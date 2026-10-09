@@ -1,6 +1,6 @@
 "use client";
 
-import { RefreshCw } from "lucide-react";
+import { RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { motion } from "motion/react";
 
 interface QuotaProgressProps {

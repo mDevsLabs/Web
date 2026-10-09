@@ -9,7 +9,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import QRCode from 'qrcode';
-import { X, Copy, Check, Download, Loader2, AlertCircle, Share2 } from 'lucide-react';
+import { XIcon as X, CopyIcon as Copy, CheckIcon as Check, DownloadIcon as Download, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, Share2Icon as Share2 } from "@mdevs/icons";
 import type { Profile } from '../../types/vibe';
 import { haptics } from '../../services/haptics';
 

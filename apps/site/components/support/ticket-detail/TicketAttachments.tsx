@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, FileText, Paperclip } from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, FileTextIcon as FileText, PaperclipIcon as Paperclip } from "@mdevs/icons";
 import type { SupportAttachment } from "@/app/actions/support-utils";
 
 export function TicketAttachments({ attachments }: { attachments: SupportAttachment[] }) {

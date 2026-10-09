@@ -6,37 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import {
-  Settings,
-  Bell,
-  Shield,
-  Download,
-  Check,
-  Sliders,
-  EyeOff,
-  Sparkles,
-  Palette,
-  Type,
-  Sun,
-  Moon,
-  Laptop,
-  Ban,
-  Loader2,
-  Users,
-  Volume2,
-  Cpu,
-  Languages,
-  X,
-  Search,
-  UserPlus,
-  Globe,
-  Lock,
-  Smartphone,
-  FileText,
-  GraduationCap,
-  RotateCcw,
-  Wrench,
-} from 'lucide-react';
+import { SettingsIcon as Settings, BellIcon as Bell, ShieldIcon as Shield, DownloadIcon as Download, CheckIcon as Check, SlidersIcon as Sliders, EyeOffIcon as EyeOff, SparklesIcon as Sparkles, PaletteIcon as Palette, TypeIcon as Type, SunIcon as Sun, MoonIcon as Moon, LaptopIcon as Laptop, BanIcon as Ban, Loader2Icon as Loader2, UsersIcon as Users, Volume2Icon as Volume2, CpuIcon as Cpu, LanguagesIcon as Languages, XIcon as X, SearchIcon as Search, UserPlusIcon as UserPlus, GlobeIcon as Globe, LockIcon as Lock, SmartphoneIcon as Smartphone, FileTextIcon as FileText, GraduationCapIcon as GraduationCap, RotateCcwIcon as RotateCcw, WrenchIcon as Wrench } from "@mdevs/icons";
 import { useNavigate } from 'react-router-dom';
 import { startFullTour } from '../services/tutorialService';
 import { useAuth } from '../context/AuthContext';

@@ -3,22 +3,23 @@
  * ============================================================================
  *
  * FICHIER GÉNÉRÉ — NE PAS ÉDITER À LA MAIN.
- * Source : apps/wakies/src/client/editor.css · Script : scripts/build-wakies-css.mjs
+ * Source : apps/wakies/integration/web/editor.css · Script : scripts/build-wakies-css.mjs
  *
  * Chaque sélecteur de Wakies est ancré sous .wakies-root, l'élément posé par
- * app/(chat)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
+ * app/(wakies)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
  * le thème clair de Wakies (.wakies-root porte :root) et ses sélecteurs nus
  * (button, input, .sidebar…) repeindraient le chat, la barre latérale et les
  * réglages de l'hôte.
  *
- * Importé par app/(chat)/wakies/layout.tsx et par lui seul.
+ * Importé par app/(wakies)/wakies/layout.tsx et par lui seul.
  * Exclu du lint (biome.jsonc) : c'est une sortie de script.
  *
  * Relancer après toute modification de la source :
  *   node scripts/build-wakies-css.mjs
  * ============================================================================ */
 
-/* Focused Spaces library and document editor. */
+@layer wakies-base, mdevs;
+@layer wakies-base {/* Focused Spaces library and document editor. */
 .wakies-root {
   --document-ink: #282b2a;
   --document-muted: #646a67;
@@ -981,13 +982,13 @@
 .wakies-root .slash-menu p {
   padding: 12px;
 }
-@keyframes saving-spin {
+@keyframes wakies-editor-saving-spin {
   to {
     transform: rotate(360deg);
   }
 }
 .wakies-root .saving-spinner {
-  animation: saving-spin 1s linear infinite;
+  animation: wakies-editor-saving-spin 1s linear infinite;
 }
 @media (min-width: 701px) {
   .wakies-root .template-app.nav-collapsed .sidebar {
@@ -1242,4 +1243,5 @@
 .wakies-root .template-app .pause-button > span {
   color: #53624d;
   font-size: 11px;
+}
 }

@@ -7,24 +7,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Bell,
-  BellOff,
-  Heart,
-  Repeat,
-  MessageSquare,
-  Sparkles,
-  UserPlus,
-  Quote as QuoteIcon,
-  FileText,
-  Check,
-  Loader2,
-  AlertCircle,
-  Mail,
-  Trash2,
-  CheckCheck,
-  RotateCcw
-} from 'lucide-react';
+import { BellIcon as Bell, BellOffIcon as BellOff, HeartIcon as Heart, RepeatIcon as Repeat, MessageSquareIcon as MessageSquare, SparklesIcon as Sparkles, UserPlusIcon as UserPlus, QuoteIcon, FileTextIcon as FileText, CheckIcon as Check, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, MailIcon as Mail, Trash2Icon as Trash2, CheckCheckIcon as CheckCheck, RotateCcwIcon as RotateCcw } from "@mdevs/icons";
 import { NotificationItem } from '../types/vibe';
 import { ApiService } from '../services/api';
 import { NotificationService } from '../services/notificationService';

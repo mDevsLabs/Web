@@ -3,21 +3,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import {
-  ExternalLink,
-  Sparkles,
-  Zap,
-  Terminal,
-  GitPullRequest,
-  Ticket,
-  FileCode,
-  MessageSquare,
-  Key,
-  Github,
-  BookOpen,
-  Copy,
-  Check,
-} from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, SparklesIcon as Sparkles, ZapIcon as Zap, TerminalIcon as Terminal, GitPullRequestIcon as GitPullRequest, TicketIcon as Ticket, FileCodeIcon as FileCode, MessageSquareIcon as MessageSquare, KeyIcon as Key, GithubIcon as Github, BookOpenIcon as BookOpen, CopyIcon as Copy, CheckIcon as Check } from "@mdevs/icons";
 import Link from "next/link";
 import { GithubRepoStats } from "@/components/github-repo-stats";
 import { GithubRelease } from "@/components/github-release";

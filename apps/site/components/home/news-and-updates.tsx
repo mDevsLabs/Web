@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRightIcon as ArrowRight, CalendarIcon as Calendar } from "@mdevs/icons";
 import Link from "next/link";
 import { NewsMedia } from "@/components/ui/media";
 import type { NewsArticle } from "@/lib/news";

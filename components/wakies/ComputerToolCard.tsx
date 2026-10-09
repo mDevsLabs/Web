@@ -1,6 +1,11 @@
 "use client";
 
-import { ArrowUpRight, FileText, Monitor, Terminal } from "lucide-react";
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  FileTextIcon as FileText,
+  MonitorIcon as Monitor,
+  TerminalIcon as Terminal,
+} from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { api } from "@/components/wakies/api";

@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircleIcon, HomeIcon, RotateCcwIcon } from "lucide-react";
+import { AlertCircleIcon, HomeIcon, RotateCcwIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect } from "react";
 

@@ -27,10 +27,11 @@
       // prochaine génération.
       "!components/vibe/vibe.css",
       // Feuilles de style Wakies : sorties de scripts/build-wakies-css.mjs
-      // (sources : apps/wakies/src/client/style.css et editor.css). Générées,
+      // (sources : apps/wakies/integration/web/style.css et editor.css). Générées,
       // donc jamais écrites à la main — même règle que pour vibe.css.
       "!components/wakies/wakies.css",
       "!components/wakies/wakies-editor.css",
+      "!components/wakies/wakies-ui.css",
       // Feuille de style Site : sortie de scripts/build-site-css.mjs (source :
       // apps/site/app/globals.css). Générée, donc jamais écrite à la main.
       "!components/site/site.css",

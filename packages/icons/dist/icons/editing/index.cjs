@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var editing_exports = {};
-__export(editing_exports, {
+var index_exports = {};
+__export(index_exports, {
   BrushCleaningIcon: () => import_brush_cleaning.BrushCleaningIcon,
   BrushIcon: () => import_brush.BrushIcon,
   CropIcon: () => import_crop.CropIcon,
@@ -36,29 +36,31 @@ __export(editing_exports, {
   PencilSparklesIcon: () => import_pencil_sparkles.PencilSparklesIcon,
   RulerDimensionLineIcon: () => import_ruler_dimension_line.RulerDimensionLineIcon,
   RulerIcon: () => import_ruler.RulerIcon,
+  SquarePenIcon: () => import_square_pen.SquarePenIcon,
   Wand2Icon: () => import_wand_2.Wand2Icon,
   WandIcon: () => import_wand.WandIcon
 });
-module.exports = __toCommonJS(editing_exports);
-var import_brush = require("./brush.cjs");
-var import_brush_cleaning = require("./brush-cleaning.cjs");
-var import_crop = require("./crop.cjs");
-var import_eraser = require("./eraser.cjs");
-var import_highlighter = require("./highlighter.cjs");
-var import_paint_bucket = require("./paint-bucket.cjs");
-var import_paint_roller = require("./paint-roller.cjs");
-var import_palette = require("./palette.cjs");
-var import_pen_off = require("./pen-off.cjs");
-var import_pen_tool = require("./pen-tool.cjs");
-var import_pencil = require("./pencil.cjs");
-var import_pencil_line = require("./pencil-line.cjs");
-var import_pencil_off = require("./pencil-off.cjs");
-var import_pencil_ruler = require("./pencil-ruler.cjs");
-var import_pencil_sparkles = require("./pencil-sparkles.cjs");
-var import_ruler = require("./ruler.cjs");
-var import_ruler_dimension_line = require("./ruler-dimension-line.cjs");
-var import_wand = require("./wand.cjs");
-var import_wand_2 = require("./wand-2.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_brush = require("./brush.js");
+var import_brush_cleaning = require("./brush-cleaning.js");
+var import_crop = require("./crop.js");
+var import_eraser = require("./eraser.js");
+var import_highlighter = require("./highlighter.js");
+var import_paint_bucket = require("./paint-bucket.js");
+var import_paint_roller = require("./paint-roller.js");
+var import_palette = require("./palette.js");
+var import_pen_off = require("./pen-off.js");
+var import_pen_tool = require("./pen-tool.js");
+var import_pencil = require("./pencil.js");
+var import_pencil_line = require("./pencil-line.js");
+var import_pencil_off = require("./pencil-off.js");
+var import_pencil_ruler = require("./pencil-ruler.js");
+var import_pencil_sparkles = require("./pencil-sparkles.js");
+var import_ruler = require("./ruler.js");
+var import_ruler_dimension_line = require("./ruler-dimension-line.js");
+var import_wand = require("./wand.js");
+var import_wand_2 = require("./wand-2.js");
+var import_square_pen = require("./square-pen.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BrushCleaningIcon,
@@ -78,6 +80,7 @@ var import_wand_2 = require("./wand-2.cjs");
   PencilSparklesIcon,
   RulerDimensionLineIcon,
   RulerIcon,
+  SquarePenIcon,
   Wand2Icon,
   WandIcon
 });

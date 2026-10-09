@@ -5,37 +5,7 @@
  * ============================================================================
  */
 
-import {
-  Ban,
-  Bell,
-  Check,
-  Cpu,
-  Download,
-  EyeOff,
-  FileText,
-  Globe,
-  GraduationCap,
-  Languages,
-  Laptop,
-  Loader2,
-  Lock,
-  Moon,
-  Palette,
-  RotateCcw,
-  Search,
-  Settings,
-  Shield,
-  Sliders,
-  Smartphone,
-  Sparkles,
-  Sun,
-  Type,
-  UserPlus,
-  Users,
-  Volume2,
-  Wrench,
-  X,
-} from "lucide-react";
+import { BanIcon as Ban, BellIcon as Bell, CheckIcon as Check, CpuIcon as Cpu, DownloadIcon as Download, EyeOffIcon as EyeOff, FileTextIcon as FileText, GlobeIcon as Globe, GraduationCapIcon as GraduationCap, LanguagesIcon as Languages, LaptopIcon as Laptop, Loader2Icon as Loader2, LockIcon as Lock, MoonIcon as Moon, PaletteIcon as Palette, RotateCcwIcon as RotateCcw, SearchIcon as Search, SettingsIcon as Settings, ShieldIcon as Shield, SlidersIcon as Sliders, SmartphoneIcon as Smartphone, SparklesIcon as Sparkles, SunIcon as Sun, TypeIcon as Type, UserPlusIcon as UserPlus, UsersIcon as Users, Volume2Icon as Volume2, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { InstallAppHint } from "@/components/vibe/common/InstallAppHint";

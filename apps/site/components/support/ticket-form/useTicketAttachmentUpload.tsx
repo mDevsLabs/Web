@@ -2,7 +2,7 @@
 
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import toast from "react-hot-toast";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle } from "@mdevs/icons";
 import type { AuthUser } from "@/components/auth-provider";
 import {
   SUPPORT_ATTACHMENT_LIMITS,

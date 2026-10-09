@@ -6,7 +6,7 @@
  * ============================================================================
  */
 
-import { Plus, X } from "lucide-react";
+import { PlusIcon as Plus, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useRef, useState } from "react";
 import {

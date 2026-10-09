@@ -1,19 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  ArrowUpDown,
-  Building2,
-  CheckSquare,
-  ChevronDown,
-  Filter,
-  Ratio,
-  Search,
-  SlidersHorizontal,
-  Square,
-  Wrench,
-  X,
-} from "lucide-react";
+import { ArrowUpDownIcon as ArrowUpDown, Building2Icon as Building2, CheckSquareIcon as CheckSquare, ChevronDownIcon as ChevronDown, FilterIcon as Filter, RatioIcon as Ratio, SearchIcon as Search, SlidersHorizontalIcon as SlidersHorizontal, SquareIcon as Square, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
 import type { ImageModelItem } from "./image-model-types";
 
 type SortOption = "default" | "name-asc" | "name-desc" | "provider-asc";

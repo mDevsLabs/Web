@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle } from "@mdevs/icons";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import {

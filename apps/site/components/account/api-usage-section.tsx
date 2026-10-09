@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { KeyRound, RefreshCw } from "lucide-react";
+import { KeyRoundIcon as KeyRound, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 
 import { getTierQuotaLimit } from "@/lib/tiers";
 import { getWeeklyResetDate, type ApiUsageStat } from "./account-utils";

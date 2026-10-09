@@ -22,7 +22,7 @@ __export(arrow_down_left_from_square_exports, {
   ArrowDownLeftFromSquareIcon: () => ArrowDownLeftFromSquareIcon
 });
 module.exports = __toCommonJS(arrow_down_left_from_square_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowDownLeftFromSquareIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowDownLeftFromSquareIcon", [["path", { "d": "M13 21h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6" }], ["path", { "d": "m3 21 9-9" }], ["path", { "d": "M9 21H3v-6" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

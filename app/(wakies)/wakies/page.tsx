@@ -7,6 +7,7 @@
  * La page est marquée « non instantanée » : le composant client lit la session au
  * premier rendu, et `cacheComponents` refuse de pré-rendre une page dont la
  * sortie dépendrait du client. C'est le même arbitrage que `/vibe`.
+ * Résolution des capacités : chargement sécurisé des serveurs MCP et extensions.
  */
 
 import Image from "next/image";

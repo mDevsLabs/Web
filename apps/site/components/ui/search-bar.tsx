@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Search, X, Loader2, CornerDownLeft } from 'lucide-react';
+import { SearchIcon as Search, XIcon as X, Loader2Icon as Loader2, CornerDownLeftIcon as CornerDownLeft } from "@mdevs/icons";
 import { SEARCH_TYPE_LABELS, type SearchEntry, type SearchType } from '@/lib/search-types';
 
 /** Interroge l'index global avec un debounce court. */

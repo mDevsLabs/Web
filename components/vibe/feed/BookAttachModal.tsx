@@ -7,7 +7,7 @@
  * ============================================================================
  */
 
-import { BookMarked, Globe, Loader2, Search, X } from "lucide-react";
+import { BookMarkedIcon as BookMarked, GlobeIcon as Globe, Loader2Icon as Loader2, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { getBookIcon } from "@/components/vibe/common/bookIcons";

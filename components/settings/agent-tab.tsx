@@ -6,17 +6,7 @@
 // globale). Toute la logique (hook useAgentSettings, options de réflexion,
 // familles d'outils) reste inchangée — seul l'enrobage change.
 
-import {
-  ActivityIcon,
-  BrainIcon,
-  FolderIcon,
-  HistoryIcon,
-  HomeIcon,
-  Loader2Icon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  WrenchIcon,
-} from "lucide-react";
+import { ActivityIcon, BrainIcon, FolderIcon, HistoryIcon, HomeIcon, Loader2Icon, ShieldCheckIcon, SparklesIcon, WrenchIcon } from "@mdevs/icons";
 import type { ReactNode } from "react";
 import { AgentActivityPanel } from "@/components/agent/agent-activity-panel";
 import { AgentScheduleHistoryPanel } from "@/components/agent/agent-schedule-history-panel";

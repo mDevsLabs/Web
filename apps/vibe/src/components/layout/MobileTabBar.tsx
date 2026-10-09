@@ -11,16 +11,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { flushSync } from 'react-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
-import {
-  Home,
-  Compass,
-  Sparkles,
-  PenSquare,
-  Bell,
-  MessageCircle,
-  Search,
-  X,
-} from 'lucide-react';
+import { HomeIcon as Home, CompassIcon as Compass, SparklesIcon as Sparkles, PenSquareIcon as PenSquare, BellIcon as Bell, MessageCircleIcon as MessageCircle, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import { ProfileAvatar } from '../common/ProfileAvatar';
 import { useMotionPrefs } from '../../hooks/useMotionPrefs';
 import { GlobalSearchBar } from './GlobalSearchBar';

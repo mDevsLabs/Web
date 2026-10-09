@@ -7,7 +7,7 @@
  */
 
 import React, { useRef, useState } from 'react';
-import { Plus, X } from 'lucide-react';
+import { PlusIcon as Plus, XIcon as X } from "@mdevs/icons";
 import { INTEREST_SUGGESTIONS, MAX_INTERESTS, MAX_INTEREST_LENGTH, normalizeInterest } from '../../data/interests';
 
 interface TagInputProps {

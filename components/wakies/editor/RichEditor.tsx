@@ -1,20 +1,20 @@
 "use client";
 
 import "@/lib/editor/patch-prosemirror";
+import {
+  BoldIcon as Bold,
+  Code2Icon as Code2,
+  ItalicIcon as Italic,
+  Link2Icon as Link2,
+  ListIcon as List,
+  ListOrderedIcon as ListOrdered,
+  QuoteIcon as Quote,
+  Redo2Icon as Redo2,
+  Undo2Icon as Undo2,
+} from "@mdevs/icons";
 import Placeholder from "@tiptap/extension-placeholder";
 import { Markdown } from "@tiptap/markdown";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
-import {
-  Bold,
-  Code2,
-  Italic,
-  Link2,
-  List,
-  ListOrdered,
-  Quote,
-  Redo2,
-  Undo2,
-} from "lucide-react";
 import { useEffect, useRef } from "react";
 import { documentExtensions } from "@/components/wakies/editor/markdown";
 import { SlashCommands } from "@/components/wakies/editor/slash-commands";

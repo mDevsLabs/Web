@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var binoculars_exports = {};
-__export(binoculars_exports, {
-  BinocularsIcon: () => BinocularsIcon
-});
-module.exports = __toCommonJS(binoculars_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const BinocularsIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("BinocularsIcon", [["path", { "d": "M10 10h4" }], ["path", { "d": "M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" }], ["path", { "d": "M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z" }], ["path", { "d": "M 22 16 L 2 16" }], ["path", { "d": "M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z" }], ["path", { "d": "M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  BinocularsIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const BinocularsIcon = /* @__PURE__ */ createIcon('BinocularsIcon', [["path", { "d": "M10 10h4" }], ["path", { "d": "M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" }], ["path", { "d": "M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z" }], ["path", { "d": "M 22 16 L 2 16" }], ["path", { "d": "M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z" }], ["path", { "d": "M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3" }]]);
+exports.BinocularsIcon = BinocularsIcon;

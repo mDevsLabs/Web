@@ -46,8 +46,8 @@ describe("Catalogue de modèles MCP", () => {
       // Icône whitelistée : jamais de repli silencieux dans l'interface.
       expect(isLucideIconName(template.icon.name)).toBe(true);
 
-      // Réservé aux forfaits payants.
-      expect(["plus", "pro", "max"]).toContain(template.minTier);
+      // Accessible dès le forfait Free.
+      expect(["free", "plus", "pro", "max"]).toContain(template.minTier);
 
       // Politique d'approbation cohérente : un serveur strictement en lecture
       // ne peut pas exiger une approbation par écriture.
@@ -138,10 +138,10 @@ describe("Catalogue de modèles MCP", () => {
     expect(getMcpTemplate("modele-qui-nexiste-pas")).toBeUndefined();
   });
 
-  it("documente GitLab et Airtable comme des connecteurs Bearer Plus read-write", () => {
+  it("documente GitLab et Airtable comme des connecteurs Bearer read-write", () => {
     for (const id of ["gitlab", "airtable"]) {
       const template = getMcpTemplate(id)!;
-      expect(template.minTier).toBe("plus");
+      expect(template.minTier).toBe("free");
       expect(template.transport).toBe("http");
       expect(template.authType).toBe("bearer");
       expect(template.readOnly).toBe(false);

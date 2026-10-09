@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Download, Printer } from "lucide-react";
+import { ArrowLeftIcon as ArrowLeft, DownloadIcon as Download, PrinterIcon as Printer } from "@mdevs/icons";
 import PrintContent from "@/components/site/print-content";
 import Link from "@/components/site/router";
 

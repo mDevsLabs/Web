@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, FileText, Users, BookHeart, MessageSquare, Loader2, X } from 'lucide-react';
+import { SearchIcon as Search, FileTextIcon as FileText, UsersIcon as Users, BookHeartIcon as BookHeart, MessageSquareIcon as MessageSquare, Loader2Icon as Loader2, XIcon as X } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import type { UnifiedSearchResult } from '../../types/vibe';
 import { makeExcerpt } from '../common/richTextUtils';

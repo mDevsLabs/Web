@@ -161,7 +161,10 @@ const nextConfig: NextConfig = {
     cachedNavigations: true,
     inlineCss: true,
     prefetchInlining: true,
-    turbopackFileSystemCacheForDev: true,
+    // Désactivé : provoque un panic Turbopack (inner_of_upper_lost_follower)
+    // quand le cache sur disque se corrompt. À réactiver quand Next.js aura
+    // corrigé le bug — https://github.com/vercel/next.js/discussions
+    turbopackFileSystemCacheForDev: false,
   },
   async headers() {
     // CSP_REPORT_ONLY=1 permet un premier déploiement en observation seule.

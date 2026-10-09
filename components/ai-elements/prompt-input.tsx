@@ -50,13 +50,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import {
-  CornerDownLeftIcon,
-  ImageIcon,
-  PlusIcon,
-  SquareIcon,
-  XIcon,
-} from "lucide-react";
+import { CornerDownLeftIcon, ImageIcon, PlusIcon, SquareIcon, XIcon } from "@mdevs/icons";
 import { nanoid } from "nanoid";
 import {
   Children,

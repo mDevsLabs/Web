@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckCircle2Icon,
-  HelpCircleIcon,
-  SendIcon,
-  TriangleAlertIcon,
-} from "lucide-react";
+import { CheckCircle2Icon, HelpCircleIcon, SendIcon, TriangleAlertIcon } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -233,9 +228,9 @@ export function AgentUserInputCard({
   return (
     <section
       aria-labelledby={`agent-question-title-${toolCallId}`}
-      className="w-[min(100%,520px)] overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-xs"
+      className="w-[min(100%,520px)] overflow-hidden rounded-2xl border border-primary/40 bg-card/85 backdrop-blur-md shadow-[inset_0_1px_0_var(--md-highlight),var(--md-shadow)]"
     >
-      <div className="flex items-start gap-2.5 border-b border-primary/20 bg-primary/5 px-4 py-3">
+      <div className="flex items-start gap-2.5 border-b border-primary/20 bg-primary/10 backdrop-blur-sm px-4 py-3">
         <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
           <HelpCircleIcon className="size-4" />
         </span>

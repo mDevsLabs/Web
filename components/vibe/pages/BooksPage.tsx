@@ -8,31 +8,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  ArrowLeft,
-  BookHeart,
-  Check,
-  ChevronDown,
-  Copy,
-  KeyRound,
-  Link2,
-  Loader2,
-  LogOut,
-  MessageSquare,
-  Pencil,
-  Pin,
-  PinOff,
-  Plus,
-  RefreshCw,
-  Send,
-  Share2,
-  Sparkles,
-  Trash2,
-  UserPlus,
-  Users,
-  X,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BookHeartIcon as BookHeart, CheckIcon as Check, ChevronDownIcon as ChevronDown, CopyIcon as Copy, KeyRoundIcon as KeyRound, Link2Icon as Link2, Loader2Icon as Loader2, LogOutIcon as LogOut, MessageSquareIcon as MessageSquare, PencilIcon as Pencil, PinIcon as Pin, PinOffIcon as PinOff, PlusIcon as Plus, RefreshCwIcon as RefreshCw, SendIcon as Send, Share2Icon as Share2, SparklesIcon as Sparkles, Trash2Icon as Trash2, UserPlusIcon as UserPlus, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   buildBookJoinLink,

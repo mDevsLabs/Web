@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  BookOpenIcon,
-  CheckCircle2Icon,
-  CpuIcon,
-  ExternalLinkIcon,
-  Loader2Icon,
-  LockIcon,
-  PlusIcon,
-  Trash2Icon,
-  WrenchIcon,
-} from "lucide-react";
+import { BookOpenIcon, CheckCircle2Icon, CpuIcon, ExternalLinkIcon, Loader2Icon, LockIcon, PlusIcon, Trash2Icon, WrenchIcon } from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";

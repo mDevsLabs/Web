@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Check,
-  FileJson,
-  FolderKanban,
-  Play,
-  RotateCcw,
-  Share2,
-} from "lucide-react";
+import { CheckIcon as Check, FileJsonIcon as FileJson, FolderKanbanIcon as FolderKanban, PlayIcon as Play, RotateCcwIcon as RotateCcw, Share2Icon as Share2 } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/site/auth-provider";
 import {

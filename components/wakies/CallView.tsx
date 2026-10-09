@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  ChevronDown,
-  Maximize2,
-  Mic,
-  MicOff,
-  PhoneOff,
-  Volume2,
-  VolumeX,
-} from "lucide-react";
+  ChevronDownIcon as ChevronDown,
+  Maximize2Icon as Maximize2,
+  MicIcon as Mic,
+  MicOffIcon as MicOff,
+  PhoneOffIcon as PhoneOff,
+  Volume2Icon as Volume2,
+  VolumeXIcon as VolumeX,
+} from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { Mascot } from "@/components/wakies/Mascot";
 import type { useVoice } from "@/components/wakies/useVoice";

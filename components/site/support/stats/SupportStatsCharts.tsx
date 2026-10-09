@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  BarChart3,
-  Layers,
-  PieChart as PieIcon,
-  TrendingUp,
-} from "lucide-react";
+import { BarChart3Icon as BarChart3, LayersIcon as Layers, PieChartIcon as PieIcon, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
 import {
   Area,
   AreaChart,

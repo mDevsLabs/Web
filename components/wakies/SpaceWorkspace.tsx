@@ -132,7 +132,7 @@ export function SpaceWorkspace({
             <h2>{loaded ? "Page introuvable" : "Chargement de la page…"}</h2>
             {loaded && (
               <button className="document-primary" onClick={() => onPage()}>
-                Back to all pages
+                Retour à toutes les pages
               </button>
             )}
           </div>

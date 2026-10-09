@@ -8,7 +8,7 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangleIcon as AlertTriangle } from "@mdevs/icons";
 
 export interface ConfirmDialogInput {
   type?: 'text' | 'url';

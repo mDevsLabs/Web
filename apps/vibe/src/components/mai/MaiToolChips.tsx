@@ -8,7 +8,7 @@
  */
 
 import React, { useState } from 'react';
-import { CheckCircle2, ChevronDown, ChevronRight, Clock, MinusCircle, Sparkles, XCircle } from 'lucide-react';
+import { CheckCircle2Icon as CheckCircle2, ChevronDownIcon as ChevronDown, ChevronRightIcon as ChevronRight, ClockIcon as Clock, MinusCircleIcon as MinusCircle, SparklesIcon as Sparkles, XCircleIcon as XCircle } from "@mdevs/icons";
 import { FALLBACK_MAI_TOOLS } from '../../data/maiTools';
 import type { MaiToolCall } from '../../types/vibe';
 

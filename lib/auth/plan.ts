@@ -80,8 +80,8 @@ export function tierMeetsMinimum(
   return getTierRank(tier) >= getTierRank(minimum);
 }
 
-export function isSkillMcpEligible(tier?: string | null): boolean {
-  return isPaidTier(tier);
+export function isSkillMcpEligible(_tier?: string | null): boolean {
+  return true;
 }
 
 export function isWakiesEligible(tier?: string | null): boolean {

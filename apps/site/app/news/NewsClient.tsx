@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Calendar, Sparkles, User } from 'lucide-react';
+import { CalendarIcon as Calendar, SparklesIcon as Sparkles, UserIcon as User } from "@mdevs/icons";
 import { PageSearch } from '@/components/ui/search-bar';
 import { NewsMedia } from '@/components/ui/media';
 import type { NewsArticle } from '@/lib/news';

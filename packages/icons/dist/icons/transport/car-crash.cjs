@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var car_crash_exports = {};
-__export(car_crash_exports, {
-  CarCrashIcon: () => CarCrashIcon
-});
-module.exports = __toCommonJS(car_crash_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const CarCrashIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("CarCrashIcon", [["path", { "d": "M8 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" }], ["path", { "d": "M7 6l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-5m0 -6h8m-6 0v-5m2 0h-4" }], ["path", { "d": "M14 8v-2" }], ["path", { "d": "M19 12h2" }], ["path", { "d": "M17.5 15.5l1.5 1.5" }], ["path", { "d": "M17.5 8.5l1.5 -1.5" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  CarCrashIcon
-});
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const CarCrashIcon = /* @__PURE__ */ createIcon('CarCrashIcon', [["path", { "d": "M8 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" }], ["path", { "d": "M7 6l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-5m0 -6h8m-6 0v-5m2 0h-4" }], ["path", { "d": "M14 8v-2" }], ["path", { "d": "M19 12h2" }], ["path", { "d": "M17.5 15.5l1.5 1.5" }], ["path", { "d": "M17.5 8.5l1.5 -1.5" }]]);
+exports.CarCrashIcon = CarCrashIcon;

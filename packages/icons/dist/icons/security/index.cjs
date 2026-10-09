@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var security_exports = {};
-__export(security_exports, {
+var index_exports = {};
+__export(index_exports, {
   BadgeCheckIcon: () => import_badge_check.BadgeCheckIcon,
   FingerprintPatternIcon: () => import_fingerprint_pattern.FingerprintPatternIcon,
   KeyIcon: () => import_key.KeyIcon,
@@ -53,48 +53,50 @@ __export(security_exports, {
   ShieldMinusIcon: () => import_shield_minus.ShieldMinusIcon,
   ShieldOffIcon: () => import_shield_off.ShieldOffIcon,
   ShieldPlusIcon: () => import_shield_plus.ShieldPlusIcon,
+  ShieldQuestionIcon: () => import_shield_question.ShieldQuestionIcon,
   ShieldQuestionMarkIcon: () => import_shield_question_mark.ShieldQuestionMarkIcon,
   ShieldUserIcon: () => import_shield_user.ShieldUserIcon,
   VaultIcon: () => import_vault.VaultIcon
 });
-module.exports = __toCommonJS(security_exports);
-var import_badge_check = require("./badge-check.cjs");
-var import_fingerprint_pattern = require("./fingerprint-pattern.cjs");
-var import_key = require("./key.cjs");
-var import_key_round = require("./key-round.cjs");
-var import_key_square = require("./key-square.cjs");
-var import_lock = require("./lock.cjs");
-var import_lock_keyhole = require("./lock-keyhole.cjs");
-var import_lock_keyhole_open = require("./lock-keyhole-open.cjs");
-var import_lock_open = require("./lock-open.cjs");
-var import_scan = require("./scan.cjs");
-var import_scan_barcode = require("./scan-barcode.cjs");
-var import_scan_box = require("./scan-box.cjs");
-var import_scan_eye = require("./scan-eye.cjs");
-var import_scan_face = require("./scan-face.cjs");
-var import_scan_heart = require("./scan-heart.cjs");
-var import_scan_line = require("./scan-line.cjs");
-var import_scan_qr_code = require("./scan-qr-code.cjs");
-var import_scan_search = require("./scan-search.cjs");
-var import_scan_square = require("./scan-square.cjs");
-var import_scan_text = require("./scan-text.cjs");
-var import_shield = require("./shield.cjs");
-var import_shield_alert = require("./shield-alert.cjs");
-var import_shield_ban = require("./shield-ban.cjs");
-var import_shield_check = require("./shield-check.cjs");
-var import_shield_close = require("./shield-close.cjs");
-var import_shield_cog = require("./shield-cog.cjs");
-var import_shield_cog_corner = require("./shield-cog-corner.cjs");
-var import_shield_ellipsis = require("./shield-ellipsis.cjs");
-var import_shield_half = require("./shield-half.cjs");
-var import_shield_keyhole = require("./shield-keyhole.cjs");
-var import_shield_lock = require("./shield-lock.cjs");
-var import_shield_minus = require("./shield-minus.cjs");
-var import_shield_off = require("./shield-off.cjs");
-var import_shield_plus = require("./shield-plus.cjs");
-var import_shield_question_mark = require("./shield-question-mark.cjs");
-var import_shield_user = require("./shield-user.cjs");
-var import_vault = require("./vault.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_badge_check = require("./badge-check.js");
+var import_fingerprint_pattern = require("./fingerprint-pattern.js");
+var import_key = require("./key.js");
+var import_key_round = require("./key-round.js");
+var import_key_square = require("./key-square.js");
+var import_lock = require("./lock.js");
+var import_lock_keyhole = require("./lock-keyhole.js");
+var import_lock_keyhole_open = require("./lock-keyhole-open.js");
+var import_lock_open = require("./lock-open.js");
+var import_scan = require("./scan.js");
+var import_scan_barcode = require("./scan-barcode.js");
+var import_scan_box = require("./scan-box.js");
+var import_scan_eye = require("./scan-eye.js");
+var import_scan_face = require("./scan-face.js");
+var import_scan_heart = require("./scan-heart.js");
+var import_scan_line = require("./scan-line.js");
+var import_scan_qr_code = require("./scan-qr-code.js");
+var import_scan_search = require("./scan-search.js");
+var import_scan_square = require("./scan-square.js");
+var import_scan_text = require("./scan-text.js");
+var import_shield = require("./shield.js");
+var import_shield_alert = require("./shield-alert.js");
+var import_shield_ban = require("./shield-ban.js");
+var import_shield_check = require("./shield-check.js");
+var import_shield_close = require("./shield-close.js");
+var import_shield_cog = require("./shield-cog.js");
+var import_shield_cog_corner = require("./shield-cog-corner.js");
+var import_shield_ellipsis = require("./shield-ellipsis.js");
+var import_shield_half = require("./shield-half.js");
+var import_shield_keyhole = require("./shield-keyhole.js");
+var import_shield_lock = require("./shield-lock.js");
+var import_shield_minus = require("./shield-minus.js");
+var import_shield_off = require("./shield-off.js");
+var import_shield_plus = require("./shield-plus.js");
+var import_shield_question_mark = require("./shield-question-mark.js");
+var import_shield_user = require("./shield-user.js");
+var import_vault = require("./vault.js");
+var import_shield_question = require("./shield-question.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BadgeCheckIcon,
@@ -131,6 +133,7 @@ var import_vault = require("./vault.cjs");
   ShieldMinusIcon,
   ShieldOffIcon,
   ShieldPlusIcon,
+  ShieldQuestionIcon,
   ShieldQuestionMarkIcon,
   ShieldUserIcon,
   VaultIcon

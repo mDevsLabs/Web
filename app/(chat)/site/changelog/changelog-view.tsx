@@ -1,19 +1,13 @@
 "use client";
 
-import {
-  ArrowLeft,
-  ExternalLink,
-  GitCommit,
-  type LucideIcon,
-  Star,
-  Zap,
-} from "lucide-react";
+import { ArrowLeftIcon as ArrowLeft, ExternalLinkIcon as ExternalLink, GitCommitIcon as GitCommit, StarIcon as Star, ZapIcon as Zap } from "@mdevs/icons";
+import type { IconProps } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Markdown from "react-markdown";
 import Link from "@/components/site/router";
 import type { ChangelogsByProject } from "@/lib/site/changelog";
 
-const iconMap: Record<string, LucideIcon> = {
+const iconMap: Record<string, React.ComponentType<any>> = {
   GitCommit,
   Star,
   Zap,

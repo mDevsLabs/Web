@@ -20,7 +20,7 @@ import { HomePage } from './pages/HomePage';
 import { AuthModal } from './pages/AuthModal';
 import { PageSkeleton } from './components/common/PageSkeleton';
 import { Post } from './types/vibe';
-import { X, CheckCircle, AlertCircle, Info, Loader2 } from 'lucide-react';
+import { XIcon as X, CheckCircleIcon as CheckCircle, AlertCircleIcon as AlertCircle, InfoIcon as Info, Loader2Icon as Loader2 } from "@mdevs/icons";
 import { InAppToast } from './services/notificationService';
 import { ApiService } from './services/api';
 import { RealtimeService } from './services/realtimeService';

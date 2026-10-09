@@ -35,3 +35,4 @@ export { ShieldPlusIcon } from './shield-plus.js';
 export { ShieldQuestionMarkIcon } from './shield-question-mark.js';
 export { ShieldUserIcon } from './shield-user.js';
 export { VaultIcon } from './vault.js';
+export { ShieldQuestionIcon } from './shield-question.js';

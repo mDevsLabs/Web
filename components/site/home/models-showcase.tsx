@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  ArrowRight,
-  Check,
-  Cloud,
-  Copy,
-  Cpu,
-  Eye,
-  Terminal,
-  Wrench,
-} from "lucide-react";
+import { ArrowRightIcon as ArrowRight, CheckIcon as Check, CloudIcon as Cloud, CopyIcon as Copy, CpuIcon as Cpu, EyeIcon as Eye, TerminalIcon as Terminal, WrenchIcon as Wrench } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";

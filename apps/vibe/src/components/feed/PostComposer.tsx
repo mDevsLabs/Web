@@ -9,27 +9,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { haptics } from '../../services/haptics';
 import { useMotionPrefs } from '../../hooks/useMotionPrefs';
-import {
-  Image as ImageIcon,
-  Mic,
-  MicOff,
-  Send,
-  X,
-  AlertCircle,
-  Loader2,
-  Sparkles,
-  Clock,
-  Lock,
-  CalendarClock,
-  Check,
-  Wand2,
-  Globe,
-  Users,
-  Undo2,
-  FileText,
-  BarChart2,
-  BookHeart,
-} from 'lucide-react';
+import { ImageIcon, MicIcon as Mic, MicOffIcon as MicOff, SendIcon as Send, XIcon as X, AlertCircleIcon as AlertCircle, Loader2Icon as Loader2, SparklesIcon as Sparkles, ClockIcon as Clock, LockIcon as Lock, CalendarClockIcon as CalendarClock, CheckIcon as Check, Wand2Icon as Wand2, GlobeIcon as Globe, UsersIcon as Users, Undo2Icon as Undo2, FileTextIcon as FileText, BarChart2Icon as BarChart2, BookHeartIcon as BookHeart } from "@mdevs/icons";
 import { useAuth } from '../../context/AuthContext';
 import { getPostCharLimit, getMediaBytesLimit, formatMediaLimit } from '../../services/tierLimits';
 import { ApiService } from '../../services/api';

@@ -38,6 +38,7 @@ const REQUIRED_TABLES = [
   // Wakies (migration 0037) : sans ces tables, /wakies répond 500 dès le
   // premier chargement de l'espace de travail, et l'application n'affiche
   // qu'un écran de chargement infini.
+  "WakiesChatTurn",
   "WakiesCall",
   "WakiesCapture",
   "WakiesConversation",
@@ -58,6 +59,14 @@ const REQUIRED_TABLES = [
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  ...[
+    "userId",
+    "conversationId",
+    "messageId",
+    "responseId",
+    "status",
+    "expiresAt",
+  ].map((column) => ({ column, table: "WakiesChatTurn" })),
   { column: "agentApprovalRequired", table: "user_notification_prefs" },
   { column: "executionOwner", table: "AgentRun" },
   { column: "executionLeaseUntil", table: "AgentRun" },
@@ -107,6 +116,22 @@ const REQUIRED_COLUMNS = [
   { column: "model", table: "WakiesWakie" },
   { column: "avatar", table: "WakiesWakie" },
   { column: "model", table: "WakiesConversation" },
+  // Migration 0042 : `GET /api/wakies/workspace` sélectionne désormais les
+  // colonnes de sélection d'outils, et la configuration de départ lit
+  // `onboardingCompleted`. Une colonne absente fait répondre 500 au premier
+  // chargement de /wakies : plus d'espace de travail, plus de chat, plus
+  // d'assistant — l'application entière est inutilisable.
+  { column: "onboardingCompleted", table: "WakiesSettings" },
+  { column: "mcpServerIds", table: "WakiesWakie" },
+  { column: "pluginIds", table: "WakiesWakie" },
+  { column: "skillIds", table: "WakiesWakie" },
+  { column: "skillParams", table: "WakiesWakie" },
+  { column: "toolIds", table: "WakiesWakie" },
+  { column: "mcpServerIds", table: "WakiesConversation" },
+  { column: "pluginIds", table: "WakiesConversation" },
+  { column: "skillIds", table: "WakiesConversation" },
+  { column: "skillParams", table: "WakiesConversation" },
+  { column: "toolIds", table: "WakiesConversation" },
 ];
 
 const REQUIRED_INDEXES = [

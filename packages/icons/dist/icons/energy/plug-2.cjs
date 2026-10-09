@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var plug_2_exports = {};
-__export(plug_2_exports, {
-  Plug2Icon: () => Plug2Icon
-});
-module.exports = __toCommonJS(plug_2_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const Plug2Icon = /* @__PURE__ */ (0, import_create_icon.createIcon)("Plug2Icon", [["path", { "d": "M9 2v6" }], ["path", { "d": "M15 2v6" }], ["path", { "d": "M12 17v5" }], ["path", { "d": "M5 8h14" }], ["path", { "d": "M6 11V8h12v3a6 6 0 1 1-12 0Z" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Plug2Icon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const Plug2Icon = /* @__PURE__ */ createIcon('Plug2Icon', [["path", { "d": "M9 2v6" }], ["path", { "d": "M15 2v6" }], ["path", { "d": "M12 17v5" }], ["path", { "d": "M5 8h14" }], ["path", { "d": "M6 11V8h12v3a6 6 0 1 1-12 0Z" }]]);
+exports.Plug2Icon = Plug2Icon;

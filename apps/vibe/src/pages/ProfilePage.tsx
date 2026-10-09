@@ -7,30 +7,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Calendar,
-  Edit3,
-  ArrowLeft,
-  X,
-  Camera,
-  LogOut,
-  Settings as SettingsIcon,
-  Upload,
-  Loader2,
-  BadgeCheck,
-  AlertCircle,
-  Share2,
-  MoreHorizontal,
-  EyeOff,
-  Ban,
-  Users,
-  Bell,
-  BellRing,
-  BarChart2,
-  CalendarClock,
-  Link2,
-  MapPin
-} from 'lucide-react';
+import { CalendarIcon as Calendar, Edit3Icon as Edit3, ArrowLeftIcon as ArrowLeft, XIcon as X, CameraIcon as Camera, LogOutIcon as LogOut, SettingsIcon, UploadIcon as Upload, Loader2Icon as Loader2, BadgeCheckIcon as BadgeCheck, AlertCircleIcon as AlertCircle, Share2Icon as Share2, MoreHorizontalIcon as MoreHorizontal, EyeOffIcon as EyeOff, BanIcon as Ban, UsersIcon as Users, BellIcon as Bell, BellRingIcon as BellRing, BarChart2Icon as BarChart2, CalendarClockIcon as CalendarClock, Link2Icon as Link2, MapPinIcon as MapPin } from "@mdevs/icons";
 import type { Profile, Post, ProfileListUser } from '../types/vibe';
 import { ApiService } from '../services/api';
 import { useAuth } from '../context/AuthContext';

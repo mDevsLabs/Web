@@ -1,6 +1,6 @@
-# Démonstrations enregistrées de Wakies
+# Démonstrations historiques du gabarit OpenDots
 
-Ces vidéos documentent des parcours de l’application autonome dans apps/wakies. Elles ne décrivent pas l’état du port mAI Web sous /wakies. Pour le statut des fonctions intégrées, consultez [INTEGRATION.md](../INTEGRATION.md).
+Ces vidéos documentent l’ancien gabarit OpenDots, archivé lors du remplacement par OpenMuse. Elles ne représentent pas les sources actuellement présentes dans apps/wakies. Elles ne décrivent pas l’état du port mAI Web sous /wakies. Pour le statut des fonctions intégrées, consultez [INTEGRATION.md](../INTEGRATION.md).
 
 Les captures ont été réalisées dans un projet Intelligence de démonstration et un espace Launch studio séparé. Elles n’exposent pas de données client ni d’identifiants. Les réponses montrées proviennent de sessions réelles ; elles n’ont pas été remplacées par du texte simulé.
 

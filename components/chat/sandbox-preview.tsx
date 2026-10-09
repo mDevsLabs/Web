@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  MonitorIcon,
-  PauseIcon,
-  PlayIcon,
-  SmartphoneIcon,
-  TabletIcon,
-  TerminalIcon,
-  TrashIcon,
-  ZapIcon,
-} from "lucide-react";
+import { ChevronDownIcon, ChevronUpIcon, MonitorIcon, PauseIcon, PlayIcon, SmartphoneIcon, TabletIcon, TerminalIcon, TrashIcon, ZapIcon } from "@mdevs/icons";
 import {
   type CSSProperties,
   useEffect,

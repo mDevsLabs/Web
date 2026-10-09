@@ -1,6 +1,6 @@
 "use client";
 
-import { KeyRound, RefreshCw } from "lucide-react";
+import { KeyRoundIcon as KeyRound, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import Link from "@/components/site/router";
 
 import { getTierQuotaLimit } from "@/lib/site/tiers";

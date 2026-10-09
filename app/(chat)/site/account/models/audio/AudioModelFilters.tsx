@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpDown, Building2, ChevronDown, Search, X } from "lucide-react";
+import { ArrowUpDownIcon as ArrowUpDown, Building2Icon as Building2, ChevronDownIcon as ChevronDown, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import type { AudioModelItem } from "./audio-model-types";
 

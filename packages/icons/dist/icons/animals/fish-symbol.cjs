@@ -22,7 +22,7 @@ __export(fish_symbol_exports, {
   FishSymbolIcon: () => FishSymbolIcon
 });
 module.exports = __toCommonJS(fish_symbol_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const FishSymbolIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("FishSymbolIcon", [["path", { "d": "M2 16s9-15 20-4C11 23 2 8 2 8" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

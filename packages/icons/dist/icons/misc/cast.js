@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const CastIcon = /* @__PURE__ */ createIcon("CastIcon", [["path", { "d": "M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" }], ["path", { "d": "M2 12a9 9 0 0 1 8 8" }], ["path", { "d": "M2 16a5 5 0 0 1 4 4" }], ["line", { "x1": "2", "x2": "2.01", "y1": "20", "y2": "20" }]]);
-export {
-  CastIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CastIcon = /* @__PURE__ */ createIcon('CastIcon', [["path", { "d": "M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" }], ["path", { "d": "M2 12a9 9 0 0 1 8 8" }], ["path", { "d": "M2 16a5 5 0 0 1 4 4" }], ["line", { "x1": "2", "x2": "2.01", "y1": "20", "y2": "20" }]]);

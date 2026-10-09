@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  AlertCircle,
-  CheckCircle2,
-  ChevronRight,
-  FileQuestion,
-  Loader2,
-  MessageSquare,
-  PlusCircle,
-  ShieldCheck,
-  TrendingUp,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, CheckCircle2Icon as CheckCircle2, ChevronRightIcon as ChevronRight, FileQuestionIcon as FileQuestion, Loader2Icon as Loader2, MessageSquareIcon as MessageSquare, PlusCircleIcon as PlusCircle, ShieldCheckIcon as ShieldCheck, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import {
   getSupportStats,

@@ -5,19 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { normalizeText, type DocMetadata } from "@/lib/text-utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {
-  Search,
-  FileText,
-  Clock,
-  Layers,
-  Copy,
-  Check,
-  Share2,
-  X,
-  FileQuestion,
-  ChevronRight,
-  Menu,
-} from "lucide-react";
+import { SearchIcon as Search, FileTextIcon as FileText, ClockIcon as Clock, LayersIcon as Layers, CopyIcon as Copy, CheckIcon as Check, Share2Icon as Share2, XIcon as X, FileQuestionIcon as FileQuestion, ChevronRightIcon as ChevronRight, MenuIcon as Menu } from "@mdevs/icons";
 import { toast } from "react-hot-toast";
 
 interface DocsClientProps {

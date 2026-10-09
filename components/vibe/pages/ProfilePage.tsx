@@ -5,30 +5,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  ArrowLeft,
-  BadgeCheck,
-  Ban,
-  BarChart2,
-  Bell,
-  BellRing,
-  Calendar,
-  CalendarClock,
-  Camera,
-  Edit3,
-  EyeOff,
-  Link2,
-  Loader2,
-  LogOut,
-  MapPin,
-  MoreHorizontal,
-  Settings as SettingsIcon,
-  Share2,
-  Upload,
-  Users,
-  X,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BadgeCheckIcon as BadgeCheck, BanIcon as Ban, BarChart2Icon as BarChart2, BellIcon as Bell, BellRingIcon as BellRing, CalendarIcon as Calendar, CalendarClockIcon as CalendarClock, CameraIcon as Camera, Edit3Icon as Edit3, EyeOffIcon as EyeOff, Link2Icon as Link2, Loader2Icon as Loader2, LogOutIcon as LogOut, MapPinIcon as MapPin, MoreHorizontalIcon as MoreHorizontal, SettingsIcon, Share2Icon as Share2, UploadIcon as Upload, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";

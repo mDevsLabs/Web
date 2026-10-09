@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const PlayingCardIcon = /* @__PURE__ */ createIcon("PlayingCardIcon", [["path", { "d": "M12.832 8.445a1 1 0 00-1.589-.098l-2.075 3.098a1 1 0 000 1.11l2 3a1 1 0 001.664 0l2-3a1 1 0 000-1.11z" }], ["rect", { "x": "5", "y": "2", "width": "14", "height": "20", "rx": "2" }]]);
-export {
-  PlayingCardIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const PlayingCardIcon = /* @__PURE__ */ createIcon('PlayingCardIcon', [["path", { "d": "M12.832 8.445a1 1 0 00-1.589-.098l-2.075 3.098a1 1 0 000 1.11l2 3a1 1 0 001.664 0l2-3a1 1 0 000-1.11z" }], ["rect", { "x": "5", "y": "2", "width": "14", "height": "20", "rx": "2" }]]);

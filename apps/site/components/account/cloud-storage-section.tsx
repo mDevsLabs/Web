@@ -1,6 +1,6 @@
 "use client";
 
-import { Cloud, RefreshCw } from "lucide-react";
+import { CloudIcon as Cloud, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { motion } from "motion/react";
 
 import { CLOUD_STORAGE_LIMITS, formatStorageBytes } from "@/lib/mai-api";

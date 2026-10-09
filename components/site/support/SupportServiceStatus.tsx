@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle2,
-  ExternalLink,
-  Info,
-  Loader2,
-  RefreshCw,
-} from "lucide-react";
+import { ActivityIcon as Activity, AlertTriangleIcon as AlertTriangle, CheckCircle2Icon as CheckCircle2, ExternalLinkIcon as ExternalLink, InfoIcon as Info, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { useCallback, useEffect, useState } from "react";
 import Link from "@/components/site/router";
 import {

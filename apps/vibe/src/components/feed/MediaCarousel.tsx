@@ -7,7 +7,7 @@
  */
 
 import React, { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight } from "@mdevs/icons";
 import { haptics } from '../../services/haptics';
 
 export interface CarouselMedia {

@@ -136,6 +136,9 @@ import { NotebookDotIcon } from "./notebook-dot.js";
 import { NotebookPenIcon } from "./notebook-pen.js";
 import { NotebookTabsIcon } from "./notebook-tabs.js";
 import { NotebookTextIcon } from "./notebook-text.js";
+import { FileJsonIcon } from "./file-json.js";
+import { FileQuestionIcon } from "./file-question.js";
+import { BookMarkedIcon } from "./book-marked.js";
 export {
   ArchiveIcon,
   ArchiveOffIcon,
@@ -157,6 +160,7 @@ export {
   BookImageIcon,
   BookKeyIcon,
   BookLockIcon,
+  BookMarkedIcon,
   BookMinusIcon,
   BookOffIcon,
   BookOpenCheckIcon,
@@ -209,6 +213,7 @@ export {
   FileIcon,
   FileImageIcon,
   FileInputIcon,
+  FileJsonIcon,
   FileKey2Icon,
   FileLock2Icon,
   FileMinus2Icon,
@@ -219,6 +224,7 @@ export {
   FilePlayIcon,
   FilePlus2Icon,
   FilePlusIcon,
+  FileQuestionIcon,
   FileQuestionMarkIcon,
   FileScanIcon,
   FileSearch2Icon,

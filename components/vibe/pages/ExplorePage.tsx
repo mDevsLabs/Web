@@ -7,23 +7,7 @@
  */
 
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  ChevronRight,
-  Crown,
-  FileText,
-  Hash,
-  Heart,
-  Loader2,
-  Search,
-  Sparkles,
-  TrendingUp,
-  Trophy,
-  UserCheck,
-  UserPlus,
-  Users,
-  X,
-} from "lucide-react";
+import { ArrowUpRightIcon as ArrowUpRight, ChevronRightIcon as ChevronRight, CrownIcon as Crown, FileTextIcon as FileText, HashIcon as Hash, HeartIcon as Heart, Loader2Icon as Loader2, SearchIcon as Search, SparklesIcon as Sparkles, TrendingUpIcon as TrendingUp, TrophyIcon as Trophy, UserCheckIcon as UserCheck, UserPlusIcon as UserPlus, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";

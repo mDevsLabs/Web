@@ -1,4 +1,4 @@
-import { Loader2, User } from "lucide-react";
+import { Loader2Icon as Loader2, UserIcon as User } from "@mdevs/icons";
 import type React from "react";
 import { useState } from "react";
 

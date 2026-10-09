@@ -7,7 +7,7 @@
  * ============================================================================
  */
 
-import { Check, Eye, Flag, Info, Pencil, Send, X } from "lucide-react";
+import { CheckIcon as Check, EyeIcon as Eye, FlagIcon as Flag, InfoIcon as Info, PencilIcon as Pencil, SendIcon as Send, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import type { DirectMessage } from "@/lib/vibe/types/vibe";

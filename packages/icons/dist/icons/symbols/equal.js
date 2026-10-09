@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const EqualIcon = /* @__PURE__ */ createIcon("EqualIcon", [["line", { "x1": "5", "x2": "19", "y1": "9", "y2": "9" }], ["line", { "x1": "5", "x2": "19", "y1": "15", "y2": "15" }]]);
-export {
-  EqualIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const EqualIcon = /* @__PURE__ */ createIcon('EqualIcon', [["line", { "x1": "5", "x2": "19", "y1": "9", "y2": "9" }], ["line", { "x1": "5", "x2": "19", "y1": "15", "y2": "15" }]]);

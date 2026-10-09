@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRightIcon, PlusIcon, SquareSlashIcon } from "lucide-react";
+import { ArrowRightIcon, PlusIcon, SquareSlashIcon } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -86,7 +86,7 @@ export function ConfigurationSection() {
   );
   const { data: mcpData } = useSWR<{
     servers: Array<{ id: string; name: string; isEnabled: boolean }>;
-  }>(isFree ? null : "/api/mcp", fetcher);
+  }>("/api/mcp", fetcher);
   const mcpServers = mcpData?.servers ?? [];
   const { data: agentsData } = useSWR<{
     agents: Array<{ id: string; name: string }>;

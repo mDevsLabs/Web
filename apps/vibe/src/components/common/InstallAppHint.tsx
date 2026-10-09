@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Download, Share } from 'lucide-react';
+import { DownloadIcon as Download, ShareIcon as Share } from "@mdevs/icons";
 import { canInstall, isIOS, isStandalone, onInstallAvailable, promptInstall } from '../../services/pwa';
 import { haptics } from '../../services/haptics';
 

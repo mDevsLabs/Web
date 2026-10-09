@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/CopilotKit/OpenMuse.git",
+  "branch": "main",
+  "commit": "1ac68f3909f2478ab6280883f1ab5ea65eb5719d",
+  "maiBranch": "canary",
+  "maiCommit": "c7a390aedc0424d83fc552d13ea189ab417c7f66",
+  "license": "MIT",
+  "compiledEntry": "../../components/wakies/workspace-app.tsx",
+  "referenceOnly": [
+    "apps/mobile",
+    "apps/server",
+    "apps/worker",
+    "apps/computer",
+    "packages"
+  ],
+  "adaptations": [
+    "integration/web"
+  ],
+  "replacedUpstreamFiles": {
+    "README.md": "UPSTREAM_README.md",
+    "package.json": "upstream.package.json"
+  }
+}

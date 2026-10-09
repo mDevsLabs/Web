@@ -1,5 +1,10 @@
 # Changelog
 
+## Corrections locales — 2026-10-09
+
+- Couleur des icônes héritée du contrôle ; dessins et indicateurs non comprimés dans les boutons.
+- ScrollArea peut rétrécir en flex/grid ; le remplissage de Tooltip ne cible que sa flèche.
+
 ## 0.2.0 — 2026-10-05
 
 - 100 composants ajoutés : 60 primitives et 40 compositions dans quatre domaines ; total 1 212.

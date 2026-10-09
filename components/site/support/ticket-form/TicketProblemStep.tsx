@@ -1,6 +1,6 @@
 "use client";
 
-import { Edit3, Eye } from "lucide-react";
+import { Edit3Icon as Edit3, EyeIcon as Eye } from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
 
 export function TicketProblemStep({

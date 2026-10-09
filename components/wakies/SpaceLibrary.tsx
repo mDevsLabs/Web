@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  ArrowUpRight,
-  FileText,
-  LayoutGrid,
-  List,
-  Plus,
-  Search,
-} from "lucide-react";
+  ArrowUpRightIcon as ArrowUpRight,
+  FileTextIcon as FileText,
+  LayoutGridIcon as LayoutGrid,
+  ListIcon as List,
+  PlusIcon as Plus,
+  SearchIcon as Search,
+} from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import type { Page } from "@/lib/wakies/pages";
 import type { Space } from "@/lib/wakies/shared/types";

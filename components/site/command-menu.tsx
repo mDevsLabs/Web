@@ -1,15 +1,7 @@
 "use client";
 
 import { Command } from "cmdk";
-import {
-  BarChart3,
-  FileText,
-  Folder,
-  LifeBuoy,
-  Loader2,
-  PlusCircle,
-  Search,
-} from "lucide-react";
+import { BarChart3Icon as BarChart3, FileTextIcon as FileText, FolderIcon as Folder, LifeBuoyIcon as LifeBuoy, Loader2Icon as Loader2, PlusCircleIcon as PlusCircle, SearchIcon as Search } from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import {

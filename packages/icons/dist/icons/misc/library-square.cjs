@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var library_square_exports = {};
-__export(library_square_exports, {
-  LibrarySquareIcon: () => LibrarySquareIcon
-});
-module.exports = __toCommonJS(library_square_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const LibrarySquareIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("LibrarySquareIcon", [["rect", { "width": "18", "height": "18", "x": "3", "y": "3", "rx": "2" }], ["path", { "d": "M7 7v10" }], ["path", { "d": "M11 7v10" }], ["path", { "d": "m15 7 2 10" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  LibrarySquareIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const LibrarySquareIcon = /* @__PURE__ */ createIcon('LibrarySquareIcon', [["rect", { "width": "18", "height": "18", "x": "3", "y": "3", "rx": "2" }], ["path", { "d": "M7 7v10" }], ["path", { "d": "M11 7v10" }], ["path", { "d": "m15 7 2 10" }]]);
+exports.LibrarySquareIcon = LibrarySquareIcon;

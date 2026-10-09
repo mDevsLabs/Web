@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy, Terminal } from "lucide-react";
+import { CheckIcon as Check, CopyIcon as Copy, TerminalIcon as Terminal } from "@mdevs/icons";
 import { useState } from "react";
 
 export function InteractiveCodeBox() {

@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Loader2, Plus, X, Check, AlertCircle, Users } from 'lucide-react';
+import { Loader2Icon as Loader2, PlusIcon as Plus, XIcon as X, CheckIcon as Check, AlertCircleIcon as AlertCircle, UsersIcon as Users } from "@mdevs/icons";
 import type { VibeBook } from '../../types/vibe';
 import { ApiService } from '../../services/api';
 import { NotificationService } from '../../services/notificationService';

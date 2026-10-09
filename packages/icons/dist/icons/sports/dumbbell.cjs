@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var dumbbell_exports = {};
-__export(dumbbell_exports, {
-  DumbbellIcon: () => DumbbellIcon
-});
-module.exports = __toCommonJS(dumbbell_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const DumbbellIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("DumbbellIcon", [["path", { "d": "M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z" }], ["path", { "d": "m2.5 21.5 1.4-1.4" }], ["path", { "d": "m20.1 3.9 1.4-1.4" }], ["path", { "d": "M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z" }], ["path", { "d": "m9.6 14.4 4.8-4.8" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  DumbbellIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const DumbbellIcon = /* @__PURE__ */ createIcon('DumbbellIcon', [["path", { "d": "M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z" }], ["path", { "d": "m2.5 21.5 1.4-1.4" }], ["path", { "d": "m20.1 3.9 1.4-1.4" }], ["path", { "d": "M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z" }], ["path", { "d": "m9.6 14.4 4.8-4.8" }]]);
+exports.DumbbellIcon = DumbbellIcon;

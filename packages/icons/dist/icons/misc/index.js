@@ -1,2255 +1,1127 @@
 "use client";
-import { AbacusIcon } from "./abacus.js";
-import { AbacusOffIcon } from "./abacus-off.js";
-import { AbcIcon } from "./abc.js";
-import { AccessPointIcon } from "./access-point.js";
-import { AccessPointOffIcon } from "./access-point-off.js";
-import { AccessibleIcon } from "./accessible.js";
-import { AccessibleOffIcon } from "./accessible-off.js";
-import { AcornIcon } from "./acorn.js";
-import { AcrobaticIcon } from "./acrobatic.js";
-import { AdIcon } from "./ad.js";
-import { Ad2Icon } from "./ad-2.js";
-import { AdCircleIcon } from "./ad-circle.js";
-import { AdCircleOffIcon } from "./ad-circle-off.js";
-import { AdOffIcon } from "./ad-off.js";
-import { AddressBookIcon } from "./address-book.js";
-import { AddressBookOffIcon } from "./address-book-off.js";
-import { AdjustmentsIcon } from "./adjustments.js";
-import { AdjustmentsAltIcon } from "./adjustments-alt.js";
-import { AdjustmentsBoltIcon } from "./adjustments-bolt.js";
-import { AdjustmentsCancelIcon } from "./adjustments-cancel.js";
-import { AdjustmentsCheckIcon } from "./adjustments-check.js";
-import { AdjustmentsCodeIcon } from "./adjustments-code.js";
-import { AdjustmentsCogIcon } from "./adjustments-cog.js";
-import { AdjustmentsDollarIcon } from "./adjustments-dollar.js";
-import { AdjustmentsDownIcon } from "./adjustments-down.js";
-import { AdjustmentsExclamationIcon } from "./adjustments-exclamation.js";
-import { AdjustmentsHeartIcon } from "./adjustments-heart.js";
-import { AdjustmentsHorizontalIcon } from "./adjustments-horizontal.js";
-import { AdjustmentsMinusIcon } from "./adjustments-minus.js";
-import { AdjustmentsOffIcon } from "./adjustments-off.js";
-import { AdjustmentsPauseIcon } from "./adjustments-pause.js";
-import { AdjustmentsPinIcon } from "./adjustments-pin.js";
-import { AdjustmentsPlusIcon } from "./adjustments-plus.js";
-import { AdjustmentsQuestionIcon } from "./adjustments-question.js";
-import { AerialLiftIcon } from "./aerial-lift.js";
-import { AiIcon } from "./ai.js";
-import { AiAgentIcon } from "./ai-agent.js";
-import { AiAgentsIcon } from "./ai-agents.js";
-import { AiGatewayIcon } from "./ai-gateway.js";
-import { AirBalloonIcon } from "./air-balloon.js";
-import { AirConditioningIcon } from "./air-conditioning.js";
-import { AirConditioningDisabledIcon } from "./air-conditioning-disabled.js";
-import { AirTrafficControlIcon } from "./air-traffic-control.js";
-import { AirVentIcon } from "./air-vent.js";
-import { AirplayIcon } from "./airplay.js";
-import { AirpodsLIcon } from "./airpods-l.js";
-import { AirpodsRIcon } from "./airpods-r.js";
-import { AlbumIcon } from "./album.js";
-import { AlbumOffIcon } from "./album-off.js";
-import { AlertCircleIcon } from "./alert-circle.js";
-import { AlertOctagonIcon } from "./alert-octagon.js";
-import { AlertTriangleIcon } from "./alert-triangle.js";
-import { AlienIcon } from "./alien.js";
-import { AlphaIcon } from "./alpha.js";
-import { AltIcon } from "./alt.js";
-import { AmpersandsIcon } from "./ampersands.js";
-import { AmphoraIcon } from "./amphora.js";
-import { AnchorIcon } from "./anchor.js";
-import { AnchorOffIcon } from "./anchor-off.js";
-import { AngleIcon } from "./angle.js";
-import { AngryIcon } from "./angry.js";
-import { AnkhIcon } from "./ankh.js";
-import { AnnoyedIcon } from "./annoyed.js";
-import { AntennaIcon } from "./antenna.js";
-import { AntennaBars1Icon } from "./antenna-bars-1.js";
-import { AntennaBars2Icon } from "./antenna-bars-2.js";
-import { AntennaBars3Icon } from "./antenna-bars-3.js";
-import { AntennaBars4Icon } from "./antenna-bars-4.js";
-import { AntennaBars5Icon } from "./antenna-bars-5.js";
-import { AntennaBarsOffIcon } from "./antenna-bars-off.js";
-import { AntennaOffIcon } from "./antenna-off.js";
-import { ApertureIcon } from "./aperture.js";
-import { ApertureOffIcon } from "./aperture-off.js";
-import { AppWindowIcon } from "./app-window.js";
-import { AppWindowMacIcon } from "./app-window-mac.js";
-import { AppsIcon } from "./apps.js";
-import { AppsOffIcon } from "./apps-off.js";
-import { ArcheryArrowIcon } from "./archery-arrow.js";
-import { AreaChartIcon } from "./area-chart.js";
-import { ArmenianDramIcon } from "./armenian-dram.js";
-import { ArrowsUpFromLineIcon } from "./arrows-up-from-line.js";
-import { ArtboardIcon } from "./artboard.js";
-import { ArtboardOffIcon } from "./artboard-off.js";
-import { ArticleIcon } from "./article.js";
-import { ArticleOffIcon } from "./article-off.js";
-import { AspectRatioIcon } from "./aspect-ratio.js";
-import { AspectRatioOffIcon } from "./aspect-ratio-off.js";
-import { AssemblyIcon } from "./assembly.js";
-import { AssemblyOffIcon } from "./assembly-off.js";
-import { AssetIcon } from "./asset.js";
-import { AstroidIcon } from "./astroid.js";
-import { Auth2faIcon } from "./auth-2fa.js";
-import { AutomaticGearboxIcon } from "./automatic-gearbox.js";
-import { AvocadoIcon } from "./avocado.js";
-import { AwardIcon } from "./award.js";
-import { AwardOffIcon } from "./award-off.js";
-import { AxeIcon } from "./axe.js";
-import { BackgroundIcon } from "./background.js";
-import { BackhoeIcon } from "./backhoe.js";
-import { BackslashIcon } from "./backslash.js";
-import { BadgeIcon } from "./badge.js";
-import { Badge2kIcon } from "./badge-2k.js";
-import { Badge3dIcon } from "./badge-3d.js";
-import { Badge3kIcon } from "./badge-3k.js";
-import { Badge4kIcon } from "./badge-4k.js";
-import { Badge5kIcon } from "./badge-5k.js";
-import { Badge8kIcon } from "./badge-8k.js";
-import { BadgeAdIcon } from "./badge-ad.js";
-import { BadgeAdOffIcon } from "./badge-ad-off.js";
-import { BadgeAlertIcon } from "./badge-alert.js";
-import { BadgeArIcon } from "./badge-ar.js";
-import { BadgeCcIcon } from "./badge-cc.js";
-import { BadgeCentIcon } from "./badge-cent.js";
-import { BadgeDollarSignIcon } from "./badge-dollar-sign.js";
-import { BadgeEuroIcon } from "./badge-euro.js";
-import { BadgeHdIcon } from "./badge-hd.js";
-import { BadgeHelpIcon } from "./badge-help.js";
-import { BadgeIndianRupeeIcon } from "./badge-indian-rupee.js";
-import { BadgeInfoIcon } from "./badge-info.js";
-import { BadgeJapaneseYenIcon } from "./badge-japanese-yen.js";
-import { BadgeMinusIcon } from "./badge-minus.js";
-import { BadgeOffIcon } from "./badge-off.js";
-import { BadgePercentIcon } from "./badge-percent.js";
-import { BadgePlusIcon } from "./badge-plus.js";
-import { BadgePoundSterlingIcon } from "./badge-pound-sterling.js";
-import { BadgeRussianRubleIcon } from "./badge-russian-ruble.js";
-import { BadgeSdIcon } from "./badge-sd.js";
-import { BadgeSwissFrancIcon } from "./badge-swiss-franc.js";
-import { BadgeTmIcon } from "./badge-tm.js";
-import { BadgeTurkishLiraIcon } from "./badge-turkish-lira.js";
-import { BadgeVoIcon } from "./badge-vo.js";
-import { BadgeVrIcon } from "./badge-vr.js";
-import { BadgeWcIcon } from "./badge-wc.js";
-import { BadgeXIcon } from "./badge-x.js";
-import { BadgesIcon } from "./badges.js";
-import { BadgesOffIcon } from "./badges-off.js";
-import { BaggageClaimIcon } from "./baggage-claim.js";
-import { BaguetteIcon } from "./baguette.js";
-import { BalloonIcon } from "./balloon.js";
-import { BalloonOffIcon } from "./balloon-off.js";
-import { BanIcon } from "./ban.js";
-import { BangladeshiTakaIcon } from "./bangladeshi-taka.js";
-import { BanknoteIcon } from "./banknote.js";
-import { BanknoteArrowDownIcon } from "./banknote-arrow-down.js";
-import { BanknoteArrowUpIcon } from "./banknote-arrow-up.js";
-import { BanknoteCheckIcon } from "./banknote-check.js";
-import { BanknoteXIcon } from "./banknote-x.js";
-import { BarChartIcon } from "./bar-chart.js";
-import { BarChart2Icon } from "./bar-chart-2.js";
-import { BarChart3Icon } from "./bar-chart-3.js";
-import { BarChart4Icon } from "./bar-chart-4.js";
-import { BarChartBigIcon } from "./bar-chart-big.js";
-import { BarChartHorizontalIcon } from "./bar-chart-horizontal.js";
-import { BarChartHorizontalBigIcon } from "./bar-chart-horizontal-big.js";
-import { BarbellIcon } from "./barbell.js";
-import { BarbellOffIcon } from "./barbell-off.js";
-import { BarcodeIcon } from "./barcode.js";
-import { BarrelIcon } from "./barrel.js";
-import { BarrelOffIcon } from "./barrel-off.js";
-import { BarrierBlockIcon } from "./barrier-block.js";
-import { BarrierBlockOffIcon } from "./barrier-block-off.js";
-import { BaselineIcon } from "./baseline.js";
-import { BasketIcon } from "./basket.js";
-import { BasketBoltIcon } from "./basket-bolt.js";
-import { BasketCancelIcon } from "./basket-cancel.js";
-import { BasketCheckIcon } from "./basket-check.js";
-import { BasketCodeIcon } from "./basket-code.js";
-import { BasketCogIcon } from "./basket-cog.js";
-import { BasketDiscountIcon } from "./basket-discount.js";
-import { BasketDollarIcon } from "./basket-dollar.js";
-import { BasketDownIcon } from "./basket-down.js";
-import { BasketExclamationIcon } from "./basket-exclamation.js";
-import { BasketHeartIcon } from "./basket-heart.js";
-import { BasketMinusIcon } from "./basket-minus.js";
-import { BasketOffIcon } from "./basket-off.js";
-import { BasketPauseIcon } from "./basket-pause.js";
-import { BasketPinIcon } from "./basket-pin.js";
-import { BasketPlusIcon } from "./basket-plus.js";
-import { BasketQuestionIcon } from "./basket-question.js";
-import { BasketSearchIcon } from "./basket-search.js";
-import { BasketShareIcon } from "./basket-share.js";
-import { BeachIcon } from "./beach.js";
-import { BeachOffIcon } from "./beach-off.js";
-import { BeanIcon } from "./bean.js";
-import { BeanOffIcon } from "./bean-off.js";
-import { BetaIcon } from "./beta.js";
-import { BetweenHorizonalEndIcon } from "./between-horizonal-end.js";
-import { BetweenHorizonalStartIcon } from "./between-horizonal-start.js";
-import { BetweenVerticalEndIcon } from "./between-vertical-end.js";
-import { BetweenVerticalStartIcon } from "./between-vertical-start.js";
-import { BicepsFlexedIcon } from "./biceps-flexed.js";
-import { BinocularsIcon } from "./binoculars.js";
-import { BiohazardIcon } from "./biohazard.js";
-import { BiohazardOffIcon } from "./biohazard-off.js";
-import { BirdhouseIcon } from "./birdhouse.js";
-import { BitcoinIcon } from "./bitcoin.js";
-import { BladeIcon } from "./blade.js";
-import { BleachIcon } from "./bleach.js";
-import { BleachChlorineIcon } from "./bleach-chlorine.js";
-import { BleachNoChlorineIcon } from "./bleach-no-chlorine.js";
-import { BleachOffIcon } from "./bleach-off.js";
-import { BlendIcon } from "./blend.js";
-import { BlendModeIcon } from "./blend-mode.js";
-import { BlenderIcon } from "./blender.js";
-import { BlindIcon } from "./blind.js";
-import { BlindsIcon } from "./blinds.js";
-import { BlocksIcon } from "./blocks.js";
-import { BluetoothIcon } from "./bluetooth.js";
-import { BluetoothConnectedIcon } from "./bluetooth-connected.js";
-import { BluetoothOffIcon } from "./bluetooth-off.js";
-import { BluetoothSearchingIcon } from "./bluetooth-searching.js";
-import { BlurIcon } from "./blur.js";
-import { BlurOffIcon } from "./blur-off.js";
-import { BmpIcon } from "./bmp.js";
-import { BombIcon } from "./bomb.js";
-import { BoneIcon } from "./bone.js";
-import { BoneFractureIcon } from "./bone-fracture.js";
-import { BoneOffIcon } from "./bone-off.js";
-import { BongIcon } from "./bong.js";
-import { BongOffIcon } from "./bong-off.js";
-import { BookmarkIcon } from "./bookmark.js";
-import { BookmarkAiIcon } from "./bookmark-ai.js";
-import { BookmarkCheckIcon } from "./bookmark-check.js";
-import { BookmarkEditIcon } from "./bookmark-edit.js";
-import { BookmarkMinusIcon } from "./bookmark-minus.js";
-import { BookmarkOffIcon } from "./bookmark-off.js";
-import { BookmarkPlusIcon } from "./bookmark-plus.js";
-import { BookmarkQuestionIcon } from "./bookmark-question.js";
-import { BookmarkXIcon } from "./bookmark-x.js";
-import { BookmarksIcon } from "./bookmarks.js";
-import { BookmarksOffIcon } from "./bookmarks-off.js";
-import { BooksIcon } from "./books.js";
-import { BooksOffIcon } from "./books-off.js";
-import { BoomIcon } from "./boom.js";
-import { BoomBoxIcon } from "./boom-box.js";
-import { BorderAllIcon } from "./border-all.js";
-import { BorderBottomIcon } from "./border-bottom.js";
-import { BorderBottomPlusIcon } from "./border-bottom-plus.js";
-import { BorderCornerIosIcon } from "./border-corner-ios.js";
-import { BorderCornerPillIcon } from "./border-corner-pill.js";
-import { BotIcon } from "./bot.js";
-import { BotIdIcon } from "./bot-id.js";
-import { BotMessageSquareIcon } from "./bot-message-square.js";
-import { BotOffIcon } from "./bot-off.js";
-import { BowIcon } from "./bow.js";
-import { BowArrowIcon } from "./bow-arrow.js";
-import { BowlIcon } from "./bowl.js";
-import { BowlChopsticksIcon } from "./bowl-chopsticks.js";
-import { BowlSpoonIcon } from "./bowl-spoon.js";
-import { BowlingIcon } from "./bowling.js";
-import { BoxesIcon } from "./boxes.js";
-import { BrailleIcon } from "./braille.js";
-import { BreadIcon } from "./bread.js";
-import { BreadOffIcon } from "./bread-off.js";
-import { BrickWallIcon } from "./brick-wall.js";
-import { BrickWallFireIcon } from "./brick-wall-fire.js";
-import { BrickWallShieldIcon } from "./brick-wall-shield.js";
-import { BridgeIcon } from "./bridge.js";
-import { BrightnessIcon } from "./brightness.js";
-import { Brightness2Icon } from "./brightness-2.js";
-import { BrightnessAutoIcon } from "./brightness-auto.js";
-import { BrightnessDownIcon } from "./brightness-down.js";
-import { BrightnessHalfIcon } from "./brightness-half.js";
-import { BrightnessOffIcon } from "./brightness-off.js";
-import { BrightnessUpIcon } from "./brightness-up.js";
-import { BringToFrontIcon } from "./bring-to-front.js";
-import { BroccoliIcon } from "./broccoli.js";
-import { BroomIcon } from "./broom.js";
-import { BroomSparklesIcon } from "./broom-sparkles.js";
-import { BubbleIcon } from "./bubble.js";
-import { BubbleMinusIcon } from "./bubble-minus.js";
-import { BubblePlusIcon } from "./bubble-plus.js";
-import { BubbleTeaIcon } from "./bubble-tea.js";
-import { BubbleTea2Icon } from "./bubble-tea-2.js";
-import { BubbleTextIcon } from "./bubble-text.js";
-import { BubbleXIcon } from "./bubble-x.js";
-import { BubblesIcon } from "./bubbles.js";
-import { BulldozerIcon } from "./bulldozer.js";
-import { BurgerIcon } from "./burger.js";
-import { ButterflyIcon } from "./butterfly.js";
-import { CableIcon } from "./cable.js";
-import { CableCarIcon } from "./cable-car.js";
-import { CactusIcon } from "./cactus.js";
-import { CactusOffIcon } from "./cactus-off.js";
-import { CalculatorIcon } from "./calculator.js";
-import { CalendarsIcon } from "./calendars.js";
-import { CamperIcon } from "./camper.js";
-import { CampfireIcon } from "./campfire.js";
-import { CanIcon } from "./can.js";
-import { CanSodaIcon } from "./can-soda.js";
-import { CanaryIcon } from "./canary.js";
-import { CancelIcon } from "./cancel.js";
-import { CandlestickChartIcon } from "./candlestick-chart.js";
-import { CaneIcon } from "./cane.js";
-import { CannabisIcon } from "./cannabis.js";
-import { CannabisOffIcon } from "./cannabis-off.js";
-import { CapsuleIcon } from "./capsule.js";
-import { CapsuleHorizontalIcon } from "./capsule-horizontal.js";
-import { CaptionsIcon } from "./captions.js";
-import { CaptionsOffIcon } from "./captions-off.js";
-import { CarambolaIcon } from "./carambola.js";
-import { CaravanIcon } from "./caravan.js";
-import { CardSimIcon } from "./card-sim.js";
-import { CaretLeftRightIcon } from "./caret-left-right.js";
-import { CartonIcon } from "./carton.js";
-import { CartonOffIcon } from "./carton-off.js";
-import { CaseLowerIcon } from "./case-lower.js";
-import { CaseSensitiveIcon } from "./case-sensitive.js";
-import { CaseUpperIcon } from "./case-upper.js";
-import { CassetteTapeIcon } from "./cassette-tape.js";
-import { CastIcon } from "./cast.js";
-import { CategoryIcon } from "./category.js";
-import { Category2Icon } from "./category-2.js";
-import { CategoryMinusIcon } from "./category-minus.js";
-import { CategoryPlusIcon } from "./category-plus.js";
-import { CctvIcon } from "./cctv.js";
-import { CctvOffIcon } from "./cctv-off.js";
-import { CeIcon } from "./ce.js";
-import { CeOffIcon } from "./ce-off.js";
-import { CertificateIcon } from "./certificate.js";
-import { Certificate2Icon } from "./certificate-2.js";
-import { Certificate2OffIcon } from "./certificate-2-off.js";
-import { CertificateOffIcon } from "./certificate-off.js";
-import { ChalkboardIcon } from "./chalkboard.js";
-import { ChalkboardOffIcon } from "./chalkboard-off.js";
-import { CheckupListIcon } from "./checkup-list.js";
-import { CheeseIcon } from "./cheese.js";
-import { ChessIcon } from "./chess.js";
-import { ChessBishopIcon } from "./chess-bishop.js";
-import { ChessKingIcon } from "./chess-king.js";
-import { ChessKnightIcon } from "./chess-knight.js";
-import { ChessPawnIcon } from "./chess-pawn.js";
-import { ChessQueenIcon } from "./chess-queen.js";
-import { ChessRookIcon } from "./chess-rook.js";
-import { ChevronsDownIcon } from "./chevrons-down.js";
-import { ChevronsDownUpIcon } from "./chevrons-down-up.js";
-import { ChevronsLeftIcon } from "./chevrons-left.js";
-import { ChevronsLeftRightIcon } from "./chevrons-left-right.js";
-import { ChevronsLeftRightEllipsisIcon } from "./chevrons-left-right-ellipsis.js";
-import { ChevronsRightIcon } from "./chevrons-right.js";
-import { ChevronsRightLeftIcon } from "./chevrons-right-left.js";
-import { ChevronsUpIcon } from "./chevrons-up.js";
-import { ChevronsUpDownIcon } from "./chevrons-up-down.js";
-import { ChocolateIcon } from "./chocolate.js";
-import { ChristmasTreeIcon } from "./christmas-tree.js";
-import { ChristmasTreeOffIcon } from "./christmas-tree-off.js";
-import { CigaretteIcon } from "./cigarette.js";
-import { CigaretteOffIcon } from "./cigarette-off.js";
-import { CircuitAmmeterIcon } from "./circuit-ammeter.js";
-import { CircuitBatteryIcon } from "./circuit-battery.js";
-import { CircuitBoardIcon } from "./circuit-board.js";
-import { CircuitBulbIcon } from "./circuit-bulb.js";
-import { CircuitCapacitorIcon } from "./circuit-capacitor.js";
-import { CircuitCapacitorPolarizedIcon } from "./circuit-capacitor-polarized.js";
-import { CircuitCellIcon } from "./circuit-cell.js";
-import { CircuitCellPlusIcon } from "./circuit-cell-plus.js";
-import { CircuitChangeoverIcon } from "./circuit-changeover.js";
-import { CircuitDiodeIcon } from "./circuit-diode.js";
-import { CircuitDiodeZenerIcon } from "./circuit-diode-zener.js";
-import { CircuitGroundIcon } from "./circuit-ground.js";
-import { CircuitGroundDigitalIcon } from "./circuit-ground-digital.js";
-import { CircuitInductorIcon } from "./circuit-inductor.js";
-import { CircuitMotorIcon } from "./circuit-motor.js";
-import { CircuitPushbuttonIcon } from "./circuit-pushbutton.js";
-import { CircuitResistorIcon } from "./circuit-resistor.js";
-import { CircuitSwitchClosedIcon } from "./circuit-switch-closed.js";
-import { CircuitSwitchOpenIcon } from "./circuit-switch-open.js";
-import { CircuitVoltmeterIcon } from "./circuit-voltmeter.js";
-import { CitrusIcon } from "./citrus.js";
-import { ClapperboardIcon } from "./clapperboard.js";
-import { ClefAltoIcon } from "./clef-alto.js";
-import { ClefBassIcon } from "./clef-bass.js";
-import { ClefTrebleIcon } from "./clef-treble.js";
-import { CliffJumpingIcon } from "./cliff-jumping.js";
-import { ClosedCaptionIcon } from "./closed-caption.js";
-import { CloudyIcon } from "./cloudy.js";
-import { CloverIcon } from "./clover.js";
-import { Clover2Icon } from "./clover-2.js";
-import { ClubIcon } from "./club.js";
-import { CoinsIcon } from "./coins.js";
-import { ColumnInsertLeftIcon } from "./column-insert-left.js";
-import { ColumnInsertRightIcon } from "./column-insert-right.js";
-import { ColumnRemoveIcon } from "./column-remove.js";
-import { CombineIcon } from "./combine.js";
-import { CometIcon } from "./comet.js";
-import { CommandIcon } from "./command.js";
-import { CommandOffIcon } from "./command-off.js";
-import { ComponentIcon } from "./component.js";
-import { ComputerIcon } from "./computer.js";
-import { ConciergeBellIcon } from "./concierge-bell.js";
-import { ConeIcon } from "./cone.js";
-import { ConfuciusIcon } from "./confucius.js";
-import { ConstructionIcon } from "./construction.js";
-import { ContrastIcon } from "./contrast.js";
-import { Contrast2Icon } from "./contrast-2.js";
-import { Contrast2OffIcon } from "./contrast-2-off.js";
-import { ContrastOffIcon } from "./contrast-off.js";
-import { CookingPotIcon } from "./cooking-pot.js";
-import { CopyIcon } from "./copy.js";
-import { CopyCheckIcon } from "./copy-check.js";
-import { CopyMinusIcon } from "./copy-minus.js";
-import { CopyPlusIcon } from "./copy-plus.js";
-import { CopySlashIcon } from "./copy-slash.js";
-import { CopyXIcon } from "./copy-x.js";
-import { CopyleftIcon } from "./copyleft.js";
-import { CopyleftOffIcon } from "./copyleft-off.js";
-import { CopyrightIcon } from "./copyright.js";
-import { CopyrightOffIcon } from "./copyright-off.js";
-import { CreativeCommonsIcon } from "./creative-commons.js";
-import { CricketIcon } from "./cricket.js";
-import { CroissantIcon } from "./croissant.js";
-import { CrosshairIcon } from "./crosshair.js";
-import { CrownIcon } from "./crown.js";
-import { CrutchesIcon } from "./crutches.js";
-import { CrutchesOffIcon } from "./crutches-off.js";
-import { CrystalBallIcon } from "./crystal-ball.js";
-import { CsvIcon } from "./csv.js";
-import { CuboidIcon } from "./cuboid.js";
-import { CupcakeIcon } from "./cupcake.js";
-import { CurlingIcon } from "./curling.js";
-import { CurrentLocationIcon } from "./current-location.js";
-import { CurrentLocationOffIcon } from "./current-location-off.js";
-import { CylinderIcon } from "./cylinder.js";
-import { DamIcon } from "./dam.js";
-import { DeafIcon } from "./deaf.js";
-import { DecimalIcon } from "./decimal.js";
-import { DecimalsArrowLeftIcon } from "./decimals-arrow-left.js";
-import { DecimalsArrowRightIcon } from "./decimals-arrow-right.js";
-import { DeerIcon } from "./deer.js";
-import { DeleteIcon } from "./delete.js";
-import { DeltaIcon } from "./delta.js";
-import { DentalIcon } from "./dental.js";
-import { DentalOffIcon } from "./dental-off.js";
-import { DessertIcon } from "./dessert.js";
-import { DiameterIcon } from "./diameter.js";
-import { DiamondIcon } from "./diamond.js";
-import { DiamondMinusIcon } from "./diamond-minus.js";
-import { DiamondPercentIcon } from "./diamond-percent.js";
-import { DiamondPlusIcon } from "./diamond-plus.js";
-import { DiceIcon } from "./dice.js";
-import { Dice1Icon } from "./dice-1.js";
-import { Dice2Icon } from "./dice-2.js";
-import { Dice3Icon } from "./dice-3.js";
-import { Dice4Icon } from "./dice-4.js";
-import { Dice5Icon } from "./dice-5.js";
-import { Dice6Icon } from "./dice-6.js";
-import { DicesIcon } from "./dices.js";
-import { DiffIcon } from "./diff.js";
-import { DirectionsIcon } from "./directions.js";
-import { DirectionsOffIcon } from "./directions-off.js";
-import { DisabledIcon } from "./disabled.js";
-import { Disabled2Icon } from "./disabled-2.js";
-import { DisabledOffIcon } from "./disabled-off.js";
-import { DiscIcon } from "./disc.js";
-import { Disc2Icon } from "./disc-2.js";
-import { Disc3Icon } from "./disc-3.js";
-import { DiscAlbumIcon } from "./disc-album.js";
-import { DiscGolfIcon } from "./disc-golf.js";
-import { DockIcon } from "./dock.js";
-import { DomeIcon } from "./dome.js";
-import { DonutIcon } from "./donut.js";
-import { DotIcon } from "./dot.js";
-import { DotSquareIcon } from "./dot-square.js";
-import { DownloadIcon } from "./download.js";
-import { DraftingCompassIcon } from "./drafting-compass.js";
-import { DragonIcon } from "./dragon.js";
-import { DramaIcon } from "./drama.js";
-import { DroneIcon } from "./drone.js";
-import { DropCircleIcon } from "./drop-circle.js";
-import { DropletIcon } from "./droplet.js";
-import { DropletOffIcon } from "./droplet-off.js";
-import { DropletsIcon } from "./droplets.js";
-import { DrumIcon } from "./drum.js";
-import { DrumstickIcon } from "./drumstick.js";
-import { EarIcon } from "./ear.js";
-import { EarOffIcon } from "./ear-off.js";
-import { EclipseIcon } from "./eclipse.js";
-import { EditIcon } from "./edit.js";
-import { Edit2Icon } from "./edit-2.js";
-import { Edit3Icon } from "./edit-3.js";
-import { EjectIcon } from "./eject.js";
-import { EllipseIcon } from "./ellipse.js";
-import { EmailStampIcon } from "./email-stamp.js";
-import { EngineIcon } from "./engine.js";
-import { Error404Icon } from "./error-404.js";
-import { Error404OffIcon } from "./error-404-off.js";
-import { EscalatorIcon } from "./escalator.js";
-import { EscalatorDownIcon } from "./escalator-down.js";
-import { EscalatorUpIcon } from "./escalator-up.js";
-import { EvChargerIcon } from "./ev-charger.js";
-import { ExerciseBallIcon } from "./exercise-ball.js";
-import { ExpandIcon } from "./expand.js";
-import { ExposureIcon } from "./exposure.js";
-import { Exposure0Icon } from "./exposure-0.js";
-import { ExposureMinus1Icon } from "./exposure-minus-1.js";
-import { ExposureMinus2Icon } from "./exposure-minus-2.js";
-import { ExposureOffIcon } from "./exposure-off.js";
-import { ExposurePlus1Icon } from "./exposure-plus-1.js";
-import { ExposurePlus2Icon } from "./exposure-plus-2.js";
-import { ExternalLinkIcon } from "./external-link.js";
-import { EyeIcon } from "./eye.js";
-import { EyeClosedIcon } from "./eye-closed.js";
-import { EyeDashedIcon } from "./eye-dashed.js";
-import { EyeOffIcon } from "./eye-off.js";
-import { FaceGrinningIcon } from "./face-grinning.js";
-import { FaceNeutralIcon } from "./face-neutral.js";
-import { FaceSlightlyFrowningIcon } from "./face-slightly-frowning.js";
-import { FaceSlightlySmilingIcon } from "./face-slightly-smiling.js";
-import { FaceSlightlySmilingPlusIcon } from "./face-slightly-smiling-plus.js";
-import { FanIcon } from "./fan.js";
-import { FastForwardIcon } from "./fast-forward.js";
-import { FaucetIcon } from "./faucet.js";
-import { FeatherIcon } from "./feather.js";
-import { FeatherOffIcon } from "./feather-off.js";
-import { FerrisWheelIcon } from "./ferris-wheel.js";
-import { FilesIcon } from "./files.js";
-import { FireExtinguisherIcon } from "./fire-extinguisher.js";
-import { FireHydrantIcon } from "./fire-hydrant.js";
-import { FireHydrantOffIcon } from "./fire-hydrant-off.js";
-import { FishingHookIcon } from "./fishing-hook.js";
-import { FishingRodIcon } from "./fishing-rod.js";
-import { FlashlightIcon } from "./flashlight.js";
-import { FlashlightOffIcon } from "./flashlight-off.js";
-import { FocusIcon } from "./focus.js";
-import { FoldHorizontalIcon } from "./fold-horizontal.js";
-import { FoldVerticalIcon } from "./fold-vertical.js";
-import { FoldersIcon } from "./folders.js";
-import { ForkliftIcon } from "./forklift.js";
-import { FormIcon } from "./form.js";
-import { FormInputIcon } from "./form-input.js";
-import { ForwardIcon } from "./forward.js";
-import { FrameIcon } from "./frame.js";
-import { FunctionIcon } from "./function.js";
-import { FunctionOffIcon } from "./function-off.js";
-import { FunctionSquareIcon } from "./function-square.js";
-import { FunnelPlusIcon } from "./funnel-plus.js";
-import { GalaxyIcon } from "./galaxy.js";
-import { GamepadIcon } from "./gamepad.js";
-import { Gamepad2Icon } from "./gamepad-2.js";
-import { GamepadDirectionalIcon } from "./gamepad-directional.js";
-import { GanttChartSquareIcon } from "./gantt-chart-square.js";
-import { GapHorizontalIcon } from "./gap-horizontal.js";
-import { GapVerticalIcon } from "./gap-vertical.js";
-import { GaugeIcon } from "./gauge.js";
-import { GavelIcon } from "./gavel.js";
-import { GemIcon } from "./gem.js";
-import { GenderAgenderIcon } from "./gender-agender.js";
-import { GenderAndrogyneIcon } from "./gender-androgyne.js";
-import { GenderBigenderIcon } from "./gender-bigender.js";
-import { GenderDemiboyIcon } from "./gender-demiboy.js";
-import { GenderDemigirlIcon } from "./gender-demigirl.js";
-import { GenderEpiceneIcon } from "./gender-epicene.js";
-import { GenderFemaleIcon } from "./gender-female.js";
-import { GenderFemmeIcon } from "./gender-femme.js";
-import { GenderGenderfluidIcon } from "./gender-genderfluid.js";
-import { GenderGenderlessIcon } from "./gender-genderless.js";
-import { GenderGenderqueerIcon } from "./gender-genderqueer.js";
-import { GenderHermaphroditeIcon } from "./gender-hermaphrodite.js";
-import { GenderIntergenderIcon } from "./gender-intergender.js";
-import { GenderMaleIcon } from "./gender-male.js";
-import { GenderNeutroisIcon } from "./gender-neutrois.js";
-import { GenderThirdIcon } from "./gender-third.js";
-import { GenderTransgenderIcon } from "./gender-transgender.js";
-import { GenderTravestiIcon } from "./gender-travesti.js";
-import { GeorgianLariIcon } from "./georgian-lari.js";
-import { GermIcon } from "./germ.js";
-import { GermOffIcon } from "./germ-off.js";
-import { GhostIcon } from "./ghost.js";
-import { Ghost2Icon } from "./ghost-2.js";
-import { Ghost3Icon } from "./ghost-3.js";
-import { GhostOffIcon } from "./ghost-off.js";
-import { GifIcon } from "./gif.js";
-import { GlassWaterIcon } from "./glass-water.js";
-import { GlassesIcon } from "./glasses.js";
-import { GoGameIcon } from "./go-game.js";
-import { GpuIcon } from "./gpu.js";
-import { GrabIcon } from "./grab.js";
-import { GraduationCapIcon } from "./graduation-cap.js";
-import { GripIcon } from "./grip.js";
-import { GripHorizontalIcon } from "./grip-horizontal.js";
-import { GripVerticalIcon } from "./grip-vertical.js";
-import { GroupIcon } from "./group.js";
-import { GrowthIcon } from "./growth.js";
-import { GuitarIcon } from "./guitar.js";
-import { HamIcon } from "./ham.js";
-import { HamburgerIcon } from "./hamburger.js";
-import { HandbagIcon } from "./handbag.js";
-import { HandshakeIcon } from "./handshake.js";
-import { HardHatIcon } from "./hard-hat.js";
-import { HatGlassesIcon } from "./hat-glasses.js";
-import { HazeIcon } from "./haze.js";
-import { HdIcon } from "./hd.js";
-import { HdmiPortIcon } from "./hdmi-port.js";
-import { HeadphonesIcon } from "./headphones.js";
-import { HeadsetIcon } from "./headset.js";
-import { HeaterIcon } from "./heater.js";
-import { HelicopterIcon } from "./helicopter.js";
-import { HexagonIcon } from "./hexagon.js";
-import { HopIcon } from "./hop.js";
-import { HopOffIcon } from "./hop-off.js";
-import { HorseIcon } from "./horse.js";
-import { HorseToyIcon } from "./horse-toy.js";
-import { HorseshoeIcon } from "./horseshoe.js";
-import { HotelIcon } from "./hotel.js";
-import { HousesIcon } from "./houses.js";
-import { HtmlIcon } from "./html.js";
-import { HttpConnectIcon } from "./http-connect.js";
-import { HttpConnectOffIcon } from "./http-connect-off.js";
-import { HttpDeleteIcon } from "./http-delete.js";
-import { HttpDeleteOffIcon } from "./http-delete-off.js";
-import { HttpGetIcon } from "./http-get.js";
-import { HttpGetOffIcon } from "./http-get-off.js";
-import { HttpHeadIcon } from "./http-head.js";
-import { HttpHeadOffIcon } from "./http-head-off.js";
-import { HttpOptionsIcon } from "./http-options.js";
-import { HttpOptionsOffIcon } from "./http-options-off.js";
-import { HttpPatchIcon } from "./http-patch.js";
-import { HttpPatchOffIcon } from "./http-patch-off.js";
-import { HttpPostIcon } from "./http-post.js";
-import { IceCream2Icon } from "./ice-cream-2.js";
-import { IceCreamConeIcon } from "./ice-cream-cone.js";
-import { IcebergIcon } from "./iceberg.js";
-import { IdCardIcon } from "./id-card.js";
-import { IdCardLanyardIcon } from "./id-card-lanyard.js";
-import { ImagesIcon } from "./images.js";
-import { ImportIcon } from "./import.js";
-import { IndentDecreaseIcon } from "./indent-decrease.js";
-import { IndentIncreaseIcon } from "./indent-increase.js";
-import { IndianRupeeIcon } from "./indian-rupee.js";
-import { InfinityIcon } from "./infinity.js";
-import { Infinity2Icon } from "./infinity-2.js";
-import { InfinityOffIcon } from "./infinity-off.js";
-import { InfoIcon } from "./info.js";
-import { InspectIcon } from "./inspect.js";
-import { InspectionPanelIcon } from "./inspection-panel.js";
-import { IroningIcon } from "./ironing.js";
-import { Ironing1Icon } from "./ironing-1.js";
-import { Ironing2Icon } from "./ironing-2.js";
-import { Ironing3Icon } from "./ironing-3.js";
-import { IroningOffIcon } from "./ironing-off.js";
-import { IroningSteamIcon } from "./ironing-steam.js";
-import { IroningSteamOffIcon } from "./ironing-steam-off.js";
-import { IterationCcwIcon } from "./iteration-ccw.js";
-import { IterationCwIcon } from "./iteration-cw.js";
-import { IvBagIcon } from "./iv-bag.js";
-import { JapaneseYenIcon } from "./japanese-yen.js";
-import { JokerIcon } from "./joker.js";
-import { JoystickIcon } from "./joystick.js";
-import { JpgIcon } from "./jpg.js";
-import { JsonIcon } from "./json.js";
-import { KanbanIcon } from "./kanban.js";
-import { KanbanSquareIcon } from "./kanban-square.js";
-import { KanbanSquareDashedIcon } from "./kanban-square-dashed.js";
-import { KayakIcon } from "./kayak.js";
-import { KazakhTengeIcon } from "./kazakh-tenge.js";
-import { LambdaIcon } from "./lambda.js";
-import { LandPlotIcon } from "./land-plot.js";
-import { LanguagesIcon } from "./languages.js";
-import { LassoIcon } from "./lasso.js";
-import { LassoSelectIcon } from "./lasso-select.js";
-import { LayerArrowDownIcon } from "./layer-arrow-down.js";
-import { LayerArrowUpIcon } from "./layer-arrow-up.js";
-import { Layers2Icon } from "./layers-2.js";
-import { Layers3Icon } from "./layers-3.js";
-import { LayersArrowDownIcon } from "./layers-arrow-down.js";
-import { LayersArrowUpIcon } from "./layers-arrow-up.js";
-import { LayersMinusIcon } from "./layers-minus.js";
-import { LayersPlusIcon } from "./layers-plus.js";
-import { LeafyGreenIcon } from "./leafy-green.js";
-import { LecternIcon } from "./lectern.js";
-import { LensConcaveIcon } from "./lens-concave.js";
-import { LensConvexIcon } from "./lens-convex.js";
-import { LettersIcon } from "./letters.js";
-import { LibraryIcon } from "./library.js";
-import { LibraryBigIcon } from "./library-big.js";
-import { LibrarySquareIcon } from "./library-square.js";
-import { LifeBuoyIcon } from "./life-buoy.js";
-import { LigatureIcon } from "./ligature.js";
-import { LighthouseIcon } from "./lighthouse.js";
-import { LineDotBottomVerticalIcon } from "./line-dot-bottom-vertical.js";
-import { LineDotLeftHorizontalIcon } from "./line-dot-left-horizontal.js";
-import { LineDotRightHorizontalIcon } from "./line-dot-right-horizontal.js";
-import { LineDotTopVerticalIcon } from "./line-dot-top-vertical.js";
-import { LineSquiggleIcon } from "./line-squiggle.js";
-import { LineStyleIcon } from "./line-style.js";
-import { LinkIcon } from "./link.js";
-import { Link2Icon } from "./link-2.js";
-import { Link2OffIcon } from "./link-2-off.js";
-import { LoaderIcon } from "./loader.js";
-import { Loader2Icon } from "./loader-2.js";
-import { LoaderPinwheelIcon } from "./loader-pinwheel.js";
-import { LocationEditIcon } from "./location-edit.js";
-import { LogInIcon } from "./log-in.js";
-import { LogOutIcon } from "./log-out.js";
-import { LogicAndIcon } from "./logic-and.js";
-import { LogicBufferIcon } from "./logic-buffer.js";
-import { LogicNandIcon } from "./logic-nand.js";
-import { LogicNorIcon } from "./logic-nor.js";
-import { LogicNotIcon } from "./logic-not.js";
-import { LogicOrIcon } from "./logic-or.js";
-import { LogicXnorIcon } from "./logic-xnor.js";
-import { LogicXorIcon } from "./logic-xor.js";
-import { LogsIcon } from "./logs.js";
-import { LollipopIcon } from "./lollipop.js";
-import { MSquareIcon } from "./m-square.js";
-import { MailboxIcon } from "./mailbox.js";
-import { MailsIcon } from "./mails.js";
-import { MarsIcon } from "./mars.js";
-import { MarsStrokeIcon } from "./mars-stroke.js";
-import { MartiniIcon } from "./martini.js";
-import { MathIcon } from "./math.js";
-import { Math1Divide2Icon } from "./math-1-divide-2.js";
-import { Math1Divide3Icon } from "./math-1-divide-3.js";
-import { MathAvgIcon } from "./math-avg.js";
-import { MathCosIcon } from "./math-cos.js";
-import { MathCtgIcon } from "./math-ctg.js";
-import { MegaphoneIcon } from "./megaphone.js";
-import { MegaphoneOffIcon } from "./megaphone-off.js";
-import { MenorahIcon } from "./menorah.js";
-import { MergeIcon } from "./merge.js";
-import { MessagesCircleIcon } from "./messages-circle.js";
-import { MessagesSquareIcon } from "./messages-square.js";
-import { MetronomeIcon } from "./metronome.js";
-import { MicrochipIcon } from "./microchip.js";
-import { MicrowaveIcon } from "./microwave.js";
-import { MidiPortIcon } from "./midi-port.js";
-import { MilestoneIcon } from "./milestone.js";
-import { MilkIcon } from "./milk.js";
-import { MilkOffIcon } from "./milk-off.js";
-import { MirrorRectangularIcon } from "./mirror-rectangular.js";
-import { MirrorRoundIcon } from "./mirror-round.js";
-import { MoodAngryIcon } from "./mood-angry.js";
-import { MoodAnnoyedIcon } from "./mood-annoyed.js";
-import { MoodAnnoyed2Icon } from "./mood-annoyed-2.js";
-import { MoodBitcoinIcon } from "./mood-bitcoin.js";
-import { MoodBoyIcon } from "./mood-boy.js";
-import { MoodCheckIcon } from "./mood-check.js";
-import { MoodCogIcon } from "./mood-cog.js";
-import { MoodConfusedIcon } from "./mood-confused.js";
-import { MoodCrazyHappyIcon } from "./mood-crazy-happy.js";
-import { MoodCryIcon } from "./mood-cry.js";
-import { MoodDollarIcon } from "./mood-dollar.js";
-import { MoodEditIcon } from "./mood-edit.js";
-import { MoodEmptyIcon } from "./mood-empty.js";
-import { MoodHappyIcon } from "./mood-happy.js";
-import { MoodHeartIcon } from "./mood-heart.js";
-import { MoodKidIcon } from "./mood-kid.js";
-import { MoodLookDownIcon } from "./mood-look-down.js";
-import { MoodLookLeftIcon } from "./mood-look-left.js";
-import { MoodLookRightIcon } from "./mood-look-right.js";
-import { MoodLookUpIcon } from "./mood-look-up.js";
-import { MopIcon } from "./mop.js";
-import { MopSparklesIcon } from "./mop-sparkles.js";
-import { MosqueIcon } from "./mosque.js";
-import { MotorbikeIcon } from "./motorbike.js";
-import { MouthIcon } from "./mouth.js";
-import { MouthOffIcon } from "./mouth-off.js";
-import { NepaliRupeeIcon } from "./nepali-rupee.js";
-import { NewspaperIcon } from "./newspaper.js";
-import { NfcIcon } from "./nfc.js";
-import { NonBinaryIcon } from "./non-binary.js";
-import { NotepadTextIcon } from "./notepad-text.js";
-import { NotepadTextDashedIcon } from "./notepad-text-dashed.js";
-import { NumberIcon } from "./number.js";
-import { Number0SmallIcon } from "./number-0-small.js";
-import { Number1SmallIcon } from "./number-1-small.js";
-import { Number10Icon } from "./number-10.js";
-import { Number10SmallIcon } from "./number-10-small.js";
-import { Number100SmallIcon } from "./number-100-small.js";
-import { Number11Icon } from "./number-11.js";
-import { Number11SmallIcon } from "./number-11-small.js";
-import { Number12SmallIcon } from "./number-12-small.js";
-import { Number123Icon } from "./number-123.js";
-import { OctagonIcon } from "./octagon.js";
-import { OctagonMinusIcon } from "./octagon-minus.js";
-import { OctagonPauseIcon } from "./octagon-pause.js";
-import { OctagonXIcon } from "./octagon-x.js";
-import { OmIcon } from "./om.js";
-import { OmegaIcon } from "./omega.js";
-import { OptionIcon } from "./option.js";
-import { OrigamiIcon } from "./origami.js";
-import { PacmanIcon } from "./pacman.js";
-import { PaintbrushIcon } from "./paintbrush.js";
-import { Paintbrush2Icon } from "./paintbrush-2.js";
-import { PalmtreeIcon } from "./palmtree.js";
-import { PandaIcon } from "./panda.js";
-import { PanelsLeftBottomIcon } from "./panels-left-bottom.js";
-import { PanelsRightBottomIcon } from "./panels-right-bottom.js";
-import { PanelsTopBottomIcon } from "./panels-top-bottom.js";
-import { PaperBagIcon } from "./paper-bag.js";
-import { PaperclipIcon } from "./paperclip.js";
-import { ParasolIcon } from "./parasol.js";
-import { ParkIcon } from "./park.js";
-import { ParkingCircleIcon } from "./parking-circle.js";
-import { ParkingMeterIcon } from "./parking-meter.js";
-import { ParkingSquareIcon } from "./parking-square.js";
-import { ParkingSquareOffIcon } from "./parking-square-off.js";
-import { PartyPopperIcon } from "./party-popper.js";
-import { PcCaseIcon } from "./pc-case.js";
-import { PdfIcon } from "./pdf.js";
-import { PeaceIcon } from "./peace.js";
-import { PentagonIcon } from "./pentagon.js";
-import { PhiIcon } from "./phi.js";
-import { PhilippinePesoIcon } from "./philippine-peso.js";
-import { PianoIcon } from "./piano.js";
-import { PickIcon } from "./pick.js";
-import { PictureInPictureIcon } from "./picture-in-picture.js";
-import { PictureInPicture2Icon } from "./picture-in-picture-2.js";
-import { PigIcon } from "./pig.js";
-import { PigMoneyIcon } from "./pig-money.js";
-import { PigOffIcon } from "./pig-off.js";
-import { PiggyBankIcon } from "./piggy-bank.js";
-import { PilcrowIcon } from "./pilcrow.js";
-import { PilcrowLeftIcon } from "./pilcrow-left.js";
-import { PilcrowRightIcon } from "./pilcrow-right.js";
-import { PilcrowSquareIcon } from "./pilcrow-square.js";
-import { PipetteIcon } from "./pipette.js";
-import { PlantPotIcon } from "./plant-pot.js";
-import { PlayingCardIcon } from "./playing-card.js";
-import { PlayingCardsIcon } from "./playing-cards.js";
-import { PlayingCardsFanIcon } from "./playing-cards-fan.js";
-import { PngIcon } from "./png.js";
-import { PocketKnifeIcon } from "./pocket-knife.js";
-import { PodiumIcon } from "./podium.js";
-import { PointerIcon } from "./pointer.js";
-import { PointerOffIcon } from "./pointer-off.js";
-import { PopcornIcon } from "./popcorn.js";
-import { PopsicleIcon } from "./popsicle.js";
-import { PoundSterlingIcon } from "./pound-sterling.js";
-import { PresentationIcon } from "./presentation.js";
-import { ProjectorIcon } from "./projector.js";
-import { ProportionsIcon } from "./proportions.js";
-import { PuzzleIcon } from "./puzzle.js";
-import { PyramidIcon } from "./pyramid.js";
-import { QrCodeIcon } from "./qr-code.js";
-import { RadarIcon } from "./radar.js";
-import { RadiationIcon } from "./radiation.js";
-import { RadicalIcon } from "./radical.js";
-import { RadioIcon } from "./radio.js";
-import { RadioOffIcon } from "./radio-off.js";
-import { RadioReceiverIcon } from "./radio-receiver.js";
-import { RadioTowerIcon } from "./radio-tower.js";
-import { RadioactiveIcon } from "./radioactive.js";
-import { RadioactiveOffIcon } from "./radioactive-off.js";
-import { RadiusIcon } from "./radius.js";
-import { RainbowIcon } from "./rainbow.js";
-import { RatIcon } from "./rat.js";
-import { Rating12PlusIcon } from "./rating-12-plus.js";
-import { Rating14PlusIcon } from "./rating-14-plus.js";
-import { Rating16PlusIcon } from "./rating-16-plus.js";
-import { Rating18PlusIcon } from "./rating-18-plus.js";
-import { RatioIcon } from "./ratio.js";
-import { RecycleIcon } from "./recycle.js";
-import { RefreshCcwIcon } from "./refresh-ccw.js";
-import { RefreshCcwDotIcon } from "./refresh-ccw-dot.js";
-import { RefreshCwIcon } from "./refresh-cw.js";
-import { RefreshCwOffIcon } from "./refresh-cw-off.js";
-import { RefrigeratorIcon } from "./refrigerator.js";
-import { RelationManyToManyIcon } from "./relation-many-to-many.js";
-import { RelationOneToManyIcon } from "./relation-one-to-many.js";
-import { RelationOneToOneIcon } from "./relation-one-to-one.js";
-import { RemoveFormattingIcon } from "./remove-formatting.js";
-import { RepeatIcon } from "./repeat.js";
-import { Repeat1Icon } from "./repeat-1.js";
-import { Repeat2Icon } from "./repeat-2.js";
-import { RepeatOffIcon } from "./repeat-off.js";
-import { ReplaceIcon } from "./replace.js";
-import { ReplaceAllIcon } from "./replace-all.js";
-import { ReplyIcon } from "./reply.js";
-import { ReplyAllIcon } from "./reply-all.js";
-import { RewindIcon } from "./rewind.js";
-import { RibbonIcon } from "./ribbon.js";
-import { RoadIcon } from "./road.js";
-import { RobotArmIcon } from "./robot-arm.js";
-import { RobotVacuumIcon } from "./robot-vacuum.js";
-import { RockingChairIcon } from "./rocking-chair.js";
-import { RollerCoasterIcon } from "./roller-coaster.js";
-import { RoseIcon } from "./rose.js";
-import { RowInsertBottomIcon } from "./row-insert-bottom.js";
-import { RowInsertTopIcon } from "./row-insert-top.js";
-import { RowRemoveIcon } from "./row-remove.js";
-import { RssIcon } from "./rss.js";
-import { RugbyBallIcon } from "./rugby-ball.js";
-import { RussianRubleIcon } from "./russian-ruble.js";
-import { SandwichIcon } from "./sandwich.js";
-import { SatelliteIcon } from "./satellite.js";
-import { SatelliteDishIcon } from "./satellite-dish.js";
-import { SaudiRiyalIcon } from "./saudi-riyal.js";
-import { SaveIcon } from "./save.js";
-import { SaveAllIcon } from "./save-all.js";
-import { SaveCheckIcon } from "./save-check.js";
-import { SaveOffIcon } from "./save-off.js";
-import { SavePenIcon } from "./save-pen.js";
-import { SavePlusIcon } from "./save-plus.js";
-import { ScaleIcon } from "./scale.js";
-import { Scale3DIcon } from "./scale-3-d.js";
-import { ScalingIcon } from "./scaling.js";
-import { SchoolIcon } from "./school.js";
-import { School2Icon } from "./school-2.js";
-import { ScissorsIcon } from "./scissors.js";
-import { ScissorsLineDashedIcon } from "./scissors-line-dashed.js";
-import { ScissorsSquareIcon } from "./scissors-square.js";
-import { ScissorsSquareDashedBottomIcon } from "./scissors-square-dashed-bottom.js";
-import { ScooterIcon } from "./scooter.js";
-import { ScreenShareIcon } from "./screen-share.js";
-import { ScreenShareOffIcon } from "./screen-share-off.js";
-import { ScrollIcon } from "./scroll.js";
-import { ScrollTextIcon } from "./scroll-text.js";
-import { SectionIcon } from "./section.js";
-import { SeparatorHorizontalIcon } from "./separator-horizontal.js";
-import { SeparatorVerticalIcon } from "./separator-vertical.js";
-import { ShapesIcon } from "./shapes.js";
-import { ShareIcon } from "./share.js";
-import { Share2Icon } from "./share-2.js";
-import { SheetIcon } from "./sheet.js";
-import { ShellIcon } from "./shell.js";
-import { ShelvingUnitIcon } from "./shelving-unit.js";
-import { ShirtIcon } from "./shirt.js";
-import { ShovelIcon } from "./shovel.js";
-import { ShowerHeadIcon } from "./shower-head.js";
-import { ShredderIcon } from "./shredder.js";
-import { ShrimpIcon } from "./shrimp.js";
-import { ShrimpOffIcon } from "./shrimp-off.js";
-import { ShrinkIcon } from "./shrink.js";
-import { ShrubIcon } from "./shrub.js";
-import { ShuffleIcon } from "./shuffle.js";
-import { SignalIcon } from "./signal.js";
-import { SignalHighIcon } from "./signal-high.js";
-import { SignalLowIcon } from "./signal-low.js";
-import { SignalMediumIcon } from "./signal-medium.js";
-import { SignalZeroIcon } from "./signal-zero.js";
-import { SignatureIcon } from "./signature.js";
-import { SirenIcon } from "./siren.js";
-import { SkipBackIcon } from "./skip-back.js";
-import { SkipForwardIcon } from "./skip-forward.js";
-import { SkullIcon } from "./skull.js";
-import { SlashIcon } from "./slash.js";
-import { SlashSquareIcon } from "./slash-square.js";
-import { SliceIcon } from "./slice.js";
-import { SnailIcon } from "./snail.js";
-import { SnowflakeIcon } from "./snowflake.js";
-import { SoapDispenserDropletIcon } from "./soap-dispenser-droplet.js";
-import { SolarPanelIcon } from "./solar-panel.js";
-import { SpaceIcon } from "./space.js";
-import { SpadeIcon } from "./spade.js";
-import { SparkleIcon } from "./sparkle.js";
-import { SparklesIcon } from "./sparkles.js";
-import { SpellCheckIcon } from "./spell-check.js";
-import { SpellCheck2Icon } from "./spell-check-2.js";
-import { SpiderIcon } from "./spider.js";
-import { SplineIcon } from "./spline.js";
-import { SplinePointerIcon } from "./spline-pointer.js";
-import { SplitIcon } from "./split.js";
-import { SplitSquareHorizontalIcon } from "./split-square-horizontal.js";
-import { SplitSquareVerticalIcon } from "./split-square-vertical.js";
-import { SpoolIcon } from "./spool.js";
-import { SpotlightIcon } from "./spotlight.js";
-import { SprayCanIcon } from "./spray-can.js";
-import { SqlIcon } from "./sql.js";
-import { SquaresExcludeIcon } from "./squares-exclude.js";
-import { SquaresIntersectIcon } from "./squares-intersect.js";
-import { SquaresSubtractIcon } from "./squares-subtract.js";
-import { SquaresUniteIcon } from "./squares-unite.js";
-import { SquircleIcon } from "./squircle.js";
-import { SquircleDashedIcon } from "./squircle-dashed.js";
-import { StampIcon } from "./stamp.js";
-import { StarIcon } from "./star.js";
-import { StarCheckIcon } from "./star-check.js";
-import { StarHalfIcon } from "./star-half.js";
-import { StarMinusIcon } from "./star-minus.js";
-import { StarOffIcon } from "./star-off.js";
-import { StarPlusIcon } from "./star-plus.js";
-import { StarXIcon } from "./star-x.js";
-import { StepBackIcon } from "./step-back.js";
-import { StepForwardIcon } from "./step-forward.js";
-import { StickerIcon } from "./sticker.js";
-import { StickyNoteIcon } from "./sticky-note.js";
-import { StickyNoteCheckIcon } from "./sticky-note-check.js";
-import { StickyNoteMinusIcon } from "./sticky-note-minus.js";
-import { StickyNoteOffIcon } from "./sticky-note-off.js";
-import { StickyNotePlusIcon } from "./sticky-note-plus.js";
-import { StickyNoteXIcon } from "./sticky-note-x.js";
-import { StickyNotesIcon } from "./sticky-notes.js";
-import { StoneIcon } from "./stone.js";
-import { StretchHorizontalIcon } from "./stretch-horizontal.js";
-import { StretchVerticalIcon } from "./stretch-vertical.js";
-import { StrikethroughIcon } from "./strikethrough.js";
-import { SummaryIcon } from "./summary.js";
-import { SunriseIcon } from "./sunrise.js";
-import { SunsetIcon } from "./sunset.js";
-import { SvgIcon } from "./svg.js";
-import { SwatchBookIcon } from "./swatch-book.js";
-import { SwissFrancIcon } from "./swiss-franc.js";
-import { SwordIcon } from "./sword.js";
-import { TableIcon } from "./table.js";
-import { Table2Icon } from "./table-2.js";
-import { TableCellsMergeIcon } from "./table-cells-merge.js";
-import { TableCellsSplitIcon } from "./table-cells-split.js";
-import { TableColumnsSplitIcon } from "./table-columns-split.js";
-import { TableOfContentsIcon } from "./table-of-contents.js";
-import { TablePropertiesIcon } from "./table-properties.js";
-import { TableRowsSplitIcon } from "./table-rows-split.js";
-import { TabletsIcon } from "./tablets.js";
-import { TagsIcon } from "./tags.js";
-import { Tally1Icon } from "./tally-1.js";
-import { Tally2Icon } from "./tally-2.js";
-import { Tally3Icon } from "./tally-3.js";
-import { Tally4Icon } from "./tally-4.js";
-import { Tally5Icon } from "./tally-5.js";
-import { TangentIcon } from "./tangent.js";
-import { TentIcon } from "./tent.js";
-import { TentTreeIcon } from "./tent-tree.js";
-import { TestTubesIcon } from "./test-tubes.js";
-import { TheaterIcon } from "./theater.js";
-import { ThermometerIcon } from "./thermometer.js";
-import { ThermometerSnowflakeIcon } from "./thermometer-snowflake.js";
-import { ThermometerSunIcon } from "./thermometer-sun.js";
-import { ThumbsDownIcon } from "./thumbs-down.js";
-import { ThumbsUpIcon } from "./thumbs-up.js";
-import { TicTacToeIcon } from "./tic-tac-toe.js";
-import { TicketsIcon } from "./tickets.js";
-import { TicketsPlaneIcon } from "./tickets-plane.js";
-import { TimelineIcon } from "./timeline.js";
-import { ToiletIcon } from "./toilet.js";
-import { TomlIcon } from "./toml.js";
-import { ToolboxIcon } from "./toolbox.js";
-import { ToothbrushIcon } from "./toothbrush.js";
-import { ToothbrushSparklesIcon } from "./toothbrush-sparkles.js";
-import { TornadoIcon } from "./tornado.js";
-import { TorusIcon } from "./torus.js";
-import { TouchpadIcon } from "./touchpad.js";
-import { TouchpadOffIcon } from "./touchpad-off.js";
-import { TowelRackIcon } from "./towel-rack.js";
-import { TowerControlIcon } from "./tower-control.js";
-import { ToyBrickIcon } from "./toy-brick.js";
-import { TrafficConeIcon } from "./traffic-cone.js";
-import { TrailerIcon } from "./trailer.js";
-import { TransgenderIcon } from "./transgender.js";
-import { TreesIcon } from "./trees.js";
-import { TriangleIcon } from "./triangle.js";
-import { TriangleDashedIcon } from "./triangle-dashed.js";
-import { TriangleRightIcon } from "./triangle-right.js";
-import { TubeLotionIcon } from "./tube-lotion.js";
-import { TurkishLiraIcon } from "./turkish-lira.js";
-import { TurntableIcon } from "./turntable.js";
-import { TvIcon } from "./tv.js";
-import { Tv2Icon } from "./tv-2.js";
-import { TvMinimalPlayIcon } from "./tv-minimal-play.js";
-import { TxtIcon } from "./txt.js";
-import { UnfoldHorizontalIcon } from "./unfold-horizontal.js";
-import { UnfoldVerticalIcon } from "./unfold-vertical.js";
-import { UngroupIcon } from "./ungroup.js";
-import { UnlinkIcon } from "./unlink.js";
-import { Unlink2Icon } from "./unlink-2.js";
-import { UnplugIcon } from "./unplug.js";
-import { UploadIcon } from "./upload.js";
-import { UsersIcon } from "./users.js";
-import { Users2Icon } from "./users-2.js";
-import { UtilityPoleIcon } from "./utility-pole.js";
-import { VanIcon } from "./van.js";
-import { VariableIcon } from "./variable.js";
-import { VectorPolygonIcon } from "./vector-polygon.js";
-import { VectorSquareIcon } from "./vector-square.js";
-import { VeganIcon } from "./vegan.js";
-import { VenetianMaskIcon } from "./venetian-mask.js";
-import { VenusIcon } from "./venus.js";
-import { VenusAndMarsIcon } from "./venus-and-mars.js";
-import { VibrateIcon } from "./vibrate.js";
-import { VibrateOffIcon } from "./vibrate-off.js";
-import { VideotapeIcon } from "./videotape.js";
-import { ViewIcon } from "./view.js";
-import { VirusIcon } from "./virus.js";
-import { VirusOffIcon } from "./virus-off.js";
-import { VoicemailIcon } from "./voicemail.js";
-import { VolleyballIcon } from "./volleyball.js";
-import { VoteIcon } from "./vote.js";
-import { WallpaperIcon } from "./wallpaper.js";
-import { WashIcon } from "./wash.js";
-import { WashDryIcon } from "./wash-dry.js";
-import { WashDry1Icon } from "./wash-dry-1.js";
-import { WashDry2Icon } from "./wash-dry-2.js";
-import { WashDry3Icon } from "./wash-dry-3.js";
-import { WashDryAIcon } from "./wash-dry-a.js";
-import { WashDryDipIcon } from "./wash-dry-dip.js";
-import { WashDryFIcon } from "./wash-dry-f.js";
-import { WashDryFlatIcon } from "./wash-dry-flat.js";
-import { WashingMachineIcon } from "./washing-machine.js";
-import { WavesArrowDownIcon } from "./waves-arrow-down.js";
-import { WavesArrowUpIcon } from "./waves-arrow-up.js";
-import { WavesHorizontalIcon } from "./waves-horizontal.js";
-import { WavesLadderIcon } from "./waves-ladder.js";
-import { WavesVerticalIcon } from "./waves-vertical.js";
-import { WaypointsIcon } from "./waypoints.js";
-import { WebcamIcon } from "./webcam.js";
-import { WebcamOffIcon } from "./webcam-off.js";
-import { WeightIcon } from "./weight.js";
-import { WeightTildeIcon } from "./weight-tilde.js";
-import { WheatIcon } from "./wheat.js";
-import { WheatOffIcon } from "./wheat-off.js";
-import { WhistleIcon } from "./whistle.js";
-import { WholeWordIcon } from "./whole-word.js";
-import { WifiIcon } from "./wifi.js";
-import { WifiCogIcon } from "./wifi-cog.js";
-import { WifiHighIcon } from "./wifi-high.js";
-import { WifiLowIcon } from "./wifi-low.js";
-import { WifiOffIcon } from "./wifi-off.js";
-import { WifiPenIcon } from "./wifi-pen.js";
-import { WifiSyncIcon } from "./wifi-sync.js";
-import { WifiZeroIcon } from "./wifi-zero.js";
-import { WormIcon } from "./worm.js";
-import { ZipIcon } from "./zip.js";
-import { ZodiacAquariusIcon } from "./zodiac-aquarius.js";
-import { ZodiacAriesIcon } from "./zodiac-aries.js";
-import { ZodiacCancerIcon } from "./zodiac-cancer.js";
-import { ZodiacCapricornIcon } from "./zodiac-capricorn.js";
-import { ZodiacGeminiIcon } from "./zodiac-gemini.js";
-import { ZodiacLeoIcon } from "./zodiac-leo.js";
-import { ZodiacLibraIcon } from "./zodiac-libra.js";
-import { ZodiacOphiuchusIcon } from "./zodiac-ophiuchus.js";
-import { ZodiacPiscesIcon } from "./zodiac-pisces.js";
-import { ZodiacSagittariusIcon } from "./zodiac-sagittarius.js";
-import { ZodiacScorpioIcon } from "./zodiac-scorpio.js";
-import { ZodiacTaurusIcon } from "./zodiac-taurus.js";
-import { ZodiacVirgoIcon } from "./zodiac-virgo.js";
-import { ZoomInIcon } from "./zoom-in.js";
-import { ZoomOutIcon } from "./zoom-out.js";
-export {
-  AbacusIcon,
-  AbacusOffIcon,
-  AbcIcon,
-  AccessPointIcon,
-  AccessPointOffIcon,
-  AccessibleIcon,
-  AccessibleOffIcon,
-  AcornIcon,
-  AcrobaticIcon,
-  Ad2Icon,
-  AdCircleIcon,
-  AdCircleOffIcon,
-  AdIcon,
-  AdOffIcon,
-  AddressBookIcon,
-  AddressBookOffIcon,
-  AdjustmentsAltIcon,
-  AdjustmentsBoltIcon,
-  AdjustmentsCancelIcon,
-  AdjustmentsCheckIcon,
-  AdjustmentsCodeIcon,
-  AdjustmentsCogIcon,
-  AdjustmentsDollarIcon,
-  AdjustmentsDownIcon,
-  AdjustmentsExclamationIcon,
-  AdjustmentsHeartIcon,
-  AdjustmentsHorizontalIcon,
-  AdjustmentsIcon,
-  AdjustmentsMinusIcon,
-  AdjustmentsOffIcon,
-  AdjustmentsPauseIcon,
-  AdjustmentsPinIcon,
-  AdjustmentsPlusIcon,
-  AdjustmentsQuestionIcon,
-  AerialLiftIcon,
-  AiAgentIcon,
-  AiAgentsIcon,
-  AiGatewayIcon,
-  AiIcon,
-  AirBalloonIcon,
-  AirConditioningDisabledIcon,
-  AirConditioningIcon,
-  AirTrafficControlIcon,
-  AirVentIcon,
-  AirplayIcon,
-  AirpodsLIcon,
-  AirpodsRIcon,
-  AlbumIcon,
-  AlbumOffIcon,
-  AlertCircleIcon,
-  AlertOctagonIcon,
-  AlertTriangleIcon,
-  AlienIcon,
-  AlphaIcon,
-  AltIcon,
-  AmpersandsIcon,
-  AmphoraIcon,
-  AnchorIcon,
-  AnchorOffIcon,
-  AngleIcon,
-  AngryIcon,
-  AnkhIcon,
-  AnnoyedIcon,
-  AntennaBars1Icon,
-  AntennaBars2Icon,
-  AntennaBars3Icon,
-  AntennaBars4Icon,
-  AntennaBars5Icon,
-  AntennaBarsOffIcon,
-  AntennaIcon,
-  AntennaOffIcon,
-  ApertureIcon,
-  ApertureOffIcon,
-  AppWindowIcon,
-  AppWindowMacIcon,
-  AppsIcon,
-  AppsOffIcon,
-  ArcheryArrowIcon,
-  AreaChartIcon,
-  ArmenianDramIcon,
-  ArrowsUpFromLineIcon,
-  ArtboardIcon,
-  ArtboardOffIcon,
-  ArticleIcon,
-  ArticleOffIcon,
-  AspectRatioIcon,
-  AspectRatioOffIcon,
-  AssemblyIcon,
-  AssemblyOffIcon,
-  AssetIcon,
-  AstroidIcon,
-  Auth2faIcon,
-  AutomaticGearboxIcon,
-  AvocadoIcon,
-  AwardIcon,
-  AwardOffIcon,
-  AxeIcon,
-  BackgroundIcon,
-  BackhoeIcon,
-  BackslashIcon,
-  Badge2kIcon,
-  Badge3dIcon,
-  Badge3kIcon,
-  Badge4kIcon,
-  Badge5kIcon,
-  Badge8kIcon,
-  BadgeAdIcon,
-  BadgeAdOffIcon,
-  BadgeAlertIcon,
-  BadgeArIcon,
-  BadgeCcIcon,
-  BadgeCentIcon,
-  BadgeDollarSignIcon,
-  BadgeEuroIcon,
-  BadgeHdIcon,
-  BadgeHelpIcon,
-  BadgeIcon,
-  BadgeIndianRupeeIcon,
-  BadgeInfoIcon,
-  BadgeJapaneseYenIcon,
-  BadgeMinusIcon,
-  BadgeOffIcon,
-  BadgePercentIcon,
-  BadgePlusIcon,
-  BadgePoundSterlingIcon,
-  BadgeRussianRubleIcon,
-  BadgeSdIcon,
-  BadgeSwissFrancIcon,
-  BadgeTmIcon,
-  BadgeTurkishLiraIcon,
-  BadgeVoIcon,
-  BadgeVrIcon,
-  BadgeWcIcon,
-  BadgeXIcon,
-  BadgesIcon,
-  BadgesOffIcon,
-  BaggageClaimIcon,
-  BaguetteIcon,
-  BalloonIcon,
-  BalloonOffIcon,
-  BanIcon,
-  BangladeshiTakaIcon,
-  BanknoteArrowDownIcon,
-  BanknoteArrowUpIcon,
-  BanknoteCheckIcon,
-  BanknoteIcon,
-  BanknoteXIcon,
-  BarChart2Icon,
-  BarChart3Icon,
-  BarChart4Icon,
-  BarChartBigIcon,
-  BarChartHorizontalBigIcon,
-  BarChartHorizontalIcon,
-  BarChartIcon,
-  BarbellIcon,
-  BarbellOffIcon,
-  BarcodeIcon,
-  BarrelIcon,
-  BarrelOffIcon,
-  BarrierBlockIcon,
-  BarrierBlockOffIcon,
-  BaselineIcon,
-  BasketBoltIcon,
-  BasketCancelIcon,
-  BasketCheckIcon,
-  BasketCodeIcon,
-  BasketCogIcon,
-  BasketDiscountIcon,
-  BasketDollarIcon,
-  BasketDownIcon,
-  BasketExclamationIcon,
-  BasketHeartIcon,
-  BasketIcon,
-  BasketMinusIcon,
-  BasketOffIcon,
-  BasketPauseIcon,
-  BasketPinIcon,
-  BasketPlusIcon,
-  BasketQuestionIcon,
-  BasketSearchIcon,
-  BasketShareIcon,
-  BeachIcon,
-  BeachOffIcon,
-  BeanIcon,
-  BeanOffIcon,
-  BetaIcon,
-  BetweenHorizonalEndIcon,
-  BetweenHorizonalStartIcon,
-  BetweenVerticalEndIcon,
-  BetweenVerticalStartIcon,
-  BicepsFlexedIcon,
-  BinocularsIcon,
-  BiohazardIcon,
-  BiohazardOffIcon,
-  BirdhouseIcon,
-  BitcoinIcon,
-  BladeIcon,
-  BleachChlorineIcon,
-  BleachIcon,
-  BleachNoChlorineIcon,
-  BleachOffIcon,
-  BlendIcon,
-  BlendModeIcon,
-  BlenderIcon,
-  BlindIcon,
-  BlindsIcon,
-  BlocksIcon,
-  BluetoothConnectedIcon,
-  BluetoothIcon,
-  BluetoothOffIcon,
-  BluetoothSearchingIcon,
-  BlurIcon,
-  BlurOffIcon,
-  BmpIcon,
-  BombIcon,
-  BoneFractureIcon,
-  BoneIcon,
-  BoneOffIcon,
-  BongIcon,
-  BongOffIcon,
-  BookmarkAiIcon,
-  BookmarkCheckIcon,
-  BookmarkEditIcon,
-  BookmarkIcon,
-  BookmarkMinusIcon,
-  BookmarkOffIcon,
-  BookmarkPlusIcon,
-  BookmarkQuestionIcon,
-  BookmarkXIcon,
-  BookmarksIcon,
-  BookmarksOffIcon,
-  BooksIcon,
-  BooksOffIcon,
-  BoomBoxIcon,
-  BoomIcon,
-  BorderAllIcon,
-  BorderBottomIcon,
-  BorderBottomPlusIcon,
-  BorderCornerIosIcon,
-  BorderCornerPillIcon,
-  BotIcon,
-  BotIdIcon,
-  BotMessageSquareIcon,
-  BotOffIcon,
-  BowArrowIcon,
-  BowIcon,
-  BowlChopsticksIcon,
-  BowlIcon,
-  BowlSpoonIcon,
-  BowlingIcon,
-  BoxesIcon,
-  BrailleIcon,
-  BreadIcon,
-  BreadOffIcon,
-  BrickWallFireIcon,
-  BrickWallIcon,
-  BrickWallShieldIcon,
-  BridgeIcon,
-  Brightness2Icon,
-  BrightnessAutoIcon,
-  BrightnessDownIcon,
-  BrightnessHalfIcon,
-  BrightnessIcon,
-  BrightnessOffIcon,
-  BrightnessUpIcon,
-  BringToFrontIcon,
-  BroccoliIcon,
-  BroomIcon,
-  BroomSparklesIcon,
-  BubbleIcon,
-  BubbleMinusIcon,
-  BubblePlusIcon,
-  BubbleTea2Icon,
-  BubbleTeaIcon,
-  BubbleTextIcon,
-  BubbleXIcon,
-  BubblesIcon,
-  BulldozerIcon,
-  BurgerIcon,
-  ButterflyIcon,
-  CableCarIcon,
-  CableIcon,
-  CactusIcon,
-  CactusOffIcon,
-  CalculatorIcon,
-  CalendarsIcon,
-  CamperIcon,
-  CampfireIcon,
-  CanIcon,
-  CanSodaIcon,
-  CanaryIcon,
-  CancelIcon,
-  CandlestickChartIcon,
-  CaneIcon,
-  CannabisIcon,
-  CannabisOffIcon,
-  CapsuleHorizontalIcon,
-  CapsuleIcon,
-  CaptionsIcon,
-  CaptionsOffIcon,
-  CarambolaIcon,
-  CaravanIcon,
-  CardSimIcon,
-  CaretLeftRightIcon,
-  CartonIcon,
-  CartonOffIcon,
-  CaseLowerIcon,
-  CaseSensitiveIcon,
-  CaseUpperIcon,
-  CassetteTapeIcon,
-  CastIcon,
-  Category2Icon,
-  CategoryIcon,
-  CategoryMinusIcon,
-  CategoryPlusIcon,
-  CctvIcon,
-  CctvOffIcon,
-  CeIcon,
-  CeOffIcon,
-  Certificate2Icon,
-  Certificate2OffIcon,
-  CertificateIcon,
-  CertificateOffIcon,
-  ChalkboardIcon,
-  ChalkboardOffIcon,
-  CheckupListIcon,
-  CheeseIcon,
-  ChessBishopIcon,
-  ChessIcon,
-  ChessKingIcon,
-  ChessKnightIcon,
-  ChessPawnIcon,
-  ChessQueenIcon,
-  ChessRookIcon,
-  ChevronsDownIcon,
-  ChevronsDownUpIcon,
-  ChevronsLeftIcon,
-  ChevronsLeftRightEllipsisIcon,
-  ChevronsLeftRightIcon,
-  ChevronsRightIcon,
-  ChevronsRightLeftIcon,
-  ChevronsUpDownIcon,
-  ChevronsUpIcon,
-  ChocolateIcon,
-  ChristmasTreeIcon,
-  ChristmasTreeOffIcon,
-  CigaretteIcon,
-  CigaretteOffIcon,
-  CircuitAmmeterIcon,
-  CircuitBatteryIcon,
-  CircuitBoardIcon,
-  CircuitBulbIcon,
-  CircuitCapacitorIcon,
-  CircuitCapacitorPolarizedIcon,
-  CircuitCellIcon,
-  CircuitCellPlusIcon,
-  CircuitChangeoverIcon,
-  CircuitDiodeIcon,
-  CircuitDiodeZenerIcon,
-  CircuitGroundDigitalIcon,
-  CircuitGroundIcon,
-  CircuitInductorIcon,
-  CircuitMotorIcon,
-  CircuitPushbuttonIcon,
-  CircuitResistorIcon,
-  CircuitSwitchClosedIcon,
-  CircuitSwitchOpenIcon,
-  CircuitVoltmeterIcon,
-  CitrusIcon,
-  ClapperboardIcon,
-  ClefAltoIcon,
-  ClefBassIcon,
-  ClefTrebleIcon,
-  CliffJumpingIcon,
-  ClosedCaptionIcon,
-  CloudyIcon,
-  Clover2Icon,
-  CloverIcon,
-  ClubIcon,
-  CoinsIcon,
-  ColumnInsertLeftIcon,
-  ColumnInsertRightIcon,
-  ColumnRemoveIcon,
-  CombineIcon,
-  CometIcon,
-  CommandIcon,
-  CommandOffIcon,
-  ComponentIcon,
-  ComputerIcon,
-  ConciergeBellIcon,
-  ConeIcon,
-  ConfuciusIcon,
-  ConstructionIcon,
-  Contrast2Icon,
-  Contrast2OffIcon,
-  ContrastIcon,
-  ContrastOffIcon,
-  CookingPotIcon,
-  CopyCheckIcon,
-  CopyIcon,
-  CopyMinusIcon,
-  CopyPlusIcon,
-  CopySlashIcon,
-  CopyXIcon,
-  CopyleftIcon,
-  CopyleftOffIcon,
-  CopyrightIcon,
-  CopyrightOffIcon,
-  CreativeCommonsIcon,
-  CricketIcon,
-  CroissantIcon,
-  CrosshairIcon,
-  CrownIcon,
-  CrutchesIcon,
-  CrutchesOffIcon,
-  CrystalBallIcon,
-  CsvIcon,
-  CuboidIcon,
-  CupcakeIcon,
-  CurlingIcon,
-  CurrentLocationIcon,
-  CurrentLocationOffIcon,
-  CylinderIcon,
-  DamIcon,
-  DeafIcon,
-  DecimalIcon,
-  DecimalsArrowLeftIcon,
-  DecimalsArrowRightIcon,
-  DeerIcon,
-  DeleteIcon,
-  DeltaIcon,
-  DentalIcon,
-  DentalOffIcon,
-  DessertIcon,
-  DiameterIcon,
-  DiamondIcon,
-  DiamondMinusIcon,
-  DiamondPercentIcon,
-  DiamondPlusIcon,
-  Dice1Icon,
-  Dice2Icon,
-  Dice3Icon,
-  Dice4Icon,
-  Dice5Icon,
-  Dice6Icon,
-  DiceIcon,
-  DicesIcon,
-  DiffIcon,
-  DirectionsIcon,
-  DirectionsOffIcon,
-  Disabled2Icon,
-  DisabledIcon,
-  DisabledOffIcon,
-  Disc2Icon,
-  Disc3Icon,
-  DiscAlbumIcon,
-  DiscGolfIcon,
-  DiscIcon,
-  DockIcon,
-  DomeIcon,
-  DonutIcon,
-  DotIcon,
-  DotSquareIcon,
-  DownloadIcon,
-  DraftingCompassIcon,
-  DragonIcon,
-  DramaIcon,
-  DroneIcon,
-  DropCircleIcon,
-  DropletIcon,
-  DropletOffIcon,
-  DropletsIcon,
-  DrumIcon,
-  DrumstickIcon,
-  EarIcon,
-  EarOffIcon,
-  EclipseIcon,
-  Edit2Icon,
-  Edit3Icon,
-  EditIcon,
-  EjectIcon,
-  EllipseIcon,
-  EmailStampIcon,
-  EngineIcon,
-  Error404Icon,
-  Error404OffIcon,
-  EscalatorDownIcon,
-  EscalatorIcon,
-  EscalatorUpIcon,
-  EvChargerIcon,
-  ExerciseBallIcon,
-  ExpandIcon,
-  Exposure0Icon,
-  ExposureIcon,
-  ExposureMinus1Icon,
-  ExposureMinus2Icon,
-  ExposureOffIcon,
-  ExposurePlus1Icon,
-  ExposurePlus2Icon,
-  ExternalLinkIcon,
-  EyeClosedIcon,
-  EyeDashedIcon,
-  EyeIcon,
-  EyeOffIcon,
-  FaceGrinningIcon,
-  FaceNeutralIcon,
-  FaceSlightlyFrowningIcon,
-  FaceSlightlySmilingIcon,
-  FaceSlightlySmilingPlusIcon,
-  FanIcon,
-  FastForwardIcon,
-  FaucetIcon,
-  FeatherIcon,
-  FeatherOffIcon,
-  FerrisWheelIcon,
-  FilesIcon,
-  FireExtinguisherIcon,
-  FireHydrantIcon,
-  FireHydrantOffIcon,
-  FishingHookIcon,
-  FishingRodIcon,
-  FlashlightIcon,
-  FlashlightOffIcon,
-  FocusIcon,
-  FoldHorizontalIcon,
-  FoldVerticalIcon,
-  FoldersIcon,
-  ForkliftIcon,
-  FormIcon,
-  FormInputIcon,
-  ForwardIcon,
-  FrameIcon,
-  FunctionIcon,
-  FunctionOffIcon,
-  FunctionSquareIcon,
-  FunnelPlusIcon,
-  GalaxyIcon,
-  Gamepad2Icon,
-  GamepadDirectionalIcon,
-  GamepadIcon,
-  GanttChartSquareIcon,
-  GapHorizontalIcon,
-  GapVerticalIcon,
-  GaugeIcon,
-  GavelIcon,
-  GemIcon,
-  GenderAgenderIcon,
-  GenderAndrogyneIcon,
-  GenderBigenderIcon,
-  GenderDemiboyIcon,
-  GenderDemigirlIcon,
-  GenderEpiceneIcon,
-  GenderFemaleIcon,
-  GenderFemmeIcon,
-  GenderGenderfluidIcon,
-  GenderGenderlessIcon,
-  GenderGenderqueerIcon,
-  GenderHermaphroditeIcon,
-  GenderIntergenderIcon,
-  GenderMaleIcon,
-  GenderNeutroisIcon,
-  GenderThirdIcon,
-  GenderTransgenderIcon,
-  GenderTravestiIcon,
-  GeorgianLariIcon,
-  GermIcon,
-  GermOffIcon,
-  Ghost2Icon,
-  Ghost3Icon,
-  GhostIcon,
-  GhostOffIcon,
-  GifIcon,
-  GlassWaterIcon,
-  GlassesIcon,
-  GoGameIcon,
-  GpuIcon,
-  GrabIcon,
-  GraduationCapIcon,
-  GripHorizontalIcon,
-  GripIcon,
-  GripVerticalIcon,
-  GroupIcon,
-  GrowthIcon,
-  GuitarIcon,
-  HamIcon,
-  HamburgerIcon,
-  HandbagIcon,
-  HandshakeIcon,
-  HardHatIcon,
-  HatGlassesIcon,
-  HazeIcon,
-  HdIcon,
-  HdmiPortIcon,
-  HeadphonesIcon,
-  HeadsetIcon,
-  HeaterIcon,
-  HelicopterIcon,
-  HexagonIcon,
-  HopIcon,
-  HopOffIcon,
-  HorseIcon,
-  HorseToyIcon,
-  HorseshoeIcon,
-  HotelIcon,
-  HousesIcon,
-  HtmlIcon,
-  HttpConnectIcon,
-  HttpConnectOffIcon,
-  HttpDeleteIcon,
-  HttpDeleteOffIcon,
-  HttpGetIcon,
-  HttpGetOffIcon,
-  HttpHeadIcon,
-  HttpHeadOffIcon,
-  HttpOptionsIcon,
-  HttpOptionsOffIcon,
-  HttpPatchIcon,
-  HttpPatchOffIcon,
-  HttpPostIcon,
-  IceCream2Icon,
-  IceCreamConeIcon,
-  IcebergIcon,
-  IdCardIcon,
-  IdCardLanyardIcon,
-  ImagesIcon,
-  ImportIcon,
-  IndentDecreaseIcon,
-  IndentIncreaseIcon,
-  IndianRupeeIcon,
-  Infinity2Icon,
-  InfinityIcon,
-  InfinityOffIcon,
-  InfoIcon,
-  InspectIcon,
-  InspectionPanelIcon,
-  Ironing1Icon,
-  Ironing2Icon,
-  Ironing3Icon,
-  IroningIcon,
-  IroningOffIcon,
-  IroningSteamIcon,
-  IroningSteamOffIcon,
-  IterationCcwIcon,
-  IterationCwIcon,
-  IvBagIcon,
-  JapaneseYenIcon,
-  JokerIcon,
-  JoystickIcon,
-  JpgIcon,
-  JsonIcon,
-  KanbanIcon,
-  KanbanSquareDashedIcon,
-  KanbanSquareIcon,
-  KayakIcon,
-  KazakhTengeIcon,
-  LambdaIcon,
-  LandPlotIcon,
-  LanguagesIcon,
-  LassoIcon,
-  LassoSelectIcon,
-  LayerArrowDownIcon,
-  LayerArrowUpIcon,
-  Layers2Icon,
-  Layers3Icon,
-  LayersArrowDownIcon,
-  LayersArrowUpIcon,
-  LayersMinusIcon,
-  LayersPlusIcon,
-  LeafyGreenIcon,
-  LecternIcon,
-  LensConcaveIcon,
-  LensConvexIcon,
-  LettersIcon,
-  LibraryBigIcon,
-  LibraryIcon,
-  LibrarySquareIcon,
-  LifeBuoyIcon,
-  LigatureIcon,
-  LighthouseIcon,
-  LineDotBottomVerticalIcon,
-  LineDotLeftHorizontalIcon,
-  LineDotRightHorizontalIcon,
-  LineDotTopVerticalIcon,
-  LineSquiggleIcon,
-  LineStyleIcon,
-  Link2Icon,
-  Link2OffIcon,
-  LinkIcon,
-  Loader2Icon,
-  LoaderIcon,
-  LoaderPinwheelIcon,
-  LocationEditIcon,
-  LogInIcon,
-  LogOutIcon,
-  LogicAndIcon,
-  LogicBufferIcon,
-  LogicNandIcon,
-  LogicNorIcon,
-  LogicNotIcon,
-  LogicOrIcon,
-  LogicXnorIcon,
-  LogicXorIcon,
-  LogsIcon,
-  LollipopIcon,
-  MSquareIcon,
-  MailboxIcon,
-  MailsIcon,
-  MarsIcon,
-  MarsStrokeIcon,
-  MartiniIcon,
-  Math1Divide2Icon,
-  Math1Divide3Icon,
-  MathAvgIcon,
-  MathCosIcon,
-  MathCtgIcon,
-  MathIcon,
-  MegaphoneIcon,
-  MegaphoneOffIcon,
-  MenorahIcon,
-  MergeIcon,
-  MessagesCircleIcon,
-  MessagesSquareIcon,
-  MetronomeIcon,
-  MicrochipIcon,
-  MicrowaveIcon,
-  MidiPortIcon,
-  MilestoneIcon,
-  MilkIcon,
-  MilkOffIcon,
-  MirrorRectangularIcon,
-  MirrorRoundIcon,
-  MoodAngryIcon,
-  MoodAnnoyed2Icon,
-  MoodAnnoyedIcon,
-  MoodBitcoinIcon,
-  MoodBoyIcon,
-  MoodCheckIcon,
-  MoodCogIcon,
-  MoodConfusedIcon,
-  MoodCrazyHappyIcon,
-  MoodCryIcon,
-  MoodDollarIcon,
-  MoodEditIcon,
-  MoodEmptyIcon,
-  MoodHappyIcon,
-  MoodHeartIcon,
-  MoodKidIcon,
-  MoodLookDownIcon,
-  MoodLookLeftIcon,
-  MoodLookRightIcon,
-  MoodLookUpIcon,
-  MopIcon,
-  MopSparklesIcon,
-  MosqueIcon,
-  MotorbikeIcon,
-  MouthIcon,
-  MouthOffIcon,
-  NepaliRupeeIcon,
-  NewspaperIcon,
-  NfcIcon,
-  NonBinaryIcon,
-  NotepadTextDashedIcon,
-  NotepadTextIcon,
-  Number0SmallIcon,
-  Number100SmallIcon,
-  Number10Icon,
-  Number10SmallIcon,
-  Number11Icon,
-  Number11SmallIcon,
-  Number123Icon,
-  Number12SmallIcon,
-  Number1SmallIcon,
-  NumberIcon,
-  OctagonIcon,
-  OctagonMinusIcon,
-  OctagonPauseIcon,
-  OctagonXIcon,
-  OmIcon,
-  OmegaIcon,
-  OptionIcon,
-  OrigamiIcon,
-  PacmanIcon,
-  Paintbrush2Icon,
-  PaintbrushIcon,
-  PalmtreeIcon,
-  PandaIcon,
-  PanelsLeftBottomIcon,
-  PanelsRightBottomIcon,
-  PanelsTopBottomIcon,
-  PaperBagIcon,
-  PaperclipIcon,
-  ParasolIcon,
-  ParkIcon,
-  ParkingCircleIcon,
-  ParkingMeterIcon,
-  ParkingSquareIcon,
-  ParkingSquareOffIcon,
-  PartyPopperIcon,
-  PcCaseIcon,
-  PdfIcon,
-  PeaceIcon,
-  PentagonIcon,
-  PhiIcon,
-  PhilippinePesoIcon,
-  PianoIcon,
-  PickIcon,
-  PictureInPicture2Icon,
-  PictureInPictureIcon,
-  PigIcon,
-  PigMoneyIcon,
-  PigOffIcon,
-  PiggyBankIcon,
-  PilcrowIcon,
-  PilcrowLeftIcon,
-  PilcrowRightIcon,
-  PilcrowSquareIcon,
-  PipetteIcon,
-  PlantPotIcon,
-  PlayingCardIcon,
-  PlayingCardsFanIcon,
-  PlayingCardsIcon,
-  PngIcon,
-  PocketKnifeIcon,
-  PodiumIcon,
-  PointerIcon,
-  PointerOffIcon,
-  PopcornIcon,
-  PopsicleIcon,
-  PoundSterlingIcon,
-  PresentationIcon,
-  ProjectorIcon,
-  ProportionsIcon,
-  PuzzleIcon,
-  PyramidIcon,
-  QrCodeIcon,
-  RadarIcon,
-  RadiationIcon,
-  RadicalIcon,
-  RadioIcon,
-  RadioOffIcon,
-  RadioReceiverIcon,
-  RadioTowerIcon,
-  RadioactiveIcon,
-  RadioactiveOffIcon,
-  RadiusIcon,
-  RainbowIcon,
-  RatIcon,
-  Rating12PlusIcon,
-  Rating14PlusIcon,
-  Rating16PlusIcon,
-  Rating18PlusIcon,
-  RatioIcon,
-  RecycleIcon,
-  RefreshCcwDotIcon,
-  RefreshCcwIcon,
-  RefreshCwIcon,
-  RefreshCwOffIcon,
-  RefrigeratorIcon,
-  RelationManyToManyIcon,
-  RelationOneToManyIcon,
-  RelationOneToOneIcon,
-  RemoveFormattingIcon,
-  Repeat1Icon,
-  Repeat2Icon,
-  RepeatIcon,
-  RepeatOffIcon,
-  ReplaceAllIcon,
-  ReplaceIcon,
-  ReplyAllIcon,
-  ReplyIcon,
-  RewindIcon,
-  RibbonIcon,
-  RoadIcon,
-  RobotArmIcon,
-  RobotVacuumIcon,
-  RockingChairIcon,
-  RollerCoasterIcon,
-  RoseIcon,
-  RowInsertBottomIcon,
-  RowInsertTopIcon,
-  RowRemoveIcon,
-  RssIcon,
-  RugbyBallIcon,
-  RussianRubleIcon,
-  SandwichIcon,
-  SatelliteDishIcon,
-  SatelliteIcon,
-  SaudiRiyalIcon,
-  SaveAllIcon,
-  SaveCheckIcon,
-  SaveIcon,
-  SaveOffIcon,
-  SavePenIcon,
-  SavePlusIcon,
-  Scale3DIcon,
-  ScaleIcon,
-  ScalingIcon,
-  School2Icon,
-  SchoolIcon,
-  ScissorsIcon,
-  ScissorsLineDashedIcon,
-  ScissorsSquareDashedBottomIcon,
-  ScissorsSquareIcon,
-  ScooterIcon,
-  ScreenShareIcon,
-  ScreenShareOffIcon,
-  ScrollIcon,
-  ScrollTextIcon,
-  SectionIcon,
-  SeparatorHorizontalIcon,
-  SeparatorVerticalIcon,
-  ShapesIcon,
-  Share2Icon,
-  ShareIcon,
-  SheetIcon,
-  ShellIcon,
-  ShelvingUnitIcon,
-  ShirtIcon,
-  ShovelIcon,
-  ShowerHeadIcon,
-  ShredderIcon,
-  ShrimpIcon,
-  ShrimpOffIcon,
-  ShrinkIcon,
-  ShrubIcon,
-  ShuffleIcon,
-  SignalHighIcon,
-  SignalIcon,
-  SignalLowIcon,
-  SignalMediumIcon,
-  SignalZeroIcon,
-  SignatureIcon,
-  SirenIcon,
-  SkipBackIcon,
-  SkipForwardIcon,
-  SkullIcon,
-  SlashIcon,
-  SlashSquareIcon,
-  SliceIcon,
-  SnailIcon,
-  SnowflakeIcon,
-  SoapDispenserDropletIcon,
-  SolarPanelIcon,
-  SpaceIcon,
-  SpadeIcon,
-  SparkleIcon,
-  SparklesIcon,
-  SpellCheck2Icon,
-  SpellCheckIcon,
-  SpiderIcon,
-  SplineIcon,
-  SplinePointerIcon,
-  SplitIcon,
-  SplitSquareHorizontalIcon,
-  SplitSquareVerticalIcon,
-  SpoolIcon,
-  SpotlightIcon,
-  SprayCanIcon,
-  SqlIcon,
-  SquaresExcludeIcon,
-  SquaresIntersectIcon,
-  SquaresSubtractIcon,
-  SquaresUniteIcon,
-  SquircleDashedIcon,
-  SquircleIcon,
-  StampIcon,
-  StarCheckIcon,
-  StarHalfIcon,
-  StarIcon,
-  StarMinusIcon,
-  StarOffIcon,
-  StarPlusIcon,
-  StarXIcon,
-  StepBackIcon,
-  StepForwardIcon,
-  StickerIcon,
-  StickyNoteCheckIcon,
-  StickyNoteIcon,
-  StickyNoteMinusIcon,
-  StickyNoteOffIcon,
-  StickyNotePlusIcon,
-  StickyNoteXIcon,
-  StickyNotesIcon,
-  StoneIcon,
-  StretchHorizontalIcon,
-  StretchVerticalIcon,
-  StrikethroughIcon,
-  SummaryIcon,
-  SunriseIcon,
-  SunsetIcon,
-  SvgIcon,
-  SwatchBookIcon,
-  SwissFrancIcon,
-  SwordIcon,
-  Table2Icon,
-  TableCellsMergeIcon,
-  TableCellsSplitIcon,
-  TableColumnsSplitIcon,
-  TableIcon,
-  TableOfContentsIcon,
-  TablePropertiesIcon,
-  TableRowsSplitIcon,
-  TabletsIcon,
-  TagsIcon,
-  Tally1Icon,
-  Tally2Icon,
-  Tally3Icon,
-  Tally4Icon,
-  Tally5Icon,
-  TangentIcon,
-  TentIcon,
-  TentTreeIcon,
-  TestTubesIcon,
-  TheaterIcon,
-  ThermometerIcon,
-  ThermometerSnowflakeIcon,
-  ThermometerSunIcon,
-  ThumbsDownIcon,
-  ThumbsUpIcon,
-  TicTacToeIcon,
-  TicketsIcon,
-  TicketsPlaneIcon,
-  TimelineIcon,
-  ToiletIcon,
-  TomlIcon,
-  ToolboxIcon,
-  ToothbrushIcon,
-  ToothbrushSparklesIcon,
-  TornadoIcon,
-  TorusIcon,
-  TouchpadIcon,
-  TouchpadOffIcon,
-  TowelRackIcon,
-  TowerControlIcon,
-  ToyBrickIcon,
-  TrafficConeIcon,
-  TrailerIcon,
-  TransgenderIcon,
-  TreesIcon,
-  TriangleDashedIcon,
-  TriangleIcon,
-  TriangleRightIcon,
-  TubeLotionIcon,
-  TurkishLiraIcon,
-  TurntableIcon,
-  Tv2Icon,
-  TvIcon,
-  TvMinimalPlayIcon,
-  TxtIcon,
-  UnfoldHorizontalIcon,
-  UnfoldVerticalIcon,
-  UngroupIcon,
-  Unlink2Icon,
-  UnlinkIcon,
-  UnplugIcon,
-  UploadIcon,
-  Users2Icon,
-  UsersIcon,
-  UtilityPoleIcon,
-  VanIcon,
-  VariableIcon,
-  VectorPolygonIcon,
-  VectorSquareIcon,
-  VeganIcon,
-  VenetianMaskIcon,
-  VenusAndMarsIcon,
-  VenusIcon,
-  VibrateIcon,
-  VibrateOffIcon,
-  VideotapeIcon,
-  ViewIcon,
-  VirusIcon,
-  VirusOffIcon,
-  VoicemailIcon,
-  VolleyballIcon,
-  VoteIcon,
-  WallpaperIcon,
-  WashDry1Icon,
-  WashDry2Icon,
-  WashDry3Icon,
-  WashDryAIcon,
-  WashDryDipIcon,
-  WashDryFIcon,
-  WashDryFlatIcon,
-  WashDryIcon,
-  WashIcon,
-  WashingMachineIcon,
-  WavesArrowDownIcon,
-  WavesArrowUpIcon,
-  WavesHorizontalIcon,
-  WavesLadderIcon,
-  WavesVerticalIcon,
-  WaypointsIcon,
-  WebcamIcon,
-  WebcamOffIcon,
-  WeightIcon,
-  WeightTildeIcon,
-  WheatIcon,
-  WheatOffIcon,
-  WhistleIcon,
-  WholeWordIcon,
-  WifiCogIcon,
-  WifiHighIcon,
-  WifiIcon,
-  WifiLowIcon,
-  WifiOffIcon,
-  WifiPenIcon,
-  WifiSyncIcon,
-  WifiZeroIcon,
-  WormIcon,
-  ZipIcon,
-  ZodiacAquariusIcon,
-  ZodiacAriesIcon,
-  ZodiacCancerIcon,
-  ZodiacCapricornIcon,
-  ZodiacGeminiIcon,
-  ZodiacLeoIcon,
-  ZodiacLibraIcon,
-  ZodiacOphiuchusIcon,
-  ZodiacPiscesIcon,
-  ZodiacSagittariusIcon,
-  ZodiacScorpioIcon,
-  ZodiacTaurusIcon,
-  ZodiacVirgoIcon,
-  ZoomInIcon,
-  ZoomOutIcon
-};
+export { AbacusIcon } from './abacus.js';
+export { AbacusOffIcon } from './abacus-off.js';
+export { AbcIcon } from './abc.js';
+export { AccessPointIcon } from './access-point.js';
+export { AccessPointOffIcon } from './access-point-off.js';
+export { AccessibleIcon } from './accessible.js';
+export { AccessibleOffIcon } from './accessible-off.js';
+export { AcornIcon } from './acorn.js';
+export { AcrobaticIcon } from './acrobatic.js';
+export { AdIcon } from './ad.js';
+export { Ad2Icon } from './ad-2.js';
+export { AdCircleIcon } from './ad-circle.js';
+export { AdCircleOffIcon } from './ad-circle-off.js';
+export { AdOffIcon } from './ad-off.js';
+export { AddressBookIcon } from './address-book.js';
+export { AddressBookOffIcon } from './address-book-off.js';
+export { AdjustmentsIcon } from './adjustments.js';
+export { AdjustmentsAltIcon } from './adjustments-alt.js';
+export { AdjustmentsBoltIcon } from './adjustments-bolt.js';
+export { AdjustmentsCancelIcon } from './adjustments-cancel.js';
+export { AdjustmentsCheckIcon } from './adjustments-check.js';
+export { AdjustmentsCodeIcon } from './adjustments-code.js';
+export { AdjustmentsCogIcon } from './adjustments-cog.js';
+export { AdjustmentsDollarIcon } from './adjustments-dollar.js';
+export { AdjustmentsDownIcon } from './adjustments-down.js';
+export { AdjustmentsExclamationIcon } from './adjustments-exclamation.js';
+export { AdjustmentsHeartIcon } from './adjustments-heart.js';
+export { AdjustmentsHorizontalIcon } from './adjustments-horizontal.js';
+export { AdjustmentsMinusIcon } from './adjustments-minus.js';
+export { AdjustmentsOffIcon } from './adjustments-off.js';
+export { AdjustmentsPauseIcon } from './adjustments-pause.js';
+export { AdjustmentsPinIcon } from './adjustments-pin.js';
+export { AdjustmentsPlusIcon } from './adjustments-plus.js';
+export { AdjustmentsQuestionIcon } from './adjustments-question.js';
+export { AerialLiftIcon } from './aerial-lift.js';
+export { AiIcon } from './ai.js';
+export { AiAgentIcon } from './ai-agent.js';
+export { AiAgentsIcon } from './ai-agents.js';
+export { AiGatewayIcon } from './ai-gateway.js';
+export { AirBalloonIcon } from './air-balloon.js';
+export { AirConditioningIcon } from './air-conditioning.js';
+export { AirConditioningDisabledIcon } from './air-conditioning-disabled.js';
+export { AirTrafficControlIcon } from './air-traffic-control.js';
+export { AirVentIcon } from './air-vent.js';
+export { AirplayIcon } from './airplay.js';
+export { AirpodsLIcon } from './airpods-l.js';
+export { AirpodsRIcon } from './airpods-r.js';
+export { AlbumIcon } from './album.js';
+export { AlbumOffIcon } from './album-off.js';
+export { AlertCircleIcon } from './alert-circle.js';
+export { AlertOctagonIcon } from './alert-octagon.js';
+export { AlertTriangleIcon } from './alert-triangle.js';
+export { AlienIcon } from './alien.js';
+export { AlphaIcon } from './alpha.js';
+export { AltIcon } from './alt.js';
+export { AmpersandsIcon } from './ampersands.js';
+export { AmphoraIcon } from './amphora.js';
+export { AnchorIcon } from './anchor.js';
+export { AnchorOffIcon } from './anchor-off.js';
+export { AngleIcon } from './angle.js';
+export { AngryIcon } from './angry.js';
+export { AnkhIcon } from './ankh.js';
+export { AnnoyedIcon } from './annoyed.js';
+export { AntennaIcon } from './antenna.js';
+export { AntennaBars1Icon } from './antenna-bars-1.js';
+export { AntennaBars2Icon } from './antenna-bars-2.js';
+export { AntennaBars3Icon } from './antenna-bars-3.js';
+export { AntennaBars4Icon } from './antenna-bars-4.js';
+export { AntennaBars5Icon } from './antenna-bars-5.js';
+export { AntennaBarsOffIcon } from './antenna-bars-off.js';
+export { AntennaOffIcon } from './antenna-off.js';
+export { ApertureIcon } from './aperture.js';
+export { ApertureOffIcon } from './aperture-off.js';
+export { AppWindowIcon } from './app-window.js';
+export { AppWindowMacIcon } from './app-window-mac.js';
+export { AppsIcon } from './apps.js';
+export { AppsOffIcon } from './apps-off.js';
+export { ArcheryArrowIcon } from './archery-arrow.js';
+export { AreaChartIcon } from './area-chart.js';
+export { ArmenianDramIcon } from './armenian-dram.js';
+export { ArrowsUpFromLineIcon } from './arrows-up-from-line.js';
+export { ArtboardIcon } from './artboard.js';
+export { ArtboardOffIcon } from './artboard-off.js';
+export { ArticleIcon } from './article.js';
+export { ArticleOffIcon } from './article-off.js';
+export { AspectRatioIcon } from './aspect-ratio.js';
+export { AspectRatioOffIcon } from './aspect-ratio-off.js';
+export { AssemblyIcon } from './assembly.js';
+export { AssemblyOffIcon } from './assembly-off.js';
+export { AssetIcon } from './asset.js';
+export { AstroidIcon } from './astroid.js';
+export { Auth2faIcon } from './auth-2fa.js';
+export { AutomaticGearboxIcon } from './automatic-gearbox.js';
+export { AvocadoIcon } from './avocado.js';
+export { AwardIcon } from './award.js';
+export { AwardOffIcon } from './award-off.js';
+export { AxeIcon } from './axe.js';
+export { BackgroundIcon } from './background.js';
+export { BackhoeIcon } from './backhoe.js';
+export { BackslashIcon } from './backslash.js';
+export { BadgeIcon } from './badge.js';
+export { Badge2kIcon } from './badge-2k.js';
+export { Badge3dIcon } from './badge-3d.js';
+export { Badge3kIcon } from './badge-3k.js';
+export { Badge4kIcon } from './badge-4k.js';
+export { Badge5kIcon } from './badge-5k.js';
+export { Badge8kIcon } from './badge-8k.js';
+export { BadgeAdIcon } from './badge-ad.js';
+export { BadgeAdOffIcon } from './badge-ad-off.js';
+export { BadgeAlertIcon } from './badge-alert.js';
+export { BadgeArIcon } from './badge-ar.js';
+export { BadgeCcIcon } from './badge-cc.js';
+export { BadgeCentIcon } from './badge-cent.js';
+export { BadgeDollarSignIcon } from './badge-dollar-sign.js';
+export { BadgeEuroIcon } from './badge-euro.js';
+export { BadgeHdIcon } from './badge-hd.js';
+export { BadgeHelpIcon } from './badge-help.js';
+export { BadgeIndianRupeeIcon } from './badge-indian-rupee.js';
+export { BadgeInfoIcon } from './badge-info.js';
+export { BadgeJapaneseYenIcon } from './badge-japanese-yen.js';
+export { BadgeMinusIcon } from './badge-minus.js';
+export { BadgeOffIcon } from './badge-off.js';
+export { BadgePercentIcon } from './badge-percent.js';
+export { BadgePlusIcon } from './badge-plus.js';
+export { BadgePoundSterlingIcon } from './badge-pound-sterling.js';
+export { BadgeRussianRubleIcon } from './badge-russian-ruble.js';
+export { BadgeSdIcon } from './badge-sd.js';
+export { BadgeSwissFrancIcon } from './badge-swiss-franc.js';
+export { BadgeTmIcon } from './badge-tm.js';
+export { BadgeTurkishLiraIcon } from './badge-turkish-lira.js';
+export { BadgeVoIcon } from './badge-vo.js';
+export { BadgeVrIcon } from './badge-vr.js';
+export { BadgeWcIcon } from './badge-wc.js';
+export { BadgeXIcon } from './badge-x.js';
+export { BadgesIcon } from './badges.js';
+export { BadgesOffIcon } from './badges-off.js';
+export { BaggageClaimIcon } from './baggage-claim.js';
+export { BaguetteIcon } from './baguette.js';
+export { BalloonIcon } from './balloon.js';
+export { BalloonOffIcon } from './balloon-off.js';
+export { BanIcon } from './ban.js';
+export { BangladeshiTakaIcon } from './bangladeshi-taka.js';
+export { BanknoteIcon } from './banknote.js';
+export { BanknoteArrowDownIcon } from './banknote-arrow-down.js';
+export { BanknoteArrowUpIcon } from './banknote-arrow-up.js';
+export { BanknoteCheckIcon } from './banknote-check.js';
+export { BanknoteXIcon } from './banknote-x.js';
+export { BarChartIcon } from './bar-chart.js';
+export { BarChart2Icon } from './bar-chart-2.js';
+export { BarChart3Icon } from './bar-chart-3.js';
+export { BarChart4Icon } from './bar-chart-4.js';
+export { BarChartBigIcon } from './bar-chart-big.js';
+export { BarChartHorizontalIcon } from './bar-chart-horizontal.js';
+export { BarChartHorizontalBigIcon } from './bar-chart-horizontal-big.js';
+export { BarbellIcon } from './barbell.js';
+export { BarbellOffIcon } from './barbell-off.js';
+export { BarcodeIcon } from './barcode.js';
+export { BarrelIcon } from './barrel.js';
+export { BarrelOffIcon } from './barrel-off.js';
+export { BarrierBlockIcon } from './barrier-block.js';
+export { BarrierBlockOffIcon } from './barrier-block-off.js';
+export { BaselineIcon } from './baseline.js';
+export { BasketIcon } from './basket.js';
+export { BasketBoltIcon } from './basket-bolt.js';
+export { BasketCancelIcon } from './basket-cancel.js';
+export { BasketCheckIcon } from './basket-check.js';
+export { BasketCodeIcon } from './basket-code.js';
+export { BasketCogIcon } from './basket-cog.js';
+export { BasketDiscountIcon } from './basket-discount.js';
+export { BasketDollarIcon } from './basket-dollar.js';
+export { BasketDownIcon } from './basket-down.js';
+export { BasketExclamationIcon } from './basket-exclamation.js';
+export { BasketHeartIcon } from './basket-heart.js';
+export { BasketMinusIcon } from './basket-minus.js';
+export { BasketOffIcon } from './basket-off.js';
+export { BasketPauseIcon } from './basket-pause.js';
+export { BasketPinIcon } from './basket-pin.js';
+export { BasketPlusIcon } from './basket-plus.js';
+export { BasketQuestionIcon } from './basket-question.js';
+export { BasketSearchIcon } from './basket-search.js';
+export { BasketShareIcon } from './basket-share.js';
+export { BeachIcon } from './beach.js';
+export { BeachOffIcon } from './beach-off.js';
+export { BeanIcon } from './bean.js';
+export { BeanOffIcon } from './bean-off.js';
+export { BetaIcon } from './beta.js';
+export { BetweenHorizonalEndIcon } from './between-horizonal-end.js';
+export { BetweenHorizonalStartIcon } from './between-horizonal-start.js';
+export { BetweenVerticalEndIcon } from './between-vertical-end.js';
+export { BetweenVerticalStartIcon } from './between-vertical-start.js';
+export { BicepsFlexedIcon } from './biceps-flexed.js';
+export { BinocularsIcon } from './binoculars.js';
+export { BiohazardIcon } from './biohazard.js';
+export { BiohazardOffIcon } from './biohazard-off.js';
+export { BirdhouseIcon } from './birdhouse.js';
+export { BitcoinIcon } from './bitcoin.js';
+export { BladeIcon } from './blade.js';
+export { BleachIcon } from './bleach.js';
+export { BleachChlorineIcon } from './bleach-chlorine.js';
+export { BleachNoChlorineIcon } from './bleach-no-chlorine.js';
+export { BleachOffIcon } from './bleach-off.js';
+export { BlendIcon } from './blend.js';
+export { BlendModeIcon } from './blend-mode.js';
+export { BlenderIcon } from './blender.js';
+export { BlindIcon } from './blind.js';
+export { BlindsIcon } from './blinds.js';
+export { BlocksIcon } from './blocks.js';
+export { BluetoothIcon } from './bluetooth.js';
+export { BluetoothConnectedIcon } from './bluetooth-connected.js';
+export { BluetoothOffIcon } from './bluetooth-off.js';
+export { BluetoothSearchingIcon } from './bluetooth-searching.js';
+export { BlurIcon } from './blur.js';
+export { BlurOffIcon } from './blur-off.js';
+export { BmpIcon } from './bmp.js';
+export { BombIcon } from './bomb.js';
+export { BoneIcon } from './bone.js';
+export { BoneFractureIcon } from './bone-fracture.js';
+export { BoneOffIcon } from './bone-off.js';
+export { BongIcon } from './bong.js';
+export { BongOffIcon } from './bong-off.js';
+export { BookmarkIcon } from './bookmark.js';
+export { BookmarkAiIcon } from './bookmark-ai.js';
+export { BookmarkCheckIcon } from './bookmark-check.js';
+export { BookmarkEditIcon } from './bookmark-edit.js';
+export { BookmarkMinusIcon } from './bookmark-minus.js';
+export { BookmarkOffIcon } from './bookmark-off.js';
+export { BookmarkPlusIcon } from './bookmark-plus.js';
+export { BookmarkQuestionIcon } from './bookmark-question.js';
+export { BookmarkXIcon } from './bookmark-x.js';
+export { BookmarksIcon } from './bookmarks.js';
+export { BookmarksOffIcon } from './bookmarks-off.js';
+export { BooksIcon } from './books.js';
+export { BooksOffIcon } from './books-off.js';
+export { BoomIcon } from './boom.js';
+export { BoomBoxIcon } from './boom-box.js';
+export { BorderAllIcon } from './border-all.js';
+export { BorderBottomIcon } from './border-bottom.js';
+export { BorderBottomPlusIcon } from './border-bottom-plus.js';
+export { BorderCornerIosIcon } from './border-corner-ios.js';
+export { BorderCornerPillIcon } from './border-corner-pill.js';
+export { BotIcon } from './bot.js';
+export { BotIdIcon } from './bot-id.js';
+export { BotMessageSquareIcon } from './bot-message-square.js';
+export { BotOffIcon } from './bot-off.js';
+export { BowIcon } from './bow.js';
+export { BowArrowIcon } from './bow-arrow.js';
+export { BowlIcon } from './bowl.js';
+export { BowlChopsticksIcon } from './bowl-chopsticks.js';
+export { BowlSpoonIcon } from './bowl-spoon.js';
+export { BowlingIcon } from './bowling.js';
+export { BoxesIcon } from './boxes.js';
+export { BrailleIcon } from './braille.js';
+export { BreadIcon } from './bread.js';
+export { BreadOffIcon } from './bread-off.js';
+export { BrickWallIcon } from './brick-wall.js';
+export { BrickWallFireIcon } from './brick-wall-fire.js';
+export { BrickWallShieldIcon } from './brick-wall-shield.js';
+export { BridgeIcon } from './bridge.js';
+export { BrightnessIcon } from './brightness.js';
+export { Brightness2Icon } from './brightness-2.js';
+export { BrightnessAutoIcon } from './brightness-auto.js';
+export { BrightnessDownIcon } from './brightness-down.js';
+export { BrightnessHalfIcon } from './brightness-half.js';
+export { BrightnessOffIcon } from './brightness-off.js';
+export { BrightnessUpIcon } from './brightness-up.js';
+export { BringToFrontIcon } from './bring-to-front.js';
+export { BroccoliIcon } from './broccoli.js';
+export { BroomIcon } from './broom.js';
+export { BroomSparklesIcon } from './broom-sparkles.js';
+export { BubbleIcon } from './bubble.js';
+export { BubbleMinusIcon } from './bubble-minus.js';
+export { BubblePlusIcon } from './bubble-plus.js';
+export { BubbleTeaIcon } from './bubble-tea.js';
+export { BubbleTea2Icon } from './bubble-tea-2.js';
+export { BubbleTextIcon } from './bubble-text.js';
+export { BubbleXIcon } from './bubble-x.js';
+export { BubblesIcon } from './bubbles.js';
+export { BulldozerIcon } from './bulldozer.js';
+export { BurgerIcon } from './burger.js';
+export { ButterflyIcon } from './butterfly.js';
+export { CableIcon } from './cable.js';
+export { CableCarIcon } from './cable-car.js';
+export { CactusIcon } from './cactus.js';
+export { CactusOffIcon } from './cactus-off.js';
+export { CalculatorIcon } from './calculator.js';
+export { CalendarsIcon } from './calendars.js';
+export { CamperIcon } from './camper.js';
+export { CampfireIcon } from './campfire.js';
+export { CanIcon } from './can.js';
+export { CanSodaIcon } from './can-soda.js';
+export { CanaryIcon } from './canary.js';
+export { CancelIcon } from './cancel.js';
+export { CandlestickChartIcon } from './candlestick-chart.js';
+export { CaneIcon } from './cane.js';
+export { CannabisIcon } from './cannabis.js';
+export { CannabisOffIcon } from './cannabis-off.js';
+export { CapsuleIcon } from './capsule.js';
+export { CapsuleHorizontalIcon } from './capsule-horizontal.js';
+export { CaptionsIcon } from './captions.js';
+export { CaptionsOffIcon } from './captions-off.js';
+export { CarambolaIcon } from './carambola.js';
+export { CaravanIcon } from './caravan.js';
+export { CardSimIcon } from './card-sim.js';
+export { CaretLeftRightIcon } from './caret-left-right.js';
+export { CartonIcon } from './carton.js';
+export { CartonOffIcon } from './carton-off.js';
+export { CaseLowerIcon } from './case-lower.js';
+export { CaseSensitiveIcon } from './case-sensitive.js';
+export { CaseUpperIcon } from './case-upper.js';
+export { CassetteTapeIcon } from './cassette-tape.js';
+export { CastIcon } from './cast.js';
+export { CategoryIcon } from './category.js';
+export { Category2Icon } from './category-2.js';
+export { CategoryMinusIcon } from './category-minus.js';
+export { CategoryPlusIcon } from './category-plus.js';
+export { CctvIcon } from './cctv.js';
+export { CctvOffIcon } from './cctv-off.js';
+export { CeIcon } from './ce.js';
+export { CeOffIcon } from './ce-off.js';
+export { CertificateIcon } from './certificate.js';
+export { Certificate2Icon } from './certificate-2.js';
+export { Certificate2OffIcon } from './certificate-2-off.js';
+export { CertificateOffIcon } from './certificate-off.js';
+export { ChalkboardIcon } from './chalkboard.js';
+export { ChalkboardOffIcon } from './chalkboard-off.js';
+export { CheckupListIcon } from './checkup-list.js';
+export { CheeseIcon } from './cheese.js';
+export { ChessIcon } from './chess.js';
+export { ChessBishopIcon } from './chess-bishop.js';
+export { ChessKingIcon } from './chess-king.js';
+export { ChessKnightIcon } from './chess-knight.js';
+export { ChessPawnIcon } from './chess-pawn.js';
+export { ChessQueenIcon } from './chess-queen.js';
+export { ChessRookIcon } from './chess-rook.js';
+export { ChevronsDownIcon } from './chevrons-down.js';
+export { ChevronsDownUpIcon } from './chevrons-down-up.js';
+export { ChevronsLeftIcon } from './chevrons-left.js';
+export { ChevronsLeftRightIcon } from './chevrons-left-right.js';
+export { ChevronsLeftRightEllipsisIcon } from './chevrons-left-right-ellipsis.js';
+export { ChevronsRightIcon } from './chevrons-right.js';
+export { ChevronsRightLeftIcon } from './chevrons-right-left.js';
+export { ChevronsUpIcon } from './chevrons-up.js';
+export { ChevronsUpDownIcon } from './chevrons-up-down.js';
+export { ChocolateIcon } from './chocolate.js';
+export { ChristmasTreeIcon } from './christmas-tree.js';
+export { ChristmasTreeOffIcon } from './christmas-tree-off.js';
+export { CigaretteIcon } from './cigarette.js';
+export { CigaretteOffIcon } from './cigarette-off.js';
+export { CircuitAmmeterIcon } from './circuit-ammeter.js';
+export { CircuitBatteryIcon } from './circuit-battery.js';
+export { CircuitBoardIcon } from './circuit-board.js';
+export { CircuitBulbIcon } from './circuit-bulb.js';
+export { CircuitCapacitorIcon } from './circuit-capacitor.js';
+export { CircuitCapacitorPolarizedIcon } from './circuit-capacitor-polarized.js';
+export { CircuitCellIcon } from './circuit-cell.js';
+export { CircuitCellPlusIcon } from './circuit-cell-plus.js';
+export { CircuitChangeoverIcon } from './circuit-changeover.js';
+export { CircuitDiodeIcon } from './circuit-diode.js';
+export { CircuitDiodeZenerIcon } from './circuit-diode-zener.js';
+export { CircuitGroundIcon } from './circuit-ground.js';
+export { CircuitGroundDigitalIcon } from './circuit-ground-digital.js';
+export { CircuitInductorIcon } from './circuit-inductor.js';
+export { CircuitMotorIcon } from './circuit-motor.js';
+export { CircuitPushbuttonIcon } from './circuit-pushbutton.js';
+export { CircuitResistorIcon } from './circuit-resistor.js';
+export { CircuitSwitchClosedIcon } from './circuit-switch-closed.js';
+export { CircuitSwitchOpenIcon } from './circuit-switch-open.js';
+export { CircuitVoltmeterIcon } from './circuit-voltmeter.js';
+export { CitrusIcon } from './citrus.js';
+export { ClapperboardIcon } from './clapperboard.js';
+export { ClefAltoIcon } from './clef-alto.js';
+export { ClefBassIcon } from './clef-bass.js';
+export { ClefTrebleIcon } from './clef-treble.js';
+export { CliffJumpingIcon } from './cliff-jumping.js';
+export { ClosedCaptionIcon } from './closed-caption.js';
+export { CloudyIcon } from './cloudy.js';
+export { CloverIcon } from './clover.js';
+export { Clover2Icon } from './clover-2.js';
+export { ClubIcon } from './club.js';
+export { CoinsIcon } from './coins.js';
+export { ColumnInsertLeftIcon } from './column-insert-left.js';
+export { ColumnInsertRightIcon } from './column-insert-right.js';
+export { ColumnRemoveIcon } from './column-remove.js';
+export { CombineIcon } from './combine.js';
+export { CometIcon } from './comet.js';
+export { CommandIcon } from './command.js';
+export { CommandOffIcon } from './command-off.js';
+export { ComponentIcon } from './component.js';
+export { ComputerIcon } from './computer.js';
+export { ConciergeBellIcon } from './concierge-bell.js';
+export { ConeIcon } from './cone.js';
+export { ConfuciusIcon } from './confucius.js';
+export { ConstructionIcon } from './construction.js';
+export { ContrastIcon } from './contrast.js';
+export { Contrast2Icon } from './contrast-2.js';
+export { Contrast2OffIcon } from './contrast-2-off.js';
+export { ContrastOffIcon } from './contrast-off.js';
+export { CookingPotIcon } from './cooking-pot.js';
+export { CopyIcon } from './copy.js';
+export { CopyCheckIcon } from './copy-check.js';
+export { CopyMinusIcon } from './copy-minus.js';
+export { CopyPlusIcon } from './copy-plus.js';
+export { CopySlashIcon } from './copy-slash.js';
+export { CopyXIcon } from './copy-x.js';
+export { CopyleftIcon } from './copyleft.js';
+export { CopyleftOffIcon } from './copyleft-off.js';
+export { CopyrightIcon } from './copyright.js';
+export { CopyrightOffIcon } from './copyright-off.js';
+export { CreativeCommonsIcon } from './creative-commons.js';
+export { CricketIcon } from './cricket.js';
+export { CroissantIcon } from './croissant.js';
+export { CrosshairIcon } from './crosshair.js';
+export { CrownIcon } from './crown.js';
+export { CrutchesIcon } from './crutches.js';
+export { CrutchesOffIcon } from './crutches-off.js';
+export { CrystalBallIcon } from './crystal-ball.js';
+export { CsvIcon } from './csv.js';
+export { CuboidIcon } from './cuboid.js';
+export { CupcakeIcon } from './cupcake.js';
+export { CurlingIcon } from './curling.js';
+export { CurrentLocationIcon } from './current-location.js';
+export { CurrentLocationOffIcon } from './current-location-off.js';
+export { CylinderIcon } from './cylinder.js';
+export { DamIcon } from './dam.js';
+export { DeafIcon } from './deaf.js';
+export { DecimalIcon } from './decimal.js';
+export { DecimalsArrowLeftIcon } from './decimals-arrow-left.js';
+export { DecimalsArrowRightIcon } from './decimals-arrow-right.js';
+export { DeerIcon } from './deer.js';
+export { DeleteIcon } from './delete.js';
+export { DeltaIcon } from './delta.js';
+export { DentalIcon } from './dental.js';
+export { DentalOffIcon } from './dental-off.js';
+export { DessertIcon } from './dessert.js';
+export { DiameterIcon } from './diameter.js';
+export { DiamondIcon } from './diamond.js';
+export { DiamondMinusIcon } from './diamond-minus.js';
+export { DiamondPercentIcon } from './diamond-percent.js';
+export { DiamondPlusIcon } from './diamond-plus.js';
+export { DiceIcon } from './dice.js';
+export { Dice1Icon } from './dice-1.js';
+export { Dice2Icon } from './dice-2.js';
+export { Dice3Icon } from './dice-3.js';
+export { Dice4Icon } from './dice-4.js';
+export { Dice5Icon } from './dice-5.js';
+export { Dice6Icon } from './dice-6.js';
+export { DicesIcon } from './dices.js';
+export { DiffIcon } from './diff.js';
+export { DirectionsIcon } from './directions.js';
+export { DirectionsOffIcon } from './directions-off.js';
+export { DisabledIcon } from './disabled.js';
+export { Disabled2Icon } from './disabled-2.js';
+export { DisabledOffIcon } from './disabled-off.js';
+export { DiscIcon } from './disc.js';
+export { Disc2Icon } from './disc-2.js';
+export { Disc3Icon } from './disc-3.js';
+export { DiscAlbumIcon } from './disc-album.js';
+export { DiscGolfIcon } from './disc-golf.js';
+export { DockIcon } from './dock.js';
+export { DomeIcon } from './dome.js';
+export { DonutIcon } from './donut.js';
+export { DotIcon } from './dot.js';
+export { DotSquareIcon } from './dot-square.js';
+export { DownloadIcon } from './download.js';
+export { DraftingCompassIcon } from './drafting-compass.js';
+export { DragonIcon } from './dragon.js';
+export { DramaIcon } from './drama.js';
+export { DroneIcon } from './drone.js';
+export { DropCircleIcon } from './drop-circle.js';
+export { DropletIcon } from './droplet.js';
+export { DropletOffIcon } from './droplet-off.js';
+export { DropletsIcon } from './droplets.js';
+export { DrumIcon } from './drum.js';
+export { DrumstickIcon } from './drumstick.js';
+export { EarIcon } from './ear.js';
+export { EarOffIcon } from './ear-off.js';
+export { EclipseIcon } from './eclipse.js';
+export { EditIcon } from './edit.js';
+export { Edit2Icon } from './edit-2.js';
+export { Edit3Icon } from './edit-3.js';
+export { EjectIcon } from './eject.js';
+export { EllipseIcon } from './ellipse.js';
+export { EmailStampIcon } from './email-stamp.js';
+export { EngineIcon } from './engine.js';
+export { Error404Icon } from './error-404.js';
+export { Error404OffIcon } from './error-404-off.js';
+export { EscalatorIcon } from './escalator.js';
+export { EscalatorDownIcon } from './escalator-down.js';
+export { EscalatorUpIcon } from './escalator-up.js';
+export { EvChargerIcon } from './ev-charger.js';
+export { ExerciseBallIcon } from './exercise-ball.js';
+export { ExpandIcon } from './expand.js';
+export { ExposureIcon } from './exposure.js';
+export { Exposure0Icon } from './exposure-0.js';
+export { ExposureMinus1Icon } from './exposure-minus-1.js';
+export { ExposureMinus2Icon } from './exposure-minus-2.js';
+export { ExposureOffIcon } from './exposure-off.js';
+export { ExposurePlus1Icon } from './exposure-plus-1.js';
+export { ExposurePlus2Icon } from './exposure-plus-2.js';
+export { ExternalLinkIcon } from './external-link.js';
+export { EyeIcon } from './eye.js';
+export { EyeClosedIcon } from './eye-closed.js';
+export { EyeDashedIcon } from './eye-dashed.js';
+export { EyeOffIcon } from './eye-off.js';
+export { FaceGrinningIcon } from './face-grinning.js';
+export { FaceNeutralIcon } from './face-neutral.js';
+export { FaceSlightlyFrowningIcon } from './face-slightly-frowning.js';
+export { FaceSlightlySmilingIcon } from './face-slightly-smiling.js';
+export { FaceSlightlySmilingPlusIcon } from './face-slightly-smiling-plus.js';
+export { FanIcon } from './fan.js';
+export { FastForwardIcon } from './fast-forward.js';
+export { FaucetIcon } from './faucet.js';
+export { FeatherIcon } from './feather.js';
+export { FeatherOffIcon } from './feather-off.js';
+export { FerrisWheelIcon } from './ferris-wheel.js';
+export { FilesIcon } from './files.js';
+export { FireExtinguisherIcon } from './fire-extinguisher.js';
+export { FireHydrantIcon } from './fire-hydrant.js';
+export { FireHydrantOffIcon } from './fire-hydrant-off.js';
+export { FishingHookIcon } from './fishing-hook.js';
+export { FishingRodIcon } from './fishing-rod.js';
+export { FlashlightIcon } from './flashlight.js';
+export { FlashlightOffIcon } from './flashlight-off.js';
+export { FocusIcon } from './focus.js';
+export { FoldHorizontalIcon } from './fold-horizontal.js';
+export { FoldVerticalIcon } from './fold-vertical.js';
+export { FoldersIcon } from './folders.js';
+export { ForkliftIcon } from './forklift.js';
+export { FormIcon } from './form.js';
+export { FormInputIcon } from './form-input.js';
+export { ForwardIcon } from './forward.js';
+export { FrameIcon } from './frame.js';
+export { FunctionIcon } from './function.js';
+export { FunctionOffIcon } from './function-off.js';
+export { FunctionSquareIcon } from './function-square.js';
+export { FunnelPlusIcon } from './funnel-plus.js';
+export { GalaxyIcon } from './galaxy.js';
+export { GamepadIcon } from './gamepad.js';
+export { Gamepad2Icon } from './gamepad-2.js';
+export { GamepadDirectionalIcon } from './gamepad-directional.js';
+export { GanttChartSquareIcon } from './gantt-chart-square.js';
+export { GapHorizontalIcon } from './gap-horizontal.js';
+export { GapVerticalIcon } from './gap-vertical.js';
+export { GaugeIcon } from './gauge.js';
+export { GavelIcon } from './gavel.js';
+export { GemIcon } from './gem.js';
+export { GenderAgenderIcon } from './gender-agender.js';
+export { GenderAndrogyneIcon } from './gender-androgyne.js';
+export { GenderBigenderIcon } from './gender-bigender.js';
+export { GenderDemiboyIcon } from './gender-demiboy.js';
+export { GenderDemigirlIcon } from './gender-demigirl.js';
+export { GenderEpiceneIcon } from './gender-epicene.js';
+export { GenderFemaleIcon } from './gender-female.js';
+export { GenderFemmeIcon } from './gender-femme.js';
+export { GenderGenderfluidIcon } from './gender-genderfluid.js';
+export { GenderGenderlessIcon } from './gender-genderless.js';
+export { GenderGenderqueerIcon } from './gender-genderqueer.js';
+export { GenderHermaphroditeIcon } from './gender-hermaphrodite.js';
+export { GenderIntergenderIcon } from './gender-intergender.js';
+export { GenderMaleIcon } from './gender-male.js';
+export { GenderNeutroisIcon } from './gender-neutrois.js';
+export { GenderThirdIcon } from './gender-third.js';
+export { GenderTransgenderIcon } from './gender-transgender.js';
+export { GenderTravestiIcon } from './gender-travesti.js';
+export { GeorgianLariIcon } from './georgian-lari.js';
+export { GermIcon } from './germ.js';
+export { GermOffIcon } from './germ-off.js';
+export { GhostIcon } from './ghost.js';
+export { Ghost2Icon } from './ghost-2.js';
+export { Ghost3Icon } from './ghost-3.js';
+export { GhostOffIcon } from './ghost-off.js';
+export { GifIcon } from './gif.js';
+export { GlassWaterIcon } from './glass-water.js';
+export { GlassesIcon } from './glasses.js';
+export { GoGameIcon } from './go-game.js';
+export { GpuIcon } from './gpu.js';
+export { GrabIcon } from './grab.js';
+export { GraduationCapIcon } from './graduation-cap.js';
+export { GripIcon } from './grip.js';
+export { GripHorizontalIcon } from './grip-horizontal.js';
+export { GripVerticalIcon } from './grip-vertical.js';
+export { GroupIcon } from './group.js';
+export { GrowthIcon } from './growth.js';
+export { GuitarIcon } from './guitar.js';
+export { HamIcon } from './ham.js';
+export { HamburgerIcon } from './hamburger.js';
+export { HandbagIcon } from './handbag.js';
+export { HandshakeIcon } from './handshake.js';
+export { HardHatIcon } from './hard-hat.js';
+export { HatGlassesIcon } from './hat-glasses.js';
+export { HazeIcon } from './haze.js';
+export { HdIcon } from './hd.js';
+export { HdmiPortIcon } from './hdmi-port.js';
+export { HeadphonesIcon } from './headphones.js';
+export { HeadsetIcon } from './headset.js';
+export { HeaterIcon } from './heater.js';
+export { HelicopterIcon } from './helicopter.js';
+export { HexagonIcon } from './hexagon.js';
+export { HopIcon } from './hop.js';
+export { HopOffIcon } from './hop-off.js';
+export { HorseIcon } from './horse.js';
+export { HorseToyIcon } from './horse-toy.js';
+export { HorseshoeIcon } from './horseshoe.js';
+export { HotelIcon } from './hotel.js';
+export { HousesIcon } from './houses.js';
+export { HtmlIcon } from './html.js';
+export { HttpConnectIcon } from './http-connect.js';
+export { HttpConnectOffIcon } from './http-connect-off.js';
+export { HttpDeleteIcon } from './http-delete.js';
+export { HttpDeleteOffIcon } from './http-delete-off.js';
+export { HttpGetIcon } from './http-get.js';
+export { HttpGetOffIcon } from './http-get-off.js';
+export { HttpHeadIcon } from './http-head.js';
+export { HttpHeadOffIcon } from './http-head-off.js';
+export { HttpOptionsIcon } from './http-options.js';
+export { HttpOptionsOffIcon } from './http-options-off.js';
+export { HttpPatchIcon } from './http-patch.js';
+export { HttpPatchOffIcon } from './http-patch-off.js';
+export { HttpPostIcon } from './http-post.js';
+export { IceCream2Icon } from './ice-cream-2.js';
+export { IceCreamConeIcon } from './ice-cream-cone.js';
+export { IcebergIcon } from './iceberg.js';
+export { IdCardIcon } from './id-card.js';
+export { IdCardLanyardIcon } from './id-card-lanyard.js';
+export { ImagesIcon } from './images.js';
+export { ImportIcon } from './import.js';
+export { IndentDecreaseIcon } from './indent-decrease.js';
+export { IndentIncreaseIcon } from './indent-increase.js';
+export { IndianRupeeIcon } from './indian-rupee.js';
+export { InfinityIcon } from './infinity.js';
+export { Infinity2Icon } from './infinity-2.js';
+export { InfinityOffIcon } from './infinity-off.js';
+export { InfoIcon } from './info.js';
+export { InspectIcon } from './inspect.js';
+export { InspectionPanelIcon } from './inspection-panel.js';
+export { IroningIcon } from './ironing.js';
+export { Ironing1Icon } from './ironing-1.js';
+export { Ironing2Icon } from './ironing-2.js';
+export { Ironing3Icon } from './ironing-3.js';
+export { IroningOffIcon } from './ironing-off.js';
+export { IroningSteamIcon } from './ironing-steam.js';
+export { IroningSteamOffIcon } from './ironing-steam-off.js';
+export { IterationCcwIcon } from './iteration-ccw.js';
+export { IterationCwIcon } from './iteration-cw.js';
+export { IvBagIcon } from './iv-bag.js';
+export { JapaneseYenIcon } from './japanese-yen.js';
+export { JokerIcon } from './joker.js';
+export { JoystickIcon } from './joystick.js';
+export { JpgIcon } from './jpg.js';
+export { JsonIcon } from './json.js';
+export { KanbanIcon } from './kanban.js';
+export { KanbanSquareIcon } from './kanban-square.js';
+export { KanbanSquareDashedIcon } from './kanban-square-dashed.js';
+export { KayakIcon } from './kayak.js';
+export { KazakhTengeIcon } from './kazakh-tenge.js';
+export { LambdaIcon } from './lambda.js';
+export { LandPlotIcon } from './land-plot.js';
+export { LanguagesIcon } from './languages.js';
+export { LassoIcon } from './lasso.js';
+export { LassoSelectIcon } from './lasso-select.js';
+export { LayerArrowDownIcon } from './layer-arrow-down.js';
+export { LayerArrowUpIcon } from './layer-arrow-up.js';
+export { Layers2Icon } from './layers-2.js';
+export { Layers3Icon } from './layers-3.js';
+export { LayersArrowDownIcon } from './layers-arrow-down.js';
+export { LayersArrowUpIcon } from './layers-arrow-up.js';
+export { LayersMinusIcon } from './layers-minus.js';
+export { LayersPlusIcon } from './layers-plus.js';
+export { LeafyGreenIcon } from './leafy-green.js';
+export { LecternIcon } from './lectern.js';
+export { LensConcaveIcon } from './lens-concave.js';
+export { LensConvexIcon } from './lens-convex.js';
+export { LettersIcon } from './letters.js';
+export { LibraryIcon } from './library.js';
+export { LibraryBigIcon } from './library-big.js';
+export { LibrarySquareIcon } from './library-square.js';
+export { LifeBuoyIcon } from './life-buoy.js';
+export { LigatureIcon } from './ligature.js';
+export { LighthouseIcon } from './lighthouse.js';
+export { LineDotBottomVerticalIcon } from './line-dot-bottom-vertical.js';
+export { LineDotLeftHorizontalIcon } from './line-dot-left-horizontal.js';
+export { LineDotRightHorizontalIcon } from './line-dot-right-horizontal.js';
+export { LineDotTopVerticalIcon } from './line-dot-top-vertical.js';
+export { LineSquiggleIcon } from './line-squiggle.js';
+export { LineStyleIcon } from './line-style.js';
+export { LinkIcon } from './link.js';
+export { Link2Icon } from './link-2.js';
+export { Link2OffIcon } from './link-2-off.js';
+export { LoaderIcon } from './loader.js';
+export { Loader2Icon } from './loader-2.js';
+export { LoaderPinwheelIcon } from './loader-pinwheel.js';
+export { LocationEditIcon } from './location-edit.js';
+export { LogInIcon } from './log-in.js';
+export { LogOutIcon } from './log-out.js';
+export { LogicAndIcon } from './logic-and.js';
+export { LogicBufferIcon } from './logic-buffer.js';
+export { LogicNandIcon } from './logic-nand.js';
+export { LogicNorIcon } from './logic-nor.js';
+export { LogicNotIcon } from './logic-not.js';
+export { LogicOrIcon } from './logic-or.js';
+export { LogicXnorIcon } from './logic-xnor.js';
+export { LogicXorIcon } from './logic-xor.js';
+export { LogsIcon } from './logs.js';
+export { LollipopIcon } from './lollipop.js';
+export { MSquareIcon } from './m-square.js';
+export { MailboxIcon } from './mailbox.js';
+export { MailsIcon } from './mails.js';
+export { MarsIcon } from './mars.js';
+export { MarsStrokeIcon } from './mars-stroke.js';
+export { MartiniIcon } from './martini.js';
+export { MathIcon } from './math.js';
+export { Math1Divide2Icon } from './math-1-divide-2.js';
+export { Math1Divide3Icon } from './math-1-divide-3.js';
+export { MathAvgIcon } from './math-avg.js';
+export { MathCosIcon } from './math-cos.js';
+export { MathCtgIcon } from './math-ctg.js';
+export { MegaphoneIcon } from './megaphone.js';
+export { MegaphoneOffIcon } from './megaphone-off.js';
+export { MenorahIcon } from './menorah.js';
+export { MergeIcon } from './merge.js';
+export { MessagesCircleIcon } from './messages-circle.js';
+export { MessagesSquareIcon } from './messages-square.js';
+export { MetronomeIcon } from './metronome.js';
+export { MicrochipIcon } from './microchip.js';
+export { MicrowaveIcon } from './microwave.js';
+export { MidiPortIcon } from './midi-port.js';
+export { MilestoneIcon } from './milestone.js';
+export { MilkIcon } from './milk.js';
+export { MilkOffIcon } from './milk-off.js';
+export { MirrorRectangularIcon } from './mirror-rectangular.js';
+export { MirrorRoundIcon } from './mirror-round.js';
+export { MoodAngryIcon } from './mood-angry.js';
+export { MoodAnnoyedIcon } from './mood-annoyed.js';
+export { MoodAnnoyed2Icon } from './mood-annoyed-2.js';
+export { MoodBitcoinIcon } from './mood-bitcoin.js';
+export { MoodBoyIcon } from './mood-boy.js';
+export { MoodCheckIcon } from './mood-check.js';
+export { MoodCogIcon } from './mood-cog.js';
+export { MoodConfusedIcon } from './mood-confused.js';
+export { MoodCrazyHappyIcon } from './mood-crazy-happy.js';
+export { MoodCryIcon } from './mood-cry.js';
+export { MoodDollarIcon } from './mood-dollar.js';
+export { MoodEditIcon } from './mood-edit.js';
+export { MoodEmptyIcon } from './mood-empty.js';
+export { MoodHappyIcon } from './mood-happy.js';
+export { MoodHeartIcon } from './mood-heart.js';
+export { MoodKidIcon } from './mood-kid.js';
+export { MoodLookDownIcon } from './mood-look-down.js';
+export { MoodLookLeftIcon } from './mood-look-left.js';
+export { MoodLookRightIcon } from './mood-look-right.js';
+export { MoodLookUpIcon } from './mood-look-up.js';
+export { MopIcon } from './mop.js';
+export { MopSparklesIcon } from './mop-sparkles.js';
+export { MosqueIcon } from './mosque.js';
+export { MotorbikeIcon } from './motorbike.js';
+export { MouthIcon } from './mouth.js';
+export { MouthOffIcon } from './mouth-off.js';
+export { NepaliRupeeIcon } from './nepali-rupee.js';
+export { NewspaperIcon } from './newspaper.js';
+export { NfcIcon } from './nfc.js';
+export { NonBinaryIcon } from './non-binary.js';
+export { NotepadTextIcon } from './notepad-text.js';
+export { NotepadTextDashedIcon } from './notepad-text-dashed.js';
+export { NumberIcon } from './number.js';
+export { Number0SmallIcon } from './number-0-small.js';
+export { Number1SmallIcon } from './number-1-small.js';
+export { Number10Icon } from './number-10.js';
+export { Number10SmallIcon } from './number-10-small.js';
+export { Number100SmallIcon } from './number-100-small.js';
+export { Number11Icon } from './number-11.js';
+export { Number11SmallIcon } from './number-11-small.js';
+export { Number12SmallIcon } from './number-12-small.js';
+export { Number123Icon } from './number-123.js';
+export { OctagonIcon } from './octagon.js';
+export { OctagonMinusIcon } from './octagon-minus.js';
+export { OctagonPauseIcon } from './octagon-pause.js';
+export { OctagonXIcon } from './octagon-x.js';
+export { OmIcon } from './om.js';
+export { OmegaIcon } from './omega.js';
+export { OptionIcon } from './option.js';
+export { OrigamiIcon } from './origami.js';
+export { PacmanIcon } from './pacman.js';
+export { PaintbrushIcon } from './paintbrush.js';
+export { Paintbrush2Icon } from './paintbrush-2.js';
+export { PalmtreeIcon } from './palmtree.js';
+export { PandaIcon } from './panda.js';
+export { PanelsLeftBottomIcon } from './panels-left-bottom.js';
+export { PanelsRightBottomIcon } from './panels-right-bottom.js';
+export { PanelsTopBottomIcon } from './panels-top-bottom.js';
+export { PaperBagIcon } from './paper-bag.js';
+export { PaperclipIcon } from './paperclip.js';
+export { ParasolIcon } from './parasol.js';
+export { ParkIcon } from './park.js';
+export { ParkingCircleIcon } from './parking-circle.js';
+export { ParkingMeterIcon } from './parking-meter.js';
+export { ParkingSquareIcon } from './parking-square.js';
+export { ParkingSquareOffIcon } from './parking-square-off.js';
+export { PartyPopperIcon } from './party-popper.js';
+export { PcCaseIcon } from './pc-case.js';
+export { PdfIcon } from './pdf.js';
+export { PeaceIcon } from './peace.js';
+export { PentagonIcon } from './pentagon.js';
+export { PhiIcon } from './phi.js';
+export { PhilippinePesoIcon } from './philippine-peso.js';
+export { PianoIcon } from './piano.js';
+export { PickIcon } from './pick.js';
+export { PictureInPictureIcon } from './picture-in-picture.js';
+export { PictureInPicture2Icon } from './picture-in-picture-2.js';
+export { PigIcon } from './pig.js';
+export { PigMoneyIcon } from './pig-money.js';
+export { PigOffIcon } from './pig-off.js';
+export { PiggyBankIcon } from './piggy-bank.js';
+export { PilcrowIcon } from './pilcrow.js';
+export { PilcrowLeftIcon } from './pilcrow-left.js';
+export { PilcrowRightIcon } from './pilcrow-right.js';
+export { PilcrowSquareIcon } from './pilcrow-square.js';
+export { PipetteIcon } from './pipette.js';
+export { PlantPotIcon } from './plant-pot.js';
+export { PlayingCardIcon } from './playing-card.js';
+export { PlayingCardsIcon } from './playing-cards.js';
+export { PlayingCardsFanIcon } from './playing-cards-fan.js';
+export { PngIcon } from './png.js';
+export { PocketKnifeIcon } from './pocket-knife.js';
+export { PodiumIcon } from './podium.js';
+export { PointerIcon } from './pointer.js';
+export { PointerOffIcon } from './pointer-off.js';
+export { PopcornIcon } from './popcorn.js';
+export { PopsicleIcon } from './popsicle.js';
+export { PoundSterlingIcon } from './pound-sterling.js';
+export { PresentationIcon } from './presentation.js';
+export { ProjectorIcon } from './projector.js';
+export { ProportionsIcon } from './proportions.js';
+export { PuzzleIcon } from './puzzle.js';
+export { PyramidIcon } from './pyramid.js';
+export { QrCodeIcon } from './qr-code.js';
+export { RadarIcon } from './radar.js';
+export { RadiationIcon } from './radiation.js';
+export { RadicalIcon } from './radical.js';
+export { RadioIcon } from './radio.js';
+export { RadioOffIcon } from './radio-off.js';
+export { RadioReceiverIcon } from './radio-receiver.js';
+export { RadioTowerIcon } from './radio-tower.js';
+export { RadioactiveIcon } from './radioactive.js';
+export { RadioactiveOffIcon } from './radioactive-off.js';
+export { RadiusIcon } from './radius.js';
+export { RainbowIcon } from './rainbow.js';
+export { RatIcon } from './rat.js';
+export { Rating12PlusIcon } from './rating-12-plus.js';
+export { Rating14PlusIcon } from './rating-14-plus.js';
+export { Rating16PlusIcon } from './rating-16-plus.js';
+export { Rating18PlusIcon } from './rating-18-plus.js';
+export { RatioIcon } from './ratio.js';
+export { RecycleIcon } from './recycle.js';
+export { RefreshCcwIcon } from './refresh-ccw.js';
+export { RefreshCcwDotIcon } from './refresh-ccw-dot.js';
+export { RefreshCwIcon } from './refresh-cw.js';
+export { RefreshCwOffIcon } from './refresh-cw-off.js';
+export { RefrigeratorIcon } from './refrigerator.js';
+export { RelationManyToManyIcon } from './relation-many-to-many.js';
+export { RelationOneToManyIcon } from './relation-one-to-many.js';
+export { RelationOneToOneIcon } from './relation-one-to-one.js';
+export { RemoveFormattingIcon } from './remove-formatting.js';
+export { RepeatIcon } from './repeat.js';
+export { Repeat1Icon } from './repeat-1.js';
+export { Repeat2Icon } from './repeat-2.js';
+export { RepeatOffIcon } from './repeat-off.js';
+export { ReplaceIcon } from './replace.js';
+export { ReplaceAllIcon } from './replace-all.js';
+export { ReplyIcon } from './reply.js';
+export { ReplyAllIcon } from './reply-all.js';
+export { RewindIcon } from './rewind.js';
+export { RibbonIcon } from './ribbon.js';
+export { RoadIcon } from './road.js';
+export { RobotArmIcon } from './robot-arm.js';
+export { RobotVacuumIcon } from './robot-vacuum.js';
+export { RockingChairIcon } from './rocking-chair.js';
+export { RollerCoasterIcon } from './roller-coaster.js';
+export { RoseIcon } from './rose.js';
+export { RowInsertBottomIcon } from './row-insert-bottom.js';
+export { RowInsertTopIcon } from './row-insert-top.js';
+export { RowRemoveIcon } from './row-remove.js';
+export { RssIcon } from './rss.js';
+export { RugbyBallIcon } from './rugby-ball.js';
+export { RussianRubleIcon } from './russian-ruble.js';
+export { SandwichIcon } from './sandwich.js';
+export { SatelliteIcon } from './satellite.js';
+export { SatelliteDishIcon } from './satellite-dish.js';
+export { SaudiRiyalIcon } from './saudi-riyal.js';
+export { SaveIcon } from './save.js';
+export { SaveAllIcon } from './save-all.js';
+export { SaveCheckIcon } from './save-check.js';
+export { SaveOffIcon } from './save-off.js';
+export { SavePenIcon } from './save-pen.js';
+export { SavePlusIcon } from './save-plus.js';
+export { ScaleIcon } from './scale.js';
+export { Scale3DIcon } from './scale-3-d.js';
+export { ScalingIcon } from './scaling.js';
+export { SchoolIcon } from './school.js';
+export { School2Icon } from './school-2.js';
+export { ScissorsIcon } from './scissors.js';
+export { ScissorsLineDashedIcon } from './scissors-line-dashed.js';
+export { ScissorsSquareIcon } from './scissors-square.js';
+export { ScissorsSquareDashedBottomIcon } from './scissors-square-dashed-bottom.js';
+export { ScooterIcon } from './scooter.js';
+export { ScreenShareIcon } from './screen-share.js';
+export { ScreenShareOffIcon } from './screen-share-off.js';
+export { ScrollIcon } from './scroll.js';
+export { ScrollTextIcon } from './scroll-text.js';
+export { SectionIcon } from './section.js';
+export { SeparatorHorizontalIcon } from './separator-horizontal.js';
+export { SeparatorVerticalIcon } from './separator-vertical.js';
+export { ShapesIcon } from './shapes.js';
+export { ShareIcon } from './share.js';
+export { Share2Icon } from './share-2.js';
+export { SheetIcon } from './sheet.js';
+export { ShellIcon } from './shell.js';
+export { ShelvingUnitIcon } from './shelving-unit.js';
+export { ShirtIcon } from './shirt.js';
+export { ShovelIcon } from './shovel.js';
+export { ShowerHeadIcon } from './shower-head.js';
+export { ShredderIcon } from './shredder.js';
+export { ShrimpIcon } from './shrimp.js';
+export { ShrimpOffIcon } from './shrimp-off.js';
+export { ShrinkIcon } from './shrink.js';
+export { ShrubIcon } from './shrub.js';
+export { ShuffleIcon } from './shuffle.js';
+export { SignalIcon } from './signal.js';
+export { SignalHighIcon } from './signal-high.js';
+export { SignalLowIcon } from './signal-low.js';
+export { SignalMediumIcon } from './signal-medium.js';
+export { SignalZeroIcon } from './signal-zero.js';
+export { SignatureIcon } from './signature.js';
+export { SirenIcon } from './siren.js';
+export { SkipBackIcon } from './skip-back.js';
+export { SkipForwardIcon } from './skip-forward.js';
+export { SkullIcon } from './skull.js';
+export { SlashIcon } from './slash.js';
+export { SlashSquareIcon } from './slash-square.js';
+export { SliceIcon } from './slice.js';
+export { SnailIcon } from './snail.js';
+export { SnowflakeIcon } from './snowflake.js';
+export { SoapDispenserDropletIcon } from './soap-dispenser-droplet.js';
+export { SolarPanelIcon } from './solar-panel.js';
+export { SpaceIcon } from './space.js';
+export { SpadeIcon } from './spade.js';
+export { SparkleIcon } from './sparkle.js';
+export { SparklesIcon } from './sparkles.js';
+export { SpellCheckIcon } from './spell-check.js';
+export { SpellCheck2Icon } from './spell-check-2.js';
+export { SpiderIcon } from './spider.js';
+export { SplineIcon } from './spline.js';
+export { SplinePointerIcon } from './spline-pointer.js';
+export { SplitIcon } from './split.js';
+export { SplitSquareHorizontalIcon } from './split-square-horizontal.js';
+export { SplitSquareVerticalIcon } from './split-square-vertical.js';
+export { SpoolIcon } from './spool.js';
+export { SpotlightIcon } from './spotlight.js';
+export { SprayCanIcon } from './spray-can.js';
+export { SqlIcon } from './sql.js';
+export { SquaresExcludeIcon } from './squares-exclude.js';
+export { SquaresIntersectIcon } from './squares-intersect.js';
+export { SquaresSubtractIcon } from './squares-subtract.js';
+export { SquaresUniteIcon } from './squares-unite.js';
+export { SquircleIcon } from './squircle.js';
+export { SquircleDashedIcon } from './squircle-dashed.js';
+export { StampIcon } from './stamp.js';
+export { StarIcon } from './star.js';
+export { StarCheckIcon } from './star-check.js';
+export { StarHalfIcon } from './star-half.js';
+export { StarMinusIcon } from './star-minus.js';
+export { StarOffIcon } from './star-off.js';
+export { StarPlusIcon } from './star-plus.js';
+export { StarXIcon } from './star-x.js';
+export { StepBackIcon } from './step-back.js';
+export { StepForwardIcon } from './step-forward.js';
+export { StickerIcon } from './sticker.js';
+export { StickyNoteIcon } from './sticky-note.js';
+export { StickyNoteCheckIcon } from './sticky-note-check.js';
+export { StickyNoteMinusIcon } from './sticky-note-minus.js';
+export { StickyNoteOffIcon } from './sticky-note-off.js';
+export { StickyNotePlusIcon } from './sticky-note-plus.js';
+export { StickyNoteXIcon } from './sticky-note-x.js';
+export { StickyNotesIcon } from './sticky-notes.js';
+export { StoneIcon } from './stone.js';
+export { StretchHorizontalIcon } from './stretch-horizontal.js';
+export { StretchVerticalIcon } from './stretch-vertical.js';
+export { StrikethroughIcon } from './strikethrough.js';
+export { SummaryIcon } from './summary.js';
+export { SunriseIcon } from './sunrise.js';
+export { SunsetIcon } from './sunset.js';
+export { SvgIcon } from './svg.js';
+export { SwatchBookIcon } from './swatch-book.js';
+export { SwissFrancIcon } from './swiss-franc.js';
+export { SwordIcon } from './sword.js';
+export { TableIcon } from './table.js';
+export { Table2Icon } from './table-2.js';
+export { TableCellsMergeIcon } from './table-cells-merge.js';
+export { TableCellsSplitIcon } from './table-cells-split.js';
+export { TableColumnsSplitIcon } from './table-columns-split.js';
+export { TableOfContentsIcon } from './table-of-contents.js';
+export { TablePropertiesIcon } from './table-properties.js';
+export { TableRowsSplitIcon } from './table-rows-split.js';
+export { TabletsIcon } from './tablets.js';
+export { TagsIcon } from './tags.js';
+export { Tally1Icon } from './tally-1.js';
+export { Tally2Icon } from './tally-2.js';
+export { Tally3Icon } from './tally-3.js';
+export { Tally4Icon } from './tally-4.js';
+export { Tally5Icon } from './tally-5.js';
+export { TangentIcon } from './tangent.js';
+export { TentIcon } from './tent.js';
+export { TentTreeIcon } from './tent-tree.js';
+export { TestTubesIcon } from './test-tubes.js';
+export { TheaterIcon } from './theater.js';
+export { ThermometerIcon } from './thermometer.js';
+export { ThermometerSnowflakeIcon } from './thermometer-snowflake.js';
+export { ThermometerSunIcon } from './thermometer-sun.js';
+export { ThumbsDownIcon } from './thumbs-down.js';
+export { ThumbsUpIcon } from './thumbs-up.js';
+export { TicTacToeIcon } from './tic-tac-toe.js';
+export { TicketsIcon } from './tickets.js';
+export { TicketsPlaneIcon } from './tickets-plane.js';
+export { TimelineIcon } from './timeline.js';
+export { ToiletIcon } from './toilet.js';
+export { TomlIcon } from './toml.js';
+export { ToolboxIcon } from './toolbox.js';
+export { ToothbrushIcon } from './toothbrush.js';
+export { ToothbrushSparklesIcon } from './toothbrush-sparkles.js';
+export { TornadoIcon } from './tornado.js';
+export { TorusIcon } from './torus.js';
+export { TouchpadIcon } from './touchpad.js';
+export { TouchpadOffIcon } from './touchpad-off.js';
+export { TowelRackIcon } from './towel-rack.js';
+export { TowerControlIcon } from './tower-control.js';
+export { ToyBrickIcon } from './toy-brick.js';
+export { TrafficConeIcon } from './traffic-cone.js';
+export { TrailerIcon } from './trailer.js';
+export { TransgenderIcon } from './transgender.js';
+export { TreesIcon } from './trees.js';
+export { TriangleIcon } from './triangle.js';
+export { TriangleDashedIcon } from './triangle-dashed.js';
+export { TriangleRightIcon } from './triangle-right.js';
+export { TubeLotionIcon } from './tube-lotion.js';
+export { TurkishLiraIcon } from './turkish-lira.js';
+export { TurntableIcon } from './turntable.js';
+export { TvIcon } from './tv.js';
+export { Tv2Icon } from './tv-2.js';
+export { TvMinimalPlayIcon } from './tv-minimal-play.js';
+export { TxtIcon } from './txt.js';
+export { UnfoldHorizontalIcon } from './unfold-horizontal.js';
+export { UnfoldVerticalIcon } from './unfold-vertical.js';
+export { UngroupIcon } from './ungroup.js';
+export { UnlinkIcon } from './unlink.js';
+export { Unlink2Icon } from './unlink-2.js';
+export { UnplugIcon } from './unplug.js';
+export { UploadIcon } from './upload.js';
+export { UsersIcon } from './users.js';
+export { Users2Icon } from './users-2.js';
+export { UtilityPoleIcon } from './utility-pole.js';
+export { VanIcon } from './van.js';
+export { VariableIcon } from './variable.js';
+export { VectorPolygonIcon } from './vector-polygon.js';
+export { VectorSquareIcon } from './vector-square.js';
+export { VeganIcon } from './vegan.js';
+export { VenetianMaskIcon } from './venetian-mask.js';
+export { VenusIcon } from './venus.js';
+export { VenusAndMarsIcon } from './venus-and-mars.js';
+export { VibrateIcon } from './vibrate.js';
+export { VibrateOffIcon } from './vibrate-off.js';
+export { VideotapeIcon } from './videotape.js';
+export { ViewIcon } from './view.js';
+export { VirusIcon } from './virus.js';
+export { VirusOffIcon } from './virus-off.js';
+export { VoicemailIcon } from './voicemail.js';
+export { VolleyballIcon } from './volleyball.js';
+export { VoteIcon } from './vote.js';
+export { WallpaperIcon } from './wallpaper.js';
+export { WashIcon } from './wash.js';
+export { WashDryIcon } from './wash-dry.js';
+export { WashDry1Icon } from './wash-dry-1.js';
+export { WashDry2Icon } from './wash-dry-2.js';
+export { WashDry3Icon } from './wash-dry-3.js';
+export { WashDryAIcon } from './wash-dry-a.js';
+export { WashDryDipIcon } from './wash-dry-dip.js';
+export { WashDryFIcon } from './wash-dry-f.js';
+export { WashDryFlatIcon } from './wash-dry-flat.js';
+export { WashingMachineIcon } from './washing-machine.js';
+export { WavesArrowDownIcon } from './waves-arrow-down.js';
+export { WavesArrowUpIcon } from './waves-arrow-up.js';
+export { WavesHorizontalIcon } from './waves-horizontal.js';
+export { WavesLadderIcon } from './waves-ladder.js';
+export { WavesVerticalIcon } from './waves-vertical.js';
+export { WaypointsIcon } from './waypoints.js';
+export { WebcamIcon } from './webcam.js';
+export { WebcamOffIcon } from './webcam-off.js';
+export { WeightIcon } from './weight.js';
+export { WeightTildeIcon } from './weight-tilde.js';
+export { WheatIcon } from './wheat.js';
+export { WheatOffIcon } from './wheat-off.js';
+export { WhistleIcon } from './whistle.js';
+export { WholeWordIcon } from './whole-word.js';
+export { WifiIcon } from './wifi.js';
+export { WifiCogIcon } from './wifi-cog.js';
+export { WifiHighIcon } from './wifi-high.js';
+export { WifiLowIcon } from './wifi-low.js';
+export { WifiOffIcon } from './wifi-off.js';
+export { WifiPenIcon } from './wifi-pen.js';
+export { WifiSyncIcon } from './wifi-sync.js';
+export { WifiZeroIcon } from './wifi-zero.js';
+export { WormIcon } from './worm.js';
+export { ZipIcon } from './zip.js';
+export { ZodiacAquariusIcon } from './zodiac-aquarius.js';
+export { ZodiacAriesIcon } from './zodiac-aries.js';
+export { ZodiacCancerIcon } from './zodiac-cancer.js';
+export { ZodiacCapricornIcon } from './zodiac-capricorn.js';
+export { ZodiacGeminiIcon } from './zodiac-gemini.js';
+export { ZodiacLeoIcon } from './zodiac-leo.js';
+export { ZodiacLibraIcon } from './zodiac-libra.js';
+export { ZodiacOphiuchusIcon } from './zodiac-ophiuchus.js';
+export { ZodiacPiscesIcon } from './zodiac-pisces.js';
+export { ZodiacSagittariusIcon } from './zodiac-sagittarius.js';
+export { ZodiacScorpioIcon } from './zodiac-scorpio.js';
+export { ZodiacTaurusIcon } from './zodiac-taurus.js';
+export { ZodiacVirgoIcon } from './zodiac-virgo.js';
+export { ZoomInIcon } from './zoom-in.js';
+export { ZoomOutIcon } from './zoom-out.js';

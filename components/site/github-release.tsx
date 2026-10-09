@@ -1,6 +1,6 @@
 "use client";
 
-import { Tag } from "lucide-react";
+import { TagIcon as Tag } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 
 export function GithubRelease({

@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const MailCodeIcon = /* @__PURE__ */ createIcon("MailCodeIcon", [["path", { "d": "M11 19h-6a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6" }], ["path", { "d": "M3 7l9 6l9 -6" }], ["path", { "d": "M20 21l2 -2l-2 -2" }], ["path", { "d": "M17 17l-2 2l2 2" }]]);
-export {
-  MailCodeIcon
-};
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const MailCodeIcon = /* @__PURE__ */ createIcon('MailCodeIcon', [["path", { "d": "M11 19h-6a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6" }], ["path", { "d": "M3 7l9 6l9 -6" }], ["path", { "d": "M20 21l2 -2l-2 -2" }], ["path", { "d": "M17 17l-2 2l2 2" }]]);

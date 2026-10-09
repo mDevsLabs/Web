@@ -1,6 +1,10 @@
 "use client";
 
-import { ChevronRight, FileText, Folder } from "lucide-react";
+import {
+  ChevronRightIcon as ChevronRight,
+  FileTextIcon as FileText,
+  FolderIcon as Folder,
+} from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { api } from "@/components/wakies/api";
 import type { Page } from "@/lib/wakies/pages";

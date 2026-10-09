@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
+import type { IconProps } from "@mdevs/icons";
 
 export type Flow = "main" | "upgrade";
 
@@ -10,7 +10,7 @@ export type StepDef = {
   title: string;
   titleAccent?: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   spotlightSelector?: string; // CSS selector for highlight, optional
   renderBody?: (ctx: StepContext) => ReactNode;
   ctaLabel?: string;

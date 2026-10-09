@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, RefreshCw } from "lucide-react";
+import { Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";

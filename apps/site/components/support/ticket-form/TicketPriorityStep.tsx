@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Laptop } from "lucide-react";
+import { CheckCircle2Icon as CheckCircle2, LaptopIcon as Laptop } from "@mdevs/icons";
 import type { RefObject } from "react";
 import type { SupportAttachment } from "@/app/actions/support-utils";
 import { PRIORITY_OPTIONS, type SupportPriority } from "@/components/support/support-config";

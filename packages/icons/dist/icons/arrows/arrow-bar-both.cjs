@@ -22,7 +22,7 @@ __export(arrow_bar_both_exports, {
   ArrowBarBothIcon: () => ArrowBarBothIcon
 });
 module.exports = __toCommonJS(arrow_bar_both_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowBarBothIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowBarBothIcon", [["path", { "d": "M8 12h-6" }], ["path", { "d": "M5 15l-3 -3l3 -3" }], ["path", { "d": "M22 12h-6" }], ["path", { "d": "M19 15l3 -3l-3 -3" }], ["path", { "d": "M12 4v16" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

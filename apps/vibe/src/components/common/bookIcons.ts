@@ -6,40 +6,7 @@
  */
 
 import type { ComponentType, SVGProps } from 'react';
-import {
-  BookHeart,
-  BookMarked,
-  BookOpen,
-  Bookmark,
-  Heart,
-  Star,
-  Sparkles,
-  Music,
-  Film,
-  Camera,
-  Coffee,
-  Flower2,
-  Moon,
-  Sun,
-  Cloud,
-  Flame,
-  Zap,
-  Rocket,
-  Trophy,
-  Gamepad2,
-  GraduationCap,
-  Briefcase,
-  Plane,
-  MapPin,
-  Cat,
-  Dog,
-  Pizza,
-  Palette,
-  Feather,
-  Gem,
-  Library,
-  PenLine,
-} from 'lucide-react';
+import { BookHeartIcon as BookHeart, BookMarkedIcon as BookMarked, BookOpenIcon as BookOpen, BookmarkIcon as Bookmark, HeartIcon as Heart, StarIcon as Star, SparklesIcon as Sparkles, MusicIcon as Music, FilmIcon as Film, CameraIcon as Camera, CoffeeIcon as Coffee, Flower2Icon as Flower2, MoonIcon as Moon, SunIcon as Sun, CloudIcon as Cloud, FlameIcon as Flame, ZapIcon as Zap, RocketIcon as Rocket, TrophyIcon as Trophy, Gamepad2Icon as Gamepad2, GraduationCapIcon as GraduationCap, BriefcaseIcon as Briefcase, PlaneIcon as Plane, MapPinIcon as MapPin, CatIcon as Cat, DogIcon as Dog, PizzaIcon as Pizza, PaletteIcon as Palette, FeatherIcon as Feather, GemIcon as Gem, LibraryIcon as Library, PenLineIcon as PenLine } from "@mdevs/icons";
 
 export type BookIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 

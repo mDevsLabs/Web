@@ -1,37 +1,5 @@
 import React from 'react';
-import {
-  Image as ImageIcon,
-  Globe,
-  FileText,
-  ShieldCheck,
-  Sparkles,
-  Languages,
-  Send,
-  TrendingUp,
-  BarChart3,
-  Zap,
-  Bell,
-  UserPlus,
-  Heart,
-  MessageCircle,
-  Settings,
-  Bookmark,
-  Repeat2,
-  MessageSquare,
-  Activity,
-  Trash2,
-  Lightbulb,
-  Search,
-  User,
-  Users,
-  Clock,
-  ArrowLeftRight,
-  Target,
-  LayoutGrid,
-  MessagesSquare,
-  BookOpen,
-  Hash
-} from 'lucide-react';
+import { ImageIcon, GlobeIcon as Globe, FileTextIcon as FileText, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, LanguagesIcon as Languages, SendIcon as Send, TrendingUpIcon as TrendingUp, BarChart3Icon as BarChart3, ZapIcon as Zap, BellIcon as Bell, UserPlusIcon as UserPlus, HeartIcon as Heart, MessageCircleIcon as MessageCircle, SettingsIcon as Settings, BookmarkIcon as Bookmark, Repeat2Icon as Repeat2, MessageSquareIcon as MessageSquare, ActivityIcon as Activity, Trash2Icon as Trash2, LightbulbIcon as Lightbulb, SearchIcon as Search, UserIcon as User, UsersIcon as Users, ClockIcon as Clock, ArrowLeftRightIcon as ArrowLeftRight, TargetIcon as Target, LayoutGridIcon as LayoutGrid, MessagesSquareIcon as MessagesSquare, BookOpenIcon as BookOpen, HashIcon as Hash } from "@mdevs/icons";
 import { type MAITool } from '../../data/maiTools';
 import { useAvailableMAITools } from '../../hooks/useAvailableMAITools';
 

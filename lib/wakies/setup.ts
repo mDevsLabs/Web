@@ -23,7 +23,7 @@ import "server-only";
 export type WakiesSetup = {
   /** Intelligence CopilotKit : non branchée (les conversations sont locales). */
   intelligence: boolean;
-  /** Modèle : toujours disponible via l'API mAI. */
+  /** Transport modèle intégré à mAI ; la disponibilité réelle est vérifiée par le catalogue et la requête. */
   model: boolean;
   /** Navigateur isolé pour la lecture de page : non branché. */
   browser: boolean;
@@ -38,20 +38,15 @@ export type WakiesSetup = {
 };
 
 export async function wakiesSetupStatus(): Promise<WakiesSetup> {
-  const voice = Boolean(
-    process.env.MAI_API_KEY ||
-      process.env.OPENAI_API_KEY ||
-      process.env.VOX_API_KEY
-  );
   return {
     browser: false,
     computers: false,
     intelligence: false,
     missing: [],
-    // Le modèle est toujours joignable : `getLanguageModel` passe par l'API mAI,
+    // Le transport utilise l'API mAI ; ceci ne garantit pas la disponibilité du fournisseur. `getLanguageModel` passe par cette API,
     // avec la clé de session si aucune clé serveur n'est configurée.
     model: true,
     slack: "not_configured",
-    voice,
+    voice: false,
   };
 }

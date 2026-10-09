@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Clock, Copy, Download, Sparkles, Terminal } from "lucide-react";
+import { CheckIcon as Check, ClockIcon as Clock, CopyIcon as Copy, DownloadIcon as Download, SparklesIcon as Sparkles, TerminalIcon as Terminal } from "@mdevs/icons";
 
 type RequestResponsePanelProps = {
   copied: boolean;

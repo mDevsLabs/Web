@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon } from "@mdevs/icons";
 import { type ReactNode, useMemo, useState } from "react";
 
 import {

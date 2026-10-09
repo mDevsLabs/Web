@@ -1,27 +1,13 @@
 "use client";
-import { AnvilIcon } from "./anvil.js";
-import { BoltIcon } from "./bolt.js";
-import { BoltOffIcon } from "./bolt-off.js";
-import { CogIcon } from "./cog.js";
-import { DrillIcon } from "./drill.js";
-import { HammerIcon } from "./hammer.js";
-import { NutIcon } from "./nut.js";
-import { NutOffIcon } from "./nut-off.js";
-import { PickaxeIcon } from "./pickaxe.js";
-import { ToolCaseIcon } from "./tool-case.js";
-import { WrenchIcon } from "./wrench.js";
-import { WrenchOffIcon } from "./wrench-off.js";
-export {
-  AnvilIcon,
-  BoltIcon,
-  BoltOffIcon,
-  CogIcon,
-  DrillIcon,
-  HammerIcon,
-  NutIcon,
-  NutOffIcon,
-  PickaxeIcon,
-  ToolCaseIcon,
-  WrenchIcon,
-  WrenchOffIcon
-};
+export { AnvilIcon } from './anvil.js';
+export { BoltIcon } from './bolt.js';
+export { BoltOffIcon } from './bolt-off.js';
+export { CogIcon } from './cog.js';
+export { DrillIcon } from './drill.js';
+export { HammerIcon } from './hammer.js';
+export { NutIcon } from './nut.js';
+export { NutOffIcon } from './nut-off.js';
+export { PickaxeIcon } from './pickaxe.js';
+export { ToolCaseIcon } from './tool-case.js';
+export { WrenchIcon } from './wrench.js';
+export { WrenchOffIcon } from './wrench-off.js';

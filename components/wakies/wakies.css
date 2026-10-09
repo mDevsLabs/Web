@@ -3,22 +3,22 @@
  * ============================================================================
  *
  * FICHIER GÉNÉRÉ — NE PAS ÉDITER À LA MAIN.
- * Source : apps/wakies/src/client/style.css · Script : scripts/build-wakies-css.mjs
+ * Source : apps/wakies/integration/web/style.css · Script : scripts/build-wakies-css.mjs
  *
  * Chaque sélecteur de Wakies est ancré sous .wakies-root, l'élément posé par
- * app/(chat)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
+ * app/(wakies)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
  * le thème clair de Wakies (.wakies-root porte :root) et ses sélecteurs nus
  * (button, input, .sidebar…) repeindraient le chat, la barre latérale et les
  * réglages de l'hôte.
  *
- * Importé par app/(chat)/wakies/layout.tsx et par lui seul.
+ * Importé par app/(wakies)/wakies/layout.tsx et par lui seul.
  * Exclu du lint (biome.jsonc) : c'est une sortie de script.
  *
  * Relancer après toute modification de la source :
  *   node scripts/build-wakies-css.mjs
  * ============================================================================ */
 
-.wakies-root {
+@layer wakies-base, mdevs;@layer wakies-base {.wakies-root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #333641;
   background: #f8f7f4;
@@ -135,6 +135,15 @@
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 30;
+  /* Le contenu peut dépasser la hauteur disponible, notamment au zoom. */
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+}
+.wakies-root .sidebar > * {
+  /* Garder les listes et les contrôles accessibles plutôt que les écraser. */
+  flex-shrink: 0;
 }
 .wakies-root .wordmark {
   border: 0;
@@ -465,7 +474,7 @@
   height: 54px;
 }
 .wakies-root .mascot.working .dot-body {
-  animation: bob 2s ease-in-out infinite;
+  animation: wakies-bob 2s ease-in-out infinite;
 }
 .wakies-root .mascot.complete .dot-body {
   transform: rotate(-3deg);
@@ -1437,14 +1446,14 @@
   display: none;
 }
 .wakies-root .spin {
-  animation: spin 2s linear infinite;
+  animation: wakies-spin 2s linear infinite;
 }
-@keyframes spin {
+@keyframes wakies-spin {
   to {
     transform: rotate(360deg);
   }
 }
-@keyframes bob {
+@keyframes wakies-bob {
   50% {
     transform: translateY(-5px);
   }
@@ -2368,7 +2377,7 @@
   height: 6px;
   border-radius: 50%;
   background: #6db0a5;
-  animation: bob 1.5s infinite;
+  animation: wakies-bob 1.5s infinite;
 }
 .wakies-root .on-call {
   background: #e3f2ed;
@@ -2386,7 +2395,7 @@
   width: 4px;
   border-radius: 50%;
   background: #aab7d7;
-  animation: bob 1s infinite;
+  animation: wakies-bob 1s infinite;
 }
 .wakies-root .thinking > span:last-child {
   margin-left: 6px;
@@ -3881,9 +3890,9 @@
   margin: 12px 0;
 }
 .wakies-root .call-persona.speaking .mascot {
-  animation: call-breathe 1.5s ease-in-out infinite;
+  animation: wakies-call-breathe 1.5s ease-in-out infinite;
 }
-@keyframes call-breathe {
+@keyframes wakies-call-breathe {
   50% {
     transform: scale(1.06) translateY(-4px);
   }
@@ -4012,4 +4021,547 @@
 .wakies-root .call-caption .call-user-caption {
   font-size: 14px;
   color: #c9e8dd;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pièces jointes (composer)                                          */
+/* ------------------------------------------------------------------ */
+
+/* L'input de fichier est masqué visuellement mais reste atteignable au
+   clavier : `display:none` le retirerait de l'ordre de tabulation et
+   transformerait la pièce jointe en action impossible au clavier. */
+.wakies-root .chat-composer .visually-hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.wakies-root .composer-pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 12px 8px;
+  margin: 0;
+  list-style: none;
+}
+.wakies-root .composer-piece {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  max-width: 100%;
+  padding: 4px 6px 4px 9px;
+  font-size: 11px;
+  color: var(--muted);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.wakies-root .composer-piece.is-echec {
+  color: var(--danger, #b3402f);
+  border-color: color-mix(in oklab, var(--danger, #b3402f) 40%, var(--line));
+}
+.wakies-root .composer-piece.is-pret {
+  border-color: var(--line);
+}
+.wakies-root .composer-piece-name {
+  max-width: 180px;
+  overflow: hidden;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wakies-root .composer-piece-meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wakies-root .composer-piece-progress {
+  position: relative;
+  display: block;
+  width: 42px;
+  height: 3px;
+  overflow: hidden;
+  background: var(--line);
+  border-radius: 2px;
+}
+.wakies-root .composer-piece-progress span {
+  display: block;
+  height: 100%;
+  background: var(--blue, #7285d5);
+  transition: width 0.2s;
+}
+/* Le survol de dépôt pose une BORDURE, pas un voile : un voile masquerait le
+   brouillon que l'utilisateur s'apprête à compléter avec le fichier. */
+.wakies-root .composer-dropzone {
+  padding: 10px;
+  margin: 0 12px 8px;
+  font-size: 12px;
+  color: var(--blue, #7285d5);
+  text-align: center;
+  border: 1px dashed var(--blue, #7285d5);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--lavender, #eeeffa) 55%, white);
+}
+.wakies-root .chat-compose-note.is-error {
+  color: var(--danger, #b3402f);
+}
+
+/* ------------------------------------------------------------------ */
+/* Pièces jointes (transcript)                                       */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .chat-piece {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 9px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  text-align: left;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.wakies-root .chat-bubble.user .chat-piece {
+  background: transparent;
+}
+.wakies-root .chat-piece-name {
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wakies-root .chat-piece-size {
+  color: var(--muted);
+}
+.wakies-root .chat-piece-open {
+  margin-left: auto;
+  color: var(--blue, #7285d5);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.wakies-root .chat-piece-missing {
+  margin-left: auto;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------------ */
+/* Carte de validation d'action                                      */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .wakies-approval {
+  max-width: 520px;
+  padding: 12px 14px;
+  margin: 8px 0 12px auto;
+  font-size: 12px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.wakies-root .wakies-approval[data-state="busy"] {
+  opacity: 0.7;
+}
+.wakies-root .wakies-approval-head {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.wakies-root .wakies-approval-origin {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.wakies-root .wakies-approval-summary {
+  margin: 0 0 8px;
+  line-height: 1.55;
+}
+.wakies-root .wakies-approval-target {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin: 0 0 8px;
+  font-size: 11px;
+}
+.wakies-root .wakies-approval-target span {
+  color: var(--muted);
+}
+.wakies-root .wakies-approval-target code {
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wakies-root .wakies-approval-params {
+  display: grid;
+  gap: 4px;
+  padding: 8px 10px;
+  margin: 0 0 10px;
+  font-size: 11px;
+  background: #f8f7f4;
+  border-radius: 8px;
+}
+.wakies-root .wakies-approval-params div {
+  display: flex;
+  gap: 8px;
+}
+.wakies-root .wakies-approval-params dt {
+  flex: 0 0 34%;
+  color: var(--muted);
+}
+.wakies-root .wakies-approval-params dd {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wakies-root .wakies-approval-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ------------------------------------------------------------------ */
+/* Capacités (compétences, extensions, serveurs MCP)                 */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .capability-picker fieldset {
+  padding: 0;
+  margin: 0 0 14px;
+  border: 0;
+}
+.wakies-root .capability-picker legend {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.wakies-root .capability-row {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  padding: 7px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+}
+.wakies-root .capability-row:last-child {
+  border-bottom: 0;
+}
+.wakies-root .capability-row input {
+  margin-top: 2px;
+}
+.wakies-root .capability-row:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.wakies-root .capability-row-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.wakies-root .capability-row-title {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+.wakies-root .capability-row-detail {
+  font-size: 11px;
+  color: var(--muted);
+}
+.wakies-root .capability-row-status {
+  font-size: 11px;
+}
+.wakies-root .capability-row-status.is-warning {
+  color: #854d0e;
+}
+.wakies-root .capability-row-status.is-destructive {
+  color: var(--danger, #b3402f);
+}
+.wakies-root .capability-issues {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 9px 11px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #854d0e;
+  background: #fdf6e6;
+  border-radius: 9px;
+}
+.wakies-root .capability-issues ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Configuration de départ (assistant)                               */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+  background: #f8f7f4;
+}
+.wakies-root .onboarding-head {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+}
+.wakies-root .onboarding-head img {
+  object-fit: contain;
+}
+.wakies-root .onboarding-head h2 {
+  margin: 2px 0 0;
+  font-size: 20px;
+}
+.wakies-root .onboarding-close {
+  margin-left: auto;
+}
+.wakies-root .onboarding-steps {
+  display: flex;
+  gap: 6px;
+  max-width: 560px;
+  padding: 0;
+  margin: 18px auto;
+  list-style: none;
+}
+.wakies-root .onboarding-steps li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.wakies-root .onboarding-steps li.active {
+  color: white;
+  background: var(--blue, #7285d5);
+  border-color: var(--blue, #7285d5);
+}
+.wakies-root .onboarding-steps li.done {
+  color: var(--blue, #7285d5);
+  border-color: var(--blue, #7285d5);
+}
+.wakies-root .onboarding-body {
+  flex: 1;
+  max-width: 560px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.wakies-root .onboarding-field {
+  display: block;
+}
+.wakies-root .onboarding-field > span,
+.wakies-root .onboarding-field legend {
+  display: block;
+  padding: 0;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.wakies-root .onboarding-field small {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.wakies-root .onboarding-field small.is-error {
+  color: var(--danger, #b3402f);
+}
+.wakies-root .onboarding-preview {
+  padding: 10px 12px;
+  margin-top: 12px;
+  background: #f8f7f4;
+  border-radius: 10px;
+}
+.wakies-root .onboarding-preview .muted {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+.wakies-root .onboarding-preview p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.wakies-root .onboarding-recap {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+.wakies-root .onboarding-recap div {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.wakies-root .onboarding-recap dt {
+  flex: 0 0 40%;
+  color: var(--muted);
+}
+.wakies-root .onboarding-recap dd {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+}
+.wakies-root .onboarding-foot {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 560px;
+  width: 100%;
+  margin: 18px auto 0;
+}
+.wakies-root .onboarding-foot .primary svg {
+  margin-left: 6px;
+}
+
+/* Port React DOM de l'expérience OpenMuse : canevas, conversation centrale,
+   cartes douces et navigation en pilule. Les accents restent sémantiques mAI. */
+.wakies-root .muse-app {
+  height: 100%;
+  min-height: 0;
+  --ink: #11191c;
+  --muted: #697176;
+  --line: #eeeef0;
+  --blue: #e9eaec;
+  --blue-dark: #11191c;
+  --lavender: #f0f1f2;
+  color: var(--ink);
+  background: #fcfcfc;
+}
+.wakies-root .muse-app .workspace { height: 100%; min-height: 0; display: flex; flex-direction: column; background: #fcfcfc; }
+.wakies-root .muse-app .topbar { min-height: 108px; height: 108px; border: 0; background: transparent; position: relative; flex-shrink: 0; }
+.wakies-root .muse-app .topbar .breadcrumbs,
+.wakies-root .muse-app .mode-badge { display: none; }
+.wakies-root .muse-persona { position: absolute; inset-inline-start: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 2px; border: 0; padding: 0; background: transparent; min-width: 120px; }
+.wakies-root .muse-persona:active:not(:disabled) { transform: translateX(-50%); }
+.wakies-root .muse-persona strong { font-size: 16px; letter-spacing: -.4px; }
+.wakies-root .muse-persona small { color: var(--muted); font-size: 11px; }
+.wakies-root .muse-persona .mascot { width: 46px; height: 46px; }
+.wakies-root .muse-app .sidebar { background: #f7f8f8; border-right-color: var(--line); }
+.wakies-root .muse-app .icon-rail { background: #fcfcfc; border-right-color: var(--line); }
+.wakies-root .muse-app .chat-workspace { flex: 1; height: auto; min-height: 0; padding: 0; }
+.wakies-root .muse-app .chat-column { min-height: 0; }
+.wakies-root .muse-app .live-chat { height: 100%; min-height: 0; max-width: 760px; margin: 0 auto; padding: 0 28px; }
+.wakies-root .muse-app .chat-persona { border: 0; min-height: 40px; padding: 0 0 8px; }
+.wakies-root .muse-app .chat-persona > .mascot,
+.wakies-root .muse-app .chat-persona > div:not(.chat-persona-actions) { display: none; }
+.wakies-root .muse-app .chat-persona-actions { margin-left: auto; }
+.wakies-root .muse-app .chat-transcript { padding: 20px 0; scroll-padding-block: 20px; overscroll-behavior: contain; }
+.wakies-root .muse-app .chat-bubble { margin-bottom: 20px; border-radius: 22px; line-height: 1.6; font-size: 15px; max-width: 94%; }
+.wakies-root .muse-app .chat-bubble.user { padding: 13px 18px; background: #f0f1f2; color: var(--ink); }
+.wakies-root .muse-app .chat-bubble.assistant { background: transparent; padding: 7px 2px; }
+.wakies-root .muse-app .chat-bubble.assistant pre { max-width: 100%; overflow-x: auto; }
+.wakies-root .muse-app .chat-composer,
+.wakies-root .muse-app .composer { border: 1px solid var(--line); border-radius: 28px; background: white; box-shadow: 0 2px 18px rgb(19 38 49 / 5%); padding: 10px 14px; }
+.wakies-root .muse-app .chat-composer { margin: 0 0 4px; flex-shrink: 0; }
+.wakies-root .muse-app .chat-compose-row textarea { font-size: 16px; min-height: 42px; max-height: 150px; }
+.wakies-root .muse-app .chat-compose-row { align-items: center; }
+.wakies-root .muse-app .send-button { background: var(--ink); color: white; border-radius: 50%; width: 42px; height: 42px; flex-shrink: 0; }
+.wakies-root .muse-app .send-button:hover:not(:disabled) { background: #333c40; }
+.wakies-root .muse-app .chat-compose-note { font-size: 11px; margin: 2px; text-align: center; color: var(--muted); }
+.wakies-root .muse-app .new-conversation { flex: 1; height: 100%; min-height: 0; max-width: 760px; padding: 24px 28px; overflow-y: auto; }
+.wakies-root .muse-app .empty-chat-persona { margin: auto 0 24px; }
+.wakies-root .muse-app .empty-chat-persona p { max-width: 440px; color: var(--muted); }
+.wakies-root .muse-app .starter-suggestions button { border-radius: 22px; background: #f0f1f2; }
+.wakies-root .muse-navigation { align-self: center; display: flex; flex-shrink: 0; gap: 3px; width: min(390px, calc(100% - 32px)); padding: 5px; margin: 10px 16px calc(16px + env(safe-area-inset-bottom, 0px)); border: 1px solid #f0f1f2; border-radius: 40px; background: #fff; box-shadow: 0 2px 18px rgb(19 38 49 / 7%); }
+.wakies-root .muse-navigation button { flex: 1; min-height: 48px; min-width: 44px; padding: 6px; border: 0; border-radius: 28px; flex-direction: column; gap: 3px; background: transparent; }
+.wakies-root .muse-navigation button[data-active='true'] { background: #f0f1f2; }
+.wakies-root .muse-navigation button span { font-size: 10px; }
+.wakies-root .muse-app .muse-screen,
+.wakies-root .muse-app .main-content { flex: 1; min-height: 0; overflow-y: auto; max-width: 1000px; width: 100%; margin: 0 auto; padding: 20px 32px; overscroll-behavior: contain; }
+.wakies-root .muse-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; margin-block: 20px; }
+.wakies-root .muse-card { padding: 20px; border-radius: 23px; background: #f0f1f2; margin-bottom: 14px; }
+.wakies-root .muse-card h2 { margin-top: 0; font-size: 16px; font-weight: 600; }
+.wakies-root .muse-card p,
+.wakies-root .muse-card small { color: var(--muted); }
+.wakies-root .muse-links { display: flex; flex-wrap: wrap; gap: 14px; margin-block: 18px; }
+.wakies-root .muse-links a { border-bottom: 1px solid currentColor; }
+.wakies-root .muse-goal-form label { display: block; margin-bottom: 14px; }
+.wakies-root .muse-goal-form input,
+.wakies-root .muse-goal-form textarea { margin-top: 8px; border-radius: 19px; }
+.wakies-root .muse-check { display: flex; align-items: center; gap: 10px; padding-block: 8px; min-height: 44px; }
+.wakies-root .muse-check input { width: 19px; height: 19px; margin: 0; }
+.wakies-root .muse-app .modal { border-radius: 26px; max-height: calc(100dvh - 40px); overflow-y: auto; }
+.wakies-root .muse-app .modal-backdrop { z-index: 90; }
+.wakies-root .muse-app .queue-list { margin: 4px 0; padding: 12px; border-radius: 20px; background: #f0f1f2; }
+.wakies-root .muse-app .queue-list li { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+.wakies-root .muse-app .queue-list li span { flex: 1; overflow-wrap: anywhere; }
+.wakies-root .muse-app .queue-list ul { margin: 0; padding: 0; list-style: none; }
+.wakies-root .muse-app .tool-card { padding: 16px; border-radius: 22px; background: #f0f1f2; margin-block: 12px; overflow-wrap: anywhere; }
+.wakies-root .muse-app .tool-card pre { white-space: pre-wrap; font-size: 12px; }
+@media (max-width: 900px) {
+  .wakies-root .muse-app .topbar { height: 96px; min-height: 96px; padding-top: env(safe-area-inset-top, 0px); }
+  .wakies-root .muse-app .live-chat { padding-inline: 17px; }
+  .wakies-root .muse-app .main-content { padding: 16px 20px; }
+  .wakies-root .muse-app .pause-button span { display: none; }
+}
+@media (max-width: 640px) {
+  .wakies-root .muse-app .workspace { padding-top: env(safe-area-inset-top, 0px); }
+  .wakies-root .muse-app .icon-rail { display: none; }
+  .wakies-root .muse-app .mobile-menu { z-index: 40; top: calc(14px + env(safe-area-inset-top, 0px)); }
+  .wakies-root .muse-app .topbar { padding-inline: 16px; }
+  .wakies-root .muse-app .top-actions { gap: 4px; }
+  .wakies-root .muse-app .sidebar { padding-top: calc(20px + env(safe-area-inset-top, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .wakies-root .muse-navigation { margin-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+  .wakies-root .muse-navigation button span { font-size: 9px; }
+  .wakies-root .muse-app .new-conversation { padding: 12px 17px; }
+  .wakies-root .muse-app .modal-backdrop { align-items: flex-end; padding: 0; }
+  .wakies-root .muse-app .modal { width: 100%; max-width: none; max-height: 92dvh; border-radius: 26px 26px 0 0; padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wakies-root .muse-app *,
+  .wakies-root .muse-app *::before,
+  .wakies-root .muse-app *::after { animation-duration: 0.01ms; transition-duration: 0.01ms; scroll-behavior: auto; }
+}
+.wakies-root .muse-app .muse-conversation-row { display: flex; gap: 2px; align-items: center; }
+.wakies-root .muse-app .muse-conversation-row > .nav-item { flex: 1; min-width: 0; }
+.wakies-root .muse-app .muse-conversation-row > button:not(.nav-item) { border: 0; background: transparent; padding: 6px; min-width: 30px; min-height: 44px; }
+
+/* Les portails Radix de la bibliothèque sont montés dans .wakies-root. */
+.wakies-root .wakies-file-overlay { position: fixed; inset: 0; background: rgb(17 25 28 / 30%); z-index: 110; }
+.wakies-root .wakies-file-dialog { position: fixed; inset-inline: max(16px, calc((100vw - 680px) / 2)); top: max(24px, env(safe-area-inset-top)); bottom: max(24px, env(safe-area-inset-bottom)); overflow-y: auto; padding: 24px; background: white; border: 1px solid var(--line); border-radius: 26px; z-index: 111; }
+.wakies-root .wakies-file-dialog h2 { font-size: 20px; }
+.wakies-root .wakies-file-list { list-style: none; padding: 0; }
+.wakies-root .wakies-file-list li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.wakies-root .wakies-file-list li > div { flex: 1 1 180px; min-width: 0; overflow-wrap: anywhere; }
+.wakies-root .wakies-file-list small { display: block; color: var(--muted); }
+.wakies-root .wakies-file-list button { min-height: 44px; padding: 8px 12px; border-radius: 18px; }
+
+/* Le compositeur garde toute sa largeur dans les shells web et mobiles. */
+.wakies-root .muse-app .chat-compose-row { display: flex; align-items: center; }
+.wakies-root .muse-app .chat-compose-row textarea { flex: 1; min-width: 0; width: 100%; }
+.wakies-root .muse-app .chat-compose-row .send-button { margin-inline-start: auto; flex-shrink: 0; }
 }

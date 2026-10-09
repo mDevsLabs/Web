@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { applyUpdate, onUpdateAvailable } from '../../services/pwa';
 import { haptics } from '../../services/haptics';
 

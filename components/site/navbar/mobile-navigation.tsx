@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Activity,
-  ChevronDown,
-  Cloud,
-  Download,
-  Gauge,
-  Image as ImageIcon,
-  UserRound,
-  Volume2,
-} from "lucide-react";
+import { ActivityIcon as Activity, ChevronDownIcon as ChevronDown, CloudIcon as Cloud, DownloadIcon as Download, GaugeIcon as Gauge, ImageIcon, UserRoundIcon as UserRound, Volume2Icon as Volume2 } from "@mdevs/icons";
 import { useState } from "react";
 import { handleAccountAnchorClick } from "@/components/site/navbar/account-anchor";
 import {

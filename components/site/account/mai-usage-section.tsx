@@ -1,6 +1,6 @@
 "use client";
 
-import { Gauge, RefreshCw } from "lucide-react";
+import { GaugeIcon as Gauge, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { motion } from "motion/react";
 
 import { formatResetDate, formatTokens } from "./account-utils";

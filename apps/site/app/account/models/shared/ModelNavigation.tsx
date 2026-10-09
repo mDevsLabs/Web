@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, Image as ImageIcon, Volume2 } from "lucide-react";
+import { CpuIcon as Cpu, ImageIcon, Volume2Icon as Volume2 } from "@mdevs/icons";
 import Link from "next/link";
 
 export type ModelCatalogSection = "text" | "images" | "audio" | "mai";

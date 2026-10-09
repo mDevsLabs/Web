@@ -1,6 +1,6 @@
 "use client";
 
-import { Volume2 } from "lucide-react";
+import { Volume2Icon as Volume2 } from "@mdevs/icons";
 
 import { type AudioUsageData, formatResetDate } from "./account-utils";
 import { QuotaProgress } from "./quota-progress";

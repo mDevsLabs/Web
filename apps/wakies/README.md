@@ -1,25 +1,23 @@
-# Wakies — application source
+# Wakies — sources et intégration mAI
 
-Ce dossier contient la source autonome de Wakies : une interface Vite, un serveur Node et des services séparés pour les fonctions de travail avec des agents. Il sert aussi de référence au port intégré à mAI Web.
+Source officielle : CopilotKit/OpenMuse, branche main, commit 1ac68f3909f2478ab6280883f1ab5ea65eb5719d. La licence MIT et les notices sont conservées. Le clone de préparation est extérieur au dépôt ; aucun .git imbriqué.
 
-Les deux versions ont des responsabilités différentes. L’application source peut contenir des intégrations qui ne sont pas encore connectées dans l’hôte. Sous mAI Web, l’authentification, PostgreSQL, les quotas et le pipeline IA sont ceux de mAI. Consultez l’état réel du port dans [docs/3-wakies/INTEGRATION.md](../../docs/3-wakies/INTEGRATION.md).
+## Architecture effective
 
-## Développement de la source
+- apps/mobile : référence Expo de l'interface importée, React 19.1 ; ne remplace pas apps/mobile de mAI (Capacitor).
+- apps/server, apps/worker, apps/computer, packages : sources originales, contrats et tests de référence des services optionnels. Aucune de ces applications n'est lancée par le build mAI.
+- integration/web : adaptations de styles du port React DOM, compilées par scripts/build-wakies-css.mjs vers components/wakies.
+- ../../components/wakies : interface réellement exécutée par /wakies. La navigation, les cartes et le compositeur sont adaptés de l'expérience source ; le transport est l'AI SDK mAI.
+- ../../lib/wakies et ../../app/(chat)/api/wakies : domaine multi-utilisateur et adaptateurs PostgreSQL, session, modèles, quotas, outils, fichiers et tâches.
 
-Prérequis : Node.js 24 et npm. Depuis apps/wakies :
+Le paquet de ce dossier délègue dev, build et typecheck à l'hôte. Il n'installe aucune pile Expo, aucun serveur Hono et aucun second React dans Next.js. upstream.package.json et UPSTREAM_README.md documentent l'environnement de référence, pas la procédure de production. Les verrous et configurations du monorepo source sont conservés pour provenance ; le verrou mAI reste à la racine.
 
-~~~sh
-npm ci
-npm run dev
-~~~
+## Démarrage
 
-Le script dev démarre le serveur applicatif et Vite. Les autres scripts déclarés dans package.json permettent notamment de lancer les tests et de construire la source. Les services externes et variables nécessaires dépendent des fonctions utilisées ; consultez l’implémentation et les guides disponibles avant de les configurer.
+Depuis la racine mAI : pnpm dev. Ouvrir /wakies avec un compte Plus, Pro ou Max. La configuration habituelle mAI et ses migrations PostgreSQL sont nécessaires ; aucune clé Intelligence ni identité OpenMuse n'est utilisée dans le graphe exécuté. Ne pas lancer le serveur source comme backend de mAI : il reste mono-propriétaire et dépend d'Intelligence.
 
-## Plans du dépôt
+## Limites
 
-- Règles et architecture du port /wakies : [documentation Wakies](../../docs/3-wakies/README.md)
-- Schéma et limites de la base intégrée : [guide de base de données](../../docs/3-wakies/DATABASE.md)
-- Ordinateurs isolés de la source : [configuration des ordinateurs](../../docs/3-wakies/COMPUTERS.md)
-- Démonstrations enregistrées de la source autonome : [galerie](../../docs/3-wakies/demos/README.md)
+Les ordinateurs, le Chromium interactif, Google OAuth autonome, les workers OpenMuse, les démos et les PDF AcroForms ne sont pas activés. Leur code est conservé pour adaptation future. Les exemples source ne sont jamais chargés dans un compte réel. Les médias de démonstration restent des références techniques ; la marque et les mascottes de production sont celles de Wakies.
 
-Pour contribuer au port intégré, modifiez les sources hôte indiquées dans le guide d’intégration et régénérez les fichiers prévus. Ne prenez pas les fonctionnalités de la source autonome pour des fonctions déjà disponibles sous /wakies.
+Voir ../../docs/3-wakies/OPENMUSE_MIGRATION.md pour les décisions, les contrats et les validations.

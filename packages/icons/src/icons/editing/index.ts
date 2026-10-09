@@ -17,3 +17,4 @@ export { RulerIcon } from './ruler.js';
 export { RulerDimensionLineIcon } from './ruler-dimension-line.js';
 export { WandIcon } from './wand.js';
 export { Wand2Icon } from './wand-2.js';
+export { SquarePenIcon } from './square-pen.js';

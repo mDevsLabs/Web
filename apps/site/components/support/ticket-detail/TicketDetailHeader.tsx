@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Laptop, Pencil, ShieldCheck, X, AlertTriangle, ChevronDown } from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, LaptopIcon as Laptop, PencilIcon as Pencil, ShieldCheckIcon as ShieldCheck, XIcon as X, AlertTriangleIcon as AlertTriangle, ChevronDownIcon as ChevronDown } from "@mdevs/icons";
 import { PRIORITY_BADGES, STATUS_CONFIG } from "@/components/support/support-config";
 import { TicketActions } from "@/components/support/ticket-detail/TicketActions";
 import { TicketAttachments } from "@/components/support/ticket-detail/TicketAttachments";

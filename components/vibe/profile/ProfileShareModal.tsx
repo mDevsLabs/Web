@@ -7,15 +7,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  Check,
-  Copy,
-  Download,
-  Loader2,
-  Share2,
-  X,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, CheckIcon as Check, CopyIcon as Copy, DownloadIcon as Download, Loader2Icon as Loader2, Share2Icon as Share2, XIcon as X } from "@mdevs/icons";
 import QRCode from "qrcode";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";

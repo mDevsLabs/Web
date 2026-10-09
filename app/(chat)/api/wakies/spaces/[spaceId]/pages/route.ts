@@ -6,6 +6,7 @@ import {
   isResponse,
   json,
   notFound,
+  rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
 } from "@/lib/wakies/http";
@@ -48,6 +49,8 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ spaceId: string }> }
 ) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (isResponse(identite)) {
     return identite;

@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const MapPinXInsideIcon = /* @__PURE__ */ createIcon("MapPinXInsideIcon", [["path", { "d": "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" }], ["path", { "d": "m14.5 7.5-5 5" }], ["path", { "d": "m9.5 7.5 5 5" }]]);
-export {
-  MapPinXInsideIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const MapPinXInsideIcon = /* @__PURE__ */ createIcon('MapPinXInsideIcon', [["path", { "d": "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" }], ["path", { "d": "m14.5 7.5-5 5" }], ["path", { "d": "m9.5 7.5 5 5" }]]);

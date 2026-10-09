@@ -1,28 +1,6 @@
-/* ============================================================================
- * WAKIES — CONTRÔLES DE L'HÔTE (écrit à la main, hors script de build)
- * ============================================================================
- *
- * POURQUOI CE FICHIER EXISTE
- *
- * Le thème Wakies re-style les `button` nus (fond blanc, bordure, padding,
- * `font: inherit`). Ces règles viennent de la feuille GÉNÉRÉE et ne sont pas
- * dans un `@layer` : elles l'emportent donc sur les classes Tailwind des
- * composants de l'hôte, qui vivent dans `@layer utilities`. Un composant
- * partagé (le sélecteur de modèle du Chat et du mode Agent) monté tel quel dans
- * /wakies perdrait ses classes de fond et de padding.
- *
- * Ce fichier ne modifie PAS la feuille générée : il ne porte que ce que
- * l'HÔTE ajoute à Wakies — le sélecteur de modèle (`.wakies-model-picker`), la
- * galerie de mascottes du dialogue (`.avatar-picker`) et la zone de
- * suppression d'un Wakie (`.dialog-danger-zone`). Ces contrôles n'existent pas
- * dans le gabarit, ils n'ont donc rien à faire dans sa feuille : ils sont
- * écrits ici, dans les jetons du thème Wakies (`--ink`, `--muted`, `--line`,
- * `--blue`, `--lavender`). Le MENU de modèles lui-même — le contenu du popover
- * — est porté dans `document.body`, donc hors `.wakies-root` : il garde
- * exactement l'apparence du Chat et du mode Agent, c'est voulu.
- *
- * Importé par app/(wakies)/wakies/layout.tsx, après les deux feuilles générées.
- * ============================================================================ */
+/* Les adaptations locales complètent packages/ui sans réinitialiser ses contrôles.
+ * Les feuilles historiques vivent dans wakies-base ; mdevs fournit les primitives.
+ * Chaque règle reste sous .wakies-root, y compris les dialogues Radix. */
 
 .wakies-root .wakies-model-picker {
   display: inline-flex;
@@ -136,4 +114,530 @@
 
 .wakies-root .dialog-danger-zone .danger:hover:not(:disabled) {
   background: color-mix(in oklab, var(--destructive, #c0553f) 12%, white);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sélecteur de modèle (`ModelPicker`)                                */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Le déclencheur est un `<button>` nu posé dans `.wakies-root`, donc la
+ * feuille générée lui donne la chrome d'un bouton Wakies — fond blanc,
+ * bordure, rayon 9. C'est cohérent avec le reste de l'application, donc on ne
+ * le neutralise pas : on le redéfinit pour qu'il corresponde à la density du
+ * rail et de l'en-tête.
+ *
+ * Le MENU, lui, est porté par un portail vers `document.body` : il est hors
+ * de `.wakies-root`, il garde donc l'apparence exacte du sélecteur du Chat et
+ * du mode Agent. Aucune de ces règles ne le touche.
+ */
+
+.wakies-root .wakies-model-trigger {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  max-width: 200px;
+  padding: 6px 9px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted, #8c8d97);
+  cursor: pointer;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.wakies-root .wakies-model-trigger:hover:not(:disabled) {
+  color: var(--ink, #333641);
+  background: #f1f0ed;
+  border-color: var(--line, #e9e8e6);
+}
+
+.wakies-root .wakies-model-trigger-block {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: none;
+  color: var(--ink, #333641);
+  background: white;
+  border-color: var(--line, #e9e8e6);
+}
+
+/* Les icônes de @mdevs/icons portent leur propre couleur (`#000`) : sans
+   `currentColor`, elles s'afficheraient noires et ignoreraient les quatre
+   accents du design system. Cette règle ne fait que leur laisser prendre la
+   couleur du texte. */
+/* biome-ignore-start lint/style/noDescendingSpecificity: règle plus faible placée après `.avatar-choice img` */
+.wakies-root .wakies-model-trigger img {
+  filter: none;
+}
+/* biome-ignore-end lint/style/noDescendingSpecificity: fin */
+
+.wakies-root .wakies-model-option {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cartes d'approbation & encadrés d'information                       */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .surface-muted {
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 12px;
+  color: var(--ink, #333641);
+  background: #f8f7f5;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 12px;
+}
+
+.wakies-root .surface-muted p {
+  margin: 0;
+}
+
+.wakies-root .surface-muted a {
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 500;
+  color: var(--blue, #7285d5);
+  text-decoration: underline;
+}
+
+.wakies-root .wakies-approval {
+  padding: 14px 16px;
+  margin: 12px 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(var(--md-blur, 12px));
+  -webkit-backdrop-filter: blur(var(--md-blur, 12px));
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 4px 16px -4px rgba(27, 44, 81, 0.08);
+}
+
+.wakies-root .wakies-approval-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-approval-origin {
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted, #8c8d97);
+  background: #f1f0ed;
+  border-radius: 6px;
+}
+
+.wakies-root .wakies-approval-summary {
+  margin: 8px 0 6px;
+  font-size: 12px;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-approval-target {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .wakies-approval-target code {
+  padding: 2px 5px;
+  font-size: 11px;
+  background: #f1f0ed;
+  border-radius: 4px;
+}
+
+.wakies-root .wakies-approval-params {
+  margin: 8px 0;
+  font-size: 11px;
+}
+
+.wakies-root .wakies-approval-params dt {
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .wakies-approval-params dd {
+  margin: 0 0 4px;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-approval-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+/* Les jetons du paquet restent achromatiques ; les accents mAI portent les états. */
+.wakies-root,
+.wakies-root .md-root {
+  --md-accent: #182023;
+  --md-icon-color: currentColor;
+  --md-accent-ink: #fff;
+  --md-focus: rgb(24 32 35 / 22%);
+  --md-radius: 20px;
+  --md-input-radius: 12px;
+  --md-font: var(--font-sans, Inter, ui-sans-serif, system-ui, sans-serif);
+  height: 100%;
+  min-height: 0;
+}
+.wakies-root .wakies-model-trigger {
+  min-height: 44px;
+  font-size: 12px;
+}
+.wakies-root .muse-app .md-button {
+  font-size: 14px;
+}
+.wakies-root .muse-app .icon-button,
+.wakies-root .muse-app .rail-button,
+.wakies-root .muse-app .mobile-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border-radius: 14px;
+}
+.wakies-root .md-button svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+.wakies-root .md-button svg [fill]:not([fill="none"]) {
+  fill: currentColor;
+}
+.wakies-root .muse-app .send-button {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 10px;
+  color: white;
+  background: var(--md-accent);
+  border: 0;
+  border-radius: 50%;
+}
+.wakies-root .muse-app .send-button:hover:not(:disabled) {
+  background: #354045;
+}
+.wakies-root .muse-app .chat-compose-row {
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.wakies-root .muse-app .chat-compose-row textarea {
+  flex: 1;
+  width: auto;
+  min-width: 80px;
+  min-height: 44px;
+  max-height: 180px;
+  padding: 10px 6px;
+  font-size: 16px;
+  line-height: 24px;
+  resize: none;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.wakies-root .muse-app .chat-compose-row textarea:focus-visible {
+  outline-offset: 0;
+}
+.wakies-root .muse-app .chat-bubble {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.wakies-root .muse-app .muse-persona {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0;
+  color: var(--ink);
+  border: 0;
+  transform: translateX(-50%);
+}
+.wakies-root .muse-app .muse-persona:active:not(:disabled) {
+  transform: translateX(-50%);
+}
+.wakies-root .muse-app .nav-item {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.wakies-root .muse-app .muse-conversation-row > button:not(.nav-item) {
+  min-width: 44px;
+  padding: 8px;
+}
+.wakies-root .muse-navigation {
+  gap: 2px;
+  width: min(460px, calc(100% - 24px));
+  padding: 5px;
+}
+.wakies-root .muse-navigation .md-button {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  min-height: 54px;
+  padding: 7px 2px;
+  color: #545e63;
+  border-radius: 28px;
+}
+.wakies-root .muse-navigation .md-button[data-active="true"] {
+  color: #182023;
+  background: #eef0f1;
+}
+.wakies-root .muse-navigation .md-button span {
+  font-size: 11px;
+  line-height: 15px;
+}
+.wakies-root .muse-card {
+  background: var(--md-surface);
+  border: 1px solid var(--md-border);
+  border-radius: var(--md-radius);
+  box-shadow: 0 3px 16px rgb(24 32 35 / 3%);
+}
+.wakies-root .muse-app .modal {
+  padding: 28px;
+  background: var(--md-solid, #fff);
+}
+.wakies-root .muse-app .modal-close {
+  top: 12px;
+  right: 12px;
+}
+.wakies-root .muse-app .modal h2 {
+  padding-right: 44px;
+}
+.wakies-root .muse-app .modal .md-input {
+  font-size: 16px;
+}
+.wakies-root .muse-app .modal .md-button.full {
+  width: 100%;
+}
+.wakies-root .avatar-choice:focus-within {
+  outline: 3px solid var(--md-focus);
+  outline-offset: 3px;
+}
+.wakies-root .avatar-choice.active {
+  border-color: var(--md-accent);
+}
+.wakies-root .wakies-file-dialog {
+  top: 50%;
+  bottom: auto;
+  max-height: calc(100dvh - 48px);
+  box-shadow: var(--md-shadow);
+  transform: translateY(-50%);
+}
+@media (max-width: 640px) {
+  .wakies-root .muse-app .live-chat {
+    padding-inline: 12px;
+  }
+  .wakies-root .muse-app .chat-composer {
+    padding: 8px;
+    border-radius: 24px;
+  }
+  .wakies-root .muse-app .modal {
+    padding: 24px 18px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  .wakies-root .dialog-danger-zone {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .wakies-root .wakies-file-dialog {
+    inset-inline: 0;
+    top: auto;
+    bottom: 0;
+    max-height: 88dvh;
+    padding: 24px 18px calc(24px + env(safe-area-inset-bottom, 0px));
+    border-radius: 24px 24px 0 0;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wakies-root *,
+  .wakies-root *::before,
+  .wakies-root *::after {
+    animation-duration: 0.01ms;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+/* Une navigation principale par taille d'écran : latérale sur desktop, basse sur mobile. */
+.wakies-root .muse-app .sidebar {
+  left: 0;
+  width: 280px;
+  padding-inline: 16px;
+}
+.wakies-root .muse-app .workspace {
+  margin-left: 280px;
+}
+.wakies-root .muse-app.nav-collapsed .sidebar {
+  visibility: hidden;
+  transform: translateX(-100%);
+}
+.wakies-root .muse-app.nav-collapsed .workspace {
+  margin-left: 0;
+}
+.wakies-root .muse-app .wordmark {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px;
+  border: 0;
+}
+.wakies-root .muse-app .sidebar-sections .muse-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 12px 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.wakies-root .muse-app .sidebar-sections .muse-navigation .md-button {
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+.wakies-root .muse-app .sidebar-sections .muse-navigation .md-button span {
+  font-size: 14px;
+}
+.wakies-root .muse-app .workspace > .muse-navigation {
+  display: none;
+}
+.wakies-root .muse-app.nav-collapsed .workspace > .muse-navigation {
+  display: flex;
+}
+.wakies-root .muse-app .desktop-nav-toggle {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+}
+.wakies-root .muse-app .nav-scrim {
+  z-index: 55;
+  padding: 0;
+  background: rgb(17 25 28 / 32%);
+  border: 0;
+  border-radius: 0;
+}
+.wakies-root .muse-app .wakie-nav {
+  flex: 1;
+  justify-content: flex-start;
+  min-width: 0;
+  padding: 6px 8px;
+  background: transparent;
+  border: 0;
+}
+.wakies-root .muse-app .wakie-nav.active {
+  background: #e9edee;
+}
+.wakies-root .muse-app input[type="checkbox"],
+.wakies-root .muse-app input[type="radio"] {
+  accent-color: var(--md-accent);
+}
+@media (min-width: 901px) {
+  .wakies-root .muse-app .mobile-menu {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .wakies-root .muse-app .workspace,
+  .wakies-root .muse-app.nav-collapsed .workspace {
+    margin-left: 0;
+  }
+  .wakies-root .muse-app .sidebar {
+    left: 0;
+    z-index: 60;
+    visibility: hidden;
+    width: min(320px, calc(100vw - 48px));
+    transform: translateX(-100%);
+  }
+  .wakies-root .muse-app .sidebar.open {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .wakies-root .muse-app .sidebar-sections {
+    display: none;
+  }
+  .wakies-root .muse-app .workspace > .muse-navigation {
+    display: flex;
+  }
+  .wakies-root .muse-app .mobile-menu {
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    left: 10px;
+    z-index: 40;
+    display: flex;
+  }
+  .wakies-root .muse-app .desktop-nav-toggle {
+    display: none;
+  }
+  .wakies-root .muse-app .nav-scrim {
+    position: fixed;
+    inset: 0;
+    display: block;
+  }
+  .wakies-root .muse-app .topbar {
+    padding-left: 64px;
+  }
+}
+
+.wakies-root .md-button svg[stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+.wakies-root .md-button svg[fill]:not([fill="none"]) {
+  fill: currentColor;
+}
+.wakies-root .muse-app .chat-compose-row textarea {
+  flex: 1 0 100%;
+  order: -1;
+  width: 100%;
+  padding: 8px;
+}
+.wakies-root .muse-app .top-actions {
+  display: flex;
+  gap: 4px;
+  margin-inline-start: auto;
+}
+.wakies-root .muse-app .pause-button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 0;
+}
+.wakies-root .muse-app .muse-persona {
+  min-width: 100px;
+}
+
+.wakies-root .muse-app .sidebar-close {
+  display: none;
+}
+.wakies-root .muse-app .thread-summary small {
+  color: var(--muted);
+  background: transparent;
+}
+@media (max-width: 900px) {
+  .wakies-root .muse-app .sidebar-close {
+    position: absolute;
+    top: calc(20px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    display: inline-flex;
+  }
+  .wakies-root .muse-app .wordmark {
+    width: calc(100% - 48px);
+  }
 }

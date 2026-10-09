@@ -6,22 +6,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  X,
-  Send,
-  Sparkles,
-  Zap,
-  Image as ImageIcon,
-  Mic,
-  MicOff,
-  FileText,
-  Search,
-  Loader2,
-  RefreshCw,
-  ChevronDown,
-  SquarePen,
-  MessagesSquare,
-} from 'lucide-react';
+import { XIcon as X, SendIcon as Send, SparklesIcon as Sparkles, ZapIcon as Zap, ImageIcon, MicIcon as Mic, MicOffIcon as MicOff, FileTextIcon as FileText, SearchIcon as Search, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw, ChevronDownIcon as ChevronDown, SquarePenIcon as SquarePen, MessagesSquareIcon as MessagesSquare } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { motion } from 'framer-motion';
 import { useMotionPrefs } from '../../hooks/useMotionPrefs';

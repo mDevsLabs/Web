@@ -1,22 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Shield,
-  ArrowLeft,
-  Lock,
-  Key,
-  Database,
-  Cookie,
-  Globe,
-  Server,
-  Cpu,
-  EyeOff,
-  UserCheck,
-  HardDrive,
-  CheckCircle2,
-  CircleDot,
-} from "lucide-react";
+import { ShieldIcon as Shield, ArrowLeftIcon as ArrowLeft, LockIcon as Lock, KeyIcon as Key, DatabaseIcon as Database, CookieIcon as Cookie, GlobeIcon as Globe, ServerIcon as Server, CpuIcon as Cpu, EyeOffIcon as EyeOff, UserCheckIcon as UserCheck, HardDriveIcon as HardDrive, CheckCircle2Icon as CheckCircle2, CircleDotIcon as CircleDot } from "@mdevs/icons";
 import Link from "next/link";
 
 export default function PrivacyPage() {

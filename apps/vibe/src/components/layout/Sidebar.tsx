@@ -7,18 +7,7 @@
 
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import {
-  Home,
-  Compass,
-  Bell,
-  Mail,
-  Sparkles,
-  Library,
-  User as UserIcon,
-  Settings,
-  PenSquare,
-  LogOut
-} from 'lucide-react';
+import { HomeIcon as Home, CompassIcon as Compass, BellIcon as Bell, MailIcon as Mail, SparklesIcon as Sparkles, LibraryIcon as Library, UserIcon, SettingsIcon as Settings, PenSquareIcon as PenSquare, LogOutIcon as LogOut } from "@mdevs/icons";
 import { useAuth } from '../../context/AuthContext';
 import { VibeLogo } from './VibeLogo';
 import { VerifiedBadge } from '../common/VerifiedBadge';

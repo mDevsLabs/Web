@@ -22,7 +22,7 @@ __export(arrow_down_narrow_wide_exports, {
   ArrowDownNarrowWideIcon: () => ArrowDownNarrowWideIcon
 });
 module.exports = __toCommonJS(arrow_down_narrow_wide_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowDownNarrowWideIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowDownNarrowWideIcon", [["path", { "d": "m3 16 4 4 4-4" }], ["path", { "d": "M7 20V4" }], ["path", { "d": "M11 4h4" }], ["path", { "d": "M11 8h7" }], ["path", { "d": "M11 12h10" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

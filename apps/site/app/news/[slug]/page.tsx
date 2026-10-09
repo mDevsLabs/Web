@@ -2,7 +2,7 @@ import { getAllNewsArticles, getNewsArticle } from '@/lib/news';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeftIcon as ArrowLeft, CalendarIcon as Calendar, ClockIcon as Clock, UserIcon as User } from "@mdevs/icons";
 import { notFound } from 'next/navigation';
 import { NewsMedia } from '@/components/ui/media';
 import { ShareButtons, CommentSection } from './ArticleClient';

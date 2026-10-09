@@ -1,182 +1,39 @@
-# Wakies — intégration sous `/wakies`
+# Wakies intégré : sources OpenMuse, services mAI
 
-Wakies est une application autonome (ex-« OpenDots », un gabarit
-auto-hébergeable CopilotKit). Elle est portée dans mAI Web sous `/wakies`,
-comme Vibe sous `/vibe`, mais avec une difficulté supplémentaire : **la
-reconnexion, les migrations, la recherche Web, les réponses IA et les quotas
-sont repris de l'hôte**, et non recréés.
+Source officielle : OpenMuse main 1ac68f3909f2478ab6280883f1ab5ea65eb5719d. Hôte : mAI canary c7a390aedc0424d83fc552d13ea189ab417c7f66. Les modifications locales antérieures sont conservées.
 
-Ce document est la carte du port : ce qui est porté, ce qui ne l'est pas
-(encore), et pourquoi.
+## Modules exécutés
 
----
+apps/wakies contient réellement les 226 fichiers suivis de la source officielle, sans .git imbriqué. apps/mobile est la référence Expo ; apps/server, worker, computer et packages restent des sources optionnelles non déployées. Leur configuration Intelligence ne fait pas partie du chemin exécuté dans mAI.
 
-## 1. Pourquoi ce n'est pas un simple « on copie les fichiers »
+components/wakies est le port React DOM actif sous app/(wakies)/wakies. WorkspaceNavigation, AppsScreen, GoalsScreen et IdeasScreen complètent la navigation inspirée d'OpenMuse. Les pages, mémoires, tâches et personnalisations mAI sont conservées. lib/wakies adapte ces composants aux services hôte. Les API vivent sous app/(chat)/api/wakies ; API_INVENTORY.json liste leurs méthodes et points d'authentification ; API_CONTRACTS.json conserve les schémas et expressions de réponse extraits des 23 fichiers de routes.
 
-Le gabarit d'origine (`apps/wakies/`) était **mono-utilisateur et
-auto-hébergé** :
+## Conversations
 
-| Dans le gabarit | Dans mAI Web |
-|---|---|
-| `OWNER_TOKEN` bearer, saisi à la main, en `sessionStorage` | session mAI (cookie httpOnly), aucune saisie |
-| deux bases SQLite (`Store`, `WorkspaceStore`) | PostgreSQL, tables `Wakies*` |
-| CopilotKit Intelligence pour les conversations | pipeline de chat mAI (modèle, outils, quotas) |
-| Parallel (MCP) ou navigateur isolé pour le Web | `/v1/web/search` via l'outillage de l'hôte |
-| `setInterval` dans le process Node pour les tâches | route cron `/api/cron/wakies` |
-| Slack (Channels SDK), OpenBot (ordinateurs), OpenAI Realtime (voix) | non branchés — déclarés, voir § 6 |
+useChat et DefaultChatTransport envoient uniquement le dernier message utilisateur. Le serveur refuse les parties système/outils fournies par le navigateur, reconstruit les 199 derniers messages PostgreSQL, valide le modèle contre fetchUserModels et le forfait, puis appelle getLanguageModel et streamText. Les UIMessage structurés restent la représentation des messages. L'interface charge 50 messages et permet le chargement des précédents. L'actualisation interappareils passe par une lecture serveur toutes les 30 secondes, seulement hors génération, si la page est visible et connectée.
 
-Un compte mAI = un espace de travail Wakies. **Toutes** les lignes des tables
-`Wakies*` portent `userId`, et aucune requête ne lit sans lui.
+Le message utilisateur est persisté avant génération ; les réponses possèdent un UUID serveur et les réponses partielles sont conservées. La migration additive 0043_wakies_chat_turns réserve les tours sous verrou transactionnel, empêche les doublons et les générations concurrentes. Elle doit être appliquée avec le runner habituel avant utilisation du nouveau chat. Aucun DDL au runtime.
 
----
+Les brouillons et la file issue d'OpenMuse restent en mémoire tant que l'interface est montée. Une erreur, un arrêt ou un changement de conversation suspend la file ; aucune exécution en arrière-plan n'est garantie. Ils ne sont pas synchronisés entre appareils.
 
-## 2. Arborescence
+## Données et outils
 
-```
-app/
-├── (wakies)/wakies/            page + layout /wakies (plein écran)
-├── (chat)/api/wakies/**        BFF : état, espaces, wakies, conversations,
-│                               messages, pages, tâches, mémoires, chat
-└── api/cron/wakies/            tick des tâches planifiées
+Les seize tables historiques restent présentes. Les tables propriétaires ont userId ; certaines tables enfants sont isolées par leur conversation ou Wakie propriétaire. Chaque fonction de requête exige userId. Les migrations 0037, 0041 et la migration locale 0042 sont conservées.
 
-components/wakies/              interface portée (35 fichiers)
-├── workspace-app.tsx           ancienne App.tsx : coquille et navigation
-├── Chat.tsx                    réécrit sur `useChat` (AI SDK)
-├── ChatTranscript.tsx          réécrit sur `UIMessage` + Streamdown
-├── ThreadList.tsx              réécrit sans `useThreads`
-├── api.ts                      client BFF (plus de jeton)
-├── markdown.tsx                Markdown via Streamdown (le moteur de l'hôte)
-├── wakies.css                  GÉNÉRÉ
-└── wakies-editor.css           GÉNÉRÉ
+Session getMaiUser, restrictions Plus/Pro/Max, catalogue, fournisseurs, quotas et comptage d'usage sont ceux de mAI. Les mutations vérifient leur origine. Skills, plugins et MCP utilisent leurs registres hôte. Les outils incompatibles avec le modèle sont absents. Les outils MCP soumis à approbation et les plugins à effets externes ne sont pas exposés au chat tant que la reprise sécurisée des approbations n'est pas raccordée ; le mode Agent reste le parcours approprié pour ces actions.
 
-lib/wakies/
-├── queries.ts                  accès PostgreSQL, scopé par compte
-├── http.ts                     identité, erreurs, quotas
-├── setup.ts                    ce qui est réellement branché
-├── onboarding.ts               espace et Wakie de départ
-├── serialize.ts                Date → millisecondes pour l'interface
-├── pages.ts                    schémas de validation des pages
-└── shared/                     types partagés (portés)
+Les pièces jointes réutilisent les uploads et blobs privés de mAI, avec chemin durable et signature serveur. Images/PDF natifs selon les capacités du modèle ; texte/JSON et PDF textuels réellement extraits en repli. Les PDF scannés sans OCR et les formats non supportés produisent une erreur explicite. Le sélecteur Mes fichiers mAI liste les blobs privés du compte avec pagination, métadonnées vérifiées, liens temporaires et suppression. Il réutilise le stockage des pièces jointes du chat ; la bibliothèque cloud Val Town possède un contrat distinct et reste accessible dans mAI.
 
-apps/wakies/                    source Vite d'origine, conservée en référence
-scripts/build-wakies-css.mjs    génère les deux feuilles de style
-scripts/rewrite-wakies-imports.mjs  ponctuel : imports → alias
-```
+## Capacités secondaires
 
-## 3. Renommage
+Activité utilise les tâches, résultats et cron Wakies existants. Objectifs utilise des pages Markdown privées avec checklist et contrôle de révision : il s'agit d'objectifs simples, pas du moteur autonome de suivi OpenMuse. Idées indique explicitement l'indisponibilité du moteur de suggestions. Apps lit les capacités réelles de mAI. Navigateur isolé, Linux, terminal, voix temps réel, worker et connecteurs autonomes Gmail/Calendar ne sont pas configurés ; leurs sources sont conservées.
 
-`OpenDots` → **Wakies**, `Dot` → **Wakie**, jusque dans les variables, les
-tables, les chemins d'API (`/api/dots` → `/api/wakies`) et les fichiers
-(`dot-agent.ts` → `wakie-agent.ts`).
+## Styles et appareils
 
-Trois tokens sont **conservés** parce qu'ils décrivent un point graphique, pas
-l'agent : `.dot-body` (corps de la mascotte), `.online-dot`,
-`.call-live-dot`, `.wordmark-dot`, `.dotted-logo`. Les aurait renommés, on
-aurait perdu le sens de la feuille de style.
+build-wakies-css.mjs génère wakies.css et wakies-editor.css depuis apps/wakies/integration/web, dans la couche wakies-base. wakies-ui.css vient de packages/ui/dist/styles.css, dans la couche mdevs, sans font-face ni thème système sombre. Les sélecteurs sont ancrés sous .wakies-root. Les dialogues propres à Wakies restent dans cette racine ; le sélecteur de modèles partagé utilise son portail et les styles de l'hôte, sans recevoir les styles Wakies.
 
-De même, `threadId` a disparu : les « threads » étaient ceux d'Intelligence.
-Ce sont des `conversations`, et la colonne s'appelle comme ça.
+La navigation principale est latérale sur ordinateur et basse sur téléphone/tablette, avec un tiroir pour les Wakies et leurs conversations. Les corrections, tests et limites de validation sont décrits dans [UI_VALIDATION.md](UI_VALIDATION.md).
 
----
+Le port DOM évite d'ajouter Expo ou react-native-web au build et conserve le React de l'hôte. Capacitor et Electron chargent toujours le site mAI et la route /wakies. Le CSS traite navigation tactile, largeur responsive et safe-area. Une compatibilité CSS ne constitue pas un test exécuté sur appareil.
 
-## 4. Ce que l'hôte fournit, et où c'est branché
-
-| Besoin | Branchement | Fichier |
-|---|---|---|
-| Compte / session | `getMaiUser()` | `lib/wakies/http.ts` |
-| Quotas weekly (tokens) | `weeklyQuotaExceeded` + `recordTokenUsage` | `app/(chat)/api/wakies/chat/route.ts` |
-| Quotas volumétriques | `TIER_LIMITS.wakies` | `lib/plans/tier-limits.ts` |
-| Rate limit IP | `enforceChatRateLimit` | idem |
-| Modèle | `getLanguageModel(DEFAULT_CHAT_MODEL, { sessionToken })` | idem |
-| Recherche Web | outil `webSearch` (API mAI + repli DDG/Searx) | idem |
-| Persistance | `WakiesMessage` (parties UI conservées telles quelles) | idem |
-
-Un message envoyé à un Wakie consomme **le même quota hebdomadaire** qu'un
-message du chat principal. Il n'existe pas de quota parallèle Wakies : ce
-serait l'illusion d'un volume infini.
-
----
-
-## 5. Feuille de style
-
-`components/wakies/wakies.css` et `wakies-editor.css` sont **générés** par
-`node scripts/build-wakies-css.mjs`. Chaque sélecteur de la source est
-re-ancré sous `.wakies-root` : sans cela, le thème clair de Wakies (`:root` →
-fond `#f8f7f4`) et ses sélecteurs nus (`button`, `input`, `.sidebar`)
-repeindraient le chat et la barre latérale de mAI.
-
-Le script **échoue** (code 1) plutôt que d'écrire une feuille partielle : une
-règle non ancrée, un sélecteur `html`/`body` résiduel ou une source manquante
-sont signalés, et rien n'est écrit.
-
-> Wakies n'utilise **ni Tailwind ni thème sombre** : pas de variante
-> `wakies-dark` à declaring dans `app/globals.css` (contrairement à Vibe).
-
-### Navigation
-
-Wakies est en **plein écran** et vit dans son propre groupe de routes
-(`app/(wakies)/wakies`) : son rail et sa barre latérale sont en
-`position: fixed`, et le layout `(chat)` aurait superposé deux navigation. La
-session reste protégée par `proxy.ts`, qui couvre toutes les routes.
-
-Les espaces et pages s'adressent par **fragment** (`/wakies#/spaces/…/pages/…`),
-convention conservée du gabarit. Le serveur ne voit que `/wakies`, donc aucun
-deep-link à réécrire — mais l'URL n'est pas partageable côté serveur.
-
----
-
-## 6. Fonctions non encore branchées
-
-Elles sont **portées** (le code est là, typé, linté) mais sans service
-derrière : l'interface le dit au lieu d'échouer au milieu d'une action.
-
-| Fonction | Manque | État de la donnée |
-|---|---|---|
-| Voix temps réel (OpenAI Realtime) | route `/voice/calls` + passerelle audio | `WakiesCall` prête |
-| Ordinateurs persistants (OpenBot) | superviseur + panneau Ordinateurs déjà rendu | pas de table |
-| Slack (Channels SDK) | canal géré | — |
-| « Approuver et enregistrer » (HITL) | outil d'approbation AI SDK | `WakiesPageReview` prête |
-
-`WakiesSetup` (`lib/wakies/setup.ts`) décrit ce point à l'interface : c'est
-lui qui remplace l'ancien écran de configuration par variables
-d'environnement.
-
----
-
-## 7. Tâches planifiées
-
-`GET /api/cron/wakies` ( authentifié par `CRON_SECRET`, comme
-`/api/cron/agent`) :
-
-1. découvre les comptes ayant au moins un Wakie ;
-2. réserve une tâche due par transaction (bail de 3 minutes) — deux ticks
-   concurrents ne peuvent pas exécuter la même tâche ;
-3. exécute le tour **dans la conversation liée** et y écrit le résultat
-   comme message ;
-4. reprogramme la prochaine exécution si la tâche est récurrente.
-
-À configurer dans `vercel.json` (ou le planificateur de l'hôte), sinon rien
-ne se déclenche tout seul.
-
----
-
-## 8. Commandes
-
-```bash
-node scripts/build-wakies-css.mjs      # régénère les deux feuilles
-node scripts/rewrite-wakies-imports.mjs  # ponctuel, après un nouveau port
-pnpm typecheck
-pnpm test:unit
-```
-
-## 9. Points ouverts
-
-- **Traduction** : la coquille, le chat, les réglages et les pages de sortie
-  sont en français ; quelques libellés du code porté (éléments de liste,
-  messages d'erreur de l'éditeur, aide du navigateur d'ordinateurs) sont
-  encore en anglais.
-- **Double navigation** : `/vibe` garde la barre latérale mAI et celle de
-  Vibe ; `/wakies` est en plein écran, donc une seule navigation — choix
-  assumé, à revoir si l'on veut revenir à une barre latérale commune.
-- **Taille du HTML** : le port de Vibe produit ~1,2 Mo de HTML par page ;
-  `/wakies` devrait être plus léger, à mesurer.
+Voir OPENMUSE_MIGRATION.md et VALIDATION_OPENMUSE.md. Les documents historiques restent identifiables comme tels.

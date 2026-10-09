@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Sparkles, Gauge, KeyRound, Zap, ArrowRight, ShieldCheck, Cloud, Image as ImageIcon, Volume2, Bot, Users, Wrench, CheckCircle2 } from "lucide-react";
+import { SparklesIcon as Sparkles, GaugeIcon as Gauge, KeyRoundIcon as KeyRound, ZapIcon as Zap, ArrowRightIcon as ArrowRight, ShieldCheckIcon as ShieldCheck, CloudIcon as Cloud, ImageIcon, Volume2Icon as Volume2, BotIcon as Bot, UsersIcon as Users, WrenchIcon as Wrench, CheckCircle2Icon as CheckCircle2 } from "@mdevs/icons";
 import { useAuth } from "@/components/auth-provider";
 
 interface PlanItem {

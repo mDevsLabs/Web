@@ -12,7 +12,7 @@ Ce document définit le style retenu pour `@mdevs/ui` et `@mdevs/icons` 0.2.0. I
 | Arrondis | 16–20 px pour les surfaces, 10–12 px pour les contrôles courants |
 | Typographie | Inter variable 4.1, fournie localement en WOFF2 et chargée par le CSS UI |
 | Icônes | SVG monochromes, grille 24 × 24, trait 1,5 px, extrémités et jointures arrondies |
-| Thème des icônes | Noir en clair, blanc en sombre ; aucun dégradé ni ombre dans le dessin |
+| Thème des icônes | Couleur du texte parent en clair et sombre ; aucun dégradé ni ombre dans le dessin |
 | Inventaire 0.2.0 | 1 212 composants = 132 primitives + 108 domaines × 10 familles ; 2 600 icônes |
 | Extension de cette version | 60 nouvelles primitives + 40 compositions typées ; 500 géométries supplémentaires |
 
@@ -56,7 +56,7 @@ Une surface combine un fond opaque de secours, une couche translucide, un reflet
 | Token | Défaut clair | Sombre | Rôle |
 | --- | --- | --- | --- |
 | `--md-font` | Inter puis polices système | Même pile | Typographie |
-| `--md-icon-color` | `#000` | `#fff` | Noir/blanc des icônes |
+| `--md-icon-color` | `currentColor` | `currentColor` | Couleur du contrôle parent |
 | `--md-blur` | `12px` | `12px` | Flou discret |
 | `--md-radius` | `20px` | `20px` | Surfaces |
 | `--md-input-radius` | `12px` | `12px` | Contrôles |
@@ -166,7 +166,7 @@ Cette empreinte élimine une représentation identique du snapshot, pas toutes l
 
 ## 7. Couleur, accessibilité et adaptation SVG
 
-Le wrapper utilise `stroke="currentColor"` avec une couleur propre noir/blanc. Sous UI, `--md-icon-color` suit le thème du provider, y compris dans les portails. Sans CSS UI, `light-dark(#000,#fff)` et `color-scheme:light dark` suivent le système lorsque le navigateur les prend en charge. `color="#000"` fournit le repli ; pour un ancien navigateur en sombre, fournir explicitement une couleur blanche.
+Le wrapper utilise `stroke="currentColor"` et hérite de la couleur de texte de son parent, y compris dans les portails. Il respecte ainsi le thème, les boutons inversés et les états informatifs. Il ne force ni noir/blanc ni `color-scheme`. `color` et `style.color` permettent une personnalisation explicite ; une règle CSS de couleur garde sa priorité normale.
 
 Les props natives restent des possibilités de personnalisation : `color` modifie la couleur choisie, `style.color` a priorité dans la fusion, et `stroke` ou des règles CSS peuvent changer le rendu. Ces exceptions préservent l’intégration mais ne doivent pas être utilisées par un agent pour introduire des icônes colorées dans une création conforme au style. Pour un bouton noir/blanc inverse, utiliser la couleur de texte du contrôle ou une valeur blanche/noire explicite afin de conserver le contraste.
 

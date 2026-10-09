@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontalIcon as MoreHorizontal } from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 export function DocumentMenu({
   items,

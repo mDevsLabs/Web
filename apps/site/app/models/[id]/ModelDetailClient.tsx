@@ -1,22 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Copy,
-  Check,
-  Download,
-  Terminal,
-  Cpu,
-  Cloud,
-  KeyRound,
-  Eye,
-  EyeOff,
-  Layers,
-  Calendar,
-  Sparkles,
-  ArrowLeft,
-  Share2,
-} from "lucide-react";
+import { CopyIcon as Copy, CheckIcon as Check, DownloadIcon as Download, TerminalIcon as Terminal, CpuIcon as Cpu, CloudIcon as Cloud, KeyRoundIcon as KeyRound, EyeIcon as Eye, EyeOffIcon as EyeOff, LayersIcon as Layers, CalendarIcon as Calendar, SparklesIcon as Sparkles, ArrowLeftIcon as ArrowLeft, Share2Icon as Share2 } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 import Markdown from "react-markdown";

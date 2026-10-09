@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ThumbsUp, ThumbsDown, MessageCircle, Send, Share2, Twitter, Facebook, Linkedin, Instagram, Youtube, Edit, Trash2, LogIn, UserPlus } from 'lucide-react';
+import { ThumbsUpIcon as ThumbsUp, ThumbsDownIcon as ThumbsDown, MessageCircleIcon as MessageCircle, SendIcon as Send, Share2Icon as Share2, TwitterIcon as Twitter, FacebookIcon as Facebook, LinkedinIcon as Linkedin, InstagramIcon as Instagram, YoutubeIcon as Youtube, EditIcon as Edit, Trash2Icon as Trash2, LogInIcon as LogIn, UserPlusIcon as UserPlus } from "@mdevs/icons";
 import { toast } from 'react-hot-toast';
 import { useAuth } from '@/components/auth-provider';
 import { formatDisplayDate } from '@/lib/date-format';

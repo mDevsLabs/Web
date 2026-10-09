@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { RefreshCw } from "lucide-react";
+import { RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 
 interface QuotaProgressProps {
   used: number;

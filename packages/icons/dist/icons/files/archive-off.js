@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const ArchiveOffIcon = /* @__PURE__ */ createIcon("ArchiveOffIcon", [["path", { "d": "M8 4h11a2 2 0 1 1 0 4h-7m-4 0h-3a2 2 0 0 1 -.826 -3.822" }], ["path", { "d": "M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 1.824 -1.18m.176 -3.82v-7" }], ["path", { "d": "M10 12h2" }], ["path", { "d": "M3 3l18 18" }]]);
-export {
-  ArchiveOffIcon
-};
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const ArchiveOffIcon = /* @__PURE__ */ createIcon('ArchiveOffIcon', [["path", { "d": "M8 4h11a2 2 0 1 1 0 4h-7m-4 0h-3a2 2 0 0 1 -.826 -3.822" }], ["path", { "d": "M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 1.824 -1.18m.176 -3.82v-7" }], ["path", { "d": "M10 12h2" }], ["path", { "d": "M3 3l18 18" }]]);

@@ -1,6 +1,10 @@
 "use client";
 
-import { FileText, Plus, X } from "lucide-react";
+import {
+  FileTextIcon as FileText,
+  PlusIcon as Plus,
+  XIcon as X,
+} from "@mdevs/icons";
 import type { Page } from "@/lib/wakies/pages";
 export function PageOutline({
   pages,

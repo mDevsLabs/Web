@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Lightbulb, Loader2, Send } from "lucide-react";
+import { BotIcon as Bot, LightbulbIcon as Lightbulb, Loader2Icon as Loader2, SendIcon as Send } from "@mdevs/icons";
 import type { SupportTicketStatus } from "@/app/actions/support-utils";
 import { getAllowedStatusTransitions } from "@/app/actions/support-utils";
 import type { TicketReplyComposerProps } from "@/components/support/ticket-detail/ticket-detail-types";

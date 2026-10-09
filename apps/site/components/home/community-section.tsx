@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Github, Instagram, Youtube, ArrowRight } from "lucide-react";
-import { SiOllama, SiHuggingface } from "react-icons/si";
+import { GithubIcon as Github, InstagramIcon as Instagram, YoutubeIcon as Youtube, ArrowRightIcon as ArrowRight } from "@mdevs/icons";
+import { SparklesIcon as SiOllama, SparklesIcon as SiHuggingface } from "@mdevs/icons";
 import Link from "next/link";
 
 export function CommunitySection() {

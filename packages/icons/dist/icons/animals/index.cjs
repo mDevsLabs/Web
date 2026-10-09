@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var animals_exports = {};
-__export(animals_exports, {
+var index_exports = {};
+__export(index_exports, {
   BatIcon: () => import_bat.BatIcon,
   BirdIcon: () => import_bird.BirdIcon,
   CatIcon: () => import_cat.CatIcon,
@@ -37,24 +37,24 @@ __export(animals_exports, {
   SquirrelIcon: () => import_squirrel.SquirrelIcon,
   TurtleIcon: () => import_turtle.TurtleIcon
 });
-module.exports = __toCommonJS(animals_exports);
-var import_bat = require("./bat.cjs");
-var import_bird = require("./bird.cjs");
-var import_cat = require("./cat.cjs");
-var import_dog = require("./dog.cjs");
-var import_fish = require("./fish.cjs");
-var import_fish_bone = require("./fish-bone.cjs");
-var import_fish_christianity = require("./fish-christianity.cjs");
-var import_fish_hook = require("./fish-hook.cjs");
-var import_fish_hook_off = require("./fish-hook-off.cjs");
-var import_fish_off = require("./fish-off.cjs");
-var import_fish_symbol = require("./fish-symbol.cjs");
-var import_paw = require("./paw.cjs");
-var import_paw_off = require("./paw-off.cjs");
-var import_paw_print = require("./paw-print.cjs");
-var import_rabbit = require("./rabbit.cjs");
-var import_squirrel = require("./squirrel.cjs");
-var import_turtle = require("./turtle.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_bat = require("./bat.js");
+var import_bird = require("./bird.js");
+var import_cat = require("./cat.js");
+var import_dog = require("./dog.js");
+var import_fish = require("./fish.js");
+var import_fish_bone = require("./fish-bone.js");
+var import_fish_christianity = require("./fish-christianity.js");
+var import_fish_hook = require("./fish-hook.js");
+var import_fish_hook_off = require("./fish-hook-off.js");
+var import_fish_off = require("./fish-off.js");
+var import_fish_symbol = require("./fish-symbol.js");
+var import_paw = require("./paw.js");
+var import_paw_off = require("./paw-off.js");
+var import_paw_print = require("./paw-print.js");
+var import_rabbit = require("./rabbit.js");
+var import_squirrel = require("./squirrel.js");
+var import_turtle = require("./turtle.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BatIcon,

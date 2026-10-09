@@ -6,13 +6,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  ArrowLeft,
-  BookHeart,
-  Loader2,
-  Users,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BookHeartIcon as BookHeart, Loader2Icon as Loader2, UsersIcon as Users } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import {

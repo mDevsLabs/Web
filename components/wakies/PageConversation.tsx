@@ -1,6 +1,11 @@
 "use client";
 
-import { ArrowUp, ChevronDown, MessageCircle, X } from "lucide-react";
+import {
+  ArrowUpIcon as ArrowUp,
+  ChevronDownIcon as ChevronDown,
+  MessageCircleIcon as MessageCircle,
+  XIcon as X,
+} from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 import { api } from "@/components/wakies/api";
 import { Chat } from "@/components/wakies/Chat";

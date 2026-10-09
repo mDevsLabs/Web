@@ -1,4 +1,4 @@
-import { MonitorPlay } from "lucide-react";
+import { MonitorPlayIcon as MonitorPlay } from "@mdevs/icons";
 
 /**
  * Présentation vidéo du modèle, intégrée via YouTube.

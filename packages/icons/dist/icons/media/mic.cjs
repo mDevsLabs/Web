@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var mic_exports = {};
-__export(mic_exports, {
-  MicIcon: () => MicIcon
-});
-module.exports = __toCommonJS(mic_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const MicIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("MicIcon", [["path", { "d": "M12 19v3" }], ["path", { "d": "M19 10v2a7 7 0 0 1-14 0v-2" }], ["rect", { "x": "9", "y": "2", "width": "6", "height": "13", "rx": "3" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  MicIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const MicIcon = /* @__PURE__ */ createIcon('MicIcon', [["path", { "d": "M12 19v3" }], ["path", { "d": "M19 10v2a7 7 0 0 1-14 0v-2" }], ["rect", { "x": "9", "y": "2", "width": "6", "height": "13", "rx": "3" }]]);
+exports.MicIcon = MicIcon;

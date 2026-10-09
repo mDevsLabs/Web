@@ -6,36 +6,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  Heart,
-  Repeat,
-  MessageSquare,
-  Bookmark,
-  BookMarked,
-  MoreHorizontal,
-  Trash2,
-  Sparkles,
-  HelpCircle,
-  ThumbsUp,
-  ThumbsDown,
-  Quote,
-  Check,
-  Pencil,
-  CalendarClock,
-  Volume2,
-  Languages,
-  Users,
-  Lock,
-  Loader2,
-  BarChart2,
-  Share2,
-  Download,
-  Pin,
-  PinOff,
-  EyeOff,
-  Ban,
-  X
-} from 'lucide-react';
+import { HeartIcon as Heart, RepeatIcon as Repeat, MessageSquareIcon as MessageSquare, BookmarkIcon as Bookmark, BookMarkedIcon as BookMarked, MoreHorizontalIcon as MoreHorizontal, Trash2Icon as Trash2, SparklesIcon as Sparkles, HelpCircleIcon as HelpCircle, ThumbsUpIcon as ThumbsUp, ThumbsDownIcon as ThumbsDown, QuoteIcon as Quote, CheckIcon as Check, PencilIcon as Pencil, CalendarClockIcon as CalendarClock, Volume2Icon as Volume2, LanguagesIcon as Languages, UsersIcon as Users, LockIcon as Lock, Loader2Icon as Loader2, BarChart2Icon as BarChart2, Share2Icon as Share2, DownloadIcon as Download, PinIcon as Pin, PinOffIcon as PinOff, EyeOffIcon as EyeOff, BanIcon as Ban, XIcon as X } from "@mdevs/icons";
 import { Post } from '../../types/vibe';
 import { ApiService, TRANSLATION_LANGUAGES } from '../../services/api';
 import { RealtimeService } from '../../services/realtimeService';

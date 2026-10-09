@@ -5,30 +5,7 @@
  * ============================================================================
  */
 
-import {
-  Check,
-  ClipboardCopy,
-  Copy,
-  CopyPlus,
-  Download,
-  Edit2,
-  FileJson,
-  Image as ImageIcon,
-  Loader2,
-  Menu,
-  MessagesSquare,
-  MoreVertical,
-  RefreshCw,
-  Send,
-  Share2,
-  ShieldAlert,
-  ShieldCheck,
-  Sparkles,
-  SquarePen,
-  Trash2,
-  XCircle,
-  Zap,
-} from "lucide-react";
+import { CheckIcon as Check, ClipboardCopyIcon as ClipboardCopy, CopyIcon as Copy, CopyPlusIcon as CopyPlus, DownloadIcon as Download, Edit2Icon as Edit2, FileJsonIcon as FileJson, ImageIcon, Loader2Icon as Loader2, MenuIcon as Menu, MessagesSquareIcon as MessagesSquare, MoreVerticalIcon as MoreVertical, RefreshCwIcon as RefreshCw, SendIcon as Send, Share2Icon as Share2, ShieldAlertIcon as ShieldAlert, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, SquarePenIcon as SquarePen, Trash2Icon as Trash2, XCircleIcon as XCircle, ZapIcon as Zap } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";

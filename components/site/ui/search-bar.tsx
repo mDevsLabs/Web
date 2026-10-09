@@ -1,6 +1,6 @@
 "use client";
 
-import { CornerDownLeft, Loader2, Search, X } from "lucide-react";
+import { CornerDownLeftIcon as CornerDownLeft, Loader2Icon as Loader2, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 import {

@@ -1,0 +1,2710 @@
+[
+  {
+    "file": "apps/computer/e2b-desktop-smoke.test.ts",
+    "lines": 234,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "@e2b/desktop",
+      "pdf-lib",
+      "../server/src/app.ts",
+      "../server/src/computer.ts",
+      "../server/src/config.ts",
+      "../server/src/db.ts",
+      "node:crypto"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "apps/computer/smoke.test.ts",
+    "lines": 139,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "pdf-lib",
+      "../server/src/app.ts",
+      "../server/src/computer.ts",
+      "../server/src/config.ts",
+      "../server/src/db.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "apps/mobile/App.tsx",
+    "lines": 531,
+    "imports": [
+      "@copilotkit/react-native/headless",
+      "expo-status-bar",
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "react-native-safe-area-context",
+      "../../packages/domain/src",
+      "./src/agent-ui",
+      "./src/agent-workspace",
+      "./src/api",
+      "./src/chat",
+      "./src/computer",
+      "./src/computer-drafts",
+      "./src/details",
+      "./src/screens",
+      "./src/threads",
+      "./src/ui",
+      "./src/workspace"
+    ],
+    "exports": [],
+    "critical": [
+      "CopilotKitProvider",
+      "useAgent"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/BrowserConsole.native.tsx",
+    "lines": 25,
+    "imports": [
+      "react",
+      "react-native",
+      "react-native-webview",
+      "./ui"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/BrowserConsole.web.tsx",
+    "lines": 20,
+    "imports": [],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/DateFields.native.tsx",
+    "lines": 36,
+    "imports": [
+      "react-native",
+      "./ui"
+    ],
+    "exports": [
+      "DateFieldsProps"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/DateFields.web.tsx",
+    "lines": 51,
+    "imports": [
+      "react-native",
+      "./ui"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/DateTimeEditor.tsx",
+    "lines": 59,
+    "imports": [
+      "react",
+      "react-native",
+      "./DateFields",
+      "./date-time",
+      "./ui"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/PdfReader.native.tsx",
+    "lines": 74,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "react-native-pdf",
+      "./ui"
+    ],
+    "exports": [
+      "PdfReaderProps"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/PdfReader.web.tsx",
+    "lines": 53,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "./ui"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/agent-ui.tsx",
+    "lines": 1940,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "react-native-svg",
+      "../../../packages/domain/src",
+      "../../../packages/domain/src/agent",
+      "./agent-workspace",
+      "./screens",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "statusLabel",
+      "AgentStatus",
+      "TaskCard",
+      "ChatWork",
+      "AgentActivityScreen",
+      "EvidenceList",
+      "TaskDetail",
+      "ArtifactCard",
+      "DelegateSheet",
+      "IdeasScreen",
+      "GoalsScreen",
+      "NotificationsSheet",
+      "AppsScreen"
+    ],
+    "critical": [
+      "useAgent",
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/agent-workspace.tsx",
+    "lines": 99,
+    "imports": [
+      "react",
+      "react-native",
+      "../../../packages/domain/src/agent",
+      "./workspace"
+    ],
+    "exports": [
+      "AgentWorkspaceProvider",
+      "useAgentWorkspace"
+    ],
+    "critical": [
+      "setInterval",
+      "useAgent"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/api-response.ts",
+    "lines": 25,
+    "imports": [],
+    "exports": [
+      "readApiPayload"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/api.ts",
+    "lines": 44,
+    "imports": [
+      "react-native",
+      "./api-response"
+    ],
+    "exports": [
+      "API_URL",
+      "MuseApi",
+      "createSession"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/assistant-markdown.ts",
+    "lines": 18,
+    "imports": [
+      "markdown-it"
+    ],
+    "exports": [
+      "assistantMarkdown",
+      "isSafeAssistantUrl"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/assistant-response.tsx",
+    "lines": 64,
+    "imports": [
+      "react",
+      "react-native",
+      "react-native-markdown-renderer",
+      "./assistant-markdown",
+      "./ui"
+    ],
+    "exports": [
+      "AssistantResponse"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/background-updates.tsx",
+    "lines": 66,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "./agent-workspace",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "BackgroundUpdates"
+    ],
+    "critical": [
+      "useAgent"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/browser-address.ts",
+    "lines": 25,
+    "imports": [],
+    "exports": [
+      "browserAddress",
+      "browserSite"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/browser-tool-card.tsx",
+    "lines": 176,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "zod",
+      "../../../packages/domain/src",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "BrowserRunContext",
+      "BrowserToolCard"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/chat.tsx",
+    "lines": 1007,
+    "imports": [
+      "@copilotkit/react-native/headless",
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "zod",
+      "./agent-ui",
+      "./agent-workspace",
+      "./assistant-response",
+      "./background-updates",
+      "./browser-tool-card",
+      "./computer",
+      "./conversation-queue",
+      "./conversation-run",
+      "./desktop-tool-card",
+      "./jev-actions",
+      "./jev-tool-card",
+      "./mail-tool-card",
+      "./search-tool-card",
+      "./thread-artifacts",
+      "./threads",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "WorkspaceTools",
+      "ChatScreen"
+    ],
+    "critical": [
+      "useAgent",
+      "useRenderTool"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/computer-drafts.tsx",
+    "lines": 49,
+    "imports": [
+      "react"
+    ],
+    "exports": [
+      "ComputerDraftProvider",
+      "useComputerDraft"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/computer-status.ts",
+    "lines": 5,
+    "imports": [],
+    "exports": [
+      "computerStatus"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/computer-workspace.tsx",
+    "lines": 726,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src",
+      "../../../packages/domain/src/computer",
+      "./computer-drafts",
+      "./desktop-stream",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "LinuxWorkspace"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/computer.tsx",
+    "lines": 284,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src",
+      "../../../packages/domain/src/computer",
+      "./browser-address",
+      "./computer-drafts",
+      "./computer-status",
+      "./computer-workspace",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "ComputerEntry",
+      "BrowserThreadCard",
+      "ComputerSheet"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/conversation-queue.ts",
+    "lines": 53,
+    "imports": [],
+    "exports": [
+      "QueuedMessage",
+      "ConversationQueue"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/conversation-run.ts",
+    "lines": 62,
+    "imports": [],
+    "exports": [
+      "replayedRunError",
+      "threadLocked",
+      "isThreadLocked",
+      "ConversationTurnError",
+      "showsRunError",
+      "runConversationTurn"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/date-time.ts",
+    "lines": 56,
+    "imports": [
+      "../../../packages/domain/src/date-time.ts"
+    ],
+    "exports": [
+      "zonedInstant",
+      "startOfZonedDay",
+      "isCompleteInstant"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/desktop-stream.tsx",
+    "lines": 112,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "./BrowserConsole",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "useDesktopStream",
+      "DesktopStream"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/desktop-tool-card.tsx",
+    "lines": 154,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "zod",
+      "../../../packages/domain/src/computer",
+      "./computer-drafts",
+      "./desktop-stream",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "DesktopToolCard"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/details.tsx",
+    "lines": 1009,
+    "imports": [
+      "expo-file-system/legacy",
+      "expo-sharing",
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src",
+      "./agent-ui",
+      "./BrowserConsole",
+      "./browser-address",
+      "./computer",
+      "./DateTimeEditor",
+      "./date-time",
+      "./PdfReader",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "Details"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/jev-actions.ts",
+    "lines": 188,
+    "imports": [
+      "../../../packages/domain/src/jev"
+    ],
+    "exports": [
+      "parseJevResult",
+      "latestJevPanelId",
+      "ChoiceAvailability",
+      "choiceAvailability",
+      "retryChoiceAvailable",
+      "selectionText",
+      "displayJevUserMessage",
+      "confirmedJevSelection"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/jev-tool-card.tsx",
+    "lines": 271,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src/jev",
+      "./jev-actions",
+      "./ui"
+    ],
+    "exports": [
+      "JevInteractionContext",
+      "JevToolCard"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/mail-tool-card.tsx",
+    "lines": 110,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "zod",
+      "./browser-tool-card",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "MailToolCard"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/relative-date.ts",
+    "lines": 21,
+    "imports": [],
+    "exports": [
+      "relativeDate"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/screens.tsx",
+    "lines": 1419,
+    "imports": [
+      "expo-document-picker",
+      "expo-file-system/legacy",
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src",
+      "./api",
+      "./browser-address",
+      "./date-time",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "TodayScreen",
+      "AgendaRow",
+      "MailScreen",
+      "CalendarScreen",
+      "BrowserScreen",
+      "FilesScreen",
+      "ActivityScreen",
+      "ConnectionsScreen"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/search-tool-card.tsx",
+    "lines": 90,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "zod",
+      "./browser-tool-card",
+      "./ui"
+    ],
+    "exports": [
+      "SearchToolCard"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/thread-artifacts.tsx",
+    "lines": 115,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "../../../packages/domain/src",
+      "../../../packages/domain/src/agent",
+      "./agent-ui",
+      "./computer",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "FileThreadCard",
+      "TaskThreadCard"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/threads.tsx",
+    "lines": 329,
+    "imports": [
+      "@copilotkit/react-native/headless",
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "./ui",
+      "./workspace"
+    ],
+    "exports": [
+      "Selection",
+      "ThreadsProvider",
+      "useMuseThread",
+      "ThreadsSheet"
+    ],
+    "critical": [
+      "useThreads"
+    ]
+  },
+  {
+    "file": "apps/mobile/src/ui.tsx",
+    "lines": 456,
+    "imports": [
+      "lucide-react-native",
+      "react",
+      "react-native",
+      "react-native-safe-area-context",
+      "./relative-date"
+    ],
+    "exports": [
+      "colors",
+      "s",
+      "Button",
+      "IconButton",
+      "Card",
+      "Chip",
+      "Field",
+      "Empty",
+      "ErrorNotice",
+      "Sheet",
+      "CheckRow",
+      "SectionHeading",
+      "LinkRow",
+      "Mascot",
+      "dateLabel",
+      "timeLabel",
+      "resultSummary"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/src/workspace.tsx",
+    "lines": 43,
+    "imports": [
+      "react",
+      "../../../packages/domain/src",
+      "./api"
+    ],
+    "exports": [
+      "Detail",
+      "WorkspaceContextValue",
+      "WorkspaceContext",
+      "useWorkspace"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/api-response.test.ts",
+    "lines": 55,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/api-response.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/assistant-markdown.test.ts",
+    "lines": 28,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/assistant-markdown.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/browser-address.test.ts",
+    "lines": 23,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/browser-address.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/computer-status.test.ts",
+    "lines": 11,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/computer-status.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/conversation-queue.test.ts",
+    "lines": 86,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/conversation-queue.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/date-time.test.ts",
+    "lines": 54,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/date-time.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/jev-actions.test.ts",
+    "lines": 180,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../../../packages/domain/src/jev.ts",
+      "../src/jev-actions.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/mobile/test/relative-date.test.ts",
+    "lines": 25,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../src/relative-date.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/actions.ts",
+    "lines": 219,
+    "imports": [
+      "node:crypto",
+      "../../../packages/domain/src/index.ts",
+      "./db.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "ActionService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/agent.ts",
+    "lines": 71,
+    "imports": [
+      "./config.ts",
+      "@ag-ui/client",
+      "@copilotkit/runtime/v2",
+      "./auth.ts",
+      "./config.ts",
+      "./engine/conversation.ts",
+      "./engine/service.ts",
+      "./jev/adapter.ts"
+    ],
+    "exports": [
+      "agentConfigured",
+      "makeRuntime"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/app.ts",
+    "lines": 355,
+    "imports": [
+      "./config.ts",
+      "node:crypto",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "hono",
+      "hono/body-limit",
+      "hono/cors",
+      "zod",
+      "../../../packages/domain/src/index.ts",
+      "./actions.ts",
+      "./agent.ts",
+      "./auth.ts",
+      "./browser.ts",
+      "./computer.ts",
+      "./computer-routes.ts",
+      "./config.ts",
+      "./db.ts",
+      "./engine/routes.ts",
+      "./engine/service.ts",
+      "./errors.ts",
+      "./files.ts",
+      "./google-auth.ts",
+      "./rate-limit.ts",
+      "./workspace.ts"
+    ],
+    "exports": [
+      "createApp"
+    ],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "apps/server/src/auth.ts",
+    "lines": 91,
+    "imports": [
+      "node:crypto",
+      "node:fs/promises",
+      "node:path",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "Auth",
+      "createAuth"
+    ],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "apps/server/src/browser-console.ts",
+    "lines": 40,
+    "imports": [],
+    "exports": [
+      "browserConsole"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/server/src/browser.ts",
+    "lines": 296,
+    "imports": [
+      "node:crypto",
+      "zod",
+      "../../../packages/domain/src/index.ts",
+      "./auth.ts",
+      "./browser-console.ts",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts",
+      "./files.ts"
+    ],
+    "exports": [
+      "BrowserService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/computer-backend.ts",
+    "lines": 374,
+    "imports": [
+      "zod",
+      "./computer.ts",
+      "./computer-e2b-desktop.ts",
+      "./config.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "ComputerSession",
+      "ComputerBackend",
+      "DockerComputer",
+      "DesktopComputerBackend"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/computer-e2b-desktop.ts",
+    "lines": 668,
+    "imports": [
+      "node:crypto",
+      "node:fs/promises",
+      "node:path",
+      "zod",
+      "./computer.ts",
+      "./config.ts",
+      "./errors.ts",
+      "@e2b/desktop"
+    ],
+    "exports": [
+      "resolution",
+      "DesktopInfo",
+      "DesktopHandle",
+      "DesktopRunOptions",
+      "DesktopBox",
+      "DesktopDriver",
+      "e2bDesktopDriver",
+      "desktopCommand",
+      "desktopActionSchema",
+      "DesktopAction",
+      "describeDesktopAction",
+      "desktopInput",
+      "E2BDesktopComputer"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/computer-routes.ts",
+    "lines": 72,
+    "imports": [
+      "hono",
+      "zod",
+      "./computer.ts",
+      "./files.ts"
+    ],
+    "exports": [
+      "computerRoutes"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/computer-tools.ts",
+    "lines": 167,
+    "imports": [
+      "@copilotkit/runtime/v2",
+      "zod",
+      "./computer.ts",
+      "./computer-e2b-desktop.ts",
+      "./config.ts",
+      "./files.ts"
+    ],
+    "exports": [
+      "computerInstructions",
+      "computerTools"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/computer.ts",
+    "lines": 772,
+    "imports": [
+      "node:child_process",
+      "node:crypto",
+      "node:fs/promises",
+      "node:path",
+      "zod",
+      "../../../packages/domain/src/computer.ts",
+      "./computer-backend.ts",
+      "./computer-e2b-desktop.ts",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "computerOutputLimit",
+      "computerCommandSchema",
+      "computerPathSchema",
+      "computerWriteSchema",
+      "ComputerState",
+      "DockerResult",
+      "DockerRunner",
+      "computerOutput",
+      "runDocker",
+      "computerIdentity",
+      "workspacePath",
+      "ComputerService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/config.ts",
+    "lines": 184,
+    "imports": [
+      "node:fs",
+      "node:path",
+      "node:util"
+    ],
+    "exports": [
+      "shadowedEnvKeys",
+      "Config",
+      "ComputerProvider",
+      "defaultJevModel",
+      "intelligenceKeyRequiredMessage",
+      "required",
+      "assertApiDeploymentConfig",
+      "browserWorkerUrl",
+      "MODEL_MAX_RETRIES",
+      "readConfig"
+    ],
+    "critical": [
+      "CPK_INTELLIGENCE_API_KEY",
+      "OPENMUSE_ACCESS_KEY"
+    ]
+  },
+  {
+    "file": "apps/server/src/db.ts",
+    "lines": 181,
+    "imports": [
+      "node:fs/promises",
+      "node:path",
+      "@electric-sql/pglite",
+      "pg",
+      "./log.ts"
+    ],
+    "exports": [
+      "Store",
+      "createPool",
+      "createStore"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/demo/entry.ts",
+    "lines": 149,
+    "imports": [
+      "node:child_process",
+      "node:crypto",
+      "node:fs/promises",
+      "node:path",
+      "node:url",
+      "../config.ts",
+      "../db.ts",
+      "./model.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "CPK_INTELLIGENCE_API_KEY",
+      "local-user"
+    ]
+  },
+  {
+    "file": "apps/server/src/demo/jev-fixture.ts",
+    "lines": 53,
+    "imports": [],
+    "exports": [
+      "schoolTripFixture",
+      "aquariumFixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/demo/model.ts",
+    "lines": 628,
+    "imports": [
+      "node:crypto",
+      "@copilotkit/aimock",
+      "zod",
+      "./jev-fixture.ts"
+    ],
+    "exports": [
+      "demoModel",
+      "demoResponse",
+      "createDemoModel"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/conversation.ts",
+    "lines": 508,
+    "imports": [
+      "../config.ts",
+      "node:crypto",
+      "@ag-ui/client",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "rxjs",
+      "zod",
+      "../../../../packages/domain/src/agent.ts",
+      "../../../../packages/domain/src/index.ts",
+      "../../../../packages/domain/src/jev.ts",
+      "../computer-tools.ts",
+      "../config.ts",
+      "../jev/adapter.ts",
+      "../jev/service.ts",
+      "../jev/tools.ts",
+      "../search.ts",
+      "./service.ts",
+      "./tanstack-agent.ts"
+    ],
+    "exports": [
+      "ConversationAgent"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/finance.ts",
+    "lines": 101,
+    "imports": [
+      "zod"
+    ],
+    "exports": [
+      "analyzeSpending"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/model.ts",
+    "lines": 398,
+    "imports": [
+      "../config.ts",
+      "node:crypto",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "zod",
+      "../../../../packages/domain/src/agent.ts",
+      "../../../../packages/domain/src/index.ts",
+      "../computer-tools.ts",
+      "../search.ts",
+      "./service.ts",
+      "./tanstack-agent.ts",
+      "./worker.ts"
+    ],
+    "exports": [
+      "executeModelTask"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/page-diff.ts",
+    "lines": 86,
+    "imports": [],
+    "exports": [
+      "pageLines",
+      "PageDiff",
+      "withoutRelativeTimes",
+      "diffPage",
+      "describePageDiff",
+      "countPageDiff"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/routes.ts",
+    "lines": 169,
+    "imports": [
+      "node:crypto",
+      "hono",
+      "zod",
+      "../../../../packages/domain/src/agent.ts",
+      "../../../../packages/domain/src/agent.ts",
+      "../errors.ts",
+      "./service.ts"
+    ],
+    "exports": [
+      "agentRoutes"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/service.ts",
+    "lines": 1200,
+    "imports": [
+      "node:crypto",
+      "zod",
+      "../../../../packages/domain/src/agent.ts",
+      "../../../../packages/domain/src/index.ts",
+      "../actions.ts",
+      "../browser.ts",
+      "../computer.ts",
+      "../config.ts",
+      "../db.ts",
+      "../errors.ts",
+      "../files.ts",
+      "../log.ts",
+      "../search.ts",
+      "../workspace.ts",
+      "./finance.ts",
+      "./model.ts",
+      "./page-diff.ts",
+      "./worker.ts"
+    ],
+    "exports": [
+      "AgentService"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/server/src/engine/tanstack-agent.ts",
+    "lines": 243,
+    "imports": [
+      "node:crypto",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "@tanstack/ai",
+      "@tanstack/ai-anthropic",
+      "@tanstack/ai-gemini",
+      "@tanstack/ai-openai",
+      "rxjs",
+      "zod",
+      "../config.ts"
+    ],
+    "exports": [
+      "unknownProvider",
+      "tanstackAgent",
+      "textOnlyToolResult",
+      "reportStepLimit"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/engine/worker.ts",
+    "lines": 258,
+    "imports": [
+      "node:crypto",
+      "../../../../packages/domain/src/agent.ts",
+      "../db.ts",
+      "../log.ts"
+    ],
+    "exports": [
+      "LostLeaseError",
+      "TaskContext",
+      "TaskHandler",
+      "TaskWorker"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/server/src/errors.ts",
+    "lines": 10,
+    "imports": [],
+    "exports": [
+      "AppError"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/files.ts",
+    "lines": 155,
+    "imports": [
+      "node:crypto",
+      "node:fs/promises",
+      "node:path",
+      "../../../packages/domain/src/index.ts",
+      "../../../packages/integrations/src/pdf.ts",
+      "./auth.ts",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "sanitizeFileName",
+      "deterministicFileId",
+      "Files"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/google-auth.ts",
+    "lines": 253,
+    "imports": [
+      "node:crypto",
+      "zod",
+      "../../../packages/integrations/src/vault.ts",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "GoogleAuth"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/index.ts",
+    "lines": 27,
+    "imports": [
+      "@hono/node-server",
+      "./app.ts",
+      "./config.ts",
+      "./db.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/jev/adapter.ts",
+    "lines": 206,
+    "imports": [
+      "@typesafe-ai/sdk",
+      "../../../../packages/domain/src/jev.ts",
+      "../config.ts",
+      "../log.ts"
+    ],
+    "exports": [
+      "JevControl",
+      "JevDecisionInput",
+      "JevDecision",
+      "JevAdapter",
+      "jevOverrideConfidence",
+      "rankJevOptions",
+      "SampleJevAdapter",
+      "createJevAdapter",
+      "LiveJevAdapter"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/jev/service.ts",
+    "lines": 392,
+    "imports": [
+      "node:crypto",
+      "../../../../packages/domain/src/jev.ts",
+      "../db.ts",
+      "./adapter.ts"
+    ],
+    "exports": [
+      "PresentChoicesInput",
+      "JevHeadSnapshot",
+      "JevService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/jev/tools.ts",
+    "lines": 94,
+    "imports": [
+      "@copilotkit/runtime/v2",
+      "zod",
+      "../../../../packages/domain/src/jev.ts",
+      "./service.ts"
+    ],
+    "exports": [
+      "presentChoicesParameters",
+      "presentChoicesTool"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/log.ts",
+    "lines": 30,
+    "imports": [],
+    "exports": [
+      "backgroundFailure",
+      "providerFailure"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/rate-limit.ts",
+    "lines": 91,
+    "imports": [
+      "@hono/node-server/conninfo",
+      "hono",
+      "./errors.ts"
+    ],
+    "exports": [
+      "RateLimitStoreOptions",
+      "createRateLimitStore",
+      "resolveClientKey",
+      "rateLimit"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/search.ts",
+    "lines": 170,
+    "imports": [
+      "node:crypto",
+      "@modelcontextprotocol/sdk/client/index.js",
+      "@modelcontextprotocol/sdk/client/streamableHttp.js",
+      "@modelcontextprotocol/sdk/types.js",
+      "zod",
+      "../../../package.json",
+      "./db.ts"
+    ],
+    "exports": [
+      "searchInputSchema",
+      "searchDescription",
+      "searchInstructions",
+      "SearchService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/worker-entry.ts",
+    "lines": 28,
+    "imports": [
+      "./app.ts",
+      "./config.ts",
+      "./db.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/server/src/workspace.ts",
+    "lines": 514,
+    "imports": [
+      "node:crypto",
+      "../../../packages/domain/src/date-time.ts",
+      "../../../packages/domain/src/index.ts",
+      "../../../packages/integrations/src/google.ts",
+      "../../../packages/integrations/src/pdf.ts",
+      "./actions.ts",
+      "./agent.ts",
+      "./config.ts",
+      "./db.ts",
+      "./errors.ts",
+      "./files.ts",
+      "./google-auth.ts"
+    ],
+    "exports": [
+      "WorkspaceService"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/browser.ts",
+    "lines": 397,
+    "imports": [
+      "node:fs/promises",
+      "node:path",
+      "playwright",
+      "./downloads.ts",
+      "./errors.ts",
+      "./network.ts",
+      "./proxy.ts",
+      "playwright"
+    ],
+    "exports": [
+      "Session",
+      "validateSessionId",
+      "createBrowserManager"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/worker/src/demo-entry.ts",
+    "lines": 24,
+    "imports": [
+      "./server.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/downloads.ts",
+    "lines": 169,
+    "imports": [
+      "node:crypto",
+      "node:fs",
+      "node:fs/promises",
+      "node:path",
+      "node:stream",
+      "node:stream/promises",
+      "playwright"
+    ],
+    "exports": [
+      "MAX_DOWNLOAD_BYTES",
+      "PdfDownload",
+      "DownloadFailure",
+      "readDownloadFailures",
+      "capturePdfDownload"
+    ],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "apps/worker/src/errors.ts",
+    "lines": 10,
+    "imports": [],
+    "exports": [
+      "WorkerError"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/index.ts",
+    "lines": 28,
+    "imports": [
+      "./server.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/network.ts",
+    "lines": 97,
+    "imports": [
+      "node:dns",
+      "node:dns/promises",
+      "node:net",
+      "./errors.ts"
+    ],
+    "exports": [
+      "isPublicIp",
+      "Resolver",
+      "validatePublicUrl"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/proxy.ts",
+    "lines": 101,
+    "imports": [
+      "node:events",
+      "node:http",
+      "node:net",
+      "./network.ts"
+    ],
+    "exports": [
+      "startEgressProxy"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/src/server.ts",
+    "lines": 132,
+    "imports": [
+      "node:crypto",
+      "node:http",
+      "./browser.ts",
+      "./errors.ts"
+    ],
+    "exports": [
+      "createWorkerServer"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/close-resilience.test.ts",
+    "lines": 68,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../src/browser.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/docker.test.ts",
+    "lines": 41,
+    "imports": [
+      "node:assert/strict",
+      "node:child_process",
+      "node:test",
+      "./worker-checks.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/fixture-worker.ts",
+    "lines": 42,
+    "imports": [
+      "node:events",
+      "../src/browser.ts",
+      "../src/server.ts",
+      "./fixtures.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/fixtures.ts",
+    "lines": 98,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "../src/proxy.ts"
+    ],
+    "exports": [
+      "fixtureOrigin",
+      "fixtureTitle",
+      "fixtureText",
+      "fixturePdf",
+      "createBrowserFixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/lifecycle.test.ts",
+    "lines": 182,
+    "imports": [
+      "node:assert/strict",
+      "node:child_process",
+      "node:crypto",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "node:os",
+      "node:path",
+      "node:test",
+      "node:url",
+      "../src/browser.ts",
+      "./fixtures.ts",
+      "./worker-checks.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/run-docker.mjs",
+    "lines": 75,
+    "imports": [
+      "node:child_process",
+      "node:crypto",
+      "node:url"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "apps/worker/tests/worker-checks.ts",
+    "lines": 142,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "./fixtures.ts"
+    ],
+    "exports": [
+      "WorkerAddress",
+      "checkBrowserWorker"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/backends/src/openbot.ts",
+    "lines": 344,
+    "imports": [
+      "zod"
+    ],
+    "exports": [
+      "OPENBOT_CONTRACT_REF",
+      "OpenBotTransport",
+      "OpenBotErrorCode",
+      "OpenBotError",
+      "OpenBotComputerStatus",
+      "OpenBotControl",
+      "OpenBotSnapshot",
+      "OpenBotNavigation",
+      "OpenBotProbe",
+      "OpenBotAdapter"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/domain/src/agent.ts",
+    "lines": 167,
+    "imports": [
+      "zod"
+    ],
+    "exports": [
+      "TaskStatus",
+      "Evidence",
+      "TaskStep",
+      "AgentTask",
+      "RunEvent",
+      "Goal",
+      "Monitor",
+      "Idea",
+      "AgentMemory",
+      "AgentArtifact",
+      "AgentNotification",
+      "AgentIdentity",
+      "AgentWorkspace",
+      "createTaskSchema",
+      "CreateTaskInput",
+      "monitorInputSchema",
+      "goalInputSchema"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/domain/src/computer.ts",
+    "lines": 29,
+    "imports": [],
+    "exports": [
+      "ComputerCommand",
+      "ComputerSnapshot",
+      "ComputerDirectory"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/domain/src/date-time.ts",
+    "lines": 29,
+    "imports": [],
+    "exports": [
+      "localDateTime"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/domain/src/index.ts",
+    "lines": 209,
+    "imports": [
+      "zod",
+      "./computer.ts"
+    ],
+    "exports": [
+      "WorkspaceMode",
+      "Section",
+      "Mail",
+      "CalendarEvent",
+      "calendarRangeSchema",
+      "Artifact",
+      "BrowserSession",
+      "emailDraftSchema",
+      "eventDraftSchema",
+      "proposalSchema",
+      "EmailDraft",
+      "EventDraft",
+      "ProposalInput",
+      "ActionProposal",
+      "ActivityEntry",
+      "Connection",
+      "Workspace",
+      "ExecutionBackend"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/domain/src/jev.ts",
+    "lines": 93,
+    "imports": [
+      "zod"
+    ],
+    "exports": [
+      "jevSourceSchema",
+      "jevOptionSchema",
+      "jevPanelSchema",
+      "jevToolResultSchema",
+      "jevActionSchema",
+      "jevActionPrefix",
+      "JevSource",
+      "JevOption",
+      "JevPanel",
+      "JevToolResult",
+      "JevAction",
+      "encodeJevAction",
+      "parseJevAction"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/integrations/src/google.ts",
+    "lines": 861,
+    "imports": [
+      "node:crypto",
+      "parse5",
+      "zod",
+      "../../domain/src/index.ts"
+    ],
+    "exports": [
+      "MAX_ATTACHMENT_BYTES",
+      "MAX_TOTAL_ATTACHMENT_BYTES",
+      "OutcomeUnknownError",
+      "GoogleApiError",
+      "RecurringEventError",
+      "CalendarListEntry",
+      "ListEventsOptions",
+      "MailAttachment",
+      "GoogleClient"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/integrations/src/pdf.ts",
+    "lines": 283,
+    "imports": [
+      "pdf-lib"
+    ],
+    "exports": [
+      "PdfError",
+      "PdfInspection",
+      "inspectPdf",
+      "fillPdf",
+      "createSamplePdf"
+    ],
+    "critical": []
+  },
+  {
+    "file": "packages/integrations/src/vault.ts",
+    "lines": 57,
+    "imports": [
+      "node:crypto"
+    ],
+    "exports": [
+      "encryptSecret",
+      "decryptSecret"
+    ],
+    "critical": []
+  },
+  {
+    "file": "tests/actions.test.ts",
+    "lines": 325,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/actions.ts",
+      "../apps/server/src/db.ts",
+      "../packages/domain/src/index.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/agent-api.test.ts",
+    "lines": 591,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "@copilotkit/runtime/v2",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../packages/domain/src/agent.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/api.test.ts",
+    "lines": 341,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/auth.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/conversation.ts",
+      "../apps/server/src/engine/service.ts",
+      "../apps/server/src/files.ts",
+      "../packages/domain/src/index.ts",
+      "../packages/integrations/src/pdf.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/auth-startup.test.ts",
+    "lines": 50,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/auth.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/browser-fixture-runner.test.ts",
+    "lines": 108,
+    "imports": [
+      "node:assert/strict",
+      "node:child_process",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "node:url",
+      "node:util"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/browser-imports-race.test.ts",
+    "lines": 96,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "node:os",
+      "node:path",
+      "node:test",
+      "pdf-lib",
+      "../apps/server/src/auth.ts",
+      "../apps/server/src/browser.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/files.ts",
+      "../packages/domain/src/index.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/browser.test.ts",
+    "lines": 743,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "node:os",
+      "node:path",
+      "node:stream",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/auth.ts",
+      "../apps/server/src/browser.ts",
+      "../apps/server/src/files.ts",
+      "../apps/worker/src/downloads.ts",
+      "../apps/worker/src/network.ts",
+      "../apps/worker/src/proxy.ts",
+      "../apps/worker/src/server.ts",
+      "../packages/domain/src/index.ts",
+      "./helpers/browser.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/computer-api.test.ts",
+    "lines": 79,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "./helpers/computer.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/computer-e2b-desktop.test.ts",
+    "lines": 1242,
+    "imports": [
+      "node:assert/strict",
+      "node:child_process",
+      "node:crypto",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "@e2b/desktop",
+      "zod",
+      "../apps/server/src/computer.ts",
+      "../apps/server/src/computer-e2b-desktop.ts",
+      "../apps/server/src/computer-tools.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/tanstack-agent.ts",
+      "../packages/domain/src/computer.ts",
+      "./helpers/computer.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/computer-runner.test.ts",
+    "lines": 50,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/computer.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "setInterval"
+    ]
+  },
+  {
+    "file": "tests/computer.test.ts",
+    "lines": 402,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "../apps/server/src/computer.ts",
+      "../apps/server/src/db.ts",
+      "./helpers/computer.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/config.test.ts",
+    "lines": 154,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/config.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "CPK_INTELLIGENCE_API_KEY"
+    ]
+  },
+  {
+    "file": "tests/conversation-browser.test.ts",
+    "lines": 296,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/engine/conversation.ts",
+      "./helpers/browser.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/conversation-calendar.test.ts",
+    "lines": 448,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/engine/conversation.ts",
+      "../packages/domain/src/index.ts",
+      "../packages/integrations/src/vault.ts",
+      "./helpers/browser.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/conversation-jev.test.ts",
+    "lines": 817,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/mobile/src/jev-actions.ts",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/engine/conversation.ts",
+      "../apps/server/src/jev/adapter.ts",
+      "../apps/server/src/jev/service.ts",
+      "../apps/server/src/jev/tools.ts",
+      "../packages/domain/src/jev.ts",
+      "./helpers/browser.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/conversation-sdk.test.ts",
+    "lines": 147,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "@ag-ui/client",
+      "@ag-ui/core",
+      "@copilotkit/core",
+      "rxjs",
+      "../apps/mobile/src/conversation-queue.ts",
+      "../apps/mobile/src/conversation-run.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/demo-model.test.ts",
+    "lines": 551,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "@ag-ui/client",
+      "@ag-ui/core",
+      "@copilotkit/aimock",
+      "@copilotkit/runtime/v2",
+      "zod",
+      "../apps/server/src/demo/model.ts",
+      "../apps/server/src/engine/tanstack-agent.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/domain.test.ts",
+    "lines": 147,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../packages/domain/src/index.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/engine.test.ts",
+    "lines": 245,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/finance.ts",
+      "../apps/server/src/engine/worker.ts",
+      "../packages/domain/src/agent.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/finance-headers.test.ts",
+    "lines": 41,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/engine/finance.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/finance.test.ts",
+    "lines": 44,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/engine/finance.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/gateway-chat-completions.test.ts",
+    "lines": 112,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "zod",
+      "../apps/server/src/engine/tanstack-agent.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/google.test.ts",
+    "lines": 1021,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../packages/domain/src/index.ts",
+      "../packages/integrations/src/google.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/helpers/browser.ts",
+    "lines": 55,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../../apps/server/src/auth.ts",
+      "../../apps/server/src/browser.ts",
+      "../../apps/server/src/config.ts",
+      "../../apps/server/src/db.ts",
+      "../../apps/server/src/files.ts"
+    ],
+    "exports": [
+      "browserFixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "tests/helpers/computer.ts",
+    "lines": 100,
+    "imports": [
+      "../../apps/server/src/computer.ts",
+      "../../apps/server/src/config.ts"
+    ],
+    "exports": [
+      "config",
+      "ok",
+      "sandbox",
+      "fixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "tests/helpers/model.ts",
+    "lines": 236,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:http",
+      "node:test"
+    ],
+    "exports": [
+      "modelFixture",
+      "chatCompletionsFixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "tests/helpers/search.ts",
+    "lines": 80,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:http",
+      "node:test"
+    ],
+    "exports": [
+      "searchSource",
+      "searchFixture"
+    ],
+    "critical": []
+  },
+  {
+    "file": "tests/jev-persistence.test.ts",
+    "lines": 715,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/jev/adapter.ts",
+      "../apps/server/src/jev/service.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/jev.test.ts",
+    "lines": 301,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "@typesafe-ai/sdk",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/jev/adapter.ts",
+      "../packages/domain/src/jev.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/log.test.ts",
+    "lines": 30,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/log.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/model-outcome.test.ts",
+    "lines": 77,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "../packages/domain/src/index.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/model-provider.test.ts",
+    "lines": 31,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/engine/tanstack-agent.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/model-retry.test.ts",
+    "lines": 148,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "@ag-ui/core",
+      "@copilotkit/runtime/v2",
+      "zod",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/engine/tanstack-agent.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/model-worker.test.ts",
+    "lines": 495,
+    "imports": [
+      "node:assert/strict",
+      "node:events",
+      "node:fs/promises",
+      "node:http",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/demo/model.ts",
+      "../packages/domain/src/agent.ts",
+      "../packages/domain/src/index.ts",
+      "./helpers/browser.ts",
+      "./helpers/computer.ts",
+      "./helpers/model.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/monitor-price-spacing.test.ts",
+    "lines": 50,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../packages/domain/src/agent.ts",
+      "./helpers/browser.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/monitor-recovery.test.ts",
+    "lines": 831,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/worker.ts",
+      "../packages/domain/src/agent.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/oauth.test.ts",
+    "lines": 242,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/google-auth.ts",
+      "../packages/integrations/src/vault.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/openbot.test.ts",
+    "lines": 247,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../packages/backends/src/openbot.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/page-diff.test.ts",
+    "lines": 107,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/engine/page-diff.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/pdf.test.ts",
+    "lines": 155,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "pdf-lib",
+      "../packages/integrations/src/pdf.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/persistence.test.ts",
+    "lines": 143,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/workspace.ts",
+      "../apps/server/src/files.ts",
+      "../apps/server/src/config.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/prepare-lease-loss.test.ts",
+    "lines": 145,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/actions.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/service.ts",
+      "../apps/server/src/engine/worker.ts",
+      "../packages/domain/src/agent.ts",
+      "../packages/domain/src/index.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/rate-limit.test.ts",
+    "lines": 163,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "hono",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/rate-limit.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/resource-ids.test.ts",
+    "lines": 145,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/auth.ts",
+      "../apps/server/src/browser.ts",
+      "../apps/server/src/config.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/files.ts",
+      "../packages/integrations/src/pdf.ts",
+      "./helpers/browser.ts",
+      "owner"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/rich-threads.test.ts",
+    "lines": 201,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "@copilotkit/runtime/v2",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/search-results.test.ts",
+    "lines": 79,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/search.ts",
+      "./helpers/search.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/search.test.ts",
+    "lines": 318,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "../apps/server/src/engine/conversation.ts",
+      "../apps/server/src/search.ts",
+      "./helpers/browser.ts",
+      "./helpers/model.ts",
+      "./helpers/search.ts"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/setup.ts",
+    "lines": 5,
+    "imports": [],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/step-limit.test.ts",
+    "lines": 42,
+    "imports": [
+      "node:assert/strict",
+      "node:test",
+      "@ag-ui/core",
+      "rxjs",
+      "../apps/server/src/engine/tanstack-agent.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/telemetry.test.ts",
+    "lines": 84,
+    "imports": [
+      "node:assert/strict",
+      "node:child_process",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "node:util"
+    ],
+    "exports": [],
+    "critical": [
+      "local-user"
+    ]
+  },
+  {
+    "file": "tests/vault.test.ts",
+    "lines": 44,
+    "imports": [
+      "node:assert/strict",
+      "node:crypto",
+      "node:test",
+      "../packages/integrations/src/vault.ts"
+    ],
+    "exports": [],
+    "critical": []
+  },
+  {
+    "file": "tests/workflows.test.ts",
+    "lines": 556,
+    "imports": [
+      "node:assert/strict",
+      "node:fs/promises",
+      "node:os",
+      "node:path",
+      "node:test",
+      "../apps/server/src/app.ts",
+      "../apps/server/src/db.ts",
+      "../packages/domain/src/agent.ts",
+      "../packages/domain/src/index.ts",
+      "../packages/integrations/src/pdf.ts"
+    ],
+    "exports": [],
+    "critical": []
+  }
+]

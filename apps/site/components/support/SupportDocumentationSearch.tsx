@@ -1,14 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  BookOpen,
-  ExternalLink,
-  FileText,
-  Loader2,
-  Search,
-  X,
-} from "lucide-react";
+import { BookOpenIcon as BookOpen, ExternalLinkIcon as ExternalLink, FileTextIcon as FileText, Loader2Icon as Loader2, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import type { SearchEntry } from "@/lib/search-types";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2Icon as CheckCircle2 } from "@mdevs/icons";
 import { WIZARD_STEPS, type TicketStep } from "@/components/support/ticket-form/ticket-form-types";
 
 export function TicketWizardProgress({

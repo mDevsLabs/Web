@@ -1,6 +1,6 @@
 "use client";
 
-import { GitCommit, Loader2 } from "lucide-react";
+import { GitCommitIcon as GitCommit, Loader2Icon as Loader2 } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { formatDisplayDate } from "@/lib/date-format";
 

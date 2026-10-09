@@ -4,6 +4,7 @@ import {
   enforceWakiesLimit,
   isResponse,
   json,
+  rejectCrossOriginMutation,
   requireWakiesUser,
 } from "@/lib/wakies/http";
 import { listMemories, saveMemory } from "@/lib/wakies/queries";
@@ -20,6 +21,8 @@ import { listMemories, saveMemory } from "@/lib/wakies/queries";
 const schema = z.object({ text: z.string().trim().min(1).max(2000) }).strict();
 
 export async function POST(request: Request) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (isResponse(identite)) {
     return identite;

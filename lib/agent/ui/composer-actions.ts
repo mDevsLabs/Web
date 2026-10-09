@@ -1,15 +1,5 @@
-import {
-  BrainIcon,
-  FolderIcon,
-  GlobeIcon,
-  ImageIcon,
-  LibraryIcon,
-  ListChecksIcon,
-  type LucideIcon,
-  MicIcon,
-  PaperclipIcon,
-  WrenchIcon,
-} from "lucide-react";
+import { BrainIcon, FolderIcon, GlobeIcon, ImageIcon, LibraryIcon, ListChecksIcon, MicIcon, PaperclipIcon, WrenchIcon } from "@mdevs/icons";
+import type { IconProps } from "@mdevs/icons";
 import type { AgentFlagKey } from "@/lib/agent/flags";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 
@@ -41,7 +31,7 @@ export type AgentComposerAvailability = {
 
 export type AgentComposerAction = {
   description: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   id: AgentComposerActionId;
   label: string;
   requiresFlag?: AgentFlagKey;

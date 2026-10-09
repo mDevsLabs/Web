@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2Icon as Loader2 } from "@mdevs/icons";
 import NewTicketClient from "./NewTicketClient";
 
 export default function NewTicketPage() {

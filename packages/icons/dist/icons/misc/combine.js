@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const CombineIcon = /* @__PURE__ */ createIcon("CombineIcon", [["path", { "d": "M14 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" }], ["path", { "d": "M19 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" }], ["path", { "d": "m7 15 3 3" }], ["path", { "d": "m7 21 3-3H5a2 2 0 0 1-2-2v-2" }], ["rect", { "x": "14", "y": "14", "width": "7", "height": "7", "rx": "1" }], ["rect", { "x": "3", "y": "3", "width": "7", "height": "7", "rx": "1" }]]);
-export {
-  CombineIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CombineIcon = /* @__PURE__ */ createIcon('CombineIcon', [["path", { "d": "M14 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" }], ["path", { "d": "M19 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" }], ["path", { "d": "m7 15 3 3" }], ["path", { "d": "m7 21 3-3H5a2 2 0 0 1-2-2v-2" }], ["rect", { "x": "14", "y": "14", "width": "7", "height": "7", "rx": "1" }], ["rect", { "x": "3", "y": "3", "width": "7", "height": "7", "rx": "1" }]]);

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ExternalLinkIcon,
-  GlobeIcon,
-  LayoutGridIcon,
-  ListIcon,
-} from "lucide-react";
+import { ExternalLinkIcon, GlobeIcon, LayoutGridIcon, ListIcon } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 

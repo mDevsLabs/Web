@@ -426,16 +426,18 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!root) return;
 
     if (resolvedTheme === "dark") {
-      root.classList.add("dark");
+      root.classList.add("dark", "md-root");
       root.classList.remove("light");
       root.setAttribute("data-theme", "dark");
+      root.setAttribute("data-md-theme", "dark");
       root.style.setProperty("--vibe-sent-bubble-bg", "#18181b");
       root.style.setProperty("--vibe-sent-bubble-color", "#ffffff");
       root.style.setProperty("--vibe-sent-bubble-border", "1px solid #3f3f46");
     } else {
-      root.classList.add("light");
+      root.classList.add("light", "md-root");
       root.classList.remove("dark");
       root.setAttribute("data-theme", "light");
+      root.setAttribute("data-md-theme", "light");
       root.style.setProperty("--vibe-sent-bubble-bg", "#ffffff");
       root.style.setProperty("--vibe-sent-bubble-color", "#000000");
       root.style.setProperty(
@@ -652,7 +654,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       <div
-        className="vibe-root"
+        className="vibe-root md-root"
+        data-md-theme={resolvedTheme}
         data-vibe-root=""
         ref={rootRef}
         suppressHydrationWarning

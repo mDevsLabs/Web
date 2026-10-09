@@ -8,7 +8,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { BookMarked, Globe, Loader2, Search, X } from 'lucide-react';
+import { BookMarkedIcon as BookMarked, GlobeIcon as Globe, Loader2Icon as Loader2, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { getBookIcon } from '../common/bookIcons';
 import type { VibeBook } from '../../types/vibe';

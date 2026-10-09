@@ -4,7 +4,6 @@ import {
   logError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { enforceChatRateLimit } from "@/lib/chat/auth";
 import {
@@ -60,11 +59,10 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
   const { id } = await params;
 

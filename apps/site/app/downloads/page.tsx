@@ -2,17 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import {
-  Download,
-  ExternalLink,
-  Copy,
-  Check,
-  Monitor,
-  Globe,
-  Terminal,
-  Cpu,
-  Users,
-} from "lucide-react";
+import { DownloadIcon as Download, ExternalLinkIcon as ExternalLink, CopyIcon as Copy, CheckIcon as Check, MonitorIcon as Monitor, GlobeIcon as Globe, TerminalIcon as Terminal, CpuIcon as Cpu, UsersIcon as Users } from "@mdevs/icons";
 import Image from "next/image";
 import { toast } from "react-hot-toast";
 import { PageSearch } from "@/components/ui/search-bar";

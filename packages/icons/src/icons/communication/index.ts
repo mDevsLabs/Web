@@ -64,3 +64,4 @@ export { SendIcon } from './send.js';
 export { SendHorizonalIcon } from './send-horizonal.js';
 export { SendToBackIcon } from './send-to-back.js';
 export { SpeechIcon } from './speech.js';
+export { MessageCircleQuestionIcon } from './message-circle-question.js';

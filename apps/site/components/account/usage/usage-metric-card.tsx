@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { IconProps } from "@mdevs/icons";
 
 export function UsageMetricCard({
   icon: Icon,
@@ -11,7 +11,7 @@ export function UsageMetricCard({
   badge,
   badgeClassName,
 }: {
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   iconClassName: string;
   label: string;
   value: string | number;

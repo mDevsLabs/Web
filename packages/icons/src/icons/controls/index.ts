@@ -48,3 +48,4 @@ export { ToggleLeftIcon } from './toggle-left.js';
 export { ToggleRightIcon } from './toggle-right.js';
 export { XIcon } from './x.js';
 export { XLineTopIcon } from './x-line-top.js';
+export { SquareCheckIcon } from './square-check.js';

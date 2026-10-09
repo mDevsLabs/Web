@@ -1,6 +1,6 @@
 "use client";
 
-import { Key } from "lucide-react";
+import { KeyIcon as Key } from "@mdevs/icons";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
 
 type RequestKeySelectorProps = {

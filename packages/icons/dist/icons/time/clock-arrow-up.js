@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const ClockArrowUpIcon = /* @__PURE__ */ createIcon("ClockArrowUpIcon", [["path", { "d": "M12 6v6l1.56.78" }], ["path", { "d": "M13.227 21.925a10 10 0 1 1 8.767-9.588" }], ["path", { "d": "m14 18 4-4 4 4" }], ["path", { "d": "M18 22v-8" }]]);
-export {
-  ClockArrowUpIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const ClockArrowUpIcon = /* @__PURE__ */ createIcon('ClockArrowUpIcon', [["path", { "d": "M12 6v6l1.56.78" }], ["path", { "d": "M13.227 21.925a10 10 0 1 1 8.767-9.588" }], ["path", { "d": "m14 18 4-4 4 4" }], ["path", { "d": "M18 22v-8" }]]);

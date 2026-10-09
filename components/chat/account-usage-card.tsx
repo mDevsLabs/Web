@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  ExternalLinkIcon,
-  GaugeIcon,
-  HardDriveIcon,
-  ImageIcon,
-  InfoIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { ExternalLinkIcon, GaugeIcon, HardDriveIcon, ImageIcon, InfoIcon, Volume2Icon } from "@mdevs/icons";
 import type { ReactNode } from "react";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import {

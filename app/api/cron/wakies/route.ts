@@ -102,14 +102,14 @@ export async function GET(request: Request) {
         if (!wakie.researchAllowed) {
           throw new Error("La recherche est désactivée pour ce Wakie.");
         }
-        const historique = await listMessages(conversationId);
+        const historique = await listMessages(userId, conversationId);
         const texte = await runTurn({
           conversationId,
           historique,
           model: getLanguageModel(DEFAULT_CHAT_MODEL),
           prompt: claim.task.prompt,
         });
-        await appendMessages([
+        await appendMessages(userId, [
           {
             conversationId,
             id: `wakies-task-${claim.lease}`,

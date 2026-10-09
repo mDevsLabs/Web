@@ -5,16 +5,15 @@ import { TOOLS_TAB_LABELS, TOOLS_TABS, type ToolsTab } from "@/lib/tools/tabs";
 
 // Sélecteur Plugins | MCP | Skills de la page Applications : rendu délégué à la
 // primitive partagée PillSwitcher (mêmes proportions compactes, animation et
-// interactions clavier que le sélecteur Chat | Agent). Le verrouillage reste
-// porté ici : sans forfait payant, seuls Skills sont ouverts ; le parent reçoit
-// onBlockedSelect pour proposer l'upgrade (dialogue, toast…).
+// interactions clavier que le sélecteur Chat | Agent). Les onglets sont tous
+// ouverts à tous les forfaits (y compris Free).
 export function ToolsSwitcher({
   activeTab,
-  isPaid,
+  isPaid: _isPaid,
   onChange,
 }: {
   activeTab: ToolsTab;
-  isPaid: boolean;
+  isPaid?: boolean;
   onChange: (tab: ToolsTab) => void;
 }) {
   return (
@@ -25,7 +24,7 @@ export function ToolsSwitcher({
       items={TOOLS_TABS.map((tab) => ({
         id: tab,
         label: TOOLS_TAB_LABELS[tab],
-        locked: !isPaid && tab !== "skills",
+        locked: false,
       }))}
       layoutId="tools-pill"
       onBlockedSelect={(tab) => onChange(tab)}

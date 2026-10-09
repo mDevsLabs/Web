@@ -1,17 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ExternalLink,
-  Gamepad2,
-  Map,
-  Zap,
-  Ticket,
-  Palette,
-  Crown,
-  Download,
-  Gem,
-} from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, Gamepad2Icon as Gamepad2, MapIcon as Map, ZapIcon as Zap, TicketIcon as Ticket, PaletteIcon as Palette, CrownIcon as Crown, DownloadIcon as Download, GemIcon as Gem } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 

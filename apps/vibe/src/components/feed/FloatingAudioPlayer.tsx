@@ -6,7 +6,7 @@
  * ============================================================================
  */
 import React from 'react';
-import { Play, Pause, SkipBack, SkipForward, X, Loader2, Volume2 } from 'lucide-react';
+import { PlayIcon as Play, PauseIcon as Pause, SkipBackIcon as SkipBack, SkipForwardIcon as SkipForward, XIcon as X, Loader2Icon as Loader2, Volume2Icon as Volume2 } from "@mdevs/icons";
 import { useAudioPlayer } from '../../context/AudioPlayerContext';
 import { haptics } from '../../services/haptics';
 

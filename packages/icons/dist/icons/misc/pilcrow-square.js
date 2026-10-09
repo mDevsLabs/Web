@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const PilcrowSquareIcon = /* @__PURE__ */ createIcon("PilcrowSquareIcon", [["rect", { "width": "18", "height": "18", "x": "3", "y": "3", "rx": "2" }], ["path", { "d": "M12 12H9.5a2.5 2.5 0 0 1 0-5H17" }], ["path", { "d": "M12 7v10" }], ["path", { "d": "M16 7v10" }]]);
-export {
-  PilcrowSquareIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const PilcrowSquareIcon = /* @__PURE__ */ createIcon('PilcrowSquareIcon', [["rect", { "width": "18", "height": "18", "x": "3", "y": "3", "rx": "2" }], ["path", { "d": "M12 12H9.5a2.5 2.5 0 0 1 0-5H17" }], ["path", { "d": "M12 7v10" }], ["path", { "d": "M16 7v10" }]]);

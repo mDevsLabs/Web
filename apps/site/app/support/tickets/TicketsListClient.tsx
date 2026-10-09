@@ -2,27 +2,7 @@
 
 import { useState, useEffect, useTransition } from "react";
 import Link from "next/link";
-import {
-  Search,
-  PlusCircle,
-  Clock,
-  CheckCircle2,
-  AlertCircle,
-  Zap,
-  ChevronRight,
-  MessageSquare,
-  RefreshCw,
-  Loader2,
-  FileQuestion,
-  User,
-  RotateCcw,
-  Archive,
-  ArchiveRestore,
-  Trash2,
-  Pencil,
-  MoreHorizontal,
-  X,
-} from "lucide-react";
+import { SearchIcon as Search, PlusCircleIcon as PlusCircle, ClockIcon as Clock, CheckCircle2Icon as CheckCircle2, AlertCircleIcon as AlertCircle, ZapIcon as Zap, ChevronRightIcon as ChevronRight, MessageSquareIcon as MessageSquare, RefreshCwIcon as RefreshCw, Loader2Icon as Loader2, FileQuestionIcon as FileQuestion, UserIcon as User, RotateCcwIcon as RotateCcw, ArchiveIcon as Archive, ArchiveRestoreIcon as ArchiveRestore, Trash2Icon as Trash2, PencilIcon as Pencil, MoreHorizontalIcon as MoreHorizontal, XIcon as X } from "@mdevs/icons";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/auth-provider";
 import { getTicketsList, updateTicketTitle, archiveTicket, deleteTicket } from "@/app/actions/support";

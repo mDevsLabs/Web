@@ -1,16 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Activity,
-  ChevronDown,
-  Cloud,
-  Download,
-  Gauge,
-  Image as ImageIcon,
-  UserRound,
-  Volume2,
-} from "lucide-react";
+import { ActivityIcon as Activity, ChevronDownIcon as ChevronDown, CloudIcon as Cloud, DownloadIcon as Download, GaugeIcon as Gauge, ImageIcon, UserRoundIcon as UserRound, Volume2Icon as Volume2 } from "@mdevs/icons";
 import Link from "next/link";
 import { Sheet } from "@/components/sheet";
 import { PageSearch } from "@/components/ui/search-bar";

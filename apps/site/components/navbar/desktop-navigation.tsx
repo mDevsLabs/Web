@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon as ChevronDown } from "@mdevs/icons";
 import Link from "next/link";
 import { checkLinkActive, checkSubActive, navLinks } from "@/components/navbar/navigation-config";
 import { NavPill } from "@/components/navbar/nav-pill";

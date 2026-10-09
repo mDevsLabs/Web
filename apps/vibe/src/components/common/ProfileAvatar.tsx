@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Loader2, User } from 'lucide-react';
+import { Loader2Icon as Loader2, UserIcon as User } from "@mdevs/icons";
 
 export interface ProfileAvatarProps {
   src?: string | null;

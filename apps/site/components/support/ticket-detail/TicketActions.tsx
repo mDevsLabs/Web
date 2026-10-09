@@ -1,6 +1,6 @@
 "use client";
 
-import { Archive, ArchiveRestore, RotateCcw, Trash2 } from "lucide-react";
+import { ArchiveIcon as Archive, ArchiveRestoreIcon as ArchiveRestore, RotateCcwIcon as RotateCcw, Trash2Icon as Trash2 } from "@mdevs/icons";
 import type { SupportTicket, SupportTicketStatus } from "@/app/actions/support-utils";
 
 export function TicketActions({

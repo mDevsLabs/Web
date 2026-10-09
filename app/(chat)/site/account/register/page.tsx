@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, Loader2, UserPlus } from "lucide-react";
+import { GlobeIcon as Globe, Loader2Icon as Loader2, UserPlusIcon as UserPlus } from "@mdevs/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import { type FormEvent, Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";

@@ -8,6 +8,12 @@ export type Status =
 export interface Settings {
   memoryAllowed: boolean;
   name: string;
+  /**
+   * Configuration de départ ACHEVÉE. `false` = le compte vient de recevoir son
+   * espace de départ et doit passer par l'assistant. Jamais lu pour décider
+   * d'un accès : c'est un repère de parcours, pas une autorisation.
+   */
+  onboardingCompleted: boolean;
   paused: boolean;
   researchAllowed: boolean;
 }
@@ -74,7 +80,36 @@ export interface Space {
   id: string;
   name: string;
 }
-export interface Wakie {
+/**
+ * Sélection d'outils d'un Wakie ou d'une conversation.
+ *
+ * `null` et `[]` ne veulent PAS dire la même chose, et c'est délibéré :
+ *
+ *   - sur un **Wakie**, `null` = aucun réglage, donc on sert ce qui est livré
+ *     par défaut ;
+ *   - sur une **conversation**, `null` = repli sur le réglage du Wakie, tandis
+ *     que `[]` = choix explicite de ne rien utiliser.
+ *
+ * C'est cette distinction qui permet à un réglage de Wakie de servir de
+ * défaut sans jamais écraser une conversation qui a décidé autrement. Elle
+ * est aussi ce qui interdit de traiter une sélection absente comme « tous les
+ * outils du compte ».
+ */
+export interface CapabilitySelection {
+  /** Serveurs MCP autorisés (`McpServer.id`). */
+  mcpServerIds?: string[] | null;
+  /** Plugins autorisés (`PluginInstallation.pluginId`). */
+  pluginIds?: string[] | null;
+  /** Skills autorisés (`Skill.id`). */
+  skillIds?: string[] | null;
+  /** Paramètres des Skills, indexés PAR SKILL : deux Skills peuvent déclarer
+   * le même nom de paramètre sans que leurs valeurs se confondent. */
+  skillParams?: Record<string, Record<string, string>> | null;
+  /** Outils de `lib/ai/tools` autorisés (`TOOL_IDS`). */
+  toolIds?: string[] | null;
+}
+
+export interface Wakie extends CapabilitySelection {
   /** Mascotte choisie (`/wakies/<avatar>.png`) ; null = déduite de l'id. */
   avatar?: string | null;
   createdAt: number;
@@ -91,15 +126,20 @@ export interface Wakie {
   spaceId: string;
   spaceIds: string[];
 }
-export interface Conversation {
+
+export interface Conversation extends CapabilitySelection {
   createdAt: number;
   id: string;
   /** Frozen at creation; null means this conversation does not participate. */
   learningContainerId?: string | null;
   /** Modèle IA de cette conversation ; null = modèle du Wakie, puis défaut. */
   model?: string | null;
+  /** Envoyée par le serveur mais retirée du contrat : `userId` est supprimé
+   * par `versClient`. Conservée pour ne pas casser les lectures existantes. */
   ownerId: string;
   title: string;
+  /** Mis à jour à chaque message ; absent du contrat historique. */
+  updatedAt?: number;
   wakieId: string;
 }
 export interface CallReceipt {
@@ -114,6 +154,9 @@ export interface CallReceipt {
 }
 export interface SetupStatus {
   browser: boolean;
+  /** Ordinateurs persistants (OpenBot) : non branchés. Présent sur le réseau
+   * mais absent du contrat historique — voir `lib/wakies/setup.ts`. */
+  computers?: boolean;
   intelligence: boolean;
   missing: string[];
   model: boolean;

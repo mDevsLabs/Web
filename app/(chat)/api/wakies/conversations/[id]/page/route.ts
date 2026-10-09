@@ -5,6 +5,7 @@ import {
   isResponse,
   json,
   notFound,
+  rejectCrossOriginMutation,
   requireWakiesUser,
 } from "@/lib/wakies/http";
 import {
@@ -58,6 +59,8 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (isResponse(identite)) {
     return identite;
@@ -95,7 +98,7 @@ export async function POST(
   if (limite) {
     return limite;
   }
-  const messages = await listMessages(id);
+  const messages = await listMessages(identite.userId, id);
   const page = await createPage(
     identite.userId,
     spaceId,

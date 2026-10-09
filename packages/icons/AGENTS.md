@@ -29,7 +29,7 @@ import type {IconProps} from '@mdevs/icons/core';
 
 Le manifeste contient `slug`, `category`, `tags`, `source`, `geometryHash` et `svg` en plus des noms/imports. `svg` est un chemin relatif au package. `source` identifie la provenance de la géométrie, pas le chemin du composant React. Tous les noms exportés d'icônes portent le suffixe `Icon` ; ils sont sensibles à la casse.
 
-Les imports racine, catégorie et individuels sont publics. Ne pas utiliser d'import par défaut, de chemin `src`, de chemin `dist` ni de nom supposé à partir d'une documentation Lucide/Tabler externe. Il n'y a pas de feuille de style Mdevs à importer pour les icônes seules ; `currentColor` suit la couleur calculée propre du SVG inline : noir/blanc par défaut, puis color/style peuvent la personnaliser.
+Les imports racine, catégorie et individuels sont publics. Ne pas utiliser d'import par défaut, de chemin `src`, de chemin `dist` ni de nom supposé à partir d'une documentation Lucide/Tabler externe. Il n'y a pas de feuille de style Mdevs à importer pour les icônes seules ; `currentColor` suit la couleur calculée propre du SVG inline : héritée du texte parent par défaut, puis color/style peuvent la personnaliser.
 
 ## 3. Respecter le contrat de props
 
@@ -123,9 +123,9 @@ Calculer SHA256 de `json.dumps(nodes, ensure_ascii=False, separators=(',', ':'))
 
 ## 11. Noir/blanc et priorités de couleur
 
-Le contour reste currentColor mais le SVG reçoit une couleur propre monochrome. Dans une portée UI, `--md-icon-color` vaut noir en clair et blanc en sombre, puis suit les portails. Sans CSS UI, light-dark et color-scheme:light dark donnent le choix système sur navigateur compatible ; color="#000" est le repli. Pour un thème manuel hors UI, définir ce token sur le périmètre ou fournir color explicitement.
+Le contour utilise `currentColor` et le SVG hérite du texte parent. Le thème et les boutons inversés déterminent ainsi son contraste. Le wrapper ne force aucune couleur ni `color-scheme` ; aucun CSS UI n'est requis pour cet héritage.
 
-`color` est extrait séparément ; `style` est fusionné avec la couleur/default color-scheme et ses valeurs explicites gagnent. Les autres attributs SVG sont toujours transmis après les défauts. Un parent coloré n’est plus hérité automatiquement comme en 0.1.0 ; pour un héritage volontaire utiliser style.color=currentColor. Les API natives permettent une personnalisation, mais un agent suivant STYLE doit conserver des valeurs noir/blanc, notamment sur un bouton inversé.
+`color` et `style` sont transmis sans valeur imposée. `style.color` garde sa priorité CSS normale sur l'attribut `color`. Les autres attributs SVG sont toujours transmis après les défauts. Préserver la couleur du contrôle parent, notamment sur un bouton inversé ou un état informatif.
 
 Ne pas confondre un SVG React inline avec un fichier chargé par img : les tokens du provider ne traversent pas le document externe. Les SVG bruts ont leur propre style monochrome et trait 1,5 ; pour suivre précisément le thème du projet, préférer le composant React. Aucun CSS UI ni police Inter n’est requis par le package Icons seul.
 

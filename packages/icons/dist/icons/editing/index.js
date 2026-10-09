@@ -18,6 +18,7 @@ import { RulerIcon } from "./ruler.js";
 import { RulerDimensionLineIcon } from "./ruler-dimension-line.js";
 import { WandIcon } from "./wand.js";
 import { Wand2Icon } from "./wand-2.js";
+import { SquarePenIcon } from "./square-pen.js";
 export {
   BrushCleaningIcon,
   BrushIcon,
@@ -36,6 +37,7 @@ export {
   PencilSparklesIcon,
   RulerDimensionLineIcon,
   RulerIcon,
+  SquarePenIcon,
   Wand2Icon,
   WandIcon
 };

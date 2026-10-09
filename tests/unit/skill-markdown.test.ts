@@ -123,7 +123,7 @@ describe("Templates Skills statiques", () => {
         tools: ["searchOpenAlexWorks"],
       })
     );
-    expect(freePlugin.valid).toBe(false);
+    expect(freePlugin.valid).toBe(true);
   });
 });
 

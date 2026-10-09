@@ -1,4 +1,4 @@
-import { BarChart3, LifeBuoy, MessageSquare, PlusCircle } from "lucide-react";
+import { BarChart3Icon as BarChart3, LifeBuoyIcon as LifeBuoy, MessageSquareIcon as MessageSquare, PlusCircleIcon as PlusCircle } from "@mdevs/icons";
 import type { Metadata } from "next";
 import Link from "@/components/site/router";
 

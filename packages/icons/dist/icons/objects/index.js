@@ -1,127 +1,63 @@
 "use client";
-import { ArmchairIcon } from "./armchair.js";
-import { Armchair2Icon } from "./armchair-2.js";
-import { Armchair2OffIcon } from "./armchair-2-off.js";
-import { ArmchairOffIcon } from "./armchair-off.js";
-import { BackpackIcon } from "./backpack.js";
-import { BackpackOffIcon } from "./backpack-off.js";
-import { BathIcon } from "./bath.js";
-import { BathOffIcon } from "./bath-off.js";
-import { BedIcon } from "./bed.js";
-import { BedDoubleIcon } from "./bed-double.js";
-import { BedFlatIcon } from "./bed-flat.js";
-import { BedOffIcon } from "./bed-off.js";
-import { BedSingleIcon } from "./bed-single.js";
-import { BellIcon } from "./bell.js";
-import { BellCheckIcon } from "./bell-check.js";
-import { BellDotIcon } from "./bell-dot.js";
-import { BellElectricIcon } from "./bell-electric.js";
-import { BellMinusIcon } from "./bell-minus.js";
-import { BellOffIcon } from "./bell-off.js";
-import { BellPlusIcon } from "./bell-plus.js";
-import { BellRingIcon } from "./bell-ring.js";
-import { BellSchoolIcon } from "./bell-school.js";
-import { BoxIcon } from "./box.js";
-import { BoxMultiple0Icon } from "./box-multiple-0.js";
-import { BoxMultiple1Icon } from "./box-multiple-1.js";
-import { BoxMultiple2Icon } from "./box-multiple-2.js";
-import { BoxMultiple3Icon } from "./box-multiple-3.js";
-import { BoxMultiple4Icon } from "./box-multiple-4.js";
-import { BoxMultiple5Icon } from "./box-multiple-5.js";
-import { BoxMultiple6Icon } from "./box-multiple-6.js";
-import { BoxMultiple7Icon } from "./box-multiple-7.js";
-import { BoxMultiple8Icon } from "./box-multiple-8.js";
-import { BoxMultiple9Icon } from "./box-multiple-9.js";
-import { BoxSelectIcon } from "./box-select.js";
-import { BriefcaseIcon } from "./briefcase.js";
-import { BriefcaseBusinessIcon } from "./briefcase-business.js";
-import { BriefcaseConveyorBeltIcon } from "./briefcase-conveyor-belt.js";
-import { BriefcaseMedicalIcon } from "./briefcase-medical.js";
-import { BriefcasePlusIcon } from "./briefcase-plus.js";
-import { FlagIcon } from "./flag.js";
-import { Flag2Icon } from "./flag-2.js";
-import { Flag2OffIcon } from "./flag-2-off.js";
-import { Flag3Icon } from "./flag-3.js";
-import { FlagBoltIcon } from "./flag-bolt.js";
-import { FlagOffIcon } from "./flag-off.js";
-import { FlagTriangleLeftIcon } from "./flag-triangle-left.js";
-import { FlagTriangleRightIcon } from "./flag-triangle-right.js";
-import { InboxIcon } from "./inbox.js";
-import { LampIcon } from "./lamp.js";
-import { LampCeilingIcon } from "./lamp-ceiling.js";
-import { LampDeskIcon } from "./lamp-desk.js";
-import { LampFloorIcon } from "./lamp-floor.js";
-import { LampWallDownIcon } from "./lamp-wall-down.js";
-import { LampWallUpIcon } from "./lamp-wall-up.js";
-import { LightbulbIcon } from "./lightbulb.js";
-import { LightbulbOffIcon } from "./lightbulb-off.js";
-import { LuggageIcon } from "./luggage.js";
-import { SofaIcon } from "./sofa.js";
-import { Trash2Icon } from "./trash-2.js";
-import { TrashOffIcon } from "./trash-off.js";
-import { UmbrellaIcon } from "./umbrella.js";
-import { UmbrellaOffIcon } from "./umbrella-off.js";
-export {
-  Armchair2Icon,
-  Armchair2OffIcon,
-  ArmchairIcon,
-  ArmchairOffIcon,
-  BackpackIcon,
-  BackpackOffIcon,
-  BathIcon,
-  BathOffIcon,
-  BedDoubleIcon,
-  BedFlatIcon,
-  BedIcon,
-  BedOffIcon,
-  BedSingleIcon,
-  BellCheckIcon,
-  BellDotIcon,
-  BellElectricIcon,
-  BellIcon,
-  BellMinusIcon,
-  BellOffIcon,
-  BellPlusIcon,
-  BellRingIcon,
-  BellSchoolIcon,
-  BoxIcon,
-  BoxMultiple0Icon,
-  BoxMultiple1Icon,
-  BoxMultiple2Icon,
-  BoxMultiple3Icon,
-  BoxMultiple4Icon,
-  BoxMultiple5Icon,
-  BoxMultiple6Icon,
-  BoxMultiple7Icon,
-  BoxMultiple8Icon,
-  BoxMultiple9Icon,
-  BoxSelectIcon,
-  BriefcaseBusinessIcon,
-  BriefcaseConveyorBeltIcon,
-  BriefcaseIcon,
-  BriefcaseMedicalIcon,
-  BriefcasePlusIcon,
-  Flag2Icon,
-  Flag2OffIcon,
-  Flag3Icon,
-  FlagBoltIcon,
-  FlagIcon,
-  FlagOffIcon,
-  FlagTriangleLeftIcon,
-  FlagTriangleRightIcon,
-  InboxIcon,
-  LampCeilingIcon,
-  LampDeskIcon,
-  LampFloorIcon,
-  LampIcon,
-  LampWallDownIcon,
-  LampWallUpIcon,
-  LightbulbIcon,
-  LightbulbOffIcon,
-  LuggageIcon,
-  SofaIcon,
-  Trash2Icon,
-  TrashOffIcon,
-  UmbrellaIcon,
-  UmbrellaOffIcon
-};
+export { ArmchairIcon } from './armchair.js';
+export { Armchair2Icon } from './armchair-2.js';
+export { Armchair2OffIcon } from './armchair-2-off.js';
+export { ArmchairOffIcon } from './armchair-off.js';
+export { BackpackIcon } from './backpack.js';
+export { BackpackOffIcon } from './backpack-off.js';
+export { BathIcon } from './bath.js';
+export { BathOffIcon } from './bath-off.js';
+export { BedIcon } from './bed.js';
+export { BedDoubleIcon } from './bed-double.js';
+export { BedFlatIcon } from './bed-flat.js';
+export { BedOffIcon } from './bed-off.js';
+export { BedSingleIcon } from './bed-single.js';
+export { BellIcon } from './bell.js';
+export { BellCheckIcon } from './bell-check.js';
+export { BellDotIcon } from './bell-dot.js';
+export { BellElectricIcon } from './bell-electric.js';
+export { BellMinusIcon } from './bell-minus.js';
+export { BellOffIcon } from './bell-off.js';
+export { BellPlusIcon } from './bell-plus.js';
+export { BellRingIcon } from './bell-ring.js';
+export { BellSchoolIcon } from './bell-school.js';
+export { BoxIcon } from './box.js';
+export { BoxMultiple0Icon } from './box-multiple-0.js';
+export { BoxMultiple1Icon } from './box-multiple-1.js';
+export { BoxMultiple2Icon } from './box-multiple-2.js';
+export { BoxMultiple3Icon } from './box-multiple-3.js';
+export { BoxMultiple4Icon } from './box-multiple-4.js';
+export { BoxMultiple5Icon } from './box-multiple-5.js';
+export { BoxMultiple6Icon } from './box-multiple-6.js';
+export { BoxMultiple7Icon } from './box-multiple-7.js';
+export { BoxMultiple8Icon } from './box-multiple-8.js';
+export { BoxMultiple9Icon } from './box-multiple-9.js';
+export { BoxSelectIcon } from './box-select.js';
+export { BriefcaseIcon } from './briefcase.js';
+export { BriefcaseBusinessIcon } from './briefcase-business.js';
+export { BriefcaseConveyorBeltIcon } from './briefcase-conveyor-belt.js';
+export { BriefcaseMedicalIcon } from './briefcase-medical.js';
+export { BriefcasePlusIcon } from './briefcase-plus.js';
+export { FlagIcon } from './flag.js';
+export { Flag2Icon } from './flag-2.js';
+export { Flag2OffIcon } from './flag-2-off.js';
+export { Flag3Icon } from './flag-3.js';
+export { FlagBoltIcon } from './flag-bolt.js';
+export { FlagOffIcon } from './flag-off.js';
+export { FlagTriangleLeftIcon } from './flag-triangle-left.js';
+export { FlagTriangleRightIcon } from './flag-triangle-right.js';
+export { InboxIcon } from './inbox.js';
+export { LampIcon } from './lamp.js';
+export { LampCeilingIcon } from './lamp-ceiling.js';
+export { LampDeskIcon } from './lamp-desk.js';
+export { LampFloorIcon } from './lamp-floor.js';
+export { LampWallDownIcon } from './lamp-wall-down.js';
+export { LampWallUpIcon } from './lamp-wall-up.js';
+export { LightbulbIcon } from './lightbulb.js';
+export { LightbulbOffIcon } from './lightbulb-off.js';
+export { LuggageIcon } from './luggage.js';
+export { SofaIcon } from './sofa.js';
+export { Trash2Icon } from './trash-2.js';
+export { TrashOffIcon } from './trash-off.js';
+export { UmbrellaIcon } from './umbrella.js';
+export { UmbrellaOffIcon } from './umbrella-off.js';

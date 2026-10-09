@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUpIcon as ArrowUp } from "@mdevs/icons";
 import { motion, AnimatePresence } from 'motion/react';
 
 export function BackToTop() {

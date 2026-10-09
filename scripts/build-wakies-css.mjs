@@ -7,7 +7,7 @@
  * POURQUOI CE SCRIPT
  *
  * Wakies arrive avec deux feuilles écrites pour une application Vite qui
- * possède le document entier (`apps/wakies/src/client/style.css`,
+ * possède le document entier (`apps/wakies/integration/web/style.css`,
  * `editor.css`). Trois de leurs mécanismes sont inacceptables tels quels dans
  * l'hôte :
  *
@@ -28,7 +28,7 @@
  * On ne change pas le design de Wakies : on change la PORTÉE de chaque règle.
  * Le fichier est lu en AST (PostCSS — même chaîne que Turbopack, donc aucun
  * analyseur maison à maintenir), puis chaque liste de sélecteurs est re-ancrée
- * sous `.wakies-root`, l'élément posé par app/(chat)/wakies/layout.tsx autour
+ * sous `.wakies-root`, l'élément posé par app/(wakies)/wakies/layout.tsx autour
  * de tout l'arbre Wakies.
  *
  * La correspondance est une TABLE, pas une suite de « remplacements » :
@@ -47,7 +47,7 @@
  * résiduel, une source disparue : tout est signalé, et rien n'est écrit.
  *
  * SORTIES : components/wakies/wakies.css et components/wakies/wakies-editor.css
- * — importés par app/(chat)/wakies/layout.tsx et par lui seul. Ces fichiers
+ * — importés par app/(wakies)/wakies/layout.tsx et par lui seul. Ces fichiers
  * sont générés : ils sont EXCLUS du lint (biome.jsonc), comme
  * components/vibe/vibe.css.
  *
@@ -67,12 +67,17 @@ const PORTEUR = ".wakies-root";
 /** Sources → sorties. L'ordre d'import dans le layout doit suivre cet ordre. */
 const FEUILLES = [
   {
+    sortie: "components/wakies/wakies-ui.css",
+    source: "packages/ui/dist/styles.css",
+    ui: true,
+  },
+  {
     sortie: "components/wakies/wakies.css",
-    source: "apps/wakies/src/client/style.css",
+    source: "apps/wakies/integration/web/style.css",
   },
   {
     sortie: "components/wakies/wakies-editor.css",
-    source: "apps/wakies/src/client/editor.css",
+    source: "apps/wakies/integration/web/editor.css",
   },
 ];
 
@@ -294,6 +299,31 @@ for (const feuille of FEUILLES) {
   }
 
   const racine = postcss.parse(readFileSync(source, "utf8"), { from: source });
+  if (feuille.ui) {
+    racine.walkAtRules("font-face", (rule) => rule.remove());
+    racine.walkAtRules("media", (rule) => {
+      if (rule.params.includes("prefers-color-scheme: dark")) rule.remove();
+    });
+  }
+  // Les identifiants de keyframes sont globaux : les préfixer protège les autres applications.
+  const animations = new Map();
+  const prefixe = feuille.sortie.split("/").pop().replace(".css", "");
+  racine.walkAtRules((regle) => {
+    if (!regle.name.endsWith("keyframes")) return;
+    const nom = regle.params.trim();
+    const nouveau = `${prefixe}-${nom}`;
+    animations.set(nom, nouveau);
+    regle.params = nouveau;
+  });
+  racine.walkDecls((declaration) => {
+    if (!/^(?:-webkit-)?animation(?:-name)?$/.test(declaration.prop)) return;
+    for (const [nom, nouveau] of animations) {
+      declaration.value = declaration.value
+        .split(/([\s,])/)
+        .map((morceau) => (morceau === nom ? nouveau : morceau))
+        .join("");
+    }
+  });
   const echecs = [];
   let reglesAncrees = 0;
   let selecteursAncrees = 0;
@@ -347,12 +377,12 @@ for (const feuille of FEUILLES) {
  * Source : ${feuille.source} · Script : scripts/build-wakies-css.mjs
  *
  * Chaque sélecteur de Wakies est ancré sous ${PORTEUR}, l'élément posé par
- * app/(chat)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
+ * app/(wakies)/wakies/layout.tsx autour de l'arbre /wakies. Sans cet ancrage,
  * le thème clair de Wakies (${PORTEUR} porte :root) et ses sélecteurs nus
  * (button, input, .sidebar…) repeindraient le chat, la barre latérale et les
  * réglages de l'hôte.
  *
- * Importé par app/(chat)/wakies/layout.tsx et par lui seul.
+ * Importé par app/(wakies)/wakies/layout.tsx et par lui seul.
  * Exclu du lint (biome.jsonc) : c'est une sortie de script.
  *
  * Relancer après toute modification de la source :
@@ -361,6 +391,15 @@ for (const feuille of FEUILLES) {
 
 `;
 
+  if (!feuille.ui) {
+    // Les primitives du paquet gardent la priorité sur les anciens contrôles nus.
+    const couche = postcss.atRule({ name: "layer", params: "wakies-base" });
+    couche.append([...racine.nodes]);
+    racine.append(couche);
+  }
+  racine.prepend(
+    postcss.atRule({ name: "layer", params: "wakies-base, mdevs" })
+  );
   writeFileSync(sortie, `${entete}${racine.toString().trim()}\n`);
   console.log(
     `✓ ${feuille.sortie} — ${reglesAncrees} règles, ${selecteursAncrees} sélecteurs`

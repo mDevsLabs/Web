@@ -7,17 +7,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import {
-  Sparkles,
-  Heart,
-  Mic,
-  MicOff,
-  Loader2,
-  AlertCircle,
-  Image as ImageIcon,
-  Languages,
-  X,
-} from 'lucide-react';
+import { SparklesIcon as Sparkles, HeartIcon as Heart, MicIcon as Mic, MicOffIcon as MicOff, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, ImageIcon, LanguagesIcon as Languages, XIcon as X } from "@mdevs/icons";
 import { Comment, MediaAsset } from '../../types/vibe';
 import { ApiService, TRANSLATION_LANGUAGES } from '../../services/api';
 import { NotificationService } from '../../services/notificationService';

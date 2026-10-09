@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { XIcon as X } from "@mdevs/icons";
 import { AnimatePresence, motion, useDragControls } from "motion/react";
 import { useEffect } from "react";
 

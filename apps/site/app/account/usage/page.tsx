@@ -3,18 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
-import {
-  Activity,
-  ArrowDownToLine,
-  Clock,
-  Database,
-  Network,
-  Zap,
-  CheckCircle2,
-  AlertTriangle,
-  Loader2,
-  Sparkles
-} from "lucide-react";
+import { ActivityIcon as Activity, ArrowDownToLineIcon as ArrowDownToLine, ClockIcon as Clock, DatabaseIcon as Database, NetworkIcon as Network, ZapIcon as Zap, CheckCircle2Icon as CheckCircle2, AlertTriangleIcon as AlertTriangle, Loader2Icon as Loader2, SparklesIcon as Sparkles } from "@mdevs/icons";
 import Link from "next/link";
 import { useAuth } from "@/components/auth-provider";
 import { getDashboardStats } from "@/app/actions/api-stats";

@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const BoomBoxIcon = /* @__PURE__ */ createIcon("BoomBoxIcon", [["path", { "d": "M4 9V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" }], ["path", { "d": "M8 8v1" }], ["path", { "d": "M12 8v1" }], ["path", { "d": "M16 8v1" }], ["rect", { "width": "20", "height": "12", "x": "2", "y": "9", "rx": "2" }], ["circle", { "cx": "8", "cy": "15", "r": "2" }], ["circle", { "cx": "16", "cy": "15", "r": "2" }]]);
-export {
-  BoomBoxIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const BoomBoxIcon = /* @__PURE__ */ createIcon('BoomBoxIcon', [["path", { "d": "M4 9V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" }], ["path", { "d": "M8 8v1" }], ["path", { "d": "M12 8v1" }], ["path", { "d": "M16 8v1" }], ["rect", { "width": "20", "height": "12", "x": "2", "y": "9", "rx": "2" }], ["circle", { "cx": "8", "cy": "15", "r": "2" }], ["circle", { "cx": "16", "cy": "15", "r": "2" }]]);

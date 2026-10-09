@@ -8,7 +8,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Check, Loader2, Search, UserPlus, Users } from 'lucide-react';
+import { CheckIcon as Check, Loader2Icon as Loader2, SearchIcon as Search, UserPlusIcon as UserPlus, UsersIcon as Users } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import { ProfileAvatar } from '../common/ProfileAvatar';

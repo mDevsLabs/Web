@@ -6,15 +6,7 @@
  * ============================================================================
  */
 
-import {
-  Loader2,
-  Pause,
-  Play,
-  SkipBack,
-  SkipForward,
-  Volume2,
-  X,
-} from "lucide-react";
+import { Loader2Icon as Loader2, PauseIcon as Pause, PlayIcon as Play, SkipBackIcon as SkipBack, SkipForwardIcon as SkipForward, Volume2Icon as Volume2, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useAudioPlayer } from "@/lib/vibe/context/AudioPlayerContext";
 import { haptics } from "@/lib/vibe/services/haptics";

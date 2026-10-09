@@ -11,20 +11,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import QRCode from 'qrcode';
 import { makeExcerpt } from '../common/richTextUtils';
-import {
-  X,
-  Search,
-  Send,
-  Link2,
-  QrCode,
-  MessageSquare,
-  Check,
-  Copy,
-  Share2,
-  Download,
-  Loader2,
-  UserPlus
-} from 'lucide-react';
+import { XIcon as X, SearchIcon as Search, SendIcon as Send, Link2Icon as Link2, QrCodeIcon as QrCode, MessageSquareIcon as MessageSquare, CheckIcon as Check, CopyIcon as Copy, Share2Icon as Share2, DownloadIcon as Download, Loader2Icon as Loader2, UserPlusIcon as UserPlus } from "@mdevs/icons";
 import type { Post } from '../../types/vibe';
 import { ApiService } from '../../services/api';
 import { NotificationService } from '../../services/notificationService';

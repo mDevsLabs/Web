@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2Icon as Volume2, VolumeXIcon as VolumeX } from "@mdevs/icons";
 
 export function NewsVideo({
   src,

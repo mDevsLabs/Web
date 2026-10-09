@@ -22,7 +22,7 @@ __export(arrow_big_up_dash_exports, {
   ArrowBigUpDashIcon: () => ArrowBigUpDashIcon
 });
 module.exports = __toCommonJS(arrow_big_up_dash_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowBigUpDashIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowBigUpDashIcon", [["path", { "d": "M14 16a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h3.293a.707.707 0 0 0 .5-1.207l-6.939-6.939a1.207 1.207 0 0 0-1.708 0l-6.94 6.94a.707.707 0 0 0 .5 1.206H8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1z" }], ["path", { "d": "M9 20h6" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

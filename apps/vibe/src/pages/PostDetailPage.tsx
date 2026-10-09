@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Loader2, AlertCircle, Sparkles, Volume2 } from 'lucide-react';
+import { ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, SparklesIcon as Sparkles, Volume2Icon as Volume2 } from "@mdevs/icons";
 import { Post } from '../types/vibe';
 import { PostCard } from '../components/feed/PostCard';
 import { CommentSection } from '../components/comments/CommentSection';

@@ -6,27 +6,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  BarChart2,
-  BookHeart,
-  CalendarClock,
-  Check,
-  Clock,
-  FileText,
-  Globe,
-  Image as ImageIcon,
-  Loader2,
-  Lock,
-  Mic,
-  MicOff,
-  Send,
-  Sparkles,
-  Undo2,
-  Users,
-  Wand2,
-  X,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, BarChart2Icon as BarChart2, BookHeartIcon as BookHeart, CalendarClockIcon as CalendarClock, CheckIcon as Check, ClockIcon as Clock, FileTextIcon as FileText, GlobeIcon as Globe, ImageIcon, Loader2Icon as Loader2, LockIcon as Lock, MicIcon as Mic, MicOffIcon as MicOff, SendIcon as Send, SparklesIcon as Sparkles, Undo2Icon as Undo2, UsersIcon as Users, Wand2Icon as Wand2, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";

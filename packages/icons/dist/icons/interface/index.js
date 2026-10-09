@@ -123,6 +123,9 @@ import { SquareTextIcon } from "./square-text.js";
 import { SquareUserIcon } from "./square-user.js";
 import { SquareUserRoundIcon } from "./square-user-round.js";
 import { SquareXIcon } from "./square-x.js";
+import { MoreHorizontalIcon } from "./more-horizontal.js";
+import { MoreVerticalIcon } from "./more-vertical.js";
+import { PanelsTopLeftIcon } from "./panels-top-left.js";
 export {
   CircleAsteriskIcon,
   CircleCheckIcon,
@@ -198,6 +201,8 @@ export {
   MenuSquareIcon,
   Minimize2Icon,
   MinimizeIcon,
+  MoreHorizontalIcon,
+  MoreVerticalIcon,
   PanelBottomCloseIcon,
   PanelBottomDashedIcon,
   PanelBottomIcon,
@@ -216,6 +221,7 @@ export {
   PanelTopDashedIcon,
   PanelTopIcon,
   PanelTopOpenIcon,
+  PanelsTopLeftIcon,
   RectangleCircleIcon,
   RectangleGogglesIcon,
   RectangleHorizontalIcon,

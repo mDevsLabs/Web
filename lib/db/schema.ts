@@ -1720,6 +1720,11 @@ export type AgentUserInputRequest = InferSelectModel<
 export const wakiesSettings = pgTable("WakiesSettings", {
   memoryAllowed: boolean("memoryAllowed").notNull().default(true),
   name: varchar("name", { length: 40 }).notNull().default("Wakie"),
+  // Configuration de départ ACHEVÉE. TRUE = le compte a déjà un profil choisi,
+  // donc l'assistant ne doit plus s'afficher. TRUE par défaut pour que les
+  // Wakies historiques restent reconnaissables : seul `ensureStarterWorkspace`
+  // passe la ligne à FALSE, au moment exact où il crée l'espace de départ.
+  onboardingCompleted: boolean("onboardingCompleted").notNull().default(true),
   paused: boolean("paused").notNull().default(false),
   researchAllowed: boolean("researchAllowed").notNull().default(true),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
@@ -1764,19 +1769,35 @@ export const wakiesWakie = pgTable(
     // service n'est pas branché). La colonne est conservée pour ne pas perdre
     // la donnée si un jour un compte l'exploite.
     learningContainerId: text("learningContainerId"),
+    // Serveurs MCP que ce Wakie peut appeler. NULL = aucun réglage : ce n'est
+    // PAS la même chose qu'un tableau vide, qui veut dire « choix explicite
+    // sans serveur ». Les identifiants sont ceux de `McpServer.id` (uuid) et
+    // sont revalidés côté serveur à chaque tour : une ligne supprimée ou
+    // désactivée ne rend aucun outil exécutable.
+    mcpServerIds: uuid("mcpServerIds").array(),
     memoryAllowed: boolean("memoryAllowed").notNull().default(true),
     // Modèle IA par défaut des NOUVELLES conversations de ce Wakie. NULL = le
     // modèle par défaut de l'application. La conversation peut le surcharger
     // (`WakiesConversation.model`) : c'est cette valeur-là qui est facturée.
     model: text("model"),
     name: varchar("name", { length: 40 }).notNull(),
+    pluginIds: text("pluginIds").array(),
     researchAllowed: boolean("researchAllowed").notNull().default(true),
     skillDeliveryEnabled: boolean("skillDeliveryEnabled")
       .notNull()
       .default(false),
+    skillIds: uuid("skillIds").array(),
+    // Paramètres des Skills, indexés PAR SKILL : deux Skills distincts peuvent
+    // déclarer le même nom de paramètre sans que leurs valeurs se confondent.
+    skillParams:
+      jsonb("skillParams").$type<Record<string, Record<string, string>>>(),
     spaceId: uuid("spaceId").references(() => wakiesSpace.id, {
       onDelete: "cascade",
     }),
+    // Outils de `lib/ai/tools` autorisés par DÉFAUT dans les conversations de
+    // ce Wakie. NULL = aucun choix enregistré ; la conversation peut le
+    // surcharger. Les identifiants sont ceux de `TOOL_IDS`.
+    toolIds: text("toolIds").array(),
     userId: text("userId").notNull(),
   },
   (table) => ({
@@ -1820,10 +1841,21 @@ export const wakiesConversation = pgTable(
     // Figé à la création : une conversation qui ne participe pas à
     // l'apprentissage y porte `null` DÉFINITIVEMENT.
     learningContainerId: text("learningContainerId"),
+    // SÉLECTION D'OUTILS DE CETTE CONVERSATION. Chacune de ces colonnes suit
+    // la même sémantique que `model` : NULL = repli sur le réglage du Wakie,
+    // un tableau vide = choix explicite « aucun », et une valeur non vide
+    // remplace le réglage du Wakie. Le serveur revalide toujours ces
+    // identifiants avant d'instancier quoi que ce soit.
+    mcpServerIds: uuid("mcpServerIds").array(),
     // Modèle IA de CETTE conversation, choisi dans l'en-tête du chat. NULL =
     // repli sur le modèle du Wakie, puis sur le modèle par défaut.
     model: text("model"),
+    pluginIds: text("pluginIds").array(),
+    skillIds: uuid("skillIds").array(),
+    skillParams:
+      jsonb("skillParams").$type<Record<string, Record<string, string>>>(),
     title: varchar("title", { length: 120 }).notNull(),
+    toolIds: text("toolIds").array(),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),
     wakieId: uuid("wakieId")
@@ -2108,3 +2140,30 @@ export const wakiesCapture = pgTable("WakiesCapture", {
   value: jsonb("value").$type<unknown>(),
 });
 export type WakiesCapture = InferSelectModel<typeof wakiesCapture>;
+
+/** Tour conversationnel durable : empêcher un rejeu ou deux générations concurrentes sur une conversation. */
+export const wakiesChatTurn = pgTable(
+  "WakiesChatTurn",
+  {
+    conversationId: uuid("conversationId")
+      .notNull()
+      .references(() => wakiesConversation.id, { onDelete: "cascade" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    expiresAt: timestamp("expiresAt").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    messageId: text("messageId").notNull(),
+    responseId: uuid("responseId").notNull().defaultRandom(),
+    status: varchar("status", { length: 16 }).notNull().default("running"),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    messageIdx: uniqueIndex("WakiesChatTurn_conversation_message_idx").on(
+      table.conversationId,
+      table.messageId
+    ),
+    userIdx: index("WakiesChatTurn_user_conversation_idx").on(
+      table.userId,
+      table.conversationId
+    ),
+  })
+);

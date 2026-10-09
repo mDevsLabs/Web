@@ -6,30 +6,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  Sparkles,
-  Image as ImageIcon,
-  Send,
-  RefreshCw,
-  Zap,
-  Loader2,
-  Copy,
-  Check,
-  Edit2,
-  Share2,
-  ShieldCheck,
-  ShieldAlert,
-  SquarePen,
-  XCircle,
-  Trash2,
-  CopyPlus,
-  Download,
-  ClipboardCopy,
-  FileJson,
-  Menu,
-  MoreVertical,
-  MessagesSquare
-} from 'lucide-react';
+import { SparklesIcon as Sparkles, ImageIcon, SendIcon as Send, RefreshCwIcon as RefreshCw, ZapIcon as Zap, Loader2Icon as Loader2, CopyIcon as Copy, CheckIcon as Check, Edit2Icon as Edit2, Share2Icon as Share2, ShieldCheckIcon as ShieldCheck, ShieldAlertIcon as ShieldAlert, SquarePenIcon as SquarePen, XCircleIcon as XCircle, Trash2Icon as Trash2, CopyPlusIcon as CopyPlus, DownloadIcon as Download, ClipboardCopyIcon as ClipboardCopy, FileJsonIcon as FileJson, MenuIcon as Menu, MoreVerticalIcon as MoreVertical, MessagesSquareIcon as MessagesSquare } from "@mdevs/icons";
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ApiService } from '../services/api';

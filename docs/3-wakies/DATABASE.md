@@ -6,7 +6,7 @@ Ce document présente l'architecture des données de Wakies, décrivant la trans
 
 ## 1. 🛡️ Isolation Multi-Tenant par `userId`
 
-Dans le modèle mAI Web, **toute table Wakies inclut une clé étrangère `userId` pointant vers la table `User`**.
+Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité mAI vérifiée). Certaines tables enfants, notamment les messages, sont isolées en vérifiant leur conversation ou Wakie propriétaire ; toutes ne portent pas physiquement `userId`, et ce champ texte n’est pas systématiquement une clé étrangère vers `User`.
 - Aucune entité ne peut exister sans rattachement explicite à un compte mAI Web.
 - Toutes les fonctions du module `lib/wakies/queries.ts` exigent `userId: string` en tout premier argument.
 
@@ -37,9 +37,16 @@ Dans le modèle mAI Web, **toute table Wakies inclut une clé étrangère `userI
 
 ## 3. 🔄 Comparaison avec le modèle SQLite d'origine
 
-| Caractéristique | Gabarit Original (`apps/wakies/`) | Portage mAI Web (`/wakies`) |
+| Caractéristique | Ancien gabarit OpenDots (archivé) | Portage mAI Web (`/wakies`) |
 |---|---|---|
 | **Moteur** | SQLite local (`node:sqlite`) | PostgreSQL Neon (Serverless) |
 | **Multi-utilisateur** | Non (mono-tenant via `OWNER_ID`) | Oui (isolation stricte par `userId`) |
 | **Conversations** | CopilotKit Intelligence Cloud | Base locale PG + AI SDK v7 |
 | **Tâches planifiées**| `setInterval` en mémoire | Endpoint transactionnel `/api/cron/wakies` |
+
+
+## Migration OpenMuse et tours de conversation
+
+Les seize tables historiques sont conservées. Les migrations 0041 (modèle/avatar) et 0042 préexistante restent en place. La migration additive 0043 ajoute WakiesChatTurn : propriétaire, conversation, message logique, UUID de réponse, statut et expiration. L’index unique conversation/message et le verrou transactionnel empêchent les doublons ; les lectures sont limitées et filtrées par compte. Aucun contenu historique n’est réécrit ou supprimé. Le journal et scripts/check-db-schema.mjs accompagnent la migration ; aucun DDL au runtime.
+
+Les objectifs simples utilisent WakiesPage et ses révisions, pas une base séparée. Les blobs privés continuent d’utiliser le stockage mAI. Aucune base source OpenMuse n’est créée ou utilisée en production. L’application de 0043 et la validation sur une vraie base sont nécessaires avant déploiement du chat.

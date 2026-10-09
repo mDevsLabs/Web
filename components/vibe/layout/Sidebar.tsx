@@ -5,18 +5,7 @@
  * ============================================================================
  */
 
-import {
-  Bell,
-  Compass,
-  Home,
-  Library,
-  LogOut,
-  Mail,
-  PenSquare,
-  Settings,
-  Sparkles,
-  User as UserIcon,
-} from "lucide-react";
+import { BellIcon as Bell, CompassIcon as Compass, HomeIcon as Home, LibraryIcon as Library, LogOutIcon as LogOut, MailIcon as Mail, PenSquareIcon as PenSquare, SettingsIcon as Settings, SparklesIcon as Sparkles, UserIcon } from "@mdevs/icons";
 import type React from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";

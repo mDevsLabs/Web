@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, Globe, MessageSquare, Zap } from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, MessageSquareIcon as MessageSquare, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import { GithubRelease } from "@/components/site/github-release";
 import Link from "@/components/site/router";

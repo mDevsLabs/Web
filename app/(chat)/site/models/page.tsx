@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  ArrowRight,
-  Calendar,
-  Cloud,
-  Cpu,
-  Eye,
-  EyeOff,
-  Layers,
-} from "lucide-react";
+import { ArrowRightIcon as ArrowRight, CalendarIcon as Calendar, CloudIcon as Cloud, CpuIcon as Cpu, EyeIcon as Eye, EyeOffIcon as EyeOff, LayersIcon as Layers } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "@/components/site/router";

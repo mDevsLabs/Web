@@ -5,17 +5,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  ArrowRight,
-  Eye,
-  EyeOff,
-  KeyRound,
-  Loader2,
-  Lock,
-  Mail,
-  User as UserIcon,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowRightIcon as ArrowRight, EyeIcon as Eye, EyeOffIcon as EyeOff, KeyRoundIcon as KeyRound, Loader2Icon as Loader2, LockIcon as Lock, MailIcon as Mail, UserIcon } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { VibeLogo } from "@/components/vibe/layout/VibeLogo";

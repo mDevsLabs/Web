@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  CheckCheck,
-  ChevronRight,
-  LoaderCircle,
-  MessageCircle,
-} from "lucide-react";
+  CheckCheckIcon as CheckCheck,
+  ChevronRightIcon as ChevronRight,
+  LoaderCircleIcon as LoaderCircle,
+  MessageCircleIcon as MessageCircle,
+} from "@mdevs/icons";
 import { Mascot } from "@/components/wakies/Mascot";
 import type { Task, Status as TaskStatus } from "@/lib/wakies/shared/types";
 export const relative = (value: number) => {

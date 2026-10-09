@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  FileText,
-  Image as ImageIcon,
-  Loader2,
-  Paperclip,
-  X,
-} from "lucide-react";
+import { FileTextIcon as FileText, ImageIcon, Loader2Icon as Loader2, PaperclipIcon as Paperclip, XIcon as X } from "@mdevs/icons";
 import type { RefObject } from "react";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import { SUPPORT_ATTACHMENT_LIMITS } from "@/app/(chat)/site/actions/support-utils";

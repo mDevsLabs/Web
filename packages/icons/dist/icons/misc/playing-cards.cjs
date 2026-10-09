@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var playing_cards_exports = {};
-__export(playing_cards_exports, {
-  PlayingCardsIcon: () => PlayingCardsIcon
-});
-module.exports = __toCommonJS(playing_cards_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const PlayingCardsIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("PlayingCardsIcon", [["path", { "d": "M14.832 8.445a1 1 0 00-1.589-.098l-2.075 3.098a1 1 0 000 1.11l2 3a1 1 0 001.664 0l2-3a1 1 0 000-1.11z" }], ["path", { "d": "m7.18 20.827-5-11a2 2 0 01.993-2.647L7 5.44" }], ["rect", { "x": "7", "y": "2", "width": "14", "height": "20", "rx": "2" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  PlayingCardsIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const PlayingCardsIcon = /* @__PURE__ */ createIcon('PlayingCardsIcon', [["path", { "d": "M14.832 8.445a1 1 0 00-1.589-.098l-2.075 3.098a1 1 0 000 1.11l2 3a1 1 0 001.664 0l2-3a1 1 0 000-1.11z" }], ["path", { "d": "m7.18 20.827-5-11a2 2 0 01.993-2.647L7 5.44" }], ["rect", { "x": "7", "y": "2", "width": "14", "height": "20", "rx": "2" }]]);
+exports.PlayingCardsIcon = PlayingCardsIcon;

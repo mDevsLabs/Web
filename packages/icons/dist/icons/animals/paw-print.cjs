@@ -22,7 +22,7 @@ __export(paw_print_exports, {
   PawPrintIcon: () => PawPrintIcon
 });
 module.exports = __toCommonJS(paw_print_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const PawPrintIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("PawPrintIcon", [["circle", { "cx": "11", "cy": "4", "r": "2" }], ["circle", { "cx": "18", "cy": "8", "r": "2" }], ["circle", { "cx": "20", "cy": "16", "r": "2" }], ["path", { "d": "M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

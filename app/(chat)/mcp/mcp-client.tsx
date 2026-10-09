@@ -1,35 +1,6 @@
 "use client";
-import type { LucideIcon } from "lucide-react";
-import {
-  ActivityIcon,
-  AlertCircleIcon,
-  BookOpenIcon,
-  CheckCircle2Icon,
-  CircleIcon,
-  CopyIcon,
-  CpuIcon,
-  CreditCardIcon,
-  DatabaseIcon,
-  DownloadIcon,
-  Edit2Icon,
-  FileTextIcon,
-  GithubIcon,
-  KeyIcon,
-  Loader2Icon,
-  MoreVerticalIcon,
-  PlusIcon,
-  RefreshCwIcon,
-  SearchIcon,
-  ServerIcon,
-  SettingsIcon,
-  ShieldAlertIcon,
-  ShieldCheckIcon,
-  StoreIcon,
-  TerminalIcon,
-  Trash2Icon,
-  WrenchIcon,
-  ZapIcon,
-} from "lucide-react";
+import type { IconProps } from "@mdevs/icons";
+import { ActivityIcon, AlertCircleIcon, BookOpenIcon, CheckCircle2Icon, CircleIcon, CopyIcon, CpuIcon, CreditCardIcon, DatabaseIcon, DownloadIcon, Edit2Icon, FileTextIcon, GithubIcon, KeyIcon, Loader2Icon, MoreVerticalIcon, PlusIcon, RefreshCwIcon, SearchIcon, ServerIcon, SettingsIcon, ShieldAlertIcon, ShieldCheckIcon, StoreIcon, TerminalIcon, Trash2Icon, WrenchIcon, ZapIcon } from "@mdevs/icons";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
@@ -97,7 +68,7 @@ type McpTemplateRow = {
 const STORE_CONNECTORS: ReadonlyArray<{
   color: string;
   highlight: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   templateId: string;
   tint: string;
 }> = [

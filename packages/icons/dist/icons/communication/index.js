@@ -65,6 +65,7 @@ import { SendIcon } from "./send.js";
 import { SendHorizonalIcon } from "./send-horizonal.js";
 import { SendToBackIcon } from "./send-to-back.js";
 import { SpeechIcon } from "./speech.js";
+import { MessageCircleQuestionIcon } from "./message-circle-question.js";
 export {
   AtSignIcon,
   MailAiIcon,
@@ -100,6 +101,7 @@ export {
   MessageCircleMoreIcon,
   MessageCircleOffIcon,
   MessageCirclePlusIcon,
+  MessageCircleQuestionIcon,
   MessageCircleQuestionMarkIcon,
   MessageCircleReplyIcon,
   MessageCircleWarningIcon,

@@ -53,6 +53,7 @@ import { HourglassCogIcon } from "./hourglass-cog.js";
 import { TimerIcon } from "./timer.js";
 import { TimerOffIcon } from "./timer-off.js";
 import { TimerResetIcon } from "./timer-reset.js";
+import { ClockIcon } from "./clock.js";
 export {
   AlarmCheckIcon,
   AlarmClockIcon,
@@ -101,6 +102,7 @@ export {
   ClockArrowUpIcon,
   ClockCheckIcon,
   ClockFadingIcon,
+  ClockIcon,
   ClockPlusIcon,
   HistoryIcon,
   HourglassCogIcon,

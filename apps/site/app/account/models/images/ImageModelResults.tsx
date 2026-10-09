@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, ChevronDown, ChevronUp, Copy, Loader2, SlidersHorizontal } from "lucide-react";
+import { CheckIcon as Check, ChevronDownIcon as ChevronDown, ChevronUpIcon as ChevronUp, CopyIcon as Copy, Loader2Icon as Loader2, SlidersHorizontalIcon as SlidersHorizontal } from "@mdevs/icons";
 import toast from "react-hot-toast";
 import type { ImageModelItem } from "./image-model-types";
 

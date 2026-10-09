@@ -9,11 +9,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  Search, Hash, Users, FileText, TrendingUp, ArrowUpRight,
-  Loader2, X, ChevronRight, Heart, Trophy, Crown, Sparkles,
-  UserPlus, UserCheck
-} from 'lucide-react';
+import { SearchIcon as Search, HashIcon as Hash, UsersIcon as Users, FileTextIcon as FileText, TrendingUpIcon as TrendingUp, ArrowUpRightIcon as ArrowUpRight, Loader2Icon as Loader2, XIcon as X, ChevronRightIcon as ChevronRight, HeartIcon as Heart, TrophyIcon as Trophy, CrownIcon as Crown, SparklesIcon as Sparkles, UserPlusIcon as UserPlus, UserCheckIcon as UserCheck } from "@mdevs/icons";
 import { ApiService } from '../services/api';
 import { Post } from '../types/vibe';
 import { PostCard } from '../components/feed/PostCard';

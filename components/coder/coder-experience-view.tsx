@@ -1,22 +1,6 @@
 "use client";
 
-import {
-  AlertCircleIcon,
-  BotIcon,
-  CheckCircle2Icon,
-  Code2Icon,
-  DownloadIcon,
-  ExternalLinkIcon,
-  GitBranchIcon,
-  GlobeIcon,
-  LaptopIcon,
-  MonitorIcon,
-  PlayIcon,
-  PuzzleIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  TerminalIcon,
-} from "lucide-react";
+import { AlertCircleIcon, BotIcon, CheckCircle2Icon, Code2Icon, DownloadIcon, ExternalLinkIcon, GitBranchIcon, GlobeIcon, LaptopIcon, MonitorIcon, PlayIcon, PuzzleIcon, ShieldCheckIcon, SparklesIcon, TerminalIcon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";

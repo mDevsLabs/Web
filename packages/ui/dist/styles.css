@@ -8,7 +8,7 @@
 }
 @layer mdevs {
   :root, .md-root {
-    --md-icon-color: #000;
+    --md-icon-color: currentColor;
     --md-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --md-accent: #4f46e5;
     --md-accent-ink: #fff;
@@ -31,20 +31,20 @@
     color-scheme: light;
   }
   .md-root[data-md-theme="dark"] {
-    --md-icon-color: #fff; --md-bg: #101724; --md-text: #f3f6fc; --md-muted: #b5c1d4; --md-surface: rgba(30, 42, 61, .83); --md-solid: #1e2a3d;
+    --md-icon-color: currentColor; --md-bg: #101724; --md-text: #f3f6fc; --md-muted: #b5c1d4; --md-surface: rgba(30, 42, 61, .83); --md-solid: #1e2a3d;
     --md-border: rgba(182, 203, 237, .22); --md-highlight: rgba(255, 255, 255, .13);
     --md-shadow: 0 18px 50px -20px rgba(0, 0, 0, .45), 0 4px 12px -6px rgba(0, 0, 0, .35);
     --md-focus: #a5b4fc; --md-success: #86efac; --md-danger: #fca5a5; --md-warning: #fde047; color-scheme: dark;
   }
   @media (prefers-color-scheme: dark) {
     :root, .md-root[data-md-theme="system"] {
-      --md-icon-color: #fff; --md-bg: #101724; --md-text: #f3f6fc; --md-muted: #b5c1d4; --md-surface: rgba(30, 42, 61, .83); --md-solid: #1e2a3d;
+      --md-icon-color: currentColor; --md-bg: #101724; --md-text: #f3f6fc; --md-muted: #b5c1d4; --md-surface: rgba(30, 42, 61, .83); --md-solid: #1e2a3d;
       --md-border: rgba(182, 203, 237, .22); --md-highlight: rgba(255, 255, 255, .13);
       --md-shadow: 0 18px 50px -20px rgba(0, 0, 0, .45), 0 4px 12px -6px rgba(0, 0, 0, .35);
       --md-focus: #a5b4fc; --md-success: #86efac; --md-danger: #fca5a5; --md-warning: #fde047; color-scheme: dark;
     }
     .md-root[data-md-theme="light"] {
-      --md-icon-color: #000; --md-bg: #f4f6fb; --md-text: #182339; --md-muted: #536079; --md-surface: rgba(255, 255, 255, .76); --md-solid: #fff;
+      --md-icon-color: currentColor; --md-bg: #f4f6fb; --md-text: #182339; --md-muted: #536079; --md-surface: rgba(255, 255, 255, .76); --md-solid: #fff;
       --md-border: rgba(85, 105, 141, .22); --md-highlight: rgba(255, 255, 255, .92);
       --md-shadow: 0 16px 44px -24px rgba(27, 44, 81, .25), 0 3px 9px -5px rgba(27, 44, 81, .15);
       --md-focus: #4338ca; --md-success: #166534; --md-danger: #b91c1c; --md-warning: #854d0e; color-scheme: light;
@@ -98,6 +98,8 @@
     cursor: pointer; text-decoration: none; transition: background var(--md-motion), box-shadow var(--md-motion), transform var(--md-motion);
   }
   .md-button:hover:not(:disabled) {box-shadow: 0 4px 14px -5px color-mix(in srgb, var(--md-accent) 50%, transparent); filter: brightness(1.05);}
+  /* Les libellés longs ne doivent pas comprimer les dessins ni l'indicateur. */
+  .md-button > svg, .md-button > .md-spinner {flex-shrink: 0;}
   .md-button:active:not(:disabled) {transform: translateY(1px);}
   .md-button:disabled {opacity: .55; cursor: not-allowed;}
   .md-button-soft {background: color-mix(in srgb, var(--md-accent) 10%, var(--md-solid)); color: var(--md-text); border-color: color-mix(in srgb, var(--md-accent) 25%, var(--md-border));}
@@ -172,7 +174,7 @@
   .md-popover {padding: 1.25rem; max-width: min(24rem, calc(100vw - 2rem)); z-index: 1002;}
   .md-popover-arrow {fill: var(--md-solid);}
   .md-tooltip {background: var(--md-text); color: var(--md-solid); border-radius: 8px; padding: .4rem .65rem; font-size: .75rem; z-index: 1003; max-width: 20rem;}
-  .md-tooltip svg {fill: var(--md-text);}
+  .md-tooltip .md-tooltip-arrow {fill: var(--md-text);}
   .md-menu {min-width: 12rem; padding: .4rem; z-index: 1002; max-height: var(--radix-dropdown-menu-content-available-height); overflow-y: auto;}
   .md-menu-item {padding: .7rem .8rem; min-height: 44px; border-radius: 9px; cursor: pointer; font-size: .875rem; outline: none;}
   .md-menu-item[data-highlighted] {background: color-mix(in srgb, var(--md-accent) 12%, var(--md-solid));}
@@ -347,7 +349,8 @@
   .md-sticky-actions {position: sticky; z-index: 10; padding: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem;}
   .md-sticky-actions[data-position="top"] {top: .5rem;}
   .md-sticky-actions[data-position="bottom"] {bottom: .5rem;}
-  .md-scroll-area {overflow: auto; overscroll-behavior: contain; min-width: 0; scrollbar-gutter: stable;}
+  /* Un enfant flex/grid doit pouvoir rétrécir pour déclencher son défilement. */
+  .md-scroll-area {overflow: auto; overscroll-behavior: contain; min-width: 0; min-height: 0; scrollbar-gutter: stable;}
   .md-code-block {margin: 0; border: 1px solid var(--md-border); border-radius: 16px; overflow: hidden; background: var(--md-solid);}
   .md-code-block figcaption {display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; padding: 1rem;}
   .md-code-block pre {margin: 0; padding: 1rem; overflow: auto; font: .875rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace; background: color-mix(in srgb,var(--md-text) 4%,var(--md-solid));}

@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var time_exports = {};
-__export(time_exports, {
+var index_exports = {};
+__export(index_exports, {
   AlarmCheckIcon: () => import_alarm_check.AlarmCheckIcon,
   AlarmClockIcon: () => import_alarm_clock.AlarmClockIcon,
   AlarmClockMinusIcon: () => import_alarm_clock_minus.AlarmClockMinusIcon,
@@ -66,6 +66,7 @@ __export(time_exports, {
   ClockArrowUpIcon: () => import_clock_arrow_up.ClockArrowUpIcon,
   ClockCheckIcon: () => import_clock_check.ClockCheckIcon,
   ClockFadingIcon: () => import_clock_fading.ClockFadingIcon,
+  ClockIcon: () => import_clock.ClockIcon,
   ClockPlusIcon: () => import_clock_plus.ClockPlusIcon,
   HistoryIcon: () => import_history.HistoryIcon,
   HourglassCogIcon: () => import_hourglass_cog.HourglassCogIcon,
@@ -74,61 +75,62 @@ __export(time_exports, {
   TimerOffIcon: () => import_timer_off.TimerOffIcon,
   TimerResetIcon: () => import_timer_reset.TimerResetIcon
 });
-module.exports = __toCommonJS(time_exports);
-var import_alarm_check = require("./alarm-check.cjs");
-var import_alarm_clock = require("./alarm-clock.cjs");
-var import_alarm_clock_minus = require("./alarm-clock-minus.cjs");
-var import_alarm_clock_off = require("./alarm-clock-off.cjs");
-var import_alarm_clock_plus = require("./alarm-clock-plus.cjs");
-var import_alarm_smoke = require("./alarm-smoke.cjs");
-var import_calendar = require("./calendar.cjs");
-var import_calendar_1 = require("./calendar-1.cjs");
-var import_calendar_arrow_down = require("./calendar-arrow-down.cjs");
-var import_calendar_arrow_up = require("./calendar-arrow-up.cjs");
-var import_calendar_check = require("./calendar-check.cjs");
-var import_calendar_check_2 = require("./calendar-check-2.cjs");
-var import_calendar_chevrons_right = require("./calendar-chevrons-right.cjs");
-var import_calendar_clock = require("./calendar-clock.cjs");
-var import_calendar_cog = require("./calendar-cog.cjs");
-var import_calendar_days = require("./calendar-days.cjs");
-var import_calendar_fold = require("./calendar-fold.cjs");
-var import_calendar_heart = require("./calendar-heart.cjs");
-var import_calendar_minus = require("./calendar-minus.cjs");
-var import_calendar_minus_2 = require("./calendar-minus-2.cjs");
-var import_calendar_off = require("./calendar-off.cjs");
-var import_calendar_plus = require("./calendar-plus.cjs");
-var import_calendar_plus_2 = require("./calendar-plus-2.cjs");
-var import_calendar_range = require("./calendar-range.cjs");
-var import_calendar_search = require("./calendar-search.cjs");
-var import_calendar_sync = require("./calendar-sync.cjs");
-var import_calendar_x = require("./calendar-x.cjs");
-var import_calendar_x_2 = require("./calendar-x-2.cjs");
-var import_clock_1 = require("./clock-1.cjs");
-var import_clock_10 = require("./clock-10.cjs");
-var import_clock_11 = require("./clock-11.cjs");
-var import_clock_12 = require("./clock-12.cjs");
-var import_clock_2 = require("./clock-2.cjs");
-var import_clock_3 = require("./clock-3.cjs");
-var import_clock_4 = require("./clock-4.cjs");
-var import_clock_5 = require("./clock-5.cjs");
-var import_clock_6 = require("./clock-6.cjs");
-var import_clock_7 = require("./clock-7.cjs");
-var import_clock_8 = require("./clock-8.cjs");
-var import_clock_9 = require("./clock-9.cjs");
-var import_clock_alert = require("./clock-alert.cjs");
-var import_clock_arrow_down = require("./clock-arrow-down.cjs");
-var import_clock_arrow_left = require("./clock-arrow-left.cjs");
-var import_clock_arrow_right = require("./clock-arrow-right.cjs");
-var import_clock_arrow_up = require("./clock-arrow-up.cjs");
-var import_clock_check = require("./clock-check.cjs");
-var import_clock_fading = require("./clock-fading.cjs");
-var import_clock_plus = require("./clock-plus.cjs");
-var import_history = require("./history.cjs");
-var import_hourglass = require("./hourglass.cjs");
-var import_hourglass_cog = require("./hourglass-cog.cjs");
-var import_timer = require("./timer.cjs");
-var import_timer_off = require("./timer-off.cjs");
-var import_timer_reset = require("./timer-reset.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_alarm_check = require("./alarm-check.js");
+var import_alarm_clock = require("./alarm-clock.js");
+var import_alarm_clock_minus = require("./alarm-clock-minus.js");
+var import_alarm_clock_off = require("./alarm-clock-off.js");
+var import_alarm_clock_plus = require("./alarm-clock-plus.js");
+var import_alarm_smoke = require("./alarm-smoke.js");
+var import_calendar = require("./calendar.js");
+var import_calendar_1 = require("./calendar-1.js");
+var import_calendar_arrow_down = require("./calendar-arrow-down.js");
+var import_calendar_arrow_up = require("./calendar-arrow-up.js");
+var import_calendar_check = require("./calendar-check.js");
+var import_calendar_check_2 = require("./calendar-check-2.js");
+var import_calendar_chevrons_right = require("./calendar-chevrons-right.js");
+var import_calendar_clock = require("./calendar-clock.js");
+var import_calendar_cog = require("./calendar-cog.js");
+var import_calendar_days = require("./calendar-days.js");
+var import_calendar_fold = require("./calendar-fold.js");
+var import_calendar_heart = require("./calendar-heart.js");
+var import_calendar_minus = require("./calendar-minus.js");
+var import_calendar_minus_2 = require("./calendar-minus-2.js");
+var import_calendar_off = require("./calendar-off.js");
+var import_calendar_plus = require("./calendar-plus.js");
+var import_calendar_plus_2 = require("./calendar-plus-2.js");
+var import_calendar_range = require("./calendar-range.js");
+var import_calendar_search = require("./calendar-search.js");
+var import_calendar_sync = require("./calendar-sync.js");
+var import_calendar_x = require("./calendar-x.js");
+var import_calendar_x_2 = require("./calendar-x-2.js");
+var import_clock_1 = require("./clock-1.js");
+var import_clock_10 = require("./clock-10.js");
+var import_clock_11 = require("./clock-11.js");
+var import_clock_12 = require("./clock-12.js");
+var import_clock_2 = require("./clock-2.js");
+var import_clock_3 = require("./clock-3.js");
+var import_clock_4 = require("./clock-4.js");
+var import_clock_5 = require("./clock-5.js");
+var import_clock_6 = require("./clock-6.js");
+var import_clock_7 = require("./clock-7.js");
+var import_clock_8 = require("./clock-8.js");
+var import_clock_9 = require("./clock-9.js");
+var import_clock_alert = require("./clock-alert.js");
+var import_clock_arrow_down = require("./clock-arrow-down.js");
+var import_clock_arrow_left = require("./clock-arrow-left.js");
+var import_clock_arrow_right = require("./clock-arrow-right.js");
+var import_clock_arrow_up = require("./clock-arrow-up.js");
+var import_clock_check = require("./clock-check.js");
+var import_clock_fading = require("./clock-fading.js");
+var import_clock_plus = require("./clock-plus.js");
+var import_history = require("./history.js");
+var import_hourglass = require("./hourglass.js");
+var import_hourglass_cog = require("./hourglass-cog.js");
+var import_timer = require("./timer.js");
+var import_timer_off = require("./timer-off.js");
+var import_timer_reset = require("./timer-reset.js");
+var import_clock = require("./clock.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AlarmCheckIcon,
@@ -178,6 +180,7 @@ var import_timer_reset = require("./timer-reset.cjs");
   ClockArrowUpIcon,
   ClockCheckIcon,
   ClockFadingIcon,
+  ClockIcon,
   ClockPlusIcon,
   HistoryIcon,
   HourglassCogIcon,

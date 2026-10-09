@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon as ChevronDown } from "@mdevs/icons";
 
 export function FooterLegal() {
   const [open, setOpen] = useState(false);

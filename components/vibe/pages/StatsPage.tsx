@@ -11,22 +11,7 @@
  * ============================================================================
  */
 
-import {
-  BarChart2,
-  Bookmark,
-  CalendarDays,
-  Clock,
-  Download,
-  Eye,
-  Flame,
-  Heart,
-  MessageCircle,
-  Repeat2,
-  Sparkles,
-  TrendingDown,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { BarChart2Icon as BarChart2, BookmarkIcon as Bookmark, CalendarDaysIcon as CalendarDays, ClockIcon as Clock, DownloadIcon as Download, EyeIcon as Eye, FlameIcon as Flame, HeartIcon as Heart, MessageCircleIcon as MessageCircle, Repeat2Icon as Repeat2, SparklesIcon as Sparkles, TrendingDownIcon as TrendingDown, TrendingUpIcon as TrendingUp, UsersIcon as Users } from "@mdevs/icons";
 import { useState } from "react";
 import {
   Area,

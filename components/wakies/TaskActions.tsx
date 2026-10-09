@@ -1,6 +1,11 @@
 "use client";
 
-import { Clock3, Pause, Play, Square } from "lucide-react";
+import {
+  Clock3Icon as Clock3,
+  PauseIcon as Pause,
+  PlayIcon as Play,
+  SquareIcon as Square,
+} from "@mdevs/icons";
 import type { Action, Settings, Task } from "@/lib/wakies/shared/types";
 export function TaskActions({
   task,

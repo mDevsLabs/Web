@@ -22,7 +22,7 @@ __export(arrow_autofit_width_exports, {
   ArrowAutofitWidthIcon: () => ArrowAutofitWidthIcon
 });
 module.exports = __toCommonJS(arrow_autofit_width_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowAutofitWidthIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowAutofitWidthIcon", [["path", { "d": "M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6" }], ["path", { "d": "M10 18h-7" }], ["path", { "d": "M21 18h-7" }], ["path", { "d": "M6 15l-3 3l3 3" }], ["path", { "d": "M18 15l3 3l-3 3" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

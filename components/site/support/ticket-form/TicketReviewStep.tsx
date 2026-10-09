@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, FileText } from "lucide-react";
+import { CheckCircle2Icon as CheckCircle2, FileTextIcon as FileText } from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import {

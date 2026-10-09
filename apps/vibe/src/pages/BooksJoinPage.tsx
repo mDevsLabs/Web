@@ -8,7 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { BookHeart, Loader2, AlertCircle, ArrowLeft, Users } from 'lucide-react';
+import { BookHeartIcon as BookHeart, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, UsersIcon as Users } from "@mdevs/icons";
 import { ApiService } from '../services/api';
 import { NotificationService } from '../services/notificationService';
 import { extractBookCode, isValidBookCode } from '../components/common/bookCode';

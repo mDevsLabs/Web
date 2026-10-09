@@ -1,4 +1,5 @@
 'use client';
+// La couleur vient du contrôle parent pour préserver le contraste et ses états.
 import { createElement, forwardRef, useId, type SVGProps } from 'react';
 export type IconNode = readonly (readonly [
     string,
@@ -16,7 +17,7 @@ export function createIcon(displayName: string, nodes: IconNode) {
         const generated = useId();
         const titleId = `${generated}-title`;
         const labelled = Boolean(title || props['aria-label'] || props['aria-labelledby']);
-        return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" color={color ?? '#000'} style={{ colorScheme: 'light dark', color: color ?? 'var(--md-icon-color, light-dark(#000, #fff))', ...style }} stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" role={labelled ? 'img' : undefined} aria-hidden={labelled ? undefined : true} aria-labelledby={title ? titleId : undefined} focusable="false" {...props} ref={ref}>
+        return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" color={color} style={style} stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" role={labelled ? 'img' : undefined} aria-hidden={labelled ? undefined : true} aria-labelledby={title ? titleId : undefined} focusable="false" {...props} ref={ref}>
       {title && <title id={titleId}>{title}</title>}
       {nodes.map(([tag, attrs], index) => createElement(tag, { ...attrs, ...(absoluteStrokeWidth ? { vectorEffect: 'non-scaling-stroke' } : {}), key: index }))}
       {children}

@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  BrainIcon,
-  DatabaseIcon,
-  DownloadIcon,
-  HardDriveIcon,
-  ImageIcon,
-  Loader2Icon,
-  MicIcon,
-  TrashIcon,
-} from "lucide-react";
+import { BrainIcon, DatabaseIcon, DownloadIcon, HardDriveIcon, ImageIcon, Loader2Icon, MicIcon, TrashIcon } from "@mdevs/icons";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";

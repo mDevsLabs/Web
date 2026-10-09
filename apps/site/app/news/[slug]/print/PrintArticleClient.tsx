@@ -1,7 +1,7 @@
 "use client";
 
 import PrintContent from '@/components/print-content';
-import { ArrowLeft, Download, Printer } from 'lucide-react';
+import { ArrowLeftIcon as ArrowLeft, DownloadIcon as Download, PrinterIcon as Printer } from "@mdevs/icons";
 import Link from 'next/link';
 
 export default function PrintArticleClient({ article }: { article: {

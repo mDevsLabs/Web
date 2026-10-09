@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Code2, Copy } from "lucide-react";
+import { CheckIcon as Check, Code2Icon as Code2, CopyIcon as Copy } from "@mdevs/icons";
 import type { RequestCodeTab } from "./request-snippets";
 
 const TABS: readonly RequestCodeTab[] = ["curl", "fetch", "python", "node"];

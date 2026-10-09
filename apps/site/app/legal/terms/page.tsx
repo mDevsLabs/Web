@@ -1,22 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  FileText,
-  ArrowLeft,
-  ShieldAlert,
-  Key,
-  CheckCircle2,
-  Zap,
-  Scale,
-  Globe,
-  Cpu,
-  Ban,
-  ScrollText,
-  MapPin,
-  Folder,
-  Lock,
-} from "lucide-react";
+import { FileTextIcon as FileText, ArrowLeftIcon as ArrowLeft, ShieldAlertIcon as ShieldAlert, KeyIcon as Key, CheckCircle2Icon as CheckCircle2, ZapIcon as Zap, ScaleIcon as Scale, GlobeIcon as Globe, CpuIcon as Cpu, BanIcon as Ban, ScrollTextIcon as ScrollText, MapPinIcon as MapPin, FolderIcon as Folder, LockIcon as Lock } from "@mdevs/icons";
 import Link from "next/link";
 
 export default function TermsPage() {

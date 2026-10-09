@@ -5,24 +5,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  Bell,
-  BellOff,
-  Check,
-  CheckCheck,
-  FileText,
-  Heart,
-  Loader2,
-  Mail,
-  MessageSquare,
-  Quote as QuoteIcon,
-  Repeat,
-  RotateCcw,
-  Sparkles,
-  Trash2,
-  UserPlus,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, BellIcon as Bell, BellOffIcon as BellOff, CheckIcon as Check, CheckCheckIcon as CheckCheck, FileTextIcon as FileText, HeartIcon as Heart, Loader2Icon as Loader2, MailIcon as Mail, MessageSquareIcon as MessageSquare, QuoteIcon, RepeatIcon as Repeat, RotateCcwIcon as RotateCcw, SparklesIcon as Sparkles, Trash2Icon as Trash2, UserPlusIcon as UserPlus } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";

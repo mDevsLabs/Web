@@ -1,7 +1,7 @@
 "use client";
 
 import DOMPurify from "dompurify";
-import { Columns2Icon, Rows2Icon } from "lucide-react";
+import { Columns2Icon, Rows2Icon } from "@mdevs/icons";
 import OrderedMap from "orderedmap";
 import {
   DOMParser,

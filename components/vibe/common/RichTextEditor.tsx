@@ -6,24 +6,7 @@
  * ============================================================================
  */
 
-import {
-  Bold,
-  Braces,
-  Check,
-  Code,
-  CornerDownLeft,
-  Highlighter,
-  Italic,
-  Link2,
-  List,
-  ListOrdered,
-  Palette,
-  Quote,
-  Sigma,
-  Strikethrough,
-  Underline as UnderlineIcon,
-  X,
-} from "lucide-react";
+import { BoldIcon as Bold, BracesIcon as Braces, CheckIcon as Check, CodeIcon as Code, CornerDownLeftIcon as CornerDownLeft, HighlighterIcon as Highlighter, ItalicIcon as Italic, Link2Icon as Link2, ListIcon as List, ListOrderedIcon as ListOrdered, PaletteIcon as Palette, QuoteIcon as Quote, SigmaIcon as Sigma, StrikethroughIcon as Strikethrough, UnderlineIcon, XIcon as X } from "@mdevs/icons";
 
 import type React from "react";
 

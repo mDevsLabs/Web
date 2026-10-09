@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var controls_exports = {};
-__export(controls_exports, {
+var index_exports = {};
+__export(index_exports, {
   CheckCheckIcon: () => import_check_check.CheckCheckIcon,
   CheckCircle2Icon: () => import_check_circle_2.CheckCircle2Icon,
   CheckCircleIcon: () => import_check_circle.CheckCircleIcon,
@@ -64,63 +64,65 @@ __export(controls_exports, {
   SettingsIcon: () => import_settings.SettingsIcon,
   SlidersHorizontalIcon: () => import_sliders_horizontal.SlidersHorizontalIcon,
   SlidersVerticalIcon: () => import_sliders_vertical.SlidersVerticalIcon,
+  SquareCheckIcon: () => import_square_check.SquareCheckIcon,
   SwitchCameraIcon: () => import_switch_camera.SwitchCameraIcon,
   ToggleLeftIcon: () => import_toggle_left.ToggleLeftIcon,
   ToggleRightIcon: () => import_toggle_right.ToggleRightIcon,
   XIcon: () => import_x.XIcon,
   XLineTopIcon: () => import_x_line_top.XLineTopIcon
 });
-module.exports = __toCommonJS(controls_exports);
-var import_check = require("./check.cjs");
-var import_check_check = require("./check-check.cjs");
-var import_check_circle = require("./check-circle.cjs");
-var import_check_circle_2 = require("./check-circle-2.cjs");
-var import_check_line = require("./check-line.cjs");
-var import_check_square = require("./check-square.cjs");
-var import_check_square_2 = require("./check-square-2.cjs");
-var import_filter = require("./filter.cjs");
-var import_filter_x = require("./filter-x.cjs");
-var import_list = require("./list.cjs");
-var import_list_check = require("./list-check.cjs");
-var import_list_checks = require("./list-checks.cjs");
-var import_list_chevrons_down_up = require("./list-chevrons-down-up.cjs");
-var import_list_chevrons_up_down = require("./list-chevrons-up-down.cjs");
-var import_list_clock = require("./list-clock.cjs");
-var import_list_collapse = require("./list-collapse.cjs");
-var import_list_end = require("./list-end.cjs");
-var import_list_filter = require("./list-filter.cjs");
-var import_list_filter_plus = require("./list-filter-plus.cjs");
-var import_list_minus = require("./list-minus.cjs");
-var import_list_music = require("./list-music.cjs");
-var import_list_ordered = require("./list-ordered.cjs");
-var import_list_plus = require("./list-plus.cjs");
-var import_list_restart = require("./list-restart.cjs");
-var import_list_sort_ascending = require("./list-sort-ascending.cjs");
-var import_list_sort_descending = require("./list-sort-descending.cjs");
-var import_list_start = require("./list-start.cjs");
-var import_list_todo = require("./list-todo.cjs");
-var import_list_tree = require("./list-tree.cjs");
-var import_list_video = require("./list-video.cjs");
-var import_list_x = require("./list-x.cjs");
-var import_minus = require("./minus.cjs");
-var import_minus_square = require("./minus-square.cjs");
-var import_plus = require("./plus.cjs");
-var import_plus_square = require("./plus-square.cjs");
-var import_search = require("./search.cjs");
-var import_search_alert = require("./search-alert.cjs");
-var import_search_check = require("./search-check.cjs");
-var import_search_code = require("./search-code.cjs");
-var import_search_slash = require("./search-slash.cjs");
-var import_search_x = require("./search-x.cjs");
-var import_settings = require("./settings.cjs");
-var import_settings_2 = require("./settings-2.cjs");
-var import_sliders_horizontal = require("./sliders-horizontal.cjs");
-var import_sliders_vertical = require("./sliders-vertical.cjs");
-var import_switch_camera = require("./switch-camera.cjs");
-var import_toggle_left = require("./toggle-left.cjs");
-var import_toggle_right = require("./toggle-right.cjs");
-var import_x = require("./x.cjs");
-var import_x_line_top = require("./x-line-top.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_check = require("./check.js");
+var import_check_check = require("./check-check.js");
+var import_check_circle = require("./check-circle.js");
+var import_check_circle_2 = require("./check-circle-2.js");
+var import_check_line = require("./check-line.js");
+var import_check_square = require("./check-square.js");
+var import_check_square_2 = require("./check-square-2.js");
+var import_filter = require("./filter.js");
+var import_filter_x = require("./filter-x.js");
+var import_list = require("./list.js");
+var import_list_check = require("./list-check.js");
+var import_list_checks = require("./list-checks.js");
+var import_list_chevrons_down_up = require("./list-chevrons-down-up.js");
+var import_list_chevrons_up_down = require("./list-chevrons-up-down.js");
+var import_list_clock = require("./list-clock.js");
+var import_list_collapse = require("./list-collapse.js");
+var import_list_end = require("./list-end.js");
+var import_list_filter = require("./list-filter.js");
+var import_list_filter_plus = require("./list-filter-plus.js");
+var import_list_minus = require("./list-minus.js");
+var import_list_music = require("./list-music.js");
+var import_list_ordered = require("./list-ordered.js");
+var import_list_plus = require("./list-plus.js");
+var import_list_restart = require("./list-restart.js");
+var import_list_sort_ascending = require("./list-sort-ascending.js");
+var import_list_sort_descending = require("./list-sort-descending.js");
+var import_list_start = require("./list-start.js");
+var import_list_todo = require("./list-todo.js");
+var import_list_tree = require("./list-tree.js");
+var import_list_video = require("./list-video.js");
+var import_list_x = require("./list-x.js");
+var import_minus = require("./minus.js");
+var import_minus_square = require("./minus-square.js");
+var import_plus = require("./plus.js");
+var import_plus_square = require("./plus-square.js");
+var import_search = require("./search.js");
+var import_search_alert = require("./search-alert.js");
+var import_search_check = require("./search-check.js");
+var import_search_code = require("./search-code.js");
+var import_search_slash = require("./search-slash.js");
+var import_search_x = require("./search-x.js");
+var import_settings = require("./settings.js");
+var import_settings_2 = require("./settings-2.js");
+var import_sliders_horizontal = require("./sliders-horizontal.js");
+var import_sliders_vertical = require("./sliders-vertical.js");
+var import_switch_camera = require("./switch-camera.js");
+var import_toggle_left = require("./toggle-left.js");
+var import_toggle_right = require("./toggle-right.js");
+var import_x = require("./x.js");
+var import_x_line_top = require("./x-line-top.js");
+var import_square_check = require("./square-check.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   CheckCheckIcon,
@@ -168,6 +170,7 @@ var import_x_line_top = require("./x-line-top.cjs");
   SettingsIcon,
   SlidersHorizontalIcon,
   SlidersVerticalIcon,
+  SquareCheckIcon,
   SwitchCameraIcon,
   ToggleLeftIcon,
   ToggleRightIcon,

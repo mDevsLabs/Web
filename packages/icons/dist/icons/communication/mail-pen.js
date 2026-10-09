@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const MailPenIcon = /* @__PURE__ */ createIcon("MailPenIcon", [["path", { "d": "M15.363 17.634a2 2 0 00-.506.854l-.837 2.87a.5.5 0 00.62.62l2.87-.837a2 2 0 00.854-.506l3.013-3.009a1 1 0 10-3.004-3.004z" }], ["path", { "d": "M22 10.38V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h6.25" }], ["path", { "d": "m22 7-8.991 5.727a2 2 0 01-2.009 0L2 7" }]]);
-export {
-  MailPenIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const MailPenIcon = /* @__PURE__ */ createIcon('MailPenIcon', [["path", { "d": "M15.363 17.634a2 2 0 00-.506.854l-.837 2.87a.5.5 0 00.62.62l2.87-.837a2 2 0 00.854-.506l3.013-3.009a1 1 0 10-3.004-3.004z" }], ["path", { "d": "M22 10.38V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h6.25" }], ["path", { "d": "m22 7-8.991 5.727a2 2 0 01-2.009 0L2 7" }]]);

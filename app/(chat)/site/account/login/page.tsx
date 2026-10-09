@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, LogIn, Mail, ShieldBan } from "lucide-react";
+import { Loader2Icon as Loader2, LogInIcon as LogIn, MailIcon as Mail, ShieldBanIcon as ShieldBan } from "@mdevs/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import { type FormEvent, Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";

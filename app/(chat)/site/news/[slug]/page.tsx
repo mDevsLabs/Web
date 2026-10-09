@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeftIcon as ArrowLeft, CalendarIcon as Calendar, ClockIcon as Clock, UserIcon as User } from "@mdevs/icons";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";

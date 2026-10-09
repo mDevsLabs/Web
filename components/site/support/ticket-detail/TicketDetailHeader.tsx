@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  AlertTriangle,
-  ChevronDown,
-  ExternalLink,
-  Laptop,
-  Pencil,
-  ShieldCheck,
-  X,
-} from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle, ChevronDownIcon as ChevronDown, ExternalLinkIcon as ExternalLink, LaptopIcon as Laptop, PencilIcon as Pencil, ShieldCheckIcon as ShieldCheck, XIcon as X } from "@mdevs/icons";
 import {
   PRIORITY_BADGES,
   STATUS_CONFIG,

@@ -29,6 +29,7 @@ import {
   wakiesQuotaMessage,
 } from "@/lib/plans/tier-limits";
 import { versClient } from "@/lib/wakies/serialize";
+import { trustedWakiesOrigin } from "@/lib/wakies/shared/origin";
 
 export type WakiesIdentity = {
   tier: TierKey;
@@ -117,3 +118,9 @@ export async function enforceWakiesLimit(params: {
 }
 
 export { toErrorResponse };
+
+export function rejectCrossOriginMutation(request: Request): Response | null {
+  return trustedWakiesOrigin(request)
+    ? null
+    : forbidden("Origine de la requête non autorisée.");
+}

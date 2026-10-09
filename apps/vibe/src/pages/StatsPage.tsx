@@ -12,22 +12,7 @@
  */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  BarChart2,
-  Bookmark,
-  Eye,
-  Heart,
-  MessageCircle,
-  Repeat2,
-  TrendingUp,
-  TrendingDown,
-  Users,
-  Sparkles,
-  CalendarDays,
-  Clock,
-  Flame,
-  Download,
-} from 'lucide-react';
+import { BarChart2Icon as BarChart2, BookmarkIcon as Bookmark, EyeIcon as Eye, HeartIcon as Heart, MessageCircleIcon as MessageCircle, Repeat2Icon as Repeat2, TrendingUpIcon as TrendingUp, TrendingDownIcon as TrendingDown, UsersIcon as Users, SparklesIcon as Sparkles, CalendarDaysIcon as CalendarDays, ClockIcon as Clock, FlameIcon as Flame, DownloadIcon as Download } from "@mdevs/icons";
 import {
   Area,
   AreaChart,

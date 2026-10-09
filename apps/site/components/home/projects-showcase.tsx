@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, ArrowRightIcon as ArrowRight } from "@mdevs/icons";
 import Link from "next/link";
 import { GithubRepoStats } from "@/components/github-repo-stats";
 import { getProjectPresentation } from "@/components/projects/project-presentation";

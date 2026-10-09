@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Cpu, ChevronDown, Check, Sparkles, Search, X } from 'lucide-react';
+import { CpuIcon as Cpu, ChevronDownIcon as ChevronDown, CheckIcon as Check, SparklesIcon as Sparkles, SearchIcon as Search, XIcon as X } from "@mdevs/icons";
 
 export interface AIModel {
   id: string;

@@ -1,31 +1,6 @@
 "use client";
 
-import {
-  AlertCircleIcon,
-  CheckIcon,
-  CopyIcon,
-  DownloadIcon,
-  EyeIcon,
-  ImageIcon,
-  LayersIcon,
-  Loader2Icon,
-  Maximize2Icon,
-  MonitorIcon,
-  PencilIcon,
-  PinIcon,
-  PinOffIcon,
-  PlusIcon,
-  RectangleVerticalIcon,
-  RefreshCwIcon,
-  SlidersHorizontalIcon,
-  SmartphoneIcon,
-  SparklesIcon,
-  SquareIcon,
-  Trash2Icon,
-  UploadCloudIcon,
-  Wand2Icon,
-  XIcon,
-} from "lucide-react";
+import { AlertCircleIcon, CheckIcon, CopyIcon, DownloadIcon, EyeIcon, ImageIcon, LayersIcon, Loader2Icon, Maximize2Icon, MonitorIcon, PencilIcon, PinIcon, PinOffIcon, PlusIcon, RectangleVerticalIcon, RefreshCwIcon, SlidersHorizontalIcon, SmartphoneIcon, SparklesIcon, SquareIcon, Trash2Icon, UploadCloudIcon, Wand2Icon, XIcon } from "@mdevs/icons";
 import Link from "next/link";
 import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";

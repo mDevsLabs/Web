@@ -1,18 +1,6 @@
 "use client";
 
-import {
-  ArrowUpDown,
-  CheckSquare,
-  ChevronDown,
-  Cpu,
-  Filter,
-  Search,
-  SlidersHorizontal,
-  Sparkles,
-  Square,
-  Wrench,
-  X,
-} from "lucide-react";
+import { ArrowUpDownIcon as ArrowUpDown, CheckSquareIcon as CheckSquare, ChevronDownIcon as ChevronDown, CpuIcon as Cpu, FilterIcon as Filter, SearchIcon as Search, SlidersHorizontalIcon as SlidersHorizontal, SparklesIcon as Sparkles, SquareIcon as Square, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import type {
   MaiModelItem,

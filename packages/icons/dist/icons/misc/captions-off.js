@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const CaptionsOffIcon = /* @__PURE__ */ createIcon("CaptionsOffIcon", [["path", { "d": "M10.5 5H19a2 2 0 0 1 2 2v8.5" }], ["path", { "d": "M17 11h-.5" }], ["path", { "d": "M19 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2" }], ["path", { "d": "m2 2 20 20" }], ["path", { "d": "M7 11h4" }], ["path", { "d": "M7 15h2.5" }]]);
-export {
-  CaptionsOffIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CaptionsOffIcon = /* @__PURE__ */ createIcon('CaptionsOffIcon', [["path", { "d": "M10.5 5H19a2 2 0 0 1 2 2v8.5" }], ["path", { "d": "M17 11h-.5" }], ["path", { "d": "M19 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2" }], ["path", { "d": "m2 2 20 20" }], ["path", { "d": "M7 11h4" }], ["path", { "d": "M7 15h2.5" }]]);

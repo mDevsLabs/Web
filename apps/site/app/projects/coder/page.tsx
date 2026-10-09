@@ -1,15 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ExternalLink,
-  Code2,
-  Bot,
-  Wrench,
-  Terminal,
-  Github,
-  Cpu,
-} from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, Code2Icon as Code2, BotIcon as Bot, WrenchIcon as Wrench, TerminalIcon as Terminal, GithubIcon as Github, CpuIcon as Cpu } from "@mdevs/icons";
 import Link from "next/link";
 import { GithubRelease } from "@/components/github-release";
 import { GithubRepoStats } from "@/components/github-repo-stats";

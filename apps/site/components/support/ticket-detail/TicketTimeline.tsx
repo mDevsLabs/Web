@@ -1,7 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import { Bot, FileText, Image as ImageIcon, MessageSquare, ShieldCheck, Sparkles } from "lucide-react";
+import { BotIcon as Bot, FileTextIcon as FileText, ImageIcon, MessageSquareIcon as MessageSquare, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles } from "@mdevs/icons";
 import type { SupportMessage } from "@/app/actions/support-utils";
 import type { TicketTimelineProps, TicketDetailUser } from "@/components/support/ticket-detail/ticket-detail-types";
 import { formatDisplayDate, formatDisplayTime } from "@/lib/date-format";

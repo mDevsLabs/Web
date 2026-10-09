@@ -1,17 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ExternalLink,
-  Search,
-  Shield,
-  Zap,
-  Lock,
-  Download,
-  Globe,
-  Github,
-  BookOpen,
-} from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, SearchIcon as Search, ShieldIcon as Shield, ZapIcon as Zap, LockIcon as Lock, DownloadIcon as Download, GlobeIcon as Globe, GithubIcon as Github, BookOpenIcon as BookOpen } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 

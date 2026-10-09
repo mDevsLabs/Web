@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const BatteryExclamationIcon = /* @__PURE__ */ createIcon("BatteryExclamationIcon", [["path", { "d": "M9 17h8c1.105 0 2 -.895 2 -2v-.5c0 -.276 .224 -.5 .5 -.5s.5 -.224 .5 -.5v-3c0 -.276 -.224 -.5 -.5 -.5s-.5 -.224 -.5 -.5v-.5c0 -1.105 -.895 -2 -2 -2h-11c-1.105 0 -2 .895 -2 2v3" }], ["path", { "d": "M5 16v3" }], ["path", { "d": "M5 22v.01" }]]);
-export {
-  BatteryExclamationIcon
-};
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const BatteryExclamationIcon = /* @__PURE__ */ createIcon('BatteryExclamationIcon', [["path", { "d": "M9 17h8c1.105 0 2 -.895 2 -2v-.5c0 -.276 .224 -.5 .5 -.5s.5 -.224 .5 -.5v-3c0 -.276 -.224 -.5 -.5 -.5s-.5 -.224 -.5 -.5v-.5c0 -1.105 -.895 -2 -2 -2h-11c-1.105 0 -2 .895 -2 2v3" }], ["path", { "d": "M5 16v3" }], ["path", { "d": "M5 22v.01" }]]);

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Globe, Cpu, Terminal, Code2 } from "lucide-react";
+import { GlobeIcon as Globe, CpuIcon as Cpu, TerminalIcon as Terminal, Code2Icon as Code2 } from "@mdevs/icons";
 
 export function FeaturesSection() {
   const features = [

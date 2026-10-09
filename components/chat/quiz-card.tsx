@@ -1,16 +1,6 @@
 ﻿"use client";
 
-import {
-  AlertCircleIcon,
-  AwardIcon,
-  CheckCircle2Icon,
-  ChevronRightIcon,
-  HelpCircleIcon,
-  RotateCcwIcon,
-  SparklesIcon,
-  TrophyIcon,
-  XCircleIcon,
-} from "lucide-react";
+import { AlertCircleIcon, AwardIcon, CheckCircle2Icon, ChevronRightIcon, HelpCircleIcon, RotateCcwIcon, SparklesIcon, TrophyIcon, XCircleIcon } from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

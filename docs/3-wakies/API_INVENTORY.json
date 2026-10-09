@@ -1,0 +1,187 @@
+[
+  {
+    "route": "/api/wakies/",
+    "methods": [],
+    "authentication": "réexport de route authentifiée",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/chat",
+    "methods": ["POST"],
+    "authentication": "authenticateChatRequest",
+    "validation": ["schema", "incomingUserMessage"],
+    "file": "app/(chat)/api/wakies/chat/route.ts",
+    "resourceGuards": ["findConversation", "findWakie"]
+  },
+  {
+    "route": "/api/wakies/conversations",
+    "methods": ["GET", "POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/conversations/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/conversations/[id]",
+    "methods": ["PATCH", "DELETE"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/conversations/[id]/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/conversations/[id]/capture",
+    "methods": ["GET", "POST"],
+    "authentication": "requireWakiesUser",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/conversations/[id]/capture/route.ts",
+    "resourceGuards": ["findConversation"]
+  },
+  {
+    "route": "/api/wakies/conversations/[id]/messages",
+    "methods": ["GET"],
+    "authentication": "requireWakiesUser",
+    "validation": ["QUERIES"],
+    "file": "app/(chat)/api/wakies/conversations/[id]/messages/route.ts",
+    "resourceGuards": ["findConversation"]
+  },
+  {
+    "route": "/api/wakies/conversations/[id]/page",
+    "methods": ["POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/conversations/[id]/page/route.ts",
+    "resourceGuards": ["findConversation", "findWakie"]
+  },
+  {
+    "route": "/api/wakies/conversations/[id]/page-context",
+    "methods": ["GET"],
+    "authentication": "requireWakiesUser",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/conversations/[id]/page-context/route.ts",
+    "resourceGuards": ["findConversation"]
+  },
+  {
+    "route": "/api/wakies/files",
+    "methods": ["GET", "DELETE"],
+    "authentication": "requireWakiesUser",
+    "validation": ["query", "removal"],
+    "file": "app/(chat)/api/wakies/files/route.ts",
+    "resourceGuards": ["pathnameDuCompte"],
+    "response": "GET liste paginée {files,cursor}, ou détail {pathname,name,size,mediaType,url}; DELETE {ok:true}; erreurs mAI."
+  },
+  {
+    "route": "/api/wakies/memories",
+    "methods": ["POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/memories/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/memories/[id]",
+    "methods": ["PUT", "DELETE"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/memories/[id]/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/pages/[id]",
+    "methods": ["GET", "PATCH"],
+    "authentication": "requireWakiesUser",
+    "validation": ["pagePatch"],
+    "file": "app/(chat)/api/wakies/pages/[id]/route.ts",
+    "resourceGuards": ["findPage"]
+  },
+  {
+    "route": "/api/wakies/settings",
+    "methods": ["PATCH"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/settings/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/spaces",
+    "methods": ["GET", "POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/spaces/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/spaces/[spaceId]/pages",
+    "methods": ["GET", "POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/spaces/[spaceId]/pages/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/state",
+    "methods": ["GET"],
+    "authentication": "requireWakiesUser",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/state/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/tasks",
+    "methods": ["POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/tasks/route.ts",
+    "resourceGuards": ["findConversation"]
+  },
+  {
+    "route": "/api/wakies/tasks/[id]",
+    "methods": ["GET"],
+    "authentication": "requireWakiesUser",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/tasks/[id]/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/tasks/[id]/actions",
+    "methods": ["POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/tasks/[id]/actions/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/tasks/[id]/schedule",
+    "methods": ["PUT"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/tasks/[id]/schedule/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/wakies",
+    "methods": ["GET", "POST"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/wakies/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/wakies/[id]",
+    "methods": ["PUT", "DELETE"],
+    "authentication": "requireWakiesUser",
+    "validation": ["schema"],
+    "file": "app/(chat)/api/wakies/wakies/[id]/route.ts",
+    "resourceGuards": []
+  },
+  {
+    "route": "/api/wakies/workspace",
+    "methods": ["GET"],
+    "authentication": "requireWakiesUser",
+    "validation": [],
+    "file": "app/(chat)/api/wakies/workspace/route.ts",
+    "resourceGuards": []
+  }
+]

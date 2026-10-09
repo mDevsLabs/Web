@@ -1,6 +1,6 @@
 "use client";
 
-import { Columns2Icon, Rows2Icon } from "lucide-react";
+import { Columns2Icon, Rows2Icon } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { computeLineDiff } from "@/lib/editor/line-diff";
 import { cn } from "@/lib/utils";

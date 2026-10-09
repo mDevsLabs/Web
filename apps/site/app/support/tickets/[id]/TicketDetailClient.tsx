@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
-import { AlertCircle, ArrowLeft, Loader2, RefreshCw } from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/auth-provider";
 import {

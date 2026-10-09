@@ -1,4 +1,4 @@
-import { RefreshCw } from "lucide-react";
+import { RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { applyUpdate, onUpdateAvailable } from "@/lib/vibe/services/pwa";

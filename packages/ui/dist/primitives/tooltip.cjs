@@ -1,6 +1,4 @@
 "use client";
-"use strict";
-"use client";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -18,24 +16,20 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var tooltip_exports = {};
-__export(tooltip_exports, {
+var stdin_exports = {};
+__export(stdin_exports, {
   Tooltip: () => Tooltip
 });
-module.exports = __toCommonJS(tooltip_exports);
+module.exports = __toCommonJS(stdin_exports);
 var import_jsx_runtime = require("react/jsx-runtime");
 var import_radix_ui = require("radix-ui");
-var import_theme = require("../internal/theme.cjs");
+var import_theme = require("../internal/theme.js");
 function Tooltip({ content, children, delayDuration = 350, side = "top" }) {
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_radix_ui.Tooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_radix_ui.Tooltip.Root, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_radix_ui.Tooltip.Trigger, { asChild: true, children }),
     /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_radix_ui.Tooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_theme.PortalScope, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_radix_ui.Tooltip.Content, { className: "md-tooltip", side, sideOffset: 8, children: [
       content,
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_radix_ui.Tooltip.Arrow, {})
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_radix_ui.Tooltip.Arrow, { className: "md-tooltip-arrow" })
     ] }) }) })
   ] }) });
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Tooltip
-});

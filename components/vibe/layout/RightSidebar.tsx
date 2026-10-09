@@ -5,7 +5,7 @@
  * ============================================================================
  */
 
-import { ArrowUpRight, Search, TrendingUp } from "lucide-react";
+import { ArrowUpRightIcon as ArrowUpRight, SearchIcon as Search, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";

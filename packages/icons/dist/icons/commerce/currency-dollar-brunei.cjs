@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var currency_dollar_brunei_exports = {};
-__export(currency_dollar_brunei_exports, {
-  CurrencyDollarBruneiIcon: () => CurrencyDollarBruneiIcon
-});
-module.exports = __toCommonJS(currency_dollar_brunei_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const CurrencyDollarBruneiIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("CurrencyDollarBruneiIcon", [["path", { "d": "M21 6h-4a3 3 0 0 0 0 6h1a3 3 0 0 1 0 6h-4" }], ["path", { "d": "M17 20v-2" }], ["path", { "d": "M18 6v-2" }], ["path", { "d": "M3 6v12h4a3 3 0 0 0 0 -6h-4h4a3 3 0 0 0 0 -6h-4" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  CurrencyDollarBruneiIcon
-});
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const CurrencyDollarBruneiIcon = /* @__PURE__ */ createIcon('CurrencyDollarBruneiIcon', [["path", { "d": "M21 6h-4a3 3 0 0 0 0 6h1a3 3 0 0 1 0 6h-4" }], ["path", { "d": "M17 20v-2" }], ["path", { "d": "M18 6v-2" }], ["path", { "d": "M3 6v12h4a3 3 0 0 0 0 -6h-4h4a3 3 0 0 0 0 -6h-4" }]]);
+exports.CurrencyDollarBruneiIcon = CurrencyDollarBruneiIcon;

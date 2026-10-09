@@ -6,7 +6,7 @@
  * un petit bouton pour couper / réactiver le son.
  */
 
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2Icon as Volume2, VolumeXIcon as VolumeX } from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 
 export function NewsVideo({

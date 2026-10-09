@@ -27,6 +27,7 @@
 
 import { VibeApp } from "@/components/vibe/vibe-app";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import "@mdevs/ui/styles.css";
 import "@/components/vibe/vibe.css";
 
 // La lecture de `cookies()` (point 2 ci-dessus) rend la route NON INSTANTE, et

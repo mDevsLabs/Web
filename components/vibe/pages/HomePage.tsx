@@ -7,7 +7,7 @@
  */
 
 import { motion } from "framer-motion";
-import { AlertCircle, ArrowUp, PenSquare, TrendingUp, X } from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowUpIcon as ArrowUp, PenSquareIcon as PenSquare, TrendingUpIcon as TrendingUp, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PostCardSkeleton } from "@/components/vibe/common/PageSkeleton";

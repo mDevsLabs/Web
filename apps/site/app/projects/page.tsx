@@ -1,14 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Archive,
-  ExternalLink,
-  Gamepad2,
-  Layers,
-  Search,
-  type LucideIcon,
-} from "lucide-react";
+import { ArchiveIcon as Archive, ExternalLinkIcon as ExternalLink, Gamepad2Icon as Gamepad2, LayersIcon as Layers, SearchIcon as Search } from "@mdevs/icons";
+import type { IconProps } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { GithubRepoStats } from "@/components/github-repo-stats";
@@ -25,7 +19,7 @@ type ActiveProjectCard = Project & {
   number: string;
   link: string;
   repo: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   iconColor: string;
   borderHover: string;
 };
@@ -38,7 +32,7 @@ const activeProjectCards: ActiveProjectCard[] = activeProjects.map((project) => 
   ...getProjectPresentation(project),
 }));
 
-const archivedProjectIcons: Record<string, LucideIcon> = {
+const archivedProjectIcons: Record<string, React.ComponentType<any>> = {
   msearch: Search,
   openprovider: Layers,
   snob: Gamepad2,

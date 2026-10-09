@@ -1,6 +1,6 @@
 "use client";
 
-import { Image as ImageIcon } from "lucide-react";
+import { ImageIcon } from "@mdevs/icons";
 
 import type { UserImageUsageData } from "@/lib/image-usage";
 import { getTierDailyImageLimit } from "@/lib/tiers";

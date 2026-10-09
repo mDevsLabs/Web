@@ -1,16 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Server,
-  Shield,
-  Zap,
-  Lock,
-  Terminal,
-  Globe,
-  Github,
-  BookOpen,
-} from "lucide-react";
+import { ServerIcon as Server, ShieldIcon as Shield, ZapIcon as Zap, LockIcon as Lock, TerminalIcon as Terminal, GlobeIcon as Globe, GithubIcon as Github, BookOpenIcon as BookOpen } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 

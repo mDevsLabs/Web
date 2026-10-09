@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { Loader2Icon as Loader2 } from "@mdevs/icons";
 import { Suspense } from "react";
 import NewTicketClient from "./NewTicketClient";
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import { Search, Folder, FileText, LifeBuoy, PlusCircle, BarChart3, Loader2 } from "lucide-react";
+import { SearchIcon as Search, FolderIcon as Folder, FileTextIcon as FileText, LifeBuoyIcon as LifeBuoy, PlusCircleIcon as PlusCircle, BarChart3Icon as BarChart3, Loader2Icon as Loader2 } from "@mdevs/icons";
 import { motion, AnimatePresence } from "motion/react";
 import { useSiteSearch } from "@/components/ui/search-bar";
 import { SEARCH_TYPE_LABELS } from "@/lib/search-types";

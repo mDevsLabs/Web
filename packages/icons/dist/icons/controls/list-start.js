@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const ListStartIcon = /* @__PURE__ */ createIcon("ListStartIcon", [["path", { "d": "M3 5h6" }], ["path", { "d": "M3 12h13" }], ["path", { "d": "M3 19h13" }], ["path", { "d": "m16 8-3-3 3-3" }], ["path", { "d": "M21 19V7a2 2 0 0 0-2-2h-6" }]]);
-export {
-  ListStartIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const ListStartIcon = /* @__PURE__ */ createIcon('ListStartIcon', [["path", { "d": "M3 5h6" }], ["path", { "d": "M3 12h13" }], ["path", { "d": "M3 19h13" }], ["path", { "d": "m16 8-3-3 3-3" }], ["path", { "d": "M21 19V7a2 2 0 0 0-2-2h-6" }]]);

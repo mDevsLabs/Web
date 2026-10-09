@@ -1,21 +1,6 @@
 "use client";
 
-import {
-  BlocksIcon,
-  CalendarIcon,
-  CheckCircle2Icon,
-  CircleSlashIcon,
-  ClockIcon,
-  CloudIcon,
-  Loader2Icon,
-  MessagesSquareIcon,
-  RepeatIcon,
-  SparklesIcon,
-  WandSparklesIcon,
-  WrenchIcon,
-  XCircleIcon,
-  XIcon,
-} from "lucide-react";
+import { BlocksIcon, CalendarIcon, CheckCircle2Icon, CircleSlashIcon, ClockIcon, CloudIcon, Loader2Icon, MessagesSquareIcon, RepeatIcon, SparklesIcon, WandSparklesIcon, WrenchIcon, XCircleIcon, XIcon } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";

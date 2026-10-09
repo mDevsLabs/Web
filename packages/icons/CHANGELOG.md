@@ -1,5 +1,9 @@
 # Changelog
 
+## Corrections locales — 2026-10-09
+
+- Les SVG héritent à nouveau du texte parent : contraste des boutons, thèmes et états préservé. Props `color`, `style`, ARIA et épaisseur inchangées.
+
 ## 0.2.0 — 2026-10-05
 
 - 100 composants ajoutés : 60 primitives et 40 compositions dans quatre domaines ; total 1 212.

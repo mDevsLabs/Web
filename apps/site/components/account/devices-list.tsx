@@ -1,23 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { 
-  Smartphone, 
-  Trash2, 
-  Edit2, 
-  Loader2, 
-  Check, 
-  X, 
-  RefreshCw, 
-  ShieldCheck, 
-  Globe, 
-  Clock, 
-  LogOut,
-  Search,
-  Laptop,
-  Ban,
-  Unlock
-} from "lucide-react";
+import { SmartphoneIcon as Smartphone, Trash2Icon as Trash2, Edit2Icon as Edit2, Loader2Icon as Loader2, CheckIcon as Check, XIcon as X, RefreshCwIcon as RefreshCw, ShieldCheckIcon as ShieldCheck, GlobeIcon as Globe, ClockIcon as Clock, LogOutIcon as LogOut, SearchIcon as Search, LaptopIcon as Laptop, BanIcon as Ban, UnlockIcon as Unlock } from "@mdevs/icons";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/auth-provider";
 import { formatDisplayDate } from "@/lib/date-format";

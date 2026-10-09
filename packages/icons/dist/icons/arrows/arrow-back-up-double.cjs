@@ -22,7 +22,7 @@ __export(arrow_back_up_double_exports, {
   ArrowBackUpDoubleIcon: () => ArrowBackUpDoubleIcon
 });
 module.exports = __toCommonJS(arrow_back_up_double_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowBackUpDoubleIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowBackUpDoubleIcon", [["path", { "d": "M13 14l-4 -4l4 -4" }], ["path", { "d": "M8 14l-4 -4l4 -4" }], ["path", { "d": "M9 10h7a4 4 0 1 1 0 8h-1" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

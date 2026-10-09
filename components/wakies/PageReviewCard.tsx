@@ -1,6 +1,10 @@
 "use client";
 
-import { ArrowUpRight, Check, FileText } from "lucide-react";
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  CheckIcon as Check,
+  FileTextIcon as FileText,
+} from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 import { computerToolResult } from "@/components/wakies/ComputerToolCard";
 import { Markdown } from "@/components/wakies/markdown";

@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const BadgeOffIcon = /* @__PURE__ */ createIcon("BadgeOffIcon", [["path", { "d": "M7 7v10l5 3l5 -3m0 -4v-9l-5 3l-2.496 -1.497" }], ["path", { "d": "M3 3l18 18" }]]);
-export {
-  BadgeOffIcon
-};
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const BadgeOffIcon = /* @__PURE__ */ createIcon('BadgeOffIcon', [["path", { "d": "M7 7v10l5 3l5 -3m0 -4v-9l-5 3l-2.496 -1.497" }], ["path", { "d": "M3 3l18 18" }]]);

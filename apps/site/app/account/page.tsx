@@ -2,7 +2,7 @@
 
 import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, LogOut, PartyPopper, Sparkles } from "lucide-react";
+import { Loader2Icon as Loader2, LogOutIcon as LogOut, PartyPopperIcon as PartyPopper, SparklesIcon as Sparkles } from "@mdevs/icons";
 import { motion } from "motion/react";
 import { useWindowSize } from "react-use";
 import toast from "react-hot-toast";

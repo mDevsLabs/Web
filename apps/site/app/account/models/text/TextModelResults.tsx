@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, ChevronDown, ChevronUp, Copy, Layers, Loader2, Wrench, X } from "lucide-react";
+import { CheckIcon as Check, ChevronDownIcon as ChevronDown, ChevronUpIcon as ChevronUp, CopyIcon as Copy, LayersIcon as Layers, Loader2Icon as Loader2, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
 import toast from "react-hot-toast";
 import type { TextModelItem } from "./text-model-types";
 import { formatModelTokens } from "./TextModelFilters";

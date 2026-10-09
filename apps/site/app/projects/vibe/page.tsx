@@ -2,17 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ArrowRight,
-  BookMarked,
-  Download,
-  Github,
-  MessagesSquare,
-  Send,
-  Smartphone,
-  Sparkles,
-  Users,
-} from 'lucide-react';
+import { ArrowRightIcon as ArrowRight, BookMarkedIcon as BookMarked, DownloadIcon as Download, GithubIcon as Github, MessagesSquareIcon as MessagesSquare, SendIcon as Send, SmartphoneIcon as Smartphone, SparklesIcon as Sparkles, UsersIcon as Users } from "@mdevs/icons";
 import { GithubRelease } from '@/components/github-release';
 import { GithubRepoStats } from '@/components/github-repo-stats';
 

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loader2Icon as Loader2 } from "@mdevs/icons";
 import { useAuth } from "@/components/auth-provider";
 import RequestsClient from "./RequestsClient";
 

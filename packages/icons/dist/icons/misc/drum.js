@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const DrumIcon = /* @__PURE__ */ createIcon("DrumIcon", [["path", { "d": "m2 2 8 8" }], ["path", { "d": "m22 2-8 8" }], ["ellipse", { "cx": "12", "cy": "9", "rx": "10", "ry": "5" }], ["path", { "d": "M7 13.4v7.9" }], ["path", { "d": "M12 14v8" }], ["path", { "d": "M17 13.4v7.9" }], ["path", { "d": "M2 9v8a10 5 0 0 0 20 0V9" }]]);
-export {
-  DrumIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const DrumIcon = /* @__PURE__ */ createIcon('DrumIcon', [["path", { "d": "m2 2 8 8" }], ["path", { "d": "m22 2-8 8" }], ["ellipse", { "cx": "12", "cy": "9", "rx": "10", "ry": "5" }], ["path", { "d": "M7 13.4v7.9" }], ["path", { "d": "M12 14v8" }], ["path", { "d": "M17 13.4v7.9" }], ["path", { "d": "M2 9v8a10 5 0 0 0 20 0V9" }]]);

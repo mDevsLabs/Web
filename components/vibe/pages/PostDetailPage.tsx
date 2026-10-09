@@ -5,13 +5,7 @@
  * ============================================================================
  */
 
-import {
-  AlertCircle,
-  ArrowLeft,
-  Loader2,
-  Sparkles,
-  Volume2,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, SparklesIcon as Sparkles, Volume2Icon as Volume2 } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { CommentSection } from "@/components/vibe/comments/CommentSection";

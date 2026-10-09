@@ -2,7 +2,7 @@
 
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { RotateCwIcon, SparklesIcon } from "lucide-react";
+import { RotateCwIcon, SparklesIcon } from "@mdevs/icons";
 import { memo, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSettings } from "@/hooks/use-settings";

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LifeBuoy, PlusCircle, MessageSquare, BarChart3 } from "lucide-react";
+import { LifeBuoyIcon as LifeBuoy, PlusCircleIcon as PlusCircle, MessageSquareIcon as MessageSquare, BarChart3Icon as BarChart3 } from "@mdevs/icons";
 
 export const metadata: Metadata = {
   title: "Centre de Support & Assistance | mAI",

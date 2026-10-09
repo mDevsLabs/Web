@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { X, Sparkles, ShieldCheck, Zap, Activity, Eye } from 'lucide-react';
+import { XIcon as X, SparklesIcon as Sparkles, ShieldCheckIcon as ShieldCheck, ZapIcon as Zap, ActivityIcon as Activity, EyeIcon as Eye } from "@mdevs/icons";
 import { Post } from '../../types/vibe';
 
 interface ExplainModalProps {

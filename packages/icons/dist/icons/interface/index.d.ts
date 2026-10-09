@@ -122,3 +122,6 @@ export { SquareTextIcon } from './square-text.js';
 export { SquareUserIcon } from './square-user.js';
 export { SquareUserRoundIcon } from './square-user-round.js';
 export { SquareXIcon } from './square-x.js';
+export { MoreHorizontalIcon } from './more-horizontal.js';
+export { MoreVerticalIcon } from './more-vertical.js';
+export { PanelsTopLeftIcon } from './panels-top-left.js';

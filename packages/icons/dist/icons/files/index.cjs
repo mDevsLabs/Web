@@ -17,8 +17,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var files_exports = {};
-__export(files_exports, {
+var index_exports = {};
+__export(index_exports, {
   ArchiveIcon: () => import_archive.ArchiveIcon,
   ArchiveOffIcon: () => import_archive_off.ArchiveOffIcon,
   ArchiveRestoreIcon: () => import_archive_restore.ArchiveRestoreIcon,
@@ -39,6 +39,7 @@ __export(files_exports, {
   BookImageIcon: () => import_book_image.BookImageIcon,
   BookKeyIcon: () => import_book_key.BookKeyIcon,
   BookLockIcon: () => import_book_lock.BookLockIcon,
+  BookMarkedIcon: () => import_book_marked.BookMarkedIcon,
   BookMinusIcon: () => import_book_minus.BookMinusIcon,
   BookOffIcon: () => import_book_off.BookOffIcon,
   BookOpenCheckIcon: () => import_book_open_check.BookOpenCheckIcon,
@@ -91,6 +92,7 @@ __export(files_exports, {
   FileIcon: () => import_file.FileIcon,
   FileImageIcon: () => import_file_image.FileImageIcon,
   FileInputIcon: () => import_file_input.FileInputIcon,
+  FileJsonIcon: () => import_file_json.FileJsonIcon,
   FileKey2Icon: () => import_file_key_2.FileKey2Icon,
   FileLock2Icon: () => import_file_lock_2.FileLock2Icon,
   FileMinus2Icon: () => import_file_minus_2.FileMinus2Icon,
@@ -101,6 +103,7 @@ __export(files_exports, {
   FilePlayIcon: () => import_file_play.FilePlayIcon,
   FilePlus2Icon: () => import_file_plus_2.FilePlus2Icon,
   FilePlusIcon: () => import_file_plus.FilePlusIcon,
+  FileQuestionIcon: () => import_file_question.FileQuestionIcon,
   FileQuestionMarkIcon: () => import_file_question_mark.FileQuestionMarkIcon,
   FileScanIcon: () => import_file_scan.FileScanIcon,
   FileSearch2Icon: () => import_file_search_2.FileSearch2Icon,
@@ -157,144 +160,147 @@ __export(files_exports, {
   NotebookTabsIcon: () => import_notebook_tabs.NotebookTabsIcon,
   NotebookTextIcon: () => import_notebook_text.NotebookTextIcon
 });
-module.exports = __toCommonJS(files_exports);
-var import_archive = require("./archive.cjs");
-var import_archive_off = require("./archive-off.cjs");
-var import_archive_restore = require("./archive-restore.cjs");
-var import_archive_x = require("./archive-x.cjs");
-var import_book = require("./book.cjs");
-var import_book_2 = require("./book-2.cjs");
-var import_book_a = require("./book-a.cjs");
-var import_book_alert = require("./book-alert.cjs");
-var import_book_audio = require("./book-audio.cjs");
-var import_book_bookmark = require("./book-bookmark.cjs");
-var import_book_check = require("./book-check.cjs");
-var import_book_copy = require("./book-copy.cjs");
-var import_book_dashed = require("./book-dashed.cjs");
-var import_book_down = require("./book-down.cjs");
-var import_book_download = require("./book-download.cjs");
-var import_book_headphones = require("./book-headphones.cjs");
-var import_book_heart = require("./book-heart.cjs");
-var import_book_image = require("./book-image.cjs");
-var import_book_key = require("./book-key.cjs");
-var import_book_lock = require("./book-lock.cjs");
-var import_book_minus = require("./book-minus.cjs");
-var import_book_off = require("./book-off.cjs");
-var import_book_open = require("./book-open.cjs");
-var import_book_open_check = require("./book-open-check.cjs");
-var import_book_open_text = require("./book-open-text.cjs");
-var import_book_plus = require("./book-plus.cjs");
-var import_book_search = require("./book-search.cjs");
-var import_book_text = require("./book-text.cjs");
-var import_book_type = require("./book-type.cjs");
-var import_book_up = require("./book-up.cjs");
-var import_book_up_2 = require("./book-up-2.cjs");
-var import_book_upload = require("./book-upload.cjs");
-var import_book_user = require("./book-user.cjs");
-var import_book_x = require("./book-x.cjs");
-var import_clipboard = require("./clipboard.cjs");
-var import_clipboard_check = require("./clipboard-check.cjs");
-var import_clipboard_clock = require("./clipboard-clock.cjs");
-var import_clipboard_copy = require("./clipboard-copy.cjs");
-var import_clipboard_edit = require("./clipboard-edit.cjs");
-var import_clipboard_list = require("./clipboard-list.cjs");
-var import_clipboard_minus = require("./clipboard-minus.cjs");
-var import_clipboard_paste = require("./clipboard-paste.cjs");
-var import_clipboard_pen_line = require("./clipboard-pen-line.cjs");
-var import_clipboard_plus = require("./clipboard-plus.cjs");
-var import_clipboard_type = require("./clipboard-type.cjs");
-var import_clipboard_x = require("./clipboard-x.cjs");
-var import_file = require("./file.cjs");
-var import_file_archive = require("./file-archive.cjs");
-var import_file_audio_2 = require("./file-audio-2.cjs");
-var import_file_axis_3_d = require("./file-axis-3-d.cjs");
-var import_file_badge_2 = require("./file-badge-2.cjs");
-var import_file_bar_chart = require("./file-bar-chart.cjs");
-var import_file_bar_chart_2 = require("./file-bar-chart-2.cjs");
-var import_file_box = require("./file-box.cjs");
-var import_file_braces = require("./file-braces.cjs");
-var import_file_braces_corner = require("./file-braces-corner.cjs");
-var import_file_chart_line = require("./file-chart-line.cjs");
-var import_file_chart_pie = require("./file-chart-pie.cjs");
-var import_file_check = require("./file-check.cjs");
-var import_file_check_2 = require("./file-check-2.cjs");
-var import_file_clock = require("./file-clock.cjs");
-var import_file_code = require("./file-code.cjs");
-var import_file_code_2 = require("./file-code-2.cjs");
-var import_file_cog_2 = require("./file-cog-2.cjs");
-var import_file_diff = require("./file-diff.cjs");
-var import_file_digit = require("./file-digit.cjs");
-var import_file_down = require("./file-down.cjs");
-var import_file_edit = require("./file-edit.cjs");
-var import_file_exclamation_point = require("./file-exclamation-point.cjs");
-var import_file_heart = require("./file-heart.cjs");
-var import_file_image = require("./file-image.cjs");
-var import_file_input = require("./file-input.cjs");
-var import_file_key_2 = require("./file-key-2.cjs");
-var import_file_lock_2 = require("./file-lock-2.cjs");
-var import_file_minus = require("./file-minus.cjs");
-var import_file_minus_2 = require("./file-minus-2.cjs");
-var import_file_music = require("./file-music.cjs");
-var import_file_output = require("./file-output.cjs");
-var import_file_pen_line = require("./file-pen-line.cjs");
-var import_file_play = require("./file-play.cjs");
-var import_file_plus = require("./file-plus.cjs");
-var import_file_plus_2 = require("./file-plus-2.cjs");
-var import_file_question_mark = require("./file-question-mark.cjs");
-var import_file_scan = require("./file-scan.cjs");
-var import_file_search = require("./file-search.cjs");
-var import_file_search_2 = require("./file-search-2.cjs");
-var import_file_signal = require("./file-signal.cjs");
-var import_file_sliders = require("./file-sliders.cjs");
-var import_file_spreadsheet = require("./file-spreadsheet.cjs");
-var import_file_stack = require("./file-stack.cjs");
-var import_file_symlink = require("./file-symlink.cjs");
-var import_file_terminal = require("./file-terminal.cjs");
-var import_file_text = require("./file-text.cjs");
-var import_file_type = require("./file-type.cjs");
-var import_file_type_2 = require("./file-type-2.cjs");
-var import_file_up = require("./file-up.cjs");
-var import_file_user = require("./file-user.cjs");
-var import_file_video_2 = require("./file-video-2.cjs");
-var import_file_volume = require("./file-volume.cjs");
-var import_file_x = require("./file-x.cjs");
-var import_file_x_2 = require("./file-x-2.cjs");
-var import_folder = require("./folder.cjs");
-var import_folder_archive = require("./folder-archive.cjs");
-var import_folder_bookmark = require("./folder-bookmark.cjs");
-var import_folder_check = require("./folder-check.cjs");
-var import_folder_clock = require("./folder-clock.cjs");
-var import_folder_closed = require("./folder-closed.cjs");
-var import_folder_code = require("./folder-code.cjs");
-var import_folder_cog_2 = require("./folder-cog-2.cjs");
-var import_folder_dot = require("./folder-dot.cjs");
-var import_folder_down = require("./folder-down.cjs");
-var import_folder_edit = require("./folder-edit.cjs");
-var import_folder_git = require("./folder-git.cjs");
-var import_folder_git_2 = require("./folder-git-2.cjs");
-var import_folder_heart = require("./folder-heart.cjs");
-var import_folder_input = require("./folder-input.cjs");
-var import_folder_kanban = require("./folder-kanban.cjs");
-var import_folder_key = require("./folder-key.cjs");
-var import_folder_lock = require("./folder-lock.cjs");
-var import_folder_minus = require("./folder-minus.cjs");
-var import_folder_open = require("./folder-open.cjs");
-var import_folder_open_dot = require("./folder-open-dot.cjs");
-var import_folder_output = require("./folder-output.cjs");
-var import_folder_plus = require("./folder-plus.cjs");
-var import_folder_root = require("./folder-root.cjs");
-var import_folder_search = require("./folder-search.cjs");
-var import_folder_search_2 = require("./folder-search-2.cjs");
-var import_folder_symlink = require("./folder-symlink.cjs");
-var import_folder_sync = require("./folder-sync.cjs");
-var import_folder_tree = require("./folder-tree.cjs");
-var import_folder_up = require("./folder-up.cjs");
-var import_folder_x = require("./folder-x.cjs");
-var import_notebook = require("./notebook.cjs");
-var import_notebook_dot = require("./notebook-dot.cjs");
-var import_notebook_pen = require("./notebook-pen.cjs");
-var import_notebook_tabs = require("./notebook-tabs.cjs");
-var import_notebook_text = require("./notebook-text.cjs");
+module.exports = __toCommonJS(index_exports);
+var import_archive = require("./archive.js");
+var import_archive_off = require("./archive-off.js");
+var import_archive_restore = require("./archive-restore.js");
+var import_archive_x = require("./archive-x.js");
+var import_book = require("./book.js");
+var import_book_2 = require("./book-2.js");
+var import_book_a = require("./book-a.js");
+var import_book_alert = require("./book-alert.js");
+var import_book_audio = require("./book-audio.js");
+var import_book_bookmark = require("./book-bookmark.js");
+var import_book_check = require("./book-check.js");
+var import_book_copy = require("./book-copy.js");
+var import_book_dashed = require("./book-dashed.js");
+var import_book_down = require("./book-down.js");
+var import_book_download = require("./book-download.js");
+var import_book_headphones = require("./book-headphones.js");
+var import_book_heart = require("./book-heart.js");
+var import_book_image = require("./book-image.js");
+var import_book_key = require("./book-key.js");
+var import_book_lock = require("./book-lock.js");
+var import_book_minus = require("./book-minus.js");
+var import_book_off = require("./book-off.js");
+var import_book_open = require("./book-open.js");
+var import_book_open_check = require("./book-open-check.js");
+var import_book_open_text = require("./book-open-text.js");
+var import_book_plus = require("./book-plus.js");
+var import_book_search = require("./book-search.js");
+var import_book_text = require("./book-text.js");
+var import_book_type = require("./book-type.js");
+var import_book_up = require("./book-up.js");
+var import_book_up_2 = require("./book-up-2.js");
+var import_book_upload = require("./book-upload.js");
+var import_book_user = require("./book-user.js");
+var import_book_x = require("./book-x.js");
+var import_clipboard = require("./clipboard.js");
+var import_clipboard_check = require("./clipboard-check.js");
+var import_clipboard_clock = require("./clipboard-clock.js");
+var import_clipboard_copy = require("./clipboard-copy.js");
+var import_clipboard_edit = require("./clipboard-edit.js");
+var import_clipboard_list = require("./clipboard-list.js");
+var import_clipboard_minus = require("./clipboard-minus.js");
+var import_clipboard_paste = require("./clipboard-paste.js");
+var import_clipboard_pen_line = require("./clipboard-pen-line.js");
+var import_clipboard_plus = require("./clipboard-plus.js");
+var import_clipboard_type = require("./clipboard-type.js");
+var import_clipboard_x = require("./clipboard-x.js");
+var import_file = require("./file.js");
+var import_file_archive = require("./file-archive.js");
+var import_file_audio_2 = require("./file-audio-2.js");
+var import_file_axis_3_d = require("./file-axis-3-d.js");
+var import_file_badge_2 = require("./file-badge-2.js");
+var import_file_bar_chart = require("./file-bar-chart.js");
+var import_file_bar_chart_2 = require("./file-bar-chart-2.js");
+var import_file_box = require("./file-box.js");
+var import_file_braces = require("./file-braces.js");
+var import_file_braces_corner = require("./file-braces-corner.js");
+var import_file_chart_line = require("./file-chart-line.js");
+var import_file_chart_pie = require("./file-chart-pie.js");
+var import_file_check = require("./file-check.js");
+var import_file_check_2 = require("./file-check-2.js");
+var import_file_clock = require("./file-clock.js");
+var import_file_code = require("./file-code.js");
+var import_file_code_2 = require("./file-code-2.js");
+var import_file_cog_2 = require("./file-cog-2.js");
+var import_file_diff = require("./file-diff.js");
+var import_file_digit = require("./file-digit.js");
+var import_file_down = require("./file-down.js");
+var import_file_edit = require("./file-edit.js");
+var import_file_exclamation_point = require("./file-exclamation-point.js");
+var import_file_heart = require("./file-heart.js");
+var import_file_image = require("./file-image.js");
+var import_file_input = require("./file-input.js");
+var import_file_key_2 = require("./file-key-2.js");
+var import_file_lock_2 = require("./file-lock-2.js");
+var import_file_minus = require("./file-minus.js");
+var import_file_minus_2 = require("./file-minus-2.js");
+var import_file_music = require("./file-music.js");
+var import_file_output = require("./file-output.js");
+var import_file_pen_line = require("./file-pen-line.js");
+var import_file_play = require("./file-play.js");
+var import_file_plus = require("./file-plus.js");
+var import_file_plus_2 = require("./file-plus-2.js");
+var import_file_question_mark = require("./file-question-mark.js");
+var import_file_scan = require("./file-scan.js");
+var import_file_search = require("./file-search.js");
+var import_file_search_2 = require("./file-search-2.js");
+var import_file_signal = require("./file-signal.js");
+var import_file_sliders = require("./file-sliders.js");
+var import_file_spreadsheet = require("./file-spreadsheet.js");
+var import_file_stack = require("./file-stack.js");
+var import_file_symlink = require("./file-symlink.js");
+var import_file_terminal = require("./file-terminal.js");
+var import_file_text = require("./file-text.js");
+var import_file_type = require("./file-type.js");
+var import_file_type_2 = require("./file-type-2.js");
+var import_file_up = require("./file-up.js");
+var import_file_user = require("./file-user.js");
+var import_file_video_2 = require("./file-video-2.js");
+var import_file_volume = require("./file-volume.js");
+var import_file_x = require("./file-x.js");
+var import_file_x_2 = require("./file-x-2.js");
+var import_folder = require("./folder.js");
+var import_folder_archive = require("./folder-archive.js");
+var import_folder_bookmark = require("./folder-bookmark.js");
+var import_folder_check = require("./folder-check.js");
+var import_folder_clock = require("./folder-clock.js");
+var import_folder_closed = require("./folder-closed.js");
+var import_folder_code = require("./folder-code.js");
+var import_folder_cog_2 = require("./folder-cog-2.js");
+var import_folder_dot = require("./folder-dot.js");
+var import_folder_down = require("./folder-down.js");
+var import_folder_edit = require("./folder-edit.js");
+var import_folder_git = require("./folder-git.js");
+var import_folder_git_2 = require("./folder-git-2.js");
+var import_folder_heart = require("./folder-heart.js");
+var import_folder_input = require("./folder-input.js");
+var import_folder_kanban = require("./folder-kanban.js");
+var import_folder_key = require("./folder-key.js");
+var import_folder_lock = require("./folder-lock.js");
+var import_folder_minus = require("./folder-minus.js");
+var import_folder_open = require("./folder-open.js");
+var import_folder_open_dot = require("./folder-open-dot.js");
+var import_folder_output = require("./folder-output.js");
+var import_folder_plus = require("./folder-plus.js");
+var import_folder_root = require("./folder-root.js");
+var import_folder_search = require("./folder-search.js");
+var import_folder_search_2 = require("./folder-search-2.js");
+var import_folder_symlink = require("./folder-symlink.js");
+var import_folder_sync = require("./folder-sync.js");
+var import_folder_tree = require("./folder-tree.js");
+var import_folder_up = require("./folder-up.js");
+var import_folder_x = require("./folder-x.js");
+var import_notebook = require("./notebook.js");
+var import_notebook_dot = require("./notebook-dot.js");
+var import_notebook_pen = require("./notebook-pen.js");
+var import_notebook_tabs = require("./notebook-tabs.js");
+var import_notebook_text = require("./notebook-text.js");
+var import_file_json = require("./file-json.js");
+var import_file_question = require("./file-question.js");
+var import_book_marked = require("./book-marked.js");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ArchiveIcon,
@@ -317,6 +323,7 @@ var import_notebook_text = require("./notebook-text.cjs");
   BookImageIcon,
   BookKeyIcon,
   BookLockIcon,
+  BookMarkedIcon,
   BookMinusIcon,
   BookOffIcon,
   BookOpenCheckIcon,
@@ -369,6 +376,7 @@ var import_notebook_text = require("./notebook-text.cjs");
   FileIcon,
   FileImageIcon,
   FileInputIcon,
+  FileJsonIcon,
   FileKey2Icon,
   FileLock2Icon,
   FileMinus2Icon,
@@ -379,6 +387,7 @@ var import_notebook_text = require("./notebook-text.cjs");
   FilePlayIcon,
   FilePlus2Icon,
   FilePlusIcon,
+  FileQuestionIcon,
   FileQuestionMarkIcon,
   FileScanIcon,
   FileSearch2Icon,

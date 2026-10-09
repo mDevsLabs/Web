@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  BookOpen,
-  BrainCircuit,
-  Code,
-  ExternalLink,
-  Github,
-  Globe,
-  Layout,
-  MessageSquare,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { BookOpenIcon as BookOpen, BrainCircuitIcon as BrainCircuit, CodeIcon as Code, ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, LayoutIcon as Layout, MessageSquareIcon as MessageSquare, SparklesIcon as Sparkles, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";

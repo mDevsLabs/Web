@@ -6,16 +6,7 @@
  * ============================================================================
  */
 
-import {
-  Bookmark,
-  Eye,
-  Heart,
-  Loader2,
-  MessageSquare,
-  Repeat,
-  TrendingUp,
-  X,
-} from "lucide-react";
+import { BookmarkIcon as Bookmark, EyeIcon as Eye, HeartIcon as Heart, Loader2Icon as Loader2, MessageSquareIcon as MessageSquare, RepeatIcon as Repeat, TrendingUpIcon as TrendingUp, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { ApiService } from "@/lib/vibe/services/api";

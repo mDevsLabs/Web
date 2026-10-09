@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarClockIcon, FileTextIcon, TableIcon } from "lucide-react";
+import { CalendarClockIcon, FileTextIcon, TableIcon } from "@mdevs/icons";
 import { useState } from "react";
 
 type DocumentParserOutput = {

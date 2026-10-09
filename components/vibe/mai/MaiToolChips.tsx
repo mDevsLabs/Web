@@ -7,15 +7,7 @@
  * ============================================================================
  */
 
-import {
-  CheckCircle2,
-  ChevronDown,
-  ChevronRight,
-  Clock,
-  MinusCircle,
-  Sparkles,
-  XCircle,
-} from "lucide-react";
+import { CheckCircle2Icon as CheckCircle2, ChevronDownIcon as ChevronDown, ChevronRightIcon as ChevronRight, ClockIcon as Clock, MinusCircleIcon as MinusCircle, SparklesIcon as Sparkles, XCircleIcon as XCircle } from "@mdevs/icons";
 import type React from "react";
 import { useState } from "react";
 import { FALLBACK_MAI_TOOLS } from "@/lib/vibe/data/maiTools";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star, Tag, Loader2 } from "lucide-react";
+import { StarIcon as Star, TagIcon as Tag, Loader2Icon as Loader2 } from "@mdevs/icons";
 
 interface RepoStats {
   stars: number;

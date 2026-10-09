@@ -6,7 +6,7 @@
  * ============================================================================
  */
 
-import { ArrowLeft, Check, Loader2, Search, Send, X } from "lucide-react";
+import { ArrowLeftIcon as ArrowLeft, CheckIcon as Check, Loader2Icon as Loader2, SearchIcon as Search, SendIcon as Send, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";

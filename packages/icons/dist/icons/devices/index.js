@@ -1,93 +1,46 @@
 "use client";
-import { CpuIcon } from "./cpu.js";
-import { KeyboardIcon } from "./keyboard.js";
-import { KeyboardMusicIcon } from "./keyboard-music.js";
-import { KeyboardOffIcon } from "./keyboard-off.js";
-import { LaptopIcon } from "./laptop.js";
-import { Laptop2Icon } from "./laptop-2.js";
-import { LaptopMinimalCheckIcon } from "./laptop-minimal-check.js";
-import { MemoryStickIcon } from "./memory-stick.js";
-import { MonitorIcon } from "./monitor.js";
-import { MonitorCheckIcon } from "./monitor-check.js";
-import { MonitorCloudIcon } from "./monitor-cloud.js";
-import { MonitorCogIcon } from "./monitor-cog.js";
-import { MonitorDotIcon } from "./monitor-dot.js";
-import { MonitorDownIcon } from "./monitor-down.js";
-import { MonitorOffIcon } from "./monitor-off.js";
-import { MonitorPauseIcon } from "./monitor-pause.js";
-import { MonitorPcIcon } from "./monitor-pc.js";
-import { MonitorPlayIcon } from "./monitor-play.js";
-import { MonitorSmartphoneIcon } from "./monitor-smartphone.js";
-import { MonitorSpeakerIcon } from "./monitor-speaker.js";
-import { MonitorStopIcon } from "./monitor-stop.js";
-import { MonitorUpIcon } from "./monitor-up.js";
-import { MonitorXIcon } from "./monitor-x.js";
-import { MouseIcon } from "./mouse.js";
-import { MouseLeftIcon } from "./mouse-left.js";
-import { MouseOffIcon } from "./mouse-off.js";
-import { MousePointerIcon } from "./mouse-pointer.js";
-import { MousePointer2Icon } from "./mouse-pointer-2.js";
-import { MousePointer2OffIcon } from "./mouse-pointer-2-off.js";
-import { MousePointerBanIcon } from "./mouse-pointer-ban.js";
-import { MousePointerClickIcon } from "./mouse-pointer-click.js";
-import { MousePointerSquareDashedIcon } from "./mouse-pointer-square-dashed.js";
-import { MouseRightIcon } from "./mouse-right.js";
-import { PrinterIcon } from "./printer.js";
-import { Printer3dIcon } from "./printer-3d.js";
-import { PrinterCheckIcon } from "./printer-check.js";
-import { PrinterXIcon } from "./printer-x.js";
-import { SmartphoneIcon } from "./smartphone.js";
-import { SmartphoneChargingIcon } from "./smartphone-charging.js";
-import { SmartphoneNfcIcon } from "./smartphone-nfc.js";
-import { TabletIcon } from "./tablet.js";
-import { TabletSmartphoneIcon } from "./tablet-smartphone.js";
-import { UsbIcon } from "./usb.js";
-import { UsbCPortIcon } from "./usb-c-port.js";
-import { WatchIcon } from "./watch.js";
-export {
-  CpuIcon,
-  KeyboardIcon,
-  KeyboardMusicIcon,
-  KeyboardOffIcon,
-  Laptop2Icon,
-  LaptopIcon,
-  LaptopMinimalCheckIcon,
-  MemoryStickIcon,
-  MonitorCheckIcon,
-  MonitorCloudIcon,
-  MonitorCogIcon,
-  MonitorDotIcon,
-  MonitorDownIcon,
-  MonitorIcon,
-  MonitorOffIcon,
-  MonitorPauseIcon,
-  MonitorPcIcon,
-  MonitorPlayIcon,
-  MonitorSmartphoneIcon,
-  MonitorSpeakerIcon,
-  MonitorStopIcon,
-  MonitorUpIcon,
-  MonitorXIcon,
-  MouseIcon,
-  MouseLeftIcon,
-  MouseOffIcon,
-  MousePointer2Icon,
-  MousePointer2OffIcon,
-  MousePointerBanIcon,
-  MousePointerClickIcon,
-  MousePointerIcon,
-  MousePointerSquareDashedIcon,
-  MouseRightIcon,
-  Printer3dIcon,
-  PrinterCheckIcon,
-  PrinterIcon,
-  PrinterXIcon,
-  SmartphoneChargingIcon,
-  SmartphoneIcon,
-  SmartphoneNfcIcon,
-  TabletIcon,
-  TabletSmartphoneIcon,
-  UsbCPortIcon,
-  UsbIcon,
-  WatchIcon
-};
+export { CpuIcon } from './cpu.js';
+export { KeyboardIcon } from './keyboard.js';
+export { KeyboardMusicIcon } from './keyboard-music.js';
+export { KeyboardOffIcon } from './keyboard-off.js';
+export { LaptopIcon } from './laptop.js';
+export { Laptop2Icon } from './laptop-2.js';
+export { LaptopMinimalCheckIcon } from './laptop-minimal-check.js';
+export { MemoryStickIcon } from './memory-stick.js';
+export { MonitorIcon } from './monitor.js';
+export { MonitorCheckIcon } from './monitor-check.js';
+export { MonitorCloudIcon } from './monitor-cloud.js';
+export { MonitorCogIcon } from './monitor-cog.js';
+export { MonitorDotIcon } from './monitor-dot.js';
+export { MonitorDownIcon } from './monitor-down.js';
+export { MonitorOffIcon } from './monitor-off.js';
+export { MonitorPauseIcon } from './monitor-pause.js';
+export { MonitorPcIcon } from './monitor-pc.js';
+export { MonitorPlayIcon } from './monitor-play.js';
+export { MonitorSmartphoneIcon } from './monitor-smartphone.js';
+export { MonitorSpeakerIcon } from './monitor-speaker.js';
+export { MonitorStopIcon } from './monitor-stop.js';
+export { MonitorUpIcon } from './monitor-up.js';
+export { MonitorXIcon } from './monitor-x.js';
+export { MouseIcon } from './mouse.js';
+export { MouseLeftIcon } from './mouse-left.js';
+export { MouseOffIcon } from './mouse-off.js';
+export { MousePointerIcon } from './mouse-pointer.js';
+export { MousePointer2Icon } from './mouse-pointer-2.js';
+export { MousePointer2OffIcon } from './mouse-pointer-2-off.js';
+export { MousePointerBanIcon } from './mouse-pointer-ban.js';
+export { MousePointerClickIcon } from './mouse-pointer-click.js';
+export { MousePointerSquareDashedIcon } from './mouse-pointer-square-dashed.js';
+export { MouseRightIcon } from './mouse-right.js';
+export { PrinterIcon } from './printer.js';
+export { Printer3dIcon } from './printer-3d.js';
+export { PrinterCheckIcon } from './printer-check.js';
+export { PrinterXIcon } from './printer-x.js';
+export { SmartphoneIcon } from './smartphone.js';
+export { SmartphoneChargingIcon } from './smartphone-charging.js';
+export { SmartphoneNfcIcon } from './smartphone-nfc.js';
+export { TabletIcon } from './tablet.js';
+export { TabletSmartphoneIcon } from './tablet-smartphone.js';
+export { UsbIcon } from './usb.js';
+export { UsbCPortIcon } from './usb-c-port.js';
+export { WatchIcon } from './watch.js';

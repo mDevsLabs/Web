@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence, useDragControls } from "motion/react";
-import { X } from "lucide-react";
+import { XIcon as X } from "@mdevs/icons";
 
 interface SheetProps {
   open: boolean;

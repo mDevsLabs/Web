@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var book_dashed_exports = {};
-__export(book_dashed_exports, {
-  BookDashedIcon: () => BookDashedIcon
-});
-module.exports = __toCommonJS(book_dashed_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const BookDashedIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("BookDashedIcon", [["path", { "d": "M12 17h1.5" }], ["path", { "d": "M12 22h1.5" }], ["path", { "d": "M12 2h1.5" }], ["path", { "d": "M17.5 22H19a1 1 0 0 0 1-1" }], ["path", { "d": "M17.5 2H19a1 1 0 0 1 1 1v1.5" }], ["path", { "d": "M20 14v3h-2.5" }], ["path", { "d": "M20 8.5V10" }], ["path", { "d": "M4 10V8.5" }], ["path", { "d": "M4 19.5V14" }], ["path", { "d": "M4 4.5A2.5 2.5 0 0 1 6.5 2H8" }], ["path", { "d": "M8 22H6.5a1 1 0 0 1 0-5H8" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  BookDashedIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const BookDashedIcon = /* @__PURE__ */ createIcon('BookDashedIcon', [["path", { "d": "M12 17h1.5" }], ["path", { "d": "M12 22h1.5" }], ["path", { "d": "M12 2h1.5" }], ["path", { "d": "M17.5 22H19a1 1 0 0 0 1-1" }], ["path", { "d": "M17.5 2H19a1 1 0 0 1 1 1v1.5" }], ["path", { "d": "M20 14v3h-2.5" }], ["path", { "d": "M20 8.5V10" }], ["path", { "d": "M4 10V8.5" }], ["path", { "d": "M4 19.5V14" }], ["path", { "d": "M4 4.5A2.5 2.5 0 0 1 6.5 2H8" }], ["path", { "d": "M8 22H6.5a1 1 0 0 1 0-5H8" }]]);
+exports.BookDashedIcon = BookDashedIcon;

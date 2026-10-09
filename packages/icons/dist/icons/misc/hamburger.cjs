@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var hamburger_exports = {};
-__export(hamburger_exports, {
-  HamburgerIcon: () => HamburgerIcon
-});
-module.exports = __toCommonJS(hamburger_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const HamburgerIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("HamburgerIcon", [["path", { "d": "M12 16H4a2 2 0 1 1 0-4h16a2 2 0 1 1 0 4h-4.25" }], ["path", { "d": "M5 12a2 2 0 0 1-2-2 9 7 0 0 1 18 0 2 2 0 0 1-2 2" }], ["path", { "d": "M5 16a2 2 0 0 0-2 2 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 2 2 0 0 0-2-2q0 0 0 0" }], ["path", { "d": "m6.67 12 6.13 4.6a2 2 0 0 0 2.8-.4l3.15-4.2" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  HamburgerIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const HamburgerIcon = /* @__PURE__ */ createIcon('HamburgerIcon', [["path", { "d": "M12 16H4a2 2 0 1 1 0-4h16a2 2 0 1 1 0 4h-4.25" }], ["path", { "d": "M5 12a2 2 0 0 1-2-2 9 7 0 0 1 18 0 2 2 0 0 1-2 2" }], ["path", { "d": "M5 16a2 2 0 0 0-2 2 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 2 2 0 0 0-2-2q0 0 0 0" }], ["path", { "d": "m6.67 12 6.13 4.6a2 2 0 0 0 2.8-.4l3.15-4.2" }]]);
+exports.HamburgerIcon = HamburgerIcon;

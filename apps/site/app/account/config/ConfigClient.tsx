@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Copy, Check, Terminal, Code2, Cpu, Key, Sparkles, RefreshCcw, Layers, Settings2, Sliders
-} from 'lucide-react';
+import { CopyIcon as Copy, CheckIcon as Check, TerminalIcon as Terminal, Code2Icon as Code2, CpuIcon as Cpu, KeyIcon as Key, SparklesIcon as Sparkles, RefreshCcwIcon as RefreshCcw, LayersIcon as Layers, Settings2Icon as Settings2, SlidersIcon as Sliders } from "@mdevs/icons";
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 import { buildConfigSnippet, getConfigBaseUrl, type ConfigTab } from './config-data';

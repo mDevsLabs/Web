@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { X, Loader2, Eye, Heart, Repeat, MessageSquare, Bookmark, TrendingUp } from 'lucide-react';
+import { XIcon as X, Loader2Icon as Loader2, EyeIcon as Eye, HeartIcon as Heart, RepeatIcon as Repeat, MessageSquareIcon as MessageSquare, BookmarkIcon as Bookmark, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 
 interface PostStatsModalProps {

@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Loader2, Search, Send, Check, X, ArrowLeft } from 'lucide-react';
+import { Loader2Icon as Loader2, SearchIcon as Search, SendIcon as Send, CheckIcon as Check, XIcon as X, ArrowLeftIcon as ArrowLeft } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { ProfileAvatar } from './ProfileAvatar';
 import { haptics } from '../../services/haptics';

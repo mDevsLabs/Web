@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
+import "@mdevs/ui/styles.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
@@ -106,7 +107,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased md-root">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,7 +1,6 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
-import { isPaidTier } from "@/lib/auth/plan";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -148,14 +147,10 @@ export async function POST(request: Request) {
     });
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
-    // peuvent être instanciés, même si le client les mentionne. Les plugins
-    // sont réservés aux forfaits payants : la vérification du forfait est
-    // refaite ici, indépendamment de l'état d'installation.
-    const pluginsAllowed = isPaidTier(ctx.maiUser.tier);
-    const pluginInstallations =
-      ctx.isGhostMode || !pluginsAllowed
-        ? []
-        : await getPluginInstallationsByUserId({ userId: ctx.userId });
+    // peuvent être instanciés, même si le client les mentionne.
+    const pluginInstallations = ctx.isGhostMode
+      ? []
+      : await getPluginInstallationsByUserId({ userId: ctx.userId });
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRightIcon, SparklesIcon } from "lucide-react";
+import { ArrowRightIcon, SparklesIcon } from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { apiEndpoints } from "@/lib/client/api-endpoints";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { Download, Menu, Search, UserRound, X } from "lucide-react";
+import { DownloadIcon as Download, MenuIcon as Menu, SearchIcon as Search, UserRoundIcon as UserRound, XIcon as X } from "@mdevs/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PageSearch } from "@/components/ui/search-bar";

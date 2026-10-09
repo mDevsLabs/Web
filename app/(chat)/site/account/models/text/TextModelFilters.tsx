@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  ArrowUpDown,
-  Building2,
-  ChevronDown,
-  Filter,
-  Layers,
-  Search,
-  ShieldAlert,
-  SlidersHorizontal,
-  Wrench,
-  X,
-} from "lucide-react";
+import { ArrowUpDownIcon as ArrowUpDown, Building2Icon as Building2, ChevronDownIcon as ChevronDown, FilterIcon as Filter, LayersIcon as Layers, SearchIcon as Search, ShieldAlertIcon as ShieldAlert, SlidersHorizontalIcon as SlidersHorizontal, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import type { TextModelItem } from "./text-model-types";
 

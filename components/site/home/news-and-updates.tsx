@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRightIcon as ArrowRight, CalendarIcon as Calendar } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Link from "@/components/site/router";
 import { NewsMedia } from "@/components/site/ui/media";

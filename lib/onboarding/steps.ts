@@ -1,16 +1,4 @@
-import {
-  BadgeCheckIcon,
-  CloudIcon,
-  FolderKanbanIcon,
-  GaugeIcon,
-  ImageIcon,
-  MessagesSquareIcon,
-  PenSquareIcon,
-  PuzzleIcon,
-  SettingsIcon,
-  SparklesIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { BadgeCheckIcon, CloudIcon, FolderKanbanIcon, GaugeIcon, ImageIcon, MessagesSquareIcon, PenSquareIcon, PuzzleIcon, SettingsIcon, SparklesIcon, Volume2Icon } from "@mdevs/icons";
 import type { ComponentType } from "react";
 
 import { TIER_KEYS, TIER_LIMITS } from "@/lib/plans/tier-limits";

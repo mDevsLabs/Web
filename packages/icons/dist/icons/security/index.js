@@ -36,6 +36,7 @@ import { ShieldPlusIcon } from "./shield-plus.js";
 import { ShieldQuestionMarkIcon } from "./shield-question-mark.js";
 import { ShieldUserIcon } from "./shield-user.js";
 import { VaultIcon } from "./vault.js";
+import { ShieldQuestionIcon } from "./shield-question.js";
 export {
   BadgeCheckIcon,
   FingerprintPatternIcon,
@@ -71,6 +72,7 @@ export {
   ShieldMinusIcon,
   ShieldOffIcon,
   ShieldPlusIcon,
+  ShieldQuestionIcon,
   ShieldQuestionMarkIcon,
   ShieldUserIcon,
   VaultIcon

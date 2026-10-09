@@ -7,7 +7,7 @@
  * ============================================================================
  */
 
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 

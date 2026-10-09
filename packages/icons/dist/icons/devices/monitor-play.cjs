@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var monitor_play_exports = {};
-__export(monitor_play_exports, {
-  MonitorPlayIcon: () => MonitorPlayIcon
-});
-module.exports = __toCommonJS(monitor_play_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const MonitorPlayIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("MonitorPlayIcon", [["path", { "d": "M15.033 9.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56V7.648a.645.645 0 0 1 .967-.56z" }], ["path", { "d": "M12 17v4" }], ["path", { "d": "M8 21h8" }], ["rect", { "x": "2", "y": "3", "width": "20", "height": "14", "rx": "2" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  MonitorPlayIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const MonitorPlayIcon = /* @__PURE__ */ createIcon('MonitorPlayIcon', [["path", { "d": "M15.033 9.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56V7.648a.645.645 0 0 1 .967-.56z" }], ["path", { "d": "M12 17v4" }], ["path", { "d": "M8 21h8" }], ["rect", { "x": "2", "y": "3", "width": "20", "height": "14", "rx": "2" }]]);
+exports.MonitorPlayIcon = MonitorPlayIcon;

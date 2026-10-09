@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { WifiOff, Wifi, RefreshCw } from 'lucide-react';
+import { WifiOffIcon as WifiOff, WifiIcon as Wifi, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { useNetworkStatus } from '../../hooks/useNetworkStatus';
 
 export const OfflineBanner: React.FC = () => {

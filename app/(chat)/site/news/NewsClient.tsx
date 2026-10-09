@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Sparkles, User } from "lucide-react";
+import { CalendarIcon as Calendar, SparklesIcon as Sparkles, UserIcon as User } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import Link from "@/components/site/router";
 import { NewsMedia } from "@/components/site/ui/media";

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Cloud, Cpu, Eye, EyeOff, Layers, Calendar, ArrowRight } from "lucide-react";
+import { CloudIcon as Cloud, CpuIcon as Cpu, EyeIcon as Eye, EyeOffIcon as EyeOff, LayersIcon as Layers, CalendarIcon as Calendar, ArrowRightIcon as ArrowRight } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { PageSearch } from "@/components/ui/search-bar";

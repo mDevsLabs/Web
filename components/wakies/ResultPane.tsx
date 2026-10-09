@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  ArrowDownToLine,
-  ArrowUpRight,
-  BookOpen,
-  ExternalLink,
-  Monitor,
-  X,
-} from "lucide-react";
+  ArrowDownToLineIcon as ArrowDownToLine,
+  ArrowUpRightIcon as ArrowUpRight,
+  BookOpenIcon as BookOpen,
+  ExternalLinkIcon as ExternalLink,
+  MonitorIcon as Monitor,
+  XIcon as X,
+} from "@mdevs/icons";
 import { useState } from "react";
 import { ComputerPanel } from "@/components/wakies/ComputerPanel";
 import { Mascot } from "@/components/wakies/Mascot";

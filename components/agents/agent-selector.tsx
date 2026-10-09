@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon } from "@mdevs/icons";
 import { useState } from "react";
 import useSWR from "swr";
 import { AgentIcon } from "@/components/agents/agent-icon";

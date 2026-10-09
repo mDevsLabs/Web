@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Gauge,
-  KeyRound,
-  Layers,
-  Rocket,
-  ShieldAlert,
-  Sparkles,
-} from "lucide-react";
+import { GaugeIcon as Gauge, KeyRoundIcon as KeyRound, LayersIcon as Layers, RocketIcon as Rocket, ShieldAlertIcon as ShieldAlert, SparklesIcon as Sparkles } from "@mdevs/icons";
 import type { StepDef } from "./types";
 
 export const MAIN_STEPS: StepDef[] = [

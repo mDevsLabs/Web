@@ -135,3 +135,6 @@ export { NotebookDotIcon } from './notebook-dot.js';
 export { NotebookPenIcon } from './notebook-pen.js';
 export { NotebookTabsIcon } from './notebook-tabs.js';
 export { NotebookTextIcon } from './notebook-text.js';
+export { FileJsonIcon } from './file-json.js';
+export { FileQuestionIcon } from './file-question.js';
+export { BookMarkedIcon } from './book-marked.js';

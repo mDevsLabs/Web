@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  CheckSquareIcon,
-  LibraryIcon,
-  Loader2Icon,
-  SearchIcon,
-  SparklesIcon,
-  SquareIcon,
-  UploadIcon,
-} from "lucide-react";
+import { CheckSquareIcon, LibraryIcon, Loader2Icon, SearchIcon, SparklesIcon, SquareIcon, UploadIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import {

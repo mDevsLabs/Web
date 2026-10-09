@@ -4,6 +4,7 @@ import {
   badRequest,
   enforceWakiesLimit,
   json,
+  rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
 } from "@/lib/wakies/http";
@@ -34,6 +35,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (identite instanceof Response) {
     return identite;

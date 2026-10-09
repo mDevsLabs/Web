@@ -1,19 +1,6 @@
 "use client";
 
-import {
-  ChevronUp,
-  ExternalLinkIcon,
-  FileTextIcon,
-  HelpCircleIcon,
-  InfoIcon,
-  LibraryIcon,
-  LineChartIcon,
-  LogOutIcon,
-  MoonIcon,
-  SettingsIcon,
-  SunIcon,
-  ZapIcon,
-} from "lucide-react";
+import { ChevronUpIcon as ChevronUp, ExternalLinkIcon, FileTextIcon, HelpCircleIcon, InfoIcon, LibraryIcon, LineChartIcon, LogOutIcon, MoonIcon, SettingsIcon, SunIcon, ZapIcon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Terminal, Copy, Check } from "lucide-react";
+import { TerminalIcon as Terminal, CopyIcon as Copy, CheckIcon as Check } from "@mdevs/icons";
 
 export function InteractiveCodeBox() {
   const [activeTab, setActiveTab] = useState<"cli" | "ollama" | "api" | "sdk">("cli");

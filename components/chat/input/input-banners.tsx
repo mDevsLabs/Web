@@ -1,6 +1,6 @@
 "use client";
 
-import { GhostIcon, TriangleAlertIcon } from "lucide-react";
+import { GhostIcon, TriangleAlertIcon } from "@mdevs/icons";
 
 export function GhostBanner({
   toggleGhostMode,

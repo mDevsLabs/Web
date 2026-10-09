@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowRight, X, Sparkles } from "lucide-react";
+import { ArrowLeftIcon as ArrowLeft, ArrowRightIcon as ArrowRight, XIcon as X, SparklesIcon as Sparkles } from "@mdevs/icons";
 import { OnboardingProgress } from "./onboarding-progress";
 import type { StepDef, StepContext } from "./types";
 import Link from "next/link";

@@ -1,12 +1,5 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  AlertCircle,
-  Archive,
-  CheckCircle2,
-  Clock,
-  RotateCcw,
-  Zap,
-} from "lucide-react";
+import type { IconProps } from "@mdevs/icons";
+import { AlertCircleIcon as AlertCircle, ArchiveIcon as Archive, CheckCircle2Icon as CheckCircle2, ClockIcon as Clock, RotateCcwIcon as RotateCcw, ZapIcon as Zap } from "@mdevs/icons";
 import type {
   SupportPriority,
   SupportTicketStatus,
@@ -59,7 +52,7 @@ export const PRIORITY_OPTIONS = [
 export type SupportTicketStatusVisual = {
   label: string;
   bg: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
 };
 
 export const STATUS_CONFIG: Record<

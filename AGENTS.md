@@ -97,7 +97,7 @@ tests/                      unit/ e2e/ pages/ prompts/
 docs/                       README.md, 1-web/, 2-vibe/, 3-wakies/, 4-coder/
 apps/vibe/                  source Vite d'origine (référence, hors build Next)
 
-apps/wakies/                idem (app Vite + serveur Hono)
+apps/wakies/                source OpenMuse (Expo/Hono), référence hors build Next
 ```
 
 Alias : `@/*` → racine du dépôt (d'où `app/…`, `lib/…`).
@@ -279,8 +279,7 @@ porté contient deux overrides documentés dans `biome.jsonc`.
 
 ## 8.2 Intégration Wakies (`/wakies`)
 
-Wakies, l'espace de travail personnel, est **porté** depuis `apps/wakies/` (app
-Vite + serveur Hono, conservée en référence) sous `/wakies`. Guide complet :
+Wakies, l'espace de travail personnel, est **porté** depuis `apps/wakies/` (source OpenMuse conservée en référence) sous `/wakies`. Guide complet :
 `docs/3-wakies/INTEGRATION.md` ; règles du port : `components/wakies/README.md`.
 Règles dédiées pour agents : `docs/3-wakies/AGENTS.md`.
 
@@ -309,7 +308,7 @@ Cinq règles à ne pas contourner :
   et le layout `(chat)` lui superposerait une seconde navigation.
 - **`components/wakies/wakies.css` et `wakies-editor.css` sont générés**
   (`scripts/build-wakies-css.mjs`). Corriger la source dans
-  `apps/wakies/src/client/`, jamais la sortie.
+  `apps/wakies/integration/web/`, jamais la sortie.
 - **Pas de variante `wakies-dark`** : Wakies est son propre thème clair, sans
   Tailwind. Ne pas introduire de `dark:`.
 - **Pas de CopilotKit, pas de `react-markdown`** : `useChat` (AI SDK) et

@@ -8,7 +8,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Check, Eye, Flag, Info, Pencil, Send, X } from 'lucide-react';
+import { CheckIcon as Check, EyeIcon as Eye, FlagIcon as Flag, InfoIcon as Info, PencilIcon as Pencil, SendIcon as Send, XIcon as X } from "@mdevs/icons";
 import type { DirectMessage } from '../../types/vibe';
 
 const REPORT_REASONS = ['Spam ou arnaque', 'Harcèlement', 'Contenu haineux ou violent', 'Contenu illégal', 'Impersonation', 'Autre'];

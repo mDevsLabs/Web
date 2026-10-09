@@ -1,64 +1,15 @@
 "use client";
 
-import { PuzzleIcon, SearchIcon, Star } from "lucide-react";
+import { PuzzleIcon, SearchIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ToolsSwitcher } from "@/components/tools/tools-switcher";
 import { Input } from "@/components/ui/input";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { TOOLS_ACTIONS_ID, type ToolsTab } from "@/lib/tools/tabs";
 import McpPanel from "./mcp-panel";
 import PluginsPanel from "./plugins-panel";
 import SkillsPanel from "./skills-panel";
-
-function LockedTabPanel({
-  label,
-  tab,
-}: {
-  label: string;
-  tab: "plugins" | "mcp";
-}) {
-  return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-6 px-4 py-16 text-center">
-      <div
-        className={`flex size-16 items-center justify-center rounded-2xl text-white shadow-md ${
-          tab === "mcp"
-            ? "bg-gradient-to-br from-violet-500 to-purple-600"
-            : "bg-gradient-to-br from-emerald-400 to-teal-600"
-        }`}
-      >
-        {tab === "mcp" ? (
-          <Star className="size-8" />
-        ) : (
-          <PuzzleIcon className="size-8" />
-        )}
-      </div>
-      <div className="max-w-xl">
-        <h2 className="mb-2 text-2xl font-bold">
-          {label} réservé aux forfaits payants
-        </h2>
-        <p className="text-sm text-muted-foreground">
-          {tab === "mcp"
-            ? "Connectez vos bases de données, APIs et outils locaux directement à l'IA avec un contrôle strict des autorisations."
-            : "Installez des plugins qui étendent l'IA et mentionnez-les avec @ dans le chat."}{" "}
-          Passez à un forfait Plus, Pro ou Max.
-        </p>
-      </div>
-      <a
-        className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
-        href={MAI_UPGRADE_URL}
-        rel="noopener"
-        target="_blank"
-      >
-        Mettre à niveau mon forfait
-      </a>
-      <UpgradeDialog feature={tab} onOpenChange={() => {}} open />
-    </div>
-  );
-}
 
 export default function ToolsClient({
   initialTab,
@@ -85,7 +36,7 @@ export default function ToolsClient({
   return (
     <div className="flex flex-1 flex-col bg-background text-foreground">
       {/* En-tête de la page Applications */}
-      <header className="z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 px-4 py-4 backdrop-blur-md sm:px-6">
+      <header className="z-20 flex flex-col gap-4 border-b border-border/60 bg-background/80 px-4 py-4 backdrop-blur-md shadow-[inset_0_-1px_0_var(--md-highlight)] sm:px-6">
         <div className="flex items-center gap-3">
           <PageBackButton fallbackHref="/" label="Retour au chat" />
           <div className="flex items-center gap-2.5">
@@ -129,20 +80,10 @@ export default function ToolsClient({
 
       <main className="mx-auto w-full max-w-full flex-1 px-4 pt-4 pb-6 sm:px-6">
         {activeTab === "plugins" ? (
-          isPaid ? (
-            <PluginsPanel searchQuery={searchQuery} />
-          ) : (
-            <LockedTabPanel label="Plugins" tab="plugins" />
-          )
+          <PluginsPanel searchQuery={searchQuery} />
         ) : null}
 
-        {activeTab === "mcp" ? (
-          isPaid ? (
-            <McpPanel searchQuery={searchQuery} />
-          ) : (
-            <LockedTabPanel label="MCP" tab="mcp" />
-          )
-        ) : null}
+        {activeTab === "mcp" ? <McpPanel searchQuery={searchQuery} /> : null}
 
         {activeTab === "skills" ? (
           <SkillsPanel searchQuery={searchQuery} />

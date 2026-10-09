@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, ArrowLeft, Loader2, RefreshCw } from "lucide-react";
+import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import {
   type FormEvent,

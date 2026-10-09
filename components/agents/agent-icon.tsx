@@ -1,34 +1,6 @@
 "use client";
 
-import {
-  BookOpenIcon,
-  BrainIcon,
-  BriefcaseIcon,
-  CameraIcon,
-  ChartLineIcon,
-  CloudIcon,
-  Code2Icon,
-  CpuIcon,
-  DatabaseIcon,
-  FileTextIcon,
-  GlobeIcon,
-  GraduationCapIcon,
-  HeadsetIcon,
-  HeartIcon,
-  LightbulbIcon,
-  MessageCircleIcon,
-  MusicIcon,
-  PaletteIcon,
-  PenLineIcon,
-  RocketIcon,
-  ScaleIcon,
-  ShieldIcon,
-  SparklesIcon,
-  TargetIcon,
-  WalletIcon,
-  WrenchIcon,
-  ZapIcon,
-} from "lucide-react";
+import { BookOpenIcon, BrainIcon, BriefcaseIcon, CameraIcon, ChartLineIcon, CloudIcon, Code2Icon, CpuIcon, DatabaseIcon, FileTextIcon, GlobeIcon, GraduationCapIcon, HeadsetIcon, HeartIcon, LightbulbIcon, MessageCircleIcon, MusicIcon, PaletteIcon, PenLineIcon, RocketIcon, ScaleIcon, ShieldIcon, SparklesIcon, TargetIcon, WalletIcon, WrenchIcon, ZapIcon } from "@mdevs/icons";
 import { BotGlyph, type BotGlyphProps } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";
 

@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  Loader2Icon,
-  LockIcon,
-  PlusIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { CheckIcon, Loader2Icon, LockIcon, PlusIcon, Trash2Icon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";

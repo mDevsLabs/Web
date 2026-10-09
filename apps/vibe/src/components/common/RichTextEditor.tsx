@@ -14,24 +14,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {
-  Bold,
-  Italic,
-  Underline as UnderlineIcon,
-  Strikethrough,
-  List,
-  ListOrdered,
-  Quote,
-  Code,
-  Link2,
-  X,
-  Check,
-  CornerDownLeft,
-  Highlighter,
-  Palette,
-  Sigma,
-  Braces,
-} from 'lucide-react';
+import { BoldIcon as Bold, ItalicIcon as Italic, UnderlineIcon, StrikethroughIcon as Strikethrough, ListIcon as List, ListOrderedIcon as ListOrdered, QuoteIcon as Quote, CodeIcon as Code, Link2Icon as Link2, XIcon as X, CheckIcon as Check, CornerDownLeftIcon as CornerDownLeft, HighlighterIcon as Highlighter, PaletteIcon as Palette, SigmaIcon as Sigma, BracesIcon as Braces } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { MentionAutocomplete, type MentionUser, type MentionBook } from '../feed/MentionAutocomplete';
 import { prepareEditorHtml } from './richSanitizer';

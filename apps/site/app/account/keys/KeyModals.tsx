@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { AlertTriangle, Check, Copy, Edit, Loader2, Lock, Plus, Trash2, X } from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle, CheckIcon as Check, CopyIcon as Copy, EditIcon as Edit, Loader2Icon as Loader2, LockIcon as Lock, PlusIcon as Plus, Trash2Icon as Trash2, XIcon as X } from "@mdevs/icons";
 import type { FormEvent } from "react";
 import type { ApiKeyMetadata, CreatedApiKeyResult } from "@/lib/api-key-types";
 

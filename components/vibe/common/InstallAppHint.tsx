@@ -1,4 +1,4 @@
-import { Download, Share } from "lucide-react";
+import { DownloadIcon as Download, ShareIcon as Share } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { haptics } from "@/lib/vibe/services/haptics";
 import {

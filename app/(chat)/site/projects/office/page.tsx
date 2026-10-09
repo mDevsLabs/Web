@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, FileText, Github, Presentation } from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, FileTextIcon as FileText, GithubIcon as Github, PresentationIcon as Presentation } from "@mdevs/icons";
 import { motion } from "motion/react";
 import { GithubRelease } from "@/components/site/github-release";
 import Link from "@/components/site/router";

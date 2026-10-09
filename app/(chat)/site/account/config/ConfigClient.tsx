@@ -1,18 +1,6 @@
 "use client";
 
-import {
-  Check,
-  Code2,
-  Copy,
-  Cpu,
-  Key,
-  Layers,
-  RefreshCcw,
-  Settings2,
-  Sliders,
-  Sparkles,
-  Terminal,
-} from "lucide-react";
+import { CheckIcon as Check, Code2Icon as Code2, CopyIcon as Copy, CpuIcon as Cpu, KeyIcon as Key, LayersIcon as Layers, RefreshCcwIcon as RefreshCcw, Settings2Icon as Settings2, SlidersIcon as Sliders, SparklesIcon as Sparkles, TerminalIcon as Terminal } from "@mdevs/icons";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Link from "@/components/site/router";

@@ -10,54 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { haptics } from '../services/haptics';
 import { motion } from 'framer-motion';
 import { useMotionPrefs } from '../hooks/useMotionPrefs';
-import {
-  Send,
-  ArrowUp,
-  Plus,
-  Image as ImageIcon,
-  Mic,
-  MicOff,
-  Search,
-  ArrowLeft,
-  Check,
-  Eye,
-  Lock,
-  Mail,
-  Loader2,
-  AlertCircle,
-  X,
-  MoreVertical,
-  Reply,
-  Forward,
-  Copy,
-  Sparkles,
-  Flag,
-  Trash2,
-  Ban,
-  Pencil,
-  Scissors,
-  Expand,
-  Drama,
-  Wand2,
-  PenLine,
-  Info,
-  Palette,
-  Languages,
-  Clock,
-  Pin,
-  PinOff,
-  FileText,
-  Users,
-  UserPlus,
-  Bold,
-  Italic,
-  Underline,
-  Strikethrough,
-  Link2,
-  BellRing,
-  Crown,
-  BookOpen
-} from 'lucide-react';
+import { SendIcon as Send, ArrowUpIcon as ArrowUp, PlusIcon as Plus, ImageIcon, MicIcon as Mic, MicOffIcon as MicOff, SearchIcon as Search, ArrowLeftIcon as ArrowLeft, CheckIcon as Check, EyeIcon as Eye, LockIcon as Lock, MailIcon as Mail, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, XIcon as X, MoreVerticalIcon as MoreVertical, ReplyIcon as Reply, ForwardIcon as Forward, CopyIcon as Copy, SparklesIcon as Sparkles, FlagIcon as Flag, Trash2Icon as Trash2, BanIcon as Ban, PencilIcon as Pencil, ScissorsIcon as Scissors, ExpandIcon as Expand, DramaIcon as Drama, Wand2Icon as Wand2, PenLineIcon as PenLine, InfoIcon as Info, PaletteIcon as Palette, LanguagesIcon as Languages, ClockIcon as Clock, PinIcon as Pin, PinOffIcon as PinOff, FileTextIcon as FileText, UsersIcon as Users, UserPlusIcon as UserPlus, BoldIcon as Bold, ItalicIcon as Italic, UnderlineIcon as Underline, StrikethroughIcon as Strikethrough, Link2Icon as Link2, BellRingIcon as BellRing, CrownIcon as Crown, BookOpenIcon as BookOpen } from "@mdevs/icons";
 import { ApiService, browserToDeepLCode, TRANSLATION_LANGUAGES } from '../services/api';
 import { getDmCharLimit, getMediaBytesLimit, formatMediaLimit } from '../services/tierLimits';
 import { RealtimeService } from '../services/realtimeService';

@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  BookOpen,
-  Github,
-  Globe,
-  Lock,
-  Server,
-  Shield,
-  Terminal,
-  Zap,
-} from "lucide-react";
+import { BookOpenIcon as BookOpen, GithubIcon as Github, GlobeIcon as Globe, LockIcon as Lock, ServerIcon as Server, ShieldIcon as Shield, TerminalIcon as Terminal, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";

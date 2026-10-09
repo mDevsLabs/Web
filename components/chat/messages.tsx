@@ -1,11 +1,5 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
-import {
-  ArrowDownIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  SearchIcon,
-  XIcon,
-} from "lucide-react";
+import { ArrowDownIcon, ChevronDownIcon, ChevronUpIcon, SearchIcon, XIcon } from "@mdevs/icons";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useMessages } from "@/hooks/use-messages";

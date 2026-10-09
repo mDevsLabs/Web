@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { X, Loader2, Check, UserPlus, UserCheck } from 'lucide-react';
+import { XIcon as X, Loader2Icon as Loader2, CheckIcon as Check, UserPlusIcon as UserPlus, UserCheckIcon as UserCheck } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { PostComposer } from '../feed/PostComposer';
 import { ProfileAvatar } from './ProfileAvatar';

@@ -64,7 +64,7 @@ Les composants sont construits avec `forwardRef<SVGSVGElement, IconProps>`. `Ico
 | `children` | Ajoutés après le titre et les nœuds de l'icône ; aucun habillage ou redimensionnement automatique. |
 | `className`, `style`, attributs SVG, `aria-*`, événements | Transmis au `<svg>` ; l'application garde la responsabilité de leur cohérence. |
 
-Le wrapper applique une couleur propre noir/blanc : le token --md-icon-color du thème UI, sinon light-dark(#000,#fff) avec color-scheme:light dark. color="#000" fournit un repli. color personnalise ce choix, puis style.color prend priorité ; un parent coloré n’est plus hérité automatiquement. Voir [STYLE.md](STYLE.md).
+Le wrapper utilise `stroke="currentColor"` et hérite de la couleur de texte de son parent, y compris dans les portails. Il respecte ainsi le thème, les boutons inversés et les états informatifs. Il ne force ni noir/blanc ni `color-scheme`. `color` et `style.color` permettent une personnalisation explicite ; une règle CSS de couleur garde sa priorité normale. Voir [STYLE.md](STYLE.md).
 
 Le wrapper pose par défaut `viewBox="0 0 24 24"`, `fill="none"`, `stroke="currentColor"`, `strokeLinecap="round"`, `strokeLinejoin="round"` et `focusable="false"`.
 

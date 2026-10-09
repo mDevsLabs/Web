@@ -201,4 +201,4 @@ En cas d’échec, suivre [TROUBLESHOOTING](TROUBLESHOOTING.md). Les vérificati
 
 L’import styles.css charge Inter variable 4.1 normal 100–900 via une URL WOFF2 relative. Le fichier est livré dans dist/fonts avec métadonnées et licence SIL OFL. Vérifier la requête dans le bundler et la politique font-src du projet ; aucune URL Google Fonts/CDN n’est nécessaire. Inter est la police UI par défaut, avec swap et fallback système.
 
-Les icônes 0.2.0 utilisent un trait 1,5 px et leur propre couleur noire/blanche, pilotée par --md-icon-color dans ThemeProvider. Sans UI, la bascule système dépend du support light-dark ; color="#000" fournit un repli. Pour hériter volontairement de la couleur d’un bouton, fournir style={{color:'currentColor'}}. [STYLE.md](STYLE.md) détaille les règles et les assets.
+Les icônes utilisent un trait 1,5 px et héritent de la couleur du texte parent. Le thème et les boutons inversés restent lisibles sans configuration supplémentaire. `color` et `style.color` permettent une personnalisation explicite. [STYLE.md](STYLE.md) détaille les règles et les assets.

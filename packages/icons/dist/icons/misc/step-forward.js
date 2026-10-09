@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const StepForwardIcon = /* @__PURE__ */ createIcon("StepForwardIcon", [["path", { "d": "M10.029 4.285A2 2 0 0 0 7 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z" }], ["path", { "d": "M3 4v16" }]]);
-export {
-  StepForwardIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const StepForwardIcon = /* @__PURE__ */ createIcon('StepForwardIcon', [["path", { "d": "M10.029 4.285A2 2 0 0 0 7 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z" }], ["path", { "d": "M3 4v16" }]]);

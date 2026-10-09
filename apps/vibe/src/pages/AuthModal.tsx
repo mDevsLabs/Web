@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Lock, Mail, User as UserIcon, KeyRound, AlertCircle, Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react';
+import { LockIcon as Lock, MailIcon as Mail, UserIcon, KeyRoundIcon as KeyRound, AlertCircleIcon as AlertCircle, EyeIcon as Eye, EyeOffIcon as EyeOff, ArrowRightIcon as ArrowRight, Loader2Icon as Loader2 } from "@mdevs/icons";
 import { ApiService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { VibeLogo } from '../components/layout/VibeLogo';

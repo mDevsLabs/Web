@@ -22,7 +22,7 @@ __export(arrow_badge_down_exports, {
   ArrowBadgeDownIcon: () => ArrowBadgeDownIcon
 });
 module.exports = __toCommonJS(arrow_badge_down_exports);
-var import_create_icon = require("../../create-icon.cjs");
+var import_create_icon = require("../../create-icon.js");
 const ArrowBadgeDownIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ArrowBadgeDownIcon", [["path", { "d": "M17 13v-6l-5 4l-5 -4v6l5 4l5 -4" }]]);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

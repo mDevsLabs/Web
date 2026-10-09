@@ -6,36 +6,7 @@
  */
 
 import { motion } from "framer-motion";
-import {
-  Ban,
-  BarChart2,
-  BookMarked,
-  Bookmark,
-  CalendarClock,
-  Check,
-  Download,
-  EyeOff,
-  Heart,
-  HelpCircle,
-  Languages,
-  Loader2,
-  Lock,
-  MessageSquare,
-  MoreHorizontal,
-  Pencil,
-  Pin,
-  PinOff,
-  Quote,
-  Repeat,
-  Share2,
-  Sparkles,
-  ThumbsDown,
-  ThumbsUp,
-  Trash2,
-  Users,
-  Volume2,
-  X,
-} from "lucide-react";
+import { BanIcon as Ban, BarChart2Icon as BarChart2, BookMarkedIcon as BookMarked, BookmarkIcon as Bookmark, CalendarClockIcon as CalendarClock, CheckIcon as Check, DownloadIcon as Download, EyeOffIcon as EyeOff, HeartIcon as Heart, HelpCircleIcon as HelpCircle, LanguagesIcon as Languages, Loader2Icon as Loader2, LockIcon as Lock, MessageSquareIcon as MessageSquare, MoreHorizontalIcon as MoreHorizontal, PencilIcon as Pencil, PinIcon as Pin, PinOffIcon as PinOff, QuoteIcon as Quote, RepeatIcon as Repeat, Share2Icon as Share2, SparklesIcon as Sparkles, ThumbsDownIcon as ThumbsDown, ThumbsUpIcon as ThumbsUp, Trash2Icon as Trash2, UsersIcon as Users, Volume2Icon as Volume2, XIcon as X } from "@mdevs/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { LikeParticles } from "@/components/vibe/common/LikeParticles";

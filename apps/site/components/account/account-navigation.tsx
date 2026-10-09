@@ -1,17 +1,7 @@
 "use client";
 
-import {
-  Cloud,
-  Gauge,
-  Image as ImageIcon,
-  KeyRound,
-  Monitor,
-  RefreshCw,
-  Sparkles,
-  User,
-  Volume2,
-  type LucideIcon,
-} from "lucide-react";
+import { CloudIcon as Cloud, GaugeIcon as Gauge, ImageIcon, KeyRoundIcon as KeyRound, MonitorIcon as Monitor, RefreshCwIcon as RefreshCw, SparklesIcon as Sparkles, UserIcon as User, Volume2Icon as Volume2 } from "@mdevs/icons";
+import type { IconProps } from "@mdevs/icons";
 
 export const ACCOUNT_SECTION_IDS = [
   "profil",
@@ -27,7 +17,7 @@ export const ACCOUNT_SECTION_IDS = [
 
 export type AccountSectionId = (typeof ACCOUNT_SECTION_IDS)[number];
 
-const ITEMS: Array<{ id: AccountSectionId; label: string; icon: LucideIcon }> = [
+const ITEMS: Array<{ id: AccountSectionId; label: string; icon: React.ComponentType<any> }> = [
   { id: "profil", label: "Profil & Paramètres", icon: User },
   { id: "usage-api", label: "Usage API", icon: KeyRound },
   { id: "usage-images", label: "Usage Images", icon: ImageIcon },

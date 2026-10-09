@@ -2,10 +2,7 @@
 
 import { useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  KeyRound, Plus, Trash2, ShieldAlert,
-  Loader2, Activity, CheckSquare, Edit, Download
-} from 'lucide-react';
+import { KeyRoundIcon as KeyRound, PlusIcon as Plus, Trash2Icon as Trash2, ShieldAlertIcon as ShieldAlert, Loader2Icon as Loader2, ActivityIcon as Activity, CheckSquareIcon as CheckSquare, EditIcon as Edit, DownloadIcon as Download } from "@mdevs/icons";
 import type { ApiKeyMetadata, CreatedApiKeyResult } from '@/lib/api-key-types';
 import { KeyModals } from './KeyModals';
 import { useRouter } from 'next/navigation';

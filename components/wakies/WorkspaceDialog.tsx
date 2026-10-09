@@ -1,9 +1,37 @@
 "use client";
+import { Button } from "@mdevs/ui/primitives/button";
+import { Input } from "@mdevs/ui/primitives/input";
+import { Textarea } from "@mdevs/ui/primitives/textarea";
 
-import { Trash2, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
-import { resolveWakieModelId } from "@/lib/wakies/model";
+/**
+ * Dialogue de personnalisation d'un Wakie.
+ *
+ * `PUT /api/wakies/wakies/:id` est un remplacement COMPLET : `name`,
+ * `instructions`, `memoryAllowed` et `researchAllowed` sont obligatoires à chaque
+ * appel. Une édition qui ne touche qu'un champ doit donc REBÂTIR sa charge
+ * utile à partir du profil déjà chargé — c'est ce que fait le `body` ci-dessous,
+ * en partant de `dialog.wakie` et des valeurs courantes pour les champs que
+ * l'utilisateur ne modifie pas. Sans cela, renommer un Wakie effacerait son
+ * avatar, son modèle et sa sélection d'outils.
+ *
+ * CE QUI N'EST PLUS PROPOSÉ
+ *
+ * Le bloc « apprentissage automatique » du gabarit (`learningContainerId`,
+ * `skillDeliveryEnabled`, liens CopilotKit) a été retiré : `lib/wakies/setup.ts`
+ * déclare `intelligence: false`, et présenter un service non branché comme une
+ * option serait un bouton sans effet. Les colonnes restent en base pour ne pas
+ * perdre la donnée d'un compte qui l'exploiterait ailleurs.
+ */
+
+import { XIcon } from "@mdevs/icons/controls/x";
+import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  CapacityPicker,
+  ToolPicker,
+  useCapabilities,
+} from "@/components/wakies/CapacityPicker";
+import { ModelPicker } from "@/components/wakies/ModelPicker";
 import {
   DEFAULT_WAKIE_AVATAR,
   isWakieAvatar,
@@ -15,6 +43,7 @@ import type {
   Wakie,
   WorkspaceState,
 } from "@/lib/wakies/shared/types";
+import { outilsParDefaut, WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
 export type Dialog =
   | { type: "space" }
   | { type: "wakie"; wakie?: Wakie; spaceId: string }
@@ -62,24 +91,42 @@ export function WorkspaceDialog({
   );
   // Mascotte et modèle : deux réglages propres au Wakie. Le modèle est le
   // DÉFAUT de ses nouvelles conversations ; la conversation peut le changer
-  // ensuite, depuis le menu de l'en-tête du chat.
+  // ensuite, depuis le menu de l'en-tête du chat. `model` reste ici la valeur
+  // ÉCRITE (null = défaut mAI), distincte de ce qu'affiche le sélecteur.
   const [avatar, setAvatar] = useState<string>(
     dialog.type === "wakie" && isWakieAvatar(dialog.wakie?.avatar)
       ? dialog.wakie.avatar
       : DEFAULT_WAKIE_AVATAR
   );
-  const [model, setModel] = useState(() =>
-    resolveWakieModelId(dialog.type === "wakie" ? dialog.wakie?.model : null)
+  const [model, setModel] = useState<string | null>(
+    dialog.type === "wakie" ? (dialog.wakie?.model ?? null) : null
   );
   const [interval, setInterval] = useState("86400");
-  const [learningContainer, setLearningContainer] = useState(
-    dialog.type === "wakie" ? (dialog.wakie?.learningContainerId ?? "") : ""
-  );
-  const [skillDelivery, setSkillDelivery] = useState(
-    dialog.type === "wakie"
-      ? (dialog.wakie?.skillDeliveryEnabled ?? false)
-      : false
-  );
+
+  // Sélection d'outils du WAKIE. Elle sert de DÉFAUT aux conversations qui
+  // n'ont rien choisi (colonne `null`) ; une conversation qui a coché
+  // elle-même garde son propre choix, et le changer ici ne l'écrase pas.
+  const [selection, setSelection] = useState({
+    mcpServerIds:
+      dialog.type === "wakie" ? (dialog.wakie?.mcpServerIds ?? []) : [],
+    pluginIds: dialog.type === "wakie" ? (dialog.wakie?.pluginIds ?? []) : [],
+    skillIds: dialog.type === "wakie" ? (dialog.wakie?.skillIds ?? []) : [],
+  });
+  const [toolIds, setToolIds] = useState<string[]>(() => {
+    if (dialog.type !== "wakie") {
+      return [];
+    }
+    // `null` = aucun réglage : on montre les outils par défaut, sans les
+    // écrire tant que l'utilisateur n'a rien changé.
+    return (
+      dialog.wakie?.toolIds ??
+      outilsParDefaut(dialog.wakie?.researchAllowed ?? true)
+    );
+  });
+
+  const capacites = useCapabilities(dialog.type === "wakie");
+  const outilsExtension = useMemo(() => new Set<string>(), []);
+
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const container = useRef<HTMLElement>(null);
@@ -89,17 +136,23 @@ export function WorkspaceDialog({
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    container.current
-      ?.querySelector<HTMLElement>("input,textarea,select")
+    const focusables = () =>
+      [
+        ...(container.current?.querySelectorAll<HTMLElement>(
+          'button:not([disabled]),input:not([disabled]):not([type="hidden"]),textarea:not([disabled]),select:not([disabled]),a[href]'
+        ) ?? []),
+      ].filter(
+        (item) => item.tabIndex >= 0 && item.getClientRects().length > 0
+      );
+    focusables()
+      .find((item) => item.matches("input,textarea,select"))
       ?.focus();
     const key = (event: KeyboardEvent) => {
+      // Un menu Radix imbriqué peut déjà avoir traité Échap ; conserver alors le dialogue parent.
+      if (event.defaultPrevented) return;
       if (event.key === "Escape") onClose();
       if (event.key === "Tab") {
-        const items = [
-          ...(container.current?.querySelectorAll<HTMLElement>(
-            "button:not([disabled]),input,textarea,select,a[href]"
-          ) ?? []),
-        ];
+        const items = focusables();
         if (event.shiftKey && document.activeElement === items[0]) {
           event.preventDefault();
           items.at(-1)?.focus();
@@ -137,13 +190,14 @@ export function WorkspaceDialog({
         ref={container}
         role="dialog"
       >
-        <button
+        <Button
           aria-label="Fermer la boîte de dialogue"
           className="modal-close icon-button"
           onClick={onClose}
+          variant="ghost"
         >
-          <X size={18} />
-        </button>
+          <XIcon size={18} />
+        </Button>
         <span className="eyebrow">MODÈLE WAKIES</span>
         <h2 id="dialog-title">{title}</h2>
         <form
@@ -161,17 +215,23 @@ export function WorkspaceDialog({
             if (dialog.type === "wakie") {
               path = dialog.wakie ? `/wakies/${dialog.wakie.id}` : "/wakies";
               method = dialog.wakie ? "PUT" : "POST";
+              // Charge utile COMPLÈTE : `PUT` exige les champs obligatoires,
+              // et les colonnes de sélection sont écrites telles que l'écran
+              // les montre. Une édition partielle qui n'enverrait que le nom
+              // effacerait l'avatar, le modèle et la sélection d'outils.
               body = {
                 avatar,
                 instructions: text,
-                learningContainerId: learningContainer.trim() || null,
+                mcpServerIds: selection.mcpServerIds,
                 memoryAllowed: memory,
                 model,
                 name,
+                pluginIds: selection.pluginIds,
                 researchAllowed: research,
-                skillDeliveryEnabled: skillDelivery,
+                skillIds: selection.skillIds,
                 spaceId: defaultSpace,
                 spaceIds,
+                toolIds,
               };
             }
             if (dialog.type === "settings") {
@@ -205,9 +265,9 @@ export function WorkspaceDialog({
           {(dialog.type === "space" || dialog.type === "wakie") && (
             <>
               <label className="field-label" htmlFor="entity-name">
-                Name
+                Nom
               </label>
-              <input
+              <Input
                 id="entity-name"
                 maxLength={40}
                 onChange={(e) => setName(e.target.value)}
@@ -227,7 +287,7 @@ export function WorkspaceDialog({
                       ? "Préférence ou contexte"
                       : "Tâche à reprendre"}
               </label>
-              <textarea
+              <Textarea
                 id="entity-text"
                 maxLength={dialog.type === "schedule" ? 4000 : 2000}
                 onChange={(e) => setText(e.target.value)}
@@ -277,15 +337,19 @@ export function WorkspaceDialog({
             <fieldset className="space-access-fields">
               <legend>Modèle IA</legend>
               <p className="muted">
-                Le modèle par défaut de ses nouvelles conversations. Le même
-                menu que dans le Chat et le mode Agent.
+                Le modèle par défaut de ses nouvelles conversations. Une
+                conversation peut en choisir un autre, puis y revenir.
               </p>
               <span className="wakies-model-picker block">
-                <ModelSelectorCompact
-                  modal
-                  onModelChange={setModel}
-                  selectedModelId={model}
-                  variant="block"
+                <ModelPicker
+                  bloc
+                  onChoisir={setModel}
+                  outilsActifs={
+                    toolIds.length > 0 ||
+                    selection.pluginIds.length > 0 ||
+                    selection.mcpServerIds.length > 0
+                  }
+                  valeur={model ?? ""}
                 />
               </span>
             </fieldset>
@@ -369,53 +433,43 @@ export function WorkspaceDialog({
           )}
           {dialog.type === "wakie" && (
             <fieldset className="space-access-fields">
-              <legend>Apprentissage automatique</legend>
-              <label className="field-label" htmlFor="learning-container">
-                Identifiant du conteneur d’apprentissage
-              </label>
-              <input
-                aria-describedby="learning-help"
-                id="learning-container"
-                maxLength={64}
-                onChange={(event) => {
-                  setLearningContainer(event.target.value);
-                  if (!event.target.value.trim()) setSkillDelivery(false);
-                }}
-                pattern="[a-z0-9]+(-[a-z0-9]+)*"
-                placeholder="research-workflow"
-                value={learningContainer}
-              />
-              <p className="muted" id="learning-help">
-                Créez d’abord ce conteneur dans votre projet Intelligence. Les
-                nouvelles conversations y contribueront par des preuves. Laissez
-                vide pour exclure les nouvelles conversations de
-                l’apprentissage. Les conversations existantes conservent leur
-                affectation d’origine.
+              <legend>Outils</legend>
+              <p className="muted">
+                Ce que ce Wakie peut utiliser par défaut. Ses nouvelles
+                conversations suivront ce choix tant que vous ne
+                l&apos;overridez pas conversation par conversation.
               </p>
-              <label className="permission-row">
-                <input
-                  checked={skillDelivery}
-                  disabled={!learningContainer.trim()}
-                  onChange={(event) => setSkillDelivery(event.target.checked)}
-                  type="checkbox"
+              <ToolPicker
+                onChanger={setToolIds}
+                outils={WAKIE_TOOL_CATALOG}
+                outilsCompte={outilsExtension}
+                valeur={toolIds}
+              />
+            </fieldset>
+          )}
+          {dialog.type === "wakie" && (
+            <fieldset className="space-access-fields">
+              <legend>Compétences et connexions</legend>
+              <p className="muted">
+                Ces ressources viennent de votre compte mAI. Les cocher ici ne
+                les installe pas : une ressource non installée ou désactivée
+                reste signalée comme telle, et n&apos;accorde aucun accès.
+              </p>
+              {capacites.chargement ? (
+                <p className="muted">Chargement de vos ressources…</p>
+              ) : null}
+              {capacites.erreur ? (
+                <p className="chat-error" role="alert">
+                  {capacites.erreur}
+                </p>
+              ) : null}
+              {!capacites.chargement && !capacites.erreur ? (
+                <CapacityPicker
+                  capabilities={capacites.capabilities}
+                  onChanger={setSelection}
+                  valeur={selection}
                 />
-                <span>
-                  <strong>Utiliser les compétences publiées</strong>
-                  <small>
-                    Chargez les compétences révisées depuis le conteneur affecté
-                    à chaque conversation. Activez aussi la diffusion dans
-                    Intelligence. Désactiver cette option arrête le chargement
-                    des compétences, pas la collecte des preuves.
-                  </small>
-                </span>
-              </label>
-              <a
-                href="https://docs.copilotkit.ai/learning"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Configurer l’apprentissage et réviser les compétences ↗
-              </a>
+              ) : null}
             </fieldset>
           )}
           {dialog.type === "schedule" && (
@@ -449,19 +503,16 @@ export function WorkspaceDialog({
                   : "La configuration du service est présente. Une conversation réussie confirme la connectivité."}
               </p>
               <p>
-                Slack: {workspace.setup.slack.replaceAll("_", " ")}. Voice:{" "}
+                Slack : {workspace.setup.slack.replaceAll("_", " ")}. Voix :{" "}
                 {workspace.setup.voice
                   ? "configuration présente"
-                  : "nécessite VOICE_API_KEY et VOICE_MODEL"}
+                  : "non configurée actuellement"}
                 .
               </p>
-              <a
-                href="https://github.com/CopilotKit/Wakies/blob/main/docs/SETUP.md"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Guide de configuration du modèle ↗
-              </a>
+              <p className="muted">
+                Les modèles et les quotas sont gérés directement par votre
+                compte mAI.
+              </p>
             </div>
           )}
           {dialog.type === "memory" && (
@@ -476,9 +527,14 @@ export function WorkspaceDialog({
               {error}
             </p>
           )}
-          <button className="primary full" disabled={busy}>
+          <Button
+            className="primary full"
+            disabled={busy}
+            type="submit"
+            variant="solid"
+          >
             {busy ? "Enregistrement…" : "Enregistrer"}
-          </button>
+          </Button>
         </form>
         {dialog.type === "wakie" && dialog.wakie && (
           <div className="dialog-danger-zone">
@@ -489,7 +545,7 @@ export function WorkspaceDialog({
                 déjà enregistrées dans vos Espaces restent en place.
               </p>
             </div>
-            <button
+            <Button
               className="danger"
               disabled={busy}
               onClick={async () => {
@@ -512,10 +568,11 @@ export function WorkspaceDialog({
                 setBusy(false);
               }}
               type="button"
+              variant="outline"
             >
-              <Trash2 size={15} />
+              <Trash2Icon size={15} />
               Supprimer ce Wakie
-            </button>
+            </Button>
           </div>
         )}
       </section>

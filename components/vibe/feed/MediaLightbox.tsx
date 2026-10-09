@@ -6,15 +6,7 @@
  * ============================================================================
  */
 
-import {
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  ExternalLink,
-  Link2,
-  Share2,
-  X,
-} from "lucide-react";
+import { ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight, DownloadIcon as Download, ExternalLinkIcon as ExternalLink, Link2Icon as Link2, Share2Icon as Share2, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";

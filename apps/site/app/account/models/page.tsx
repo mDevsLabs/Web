@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, RefreshCw } from "lucide-react";
+import { Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
 import { KeyCatalogBanner } from "./shared/KeyCatalogBanner";
 import { ModelNavigation } from "./shared/ModelNavigation";
 import { useModelCatalog } from "./shared/useModelCatalog";

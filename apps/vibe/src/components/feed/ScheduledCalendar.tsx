@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Loader2, CalendarClock } from 'lucide-react';
+import { ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight, Loader2Icon as Loader2, CalendarClockIcon as CalendarClock } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import type { Post } from '../../types/vibe';
 import { haptics } from '../../services/haptics';

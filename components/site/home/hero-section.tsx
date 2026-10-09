@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  ArrowRight,
-  Cpu,
-  Database,
-  Layers,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-} from "lucide-react";
+import { ArrowRightIcon as ArrowRight, CpuIcon as Cpu, DatabaseIcon as Database, LayersIcon as Layers, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, TerminalIcon as Terminal } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Link from "@/components/site/router";
 

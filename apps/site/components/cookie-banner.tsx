@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Cookie, ShieldCheck, X, Check, Lock } from 'lucide-react';
+import { CookieIcon as Cookie, ShieldCheckIcon as ShieldCheck, XIcon as X, CheckIcon as Check, LockIcon as Lock } from "@mdevs/icons";
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);

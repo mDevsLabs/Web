@@ -49,6 +49,7 @@ import { ToggleLeftIcon } from "./toggle-left.js";
 import { ToggleRightIcon } from "./toggle-right.js";
 import { XIcon } from "./x.js";
 import { XLineTopIcon } from "./x-line-top.js";
+import { SquareCheckIcon } from "./square-check.js";
 export {
   CheckCheckIcon,
   CheckCircle2Icon,
@@ -95,6 +96,7 @@ export {
   SettingsIcon,
   SlidersHorizontalIcon,
   SlidersVerticalIcon,
+  SquareCheckIcon,
   SwitchCameraIcon,
   ToggleLeftIcon,
   ToggleRightIcon,

@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { LogIn, Loader2, ShieldBan, Mail } from "lucide-react";
+import { LogInIcon as LogIn, Loader2Icon as Loader2, ShieldBanIcon as ShieldBan, MailIcon as Mail } from "@mdevs/icons";
 import { useAuth } from "@/components/auth-provider";
 import { MaiApiError } from "@/lib/mai-api";
 import toast from "react-hot-toast";

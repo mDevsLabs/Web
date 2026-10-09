@@ -1,6 +1,6 @@
 "use client";
 
-import { AudioWaveform, Mic } from "lucide-react";
+import { AudioWaveformIcon as AudioWaveform, MicIcon as Mic } from "@mdevs/icons";
 
 const DEFAULT_VOICES = [
   { id: "flux-alexis-en", name: "Alexis", desc: "Voix féminine chaleureuse, naturelle et claire (FR/EN)" },

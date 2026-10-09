@@ -1,7 +1,7 @@
 "use client";
 
 import { type FormEvent } from "react";
-import { KeyRound, Loader2, Sparkles } from "lucide-react";
+import { KeyRoundIcon as KeyRound, Loader2Icon as Loader2, SparklesIcon as Sparkles } from "@mdevs/icons";
 
 export function UpgradeCodeSection({
   code,

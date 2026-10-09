@@ -7,17 +7,7 @@
  */
 
 import { motion } from "framer-motion";
-import {
-  AlertCircle,
-  Heart,
-  Image as ImageIcon,
-  Languages,
-  Loader2,
-  Mic,
-  MicOff,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { AlertCircleIcon as AlertCircle, HeartIcon as Heart, ImageIcon, LanguagesIcon as Languages, Loader2Icon as Loader2, MicIcon as Mic, MicOffIcon as MicOff, SparklesIcon as Sparkles, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LikeParticles } from "@/components/vibe/common/LikeParticles";

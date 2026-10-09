@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Search, TrendingUp, ArrowUpRight } from 'lucide-react';
+import { SearchIcon as Search, TrendingUpIcon as TrendingUp, ArrowUpRightIcon as ArrowUpRight } from "@mdevs/icons";
 import { ApiService } from '../../services/api';
 import { ProfileAvatar } from '../common/ProfileAvatar';
 import { VerifiedBadge } from '../common/VerifiedBadge';

@@ -4,9 +4,11 @@ import {
   isResponse,
   json,
   notFound,
+  rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
 } from "@/lib/wakies/http";
+import { validateWakiesModel } from "@/lib/wakies/model-access";
 import {
   deleteConversation,
   findConversation,
@@ -14,28 +16,67 @@ import {
 } from "@/lib/wakies/queries";
 
 /**
- * PATCH  /api/wakies/conversations/:id — renommage et modèle IA.
+ * PATCH  /api/wakies/conversations/:id — titre, modèle et sélection d'outils.
  * DELETE /api/wakies/conversations/:id — suppression (messages inclus, en cascade).
  *
- * Le modèle se choisit dans l'en-tête du chat, comme dans le Chat principal :
- * `null` est un choix explicite (« revenir au modèle du Wakie »), pas une
- * absence de valeur — d'où un schéma qui distingue `undefined` de `null`.
+ * La distinction `undefined` / `null` porte sur TOUS les champs :
+ *
+ *   - champ absent → conserver la valeur actuelle ;
+ *   - `null`       → revenir au réglage du Wakie (ou effacer le choix) ;
+ *   - `[]`         → choix explicite de ne rien utiliser.
+ *
+ * Le formulaire doit donc écrire le champ même quand il veut « revenir au
+ * Wakie » : envoyer `{ model: "" }` ne reviendrait pas au modèle du Wakie, ça
+ * serait refusé (`z.string().trim().min(1)`).
+ *
+ * Les identifiants envoyés ne sont PAS validés ici comme appartenant au
+ * compte : un Skill d'un autre compte échouerait plus tard, à l'usage, avec un
+ * message (« cette compétence n'existe pas sur ce compte ») au lieu d'un refus
+ * clair. Enregistrer l'intention et la revalider au moment du tour est le même
+ * mécanisme que celui des Plugins et des serveurs MCP.
  */
+
+/** Liste d'identifiants : vide = choix explicite « aucun ». */
+const liste = z.array(z.string().min(1).max(64)).max(60).nullable().optional();
 
 const schema = z
   .object({
+    mcpServerIds: liste,
     model: z.string().trim().min(1).max(200).nullable().optional(),
+    pluginIds: liste,
+    skillIds: liste,
+    skillParams: z
+      .record(
+        z.string().min(1).max(64),
+        z.record(z.string(), z.string().max(2000))
+      )
+      .nullable()
+      .optional(),
     title: z.string().trim().min(1).max(120).optional(),
+    toolIds: liste,
   })
   .strict()
-  .refine((value) => value.title !== undefined || value.model !== undefined, {
-    message: "Rien à modifier : précisez un titre ou un modèle.",
-  });
+  .refine(
+    (value) =>
+      value.title !== undefined ||
+      value.model !== undefined ||
+      value.skillIds !== undefined ||
+      value.pluginIds !== undefined ||
+      value.mcpServerIds !== undefined ||
+      value.toolIds !== undefined ||
+      value.skillParams !== undefined,
+    {
+      message:
+        "Rien à modifier : précisez un titre, un modèle ou une sélection.",
+    }
+  );
 
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (isResponse(identite)) {
     return identite;
@@ -47,6 +88,11 @@ export async function PATCH(
       message: zodIssuesMessage(parsed.error),
     });
   }
+  const modelError = await validateWakiesModel(
+    parsed.data.model,
+    identite.tier
+  );
+  if (modelError) return modelError;
   const row = await updateConversation(identite.userId, id, parsed.data);
   if (!row) {
     return notFound("Conversation introuvable.");
@@ -58,6 +104,8 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const originError = rejectCrossOriginMutation(_request);
+  if (originError) return originError;
   const identite = await requireWakiesUser();
   if (isResponse(identite)) {
     return identite;

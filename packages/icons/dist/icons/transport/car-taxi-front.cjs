@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var car_taxi_front_exports = {};
-__export(car_taxi_front_exports, {
-  CarTaxiFrontIcon: () => CarTaxiFrontIcon
-});
-module.exports = __toCommonJS(car_taxi_front_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const CarTaxiFrontIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("CarTaxiFrontIcon", [["path", { "d": "M10 2h4" }], ["path", { "d": "m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8" }], ["path", { "d": "M7 14h.01" }], ["path", { "d": "M17 14h.01" }], ["rect", { "width": "18", "height": "8", "x": "3", "y": "10", "rx": "2" }], ["path", { "d": "M5 18v2" }], ["path", { "d": "M19 18v2" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  CarTaxiFrontIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const CarTaxiFrontIcon = /* @__PURE__ */ createIcon('CarTaxiFrontIcon', [["path", { "d": "M10 2h4" }], ["path", { "d": "m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8" }], ["path", { "d": "M7 14h.01" }], ["path", { "d": "M17 14h.01" }], ["rect", { "width": "18", "height": "8", "x": "3", "y": "10", "rx": "2" }], ["path", { "d": "M5 18v2" }], ["path", { "d": "M19 18v2" }]]);
+exports.CarTaxiFrontIcon = CarTaxiFrontIcon;

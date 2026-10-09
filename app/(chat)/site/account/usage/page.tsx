@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDownToLine,
-  CheckCircle2,
-  Clock,
-  Database,
-  Loader2,
-  Network,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { ActivityIcon as Activity, AlertTriangleIcon as AlertTriangle, ArrowDownToLineIcon as ArrowDownToLine, CheckCircle2Icon as CheckCircle2, ClockIcon as Clock, DatabaseIcon as Database, Loader2Icon as Loader2, NetworkIcon as Network, SparklesIcon as Sparkles, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";

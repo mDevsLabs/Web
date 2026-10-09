@@ -24,8 +24,8 @@ import {
   FileSpreadsheetIcon,
   FileTextIcon,
   FolderIcon,
-  GridIcon,
   ImageIcon,
+  LayoutGridIcon,
   LibraryIcon,
   ListFilterIcon,
   ListIcon,
@@ -40,7 +40,7 @@ import {
   Trash2Icon,
   VideoIcon,
   XIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -972,7 +972,7 @@ export default function LibraryPage() {
                 title="Vue grille"
                 type="button"
               >
-                <GridIcon className="size-4" />
+                <LayoutGridIcon className="size-4" />
               </button>
               <button
                 aria-label="Vue liste"

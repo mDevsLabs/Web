@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Gauge, Rocket } from "lucide-react";
+import { SparklesIcon as Sparkles, GaugeIcon as Gauge, RocketIcon as Rocket } from "@mdevs/icons";
 import type { StepDef } from "./types";
 
 export const UPGRADE_STEPS: StepDef[] = [

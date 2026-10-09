@@ -52,3 +52,4 @@ export { HourglassCogIcon } from './hourglass-cog.js';
 export { TimerIcon } from './timer.js';
 export { TimerOffIcon } from './timer-off.js';
 export { TimerResetIcon } from './timer-reset.js';
+export { ClockIcon } from './clock.js';

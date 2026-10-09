@@ -1,33 +1,6 @@
 "use client";
 
-import {
-  ArchiveIcon,
-  ArrowRightIcon,
-  CalendarClockIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  Code2Icon,
-  FolderKanbanIcon,
-  GlobeIcon,
-  ImageIcon,
-  LibraryIcon,
-  LockIcon,
-  MessageCircleIcon,
-  MoreHorizontalIcon,
-  PanelLeftIcon,
-  PenSquareIcon,
-  PlusIcon,
-  PuzzleIcon,
-  SearchIcon,
-  SettingsIcon,
-  SlidersHorizontalIcon,
-  SparkleIcon,
-  SparklesIcon,
-  TerminalIcon,
-  TrashIcon,
-  UsersIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { ArchiveIcon, ArrowRightIcon, CalendarClockIcon, CheckIcon, ChevronDownIcon, Code2Icon, FolderKanbanIcon, GlobeIcon, ImageIcon, LibraryIcon, LockIcon, MessageCircleIcon, MoreHorizontalIcon, PanelLeftIcon, PenSquareIcon, PlusIcon, PuzzleIcon, SearchIcon, SettingsIcon, SlidersHorizontalIcon, SparkleIcon, SparklesIcon, TerminalIcon, TrashIcon, UsersIcon, Volume2Icon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";

@@ -7,18 +7,11 @@
  * vitrine de la page d'accueil ne puissent plus diverger sur ces choix.
  */
 
-import {
-  Archive,
-  Code2,
-  Cpu,
-  Globe,
-  MessagesSquare,
-  Terminal,
-  type LucideIcon,
-} from "lucide-react";
+import { ArchiveIcon as Archive, Code2Icon as Code2, CpuIcon as Cpu, GlobeIcon as Globe, MessagesSquareIcon as MessagesSquare, TerminalIcon as Terminal } from "@mdevs/icons";
+import type { IconProps } from "@mdevs/icons";
 
 export type ProjectPresentation = {
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   iconColor: string;
   borderHover: string;
 };
@@ -67,7 +60,7 @@ const PROJECT_PRESENTATIONS: Record<string, ProjectPresentation> = {
  * `iconKey` est la clé déclarée dans `lib/projects-data.ts`. Elle sert de source de
  * vérité : si les deux tables se contredisent, l'icône suit toujours `iconKey`.
  */
-const ICONS_BY_KEY: Record<string, LucideIcon> = {
+const ICONS_BY_KEY: Record<string, React.ComponentType<any>> = {
   globe: Globe,
   "messages-square": MessagesSquare,
   code: Code2,

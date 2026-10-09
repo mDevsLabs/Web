@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  ArrowLeft,
-  Check,
-  FileCode2,
-  LoaderCircle,
-  PanelLeft,
-} from "lucide-react";
+  ArrowLeftIcon as ArrowLeft,
+  CheckIcon as Check,
+  FileCode2Icon as FileCode2,
+  LoaderCircleIcon as LoaderCircle,
+  PanelLeftIcon as PanelLeft,
+} from "@mdevs/icons";
 import {
   lazy,
   Suspense,

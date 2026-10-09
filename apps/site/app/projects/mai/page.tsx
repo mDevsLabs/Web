@@ -1,18 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ExternalLink,
-  Sparkles,
-  Zap,
-  BrainCircuit,
-  MessageSquare,
-  Code,
-  Layout,
-  Globe,
-  Github,
-  BookOpen,
-} from "lucide-react";
+import { ExternalLinkIcon as ExternalLink, SparklesIcon as Sparkles, ZapIcon as Zap, BrainCircuitIcon as BrainCircuit, MessageSquareIcon as MessageSquare, CodeIcon as Code, LayoutIcon as Layout, GlobeIcon as Globe, GithubIcon as Github, BookOpenIcon as BookOpen } from "@mdevs/icons";
 import Link from "next/link";
 import Image from "next/image";
 

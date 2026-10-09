@@ -41,7 +41,7 @@
 
 "use client";
 
-import { AlertCircle, CheckCircle, Info, Loader2, X } from "lucide-react";
+import { AlertCircleIcon as AlertCircle, CheckCircleIcon as CheckCircle, InfoIcon as Info, Loader2Icon as Loader2, XIcon as X } from "@mdevs/icons";
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { OfflineBanner } from "@/components/vibe/common/OfflineBanner";
 import { OnboardingModal } from "@/components/vibe/common/OnboardingModal";

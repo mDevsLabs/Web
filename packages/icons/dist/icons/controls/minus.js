@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const MinusIcon = /* @__PURE__ */ createIcon("MinusIcon", [["path", { "d": "M5 12h14" }]]);
-export {
-  MinusIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const MinusIcon = /* @__PURE__ */ createIcon('MinusIcon', [["path", { "d": "M5 12h14" }]]);

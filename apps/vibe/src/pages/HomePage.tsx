@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { AlertCircle, PenSquare, TrendingUp, X, ArrowUp } from 'lucide-react';
+import { AlertCircleIcon as AlertCircle, PenSquareIcon as PenSquare, TrendingUpIcon as TrendingUp, XIcon as X, ArrowUpIcon as ArrowUp } from "@mdevs/icons";
 import { PostComposer } from '../components/feed/PostComposer';
 import { PostCard } from '../components/feed/PostCard';
 import { ExplainModal } from '../components/feed/ExplainModal';

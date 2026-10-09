@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Download, Loader2, RefreshCw, ShieldCheck } from "lucide-react";
+import { DownloadIcon as Download, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw, ShieldCheckIcon as ShieldCheck } from "@mdevs/icons";
 import Link from "next/link";
 import toast from "react-hot-toast";
 

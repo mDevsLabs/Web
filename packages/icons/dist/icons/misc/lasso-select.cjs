@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var lasso_select_exports = {};
-__export(lasso_select_exports, {
-  LassoSelectIcon: () => LassoSelectIcon
-});
-module.exports = __toCommonJS(lasso_select_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const LassoSelectIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("LassoSelectIcon", [["path", { "d": "M7 22a5 5 0 0 1-2-4" }], ["path", { "d": "M7 16.93c.96.43 1.96.74 2.99.91" }], ["path", { "d": "M3.34 14A6.8 6.8 0 0 1 2 10c0-4.42 4.48-8 10-8s10 3.58 10 8a7.19 7.19 0 0 1-.33 2" }], ["path", { "d": "M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" }], ["path", { "d": "M14.33 22h-.09a.35.35 0 0 1-.24-.32v-10a.34.34 0 0 1 .33-.34c.08 0 .15.03.21.08l7.34 6a.33.33 0 0 1-.21.59h-4.49l-2.57 3.85a.35.35 0 0 1-.28.14z" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  LassoSelectIcon
-});
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const LassoSelectIcon = /* @__PURE__ */ createIcon('LassoSelectIcon', [["path", { "d": "M7 22a5 5 0 0 1-2-4" }], ["path", { "d": "M7 16.93c.96.43 1.96.74 2.99.91" }], ["path", { "d": "M3.34 14A6.8 6.8 0 0 1 2 10c0-4.42 4.48-8 10-8s10 3.58 10 8a7.19 7.19 0 0 1-.33 2" }], ["path", { "d": "M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" }], ["path", { "d": "M14.33 22h-.09a.35.35 0 0 1-.24-.32v-10a.34.34 0 0 1 .33-.34c.08 0 .15.03.21.08l7.34 6a.33.33 0 0 1-.21.59h-4.49l-2.57 3.85a.35.35 0 0 1-.28.14z" }]]);
+exports.LassoSelectIcon = LassoSelectIcon;

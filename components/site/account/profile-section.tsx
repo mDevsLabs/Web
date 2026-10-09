@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Camera,
-  Loader2,
-  Lock,
-  Mail,
-  Phone,
-  Sparkles,
-  User,
-} from "lucide-react";
+import { CameraIcon as Camera, Loader2Icon as Loader2, LockIcon as Lock, MailIcon as Mail, PhoneIcon as Phone, SparklesIcon as Sparkles, UserIcon as User } from "@mdevs/icons";
 import { motion } from "motion/react";
 import {
   type ChangeEvent,

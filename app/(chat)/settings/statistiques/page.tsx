@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart3Icon, LineChartIcon, SparklesIcon } from "lucide-react";
+import { BarChart3Icon, LineChartIcon, SparklesIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import useSWR from "swr";

@@ -5,7 +5,7 @@
  * ============================================================================
  */
 
-import { Check, ChevronDown, Cpu, Search, Sparkles, X } from "lucide-react";
+import { CheckIcon as Check, ChevronDownIcon as ChevronDown, CpuIcon as Cpu, SearchIcon as Search, SparklesIcon as Sparkles, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 

@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Copy,
-  Loader2,
-  Volume2,
-  Wrench,
-} from "lucide-react";
+import { CheckIcon as Check, ChevronDownIcon as ChevronDown, ChevronUpIcon as ChevronUp, CopyIcon as Copy, Loader2Icon as Loader2, Volume2Icon as Volume2, WrenchIcon as Wrench } from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import toast from "react-hot-toast";

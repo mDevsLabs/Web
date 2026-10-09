@@ -1,6 +1,6 @@
 "use client";
 
-import { Monitor } from "lucide-react";
+import { MonitorIcon as Monitor } from "@mdevs/icons";
 
 import { DevicesList } from "./devices-list";
 

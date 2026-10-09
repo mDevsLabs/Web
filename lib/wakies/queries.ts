@@ -18,11 +18,12 @@ import "server-only";
  * pas d'existence.
  */
 
-import { and, asc, desc, eq, inArray, lt, lte, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gt, inArray, lt, lte, or, sql } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
 import {
   wakiesCall,
   wakiesCapture,
+  wakiesChatTurn,
   wakiesConversation,
   wakiesMemory,
   wakiesMessage,
@@ -38,6 +39,7 @@ import {
   wakiesWakie,
   wakiesWakieSpace,
 } from "@/lib/db/schema";
+import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
 
 export type WakieSpaceRow = typeof wakiesSpace.$inferSelect;
 export type WakieRow = typeof wakiesWakie.$inferSelect;
@@ -107,6 +109,8 @@ export async function updateSettings(
     paused: boolean;
     researchAllowed: boolean;
     memoryAllowed: boolean;
+    /** Repère de parcours, écrit par l'assistant de configuration. */
+    onboardingCompleted: boolean;
   }>
 ): Promise<WakieSettingsRow> {
   await ensureSettings(userId);
@@ -215,6 +219,59 @@ export async function findWakie(
   return wakie ?? null;
 }
 
+/**
+ * Erreur de quota levée par `createWakie`. Type distincte d'un `Error` simple
+ * pour que l'appelant sache qu'il doit répondre 429 et non 400 : refuser un
+ * quota et refuser une saisie invalide sont deux échecs différents.
+ */
+export class WakiesQuotaError extends Error {
+  readonly limite: number;
+  readonly utilise: number;
+  constructor(limite: number, utilise: number) {
+    super("Limite de Wakies atteinte pour ce forfait.");
+    this.name = "WakiesQuotaError";
+    this.limite = limite;
+    this.utilise = utilise;
+  }
+}
+
+/**
+ * Verrou consultatif de transaction, dérivé du compte.
+ *
+ * `hashtext` n'existe pas côté JavaScript ; on fait donc le hachage ici. Une
+ * collision entre deux comptes ne coûte qu'un bref blocage mutuel à la
+ * création — bien moins cher qu'un quota dépassé, et la propriété d'un compte
+ * ne dépend d'aucun index unique sur le nombre de lignes.
+ *
+ * Le verrou est pris dans la transaction et relâché à la fin : `pg_advisory_xact_lock`
+ * est justement le variante transactionnelle, rien à libérer à la main.
+ */
+function hashCompte(userId: string): bigint {
+  let hash = 2_166_136_261;
+  for (let i = 0; i < userId.length; i++) {
+    hash ^= userId.charCodeAt(i);
+    hash = Math.imul(hash, 16_777_619);
+  }
+  return BigInt(hash >>> 0);
+}
+
+/**
+ * Crée un Wakie en respectant le quota du forfait, TOUT EN UN SEUL passage.
+ *
+ * AVANT, le quota était vérifié par la route (`COUNT` puis `INSERT` dans deux
+ * transactions distinctes). Deux créations simultanées sur un compte à
+ * `quota - 1` lisaient le même compte et passaient toutes deux : le forfait
+ * Plus (6 Wakies) pouvait en créer 7.
+ *
+ * MAINTENANT, le verrou est pris AVANT le comptage et tenu jusqu'à la fin de
+ * l'insertion. La seconde requête concurrente attend, puis recompte et voit
+ * la ligne de la première. Un `SERIALIZABLE` ferait la même chose mais
+ * exigerait de renvoyer l'appelant sur une erreur `40001` à rejouer — un
+ * quota dépassé deviendrait une panne intermittente.
+ *
+ * `quota: null` = illimité (forfait Max) : on court-circuite le comptage, qui
+ * coûterait un aller-retour pour rien.
+ */
 export async function createWakie(
   userId: string,
   input: {
@@ -228,7 +285,13 @@ export async function createWakie(
     model?: string | null;
     learningContainerId?: string | null;
     skillDeliveryEnabled?: boolean;
-  }
+    mcpServerIds?: string[] | null;
+    pluginIds?: string[] | null;
+    skillIds?: string[] | null;
+    skillParams?: Record<string, Record<string, string>> | null;
+    toolIds?: string[] | null;
+  },
+  quota: number | null = null
 ): Promise<WakieWithSpaces> {
   await dbReady();
   const db = getDb();
@@ -244,28 +307,81 @@ export async function createWakie(
       throw new Error("Espace inconnu sur ce compte.");
     }
   }
-  const [row] = await db.transaction(async (tx) => {
+  return db.transaction(async (tx) => {
+    if (quota !== null) {
+      await tx.execute(
+        sql`SELECT pg_advisory_xact_lock(${hashCompte(userId)})`
+      );
+      const [{ total }] = await tx
+        .select({ total: sql<number>`count(*)::int` })
+        .from(wakiesWakie)
+        .where(eq(wakiesWakie.userId, userId));
+      const utilise = Number(total ?? 0);
+      if (utilise >= quota) {
+        throw new WakiesQuotaError(quota, utilise);
+      }
+    }
     const [insere] = await tx
       .insert(wakiesWakie)
       .values({
         avatar: input.avatar ?? null,
         instructions: input.instructions,
         learningContainerId: input.learningContainerId ?? null,
+        mcpServerIds: input.mcpServerIds ?? null,
         memoryAllowed: input.memoryAllowed,
         model: input.model ?? null,
         name: input.name,
+        pluginIds: input.pluginIds ?? null,
         researchAllowed: input.researchAllowed,
         skillDeliveryEnabled: input.skillDeliveryEnabled ?? false,
+        skillIds: input.skillIds ?? null,
+        skillParams: input.skillParams ?? null,
         spaceId: input.spaceId,
+        toolIds: input.toolIds ?? null,
         userId,
       })
       .returning();
     await tx
       .insert(wakiesWakieSpace)
       .values(spaceIds.map((spaceId) => ({ spaceId, wakieId: insere.id })));
-    return [insere];
+    return { ...insere, spaceIds };
   });
-  return { ...row, spaceIds };
+}
+
+/**
+ * Colonnes de sélection d'outils à écrire, pour un Wakie comme pour une
+ * conversation.
+ *
+ * Seule la sémantique compte ici : un champ ABSENT du patch (`undefined`) ne
+ * doit produire aucune écriture. C'est ce qui distingue un `PUT` qui ne change
+ * que le nom d'un `PATCH` qui vide la sélection — les deux appellent pourtant
+ * la même fonction.
+ */
+function selectionPatch(
+  actuel: Record<string, unknown>,
+  patch: Record<string, unknown>
+): Record<string, string[] | null | Record<string, Record<string, string>>> {
+  const ecrit: Record<
+    string,
+    string[] | null | Record<string, Record<string, string>>
+  > = {};
+  for (const champ of [
+    "mcpServerIds",
+    "pluginIds",
+    "skillIds",
+    "skillParams",
+    "toolIds",
+  ] as const) {
+    const valeur = patch[champ];
+    if (valeur !== undefined) {
+      ecrit[champ] = valeur as string[] | null;
+    } else if (actuel[champ] !== undefined) {
+      // La colonne existe déjà : on la réécrit à l'identique pour ne pas
+      // dépendre du comportement par défaut de Drizzle sur un INSERT partial.
+      ecrit[champ] = actuel[champ] as string[] | null;
+    }
+  }
+  return ecrit;
 }
 
 export async function updateWakie(
@@ -282,6 +398,13 @@ export async function updateWakie(
     spaceIds?: string[];
     learningContainerId?: string | null;
     skillDeliveryEnabled?: boolean;
+    // Sélection d'outils. `undefined` = conserver la valeur actuelle,
+    // `null` = effacer le réglage, `[]` = choix explicite de ne rien utiliser.
+    mcpServerIds?: string[] | null;
+    pluginIds?: string[] | null;
+    skillIds?: string[] | null;
+    skillParams?: Record<string, Record<string, string>> | null;
+    toolIds?: string[] | null;
   }
 ): Promise<WakieWithSpaces> {
   await dbReady();
@@ -320,6 +443,10 @@ export async function updateWakie(
         skillDeliveryEnabled:
           patch.skillDeliveryEnabled ?? actuel.skillDeliveryEnabled,
         spaceId: spaceParDefaut,
+        // Même règle que sur une conversation : absent = conserver, `null` =
+        // effacer le réglage. Un PATCH qui ne porte que le nom ne doit pas
+        // vider le plateau d'outils du Wakie.
+        ...selectionPatch(actuel, patch),
       })
       .where(and(eq(wakiesWakie.id, wakieId), eq(wakiesWakie.userId, userId)))
       .returning();
@@ -407,6 +534,13 @@ export async function createConversation(
       // conversation en garde une copie, donc changer le Wakie ne réécrit pas
       // le modèle des fils existants (et donc leur facturation).
       model: input.model ?? wakie.model ?? null,
+      // À CONTRAIRE des colonnes de sélection d'outils, qui restent à NULL.
+      // Ce n'est pas un oubli : le modèle est FIGÉ à la création parce qu'il
+      // détermine ce qui a été facturé aux tours déjà joués, alors qu'un outil
+      // ne coûte qu'au tour où il est appelé. NULL y signifie « suit le
+      // Wakie », donc corriger la sélection d'un Wakie corrige aussi ses
+      // conversations qui n'ont jamais rien choisi — comportement voulu, et le
+      // seul qui rende `null` et `[]` distinguables.
       title: input.title,
       userId,
       wakieId: input.wakieId,
@@ -416,20 +550,35 @@ export async function createConversation(
 }
 
 /**
- * Met à jour une conversation du compte (titre et/ou modèle IA).
+ * Met à jour une conversation du compte.
  *
  * Les champs absents ne sont pas touchés : le renommage et le choix du modèle
  * sont deux gestes indépendants, et un PATCH qui n'en porte qu'un ne doit pas
  * écraser l'autre. `model: null` revient au modèle du Wakie (puis au défaut) :
  * c'est un choix explicite, pas une absence de valeur.
+ *
+ * Il en va de même pour la sélection d'outils : `undefined` = conserver,
+ * `null` = revenir au réglage du Wakie, `[]` = ne rien utiliser. Le formulaire
+ * et son adaptateur doivent distinguer ces trois intentions — les confondre
+ * fait qu'un simple renommage vide le plateau d'outils de la conversation.
  */
 export async function updateConversation(
   userId: string,
   conversationId: string,
-  patch: { title?: string; model?: string | null }
+  patch: {
+    title?: string;
+    model?: string | null;
+    mcpServerIds?: string[] | null;
+    pluginIds?: string[] | null;
+    skillIds?: string[] | null;
+    skillParams?: Record<string, Record<string, string>> | null;
+    toolIds?: string[] | null;
+  }
 ): Promise<WakieConversationRow | null> {
   await dbReady();
-  const changes: { title?: string; model?: string | null; updatedAt: Date } = {
+  const changes: Partial<typeof wakiesConversation.$inferInsert> & {
+    updatedAt: Date;
+  } = {
     updatedAt: new Date(),
   };
   if (patch.title !== undefined) {
@@ -437,6 +586,20 @@ export async function updateConversation(
   }
   if (patch.model !== undefined) {
     changes.model = patch.model;
+  }
+  // Chaque colonne est traitée séparément : `undefined` (absent du PATCH) et
+  // `null` (« reviens au Wakie ») doivent produire deux écritures différentes.
+  for (const champ of [
+    "mcpServerIds",
+    "pluginIds",
+    "skillIds",
+    "skillParams",
+    "toolIds",
+  ] as const) {
+    const valeur = patch[champ];
+    if (valeur !== undefined) {
+      changes[champ] = valeur as never;
+    }
   }
   const [row] = await getDb()
     .update(wakiesConversation)
@@ -470,12 +633,25 @@ export async function findConversation(
   return row ?? null;
 }
 
-export async function touchConversation(conversationId: string): Promise<void> {
+/**
+ * Marque la conversation comme modifiée. Prend `userId` comme les autres : un
+ * `UPDATE` sans filtre de propriété peut toucher la conversation d'un autre
+ * compte, et rien dans la signature ne l'interdisait.
+ */
+export async function touchConversation(
+  userId: string,
+  conversationId: string
+): Promise<void> {
   await dbReady();
   await getDb()
     .update(wakiesConversation)
     .set({ updatedAt: new Date() })
-    .where(eq(wakiesConversation.id, conversationId));
+    .where(
+      and(
+        eq(wakiesConversation.id, conversationId),
+        eq(wakiesConversation.userId, userId)
+      )
+    );
 }
 
 export async function deleteConversation(
@@ -505,15 +681,67 @@ export type WakieMessageInput = {
 };
 
 /**
+ * PROPRIÉTÉ DES MESSAGES
+ *
+ * `WakiesMessage` ne porte volontairement PAS de colonne `userId` : un message
+ * appartient à une conversation, qui appartient à un compte, et dupliquer la
+ * propriété sur chaque ligne serait une seconde vérité à désynchroniser. La
+ * propriété se vérifie donc par jointure sur `WakiesConversation.userId`.
+ *
+ * Les quatre fonctions de messages prenaient auparavant un identifiant seul.
+ * C'était une frontière absente : l'appelant devait avoir vérifié la propriété
+ * en amont, et rien dans la signature ne le rappelait. Un forget supprimait
+ * silencieusement le filtre. Elles prennent maintenant toutes `userId` en
+ * premier paramètre, comme le reste du fichier.
+ */
+
+/** Les conversations du compte parmi celles du lot. Toute autre est rejetée. */
+async function ownedConversationIds(
+  userId: string,
+  conversationIds: readonly string[]
+): Promise<Set<string>> {
+  const uniques = [...new Set(conversationIds)];
+  if (uniques.length === 0) {
+    return new Set();
+  }
+  await dbReady();
+  const rows = await getDb()
+    .select({ id: wakiesConversation.id })
+    .from(wakiesConversation)
+    .where(
+      and(
+        eq(wakiesConversation.userId, userId),
+        inArray(wakiesConversation.id, uniques)
+      )
+    );
+  return new Set(rows.map((row) => row.id));
+}
+
+/**
  * Écrit un lot de messages. `onConflictDoNothing` sur l'identifiant rend
  * l'opération sûre à rejouer : un flux interrompu puis renvoyé ne duplique
  * pas les messages déjà persistés.
+ *
+ * Le lot est EN ATTENDANT vérifié : un `conversationId` qui n'appartient pas
+ * au compte fait échouer l'écriture entière plutôt que d'en insérer une
+ * partie. Écrire ne doit jamais être partiel sous le doute.
  */
 export async function appendMessages(
+  userId: string,
   messages: WakieMessageInput[]
 ): Promise<void> {
   if (messages.length === 0) {
     return;
+  }
+  const autorisees = await ownedConversationIds(
+    userId,
+    messages.map((message) => message.conversationId)
+  );
+  const intruses = messages.filter(
+    (message) => !autorisees.has(message.conversationId)
+  );
+  if (intruses.length > 0) {
+    throw new Error("Conversation introuvable sur ce compte.");
   }
   await dbReady();
   await getDb()
@@ -522,24 +750,64 @@ export async function appendMessages(
     .onConflictDoNothing({ target: wakiesMessage.id });
 }
 
+/**
+ * Historique d'une conversation, dans l'ordre d'écriture (`seq`).
+ *
+ * `seq` est un `serial` : c'est l'ordre d'INSERTION, pas l'horodatage. Deux
+ * messages écrits dans la même milliseconde restent donc dans le bon ordre,
+ * ce que `createdAt` ne garantit pas.
+ *
+ * PAGINATION — le curseur est `seq`, pas `createdAt`, et il est STRICTEMENT
+ * décroissant. Deux pages successives ne peuvent donc jamais se chevaucher ni
+ * sauter un message, même quand plusieurs messages partagent le même
+ * horodatage. `limite` est bornée : une conversation longue ne se charge
+ * jamais entière en mémoire.
+ */
 export async function listMessages(
-  conversationId: string
+  userId: string,
+  conversationId: string,
+  options: { avantSeq?: number; limite?: number } = {}
 ): Promise<(typeof wakiesMessage.$inferSelect)[]> {
   await dbReady();
-  return getDb()
-    .select()
+  const conditions = [
+    eq(wakiesMessage.conversationId, conversationId),
+    eq(wakiesConversation.userId, userId),
+  ];
+  if (options.avantSeq !== undefined) {
+    conditions.push(lt(wakiesMessage.seq, options.avantSeq));
+  }
+  const rows = await getDb()
+    .select({ message: wakiesMessage })
     .from(wakiesMessage)
-    .where(eq(wakiesMessage.conversationId, conversationId))
-    .orderBy(asc(wakiesMessage.seq));
+    .innerJoin(
+      wakiesConversation,
+      eq(wakiesMessage.conversationId, wakiesConversation.id)
+    )
+    .where(and(...conditions))
+    .orderBy(desc(wakiesMessage.seq))
+    .limit(Math.min(Math.max(options.limite ?? 200, 1), 501));
+  return rows.map((row) => row.message).reverse();
 }
 
 /** Message déjà écrit ? Utilisé par le flux pour ne pas le réinsérer. */
-export async function messageExists(messageId: string): Promise<boolean> {
+export async function messageExists(
+  userId: string,
+  messageId: string
+): Promise<boolean> {
   await dbReady();
   const [row] = await getDb()
     .select({ id: wakiesMessage.id })
     .from(wakiesMessage)
-    .where(eq(wakiesMessage.id, messageId))
+    .innerJoin(
+      wakiesConversation,
+      eq(wakiesMessage.conversationId, wakiesConversation.id)
+    )
+    .where(
+      and(
+        eq(wakiesMessage.id, messageId),
+        eq(wakiesConversation.userId, userId)
+      )
+    )
     .limit(1);
   return Boolean(row);
 }
@@ -657,7 +925,9 @@ export async function updatePage(
     .update(wakiesPage)
     .set({
       ...(patch.title === undefined ? {} : { title: patch.title }),
-      ...(patch.content === undefined ? {} : { content: patch.content }),
+      ...(patch.content === undefined
+        ? {}
+        : { content: preserveGoalMarker(page.content, patch.content) }),
       parentId,
       revision: page.revision + 1,
       updatedAt: new Date(),
@@ -1351,4 +1621,84 @@ export async function saveCapture(
       set: { updatedAt: new Date(), value },
       target: wakiesCapture.conversationId,
     });
+}
+
+/** Réservation transactionnelle : le serveur possède l'historique et la clé d'idempotence. */
+export async function reserveChatTurn(
+  userId: string,
+  conversationId: string,
+  messageId: string
+): Promise<
+  { conflict: "busy" | "replayed" } | { id: string; responseId: string }
+> {
+  if (!(await findConversation(userId, conversationId)))
+    throw new Error("Conversation introuvable.");
+  await dbReady();
+  return getDb().transaction(async (tx) => {
+    await tx.execute(
+      sql`select pg_advisory_xact_lock(${hashCompte(`${userId}:${conversationId}`)})`
+    );
+    const [replayed] = await tx
+      .select()
+      .from(wakiesChatTurn)
+      .where(
+        and(
+          eq(wakiesChatTurn.userId, userId),
+          eq(wakiesChatTurn.conversationId, conversationId),
+          eq(wakiesChatTurn.messageId, messageId)
+        )
+      )
+      .limit(1);
+    if (replayed) return { conflict: "replayed" as const };
+    const [running] = await tx
+      .select()
+      .from(wakiesChatTurn)
+      .where(
+        and(
+          eq(wakiesChatTurn.userId, userId),
+          eq(wakiesChatTurn.conversationId, conversationId),
+          eq(wakiesChatTurn.status, "running"),
+          gt(wakiesChatTurn.expiresAt, new Date())
+        )
+      )
+      .limit(1);
+    if (running) return { conflict: "busy" as const };
+    await tx
+      .update(wakiesChatTurn)
+      .set({ status: "interrupted" })
+      .where(
+        and(
+          eq(wakiesChatTurn.userId, userId),
+          eq(wakiesChatTurn.conversationId, conversationId),
+          eq(wakiesChatTurn.status, "running")
+        )
+      );
+    const [turn] = await tx
+      .insert(wakiesChatTurn)
+      .values({
+        conversationId,
+        expiresAt: new Date(Date.now() + 360_000),
+        messageId,
+        userId,
+      })
+      .returning();
+    return { id: turn.id, responseId: turn.responseId };
+  });
+}
+export async function finishChatTurn(
+  userId: string,
+  turnId: string,
+  status: "completed" | "interrupted" | "failed"
+): Promise<void> {
+  await dbReady();
+  await getDb()
+    .update(wakiesChatTurn)
+    .set({ status })
+    .where(
+      and(
+        eq(wakiesChatTurn.id, turnId),
+        eq(wakiesChatTurn.userId, userId),
+        eq(wakiesChatTurn.status, "running")
+      )
+    );
 }

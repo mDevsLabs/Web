@@ -1,20 +1,6 @@
 "use client";
 
-import {
-  BookOpen,
-  Check,
-  Copy,
-  ExternalLink,
-  FileCode,
-  Github,
-  GitPullRequest,
-  Key,
-  MessageSquare,
-  Sparkles,
-  Terminal,
-  Ticket,
-  Zap,
-} from "lucide-react";
+import { BookOpenIcon as BookOpen, CheckIcon as Check, CopyIcon as Copy, ExternalLinkIcon as ExternalLink, FileCodeIcon as FileCode, GithubIcon as Github, GitPullRequestIcon as GitPullRequest, KeyIcon as Key, MessageSquareIcon as MessageSquare, SparklesIcon as Sparkles, TerminalIcon as Terminal, TicketIcon as Ticket, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";

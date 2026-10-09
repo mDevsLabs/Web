@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const CanSodaIcon = /* @__PURE__ */ createIcon("CanSodaIcon", [["path", { "d": "m17 22 1.664-2.496a2 2 0 00.336-1.11V5.606a2 2 0 00-.336-1.11L17 2" }], ["path", { "d": "M18 22H6" }], ["path", { "d": "M18 2H6" }], ["path", { "d": "M5 17h14" }], ["path", { "d": "M5 7h14" }], ["path", { "d": "m7 22-1.664-2.496A2 2 0 015 18.394V5.606a2 2 0 01.336-1.11L7 2" }]]);
-export {
-  CanSodaIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CanSodaIcon = /* @__PURE__ */ createIcon('CanSodaIcon', [["path", { "d": "m17 22 1.664-2.496a2 2 0 00.336-1.11V5.606a2 2 0 00-.336-1.11L17 2" }], ["path", { "d": "M18 22H6" }], ["path", { "d": "M18 2H6" }], ["path", { "d": "M5 17h14" }], ["path", { "d": "M5 7h14" }], ["path", { "d": "m7 22-1.664-2.496A2 2 0 015 18.394V5.606a2 2 0 01.336-1.11L7 2" }]]);

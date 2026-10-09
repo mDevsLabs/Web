@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, Layers, Sparkles, Terminal, ShieldCheck, Database, Cpu } from "lucide-react";
+import { ArrowRightIcon as ArrowRight, LayersIcon as Layers, SparklesIcon as Sparkles, TerminalIcon as Terminal, ShieldCheckIcon as ShieldCheck, DatabaseIcon as Database, CpuIcon as Cpu } from "@mdevs/icons";
 import Link from "next/link";
 
 export function HeroSection() {

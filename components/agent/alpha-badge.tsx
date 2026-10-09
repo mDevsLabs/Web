@@ -1,6 +1,6 @@
 "use client";
 
-import { FlaskConicalIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
+import { FlaskConicalIcon, ShieldCheckIcon, SparklesIcon } from "@mdevs/icons";
 import { type AgentChannel, getAgentChannelInfo } from "@/lib/agent/channel";
 import { cn } from "@/lib/utils";
 

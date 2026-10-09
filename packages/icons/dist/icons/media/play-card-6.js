@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const PlayCard6Icon = /* @__PURE__ */ createIcon("PlayCard6Icon", [["path", { "d": "M19 5v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2" }], ["path", { "d": "M8 6h.01" }], ["path", { "d": "M16 18h.01" }], ["path", { "d": "M14 9h-3a1 1 0 0 0 -1 1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-1a1 1 0 0 0 -1 -1h-3" }]]);
-export {
-  PlayCard6Icon
-};
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const PlayCard6Icon = /* @__PURE__ */ createIcon('PlayCard6Icon', [["path", { "d": "M19 5v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2" }], ["path", { "d": "M8 6h.01" }], ["path", { "d": "M16 18h.01" }], ["path", { "d": "M14 9h-3a1 1 0 0 0 -1 1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-1a1 1 0 0 0 -1 -1h-3" }]]);

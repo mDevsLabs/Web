@@ -1,6 +1,6 @@
 "use client";
 
-import { KeyRound, ShieldAlert } from "lucide-react";
+import { KeyRoundIcon as KeyRound, ShieldAlertIcon as ShieldAlert } from "@mdevs/icons";
 import Link from "next/link";
 import type { UserApiKeyUsage } from "@/app/actions/api-keys";
 

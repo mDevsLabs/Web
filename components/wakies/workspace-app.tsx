@@ -1,41 +1,51 @@
 "use client";
 
-import {
-  ArrowUp,
-  ArrowUpRight,
-  BookOpen,
-  Clock3,
-  Code2,
-  Folder,
-  Menu,
-  MessageCircle,
-  Monitor,
-  MoreHorizontal,
-  PanelLeft,
-  Pause,
-  Play,
-  Plus,
-  Search,
-  Settings2,
-  Trash2,
-  X,
-} from "lucide-react";
+import { ArrowUpIcon } from "@mdevs/icons/arrows/arrow-up";
+import { ArrowUpRightIcon } from "@mdevs/icons/arrows/arrow-up-right";
+import { MessageCircleIcon } from "@mdevs/icons/communication/message-circle";
+import { MessageSquareIcon } from "@mdevs/icons/communication/message-square";
+import { PlusIcon } from "@mdevs/icons/controls/plus";
+import { SearchIcon } from "@mdevs/icons/controls/search";
+import { Settings2Icon } from "@mdevs/icons/controls/settings-2";
+import { XIcon } from "@mdevs/icons/controls/x";
+import { MonitorIcon } from "@mdevs/icons/devices/monitor";
+import { BookOpenIcon } from "@mdevs/icons/files/book-open";
+import { FolderIcon } from "@mdevs/icons/files/folder";
+import { EllipsisVerticalIcon } from "@mdevs/icons/interface/ellipsis-vertical";
+import { MenuIcon } from "@mdevs/icons/interface/menu";
+import { PanelLeftIcon } from "@mdevs/icons/interface/panel-left";
+import { PauseIcon } from "@mdevs/icons/media/pause";
+import { PlayIcon } from "@mdevs/icons/media/play";
+import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
+import { TimerIcon } from "@mdevs/icons/time/timer";
+import { Button } from "@mdevs/ui/primitives/button";
+import { Input } from "@mdevs/ui/primitives/input";
+import { Textarea } from "@mdevs/ui/primitives/textarea";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppSwitcherMenu } from "@/components/common/app-switcher";
+import { AppsScreen } from "@/components/wakies/AppsScreen";
 import { ApiError, api } from "@/components/wakies/api";
 import { Chat } from "@/components/wakies/Chat";
+import { ConversationList } from "@/components/wakies/ConversationList";
+import { WakiesDraftProvider } from "@/components/wakies/DraftProvider";
+import { GoalsScreen } from "@/components/wakies/GoalsScreen";
+import { IdeasScreen } from "@/components/wakies/IdeasScreen";
 import { Mascot } from "@/components/wakies/Mascot";
+import { Onboarding } from "@/components/wakies/Onboarding";
 import { openPageLink } from "@/components/wakies/page-navigation";
 import { ResultPane } from "@/components/wakies/ResultPane";
 import { SpaceNav } from "@/components/wakies/SpaceNav";
 import { SpaceWorkspace } from "@/components/wakies/SpaceWorkspace";
 import { TaskActions } from "@/components/wakies/TaskActions";
 import { TaskRow } from "@/components/wakies/TaskPresentation";
-import { ThreadList } from "@/components/wakies/ThreadList";
 import {
   type Dialog,
   WorkspaceDialog,
 } from "@/components/wakies/WorkspaceDialog";
+import {
+  type WakiesSection,
+  WorkspaceNavigation,
+} from "@/components/wakies/WorkspaceNavigation";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import type {
   Conversation,
@@ -54,13 +64,19 @@ import type {
  * plus aucun écran de déverrouillage ni jeton à saisir (voir api.ts).
  */
 export function WakiesWorkspace() {
+  return (
+    <WakiesDraftProvider>
+      <WakiesWorkspaceContent />
+    </WakiesDraftProvider>
+  );
+}
+
+function WakiesWorkspaceContent() {
   const [state, setState] = useState<State>();
   const [workspace, setWorkspace] = useState<WorkspaceState>();
   const [selectedWakie, setSelectedWakie] = useState("");
   const [selectedThread, setSelectedThread] = useState<string>();
-  const [view, rawSetView] = useState<"chat" | "tasks" | "memories" | "space">(
-    "chat"
-  );
+  const [view, rawSetView] = useState<WakiesSection>("chat");
   const dirtyPage = useRef(false);
   const [spaceId, setSpaceId] = useState("");
   const [pageId, setPageId] = useState<string>();
@@ -72,11 +88,13 @@ export function WakiesWorkspace() {
       dirtyPage.current &&
       !window.confirm("Abandonner votre brouillon de page non enregistré ?")
     )
-      return;
+      return false;
     dirtyPage.current = false;
     if (next !== "space")
       history.replaceState(null, "", location.pathname + location.search);
     rawSetView(next);
+    setMobile(false);
+    return true;
   };
   useEffect(() => {
     let acceptedHash = location.hash;
@@ -113,9 +131,53 @@ export function WakiesWorkspace() {
   // l'interface doit proposer la sortie (reconnexion) plutôt qu'un écran vide.
   const [sessionExpiree, setSessionExpiree] = useState(false);
   const [planRequis, setPlanRequis] = useState(false);
-  const [dialog, setDialog] = useState<Dialog>();
+  const [dialog, rawSetDialog] = useState<Dialog>();
+  const setDialog = (next: Dialog | undefined) => {
+    setMobile(false);
+    rawSetDialog(next);
+  };
   const [mobile, setMobile] = useState(false);
   const [navCollapsed, setNavCollapsed] = useState(false);
+  useEffect(() => {
+    if (!mobile) return;
+    const sidebar = document.getElementById("workspace-sidebar");
+    const previous =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const focusables = () =>
+      [
+        ...(sidebar?.querySelectorAll<HTMLElement>(
+          "button:not([disabled]),a[href],input:not([disabled])"
+        ) ?? []),
+      ].filter(
+        (item) => item.tabIndex >= 0 && item.getClientRects().length > 0
+      );
+    focusables()[0]?.focus();
+    const key = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+      if (event.key === "Escape") setMobile(false);
+      if (event.key !== "Tab") return;
+      const items = focusables();
+      if (event.shiftKey && document.activeElement === items[0]) {
+        event.preventDefault();
+        items.at(-1)?.focus();
+      } else if (!event.shiftKey && document.activeElement === items.at(-1)) {
+        event.preventDefault();
+        items[0]?.focus();
+      }
+    };
+    const resized = () => {
+      if (window.innerWidth > 900) setMobile(false);
+    };
+    document.addEventListener("keydown", key);
+    window.addEventListener("resize", resized);
+    return () => {
+      document.removeEventListener("keydown", key);
+      window.removeEventListener("resize", resized);
+      previous?.focus();
+    };
+  }, [mobile]);
   const [pane, setPane] = useState(false);
   const [capture, setCapture] = useState<Result>();
   const [prompt, setPrompt] = useState("");
@@ -133,7 +195,16 @@ export function WakiesWorkspace() {
       setWorkspace(w);
       setSessionExpiree(false);
       setPlanRequis(false);
-      setSelectedWakie((previous) => previous || w.wakies[0]?.id || "");
+      setSelectedWakie((previous) =>
+        w.wakies.some((item) => item.id === previous)
+          ? previous
+          : w.wakies[0]?.id || ""
+      );
+      setSelectedThread((previous) =>
+        w.conversations.some((item) => item.id === previous)
+          ? previous
+          : undefined
+      );
     } catch (e) {
       if (e instanceof ApiError && e.status === 401) setSessionExpiree(true);
       else if (e instanceof ApiError && e.status === 403) setPlanRequis(true);
@@ -149,7 +220,10 @@ export function WakiesWorkspace() {
   // retour sur l'onglet évite d'attendre le prochain tick.
   useEffect(() => {
     void refresh();
-    const timer = setInterval(() => void refresh(), 12_000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible" && navigator.onLine)
+        void refresh();
+    }, 30_000);
     const auRetour = () => {
       if (document.visibilityState === "visible") void refresh();
     };
@@ -172,25 +246,31 @@ export function WakiesWorkspace() {
           if (active) setError(e.message);
         });
     load();
-    const timer = setInterval(load, 3000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible" && navigator.onLine) load();
+    }, 30_000);
     return () => {
       active = false;
       clearInterval(timer);
     };
   }, [selectedThread]);
-  const mutate = async (path: string, method: string, body?: unknown) => {
-    setError("");
-    try {
-      await api(path, method, body);
-      await refresh();
-      if (taskDetail)
-        setTaskDetail(await api<Detail>(`/tasks/${taskDetail.task.id}`));
-      return true;
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Enregistrement impossible.");
-      return false;
-    }
-  };
+  const mutate = useCallback(
+    async (path: string, method: string, body?: unknown) => {
+      setError("");
+      try {
+        await api(path, method, body);
+        await refresh();
+        if (taskDetail) {
+          setTaskDetail(await api<Detail>(`/tasks/${taskDetail.task.id}`));
+        }
+        return true;
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Enregistrement impossible.");
+        return false;
+      }
+    },
+    [refresh, taskDetail]
+  );
   const wakie =
     workspace?.wakies.find((item) => item.id === selectedWakie) ??
     workspace?.wakies[0];
@@ -198,22 +278,43 @@ export function WakiesWorkspace() {
     (item) => item.id === selectedThread && item.wakieId === wakie?.id
   );
   const configured = !!workspace && workspace.setup.missing.length === 0;
+  /**
+   * L'assistant de configuration s'ouvre tant que le compte n'a pas terminé
+   * SA configuration de départ. Il édite le Wakie de départ déjà en base :
+   * quitter puis reprendre est donc gratuit, et supprimer ce Wakie fait
+   * disparaître l'assistant au lieu de le boucler.
+   */
+  const onboardingOuvert = Boolean(
+    workspace && !state?.settings.onboardingCompleted && wakie
+  );
+  const terminerOnboarding = useCallback(async () => {
+    try {
+      await mutate("/settings", "PATCH", { onboardingCompleted: true });
+    } catch (e) {
+      setError(
+        e instanceof Error
+          ? e.message
+          : "La configuration n'a pas pu être enregistrée."
+      );
+    }
+  }, [mutate]);
   const chooseWakie = (next: Wakie) => {
+    if (!setView("chat")) return;
     setSelectedWakie(next.id);
     setSelectedThread(
       workspace?.conversations.find((item) => item.wakieId === next.id)?.id
     );
-    setView("chat");
     setMobile(false);
     setPendingPrompt(undefined);
   };
   const newConversation = async (text?: string) => {
     if (!wakie || !configured || busy) return;
+    if (!setView("chat")) return;
     setBusy(true);
     setError("");
     try {
       const next = await api<Conversation>("/conversations", "POST", {
-        title: text?.slice(0, 80) || "Une nouvelle réflexion",
+        title: text?.trim().slice(0, 80) || "Une nouvelle réflexion",
         wakieId: wakie.id,
       });
       await refresh();
@@ -270,7 +371,7 @@ export function WakiesWorkspace() {
         </a>
       </main>
     );
-  if (!state || !workspace || !wakie)
+  if (!state || !workspace)
     return (
       <main className="unlock">
         <Mascot state="working" />
@@ -278,11 +379,13 @@ export function WakiesWorkspace() {
         {error && (
           <>
             <p className="chat-error">{error}</p>
-            <button onClick={() => void refresh()}>Réessayer</button>
+            <Button onClick={() => void refresh()} variant="outline">
+              Réessayer
+            </Button>
           </>
         )}
         <div style={{ marginTop: "1.25rem" }}>
-          <button
+          <Button
             className="muted"
             onClick={() => {
               if (typeof window !== "undefined" && window.history.length > 1) {
@@ -299,9 +402,10 @@ export function WakiesWorkspace() {
               textDecoration: "underline",
             }}
             type="button"
+            variant="outline"
           >
             ← Retour à la page précédente
-          </button>
+          </Button>
         </div>
       </main>
     );
@@ -321,16 +425,17 @@ export function WakiesWorkspace() {
             modèle, puis ouvrez la conversation. Vos Espaces et vos pages
             restent en place.
           </p>
-          <button
+          <Button
             className="primary"
             onClick={() =>
               space
                 ? setDialog({ spaceId: space.id, type: "wakie" })
                 : setDialog({ type: "space" })
             }
+            variant="solid"
           >
             {space ? "Créer un Wakie" : "Créer un Espace"}
-          </button>
+          </Button>
           {error && (
             <p className="chat-error" role="alert">
               {error}
@@ -350,125 +455,95 @@ export function WakiesWorkspace() {
     );
   }
   const content = (
-    <div className={`app template-app ${navCollapsed ? "nav-collapsed" : ""}`}>
-      <nav aria-label="Navigation de l’espace de travail" className="icon-rail">
-        {/* Le logo n'est plus un simple retour à l'accueil : il ouvre le menu
-            des espaces de mAI (mAI, Site, Vibe, Coder, CLI). Wakies n'appartient
-            pas au catalogue, donc AUCUNE entrée n'est marquée « courante » —
-            celle de mAI reste cliquable, sinon on ne pourrait plus revenir au
-            chat depuis /wakies. */}
-        <AppSwitcherMenu align="start" currentAppOverride={null} side="right">
-          <button
-            aria-label="Changer d’espace de travail"
-            className="rail-brand"
-            type="button"
-          >
-            <img
-              alt=""
-              className="size-5.5 object-contain"
-              src="/wakies/logo.png"
-            />
-          </button>
-        </AppSwitcherMenu>
-        <button
-          aria-label={
-            navCollapsed
-              ? "Déplier la barre latérale"
-              : "Replier la barre latérale"
-          }
-          onClick={() => setNavCollapsed(!navCollapsed)}
-        >
-          <PanelLeft size={18} />
-        </button>
-        <button
-          aria-label="Nouvelle conversation"
-          disabled={!configured}
-          onClick={() => void newConversation()}
-        >
-          <Plus size={19} />
-        </button>
-        <button
-          aria-label="Ouvrir les Espaces"
-          onClick={() => {
-            if (workspace.spaces[0]) openPage(workspace.spaces[0].id);
-          }}
-        >
-          <Folder size={18} />
-        </button>
-        <button aria-label="Ouvrir l’activité" onClick={() => setView("tasks")}>
-          <Clock3 size={18} />
-        </button>
-        <button
-          aria-label="Ouvrir les paramètres"
-          className="rail-settings"
-          onClick={() => setDialog({ type: "settings" })}
-        >
-          <Settings2 size={18} />
-        </button>
-      </nav>
-      <button
+    <div
+      className={`app template-app muse-app ${navCollapsed ? "nav-collapsed" : ""}`}
+    >
+      <Button
         aria-controls="workspace-sidebar"
         aria-expanded={mobile}
         aria-label="Ouvrir la navigation"
         className="mobile-menu icon-button"
         onClick={() => setMobile(true)}
+        variant="ghost"
       >
-        <Menu size={21} />
-      </button>
+        <MenuIcon size={21} />
+      </Button>
       {mobile && (
-        <button
+        <Button
           aria-label="Fermer la navigation"
           className="nav-scrim"
           onClick={() => setMobile(false)}
+          variant="outline"
         />
       )}
       <aside
+        aria-label="Navigation de Wakies"
+        aria-modal={mobile || undefined}
         className={`sidebar ${mobile ? "open" : ""}`}
         id="workspace-sidebar"
+        role={mobile ? "dialog" : undefined}
       >
-        <button
-          className="wordmark"
-          onClick={() => {
-            setView("chat");
-            setSelectedThread(undefined);
-          }}
+        <AppSwitcherMenu align="start" currentAppOverride={null} side="bottom">
+          <Button
+            aria-label="Changer d’espace de travail"
+            className="wordmark"
+            variant="ghost"
+          >
+            <img
+              alt="Wakies"
+              className="size-5.5 object-contain shrink-0"
+              src="/wakies/logo.png"
+            />
+            Wakies
+          </Button>
+        </AppSwitcherMenu>
+        <Button
+          aria-label="Fermer le menu"
+          className="sidebar-close icon-button"
+          onClick={() => setMobile(false)}
+          variant="ghost"
         >
-          <img
-            alt="Wakies"
-            className="size-5.5 object-contain shrink-0"
-            src="/wakies/logo.png"
-          />
-          Wakies<span className="wordmark-dot">•</span>
-        </button>
-        <button
+          <XIcon size={18} />
+        </Button>
+        <Button
           className="new-chat nav-item"
           disabled={!configured}
           onClick={() => void newConversation()}
+          variant="ghost"
         >
-          <Plus size={17} />
+          <PlusIcon size={17} />
           <span>Nouvelle conversation</span>
-        </button>
+        </Button>
+        <div className="sidebar-sections">
+          <WorkspaceNavigation onSelect={setView} section={view} />
+        </div>
         <div className="spaces-heading nav-label">
           WAKIES
-          <button
+          <Button
             aria-label="Créer un Wakie"
             className="icon-button"
             onClick={() =>
-              setDialog({ spaceId: workspace.spaces[0].id, type: "wakie" })
+              setDialog(
+                workspace.spaces[0]
+                  ? { spaceId: workspace.spaces[0].id, type: "wakie" }
+                  : { type: "space" }
+              )
             }
+            variant="ghost"
           >
-            <Plus size={14} />
-          </button>
+            <PlusIcon size={14} />
+          </Button>
         </div>
         <nav aria-label="Wakies" className="wakies-nav">
           {workspace.wakies.map((item) => (
             <div className="wakie-nav-row" key={item.id}>
-              <button
+              <Button
                 aria-current={
                   wakie.id === item.id && view === "chat" ? "page" : undefined
                 }
                 className={`wakie-nav ${wakie.id === item.id && view === "chat" ? "active" : ""}`}
                 onClick={() => chooseWakie(item)}
+                variant="outline"
               >
                 <Mascot
                   avatar={item.avatar}
@@ -478,9 +553,9 @@ export function WakiesWorkspace() {
                   small
                 />
                 <span>{item.name}</span>
-              </button>
-              <button
-                aria-label={`Edit ${item.name} settings`}
+              </Button>
+              <Button
+                aria-label={`Personnaliser ${item.name}`}
                 className="icon-button wakie-settings"
                 onClick={() =>
                   setDialog({
@@ -489,21 +564,23 @@ export function WakiesWorkspace() {
                     wakie: item,
                   })
                 }
+                variant="ghost"
               >
-                <MoreHorizontal size={15} />
-              </button>
+                <EllipsisVerticalIcon size={15} />
+              </Button>
             </div>
           ))}
         </nav>
         <div className="spaces-heading nav-label">
-          SPACES
-          <button
+          ESPACES
+          <Button
             aria-label="Créer un Espace"
             className="icon-button"
             onClick={() => setDialog({ type: "space" })}
+            variant="ghost"
           >
-            <Plus size={14} />
-          </button>
+            <PlusIcon size={14} />
+          </Button>
         </div>
         <nav aria-label="Espaces" className="spaces-nav">
           {workspace.spaces.map((space) => (
@@ -517,10 +594,12 @@ export function WakiesWorkspace() {
           ))}
         </nav>
         {configured ? (
-          <ThreadList
+          <ConversationList
             local={workspace.conversations}
+            onChanged={refresh}
             onNew={() => void newConversation()}
-            onSelect={(id) => {
+            onSelect={(id: string) => {
+              if (!setView("chat")) return;
               const conversation = workspace.conversations.find(
                 (item) => item.id === id
               );
@@ -533,67 +612,65 @@ export function WakiesWorkspace() {
             wakieId={wakie.id}
             wakies={workspace.wakies}
           />
-        ) : (
-          <div className="sidebar-empty">
-            Set up text chat to begin a persistent conversation.
-          </div>
-        )}
+        ) : null}
         <div className="sidebar-bottom">
-          <button
-            className={`nav-item ${view === "tasks" ? "active" : ""}`}
-            onClick={() => {
-              setView("tasks");
-              setMobile(false);
-            }}
-          >
-            <Clock3 size={17} />
-            <span>Scheduled & activity</span>
-            <small>{state.tasks.length}</small>
-          </button>
-          <button
+          <Button
             className={`nav-item ${view === "memories" ? "active" : ""}`}
             onClick={() => {
               setView("memories");
               setMobile(false);
             }}
+            variant="outline"
           >
-            <BookOpen size={17} />
+            <BookOpenIcon size={17} />
             <span>Mémoires</span>
             <small>{state.memories.length}</small>
-          </button>
-          <button
+          </Button>
+          <Button
             className="nav-item"
             onClick={() => setDialog({ type: "settings" })}
+            variant="ghost"
           >
-            <Settings2 size={17} />
+            <Settings2Icon size={17} />
             <span>Réglages et configuration</span>
-          </button>
-          <a
-            className="nav-item"
-            href="https://github.com/CopilotKit/Wakies"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <Code2 size={17} />
-            <span>Personnalisez-le</span>
-            <ArrowUpRight size={13} />
-          </a>
+          </Button>
+          {/* La version vient du paquet, pas d'un dépôt externe : le port est
+              intégré à mAI et n'est plus un modèle open source à installer. */}
           <div className="version">
-            MODÈLE OPEN SOURCE <span>v0.1</span>
+            HÉBERGÉ PAR MAI <span>v0.1</span>
           </div>
         </div>
       </aside>
-      <div className="workspace">
+      <div className="workspace" inert={mobile ? true : undefined}>
         <header className="topbar">
-          <button
+          <Button
             aria-label={
               navCollapsed ? "Afficher la navigation" : "Masquer la navigation"
             }
             className="desktop-nav-toggle document-icon"
             onClick={() => setNavCollapsed(!navCollapsed)}
+            variant="outline"
           >
-            <PanelLeft size={18} />
-          </button>
+            <PanelLeftIcon size={18} />
+          </Button>
+          <Button
+            aria-label={`Personnaliser ${wakie.name}`}
+            className="muse-persona"
+            onClick={() => setDialog({ spaceId, type: "wakie", wakie })}
+            type="button"
+            variant="ghost"
+          >
+            <Mascot
+              avatar={wakie.avatar}
+              identity={wakie.id}
+              name={wakie.name}
+              small
+            />
+            <strong>{wakie.name}</strong>
+            <small>
+              {state.settings.paused ? "En pause" : "À votre écoute"}
+            </small>
+          </Button>
           <div className="breadcrumbs">
             <span>
               {view === "space"
@@ -612,10 +689,14 @@ export function WakiesWorkspace() {
             </strong>
           </div>
           <div className="top-actions">
+            {/* Le badge disait « HÉBERGÉ LOCALEMENT », ce qui est FAUX :
+                l'espace est servi par mAI, sur les serveurs mAI, avec la
+                session et les quotas du compte. C'est une information
+                affichée, pas un coussin décoratif : elle doit être juste. */}
             <span className="mode-badge">
-              {configured ? "HÉBERGÉ LOCALEMENT" : "CONFIGURATION REQUISE"}
+              {configured ? "HÉBERGÉ PAR MAI" : "CONFIGURATION REQUISE"}
             </span>
-            <button
+            <Button
               aria-label={
                 state.settings.paused
                   ? "Reprendre tous les Wakies"
@@ -627,32 +708,39 @@ export function WakiesWorkspace() {
                   paused: !state.settings.paused,
                 })
               }
+              variant="outline"
             >
-              {state.settings.paused ? <Play size={14} /> : <Pause size={14} />}
+              {state.settings.paused ? (
+                <PlayIcon size={14} />
+              ) : (
+                <PauseIcon size={14} />
+              )}
               <span>{state.settings.paused ? "Reprendre" : "Pause"}</span>
-            </button>
-            <button
+            </Button>
+            <Button
               aria-expanded={pane}
               aria-label={
                 pane ? "Masquer l’ordinateur" : "Afficher l’ordinateur"
               }
               className="icon-button"
               onClick={() => setPane(!pane)}
+              variant="ghost"
             >
-              <Monitor size={18} />
-            </button>
+              <MonitorIcon size={18} />
+            </Button>
           </div>
         </header>
         {error && (
           <div className="error-banner" role="alert">
             <span>{error}</span>
-            <button
+            <Button
               aria-label="Masquer l’erreur"
               className="icon-button"
               onClick={() => setError("")}
+              variant="ghost"
             >
-              <X size={16} />
-            </button>
+              <XIcon size={16} />
+            </Button>
           </div>
         )}
         {state.settings.paused && (
@@ -661,7 +749,25 @@ export function WakiesWorkspace() {
             tâches planifiées attendent.
           </div>
         )}
-        {view === "space" ? (
+        {view === "apps" ? (
+          <AppsScreen
+            onCustomize={() =>
+              setDialog({ spaceId: wakie.spaceId, type: "wakie", wakie })
+            }
+            wakie={wakie}
+          />
+        ) : view === "goals" ? (
+          <GoalsScreen
+            defaultSpaceId={wakie.spaceId}
+            onOpen={openPage}
+            spaces={workspace.spaces}
+          />
+        ) : view === "ideas" ? (
+          <IdeasScreen
+            onGoals={() => setView("goals")}
+            onMemories={() => setView("memories")}
+          />
+        ) : view === "space" ? (
           <SpaceWorkspace
             key={spaceId}
             onCreateWakie={() => setDialog({ spaceId, type: "wakie" })}
@@ -720,7 +826,7 @@ export function WakiesWorkspace() {
                     />
                     <h2>{wakie.name}</h2>
                     <p>{wakie.instructions}</p>
-                    <button
+                    <Button
                       className="text-button"
                       onClick={() =>
                         setDialog({
@@ -729,31 +835,38 @@ export function WakiesWorkspace() {
                           wakie,
                         })
                       }
+                      variant="outline"
                     >
-                      Modifier le spécialiste <MoreHorizontal size={14} />
-                    </button>
+                      Modifier le spécialiste <EllipsisVerticalIcon size={14} />
+                    </Button>
                   </div>
                   {!configured && (
                     <div className="setup-card">
                       <span className="setup-icon">
-                        <Settings2 size={20} />
+                        <Settings2Icon size={20} />
                       </span>
                       <div>
-                        <strong>Connectez votre Wakie</strong>
+                        <strong>Terminez la configuration</strong>
                         <p>
-                          Connectez votre modèle et votre service de
-                          conversation dans les Réglages pour commencer à
-                          discuter. Vos Espaces et les préférences de vos Wakies
-                          sont prêts.
+                          Choisissez un nom, une mascotte et des consignes de
+                          rôle pour ce Wakie. Vos Espaces et vos préférences
+                          sont déjà prêts.
                         </p>
-                        <a
-                          href="https://github.com/CopilotKit/Wakies/blob/main/docs/SETUP.md"
-                          rel="noreferrer"
-                          target="_blank"
+                        <Button
+                          className="text-button"
+                          onClick={() =>
+                            setDialog({
+                              spaceId: wakie.spaceId,
+                              type: "wakie",
+                              wakie,
+                            })
+                          }
+                          type="button"
+                          variant="outline"
                         >
-                          Ouvrir le guide de configuration{" "}
-                          <ArrowUpRight size={12} />
-                        </a>
+                          Personnaliser ce Wakie
+                          <ArrowUpRightIcon size={12} />
+                        </Button>
                       </div>
                     </div>
                   )}
@@ -764,7 +877,7 @@ export function WakiesWorkspace() {
                       void newConversation(prompt);
                     }}
                   >
-                    <textarea
+                    <Textarea
                       aria-label="Démarrer une conversation"
                       disabled={!configured}
                       maxLength={4000}
@@ -778,16 +891,18 @@ export function WakiesWorkspace() {
                     />
                     <div className="composer-bottom">
                       <span>
-                        <MessageCircle size={14} />
+                        <MessageCircleIcon size={14} />
                         Texte et appels, une seule conversation
                       </span>
-                      <button
+                      <Button
                         aria-label="Démarrer la conversation"
                         className="send-button"
                         disabled={!configured || busy || !prompt.trim()}
+                        type="submit"
+                        variant="solid"
                       >
-                        <ArrowUp size={19} />
-                      </button>
+                        <ArrowUpIcon size={19} />
+                      </Button>
                     </div>
                   </form>
                   <div className="starter-suggestions">
@@ -796,27 +911,34 @@ export function WakiesWorkspace() {
                       "Étudier une page publique",
                       "Établir un plan que je puisse suivre",
                     ].map((text) => (
-                      <button
+                      <Button
                         disabled={!configured}
                         key={text}
                         onClick={() => setPrompt(text)}
+                        variant="outline"
                       >
                         {text}
-                        <ArrowUpRight size={12} />
-                      </button>
+                        <ArrowUpRightIcon size={12} />
+                      </Button>
                     ))}
                   </div>
+                  {/* La ligne affichait « Slack · not_configured » avec un
+                      voyant. C'est trompeur sur deux points : Slack n'est pas
+                      branché dans le port, et un voyant d'état ne veut rien
+                      dire pour l'utilisateur qui n'a jamais demandé Slack.
+                      On affiche ce qui est réellement branché. */}
                   <div className="connection-note">
                     <span
-                      className={`online-dot ${workspace.setup.slack === "online" ? "" : "off"}`}
+                      className={`online-dot ${workspace.setup.model ? "" : "off"}`}
                     />
-                    Slack · {workspace.setup.slack.replaceAll("_", " ")}
-                    <button
+                    Modèle servi par votre compte mAI
+                    <Button
                       className="text-button"
                       onClick={() => setDialog({ type: "settings" })}
+                      variant="outline"
                     >
                       Détails de la configuration
-                    </button>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -837,7 +959,7 @@ export function WakiesWorkspace() {
             <div className="page-heading">
               <div>
                 <span className="eyebrow">VOTRE ESPACE DE TRAVAIL</span>
-                <h1>{view === "memories" ? "Memories" : "Un peu de suivi."}</h1>
+                <h1>{view === "memories" ? "Mémoires" : "Un peu de suivi."}</h1>
                 <p>
                   {view === "memories"
                     ? "Les préférences que vous choisissez de partager avec vos Wakies."
@@ -845,13 +967,14 @@ export function WakiesWorkspace() {
                 </p>
               </div>
               {view === "memories" && (
-                <button
+                <Button
                   className="primary"
                   onClick={() => setDialog({ type: "memory" })}
+                  variant="solid"
                 >
-                  <Plus size={15} />
+                  <PlusIcon size={15} />
                   Ajouter une mémoire
-                </button>
+                </Button>
               )}
             </div>
             {view === "memories" ? (
@@ -859,7 +982,7 @@ export function WakiesWorkspace() {
                 <div className="memory-grid">
                   {state.memories.map((memory) => (
                     <article className="memory-card" key={memory.id}>
-                      <BookOpen size={18} />
+                      <BookOpenIcon size={18} />
                       <p>{memory.text}</p>
                       <div>
                         <small>
@@ -867,22 +990,24 @@ export function WakiesWorkspace() {
                             ? "Disponible pour les Wakies autorisés"
                             : "Utilisation des mémoires désactivée"}
                         </small>
-                        <button
+                        <Button
                           aria-label="Modifier la mémoire"
                           className="icon-button"
                           onClick={() => setDialog({ memory, type: "memory" })}
+                          variant="ghost"
                         >
-                          <MoreHorizontal size={17} />
-                        </button>
-                        <button
+                          <EllipsisVerticalIcon size={17} />
+                        </Button>
+                        <Button
                           aria-label="Supprimer la mémoire"
                           className="icon-button"
                           onClick={() =>
                             void mutate(`/memories/${memory.id}`, "DELETE", {})
                           }
+                          variant="ghost"
                         >
-                          <Trash2 size={15} />
-                        </button>
+                          <Trash2Icon size={15} />
+                        </Button>
                       </div>
                     </article>
                   ))}
@@ -902,8 +1027,8 @@ export function WakiesWorkspace() {
             ) : (
               <>
                 <label className="search-box">
-                  <Search size={16} />
-                  <input
+                  <SearchIcon size={16} />
+                  <Input
                     aria-label="Rechercher des tâches"
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Trouver une tâche…"
@@ -929,7 +1054,7 @@ export function WakiesWorkspace() {
                 </div>
                 {!state.tasks.length && (
                   <div className="large-empty">
-                    <Clock3 size={32} />
+                    <TimerIcon size={32} />
                     <h2>Laissez une réflexion revenir plus tard.</h2>
                     <p>
                       Ouvrez une conversation et utilisez le bouton horloge pour
@@ -960,6 +1085,12 @@ export function WakiesWorkspace() {
                           setError("Saisissez un nombre de minutes valide.");
                           return;
                         }
+                        if (value > 0 && value < 1) {
+                          setError(
+                            "L’intervalle doit être d’au moins 1 minute."
+                          );
+                          return;
+                        }
                         await mutate(
                           `/tasks/${taskDetail.task.id}/schedule`,
                           "PUT",
@@ -981,13 +1112,18 @@ export function WakiesWorkspace() {
                         {event.text}
                       </p>
                     ))}
-                    <small>{taskDetail.runs.length} saved runs</small>
+                    <small>
+                      {taskDetail.runs.length} exécution
+                      {taskDetail.runs.length > 1 ? "s" : ""} enregistrée
+                      {taskDetail.runs.length > 1 ? "s" : ""}
+                    </small>
                   </section>
                 )}
               </>
             )}
           </main>
         )}
+        <WorkspaceNavigation onSelect={setView} section={view} />
         {pane && view !== "chat" && (
           <div className="computer-overlay">
             <ResultPane
@@ -1006,7 +1142,22 @@ export function WakiesWorkspace() {
           </div>
         )}
       </div>
-      {dialog && (
+      {onboardingOuvert && state && workspace && wakie ? (
+        <Onboarding
+          espace={workspace.spaces.find(
+            (candidate) => candidate.id === wakie.spaceId
+          )}
+          onEnregistrer={async (corps) => {
+            const ok = await mutate(`/wakies/${wakie.id}`, "PUT", corps);
+            return ok;
+          }}
+          onRepartir={() => void refresh()}
+          onTerminer={terminerOnboarding}
+          reglage={state.settings}
+          wakie={wakie}
+        />
+      ) : null}
+      {dialog ? (
         <WorkspaceDialog
           dialog={dialog}
           mutate={mutate}
@@ -1014,7 +1165,7 @@ export function WakiesWorkspace() {
           state={state}
           workspace={workspace}
         />
-      )}
+      ) : null}
     </div>
   );
   return content;

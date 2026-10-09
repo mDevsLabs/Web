@@ -1,307 +1,401 @@
-import { afterEach, expect, it, vi } from 'vitest';
-import { mkdtempSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { createHmac } from 'node:crypto';
-import { WorkspaceStore } from '../src/server/workspace.js';
-import { ComputerService } from '../src/server/computer-service.js';
-import { computerInputs } from '../src/shared/computer-types.js';
-import { computerTools } from '../src/server/computer-tools.js';
-const stores: WorkspaceStore[] = [];
-afterEach(() => {
-  for (const store of stores.splice(0)) store.close();
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { after, before, test } from "node:test";
+import { ComputerService, type DockerResult } from "../apps/server/src/computer.ts";
+import { createStore, type Store } from "../apps/server/src/db.ts";
+import { config, fixture, ok, sandbox } from "./helpers/computer.ts";
+
+let db: Store;
+before(async () => {
+  db = await createStore();
 });
-function fixture(deadline = 1000) {
-  const workspace = new WorkspaceStore(':memory:', 'owner');
-  stores.push(workspace);
-  const id = workspace.wakies()[0].id;
-  const calls: { url: string; init?: RequestInit }[] = [];
-  let paused = false;
-  let endpoint: string | undefined;
-  let actionHandler: (
-    url: string,
-    init?: RequestInit,
-  ) => Promise<Response> = async () => Response.json({ text: 'result' });
-  const transport: typeof fetch = async (input, init) => {
-    const url = String(input);
-    calls.push({ url, init });
-    if (url.endsWith('/computers'))
-      return Response.json({
-        computers: workspace.wakies().map((wakie) => ({
-          botId: wakie.id,
-          container: `wakies-computer-${wakie.id}`,
-          status: 'running',
-          ...(endpoint ? { url: endpoint } : {}),
-        })),
-      });
-    if (url.endsWith('/ensure'))
-      return Response.json({
-        botId: id,
-        container: `wakies-computer-${id}`,
-        status: 'running',
-        url: `http://wakies-computer-${id}:4100`,
-      });
-    if (url.endsWith('/control'))
-      return Response.json({
-        holder: 'human',
-        requested: false,
-        transitioning: false,
-        resumeSnapshotRequired: false,
-        request: { id: 'request', status: 'taken' },
-      });
-    return actionHandler(url, init);
-  };
-  const config = {
-    baseUrl: 'https://example.com',
-    voiceName: 'voice',
-    slackUsers: [],
-    runtimeUrl: 'http://localhost',
-    computerSupervisorUrl: 'http://127.0.0.1:4312',
-    computerSupervisorToken: 'supervisor-secret',
-    computerToken: 'master-secret',
-  };
-  const service = new ComputerService(
-    workspace,
-    config,
-    () => paused,
-    transport,
-    deadline,
-  );
-  workspace.computers.patch(id, {
-    enabled: true,
-    browser: true,
-    files: true,
-    shell: true,
-  });
-  return {
-    workspace,
-    id,
-    service,
-    calls,
-    config,
-    transport,
-    setPaused: (value: boolean) => {
-      paused = value;
-    },
-    setEndpoint: (value: string) => {
-      endpoint = value;
-    },
-    handle: (fn: typeof actionHandler) => {
-      actionHandler = fn;
-    },
-  };
-}
-it('defaults every permission off and persists policy and metadata-only audit across restart', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'computers-'));
-  const path = join(dir, 'db');
-  let workspace = new WorkspaceStore(path, 'owner');
-  const id = workspace.wakies()[0].id;
-  expect(workspace.computers.permissions(id)).toEqual({
-    enabled: false,
-    browser: false,
-    files: false,
-    shell: false,
-  });
-  workspace.computers.patch(id, { enabled: true, files: true });
-  const audit = workspace.computers.begin(id, 'files_write', 'agent');
-  workspace.computers.finish(audit, 'succeeded');
-  workspace.close();
-  workspace = new WorkspaceStore(path, 'owner');
-  expect(workspace.computers.permissions(id).files).toBe(true);
-  expect(workspace.computers.audit(id)[0]).toMatchObject({
-    action: 'files_write',
-    outcome: 'succeeded',
-  });
-  workspace.close();
-  rmSync(dir, { recursive: true });
+after(async () => {
+  await db.close();
 });
-it('status never provisions and actions use per-Wakie derived credentials with audit before dispatch', async () => {
+
+test("disabled computer reports setup without invoking Docker", async () => {
   const f = fixture();
-  f.config.computerToken = '  master-secret  ';
-  await f.service.status(f.id);
-  expect(f.calls.every((call) => !call.url.endsWith('/ensure'))).toBe(true);
-  f.handle(async () => {
-    expect(f.workspace.computers.audit(f.id)[0].outcome).toBe('pending');
-    return Response.json({ text: f.config.computerToken.trim() });
+  const service = new ComputerService(db, { ...config, computerEnabled: false }, f.runner);
+  assert.equal((await service.snapshot("owner")).status, "unconfigured");
+  await assert.rejects(service.execute("owner", { command: "pwd" }), /not configured/);
+  assert.equal(f.calls.length, 0);
+});
+
+test("commands execute solely as Docker argv and persist failed exit/output receipts", async () => {
+  const f = fixture({
+    command: async () => ({ ...ok("partial output"), stderr: "bad input", exitCode: 7 }),
   });
-  expect(
-    await f.service.action(f.id, 'files_read', { path: 'note.txt' }, 'agent'),
-  ).toEqual({ text: '[redacted]' });
-  const request = f.calls.find((call) => call.url.endsWith('/files/read'))!;
-  expect(new Headers(request.init?.headers).get('authorization')).toBe(
-    `Bearer ${createHmac('sha256', 'master-secret').update(`wakies-computer:${f.id}`).digest('hex')}`,
-  );
-  expect(new Headers(request.init?.headers).get('x-openbot-bot-id')).toBe(f.id);
-  expect(request.init?.redirect).toBe('error');
-  f.handle(async () => Response.json({ text: 'result' }));
-  const other = f.workspace.createWakie(
-    f.workspace.spaces()[0].id,
-    'Other',
-    '',
-    true,
-    true,
-  );
-  f.workspace.computers.patch(other.id, { enabled: true, files: true });
-  await f.service.action(other.id, 'files_read', { path: 'note.txt' });
-  const last = f.calls.at(-1)!;
-  expect(new Headers(last.init?.headers).get('authorization')).not.toBe(
-    new Headers(request.init?.headers).get('authorization'),
-  );
-  expect(last.url).toContain(other.id);
+  const service = new ComputerService(db, config, f.runner);
+  const command = "printf '$HOME'; exit 7; $(touch /host-must-not-run)";
+  const result = await service.execute("owner", { command });
+  assert.equal(result.status, "failed");
+  assert.equal(result.exitCode, 7);
+  assert.equal(result.stdout, "partial output");
+  assert.equal(result.stderr, "bad input");
+  assert.deepEqual(await db.get("owner", "computer-commands", result.id), result);
+  const call = f.calls.find((c) => c.args[0] === "exec");
+  assert.ok(call);
+  assert.equal(call.args.at(-1), command);
+  assert.ok(call.args.includes("/usr/bin/timeout"));
+  assert.ok(call.args.includes("/bin/bash"));
+  assert.ok(f.calls.every((c) => c.timeoutMs > 0 && c.timeoutMs <= 35000));
+  assert.equal((await service.snapshot("other-owner")).commands.length, 0);
 });
-it('rejects foreign targets, nonexistent Wakies, traversal, unexpected inputs and agent human controls', async () => {
-  const f = fixture();
-  f.setEndpoint('http://attacker.test:4100');
-  await expect(f.service.action(f.id, 'read', {})).rejects.toThrow('endpoint');
-  expect(f.calls).toHaveLength(1);
-  await expect(f.service.action('missing', 'read', {})).rejects.toThrow(
-    'Wakie not found',
-  );
-  for (const path of [
-    '../secret',
-    'a/../../secret',
-    '/etc/passwd',
-    'a\\secret',
-    'a\0b',
-  ])
-    expect(computerInputs.files_read.safeParse({ path }).success).toBe(false);
-  expect(
-    computerInputs.exec.safeParse({ command: 'pwd', timeoutMs: 60001 }).success,
-  ).toBe(false);
-  expect(
-    computerInputs.read.safeParse({ url: 'http://elsewhere' }).success,
-  ).toBe(false);
-  await expect(
-    f.service.action(f.id, 'human_type', { text: 'secret' }, 'agent'),
-  ).rejects.toThrow('owner-only');
-});
-it('checks current permissions and global pause and records failure without sensitive inputs', async () => {
-  const f = fixture();
-  f.workspace.computers.patch(f.id, { shell: false });
-  await expect(
-    f.service.action(f.id, 'exec', { command: 'sensitive command' }, 'agent'),
-  ).rejects.toThrow('permission');
-  f.setPaused(true);
-  await expect(f.service.action(f.id, 'read', {}, 'agent')).rejects.toThrow(
-    'paused',
-  );
-  expect(f.calls).toHaveLength(0);
-  expect(JSON.stringify(f.workspace.computers.audit(f.id))).not.toContain(
-    'sensitive',
-  );
-  expect(
-    f.workspace.computers.audit(f.id).every((a) => a.outcome === 'failed'),
-  ).toBe(true);
-});
-it('cancels in-flight actions on revocation and bounds upstream deadlines', async () => {
-  const f = fixture(200);
-  f.handle(
-    async (_url, init) =>
-      new Promise((_resolve, reject) => {
-        init?.signal?.addEventListener(
-          'abort',
-          () => reject(new Error('aborted')),
-          { once: true },
-        );
+
+test("a running command holds an atomic lease across service instances", async () => {
+  let finish: ((result: DockerResult) => void) | undefined;
+  let signalStarted: (() => void) | undefined;
+  const started = new Promise<void>((resolve) => {
+    signalStarted = resolve;
+  });
+  const f = fixture({
+    command: () =>
+      new Promise((resolve) => {
+        finish = resolve;
+        signalStarted?.();
       }),
-  );
-  const run = f.service.action(f.id, 'exec', { command: 'wait' }, 'agent');
-  setTimeout(() => f.workspace.computers.patch(f.id, { shell: false }), 20);
-  await expect(run).rejects.toThrow('cancelled or timed out');
-  await expect(f.service.action(f.id, 'read', {})).rejects.toThrow(
-    'cancelled or timed out',
-  );
-  expect(
-    f.workspace.computers.audit(f.id).every((a) => a.outcome === 'failed'),
-  ).toBe(true);
-});
-it('preserves recovery handback after permissions are revoked; upstream failures are sanitized', async () => {
-  const f = fixture();
-  f.workspace.computers.patch(f.id, { enabled: false, browser: false });
-  await f.service.control(f.id, 'release');
-  expect(f.calls.some((call) => call.url.endsWith('/control/release'))).toBe(
-    true,
-  );
-  f.workspace.computers.patch(f.id, { enabled: true, browser: true });
-  f.handle(async () =>
-    Response.json({ error: 'secret upstream detail' }, { status: 500 }),
-  );
-  await expect(f.service.action(f.id, 'read', {})).rejects.toThrow('HTTP 500');
-  f.handle(async () => new Response('x'.repeat(4_000_001)));
-  await expect(f.service.action(f.id, 'read', {})).rejects.toThrow(
-    'size limit',
-  );
-});
-it('binds tools to the current Wakie without exposing human or policy controls', async () => {
-  const f = fixture();
-  const check = vi.fn();
-  const tools = computerTools(
-    f.service,
-    f.id,
-    check,
-    new AbortController().signal,
-  );
-  expect(
-    tools.some(
-      (t) => t.name.includes('human') || t.name.includes('permission'),
-    ),
-  ).toBe(false);
-  const read = tools.find((t) => t.name === 'computer_files_read')!;
-  await read.execute?.({ path: 'notes.txt' });
-  expect(check).toHaveBeenCalled();
-  expect(f.calls.at(-1)?.url).toContain(f.id);
-});
-it('bounds completed audit storage while preserving pending work', () => {
-  const f = fixture();
-  const pending = f.workspace.computers.begin(f.id, 'exec', 'agent');
-  for (let i = 0; i < 1010; i++)
-    f.workspace.computers.finish(
-      f.workspace.computers.begin(f.id, 'read', 'owner'),
-      'succeeded',
-    );
-  f.workspace.computers.finish(pending, 'failed');
-  expect(f.workspace.computers.audit(f.id)).toHaveLength(50);
-});
-
-it('accepts an uppercase namespace while preserving exact container identity', async () => {
-  const f = fixture();
-  const config = { ...f.config, computerNamespace: 'MyWakies' };
-  const transport: typeof fetch = async (input, init) => {
-    if (String(input).endsWith('/computers'))
-      return Response.json({
-        computers: [
-          {
-            botId: f.id,
-            container: `MyWakies-computer-${f.id}`,
-            status: 'running',
-            url: `http://MyWakies-computer-${f.id}:4100`,
-          },
-        ],
-      });
-    return f.transport(input, init);
-  };
-  const service = new ComputerService(
-    f.workspace,
-    config,
-    () => false,
-    transport,
-  );
-  await expect(service.action(f.id, 'read', {})).resolves.toEqual({
-    text: 'result',
   });
-  expect(f.calls.at(-1)?.url).toBe(`http://mywakies-computer-${f.id}:4100/read`);
+  const first = new ComputerService(db, config, f.runner);
+  const second = new ComputerService(db, config, f.runner);
+  const run = first.execute("owner", { command: "sleep 1" });
+  await started;
+  await assert.rejects(second.execute("owner", { command: "pwd" }), /busy/);
+  finish?.(ok());
+  await run;
 });
 
-it('gives agents a safe recovery instruction for stale browser or control conflicts', async () => {
-  const f = fixture();
-  f.handle(async () =>
-    Response.json({ error: f.config.computerToken }, { status: 409 }),
+test("timeouts and interruptions remain durable and idempotent commands never replay", async () => {
+  const f = fixture({
+    command: async () => ({ ...ok("partial"), timedOut: true, exitCode: null }),
+  });
+  const service = new ComputerService(db, config, f.runner);
+  const first = await service.execute(
+    "owner",
+    { command: "sleep 999" },
+    { idempotencyKey: "timeout-case" },
   );
-  await expect(
-    f.service.action(f.id, 'navigate', { url: 'https://example.com' }, 'agent'),
-  ).rejects.toThrow('computer_snapshot');
-  await expect(
-    f.service.action(f.id, 'navigate', { url: 'https://example.com' }, 'agent'),
-  ).rejects.not.toThrow(f.config.computerToken);
-  expect(f.workspace.computers.audit(f.id)[0].outcome).toBe('failed');
+  assert.equal(first.status, "timed_out");
+  const count = f.calls.length;
+  assert.deepEqual(
+    await service.execute("owner", { command: "sleep 999" }, { idempotencyKey: "timeout-case" }),
+    first,
+  );
+  assert.equal(f.calls.length, count);
+  const stopped = fixture({
+    command: async () => ({ ...ok(), interrupted: true, exitCode: null }),
+  });
+  assert.equal(
+    (await new ComputerService(db, config, stopped.runner).execute("owner", { command: "sleep 2" }))
+      .status,
+    "interrupted",
+  );
+});
+
+test("attaching an existing container fails closed on unsafe isolation or owner labels", async () => {
+  for (const modify of [
+    (value: ReturnType<typeof sandbox>) => {
+      value.HostConfig.Privileged = true;
+    },
+    (value: ReturnType<typeof sandbox>) => {
+      value.HostConfig.NetworkMode = "bridge";
+    },
+    (value: ReturnType<typeof sandbox>) => {
+      value.HostConfig.SecurityOpt.push("seccomp=unconfined");
+    },
+    (value: ReturnType<typeof sandbox>) => {
+      value.Config.Labels = {};
+    },
+    (value: ReturnType<typeof sandbox>) => {
+      value.Mounts[0].Type = "bind";
+    },
+    (value: ReturnType<typeof sandbox>) => {
+      value.Config.Env.push("OPENAI_API_KEY=must-not-enter");
+    },
+  ]) {
+    const inspect = sandbox();
+    modify(inspect);
+    const f = fixture({ inspect });
+    const service = new ComputerService(db, config, f.runner);
+    await assert.rejects(service.execute("owner", { command: "pwd" }), /isolation|ownership/);
+    assert.ok(!f.calls.some((c) => c.args[0] === "exec"));
+  }
+});
+
+test("paths cannot escape the workspace and file contents travel on stdin", async () => {
+  const f = fixture({ command: async () => ok(JSON.stringify({ path: "/workspace/note.txt" })) });
+  const service = new ComputerService(db, config, f.runner);
+  for (const path of ["/etc/passwd", "/workspace/../secret", "relative", "/workspace\0/file"])
+    await assert.rejects(service.read("owner", path), /workspace|path/i);
+  const text = "$(touch /host-must-not-run)\nquoted ' content";
+  assert.deepEqual(await service.write("owner", "/workspace/note.txt", text), {
+    path: "/workspace/note.txt",
+  });
+  const call = f.calls.find((c) => c.args[0] === "exec");
+  assert.ok(call);
+  assert.equal(JSON.parse(call.input ?? "{}").text, text);
+  assert.ok(!call.args.some((arg) => arg.includes(text)));
+});
+
+test("Stop interrupts an active command and its final output cannot overwrite the interrupted receipt", async () => {
+  let finish: ((result: DockerResult) => void) | undefined;
+  let signalStarted: (() => void) | undefined;
+  const started = new Promise<void>((resolve) => {
+    signalStarted = resolve;
+  });
+  const f = fixture({
+    command: () =>
+      new Promise((resolve) => {
+        finish = resolve;
+        signalStarted?.();
+      }),
+  });
+  const service = new ComputerService(db, config, f.runner);
+  const command = service.execute("owner", { command: "sleep 30" });
+  await started;
+  await service.stop("owner");
+  finish?.({ ...ok("partial before stop"), exitCode: 137 });
+  const receipt = await command;
+  assert.equal(receipt.status, "interrupted");
+  assert.equal(receipt.stdout, "partial before stop");
+});
+
+test("exit 137 without a recorded stop remains a failed command", async () => {
+  const f = fixture({ command: async () => ({ ...ok(), exitCode: 137 }) });
+  assert.equal(
+    (await new ComputerService(db, config, f.runner).execute("owner", { command: "exit 137" }))
+      .status,
+    "failed",
+  );
+});
+
+test("restart waits until a delayed pre-stop Docker execution acknowledges completion", async () => {
+  const inspection = sandbox(true);
+  let release: (() => void) | undefined;
+  let signalReady: (() => void) | undefined;
+  const ready = new Promise<void>((resolve) => {
+    signalReady = resolve;
+  });
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  let executions = 0;
+  const f = fixture({ inspect: inspection });
+  const service = new ComputerService(db, config, async (args, options) => {
+    if (args[0] === "container" && args[1] === "stop") inspection.State.Running = false;
+    if (args[0] === "container" && args[1] === "start") inspection.State.Running = true;
+    if (args[0] === "exec") {
+      signalReady?.();
+      await gate;
+      if (!inspection.State.Running) return { ...ok(), exitCode: 125 };
+      executions += 1;
+      return ok("executed");
+    }
+    return f.runner(args, options);
+  });
+  const command = service.execute("owner", { command: "echo delayed" });
+  try {
+    await ready;
+    await service.stop("owner");
+    await assert.rejects(service.start("owner"), /busy/);
+  } finally {
+    release?.();
+    await command;
+  }
+  assert.equal((await command).status, "interrupted");
+  assert.equal(executions, 0);
+  assert.equal((await service.start("owner")).status, "running");
+});
+
+test("failed Stop keeps commands quarantined and can be retried before the lease expires", async () => {
+  const inspection = sandbox(true);
+  let release: (() => void) | undefined;
+  let signalReady: (() => void) | undefined;
+  const ready = new Promise<void>((resolve) => {
+    signalReady = resolve;
+  });
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  let attempts = 0;
+  const f = fixture({ inspect: inspection });
+  const service = new ComputerService(db, config, async (args, options) => {
+    if (args[0] === "exec") {
+      signalReady?.();
+      await gate;
+      return { ...ok(), exitCode: 137 };
+    }
+    if (args[0] === "container" && args[1] === "stop") {
+      if (++attempts === 1) return { ...ok(), exitCode: 1 };
+      inspection.State.Running = false;
+    }
+    if (args[0] === "container" && args[1] === "start") inspection.State.Running = true;
+    return f.runner(args, options);
+  });
+  const command = service.execute("owner", { command: "sleep 30" });
+  try {
+    await ready;
+    await assert.rejects(service.stop("owner"), /Docker/);
+    await assert.rejects(service.start("owner"), /busy/);
+    assert.equal((await service.stop("owner")).status, "stopped");
+  } finally {
+    release?.();
+    await command;
+  }
+  assert.equal((await command).status, "interrupted");
+  assert.equal(attempts, 2);
+  assert.equal((await service.start("owner")).status, "running");
+});
+
+test("a timeout with unconfirmed Docker cleanup stays quarantined until Stop succeeds", async () => {
+  let failStop = true;
+  const inspection = sandbox(true);
+  const f = fixture({ inspect: inspection });
+  const service = new ComputerService(db, config, async (args, options) => {
+    if (args[0] === "exec") return { ...ok("partial"), timedOut: true, exitCode: null };
+    if (args[0] === "container" && args[1] === "stop") {
+      if (failStop) return { ...ok(), timedOut: true, exitCode: null };
+      inspection.State.Running = false;
+    }
+    if (args[0] === "container" && args[1] === "start") inspection.State.Running = true;
+    return f.runner(args, options);
+  });
+  assert.equal((await service.execute("owner", { command: "sleep 99" })).status, "timed_out");
+  await assert.rejects(service.start("owner"), /busy/);
+  failStop = false;
+  assert.equal((await service.stop("owner")).status, "stopped");
+  assert.equal((await service.start("owner")).status, "running");
+});
+
+test("an expired lease from a dead executor recovers as interrupted without replay", async () => {
+  const id = createHash("sha256").update("computer-command:dead-executor").digest("hex");
+  await db.put("owner", "computer-commands", {
+    id,
+    command: "echo unknown",
+    cwd: "/workspace",
+    status: "running",
+    stdout: "",
+    stderr: "",
+    truncated: false,
+    startedAt: new Date(Date.now() - 200000).toISOString(),
+  });
+  await db.put("owner", "computer-state", {
+    id: "lease",
+    token: "dead-process",
+    expiresAt: Date.now() - 1,
+    stopping: true,
+    stopInFlight: true,
+    stopAttempt: "dead-attempt",
+    stopConfirmed: false,
+    executorDone: false,
+    operation: "command",
+  });
+  const f = fixture();
+  const service = new ComputerService(db, config, f.runner);
+  const snapshot = await service.snapshot("owner");
+  assert.equal(snapshot.commands.find((command) => command.id === id)?.status, "interrupted");
+  const replay = await service.execute(
+    "owner",
+    { command: "echo unknown" },
+    { idempotencyKey: "dead-executor" },
+  );
+  assert.equal(replay.status, "interrupted");
+  assert.ok(!f.calls.some((call) => call.args[0] === "exec"));
+  assert.equal((await service.start("owner")).status, "running");
+});
+
+test("a Stop quarantine that lands before the lease check keeps its record", async () => {
+  const f = fixture();
+  const service = new ComputerService(db, config, f.runner);
+  const cmdId = createHash("sha256").update("computer-command:quarantine-case").digest("hex");
+  const originalGet = db.get.bind(db);
+  let intercepted = false;
+  db.get = (async (o: string, kind: string, id: string) => {
+    if (!intercepted && kind === "computer-state" && id === "lease") {
+      const lease = await originalGet<{ token: string }>(o, kind, id);
+      const row = await originalGet(o, "computer-commands", cmdId);
+      if (lease && row) {
+        intercepted = true;
+        await db.compareAndSwap(
+          o,
+          kind,
+          id,
+          { token: lease.token, stopping: false },
+          {
+            stopping: true,
+            stopInFlight: true,
+            stopAttempt: "stop-attempt-1",
+            stopConfirmed: false,
+            expiresAt: Date.now() + 180000,
+          },
+        );
+        await db.compareAndSwap(
+          o,
+          "computer-commands",
+          cmdId,
+          { status: "running" },
+          {
+            status: "interrupted",
+            completedAt: new Date().toISOString(),
+            stderr: "Stopped by the user. Inspect the workspace before repeating this command.",
+          },
+        );
+      }
+    }
+    return originalGet(o, kind, id);
+  }) as Store["get"];
+  try {
+    const receipt = await service.execute(
+      "owner",
+      { command: "sleep 30" },
+      { idempotencyKey: "quarantine-case" },
+    );
+    assert.equal(receipt.status, "interrupted");
+    assert.match(receipt.stderr, /Stopped by the user/);
+    assert.ok(!f.calls.some((call) => call.args[0] === "exec"));
+  } finally {
+    db.get = originalGet;
+    await db.remove("owner", "computer-state", "lease");
+  }
+});
+
+test("a command marked dead after the lease check is never executed", async () => {
+  const f = fixture({ command: async () => ok("should never run") });
+  const service = new ComputerService(db, config, f.runner);
+  const cmdId = createHash("sha256").update("computer-command:dead-row-case").digest("hex");
+  const originalGet = db.get.bind(db);
+  let intercepted = false;
+  db.get = (async (o: string, kind: string, id: string) => {
+    if (!intercepted && kind === "computer-state" && id === "lease") {
+      const lease = await originalGet<{ token: string }>(o, kind, id);
+      const row = await originalGet(o, "computer-commands", cmdId);
+      if (lease && row) {
+        intercepted = true;
+        await db.compareAndSwap(
+          o,
+          "computer-commands",
+          cmdId,
+          { status: "running" },
+          {
+            status: "interrupted",
+            completedAt: new Date().toISOString(),
+            stderr:
+              "Execution was interrupted. Its outcome is unknown; inspect files before running it again.",
+          },
+        );
+      }
+    }
+    return originalGet(o, kind, id);
+  }) as Store["get"];
+  try {
+    const receipt = await service.execute(
+      "owner",
+      { command: "touch /tmp/should-not-run" },
+      { idempotencyKey: "dead-row-case" },
+    );
+    assert.equal(receipt.status, "interrupted");
+    assert.equal(receipt.stdout, "");
+    assert.ok(!f.calls.some((call) => call.args[0] === "exec"), "docker exec must not run");
+  } finally {
+    db.get = originalGet;
+  }
 });

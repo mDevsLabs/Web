@@ -1,6 +1,4 @@
 "use client";
-import { createIcon } from "../../create-icon.js";
-const CopyXIcon = /* @__PURE__ */ createIcon("CopyXIcon", [["path", { "d": "M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2" }], ["rect", { "x": "8", "y": "8", "width": "14", "height": "14", "rx": "2" }], ["path", { "d": "m12.5 12.5 5 5" }], ["path", { "d": "m12.5 17.5 5-5" }]]);
-export {
-  CopyXIcon
-};
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CopyXIcon = /* @__PURE__ */ createIcon('CopyXIcon', [["path", { "d": "M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2" }], ["rect", { "x": "8", "y": "8", "width": "14", "height": "14", "rx": "2" }], ["path", { "d": "m12.5 12.5 5 5" }], ["path", { "d": "m12.5 17.5 5-5" }]]);

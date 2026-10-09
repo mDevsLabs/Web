@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  AlertTriangle,
-  ArrowLeft,
-  Bug,
-  HelpCircle,
-  Loader2,
-  Sparkles,
-} from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle, ArrowLeftIcon as ArrowLeft, BugIcon as Bug, HelpCircleIcon as HelpCircle, Loader2Icon as Loader2, SparklesIcon as Sparkles } from "@mdevs/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";

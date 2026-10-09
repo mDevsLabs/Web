@@ -10,31 +10,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  ArrowLeft,
-  Plus,
-  Loader2,
-  AlertCircle,
-  Trash2,
-  Pencil,
-  Check,
-  X,
-  BookHeart,
-  Sparkles,
-  Users,
-  LogOut,
-  Share2,
-  Link2,
-  KeyRound,
-  UserPlus,
-  ChevronDown,
-  Copy,
-  RefreshCw,
-  Pin,
-  PinOff,
-  MessageSquare,
-  Send
-} from 'lucide-react';
+import { ArrowLeftIcon as ArrowLeft, PlusIcon as Plus, Loader2Icon as Loader2, AlertCircleIcon as AlertCircle, Trash2Icon as Trash2, PencilIcon as Pencil, CheckIcon as Check, XIcon as X, BookHeartIcon as BookHeart, SparklesIcon as Sparkles, UsersIcon as Users, LogOutIcon as LogOut, Share2Icon as Share2, Link2Icon as Link2, KeyRoundIcon as KeyRound, UserPlusIcon as UserPlus, ChevronDownIcon as ChevronDown, CopyIcon as Copy, RefreshCwIcon as RefreshCw, PinIcon as Pin, PinOffIcon as PinOff, MessageSquareIcon as MessageSquare, SendIcon as Send } from "@mdevs/icons";
 import type { VibeBook, VibeBookMember, VibeBookPost } from '../types/vibe';
 import { ApiService } from '../services/api';
 import { NotificationService } from '../services/notificationService';

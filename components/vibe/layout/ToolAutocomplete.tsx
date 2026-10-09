@@ -1,36 +1,4 @@
-import {
-  Activity,
-  ArrowLeftRight,
-  BarChart3,
-  Bell,
-  Bookmark,
-  BookOpen,
-  Clock,
-  FileText,
-  Globe,
-  Hash,
-  Heart,
-  Image as ImageIcon,
-  Languages,
-  LayoutGrid,
-  Lightbulb,
-  MessageCircle,
-  MessageSquare,
-  MessagesSquare,
-  Repeat2,
-  Search,
-  Send,
-  Settings,
-  ShieldCheck,
-  Sparkles,
-  Target,
-  Trash2,
-  TrendingUp,
-  User,
-  UserPlus,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ActivityIcon as Activity, ArrowLeftRightIcon as ArrowLeftRight, BarChart3Icon as BarChart3, BellIcon as Bell, BookmarkIcon as Bookmark, BookOpenIcon as BookOpen, ClockIcon as Clock, FileTextIcon as FileText, GlobeIcon as Globe, HashIcon as Hash, HeartIcon as Heart, ImageIcon, LanguagesIcon as Languages, LayoutGridIcon as LayoutGrid, LightbulbIcon as Lightbulb, MessageCircleIcon as MessageCircle, MessageSquareIcon as MessageSquare, MessagesSquareIcon as MessagesSquare, Repeat2Icon as Repeat2, SearchIcon as Search, SendIcon as Send, SettingsIcon as Settings, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, TargetIcon as Target, Trash2Icon as Trash2, TrendingUpIcon as TrendingUp, UserIcon as User, UserPlusIcon as UserPlus, UsersIcon as Users, ZapIcon as Zap } from "@mdevs/icons";
 import type React from "react";
 import type { MAITool } from "@/lib/vibe/data/maiTools";
 import { useAvailableMAITools } from "@/lib/vibe/hooks/useAvailableMAITools";

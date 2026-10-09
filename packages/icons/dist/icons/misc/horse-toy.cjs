@@ -1,30 +1,5 @@
 "use client";
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var horse_toy_exports = {};
-__export(horse_toy_exports, {
-  HorseToyIcon: () => HorseToyIcon
-});
-module.exports = __toCommonJS(horse_toy_exports);
-var import_create_icon = require("../../create-icon.cjs");
-const HorseToyIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("HorseToyIcon", [["path", { "d": "M3.5 17.5c5.667 4.667 11.333 4.667 17 0" }], ["path", { "d": "M19 18.5l-2 -8.5l1 -2l2 1l1.5 -1.5l-2.5 -4.5c-5.052 .218 -5.99 3.133 -7 6h-6a3 3 0 0 0 -3 3" }], ["path", { "d": "M5 18.5l2 -9.5" }], ["path", { "d": "M8 20l2 -5h4l2 5" }]]);
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  HorseToyIcon
-});
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const HorseToyIcon = /* @__PURE__ */ createIcon('HorseToyIcon', [["path", { "d": "M3.5 17.5c5.667 4.667 11.333 4.667 17 0" }], ["path", { "d": "M19 18.5l-2 -8.5l1 -2l2 1l1.5 -1.5l-2.5 -4.5c-5.052 .218 -5.99 3.133 -7 6h-6a3 3 0 0 0 -3 3" }], ["path", { "d": "M5 18.5l2 -9.5" }], ["path", { "d": "M8 20l2 -5h4l2 5" }]]);
+exports.HorseToyIcon = HorseToyIcon;

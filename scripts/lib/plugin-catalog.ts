@@ -87,10 +87,9 @@ export const manifestSchema = z
     description: z.string().min(1),
     icon: iconSchema,
     id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-    // Les plugins sont réservés aux forfaits payants : le plancher est « plus ».
-    minTier: z.enum(["plus", "pro", "max"], {
-      message:
-        "minTier doit valoir plus, pro ou max (les plugins sont payants).",
+    // Les plugins sont autorisés dès le forfait Free.
+    minTier: z.enum(["free", "plus", "pro", "max"], {
+      message: "minTier doit valoir free, plus, pro ou max.",
     }),
     name: z.string().min(1),
     permissions: permissionsSchema,

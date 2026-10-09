@@ -62,6 +62,12 @@ importers:
       '@codemirror/view':
         specifier: ^6.43.13
         version: 6.43.13
+      '@mdevs/icons':
+        specifier: file:packages/icons
+        version: file:packages/icons(react@19.3.0)
+      '@mdevs/ui':
+        specifier: file:packages/ui
+        version: file:packages/ui(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@neondatabase/serverless':
         specifier: ^1.2.0
         version: 1.2.0
@@ -1293,6 +1299,19 @@ packages:
 
   '@marijn/find-cluster-break@1.0.2':
     resolution: {integrity: sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==}
+
+  '@mdevs/icons@file:packages/icons':
+    resolution: {directory: packages/icons, type: directory}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: ^18.3.1 || ^19.0.0
+
+  '@mdevs/ui@file:packages/ui':
+    resolution: {directory: packages/ui, type: directory}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: ^18.3.1 || ^19.0.0
+      react-dom: ^18.3.1 || ^19.0.0
 
   '@mermaid-js/parser@1.2.1':
     resolution: {integrity: sha512-n12NohV3mrUyUL2o93IgG/ifeW9FTyeJn3zDxkhwa8MJ9Fxg3HQMlA3RiGmD/3UnJvheztkjjQAjA2T4LmUcpw==}
@@ -6544,6 +6563,19 @@ snapshots:
       '@lezer/lr': 1.4.2
 
   '@marijn/find-cluster-break@1.0.2': {}
+
+  '@mdevs/icons@file:packages/icons(react@19.3.0)':
+    dependencies:
+      react: 19.3.0
+
+  '@mdevs/ui@file:packages/ui(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+    dependencies:
+      radix-ui: 1.7.0(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
 
   '@mermaid-js/parser@1.2.1':
     dependencies:

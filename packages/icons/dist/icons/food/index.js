@@ -1,73 +1,36 @@
 "use client";
-import { AppleIcon } from "./apple.js";
-import { BananaIcon } from "./banana.js";
-import { BeefIcon } from "./beef.js";
-import { BeefOffIcon } from "./beef-off.js";
-import { BeerIcon } from "./beer.js";
-import { BeerOffIcon } from "./beer-off.js";
-import { BottleIcon } from "./bottle.js";
-import { BottleOffIcon } from "./bottle-off.js";
-import { BottleWineIcon } from "./bottle-wine.js";
-import { CakeIcon } from "./cake.js";
-import { CakeOffIcon } from "./cake-off.js";
-import { CakeRollIcon } from "./cake-roll.js";
-import { CakeSliceIcon } from "./cake-slice.js";
-import { CandyIcon } from "./candy.js";
-import { CandyCaneIcon } from "./candy-cane.js";
-import { CandyOffIcon } from "./candy-off.js";
-import { CarrotIcon } from "./carrot.js";
-import { CarrotOffIcon } from "./carrot-off.js";
-import { ChefHatIcon } from "./chef-hat.js";
-import { ChefHatOffIcon } from "./chef-hat-off.js";
-import { CherryIcon } from "./cherry.js";
-import { CoffeeIcon } from "./coffee.js";
-import { CookieIcon } from "./cookie.js";
-import { CupSodaIcon } from "./cup-soda.js";
-import { EggIcon } from "./egg.js";
-import { EggFriedIcon } from "./egg-fried.js";
-import { EggOffIcon } from "./egg-off.js";
-import { ForkKnifeIcon } from "./fork-knife.js";
-import { ForkKnifeCrossedIcon } from "./fork-knife-crossed.js";
-import { GrapeIcon } from "./grape.js";
-import { PizzaIcon } from "./pizza.js";
-import { SaladIcon } from "./salad.js";
-import { SoupIcon } from "./soup.js";
-import { WineIcon } from "./wine.js";
-import { WineOffIcon } from "./wine-off.js";
-export {
-  AppleIcon,
-  BananaIcon,
-  BeefIcon,
-  BeefOffIcon,
-  BeerIcon,
-  BeerOffIcon,
-  BottleIcon,
-  BottleOffIcon,
-  BottleWineIcon,
-  CakeIcon,
-  CakeOffIcon,
-  CakeRollIcon,
-  CakeSliceIcon,
-  CandyCaneIcon,
-  CandyIcon,
-  CandyOffIcon,
-  CarrotIcon,
-  CarrotOffIcon,
-  ChefHatIcon,
-  ChefHatOffIcon,
-  CherryIcon,
-  CoffeeIcon,
-  CookieIcon,
-  CupSodaIcon,
-  EggFriedIcon,
-  EggIcon,
-  EggOffIcon,
-  ForkKnifeCrossedIcon,
-  ForkKnifeIcon,
-  GrapeIcon,
-  PizzaIcon,
-  SaladIcon,
-  SoupIcon,
-  WineIcon,
-  WineOffIcon
-};
+export { AppleIcon } from './apple.js';
+export { BananaIcon } from './banana.js';
+export { BeefIcon } from './beef.js';
+export { BeefOffIcon } from './beef-off.js';
+export { BeerIcon } from './beer.js';
+export { BeerOffIcon } from './beer-off.js';
+export { BottleIcon } from './bottle.js';
+export { BottleOffIcon } from './bottle-off.js';
+export { BottleWineIcon } from './bottle-wine.js';
+export { CakeIcon } from './cake.js';
+export { CakeOffIcon } from './cake-off.js';
+export { CakeRollIcon } from './cake-roll.js';
+export { CakeSliceIcon } from './cake-slice.js';
+export { CandyIcon } from './candy.js';
+export { CandyCaneIcon } from './candy-cane.js';
+export { CandyOffIcon } from './candy-off.js';
+export { CarrotIcon } from './carrot.js';
+export { CarrotOffIcon } from './carrot-off.js';
+export { ChefHatIcon } from './chef-hat.js';
+export { ChefHatOffIcon } from './chef-hat-off.js';
+export { CherryIcon } from './cherry.js';
+export { CoffeeIcon } from './coffee.js';
+export { CookieIcon } from './cookie.js';
+export { CupSodaIcon } from './cup-soda.js';
+export { EggIcon } from './egg.js';
+export { EggFriedIcon } from './egg-fried.js';
+export { EggOffIcon } from './egg-off.js';
+export { ForkKnifeIcon } from './fork-knife.js';
+export { ForkKnifeCrossedIcon } from './fork-knife-crossed.js';
+export { GrapeIcon } from './grape.js';
+export { PizzaIcon } from './pizza.js';
+export { SaladIcon } from './salad.js';
+export { SoupIcon } from './soup.js';
+export { WineIcon } from './wine.js';
+export { WineOffIcon } from './wine-off.js';

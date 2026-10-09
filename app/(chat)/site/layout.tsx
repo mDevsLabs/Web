@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
+import "@mdevs/ui/styles.css";
 import "@/components/site/site.css";
 import { AuthProvider } from "@/components/site/auth-provider";
 import { BackToTop } from "@/components/site/back-to-top";
@@ -60,7 +61,10 @@ export default async function SiteLayout({
     : null;
 
   return (
-    <div className="site-root min-h-screen flex flex-col relative bg-white text-slate-900 w-full overflow-x-hidden selection:bg-purple-100 selection:text-purple-900">
+    <div
+      className="site-root md-root min-h-screen flex flex-col relative bg-white text-slate-900 w-full overflow-x-hidden selection:bg-purple-100 selection:text-purple-900"
+      data-md-theme="light"
+    >
       <MotionProvider>
         <ToastProvider>
           <AuthProvider initialToken={token} initialUser={initialUser}>

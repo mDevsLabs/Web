@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { Check, CheckCheck, MessageSquare } from 'lucide-react';
+import { CheckIcon as Check, CheckCheckIcon as CheckCheck, MessageSquareIcon as MessageSquare } from "@mdevs/icons";
 import {
   useTheme,
   MESSAGE_BUBBLE_THEMES,

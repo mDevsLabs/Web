@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  BookOpen,
-  Download,
-  ExternalLink,
-  Github,
-  Globe,
-  Lock,
-  Search,
-  Shield,
-  Zap,
-} from "lucide-react";
+import { BookOpenIcon as BookOpen, DownloadIcon as Download, ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, LockIcon as Lock, SearchIcon as Search, ShieldIcon as Shield, ZapIcon as Zap } from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";
