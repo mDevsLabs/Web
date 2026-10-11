@@ -247,7 +247,7 @@ export default function MaiCliProjectPage() {
           <FeatureCard
             icon={<Key className="w-6 h-6 text-purple-600" />}
             title="BYOK & Indépendance"
-            description="Bring Your Own Key : utilisez vos propres clés chez le fournisseur IA de votre choix (Ollama, Hugging Face, OpenAI, etc.)."
+            description="Utilisez vos propres clés chez le fournisseur d’IA de votre choix (Ollama, Hugging Face, OpenAI, etc.)."
             delay={0.7}
           />
         </div>
@@ -258,7 +258,7 @@ export default function MaiCliProjectPage() {
         <div>
           <h4 className="text-lg font-bold text-slate-900">Dépôt GitHub mDevsLabs/mAI-CLI</h4>
           <p className="text-slate-600 text-sm font-light">
-            Un projet open source en accès anticipé auquel vous pouvez participer.
+            Un projet à code source ouvert en accès anticipé auquel vous pouvez participer.
           </p>
         </div>
         <div>

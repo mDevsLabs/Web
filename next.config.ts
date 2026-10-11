@@ -160,10 +160,38 @@ const nextConfig: NextConfig = {
     appNewScrollHandler: true,
     cachedNavigations: true,
     inlineCss: true,
+    // Barils d'exports massivement importés : sans cette liste, chaque fichier
+    // qui écrit `import { X } from "pkg"` tire la barre entière dans le graphe
+    // de compilation. `@mdevs/icons` est importé par 315 fichiers, `sonner` par
+    // 70, `framer-motion` et `radix-ui` par une vingtaine chacun — c'est le
+    // premier coût de compilation à froid du mode dev.
+    //
+    // `lucide-react` et `recharts` sont absents ici car Next.js les optimise déjà
+    // par défaut (node_modules/next/dist/docs/…/optimizePackageImports.md) : les
+    // lister ne ferait qu'ajouter une clé trompeuse.
+    //
+    // `@mdevs/ui` est volontairement exclu : son manifeste déclare
+    // `sideEffects: ["**/*.css"]`, et la transformation en imports profonds peut
+    // emporter les styles avec eux. Un gain de compilation ne vaut pas une
+    // interface déroulée.
+    optimizePackageImports: [
+      "@mdevs/icons",
+      "cmdk",
+      "framer-motion",
+      "mermaid",
+      "radix-ui",
+      "shiki",
+      "sonner",
+    ],
     prefetchInlining: true,
     // Désactivé : provoque un panic Turbopack (inner_of_upper_lost_follower)
     // quand le cache sur disque se corrompt. À réactiver quand Next.js aura
     // corrigé le bug — https://github.com/vercel/next.js/discussions
+    //
+    // Marche de re-test, pour ne pas la refaire deviner : `rm -rf .next`, passer
+    // cette valeur à `true` sur une branche dédiée, chronométrer deux demarrages
+    // froids puis la premiere requete `/settings`. En cas de panic, reverter —
+    // le cache corrompu survit au changement de code.
     turbopackFileSystemCacheForDev: false,
   },
   async headers() {
@@ -219,6 +247,23 @@ const nextConfig: NextConfig = {
         hostname: "*.r2.dev",
         protocol: "https",
       },
+      // Les trois hôtes suivants figuraient dans l'`img-src` de la CSP sans être
+      // dans cette liste : la politique les admettait, l'optimiseur les refusait.
+      // Un `<Image>` pointant sur l'un d'eux renvoyait une erreur au lieu d'une
+      // image — et en `next/image` non optimisé, le contraste entre les deux
+      // listes passait inaperçu jusqu'à l'affichage.
+      {
+        hostname: "api.dicebear.com",
+        protocol: "https",
+      },
+      {
+        hostname: "picsum.photos",
+        protocol: "https",
+      },
+      {
+        hostname: "www.google.com",
+        protocol: "https",
+      },
     ],
   },
   logging: {
@@ -266,6 +311,24 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  /*
+   * `turbopack.root` — volontairement ABSENT, malgré l'avertissement affiché :
+   *
+   *   « Next.js ignored pnpm-lock.yaml in C:\Users\<user> because it is outside
+   *     the current Git repository. To use this directory, set turbopack.root »
+   *
+   * Le définir (`root: process.cwd()`, le motif de apps/site/next.config.ts)
+   * casse la résolution des polices : `app/layout.tsx` ne charge plus, et le
+   * journal de dev remplit « Module not found: Can't resolve
+   * '@vercel/turbopack-next/internal/font/google/font' » — l'import mapping
+   * interne de `next/font/google` ne retrouve plus ses entrées quand la racine
+   * épinglée contient un espace (« Dossiers Mathias »). Vérifié en comparant deux
+   * demarrages, erreurs de police d'un cote, zero de l'autre.
+   *
+   * L'avertissement est cosmétique : Turbopack ignore un lockfile étranger, ce
+   * qui est le comportement voulu. Ne pas « réparer » sans re-tester /login et
+   * /settings complet.
+   */
 };
 
 export default withBotId(nextConfig);

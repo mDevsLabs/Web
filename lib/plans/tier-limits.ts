@@ -47,7 +47,7 @@ const GiB = 1024 * 1024 * 1024;
 
 export const TIER_LIMITS: Record<TierKey, TierLimits> = {
   free: {
-    agents: 0,
+    agents: 8,
     chatWeeklyTokens: 10_000_000,
     customInstructions: 2000,
     imagesPerDay: 5,
@@ -217,17 +217,20 @@ export type WakiesQuotaKey =
   | "pages"
   | "tasks"
   | "memories"
-  | "conversations";
+  | "conversations"
+  | "wakieProfileImages";
 
 const WAKIES_QUOTAS: Record<TierKey, Record<WakiesQuotaKey, number | null>> = {
   free: {
     // Wakies est réservé aux forfaits payants (Plus, Pro, Max). Pour le forfait
-    // Free, les quotas sont nuls, à l'instar des bots et du mode Agent.
+    // Free, les quotas sont nuls, à l'instar du mode Agent. Les bots ne sont
+    // plus dans ce cas : ils sont ouverts à tous et bornés par quota (8 en Free).
     conversations: 0,
     memories: 0,
     pages: 0,
     spaces: 0,
     tasks: 0,
+    wakieProfileImages: 0,
     wakies: 0,
   },
   max: {
@@ -236,6 +239,7 @@ const WAKIES_QUOTAS: Record<TierKey, Record<WakiesQuotaKey, number | null>> = {
     pages: null,
     spaces: null,
     tasks: null,
+    wakieProfileImages: null,
     wakies: null,
   },
   plus: {
@@ -244,6 +248,7 @@ const WAKIES_QUOTAS: Record<TierKey, Record<WakiesQuotaKey, number | null>> = {
     pages: 200,
     spaces: 8,
     tasks: 10,
+    wakieProfileImages: 10,
     wakies: 6,
   },
   pro: {
@@ -252,6 +257,7 @@ const WAKIES_QUOTAS: Record<TierKey, Record<WakiesQuotaKey, number | null>> = {
     pages: 800,
     spaces: 20,
     tasks: 25,
+    wakieProfileImages: 50,
     wakies: 12,
   },
 };
@@ -292,6 +298,7 @@ export function wakiesQuotaMessage(
     pages: "pages",
     spaces: "espaces",
     tasks: "tâches planifiées",
+    wakieProfileImages: "images de profil",
     wakies: "Wakies",
   };
   return `Limite de ${quota} ${ressources[limit]} atteinte pour ce forfait. Supprimez-en une avant d'en créer une nouvelle.`;

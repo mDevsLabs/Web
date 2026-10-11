@@ -30,7 +30,7 @@ export async function authenticateOpenAIRequest(
           error: {
             code: "invalid_api_key",
             message:
-              "You must provide a Bearer API key in the Authorization header.",
+              "Vous devez fournir une clé API Bearer dans l'en-tête Authorization.",
             param: null,
             type: "invalid_request_error",
           },
@@ -92,7 +92,7 @@ export async function authenticateOpenAIRequest(
           error: {
             code: "rate_limit_exceeded",
             message:
-              "Rate limit reached for requests. Please slow down your requests.",
+              "Limite de requêtes atteinte. Veuillez ralentir vos requêtes.",
             param: null,
             type: "requests",
           },

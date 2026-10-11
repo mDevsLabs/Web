@@ -1,6 +1,20 @@
 "use client";
 
-import { ArrowRightIcon as ArrowRight, BotIcon as Bot, CheckCircle2Icon as CheckCircle2, CloudIcon as Cloud, GaugeIcon as Gauge, ImageIcon, KeyRoundIcon as KeyRound, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, UsersIcon as Users, Volume2Icon as Volume2, WrenchIcon as Wrench, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  ArrowRightIcon as ArrowRight,
+  BotIcon as Bot,
+  CheckCircle2Icon as CheckCircle2,
+  CloudIcon as Cloud,
+  GaugeIcon as Gauge,
+  ImageIcon,
+  KeyRoundIcon as KeyRound,
+  ShieldCheckIcon as ShieldCheck,
+  SparklesIcon as Sparkles,
+  UsersIcon as Users,
+  Volume2Icon as Volume2,
+  WrenchIcon as Wrench,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef } from "react";

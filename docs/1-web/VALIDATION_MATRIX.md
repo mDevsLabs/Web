@@ -92,29 +92,33 @@ workflow Vercel. Chaque ligne indique où le comportement est vérifié
 ## Commandes de validation réelles
 
 ```bash
-pnpm check          # Ultracite/Biome : lint + format (diagnostics préexistants exclus)
-pnpm typecheck      # tsc --noEmit
-pnpm test:unit      # Vitest : 24 fichiers, 204 tests
+pnpm check          # Ultracite/Biome : lint + format de tout le dépôt
+pnpm typecheck      # tsc --noEmit — Ne voit PAS les modules backend (hors tsconfig)
+pnpm test:unit      # Vitest : logique pure et garde-fous, sans réseau ni base
 pnpm plugins:gen    # régénération des catalogues de plugins dérivés
 pnpm plugins:check  # validation des catalogues de plugins générés
 pnpm build          # Next build (équivalent reproductible du build Vercel)
 ```
 
-Résultat au 2026-09-14 : typecheck ✅ · tests unitaires ✅ (202 passés, 2
-skippés préexistants, 24 fichiers) · plugins:gen ✅ · plugins:check ✅ (5 plugins
-valides) · lint des fichiers modifiés ✅ (Biome ciblé sur les fichiers du lot ;
-`pnpm check` à l'échelle du dépôt reste rouge sur des diagnostics préexistants,
-listés ci-dessous) · `pnpm build` non relancé dans cet atelier. Les tests e2e
-d'accueil (`tests/e2e/agent.test.ts`) exigent un environnement authentifié
-standard et n'ont pas été relancés ici : leur valeur est structurelle et
-documentaire tant qu'ils ne tournent pas en CI.
+**Cette section ne consigne plus de résultat daté ni de nombre de fichiers.** Un
+compte rendu du type « 24 fichiers, 204 tests » était faux quelques jours plus
+tard, et une photographie de l'état vert/rouge n'est vérifiable que le temps d'un
+commit. Ce qu'il faut retenir à la place :
 
-## Diagnostics préexistants (non introduits par ces lots)
+- `pnpm test:unit` est la référence ; le nombre de suites évolue à chaque lot, il
+  ne se documente pas.
+- `deno check <module>.ts` est le seul typecheck du backend Val Town : un
+  `pnpm typecheck` ou `pnpm build` réussi ne dit **rien** de `main.ts`,
+  `config.ts`, `vibe-*.ts`… (ils sont hors `tsconfig.json`).
+- `pnpm check` ne doit **jamais** être remplacé par `pnpm fix` pendant un lot en
+  cours : `fix` réécrit tout le dépôt, `*.sql` et `*.md` compris.
 
-- `lib/db/queries.ts:3874` — `noControlCharactersInRegex`
-- `lib/db/queries.ts:3976` — `useTemplate`
-- `components/planning/schedule-dialog.tsx:76` — `useExhaustiveDependencies` (hook `isOpen`)
+## Diagnostics préexistants
 
-Ces zones n'ont pas été modifiées (règle : ne pas corriger des zones sans
-rapport pour obtenir un voyant vert). Le reste du dépôt (`web.ts`, backend mAI
-à la racine) porte des diagnostics préexistants hors périmètre de ces lots.
+`biome.jsonc` désactive un sous-ensemble de règles (`noExplicitAny`, `useTemplate`,
+`noStaticOnlyClass`, `useConsistentMemberAccessibility`, `noUnusedImports`…). La
+liste des règles éteintes est dans le fichier de configuration, pas ici : une liste
+recopiée dans ce document a déja renvoyé vers des règles qui ne s'appellent plus
+comme ça. Les zones concernées (`lib/db/queries.ts`, le backend à la racine, les
+portages Vibe et Wakies) portent de la dette de typage `as any` **sans que ce soit
+une erreur de lint** : cela ne doit pas être présenté comme un voyant rouge.

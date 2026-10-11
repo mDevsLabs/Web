@@ -1,6 +1,10 @@
 "use client";
 
-import { KeyRoundIcon as KeyRound, Loader2Icon as Loader2, SparklesIcon as Sparkles } from "@mdevs/icons";
+import {
+  KeyRoundIcon as KeyRound,
+  Loader2Icon as Loader2,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
 import type { FormEvent } from "react";
 
 export function UpgradeCodeSection({

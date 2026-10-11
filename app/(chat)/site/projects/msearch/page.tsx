@@ -1,6 +1,16 @@
 "use client";
 
-import { BookOpenIcon as BookOpen, DownloadIcon as Download, ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, LockIcon as Lock, SearchIcon as Search, ShieldIcon as Shield, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  BookOpenIcon as BookOpen,
+  DownloadIcon as Download,
+  ExternalLinkIcon as ExternalLink,
+  GithubIcon as Github,
+  GlobeIcon as Globe,
+  LockIcon as Lock,
+  SearchIcon as Search,
+  ShieldIcon as Shield,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";
@@ -172,7 +182,7 @@ export default function MsearchProjectPage() {
             delay={0.6}
             description="Le code source est entièrement ouvert et accessible pour une transparence et sécurité totales."
             icon={<Github className="w-6 h-6 text-blue-600" />}
-            title="Projet Open Source"
+            title="Projet libre"
           />
           <FeatureCard
             delay={0.7}

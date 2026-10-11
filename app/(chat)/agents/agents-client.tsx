@@ -1,6 +1,27 @@
 "use client";
 
-import { BarChart3Icon, BrainIcon, CheckIcon, CloudIcon, CopyIcon, Edit2Icon, LayoutGridIcon, MessageSquareIcon, MessageSquareTextIcon, MoreVerticalIcon, PinIcon, PlusIcon, SearchIcon, SlidersHorizontalIcon, SparklesIcon, TagIcon, ThermometerIcon, Trash2Icon, TriangleAlertIcon, XIcon } from "@mdevs/icons";
+import {
+  BarChart3Icon,
+  BrainIcon,
+  CheckIcon,
+  CloudIcon,
+  CopyIcon,
+  Edit2Icon,
+  LayoutGridIcon,
+  MessageSquareIcon,
+  MessageSquareTextIcon,
+  MoreVerticalIcon,
+  PinIcon,
+  PlusIcon,
+  SearchIcon,
+  SlidersHorizontalIcon,
+  SparklesIcon,
+  TagIcon,
+  ThermometerIcon,
+  Trash2Icon,
+  TriangleAlertIcon,
+  XIcon,
+} from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -66,7 +87,9 @@ export default function AgentsClient() {
     isLoading,
   } = useSWR<{ agents: Agent[]; limit: number | null }>("/api/agents", fetcher);
   const agents = useMemo(() => agentsData?.agents ?? [], [agentsData]);
-  // Quota d'agents du forfait : Plus 15 / Pro 25 / Max illimité (`null`).
+  // Quota d'agents du forfait : Free 8 / Plus 15 / Pro 25 / Max illimité (`null`).
+  // La limite vient de l'API, jamais d'un calcul ici : le client affiche ce que
+  // le serveur applique.
   const agentLimit = agentsData?.limit ?? null;
   const isAtAgentLimit = agentLimit !== null && agents.length >= agentLimit;
   const { data: templates = [] } = useSWR<AgentTemplate[]>(

@@ -36,7 +36,7 @@ const models2: ModelCardData[] = [
     badge: "Cloud • Texte + images • 1M",
     description:
       "Le modèle principal de la génération mAI-2. Raisonnement, codage, vitesse et création, avec un contexte pouvant atteindre 1 million de tokens. S'exécute dans le cloud via l'API mAI — aucune installation locale.",
-    tagline: "Our flagship model, for the best price.",
+    tagline: "Notre modèle phare, au meilleur prix.",
     cloud: true,
     vision: true,
     context: "1M tokens",

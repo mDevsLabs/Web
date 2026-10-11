@@ -7,7 +7,13 @@
  * ============================================================================
  */
 
-import { CheckIcon as Check, Loader2Icon as Loader2, SearchIcon as Search, UserPlusIcon as UserPlus, UsersIcon as Users } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  Loader2Icon as Loader2,
+  SearchIcon as Search,
+  UserPlusIcon as UserPlus,
+  UsersIcon as Users,
+} from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";

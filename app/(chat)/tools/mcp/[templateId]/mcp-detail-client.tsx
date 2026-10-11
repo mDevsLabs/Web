@@ -1,6 +1,19 @@
 "use client";
 
-import { AlertTriangleIcon, BookOpenIcon, CheckCircle2Icon, CircleSlashIcon, ExternalLinkIcon, KeyIcon, Loader2Icon, LockIcon, RefreshCwIcon, ShieldCheckIcon, Trash2Icon, ZapIcon } from "@mdevs/icons";
+import {
+  AlertTriangleIcon,
+  BookOpenIcon,
+  CheckCircle2Icon,
+  CircleSlashIcon,
+  ExternalLinkIcon,
+  KeyIcon,
+  Loader2Icon,
+  LockIcon,
+  RefreshCwIcon,
+  ShieldCheckIcon,
+  Trash2Icon,
+  ZapIcon,
+} from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";

@@ -192,7 +192,7 @@ export function PageReviewCard({
                 ? "Enregistrement…"
                 : saved
                   ? "Poursuivre la conversation"
-                  : "Approve & save"}
+                  : "Approuver et enregistrer"}
             </button>
             {!saved && (
               <button

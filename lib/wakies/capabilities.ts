@@ -26,10 +26,12 @@ import "server-only";
  *     compte ». Si un identifiant est inconnu, il est SIGNALE et retiré.
  *   - une installation désactivée n'est jamais présentée comme utilisable : la
  *     disponibilité est recalculée, pas lue dans la fiche du Wakie.
- *   - un Plugin déclarant `writesUserData` ou `requiresApproval` n'est jamais
- *     instancié dans le canal chat : `createPluginTools` lève une exception dans
- *     ce cas, et on ne veut pas l discovers à la première requête. Il est
- *     écarté ici, avec sa raison.
+ *   - un Plugin dont TOUS les outils écrivent chez un fournisseur n'est jamais
+ *     instancié dans le canal chat : les écritures relèvent de l'Agent, où le
+ *     moteur de permissions les fait approuver avant exécution. Un connecteur
+ *     mixte (Google Agenda lit l'agenda et y écrit) reste donc utilisable ici,
+ *     pour sa lecture seule ; le router `createPluginTools` filtre les écritures
+ *     de son côté, et on écarte ici ce qui ne laisse rien à servir.
  */
 
 import { normalizeToolIds } from "@/lib/ai/tools/ids";
@@ -39,9 +41,16 @@ import {
   getMcpServersByUserId,
   getPluginInstallationsByUserId,
 } from "@/lib/db/queries";
+import type { PluginInstallation } from "@/lib/db/schema";
+import {
+  INTEGRATION_PROVIDERS,
+  type IntegrationDescriptor,
+} from "@/lib/integrations/providers";
+import { listActiveConnections } from "@/lib/integrations/repository";
 import { getPluginByToolId, getPluginManifest } from "@/lib/plugins/catalog";
 import { getToolIdsForPluginIds } from "@/lib/plugins/server";
 import { canUsePlugin, pluginTierMessage } from "@/lib/plugins/tier-lock";
+import { hasReadTool, toolEffect } from "@/lib/plugins/tool-effect";
 
 /** Raison pour laquelle une capacité demandée n'est pas utilisable. */
 export type CapacityIssue = {
@@ -96,10 +105,141 @@ export const OUTILS_PAR_DEFAUT = [
  * conversation qui l'emporte quand elle a Speaké. Le reste est de la
  * revalidation.
  */
-export async function resolveSelection(params: {
-  userId: string;
+/**
+ * Revalidation d'UNE extension demandée : `null` quand elle est utilisable,
+ * sinon la raison française de son refus. Partagée par la sélection du Wakie et
+ * par les mentions `@` d'applications connectées, pour que les deux chemins ne
+ * puissent jamais se contredire sur ce qu'un plugin a le droit de faire ici.
+ */
+function raisonDeRefusPlugin(
+  demande: string,
+  params: {
+    installations: readonly PluginInstallation[];
+    tier: string;
+  }
+): string | null {
+  const manifest = getPluginManifest(demande);
+  if (!manifest) {
+    return "Cette extension n'existe pas dans le catalogue.";
+  }
+  if (!canUsePlugin(manifest, params.tier)) {
+    return pluginTierMessage(manifest);
+  }
+  const installation = params.installations.find(
+    (item) => item.pluginId === demande
+  );
+  if (!installation) {
+    return "Cette extension n'est pas installée sur ce compte.";
+  }
+  if (!installation.isEnabled) {
+    return "Cette extension est désactivée dans vos réglages.";
+  }
+  // Un connecteur mixte (Google Agenda lit ET écrit) reste utilisable ici :
+  // `createPluginTools` n'y sert que ses outils de lecture. Un plugin sans
+  // AUCUNE lecture n'a rien à servir dans ce canal — l'écriture attend une
+  // approbation et ne se déclenche que depuis l'Agent.
+  if (!hasReadTool(manifest)) {
+    return "Cette extension n'expose que des actions d'écriture : elle n'est disponible que depuis l'Agent.";
+  }
+  return null;
+}
+
+/** Jetons de mention `@` des connecteurs, en minuscules sans espace. */
+const MENTIONS_DE_CONNECTEUR: ReadonlyMap<string, IntegrationDescriptor> =
+  new Map(
+    INTEGRATION_PROVIDERS.flatMap((descriptor) =>
+      [descriptor.mentionToken, descriptor.label, descriptor.id].map(
+        (cle) =>
+          [cle.toLowerCase().replace(/\s+/g, ""), descriptor] as [
+            string,
+            IntegrationDescriptor,
+          ]
+      )
+    )
+  );
+
+/**
+ * Applications externes mentionnées par un `@` dans un message Wakies.
+ *
+ * Le menu `@` de Wakies propose les membres de la conversation ; un connecteur
+ * n'est pas un participant, c'est un plateau d'outils qu'on autorise pour ce
+ * tour. La demande passe par la MÊME revalidation que la configuration du Wakie
+ * (installée, activée, forfait, lecture disponible) et exige en plus une
+ * connexion réelle : mentionner Gmail sans compte connecté ne doit pas envoyer
+ * un appel à l'API en 401, mais une réponse qui dit quoi faire.
+ */
+export async function applyIntegrationMentions(params: {
+  nomsMentionnes: readonly string[];
   tier: string;
+  userId: string;
+}): Promise<{ issues: CapacityIssue[]; pluginIds: string[] }> {
+  const demandes = params.nomsMentionnes
+    .map((nom) => nom.toLowerCase().replace(/\s+/g, ""))
+    .filter((nom) => MENTIONS_DE_CONNECTEUR.has(nom));
+  if (demandes.length === 0) {
+    return { issues: [], pluginIds: [] };
+  }
+
+  const [installations, connexions] = await Promise.all([
+    getPluginInstallationsByUserId({ userId: params.userId }),
+    listActiveConnections({ userId: params.userId }),
+  ]);
+  const connectes = new Set(connexions.map((ligne) => ligne.provider));
+
+  const issues: CapacityIssue[] = [];
+  const pluginIds: string[] = [];
+  const dejaVu = new Set<string>();
+  for (const nom of demandes) {
+    const descriptor = MENTIONS_DE_CONNECTEUR.get(nom);
+    if (!descriptor || dejaVu.has(descriptor.pluginId)) {
+      continue;
+    }
+    dejaVu.add(descriptor.pluginId);
+    if (!connectes.has(descriptor.id)) {
+      issues.push({
+        id: descriptor.pluginId,
+        kind: "plugin",
+        raison: `Connectez ${descriptor.label} depuis l'onglet Plugins pour que je puisse l'utiliser.`,
+      });
+      continue;
+    }
+    const refus = raisonDeRefusPlugin(descriptor.pluginId, {
+      installations,
+      tier: params.tier,
+    });
+    if (refus) {
+      issues.push({ id: descriptor.pluginId, kind: "plugin", raison: refus });
+      continue;
+    }
+    pluginIds.push(descriptor.pluginId);
+  }
+  return { issues, pluginIds };
+}
+
+export async function resolveSelection(params: {
+  conversation: {
+    mcpServerIds?: string[] | null;
+    pluginIds?: string[] | null;
+    skillIds?: string[] | null;
+    skillParams?: Record<string, Record<string, string>> | null;
+    toolIds?: string[] | null;
+  };
   isGhostMode: boolean;
+  /**
+   * Capacité invoquée pour CE tour seulement — mention `@jeton`, et rien
+   * d'autre. Elle entre AVANT la revalidation, dans la même voie : une
+   * extension non installée, un serveur désactivé ou un plugin hors forfait
+   * sont refusés exactement comme s'ils étaient réglés dans la fiche du Wakie.
+   * Deux chemins de validation différents finiront toujours par se contredire.
+   */
+  supplement?: {
+    mcpServerIds?: readonly string[];
+    pluginIds?: readonly string[];
+    skillIds?: readonly string[];
+    toolIds?: readonly string[];
+  };
+  tier: string;
+  userId: string;
   wakie: {
     mcpServerIds?: string[] | null;
     pluginIds?: string[] | null;
@@ -108,20 +248,30 @@ export async function resolveSelection(params: {
     skillParams?: Record<string, Record<string, string>> | null;
     toolIds?: string[] | null;
   };
-  conversation: {
-    mcpServerIds?: string[] | null;
-    pluginIds?: string[] | null;
-    skillIds?: string[] | null;
-    skillParams?: Record<string, Record<string, string>> | null;
-    toolIds?: string[] | null;
-  };
 }): Promise<EffectiveSelection> {
   const issues: CapacityIssue[] = [];
+  const supplement = params.supplement ?? {};
+
+  /** Sélection de la conversation, sinon du Wakie, PLUS ce que le tour invoque. */
+  const union = (
+    demande: string[] | null | undefined,
+    repli: string[] | null | undefined,
+    ajoute: readonly string[] | undefined,
+    defaut: readonly string[]
+  ): string[] => [
+    ...new Set([...(demande ?? repli ?? defaut), ...(ajoute ?? [])]),
+  ];
 
   // ─── Skills ────────────────────────────────────────────────────────────────
+  const demandesSkill = union(
+    params.conversation.skillIds,
+    params.wakie.skillIds,
+    supplement.skillIds,
+    []
+  );
   const skills = await prepareSkillsContext({
     isFreeUser: !isPaidTier(params.tier),
-    skillIds: params.conversation.skillIds ?? params.wakie.skillIds ?? [],
+    skillIds: demandesSkill,
     skillParams:
       params.conversation.skillParams ?? params.wakie.skillParams ?? null,
     userId: params.userId,
@@ -136,9 +286,7 @@ export async function resolveSelection(params: {
   // Un identifiant de Skill que `getSkillById` n'a pas rendu n'est pas dans
   // `skills.skills` : il n'existe pas pour ce compte.
   const trouves = new Set(skills.skills.map((skill) => skill.skillId));
-  for (const demande of [
-    ...new Set(params.conversation.skillIds ?? params.wakie.skillIds ?? []),
-  ]) {
+  for (const demande of demandesSkill) {
     if (!trouves.has(demande)) {
       issues.push({
         id: demande,
@@ -150,65 +298,24 @@ export async function resolveSelection(params: {
   }
 
   // ─── Plugins ───────────────────────────────────────────────────────────────
-  const demandesPlugin =
-    params.conversation.pluginIds ?? params.wakie.pluginIds ?? [];
+  const demandesPlugin = union(
+    params.conversation.pluginIds,
+    params.wakie.pluginIds,
+    supplement.pluginIds,
+    []
+  );
   const pluginIds: string[] = [];
   if (demandesPlugin.length > 0) {
     const installations = await getPluginInstallationsByUserId({
       userId: params.userId,
     });
     for (const demande of demandesPlugin) {
-      const manifest = getPluginManifest(demande);
-      if (!manifest) {
-        issues.push({
-          id: demande,
-          kind: "plugin",
-          raison: "Cette extension n'existe pas dans le catalogue.",
-        });
-        continue;
-      }
-      if (!canUsePlugin(manifest, params.tier)) {
-        issues.push({
-          id: demande,
-          kind: "plugin",
-          raison: pluginTierMessage(manifest),
-        });
-        continue;
-      }
-      const installation = installations.find(
-        (item) => item.pluginId === demande
-      );
-      if (!installation) {
-        issues.push({
-          id: demande,
-          kind: "plugin",
-          raison: "Cette extension n'est pas installée sur ce compte.",
-        });
-        continue;
-      }
-      if (!installation.isEnabled) {
-        issues.push({
-          id: demande,
-          kind: "plugin",
-          raison: "Cette extension est désactivée dans vos réglages.",
-        });
-        continue;
-      }
-      // Le canal chat ne peut pas posséder un Plugin qui lit ou écrit les
-      // données du compte : `createPluginTools` lève dans ce cas. On l'écarte
-      // ici avec une raison, plutôt que de laisser une exception au milieu d'un
-      // tour déjà commencé.
-      if (
-        manifest.permissions.writesUserData ||
-        manifest.permissions.requiresApproval ||
-        manifest.permissions.readsUserData
-      ) {
-        issues.push({
-          id: demande,
-          kind: "plugin",
-          raison:
-            "Cette extension agit sur les données du compte et n'est disponible que depuis l'Agent.",
-        });
+      const refus = raisonDeRefusPlugin(demande, {
+        installations,
+        tier: params.tier,
+      });
+      if (refus) {
+        issues.push({ id: demande, kind: "plugin", raison: refus });
         continue;
       }
       pluginIds.push(demande);
@@ -219,8 +326,12 @@ export async function resolveSelection(params: {
   // La liste reste EXPLICITE, même vide : `loadMcpContext` distingue `[]`
   // (« aucun serveur », zéro E/S) de `undefined` (« devine à partir des
   // outils demandés »). Un parcours Wakies configuré ne devine jamais.
-  const demandesMcp =
-    params.conversation.mcpServerIds ?? params.wakie.mcpServerIds ?? [];
+  const demandesMcp = union(
+    params.conversation.mcpServerIds,
+    params.wakie.mcpServerIds,
+    supplement.mcpServerIds,
+    []
+  );
   const mcpServerIds: string[] = [];
   if (demandesMcp.length > 0) {
     const serveurs = await getMcpServersByUserId({ userId: params.userId });
@@ -247,8 +358,12 @@ export async function resolveSelection(params: {
   }
 
   // ─── Outils ────────────────────────────────────────────────────────────────
-  const demandesOutils = params.conversation.toolIds ??
-    params.wakie.toolIds ?? [...OUTILS_PAR_DEFAUT];
+  const demandesOutils = union(
+    params.conversation.toolIds,
+    params.wakie.toolIds,
+    supplement.toolIds,
+    OUTILS_PAR_DEFAUT
+  );
   const normalises = normalizeToolIds(demandesOutils, {
     pluginToolIds: getToolIdsForPluginIds(pluginIds),
   });
@@ -271,6 +386,19 @@ export async function resolveSelection(params: {
           kind: "outil",
           raison:
             "Cet outil dépend d'une extension qui n'est pas sélectionnée.",
+        });
+        continue;
+      }
+      // Le plugin est sélectionné, mais CET outil écrit chez le fournisseur :
+      // `createPluginTools` ne l'instancie pas hors de l'Agent. Le signaler ici
+      // vaut mieux que laisser le modèle appeler un outil absent du plateau.
+      const manifestTool = proprietaire.tools.find((item) => item.id === outil);
+      if (manifestTool && toolEffect(proprietaire, manifestTool) === "write") {
+        issues.push({
+          id: outil,
+          kind: "outil",
+          raison:
+            "Cette action écrit chez le fournisseur : elle n'existe que depuis l'Agent, où elle est soumise à votre approbation.",
         });
         continue;
       }

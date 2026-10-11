@@ -5,7 +5,30 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BadgeCheckIcon as BadgeCheck, BanIcon as Ban, BarChart2Icon as BarChart2, BellIcon as Bell, BellRingIcon as BellRing, CalendarIcon as Calendar, CalendarClockIcon as CalendarClock, CameraIcon as Camera, Edit3Icon as Edit3, EyeOffIcon as EyeOff, Link2Icon as Link2, Loader2Icon as Loader2, LogOutIcon as LogOut, MapPinIcon as MapPin, MoreHorizontalIcon as MoreHorizontal, SettingsIcon, Share2Icon as Share2, UploadIcon as Upload, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  BadgeCheckIcon as BadgeCheck,
+  BanIcon as Ban,
+  BarChart2Icon as BarChart2,
+  BellIcon as Bell,
+  BellRingIcon as BellRing,
+  CalendarIcon as Calendar,
+  CalendarClockIcon as CalendarClock,
+  CameraIcon as Camera,
+  Edit3Icon as Edit3,
+  EyeOffIcon as EyeOff,
+  Link2Icon as Link2,
+  Loader2Icon as Loader2,
+  LogOutIcon as LogOut,
+  MapPinIcon as MapPin,
+  MoreHorizontalIcon as MoreHorizontal,
+  SettingsIcon,
+  Share2Icon as Share2,
+  UploadIcon as Upload,
+  UsersIcon as Users,
+  XIcon as X,
+} from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
@@ -20,6 +43,8 @@ import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
 import { PostCard } from "@/components/vibe/feed/PostCard";
 import { ScheduledCalendar } from "@/components/vibe/feed/ScheduledCalendar";
 import { ProfileShareModal } from "@/components/vibe/profile/ProfileShareModal";
+import { ProfileStoryRing } from "@/components/vibe/stories/ProfileStoryRing";
+import { StoriesArchive } from "@/components/vibe/stories/StoriesArchive";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
@@ -28,6 +53,8 @@ import type { Post, Profile, ProfileListUser } from "@/lib/vibe/types/vibe";
 import { useNavigate } from "../router";
 
 interface ProfilePageProps {
+  /** Seed serveur de premier écran (voir lib/vibe/server/hydration.ts). */
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
   onBack?: () => void;
   onOpenProfile: (username: string) => void;
   onOpenThread: (post: Post) => void;
@@ -36,6 +63,7 @@ interface ProfilePageProps {
 
 export const ProfilePage: React.FC<ProfilePageProps> = ({
   username,
+  hydration,
   onBack,
   onOpenThread,
   onOpenProfile,
@@ -65,7 +93,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [profileError, setProfileError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<
-    "posts" | "replies" | "media" | "likes" | "stats" | "scheduled"
+    "archive" | "likes" | "media" | "posts" | "replies" | "scheduled" | "stats"
   >("posts");
   const [creatorStats, setCreatorStats] = useState<{
     total_views: number;
@@ -196,11 +224,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     };
   }, [isSelf, activeTab]);
 
-  const fetchProfile = useCallback(async () => {
-    setIsLoadingProfile(true);
-    setProfileError(null);
-    try {
-      const data = await ApiService.getProfile(targetUsername);
+  const applyProfile = useCallback(
+    (data: { posts: Post[]; profile: Profile }) => {
       setProfile(data.profile);
       setPosts(data.posts || []);
       setIsFollowing(Boolean((data.profile as any).isFollowing));
@@ -215,6 +240,47 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       setEditLocation(data.profile.location || "");
       setEditAvatar(data.profile.avatarUrl || "");
       setEditBanner(data.profile.bannerUrl || "");
+    },
+    [targetUsername]
+  );
+
+  /**
+   * Graine lue en base par la page serveur. Elle n'est exploitable que si elle
+   * décrit le profil demandé ET le visiteur courant — ses drapeaux (`has_liked`,
+   * blocages, abonnement) sont propres au viewer. Sinon, null : retour à
+   * l'appel API, comportement historique.
+   */
+  const profileSeed = useCallback((): {
+    posts: Post[];
+    profile: Profile;
+  } | null => {
+    if (!hydration?.data) {
+      return null;
+    }
+    const data = hydration.data as { posts?: Post[]; profile?: Profile };
+    if (!data.profile) {
+      return null;
+    }
+    const seedUser = String(data.profile.username || "").toLowerCase();
+    if (seedUser !== targetUsername.toLowerCase()) {
+      return null;
+    }
+    if (hydration.as !== null) {
+      if (user && String(hydration.as) !== String(user.id ?? "")) {
+        return null;
+      }
+    } else if (user) {
+      return null;
+    }
+    return { posts: data.posts || [], profile: data.profile };
+  }, [hydration, targetUsername, user]);
+
+  const fetchProfile = useCallback(async () => {
+    setIsLoadingProfile(true);
+    setProfileError(null);
+    try {
+      const data = await ApiService.getProfile(targetUsername);
+      applyProfile(data);
     } catch (err: any) {
       if (isSelf && authProfile) {
         setProfile(authProfile);
@@ -232,13 +298,23 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     } finally {
       setIsLoadingProfile(false);
     }
-  }, [targetUsername, isSelf, authProfile, user?.username]);
+  }, [applyProfile, targetUsername, isSelf, authProfile, user?.username]);
 
   useEffect(() => {
     if (!username && isLoadingSession) return;
-    queueMicrotask(() => {
-      fetchProfile();
-    });
+    const seed = profileSeed();
+    if (seed) {
+      // Premier écran déjà lu en base : aucun `GET /v1/profiles/:username`.
+      // La graine rejoint le cache API pour que les autres composants
+      // (cartes de post, prefetch) la lisent en mémoire.
+      applyProfile(seed);
+      setIsLoadingProfile(false);
+      ApiService.seedCache(ApiService.profileEndpoint(targetUsername), seed);
+    } else {
+      queueMicrotask(() => {
+        fetchProfile();
+      });
+    }
     // État du bouton « Cercle Privé » (profils d'autrui uniquement)
     if (!isSelf && targetUsername) {
       ApiService.checkCircle(targetUsername)
@@ -260,7 +336,15 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     return () => {
       window.removeEventListener("vibe:post_updated", handlePostUpdated);
     };
-  }, [fetchProfile, username, isLoadingSession, isSelf, targetUsername]);
+  }, [
+    applyProfile,
+    fetchProfile,
+    isLoadingSession,
+    isSelf,
+    profileSeed,
+    targetUsername,
+    username,
+  ]);
 
   // Charger les publications aimées au clic sur l'onglet 'likes'
   useEffect(() => {
@@ -748,6 +832,9 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         {/* Avatar & Action Button */}
         <div className="flex items-end justify-between -mt-16 sm:-mt-20">
           <div className="relative group">
+            {/* Anneau de story en superposition : il ne s'affiche que si le
+                compte a une story live, et n'altère pas l'overlay « Changer ». */}
+            <ProfileStoryRing username={targetUsername} />
             <ProfileAvatar
               alt="Avatar"
               className="border-4 border-black bg-zinc-900 shadow-2xl"
@@ -1079,6 +1166,23 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full" />
               )}
             </button>
+            <button
+              className="flex-1 min-w-20 py-3 text-center text-xs font-semibold uppercase tracking-wider relative transition-colors hover:bg-zinc-900"
+              onClick={() => {
+                haptics.light();
+                setActiveTab("archive");
+              }}
+              title="Stories archivées (après 24 h)"
+            >
+              <span
+                className={`inline-flex items-center gap-1 ${activeTab === "archive" ? "text-white" : "text-zinc-500"}`}
+              >
+                Archive
+              </span>
+              {activeTab === "archive" && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full" />
+              )}
+            </button>
           </>
         )}
       </div>
@@ -1197,6 +1301,18 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
 
       {/* Panneau posts programmés (soi-même, calendrier drag & drop) */}
       {isSelf && activeTab === "scheduled" && <ScheduledCalendar />}
+
+      {/* Stories archivées : réservées au propriétaire. Un visiteur ne liste pas
+          les souvenirs expirés d'autrui, seulement ce qui est au rail. */}
+      {isSelf && activeTab === "archive" && (
+        <div className="p-4">
+          <StoriesArchive
+            avatarUrl={activeAvatar}
+            displayName={profile?.displayName || targetUsername}
+            username={targetUsername}
+          />
+        </div>
+      )}
 
       {/* Real Posts Stream from DB (masqué sur les onglets stats/programmés) */}
       {activeTab !== "stats" && activeTab !== "scheduled" && (

@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckIcon as Check, CookieIcon as Cookie, LockIcon as Lock, ShieldCheckIcon as ShieldCheck, XIcon as X } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  CookieIcon as Cookie,
+  LockIcon as Lock,
+  ShieldCheckIcon as ShieldCheck,
+  XIcon as X,
+} from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 

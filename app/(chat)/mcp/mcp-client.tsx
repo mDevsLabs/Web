@@ -1,6 +1,34 @@
 "use client";
 import type { IconProps } from "@mdevs/icons";
-import { ActivityIcon, AlertCircleIcon, BookOpenIcon, CheckCircle2Icon, CircleIcon, CopyIcon, CpuIcon, CreditCardIcon, DatabaseIcon, DownloadIcon, Edit2Icon, FileTextIcon, GithubIcon, KeyIcon, Loader2Icon, MoreVerticalIcon, PlusIcon, RefreshCwIcon, SearchIcon, ServerIcon, SettingsIcon, ShieldAlertIcon, ShieldCheckIcon, StoreIcon, TerminalIcon, Trash2Icon, WrenchIcon, ZapIcon } from "@mdevs/icons";
+import {
+  ActivityIcon,
+  AlertCircleIcon,
+  BookOpenIcon,
+  CheckCircle2Icon,
+  CircleIcon,
+  CopyIcon,
+  CpuIcon,
+  CreditCardIcon,
+  DatabaseIcon,
+  DownloadIcon,
+  Edit2Icon,
+  FileTextIcon,
+  KeyIcon,
+  Loader2Icon,
+  MoreVerticalIcon,
+  PlusIcon,
+  RefreshCwIcon,
+  SearchIcon,
+  ServerIcon,
+  SettingsIcon,
+  ShieldAlertIcon,
+  ShieldCheckIcon,
+  StoreIcon,
+  TerminalIcon,
+  Trash2Icon,
+  WrenchIcon,
+  ZapIcon,
+} from "@mdevs/icons";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
@@ -72,13 +100,6 @@ const STORE_CONNECTORS: ReadonlyArray<{
   templateId: string;
   tint: string;
 }> = [
-  {
-    color: "text-foreground dark:text-foreground",
-    highlight: "Dépôts, issues & PR",
-    icon: GithubIcon,
-    templateId: "github",
-    tint: "bg-foreground/10",
-  },
   {
     color: "text-violet-600 dark:text-violet-400",
     highlight: "Docs & bases Notion",
@@ -1495,10 +1516,10 @@ export default function McpClient({
               <div className="space-y-4 text-xs">
                 <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
                   <span className="text-muted-foreground block mb-1">
-                    # SSE GitHub
+                    # Serveur SSE
                   </span>
                   <span className="text-primary block font-semibold">
-                    URL: https://github-mcp.company.com/sse
+                    URL: https://mcp.company.com/sse
                   </span>
                   <span className="text-muted-foreground block">
                     Auth: bearer • timeout 15000ms • rate 60/min
@@ -1869,7 +1890,7 @@ export default function McpClient({
                 </Label>
                 <Input
                   onChange={(e) => setFormName(e.target.value)}
-                  placeholder="Ex: GitHub MCP"
+                  placeholder="Ex: Mon serveur MCP"
                   required
                   value={formName}
                 />

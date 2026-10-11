@@ -1,6 +1,13 @@
 "use client";
 
-import { AudioLinesIcon, Loader2Icon, PauseIcon, PlayIcon, SkipBackIcon, SkipForwardIcon } from "@mdevs/icons";
+import {
+  AudioLinesIcon,
+  Loader2Icon,
+  PauseIcon,
+  PlayIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+} from "@mdevs/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 

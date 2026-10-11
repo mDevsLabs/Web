@@ -8,6 +8,10 @@ import {
   updateScheduledMessage,
 } from "@/lib/db/queries";
 import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
+import {
+  isValidIANATimezone,
+  type MonthlyPolicy,
+} from "@/lib/planning/recurrence";
 import { SCHEDULE_TOOL_MODES } from "@/lib/planning/tool-mode";
 import { buildNullableCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 
@@ -20,9 +24,13 @@ const buildPatchSchema = (tier?: string | null) =>
     cloudFileUrls: z.array(z.string()).optional(),
     createMode: z.enum(["new_chat", "existing_chat"]).optional(),
     customInstructions: buildNullableCustomInstructionsSchema(tier),
+    dayOfMonth: z.number().int().min(1).max(31).nullable().optional(),
     // Obsolète : accepté pour compat, plus lu par l'exécuteur.
     enabledTools: z.array(z.string()).optional(),
+    hour: z.number().int().min(0).max(23).nullable().optional(),
+    minute: z.number().int().min(0).max(59).nullable().optional(),
     modelId: z.string().min(1).optional(),
+    monthlyPolicy: z.enum(["clamp", "report", "skip"]).optional(),
     prompt: z.string().min(1).max(5000).optional(),
     recurrence: z.enum(["none", "daily", "weekly", "monthly"]).optional(),
     scheduledAt: z.string().datetime().optional(),
@@ -30,6 +38,17 @@ const buildPatchSchema = (tier?: string | null) =>
       .enum(["pending", "processing", "completed", "failed", "cancelled"])
       .optional(),
     temperature: z.number().min(0).max(2).nullable().optional(),
+    // Récurrence calendaire (migration 0046), mêmes règles qu'à la création :
+    // fuseau IANA contrôlé, jamais deviné.
+    timezone: z
+      .string()
+      .max(64)
+      .refine(isValidIANATimezone, {
+        message:
+          "Fuseau horaire invalide (nom IANA attendu, ex. Europe/Paris).",
+      })
+      .nullable()
+      .optional(),
     title: z.string().min(1).max(100).optional(),
     toolMode: z.enum(SCHEDULE_TOOL_MODES).optional(),
   });
@@ -123,7 +142,13 @@ export async function PATCH(
       ...(isReset
         ? { executedAt: null, lastError: null, resultChatId: null }
         : {}),
+      dayOfMonth:
+        parsed.dayOfMonth === undefined ? undefined : parsed.dayOfMonth,
+      hour: parsed.hour === undefined ? undefined : parsed.hour,
+      minute: parsed.minute === undefined ? undefined : parsed.minute,
       modelId: parsed.modelId,
+      monthlyPolicy:
+        (parsed.monthlyPolicy as MonthlyPolicy | undefined) ?? undefined,
       prompt: parsed.prompt,
       recurrence: parsed.recurrence,
       scheduledAt: parsed.scheduledAt
@@ -131,6 +156,7 @@ export async function PATCH(
         : undefined,
       status: effectiveStatus,
       temperature: parsed.temperature,
+      timezone: parsed.timezone ?? undefined,
       title: parsed.title,
       toolMode: parsed.toolMode,
       userId,

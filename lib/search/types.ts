@@ -39,6 +39,8 @@ export const SEARCH_SOURCE_KEYS = [
   "audio",
   "bot",
   "chat",
+  "cli",
+  "coder",
   "command",
   "doc",
   "file",
@@ -51,8 +53,11 @@ export const SEARCH_SOURCE_KEYS = [
   "plugin",
   "project",
   "run",
+  "site",
   "skill",
   "stats",
+  "vibe",
+  "wakies",
 ] as const;
 
 export type SearchSourceKey = (typeof SEARCH_SOURCE_KEYS)[number];
@@ -66,6 +71,8 @@ export const SEARCH_SOURCE_LABELS: Record<SearchSourceKey, string> = {
   audio: "Générations audio",
   bot: "Bots",
   chat: "Discussions",
+  cli: "mAI CLI & Commandes",
+  coder: "Coder (Espace de code)",
   command: "Commandes",
   doc: "Fichiers de projet",
   file: "Fichiers",
@@ -78,19 +85,24 @@ export const SEARCH_SOURCE_LABELS: Record<SearchSourceKey, string> = {
   plugin: "Plugins",
   project: "Projets",
   run: "Étapes d'agent",
+  site: "Site officiel & Docs",
   skill: "Skills",
   stats: "Modèles utilisés",
+  vibe: "Vibe (Réseau social)",
+  wakies: "Wakies (Espaces & Agents)",
 };
 
 /**
  * Sources réservées aux forfaits payants.
  *
- * `/api/mcp`, `/api/agents` et `/api/plugins` répondent `plan_required` à un
- * compte Free. Les interroger quand même coûterait trois 403 pour afficher un
- * vide : la page les retire simplement de ses filtres, sur le même modèle que
- * la barre latérale.
+ * `/api/mcp` et `/api/plugins` répondent `plan_required` à un compte Free. Les
+ * interroger quand même coûterait deux 403 pour afficher un vide : la page les
+ * retire simplement de ses filtres, sur le même modèle que la barre latérale.
+ *
+ * `bot` n'en fait plus partie : les bots sont ouverts à tous les forfaits et
+ * bornés par quota (`getTierAgentLimit`, 8 en Free), `/api/agents` répond donc 200.
  */
-export const PAID_ONLY_SOURCES: SearchSourceKey[] = ["bot", "mcp", "plugin"];
+export const PAID_ONLY_SOURCES: SearchSourceKey[] = ["mcp", "plugin"];
 
 /** Un résultat, quelle que soit sa source. */
 export type SearchHit = {

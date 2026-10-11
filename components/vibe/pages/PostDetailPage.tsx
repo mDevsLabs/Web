@@ -5,27 +5,38 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, SparklesIcon as Sparkles, Volume2Icon as Volume2 } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  Loader2Icon as Loader2,
+  SparklesIcon as Sparkles,
+  Volume2Icon as Volume2,
+} from "@mdevs/icons";
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { CommentSection } from "@/components/vibe/comments/CommentSection";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { PostCard } from "@/components/vibe/feed/PostCard";
 import { useAudioPlayer } from "@/lib/vibe/context/AudioPlayerContext";
+import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import type { Post } from "@/lib/vibe/types/vibe";
 
 interface PostDetailPageProps {
+  /** Seed serveur de premier écran (voir lib/vibe/server/hydration.ts). */
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
   onBack: () => void;
   onOpenProfile: (username: string) => void;
   postId: string;
 }
 
 export const PostDetailPage: React.FC<PostDetailPageProps> = ({
+  hydration,
   postId,
   onBack,
   onOpenProfile,
 }) => {
+  const { user } = useAuth();
   const [post, setPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -62,27 +73,61 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
     }
   };
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      setIsLoading(true);
-      setNotFound(false);
-      try {
-        const data = await ApiService.getPost(postId);
-        if (data?.post) {
-          setPost(data.post);
-        } else {
-          setNotFound(true);
-        }
-      } catch (err) {
-        console.error("Erreur chargement post:", err);
-        setNotFound(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  // La graine n'est consommée qu'une fois par publication : les rechargements
+  // ultérieurs (événement vibe:post_updated, retour d'édition) passent par
+  // l'API, autorité après écriture.
+  const seededForPostRef = useRef<string | null>(null);
 
-    fetchPost();
-  }, [postId]);
+  const fetchPost = useCallback(async () => {
+    const seed = hydration?.data as
+      | {
+          comments?: {
+            aiDigest: string | null;
+            comments: any[];
+            count: number;
+          } | null;
+          post?: Post;
+        }
+      | null
+      | undefined;
+    const seedUsable =
+      seed?.post &&
+      String(seed.post.id) === String(postId) &&
+      (hydration?.as === null
+        ? !user
+        : !user || String(hydration?.as) === String(user.id ?? ""));
+    if (seedUsable && seededForPostRef.current !== String(postId)) {
+      seededForPostRef.current = String(postId);
+      setPost(seed!.post!);
+      setNotFound(false);
+      setIsLoading(false);
+      if (seed!.comments) {
+        // CommentSection relit `/v1/posts/:id/comments` : la graine placée sous
+        // la clé exacte de son cache (10 s) supprime cet appel aussi.
+        ApiService.seedCache(`/v1/posts/${postId}/comments`, seed!.comments);
+      }
+      return;
+    }
+    setIsLoading(true);
+    setNotFound(false);
+    try {
+      const data = await ApiService.getPost(postId);
+      if (data?.post) {
+        setPost(data.post);
+      } else {
+        setNotFound(true);
+      }
+    } catch (err) {
+      console.error("Erreur chargement post:", err);
+      setNotFound(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [hydration, postId, user]);
+
+  useEffect(() => {
+    void fetchPost();
+  }, [fetchPost]);
 
   return (
     <div className="flex-1 min-h-screen border-r border-zinc-800 bg-black pb-8">

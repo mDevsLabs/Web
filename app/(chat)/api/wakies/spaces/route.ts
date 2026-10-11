@@ -14,9 +14,8 @@ import { createSpace, listSpaces } from "@/lib/wakies/queries";
  * GET  /api/wakies/spaces — espaces du compte.
  * POST /api/wakies/spaces — création.
  *
- * Un compte qui n'a jamais ouvert Wakies n'a ni espace, ni Wakie, ni
- * conversation : `ensureStarterWorkspace` (lib/wakies/onboarding.ts) crée
- * l'ensemble de départ au premier chargement de l'application.
+ * L'ouverture de Wakies ne crée aucun espace automatiquement. Un nouvel
+ * utilisateur commence à zéro et crée explicitement son premier Espace.
  */
 
 const schema = z

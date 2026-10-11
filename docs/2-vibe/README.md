@@ -8,6 +8,7 @@ Vibe est la partie sociale de mAI : profils, publications, flux, interactions et
 - [Architecture de la source](ARCHITECTURE.md) : frontend, backend et flux de données.
 - [Application mobile](MOBILE_CAPACITOR.md) : client Capacitor propre à Vibe.
 - [Styles et navigation](STYLING_ROUTING.md) : isolation du thème et URL.
+- [Stories](STORIES.md) : cycle de 24 h, archive, quotas journaliers et les deux plafonds média distincts.
 - [Règles de développement](AGENTS.md) : sources à modifier et invariants du port.
 
 La source autonome et son backend ont leur propre cycle de build. Le build Next racine ne les compile pas directement ; il génère les éléments du port selon les scripts du dépôt. Le README de la source est [apps/vibe/README.md](../../apps/vibe/README.md).

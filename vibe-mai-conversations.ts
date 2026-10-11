@@ -40,12 +40,14 @@ export function registerVibeMAIConversationRoutes(
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(sql, userId, requested);
-      if (conv.invalid)
+      if (conv.invalid) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const conversationId =
         conv.id || (await getOrCreateConversation(sql, userId));
-      if (!conversationId)
+      if (!conversationId) {
         return c.json({ conversation_id: null, has_more: false, messages: [] });
+      }
 
       const rows = await sql`
         SELECT id, sender_role, content, tool_calls, created_at FROM mai_messages
@@ -181,8 +183,9 @@ export function registerVibeMAIConversationRoutes(
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const id = String(c.req.param("conversationId") || "");
-      if (!UUID_RE.test(id))
+      if (!UUID_RE.test(id)) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const body = await c.req.json().catch(() => ({}) as any);
       const clean = String(body?.title || "")
         .replace(/\s+/g, " ")
@@ -197,8 +200,9 @@ export function registerVibeMAIConversationRoutes(
         WHERE id = ${id}::uuid AND user_id = ${userId}
         RETURNING id, title
       `.catch(() => []);
-      if (updated.length === 0)
+      if (updated.length === 0) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       return c.json({
         conversation: {
           id: String(updated[0].id),
@@ -229,16 +233,18 @@ export function registerVibeMAIConversationRoutes(
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const id = String(c.req.param("conversationId") || "");
-      if (!UUID_RE.test(id))
+      if (!UUID_RE.test(id)) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
 
       const sql = getDb();
       await ensureMAIConversations();
       const deleted = await sql`
         DELETE FROM mai_conversations WHERE id = ${id}::uuid AND user_id = ${userId} RETURNING id
       `.catch(() => []);
-      if (deleted.length === 0)
+      if (deleted.length === 0) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       return c.json({ deleted: String(deleted[0].id), success: true });
     } catch (err: any) {
       console.error("[Vibe API] mAI Delete Conversation Error:", err);
@@ -263,8 +269,9 @@ export function registerVibeMAIConversationRoutes(
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const id = String(c.req.param("conversationId") || "");
-      if (!UUID_RE.test(id))
+      if (!UUID_RE.test(id)) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
 
       const sql = getDb();
       await ensureMAIConversations();
@@ -272,13 +279,16 @@ export function registerVibeMAIConversationRoutes(
         SELECT title, model_id, system_prompt FROM mai_conversations
         WHERE id = ${id}::uuid AND user_id = ${userId} LIMIT 1
       `.catch(() => []);
-      if (src.length === 0)
+      if (src.length === 0) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
 
       const baseTitle = String(src[0].title || "Discussion mAI").slice(0, 100);
       const created = await sql`
         INSERT INTO mai_conversations (user_id, title, model_id, system_prompt)
-        VALUES (${userId}, ${`${baseTitle} (copie)`}, ${src[0].model_id || null}, ${src[0].system_prompt || null})
+        VALUES (${userId}, ${`${baseTitle} (copie)`}, ${src[0].model_id || null}, ${
+          src[0].system_prompt || null
+        })
         RETURNING id
       `;
       const newId = String(created[0].id);

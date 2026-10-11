@@ -1,6 +1,18 @@
 "use client";
 
-import { ChevronUpIcon as ChevronUp, ExternalLinkIcon, FileTextIcon, HelpCircleIcon, InfoIcon, LibraryIcon, LineChartIcon, LogOutIcon, MoonIcon, SettingsIcon, SunIcon, ZapIcon } from "@mdevs/icons";
+import {
+  ChevronUpIcon as ChevronUp,
+  FileTextIcon,
+  HelpCircleIcon,
+  InfoIcon,
+  LibraryIcon,
+  LineChartIcon,
+  LogOutIcon,
+  MoonIcon,
+  SettingsIcon,
+  SunIcon,
+  ZapIcon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -182,17 +194,14 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
             <DropdownMenuSub>
               <DropdownMenuSubTrigger className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent">
                 <HelpCircleIcon className="size-4 text-muted-foreground" />
-                <span>Support</span>
+                <span>Assistance</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="w-52 rounded-xl border border-border/60 bg-card/95 p-1.5 backdrop-blur-xl shadow-[var(--shadow-float)]">
                 <DropdownMenuItem asChild>
                   <a
                     className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                     href={APP_SUPPORT_URL}
-                    rel="noopener noreferrer"
-                    target="_blank"
                   >
-                    <ExternalLinkIcon className="size-3.5 text-muted-foreground" />
                     <span>Centre d'aide</span>
                   </a>
                 </DropdownMenuItem>

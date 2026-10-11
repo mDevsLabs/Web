@@ -23,7 +23,7 @@ Installer le dossier extrait avec `npm install --install-links /chemin/mdevs-ui`
 
 Contrats : `src/primitives/*.tsx`, `src/components/<domaine>/types.ts` et fichiers publics. Index : `catalog/manifest.json`. Guides de domaine : `catalog/<domaine>/README.md`. Les données sampleProps sont fictives ; les composants n’appellent pas de services réseau.
 
-`ThemeProvider` accepte theme, accent, radius, glass et variables CSS via style. Les portails héritent de ces valeurs. Le CSS est sous `@layer mdevs`. Importer styles.css une seule fois. Le verre se désactive avec `glass={false}`, les animations suivent prefers-reduced-motion.
+`ThemeProvider` accepte theme, variant, accent, radius, glass et variables CSS via style. Les portails héritent de ces valeurs. Liquid Glass est le défaut ; `variant="chatgpt"` active le style achromatique mat. Le CSS est sous `@layer mdevs`. Importer styles.css une seule fois. Le verre se désactive avec `glass={false}`, les animations suivent prefers-reduced-motion.
 
 Fournir un label aux boutons à icône et aux champs, un titre aux modales et des callbacks réels. Les formulaires utilisent la validation HTML native ; validation métier, persistance et autorisations restent dans l’application.
 
@@ -160,7 +160,7 @@ Sous Next.js App Router, importer le CSS global dans `app/layout.tsx`. Créer un
 
 ## 7. Thème, CSS et portails
 
-`ThemeProvider` accepte `theme: 'light' | 'dark' | 'system'`, `accent`, `radius`, `glass` et des attributs de `div`. Il n'impose pas un fond de page. Le fond hôte, le contraste et la surface derrière le verre font partie de l'intégration.
+`ThemeProvider` accepte `theme: 'light' | 'dark' | 'system'`, `variant: 'liquid-glass' | 'chatgpt'`, `accent`, `radius`, `glass` et des attributs de `div`. Liquid Glass est le défaut ; la variante `chatgpt` est mate et achromatique. Il n'impose pas un fond de page. Le fond hôte, le contraste et la surface derrière le verre font partie de l'intégration.
 
 Les overlays portalisés disposent d'un `PortalScope` qui recopie le thème, l'accent, le rayon, le mode verre et les propriétés CSS dont la clé commence par `--` passées à `ThemeProvider.style`. Les styles ordinaires de layout et `className` ne sont pas recopiés. Une variable définie uniquement dans une règle CSS sur le wrapper du provider ne suit pas automatiquement son portail.
 
@@ -405,7 +405,7 @@ Le verre est dépendant du fond hôte. Un flou ne garantit pas le contraste sur 
 
 `glass=false` retire le flou et rend opaques les surfaces `.md-glass` ; les autres contrôles peuvent conserver des fonds translucides. `prefers-reduced-motion` désactive les animations ; `prefers-reduced-transparency` retire le flou lorsque le navigateur le reconnaît. En couleurs forcées, le système utilise des couleurs natives.
 
-Les boutons principaux ont une hauteur minimale de 44 px. Les boutons de fermeture et certaines suppressions compactes ont des cibles plus petites dans cette version ; adapter la densité et les styles hôtes lorsque le contexte tactile le demande.
+Les champs et les affords natifs ont une hauteur minimale de 44 px ; les actions mesurent 32 px depuis l’échelle compacte. Les boutons de fermeture et certaines suppressions compactes ont des cibles plus petites dans cette version ; adapter la densité et les styles hôtes lorsque le contexte tactile le demande.
 
 ## 9. Vérification pratique d’une intégration
 
@@ -579,7 +579,7 @@ Les casts du runtime métier alignent des valeurs FormData sur les modèles gén
 
 Sous Next.js App Router, importer le CSS dans le layout et placer les callbacks dans une frontière client. Garder les props serveur sérialisables. Avec React SSR classique, utiliser les mêmes valeurs de thème au serveur et au premier rendu client. Le thème `system` est porté par des media queries CSS ; ThemeProvider ne gère pas la persistance.
 
-Les variables de tokens transmises via `ThemeProvider.style` sont propagées aux portails. Les propriétés de layout ordinaires comme `padding` ne sont pas copiées. Les props `accent` et `radius` remplacent les tokens homonymes présents dans `style`. Pour chaque ThemeProvider imbriqué, préciser les valeurs nécessaires au périmètre.
+Les variables de tokens transmises via `ThemeProvider.style` sont propagées aux portails, ainsi que le thème, la variante, l'accent et le rayon. Les propriétés de layout ordinaires comme `padding` ne sont pas copiées. Les props `accent` et `radius` remplacent les tokens homonymes présents dans `style`. Pour chaque ThemeProvider imbriqué, préciser les valeurs nécessaires au périmètre.
 
 Ne pas lire le stockage ou un media query pendant le rendu pour choisir arbitrairement une valeur différente du serveur. Si l’application doit mémoriser un thème, prévoir cette politique dans le code hôte et vérifier l’hydratation.
 
@@ -1661,7 +1661,7 @@ Avec plusieurs icônes titrées, `useId()` donne à chaque titre un ID propre à
 
 ### Boutons et cibles tactiles
 
-Un SVG de 20 px peut être placé dans un bouton d'au moins 44 × 44 pixels CSS, cible pratique pour une interface tactile. Ce dimensionnement relève du bouton hôte. Employer un vrai `<button type="button">` pour une action et un `<a href="…">` pour une navigation ; un SVG avec `onClick` ne fournit pas automatiquement clavier, focus ou sémantique de contrôle.
+Un SVG de 20 px tient dans un bouton de 32 px de haut, l'échelle courante des actions ; sur un support tactile, le style hôte élargit la cible jusqu'à 44 × 44 pixels CSS. Ce dimensionnement relève du bouton hôte. Employer un vrai `<button type="button">` pour une action et un `<a href="…">` pour une navigation ; un SVG avec `onClick` ne fournit pas automatiquement clavier, focus ou sémantique de contrôle.
 
 ```tsx
 <button
@@ -2072,7 +2072,7 @@ Ne pas réduire l’opacité de tout un conteneur pour créer de la translucence
 - Grid utilise des colonnes fluides avec largeur minimale configurée.
 - Container limite la mesure et centre le contenu.
 
-La plupart des champs et boutons principaux ont une hauteur minimale de 44 px. Les textes secondaires sont compacts ; adapter la densité au public et au support sans réduire la zone d’action à la taille d’une icône.
+La plupart des champs et des affords natifs ont une hauteur minimale de 44 px ; les actions (boutons, onglets, entrées de menu, liens de navigation) mesurent 32 px. Les textes secondaires sont compacts ; adapter la densité au public et au support sans réduire la zone d’action à la taille d’une icône.
 
 Les attributs HTML et `style` restent utiles pour la composition. Éviter de cibler un détail privé de DOM quand un token ou une prop publique exprime déjà le besoin. Si la modification change le comportement du rendu commun, la traiter comme changement de composant et vérifier les usages concernés.
 
@@ -2233,7 +2233,7 @@ Une icône décorative dans un bouton n'apporte pas de nom à elle seule; `IconB
 
 Les overlays portalisés gardent leur contexte React mais sortent de leur parent DOM. `PortalScope` crée un wrapper `.md-root.md-portal-scope` avec `display: contents` et recopie :
 
-- `theme`, `glass`, `accent` et `radius` du `ThemeProvider`;
+- `theme`, `variant`, `glass`, `accent` et `radius` du `ThemeProvider`;
 - les clés CSS commençant par `--` présentes dans sa prop `style`.
 
 ```tsx
@@ -2578,7 +2578,7 @@ Ce document définit le style retenu pour `@mdevs/ui` et `@mdevs/icons` 0.2.0. I
 | Sujet | Règle retenue |
 | --- | --- |
 | Framework | React 18.3/19 et TypeScript strict ; imports nommés et modules indépendants |
-| Surfaces | Liquid Glass discret : flou léger, reflet fin, contenu net |
+| Surfaces | Liquid Glass discret par défaut ; variante `chatgpt` noire et blanche, mate et sans flou |
 | Espacement | Interface aérée, unités régulières, adaptation au contenu |
 | Arrondis | 16–20 px pour les surfaces, 10–12 px pour les contrôles courants |
 | Typographie | Inter variable 4.1, fournie localement en WOFF2 et chargée par le CSS UI |
@@ -2653,7 +2653,7 @@ Employer une grille d’espacement de 4 px : 4, 8, 12, 16, 20, 24, 32. Un groupe
 
 Utiliser `min-width:0` dans les panneaux flex/grid, `minmax(0,1fr)` pour les colonnes et une région locale de défilement pour les tables/code. Ne pas masquer un débordement de page par `overflow-x:hidden` pour faire passer un test. Les layouts nouveaux s’empilent sous 640 px lorsque leur structure le demande ; les composants ne détectent pas un appareil par user-agent.
 
-Une action principale garde une cible pratique de 44 × 44 px. Certains contrôles compacts, comme les suppressions de filtre, utilisent 36 px dans cette version ; agrandir selon le contexte tactile. Une icône de 20 px n’est pas une zone de clic de 20 px. Ne pas réduire l’anneau de focus pour obtenir un rendu plus discret.
+Une action principale mesure 32 px de haut (28 px en compact, 34 px en élargi), soit l’échelle des boutons de barre latérale de l’hôte. Les champs, les interrupteurs et les affords natifs gardent 44 px. Une icône de 20 px n’est pas une zone de clic de 20 px : sur un support tactile, le style hôte doit élargir la cible. Ne pas réduire l’anneau de focus pour obtenir un rendu plus discret.
 
 Préférer les contrôles HTML natifs lorsque leur contrat suffit. La combobox spécialisée conserve le focus sur son input et utilise `aria-activedescendant` ; les listes simples et le master/detail utilisent leurs éléments natifs sans recevoir un rôle ARIA complexe arbitraire. Les dialogues/menu utilisent Radix et les tokens de `PortalScope`.
 
@@ -3186,7 +3186,7 @@ export function AppProviders({children}: {children: ReactNode}) {
 }
 ```
 
-`ThemeProvider` applique la police, les couleurs et les variables à son périmètre. Il ne peint pas un fond de page plein. Définir le fond de l'application au niveau hôte selon le design souhaité. `theme="system"` se résout par CSS sans lecture JavaScript de la préférence pendant le rendu.
+`ThemeProvider` applique la police, les couleurs et les variables à son périmètre. `variant="chatgpt"` active un style achromatique et mat ; Liquid Glass reste le défaut. Il ne peint pas un fond de page plein. Définir le fond de l'application au niveau hôte selon le design souhaité. `theme="system"` se résout par CSS sans lecture JavaScript de la préférence pendant le rendu.
 
 Pour un verre discret, ajuster quelques tokens plutôt que multiplier les styles sur chaque carte. Pour un appareil peu puissant ou une image de fond difficile à lire, `glass={false}` retire le flou. Les préférences d'accessibilité restent couvertes par le CSS; vérifier les personnalisations sur le fond réel. Consulter [LIQUID_GLASS.md](LIQUID_GLASS.md).
 

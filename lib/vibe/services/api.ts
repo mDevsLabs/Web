@@ -9,7 +9,6 @@
 import { MAI_API_URL } from "@/lib/constants";
 import { AppStorage } from "@/lib/vibe/services/storageAdapter";
 import type {
-  BookComment,
   Comment,
   DirectMessage,
   DMConversation,
@@ -22,6 +21,10 @@ import type {
   Profile,
   ProfileListUser,
   ServerDraft,
+  Story,
+  StoryAuthor,
+  StoryQuota,
+  StoryViewer,
   UnifiedSearchResult,
   User,
   UserSettings,
@@ -280,6 +283,40 @@ export class ApiService {
     } catch {}
   }
 
+  /**
+   * Injecte dans le cache mémoire une donnée LUE EN BASE par le serveur Next
+   * (pré-hydratation RSC, cf. lib/vibe/server). L'endpoint doit être la clé
+   * exacte que le getter construit — d'où `feedEndpoint`/`profileEndpoint`,
+   * utilisés des deux côtés. Un `useEffect` de montage survivant résout alors
+   * depuis la mémoire au lieu de redemander l'API.
+   *
+   * Le TTL n'est pas stocké par entrée : il est appliqué à la lecture par le
+   * getter. Une graine est donc une entrée ordinaire, fraîche à l'horodatage
+   * d'insertion ; les invalidations d'écriture (`invalidateCache`) la purgent
+   * comme n'importe quelle réponse réseau.
+   */
+  static seedCache(endpoint: string, data: unknown): void {
+    ApiService.cache.set(endpoint, { data, ts: Date.now() });
+  }
+
+  /** Clé canonique du feed (partagée avec le lecteur serveur). */
+  static feedEndpoint(
+    type: "for_you" | "stream" | "trending",
+    tag?: string,
+    cursor?: string
+  ): string {
+    const queryParams = new URLSearchParams({ type });
+    if (tag) queryParams.append("tag", tag);
+    if (cursor) queryParams.append("cursor", cursor);
+    return `/v1/feed?${queryParams.toString()}`;
+  }
+
+  /** Clé canonique du profil public (partagée avec le lecteur serveur). */
+  static profileEndpoint(username: string): string {
+    const cleanUser = username.trim().replace(/^@/, "");
+    return `/v1/profiles/${encodeURIComponent(cleanUser)}`;
+  }
+
   /** Précharge les profils auteurs d'un flux pour un affichage instantané des pages profil. */
   static prefetchProfiles(
     posts: Array<{ username?: string; author_id?: string }>
@@ -294,8 +331,7 @@ export class ApiService {
 
   /** Précharge en arrière-plan le profil + ses posts (sans bloquer l'UI). */
   static prefetchProfile(username: string): void {
-    const cleanUser = username.trim().replace(/^@/, "");
-    const endpoint = `/v1/profiles/${encodeURIComponent(cleanUser)}`;
+    const endpoint = ApiService.profileEndpoint(username);
     ApiService.cachedRequest(endpoint, 60_000).catch(() => {});
   }
   static getToken(): string | null {
@@ -651,9 +687,7 @@ export class ApiService {
     title: string;
     nextCursor?: string | null;
   }> {
-    const queryParams = new URLSearchParams({ type });
-    if (tag) queryParams.append("tag", tag);
-    if (cursor) queryParams.append("cursor", cursor);
+    const endpoint = ApiService.feedEndpoint(type, tag, cursor);
     const sessionGeneration = ApiService.sessionGeneration;
     const cacheGeneration = ApiService.cacheGeneration;
 
@@ -663,7 +697,7 @@ export class ApiService {
         mode: string;
         title: string;
         nextCursor?: string | null;
-      }>(`/v1/feed?${queryParams.toString()}`);
+      }>(endpoint);
 
       // Ne pas recréer un snapshot après un logout ou une écriture survenu pendant le fetch.
       if (
@@ -1247,13 +1281,6 @@ export class ApiService {
     });
   }
 
-  /** Livres (du compte courant) contenant un post donné — badge PostCard. */
-  static async getBooksForPost(
-    postId: string
-  ): Promise<{ success: boolean; book_ids: string[] }> {
-    return ApiService.request(`/v1/books/for-post/${postId}`);
-  }
-
   /** Épingle / désépingle une Vibe dans un Livre (max 3, membres autorisés). */
   static async pinBookPost(
     bookId: string,
@@ -1286,61 +1313,6 @@ export class ApiService {
     return ApiService.request(
       `/v1/books/${bookId}/members/${userId}/transfer-ownership`,
       { method: "POST" }
-    );
-  }
-
-  /** Discussion du Livre : liste des commentaires (pagée). */
-  static async getBookComments(
-    bookId: string,
-    limit = 50,
-    offset = 0
-  ): Promise<{ success: boolean; comments: BookComment[] }> {
-    return ApiService.request(
-      `/v1/books/${bookId}/comments?limit=${limit}&offset=${offset}`
-    );
-  }
-
-  /** Ajoute un commentaire à la discussion du Livre (réponse citée optionnelle). */
-  static async addBookComment(
-    bookId: string,
-    content: string,
-    replyToId?: string | null
-  ): Promise<{ success: boolean; comment: BookComment }> {
-    return ApiService.request(`/v1/books/${bookId}/comments`, {
-      body: JSON.stringify({
-        content,
-        ...(replyToId ? { reply_to_id: replyToId } : {}),
-      }),
-      method: "POST",
-    });
-  }
-
-  /** Supprime un commentaire de la discussion (auteur ou créateur du Livre). */
-  static async deleteBookComment(
-    bookId: string,
-    commentId: string
-  ): Promise<{ success: boolean }> {
-    return ApiService.request(`/v1/books/${bookId}/comments/${commentId}`, {
-      method: "DELETE",
-    });
-  }
-
-  /** Réagit à un message de la discussion du Livre (toggle emoji). */
-  static async reactBookComment(
-    bookId: string,
-    commentId: string,
-    emoji: string
-  ): Promise<{
-    success: boolean;
-    reacted: boolean;
-    reactions: { emoji: string; count: number; mine: boolean }[];
-  }> {
-    return ApiService.request(
-      `/v1/books/${bookId}/comments/${commentId}/react`,
-      {
-        body: JSON.stringify({ emoji }),
-        method: "POST",
-      }
     );
   }
 
@@ -1657,16 +1629,6 @@ export class ApiService {
     }>;
   }> {
     return ApiService.request("/v1/mai/tools");
-  }
-
-  /** Enregistre la liste des outils mAI activés (Paramètres → Outils mAI). */
-  static async updateMAITools(
-    enabledToolIds: string[]
-  ): Promise<{ success: boolean; enabled_tool_ids: string[] }> {
-    return ApiService.request("/v1/mai/tools", {
-      body: JSON.stringify({ enabled_tool_ids: enabledToolIds }),
-      method: "POST",
-    });
   }
 
   static async reactToMessage(
@@ -2302,25 +2264,16 @@ export class ApiService {
     return ApiService.request("/v1/mai/quotas");
   }
 
-  static async modulateText(
-    text: string,
-    tone = "executive"
-  ): Promise<{ success: boolean; modulated: string }> {
-    return ApiService.request("/v1/mai/modulate", {
-      body: JSON.stringify({ text, tone }),
-      method: "POST",
-    });
-  }
-
   // ─────────────────────────────────────────────
   // PROFILES & AVATAR SYNC
   // ─────────────────────────────────────────────
   static async getProfile(
     username: string
   ): Promise<{ profile: Profile; posts: Post[] }> {
-    const cleanUser = username.trim().replace(/^@/, "");
-    const endpoint = `/v1/profiles/${encodeURIComponent(cleanUser)}`;
-    return ApiService.cachedRequest(endpoint, 30_000);
+    return ApiService.cachedRequest(
+      ApiService.profileEndpoint(username),
+      30_000
+    );
   }
 
   static async updateProfile(
@@ -2362,6 +2315,125 @@ export class ApiService {
       "file",
       file,
       "Erreur lors de l'upload du fichier."
+    );
+  }
+
+  // ─────────────────────────────────────────────
+  // STORIES — rail de 24 h, publication, vues, réactions
+  //
+  // L'identité n'est jamais un argument : le porteur Bearer suffit, comme partout
+  // ailleurs dans ce service. Les médias sont téléversés par `uploadFile` AVANT
+  // `createStory` — la publication ne fait que revendiquer des objets déjà stockés,
+  // et le serveur en recontrôle l'origine et la taille.
+  // ─────────────────────────────────────────────
+
+  /** Clé canonique du rail (partagée avec le lecteur serveur lib/vibe/server). */
+  static storiesTrayEndpoint(): string {
+    return "/v1/stories/tray";
+  }
+
+  /** Rail du jour, groupé par auteur. TTL court : le rail est très volatil. */
+  static async getStoriesTray(): Promise<{
+    stories: StoryAuthor[];
+    success: boolean;
+  }> {
+    return ApiService.cachedRequest(ApiService.storiesTrayEndpoint(), 15_000);
+  }
+
+  /** Quota du jour (limite, usage, compte à rebours avant minuit Paris). */
+  static async getStoryQuota(): Promise<StoryQuota> {
+    return ApiService.cachedRequest("/v1/stories/quota", 15_000);
+  }
+
+  /** Mes stories encore visibles (live). */
+  static async getActiveStories(): Promise<{
+    stories: Story[];
+    success: boolean;
+  }> {
+    return ApiService.cachedRequest("/v1/stories/active", 15_000);
+  }
+
+  /** Mes stories archivées (échéance dépassée ou archive volontaire). */
+  static async getStoriesArchive(): Promise<{
+    stories: Story[];
+    success: boolean;
+  }> {
+    return ApiService.cachedRequest("/v1/stories/archive", 60_000);
+  }
+
+  static async createStory(payload: {
+    caption?: string;
+    items: Array<{
+      alt_text?: string;
+      height?: number | null;
+      media_type: "image" | "video";
+      pathname: string;
+      url: string;
+      width?: number | null;
+    }>;
+    visibility?: "followers" | "public" | "private";
+  }): Promise<{ id: string; quota: StoryQuota; success: boolean }> {
+    ApiService.invalidateCache("/v1/stories");
+    return ApiService.request("/v1/stories", {
+      body: JSON.stringify(payload),
+      method: "POST",
+    });
+  }
+
+  static async patchStory(
+    id: string,
+    payload: { archived?: boolean; caption?: string; visibility?: string }
+  ): Promise<{ id: string; success: boolean }> {
+    ApiService.invalidateCache("/v1/stories");
+    return ApiService.request(`/v1/stories/${encodeURIComponent(id)}`, {
+      body: JSON.stringify(payload),
+      method: "PATCH",
+    });
+  }
+
+  static async deleteStory(
+    id: string
+  ): Promise<{ id: string; success: boolean }> {
+    ApiService.invalidateCache("/v1/stories");
+    return ApiService.request(`/v1/stories/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    });
+  }
+
+  /**
+   * Marque une vue. Idempotente côté serveur (clé composée story×spectateur) :
+   * revoir la même story ne gonfle pas le compteur de l'auteur. Un 204 vide est
+   * attendu, d'où l'absence de lecture de corps.
+   */
+  static async viewStory(id: string): Promise<void> {
+    try {
+      await ApiService.request(`/v1/stories/${encodeURIComponent(id)}/view`, {
+        method: "POST",
+      });
+    } catch {
+      // Une vue non enregistrée ne doit jamais interrompre la consultation.
+    }
+  }
+
+  static async reactStory(
+    id: string,
+    emoji: string
+  ): Promise<{ emoji: string; success: boolean }> {
+    return ApiService.request(`/v1/stories/${encodeURIComponent(id)}/react`, {
+      body: JSON.stringify({ emoji }),
+      method: "POST",
+    });
+  }
+
+  /** Liste de qui a regardé — appel réservé à l'auteur (le serveur renvoie 403 sinon). */
+  static async getStoryViews(id: string): Promise<{
+    count: number;
+    success: boolean;
+    viewers: StoryViewer[];
+  }> {
+    return ApiService.cachedRequest(
+      `/v1/stories/${encodeURIComponent(id)}/views`,
+      10_000
     );
   }
 

@@ -3,6 +3,7 @@ import { API_ERROR_STATUS } from "./lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { isLiveSessionToken } from "./lib/auth/token-liveness";
 import { MAI_SESSION_COOKIE } from "./lib/constants";
+import { estRouteApiAutonome } from "./lib/security/proxy-policy";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -50,11 +51,23 @@ export async function proxy(request: NextRequest) {
   // Routes API autonomes : elles portent leur propre mécanisme d'authentification
   // (CRON_SECRET par en-tête pour les crons, Bearer API Key pour l'API publique
   // d'agents, ou sont publiques par conception comme la consultation de skills partagés).
-  // Elles ne requièrent pas de cookie de session navigateur.
+  // Elles ne requièrent pas de cookie de session navigateur. La liste et la
+  // normalisation du basePath vivent dans lib/security/proxy-policy.ts, module pur
+  // dont la frontière d'authentification est testable sans runtime Next.
+  if (estRouteApiAutonome(pathname, process.env.NEXT_PUBLIC_BASE_PATH ?? "")) {
+    return NextResponse.next();
+  }
+
+  // Le callback OAuth s'authentifie par son état scellé, pas par la session :
+  // le compte est EN TRAIN d'être connecté, et l'écran de consentement peut
+  // rester ouvert plus longtemps que l'`exp` du jeton de session. Le traiter
+  // comme une route privée affichrait un 401 JSON en pleine navigation
+  // utilisateur — une page que l'utilisateur ne peut pas interpréter.
+  // `connect`, `disconnect` et `status` restent protégés : ce sont des appels
+  // XHR de notre propre interface, qui doivent répondre 401.
   if (
-    pathname.startsWith("/api/cron/") ||
-    pathname.startsWith("/api/site/v1/") ||
-    pathname.startsWith("/api/skills/share/")
+    pathname.startsWith("/api/integration/") &&
+    pathname.endsWith("/callback")
   ) {
     return NextResponse.next();
   }

@@ -1,6 +1,38 @@
 "use client";
 
-import { BarChart3Icon, BombIcon, BrainIcon, CalculatorIcon, CalendarClockIcon, CalendarIcon, CloudSunIcon, Code2Icon, DownloadIcon, FileTextIcon, FolderArchiveIcon, FolderKanbanIcon, GhostIcon, GlobeIcon, HomeIcon, ImageIcon, LightbulbIcon, ListChecksIcon, ListIcon, NotebookIcon, PaletteIcon, PenLineIcon, PenSquareIcon, QrCodeIcon, SearchIcon, SlidersHorizontalIcon, Trash2Icon, TrophyIcon, Volume2Icon, XIcon, ZapIcon } from "@mdevs/icons";
+import {
+  BarChart3Icon,
+  BombIcon,
+  BrainIcon,
+  CalculatorIcon,
+  CalendarClockIcon,
+  CalendarIcon,
+  CloudSunIcon,
+  Code2Icon,
+  DownloadIcon,
+  FileTextIcon,
+  FolderArchiveIcon,
+  FolderKanbanIcon,
+  GhostIcon,
+  GlobeIcon,
+  HomeIcon,
+  ImageIcon,
+  LightbulbIcon,
+  ListChecksIcon,
+  ListIcon,
+  NotebookIcon,
+  PaletteIcon,
+  PenLineIcon,
+  PenSquareIcon,
+  QrCodeIcon,
+  SearchIcon,
+  SlidersHorizontalIcon,
+  Trash2Icon,
+  TrophyIcon,
+  Volume2Icon,
+  XIcon,
+  ZapIcon,
+} from "@mdevs/icons";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { BotGlyph } from "@/components/agents/bot-avatar";
@@ -32,19 +64,19 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "new",
-    description: "Start a new chat",
+    description: "Démarrer une nouvelle conversation",
     icon: <PenSquareIcon className="size-3.5" />,
     name: "new",
   },
   {
     action: "clear",
-    description: "Clear current chat",
+    description: "Effacer la conversation en cours",
     icon: <Trash2Icon className="size-3.5" />,
     name: "clear",
   },
   {
     action: "rename",
-    description: "Rename current chat",
+    description: "Renommer la conversation en cours",
     icon: <PenLineIcon className="size-3.5" />,
     name: "rename",
   },
@@ -244,13 +276,13 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "delete",
-    description: "Delete current chat",
+    description: "Supprimer la conversation en cours",
     icon: <XIcon className="size-3.5" />,
     name: "delete",
   },
   {
     action: "purge",
-    description: "Delete all chats",
+    description: "Supprimer toutes les conversations",
     icon: <BombIcon className="size-3.5" />,
     name: "purge",
   },
@@ -403,13 +435,13 @@ export function getFilteredSlashCommands(
     list = list.filter((cmd) => cmd.action !== "export");
   }
   if (context?.isFree) {
-    // `/bots` et les commandes personnalisées visent des fonctions réservées
-    // aux forfaits payants : les proposer à un compte Free mènerait à un sélecteur
-    // absent. Le filtre est posé ICI, sur le catalogue, plutôt que dans chaque
-    // composer — les deux sont alimentés par la même liste.
-    list = list.filter(
-      (cmd) => cmd.action !== "bots" && cmd.action !== "custom"
-    );
+    // Les commandes personnalisées restent réservées aux forfaits payants : la
+    // proposer à un compte Free mènerait à un sélecteur absent. `/bots` n'est
+    // plus filtré : les bots sont ouverts à tous et bornés par quota (8 en
+    // Free), et le sélecteur est monté pour tous les forfaits. Le filtre est
+    // posé ICI, sur le catalogue, plutôt que dans chaque composer — les deux
+    // sont alimentés par la même liste.
+    list = list.filter((cmd) => cmd.action !== "custom");
   }
   const q = query.toLowerCase().trim();
   if (!q) {

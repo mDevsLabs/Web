@@ -3,6 +3,7 @@ import "server-only";
 import type { Tool } from "ai";
 import { PLUGIN_MANIFEST_LIST } from "./catalog";
 import { PLUGIN_DEFINITIONS } from "./server.generated";
+import { toolEffect } from "./tool-effect";
 import type { PluginDefinition, PluginToolDeps } from "./types";
 
 export const PLUGIN_DEFINITION_LIST: PluginDefinition[] = PLUGIN_DEFINITIONS;
@@ -60,6 +61,12 @@ export function getToolIdsForPluginIds(pluginIds: string[]): string[] {
 
 // Instancie les outils des plugins autorisés. `pluginIds` vide/absent = tous
 // les plugins du catalogue (usage interne/tests).
+//
+// Deux filtres, plus deux exceptions. Un plugin qui lit les données d'un compte
+// n'a rien à lire sans identité vérifiée : il est écarté (et signalé) plutôt
+// que de faire tomber un tour déjà commencé. Un outil d'ÉCRITURE n'est servi que
+// sur le canal Agent, où le moteur de permissions le colle d'office à
+// `"ask"` — les autres canaux gardent la lecture du même plugin.
 export function createPluginTools(
   deps: PluginToolDeps,
   pluginIds?: string[]
@@ -70,31 +77,26 @@ export function createPluginTools(
     if (allowed && !allowed.has(definition.manifest.id)) {
       continue;
     }
-    if (
-      deps.channel &&
-      deps.channel !== "agent" &&
-      (definition.manifest.permissions.writesUserData ||
-        definition.manifest.permissions.requiresApproval)
-    ) {
-      throw new Error(
-        `Le plugin « ${definition.manifest.id} » nécessite le canal Agent interactif.`
+    const { manifest } = definition;
+    if (manifest.permissions.readsUserData && !deps.userId) {
+      console.warn(
+        `[plugins] « ${manifest.id} » écarté : il lit les données d'un compte et l'appel ne porte aucun identifiant utilisateur.`
       );
+      continue;
     }
-    if (
-      deps.channel &&
-      deps.channel !== "agent" &&
-      definition.manifest.permissions.readsUserData
-    ) {
-      throw new Error(
-        `Le plugin « ${definition.manifest.id} » nécessite un contexte utilisateur non disponible.`
-      );
+    const interactive = !deps.channel || deps.channel === "agent";
+    const served = interactive
+      ? manifest.tools
+      : manifest.tools.filter((tool) => toolEffect(manifest, tool) === "read");
+    if (served.length === 0) {
+      continue;
     }
     const created = definition.createTools(deps);
-    for (const manifestTool of definition.manifest.tools) {
+    for (const manifestTool of served) {
       const implementation = created[manifestTool.id];
       if (!implementation) {
         throw new Error(
-          `Le plugin « ${definition.manifest.id} » ne fournit pas l'outil « ${manifestTool.id} ».`
+          `Le plugin « ${manifest.id} » ne fournit pas l'outil « ${manifestTool.id} ».`
         );
       }
       tools[manifestTool.id] = implementation;

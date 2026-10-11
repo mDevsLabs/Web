@@ -1,6 +1,33 @@
 "use client";
 
-import { AlertCircleIcon, BellIcon, BotIcon, BrainIcon, CameraIcon, CloudIcon, DatabaseIcon, ExternalLinkIcon, EyeIcon, EyeOffIcon, ImageIcon, KeyRoundIcon, LanguagesIcon, LineChartIcon, Loader2Icon, LockIcon, MonitorSmartphoneIcon, RefreshCwIcon, SettingsIcon, ShieldCheckIcon, SparklesIcon, SquareSlashIcon, StarIcon, UserIcon, Volume2Icon, WrenchIcon, ZapIcon } from "@mdevs/icons";
+import {
+  AlertCircleIcon,
+  BellIcon,
+  BotIcon,
+  BrainIcon,
+  CameraIcon,
+  ClipboardListIcon,
+  CloudIcon,
+  DatabaseIcon,
+  EyeIcon,
+  EyeOffIcon,
+  ImageIcon,
+  KeyRoundIcon,
+  LanguagesIcon,
+  LineChartIcon,
+  Loader2Icon,
+  MonitorSmartphoneIcon,
+  RefreshCwIcon,
+  SettingsIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+  SquareSlashIcon,
+  StarIcon,
+  UserIcon,
+  Volume2Icon,
+  WrenchIcon,
+  ZapIcon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -22,10 +49,10 @@ import {
 } from "@/components/chat/model-selector-compact";
 import { reopenNotificationPrompt } from "@/components/chat/notification-permission-gate";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { AgentTab } from "@/components/settings/agent-tab";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
 import { DataTab } from "@/components/settings/data-tab";
+import { FormsTab } from "@/components/settings/forms-tab";
 import { MemoryCard } from "@/components/settings/memory-card";
 import {
   OptionSelector,
@@ -62,7 +89,6 @@ import {
   resolveSpeechUsage,
   useSettings,
 } from "@/hooks/use-settings";
-import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
@@ -71,7 +97,7 @@ import {
   type AppCatalogEntry,
   type AppKey,
 } from "@/lib/apps/catalog";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL } from "@/lib/constants";
 import { type CreationMode, normalizeCreationMode } from "@/lib/creation/mode";
 import {
   AUTO_DICTATION_LANGUAGE,
@@ -159,6 +185,7 @@ type SettingsTab =
   | "agent"
   | "configuration"
   | "data"
+  | "forms"
   | "memory"
   | "notifications"
   | "preferences"
@@ -175,6 +202,7 @@ const SETTINGS_TABS: {
   { icon: BotIcon, id: "agent", label: "Agent" },
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
+  { icon: ClipboardListIcon, id: "forms", label: "Formulaires" },
   { icon: BellIcon, id: "notifications", label: "Notifications" },
   { icon: DatabaseIcon, id: "data", label: "Données" },
   { icon: WrenchIcon, id: "configuration", label: "Outils" },
@@ -425,8 +453,6 @@ function SettingsPageInner() {
     { dedupingInterval: 30_000 }
   );
 
-  const { isFree } = useTier();
-
   // Forfait utilisé pour BORNER les instructions personnalisées. On lit le
   // profil plutôt que `useTier()` : le profil expose `tier` tel que persisté,
   // alors que useTier dérive des drapeaux à partir de plusieurs sources de la
@@ -447,7 +473,6 @@ function SettingsPageInner() {
   const { favorite: favoriteApp, setFavorite: setFavoriteApp } =
     useFavoriteApp();
   const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
-  const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
   const [dictationLanguage, setDictationLanguage] = useState(
@@ -460,16 +485,13 @@ function SettingsPageInner() {
   const { data: prefAgentsData } = useSWR<{
     agents: any[];
     limit: number | null;
-  }>(isFree ? null : "/api/agents", fetcher, { dedupingInterval: 30_000 });
+  }>("/api/agents", fetcher, { dedupingInterval: 30_000 });
   const prefAgents: any[] = Array.isArray(prefAgentsData?.agents)
     ? prefAgentsData.agents
     : [];
 
   const handleSaveDefaultAgent = useCallback(
     async (next: string) => {
-      if (isFree) {
-        return;
-      }
       const previous = defaultAgentId;
       setDefaultAgentId(next);
       setIsSavingDefaultAgent(true);
@@ -497,7 +519,7 @@ function SettingsPageInner() {
         setIsSavingDefaultAgent(false);
       }
     },
-    [defaultAgentId, isFree, mutateCustomPref]
+    [defaultAgentId, mutateCustomPref]
   );
 
   const handleToggleShowAgentChatIcons = useCallback(
@@ -1153,6 +1175,8 @@ function SettingsPageInner() {
           { id: "data-memory", label: "Mémoire" },
           { id: "data-generations", label: "Images & audios" },
         ];
+      case "forms":
+        return [{ id: "forms-list", label: "Formulaires" }];
       default:
         return [];
     }
@@ -1187,10 +1211,10 @@ function SettingsPageInner() {
       </div>
 
       {/* Onglets — même design que les pages Audio / Images */}
-      <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
+      <div className="border-b border-border/40 bg-muted/20 px-4 py-1.5 sm:px-6">
         <div
           aria-label="Sections des paramètres"
-          className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto"
+          className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5"
           role="tablist"
         >
           {SETTINGS_TABS.map((tab, index) => (
@@ -1732,13 +1756,10 @@ function SettingsPageInner() {
                       </p>
                       <Link
                         className="inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold text-foreground hover:underline"
-                        href={MAI_UPGRADE_URL}
-                        rel="noreferrer"
-                        target="_blank"
+                        href={APP_PRICING_URL}
                       >
                         <SparklesIcon className="size-3" />
                         Voir les forfaits
-                        <ExternalLinkIcon className="size-3" />
                       </Link>
                     </div>
                   ) : null}
@@ -1808,34 +1829,11 @@ function SettingsPageInner() {
                 </div>
               </div>
 
-              {/* Bot par défaut */}
+              {/* Bot par défaut : ouvert à tous les forfaits. Ce qui borne un
+                  Free est le quota de bots (8), pas l'accès à la préférence. */}
               <div
-                className={`surface-card flex flex-col gap-4 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
+                className="surface-card flex flex-col gap-4 scroll-mt-6"
                 id="prefs-agent"
-                onClick={
-                  isFree
-                    ? () => {
-                        toast.error(
-                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
-                        );
-                        setAgentsUpgradeOpen(true);
-                      }
-                    : undefined
-                }
-                onKeyDown={
-                  isFree
-                    ? (event) => {
-                        if (event.key !== "Enter" && event.key !== " ") return;
-                        event.preventDefault();
-                        toast.error(
-                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
-                        );
-                        setAgentsUpgradeOpen(true);
-                      }
-                    : undefined
-                }
-                role={isFree ? "button" : undefined}
-                tabIndex={isFree ? 0 : undefined}
               >
                 <div className="flex items-center gap-2.5">
                   <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
@@ -1854,39 +1852,29 @@ function SettingsPageInner() {
                     <Loader2Icon className="size-4 animate-spin text-muted-foreground" />
                   )}
                 </div>
-                {isFree ? (
-                  <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-warning/40 bg-warning/5 text-xs text-warning">
-                    <LockIcon className="size-4 shrink-0" />
-                    <span>
-                      Réservé aux forfaits Plus, Pro et Max — passez à un
-                      forfait supérieur pour choisir un bot par défaut.
-                    </span>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-1.5">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Agent activé au lancement d'une nouvelle conversation
-                    </Label>
-                    <OptionSelector
-                      disabled={isSavingDefaultAgent}
-                      items={[
-                        { id: "none", label: "Aucun (modèle standard)" },
-                        ...prefAgents.map((a) => ({
-                          icon: <BotGlyph className="size-3.5" />,
-                          id: a.id,
-                          label: a.name,
-                        })),
-                      ]}
-                      onChange={handleSaveDefaultAgent}
-                      placeholder="Choisir un bot"
-                      value={defaultAgentId}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      S'applique au prochain chargement du chat. Modifiable à
-                      tout moment via la mention @agent.
-                    </span>
-                  </div>
-                )}
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs font-medium text-muted-foreground">
+                    Agent activé au lancement d'une nouvelle conversation
+                  </Label>
+                  <OptionSelector
+                    disabled={isSavingDefaultAgent}
+                    items={[
+                      { id: "none", label: "Aucun (modèle standard)" },
+                      ...prefAgents.map((a) => ({
+                        icon: <BotGlyph className="size-3.5" />,
+                        id: a.id,
+                        label: a.name,
+                      })),
+                    ]}
+                    onChange={handleSaveDefaultAgent}
+                    placeholder="Choisir un bot"
+                    value={defaultAgentId}
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    S'applique au prochain chargement du chat. Modifiable à tout
+                    moment via la mention @agent.
+                  </span>
+                </div>
 
                 <div className="pt-2 border-t border-border/40 flex items-center justify-between gap-3">
                   <div className="flex flex-col">
@@ -1914,11 +1902,6 @@ function SettingsPageInner() {
                   </label>
                 </div>
               </div>
-              <UpgradeDialog
-                feature="agents"
-                onOpenChange={setAgentsUpgradeOpen}
-                open={agentsUpgradeOpen}
-              />
 
               {/* Préférences Outils de Génération (Images & Audio) */}
               <div
@@ -2351,14 +2334,12 @@ function SettingsPageInner() {
                     </div>
                     <p className="text-[11px] text-muted-foreground">
                       En activant, vous acceptez de recevoir des notifications
-                      navigateur et in-app. Consultez{" "}
+                      navigateur et dans l’application. Consultez{" "}
                       <a
                         className="underline text-primary"
-                        href="https://mai-devs.vercel.app"
-                        rel="noopener noreferrer"
-                        target="_blank"
+                        href="/site/legal/privacy"
                       >
-                        mai-devs.vercel.app
+                        la politique de confidentialité
                       </a>{" "}
                       pour la politique RGPD.
                     </p>
@@ -2505,11 +2486,9 @@ function SettingsPageInner() {
                     activé l'option. Plus d'infos sur{" "}
                     <a
                       className="text-primary underline"
-                      href="https://mai-devs.vercel.app"
-                      rel="noopener noreferrer"
-                      target="_blank"
+                      href="/site/legal/privacy"
                     >
-                      mai-devs.vercel.app
+                      politique de confidentialité
                     </a>
                     .
                   </p>
@@ -2551,6 +2530,11 @@ function SettingsPageInner() {
             /* ────────────── SECTION DONNÉES ────────────── */
             <div className="py-6 max-w-4xl">
               <DataTab />
+            </div>
+          ) : activeTab === "forms" ? (
+            /* ────────────── SECTION FORMULAIRES ────────────── */
+            <div className="py-6 max-w-4xl scroll-mt-6" id="forms-list">
+              <FormsTab />
             </div>
           ) : (
             /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
@@ -2602,7 +2586,6 @@ function SettingsPageInner() {
                     >
                       <SparklesIcon className="size-4" />
                       <span>Gérer / Mettre à niveau</span>
-                      <ExternalLinkIcon className="size-3.5" />
                     </Link>
                   );
                 })()}
@@ -2762,7 +2745,7 @@ function SettingsPageInner() {
                         Synthèse Vocale
                       </h3>
                       <p className="hidden text-xs text-muted-foreground sm:block">
-                        Tokens consommés pour l'API Speech et Text-to-Speech
+                        Tokens consommés pour l’API vocale et la synthèse vocale
                       </p>
                     </div>
                   </div>
@@ -2871,11 +2854,9 @@ function SettingsPageInner() {
                     directement sur le portail officiel{" "}
                     <Link
                       className="text-primary font-medium underline inline-flex items-center gap-0.5"
-                      href={MAI_UPGRADE_URL}
-                      target="_blank"
+                      href={APP_PRICING_URL}
                     >
-                      mai-devs.vercel.app
-                      <ExternalLinkIcon className="size-3" />
+                      la page des forfaits
                     </Link>
                     .
                   </p>

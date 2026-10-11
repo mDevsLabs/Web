@@ -2,6 +2,11 @@
  * useInfiniteFeed — scroll infini avec curseur côté serveur.
  * Gère le premier chargement, les pages suivantes via une sentinelle
  * IntersectionObserver, la garde anti-doublon et les erreurs.
+ *
+ * Hydratation : quand `hydrationKey` désigne le même écran que `resetKey`,
+ * les `initialItems` posés par le serveur (RSC) deviennent le premier page —
+ * le `load` initial est sauté UNE fois, puis le comportement redevient normal
+ * (un changement d'onglet ou un `refresh()` recallent l'API).
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -13,6 +18,12 @@ interface UseInfiniteFeedOptions<T> {
   fetchPage: (
     cursor?: string
   ) => Promise<{ items: T[]; nextCursor?: string | null }>;
+  /** Identité de l'écran hydraté ; doit égaler `String(resetKey)` pour sauter le premier load. */
+  hydrationKey?: string | null;
+  /** Page déjà rendue côté serveur (seed RSC), `null` si hydratation ratée. */
+  initialItems?: T[] | null;
+  /** Curseur pointant la page SUIVANTE le seed. */
+  initialNextCursor?: string | null;
   /** Dépendances qui réinitialisent le flux (onglet, filtre…). */
   resetKey?: string | number | null;
 }
@@ -21,16 +32,35 @@ export function useInfiniteFeed<T extends { id?: string | number }>({
   fetchPage,
   resetKey,
   enabled = true,
+  initialItems,
+  initialNextCursor,
+  hydrationKey,
 }: UseInfiniteFeedOptions<T>) {
-  const [items, setItems] = useState<T[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const seeded = Boolean(
+    initialItems &&
+      initialItems.length > 0 &&
+      hydrationKey !== null &&
+      hydrationKey !== undefined &&
+      hydrationKey === String(resetKey ?? "")
+  );
+  const [items, setItems] = useState<T[]>(() => (seeded ? initialItems! : []));
+  const [isLoading, setIsLoading] = useState(() => !seeded);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [hasMore, setHasMore] = useState(true);
-  const cursorRef = useRef<string | undefined>(undefined);
-  const hasMoreRef = useRef(true);
+  const [hasMore, setHasMore] = useState(() =>
+    seeded ? Boolean(initialNextCursor) : true
+  );
+  const cursorRef = useRef<string | undefined>(
+    seeded ? initialNextCursor || undefined : undefined
+  );
+  const hasMoreRef = useRef<boolean>(
+    seeded ? Boolean(initialNextCursor) : true
+  );
   const inFlightRef = useRef(false);
   const fetchPageRef = useRef(fetchPage);
+  // Le saut n'est valable que pour le TOUT premier déclenchement de l'effet
+  // d'resetKey ; après, resetKey/refresh repassent par l'API.
+  const skipFirstLoadRef = useRef(seeded);
 
   // Synchronisation de la dernière version de fetchPage sans relancer le flux
   useEffect(() => {
@@ -63,9 +93,14 @@ export function useInfiniteFeed<T extends { id?: string | number }>({
     }
   }, []);
 
-  // (Re)chargement initial à chaque changement de resetKey
+  // (Re)chargement initial à chaque changement de resetKey — sauté une seule
+  // fois quand l'écran arrive hydraté depuis le serveur.
   useEffect(() => {
     if (!enabled) return;
+    if (skipFirstLoadRef.current) {
+      skipFirstLoadRef.current = false;
+      return;
+    }
     cursorRef.current = undefined;
     hasMoreRef.current = true;
     setHasMore(true);

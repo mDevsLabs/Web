@@ -150,7 +150,10 @@ export function registerVibeSettingsRoutes(
         `,
         sql`
           INSERT INTO usage_logs (user_id, action_type, endpoint, metadata, tokens_used, timestamp)
-          VALUES (${userId}, ${action_type}, ${endpoint}, ${JSON.stringify({ endpoint, timestamp: new Date().toISOString() })}::jsonb, ${tokens}, NOW())
+          VALUES (${userId}, ${action_type}, ${endpoint}, ${JSON.stringify({
+            endpoint,
+            timestamp: new Date().toISOString(),
+          })}::jsonb, ${tokens}, NOW())
         `.catch(() => {}),
       ]);
 
@@ -268,44 +271,120 @@ export function registerVibeSettingsRoutes(
         )
         ON CONFLICT (user_id)
         DO UPDATE SET
-          email_notifications = CASE WHEN ${body.email_notifications !== undefined} THEN EXCLUDED.email_notifications ELSE user_settings.email_notifications END,
-          push_notifications = CASE WHEN ${body.push_notifications !== undefined} THEN EXCLUDED.push_notifications ELSE user_settings.push_notifications END,
-          notify_on_like = CASE WHEN ${body.notify_on_like !== undefined} THEN EXCLUDED.notify_on_like ELSE user_settings.notify_on_like END,
-          notify_on_repost = CASE WHEN ${body.notify_on_repost !== undefined} THEN EXCLUDED.notify_on_repost ELSE user_settings.notify_on_repost END,
-          notify_on_reply = CASE WHEN ${body.notify_on_reply !== undefined} THEN EXCLUDED.notify_on_reply ELSE user_settings.notify_on_reply END,
-          notify_on_dm = CASE WHEN ${body.notify_on_dm !== undefined} THEN EXCLUDED.notify_on_dm ELSE user_settings.notify_on_dm END,
-          content_filter_level = CASE WHEN ${body.content_filter_level !== undefined} THEN EXCLUDED.content_filter_level ELSE user_settings.content_filter_level END,
-          blur_sensitive_content = CASE WHEN ${body.blur_sensitive_content !== undefined} THEN EXCLUDED.blur_sensitive_content ELSE user_settings.blur_sensitive_content END,
-          age_restriction_enabled = CASE WHEN ${body.age_restriction_enabled !== undefined} THEN EXCLUDED.age_restriction_enabled ELSE user_settings.age_restriction_enabled END,
-          allow_dms = CASE WHEN ${body.allow_dms !== undefined || body.allow_dms_from !== undefined} THEN EXCLUDED.allow_dms ELSE user_settings.allow_dms END,
-          dms_enabled = CASE WHEN ${body.dms_enabled !== undefined} THEN EXCLUDED.dms_enabled ELSE user_settings.dms_enabled END,
-          feed_default_mode = CASE WHEN ${body.feed_default_mode !== undefined} THEN EXCLUDED.feed_default_mode ELSE user_settings.feed_default_mode END,
-          hide_reposts = CASE WHEN ${body.hide_reposts !== undefined} THEN EXCLUDED.hide_reposts ELSE user_settings.hide_reposts END,
-          blocked_keywords = CASE WHEN ${body.blocked_keywords !== undefined} THEN EXCLUDED.blocked_keywords ELSE user_settings.blocked_keywords END,
-          two_factor_auth = CASE WHEN ${body.two_factor_auth !== undefined} THEN EXCLUDED.two_factor_auth ELSE user_settings.two_factor_auth END,
-          allow_mentions = CASE WHEN ${body.allow_mentions !== undefined} THEN EXCLUDED.allow_mentions ELSE user_settings.allow_mentions END,
-          theme_preference = CASE WHEN ${body.theme_preference !== undefined} THEN EXCLUDED.theme_preference ELSE user_settings.theme_preference END,
-          accent_color = CASE WHEN ${body.accent_color !== undefined} THEN EXCLUDED.accent_color ELSE user_settings.accent_color END,
-          font_size = CASE WHEN ${body.font_size !== undefined} THEN EXCLUDED.font_size ELSE user_settings.font_size END,
-          mai_auto_approve_tools = CASE WHEN ${body.mai_auto_approve_tools !== undefined} THEN EXCLUDED.mai_auto_approve_tools ELSE user_settings.mai_auto_approve_tools END,
-          posts_ai_generated_by_default = CASE WHEN ${body.posts_ai_generated_by_default !== undefined} THEN EXCLUDED.posts_ai_generated_by_default ELSE user_settings.posts_ai_generated_by_default END,
-          mai_default_model = CASE WHEN ${body.mai_default_model !== undefined} THEN EXCLUDED.mai_default_model ELSE user_settings.mai_default_model END,
-          mai_tts_voice = CASE WHEN ${body.mai_tts_voice !== undefined} THEN EXCLUDED.mai_tts_voice ELSE user_settings.mai_tts_voice END,
-          ui_language = CASE WHEN ${body.ui_language !== undefined} THEN EXCLUDED.ui_language ELSE user_settings.ui_language END,
-          message_bubble_theme = CASE WHEN ${body.message_bubble_theme !== undefined} THEN EXCLUDED.message_bubble_theme ELSE user_settings.message_bubble_theme END,
-          chat_background_theme = CASE WHEN ${body.chat_background_theme !== undefined} THEN EXCLUDED.chat_background_theme ELSE user_settings.chat_background_theme END,
-          message_bubble_shape = CASE WHEN ${body.message_bubble_shape !== undefined} THEN EXCLUDED.message_bubble_shape ELSE user_settings.message_bubble_shape END,
-          default_vibe_audience = CASE WHEN ${body.default_vibe_audience !== undefined} THEN EXCLUDED.default_vibe_audience ELSE user_settings.default_vibe_audience END,
-          scheduled_theme = CASE WHEN ${body.scheduled_theme !== undefined} THEN EXCLUDED.scheduled_theme ELSE user_settings.scheduled_theme END,
-          onboarding_completed = CASE WHEN ${body.onboarding_completed !== undefined} THEN EXCLUDED.onboarding_completed ELSE user_settings.onboarding_completed END,
-          mai_context_posts = CASE WHEN ${body.mai_context_posts !== undefined} THEN EXCLUDED.mai_context_posts ELSE user_settings.mai_context_posts END,
-          mai_context_dms = CASE WHEN ${body.mai_context_dms !== undefined} THEN EXCLUDED.mai_context_dms ELSE user_settings.mai_context_dms END,
-          mai_context_books = CASE WHEN ${body.mai_context_books !== undefined} THEN EXCLUDED.mai_context_books ELSE user_settings.mai_context_books END,
-          hide_verified_badge = CASE WHEN ${body.hide_verified_badge !== undefined} THEN EXCLUDED.hide_verified_badge ELSE user_settings.hide_verified_badge END,
-          mai_enabled_tools = CASE WHEN ${body.mai_enabled_tools !== undefined} THEN EXCLUDED.mai_enabled_tools ELSE user_settings.mai_enabled_tools END,
-          collab_auto_accept = CASE WHEN ${body.collab_auto_accept !== undefined} THEN EXCLUDED.collab_auto_accept ELSE user_settings.collab_auto_accept END,
-          dm_auto_translate = CASE WHEN ${body.dm_auto_translate !== undefined} THEN EXCLUDED.dm_auto_translate ELSE user_settings.dm_auto_translate END,
-          dm_translate_lang = CASE WHEN ${body.dm_translate_lang !== undefined} THEN EXCLUDED.dm_translate_lang ELSE user_settings.dm_translate_lang END,
+          email_notifications = CASE WHEN ${
+            body.email_notifications !== undefined
+          } THEN EXCLUDED.email_notifications ELSE user_settings.email_notifications END,
+          push_notifications = CASE WHEN ${
+            body.push_notifications !== undefined
+          } THEN EXCLUDED.push_notifications ELSE user_settings.push_notifications END,
+          notify_on_like = CASE WHEN ${
+            body.notify_on_like !== undefined
+          } THEN EXCLUDED.notify_on_like ELSE user_settings.notify_on_like END,
+          notify_on_repost = CASE WHEN ${
+            body.notify_on_repost !== undefined
+          } THEN EXCLUDED.notify_on_repost ELSE user_settings.notify_on_repost END,
+          notify_on_reply = CASE WHEN ${
+            body.notify_on_reply !== undefined
+          } THEN EXCLUDED.notify_on_reply ELSE user_settings.notify_on_reply END,
+          notify_on_dm = CASE WHEN ${
+            body.notify_on_dm !== undefined
+          } THEN EXCLUDED.notify_on_dm ELSE user_settings.notify_on_dm END,
+          content_filter_level = CASE WHEN ${
+            body.content_filter_level !== undefined
+          } THEN EXCLUDED.content_filter_level ELSE user_settings.content_filter_level END,
+          blur_sensitive_content = CASE WHEN ${
+            body.blur_sensitive_content !== undefined
+          } THEN EXCLUDED.blur_sensitive_content ELSE user_settings.blur_sensitive_content END,
+          age_restriction_enabled = CASE WHEN ${
+            body.age_restriction_enabled !== undefined
+          } THEN EXCLUDED.age_restriction_enabled ELSE user_settings.age_restriction_enabled END,
+          allow_dms = CASE WHEN ${
+            body.allow_dms !== undefined || body.allow_dms_from !== undefined
+          } THEN EXCLUDED.allow_dms ELSE user_settings.allow_dms END,
+          dms_enabled = CASE WHEN ${
+            body.dms_enabled !== undefined
+          } THEN EXCLUDED.dms_enabled ELSE user_settings.dms_enabled END,
+          feed_default_mode = CASE WHEN ${
+            body.feed_default_mode !== undefined
+          } THEN EXCLUDED.feed_default_mode ELSE user_settings.feed_default_mode END,
+          hide_reposts = CASE WHEN ${
+            body.hide_reposts !== undefined
+          } THEN EXCLUDED.hide_reposts ELSE user_settings.hide_reposts END,
+          blocked_keywords = CASE WHEN ${
+            body.blocked_keywords !== undefined
+          } THEN EXCLUDED.blocked_keywords ELSE user_settings.blocked_keywords END,
+          two_factor_auth = CASE WHEN ${
+            body.two_factor_auth !== undefined
+          } THEN EXCLUDED.two_factor_auth ELSE user_settings.two_factor_auth END,
+          allow_mentions = CASE WHEN ${
+            body.allow_mentions !== undefined
+          } THEN EXCLUDED.allow_mentions ELSE user_settings.allow_mentions END,
+          theme_preference = CASE WHEN ${
+            body.theme_preference !== undefined
+          } THEN EXCLUDED.theme_preference ELSE user_settings.theme_preference END,
+          accent_color = CASE WHEN ${
+            body.accent_color !== undefined
+          } THEN EXCLUDED.accent_color ELSE user_settings.accent_color END,
+          font_size = CASE WHEN ${
+            body.font_size !== undefined
+          } THEN EXCLUDED.font_size ELSE user_settings.font_size END,
+          mai_auto_approve_tools = CASE WHEN ${
+            body.mai_auto_approve_tools !== undefined
+          } THEN EXCLUDED.mai_auto_approve_tools ELSE user_settings.mai_auto_approve_tools END,
+          posts_ai_generated_by_default = CASE WHEN ${
+            body.posts_ai_generated_by_default !== undefined
+          } THEN EXCLUDED.posts_ai_generated_by_default ELSE user_settings.posts_ai_generated_by_default END,
+          mai_default_model = CASE WHEN ${
+            body.mai_default_model !== undefined
+          } THEN EXCLUDED.mai_default_model ELSE user_settings.mai_default_model END,
+          mai_tts_voice = CASE WHEN ${
+            body.mai_tts_voice !== undefined
+          } THEN EXCLUDED.mai_tts_voice ELSE user_settings.mai_tts_voice END,
+          ui_language = CASE WHEN ${
+            body.ui_language !== undefined
+          } THEN EXCLUDED.ui_language ELSE user_settings.ui_language END,
+          message_bubble_theme = CASE WHEN ${
+            body.message_bubble_theme !== undefined
+          } THEN EXCLUDED.message_bubble_theme ELSE user_settings.message_bubble_theme END,
+          chat_background_theme = CASE WHEN ${
+            body.chat_background_theme !== undefined
+          } THEN EXCLUDED.chat_background_theme ELSE user_settings.chat_background_theme END,
+          message_bubble_shape = CASE WHEN ${
+            body.message_bubble_shape !== undefined
+          } THEN EXCLUDED.message_bubble_shape ELSE user_settings.message_bubble_shape END,
+          default_vibe_audience = CASE WHEN ${
+            body.default_vibe_audience !== undefined
+          } THEN EXCLUDED.default_vibe_audience ELSE user_settings.default_vibe_audience END,
+          scheduled_theme = CASE WHEN ${
+            body.scheduled_theme !== undefined
+          } THEN EXCLUDED.scheduled_theme ELSE user_settings.scheduled_theme END,
+          onboarding_completed = CASE WHEN ${
+            body.onboarding_completed !== undefined
+          } THEN EXCLUDED.onboarding_completed ELSE user_settings.onboarding_completed END,
+          mai_context_posts = CASE WHEN ${
+            body.mai_context_posts !== undefined
+          } THEN EXCLUDED.mai_context_posts ELSE user_settings.mai_context_posts END,
+          mai_context_dms = CASE WHEN ${
+            body.mai_context_dms !== undefined
+          } THEN EXCLUDED.mai_context_dms ELSE user_settings.mai_context_dms END,
+          mai_context_books = CASE WHEN ${
+            body.mai_context_books !== undefined
+          } THEN EXCLUDED.mai_context_books ELSE user_settings.mai_context_books END,
+          hide_verified_badge = CASE WHEN ${
+            body.hide_verified_badge !== undefined
+          } THEN EXCLUDED.hide_verified_badge ELSE user_settings.hide_verified_badge END,
+          mai_enabled_tools = CASE WHEN ${
+            body.mai_enabled_tools !== undefined
+          } THEN EXCLUDED.mai_enabled_tools ELSE user_settings.mai_enabled_tools END,
+          collab_auto_accept = CASE WHEN ${
+            body.collab_auto_accept !== undefined
+          } THEN EXCLUDED.collab_auto_accept ELSE user_settings.collab_auto_accept END,
+          dm_auto_translate = CASE WHEN ${
+            body.dm_auto_translate !== undefined
+          } THEN EXCLUDED.dm_auto_translate ELSE user_settings.dm_auto_translate END,
+          dm_translate_lang = CASE WHEN ${
+            body.dm_translate_lang !== undefined
+          } THEN EXCLUDED.dm_translate_lang ELSE user_settings.dm_translate_lang END,
           updated_at = NOW()
       `;
 

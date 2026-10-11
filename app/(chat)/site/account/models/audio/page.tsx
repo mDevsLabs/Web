@@ -1,8 +1,11 @@
 "use client";
 
-import { Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
-import { useRouter } from "next/navigation";
+import {
+  Loader2Icon as Loader2,
+  RefreshCwIcon as RefreshCw,
+} from "@mdevs/icons";
 import { useEffect } from "react";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyCatalogBanner } from "../shared/KeyCatalogBanner";
 import { ModelNavigation } from "../shared/ModelNavigation";
@@ -57,9 +60,9 @@ export default function ApiAudioModelsPage() {
               </span>
             </h1>
             <p className="text-slate-500 text-sm md:text-base font-light max-w-2xl">
-              Consultez le catalogue interactif des modèles Text-to-Speech (TTS)
-              compatibles OpenAI SDK &amp; Google Cloud TTS accessibles avec
-              votre clé d&apos;API mAI.
+              Consultez le catalogue interactif des modèles de synthèse vocale
+              (TTS) compatibles avec le SDK OpenAI et Google Cloud TTS,
+              accessibles avec votre clé d&apos;API mAI.
             </p>
           </div>
           <button

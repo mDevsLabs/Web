@@ -1,3 +1,4 @@
+import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — DMs : ACTIONS MESSAGE (vibe-dms-message-actions.ts)
@@ -51,11 +52,12 @@ export function registerDMMessageActionRoutes(
       const conversationId = target.conversationId;
       const msgRows =
         await sql`SELECT id FROM direct_messages WHERE id = ${messageId}::uuid AND conversation_id = ${conversationId}::uuid LIMIT 1`;
-      if (msgRows.length === 0)
+      if (msgRows.length === 0) {
         return c.json(
           { error: "Message introuvable dans cette conversation." },
           404
         );
+      }
       const countRows =
         await sql`SELECT COUNT(*) AS n FROM dm_pinned_messages WHERE conversation_id = ${conversationId}::uuid`;
       if (Number(countRows[0]?.n || 0) >= 3) {
@@ -158,8 +160,9 @@ export function registerDMMessageActionRoutes(
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0)
+        if (memberRows.length === 0) {
           return c.json({ error: "Accès refusé." }, 403);
+        }
         const messages = await sql`
           SELECT m.id, m.conversation_id, m.sender_id, m.recipient_id, m.content, u.username as sender_username, m.created_at
           FROM direct_messages m
@@ -224,8 +227,9 @@ export function registerDMMessageActionRoutes(
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0)
+        if (memberRows.length === 0) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
         const last = await sql`
           SELECT id, read_by FROM direct_messages
           WHERE conversation_id = ${groupId}::uuid AND sender_id <> ${userId}
@@ -233,14 +237,17 @@ export function registerDMMessageActionRoutes(
           ORDER BY created_at DESC
           LIMIT 1
         `;
-        if (last.length === 0)
+        if (last.length === 0) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
         const readers = Array.isArray(last[0].read_by)
           ? (last[0].read_by as any[])
               .map(String)
               .filter((x) => x !== String(userId))
           : [];
-        await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(readers)}::jsonb WHERE id = ${last[0].id}::uuid`;
+        await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(
+          readers
+        )}::jsonb WHERE id = ${last[0].id}::uuid`;
         return c.json({ success: true, unread: true });
       }
       const partnerId = Number(rawKey);
@@ -253,7 +260,9 @@ export function registerDMMessageActionRoutes(
         LIMIT 1
       `;
       if (last.length > 0) {
-        await sql`UPDATE direct_messages SET is_read = FALSE, read_at = NULL WHERE id = ${last[0].id}::uuid`;
+        await sql`UPDATE direct_messages SET is_read = FALSE, read_at = NULL WHERE id = ${
+          last[0].id
+        }::uuid`;
       } else {
         // Aucun message reçu : marquer le dernier envoyé pour rouvrir le fil côté client
         const own = await sql`
@@ -261,8 +270,9 @@ export function registerDMMessageActionRoutes(
           WHERE sender_id = ${userId} AND recipient_id = ${partnerId}
           ORDER BY created_at DESC LIMIT 1
         `;
-        if (own.length === 0)
+        if (own.length === 0) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
       }
       return c.json({ success: true, unread: true });
     } catch {
@@ -307,8 +317,9 @@ export function registerDMMessageActionRoutes(
       const msgRows = await sql`
         SELECT id, sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1
       `;
-      if (msgRows.length === 0)
+      if (msgRows.length === 0) {
         return c.json({ error: "Message introuvable." }, 404);
+      }
       const msg = msgRows[0];
       if (
         Number(msg.sender_id) !== userId &&
@@ -447,8 +458,9 @@ export function registerDMMessageActionRoutes(
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0)
+        if (memberRows.length === 0) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
         const groupRows = await sql`
           SELECT group_name FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1
         `;
@@ -489,7 +501,9 @@ export function registerDMMessageActionRoutes(
         improve: `Améliore, enrichis et perfectionne ce message pour qu'il s'intègre harmonieusement à la discussion ${partnerLabel}. Préserve fidèlement l'intention de l'utilisateur, améliore la formulation et le naturel en français.`,
         shorten:
           "Réduis ce message : rends-le plus court et percutant tout en conservant son sens essentiel. Ne perds aucune information importante, supprime les fioritures.",
-        tone: `Change le ton de ce message : réécris-le avec un ton ${toneValue ? `« ${toneValue} »` : "plus amical et naturel"}, en gardant strictement le même fond et la même intention.`,
+        tone: `Change le ton de ce message : réécris-le avec un ton ${
+          toneValue ? `« ${toneValue} »` : "plus amical et naturel"
+        }, en gardant strictement le même fond et la même intention.`,
       };
       const presetInstruction = PRESETS[preset];
       if (!presetInstruction) {
@@ -569,7 +583,7 @@ export function registerDMMessageActionRoutes(
       if (openRouterApiKey) {
         for (const modelToTry of candidateModels) {
           try {
-            const aiRes = await fetch(
+            const aiRes = await fetchOpenRouter(
               "https://openrouter.ai/api/v1/chat/completions",
               {
                 body: JSON.stringify({

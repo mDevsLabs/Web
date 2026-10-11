@@ -1,11 +1,15 @@
 "use client";
 
-import { DownloadIcon as Download, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw, ShieldCheckIcon as ShieldCheck } from "@mdevs/icons";
-import { useRouter } from "next/navigation";
+import {
+  DownloadIcon as Download,
+  Loader2Icon as Loader2,
+  RefreshCwIcon as RefreshCw,
+  ShieldCheckIcon as ShieldCheck,
+} from "@mdevs/icons";
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
-import Link from "@/components/site/router";
+import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { ModelNavigation } from "../shared/ModelNavigation";
 import { MaiModelFilters, useMaiModelFilters } from "./MaiModelFilters";

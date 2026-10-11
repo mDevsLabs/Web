@@ -41,8 +41,14 @@
 
 "use client";
 
-import { AlertCircleIcon as AlertCircle, CheckCircleIcon as CheckCircle, InfoIcon as Info, Loader2Icon as Loader2, XIcon as X } from "@mdevs/icons";
-import { Suspense, useCallback, useEffect, useState } from "react";
+import {
+  AlertCircleIcon as AlertCircle,
+  CheckCircleIcon as CheckCircle,
+  InfoIcon as Info,
+  Loader2Icon as Loader2,
+  XIcon as X,
+} from "@mdevs/icons";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { OfflineBanner } from "@/components/vibe/common/OfflineBanner";
 import { OnboardingModal } from "@/components/vibe/common/OnboardingModal";
 import { PageSkeleton } from "@/components/vibe/common/PageSkeleton";
@@ -62,7 +68,12 @@ import { applyAnimationsAttribute } from "@/lib/vibe/services/animationPrefs";
 import { ApiService } from "@/lib/vibe/services/api";
 import type { InAppToast } from "@/lib/vibe/services/notificationService";
 import { RealtimeService } from "@/lib/vibe/services/realtimeService";
-import type { Post } from "@/lib/vibe/types/vibe";
+import {
+  shouldAutoStartTour,
+  startFullTour,
+  stopTour,
+} from "@/lib/vibe/services/tutorialService";
+import type { Post, VibeSessionHydration } from "@/lib/vibe/types/vibe";
 
 /** Durée d'affichage d'un toast en application, en millisecondes. */
 const TOAST_DUREE_MS = 4000;
@@ -70,6 +81,12 @@ const TOAST_DUREE_MS = 4000;
 export interface VibeAppProps {
   /** Page résolue par l'App Router. */
   children: React.ReactNode;
+  /**
+   * Session pré-hydratée par le layout serveur (répliques de /v1/me,
+   * /v1/settings, unread_count). `null`/absent : comportement historique,
+   * l'AuthContext recharge tout via l'API.
+   */
+  initialSession?: VibeSessionHydration | null;
   /** Jeton de session lu côté serveur dans le cookie `mai_session_token`. */
   sessionToken: string | null;
 }
@@ -79,20 +96,32 @@ export interface VibeAppProps {
  * serveur : `ThemeProvider` et `AuthProvider` lisent `localStorage` au montage
  * et n'ont de sens que dans un composant client.
  */
-export function VibeApp({ sessionToken, children }: VibeAppProps) {
+export function VibeApp({
+  children,
+  initialSession,
+  sessionToken,
+}: VibeAppProps) {
   return (
     <ThemeProvider>
-      <AuthProvider initialToken={sessionToken}>
+      <AuthProvider initialSession={initialSession} initialToken={sessionToken}>
         <VibeSessionBridge sessionToken={sessionToken} />
         <AudioPlayerProvider>
-          <VibeShell>{children}</VibeShell>
+          <VibeShell initialUnread={initialSession?.unread}>
+            {children}
+          </VibeShell>
         </AudioPlayerProvider>
       </AuthProvider>
     </ThemeProvider>
   );
 }
 
-function VibeShell({ children }: { children: React.ReactNode }) {
+function VibeShell({
+  children,
+  initialUnread,
+}: {
+  children: React.ReactNode;
+  initialUnread?: VibeSessionHydration["unread"];
+}) {
   const {
     isAuthenticated,
     isLoadingSession,
@@ -113,8 +142,43 @@ function VibeShell({ children }: { children: React.ReactNode }) {
     null
   );
   const [toasts, setToasts] = useState<InAppToast[]>([]);
-  const [unreadNotifications, setUnreadNotifications] = useState(0);
-  const [unreadMessages, setUnreadMessages] = useState(0);
+  // Badges pré-hydratés par le layout quand il les a lus : le premier appel
+  // `refreshUnreadCounts` devient superflu (et n'a plus rien à cacher).
+  const [unreadNotifications, setUnreadNotifications] = useState(
+    () => initialUnread?.unread_notifications ?? 0
+  );
+  const [unreadMessages, setUnreadMessages] = useState(
+    () => initialUnread?.unread_messages ?? 0
+  );
+  const unreadSeeded = useRef(Boolean(initialUnread));
+
+  /**
+   * Onboarding terminé sur le compte neuf → visite guidée qui enchaîne les
+   * pages, une seule tentative par montage. Le rejet (fermeture du tour) et la
+   * fin (10/10) sont durables — cf. tutorialService.
+   */
+  const autoTourTriedRef = useRef(false);
+  const handleOnboardingDone = useCallback(
+    (opts?: { completed?: boolean }) => {
+      dismissOnboarding();
+      if (
+        opts?.completed &&
+        !autoTourTriedRef.current &&
+        shouldAutoStartTour()
+      ) {
+        autoTourTriedRef.current = true;
+        // Laisse la coquille repeindre derrière la modale fermée.
+        window.setTimeout(() => {
+          void startFullTour(navigate);
+        }, 600);
+      }
+    },
+    [dismissOnboarding, navigate]
+  );
+
+  // Les popovers driver.js vivent au niveau du corps : quitter /vibe sans les
+  // détruire laisserait un voile au-dessus de l'hôte mAI.
+  useEffect(() => () => stopTour(), []);
 
   const editingPost = composerDraft?.editPost || null;
 
@@ -161,7 +225,12 @@ function VibeShell({ children }: { children: React.ReactNode }) {
     if (!isAuthenticated) {
       return;
     }
-    refreshUnreadCounts();
+    if (unreadSeeded.current) {
+      // Le layout a déjà posé les compteurs : premier appel API inutile.
+      unreadSeeded.current = false;
+    } else {
+      refreshUnreadCounts();
+    }
 
     const token = ApiService.getToken();
     if (token) {
@@ -407,8 +476,8 @@ function VibeShell({ children }: { children: React.ReactNode }) {
         {/* Mini-lecteur audio flottant mAI */}
         <FloatingAudioPlayer />
 
-        {/* Onboarding guidé (première visite) */}
-        {showOnboarding && <OnboardingModal onDone={dismissOnboarding} />}
+        {/* Onboarding guidé (première visite) — puis visite guidée auto */}
+        {showOnboarding && <OnboardingModal onDone={handleOnboardingDone} />}
 
         {/* Bandeau hors-ligne */}
         <OfflineBanner />

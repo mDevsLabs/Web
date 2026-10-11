@@ -1,3 +1,4 @@
+import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — DMs : SOCLE PARTAGÉ (vibe-dms-core.ts)
@@ -351,7 +352,7 @@ export async function generateMAIDMReply(
         ];
         for (const modelToTry of candidateModels) {
           try {
-            const aiRes = await fetch(
+            const aiRes = await fetchOpenRouter(
               "https://openrouter.ai/api/v1/chat/completions",
               {
                 body: JSON.stringify({
@@ -414,7 +415,10 @@ export async function generateMAIDMReply(
       RETURNING *
     `;
     await sql`
-      UPDATE dm_conversations SET last_message_preview = ${reply.slice(0, 120)}, last_message_at = NOW()
+      UPDATE dm_conversations SET last_message_preview = ${reply.slice(
+        0,
+        120
+      )}, last_message_at = NOW()
       WHERE id = ${conversationId}::uuid
     `.catch(() => {});
     await sql`
@@ -518,8 +522,9 @@ export async function resolveConversationTarget(
         !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
           groupId
         )
-      )
+      ) {
         return null;
+      }
       const memberRows =
         await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid`;
       const memberIds = (memberRows as any[]).map((r) => Number(r.user_id));
@@ -648,8 +653,9 @@ export async function attachDMAttachedPosts(
       ])
     );
     for (const m of messages) {
-      if (m?.attached_post_id)
+      if (m?.attached_post_id) {
         m.attached_post = byId.get(String(m.attached_post_id)) || null;
+      }
     }
   } catch {}
 }
@@ -673,8 +679,9 @@ export async function deriveForwardedFrom(
       !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         id
       )
-    )
+    ) {
       return null;
+    }
     const rows = await sql`
       SELECT m.id AS message_id, u.username, pr.display_name
       FROM direct_messages m
@@ -702,15 +709,18 @@ export const assertMessageAccess = async (
 ): Promise<{ ok: boolean; message?: any; error?: string; code?: number }> => {
   const rows =
     await sql`SELECT id, sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
-  if (rows.length === 0)
+  if (rows.length === 0) {
     return { code: 404, error: "Message introuvable.", ok: false };
+  }
   const m = rows[0];
-  if (Number(m.sender_id) === userId || Number(m.recipient_id) === userId)
+  if (Number(m.sender_id) === userId || Number(m.recipient_id) === userId) {
     return { message: m, ok: true };
+  }
   const memberRows = await sql`
     SELECT 1 FROM dm_group_members WHERE conversation_id = ${m.conversation_id}::uuid AND user_id = ${userId} LIMIT 1
   `;
-  if (memberRows.length === 0)
+  if (memberRows.length === 0) {
     return { code: 403, error: "Accès refusé.", ok: false };
+  }
   return { message: m, ok: true };
 };

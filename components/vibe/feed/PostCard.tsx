@@ -5,8 +5,37 @@
  * ============================================================================
  */
 
+import {
+  BanIcon as Ban,
+  BarChart2Icon as BarChart2,
+  BookMarkedIcon as BookMarked,
+  BookmarkIcon as Bookmark,
+  CalendarClockIcon as CalendarClock,
+  CheckIcon as Check,
+  DownloadIcon as Download,
+  EyeOffIcon as EyeOff,
+  HeartIcon as Heart,
+  HelpCircleIcon as HelpCircle,
+  LanguagesIcon as Languages,
+  Loader2Icon as Loader2,
+  LockIcon as Lock,
+  MessageSquareIcon as MessageSquare,
+  MoreHorizontalIcon as MoreHorizontal,
+  PencilIcon as Pencil,
+  PinIcon as Pin,
+  PinOffIcon as PinOff,
+  QuoteIcon as Quote,
+  RepeatIcon as Repeat,
+  Share2Icon as Share2,
+  SparklesIcon as Sparkles,
+  ThumbsDownIcon as ThumbsDown,
+  ThumbsUpIcon as ThumbsUp,
+  Trash2Icon as Trash2,
+  UsersIcon as Users,
+  Volume2Icon as Volume2,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { BanIcon as Ban, BarChart2Icon as BarChart2, BookMarkedIcon as BookMarked, BookmarkIcon as Bookmark, CalendarClockIcon as CalendarClock, CheckIcon as Check, DownloadIcon as Download, EyeOffIcon as EyeOff, HeartIcon as Heart, HelpCircleIcon as HelpCircle, LanguagesIcon as Languages, Loader2Icon as Loader2, LockIcon as Lock, MessageSquareIcon as MessageSquare, MoreHorizontalIcon as MoreHorizontal, PencilIcon as Pencil, PinIcon as Pin, PinOffIcon as PinOff, QuoteIcon as Quote, RepeatIcon as Repeat, Share2Icon as Share2, SparklesIcon as Sparkles, ThumbsDownIcon as ThumbsDown, ThumbsUpIcon as ThumbsUp, Trash2Icon as Trash2, UsersIcon as Users, Volume2Icon as Volume2, XIcon as X } from "@mdevs/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { LikeParticles } from "@/components/vibe/common/LikeParticles";
@@ -22,6 +51,7 @@ import { MediaCarousel } from "@/components/vibe/feed/MediaCarousel";
 import { MediaLightbox } from "@/components/vibe/feed/MediaLightbox";
 import { PostShareModal } from "@/components/vibe/feed/PostShareModal";
 import { PostStatsModal } from "@/components/vibe/feed/PostStatsModal";
+import { ProfileStoryRing } from "@/components/vibe/stories/ProfileStoryRing";
 import { formatCompactCount } from "@/lib/vibe/algorithms";
 import { useAudioPlayer } from "@/lib/vibe/context/AudioPlayerContext";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
@@ -660,12 +690,15 @@ export const PostCardBase: React.FC<PostCardProps> = ({
       <div className="flex gap-3">
         {/* Avatar */}
         <div
-          className="shrink-0"
+          className="shrink-0 relative"
           onClick={(e) => {
             e.stopPropagation();
             if (onOpenProfile) onOpenProfile(post.username);
           }}
         >
+          {/* Anneau de story en superposition : clique sur le bandeau pour les
+              stories, clic sur l'avatar pour le profil (comportement inchangé). */}
+          <ProfileStoryRing username={post.username} />
           <ProfileAvatar
             alt={post.username}
             className="border border-zinc-800 hover:opacity-90 transition-opacity"

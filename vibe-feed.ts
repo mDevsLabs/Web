@@ -63,8 +63,9 @@ export const FEEDBACK_STOP_WORDS = new Set([
 export const extractFeedbackTokens = (content: string): string[] => {
   const lower = (content || "").toLowerCase();
   const tokens: string[] = [];
-  for (const m of lower.matchAll(/#([\p{L}\p{N}_]{2,30})/gu))
+  for (const m of lower.matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) {
     tokens.push(`#${m[1]}`);
+  }
   for (const w of lower.split(/[^\p{L}\p{N}#']+/u)) {
     if (w.length >= 4 && !FEEDBACK_STOP_WORDS.has(w)) tokens.push(w);
   }
@@ -133,10 +134,26 @@ export function registerVibeFeedRoutes(
           posts = await sql`
             SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                    (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-                   ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                       : sql`FALSE`
+                   } as has_liked,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                       : sql`FALSE`
+                   } as has_reposted,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                       : sql`FALSE`
+                   } as has_bookmarked,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                       : sql`NULL`
+                   } as my_feedback
             FROM posts p
             JOIN users u ON u.id = p.author_id
             LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -148,10 +165,26 @@ export function registerVibeFeedRoutes(
           posts = await sql`
             SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                    (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-                   ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                       : sql`FALSE`
+                   } as has_liked,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                       : sql`FALSE`
+                   } as has_reposted,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                       : sql`FALSE`
+                   } as has_bookmarked,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                       : sql`NULL`
+                   } as my_feedback
             FROM posts p
             JOIN users u ON u.id = p.author_id
             LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -289,10 +322,26 @@ export function registerVibeFeedRoutes(
       const rawCandidates = await sql`
         SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-               ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                   : sql`FALSE`
+               } as has_liked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                   : sql`FALSE`
+               } as has_reposted,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                   : sql`FALSE`
+               } as has_bookmarked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                   : sql`NULL`
+               } as my_feedback
         FROM posts p
         JOIN users u ON u.id = p.author_id
         LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -306,8 +355,9 @@ export function registerVibeFeedRoutes(
       // Filtrage selon les paramètres utilisateur
       const filteredCandidates = rawCandidates.filter((post: any) => {
         if (shouldHideReposts && post.is_repost) return false;
-        if (currentUserId && Number(post.author_id) === currentUserId)
+        if (currentUserId && Number(post.author_id) === currentUserId) {
           return true;
+        }
         if (isHiddenAuthor(post.author_id)) return false;
         if (blockedKeywords.length > 0) {
           const contentLc = (post.content || "").toLowerCase();
@@ -420,8 +470,9 @@ export function registerVibeFeedRoutes(
           const aff = topicAffinity.get(bare) ?? topicAffinity.get(token) ?? 0;
           if (aff > 0) {
             affinityBoost += aff;
-            if (matched.length < 3 && !matched.includes(bare))
+            if (matched.length < 3 && !matched.includes(bare)) {
               matched.push(bare);
+            }
           }
         }
         // Dwell : temps passé sur ce post précis → boost implicite (vrai profil)
@@ -575,8 +626,9 @@ export function registerVibeFeedRoutes(
           const normalized = rawTag.toLowerCase().trim();
           if (normalized.length <= 1 || normalized.length > 35) continue;
 
-          if (!tagMap[rawTag])
+          if (!tagMap[rawTag]) {
             tagMap[rawTag] = { count: 0, engagement: 0, recencyBoost: 0 };
+          }
           tagMap[rawTag].count += 1;
           tagMap[rawTag].engagement += eng;
           tagMap[rawTag].recencyBoost += recency;
@@ -664,10 +716,26 @@ export function registerVibeFeedRoutes(
       const posts = await sql`
         SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-               ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                   : sql`FALSE`
+               } as has_liked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                   : sql`FALSE`
+               } as has_reposted,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                   : sql`FALSE`
+               } as has_bookmarked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                   : sql`NULL`
+               } as my_feedback
         FROM posts p
         JOIN users u ON u.id = p.author_id
         LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -735,10 +803,26 @@ export function registerVibeFeedRoutes(
       const posts = await sql`
         SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-               ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                   : sql`FALSE`
+               } as has_liked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                   : sql`FALSE`
+               } as has_reposted,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                   : sql`FALSE`
+               } as has_bookmarked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                   : sql`NULL`
+               } as my_feedback
         FROM posts p
         JOIN users u ON u.id = p.author_id
         LEFT JOIN profiles pr ON pr.user_id = u.id

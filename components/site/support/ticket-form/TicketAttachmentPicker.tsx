@@ -1,6 +1,12 @@
 "use client";
 
-import { FileTextIcon as FileText, ImageIcon, Loader2Icon as Loader2, PaperclipIcon as Paperclip, XIcon as X } from "@mdevs/icons";
+import {
+  FileTextIcon as FileText,
+  ImageIcon,
+  Loader2Icon as Loader2,
+  PaperclipIcon as Paperclip,
+  XIcon as X,
+} from "@mdevs/icons";
 import type { RefObject } from "react";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import { SUPPORT_ATTACHMENT_LIMITS } from "@/app/(chat)/site/actions/support-utils";
@@ -87,7 +93,7 @@ export function TicketAttachmentPicker({
           ) : (
             <Paperclip aria-hidden="true" className="h-4 w-4" />
           )}
-          {uploading ? "Upload Z1…" : "Parcourir les fichiers"}
+          {uploading ? "Envoi en cours…" : "Parcourir les fichiers"}
         </button>
         <p className="text-[11px] text-slate-400">
           Images, .txt et .md uniquement • 8 Mo par fichier

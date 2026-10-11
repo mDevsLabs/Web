@@ -1,4 +1,4 @@
-import nodemailer from "npm:nodemailer";
+import nodemailer from "nodemailer";
 
 function escapeHtml(str: string): string {
   return String(str)
@@ -13,9 +13,7 @@ function getEnv(key: string): string | undefined {
   if (typeof process !== "undefined" && process.env && process.env[key]) {
     return process.env[key];
   }
-  // @ts-expect-error Nodemailer transport typing is incompatible with the configured transport.
   if (typeof Deno !== "undefined" && Deno.env && Deno.env.get) {
-    // @ts-expect-error Nodemailer transport typing is incompatible with the configured transport.
     return Deno.env.get(key);
   }
 }
@@ -29,7 +27,7 @@ export async function sendVerificationEmail(
   // Log du code pour développement / debugging
   const maskedEmail = email.replace(/(.{2}).*(@.*)/, "$1***$2");
   console.log(
-    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)} code=${code}`
+    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)}`
   );
 
   let subject = "Notification - mAI";
@@ -95,7 +93,7 @@ export async function sendVerificationEmail(
     </head>
     <body style="margin:0; padding:0; background-color:#090d16; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f8fafc;">
       <div style="max-width:560px; margin:40px auto; background:#111827; border:1px solid #1f293d; border-radius:16px; overflow:hidden; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
-        
+
         <!-- Header & Logo -->
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 100%); padding:32px 24px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:48px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
@@ -106,7 +104,7 @@ export async function sendVerificationEmail(
         <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0;">Bonjour,</p>
           <p>${textContent}</p>
-          
+
           ${
             showCode
               ? `
@@ -328,7 +326,7 @@ export async function sendSupportTicketCreatedEmail({
     </head>
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
       <div style="max-width:600px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-        
+
         <!-- Header & Logo -->
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:32px 28px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
@@ -339,25 +337,37 @@ export async function sendSupportTicketCreatedEmail({
         <!-- Body Content -->
         <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0; font-size:15px;">Un utilisateur vient de soumettre un nouveau ticket sur la plateforme <strong>mAI</strong>.</p>
-          
+
           <!-- Metadatas Box -->
           <div style="background:#131d31; border:1px solid #1e293b; border-radius:16px; padding:20px; margin:24px 0;">
             <table style="width:100%; border-collapse:collapse; font-size:13px;">
               <tr>
                 <td style="padding:6px 0; color:#94a3b8; width:110px; font-weight:600;">Demandeur :</td>
                 <td style="padding:6px 0; color:#f8fafc; font-weight:700;">
-                  ${escapeHtml(ticket.user_name)} 
-                  <span style="color:#a855f7; font-weight:500;">(${escapeHtml(ticket.user_email)})</span>
-                  ${ticket.user_tier ? `<span style="background:rgba(168,85,247,0.2); color:#c084fc; font-size:11px; padding:2px 8px; border-radius:100px; margin-left:6px; font-weight:700;">${escapeHtml(ticket.user_tier)}</span>` : ""}
+                  ${escapeHtml(ticket.user_name)}
+                  <span style="color:#a855f7; font-weight:500;">(${escapeHtml(
+                    ticket.user_email
+                  )})</span>
+                  ${
+                    ticket.user_tier
+                      ? `<span style="background:rgba(168,85,247,0.2); color:#c084fc; font-size:11px; padding:2px 8px; border-radius:100px; margin-left:6px; font-weight:700;">${escapeHtml(
+                          ticket.user_tier
+                        )}</span>`
+                      : ""
+                  }
                 </td>
               </tr>
               <tr>
                 <td style="padding:6px 0; color:#94a3b8; font-weight:600;">Projet :</td>
-                <td style="padding:6px 0; color:#60a5fa; font-weight:700;">${escapeHtml(ticket.project)}</td>
+                <td style="padding:6px 0; color:#60a5fa; font-weight:700;">${escapeHtml(
+                  ticket.project
+                )}</td>
               </tr>
               <tr>
                 <td style="padding:6px 0; color:#94a3b8; font-weight:600;">Section :</td>
-                <td style="padding:6px 0; color:#e2e8f0; font-weight:600;">${escapeHtml(ticket.category)}</td>
+                <td style="padding:6px 0; color:#e2e8f0; font-weight:600;">${escapeHtml(
+                  ticket.category
+                )}</td>
               </tr>
               <tr>
                 <td style="padding:6px 0; color:#94a3b8; font-weight:600;">Priorité :</td>
@@ -373,7 +383,9 @@ export async function sendSupportTicketCreatedEmail({
           <!-- Description Box -->
           <div style="margin:24px 0;">
             <p style="font-size:13px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Objet de la demande :</p>
-            <h2 style="font-size:17px; font-weight:700; color:#ffffff; margin:0 0 12px 0;">${escapeHtml(ticket.title)}</h2>
+            <h2 style="font-size:17px; font-weight:700; color:#ffffff; margin:0 0 12px 0;">${escapeHtml(
+              ticket.title
+            )}</h2>
             <div style="background:#090d16; border:1px solid #1e293b; border-left:4px solid #9333ea; border-radius:12px; padding:18px; color:#e2e8f0; font-size:14px; line-height:1.7; word-break:break-word;">
               ${safeDescription}
             </div>
@@ -387,8 +399,12 @@ export async function sendSupportTicketCreatedEmail({
           </div>
 
           <p style="text-align:center; font-size:12px; color:#64748b; margin-top:12px;">
-            Vous pouvez également écrire directement au demandeur : 
-            <a href="mailto:${escapeHtml(ticket.user_email)}?subject=Re: [Support mAI ${ticketRef}] ${encodeURIComponent(ticket.title)}" style="color:#a855f7; text-decoration:underline;">
+            Vous pouvez également écrire directement au demandeur :
+            <a href="mailto:${escapeHtml(
+              ticket.user_email
+            )}?subject=Re: [Support mAI ${ticketRef}] ${encodeURIComponent(
+              ticket.title
+            )}" style="color:#a855f7; text-decoration:underline;">
               ${escapeHtml(ticket.user_email)}
             </a>
           </p>
@@ -451,20 +467,22 @@ export async function sendSupportTicketUpdateEmail({
     </head>
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
       <div style="max-width:600px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-        
+
         <!-- Header -->
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:32px 28px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
           <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:16px 0 4px 0; letter-spacing:-0.5px;">
             ${isFromAdmin ? "Réponse de l'Équipe Support" : "Nouveau message"}
           </h1>
-          <p style="color:#a855f7; font-size:13px; font-weight:600; margin:0;">TICKET ${ticketRef} • ${escapeHtml(ticket.title)}</p>
+          <p style="color:#a855f7; font-size:13px; font-weight:600; margin:0;">TICKET ${ticketRef} • ${escapeHtml(
+            ticket.title
+          )}</p>
         </div>
 
         <!-- Body Content -->
         <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0;">Bonjour <strong>${escapeHtml(recipientName)}</strong>,</p>
-          
+
           <p>
             ${
               isFromAdmin
@@ -472,9 +490,11 @@ export async function sendSupportTicketUpdateEmail({
                 : "Un nouveau message a été posté sur le ticket :"
             }
           </p>
-          
+
           <!-- Message Bubble -->
-          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid ${isFromAdmin ? "#10b981" : "#a855f7"}; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
+          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid ${
+            isFromAdmin ? "#10b981" : "#a855f7"
+          }; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
             ${safeMessage}
           </div>
 
@@ -493,7 +513,9 @@ export async function sendSupportTicketUpdateEmail({
             newStatus
               ? `
           <div style="background:rgba(59, 130, 246, 0.1); border:1px solid rgba(59, 130, 246, 0.3); border-radius:12px; padding:12px 18px; margin:20px 0; font-size:13px; color:#93c5fd;">
-            <strong>Mise à jour de statut :</strong> Le ticket est désormais noté comme <em>${escapeHtml(newStatus)}</em>.
+            <strong>Mise à jour de statut :</strong> Le ticket est désormais noté comme <em>${escapeHtml(
+              newStatus
+            )}</em>.
           </div>
           `
               : ""
@@ -507,8 +529,11 @@ export async function sendSupportTicketUpdateEmail({
           </div>
 
           <p style="font-size:12px; color:#64748b; text-align:center; margin-top:20px;">
-            Vous pouvez à tout moment suivre l'état de l'ensemble de vos demandes sur votre 
-            <a href="${appUrl.replace(/\/$/, "")}/support/tickets" style="color:#a855f7; text-decoration:underline;">Espace Support mAI</a>.
+            Vous pouvez à tout moment suivre l'état de l'ensemble de vos demandes sur votre
+            <a href="${appUrl.replace(
+              /\/$/,
+              ""
+            )}/support/tickets" style="color:#a855f7; text-decoration:underline;">Espace Support mAI</a>.
           </p>
         </div>
 

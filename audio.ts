@@ -8,6 +8,13 @@ import {
   getWeekData,
   verifyToken,
 } from "./config.ts";
+import {
+  effectiveModel,
+  getModelCatalog,
+  isFreeModelId,
+  ModelAccessError,
+  supportsOutput,
+} from "./openrouter-models.ts";
 
 export interface SpeechModelItem {
   created: number;
@@ -36,35 +43,6 @@ function getOpenRouterApiKey(userCustomKey?: string | null): string {
   }
   return "";
 }
-
-/**
- * Modèles Speech de repli avec voix disponibles et noms nettoyés sans (Free)
- */
-const FALLBACK_SPEECH_MODELS = [
-  {
-    architecture: {
-      input_modalities: ["text"],
-      modality: "text->speech",
-      output_modalities: ["speech"],
-    },
-    created: Math.floor(Date.now() / 1000) - 86_400 * 30,
-    description:
-      "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram.",
-    id: "deepgram/flux-tts:free",
-    name: "Deepgram: Flux TTS",
-    object: "model",
-    owned_by: "deepgram",
-    supported_parameters: ["voice", "speed", "response_format"],
-    voices: [
-      "flux-alexis-en",
-      "flux-michael-en",
-      "flux-stacy-en",
-      "flux-sam-en",
-      "flux-asteria-en",
-      "flux-orion-en",
-    ],
-  },
-];
 
 let speechTablesInitialized = false;
 async function ensureSpeechTables(sql: any) {
@@ -103,71 +81,35 @@ async function ensureSpeechTables(sql: any) {
   }
 }
 
-export function registerAudioRoutes(app: Hono) {
+export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
   try {
-    ensureSpeechTables(getDb()).catch(() => {});
+    ensureSpeechTables(database()).catch(() => {});
   } catch {}
   // ─────────────────────────────────────────────
   // GET /v1/models/speech, /models/speech & /v1/audio/models
   // ─────────────────────────────────────────────
   const handleGetSpeechModels = async (c: any) => {
     try {
-      const res = await fetch(
-        "https://openrouter.ai/api/v1/models?output_modalities=speech"
-      );
-
-      let rawModels: any[] = [];
-      if (res.ok) {
-        const json = await res.json();
-        rawModels = json.data || [];
-      }
-
-      if (rawModels.length === 0) {
-        rawModels = FALLBACK_SPEECH_MODELS;
-      }
-
-      // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
-      const freeSpeechModels = rawModels
-        .filter((m) => m?.id && (m.id || "").toLowerCase().includes(":free"))
-        .map((m) => {
-          const rawName = m.name || m.id;
-          const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
-          return {
-            architecture: m.architecture || {
-              input_modalities: ["text"],
-              modality: "text->speech",
-              output_modalities: ["speech"],
-            },
-            created: m.created || Math.floor(Date.now() / 1000),
-            description:
-              m.description ||
-              `Modèle de synthèse vocale (TTS) ${cleanedName}.`,
-            id: m.id,
-            name: cleanedName,
-            object: "model",
-            owned_by: (m.id || "").split("/")[0] || "openrouter",
-            supported_parameters: m.supported_parameters || [
-              "voice",
-              "speed",
-              "response_format",
-            ],
-            voices: m.voices || [
-              "flux-alexis-en",
-              "flux-michael-en",
-              "flux-stacy-en",
-              "flux-sam-en",
-              "flux-asteria-en",
-              "flux-orion-en",
-            ],
-          };
-        });
-
-      const finalModels =
-        freeSpeechModels.length > 0 ? freeSpeechModels : FALLBACK_SPEECH_MODELS;
-
-      return c.json({ data: finalModels, object: "list" });
+      const catalog = await getModelCatalog(database());
+      const models = catalog.models
+        .filter(
+          (m) =>
+            m.isActive &&
+            m.is_available &&
+            isFreeModelId(m.id) &&
+            (supportsOutput(m, "speech") || supportsOutput(m, "audio"))
+        )
+        .map((m) => ({
+          ...effectiveModel(m),
+          name: cleanModelName(effectiveModel(m).name),
+          voices: m.upstream.supported_voices ?? m.upstream.voices ?? [],
+        }));
+      return c.json({ data: models, object: "list" });
     } catch {
-      return c.json({ data: FALLBACK_SPEECH_MODELS, object: "list" });
+      return c.json(
+        { error: "Catalogue Speech temporairement indisponible." },
+        503
+      );
     }
   };
 
@@ -249,7 +191,7 @@ export function registerAudioRoutes(app: Hono) {
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
-      if (token) {
+      if (token && !userId) {
         try {
           const payload = await verifyToken(token);
           userId = (payload.sub as string) || userId;
@@ -257,7 +199,7 @@ export function registerAudioRoutes(app: Hono) {
         } catch {}
       }
 
-      const sql = getDb();
+      const sql = database();
 
       // Résolution du user_id réel via mprojects_api_keys si token ou userId transmis
       if (token) {
@@ -285,10 +227,10 @@ export function registerAudioRoutes(app: Hono) {
       const [uRows, usageRows] = await Promise.all([
         sql`SELECT id, email, username, tier FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`,
         sql`
-          SELECT COALESCE(SUM(tokens_used::numeric), 0) as tokens_used, COALESCE(SUM(requests_count::numeric), 0) as requests_count 
-          FROM weekly_speech_usage 
+          SELECT COALESCE(SUM(tokens_used::numeric), 0) as tokens_used, COALESCE(SUM(requests_count::numeric), 0) as requests_count
+          FROM weekly_speech_usage
           WHERE (
-            user_id = ${userId}::text 
+            user_id = ${userId}::text
             OR user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
@@ -348,7 +290,7 @@ export function registerAudioRoutes(app: Hono) {
         return c.json({ error: "Non authentifié." }, 401);
       }
 
-      const sql = getDb();
+      const sql = database();
       const history = await sql`
         SELECT id, title, pinned, model, voice, input_text, audio_url, tokens_count, character_count, status, created_at
         FROM mprojects_speech_generations
@@ -394,7 +336,7 @@ export function registerAudioRoutes(app: Hono) {
       }
 
       const body = await c.req.json().catch(() => ({}));
-      const sql = getDb();
+      const sql = database();
       const sets: string[] = [];
       const values: any[] = [];
       let idx = 1;
@@ -415,8 +357,10 @@ export function registerAudioRoutes(app: Hono) {
       }
 
       values.push(id, userId);
-      const query = `UPDATE mprojects_speech_generations SET ${sets.join(", ")} WHERE id::text = $${idx++}::text AND user_id = $${idx}::text RETURNING id, title, pinned`;
-      const result = await sql.unsafe(query, values);
+      const query = `UPDATE mprojects_speech_generations SET ${sets.join(
+        ", "
+      )} WHERE id::text = $${idx++}::text AND user_id = $${idx}::text RETURNING id, title, pinned`;
+      const result = await sql.query(query, values);
 
       return c.json({ data: result[0] || null, success: true });
     } catch (err: any) {
@@ -469,7 +413,7 @@ export function registerAudioRoutes(app: Hono) {
         return c.json({ error: "ID manquant." }, 400);
       }
 
-      const sql = getDb();
+      const sql = database();
 
       if (purgeAll && !id) {
         const deleted = await sql`
@@ -615,8 +559,7 @@ export function registerAudioRoutes(app: Hono) {
       }
 
       // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
-      const modelStr = String(model).toLowerCase().trim();
-      if (!modelStr.includes(":free")) {
+      if (typeof model !== "string" || !isFreeModelId(model)) {
         return c.json(
           {
             error: {
@@ -630,13 +573,35 @@ export function registerAudioRoutes(app: Hono) {
         );
       }
 
-      const sql = getDb();
+      const sql = database();
+      const catalog = await getModelCatalog(sql);
+      const storedModel = catalog.byId.get(model);
+      if (
+        !storedModel?.is_available ||
+        !(
+          supportsOutput(storedModel, "speech") ||
+          supportsOutput(storedModel, "audio")
+        )
+      ) {
+        throw new ModelAccessError(
+          404,
+          "model_unavailable",
+          "Modèle Speech indisponible."
+        );
+      }
+      if (!storedModel.isActive) {
+        throw new ModelAccessError(
+          403,
+          "model_inactive",
+          "Ce modèle a été désactivé."
+        );
+      }
       const { weekStartStr, nextResetIso } = getWeekData();
 
       // Vérifier le forfait réel de l'utilisateur
       const uRows = await sql`
-        SELECT tier FROM users 
-        WHERE id::text = ${userId}::text OR username = ${userId}::text 
+        SELECT tier FROM users
+        WHERE id::text = ${userId}::text OR username = ${userId}::text
         LIMIT 1
       `.catch(() => []);
       const keyTier = extractTierFromApiKey(token);
@@ -649,9 +614,9 @@ export function registerAudioRoutes(app: Hono) {
 
       // Vérification du quota hebdomadaire
       const usageRows = await sql`
-        SELECT tokens_used 
-        FROM weekly_speech_usage 
-        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date 
+        SELECT tokens_used
+        FROM weekly_speech_usage
+        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
         LIMIT 1
       `.catch(() => []);
       const currentUsage = Number(usageRows[0]?.tokens_used || 0);
@@ -743,7 +708,7 @@ export function registerAudioRoutes(app: Hono) {
           INSERT INTO weekly_speech_usage (user_id, week_start, tokens_used, requests_count, updated_at)
           VALUES (${userId}::text, ${weekStartStr}::date, ${estimatedTokens}, 1, NOW())
           ON CONFLICT (user_id, week_start)
-          DO UPDATE SET 
+          DO UPDATE SET
             tokens_used = weekly_speech_usage.tokens_used + ${estimatedTokens},
             requests_count = weekly_speech_usage.requests_count + 1,
             updated_at = NOW()
@@ -780,7 +745,9 @@ export function registerAudioRoutes(app: Hono) {
       try {
         await sql`
           INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-          VALUES (${apiKey || "jwt"}::text, ${reqPath || "/v1/speech"}::text, 'POST', 200, 500, NOW())
+          VALUES (${apiKey || "jwt"}::text, ${
+            reqPath || "/v1/speech"
+          }::text, 'POST', 200, 500, NOW())
         `;
       } catch {}
 
@@ -828,6 +795,12 @@ export function registerAudioRoutes(app: Hono) {
         status: 200,
       });
     } catch (err: any) {
+      if (err instanceof ModelAccessError) {
+        return c.json(
+          { error: { code: err.code, message: err.message } },
+          err.status
+        );
+      }
       console.error("[Speech API] Erreur serveur:", err);
       return c.json(
         {

@@ -26,10 +26,10 @@ __export(theme_exports, {
 module.exports = __toCommonJS(theme_exports);
 var import_jsx_runtime = require("react/jsx-runtime");
 var import_react = require("react");
-const ThemeContext = (0, import_react.createContext)({ theme: "system", glass: true });
+const ThemeContext = (0, import_react.createContext)({ theme: "system", glass: true, variant: "liquid-glass" });
 function PortalScope({ children }) {
-  const { theme, glass, accent, radius, variables } = (0, import_react.useContext)(ThemeContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "md-root md-portal-scope", "data-md-theme": theme, "data-md-glass": glass ? "on" : "off", style: { ...variables, ...accent ? { "--md-accent": accent } : {}, ...radius ? { "--md-radius": radius } : {} }, children });
+  const { theme, glass, variant, accent, radius, variables } = (0, import_react.useContext)(ThemeContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "md-root md-portal-scope", "data-md-theme": theme, "data-md-glass": glass ? "on" : "off", "data-md-variant": variant, style: { ...variables, ...accent ? { "--md-accent": accent } : {}, ...radius ? { "--md-radius": radius } : {} }, children });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

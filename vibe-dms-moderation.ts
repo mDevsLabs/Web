@@ -30,8 +30,9 @@ export function registerDMModerationRoutes(
       const userId = Number(payload.sub || (payload as any).id);
       const { user_id } = await c.req.json();
       const targetId = Number(user_id);
-      if (!targetId || targetId === userId)
+      if (!targetId || targetId === userId) {
         return c.json({ error: "Utilisateur invalide." }, 400);
+      }
 
       const sql = getDb();
       await sql`
@@ -116,13 +117,16 @@ export function registerDMModerationRoutes(
       const userId = Number(payload.sub || (payload as any).id);
       const { reported_user_id, reason, message_id } = await c.req.json();
       const targetId = Number(reported_user_id);
-      if (!targetId)
+      if (!targetId) {
         return c.json({ error: "Utilisateur à signaler requis." }, 400);
+      }
 
       const sql = getDb();
       await sql`
         INSERT INTO dm_reports (reporter_id, reported_user_id, message_id, reason)
-        VALUES (${userId}, ${targetId}, ${message_id || null}, ${String(reason || "non précisé").slice(0, 500)})
+        VALUES (${userId}, ${targetId}, ${message_id || null}, ${String(
+          reason || "non précisé"
+        ).slice(0, 500)})
       `;
       return c.json({
         message: "Signalement transmis à la modération.",
@@ -157,12 +161,14 @@ export function registerDMModerationRoutes(
       if (rawKey.startsWith("group:")) {
         const groupId = rawKey.slice(6);
         const groupName = customName.slice(0, 100);
-        if (!groupName)
+        if (!groupName) {
           return c.json({ error: "Le nom du groupe est requis." }, 400);
+        }
         const convRows =
           await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
-        if (convRows.length === 0)
+        if (convRows.length === 0) {
           return c.json({ error: "Groupe introuvable." }, 404);
+        }
         if (Number(convRows[0].created_by) !== userId) {
           return c.json(
             { error: "Seul l'administrateur du groupe peut le renommer." },
@@ -262,8 +268,9 @@ export function registerDMModerationRoutes(
       const sql = getDb();
       const rows =
         await sql`SELECT sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Message introuvable." }, 404);
+      }
       if (Number(rows[0].sender_id) !== userId) {
         return c.json(
           { error: "Vous ne pouvez supprimer que vos propres messages." },

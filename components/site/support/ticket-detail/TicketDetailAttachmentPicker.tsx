@@ -1,6 +1,12 @@
 "use client";
 
-import { FileTextIcon as FileText, ImageIcon, Loader2Icon as Loader2, PaperclipIcon as Paperclip, XIcon as X } from "@mdevs/icons";
+import {
+  FileTextIcon as FileText,
+  ImageIcon,
+  Loader2Icon as Loader2,
+  PaperclipIcon as Paperclip,
+  XIcon as X,
+} from "@mdevs/icons";
 import type { RefObject } from "react";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import { SUPPORT_ATTACHMENT_LIMITS } from "@/app/(chat)/site/actions/support-utils";
@@ -37,7 +43,7 @@ export function TicketDetailAttachmentPicker({
         <span
           className={`text-[11px] font-bold ${canUploadMore ? "text-emerald-600" : "text-red-600"}`}
         >
-          {canUploadMore ? "Upload disponible" : "Limite atteinte"}
+          {canUploadMore ? "Envoi disponible" : "Limite atteinte"}
         </span>
       </div>
       <div
@@ -87,7 +93,7 @@ export function TicketDetailAttachmentPicker({
           ) : (
             <ImageIcon aria-hidden="true" className="h-4 w-4 text-purple-600" />
           )}
-          {uploading ? "Upload Z1…" : "Choisir / Glisser fichiers"}
+          {uploading ? "Envoi en cours…" : "Choisir ou déposer des fichiers"}
         </button>
         <span className="text-slate-500">
           ou glissez-déposez ici • 8 Mo max • images, .txt, .md

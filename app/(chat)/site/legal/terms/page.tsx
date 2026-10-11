@@ -1,6 +1,21 @@
 "use client";
 
-import { ArrowLeftIcon as ArrowLeft, BanIcon as Ban, CheckCircle2Icon as CheckCircle2, CpuIcon as Cpu, FileTextIcon as FileText, FolderIcon as Folder, GlobeIcon as Globe, KeyIcon as Key, LockIcon as Lock, MapPinIcon as MapPin, ScaleIcon as Scale, ScrollTextIcon as ScrollText, ShieldAlertIcon as ShieldAlert, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  BanIcon as Ban,
+  CheckCircle2Icon as CheckCircle2,
+  CpuIcon as Cpu,
+  FileTextIcon as FileText,
+  FolderIcon as Folder,
+  GlobeIcon as Globe,
+  KeyIcon as Key,
+  LockIcon as Lock,
+  MapPinIcon as MapPin,
+  ScaleIcon as Scale,
+  ScrollTextIcon as ScrollText,
+  ShieldAlertIcon as ShieldAlert,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Link from "@/components/site/router";
 

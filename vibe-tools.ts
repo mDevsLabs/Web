@@ -511,7 +511,9 @@ export async function loadUserEnabledTools(
       () => {}
     );
     const rows =
-      await sql`SELECT mai_enabled_tools FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
+      await sql`SELECT mai_enabled_tools FROM user_settings WHERE user_id = ${Number(
+        key
+      )} LIMIT 1`;
     const raw = rows[0]?.mai_enabled_tools;
     if (Array.isArray(raw) && raw.length > 0) {
       const valid = new Set(
@@ -632,43 +634,51 @@ async function analyzeCreatorStats(
         WHERE p.author_id = ${Number(userId)} AND pv.created_at >= ${sinceIso}::timestamptz
         GROUP BY 1 ORDER BY views DESC LIMIT 1
       `;
-      if (d[0])
+      if (d[0]) {
         bestDay = {
           day: String(d[0].day).slice(0, 10),
           views: Number(d[0].views || 0),
         };
+      }
     } catch {}
 
     // Recommandations générées à partir des chiffres
     const recommendations: string[] = [];
-    if (posts === 0)
+    if (posts === 0) {
       recommendations.push(
         "Publiez au moins une publication sur la période pour générer des données analysables."
       );
-    if (engagementRate < 2 && views > 0)
+    }
+    if (engagementRate < 2 && views > 0) {
       recommendations.push(
         "Engagement faible : posez des questions ou ajoutez un sondage pour stimuler les réponses."
       );
-    if (replies === 0 && views > 50)
+    }
+    if (replies === 0 && views > 50) {
       recommendations.push(
         "Aucune réponse : terminez vos publications par une question ouverte."
       );
-    if (reposts < likes / 10 && likes > 10)
+    }
+    if (reposts < likes / 10 && likes > 10) {
       recommendations.push(
         "Peu de reposts : visez des contenus utiles/partenables (listes, conseils)."
       );
-    if (bestDay && bestDay.views > 0)
+    }
+    if (bestDay && bestDay.views > 0) {
       recommendations.push(
         `Votre meilleur jour est le ${bestDay.day} (${bestDay.views} vues) : publiez aux heures similaires.`
       );
-    if (sources.length > 1)
+    }
+    if (sources.length > 1) {
       recommendations.push(
         `Source dominante : ${sources[0].source} — amplifiez ce canal.`
       );
-    if (recommendations.length === 0)
+    }
+    if (recommendations.length === 0) {
       recommendations.push(
         "Vos métriques sont équilibrées : continuez et testez de nouveaux formats."
       );
+    }
 
     return {
       result: {

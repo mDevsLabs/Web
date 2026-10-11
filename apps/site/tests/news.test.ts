@@ -49,7 +49,7 @@ describe("news catalogue", () => {
     expect(article?.visibility).toBe("standard");
     expect(article?.category).toBe("Lancement");
     expect(article?.image).toBe("https://upload.fs.fr/dA57zDuVV5.png");
-    expect(article?.content).toContain("Release Candidate");
+    expect(article?.content).toContain("version candidate");
   });
 
   it("presents the five projects in their published order", () => {

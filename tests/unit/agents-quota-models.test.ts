@@ -1,8 +1,10 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { getTableColumns } from "drizzle-orm";
 import { describe, expect, it } from "vitest";
 import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { agent, agentTemplate } from "@/lib/db/schema";
 import {
   DEFAULT_SCHEDULE_TOOL_MODE,
   deriveScheduleToolMode,
@@ -25,10 +27,10 @@ function source(file: string): string {
 }
 
 describe("Quota d'agents par forfait", () => {
-  it("accorde 15 agents en Plus, 25 en Pro, aucun quota en Free", () => {
+  it("accorde 8 agents en Free, 15 en Plus et 25 en Pro", () => {
+    expect(getTierAgentLimit("free")).toBe(8);
     expect(getTierAgentLimit("plus")).toBe(15);
     expect(getTierAgentLimit("pro")).toBe(25);
-    expect(getTierAgentLimit("free")).toBe(0);
   });
 
   it("traite Max comme un quota illimité", () => {
@@ -38,6 +40,12 @@ describe("Quota d'agents par forfait", () => {
   });
 
   it("ne signale le quota dépassé que pour un quota fini", () => {
+    // Free : 8 bots, donc le 9e est refusé. Les bornes sont verrouillées ici
+    // parce que le quota est la seule barrière du Free — le paywall de la page
+    // `/agents` a été retiré, et sans ce verrou une régression vers un
+    // plafond implicite passerait inaperçue.
+    expect(isAgentQuotaExceeded("free", 7)).toBe(false);
+    expect(isAgentQuotaExceeded("free", 8)).toBe(true);
     expect(isAgentQuotaExceeded("plus", 14)).toBe(false);
     expect(isAgentQuotaExceeded("plus", 15)).toBe(true);
     expect(isAgentQuotaExceeded("pro", 25)).toBe(true);
@@ -47,8 +55,8 @@ describe("Quota d'agents par forfait", () => {
   });
 
   it("normalise un forfait inconnu ou absent sur Free", () => {
-    expect(getTierAgentLimit(null)).toBe(0);
-    expect(getTierAgentLimit("inconnu")).toBe(0);
+    expect(getTierAgentLimit(null)).toBe(getTierAgentLimit("free"));
+    expect(getTierAgentLimit("inconnu")).toBe(getTierAgentLimit("free"));
   });
 
   it("garde le miroir backend (config.ts) aligné sur lib/plans/tier-limits.ts", () => {
@@ -212,7 +220,8 @@ describe("Suppression du système emoji", () => {
     expect(migration).toContain(
       'ALTER TABLE "AgentTemplate" DROP COLUMN IF EXISTS "emoji"'
     );
-    expect(source("lib/db/schema.ts")).not.toContain('emoji: varchar("emoji"');
+    expect(getTableColumns(agent)).not.toHaveProperty("emoji");
+    expect(getTableColumns(agentTemplate)).not.toHaveProperty("emoji");
   });
 
   it("ne garde plus ni preset emoji ni prop emoji sur AgentIcon", () => {
@@ -307,7 +316,7 @@ describe("Onglet Types de bots", () => {
 });
 
 describe("Icônes uniques", () => {
-  it("donne une icône distincte à chacun des 16 plugins", () => {
+  it("donne une icône distincte à chacun des 17 plugins", () => {
     const manifests = readFileSync("lib/plugins/index.json", "utf8");
     expect(manifests).toContain("catalogVersion");
     const dirs = [
@@ -315,8 +324,9 @@ describe("Icônes uniques", () => {
       "crossref",
       "eurostat",
       "fr-holidays",
-      "github-public",
+      "github",
       "gitlab-public",
+      "google",
       "json-toolbox",
       "mobilite-fr",
       "open-food-facts",
@@ -330,12 +340,16 @@ describe("Icônes uniques", () => {
     ];
     const icons = dirs.map((dir) => {
       const manifest = JSON.parse(source(`lib/plugins/${dir}/index.json`)) as {
-        icon: { name: string; type: string };
+        icon: { name?: string; src?: string; type: string };
       };
-      return manifest.icon.name;
+      // Deux natures de repère coexistent : une icône lucide nommée, et le logo
+      // de marque d'un connecteur, désigné par son fichier. Les deux se comparent
+      // par leur identifiant visuel, sinon un connecteur passerait pour un
+      // doublon d'un autre simplement parce qu'il n'a pas de `name`.
+      return manifest.icon.name ?? manifest.icon.src;
     });
-    expect(icons).toHaveLength(16);
-    expect(new Set(icons).size).toBe(16);
+    expect(icons).toHaveLength(17);
+    expect(new Set(icons).size).toBe(17);
   });
 
   it("déclare dans l'allowlist chaque icône utilisée par un manifeste", () => {
@@ -450,7 +464,7 @@ describe("Planification : modes d'outils", () => {
 
   it("n'instancie aucun outil de plugin en mode Aucun", () => {
     const executor = source("lib/planning/executor.ts");
-    expect(executor).toContain('toolMode === "none"\n        ? []');
+    expect(executor).toMatch(/toolMode\s*===\s*"none"\s*\?\s*\[\]/);
   });
 
   it("ajoute toolMode à la table ScheduledMessage avec une contrainte", () => {

@@ -26,8 +26,8 @@ module.exports = __toCommonJS(theme_provider_exports);
 var import_jsx_runtime = require("react/jsx-runtime");
 var import_utils = require("../internal/utils.cjs");
 var import_theme = require("../internal/theme.cjs");
-function ThemeProvider({ theme = "system", accent, radius, glass = true, className, style, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_theme.ThemeContext.Provider, { value: { theme, accent, radius, glass, variables: Object.fromEntries(Object.entries(style ?? {}).filter(([key]) => key.startsWith("--"))) }, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ...props, className: (0, import_utils.cx)("md-root", className), "data-md-theme": theme, "data-md-glass": glass ? "on" : "off", style: { ...style, ...accent ? { "--md-accent": accent } : {}, ...radius ? { "--md-radius": radius } : {} } }) });
+function ThemeProvider({ theme = "system", variant = "liquid-glass", accent, radius, glass = true, className, style, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_theme.ThemeContext.Provider, { value: { theme, variant, accent, radius, glass, variables: Object.fromEntries(Object.entries(style ?? {}).filter(([key]) => key.startsWith("--"))) }, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ...props, className: (0, import_utils.cx)("md-root", className), "data-md-theme": theme, "data-md-glass": glass ? "on" : "off", "data-md-variant": variant, style: { ...style, ...accent ? { "--md-accent": accent } : {}, ...radius ? { "--md-radius": radius } : {} } }) });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

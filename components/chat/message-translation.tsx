@@ -1,6 +1,11 @@
 "use client";
 
-import { CheckIcon, LanguagesIcon, Loader2Icon, Volume2Icon } from "@mdevs/icons";
+import {
+  CheckIcon,
+  LanguagesIcon,
+  Loader2Icon,
+  Volume2Icon,
+} from "@mdevs/icons";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -96,7 +101,9 @@ export function useMessageTranslation(sourceText: string | undefined) {
           );
         }
         setState({
-          code: data.target_lang ?? code,
+          // La BFF renvoie un DTO camelCase, y compris quand le résultat
+          // vient du backend mai-translate.ts (normalisé par la route).
+          code: data.targetLang ?? code,
           detectedLanguage: data.detectedLanguage ?? "",
           isPending: false,
           provider: data.provider ?? "deepl",

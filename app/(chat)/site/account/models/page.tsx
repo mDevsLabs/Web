@@ -1,8 +1,11 @@
 "use client";
 
-import { Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
-import { useRouter } from "next/navigation";
+import {
+  Loader2Icon as Loader2,
+  RefreshCwIcon as RefreshCw,
+} from "@mdevs/icons";
 import { useEffect } from "react";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyCatalogBanner } from "./shared/KeyCatalogBanner";
 import { ModelNavigation } from "./shared/ModelNavigation";

@@ -12,8 +12,8 @@
 - **Protection de la vie privée** : Renforcement des mécanismes de confidentialité afin de limiter l’exposition des données utilisateur pendant la navigation.
 - **Sécurité par défaut** : Activation d’un comportement protecteur dès la première utilisation, sans configuration complexe nécessaire.
 
-#### 🌍 Open Source
-- **Code ouvert** : Publication du projet en open source afin de garantir transparence, auditabilité et collaboration communautaire.
+#### 🌍 Code source ouvert
+- **Code ouvert** : Publication du projet avec son code source afin de garantir transparence, auditabilité et collaboration communautaire.
 - **Contribution** : Préparation d’une structure de projet claire pour faciliter les futures contributions, corrections et améliorations proposées par la communauté.
 - **Transparence** : Mise en avant d’une approche ouverte permettant à chacun de vérifier le fonctionnement du navigateur et de ses protections intégrées.
 

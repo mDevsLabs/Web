@@ -7,8 +7,15 @@
  * vitrine de la page d'accueil ne puissent plus diverger sur ces choix.
  */
 
-import { ArchiveIcon as Archive, Code2Icon as Code2, CpuIcon as Cpu, GlobeIcon as Globe, MessagesSquareIcon as MessagesSquare, TerminalIcon as Terminal } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
+import {
+  ArchiveIcon as Archive,
+  Code2Icon as Code2,
+  CpuIcon as Cpu,
+  GlobeIcon as Globe,
+  MessagesSquareIcon as MessagesSquare,
+  TerminalIcon as Terminal,
+} from "@mdevs/icons";
 
 export type ProjectPresentation = {
   icon: React.ComponentType<any>;

@@ -5,7 +5,11 @@
  * ============================================================================
  */
 
-import { RefreshCwIcon as RefreshCw, WifiIcon as Wifi, WifiOffIcon as WifiOff } from "@mdevs/icons";
+import {
+  RefreshCwIcon as RefreshCw,
+  WifiIcon as Wifi,
+  WifiOffIcon as WifiOff,
+} from "@mdevs/icons";
 import type React from "react";
 import { useNetworkStatus } from "@/lib/vibe/hooks/useNetworkStatus";
 

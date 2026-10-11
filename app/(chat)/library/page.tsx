@@ -83,7 +83,7 @@ import {
 } from "@/components/ui/popover";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
-import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL, MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import { fetcher } from "@/lib/utils";
 
 export type CloudFile = {
@@ -1146,8 +1146,7 @@ export default function LibraryPage() {
                 Presque plein —{" "}
                 <Link
                   className="font-semibold underline underline-offset-2 hover:text-foreground"
-                  href={MAI_UPGRADE_URL}
-                  target="_blank"
+                  href={APP_PRICING_URL}
                 >
                   mettre à niveau
                 </Link>

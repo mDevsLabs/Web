@@ -109,3 +109,30 @@ describe("bibliothèque Wakies privée", { timeout: 30_000 }, () => {
     expect(await signerPieceJointe("alice", "uploads/alice/a.txt")).toBeNull();
   });
 });
+
+/**
+ * La signature PROPRIÉTAIRE existe pour les images publiques (fiche d'un ami) :
+ * elle doit rester bornée à l'espace du propriétaire, sinon c'est un oracle de
+ * signature pour tous les blobs du stockage.
+ */
+describe("signature propriétaire (images publiques)", {
+  timeout: 30_000,
+}, () => {
+  it("signe un blob DANS l'espace du propriétaire", async () => {
+    const { signerBlobDuProprietaire } = await import("@/lib/wakies/blob");
+    expect(await signerBlobDuProprietaire("bob", "uploads/bob/photo.png")).toBe(
+      "https://files.example/test"
+    );
+    expect(mocks.head).toHaveBeenCalledWith("uploads/bob/photo.png");
+  });
+  it("refuse un blob d'un autre espace SANS toucher au stockage", async () => {
+    const { signerBlobDuProprietaire } = await import("@/lib/wakies/blob");
+    expect(
+      await signerBlobDuProprietaire("bob", "uploads/alice/a.txt")
+    ).toBeNull();
+    expect(
+      await signerBlobDuProprietaire("bob", "uploads/bob/../alice/a.txt")
+    ).toBeNull();
+    expect(mocks.head).not.toHaveBeenCalled();
+  });
+});

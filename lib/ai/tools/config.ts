@@ -1,4 +1,33 @@
-import { BarChart3Icon, BookOpenIcon, BrainIcon, CalculatorIcon, CalendarIcon, CalendarPlusIcon, CameraIcon, CloudSunIcon, CoinsIcon, FileSearchIcon, FileTextIcon, GaugeIcon, GlobeIcon, HelpCircleIcon, ImageIcon, ImagePlusIcon, KeyRoundIcon, LightbulbIcon, LineChartIcon, NotebookIcon, PencilIcon, PlayIcon, PodcastIcon, QrCodeIcon, TrophyIcon, UserRoundIcon, Volume2Icon, WaypointsIcon } from "@mdevs/icons";
+import {
+  BarChart3Icon,
+  BookOpenIcon,
+  BrainIcon,
+  CalculatorIcon,
+  CalendarIcon,
+  CalendarPlusIcon,
+  CameraIcon,
+  CloudSunIcon,
+  CoinsIcon,
+  FileSearchIcon,
+  FileTextIcon,
+  GaugeIcon,
+  GlobeIcon,
+  HelpCircleIcon,
+  ImageIcon,
+  ImagePlusIcon,
+  KeyRoundIcon,
+  LightbulbIcon,
+  LineChartIcon,
+  NotebookIcon,
+  PencilIcon,
+  PlayIcon,
+  PodcastIcon,
+  QrCodeIcon,
+  TrophyIcon,
+  UserRoundIcon,
+  Volume2Icon,
+  WaypointsIcon,
+} from "@mdevs/icons";
 import type { ComponentType } from "react";
 
 // Source unique : `lib/ai/tools/ids.ts` distingue les outils réellement

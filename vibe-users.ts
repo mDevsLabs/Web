@@ -201,7 +201,11 @@ export function registerVibeUsersRoutes(
                COALESCE(pr.avatar_url, u.avatar_url) as avatar_url,
                COALESCE(pr.bio, 'Membre Vibe') as bio,
                COALESCE(pr.followers_count, 0) as followers_count,
-               ${currentUserId ? sql`EXISTS (SELECT 1 FROM follows f WHERE f.follower_id = ${currentUserId} AND f.following_id = u.id)` : sql`FALSE`} as is_following
+               ${
+                 currentUserId
+                   ? sql`EXISTS (SELECT 1 FROM follows f WHERE f.follower_id = ${currentUserId} AND f.following_id = u.id)`
+                   : sql`FALSE`
+               } as is_following
         FROM users u
         LEFT JOIN profiles pr ON pr.user_id = u.id
         WHERE (${currentUserId ? sql`u.id != ${currentUserId}` : true})
@@ -247,8 +251,9 @@ export function registerVibeUsersRoutes(
       const sql = getDb();
       const target =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${username} LIMIT 1`;
-      if (target.length === 0)
+      if (target.length === 0) {
         return c.json({ error: "Profil introuvable." }, 404);
+      }
       const targetId = Number(target[0].id);
 
       const users =
@@ -259,7 +264,11 @@ export function registerVibeUsersRoutes(
                    COALESCE(pr.display_name, u.username) as display_name,
                    COALESCE(pr.avatar_url, u.avatar_url) as avatar_url,
                    COALESCE(pr.followers_count, 0) as followers_count,
-                   ${currentUserId ? sql`EXISTS (SELECT 1 FROM follows f2 WHERE f2.follower_id = ${currentUserId} AND f2.following_id = u.id)` : sql`FALSE`} as is_following
+                   ${
+                     currentUserId
+                       ? sql`EXISTS (SELECT 1 FROM follows f2 WHERE f2.follower_id = ${currentUserId} AND f2.following_id = u.id)`
+                       : sql`FALSE`
+                   } as is_following
             FROM follows f
             JOIN users u ON u.id = f.follower_id
             LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -273,7 +282,11 @@ export function registerVibeUsersRoutes(
                    COALESCE(pr.display_name, u.username) as display_name,
                    COALESCE(pr.avatar_url, u.avatar_url) as avatar_url,
                    COALESCE(pr.followers_count, 0) as followers_count,
-                   ${currentUserId ? sql`EXISTS (SELECT 1 FROM follows f2 WHERE f2.follower_id = ${currentUserId} AND f2.following_id = u.id)` : sql`FALSE`} as is_following
+                   ${
+                     currentUserId
+                       ? sql`EXISTS (SELECT 1 FROM follows f2 WHERE f2.follower_id = ${currentUserId} AND f2.following_id = u.id)`
+                       : sql`FALSE`
+                   } as is_following
             FROM follows f
             JOIN users u ON u.id = f.following_id
             LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -494,9 +507,21 @@ export function registerVibeUsersRoutes(
         posts = await sql`
           SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                  (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-                 ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-                 ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-                 ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked
+                 ${
+                   currentUserId
+                     ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                     : sql`FALSE`
+                 } as has_liked,
+                 ${
+                   currentUserId
+                     ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                     : sql`FALSE`
+                 } as has_reposted,
+                 ${
+                   currentUserId
+                     ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                     : sql`FALSE`
+                 } as has_bookmarked
           FROM posts p
           JOIN users u ON u.id = p.author_id
           LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -524,9 +549,21 @@ export function registerVibeUsersRoutes(
                    (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
                    TRUE AS pinned_by_profile,
                    pu.username AS pinned_by_username,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-                   ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                       : sql`FALSE`
+                   } as has_liked,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                       : sql`FALSE`
+                   } as has_reposted,
+                   ${
+                     currentUserId
+                       ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                       : sql`FALSE`
+                   } as has_bookmarked
             FROM profile_pinned_posts ppp
             JOIN posts p ON p.id = ppp.post_id
             JOIN users u ON u.id = p.author_id
@@ -644,9 +681,21 @@ export function registerVibeUsersRoutes(
       const posts = await sql`
         SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
                (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                   : sql`FALSE`
+               } as has_liked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                   : sql`FALSE`
+               } as has_reposted,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                   : sql`FALSE`
+               } as has_bookmarked
         FROM post_interactions pi
         JOIN posts p ON p.id = pi.post_id
         JOIN users u ON u.id = p.author_id
@@ -869,9 +918,17 @@ export function registerVibeUsersRoutes(
         )
         ON CONFLICT (user_id)
         DO UPDATE SET
-          display_name = ${nextDisplayName === undefined ? sql`profiles.display_name` : nextDisplayName},
+          display_name = ${
+            nextDisplayName === undefined
+              ? sql`profiles.display_name`
+              : nextDisplayName
+          },
           bio = ${nextBio === undefined ? sql`profiles.bio` : nextBio},
-          interests = ${nextInterests === undefined ? sql`profiles.interests` : (nextInterests as string[])},
+          interests = ${
+            nextInterests === undefined
+              ? sql`profiles.interests`
+              : (nextInterests as string[])
+          },
           avatar_url = ${nextAvatarUrl === undefined ? sql`profiles.avatar_url` : nextAvatarUrl},
           banner_url = ${nextBannerUrl === undefined ? sql`profiles.banner_url` : nextBannerUrl},
           website = ${nextWebsite === undefined ? sql`profiles.website` : nextWebsite},
@@ -1007,12 +1064,14 @@ export function registerVibeUsersRoutes(
       const sql = getDb();
       const targetUser =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0)
+      if (targetUser.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       const targetId = Number(targetUser[0].id);
 
-      if (targetId === currentUserId)
+      if (targetId === currentUserId) {
         return c.json({ error: "Impossible de se suivre soi-même." }, 400);
+      }
 
       const existing = await sql`
         SELECT 1 FROM follows WHERE follower_id = ${currentUserId} AND following_id = ${targetId}
@@ -1096,8 +1155,9 @@ export function registerVibeUsersRoutes(
       await ensurePostSubscriptionsTable(sql);
       const targetUser =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0)
+      if (targetUser.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
 
       const rows = await sql`
         SELECT 1 FROM post_subscriptions
@@ -1133,8 +1193,9 @@ export function registerVibeUsersRoutes(
       await ensurePostSubscriptionsTable(sql);
       const targetUser =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0)
+      if (targetUser.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       const targetId = Number(targetUser[0].id);
 
       if (targetId === currentUserId) {
@@ -1210,8 +1271,9 @@ export function registerVibeUsersRoutes(
       const sql = getDb();
       const targetUser =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0)
+      if (targetUser.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       const targetId = Number(targetUser[0].id);
       if (targetId === currentUserId) {
         return c.json({ error: "Impossible de se masquer soi-même." }, 400);
@@ -1307,14 +1369,16 @@ export function registerVibeUsersRoutes(
     try {
       const rawParam = c.req.param("username") || "";
       const targetUsername = rawParam.toLowerCase().trim().replace(/^@/, "");
-      if (!targetUsername)
+      if (!targetUsername) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       await ensureProfileViewsTable();
       const sql = getDb();
       const targetUser =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0)
+      if (targetUser.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       const targetId = Number(targetUser[0].id);
       let viewerId: number | null = null;
       try {
@@ -1325,8 +1389,9 @@ export function registerVibeUsersRoutes(
         }
       } catch {}
       // Pas d'auto-comptage
-      if (viewerId && viewerId === targetId)
+      if (viewerId && viewerId === targetId) {
         return c.json({ counted: false, success: true });
+      }
       if (viewerId && !rateLimit(`pv:${viewerId}:${targetId}`, 1, 60_000)) {
         return c.json({ counted: false, success: true });
       }
@@ -1383,8 +1448,9 @@ export function registerVibeUsersRoutes(
       const rows =
         await sql`SELECT created_at::date AS day, COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${userId} AND created_at >= ${sinceIso}::timestamptz GROUP BY created_at::date ORDER BY day ASC`;
       const byDay = new Map<string, number>();
-      for (const r of rows as any[])
+      for (const r of rows as any[]) {
         byDay.set(String(r.day).slice(0, 10), Number(r.n || 0));
+      }
       const series: Array<{ day: string; views: number }> = [];
       for (let i = periodDays - 1; i >= 0; i--) {
         const d = new Date(Date.now() - i * 86_400_000)

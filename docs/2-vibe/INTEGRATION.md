@@ -163,6 +163,36 @@ routes BFF. `next.config.ts` déclare donc l'origine de l'API
 de la CSP — sans quoi le fil, les messages et le temps réel de `/vibe`
 répondraient par des erreurs de console.
 
+### 7bis. Pré-hydratation : les lectures de premier écran viennent de Postgres
+
+Depuis la migration « lectures base », les GET de premier écran ne partent
+plus du navigateur : les pages générées (`scripts/build-vibe-routes.mjs`,
+template async) appellent `getVibeHydration()` — `lib/vibe/server/` lit le
+**même Neon Postgres** que le backend (`DATABASE_URL` partagé, pooler
+`-pooler`) et transmet une graine `{ as, hydratedAt, key, data }` aux
+adaptateurs de `vibe-routes.tsx`. Concrètement : `/vibe` (session : /v1/me,
+réglages, badges), le profil, Explorer, une publication + ses réponses, les
+notifications, les conversations, les Livres et le Cercle s'affichent sans
+aucun appel `mai.val.run` au premier rendu.
+
+Contrats à respecter en intervenant sur cette couche :
+
+- **Les écritures, l'IA et le SSE restent à l'API.** Un lecteur serveur ne
+  fait jamais `POST`/`PATCH`/`DELETE`, n'appelle pas les modèles, et
+  n'exécute aucun DDL : les tables Vibe appartiennent au backend
+  (`ensure*`). Table ou colonne absente ⇒ graine `null` ⇒ repli API.
+- **Toute erreur de lecture vaut `data: null`**, jamais une exception : la
+  page se comporte alors exactement comme avant la migration.
+- **Les graines portent l'identité du lecteur (`as`)** : une page rejette une
+  graine qui ne vient pas du visiteur courant. Les données injectées dans le
+  cache d'`ApiService` passent par `seedEndpointFor`/`profileEndpoint`/
+  `feedEndpoint` — clés identiques aux getters, sinon le cache ne sert pas.
+- **Pas de prefetch** : le `Link` de `components/vibe/router.tsx` pose
+  `prefetch={false}`, sinon chaque survol exécuterait des lectures Postgres.
+- La publication des contenus programmés, effet de bord caché des GET du
+  backend, est déportée dans `app/api/cron/vibe` (tick 5 min via
+  `cron-tasks.yml`) ; le backend garde sa publication paresseuse pour mobile.
+
 ## 8. Décisions de lint
 
 `biome.jsonc` contient trois exceptions documentées, toutes limitées à Vibe :
@@ -182,8 +212,9 @@ répondraient par des erreurs de console.
   se répondent visuellement. Trois sorties : garder les deux (Vibe est une
   application dans l'application), masquer celle de l'hôte sur `/vibe`, ou
   intégrer les entrées de Vibe à la navigation de mAI.
-- **`apps/vibe/` (la source Vite) est aujourd'hui non suivie par git.**
-  `scripts/build-vibe-css.mjs` en lit `src/index.css` : sans ce dossier, la
-  feuille de style ne peut plus être régénérée. Le commiter (au moins
-  `src/index.css` et `src/context/ThemeContext.tsx`, les deux sources de
-  référence) rend la génération reproductible en intégration continue.
+- **`apps/vibe/` (la source Vite) est suivie par git**, y compris
+  `src/index.css` et les migrations `lib/db/migrations/*.sql`. La régénération de
+  `components/vibe/vibe.css` par `scripts/build-vibe-css.mjs` est donc
+  reproductible en intégration continue : ce point, qui figurait ici comme une
+  dette, est soldé. Ne pas le rouvrir en retirant la source du suivi — sans elle,
+  la feuille de style générée ne peut plus être produite.

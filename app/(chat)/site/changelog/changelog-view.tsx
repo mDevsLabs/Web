@@ -1,7 +1,13 @@
 "use client";
 
-import { ArrowLeftIcon as ArrowLeft, ExternalLinkIcon as ExternalLink, GitCommitIcon as GitCommit, StarIcon as Star, ZapIcon as Zap } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ExternalLinkIcon as ExternalLink,
+  GitCommitIcon as GitCommit,
+  StarIcon as Star,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Markdown from "react-markdown";
 import Link from "@/components/site/router";

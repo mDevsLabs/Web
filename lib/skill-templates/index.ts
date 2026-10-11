@@ -113,7 +113,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       id: "incident-debugger",
       instructions:
         "Tu es un ingénieur fiabilité. Analyse les issues et stack traces Sentry via les outils MCP disponibles, regroupe les erreurs similaires, identifie les régressions récentes, puis propose pour chaque incident : cause probable, étapes de reproduction et correctif priorisé.",
-      mcpServerNames: ["Sentry", "GitHub"],
+      mcpServerNames: ["Sentry"],
       minTier: "plus",
       name: "Débogueur d'incidents Sentry",
       parameters: [
@@ -340,40 +340,6 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
   {
     manifest: {
       author: "mAI",
-      category: "dev",
-      color: "#1f2937",
-      description:
-        "Triage des issues et revues de pull requests GitHub avec plan de test.",
-      icon: { name: "GitBranch", type: "lucide" },
-      id: "github-maintainer",
-      instructions:
-        "Tu es mainteneur d'un dépôt GitHub. Via le serveur MCP GitHub installé, liste les issues et pull requests ouvertes, déduplique, priorise selon l'impact et l'ancienneté, puis pour chaque sujet retenu : résume le contexte, liste les fichiers concernés, propose un plan de test et une réponse prête à publier. Toute écriture (commentaire, label, fermeture, création de branche) est proposée puis attend une approbation explicite avant exécution.",
-      mcpServerNames: ["GitHub"],
-      minTier: "plus",
-      name: "Mainteneur GitHub",
-      parameters: [
-        {
-          description: "Dépôt au format propriétaire/nom",
-          name: "depot",
-          required: true,
-          type: "string",
-        },
-        {
-          defaultValue: "issues",
-          description: "Périmètre : issues, pull requests ou les deux",
-          name: "perimetre",
-          required: false,
-          type: "string",
-        },
-      ],
-      pluginIds: [],
-      tags: ["GitHub", "Revue", "Triage"],
-      tools: ["mcp", "documentParser", "createDocument"],
-    },
-  },
-  {
-    manifest: {
-      author: "mAI",
       category: "business",
       color: "#a855f7",
       description:
@@ -534,8 +500,8 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       icon: { name: "Rocket", type: "lucide" },
       id: "release-preparation",
       instructions:
-        "Tu es responsable de préparation de release pour un projet public GitLab. Inspecte le résumé du projet, les issues et merge requests ouvertes, les dernières releases et les fichiers de versionnement ou de configuration accessibles publiquement. Croise les informations GitHub et Sentry si ces serveurs sont installés. Vérifie la cohérence entre la version, les notes, les migrations et les tests attendus ; produis une checklist ordonnée, les risques bloquants et un brouillon de notes. Ne modifie ni ne publie quoi que ce soit : toute action d'écriture reste proposée puis soumise à approbation.",
-      mcpServerNames: ["GitHub", "GitLab", "Sentry"],
+        "Tu es responsable de préparation de release pour un projet public GitLab. Inspecte le résumé du projet, les issues et merge requests ouvertes, les dernières releases et les fichiers de versionnement ou de configuration accessibles publiquement. Croise les informations GitLab et Sentry si ces serveurs sont installés. Vérifie la cohérence entre la version, les notes, les migrations et les tests attendus ; produis une checklist ordonnée, les risques bloquants et un brouillon de notes. Ne modifie ni ne publie quoi que ce soit : toute action d'écriture reste proposée puis soumise à approbation.",
+      mcpServerNames: ["GitLab", "Sentry"],
       minTier: "plus",
       name: "Préparation de release",
       parameters: [

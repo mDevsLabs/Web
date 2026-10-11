@@ -11,6 +11,7 @@ import {
 } from "./colorMode";
 import { I18nProvider } from "./i18n";
 import { readInitialWindowThemeSnapshot } from "./initialWindowTheme";
+import "@mdevs/ui/styles.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";

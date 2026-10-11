@@ -212,7 +212,7 @@ export async function sendHtmlEmail(
       });
 
       await transporter.sendMail({
-        from: `"mAI Support" <${gmailUser}>`,
+        from: `"mAI Assistance" <${gmailUser}>`,
         html,
         subject,
         to,
@@ -291,7 +291,7 @@ export async function sendSupportTicketCreatedEmail({
   const ticketRef = ticket.ticket_number
     ? `#TICK-${ticket.ticket_number}`
     : `#${ticket.id.slice(0, 8)}`;
-  const subject = `[Support mAI] Nouveau ticket ${ticketRef} : ${ticket.title}`;
+  const subject = `[Assistance mAI] Nouveau ticket ${ticketRef} : ${ticket.title}`;
 
   const directLink = `${appUrl.replace(/\/$/, "")}/support/tickets/${ticket.id}`;
   const safeDescription = escapeHtml(ticket.description).replace(/\n/g, "<br>");
@@ -333,7 +333,7 @@ export async function sendSupportTicketCreatedEmail({
         </div>
 
         <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
-          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre d’assistance et de signalement technique</p>
         </div>
       </div>
     </body>
@@ -369,8 +369,8 @@ export async function sendSupportTicketUpdateEmail({
     ? `#TICK-${ticket.ticket_number}`
     : `#${ticket.id.slice(0, 8)}`;
   const subject = isFromAdmin
-    ? `[Support mAI] Réponse à votre ticket ${ticketRef} : ${ticket.title}`
-    : `[Support mAI] Nouveau message sur le ticket ${ticketRef}`;
+    ? `[Assistance mAI] Réponse à votre ticket ${ticketRef} : ${ticket.title}`
+    : `[Assistance mAI] Nouveau message sur le ticket ${ticketRef}`;
 
   const directLink = `${appUrl.replace(/\/$/, "")}/support/tickets/${ticket.id}`;
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
@@ -388,7 +388,7 @@ export async function sendSupportTicketUpdateEmail({
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:32px 28px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
           <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:16px 0 4px 0;">
-            ${isFromAdmin ? "Réponse de l'Équipe Support" : "Nouveau message"}
+            ${isFromAdmin ? "Réponse de l'équipe d'assistance" : "Nouveau message"}
           </h1>
           <p style="color:#a855f7; font-size:13px; font-weight:600; margin:0;">TICKET ${ticketRef} • ${escapeHtml(ticket.title)}</p>
         </div>
@@ -415,7 +415,7 @@ export async function sendSupportTicketUpdateEmail({
         </div>
 
         <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
-          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre d’assistance et de signalement technique</p>
         </div>
       </div>
     </body>

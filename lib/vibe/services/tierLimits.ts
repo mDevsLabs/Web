@@ -37,3 +37,36 @@ export const getMediaBytesLimit = (tier?: string | null): number =>
 /** « 50 Mo » / « 1 Go » — libellés d'interface. */
 export const formatMediaLimit = (bytes: number): string =>
   bytes >= MEDIA_BYTES_PAID ? "1 Go" : "50 Mo";
+
+/* ─────────── Stories ───────────
+ * Miroir d'AFFICHAGE. L'autorité est serveur : TIER_DAILY_STORY_LIMITS dans
+ * config.ts applique la limite, et `GET /v1/stories/quota` la renvoie déjà
+ * calculée. Ce qui suit ne sert qu'à libeller l'interface avant réponse.
+ */
+
+/** Taille maximale d'un média de story — contrat produit, tous forfaits.
+ *  Distinct du plafond d'upload par forfait ci-dessus : une story de 900 Mo
+ *  reste refusée même par un compte Max, et le serveur le revérifie. */
+export const STORY_MEDIA_MAX_BYTES = 50 * 1024 * 1024;
+
+const DAILY_STORIES: Record<string, number | null> = {
+  free: 1,
+  max: null,
+  plus: 5,
+  pro: 10,
+};
+
+/** Stories publiables par jour. `null` = illimité (Max). */
+export const getDailyStoryLimit = (tier?: string | null): number | null => {
+  const cle = String(tier || "")
+    .trim()
+    .toLowerCase();
+  // Un forfait inconnu est traité comme Free : la limite la plus stricte.
+  return Object.hasOwn(DAILY_STORIES, cle)
+    ? DAILY_STORIES[cle]
+    : DAILY_STORIES.free;
+};
+
+/** « Illimitées » ou « N par jour » — libellé d'interface. */
+export const formatStoryLimit = (limit: number | null): string =>
+  limit === null ? "illimitées" : `${limit} par jour`;

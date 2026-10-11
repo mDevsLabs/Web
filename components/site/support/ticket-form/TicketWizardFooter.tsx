@@ -1,6 +1,11 @@
 "use client";
 
-import { ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight, Loader2Icon as Loader2, SendIcon as Send } from "@mdevs/icons";
+import {
+  ChevronLeftIcon as ChevronLeft,
+  ChevronRightIcon as ChevronRight,
+  Loader2Icon as Loader2,
+  SendIcon as Send,
+} from "@mdevs/icons";
 import type { TicketStep } from "@/components/site/support/ticket-form/ticket-form-types";
 import { WIZARD_STEPS } from "@/components/site/support/ticket-form/ticket-form-types";
 

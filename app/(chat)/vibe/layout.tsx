@@ -27,6 +27,7 @@
 
 import { VibeApp } from "@/components/vibe/vibe-app";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { readVibeSession } from "@/lib/vibe/server/hydration";
 import "@mdevs/ui/styles.css";
 import "@/components/vibe/vibe.css";
 
@@ -48,6 +49,15 @@ export default async function VibeLayout({
   children: React.ReactNode;
 }) {
   const sessionToken = await getMaiSessionToken();
+  // Le jeton valide, lu à l'instant, vaut identité : autant en dériver la
+  // session (profil, réglages, badges) depuis Postgres, sur le même chemin que
+  // celui qu'empruntait le navigateur vers l'API. `readVibeSession` dégrade
+  // chaque compartiment à `null` indépendamment — jamais il ne bloque la page.
+  const initialSession = sessionToken ? await readVibeSession() : null;
 
-  return <VibeApp sessionToken={sessionToken}>{children}</VibeApp>;
+  return (
+    <VibeApp initialSession={initialSession} sessionToken={sessionToken}>
+      {children}
+    </VibeApp>
+  );
 }

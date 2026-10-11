@@ -113,8 +113,9 @@ export async function attachQuotedPosts(posts: any[]) {
       ])
     );
     for (const p of posts) {
-      if (p.quoted_post_id)
+      if (p.quoted_post_id) {
         p.quoted_post = byId.get(String(p.quoted_post_id)) || null;
+      }
     }
   } catch (err) {
     console.warn("[vibe-posts] attachQuotedPosts:", (err as any)?.message);
@@ -179,8 +180,9 @@ export async function attachPolls(posts: any[], currentUserId: number | null) {
         SELECT poll_id, option_id FROM post_poll_votes
         WHERE poll_id = ANY(${pollIds}::uuid[]) AND user_id = ${currentUserId}
       `.catch(() => []);
-      for (const v of votes)
+      for (const v of votes) {
         votesByPoll[String(v.poll_id)] = String(v.option_id);
+      }
     }
     const pollByPost: Record<string, any> = {};
     for (const pl of polls) {
@@ -527,7 +529,11 @@ export async function attachBookRefs(
              u.username AS owner_username, pr.display_name AS owner_display_name,
              (SELECT COUNT(*) FROM vibe_book_members bm WHERE bm.book_id = b.id) AS members_count,
              (SELECT COUNT(*) FROM vibe_book_items bi WHERE bi.book_id = b.id) AS items_count,
-             ${viewerId === null ? sql`FALSE` : sql`(b.user_id = ${viewerId} OR EXISTS (SELECT 1 FROM vibe_book_members bm2 WHERE bm2.book_id = b.id AND bm2.user_id = ${viewerId}))`} AS viewer_is_member
+             ${
+               viewerId === null
+                 ? sql`FALSE`
+                 : sql`(b.user_id = ${viewerId} OR EXISTS (SELECT 1 FROM vibe_book_members bm2 WHERE bm2.book_id = b.id AND bm2.user_id = ${viewerId}))`
+             } AS viewer_is_member
       FROM vibe_books b
       JOIN users u ON u.id = b.user_id
       LEFT JOIN profiles pr ON pr.user_id = u.id

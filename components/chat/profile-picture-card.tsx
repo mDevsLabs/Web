@@ -1,6 +1,14 @@
 "use client";
 
-import { AlertTriangleIcon, CheckCircle2Icon, ImageUpIcon, InfoIcon, LinkIcon, Loader2Icon, PaperclipIcon } from "@mdevs/icons";
+import {
+  AlertTriangleIcon,
+  CheckCircle2Icon,
+  ImageUpIcon,
+  InfoIcon,
+  LinkIcon,
+  Loader2Icon,
+  PaperclipIcon,
+} from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";

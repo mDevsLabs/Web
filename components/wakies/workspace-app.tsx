@@ -21,16 +21,19 @@ import { TimerIcon } from "@mdevs/icons/time/timer";
 import { Button } from "@mdevs/ui/primitives/button";
 import { Input } from "@mdevs/ui/primitives/input";
 import { Textarea } from "@mdevs/ui/primitives/textarea";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import useSWR from "swr";
 import { AppSwitcherMenu } from "@/components/common/app-switcher";
-import { AppsScreen } from "@/components/wakies/AppsScreen";
 import { ApiError, api } from "@/components/wakies/api";
 import { Chat } from "@/components/wakies/Chat";
 import { ConversationList } from "@/components/wakies/ConversationList";
 import { WakiesDraftProvider } from "@/components/wakies/DraftProvider";
+import { FriendsScreen } from "@/components/wakies/FriendsScreen";
 import { GoalsScreen } from "@/components/wakies/GoalsScreen";
 import { IdeasScreen } from "@/components/wakies/IdeasScreen";
 import { Mascot } from "@/components/wakies/Mascot";
+import { MonProfilCard } from "@/components/wakies/MonProfilCard";
 import { Onboarding } from "@/components/wakies/Onboarding";
 import { openPageLink } from "@/components/wakies/page-navigation";
 import { ResultPane } from "@/components/wakies/ResultPane";
@@ -38,6 +41,10 @@ import { SpaceNav } from "@/components/wakies/SpaceNav";
 import { SpaceWorkspace } from "@/components/wakies/SpaceWorkspace";
 import { TaskActions } from "@/components/wakies/TaskActions";
 import { TaskRow } from "@/components/wakies/TaskPresentation";
+import { TodayScreen } from "@/components/wakies/TodayScreen";
+import { useMessagingNotifications } from "@/components/wakies/useMessagingNotifications";
+import { WakieProfileDrawer } from "@/components/wakies/WakieProfileDrawer";
+import { WakiesNotificationBell } from "@/components/wakies/WakiesNotificationBell";
 import {
   type Dialog,
   WorkspaceDialog,
@@ -46,7 +53,9 @@ import {
   type WakiesSection,
   WorkspaceNavigation,
 } from "@/components/wakies/WorkspaceNavigation";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL } from "@/lib/constants";
+import { memoriserNavReduite } from "@/lib/wakies/client/nav-collapsed";
+import type { Page } from "@/lib/wakies/pages";
 import type {
   Conversation,
   Detail,
@@ -63,23 +72,131 @@ import type {
  * n'a plus de runtime externe à envelopper. La session, elle, vient de l'hôte —
  * plus aucun écran de déverrouillage ni jeton à saisir (voir api.ts).
  */
-export function WakiesWorkspace() {
+export function WakiesWorkspace({
+  initialNavCollapsed = false,
+}: {
+  /** Lu côté serveur : éviter que le rail ne se replie après l'hydratation. */
+  initialNavCollapsed?: boolean;
+}) {
   return (
     <WakiesDraftProvider>
-      <WakiesWorkspaceContent />
+      <WakiesWorkspaceContent initialNavCollapsed={initialNavCollapsed} />
     </WakiesDraftProvider>
   );
 }
 
-function WakiesWorkspaceContent() {
+function WakiesWorkspaceContent({
+  initialNavCollapsed,
+}: {
+  initialNavCollapsed: boolean;
+}) {
   const [state, setState] = useState<State>();
+  const routeur = useRouter();
+  /**
+   * Les réglages sont une PAGE, plus une fenêtre. Une URL se relit, se
+   * partage, et surtout se ferme sans emporter le contexte avec elle ; le
+   * dialogue, lui, rendait l'atelier inerte et n'existait nulle part.
+   */
+  const ouvrirReglages = useCallback(
+    () => routeur.push("/wakies/settings"),
+    [routeur]
+  );
   const [workspace, setWorkspace] = useState<WorkspaceState>();
   const [selectedWakie, setSelectedWakie] = useState("");
   const [selectedThread, setSelectedThread] = useState<string>();
-  const [view, rawSetView] = useState<WakiesSection>("chat");
+  const [view, rawSetView] = useState<WakiesSection>("today");
   const dirtyPage = useRef(false);
   const [spaceId, setSpaceId] = useState("");
   const [pageId, setPageId] = useState<string>();
+  const [sidebarSearch, setSidebarSearch] = useState("");
+  const [searchPages, setSearchPages] = useState<
+    { page: Page; space: WorkspaceState["spaces"][number] }[]
+  >([]);
+  /** Message visé par une recherche : le fil s'y rend et le met en évidence. */
+  const [cibleMessageId, setCibleMessageId] = useState<string | null>(null);
+  /**
+   * Résultats de la recherche SERVEUR.
+   *
+   * Les titres se filtrent localement (la liste est déjà chargée) ; le TEXTE
+   * des messages, non — il vit en base. La route `/search` le cherche, borné
+   * aux 100 derniers messages de chaque conversation, et le dit : c'est une
+   * recherche de reprise, pas une indexation complète de l'historique.
+   */
+  const [searchMessages, setSearchMessages] = useState<
+    Array<{
+      conversationId: string;
+      extrait: string;
+      id: string;
+      role: string;
+    }>
+  >([]);
+  const spaceKey = workspace?.spaces.map((space) => space.id).join(",") ?? "";
+  useEffect(() => {
+    const query = sidebarSearch.trim().toLocaleLowerCase("fr");
+    if (!query || !workspace?.spaces.length) {
+      setSearchPages([]);
+      return;
+    }
+    setSearchPages([]);
+    let active = true;
+    const timer = setTimeout(() => {
+      void Promise.all(
+        workspace.spaces.map(async (space) => ({
+          pages: await api<Page[]>(`/spaces/${space.id}/pages`),
+          space,
+        }))
+      )
+        .then((groups) => {
+          if (active)
+            setSearchPages(
+              groups.flatMap(({ pages, space }) =>
+                pages
+                  .filter((page) =>
+                    page.title.toLocaleLowerCase("fr").includes(query)
+                  )
+                  .map((page) => ({ page, space }))
+              )
+            );
+        })
+        .catch(() => {
+          if (active) setSearchPages([]);
+        });
+    }, 180);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [sidebarSearch, spaceKey, workspace?.spaces]);
+  useEffect(() => {
+    const requete = sidebarSearch.trim();
+    if (requete.length < 2) {
+      setSearchMessages([]);
+      return;
+    }
+    let active = true;
+    const timer = setTimeout(() => {
+      void api<{
+        messages: Array<{
+          conversationId: string;
+          extrait: string;
+          id: string;
+          role: string;
+        }>;
+      }>(`/search?q=${encodeURIComponent(requete)}`)
+        .then((donnees) => {
+          if (active) setSearchMessages(donnees.messages);
+        })
+        .catch(() => {
+          // Une recherche en panne laisse la liste locale : elle ne bloque ni
+          // la lecture ni la navigation.
+          if (active) setSearchMessages([]);
+        });
+    }, 220);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [sidebarSearch]);
   const setDirtyPage = useCallback((value: boolean) => {
     dirtyPage.current = value;
   }, []);
@@ -132,12 +249,21 @@ function WakiesWorkspaceContent() {
   const [sessionExpiree, setSessionExpiree] = useState(false);
   const [planRequis, setPlanRequis] = useState(false);
   const [dialog, rawSetDialog] = useState<Dialog>();
+  /** Fiche sociale ouverte depuis « Mon profil » (tiroir, pas un écran). */
+  const [ficheWakie, setFicheWakie] = useState<Wakie>();
   const setDialog = (next: Dialog | undefined) => {
     setMobile(false);
     rawSetDialog(next);
   };
   const [mobile, setMobile] = useState(false);
-  const [navCollapsed, setNavCollapsed] = useState(false);
+  const [navCollapsed, setNavCollapsed] = useState(initialNavCollapsed);
+  // La réduction est un réglage d'affichage : il survit au rechargement, comme
+  // la barre de l'hôte, mais sous sa propre clé de cookie.
+  const basculerNav = () => {
+    const suivante = !navCollapsed;
+    setNavCollapsed(suivante);
+    memoriserNavReduite(suivante);
+  };
   useEffect(() => {
     if (!mobile) return;
     const sidebar = document.getElementById("workspace-sidebar");
@@ -185,54 +311,86 @@ function WakiesWorkspaceContent() {
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
   const [taskDetail, setTaskDetail] = useState<Detail>();
-  const refresh = useCallback(async () => {
-    try {
+  const messaging = useMessagingNotifications(
+    view === "chat" ? selectedThread : undefined
+  );
+  /** Une notification mène à son fil, puis sort du compteur. */
+  const ouvrirNotification = (conversationId: string) => {
+    if (!setView("chat")) return;
+    const cible = workspace?.conversations.find(
+      (conversation) => conversation.id === conversationId
+    );
+    if (!cible) return;
+    setSelectedWakie(cible.wakieId);
+    setSelectedThread(cible.id);
+    messaging.retirer(cible.id);
+  };
+  const { data: loaded, mutate: refreshData } = useSWR(
+    "wakies-workspace",
+    async () => {
       const [s, w] = await Promise.all([
         api<State>("/state"),
         api<WorkspaceState>("/workspace"),
       ]);
-      setState(s);
-      setWorkspace(w);
-      setSessionExpiree(false);
-      setPlanRequis(false);
-      setSelectedWakie((previous) =>
-        w.wakies.some((item) => item.id === previous)
-          ? previous
-          : w.wakies[0]?.id || ""
-      );
-      setSelectedThread((previous) =>
-        w.conversations.some((item) => item.id === previous)
-          ? previous
-          : undefined
-      );
-    } catch (e) {
-      if (e instanceof ApiError && e.status === 401) setSessionExpiree(true);
-      else if (e instanceof ApiError && e.status === 403) setPlanRequis(true);
-      else
-        setError(
-          e instanceof Error ? e.message : "Impossible de joindre le serveur."
-        );
+      return { state: s, workspace: w };
+    },
+    {
+      onError: (e: unknown) => {
+        if (e instanceof ApiError && e.status === 401) setSessionExpiree(true);
+        else if (e instanceof ApiError && e.status === 403) setPlanRequis(true);
+        else
+          setError(
+            e instanceof Error ? e.message : "Impossible de joindre le serveur."
+          );
+      },
+      refreshInterval: 5000,
+      revalidateOnFocus: true,
     }
-  }, []);
-  // Rafraîchissement : le gabarit interrogeait son serveur toutes les 3 s pour
-  // suivre l'avancement d'une exécution. Ici les données sont celles du compte,
-  // qui ne changent qu'à l'action : 12 s suffisent, et un rafraîchissement au
-  // retour sur l'onglet évite d'attendre le prochain tick.
+  );
   useEffect(() => {
-    void refresh();
-    const timer = setInterval(() => {
-      if (document.visibilityState === "visible" && navigator.onLine)
-        void refresh();
-    }, 30_000);
-    const auRetour = () => {
-      if (document.visibilityState === "visible") void refresh();
+    if (!loaded) return;
+    const w = loaded.workspace;
+    setState(loaded.state);
+    setWorkspace(w);
+    setSessionExpiree(false);
+    setPlanRequis(false);
+    setSelectedWakie((previous) =>
+      w.wakies.some((item) => item.id === previous)
+        ? previous
+        : w.wakies[0]?.id || ""
+    );
+    setSelectedThread((previous) =>
+      w.conversations.some((item) => item.id === previous)
+        ? previous
+        : undefined
+    );
+  }, [loaded]);
+  const refresh = useCallback(async () => {
+    await refreshData();
+    await messaging.refresh();
+  }, [refreshData, messaging.refresh]);
+  const marquerLu = useCallback(
+    (conversationId: string) => {
+      messaging.retirer(conversationId);
+      void refreshData();
+    },
+    [messaging.retirer, refreshData]
+  );
+  useEffect(() => {
+    const ouvrir = (event: Event) => {
+      const id = (event as CustomEvent<string>).detail;
+      const conversation = workspace?.conversations.find(
+        (item) => item.id === id
+      );
+      if (!conversation || dirtyPage.current) return;
+      rawSetView("chat");
+      setSelectedWakie(conversation.wakieId);
+      setSelectedThread(id);
+      setMobile(false);
     };
-    document.addEventListener("visibilitychange", auRetour);
-    return () => {
-      clearInterval(timer);
-      document.removeEventListener("visibilitychange", auRetour);
-    };
-  }, [refresh]);
+    window.addEventListener("wakies-open-conversation", ouvrir);
+    return () => window.removeEventListener("wakies-open-conversation", ouvrir);
+  }, [workspace]);
   useEffect(() => {
     setCapture(undefined);
     if (!selectedThread) return;
@@ -358,12 +516,7 @@ function WakiesWorkspaceContent() {
           Mettez à niveau votre compte mAI pour accéder à vos Wakies, vos
           espaces et vos tâches planifiées.
         </p>
-        <a
-          className="primary"
-          href={MAI_UPGRADE_URL}
-          rel="noopener"
-          target="_blank"
-        >
+        <a className="primary" href={APP_PRICING_URL}>
           Mettre à niveau mon forfait
         </a>
         <a className="muted" href="/">
@@ -376,6 +529,7 @@ function WakiesWorkspaceContent() {
       <main className="unlock">
         <Mascot state="working" />
         <h1>Chargement de vos Wakies…</h1>
+
         {error && (
           <>
             <p className="chat-error">{error}</p>
@@ -483,20 +637,43 @@ function WakiesWorkspaceContent() {
         id="workspace-sidebar"
         role={mobile ? "dialog" : undefined}
       >
-        <AppSwitcherMenu align="start" currentAppOverride={null} side="bottom">
+        {/* Rangée de tête du rail : le sélecteur d'applications, puis les
+            notifications et la réduction, à sa droite. Ces trois commandes
+            restent praticables quand le rail se réduit en colonne d'icônes. */}
+        <div className="rail-actions">
+          <AppSwitcherMenu
+            align="start"
+            currentAppOverride={null}
+            side="bottom"
+          >
+            <Button
+              aria-label="Changer d’espace de travail"
+              className="wordmark"
+              variant="ghost"
+            >
+              <img
+                alt="Wakies"
+                className="size-5.5 object-contain shrink-0"
+                src="/wakies/logo.png"
+              />
+              <span className="rail-label">Wakies</span>
+            </Button>
+          </AppSwitcherMenu>
+          <WakiesNotificationBell
+            notifications={messaging.notifications}
+            onAutoriser={() => void messaging.autoriser()}
+            onSelect={ouvrirNotification}
+            permission={messaging.permission}
+          />
           <Button
-            aria-label="Changer d’espace de travail"
-            className="wordmark"
+            aria-label={navCollapsed ? "Déplier le menu" : "Réduire le menu"}
+            className="rail-collapse"
+            onClick={basculerNav}
             variant="ghost"
           >
-            <img
-              alt="Wakies"
-              className="size-5.5 object-contain shrink-0"
-              src="/wakies/logo.png"
-            />
-            Wakies
+            <PanelLeftIcon size={17} />
           </Button>
-        </AppSwitcherMenu>
+        </div>
         <Button
           aria-label="Fermer le menu"
           className="sidebar-close icon-button"
@@ -514,6 +691,130 @@ function WakiesWorkspaceContent() {
           <PlusIcon size={17} />
           <span>Nouvelle conversation</span>
         </Button>
+        <div className="wakies-sidebar-search">
+          <Input
+            aria-label="Rechercher dans Wakies"
+            onChange={(event) => setSidebarSearch(event.target.value)}
+            placeholder="Rechercher…"
+            value={sidebarSearch}
+          />
+          {sidebarSearch.trim() && workspace && (
+            <section
+              aria-label="Résultats de recherche"
+              className="wakies-search-results"
+            >
+              {workspace.conversations
+                .filter((item) =>
+                  item.title
+                    .toLocaleLowerCase("fr")
+                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+                )
+                .map((item) => (
+                  <button
+                    key={`conversation-${item.id}`}
+                    onClick={() => {
+                      const owner = workspace.wakies.find(
+                        (candidate) => candidate.id === item.wakieId
+                      );
+                      if (owner) setSelectedWakie(owner.id);
+                      setSelectedThread(item.id);
+                      setView("chat");
+                    }}
+                    type="button"
+                  >
+                    Conversation · {item.title}
+                  </button>
+                ))}
+              {workspace.spaces
+                .filter((item) =>
+                  item.name
+                    .toLocaleLowerCase("fr")
+                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+                )
+                .map((item) => (
+                  <button
+                    key={`space-${item.id}`}
+                    onClick={() => openPage(item.id)}
+                    type="button"
+                  >
+                    Espace · {item.name}
+                  </button>
+                ))}
+              {workspace.wakies
+                .filter((item) =>
+                  item.name
+                    .toLocaleLowerCase("fr")
+                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+                )
+                .map((item) => (
+                  <button
+                    key={`wakie-${item.id}`}
+                    onClick={() => chooseWakie(item)}
+                    type="button"
+                  >
+                    Wakie · {item.name}
+                  </button>
+                ))}
+              {searchPages.map(({ page, space }) => (
+                <button
+                  key={`page-${page.id}`}
+                  onClick={() => openPage(space.id, page.id)}
+                  type="button"
+                >
+                  Page · {page.title} ({space.name})
+                </button>
+              ))}
+              {/* Les messages trouvés s'affichent sous les titres : on cherche
+                  une phrase, pas un fil — et cliquer ouvre le fil en mettant
+                  le message en évidence. */}
+              {searchMessages.map((message) => {
+                const fil = workspace.conversations.find(
+                  (item) => item.id === message.conversationId
+                );
+                return (
+                  <button
+                    key={`message-${message.id}`}
+                    onClick={() => {
+                      const cible = workspace.conversations.find(
+                        (item) => item.id === message.conversationId
+                      );
+                      if (!cible) return;
+                      const proprietaire = workspace.wakies.find(
+                        (candidat) => candidat.id === cible.wakieId
+                      );
+                      if (proprietaire) setSelectedWakie(proprietaire.id);
+                      setSelectedThread(cible.id);
+                      setCibleMessageId(message.id);
+                      setView("chat");
+                      setMobile(false);
+                      setSidebarSearch("");
+                    }}
+                    type="button"
+                  >
+                    Message · {message.extrait.slice(0, 80)}
+                    {fil ? ` (${fil.title})` : ""}
+                  </button>
+                );
+              })}
+              {!workspace.conversations.some((item) =>
+                item.title
+                  .toLocaleLowerCase("fr")
+                  .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+              ) &&
+                !workspace.spaces.some((item) =>
+                  item.name
+                    .toLocaleLowerCase("fr")
+                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+                ) &&
+                !workspace.wakies.some((item) =>
+                  item.name
+                    .toLocaleLowerCase("fr")
+                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
+                ) &&
+                !searchPages.length && <p>Aucun résultat.</p>}
+            </section>
+          )}
+        </div>
         <div className="sidebar-sections">
           <WorkspaceNavigation onSelect={setView} section={view} />
         </div>
@@ -587,7 +888,13 @@ function WakiesWorkspaceContent() {
             <SpaceNav
               active={view === "space" && spaceId === space.id}
               key={space.id}
+              onChanged={() => void refresh()}
               onOpen={(id) => openPage(space.id, id)}
+              onSupprime={(id) => {
+                // L'écran ouvert vient de cesser d'exister : y rester
+                // afficherait un espace fantôme jusqu'au prochain clic.
+                if (view === "space" && spaceId === id) setView("today");
+              }}
               pageId={pageId}
               space={space}
             />
@@ -628,14 +935,14 @@ function WakiesWorkspaceContent() {
           </Button>
           <Button
             className="nav-item"
-            onClick={() => setDialog({ type: "settings" })}
+            onClick={() => ouvrirReglages()}
             variant="ghost"
           >
             <Settings2Icon size={17} />
             <span>Réglages et configuration</span>
           </Button>
           {/* La version vient du paquet, pas d'un dépôt externe : le port est
-              intégré à mAI et n'est plus un modèle open source à installer. */}
+              intégré à mAI et n'est plus un modèle à code source ouvert à installer. */}
           <div className="version">
             HÉBERGÉ PAR MAI <span>v0.1</span>
           </div>
@@ -643,34 +950,45 @@ function WakiesWorkspaceContent() {
       </aside>
       <div className="workspace" inert={mobile ? true : undefined}>
         <header className="topbar">
-          <Button
-            aria-label={
-              navCollapsed ? "Afficher la navigation" : "Masquer la navigation"
-            }
-            className="desktop-nav-toggle document-icon"
-            onClick={() => setNavCollapsed(!navCollapsed)}
-            variant="outline"
-          >
-            <PanelLeftIcon size={18} />
-          </Button>
-          <Button
-            aria-label={`Personnaliser ${wakie.name}`}
-            className="muse-persona"
-            onClick={() => setDialog({ spaceId, type: "wakie", wakie })}
-            type="button"
-            variant="ghost"
-          >
-            <Mascot
-              avatar={wakie.avatar}
-              identity={wakie.id}
-              name={wakie.name}
-              small
-            />
-            <strong>{wakie.name}</strong>
-            <small>
-              {state.settings.paused ? "En pause" : "À votre écoute"}
-            </small>
-          </Button>
+          {view === "chat" ? (
+            <Button
+              aria-label={`Personnaliser ${wakie.name}`}
+              className="muse-persona"
+              onClick={() => setDialog({ spaceId, type: "wakie", wakie })}
+              type="button"
+              variant="ghost"
+            >
+              <Mascot
+                avatar={wakie.avatar}
+                identity={wakie.id}
+                name={wakie.name}
+                small
+              />
+              <strong>{wakie.name}</strong>
+              <small>
+                {state.settings.paused ? "En pause" : "À votre écoute"}
+              </small>
+            </Button>
+          ) : (
+            <div className="muse-page-title">
+              <span>WAKIES</span>
+              <h1>
+                {view === "today"
+                  ? "Aujourd’hui"
+                  : view === "tasks"
+                    ? "Activité"
+                    : view === "ideas"
+                      ? "Idées"
+                      : view === "goals"
+                        ? "Objectifs"
+                        : view === "memories"
+                          ? "Mémoires"
+                          : view === "profil"
+                            ? "Mon profil"
+                            : "Espaces"}
+              </h1>
+            </div>
+          )}
           <div className="breadcrumbs">
             <span>
               {view === "space"
@@ -685,7 +1003,9 @@ function WakiesWorkspaceContent() {
                   ? "Activité"
                   : view === "space"
                     ? "Pages"
-                    : "Mémoires"}
+                    : view === "profil"
+                      ? "Mon profil"
+                      : "Mémoires"}
             </strong>
           </div>
           <div className="top-actions">
@@ -749,12 +1069,28 @@ function WakiesWorkspaceContent() {
             tâches planifiées attendent.
           </div>
         )}
-        {view === "apps" ? (
-          <AppsScreen
-            onCustomize={() =>
-              setDialog({ spaceId: wakie.spaceId, type: "wakie", wakie })
-            }
-            wakie={wakie}
+        {view === "today" ? (
+          <TodayScreen
+            busy={busy}
+            configured={configured}
+            conversations={workspace.conversations}
+            onCreateConversation={(prompt) => void newConversation(prompt)}
+            onOpenConversation={(conversation) => {
+              const owner = workspace.wakies.find(
+                (candidate) => candidate.id === conversation.wakieId
+              );
+              if (owner) {
+                chooseWakie(owner);
+                setSelectedThread(conversation.id);
+                setView("chat");
+              }
+            }}
+            onOpenSpace={(id) => openPage(id)}
+            onSection={setView}
+            paused={state.settings.paused}
+            spaces={workspace.spaces}
+            tasks={state.tasks}
+            wakies={workspace.wakies}
           />
         ) : view === "goals" ? (
           <GoalsScreen
@@ -777,7 +1113,7 @@ function WakiesWorkspaceContent() {
             onSchedule={(conversationId) =>
               setDialog({ conversationId, type: "schedule" })
             }
-            onSettings={() => setDialog({ type: "settings" })}
+            onSettings={() => ouvrirReglages()}
             onThread={(id) => {
               const target = workspace.conversations.find((t) => t.id === id);
               if (target) {
@@ -802,10 +1138,14 @@ function WakiesWorkspaceContent() {
                   calls={workspace.calls.filter(
                     (call) => call.conversationId === thread.id
                   )}
+                  cibleMessageId={cibleMessageId}
+                  conversations={workspace.conversations}
+                  espaces={workspace.spaces}
                   initialPrompt={pendingPrompt}
                   key={thread.id}
                   onComputer={() => setPane(true)}
                   onConsumed={() => setPendingPrompt(undefined)}
+                  onLu={marquerLu}
                   onSaved={refresh}
                   onSchedule={() =>
                     setDialog({ conversationId: thread.id, type: "schedule" })
@@ -814,6 +1154,7 @@ function WakiesWorkspaceContent() {
                   thread={thread}
                   voiceReady={workspace.setup.voice}
                   wakie={wakie}
+                  wakies={workspace.wakies}
                 />
               ) : (
                 <div className="new-conversation">
@@ -934,7 +1275,7 @@ function WakiesWorkspaceContent() {
                     Modèle servi par votre compte mAI
                     <Button
                       className="text-button"
-                      onClick={() => setDialog({ type: "settings" })}
+                      onClick={() => ouvrirReglages()}
                       variant="outline"
                     >
                       Détails de la configuration
@@ -954,6 +1295,85 @@ function WakiesWorkspaceContent() {
               />
             )}
           </div>
+        ) : view === "profil" ? (
+          <main className="main-content">
+            <div className="page-heading">
+              <div>
+                <span className="eyebrow">
+                  CE QUE VOS WAKIES SAVENT DE VOUS
+                </span>
+                <h1>Mon profil</h1>
+                <p>
+                  Votre profil Vibe est lu par vos Wakies : ils vous connaissent
+                  sans que vous ayez à vous présenter à chaque conversation. Il
+                  se modifie dans Vibe. Vos fiches de Wakie, elles, se publient
+                  ici.
+                </p>
+              </div>
+            </div>
+            <MonProfilCard />
+            <section className="surface-muted">
+              <strong>Mes fiches Wakie</strong>
+              <p className="muted">
+                Pseudo, bio, liens, persona publiée et images : ce qu&apos;un
+                autre compte peut voir, et cloner.
+              </p>
+              <ul className="wakies-social-list">
+                {workspace.wakies.map((item) => (
+                  <li className="wakies-social-line" key={item.id}>
+                    <Mascot
+                      avatar={item.avatar}
+                      decorative
+                      identity={item.id}
+                      name={item.name}
+                      small
+                    />
+                    <strong>{item.name}</strong>
+                    {item.handle ? (
+                      <small className="muted"> @{item.handle}</small>
+                    ) : (
+                      <small className="muted"> Sans pseudo</small>
+                    )}
+                    <Button
+                      className="text-button"
+                      onClick={() => setFicheWakie(item)}
+                      type="button"
+                      variant="ghost"
+                    >
+                      Publier ma fiche
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            {ficheWakie ? (
+              <WakieProfileDrawer
+                onChanged={refresh}
+                onClose={() => setFicheWakie(undefined)}
+                wakie={ficheWakie}
+              />
+            ) : null}
+          </main>
+        ) : view === "amis" ? (
+          <FriendsScreen
+            espaces={workspace.spaces.map((espace) => ({
+              id: espace.id,
+              name: espace.name,
+            }))}
+            onChanged={refresh}
+            onOuvrirWakie={(wakieId, conversationId) => {
+              if (conversationId) {
+                setSelectedWakie(wakieId);
+                setSelectedThread(conversationId);
+                setView("chat");
+                return;
+              }
+              const cible = workspace.wakies.find(
+                (candidat) => candidat.id === wakieId
+              );
+              if (cible) chooseWakie(cible);
+            }}
+          />
         ) : (
           <main className="main-content">
             <div className="page-heading">

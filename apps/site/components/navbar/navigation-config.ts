@@ -90,7 +90,7 @@ export const navLinks: NavItem[] = [
     name: "Plus",
     href: "/support",
     subitems: [
-      { name: "Support", href: "/support" },
+      { name: "Assistance", href: "/support" },
       { name: "Documentation", href: "/docs" },
       { name: "Téléchargements", href: "/downloads" },
     ],

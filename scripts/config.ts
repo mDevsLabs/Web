@@ -1,0 +1,600 @@
+import { sqlite } from "https://esm.town/v/std/sqlite";
+import { type NeonQueryFunction, neon } from "npm:@neondatabase/serverless";
+import { jwtVerify, SignJWT } from "npm:jose";
+import type {} from "./api-context.ts";
+
+// ─────────────────────────────────────────────
+// Config & Données
+// ─────────────────────────────────────────────
+export const JWT_EXPIRY = "7d";
+export const BCRYPT_ROUNDS = 12;
+const MAX_VERIFICATION_ATTEMPTS = 5;
+
+// ─────────────────────────────────────────────
+// Rate limiting en mémoire (par clé : ip ou user)
+// ─────────────────────────────────────────────
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+export function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number
+): boolean {
+  const now = Date.now();
+  const bucket = rateBuckets.get(key);
+  // `>=` et non `>` : à l'instant exact d'expiration la fenêtre est close, et
+  // la fenêtre annoncée vaut `windowMs`, pas `windowMs + 1`.
+  if (!bucket || now >= bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
+    return true;
+  }
+  if (bucket.count >= limit) return false;
+  bucket.count += 1;
+  return true;
+}
+
+export function clientIp(c: any): string {
+  return (
+    c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ||
+    c.req.header("x-real-ip") ||
+    "unknown"
+  );
+}
+
+export type Tier = "Free" | "Plus" | "Pro" | "Max";
+
+const TIER_ALIASES: Record<string, Tier> = {
+  free: "Free",
+  gratuit: "Free",
+  max: "Max",
+  plus: "Plus",
+  pro: "Pro",
+};
+
+/**
+ * Normalise n'importe quelle représentation de forfait venant de la base, d'une clé API
+ * ou d'un JWT ("gratuit", " PRO ", "max") en tier canonique.
+ * Une valeur vide ou inconnue retombe sur "Free", comme l'ancien `MAP[t] || MAP["Free"]`.
+ */
+export function normalizeTier(tier?: string | null): Tier {
+  return (
+    TIER_ALIASES[
+      String(tier || "")
+        .trim()
+        .toLowerCase()
+    ] || "Free"
+  );
+}
+
+export function isPaidTier(tier?: string | null): boolean {
+  return normalizeTier(tier) !== "Free";
+}
+
+// Limites de tokens mAI hebdomadaires (Input + Output)
+export const TIER_LIMITS: Record<Tier, number> = {
+  Free: 10_000_000,
+  Max: 50_000_000,
+  Plus: 20_000_000,
+  Pro: 30_000_000,
+};
+
+export function getTierMaiTokenLimit(tier?: string | null): number {
+  return TIER_LIMITS[normalizeTier(tier)];
+}
+
+// Limites de tokens Speech hebdomadaires
+export const TIER_SPEECH_LIMITS: Record<Tier, number> = {
+  Free: 30_000_000,
+  Max: 300_000_000,
+  Plus: 75_000_000,
+  Pro: 150_000_000,
+};
+
+export function getTierSpeechLimit(tier?: string | null): number {
+  return TIER_SPEECH_LIMITS[normalizeTier(tier)];
+}
+
+// Limites de requêtes API hebdomadaires (remise à zéro le lundi 00:00 UTC)
+export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
+  Free: 500,
+  Max: 7500,
+  Plus: 1500,
+  Pro: 3000,
+};
+
+export function getTierRequestLimit(tier?: string | null): number {
+  return TIER_REQUEST_LIMITS[normalizeTier(tier)];
+}
+
+/**
+ * Extrait le forfait (TIER_USER) encodé directement dans une clé API au format :
+ * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
+ * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
+ */
+export function extractTierFromApiKey(
+  apiKey: string | null | undefined
+): "Free" | "Plus" | "Pro" | "Max" | null {
+  if (!apiKey || typeof apiKey !== "string") return null;
+  const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
+  if (!match) return null;
+  const t = match[1].toLowerCase();
+  if (t === "free") return "Free";
+  if (t === "plus") return "Plus";
+  if (t === "pro") return "Pro";
+  if (t === "max") return "Max";
+  return null;
+}
+
+/**
+ * Calcule l'augmentation temporaire de quota active pour un utilisateur et un type de service.
+ */
+export async function getUserQuotaBoost(
+  sql: any,
+  userId: string | null | undefined,
+  quotaType: "mai" | "api" | "images" | "audio"
+): Promise<number> {
+  if (!sql || !userId) return 0;
+  try {
+    const rows = await sql`
+      SELECT COALESCE(SUM(boost_amount), 0) as total_boost
+      FROM user_quota_boosts
+      WHERE (
+        user_id = 'all'
+        OR user_id = ${userId}::text
+        OR user_id IN (
+          SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text
+        )
+        OR user_id IN (
+          SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text
+        )
+        OR user_id IN (
+          SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text
+        )
+      )
+        AND quota_type = ${quotaType}
+        AND is_active = TRUE
+        AND starts_at <= NOW()
+        AND expires_at >= NOW()
+    `;
+    return Number(rows[0]?.total_boost || 0);
+  } catch {
+    return 0;
+  }
+}
+
+// Limites quotidiennes de génération d'images
+export const TIER_DAILY_IMAGE_LIMITS: Record<Tier, number> = {
+  Free: 5,
+  Max: 35,
+  Plus: 10,
+  Pro: 20,
+};
+
+export function getTierDailyImageLimit(tier?: string | null): number {
+  return TIER_DAILY_IMAGE_LIMITS[normalizeTier(tier)];
+}
+
+// Nombre de Stories Vibe publiables par jour. Table à part de
+// TIER_DAILY_IMAGE_LIMITS : une story n'est pas une image générée par l'IA, et
+// partager les compteurs corromprait les deux quotas (voyez
+// vibe_story_usage_daily dans la migration 026).
+//
+// `null` = illimité, réservé au forfait Max — la valeur n'est PAS ramenée à un
+// nombre par un quelconque défaut : l'appelant doit traiter `null` explicitement.
+//
+// Ce quota n'est jamais affiché dans /settings (choix produit) : il n'a donc pas
+// de pendant dans lib/plans/tier-limits.ts, côté Next.
+export const TIER_DAILY_STORY_LIMITS: Record<Tier, number | null> = {
+  Free: 1,
+  Max: null,
+  Plus: 5,
+  Pro: 10,
+};
+
+/** Limite quotidienne de stories. `null` = illimité (Max) : aucune vérification. */
+export function getTierDailyStoryLimit(tier?: string | null): number | null {
+  return TIER_DAILY_STORY_LIMITS[normalizeTier(tier)];
+}
+
+// Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
+export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
+  Free: 100,
+  Max: 10,
+  Plus: 50,
+  Pro: 25,
+};
+
+export function getTierImageRequestCost(tier?: string | null): number {
+  return TIER_IMAGE_REQUEST_COST[normalizeTier(tier)];
+}
+
+// Limites de stockage Cloud par tier (en octets)
+const GIB = 1024 * 1024 * 1024;
+
+export const STORAGE_LIMITS_BYTES: Record<Tier, number> = {
+  Free: 10 * GIB,
+  Max: 60 * GIB,
+  Plus: 20 * GIB,
+  Pro: 40 * GIB,
+};
+
+export function getTierStorageLimitBytes(tier?: string | null): number {
+  return STORAGE_LIMITS_BYTES[normalizeTier(tier)];
+}
+
+// Taille maximale d'UN SEUL fichier envoyé via /upload-file (images, vidéos,
+// documents d'un post ou d'un message). À ne pas confondre avec
+// STORAGE_LIMITS_BYTES ci-dessus, qui est le quota de stockage Cloud cumulé.
+//
+// Le plafonnement par forfait rétablit la parole tenue par l'interface
+// (`lib/vibe/services/tierLimits.ts` annonçait 1 Go aux payants alors que le
+// serveur refusait tout ce qui dépassait 50 Mo, quel que soit le compte).
+//
+// La borne des Stories Vibe (50 Mo, tous forfaits) est un contrat produit
+// distinct : elle est recontrôlée à la création de la story, pas ici.
+const MIB = 1024 * 1024;
+
+export const MEDIA_UPLOAD_LIMITS_BYTES: Record<Tier, number> = {
+  Free: 50 * MIB,
+  Max: GIB,
+  Plus: GIB,
+  Pro: GIB,
+};
+
+/**
+ * Taille maximale autorisée pour un envoi, selon le forfait.
+ * Un forfait illisible retombe sur `Free` : la limite se réduit, ne s'étend jamais.
+ */
+export function getTierMediaUploadLimitBytes(tier?: string | null): number {
+  return MEDIA_UPLOAD_LIMITS_BYTES[normalizeTier(tier)];
+}
+
+let _cachedDb: NeonQueryFunction<false, false> | null = null;
+let _lastDbUrl: string | null = null;
+
+export function getDb() {
+  const rawUrl =
+    (typeof (globalThis as any).Deno === "undefined"
+      ? null
+      : (globalThis as any).Deno.env?.get("DATABASE_URL")) ||
+    (typeof process === "undefined" ? null : process.env?.DATABASE_URL);
+  if (!rawUrl) {
+    throw new Error("DATABASE_URL not set");
+  }
+
+  // Activer automatiquement le mode connection pooler Neon (-pooler) si disponible
+  let url = rawUrl;
+  if (url.includes(".neon.tech") && !url.includes("-pooler")) {
+    url = url.replace(/@([^:]+)(\.neon\.tech)/, "@$1-pooler$2");
+  }
+
+  if (!_cachedDb || _lastDbUrl !== url) {
+    _cachedDb = neon<false, false>(url);
+    _lastDbUrl = url;
+  }
+  return _cachedDb;
+}
+
+export function getJwtSecret(): Uint8Array {
+  const denoSecret =
+    typeof Deno === "undefined"
+      ? null
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET");
+  const nodeSecret =
+    typeof process === "undefined"
+      ? null
+      : process.env.MAI_JWT_SECRET || process.env.JWT_SECRET;
+  const secret = denoSecret || nodeSecret || "";
+  const encoded = new TextEncoder().encode(secret);
+  if (encoded.byteLength < 32) {
+    throw new Error(
+      "MAI_JWT_SECRET doit être configuré avec au moins 32 octets."
+    );
+  }
+  return encoded;
+}
+
+// ─────────────────────────────────────────────
+// Helpers d'authentification & Utilitaires
+// ─────────────────────────────────────────────
+export async function signToken(
+  payload: Record<string, unknown>
+): Promise<string> {
+  return new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime(JWT_EXPIRY)
+    .sign(getJwtSecret());
+}
+
+export async function verifyToken(
+  token: string
+): Promise<Record<string, unknown>> {
+  // Valider d’abord la signature et l’expiration : aucun accès réseau pour un JWT invalide.
+  const { payload } = await jwtVerify(token, getJwtSecret(), {
+    requiredClaims: ["exp"],
+  });
+  const revoked = await Promise.all([
+    sqlite
+      .execute({
+        args: [token],
+        sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
+      })
+      .then((result) => Boolean(result?.rows?.length))
+      .catch(() => false),
+    (async () => {
+      try {
+        const sql = getDb();
+        const rows =
+          await sql`SELECT 1 FROM token_blacklist WHERE token = ${token} LIMIT 1`;
+        return rows.length > 0;
+      } catch {
+        return false;
+      }
+    })(),
+  ]);
+  if (revoked.some(Boolean)) throw new Error("Token révoqué.");
+
+  return payload as Record<string, unknown>;
+}
+
+export async function blacklistToken(token: string) {
+  const expiresAt = new Date(
+    Date.now() + 14 * 24 * 60 * 60 * 1000
+  ).toISOString();
+  try {
+    await sqlite.execute({
+      args: [token],
+      sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
+    });
+  } catch {}
+  try {
+    const sql = getDb();
+    await sql`INSERT INTO token_blacklist (token, revoked_at, expires_at) VALUES (${token}, NOW(), ${expiresAt}::timestamp) ON CONFLICT (token) DO NOTHING`;
+  } catch {}
+  // Nettoyage opportuniste des vieux tokens
+  try {
+    const sql = getDb();
+    await sql`DELETE FROM token_blacklist WHERE expires_at < NOW() OR revoked_at < NOW() - INTERVAL '14 days'`;
+  } catch {}
+  try {
+    await sqlite.execute({
+      args: [],
+      sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
+    });
+  } catch {}
+}
+
+export function extractToken(req: Request): string | null {
+  const auth = req.headers.get("Authorization");
+  if (!auth?.startsWith("Bearer ")) {
+    return null;
+  }
+  return auth.slice(7);
+}
+
+export function parseUserAgent(ua: string) {
+  const uaLower = ua.toLowerCase();
+  let os = "linux";
+  let osVersion = "Linux";
+
+  if (uaLower.includes("iphone")) {
+    os = "apple";
+    osVersion = "iPhone (iOS)";
+  } else if (uaLower.includes("ipad")) {
+    os = "apple";
+    osVersion = "iPad (iPadOS)";
+  } else if (uaLower.includes("mac os") || uaLower.includes("macintosh")) {
+    os = "apple";
+    osVersion = "macOS";
+  } else if (
+    uaLower.includes("windows nt 10.0") ||
+    uaLower.includes("windows 11") ||
+    uaLower.includes("windows 10")
+  ) {
+    os = "microsoft";
+    osVersion = "Windows 10/11";
+  } else if (uaLower.includes("win")) {
+    os = "microsoft";
+    osVersion = "Windows";
+  } else if (uaLower.includes("android")) {
+    os = "google";
+    osVersion = "Android";
+  } else if (uaLower.includes("ubuntu")) {
+    os = "linux";
+    osVersion = "Ubuntu Linux";
+  } else if (uaLower.includes("debian")) {
+    os = "linux";
+    osVersion = "Debian Linux";
+  } else if (uaLower.includes("fedora")) {
+    os = "linux";
+    osVersion = "Fedora Linux";
+  }
+
+  let model = "Navigateur Web";
+  let version = "";
+
+  if (uaLower.includes("mai-cli") || uaLower.includes("mai cli")) {
+    model = "mAI CLI";
+    version = "Terminal";
+  } else if (uaLower.includes("pulse-extension") || uaLower.includes("pulse")) {
+    model = "Pulse Extension";
+    version = "Extension";
+  } else if (uaLower.includes("edg/")) {
+    model = "Microsoft Edge";
+    const match = ua.match(/Edg\/([0-9.]+)/i);
+    if (match) {
+      version = `v${match[1].split(".")[0]}`;
+    }
+  } else if (uaLower.includes("opr/") || uaLower.includes("opera/")) {
+    model = "Opera";
+    const match = ua.match(/(?:OPR|Opera)\/([0-9.]+)/i);
+    if (match) {
+      version = `v${match[1].split(".")[0]}`;
+    }
+  } else if (uaLower.includes("chrome/")) {
+    model = "Google Chrome";
+    const match = ua.match(/Chrome\/([0-9.]+)/i);
+    if (match) {
+      version = `v${match[1].split(".")[0]}`;
+    }
+  } else if (uaLower.includes("firefox/")) {
+    model = "Mozilla Firefox";
+    const match = ua.match(/Firefox\/([0-9.]+)/i);
+    if (match) {
+      version = `v${match[1].split(".")[0]}`;
+    }
+  } else if (uaLower.includes("safari/") && !uaLower.includes("chrome")) {
+    model = "Apple Safari";
+    const match = ua.match(/Version\/([0-9.]+)/i);
+    if (match) {
+      version = `v${match[1].split(".")[0]}`;
+    }
+  }
+
+  const fullVersion = version ? `${osVersion} • ${version}` : osVersion;
+  const osLabel =
+    os === "apple"
+      ? "Apple"
+      : os === "microsoft"
+        ? "Windows"
+        : os === "google"
+          ? "Google"
+          : "Linux";
+  const deviceName = `${model} (${osLabel})`;
+
+  return {
+    device_model: model,
+    device_name: deviceName,
+    device_version: fullVersion,
+    os,
+  };
+}
+
+export function getWeekData() {
+  const now = new Date();
+  const day = now.getUTCDay() || 7;
+
+  const weekStart = new Date(now);
+  weekStart.setUTCDate(now.getUTCDate() - (day - 1));
+  weekStart.setUTCHours(0, 0, 0, 0);
+
+  const nextReset = new Date(weekStart);
+  nextReset.setUTCDate(weekStart.getUTCDate() + 7);
+
+  return {
+    nextResetIso: nextReset.toISOString(),
+    weekStartStr: weekStart.toISOString().split("T")[0],
+  };
+}
+
+// ─────────────────────────────────────────────
+// E-mails & Vérification (SQLite)
+// ─────────────────────────────────────────────
+let sqliteReady = false;
+
+export async function initSQLite() {
+  if (sqliteReady) return;
+  await sqlite.execute(`
+    CREATE TABLE IF NOT EXISTS verification_codes (
+      email TEXT,
+      code TEXT,
+      action TEXT,
+      expires_at DATETIME,
+      attempts INTEGER NOT NULL DEFAULT 0,
+      PRIMARY KEY (email, action)
+    );
+  `);
+  // Migration additive pour les bases SQLite déjà créées.
+  const verificationCodeColumns = await sqlite.execute(
+    "PRAGMA table_info(verification_codes)"
+  );
+  if (
+    !verificationCodeColumns.rows.some(
+      (row: any) => String(row[1]) === "attempts"
+    )
+  ) {
+    await sqlite.execute(
+      "ALTER TABLE verification_codes ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"
+    );
+  }
+  await sqlite.execute(`
+    CREATE TABLE IF NOT EXISTS token_blacklist (
+      token TEXT PRIMARY KEY,
+      revoked_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+  sqliteReady = true;
+  console.log("[SQLite] Tables de vérification initialisées.");
+}
+
+export async function generateVerificationCode(
+  email: string,
+  action: string
+): Promise<string> {
+  // Assure que les tables SQLite existent (retry si l'init au démarrage a échoué)
+  await initSQLite();
+
+  const isDeletion = action === "delete_account";
+  const length = isDeletion ? 8 : 6;
+  const min = 10 ** (length - 1);
+  const max = 10 ** length - 1;
+  // Crypto PRNG (corrige Math.random prévisible)
+  const range = max - min;
+  const randomValue =
+    crypto.getRandomValues(new Uint32Array(1))[0] / 0xff_ff_ff_ff;
+  const code = Math.floor(min + randomValue * range)
+    .toString()
+    .padStart(length, "0");
+  const expiresAt = new Date(Date.now() + 10 * 60_000).toISOString(); // 10 minutes
+
+  await sqlite.execute({
+    args: [email, code, action, expiresAt],
+    sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at, attempts) VALUES (?, ?, ?, ?, 0)",
+  });
+
+  return code;
+}
+
+export async function verifyVerificationCode(
+  email: string,
+  code: string,
+  action: string
+): Promise<boolean> {
+  await initSQLite();
+
+  const now = new Date().toISOString();
+  const normalizedCode = String(code).trim();
+  // La consommation et le compteur sont atomiques pour résister aux essais concurrents.
+  const accepted = await sqlite.execute({
+    args: [email, normalizedCode, action, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "DELETE FROM verification_codes WHERE email = ? AND code = ? AND action = ? AND expires_at >= ? AND attempts < ? RETURNING email",
+  });
+  if (accepted.rows.length > 0) {
+    return true;
+  }
+
+  const failedAttempt = await sqlite.execute({
+    args: [email, action, normalizedCode, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "UPDATE verification_codes SET attempts = attempts + 1 WHERE email = ? AND action = ? AND code != ? AND expires_at >= ? AND attempts < ? RETURNING attempts",
+  });
+  if (
+    failedAttempt.rows.length > 0 &&
+    Number(failedAttempt.rows[0][0]) >= MAX_VERIFICATION_ATTEMPTS
+  ) {
+    await sqlite.execute({
+      args: [email, action],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
+    });
+  } else if (failedAttempt.rows.length === 0) {
+    // Nettoie un code expiré ou déjà verrouillé.
+    await sqlite.execute({
+      args: [email, action, now, MAX_VERIFICATION_ATTEMPTS],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ? AND (expires_at < ? OR attempts >= ?)",
+    });
+  }
+
+  return false;
+}
+
+export { sqlite };

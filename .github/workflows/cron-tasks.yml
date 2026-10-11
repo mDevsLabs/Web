@@ -1,9 +1,10 @@
-name: Tâches planifiées (Agent · Planning · Wakies)
+name: Tâches planifiées (Agent · Planning · Wakies · Vibe)
 
-# Un seul workflow couvre les trois ticks cron de l'hôte :
+# Un seul workflow couvre les quatre ticks cron de l'hôte :
 #   • /api/cron/agent    — scheduler Agent (déjà existant)
 #   • /api/cron/planning — messages planifiés (déjà existant)
-#   • /api/cron/wakies   — tâches planifiées Wakies (nouveau)
+#   • /api/cron/wakies   — tâches planifiées Wakies
+#   • /api/cron/vibe     — publication des vibes & DMs programmés (GET)
 #
 # Identique aux deux fichiers fusionnés : mêmes secrets (APP_URL, CRON_SECRET),
 # mêmes headers (Bearer CRON_SECRET), mêmes retries d'erreur. La fusion
@@ -14,9 +15,13 @@ name: Tâches planifiées (Agent · Planning · Wakies)
 # sur l'occurrence plutôt que de lancer une seconde exécution. Ajouter un
 # workflow supplémentaire ne change donc rien au comportement.
 #
-# Wakies : /api/cron/wakies réserve aussi atomiquement les tâches dues
-# (bail 3 min, couvre queued et completed avec nextRunAt passé) — deux ticks
-# concurrents ne double pas une tâche.
+# Wakies : /api/cron/wakies réserve aussi atomiquement les tâches dues (bail 6 min,
+# couvre queued, completed avec nextRunAt passé, et running dont le bail a expiré) —
+# deux ticks concurrents ne doublent pas une tâche, une invocation tuée est reprise
+# au passage suivant, et trois revendications sans exécution terminée abandonnent la
+# tâche au lieu de la faire rebondir indéfiniment. Le bail est plus long que
+# maxDuration (300 s) : un bail plus court expirerait pendant une exécution lente
+# légitime et le tick suivant reprendrait la même occurrence.
 #
 # Cadence 5 min : le tick agent se donne 285 s de budget ; chaque occurrence
 # peut attendre une approbation utilisateur jusqu'à 24 h. Une cadence plus
@@ -140,5 +145,28 @@ jobs:
             echo "Cron Wakies exécuté avec succès."
           else
             echo "::error::Échec du cron Wakies (HTTP $HTTP_STATUS)"
+            exit 1
+          fi
+
+      - name: Tick publication programmées Vibe — /api/cron/vibe
+        env:
+          CLEAN_URL: ${{ steps.clean-url.outputs.clean_url }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        continue-on-error: true
+        run: |
+          echo "Appel de $CLEAN_URL/api/cron/vibe..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" "$CLEAN_URL/api/cron/vibe" \
+            -H "Authorization: Bearer $CRON_SECRET")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Cron Vibe exécuté avec succès."
+          else
+            echo "::error::Échec du cron Vibe (HTTP $HTTP_STATUS)"
             exit 1
           fi

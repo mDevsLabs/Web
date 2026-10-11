@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { CheckIcon } from "@mdevs/icons/controls/check";
+import { Button } from "@mdevs/ui/primitives/button";
+import { ThemeProvider } from "@mdevs/ui/primitives/theme-provider";
 import { BrandLogo } from "./BrandLogo";
 import type { TFunction } from "./i18n";
 
@@ -162,21 +165,33 @@ export function AboutDialog({ open, t, shell, onClose }: Props) {
           >
             {t("app.help.aboutOpenRepo")}
           </button>
-          <button
-            className="ws-about-btn ws-about-btn--ghost"
-            onClick={copyInfo}
-            type="button"
+          <ThemeProvider
+            theme={
+              document.documentElement.getAttribute("data-color-scheme") ===
+              "light"
+                ? "light"
+                : "dark"
+            }
+            style={{ display: "contents" }}
           >
-            {copied ? t("app.help.aboutCopied") : t("app.help.aboutCopyInfo")}
-          </button>
-          <button
-            autoFocus
-            className="ws-about-btn ws-about-btn--primary"
-            onClick={onClose}
-            type="button"
+            <Button variant="soft" onClick={copyInfo}>
+              {copied && <CheckIcon aria-hidden="true" size={16} />}
+              {copied ? t("app.help.aboutCopied") : t("app.help.aboutCopyInfo")}
+            </Button>
+          </ThemeProvider>
+          <ThemeProvider
+            theme={
+              document.documentElement.getAttribute("data-color-scheme") ===
+              "light"
+                ? "light"
+                : "dark"
+            }
+            style={{ display: "contents" }}
           >
-            {t("app.help.aboutClose")}
-          </button>
+            <Button autoFocus onClick={onClose}>
+              {t("app.help.aboutClose")}
+            </Button>
+          </ThemeProvider>
         </div>
         <div className="ws-about-footer">{t("app.help.aboutCopyright")}</div>
       </div>

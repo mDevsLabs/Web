@@ -21,6 +21,9 @@
       "!scripts/newsletter_editor.html",
       "!lib/plugins/catalog.generated.ts",
       "!lib/plugins/server.generated.ts",
+      // Inventaire régénéré par scripts/audit-backend.mjs : sa sortie n'est pas
+      // éditée à la main ni reformatée après génération.
+      "!docs/1-web/API_INVENTORY.json",
       // Feuille de style Vibe : sortie de scripts/build-vibe-css.mjs (source :
       // apps/vibe/src/index.css). Comme les catalogues générés ci-dessus, elle
       // n'est pas écrite à la main — la corriger ici serait perdu à la
@@ -32,6 +35,9 @@
       "!components/wakies/wakies.css",
       "!components/wakies/wakies-editor.css",
       "!components/wakies/wakies-ui.css",
+      // Même génération, omise de la liste lors de son ajout : `ultracite fix`
+      // reformaterait une sortie de script à chaque pre-commit.
+      "!components/wakies/wakies-host.css",
       // Feuille de style Site : sortie de scripts/build-site-css.mjs (source :
       // apps/site/app/globals.css). Générée, donc jamais écrite à la main.
       "!components/site/site.css",
@@ -42,7 +48,11 @@
       // Sources d'applications autonomes et paquets externes :
       // Exclus pour ne pas polluer le linting du projet principal mAI Web.
       "!apps",
-      "!packages"
+      "!packages",
+      // Logos de marque (graphistes, non des icônes Lucide) : le formatter les
+      // déploierait en multiligne. Ils sont servis tels quels et relèvent des
+      // assets protégés — la norme du dépôt est de ne pas retoucher les images.
+      "!public/**/*.svg"
     ]
   },
   // Vibe : les tables de réglages (thèmes de bulles, fonds de discussion, formes,

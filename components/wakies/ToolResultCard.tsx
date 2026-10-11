@@ -2,6 +2,8 @@
 
 /** Port des cartes de résultats OpenMuse : le format AI SDK est interprété explicitement, sans exécuter le contenu retourné. */
 import type { UIMessage } from "ai";
+import { PluginToolLogo } from "@/lib/integrations/logo";
+import { getPluginByToolId } from "@/lib/plugins/catalog";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
 export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
   if (part.type === "source-url") {
@@ -35,6 +37,14 @@ export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
     toolCallId?: string;
   };
   const name = value.toolName ?? value.type.slice(5);
+  // Un outil de connecteur a un nom français dans son manifeste : l'afficher
+  // avec le logo de l'application dit laquelle a répondu, au lieu d'un
+  // identifiant technique en camelCase.
+  const manifest = getPluginByToolId(name);
+  const pluginTool = manifest?.tools.find((item) => item.id === name);
+  const label = manifest
+    ? `${manifest.name} · ${pluginTool?.label ?? name}`
+    : name;
   const state = value.state;
   let output = "";
   if (value.output !== undefined) {
@@ -48,8 +58,11 @@ export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
     }
   }
   return (
-    <article aria-label={`Outil ${name}`} className="tool-card">
-      <strong>{name}</strong>
+    <article aria-label={`Outil ${label}`} className="tool-card">
+      <strong className="tool-card-title">
+        <PluginToolLogo className="tool-card-logo" toolId={name} />
+        {label}
+      </strong>
       <p role="status">
         {state === "output-available"
           ? "Résultat enregistré"

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import "@mdevs/ui/styles.css";
 import { Navbar } from "@/components/navbar";
 import { BackToTop } from "@/components/back-to-top";
 import { StatusWidget } from "@/components/status-widget";

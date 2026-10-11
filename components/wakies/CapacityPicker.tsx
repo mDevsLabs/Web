@@ -198,14 +198,12 @@ export function useCapabilities(actif: boolean): {
 
 function Ligne({
   actif,
-  detail,
   disabled = false,
   libelle,
   onBasculer,
   statut,
 }: {
   actif: boolean;
-  detail?: string | null;
   disabled?: boolean;
   libelle: string;
   onBasculer: () => void;
@@ -224,9 +222,6 @@ function Ligne({
           {libelle}
           {actif ? <CheckIcon size={14} /> : null}
         </span>
-        {detail ? (
-          <small className="capability-row-detail">{detail}</small>
-        ) : null}
         {statut ? (
           <small className={`capability-row-status is-${statut.ton}`}>
             {statut.texte}
@@ -283,7 +278,6 @@ export function CapacityPicker({
           competences.map((competence) => (
             <Ligne
               actif={valeur.skillIds.includes(competence.id)}
-              detail={competence.description}
               key={competence.id}
               libelle={competence.name}
               onBasculer={() =>
@@ -333,7 +327,6 @@ export function CapacityPicker({
             return (
               <Ligne
                 actif={valeur.pluginIds.includes(extension.id)}
-                detail={extension.description}
                 disabled={!installee || verrouillee}
                 key={extension.id}
                 libelle={extension.name}
@@ -363,9 +356,6 @@ export function CapacityPicker({
           serveurs.map((serveur) => (
             <Ligne
               actif={valeur.mcpServerIds.includes(serveur.id)}
-              detail={
-                serveur.transport ? `Transport ${serveur.transport}` : null
-              }
               disabled={serveur.enabled === false}
               key={serveur.id}
               libelle={serveur.name}
@@ -422,7 +412,6 @@ export function ToolPicker({
         {listeOutils.map((outil) => (
           <Ligne
             actif={valeur.includes(outil.id)}
-            detail={outil.description}
             key={outil.id}
             libelle={outil.label}
             onBasculer={() =>

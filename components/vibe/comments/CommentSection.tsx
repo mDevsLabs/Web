@@ -6,8 +6,18 @@
  * ============================================================================
  */
 
+import {
+  AlertCircleIcon as AlertCircle,
+  HeartIcon as Heart,
+  ImageIcon,
+  LanguagesIcon as Languages,
+  Loader2Icon as Loader2,
+  MicIcon as Mic,
+  MicOffIcon as MicOff,
+  SparklesIcon as Sparkles,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { AlertCircleIcon as AlertCircle, HeartIcon as Heart, ImageIcon, LanguagesIcon as Languages, Loader2Icon as Loader2, MicIcon as Mic, MicOffIcon as MicOff, SparklesIcon as Sparkles, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LikeParticles } from "@/components/vibe/common/LikeParticles";

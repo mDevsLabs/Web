@@ -185,7 +185,7 @@ function Sidebar({
         >
           <SheetHeader className="sr-only">
             <SheetTitle>Barre latérale</SheetTitle>
-            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
+            <SheetDescription>Affiche la barre latérale sur mobile.</SheetDescription>
           </SheetHeader>
           <div className="mx-auto mt-3 h-1.5 w-10 rounded-full bg-sidebar-foreground/20" />
           <div className="flex h-full w-full flex-col overflow-y-auto overscroll-contain pt-2 pb-[calc(env(safe-area-inset-bottom)+12px)] -webkit-overflow-scrolling-touch">{children}</div>

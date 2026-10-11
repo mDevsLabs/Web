@@ -218,8 +218,9 @@ export function registerDMDirectRoutes(
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0)
+        if (memberRows.length === 0) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
 
         const messages = await sql`
           SELECT m.*, u.username as sender_username,
@@ -293,7 +294,9 @@ export function registerDMDirectRoutes(
               ? m.read_by.map(String)
               : [];
             readers.push(String(userId));
-            await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(readers)}::jsonb WHERE id = ${m.id}::uuid`;
+            await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(
+              readers
+            )}::jsonb WHERE id = ${m.id}::uuid`;
           }
         } catch {}
 
@@ -419,7 +422,7 @@ export function registerDMDirectRoutes(
       ) {
         const groupId = conversation_id.slice(6);
         if (!content?.trim()) return c.json({ error: "Contenu requis." }, 400);
-        if (send_at)
+        if (send_at) {
           return c.json(
             {
               error:
@@ -427,22 +430,25 @@ export function registerDMDirectRoutes(
             },
             400
           );
+        }
         const sql = getDb();
         await ensureDMTables().catch(() => {});
         const dmCharLimit = await getDmMessageCharLimit(sql, userId);
-        if (dmPlainLength(content) > dmCharLimit)
+        if (dmPlainLength(content) > dmCharLimit) {
           return c.json(
             {
               error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).`,
             },
             400
           );
+        }
         const memberRows = await sql`
           SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid
         `;
         const memberIds = (memberRows as any[]).map((r) => Number(r.user_id));
-        if (!memberIds.includes(userId))
+        if (!memberIds.includes(userId)) {
           return c.json({ error: "Conversation introuvable." }, 404);
+        }
 
         // Conversation de Livre ? (book_id non nul → publication jointe autorisée)
         const convRows = await sql`
@@ -479,11 +485,12 @@ export function registerDMDirectRoutes(
           const okPost = await sql`
             SELECT 1 FROM vibe_book_items WHERE book_id = ${bookId}::uuid AND post_id = ${rawAttached}::uuid LIMIT 1
           `.catch(() => []);
-          if (okPost.length === 0)
+          if (okPost.length === 0) {
             return c.json(
               { error: "Cette publication ne fait pas partie du Livre." },
               400
             );
+          }
           validAttachedPostId = rawAttached;
         }
 
@@ -538,11 +545,21 @@ export function registerDMDirectRoutes(
 
         const msg = await sql`
           INSERT INTO direct_messages (conversation_id, sender_id, content, mentions, urgent_mentions, reply_to_id, forwarded_from, attached_post_id)
-          VALUES (${groupId}::uuid, ${userId}, ${content.trim()}, ${JSON.stringify(mentionMatches)}::jsonb, ${JSON.stringify(isUrgentAll ? ["tous"] : urgentUsernames.map((u: any) => u.username))}::jsonb, ${validReplyTo}, ${forwardedFrom ? JSON.stringify(forwardedFrom) : null}::jsonb, ${validAttachedPostId})
+          VALUES (${groupId}::uuid, ${userId}, ${content.trim()}, ${JSON.stringify(
+            mentionMatches
+          )}::jsonb, ${JSON.stringify(
+            isUrgentAll ? ["tous"] : urgentUsernames.map((u: any) => u.username)
+          )}::jsonb, ${validReplyTo}, ${
+            forwardedFrom ? JSON.stringify(forwardedFrom) : null
+          }::jsonb, ${validAttachedPostId})
           RETURNING *
         `;
         await sql`
-          UPDATE dm_conversations SET last_message_preview = ${stripHtmlTags(String(content)).trim().slice(0, 120)}, last_message_at = NOW()
+          UPDATE dm_conversations SET last_message_preview = ${stripHtmlTags(
+            String(content)
+          )
+            .trim()
+            .slice(0, 120)}, last_message_at = NOW()
           WHERE id = ${groupId}::uuid
         `;
         // Infos de la publication jointe (diffusées aux membres pour la carte cliquable)
@@ -687,7 +704,9 @@ export function registerDMDirectRoutes(
         INSERT INTO dm_conversations (participant_one_id, participant_two_id, last_message_preview, last_message_at)
         VALUES (${p1}, ${p2}, ${stripHtmlTags(String(content)).trim()}, NOW())
         ON CONFLICT (participant_one_id, participant_two_id)
-        DO UPDATE SET last_message_preview = ${stripHtmlTags(String(content)).trim()}, last_message_at = NOW()
+        DO UPDATE SET last_message_preview = ${stripHtmlTags(
+          String(content)
+        ).trim()}, last_message_at = NOW()
         RETURNING id
       `;
 
@@ -703,12 +722,16 @@ export function registerDMDirectRoutes(
       const msg = scheduledAt
         ? await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, status, send_at, forwarded_from)
-        VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, 'scheduled', ${scheduledAt}::timestamptz, ${forwardedFrom ? JSON.stringify(forwardedFrom) : null}::jsonb)
+        VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, 'scheduled', ${scheduledAt}::timestamptz, ${
+          forwardedFrom ? JSON.stringify(forwardedFrom) : null
+        }::jsonb)
         RETURNING *
       `
         : await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, forwarded_from)
-        VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, ${forwardedFrom ? JSON.stringify(forwardedFrom) : null}::jsonb)
+        VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, ${
+          forwardedFrom ? JSON.stringify(forwardedFrom) : null
+        }::jsonb)
         RETURNING *
       `;
 

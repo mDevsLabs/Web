@@ -1,6 +1,16 @@
 "use client";
 
-import { BookOpenIcon as BookOpen, BrainCircuitIcon as BrainCircuit, CodeIcon as Code, ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, LayoutIcon as Layout, MessageSquareIcon as MessageSquare, SparklesIcon as Sparkles, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  BookOpenIcon as BookOpen,
+  BrainCircuitIcon as BrainCircuit,
+  CodeIcon as Code,
+  GithubIcon as Github,
+  GlobeIcon as Globe,
+  LayoutIcon as Layout,
+  MessageSquareIcon as MessageSquare,
+  SparklesIcon as Sparkles,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";
@@ -87,15 +97,12 @@ export default function MaiProjectPage() {
           </p>
 
           <div className="flex flex-row items-center gap-2 sm:gap-3 overflow-x-auto p-4 -m-4 max-w-full whitespace-nowrap scrollbar-none">
-            <a
+            <Link
               className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] text-slate-900 font-semibold text-xs sm:text-sm hover:bg-white/60 transition-colors shrink-0"
-              href="https://mai-devs.vercel.app"
-              rel="noreferrer"
-              target="_blank"
+              href="/"
             >
               Découvrir mAI Web
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            </Link>
             <a
               className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] text-slate-900 font-semibold text-xs sm:text-sm hover:bg-white/60 transition-colors shrink-0"
               href="https://github.com/mDevsLabs/mAI"

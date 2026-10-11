@@ -34,9 +34,9 @@ export function registerDeviceRoutes(app: Hono) {
     }
 
     const rawDevices = await sql`
-      SELECT id, token, os, device_model, device_version, ip_address, device_name, last_active, created_at 
-      FROM connected_devices 
-      WHERE user_id = ${userId}::text 
+      SELECT id, token, os, device_model, device_version, ip_address, device_name, last_active, created_at
+      FROM connected_devices
+      WHERE user_id = ${userId}::text
       ORDER BY last_active DESC
     `;
 
@@ -62,7 +62,7 @@ export function registerDeviceRoutes(app: Hono) {
     const sql = getDb();
 
     const otherDevices = await sql`
-      SELECT token FROM connected_devices 
+      SELECT token FROM connected_devices
       WHERE user_id = ${userId}::text AND token != ${token}
     `;
 
@@ -78,7 +78,7 @@ export function registerDeviceRoutes(app: Hono) {
     }
 
     await sql`
-      DELETE FROM connected_devices 
+      DELETE FROM connected_devices
       WHERE user_id = ${userId}::text AND token != ${token}
     `;
 
@@ -94,7 +94,7 @@ export function registerDeviceRoutes(app: Hono) {
     const sql = getDb();
 
     const allDevices = await sql`
-      SELECT token FROM connected_devices 
+      SELECT token FROM connected_devices
       WHERE user_id = ${userId}::text
     `;
 
@@ -110,7 +110,7 @@ export function registerDeviceRoutes(app: Hono) {
     }
 
     await sql`
-      DELETE FROM connected_devices 
+      DELETE FROM connected_devices
       WHERE user_id = ${userId}::text
     `;
 

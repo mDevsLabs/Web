@@ -16,6 +16,8 @@ React 18.3 ou 19 est une peer dependency. Le package et ses exports publics sont
 
 Chaque icône accepte les props SVG et utilise currentColor. Les icônes seules sont décoratives ; nommez le bouton ou le lien qui porte l’action. Utilisez title ou les attributs ARIA lorsque l’icône transmet une information à elle seule.
 
+Préférez les sous-chemins d’icônes pour les bundles web (`@mdevs/icons/controls/search`) et gardez l’import racine pour les petits scripts ou les bundlers qui optimisent les gros barrels. Les applications Next peuvent ajouter `@mdevs/icons` à `experimental.optimizePackageImports` ; les imports individuels restent le choix le plus prévisible dans Vite et les autres bundlers.
+
 ## Trouver une icône
 
 - [Manifeste complet](catalog/manifest.json) : noms, chemins d’import, mots-clés, catégorie et provenance.

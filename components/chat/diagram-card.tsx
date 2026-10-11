@@ -1,7 +1,17 @@
 "use client";
 
+import {
+  CodeIcon,
+  DownloadIcon,
+  ImageDownIcon,
+  Maximize2Icon,
+  MinusIcon,
+  PlusIcon,
+  RotateCcwIcon,
+  WaypointsIcon,
+  XIcon,
+} from "@mdevs/icons";
 import DOMPurify from "dompurify";
-import { CodeIcon, DownloadIcon, ImageDownIcon, Maximize2Icon, MinusIcon, PlusIcon, RotateCcwIcon, WaypointsIcon, XIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 

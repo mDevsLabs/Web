@@ -1,8 +1,8 @@
-# Introducing projects in Release Candidate
+# Présentation des projets en version candidate
 
 ![La suite mAI — Web, Vibe, Coder, CLI et Pulse](https://upload.fs.fr/dA57zDuVV5.png)
 
-> **mDevsLabs** annonce que les cinq produits de la suite mAI — **Web**, **Vibe**, **Coder**, **CLI** et **Pulse** — sortent en **Release Candidate**. Un statut longtemps resté discret dans les versions : il devient désormais explicite, public et opposable.
+> **mDevsLabs** annonce que les cinq produits de la suite mAI — **Web**, **Vibe**, **Coder**, **CLI** et **Pulse** — sortent en **version candidate**. Un statut longtemps resté discret dans les versions : il devient désormais explicite, public et opposable.
 
 ---
 
@@ -14,7 +14,7 @@
 4. [Coder — l’IDE IA pensé pour les agents autonomes](#coder--lide-ia-pense-pour-les-agents-autonomes)
 5. [CLI — l’assistant qui vit dans votre terminal](#cli--lassistant-qui-vit-dans-votre-terminal)
 6. [Pulse — l’IA dans les outils du quotidien](#pulse--l-ia-dans-les-outils-du-quotidien)
-7. [Ce que signifie « Release Candidate »](#ce-que-signifie--release-candidate-)
+7. [Ce que signifie « version candidate »](#ce-que-signifie--version-candidate-)
 8. [Comment obtenir les projets](#comment-obtenir-les-projets)
 9. [Sources officielles](#sources-officielles)
 
@@ -83,7 +83,7 @@ CLI est le projet le plus ancien de la suite, et celui qui a le moins changé d�
 
 Discussions et séances de codage dans le terminal CLI via mAI.
 
-Il repose sur trois piliers : l’intégration native au terminal, la liberté de choix du modèle d’inférence, et l’unification des flux de codage et de communication opérationnelle. Le modèle BYOK (*Bring Your Own Key*) laisse le choix du fournisseur entre les mains de l’utilisateur.
+Il repose sur trois piliers : l’intégration native au terminal, la liberté de choix du modèle d’inférence, et l’unification des flux de codage et de communication opérationnelle. Le modèle BYOK (*apportez votre propre clé*) laisse le choix du fournisseur entre les mains de l’utilisateur.
 
 - [Page du projet](/projects/cli)
 - [Documentation](/docs?doc=app-cli)
@@ -105,16 +105,16 @@ Pour les éditeurs de code, l’extension Visual Studio Code apporte une complé
 
 ---
 
-## Ce que signifie « Release Candidate »
+## Ce que signifie « version candidate »
 
 Nous avons longtemps laissé cette expression rester implicite dans les versions, sans jamais la rendre visible. C’était une erreur : un statut flou est un statut qui ne protège personne.
 
-**Release Candidate signifie ceci :**
+**Une version candidate signifie ceci :**
 
 - **Les fonctionnalités sont figées.** Ce qui est livré est ce qui sera livré. Nous n’ajouterons pas de nouvelle fonction majeure avant la version finale.
 - **Seuls des correctifs entrent.** Fiabilité, sécurité, performance, conformité aux plateformes. Rien d’autre.
 - **L’interface n’affiche plus d’étiquette de statut.** Le statut n’est pas une information utile à chaque écran : c’est une décision de livraison. Elle vit dans cette annonce et dans le dépôt de chaque projet, où chaque version est taguée.
-- **Rien ne vous oblige à attendre.** Une Release Candidate est utilisable en production. Nous la publions tôt pour que vous puissiez l’éprouver longtemps avant la version finale.
+- **Rien ne vous oblige à attendre.** Une version candidate est utilisable en production. Nous la publions tôt pour que vous puissiez l’éprouver longtemps avant la version finale.
 
 Autrement dit : nous figeons, vous testez, nous corrigeons.
 
@@ -155,6 +155,6 @@ Les cinq produits restent accessibles gratuitement. Les offres et forfaits ouvre
 **Des fonctionnalités figées.**
 **Des correctifs seulement.**
 
-**La Release Candidate est ouverte.**
+**La version candidate est ouverte.**
 
 *mDevsLabs – Intelligence artificielle haute performance, locale et souveraine.*

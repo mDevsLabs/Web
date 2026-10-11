@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@mdevs/ui/primitives/button";
+import { ConfirmDialog } from "@mdevs/ui/primitives/confirm-dialog";
 import { Input } from "@mdevs/ui/primitives/input";
 import { Textarea } from "@mdevs/ui/primitives/textarea";
 
@@ -47,7 +48,6 @@ import { outilsParDefaut, WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
 export type Dialog =
   | { type: "space" }
   | { type: "wakie"; wakie?: Wakie; spaceId: string }
-  | { type: "settings" }
   | { type: "memory"; memory?: Memory }
   | { type: "schedule"; conversationId: string };
 export function WorkspaceDialog({
@@ -175,17 +175,15 @@ export function WorkspaceDialog({
         ? dialog.wakie
           ? "Personnalisez ce Wakie."
           : "Rencontrez votre prochain spécialiste."
-        : dialog.type === "settings"
-          ? "Votre espace de travail, vos règles."
-          : dialog.type === "memory"
-            ? "Quelque chose à retenir."
-            : "Confiez le temps à votre Wakie.";
+        : dialog.type === "memory"
+          ? "Quelque chose à retenir."
+          : "Confiez le temps à votre Wakie.";
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <section
         aria-labelledby="dialog-title"
         aria-modal="true"
-        className="modal"
+        className={`modal ${dialog.type === "wakie" ? "modal-wakie-editor" : ""}`}
         onClick={(e) => e.stopPropagation()}
         ref={container}
         role="dialog"
@@ -234,11 +232,6 @@ export function WorkspaceDialog({
                 toolIds,
               };
             }
-            if (dialog.type === "settings") {
-              path = "/settings";
-              method = "PATCH";
-              body = { memoryAllowed: memory, researchAllowed: research };
-            }
             if (dialog.type === "memory") {
               path = dialog.memory
                 ? `/memories/${dialog.memory.id}`
@@ -276,32 +269,28 @@ export function WorkspaceDialog({
               />
             </>
           )}
-          {dialog.type !== "settings" && (
-            <>
-              <label className="field-label" htmlFor="entity-text">
-                {dialog.type === "wakie"
-                  ? "Instructions de rôle"
-                  : dialog.type === "space"
-                    ? "Que contient cet espace ?"
-                    : dialog.type === "memory"
-                      ? "Préférence ou contexte"
-                      : "Tâche à reprendre"}
-              </label>
-              <Textarea
-                id="entity-text"
-                maxLength={dialog.type === "schedule" ? 4000 : 2000}
-                onChange={(e) => setText(e.target.value)}
-                placeholder={
-                  dialog.type === "wakie"
-                    ? "Vous êtes un partenaire de recherche rigoureux. Comparez les preuves et dites clairement ce qui reste incertain."
-                    : ""
-                }
-                required={dialog.type !== "space"}
-                rows={4}
-                value={text}
-              />
-            </>
-          )}
+          <label className="field-label" htmlFor="entity-text">
+            {dialog.type === "wakie"
+              ? "Instructions de rôle"
+              : dialog.type === "space"
+                ? "Que contient cet espace ?"
+                : dialog.type === "memory"
+                  ? "Préférence ou contexte"
+                  : "Tâche à reprendre"}
+          </label>
+          <Textarea
+            id="entity-text"
+            maxLength={dialog.type === "schedule" ? 4000 : 2000}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={
+              dialog.type === "wakie"
+                ? "Vous êtes un partenaire de recherche rigoureux. Comparez les preuves et dites clairement ce qui reste incertain."
+                : ""
+            }
+            required={dialog.type !== "space"}
+            rows={4}
+            value={text}
+          />
           {dialog.type === "wakie" && (
             <fieldset className="space-access-fields">
               <legend>Mascotte</legend>
@@ -341,16 +330,7 @@ export function WorkspaceDialog({
                 conversation peut en choisir un autre, puis y revenir.
               </p>
               <span className="wakies-model-picker block">
-                <ModelPicker
-                  bloc
-                  onChoisir={setModel}
-                  outilsActifs={
-                    toolIds.length > 0 ||
-                    selection.pluginIds.length > 0 ||
-                    selection.mcpServerIds.length > 0
-                  }
-                  valeur={model ?? ""}
-                />
+                <ModelPicker bloc onChoisir={setModel} valeur={model ?? ""} />
               </span>
             </fieldset>
           )}
@@ -399,7 +379,7 @@ export function WorkspaceDialog({
               </select>
             </fieldset>
           )}
-          {(dialog.type === "wakie" || dialog.type === "settings") && (
+          {dialog.type === "wakie" && (
             <>
               <label className="permission-row">
                 <input
@@ -436,8 +416,8 @@ export function WorkspaceDialog({
               <legend>Outils</legend>
               <p className="muted">
                 Ce que ce Wakie peut utiliser par défaut. Ses nouvelles
-                conversations suivront ce choix tant que vous ne
-                l&apos;overridez pas conversation par conversation.
+                conversations suivront ce choix, sauf si vous le remplacez pour
+                une conversation en particulier.
               </p>
               <ToolPicker
                 onChanger={setToolIds}
@@ -494,27 +474,6 @@ export function WorkspaceDialog({
               </p>
             </>
           )}
-          {dialog.type === "settings" && (
-            <div className="config-note">
-              <strong>Configuration du service</strong>
-              <p>
-                {workspace.setup.missing.length
-                  ? `Ajoutez ${workspace.setup.missing.join(", ")} à l’environnement du serveur, puis redémarrez.`
-                  : "La configuration du service est présente. Une conversation réussie confirme la connectivité."}
-              </p>
-              <p>
-                Slack : {workspace.setup.slack.replaceAll("_", " ")}. Voix :{" "}
-                {workspace.setup.voice
-                  ? "configuration présente"
-                  : "non configurée actuellement"}
-                .
-              </p>
-              <p className="muted">
-                Les modèles et les quotas sont gérés directement par votre
-                compte mAI.
-              </p>
-            </div>
-          )}
           {dialog.type === "memory" && (
             <p className="muted">
               Les mémoires sont des préférences explicites, pas un apprentissage
@@ -545,17 +504,11 @@ export function WorkspaceDialog({
                 déjà enregistrées dans vos Espaces restent en place.
               </p>
             </div>
-            <Button
-              className="danger"
-              disabled={busy}
-              onClick={async () => {
-                if (
-                  !window.confirm(
-                    `Supprimer définitivement « ${dialog.wakie?.name} » et toutes ses conversations ?`
-                  )
-                ) {
-                  return;
-                }
+            <ConfirmDialog
+              cancelLabel="Annuler"
+              confirmLabel="Supprimer définitivement"
+              description="Ses conversations et ses messages partent avec lui. Cette action est irréversible."
+              onConfirm={async () => {
                 setBusy(true);
                 setError("");
                 if (await mutate(`/wakies/${dialog.wakie?.id}`, "DELETE")) {
@@ -567,12 +520,19 @@ export function WorkspaceDialog({
                 }
                 setBusy(false);
               }}
-              type="button"
-              variant="outline"
-            >
-              <Trash2Icon size={15} />
-              Supprimer ce Wakie
-            </Button>
+              title={`Supprimer « ${dialog.wakie.name} » ?`}
+              trigger={
+                <Button
+                  className="danger"
+                  disabled={busy}
+                  type="button"
+                  variant="outline"
+                >
+                  <Trash2Icon size={15} />
+                  Supprimer ce Wakie
+                </Button>
+              }
+            />
           </div>
         )}
       </section>

@@ -1,6 +1,13 @@
 "use client";
 
-import { ExternalLinkIcon, GaugeIcon, HardDriveIcon, ImageIcon, InfoIcon, Volume2Icon } from "@mdevs/icons";
+import {
+  ExternalLinkIcon,
+  GaugeIcon,
+  HardDriveIcon,
+  ImageIcon,
+  InfoIcon,
+  Volume2Icon,
+} from "@mdevs/icons";
 import type { ReactNode } from "react";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
@@ -9,7 +16,6 @@ import {
   formatTokensFr,
 } from "@/lib/account/format";
 import type { UsageSummary } from "@/lib/account/usage";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type AccountUsageCardProps = {

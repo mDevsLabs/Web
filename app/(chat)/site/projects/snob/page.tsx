@@ -1,6 +1,16 @@
 "use client";
 
-import { CrownIcon as Crown, DownloadIcon as Download, ExternalLinkIcon as ExternalLink, Gamepad2Icon as Gamepad2, GemIcon as Gem, MapIcon, PaletteIcon as Palette, TicketIcon as Ticket, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  CrownIcon as Crown,
+  DownloadIcon as Download,
+  ExternalLinkIcon as ExternalLink,
+  Gamepad2Icon as Gamepad2,
+  GemIcon as Gem,
+  MapIcon,
+  PaletteIcon as Palette,
+  TicketIcon as Ticket,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "@/components/site/router";

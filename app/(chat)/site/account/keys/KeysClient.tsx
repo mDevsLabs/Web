@@ -1,11 +1,21 @@
 "use client";
 
-import { ActivityIcon as Activity, CheckSquareIcon as CheckSquare, DownloadIcon as Download, EditIcon as Edit, KeyRoundIcon as KeyRound, Loader2Icon as Loader2, PlusIcon as Plus, ShieldAlertIcon as ShieldAlert, Trash2Icon as Trash2 } from "@mdevs/icons";
+import {
+  ActivityIcon as Activity,
+  CheckSquareIcon as CheckSquare,
+  DownloadIcon as Download,
+  EditIcon as Edit,
+  KeyRoundIcon as KeyRound,
+  Loader2Icon as Loader2,
+  PlusIcon as Plus,
+  ShieldAlertIcon as ShieldAlert,
+  Trash2Icon as Trash2,
+} from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import type {
   ApiKeyMetadata,
   CreatedApiKeyResult,

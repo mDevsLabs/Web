@@ -3,6 +3,8 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { DownloadIcon as Download, MenuIcon as Menu, SearchIcon as Search, UserRoundIcon as UserRound, XIcon as X } from "@mdevs/icons";
+import { Button } from "@mdevs/ui/primitives/button";
+import { ThemeProvider } from "@mdevs/ui/primitives/theme-provider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PageSearch } from "@/components/ui/search-bar";
@@ -78,17 +80,19 @@ export function Navbar({ changelogs, news }: NavbarProps) {
             </Link>
 
             {/* Recherche (mobile & tablette) */}
-            <button
-              type="button"
-              className="lg:hidden flex h-11 w-11 items-center justify-center rounded-full text-slate-600 transition-[background-color,transform] duration-150 hover:bg-black/5 active:scale-95"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setIsCommandOpen(true);
-              }}
-              aria-label="Rechercher"
-            >
-              <Search className="w-5 h-5" />
-            </button>
+            <ThemeProvider theme="light" style={{ display: "contents" }}>
+              <Button
+                variant="ghost"
+                className="lg:hidden !h-11 !w-11 !min-h-11 !min-w-11 !justify-center !rounded-full !p-0 text-slate-600 transition-[background-color,transform] duration-150 hover:bg-black/5 active:scale-95"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsCommandOpen(true);
+                }}
+                aria-label="Rechercher"
+              >
+                <Search className="w-5 h-5" />
+              </Button>
+            </ThemeProvider>
 
             {/* Compte (mobile icon) */}
             <Link

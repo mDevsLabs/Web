@@ -41,8 +41,15 @@ const liste = z.array(z.string().min(1).max(64)).max(60).nullable().optional();
 
 const schema = z
   .object({
+    // Contexte réglé durablement sur le fil par `@@` (migration 0053). Retirer
+    // une mention de la puce « Réglages de ce fil » passe par ces trois champs.
+    contextPageIds: liste,
+    contextSpaceIds: liste,
+    contextWakieIds: liste,
+    favorite: z.boolean().optional(),
     mcpServerIds: liste,
     model: z.string().trim().min(1).max(200).nullable().optional(),
+    muted: z.boolean().optional(),
     pluginIds: liste,
     skillIds: liste,
     skillParams: z
@@ -58,16 +65,21 @@ const schema = z
   .strict()
   .refine(
     (value) =>
+      value.favorite !== undefined ||
+      value.muted !== undefined ||
       value.title !== undefined ||
       value.model !== undefined ||
       value.skillIds !== undefined ||
       value.pluginIds !== undefined ||
       value.mcpServerIds !== undefined ||
       value.toolIds !== undefined ||
+      value.contextPageIds !== undefined ||
+      value.contextSpaceIds !== undefined ||
+      value.contextWakieIds !== undefined ||
       value.skillParams !== undefined,
     {
       message:
-        "Rien à modifier : précisez un titre, un modèle ou une sélection.",
+        "Rien à modifier : précisez une préférence, un titre, un modèle ou une sélection.",
     }
   );
 

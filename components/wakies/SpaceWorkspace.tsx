@@ -37,6 +37,10 @@ export function SpaceWorkspace({
   const [error, setError] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [outline, setOutline] = useState(false);
+  // Une action du menu de carte (épingle, renommage, suppression) doit se voir
+  // tout de suite : incrémenter cette clé relance la lecture immédiatement,
+  // sans attendre le prochain passage des trois secondes.
+  const [reloadKey, setReloadKey] = useState(0);
   useEffect(() => {
     let active = true;
     const load = async () => {
@@ -60,7 +64,7 @@ export function SpaceWorkspace({
       active = false;
       clearInterval(timer);
     };
-  }, [space.id]);
+  }, [space.id, reloadKey]);
   const page = pages.find((item) => item.id === pageId);
   const saved = useCallback(
     (next: Page) =>
@@ -139,6 +143,7 @@ export function SpaceWorkspace({
         )
       ) : (
         <SpaceLibrary
+          onAfterChange={() => setReloadKey((cle) => cle + 1)}
           onNew={() => void create(null)}
           onPage={onPage}
           pages={pages}

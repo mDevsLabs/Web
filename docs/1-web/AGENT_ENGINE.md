@@ -43,7 +43,7 @@ Le moteur s'appuie sur les primitives déjà installées (`ai@7`) :
   forfait payant, quota) dans `lib/agent/gate.ts`.
 - Le **mode Fantôme** n'est pas disponible dans Agent (la persistance des runs
   est nécessaire) : l'API refuse `isGhostMode`.
-- Le canal est diffusé par `lib/agent/channel.ts` (`AGENT_CHANNEL = "alpha"`).
+- Le canal est diffusé par `lib/agent/channel.ts` (`AGENT_CHANNEL = "beta"`).
   Passer à Beta puis Stable se fait en changeant cette seule constante : badge,
   textes et écrans s'y adaptent.
 

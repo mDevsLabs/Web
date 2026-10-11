@@ -9,7 +9,7 @@
 1. [Le terminal au centre du flux de développement](#le-terminal-au-centre-du-flux-de-développement)
 2. [Capacités et fonctionnalités](#capacités-et-fonctionnalités)
 3. [Communication intégrée](#communication-intégrée)
-4. [Modèle BYOK (Bring Your Own Key)](#modèle-byok-bring-your-own-key)
+4. [Modèle BYOK (apportez votre propre clé)](#modèle-byok-apportez-votre-propre-clé)
 5. [Guide d'installation](#guide-dinstallation)
 6. [Public cible](#public-cible)
 7. [Accès anticipé et contributions](#accès-anticipé-et-contributions)
@@ -75,9 +75,9 @@ Cette centralisation limite la dispersion attentionnelle et regroupe le pilotage
 
 ---
 
-## Modèle BYOK (Bring Your Own Key)
+## Modèle BYOK (apportez votre propre clé)
 
-mAI CLI repose sur le principe du **BYOK (Bring Your Own Key)** :
+mAI CLI repose sur le principe du **BYOK (apportez votre propre clé)** :
 
 Chaque utilisateur configure sa propre clé d'accès auprès du fournisseur de son choix (OpenAI, Anthropic, Google Gemini, Groq, Ollama en local).
 

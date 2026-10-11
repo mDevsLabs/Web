@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { AlertTriangleIcon, Settings2Icon } from "@mdevs/icons";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type {

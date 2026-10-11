@@ -118,7 +118,6 @@ describe("Catalogue de modèles MCP", () => {
 
   it("expose les connecteurs du Store et marque les stdio non vérifiés", () => {
     const storeIds = [
-      "github",
       "gitlab",
       "notion",
       "brave-search",
@@ -170,7 +169,7 @@ describe("Recherche et appariement du catalogue MCP", () => {
       dataTemplates.every((template) => template.category === "data")
     ).toBe(true);
 
-    const github = getMcpTemplate("github");
+    const github = getMcpTemplate("gitlab");
     expect(github).toBeDefined();
     expect(matchesMcpTemplateQuery(github!, "token")).toBe(true);
     expect(matchesMcpTemplateQuery(github!, "zzzz-inexistant")).toBe(false);
@@ -182,10 +181,10 @@ describe("Recherche et appariement du catalogue MCP", () => {
         id: "server-1",
         isEnabled: true,
         name: "Nom modifié par l'utilisateur",
-        templateId: "github",
+        templateId: "gitlab",
       },
     ]);
-    const githubEntry = entries.find((entry) => entry.id === "github");
+    const githubEntry = entries.find((entry) => entry.id === "gitlab");
     expect(githubEntry?.installed).toBe(true);
     expect(githubEntry?.enabled).toBe(true);
     expect(githubEntry?.installedServerId).toBe("server-1");
@@ -214,7 +213,7 @@ describe("Préparation d'installation d'un modèle MCP", () => {
   });
 
   it("signale les modèles qui exigent une configuration avant activation", () => {
-    expect(templateRequiresConfiguration(getMcpTemplate("github")!)).toBe(true);
+    expect(templateRequiresConfiguration(getMcpTemplate("gitlab")!)).toBe(true);
     expect(templateRequiresConfiguration(getMcpTemplate("notion")!)).toBe(true);
   });
 });

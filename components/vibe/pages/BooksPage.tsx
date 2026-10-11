@@ -8,7 +8,31 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BookHeartIcon as BookHeart, CheckIcon as Check, ChevronDownIcon as ChevronDown, CopyIcon as Copy, KeyRoundIcon as KeyRound, Link2Icon as Link2, Loader2Icon as Loader2, LogOutIcon as LogOut, MessageSquareIcon as MessageSquare, PencilIcon as Pencil, PinIcon as Pin, PinOffIcon as PinOff, PlusIcon as Plus, RefreshCwIcon as RefreshCw, SendIcon as Send, Share2Icon as Share2, SparklesIcon as Sparkles, Trash2Icon as Trash2, UserPlusIcon as UserPlus, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  BookHeartIcon as BookHeart,
+  CheckIcon as Check,
+  ChevronDownIcon as ChevronDown,
+  CopyIcon as Copy,
+  KeyRoundIcon as KeyRound,
+  Link2Icon as Link2,
+  Loader2Icon as Loader2,
+  LogOutIcon as LogOut,
+  MessageSquareIcon as MessageSquare,
+  PencilIcon as Pencil,
+  PinIcon as Pin,
+  PinOffIcon as PinOff,
+  PlusIcon as Plus,
+  RefreshCwIcon as RefreshCw,
+  SendIcon as Send,
+  Share2Icon as Share2,
+  SparklesIcon as Sparkles,
+  Trash2Icon as Trash2,
+  UserPlusIcon as UserPlus,
+  UsersIcon as Users,
+  XIcon as X,
+} from "@mdevs/icons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   buildBookJoinLink,
@@ -23,6 +47,7 @@ import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { PostCard } from "@/components/vibe/feed/PostCard";
+import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
@@ -46,8 +71,11 @@ function RenderBookIcon({
 
 const isOwnerOf = (b?: VibeBook | null) => b?.is_owner !== false;
 
-export const BooksPage: React.FC = () => {
+export const BooksPage: React.FC<{
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}> = ({ hydration }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { bookId } = useParams<{ bookId?: string }>();
 
   const [books, setBooks] = useState<VibeBook[]>([]);
@@ -104,28 +132,60 @@ export const BooksPage: React.FC = () => {
 
   const { confirm, confirmDialog } = useConfirmDialog();
 
-  const fetchBooks = useCallback((silent = false) => {
-    if (!silent) {
-      setIsLoading(true);
-      setError(null);
-    }
-    ApiService.getBooks()
-      .then((res) => {
+  // Graine serveur (liste de premier écran) — consommée une fois, seulement
+  // si l'on ouvre la liste (pas le détail d'un Livre).
+  const booksSeedConsumedRef = useRef(false);
+  const fetchBooks = useCallback(
+    (silent = false) => {
+      if (!silent) {
+        setIsLoading(true);
+        setError(null);
+      }
+      const seedOk =
+        !booksSeedConsumedRef.current &&
+        !bookId &&
+        hydration?.data &&
+        (hydration.as === null
+          ? !user
+          : !user || String(hydration.as) === String(user.id ?? ""));
+      if (seedOk) {
+        booksSeedConsumedRef.current = true;
+        const res = hydration!.data as {
+          books?: VibeBook[];
+          maxBooks?: number;
+          ownedCount?: number;
+        };
         const list = res.books || [];
         setBooks(list);
         setMaxBooks(res.maxBooks || 5);
         setOwnedCount(
           res.ownedCount ?? list.filter((b) => b.is_owner !== false).length
         );
-      })
-      .catch((err: any) => {
-        if (!silent)
-          setError(err?.message || "Impossible de charger vos Livres.");
-      })
-      .finally(() => {
-        if (!silent) setIsLoading(false);
-      });
-  }, []);
+        ApiService.seedCache("/v1/books", res);
+        if (!silent) {
+          setIsLoading(false);
+        }
+        return;
+      }
+      ApiService.getBooks()
+        .then((res) => {
+          const list = res.books || [];
+          setBooks(list);
+          setMaxBooks(res.maxBooks || 5);
+          setOwnedCount(
+            res.ownedCount ?? list.filter((b) => b.is_owner !== false).length
+          );
+        })
+        .catch((err: any) => {
+          if (!silent)
+            setError(err?.message || "Impossible de charger vos Livres.");
+        })
+        .finally(() => {
+          if (!silent) setIsLoading(false);
+        });
+    },
+    [bookId, hydration, user]
+  );
 
   const fetchBookDetail = useCallback(
     (silent = false) => {

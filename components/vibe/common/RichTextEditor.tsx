@@ -6,7 +6,24 @@
  * ============================================================================
  */
 
-import { BoldIcon as Bold, BracesIcon as Braces, CheckIcon as Check, CodeIcon as Code, CornerDownLeftIcon as CornerDownLeft, HighlighterIcon as Highlighter, ItalicIcon as Italic, Link2Icon as Link2, ListIcon as List, ListOrderedIcon as ListOrdered, PaletteIcon as Palette, QuoteIcon as Quote, SigmaIcon as Sigma, StrikethroughIcon as Strikethrough, UnderlineIcon, XIcon as X } from "@mdevs/icons";
+import {
+  BoldIcon as Bold,
+  BracesIcon as Braces,
+  CheckIcon as Check,
+  CodeIcon as Code,
+  CornerDownLeftIcon as CornerDownLeft,
+  HighlighterIcon as Highlighter,
+  ItalicIcon as Italic,
+  Link2Icon as Link2,
+  ListIcon as List,
+  ListOrderedIcon as ListOrdered,
+  PaletteIcon as Palette,
+  QuoteIcon as Quote,
+  SigmaIcon as Sigma,
+  StrikethroughIcon as Strikethrough,
+  UnderlineIcon,
+  XIcon as X,
+} from "@mdevs/icons";
 
 import type React from "react";
 

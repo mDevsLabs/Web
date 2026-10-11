@@ -1,7 +1,30 @@
 "use client";
 
+import {
+  CheckCircle2Icon,
+  CircleDashedIcon,
+  CircleIcon,
+  ClockIcon,
+  DownloadIcon,
+  FileTextIcon,
+  FolderIcon,
+  GlobeIcon,
+  HammerIcon,
+  HelpCircleIcon,
+  LibraryIcon,
+  Loader2Icon,
+  MessageSquareIcon,
+  PackageIcon,
+  PlugIcon,
+  PuzzleIcon,
+  SearchIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+  TimerIcon,
+  TriangleAlertIcon,
+  UserIcon,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { CheckCircle2Icon, CircleDashedIcon, CircleIcon, ClockIcon, DownloadIcon, FileTextIcon, FolderIcon, GlobeIcon, HammerIcon, HelpCircleIcon, LibraryIcon, Loader2Icon, MessageSquareIcon, PackageIcon, PlugIcon, PuzzleIcon, SearchIcon, ShieldCheckIcon, SparklesIcon, TimerIcon, TriangleAlertIcon, UserIcon } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import type { AgentStreamState } from "@/components/agent/agent-stream-provider";
 import { Button } from "@/components/ui/button";
@@ -26,6 +49,7 @@ import type {
 } from "@/lib/agent/types";
 import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
+import { IntegrationLogo, integrationForToolId } from "@/lib/integrations/logo";
 import { cn } from "@/lib/utils";
 
 // Timeline d'exécution : uniquement des actions observables — outils, fichiers,
@@ -247,6 +271,9 @@ function ToolRetryGroup({
     0
   );
   const Icon = CATEGORY_ICONS[last.category] ?? STEP_ICONS.tool_result;
+  // Un outil de connecteur externe se reconnaît à son logo : la catégorie
+  // « Plugin » dirait juste « extension », pas « Google ».
+  const connector = last.toolId ? integrationForToolId(last.toolId) : undefined;
 
   return (
     <div className="flex flex-col">
@@ -258,7 +285,11 @@ function ToolRetryGroup({
         type="button"
       >
         <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center">
-          <Icon className="size-3.5 text-muted-foreground" />
+          {connector ? (
+            <IntegrationLogo className="size-3.5" descriptor={connector} />
+          ) : (
+            <Icon className="size-3.5 text-muted-foreground" />
+          )}
         </span>
         <span className="flex min-w-0 flex-1 flex-col">
           <span className="flex items-center gap-2">
@@ -525,6 +556,9 @@ export function AgentRunTimeline({
               (category ? CATEGORY_ICONS[category] : undefined) ??
               STEP_ICONS[step.type] ??
               CircleIcon;
+            const connector = activity?.toolId
+              ? integrationForToolId(activity.toolId)
+              : undefined;
             return (
               <motion.div
                 animate={{ opacity: 1, y: 0 }}
@@ -536,7 +570,14 @@ export function AgentRunTimeline({
                 transition={{ duration: 0.2 }}
               >
                 <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center">
-                  <Icon className="size-3.5 text-muted-foreground" />
+                  {connector ? (
+                    <IntegrationLogo
+                      className="size-3.5"
+                      descriptor={connector}
+                    />
+                  ) : (
+                    <Icon className="size-3.5 text-muted-foreground" />
+                  )}
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="flex min-w-0 flex-wrap items-center gap-2">

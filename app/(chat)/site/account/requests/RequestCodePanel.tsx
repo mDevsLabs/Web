@@ -1,6 +1,10 @@
 "use client";
 
-import { CheckIcon as Check, Code2Icon as Code2, CopyIcon as Copy } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  Code2Icon as Code2,
+  CopyIcon as Copy,
+} from "@mdevs/icons";
 import type { RequestCodeTab } from "./request-snippets";
 
 const TABS: readonly RequestCodeTab[] = ["curl", "fetch", "python", "node"];

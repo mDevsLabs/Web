@@ -60,7 +60,9 @@ async function fallbackWebSearch(
 
   // 1. Essai Google News RSS (Ultra-rapide, mondial, temps réel, aucune clé requise)
   try {
-    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`;
+    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(
+      query
+    )}&hl=fr&gl=FR&ceid=FR:fr`;
     const res = await fetch(rssUrl, {
       headers: {
         Accept: "application/rss+xml, text/xml, */*",
@@ -161,7 +163,9 @@ async function fallbackWebSearch(
   // 3. Essai Wikipedia API
   try {
     const lang = /[éèàùçâêîôû]/i.test(query) ? "fr" : "en";
-    const wikiUrl = `https://${lang}.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=${count}&namespace=0&format=json`;
+    const wikiUrl = `https://${lang}.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(
+      query
+    )}&limit=${count}&namespace=0&format=json`;
     const res = await fetch(wikiUrl, {
       headers: {
         "User-Agent":
@@ -255,10 +259,12 @@ export async function executeWebSearch(
                 if (Array.isArray(data.results)) {
                   rawHits = data.results;
                 } else {
-                  if (Array.isArray(data.results.web))
+                  if (Array.isArray(data.results.web)) {
                     rawHits.push(...data.results.web);
-                  if (Array.isArray(data.results.news))
+                  }
+                  if (Array.isArray(data.results.news)) {
                     rawHits.push(...data.results.news);
+                  }
                 }
               } else if (Array.isArray(data.hits)) {
                 rawHits = data.hits;

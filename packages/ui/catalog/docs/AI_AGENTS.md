@@ -146,7 +146,7 @@ Les casts du runtime métier alignent des valeurs FormData sur les modèles gén
 
 Sous Next.js App Router, importer le CSS dans le layout et placer les callbacks dans une frontière client. Garder les props serveur sérialisables. Avec React SSR classique, utiliser les mêmes valeurs de thème au serveur et au premier rendu client. Le thème `system` est porté par des media queries CSS ; ThemeProvider ne gère pas la persistance.
 
-Les variables de tokens transmises via `ThemeProvider.style` sont propagées aux portails. Les propriétés de layout ordinaires comme `padding` ne sont pas copiées. Les props `accent` et `radius` remplacent les tokens homonymes présents dans `style`. Pour chaque ThemeProvider imbriqué, préciser les valeurs nécessaires au périmètre.
+Les variables de tokens transmises via `ThemeProvider.style` sont propagées aux portails, ainsi que le thème, la variante, l'accent et le rayon. Les propriétés de layout ordinaires comme `padding` ne sont pas copiées. Les props `accent` et `radius` remplacent les tokens homonymes présents dans `style`. Pour chaque ThemeProvider imbriqué, préciser les valeurs nécessaires au périmètre.
 
 Ne pas lire le stockage ou un media query pendant le rendu pour choisir arbitrairement une valeur différente du serveur. Si l’application doit mémoriser un thème, prévoir cette politique dans le code hôte et vérifier l’hydratation.
 

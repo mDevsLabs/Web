@@ -39,14 +39,23 @@ export function getDb() {
 }
 
 /**
- * La colonne `plan` de `mprojects_api_keys` a longtemps hosted deux notions
+ * La colonne `plan` de `mprojects_api_keys` a longtemps porté deux notions
  * contradictoires : le NOM de la clé (écrit à la création et à la mise à jour) et
  * le FORFAIT de l'abonné (écrit par l'activation d'un code d'abonnement). Un simple
  * upgrade d'abonnement écrasait donc le nom de toutes les clés du compte.
  *
- * `key_name` est la colonne dédiée au nom. `plan` redevient le forfait. La migration
- * est idempotente et appliquée paresseusement au premier accès à la table ; les
- * lectures retombent sur `plan` pour les lignes créées avant la migration.
+ * `key_name` est la colonne dédiée au nom, `plan` redevient le forfait. La colonne
+ * est créée par la migration versionnée
+ * `0040_mprojects_api_keys_key_name`, appliquée par `pnpm db:migrate`. Aucune
+ * instruction de schéma ne vit dans ce module : les requêtes d'une clé supposent
+ * la colonne présente, et un rôle SQL sans privilège DDL ne peut pas — et ne doit
+ * pas — la créer au passage d'une requête utilisateur. Ce sont précisément les
+ * termes que refuse le garde-fou `tests/unit/api-key-migration-safety.test.ts`.
+ *
+ * Le repli de `readKeyName` sur `plan` couvre le passif : les lignes créées avant
+ * la migration n'ont jamais eu de nom dédié, et la migration 0040 a backfillé
+ * `key_name = plan`. Une valeur absente des deux colonnes reste présentable
+ * (« Clé API ») sans réécriture de donnée.
  */
 
 /** Nom d'une clé, avec repli sur l'ancienne colonne `plan` pour l'historique. */

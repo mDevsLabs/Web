@@ -30,7 +30,7 @@ export function TicketDetailAttachmentPicker({
         <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-700">
           <Paperclip className="h-3.5 w-3.5" aria-hidden="true" /> Fichiers (images / .txt / .md) — 8 Mo max, {SUPPORT_ATTACHMENT_LIMITS.MAX_FILES_PER_ROLE_PER_TICKET} max / {role === "admin" ? "admin" : "vous"} • {myAttachmentsCount}/{SUPPORT_ATTACHMENT_LIMITS.MAX_FILES_PER_ROLE_PER_TICKET}
         </span>
-        <span className={`text-[11px] font-bold ${canUploadMore ? "text-emerald-600" : "text-red-600"}`}>{canUploadMore ? "Upload disponible" : "Limite atteinte"}</span>
+        <span className={`text-[11px] font-bold ${canUploadMore ? "text-emerald-600" : "text-red-600"}`}>{canUploadMore ? "Envoi disponible" : "Limite atteinte"}</span>
       </div>
       <div
         onDragOver={(event) => { event.preventDefault(); event.currentTarget.classList.add("border-purple-400", "bg-purple-50"); }}
@@ -41,7 +41,7 @@ export function TicketDetailAttachmentPicker({
         <input ref={fileInputRef} type="file" multiple accept="image/*,.txt,.md,text/plain,text/markdown" onChange={(event) => void onFilesSelected(event.target.files)} className="sr-only" aria-label="Sélectionner des pièces jointes" />
         <button type="button" onClick={() => fileInputRef.current?.click()} disabled={!canUploadMore || uploading} className="flex shrink-0 cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:border-purple-300 disabled:cursor-not-allowed disabled:opacity-40">
           {uploading ? <Loader2 className="h-4 w-4 animate-spin text-purple-600" aria-hidden="true" /> : <ImageIcon className="h-4 w-4 text-purple-600" aria-hidden="true" />}
-          {uploading ? "Upload Z1…" : "Choisir / Glisser fichiers"}
+          {uploading ? "Envoi en cours…" : "Choisir ou déposer des fichiers"}
         </button>
         <span className="text-slate-500">ou glissez-déposez ici • 8 Mo max • images, .txt, .md</span>
       </div>

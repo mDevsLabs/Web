@@ -1,6 +1,13 @@
 "use client";
 
-import { ChevronDownIcon as ChevronDown, DownloadIcon as Download, MenuIcon as Menu, SearchIcon as Search, UserRoundIcon as UserRound, XIcon as X } from "@mdevs/icons";
+import {
+  ChevronDownIcon as ChevronDown,
+  DownloadIcon as Download,
+  MenuIcon as Menu,
+  SearchIcon as Search,
+  UserRoundIcon as UserRound,
+  XIcon as X,
+} from "@mdevs/icons";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useState } from "react";

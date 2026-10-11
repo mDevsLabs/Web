@@ -157,13 +157,13 @@ export default function OpenProviderProjectPage() {
           />
           <FeatureCard
             icon={<Github className="w-6 h-6 text-pink-600" />}
-            title="100% Open Source"
+            title="100 % en code ouvert"
             description="Code entièrement ouvert et vérifiable. Vous gardez le contrôle total sur l'outil."
             delay={0.6}
           />
           <FeatureCard
             icon={<Shield className="w-6 h-6 text-pink-600" />}
-            title="BYOK (Bring Your Own Key)"
+            title="BYOK (utilisez votre propre clé)"
             description="Utilisez vos propres clés d'API sans intermédiaire pour une flexibilité maximale."
             delay={0.7}
           />
@@ -175,7 +175,7 @@ export default function OpenProviderProjectPage() {
         <div>
           <h4 className="text-lg font-bold text-slate-900">Dépôt GitHub mDevsLabs/OpenProvider</h4>
           <p className="text-slate-600 text-sm font-light">
-            Un projet open source auquel vous pouvez participer.
+            Un projet à code source ouvert auquel vous pouvez participer.
           </p>
         </div>
         <div>

@@ -5,6 +5,34 @@ export type VerificationTier =
   | "official"
   | null;
 
+/**
+ * Graine de pré-hydratation RSC injectée par les pages serveur (`getVibeHydration`).
+ * Miroir structurel VOLONTAIRE du type `VibeHydration` de `lib/vibe/server/hydration.ts` :
+ * ce module serveur est `server-only` et ne doit jamais être importé — même en type —
+ * par une page cliente. Les deux formes sont structurellement compatibles.
+ */
+export interface VibeHydrationSeed<T = unknown> {
+  /** `users.id` au moment de la lecture serveur ; rejeter un seed d'une autre identité. */
+  as: string | null;
+  data: T | null;
+  /** Horodatage ms de la lecture — comparer à la dernière écriture locale. */
+  hydratedAt: number;
+  /** Identité (route + params) du seed. */
+  key: string;
+}
+
+/**
+ * Session pré-hydratée produite par le layout serveur `/vibe` (répliques de
+ * `GET /v1/me`, `GET /v1/settings`, `GET /v1/notifications/unread_count`).
+ * Chaque partie est nullable : un lecteur serveur en échec vaut `null`, et le
+ * client retombe sur son appel API habituel pour cette partie seulement.
+ */
+export interface VibeSessionHydration {
+  me: { profile: Profile; quotas: MAIQuotas; user: User } | null;
+  settings: Record<string, any> | null;
+  unread: { unread_messages: number; unread_notifications: number } | null;
+}
+
 export interface User {
   avatar_url?: string;
   created_at: string;
@@ -404,21 +432,6 @@ export interface VibeBookPost extends Post {
   saved_at?: string;
 }
 
-/** Commentaire de la discussion d'un Livre. */
-export interface BookComment {
-  avatar_url?: string | null;
-  content: string;
-  created_at: string;
-  display_name?: string | null;
-  id: string;
-  reactions?: Array<{ emoji: string; count: number; mine: boolean }>;
-  reply_content?: string | null;
-  reply_to_id?: string | null;
-  reply_username?: string | null;
-  user_id: number | string;
-  username: string;
-}
-
 /** Entrée de liste d'abonnés / abonnements d'un profil. */
 export interface ProfileListUser {
   avatar_url?: string | null;
@@ -529,4 +542,62 @@ export interface UserSettings {
   two_factor_auth?: boolean;
   /** Langue cible de traduction (code DeepL : FR, EN-US…) ; vide/null = langue du navigateur. */
   ui_language?: string;
+}
+
+// ─────────────────────────────────────────────
+// STORIES — publications éphémères de 24 h
+// Contrat de `vibe-stories.ts` : les dates arrivent en ISO (JSON), les ids sont
+// des UUID, les positions ordonnent les médias d'une même story.
+// ─────────────────────────────────────────────
+
+/** Un média d'une story : photo ou vidéo, ≤ 50 Mo (contrat recontrôlé serveur). */
+export interface StoryMedia {
+  altText: string;
+  fileSizeBytes?: number;
+  height: number | null;
+  id: string;
+  mediaType: "image" | "video";
+  position: number;
+  url: string;
+  width: number | null;
+}
+
+/** Une story : un instantané de 24 h, une légende, un ou plusieurs médias. */
+export interface Story {
+  archivedAt?: string | null;
+  caption: string;
+  createdAt: string;
+  expiresAt: string;
+  id: string;
+  media: StoryMedia[];
+  visibility: "followers" | "public" | "private";
+}
+
+/** Une story et son auteur, tels que les sert le rail : groupés par auteur. */
+export interface StoryAuthor {
+  authorId: number;
+  avatarUrl: string | null;
+  displayName: string;
+  isMine: boolean;
+  seen: boolean;
+  stories: Story[];
+  username: string;
+}
+
+/** Quota de publication du jour. `limit: null` = forfait Max, illimité. */
+export interface StoryQuota {
+  limit: number | null;
+  remaining: number | null;
+  resetsInMs?: number;
+  tier: string;
+  timeZone?: string;
+  used: number;
+}
+
+/** Spectateur relevé dans la liste des vues — visible par l'auteur seul. */
+export interface StoryViewer {
+  avatarUrl: string | null;
+  displayName: string;
+  username: string;
+  viewedAt: string;
 }

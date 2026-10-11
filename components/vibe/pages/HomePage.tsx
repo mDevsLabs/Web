@@ -6,8 +6,14 @@
  * ============================================================================
  */
 
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowUpIcon as ArrowUp,
+  PenSquareIcon as PenSquare,
+  TrendingUpIcon as TrendingUp,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { AlertCircleIcon as AlertCircle, ArrowUpIcon as ArrowUp, PenSquareIcon as PenSquare, TrendingUpIcon as TrendingUp, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PostCardSkeleton } from "@/components/vibe/common/PageSkeleton";
@@ -15,6 +21,7 @@ import { ExplainModal } from "@/components/vibe/feed/ExplainModal";
 import { PostCard } from "@/components/vibe/feed/PostCard";
 import { PostComposer } from "@/components/vibe/feed/PostComposer";
 import { VibeLogo } from "@/components/vibe/layout/VibeLogo";
+import { StoriesTray } from "@/components/vibe/stories/StoriesTray";
 import { useInfiniteFeed } from "@/lib/vibe/hooks/useInfiniteFeed";
 import { useMotionPrefs } from "@/lib/vibe/hooks/useMotionPrefs";
 import { ApiService } from "@/lib/vibe/services/api";
@@ -22,6 +29,8 @@ import { haptics } from "@/lib/vibe/services/haptics";
 import type { Post } from "@/lib/vibe/types/vibe";
 
 interface HomePageProps {
+  /** Seed serveur de premier écran (voir lib/vibe/server/hydration.ts). */
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
   onOpenProfile: (username: string) => void;
   onOpenThread: (post: Post) => void;
 }
@@ -360,6 +369,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           // Le composer émet vibe:feed_refresh avec le post créé
         }}
       />
+
+      {/* Rail de stories — sous le composer, au-dessus du fil. « Tendances » a
+          déjà sa propre bande horizontale : deux bandes empilées feraient doublon. */}
+      {feedType === "trending" ? null : <StoriesTray />}
 
       {/* Bouton « N nouvelles vibes » */}
       {newCount > 0 && (

@@ -239,7 +239,17 @@ export default function RequestsClient() {
             return (
               <div key={cat} className="space-y-2">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-2 flex items-center gap-1.5">
-                  <span>{cat}</span>
+                  <span>
+                    {cat === "Images & Web Search"
+                      ? "Images et recherche Web"
+                      : cat === "Audio & Speech"
+                        ? "Audio et synthèse vocale"
+                        : cat === "SDK Google & Anthropic"
+                          ? "SDK Google et Anthropic"
+                          : cat === "LLM & Modèles"
+                            ? "Modèles de langage (LLM)"
+                            : cat}
+                  </span>
                   <span className="text-[10px] bg-slate-100 text-slate-500 font-semibold px-1.5 py-0.5 rounded-full">
                     {routesInCat.length}
                   </span>

@@ -9,6 +9,22 @@
  */
 import { z } from "zod";
 
+/**
+ * Réglages de lecture d'une page. Volontairement court, et chaque clé change
+ * réellement l'affichage : un réglage que rien ne lit est un mensonge
+ * d'interface. Le titre reste toujours modifiable dans le document.
+ */
+export const pageSettings = z
+  .object({
+    /** Signe affiché à la place de l'icône de page dans la bibliothèque. */
+    icon: z.string().trim().max(16).nullable().default(null),
+    /** Colonne de lecture élargie, à la largeur de la bibliothèque. */
+    large: z.boolean().default(false),
+  })
+  .strict();
+
+export type PageSettings = z.infer<typeof pageSettings>;
+
 export const pageInput = z
   .object({
     content: z.string().max(100_000).default(""),
@@ -17,6 +33,15 @@ export const pageInput = z
   })
   .strict();
 
+/**
+ * `.strict()` est un contrat : une clé non déclarée répond 400.
+ *
+ * Le PATCH porte ce qui EST le document — titre, contenu, parent — et fait
+ * varier la révision. L'épingle et les réglages de lecture ont leur route
+ * (`/pages/:id/pin`, `/pages/:id/settings`) et n'entrent pas ici : les écrire
+ * par le PATCH ferait bondir la révision derrière le dos de l'onglet ouvert sur
+ * la page, qui perdrait son brouillon en 409 à la prochaine sauvegarde.
+ */
 export const pagePatch = z
   .object({
     content: z.string().max(100_000).optional(),
@@ -31,7 +56,9 @@ export interface Page {
   createdAt: number;
   id: string;
   parentId: string | null;
+  pinned: boolean;
   revision: number;
+  settings: PageSettings | null;
   sourceThreadId: string | null;
   spaceId: string;
   title: string;

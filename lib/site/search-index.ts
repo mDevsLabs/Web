@@ -78,7 +78,7 @@ const STATIC_PAGES: SearchEntry[] = [
     description:
       "Centre d'assistance, signalement de bugs et suivi des tickets.",
     href: "/support",
-    title: "Support",
+    title: "Assistance",
     type: "page",
   },
   {

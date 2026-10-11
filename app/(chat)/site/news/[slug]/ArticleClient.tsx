@@ -1,6 +1,21 @@
 "use client";
 
-import { EditIcon as Edit, FacebookIcon as Facebook, InstagramIcon as Instagram, LinkedinIcon as Linkedin, LogInIcon as LogIn, MessageCircleIcon as MessageCircle, SendIcon as Send, Share2Icon as Share2, ThumbsDownIcon as ThumbsDown, ThumbsUpIcon as ThumbsUp, Trash2Icon as Trash2, TwitterIcon as Twitter, UserPlusIcon as UserPlus, YoutubeIcon as Youtube } from "@mdevs/icons";
+import {
+  EditIcon as Edit,
+  FacebookIcon as Facebook,
+  InstagramIcon as Instagram,
+  LinkedinIcon as Linkedin,
+  LogInIcon as LogIn,
+  MessageCircleIcon as MessageCircle,
+  SendIcon as Send,
+  Share2Icon as Share2,
+  ThumbsDownIcon as ThumbsDown,
+  ThumbsUpIcon as ThumbsUp,
+  Trash2Icon as Trash2,
+  TwitterIcon as Twitter,
+  UserPlusIcon as UserPlus,
+  YoutubeIcon as Youtube,
+} from "@mdevs/icons";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";

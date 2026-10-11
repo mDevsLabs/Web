@@ -1,6 +1,12 @@
 "use client";
 
-import { ExternalLinkIcon as ExternalLink, GithubIcon as Github, GlobeIcon as Globe, MessageSquareIcon as MessageSquare, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  ExternalLinkIcon as ExternalLink,
+  GithubIcon as Github,
+  GlobeIcon as Globe,
+  MessageSquareIcon as MessageSquare,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import { GithubRelease } from "@/components/site/github-release";
 import Link from "@/components/site/router";

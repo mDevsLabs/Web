@@ -1,11 +1,15 @@
 "use client";
 
-import { GlobeIcon as Globe, Loader2Icon as Loader2, UserPlusIcon as UserPlus } from "@mdevs/icons";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  GlobeIcon as Globe,
+  Loader2Icon as Loader2,
+  UserPlusIcon as UserPlus,
+} from "@mdevs/icons";
+import { useSearchParams } from "next/navigation";
 import { type FormEvent, Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
-import Link from "@/components/site/router";
+import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 import { MaiApiError } from "@/lib/site/mai-api";
 
 function RegisterForm() {
@@ -320,8 +324,6 @@ function RegisterForm() {
               <Link
                 className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-2 transition-colors"
                 href="/legal/terms"
-                rel="noopener noreferrer"
-                target="_blank"
               >
                 Conditions Générales d'Utilisation
               </Link>{" "}
@@ -329,8 +331,6 @@ function RegisterForm() {
               <Link
                 className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-2 transition-colors"
                 href="/legal/privacy"
-                rel="noopener noreferrer"
-                target="_blank"
               >
                 Politique de Confidentialité
               </Link>

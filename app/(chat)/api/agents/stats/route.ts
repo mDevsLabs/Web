@@ -1,10 +1,13 @@
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import {
+  planGuardResponse,
+  requireAuthenticatedTier,
+} from "@/lib/auth/plan-guard";
 import { getAgentStatsByUserId } from "@/lib/db/queries";
 import { getTierAgentLimit } from "@/lib/plans/tier-limits";
 
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }

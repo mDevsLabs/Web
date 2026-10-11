@@ -1,5 +1,12 @@
 import type { IconProps } from "@mdevs/icons";
-import { AlertCircleIcon as AlertCircle, ArchiveIcon as Archive, CheckCircle2Icon as CheckCircle2, ClockIcon as Clock, RotateCcwIcon as RotateCcw, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArchiveIcon as Archive,
+  CheckCircle2Icon as CheckCircle2,
+  ClockIcon as Clock,
+  RotateCcwIcon as RotateCcw,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import type {
   SupportPriority,
   SupportTicketStatus,

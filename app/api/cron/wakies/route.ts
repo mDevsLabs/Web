@@ -7,7 +7,6 @@ import { isPaidTier } from "@/lib/auth/plan";
 import { getPersistedTier } from "@/lib/db/users";
 import { timingSafeCompare } from "@/lib/security/timing";
 import {
-  addTaskEvent,
   appendMessages,
   claimDueTask,
   failTask,
@@ -65,14 +64,24 @@ async function isAuthorized(request: Request): Promise<boolean> {
   return true;
 }
 
-export async function GET(request: Request) {
+async function handleTick(request: Request): Promise<Response> {
   if (!(await isAuthorized(request))) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
+  // Identité de CETTE invocation, unique pour tout le tick : c'est elle que le
+  // bail porte, et donc ce qui permet à `finishTask` de refuser l'écriture d'un
+  // worker dont le bail a été repris depuis. Elle est fixée ici, avant le premier
+  // claim, et non à la fabrication de la réponse.
+  const workerId = `cron-${randomUUID().slice(0, 8)}`;
+
   const comptes = await listUsersWithWakies();
   const resumes: { taskId: string; userId: string }[] = [];
   const echecs: { taskId: string; message: string; userId: string }[] = [];
+  // Finalisations refusées parce que le bail avait changé de porteur : le message
+  // a pu être écrit dans la conversation sans que la tâche le sache. Sans compteur
+  // ici, l'écriture perdue est silencieuse et le tick suivant revend la même tâche.
+  const perdus: { taskId: string; userId: string }[] = [];
 
   for (const userId of comptes) {
     const persisted = await getPersistedTier({ userId }).catch(() => null);
@@ -81,7 +90,7 @@ export async function GET(request: Request) {
     }
 
     for (let tour = 0; tour < 3; tour++) {
-      const claim = await claimDueTask(userId);
+      const claim = await claimDueTask(userId, workerId);
       if (!claim) {
         break;
       }
@@ -109,6 +118,10 @@ export async function GET(request: Request) {
           model: getLanguageModel(DEFAULT_CHAT_MODEL),
           prompt: claim.task.prompt,
         });
+        // L'identifiant du message est dérivé du bail : `appendMessages` pose un
+        // `onConflictDoNothing` dessus, donc une reprise de la MÊME occurrence
+        // n'écrirait pas un second brief. Une occurrence distincte a un bail
+        // distinct, et un message distinct — c'est le comportement voulu.
         await appendMessages(userId, [
           {
             conversationId,
@@ -117,17 +130,30 @@ export async function GET(request: Request) {
             role: "assistant",
           },
         ]);
-        await finishTask(claim.task.id, claim.lease, {
-          sample: false,
-          sources: [],
-          text: texte,
-        });
-        resumes.push({ taskId: claim.task.id, userId });
+        const finalise = await finishTask(
+          claim.task.id,
+          claim.lease,
+          {
+            sample: false,
+            sources: [],
+            text: texte,
+          },
+          workerId
+        );
+        if (finalise) {
+          resumes.push({ taskId: claim.task.id, userId });
+        } else {
+          console.warn(
+            `[cron/wakies] écriture perdue : le bail de la tâche ${claim.task.id} avait été repris entre-temps`
+          );
+          perdus.push({ taskId: claim.task.id, userId });
+        }
       } catch (erreur) {
         const message =
           erreur instanceof Error ? erreur.message : "Erreur inconnue.";
-        await addTaskEvent(claim.task.id, message, claim.lease);
-        await failTask(claim.task.id, claim.lease, message);
+        // `failTask` journalise l'événement dans sa propre transaction : un
+        // `addTaskEvent` ici écrirait deux fois, et hors bail.
+        await failTask(claim.task.id, claim.lease, message, workerId);
         echecs.push({ message, taskId: claim.task.id, userId });
       }
     }
@@ -135,10 +161,25 @@ export async function GET(request: Request) {
 
   return Response.json({
     echecs,
+    perdus,
     resumes,
-    traites: resumes.length + echecs.length,
-    worker: `cron-${randomUUID().slice(0, 8)}`,
+    traites: resumes.length + echecs.length + perdus.length,
+    worker: workerId,
   });
+}
+
+/*
+ * Les deux verbes, comme `agent` et `planning`. Le planificateur GitHub appelle
+ * ce tick en POST : une route qui n'exposait que GET répondait 405, et
+ * `continue-on-error` masquait l'échec — les tâches récurrentes ne se déclenchaient
+ * jamais, sans que rien ne le dise.
+ */
+export async function GET(request: Request) {
+  return handleTick(request);
+}
+
+export async function POST(request: Request) {
+  return handleTick(request);
 }
 
 /**

@@ -4,7 +4,7 @@ Après la conception de mAI, interface pensée pour unifier les plus grands mod�
 
 Chaque jour, l’utilisateur navigue entre moteurs de recherche, sites d’information, plateformes professionnelles, espaces personnels, outils de productivité et services en ligne. Pourtant, cette navigation quotidienne reste trop souvent exposée à des publicités intrusives, des traqueurs invisibles, des contenus potentiellement malveillants et une surcharge d’informations qui nuit autant à la concentration qu’à la sécurité.
 
-C’est dans ce contexte qu’est né **mSearch**, un navigateur sécurisé, rapide et efficace, conçu pour offrir au grand public une expérience de navigation plus propre, plus maîtrisée et plus intelligente. Propulsé par la base technique de **Min Browser**, mSearch reprend les fondations d’un navigateur minimaliste, open source et orienté confidentialité, tout en y ajoutant une identité propre, une approche renforcée de la sécurité et une intégration directe de **mAI en barre latérale**.
+C’est dans ce contexte qu’est né **mSearch**, un navigateur sécurisé, rapide et efficace, conçu pour offrir au grand public une expérience de navigation plus propre, plus maîtrisée et plus intelligente. Propulsé par la base technique de **Min Browser**, mSearch reprend les fondations d’un navigateur minimaliste, libre et orienté confidentialité, tout en y ajoutant une identité propre, une approche renforcée de la sécurité et une intégration directe de **mAI en barre latérale**.
 
 L’objectif est simple : permettre à chacun de rechercher, consulter, lire et comprendre le web dans un environnement plus sûr, sans complexité inutile.
 
@@ -140,7 +140,7 @@ Cette approche crée une complémentarité naturelle entre mSearch et mAI. mSear
 
 Le choix de s’appuyer sur **Min Browser** comme base technique de mSearch répond à une logique claire : partir d’un navigateur déjà reconnu pour sa sobriété, sa rapidité et son orientation vers la confidentialité.
 
-Min Browser est un navigateur open source conçu pour offrir une expérience épurée, avec une interface minimaliste et des fonctionnalités centrées sur la concentration. Il intègre notamment le blocage des publicités et des traqueurs, la gestion des onglets par groupes, un mode lecteur, la recherche dans les pages visitées et une interface pensée pour limiter les distractions.
+Min Browser est un navigateur libre conçu pour offrir une expérience épurée, avec une interface minimaliste et des fonctionnalités centrées sur la concentration. Il intègre notamment le blocage des publicités et des traqueurs, la gestion des onglets par groupes, un mode lecteur, la recherche dans les pages visitées et une interface pensée pour limiter les distractions.
 
 Cette philosophie correspond parfaitement à l’ambition de mSearch.
 
@@ -164,9 +164,9 @@ Cette protection native évite de dépendre d’extensions tierces et garantit u
 
 Pour l’utilisateur final, le bénéfice est immédiat : une navigation plus propre, plus rapide et moins exposée au pistage.
 
-### 3. Une architecture open source
+### 3. Une architecture libre
 
-Le caractère open source de Min Browser représente un atout important. Il permet une meilleure transparence technique et offre une base plus saine pour construire un produit orienté sécurité et confidentialité.
+Le caractère libre de Min Browser représente un atout important. Il permet une meilleure transparence technique et offre une base plus saine pour construire un produit orienté sécurité et confidentialité.
 
 mSearch peut ainsi s’appuyer sur une fondation existante, tout en y ajoutant sa propre identité, ses choix de configuration, son expérience utilisateur et son intégration avec mAI.
 
@@ -222,7 +222,7 @@ mSearch est né d’un constat simple : la navigation web moderne a besoin de re
 
 Entre les publicités intrusives, les traqueurs invisibles, les contenus malveillants et la surcharge informationnelle, l’utilisateur grand public se retrouve souvent exposé sans même en avoir conscience.
 
-En s’appuyant sur la base technique de Min Browser, mSearch bénéficie d’un socle minimaliste, open source et orienté confidentialité. En y ajoutant une identité propre, des choix de sécurité renforcés, une politique de non-revente des données, une navigation chiffrée lorsque disponible et l’intégration de mAI en barre latérale, le navigateur devient bien plus qu’un simple outil d’accès au web.
+En s’appuyant sur la base technique de Min Browser, mSearch bénéficie d’un socle minimaliste, libre et orienté confidentialité. En y ajoutant une identité propre, des choix de sécurité renforcés, une politique de non-revente des données, une navigation chiffrée lorsque disponible et l’intégration de mAI en barre latérale, le navigateur devient bien plus qu’un simple outil d’accès au web.
 
 Il devient un espace de navigation sécurisé, intelligent et accessible.
 

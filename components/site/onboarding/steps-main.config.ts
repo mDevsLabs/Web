@@ -1,6 +1,13 @@
 "use client";
 
-import { GaugeIcon as Gauge, KeyRoundIcon as KeyRound, LayersIcon as Layers, RocketIcon as Rocket, ShieldAlertIcon as ShieldAlert, SparklesIcon as Sparkles } from "@mdevs/icons";
+import {
+  GaugeIcon as Gauge,
+  KeyRoundIcon as KeyRound,
+  LayersIcon as Layers,
+  RocketIcon as Rocket,
+  ShieldAlertIcon as ShieldAlert,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
 import type { StepDef } from "./types";
 
 export const MAIN_STEPS: StepDef[] = [

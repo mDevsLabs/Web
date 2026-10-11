@@ -1,6 +1,10 @@
 "use client";
 
-import { CpuIcon as Cpu, ImageIcon, Volume2Icon as Volume2 } from "@mdevs/icons";
+import {
+  CpuIcon as Cpu,
+  ImageIcon,
+  Volume2Icon as Volume2,
+} from "@mdevs/icons";
 import Link from "@/components/site/router";
 
 export type ModelCatalogSection = "text" | "images" | "audio" | "mai";

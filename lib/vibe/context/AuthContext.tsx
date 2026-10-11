@@ -6,10 +6,15 @@
  */
 
 import type React from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { ApiService } from "@/lib/vibe/services/api";
 import { RealtimeService } from "@/lib/vibe/services/realtimeService";
-import type { MAIQuotas, Profile, User } from "@/lib/vibe/types/vibe";
+import type {
+  MAIQuotas,
+  Profile,
+  User,
+  VibeSessionHydration,
+} from "@/lib/vibe/types/vibe";
 
 interface AuthContextType {
   dismissOnboarding: () => void;
@@ -33,31 +38,55 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{
   children: React.ReactNode;
+  /**
+   * Session lue en base par le layout `/vibe` (voir lib/vibe/server). Quand
+   * `me` est présent, le premier écran n'a plus besoin de `GET /v1/me` ni de
+   * `GET /v1/settings` : les appels API ne restent que le chemin de repli et
+   * de rafraîchissement.
+   */
+  initialSession?: VibeSessionHydration | null;
   initialToken?: string | null;
-}> = ({ children, initialToken }) => {
+}> = ({ children, initialSession, initialToken }) => {
+  const seedMe = initialSession?.me ?? null;
+  const seedSettings = initialSession?.settings ?? null;
   const [token, setToken] = useState<string | null>(() => {
     if (initialToken !== undefined) {
       return initialToken;
     }
     return ApiService.getToken();
   });
-  const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [quotas, setQuotas] = useState<MAIQuotas | null>(null);
+  const [user, setUser] = useState<User | null>(() => seedMe?.user ?? null);
+  const [profile, setProfile] = useState<Profile | null>(
+    () => seedMe?.profile ?? null
+  );
+  const [quotas, setQuotas] = useState<MAIQuotas | null>(
+    () => seedMe?.quotas ?? null
+  );
   const [isLoadingSession, setIsLoadingSession] = useState(() => {
+    if (seedMe) {
+      return false;
+    }
     if (initialToken !== undefined) {
       return Boolean(initialToken);
     }
     return Boolean(ApiService.getToken());
   });
-  const [showOnboarding, setShowOnboarding] = useState(false);
+  // Un nouvel utilisateur n'a aucune ligne `user_settings` : la comparaison
+  // historique `=== false` lui cachait l'onboarding (undefined ≠ false). Le
+  // seul état qui le ferme, c'est `true`.
+  const [showOnboarding, setShowOnboarding] = useState(
+    () => Boolean(seedMe) && seedSettings?.onboarding_completed !== true
+  );
+  const hydratedRef = useRef(Boolean(seedMe));
+  const settingsKnownRef = useRef(Boolean(seedSettings));
 
   /** Après session établie : ouvre l'onboarding si jamais terminé (getSettings séparé). */
   const checkOnboarding = async (expectedToken: string) => {
     try {
       const res = await ApiService.getSettings();
       if (ApiService.getToken() !== expectedToken) return;
-      if (res?.settings && res.settings.onboarding_completed === false) {
+      settingsKnownRef.current = true;
+      if (res?.settings && res.settings.onboarding_completed !== true) {
         setShowOnboarding(true);
       }
     } catch {}
@@ -84,11 +113,24 @@ export const AuthProvider: React.FC<{
     setQuotas(null);
     setShowOnboarding(false);
     setIsLoadingSession(false);
+    hydratedRef.current = false;
+    settingsKnownRef.current = false;
   };
 
-  const fetchSession = async () => {
+  const fetchSession = async (force = false) => {
     const currentToken = ApiService.getToken();
     if (!currentToken) {
+      setIsLoadingSession(false);
+      return;
+    }
+
+    if (!force && hydratedRef.current) {
+      // Le premier écran vient du serveur : `GET /v1/me` serait exactement la
+      // requête qu'on supprime. Il ne reste à vérifier que l'onboarding si le
+      // seed de réglages manque.
+      if (!settingsKnownRef.current) {
+        void checkOnboarding(currentToken);
+      }
       setIsLoadingSession(false);
       return;
     }
@@ -100,6 +142,7 @@ export const AuthProvider: React.FC<{
       setUser(data.user);
       setProfile(data.profile);
       setQuotas(data.quotas);
+      hydratedRef.current = true;
       checkOnboarding(currentToken);
     } catch (err: any) {
       // On ne déconnecte que sur une vraie invalidation (401) de la session courante.
@@ -159,7 +202,9 @@ export const AuthProvider: React.FC<{
     ApiService.setToken(newToken);
     setToken(newToken);
     setIsLoadingSession(true);
-    await fetchSession();
+    // Jeton neuf (connexion, reprise après expiration) : le seed du serveur
+    // ne le concerne pas, on recharge la session depuis l'API.
+    await fetchSession(true);
   };
 
   const logout = () => {

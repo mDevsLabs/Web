@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { revokeApiKey, updateApiKey } from "@/lib/site/api-key-manager";
 import { authenticateSession } from "@/lib/site/session-auth";
 
-// DELETE /api/dev-keys/[id] - Révoquer une clé API (auth requise)
+// DELETE /api/site/dev-keys/[id] - Révoquer une clé API (auth requise)
 export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -44,7 +44,7 @@ export async function DELETE(
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (err: any) {
-    console.error("Erreur DELETE /api/dev-keys/[id]:", err);
+    console.error("Erreur DELETE /api/site/dev-keys/[id]:", err);
     return NextResponse.json(
       {
         error: {
@@ -57,7 +57,7 @@ export async function DELETE(
   }
 }
 
-// PUT /api/dev-keys/[id] - Mettre à jour une clé API (auth requise)
+// PUT /api/site/dev-keys/[id] - Mettre à jour une clé API (auth requise)
 export async function PUT(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -170,7 +170,7 @@ export async function PUT(
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (err: any) {
-    console.error("Erreur PUT /api/dev-keys/[id]:", err);
+    console.error("Erreur PUT /api/site/dev-keys/[id]:", err);
     return NextResponse.json(
       {
         error: {

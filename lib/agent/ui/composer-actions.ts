@@ -1,5 +1,15 @@
-import { BrainIcon, FolderIcon, GlobeIcon, ImageIcon, LibraryIcon, ListChecksIcon, MicIcon, PaperclipIcon, WrenchIcon } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
+import {
+  BrainIcon,
+  FolderIcon,
+  GlobeIcon,
+  ImageIcon,
+  LibraryIcon,
+  ListChecksIcon,
+  MicIcon,
+  PaperclipIcon,
+  WrenchIcon,
+} from "@mdevs/icons";
 import type { AgentFlagKey } from "@/lib/agent/flags";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 

@@ -62,6 +62,8 @@ export const permissionsSchema = z
 
 const pluginToolSchema = z.object({
   description: z.string().min(1),
+  // Absent = déduit des permissions du plugin (voir lib/plugins/tool-effect.ts).
+  effect: z.enum(["read", "write"]).optional(),
   id: z
     .string()
     .min(1)
@@ -102,6 +104,19 @@ export const manifestSchema = z
       new Set(manifest.tools.map((tool) => tool.id)).size ===
       manifest.tools.length,
     { message: "Les identifiants d'outils d'un plugin doivent être uniques." }
+  )
+  // Un outil qui écrit chez le fournisseur oblige à déclarer le plugin comme
+  // écrivant : sinon `tool-effect` le classerait « lecture » par défaut et il
+  // serait exposé au Chat sans passer par l'approbation de l'Agent.
+  .refine(
+    (manifest) =>
+      !manifest.tools.some((tool) => tool.effect === "write") ||
+      manifest.permissions.writesUserData,
+    {
+      message:
+        'Un outil en effect: "write" exige permissions.writesUserData: true.',
+      path: ["permissions", "writesUserData"],
+    }
   );
 
 export const rootCatalogSchema = z.object({

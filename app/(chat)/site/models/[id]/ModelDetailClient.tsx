@@ -1,6 +1,21 @@
 "use client";
 
-import { ArrowLeftIcon as ArrowLeft, CalendarIcon as Calendar, CheckIcon as Check, CloudIcon as Cloud, CopyIcon as Copy, CpuIcon as Cpu, DownloadIcon as Download, EyeIcon as Eye, EyeOffIcon as EyeOff, KeyRoundIcon as KeyRound, LayersIcon as Layers, Share2Icon as Share2, SparklesIcon as Sparkles, TerminalIcon as Terminal } from "@mdevs/icons";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  CalendarIcon as Calendar,
+  CheckIcon as Check,
+  CloudIcon as Cloud,
+  CopyIcon as Copy,
+  CpuIcon as Cpu,
+  DownloadIcon as Download,
+  EyeIcon as Eye,
+  EyeOffIcon as EyeOff,
+  KeyRoundIcon as KeyRound,
+  LayersIcon as Layers,
+  Share2Icon as Share2,
+  SparklesIcon as Sparkles,
+  TerminalIcon as Terminal,
+} from "@mdevs/icons";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";

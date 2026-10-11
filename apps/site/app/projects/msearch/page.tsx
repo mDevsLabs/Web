@@ -170,7 +170,7 @@ export default function MsearchProjectPage() {
           />
           <FeatureCard
             icon={<Github className="w-6 h-6 text-blue-600" />}
-            title="Projet Open Source"
+            title="Projet libre"
             description="Le code source est entièrement ouvert et accessible pour une transparence et sécurité totales."
             delay={0.6}
           />

@@ -2,6 +2,7 @@ import { type CSSProperties, type ReactNode } from 'react';
 export interface ThemeContextValue {
     theme: 'light' | 'dark' | 'system';
     glass: boolean;
+    variant: 'liquid-glass' | 'chatgpt';
     accent?: string;
     radius?: string;
     variables?: CSSProperties;

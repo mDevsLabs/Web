@@ -64,7 +64,7 @@ export default function SupportStatsClient() {
     <div className="space-y-8">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <div className="flex items-center gap-2"><Link href="/support" className="mr-2 flex items-center gap-1.5 text-xs font-bold text-slate-500 transition-colors hover:text-slate-900"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Support</Link><h1 className="flex items-center gap-2 text-2xl font-black tracking-tight text-slate-900">Observatoire & Métriques du Support</h1></div>
+          <div className="flex items-center gap-2"><Link href="/support" className="mr-2 flex items-center gap-1.5 text-xs font-bold text-slate-500 transition-colors hover:text-slate-900"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Assistance</Link><h1 className="flex items-center gap-2 text-2xl font-black tracking-tight text-slate-900">Observatoire et métriques de l’assistance</h1></div>
           <p className="mt-1 text-xs text-slate-500 sm:text-sm">{isAdmin ? "Analyse globale de la volumétrie, de la réactivité et de la stabilité des composants de la plateforme." : "Suivi statistique personnel de vos signalements d'incidents et délais de résolution."}</p>
         </div>
         <button type="button" onClick={() => void fetchStats()} disabled={loading} className="flex cursor-pointer items-center gap-2 self-start rounded-xl border border-slate-200 bg-white p-2.5 text-xs font-bold text-slate-600 shadow-2xs transition-all hover:bg-slate-50 hover:text-slate-900 disabled:opacity-50 sm:self-auto"><RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin text-purple-600" : ""}`} aria-hidden="true" /><span>Actualiser</span></button>

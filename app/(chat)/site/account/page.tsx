@@ -1,8 +1,12 @@
 "use client";
 
-import { Loader2Icon as Loader2, LogOutIcon as LogOut, PartyPopperIcon as PartyPopper, SparklesIcon as Sparkles } from "@mdevs/icons";
+import {
+  Loader2Icon as Loader2,
+  LogOutIcon as LogOut,
+  PartyPopperIcon as PartyPopper,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
-import { useRouter } from "next/navigation";
 import {
   type FormEvent,
   useCallback,
@@ -29,6 +33,7 @@ import { UpgradeCelebration } from "@/components/site/account/upgrade-celebratio
 import { UpgradeCodeSection } from "@/components/site/account/upgrade-code-section";
 import { useAccountDashboard } from "@/components/site/account/use-account-dashboard";
 import { useAuth } from "@/components/site/auth-provider";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import { MaiApiError } from "@/lib/site/mai-api";
 
 export default function AccountPage() {

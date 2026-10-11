@@ -33,9 +33,9 @@ export function PageConversation({
   onCreateWakie: () => void;
   onOpenChange: (value: boolean) => void;
 }) {
-  const wakies = workspace.wakies.filter((wakie) =>
-    wakie.spaceIds.includes(page.spaceId)
-  );
+  // Toute personne peut travailler sur une page : le service vérifie que le
+  // Wakie appartient bien au compte, même s’il est rattaché à un autre espace.
+  const wakies = workspace.wakies;
   const [wakieId, setWakieId] = useState("");
   const wakie = wakies.find((wakie) => wakie.id === wakieId) ?? wakies[0];
   const [thread, setThread] = useState<Conversation>();

@@ -66,47 +66,6 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
       category: "devtools",
       credentials: [
         {
-          docsUrl: "https://github.com/settings/personal-access-tokens/new",
-          instructions:
-            "GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token ». Limitez le token aux dépôts concernés, puis accordez en lecture (et écriture si nécessaire) les permissions « Contents », « Issues » et « Pull requests ». Collez le token (github_pat_…) dans le champ « Token personnel GitHub » de la fiche du serveur.",
-          key: "token",
-          kind: "auth",
-          label: "Token personnel GitHub (fine-grained)",
-          required: true,
-        },
-      ],
-      description:
-        "Dépôts, issues, pull requests et code hébergés sur GitHub, via le serveur MCP distant officiel de GitHub.",
-      docsUrl:
-        "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/set-up-the-github-mcp-server",
-      icon: { name: "Terminal", type: "lucide" },
-      id: "github",
-      minTier: "free",
-      name: "GitHub",
-      readOnly: false,
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://github.com/settings/personal-access-tokens/new pour créer un token fine-grained.",
-        "2. Nommez le token, choisissez une expiration courte (30 à 90 jours).",
-        "3. « Repository access » : sélectionnez uniquement les dépôts à exposer.",
-        "4. Permissions : Contents / Issues / Pull requests en Read and Write, Metadata en Read-only.",
-        "5. Installez ce modèle puis collez le token (github_pat_…) dans la fiche du serveur — jamais dans une variable d'environnement du service.",
-        "6. Les lectures sont automatiques ; toute écriture (création d'issue, de branche, de PR) demande votre approbation dans la conversation.",
-      ],
-      tags: ["GitHub", "Code", "DevOps"],
-      transport: "http",
-      url: "https://api.githubcopilot.com/mcp/",
-      verifiedAt: "2026-09-14",
-    },
-  },
-  {
-    manifest: {
-      activation: "ready",
-      author: "mAI",
-      authType: "bearer",
-      category: "devtools",
-      credentials: [
-        {
           docsUrl: "https://gitlab.com/-/user_settings/personal_access_tokens",
           instructions:
             "GitLab → User settings → Personal access tokens → Create personal access token. Donnez une expiration courte, limitez les projets et les scopes aux opérations nécessaires (notamment read_api et api si vous autorisez des écritures). Copiez le jeton dans le champ « Token d'accès personnel GitLab » de la fiche MCP ; il sera chiffré côté serveur et ne sera pas renvoyé au navigateur.",

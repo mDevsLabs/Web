@@ -23,6 +23,8 @@
     "code:create": "bun run scripts/admin.ts --codes"
   },
   "dependencies": {
+    "@mdevs/icons": "file:../../packages/icons",
+    "@mdevs/ui": "file:../../packages/ui",
     "@neondatabase/serverless": "^1.2.0",
     "@tailwindcss/typography": "^0.5.20",
     "aws4fetch": "^1.0.20",

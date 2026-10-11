@@ -1,6 +1,13 @@
 "use client";
 
-import { BotIcon as Bot, FileTextIcon as FileText, ImageIcon, MessageSquareIcon as MessageSquare, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles } from "@mdevs/icons";
+import {
+  BotIcon as Bot,
+  FileTextIcon as FileText,
+  ImageIcon,
+  MessageSquareIcon as MessageSquare,
+  ShieldCheckIcon as ShieldCheck,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
 import type {
   SupportAttachment,
@@ -79,7 +86,7 @@ export function TicketTimeline({
                       </span>
                       {isFromAdmin ? (
                         <span className="rounded-md bg-purple-600 px-2 py-0.5 text-[10px] font-black uppercase text-white">
-                          mAI • Support
+                          mAI • Assistance
                         </span>
                       ) : null}
                       {isOriginalPost ? (

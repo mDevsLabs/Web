@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { createApiKey, listApiKeys } from "@/lib/site/api-key-manager";
 import { authenticateSession } from "@/lib/site/session-auth";
 
-// GET /api/dev-keys - Lister les clés API de l'utilisateur (auth requise)
+// GET /api/site/dev-keys - Lister les clés API de l'utilisateur (auth requise)
 export async function GET(req: NextRequest) {
   try {
     const auth = await authenticateSession(req);
@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (err: any) {
-    console.error("Erreur GET /api/dev-keys:", err);
+    console.error("Erreur GET /api/site/dev-keys:", err);
     return NextResponse.json(
       {
         error: {
@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST /api/dev-keys - Générer une nouvelle clé API (auth requise)
+// POST /api/site/dev-keys - Générer une nouvelle clé API (auth requise)
 export async function POST(req: NextRequest) {
   try {
     const auth = await authenticateSession(req);
@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (err: any) {
-    console.error("Erreur POST /api/dev-keys:", err);
+    console.error("Erreur POST /api/site/dev-keys:", err);
     return NextResponse.json(
       {
         error: {

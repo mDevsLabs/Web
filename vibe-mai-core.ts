@@ -85,14 +85,20 @@ export function formatToolReply(
     return `💡 **Idées de publications Vibe** (thème : ${result.topic}) :\n\n${result.suggestions}\n\n*Utilisez /publish suivi du texte choisi pour publier.*`;
   }
   if (toolName === "get_account_stats") {
-    return `📈 **Statistiques du compte @${result.user.username}** :\n• Publications : **${result.totalPosts}**\n• Score de réputation : **${result.profile?.reputation_score || 100} pts**\n• Forfait : **${result.user.tier || "Free"}**`;
+    return `📈 **Statistiques du compte @${result.user.username}** :\n• Publications : **${result.totalPosts}**\n• Score de réputation : **${
+      result.profile?.reputation_score || 100
+    } pts**\n• Forfait : **${result.user.tier || "Free"}**`;
   }
   if (toolName === "check_quotas") {
     const q = result;
-    return `📊 **Vos quotas réels (${q.tier})** :\n• Tokens mAI : **${q.weeklyTokens.used.toLocaleString()}** / ${q.weeklyTokens.limit.toLocaleString()} (${q.weeklyTokens.percent}%)\n• Images quotidiennes : **${q.dailyImages.used}** / ${q.dailyImages.limit} (${q.dailyImages.percent}%)\n• Réinitialisation : ${new Date(q.resetAt).toLocaleDateString("fr-FR")}`;
+    return `📊 **Vos quotas réels (${q.tier})** :\n• Tokens mAI : **${q.weeklyTokens.used.toLocaleString()}** / ${q.weeklyTokens.limit.toLocaleString()} (${q.weeklyTokens.percent}%)\n• Images quotidiennes : **${q.dailyImages.used}** / ${q.dailyImages.limit} (${q.dailyImages.percent}%)\n• Réinitialisation : ${new Date(
+      q.resetAt
+    ).toLocaleDateString("fr-FR")}`;
   }
   if (toolName === "update_profile") {
-    return `✅ ${result.message}\n\n• Nom affiché : **${result.profile.display_name}**\n• Bio : ${result.profile.bio || "_(vide)_"}`;
+    return `✅ ${result.message}\n\n• Nom affiché : **${result.profile.display_name}**\n• Bio : ${
+      result.profile.bio || "_(vide)_"
+    }`;
   }
   if (toolName === "follow_user") {
     return `👥 ${result.message}`;
@@ -133,8 +139,9 @@ export function formatToolReply(
     return `📊 **Analyse du post @${result.author}** :\n• ❤️ ${result.likes} · 🔁 ${result.reposts} · 💬 ${result.replies} · 👁️ ${result.views} · 🔖 ${result.bookmarks}\n• Engagement : **${result.engagement}** (taux ${result.engagement_rate_percent}%)\n\n« ${result.content} »`;
   }
   if (toolName === "search_posts") {
-    if (!result.resultsCount)
+    if (!result.resultsCount) {
       return `🔎 Aucune publication trouvée pour « ${result.query} ».`;
+    }
     const list = (result.posts || [])
       .slice(0, 5)
       .map(
@@ -151,7 +158,13 @@ export function formatToolReply(
     const reco = (result.recommendations || [])
       .map((r: string) => `• ${r}`)
       .join("\n");
-    return `📈 **Analyse créateur (${result.period_days} j)** :\n• 👁️ Vues : **${t.views ?? "—"}** · ❤️ ${t.likes ?? "—"} · 🔁 ${t.reposts ?? "—"} · 💬 ${t.replies ?? "—"}\n• Taux d'engagement : **${result.engagement_rate_percent ?? "—"}%**${reco ? `\n\n**Recommandations :**\n${reco}` : ""}`;
+    return `📈 **Analyse créateur (${result.period_days} j)** :\n• 👁️ Vues : **${
+      t.views ?? "—"
+    }** · ❤️ ${t.likes ?? "—"} · 🔁 ${t.reposts ?? "—"} · 💬 ${
+      t.replies ?? "—"
+    }\n• Taux d'engagement : **${result.engagement_rate_percent ?? "—"}%**${
+      reco ? `\n\n**Recommandations :**\n${reco}` : ""
+    }`;
   }
   if (toolName === "analyze_audience") {
     const src = (result.sources || [])
@@ -165,28 +178,50 @@ export function formatToolReply(
       .slice(0, 3)
       .map((f: any) => `@${f.username} (${f.views})`)
       .join(", ");
-    return `👥 **Audience (${result.period_days} j)** :\n• Vues : **${result.total_views}** · Visiteurs uniques : **${result.unique_viewers}**\n${src}${hours ? `\n• Heures de pointe : ${hours}` : ""}${fans ? `\n• Top followers engagés : ${fans}` : ""}`;
+    return `👥 **Audience (${result.period_days} j)** :\n• Vues : **${result.total_views}** · Visiteurs uniques : **${result.unique_viewers}**\n${src}${
+      hours ? `\n• Heures de pointe : ${hours}` : ""
+    }${fans ? `\n• Top followers engagés : ${fans}` : ""}`;
   }
   if (toolName === "best_time_to_post") {
     const slots = (result.best_slots || [])
       .map(
         (s: any) =>
-          `• **${s.weekday} ${String(s.hour).padStart(2, "0")}h** — ${s.avg_views} vues moy., ${s.avg_engagement} engagement`
+          `• **${s.weekday} ${String(s.hour).padStart(
+            2,
+            "0"
+          )}h** — ${s.avg_views} vues moy., ${s.avg_engagement} engagement`
       )
       .join("\n");
-    return `🕐 **Meilleurs créneaux (${result.period_days} j, ${result.analyzed_posts} posts analysés)** :\n${slots || "• Pas assez de données."}\n\n*Confiance : ${result.confidence}*`;
+    return `🕐 **Meilleurs créneaux (${result.period_days} j, ${result.analyzed_posts} posts analysés)** :\n${
+      slots || "• Pas assez de données."
+    }\n\n*Confiance : ${result.confidence}*`;
   }
   if (toolName === "compare_periods") {
     const fmt = (label: string, m: any) =>
-      `• ${label} : **${m.current}** vs ${m.previous} (${m.delta >= 0 ? "+" : ""}${m.delta}, ${m.percent >= 0 ? "+" : ""}${m.percent}%)`;
-    return `📊 **Comparaison (${result.period_days} j vs les ${result.period_days} précédents)** :\n${fmt("Vues", result.views)}\n${fmt("Likes", result.likes)}\n${fmt("Reposts", result.reposts)}\n${fmt("Réponses", result.replies)}\n${fmt("Followers gagnés", result.followers_gained)}\n${fmt("Vues du profil", result.profile_views)}`;
+      `• ${label} : **${m.current}** vs ${m.previous} (${m.delta >= 0 ? "+" : ""}${m.delta}, ${
+        m.percent >= 0 ? "+" : ""
+      }${m.percent}%)`;
+    return `📊 **Comparaison (${result.period_days} j vs les ${result.period_days} précédents)** :\n${fmt(
+      "Vues",
+      result.views
+    )}\n${fmt("Likes", result.likes)}\n${fmt("Reposts", result.reposts)}\n${fmt(
+      "Réponses",
+      result.replies
+    )}\n${fmt("Followers gagnés", result.followers_gained)}\n${fmt(
+      "Vues du profil",
+      result.profile_views
+    )}`;
   }
   if (toolName === "predict_post_performance") {
     const tips = (result.breakdown || [])
       .filter((b: any) => b.tip)
       .map((b: any) => `• ${b.tip}`)
       .join("\n");
-    return `🎯 **Prévision du brouillon : ${result.score}/100**${result.cold_start ? " (historique insuffisant)" : ""}\n• Portée estimée : **${result.estimated_reach}** vues\n• Engagement estimé : **${result.estimated_engagement}**${tips ? `\n\n**Conseils :**\n${tips}` : ""}`;
+    return `🎯 **Prévision du brouillon : ${result.score}/100**${
+      result.cold_start ? " (historique insuffisant)" : ""
+    }\n• Portée estimée : **${result.estimated_reach}** vues\n• Engagement estimé : **${result.estimated_engagement}**${
+      tips ? `\n\n**Conseils :**\n${tips}` : ""
+    }`;
   }
   if (toolName === "analyze_content_performance") {
     const formats = (result.formats || [])
@@ -199,14 +234,20 @@ export function formatToolReply(
       .slice(0, 5)
       .map((t: any) => `${t.tag} (${t.avg_views} vues)`)
       .join(", ");
-    return `🧩 **Performance par format (${result.period_days} j)** :\n${formats || "• Aucun post sur la période."}${tags ? `\n\n**Top hashtags :** ${tags}` : ""}`;
+    return `🧩 **Performance par format (${result.period_days} j)** :\n${
+      formats || "• Aucun post sur la période."
+    }${tags ? `\n\n**Top hashtags :** ${tags}` : ""}`;
   }
   if (toolName === "analyze_dm_activity") {
     const top = (result.top_correspondents || [])
       .slice(0, 3)
       .map((c: any) => `@${c.username} (${c.messages})`)
       .join(", ");
-    return `💬 **Activité messages (${result.period_days} j)** :\n• Total : **${result.messages_total}** (${result.sent} envoyés, ${result.received} reçus)\n• Conversations actives : **${result.active_conversations}** · Groupes : ${result.groups}${result.avg_reply_minutes === null ? "" : `\n• Temps de réponse moyen : **${result.avg_reply_minutes} min**`}${top ? `\n• Top correspondants : ${top}` : ""}`;
+    return `💬 **Activité messages (${result.period_days} j)** :\n• Total : **${result.messages_total}** (${result.sent} envoyés, ${result.received} reçus)\n• Conversations actives : **${result.active_conversations}** · Groupes : ${result.groups}${
+      result.avg_reply_minutes === null
+        ? ""
+        : `\n• Temps de réponse moyen : **${result.avg_reply_minutes} min**`
+    }${top ? `\n• Top correspondants : ${top}` : ""}`;
   }
   if (toolName === "analyze_book_stats") {
     const books = (result.books || [])
@@ -229,7 +270,9 @@ export function formatToolReply(
       .slice(0, 4)
       .map((t: any) => `${t.tag} (${t.platform_posts_7d})`)
       .join(", ");
-    return `#️⃣ **Hashtags (${result.period_days} j)** :\n${tags || "• Aucun hashtag utilisé sur la période."}${sugg ? `\n\n**Suggestions tendance :** ${sugg}` : ""}`;
+    return `#️⃣ **Hashtags (${result.period_days} j)** :\n${
+      tags || "• Aucun hashtag utilisé sur la période."
+    }${sugg ? `\n\n**Suggestions tendance :** ${sugg}` : ""}`;
   }
   return "✅ Action effectuée.";
 }
@@ -269,8 +312,9 @@ export async function buildPostContext(
       !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         postId
       )
-    )
+    ) {
       return null;
+    }
 
     const rows = await sql`
       SELECT p.id, p.content, p.likes_count, p.reposts_count, p.replies_count, p.views_count,
@@ -317,7 +361,9 @@ export async function buildPostContext(
       `${post.ai_generated ? " [marqué « créé avec l'IA » par son auteur]" : ""}\n` +
       `Publié le ${new Date(post.published_at).toLocaleString("fr-FR")}\n\n` +
       `« ${post.content} »\n\n` +
-      `Statistiques : ${post.likes_count} J'aime · ${post.replies_count} réponses · ${post.reposts_count} republications · ${post.views_count || 0} vues` +
+      `Statistiques : ${post.likes_count} J'aime · ${post.replies_count} réponses · ${post.reposts_count} republications · ${
+        post.views_count || 0
+      } vues` +
       commentsText;
 
     const imageParts: any[] = [];
@@ -332,8 +378,9 @@ export async function buildPostContext(
         const res = await fetch(url);
         if (!res.ok) continue;
         const buf = await res.arrayBuffer();
-        if (buf.byteLength === 0 || buf.byteLength > MAX_CONTEXT_IMAGE_BYTES)
+        if (buf.byteLength === 0 || buf.byteLength > MAX_CONTEXT_IMAGE_BYTES) {
           continue;
+        }
         const contentType = res.headers.get("content-type") || "image/jpeg";
         imageParts.push({
           image_url: {
@@ -463,8 +510,9 @@ export async function maybeAutoTitleConversation(
       current &&
       current !== "Discussion mAI" &&
       current !== "Nouvelle discussion mAI"
-    )
+    ) {
       return;
+    }
     const plain = stripHtmlTags(String(firstMessage))
       .replace(/\s+/g, " ")
       .trim();
@@ -489,7 +537,9 @@ export async function saveMAIMessage(
         : null;
     const rows = await sql`
       INSERT INTO mai_messages (conversation_id, sender_role, content, tool_calls, tool_call_id)
-      VALUES (${conversationId}::uuid, ${role}, ${content}, ${toolCallsJson}::jsonb, ${extra?.toolCallId || null})
+      VALUES (${conversationId}::uuid, ${role}, ${content}, ${toolCallsJson}::jsonb, ${
+        extra?.toolCallId || null
+      })
       RETURNING id, created_at
     `;
     await sql`UPDATE mai_conversations SET updated_at = NOW() WHERE id = ${conversationId}::uuid`;
@@ -568,7 +618,9 @@ export async function finalizePendingToolMessage(
           status: patch.status,
         };
         await sql`
-          UPDATE mai_messages SET content = ${patch.reply}, tool_calls = ${JSON.stringify(calls)}::jsonb
+          UPDATE mai_messages SET content = ${patch.reply}, tool_calls = ${JSON.stringify(
+            calls
+          )}::jsonb
           WHERE id = ${row.id}::uuid
         `;
         return { id: String(row.id) };
@@ -725,8 +777,9 @@ export function detectTool(
     const args: Record<string, string> = {};
     if (dn) args.display_name = dn[1].trim();
     if (bio) args.bio = bio[1].trim();
-    if (args.display_name || args.bio)
+    if (args.display_name || args.bio) {
       return { toolArgs: args, toolToRun: "update_profile" };
+    }
     return null;
   }
   if (
@@ -739,8 +792,9 @@ export function detectTool(
       .replace(/^[/@](follow|suivre)\s*:?\s*/i, "")
       .trim()
       .replace(/^@/, "");
-    if (target)
+    if (target) {
       return { toolArgs: { username: target }, toolToRun: "follow_user" };
+    }
   }
   if (
     lower.startsWith("/trends") ||
@@ -910,16 +964,18 @@ export function detectTool(
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
-    if (m)
+    if (m) {
       return {
         toolArgs: { like: !isUnlike, post_id: m[0] },
         toolToRun: "like_post",
       };
-    if (raw)
+    }
+    if (raw) {
       return {
         toolArgs: { like: !isUnlike, post_id: raw.split(/\s+/)[0] },
         toolToRun: "like_post",
       };
+    }
     return null;
   }
   if (
@@ -933,11 +989,12 @@ export function detectTool(
       .replace(/^[/@](dm|message|envoyer)\s*:?\s*/i, "")
       .trim();
     const um = raw.match(/^@?([a-z0-9_]{1,30})\s+([\s\S]+)/i);
-    if (um)
+    if (um) {
       return {
         toolArgs: { content: um[2].trim(), username: um[1] },
         toolToRun: "send_message",
       };
+    }
     return null;
   }
   if (
@@ -973,13 +1030,14 @@ export function detectTool(
       if (
         field === "theme_preference" &&
         ["dark", "light", "auto"].includes(valRaw.toLowerCase())
-      )
+      ) {
         v = valRaw.toLowerCase();
-      else if (
+      } else if (
         field === "feed_default_mode" &&
         ["for_you", "following", "trending"].includes(valRaw.toLowerCase())
-      )
+      ) {
         v = valRaw.toLowerCase();
+      }
       if (v) return { toolArgs: { [field]: v }, toolToRun: "update_settings" };
     }
     if (
@@ -1008,11 +1066,12 @@ export function detectTool(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
     if (m) return { toolArgs: { post_id: m[0] }, toolToRun: "bookmark_post" };
-    if (raw)
+    if (raw) {
       return {
         toolArgs: { post_id: raw.split(/\s+/)[0] },
         toolToRun: "bookmark_post",
       };
+    }
     return null;
   }
   if (
@@ -1025,11 +1084,12 @@ export function detectTool(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
     if (m) return { toolArgs: { post_id: m[0] }, toolToRun: "repost_post" };
-    if (raw)
+    if (raw) {
       return {
         toolArgs: { post_id: raw.split(/\s+/)[0] },
         toolToRun: "repost_post",
       };
+    }
     return null;
   }
   if (
@@ -1044,11 +1104,12 @@ export function detectTool(
     const m = raw.match(
       /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s+([\s\S]+)/i
     );
-    if (m)
+    if (m) {
       return {
         toolArgs: { content: m[2].trim(), post_id: m[1] },
         toolToRun: "comment_post",
       };
+    }
     return null;
   }
   if (

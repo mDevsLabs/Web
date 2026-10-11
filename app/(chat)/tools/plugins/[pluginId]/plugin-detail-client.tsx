@@ -1,11 +1,30 @@
 "use client";
 
-import { AlertTriangleIcon, CheckIcon, CircleCheckIcon, DatabaseIcon, Globe2Icon, InfoIcon, KeyRoundIcon, Loader2Icon, LockIcon, PlusIcon, ShieldCheckIcon, Trash2Icon } from "@mdevs/icons";
-import { useState } from "react";
+import {
+  AlertTriangleIcon,
+  CheckIcon,
+  CircleCheckIcon,
+  DatabaseIcon,
+  Globe2Icon,
+  InfoIcon,
+  KeyRoundIcon,
+  Loader2Icon,
+  LockIcon,
+  LogInIcon,
+  PlusIcon,
+  RefreshCwIcon,
+  ShieldCheckIcon,
+  Trash2Icon,
+  UnlinkIcon,
+} from "@mdevs/icons";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { useSWRConfig } from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
+import { IntegrationLogo } from "@/lib/integrations/logo";
+import { getIntegrationByPluginId } from "@/lib/integrations/providers";
+import type { IntegrationStatus } from "@/lib/integrations/status";
 import { getCategoryLabel } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginManifest } from "@/lib/plugins/types";
@@ -38,6 +57,26 @@ type PermissionRow = {
   label: string;
   tone: "default" | "positive" | "warning" | "danger";
   value: string;
+};
+
+/**
+ * Motifs de refus renvoyés par le callback, dits à l'utilisateur en français.
+ * Chaque motif correspond à une sortie réelle de `callback/route.ts` — un motif
+ * inconnu retombe sur une phrase générique plutôt que sur un silence.
+ */
+const OAUTH_FAILURE_MESSAGES: Record<string, string> = {
+  exchange_failed:
+    "Le fournisseur n'a pas reconnu ce code. Recommencez la connexion.",
+  not_configured: `Ce connecteur n'est pas activé sur cette instance (identifiants d'application manquants).`,
+  plan_required: "Le forfait actuel ne permet pas d'installer ce plugin.",
+  provider_denied:
+    "Connexion annulée : les accès demandés n'ont pas été accordés.",
+  state_invalid:
+    "Cette connexion a expiré ou a été entamée depuis un autre navigateur. Relancez-la.",
+  tier_unavailable:
+    "Impossible de vérifier votre forfait. Le compte externe n'a pas été installé ; vous pourrez réessayer.",
+  vault_unconfigured:
+    "Le coffre de secrets n'est pas configuré sur cette instance : les jetons ne peuvent être ni scellés ni stockés.",
 };
 
 function permissionRows(manifest: PluginManifest): PermissionRow[] {
@@ -98,19 +137,55 @@ export default function PluginDetailClient({
   installedVersion,
   locked,
   manifest,
+  notice,
 }: {
   enabled: boolean;
   installed: boolean;
   installedVersion: string | null;
   locked: boolean;
   manifest: PluginManifest;
+  /** Issue du retour OAuth, passée par la page : une seule fois, puis effacée. */
+  notice?: {
+    account?: string;
+    installation?: string;
+    outcome?: string;
+    provider?: string;
+    reason?: string;
+  };
 }) {
   const { mutate: mutatePlugins } = useSWRConfig();
   const [isBusy, setIsBusy] = useState(false);
+  const [isDisconnecting, setIsDisconnecting] = useState(false);
   const [confirmUninstall, setConfirmUninstall] = useState(false);
   const [state, setState] = useState({ enabled, installed, installedVersion });
   const risk = riskLabel(manifest);
   const permissions = permissionRows(manifest);
+
+  // Un connecteur est un plugin comme un autre, avec une étape de plus : le
+  // compte externe. Le descripteur est dérivé du manifeste, jamais dupliqué.
+  const connector = useMemo(
+    () => getIntegrationByPluginId(manifest.id),
+    [manifest.id]
+  );
+  const {
+    data: integrationData,
+    isLoading: isIntegrationLoading,
+    mutate: mutateIntegrations,
+  } = useSWR<{
+    integrations: IntegrationStatus[];
+  }>(connector ? "/api/integration" : null);
+  const connection = integrationData?.integrations?.find(
+    (item) => item.pluginId === manifest.id
+  );
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const connectHref = connector
+    ? `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
+        `${basePath}/tools/plugins/${manifest.id}`
+      )}`
+    : null;
+  const installConnectHref = connectHref
+    ? `${connectHref}&intent=install`
+    : null;
 
   const runAction = async (
     action: () => Promise<Response>,
@@ -136,7 +211,7 @@ export default function PluginDetailClient({
     }
   };
 
-  const refreshInstallations = async () => {
+  const refreshInstallations = useCallback(async () => {
     const response = await fetch("/api/plugins");
     if (!response.ok) {
       return;
@@ -157,9 +232,14 @@ export default function PluginDetailClient({
         installedVersion: entry.installedVersion,
       });
     }
-  };
+  }, [manifest.id]);
 
   const handleInstall = () => {
+    if (connector && !connection?.connected && installConnectHref) {
+      setIsBusy(true);
+      window.location.assign(installConnectHref);
+      return;
+    }
     runAction(
       () =>
         fetch("/api/plugins", {
@@ -200,6 +280,107 @@ export default function PluginDetailClient({
     );
   };
 
+  const handleDisconnect = async () => {
+    if (!connector) {
+      return;
+    }
+    setIsDisconnecting(true);
+    try {
+      const response = await fetch(
+        `/api/integration/${connector.id}/disconnect`,
+        { method: "POST" }
+      );
+      const payload = (await response.json().catch(() => null)) as {
+        message?: string;
+      } | null;
+      if (!response.ok) {
+        throw new Error(payload?.message ?? "Déconnexion impossible.");
+      }
+      toast.success(payload?.message ?? `${connector.label} déconnecté.`);
+      await mutateIntegrations();
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Une erreur est survenue."
+      );
+    } finally {
+      setIsDisconnecting(false);
+    }
+  };
+
+  // Le callback revient par navigation, l'issue en query. On l'annonce une fois,
+  // puis on rature l'URL : sinon chaque rafraîchissement rejouerait le toast, et
+  // un lien collé dans un nouvel onglet annoncerait une connexion en cours.
+  const consumedNotice = useRef<string | null>(null);
+  useEffect(() => {
+    const signature = notice?.outcome
+      ? [
+          notice.outcome,
+          notice.provider ?? "",
+          notice.reason ?? "",
+          notice.installation ?? "",
+        ].join("|")
+      : null;
+    if (!signature || consumedNotice.current === signature) {
+      return;
+    }
+    consumedNotice.current = signature;
+
+    const label = connector?.label ?? manifest.name;
+    if (notice?.outcome === "connected") {
+      if (notice.installation === "installed") {
+        toast.success(
+          `${label} connecté et ${manifest.name} installé — mentionnez-le avec @${manifest.name} dans le chat.`
+        );
+      } else {
+        toast.success(
+          `${label} connecté${notice.account ? ` — ${notice.account}` : ""}.`
+        );
+        if (notice.installation) {
+          toast.error(
+            notice.installation === "plan_required"
+              ? OAUTH_FAILURE_MESSAGES.plan_required
+              : notice.installation === "tier_unavailable"
+                ? OAUTH_FAILURE_MESSAGES.tier_unavailable
+                : "Le compte est connecté, mais le plugin n'a pas pu être installé. Réessayez depuis cette fiche.",
+            { duration: 9000 }
+          );
+        }
+      }
+    } else if (notice?.outcome === "error") {
+      toast.error(
+        OAUTH_FAILURE_MESSAGES[notice.reason ?? ""] ??
+          "La connexion a échoué pour une raison inattendue.",
+        { duration: 9000 }
+      );
+    }
+
+    const url = new URL(window.location.href);
+    for (const name of [
+      "integration",
+      "provider",
+      "account",
+      "reason",
+      "installation",
+    ]) {
+      url.searchParams.delete(name);
+    }
+    window.history.replaceState(
+      null,
+      "",
+      `${url.pathname}${url.search}${url.hash}`
+    );
+    void mutateIntegrations();
+    void mutatePlugins("/api/plugins");
+    void refreshInstallations();
+  }, [
+    connector,
+    manifest.name,
+    mutateIntegrations,
+    mutatePlugins,
+    notice,
+    refreshInstallations,
+  ]);
+
   return (
     <div className="flex min-h-0 flex-1 flex-col bg-background text-foreground">
       <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border/40 bg-background/90 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
@@ -231,7 +412,7 @@ export default function PluginDetailClient({
                   "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold",
                   state.installed
                     ? state.enabled
-                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "bg-success/10 text-success"
                       : "bg-muted text-muted-foreground"
                     : "bg-muted text-muted-foreground"
                 )}
@@ -239,7 +420,7 @@ export default function PluginDetailClient({
                 <span
                   className={cn(
                     "size-1.5 rounded-full",
-                    state.enabled ? "bg-emerald-500" : "bg-muted-foreground"
+                    state.enabled ? "bg-success" : "bg-muted-foreground"
                   )}
                 />
                 {state.enabled
@@ -255,7 +436,7 @@ export default function PluginDetailClient({
                 className={cn(
                   "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase",
                   locked
-                    ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                    ? "bg-warning/10 text-warning"
                     : "bg-primary/10 text-primary"
                 )}
               >
@@ -266,10 +447,10 @@ export default function PluginDetailClient({
                 className={cn(
                   "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold",
                   risk.tone === "high"
-                    ? "bg-red-500/10 text-red-700 dark:text-red-400"
+                    ? "bg-destructive/10 text-destructive"
                     : risk.tone === "medium"
-                      ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
-                      : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+                      ? "bg-warning/10 text-warning"
+                      : "bg-success/10 text-success"
                 )}
               >
                 <ShieldCheckIcon className="size-3" />
@@ -287,7 +468,7 @@ export default function PluginDetailClient({
             </div>
 
             {locked ? (
-              <div className="flex items-start gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
+              <div className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm text-foreground">
                 <LockIcon className="mt-0.5 size-4 shrink-0" />
                 <p>
                   Installation réservée au forfait {manifest.minTier}. Le
@@ -296,6 +477,135 @@ export default function PluginDetailClient({
               </div>
             ) : null}
           </section>
+
+          {/* ─── Connexion au compte externe ─────────────────────────────── */}
+          {connector ? (
+            <section className="flex flex-col gap-4 rounded-3xl border border-border/60 bg-card p-5 shadow-sm sm:p-6">
+              <div className="flex items-start gap-3">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-muted/30 p-2">
+                  <IntegrationLogo className="size-6" descriptor={connector} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-base font-semibold">
+                    Compte {connector.label}
+                  </h2>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                    {connector.accessSummary}
+                  </p>
+                </div>
+                {connection?.connected ? (
+                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-success/10 px-2.5 py-1 text-[11px] font-semibold text-success">
+                    <CheckIcon className="size-3" />
+                    Connecté
+                  </span>
+                ) : (
+                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                    Non connecté
+                  </span>
+                )}
+              </div>
+
+              {connection?.connected ? (
+                <div className="flex flex-col gap-2 rounded-2xl bg-muted/30 p-3 text-sm">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="text-muted-foreground">Compte</span>
+                    <span className="font-medium">
+                      {connection.accountLabel ??
+                        connection.accountEmail ??
+                        "—"}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="text-muted-foreground">Autorités</span>
+                    <span className="font-medium">
+                      {connection.scopes.length} accordées
+                    </span>
+                  </div>
+                  {connection.expiresAt ? (
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <span className="text-muted-foreground">
+                        Jeton renouvelable jusqu'au
+                      </span>
+                      <span className="font-medium">
+                        {new Date(connection.expiresAt).toLocaleDateString(
+                          "fr-FR"
+                        )}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {connection && !connection.configured ? (
+                <p className="text-sm leading-6 text-muted-foreground">
+                  Ce connecteur n'est pas activé sur cette instance : les
+                  identifiants de l'application {connector.label} manquent côté
+                  serveur.
+                </p>
+              ) : null}
+
+              {connection?.connected && !connection.canWrite ? (
+                <p className="text-sm leading-6 text-warning">
+                  Les accès en écriture n'ont pas été accordés : la lecture
+                  reste disponible, les actions d'écriture seront refusées.
+                </p>
+              ) : null}
+
+              <div className="flex flex-wrap items-center gap-2">
+                {connection?.connected ? (
+                  <>
+                    <Button
+                      disabled={isDisconnecting}
+                      onClick={handleDisconnect}
+                      size="sm"
+                      type="button"
+                      variant="outline"
+                    >
+                      {isDisconnecting ? (
+                        <Loader2Icon className="size-4 animate-spin" />
+                      ) : (
+                        <UnlinkIcon className="size-4" />
+                      )}
+                      Déconnecter
+                    </Button>
+                    <Button asChild size="sm" type="button" variant="outline">
+                      <a href={connectHref ?? undefined}>
+                        <ShieldCheckIcon className="size-4" />
+                        Mettre à jour les accès
+                      </a>
+                    </Button>
+                    <Button asChild size="sm" type="button" variant="ghost">
+                      <a href={connectHref ?? undefined}>
+                        <RefreshCwIcon className="size-4" />
+                        Reconnecter
+                      </a>
+                    </Button>
+                  </>
+                ) : connection?.configured ? (
+                  <Button asChild size="sm" type="button">
+                    <a href={connectHref ?? undefined}>
+                      <LogInIcon className="size-4" />
+                      Connecter {connector.label}
+                    </a>
+                  </Button>
+                ) : null}
+              </div>
+
+              {connection?.connected && connector.id === "github" ? (
+                <p className="text-xs leading-5 text-muted-foreground">
+                  GitHub peut réutiliser l'autorisation existante si les droits
+                  demandés n'ont pas changé. Une nouvelle demande sera affichée
+                  lorsque les accès requis évoluent.
+                </p>
+              ) : null}
+
+              <p className="text-xs leading-5 text-muted-foreground">
+                Les actions qui modifient une donnée chez {connector.label} ne
+                sont proposées que dans l'Agent, et chacune demande votre
+                approbation avant de s'exécuter.
+              </p>
+            </section>
+          ) : null}
 
           <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-2xl border border-border/50 bg-muted/20 p-4">
@@ -398,10 +708,10 @@ export default function PluginDetailClient({
                         className={cn(
                           "flex size-9 shrink-0 items-center justify-center rounded-xl",
                           permission.tone === "positive"
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-success/10 text-success"
                             : permission.tone === "danger"
-                              ? "bg-red-500/10 text-red-600 dark:text-red-400"
-                              : "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                              ? "bg-destructive/10 text-destructive"
+                              : "bg-warning/10 text-warning"
                         )}
                       >
                         <Icon className="size-4" />
@@ -434,7 +744,7 @@ export default function PluginDetailClient({
 
           <section className="rounded-2xl border border-border/50 bg-muted/20 p-4 sm:p-5">
             <div className="flex items-start gap-3">
-              <CircleCheckIcon className="mt-0.5 size-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <CircleCheckIcon className="mt-0.5 size-5 shrink-0 text-success" />
               <div>
                 <h2 className="text-sm font-semibold">Utilisation</h2>
                 <p className="mt-1 text-sm leading-6 text-muted-foreground">
@@ -522,9 +832,7 @@ export default function PluginDetailClient({
                   <CheckIcon
                     className={cn(
                       "size-4",
-                      state.enabled
-                        ? "text-emerald-500"
-                        : "text-muted-foreground"
+                      state.enabled ? "text-success" : "text-muted-foreground"
                     )}
                   />
                 )}
@@ -546,7 +854,9 @@ export default function PluginDetailClient({
             </>
           ) : (
             <Button
-              disabled={isBusy || locked}
+              disabled={
+                isBusy || locked || Boolean(connector && isIntegrationLoading)
+              }
               onClick={handleInstall}
               title={
                 locked

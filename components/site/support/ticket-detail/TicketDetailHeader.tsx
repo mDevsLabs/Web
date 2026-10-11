@@ -1,6 +1,14 @@
 "use client";
 
-import { AlertTriangleIcon as AlertTriangle, ChevronDownIcon as ChevronDown, ExternalLinkIcon as ExternalLink, LaptopIcon as Laptop, PencilIcon as Pencil, ShieldCheckIcon as ShieldCheck, XIcon as X } from "@mdevs/icons";
+import {
+  AlertTriangleIcon as AlertTriangle,
+  ChevronDownIcon as ChevronDown,
+  ExternalLinkIcon as ExternalLink,
+  LaptopIcon as Laptop,
+  PencilIcon as Pencil,
+  ShieldCheckIcon as ShieldCheck,
+  XIcon as X,
+} from "@mdevs/icons";
 import {
   PRIORITY_BADGES,
   STATUS_CONFIG,
@@ -184,7 +192,7 @@ export function TicketDetailHeader({
           </div>
           <a
             className="inline-flex items-center gap-1 font-bold text-purple-700 hover:underline"
-            href={`mailto:${encodeURIComponent(ticket.user_email || "")}?subject=${encodeURIComponent(`Re: [Support mAI #TICK-${ticket.ticket_number}] ${ticket.title}`)}`}
+            href={`mailto:${encodeURIComponent(ticket.user_email || "")}?subject=${encodeURIComponent(`Re: [Assistance mAI #TICK-${ticket.ticket_number}] ${ticket.title}`)}`}
           >
             Écrire par e-mail{" "}
             <ExternalLink aria-hidden="true" className="h-3 w-3" />

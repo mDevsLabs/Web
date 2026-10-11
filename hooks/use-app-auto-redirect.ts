@@ -83,7 +83,11 @@ export function useAppAutoRedirect(): void {
     if (target === "coder") {
       redirectedRef.current = true;
       if (!pathname?.startsWith("/coder") && !pathname?.startsWith("/code")) {
-        router.replace("/coder");
+        try {
+          router.replace("/coder");
+        } catch {
+          window.location.replace("/coder");
+        }
       }
       if (
         platform === "electron" &&
@@ -94,7 +98,11 @@ export function useAppAutoRedirect(): void {
     } else if (target === "vibe") {
       redirectedRef.current = true;
       if (!pathname?.startsWith("/vibe")) {
-        router.replace("/vibe");
+        try {
+          router.replace("/vibe");
+        } catch {
+          window.location.replace("/vibe");
+        }
       }
     } else if (target === "web") {
       redirectedRef.current = true;

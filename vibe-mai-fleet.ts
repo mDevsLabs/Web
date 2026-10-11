@@ -1,3 +1,4 @@
+import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — mAI AGENT FLEET (vibe-mai-fleet.ts)
@@ -99,8 +100,9 @@ export class MAIAgentFleet {
   static synthesizeThread(
     comments: Array<{ author: string; content: string }>
   ): string {
-    if (!comments || comments.length === 0)
+    if (!comments || comments.length === 0) {
       return "Aucun commentaire pour le moment.";
+    }
     const count = comments.length;
     const authors = [...new Set(comments.map((c) => c.author))]
       .slice(0, 3)
@@ -121,7 +123,9 @@ export class MAIAgentFleet {
     try {
       const sql = getDb();
       const keyRows =
-        await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(userId)}::text LIMIT 1`;
+        await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(
+          userId
+        )}::text LIMIT 1`;
       return keyRows[0]?.api_key || "";
     } catch {
       return "";
@@ -145,7 +149,9 @@ export class MAIAgentFleet {
     try {
       const sql = getDb();
       const rows =
-        await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
+        await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(
+          key
+        )} LIMIT 1`;
       const saved = String(rows[0]?.mai_default_model || "").trim();
       if (saved) model = saved;
     } catch {}
@@ -171,7 +177,7 @@ export class MAIAgentFleet {
     const resolvedModel =
       model || (await MAIAgentFleet.getUserDefaultModel(userId));
     try {
-      const aiRes = await fetch(
+      const aiRes = await fetchOpenRouter(
         "https://openrouter.ai/api/v1/chat/completions",
         {
           body: JSON.stringify({
@@ -227,14 +233,16 @@ export class MAIAgentFleet {
 
         case "create_post": {
           const { content, format = "micro_text", media_url } = args;
-          if (!content?.trim())
+          if (!content?.trim()) {
             throw new Error("Le contenu du post est obligatoire.");
+          }
 
           const safety = MAIAgentFleet.assessContentSafety(content);
-          if (!safety.isSafe)
+          if (!safety.isSafe) {
             throw new Error(
               `Publication refusée par mAI : ${safety.flagReason}`
             );
+          }
 
           const inserted = await sql`
             INSERT INTO posts (author_id, content, format, created_via, toxicity_score, ai_generated)
@@ -313,7 +321,7 @@ export class MAIAgentFleet {
           const maxImages = getTierDailyImageLimit(tier);
 
           const todayRows = await sql`
-            SELECT images_generated FROM daily_image_usage 
+            SELECT images_generated FROM daily_image_usage
             WHERE user_id = ${uid} AND usage_date = CURRENT_DATE LIMIT 1
           `;
           const currentCount = todayRows[0]?.images_generated || 0;
@@ -418,7 +426,10 @@ export class MAIAgentFleet {
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
             "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français : verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
-            `Affirmation : « ${statement} »\n\nSources trouvées :\n${sources.map((s) => `- ${s.title} : ${s.snippet}`).join("\n") || "(aucune)"}`
+            `Affirmation : « ${statement} »\n\nSources trouvées :\n${
+              sources.map((s) => `- ${s.title} : ${s.snippet}`).join("\n") ||
+              "(aucune)"
+            }`
           );
           resultData = {
             analysis:
@@ -469,10 +480,11 @@ export class MAIAgentFleet {
             `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic} », dans un style « ${style} ». Format : une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
             String(topic || "sujets d'actualité")
           );
-          if (!llm)
+          if (!llm) {
             throw new Error(
               "Génération indisponible : aucune clé IA configurée sur le serveur."
             );
+          }
           resultData = { style, suggestions: llm, topic };
           break;
         }
@@ -484,10 +496,11 @@ export class MAIAgentFleet {
             `Traduis le texte suivant en ${target_language}. Réponds UNIQUEMENT par la traduction, sans commentaire.`,
             String(text || "")
           );
-          if (!llm)
+          if (!llm) {
             throw new Error(
               "Traduction indisponible : aucune clé IA configurée sur le serveur."
             );
+          }
           resultData = { targetLanguage: target_language, translated: llm };
           break;
         }
@@ -519,10 +532,11 @@ export class MAIAgentFleet {
 
         case "update_profile": {
           const { display_name, bio } = args;
-          if (!display_name && !bio)
+          if (!display_name && !bio) {
             throw new Error(
               "Fournissez au moins un champ (display_name ou bio)."
             );
+          }
           if (
             display_name !== undefined &&
             (String(display_name).length < 2 ||
@@ -560,11 +574,13 @@ export class MAIAgentFleet {
           if (!cleanUsername) throw new Error("username est requis.");
           const target =
             await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
-          if (target.length === 0)
+          if (target.length === 0) {
             throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
+          }
           const targetId = Number(target[0].id);
-          if (targetId === uid)
+          if (targetId === uid) {
             throw new Error("Vous ne pouvez pas vous suivre vous-même.");
+          }
 
           if (follow) {
             const existing =
@@ -628,18 +644,25 @@ export class MAIAgentFleet {
             throw new Error("post_id UUID valide est requis.");
           }
           const postRows =
-            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
-          if (postRows.length === 0)
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(
+              post_id
+            )}::uuid LIMIT 1`;
+          if (postRows.length === 0) {
             throw new Error("Publication introuvable.");
+          }
           const authorId = Number(postRows[0].author_id);
           if (like) {
             const existing = await sql`
               SELECT id FROM post_interactions
-              WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'like' LIMIT 1
+              WHERE user_id = ${uid} AND post_id = ${String(
+                post_id
+              )}::uuid AND interaction_type = 'like' LIMIT 1
             `;
             if (existing.length > 0) {
               const c =
-                await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+                await sql`SELECT likes_count FROM posts WHERE id = ${String(
+                  post_id
+                )}::uuid LIMIT 1`;
               resultData = {
                 liked: true,
                 likes_count: Number(c[0]?.likes_count || 0),
@@ -653,17 +676,23 @@ export class MAIAgentFleet {
               VALUES (${uid}, ${String(post_id)}::uuid, 'like')
               ON CONFLICT (user_id, post_id, interaction_type) DO NOTHING
             `;
-            await sql`UPDATE posts SET likes_count = COALESCE(likes_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
+            await sql`UPDATE posts SET likes_count = COALESCE(likes_count,0) + 1 WHERE id = ${String(
+              post_id
+            )}::uuid`;
             if (authorId !== uid) {
               try {
                 await sql`
                   INSERT INTO notifications (recipient_id, actor_id, type, post_id, message)
-                  VALUES (${authorId}, ${uid}, 'like', ${String(post_id)}::uuid, 'a aimé votre publication via mAI')
+                  VALUES (${authorId}, ${uid}, 'like', ${String(
+                    post_id
+                  )}::uuid, 'a aimé votre publication via mAI')
                 `;
               } catch {}
             }
             const c =
-              await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+              await sql`SELECT likes_count FROM posts WHERE id = ${String(
+                post_id
+              )}::uuid LIMIT 1`;
             resultData = {
               liked: true,
               likes_count: Number(c[0]?.likes_count || 0),
@@ -673,14 +702,20 @@ export class MAIAgentFleet {
           } else {
             const existing = await sql`
               SELECT id FROM post_interactions
-              WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'like' LIMIT 1
+              WHERE user_id = ${uid} AND post_id = ${String(
+                post_id
+              )}::uuid AND interaction_type = 'like' LIMIT 1
             `;
             if (existing.length > 0) {
               await sql`DELETE FROM post_interactions WHERE id = ${existing[0].id}::uuid`;
-              await sql`UPDATE posts SET likes_count = GREATEST(0, COALESCE(likes_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
+              await sql`UPDATE posts SET likes_count = GREATEST(0, COALESCE(likes_count,0) - 1) WHERE id = ${String(
+                post_id
+              )}::uuid`;
             }
             const c =
-              await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+              await sql`SELECT likes_count FROM posts WHERE id = ${String(
+                post_id
+              )}::uuid LIMIT 1`;
             resultData = {
               liked: false,
               likes_count: Number(c[0]?.likes_count || 0),
@@ -698,23 +733,28 @@ export class MAIAgentFleet {
             .trim()
             .toLowerCase();
           const text = String(content || "").trim();
-          if (!cleanUsername)
+          if (!cleanUsername) {
             throw new Error("username destinataire est requis.");
+          }
           if (!text) throw new Error("Le contenu du message est obligatoire.");
-          if (text.length > 2000)
+          if (text.length > 2000) {
             throw new Error("Message trop long (max 2000 caractères).");
+          }
           const safety = MAIAgentFleet.assessContentSafety(text);
-          if (!safety.isSafe)
+          if (!safety.isSafe) {
             throw new Error(`Message refusé par mAI : ${safety.flagReason}`);
+          }
           const target =
             await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
-          if (target.length === 0)
+          if (target.length === 0) {
             throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
+          }
           const recId = Number(target[0].id);
-          if (recId === uid)
+          if (recId === uid) {
             throw new Error(
               "Vous ne pouvez pas vous envoyer un message à vous-même."
             );
+          }
           const p1 = uid < recId ? uid : recId;
           const p2 = uid < recId ? recId : uid;
           const convRows = await sql`
@@ -773,8 +813,9 @@ export class MAIAgentFleet {
           for (const k of ALLOWED) {
             if (args[k] !== undefined) patch[k] = args[k];
           }
-          if (Object.keys(patch).length === 0)
+          if (Object.keys(patch).length === 0) {
             throw new Error("Aucun paramètre autorisé fourni.");
+          }
           if (
             patch.feed_default_mode &&
             !["for_you", "following", "trending"].includes(
@@ -818,44 +859,46 @@ export class MAIAgentFleet {
             if (jsonVal !== null) {
               await sql`UPDATE user_settings SET blocked_keywords = ${jsonVal} WHERE user_id = ${uid}`;
             } else if (typeof val === "boolean") {
-              if (col === "hide_reposts")
+              if (col === "hide_reposts") {
                 await sql`UPDATE user_settings SET hide_reposts = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_auto_approve_tools")
+              } else if (col === "mai_auto_approve_tools") {
                 await sql`UPDATE user_settings SET mai_auto_approve_tools = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_posts")
+              } else if (col === "mai_context_posts") {
                 await sql`UPDATE user_settings SET mai_context_posts = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_dms")
+              } else if (col === "mai_context_dms") {
                 await sql`UPDATE user_settings SET mai_context_dms = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_books")
+              } else if (col === "mai_context_books") {
                 await sql`UPDATE user_settings SET mai_context_books = ${val} WHERE user_id = ${uid}`;
-              else if (col === "email_notifications")
+              } else if (col === "email_notifications") {
                 await sql`UPDATE user_settings SET email_notifications = ${val} WHERE user_id = ${uid}`;
-              else if (col === "push_notifications")
+              } else if (col === "push_notifications") {
                 await sql`UPDATE user_settings SET push_notifications = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_like")
+              } else if (col === "notify_on_like") {
                 await sql`UPDATE user_settings SET notify_on_like = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_reply")
+              } else if (col === "notify_on_reply") {
                 await sql`UPDATE user_settings SET notify_on_reply = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_dm")
+              } else if (col === "notify_on_dm") {
                 await sql`UPDATE user_settings SET notify_on_dm = ${val} WHERE user_id = ${uid}`;
-              else if (col === "dm_auto_translate")
+              } else if (col === "dm_auto_translate") {
                 await sql`UPDATE user_settings SET dm_auto_translate = ${val} WHERE user_id = ${uid}`;
+              }
             } else {
               const s = String(val).slice(0, 100);
-              if (col === "theme_preference")
+              if (col === "theme_preference") {
                 await sql`UPDATE user_settings SET theme_preference = ${s} WHERE user_id = ${uid}`;
-              else if (col === "ui_language")
+              } else if (col === "ui_language") {
                 await sql`UPDATE user_settings SET ui_language = ${s} WHERE user_id = ${uid}`;
-              else if (col === "feed_default_mode")
+              } else if (col === "feed_default_mode") {
                 await sql`UPDATE user_settings SET feed_default_mode = ${s} WHERE user_id = ${uid}`;
-              else if (col === "accent_color")
+              } else if (col === "accent_color") {
                 await sql`UPDATE user_settings SET accent_color = ${s} WHERE user_id = ${uid}`;
-              else if (col === "font_size")
+              } else if (col === "font_size") {
                 await sql`UPDATE user_settings SET font_size = ${s} WHERE user_id = ${uid}`;
-              else if (col === "mai_default_model")
+              } else if (col === "mai_default_model") {
                 await sql`UPDATE user_settings SET mai_default_model = ${s} WHERE user_id = ${uid}`;
-              else if (col === "dm_translate_lang")
+              } else if (col === "dm_translate_lang") {
                 await sql`UPDATE user_settings SET dm_translate_lang = ${s} WHERE user_id = ${uid}`;
+              }
             }
           }
           try {
@@ -879,23 +922,30 @@ export class MAIAgentFleet {
           ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          const exists =
-            await sql`SELECT id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+          const exists = await sql`SELECT id FROM posts WHERE id = ${String(
+            post_id
+          )}::uuid LIMIT 1`;
           if (exists.length === 0) throw new Error("Publication introuvable.");
           if (bookmark) {
             await sql`
               INSERT INTO bookmarks (user_id, post_id) VALUES (${uid}, ${String(post_id)}::uuid)
               ON CONFLICT (user_id, post_id) DO NOTHING
             `;
-            await sql`UPDATE posts SET bookmarks_count = COALESCE(bookmarks_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
+            await sql`UPDATE posts SET bookmarks_count = COALESCE(bookmarks_count,0) + 1 WHERE id = ${String(
+              post_id
+            )}::uuid`;
             resultData = {
               bookmarked: true,
               message: "Post ajouté à vos favoris !",
               post_id,
             };
           } else {
-            await sql`DELETE FROM bookmarks WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid`;
-            await sql`UPDATE posts SET bookmarks_count = GREATEST(0, COALESCE(bookmarks_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
+            await sql`DELETE FROM bookmarks WHERE user_id = ${uid} AND post_id = ${String(
+              post_id
+            )}::uuid`;
+            await sql`UPDATE posts SET bookmarks_count = GREATEST(0, COALESCE(bookmarks_count,0) - 1) WHERE id = ${String(
+              post_id
+            )}::uuid`;
             resultData = {
               bookmarked: false,
               message: "Post retiré de vos favoris.",
@@ -916,12 +966,16 @@ export class MAIAgentFleet {
             throw new Error("post_id UUID valide est requis.");
           }
           const prow =
-            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(
+              post_id
+            )}::uuid LIMIT 1`;
           if (prow.length === 0) throw new Error("Publication introuvable.");
           if (repost) {
             const existing = await sql`
               SELECT id FROM post_interactions
-              WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'repost' LIMIT 1
+              WHERE user_id = ${uid} AND post_id = ${String(
+                post_id
+              )}::uuid AND interaction_type = 'repost' LIMIT 1
             `;
             if (existing.length > 0) {
               resultData = {
@@ -936,15 +990,21 @@ export class MAIAgentFleet {
               VALUES (${uid}, ${String(post_id)}::uuid, 'repost')
               ON CONFLICT (user_id, post_id, interaction_type) DO NOTHING
             `;
-            await sql`UPDATE posts SET reposts_count = COALESCE(reposts_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
+            await sql`UPDATE posts SET reposts_count = COALESCE(reposts_count,0) + 1 WHERE id = ${String(
+              post_id
+            )}::uuid`;
             resultData = {
               message: "Publication repostée avec succès !",
               post_id,
               reposted: true,
             };
           } else {
-            await sql`DELETE FROM post_interactions WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'repost'`;
-            await sql`UPDATE posts SET reposts_count = GREATEST(0, COALESCE(reposts_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
+            await sql`DELETE FROM post_interactions WHERE user_id = ${uid} AND post_id = ${String(
+              post_id
+            )}::uuid AND interaction_type = 'repost'`;
+            await sql`UPDATE posts SET reposts_count = GREATEST(0, COALESCE(reposts_count,0) - 1) WHERE id = ${String(
+              post_id
+            )}::uuid`;
             resultData = {
               message: "Repost annulé.",
               post_id,
@@ -965,30 +1025,39 @@ export class MAIAgentFleet {
           ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          if (!text)
+          if (!text) {
             throw new Error("Le contenu du commentaire est obligatoire.");
-          if (text.length > 2000)
+          }
+          if (text.length > 2000) {
             throw new Error("Commentaire trop long (max 2000 caractères).");
+          }
           const safety = MAIAgentFleet.assessContentSafety(text);
-          if (!safety.isSafe)
+          if (!safety.isSafe) {
             throw new Error(
               `Commentaire refusé par mAI : ${safety.flagReason}`
             );
+          }
           const prow =
-            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(
+              post_id
+            )}::uuid LIMIT 1`;
           if (prow.length === 0) throw new Error("Publication introuvable.");
           const inserted = await sql`
             INSERT INTO comments (post_id, author_id, content, depth)
             VALUES (${String(post_id)}::uuid, ${uid}, ${text}, 1)
             RETURNING id, content, created_at
           `;
-          await sql`UPDATE posts SET replies_count = COALESCE(replies_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
+          await sql`UPDATE posts SET replies_count = COALESCE(replies_count,0) + 1 WHERE id = ${String(
+            post_id
+          )}::uuid`;
           const authorId = Number(prow[0].author_id);
           if (authorId !== uid) {
             try {
               await sql`
                 INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
-                VALUES (${authorId}, ${uid}, 'reply', ${String(post_id)}::uuid, ${String(inserted[0].id)}::uuid, 'a commenté votre publication via mAI')
+                VALUES (${authorId}, ${uid}, 'reply', ${String(post_id)}::uuid, ${String(
+                  inserted[0].id
+                )}::uuid, 'a commenté votre publication via mAI')
               `;
             } catch {}
           }
@@ -1161,7 +1230,9 @@ export class MAIAgentFleet {
                   : "low",
             message:
               bestSlots.length > 0
-                ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${bestSlots[0].avg_views} vues moyennes).`
+                ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${
+                    bestSlots[0].avg_views
+                  } vues moyennes).`
                 : "Pas encore assez de données de publication.",
             note:
               analyzedPosts === 0
@@ -1180,7 +1251,8 @@ export class MAIAgentFleet {
           const prevSince = new Date(
             nowMs - 2 * days * 86_400_000
           ).toISOString();
-          const postAgg = (since: string, until: string) => sql`
+          const postAgg = (since: string, until: string) =>
+            sql`
             SELECT COALESCE(SUM(views_count),0) AS views, COALESCE(SUM(likes_count),0) AS likes,
                    COALESCE(SUM(reposts_count),0) AS reposts, COALESCE(SUM(replies_count),0) AS replies,
                    COUNT(*) AS posts
@@ -1230,8 +1302,9 @@ export class MAIAgentFleet {
 
         case "predict_post_performance": {
           const content = String(args.content || "").trim();
-          if (!content)
+          if (!content) {
             throw new Error("Le contenu du brouillon est obligatoire.");
+          }
           const plannedFormat = String(args.format || "").trim() || null;
           const sinceIso = new Date(Date.now() - 90 * 86_400_000).toISOString();
           const [globalRows, formatRows, hourRows] = await Promise.all([
@@ -1466,7 +1539,9 @@ export class MAIAgentFleet {
             formats,
             message:
               formats.length > 0
-                ? `Format le plus engageant : ${formats[0].format} (${formats[0].avg_engagement} engagement moyen).`
+                ? `Format le plus engageant : ${formats[0].format} (${
+                    formats[0].avg_engagement
+                  } engagement moyen).`
                 : "Aucun post publié sur la période.",
             period_days: days,
             posts_analyzed: (rows as any[]).length,
@@ -1521,8 +1596,9 @@ export class MAIAgentFleet {
               Number(m.sender_id) === uid
                 ? Number(m.recipient_id || 0)
                 : Number(m.sender_id);
-            if (other && other !== uid)
+            if (other && other !== uid) {
               perOther[other] = (perOther[other] || 0) + 1;
+            }
           }
           const topIds = Object.entries(perOther)
             .sort((a, b) => b[1] - a[1])
@@ -1714,7 +1790,9 @@ export class MAIAgentFleet {
       const duration = Date.now() - startTime;
       await sql`
         INSERT INTO mai_tool_executions (user_id, tool_name, parameters, result, status, execution_time_ms)
-        VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify(resultData)}::jsonb, 'success', ${duration})
+        VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify(
+          resultData
+        )}::jsonb, 'success', ${duration})
       `;
 
       return { result: resultData, success: true };
@@ -1723,7 +1801,9 @@ export class MAIAgentFleet {
       const duration = Date.now() - startTime;
       await sql`
         INSERT INTO mai_tool_executions (user_id, tool_name, parameters, result, status, execution_time_ms)
-        VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify({ error: err.message })}::jsonb, 'failed', ${duration})
+        VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify(
+          { error: err.message }
+        )}::jsonb, 'failed', ${duration})
       `.catch(() => {});
       return { error: err.message, result: null, success: false };
     }

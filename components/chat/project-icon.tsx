@@ -1,5 +1,22 @@
-import { BookOpenIcon as BookOpen, BrainIcon as Brain, BriefcaseIcon as Briefcase, CodeIcon as Code, DatabaseIcon as Database, FileTextIcon as FileText, FlaskConicalIcon as FlaskConical, FolderIcon as Folder, GlobeIcon as Globe, LayersIcon as Layers, LightbulbIcon as Lightbulb, RocketIcon as Rocket, SparklesIcon as Sparkles, TargetIcon as Target, TerminalIcon as Terminal, ZapIcon as Zap } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
+import {
+  BookOpenIcon as BookOpen,
+  BrainIcon as Brain,
+  BriefcaseIcon as Briefcase,
+  CodeIcon as Code,
+  DatabaseIcon as Database,
+  FileTextIcon as FileText,
+  FlaskConicalIcon as FlaskConical,
+  FolderIcon as Folder,
+  GlobeIcon as Globe,
+  LayersIcon as Layers,
+  LightbulbIcon as Lightbulb,
+  RocketIcon as Rocket,
+  SparklesIcon as Sparkles,
+  TargetIcon as Target,
+  TerminalIcon as Terminal,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import type React from "react";
 
 export type ProjectIconName =

@@ -163,8 +163,9 @@ async function callDeepl(
   targetLang: string
 ): Promise<{ text: string; detected: string }> {
   const keys = getDeeplKeys();
-  if (keys.length === 0)
+  if (keys.length === 0) {
     throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
+  }
   const errors: string[] = [];
   for (const key of keys) {
     try {

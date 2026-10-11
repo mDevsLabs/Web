@@ -64,8 +64,12 @@ export type BoundedJsonResult<T> =
     } & Omit<BoundedFetchFailure, "kind" | "ok">);
 
 export type BoundedFetchOptions = {
+  /** Corps d'une requête qui écrit. Sa présence interdit toute reprise. */
+  body?: string;
   headers?: Record<string, string>;
   maxBytes?: number;
+  /** Méthode autorisée : `POST` sert aux écritures des connecteurs. Défaut `GET`. */
+  method?: "GET" | "POST";
   /** 0 désactive toute reprise. Défaut : une reprise sur 502/503/504. */
   retries?: 0 | 1;
   /** Annulation transmise par l'appelant ; prioritaire sur le délai interne. */
@@ -119,8 +123,15 @@ async function attemptFetch(
 
   try {
     const response = await fetch(url, {
-      headers: { Accept: "application/json", ...options.headers },
-      method: "GET",
+      ...(options.body === undefined ? {} : { body: options.body }),
+      headers: {
+        Accept: "application/json",
+        ...(options.body === undefined
+          ? {}
+          : { "Content-Type": "application/json" }),
+        ...options.headers,
+      },
+      method: options.method ?? "GET",
       redirect: "error",
       signal: controller.signal,
     });
@@ -198,7 +209,11 @@ export async function boundedFetch(
 ): Promise<BoundedFetchResult> {
   const maxBytes = options.maxBytes ?? DEFAULT_MAX_BYTES;
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
-  const maxAttempts = options.retries === 0 ? 1 : MAX_ATTEMPTS;
+  // Une requête qui écrit n'est JAMAIS rejouée : un 503 sur l'envoi d'un
+  // e-mail ou la création d'un événement, suivi d'une reprise, produit deux
+  // e-mails ou deux événements. La reprise reste réservée aux GET idempotents.
+  const maxAttempts =
+    options.retries === 0 || options.body !== undefined ? 1 : MAX_ATTEMPTS;
 
   // Annulation déjà demandée : ne part pas une requête inutile.
   if (options.signal?.aborted) {

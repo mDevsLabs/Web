@@ -1,6 +1,26 @@
 "use client";
 
-import { AlertCircleIcon, ArrowRightIcon, CalendarClockIcon, CalendarIcon, CheckCircle2Icon, ClockIcon, CloudIcon, Edit2Icon, ExternalLinkIcon, Loader2Icon, PlayIcon, PlusIcon, RefreshCwIcon, RepeatIcon, SearchIcon, SparklesIcon, Trash2Icon, WrenchIcon, XCircleIcon } from "@mdevs/icons";
+import {
+  AlertCircleIcon,
+  ArrowRightIcon,
+  CalendarClockIcon,
+  CalendarIcon,
+  CheckCircle2Icon,
+  ClockIcon,
+  CloudIcon,
+  Edit2Icon,
+  ExternalLinkIcon,
+  Loader2Icon,
+  PlayIcon,
+  PlusIcon,
+  RefreshCwIcon,
+  RepeatIcon,
+  SearchIcon,
+  SparklesIcon,
+  Trash2Icon,
+  WrenchIcon,
+  XCircleIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
@@ -23,6 +43,7 @@ import { Input } from "@/components/ui/input";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import { formatInZone } from "@/lib/planning/recurrence";
 import {
   deriveScheduleToolMode,
   SCHEDULE_TOOL_MODE_META,
@@ -417,6 +438,27 @@ export function PlanningClient({
                             </span>
                           )}
                         </div>
+                        {/* Détails techniques : prochain envoi dans le fuseau
+                            de la tâche ET en UTC — la ligne locale ci-dessus
+                            reste dans le fuseau du navigateur. */}
+                        {item.recurrence && item.recurrence !== "none" && (
+                          <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 font-mono text-[10px] text-muted-foreground/80">
+                            <span>
+                              {item.timezone || "Europe/Paris"}:{" "}
+                              {formatInZone(
+                                item.timezone || "Europe/Paris",
+                                new Date(item.scheduledAt)
+                              )}
+                            </span>
+                            <span>
+                              UTC:{" "}
+                              {new Date(item.scheduledAt)
+                                .toISOString()
+                                .slice(0, 16)
+                                .replace("T", " ")}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1">

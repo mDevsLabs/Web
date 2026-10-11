@@ -303,7 +303,7 @@ export async function sendSupportTicketCreatedEmail({
         </div>
 
         <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
-          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre d’assistance et de signalement technique</p>
         </div>
       </div>
     </body>
@@ -385,7 +385,7 @@ export async function sendSupportTicketUpdateEmail({
         </div>
 
         <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
-          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre d’assistance et de signalement technique</p>
         </div>
       </div>
     </body>

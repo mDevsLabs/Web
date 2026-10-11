@@ -91,7 +91,7 @@ export function ConfigurationSection() {
   const { data: agentsData } = useSWR<{
     agents: Array<{ id: string; name: string }>;
     limit: number | null;
-  }>(isFree ? null : "/api/agents", fetcher);
+  }>("/api/agents", fetcher);
   const agents = agentsData?.agents ?? [];
   const { data: skills = [] } = useSWR<Array<{ id: string; name: string }>>(
     isFree ? null : "/api/skills",

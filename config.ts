@@ -1,6 +1,7 @@
 import { sqlite } from "https://esm.town/v/std/sqlite";
-import { neon } from "npm:@neondatabase/serverless";
+import { type NeonQueryFunction, neon } from "npm:@neondatabase/serverless";
 import { jwtVerify, SignJWT } from "npm:jose";
+import type {} from "./api-context.ts";
 
 // ─────────────────────────────────────────────
 // Config & Données
@@ -173,6 +174,28 @@ export function getTierDailyImageLimit(tier?: string | null): number {
   return TIER_DAILY_IMAGE_LIMITS[normalizeTier(tier)];
 }
 
+// Nombre de Stories Vibe publiables par jour. Table à part de
+// TIER_DAILY_IMAGE_LIMITS : une story n'est pas une image générée par l'IA, et
+// partager les compteurs corromprait les deux quotas (voyez
+// vibe_story_usage_daily dans la migration 026).
+//
+// `null` = illimité, réservé au forfait Max — la valeur n'est PAS ramenée à un
+// nombre par un quelconque défaut : l'appelant doit traiter `null` explicitement.
+//
+// Ce quota n'est jamais affiché dans /settings (choix produit) : il n'a donc pas
+// de pendant dans lib/plans/tier-limits.ts, côté Next.
+export const TIER_DAILY_STORY_LIMITS: Record<Tier, number | null> = {
+  Free: 1,
+  Max: null,
+  Plus: 5,
+  Pro: 10,
+};
+
+/** Limite quotidienne de stories. `null` = illimité (Max) : aucune vérification. */
+export function getTierDailyStoryLimit(tier?: string | null): number | null {
+  return TIER_DAILY_STORY_LIMITS[normalizeTier(tier)];
+}
+
 // Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
 export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
   Free: 100,
@@ -199,7 +222,34 @@ export function getTierStorageLimitBytes(tier?: string | null): number {
   return STORAGE_LIMITS_BYTES[normalizeTier(tier)];
 }
 
-let _cachedDb: ReturnType<typeof neon> | null = null;
+// Taille maximale d'UN SEUL fichier envoyé via /upload-file (images, vidéos,
+// documents d'un post ou d'un message). À ne pas confondre avec
+// STORAGE_LIMITS_BYTES ci-dessus, qui est le quota de stockage Cloud cumulé.
+//
+// Le plafonnement par forfait rétablit la parole tenue par l'interface
+// (`lib/vibe/services/tierLimits.ts` annonçait 1 Go aux payants alors que le
+// serveur refusait tout ce qui dépassait 50 Mo, quel que soit le compte).
+//
+// La borne des Stories Vibe (50 Mo, tous forfaits) est un contrat produit
+// distinct : elle est recontrôlée à la création de la story, pas ici.
+const MIB = 1024 * 1024;
+
+export const MEDIA_UPLOAD_LIMITS_BYTES: Record<Tier, number> = {
+  Free: 50 * MIB,
+  Max: GIB,
+  Plus: GIB,
+  Pro: GIB,
+};
+
+/**
+ * Taille maximale autorisée pour un envoi, selon le forfait.
+ * Un forfait illisible retombe sur `Free` : la limite se réduit, ne s'étend jamais.
+ */
+export function getTierMediaUploadLimitBytes(tier?: string | null): number {
+  return MEDIA_UPLOAD_LIMITS_BYTES[normalizeTier(tier)];
+}
+
+let _cachedDb: NeonQueryFunction<false, false> | null = null;
 let _lastDbUrl: string | null = null;
 
 export function getDb() {
@@ -219,7 +269,7 @@ export function getDb() {
   }
 
   if (!_cachedDb || _lastDbUrl !== url) {
-    _cachedDb = neon(url);
+    _cachedDb = neon<false, false>(url);
     _lastDbUrl = url;
   }
   return _cachedDb;
@@ -260,34 +310,31 @@ export async function signToken(
 export async function verifyToken(
   token: string
 ): Promise<Record<string, unknown>> {
-  // Vérif SQLite (legacy Val Town)
-  try {
-    const sqliteResult = await sqlite.execute({
-      args: [token],
-      sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
-    });
-    if (sqliteResult?.rows && sqliteResult.rows.length > 0) {
-      throw new Error("Token révoqué.");
-    }
-  } catch (e: any) {
-    if (e?.message === "Token révoqué.") throw e;
-  }
-
-  // Vérif Postgres token_blacklist avec TTL 14j
-  try {
-    const sql = getDb();
-    const pgResult =
-      await sql`SELECT 1 FROM token_blacklist WHERE token = ${token} LIMIT 1`;
-    if (pgResult && pgResult.length > 0) {
-      throw new Error("Token révoqué.");
-    }
-  } catch (e: any) {
-    if (e?.message === "Token révoqué.") throw e;
-  }
-
+  // Valider d’abord la signature et l’expiration : aucun accès réseau pour un JWT invalide.
   const { payload } = await jwtVerify(token, getJwtSecret(), {
     requiredClaims: ["exp"],
   });
+  const revoked = await Promise.all([
+    sqlite
+      .execute({
+        args: [token],
+        sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
+      })
+      .then((result) => Boolean(result?.rows?.length))
+      .catch(() => false),
+    (async () => {
+      try {
+        const sql = getDb();
+        const rows =
+          await sql`SELECT 1 FROM token_blacklist WHERE token = ${token} LIMIT 1`;
+        return rows.length > 0;
+      } catch {
+        return false;
+      }
+    })(),
+  ]);
+  if (revoked.some(Boolean)) throw new Error("Token révoqué.");
+
   return payload as Record<string, unknown>;
 }
 

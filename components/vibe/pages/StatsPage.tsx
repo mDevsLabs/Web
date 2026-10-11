@@ -11,7 +11,22 @@
  * ============================================================================
  */
 
-import { BarChart2Icon as BarChart2, BookmarkIcon as Bookmark, CalendarDaysIcon as CalendarDays, ClockIcon as Clock, DownloadIcon as Download, EyeIcon as Eye, FlameIcon as Flame, HeartIcon as Heart, MessageCircleIcon as MessageCircle, Repeat2Icon as Repeat2, SparklesIcon as Sparkles, TrendingDownIcon as TrendingDown, TrendingUpIcon as TrendingUp, UsersIcon as Users } from "@mdevs/icons";
+import {
+  BarChart2Icon as BarChart2,
+  BookmarkIcon as Bookmark,
+  CalendarDaysIcon as CalendarDays,
+  ClockIcon as Clock,
+  DownloadIcon as Download,
+  EyeIcon as Eye,
+  FlameIcon as Flame,
+  HeartIcon as Heart,
+  MessageCircleIcon as MessageCircle,
+  Repeat2Icon as Repeat2,
+  SparklesIcon as Sparkles,
+  TrendingDownIcon as TrendingDown,
+  TrendingUpIcon as TrendingUp,
+  UsersIcon as Users,
+} from "@mdevs/icons";
 import { useState } from "react";
 import {
   Area,
@@ -55,7 +70,9 @@ function growthPct(
   return Math.round(((current - previous) / previous) * 1000) / 10;
 }
 
-export function StatsPage() {
+export function StatsPage(_props: {
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}) {
   const navigate = useNavigate();
   const [period, setPeriod] = useState<StatsPeriod>("30d");
   const { stats, profileViews, loading, error, refetch } =

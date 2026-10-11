@@ -1,7 +1,13 @@
 "use client";
 
-import { ArchiveIcon as Archive, ExternalLinkIcon as ExternalLink, Gamepad2Icon as Gamepad2, LayersIcon as Layers, SearchIcon as Search } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
+import {
+  ArchiveIcon as Archive,
+  ExternalLinkIcon as ExternalLink,
+  Gamepad2Icon as Gamepad2,
+  LayersIcon as Layers,
+  SearchIcon as Search,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRepoStats } from "@/components/site/github-repo-stats";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LifeBuoyIcon as LifeBuoy, PlusCircleIcon as PlusCircle, MessageSquareIcon as MessageSquare, BarChart3Icon as BarChart3 } from "@mdevs/icons";
 
 export const metadata: Metadata = {
-  title: "Centre de Support & Assistance | mAI",
+  title: "Centre d’assistance | mAI",
   description:
     "Espace officiel d'assistance technique, signalement d'anomalies et suivi des tickets pour l'écosystème mAI et mDevsLabs.",
 };

@@ -44,11 +44,43 @@ import { getSkillById, trackSkillUsage } from "@/lib/db/queries";
  * restrictionner la surface déjà autorisée.
  */
 
+/**
+ * BUDGET DE CONTEXTE DES SKILLS
+ *
+ * L'injection des Skills n'est pas un droit : c'est une part du prompt
+ * système, et dix Skills très longs peuvent y écraser le rôle du Wakie et
+ * les mémoires. Deux bornes les contiennent :
+ *
+ *   - SKILL_MAX_INSTRUCTIONS : un Skill au-delà est exclu de l'injection
+ *     (raison « trop volumineux ») — il n'est pas tronqué au milieu d'une
+ *     phrase, ce qui produirait une consigne incohérente ;
+ *   - SKILL_CONTEXT_BUDGET : plafond TOTAL des instructions injectées. Les
+ *     Skills sont évalués épinglés d'abord (choix explicite de l'utilisateur),
+ *     puis dans l'ordre de la sélection ; le premier qui dépasserait le
+ *     budget est exclu (raison « budget épuisé »), et tous les suivants avec
+ *     lui. Rien n'estۜ injecté en silence : chaque exclusion remonte à
+ *     l'appelant pour être affichée (issues du tour Wakies).
+ */
+export const SKILL_CONTEXT_BUDGET = 64_000;
+export const SKILL_MAX_INSTRUCTIONS = 8000;
+
+export type SkillBudgetExclusion = {
+  /** Raison en français, affichable, pour l'issue du tour. */
+  raison: "budget épuisé" | "trop volumineux";
+  skillId: string;
+  /** Taille des instructions APRÈS substitution, en caractères. */
+  taille: number;
+};
+
 export type PreparedSkill = {
   /** Identifiant du Skill, ou `null` si la sélection était vide ou inconnue. */
   skillId: string | null;
+  /** Nom du Skill, tel qu'enregistré (affichage des exclusions). */
+  name: string;
   /** Instructions APRÈS substitution des paramètres. */
   instructions: string;
+  /** Le Skill est-il épinglé dans la bibliothèque du compte ? */
+  pinned: boolean;
   /** Identifiants d'outils déclarés par le Skill. */
   tools: string[];
   /** Serveurs MCP déclarés, ignorés pour un compte gratuit. */
@@ -58,8 +90,14 @@ export type PreparedSkill = {
 };
 
 export type PreparedSkills = {
-  /** Instructions de chaque Skill, dans l'ordre de la sélection. */
+  /** Instructions INJECTÉES, épinglés d'abord puis ordre de sélection. */
   instructions: string[];
+  /** Identifiants injectés (dans le même ordre que `instructions`). */
+  injectedSkillIds: string[];
+  /** Total des caractères injectés (contrôle et diagnostics). */
+  injectedCharacterCount: number;
+  /** Skills demandés, trouvés, mais écartés par le budget de contexte. */
+  exclusions: SkillBudgetExclusion[];
   /** Union des outils déclarés, sans doublon. */
   tools: string[];
   /** Union des serveurs MCP déclarés. */
@@ -81,6 +119,9 @@ export type PreparedSkills = {
 };
 
 const VIDE: PreparedSkills = {
+  exclusions: [],
+  injectedCharacterCount: 0,
+  injectedSkillIds: [],
   instructions: [],
   mcpServerIds: [],
   mcpToolFilter: null,
@@ -170,7 +211,9 @@ export async function prepareSkillContext(params: {
         typeof skill.mcpToolFilter !== "object"
           ? null
           : (skill.mcpToolFilter as Record<string, string[] | null>),
+      name: skill.name,
       parameterError,
+      pinned: skill.pinned === true,
       skillId: skill.id,
       tools: Array.isArray(skill.tools) ? (skill.tools as string[]) : [],
     };
@@ -184,8 +227,12 @@ export async function prepareSkillContext(params: {
 /**
  * Prépare une sélection de Skills pour une conversation.
  *
- * L'ordre de la sélection est conservé : il décide de l'ordre dans lequel les
- * instructions seront présentées au modèle.
+ * Ordre d'injection : épinglés d'abord (choix explicite de l'utilisateur),
+ * puis l'ordre de la sélection — chaque groupe garde son ordre relatif. Le
+ * budget de contexte est ensuite appliqué dans cet ordre : un Skill exclu ne
+ * disparaît PAS de `skills` (il existe toujours) ni des outils/MCP déclarés
+ * (l'utilisateur les a demandés), seules ses instructions quittent le prompt,
+ * avec une trace dans `exclusions`.
  */
 export async function prepareSkillsContext(params: {
   userId: string;
@@ -196,7 +243,7 @@ export async function prepareSkillsContext(params: {
   isFreeUser: boolean;
 }): Promise<PreparedSkills> {
   if (params.skillIds.length === 0) {
-    return { ...VIDE, tools: [] };
+    return { ...VIDE };
   }
   // Un Skill ne doit être compté qu'une fois, même s'il est listé deux fois.
   const uniques = [...new Set(params.skillIds)].filter(Boolean);
@@ -211,7 +258,10 @@ export async function prepareSkillsContext(params: {
     )
   );
 
-  const skills: PreparedSkill[] = [];
+  const skills: (PreparedSkill & { skillId: string })[] = [];
+  const exclusions: SkillBudgetExclusion[] = [];
+  const injectees: string[] = [];
+  let budgetRestant = SKILL_CONTEXT_BUDGET;
   const outils = new Set<string>();
   const serveurs = new Set<string>();
   const filtres: (Record<string, string[] | null> | null)[] = [];
@@ -224,13 +274,16 @@ export async function prepareSkillsContext(params: {
     if (prepare.parameterError) {
       parameterError ??= prepare.parameterError;
     }
-    skills.push({
+    const poste: PreparedSkill & { skillId: string } = {
       instructions: prepare.instructions,
       mcpServerIds: prepare.mcpServerIds,
       mcpToolFilter: prepare.mcpToolFilter,
+      name: prepare.name,
+      pinned: prepare.pinned,
       skillId: prepare.skillId,
       tools: prepare.tools,
-    });
+    };
+    skills.push(poste);
     for (const outil of prepare.tools) {
       outils.add(outil);
     }
@@ -240,8 +293,49 @@ export async function prepareSkillsContext(params: {
     filtres.push(prepare.mcpToolFilter);
   }
 
+  // Épinglés d'abord, même ordre relatif à l'intérieur de chaque groupe. Le
+  // budget est DÉPENSÉ dans cet ordre d'injection, pas dans l'ordre de la
+  // sélection brute : épingler un Skill le rend prioritaire pour tenir dans
+  // le contexte.
+  const ordreInjection = [...skills].sort(
+    (a, b) => Number(b.pinned) - Number(a.pinned)
+  );
+  const instructionsInjectees: string[] = [];
+  let injecteCaracteres = 0;
+  for (const poste of ordreInjection) {
+    if (poste.instructions.length > SKILL_MAX_INSTRUCTIONS) {
+      // Un Skill très long n'est pas tronqué au milieu : une consigne coupée
+      // deviendrait incohérente. Il est exclu avec sa raison, visible.
+      exclusions.push({
+        raison: "trop volumineux",
+        skillId: poste.skillId,
+        taille: poste.instructions.length,
+      });
+      continue;
+    }
+    if (budgetRestant < poste.instructions.length) {
+      // Les suivants sont exclus avec lui : le budget ne se re-remplit pas.
+      exclusions.push({
+        raison: "budget épuisé",
+        skillId: poste.skillId,
+        taille: poste.instructions.length,
+      });
+      continue;
+    }
+    budgetRestant -= poste.instructions.length;
+    injectees.push(poste.skillId);
+    injecteCaracteres += poste.instructions.length;
+  }
+
   return {
-    instructions: skills.map((skill) => skill.instructions),
+    exclusions,
+    injectedCharacterCount: injecteCaracteres,
+    injectedSkillIds: injectees,
+    instructions: injectees.length
+      ? ordreInjection
+          .filter((poste) => injectees.includes(poste.skillId))
+          .map((poste) => poste.instructions)
+      : [],
     mcpServerIds: [...serveurs],
     mcpToolFilter: intersecterFiltres(filtres),
     parameterError,

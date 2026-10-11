@@ -320,7 +320,16 @@ export function Link({
   };
 
   return (
-    <NextLink href={toVibePath(to)} onClick={handleClick} {...props}>
+    <NextLink
+      href={toVibePath(to)}
+      onClick={handleClick}
+      // Les pages /vibe sont pré-hydratées depuis Postgres côté serveur : avec
+      // `cacheComponents`, le prefetch au survol exécuterait ces lectures pour
+      // chaque lien survolé. La navigation client reste instantanée grâce au
+      // cache TTL de `ApiService`.
+      prefetch={false}
+      {...props}
+    >
       {children}
     </NextLink>
   );

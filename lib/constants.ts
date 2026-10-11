@@ -14,7 +14,10 @@ export const isTestEnvironment = Boolean(
 export const MAI_SESSION_COOKIE = "mai_session_token";
 export const MAI_API_URL =
   process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
-export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
+// URL absolue conservée pour les réponses API consommées hors du navigateur.
+export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app/pricing";
+// Navigation dans l'application intégrée au shell Next.js.
+export const APP_PRICING_URL = "/site/pricing";
 
 // Handoff Cloud -> chat : pièce jointe en attente (sessionStorage)
 export const MAI_PENDING_ATTACHMENT_KEY = "mai-pending-attachment";
@@ -32,11 +35,11 @@ export const MEMORY_CONTENT_MAX_LENGTH = 2000;
 export { APP_VERSION } from "@/lib/version";
 export const APP_NAME = "mAI";
 export const APP_COPYRIGHT = `© ${new Date().getFullYear()} mAI — Tous droits réservés`;
-export const APP_SUPPORT_URL = "https://mai-devs.vercel.app/support";
+export const APP_SUPPORT_URL = "/site/support";
 export const LEGAL_LINKS = [
-  { href: "https://mai-devs.vercel.app/legal", label: "Mentions légales" },
-  { href: "https://mai-devs.vercel.app/privacy", label: "Confidentialité" },
-  { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
+  { href: "/site/legal", label: "Mentions légales" },
+  { href: "/site/legal/privacy", label: "Confidentialité" },
+  { href: "/site/legal/terms", label: "CGU" },
 ] as const;
 export const TERMS_URL = LEGAL_LINKS[2].href;
 

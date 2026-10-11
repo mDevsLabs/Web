@@ -1,6 +1,12 @@
 "use client";
 
-import { BrainIcon, CheckIcon, FolderIcon, GaugeIcon, WrenchIcon } from "@mdevs/icons";
+import {
+  BrainIcon,
+  CheckIcon,
+  FolderIcon,
+  GaugeIcon,
+  WrenchIcon,
+} from "@mdevs/icons";
 import { useState } from "react";
 import {
   Popover,

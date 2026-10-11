@@ -1,6 +1,11 @@
 "use client";
 
-import { Code2Icon as Code2, CpuIcon as Cpu, GlobeIcon as Globe, TerminalIcon as Terminal } from "@mdevs/icons";
+import {
+  Code2Icon as Code2,
+  CpuIcon as Cpu,
+  GlobeIcon as Globe,
+  TerminalIcon as Terminal,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 
 export function FeaturesSection() {

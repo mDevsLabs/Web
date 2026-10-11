@@ -41,3 +41,65 @@ Ce document contient les règles fondamentales et les consignes de développemen
 - La configuration mobile se trouve dans `apps/vibe/capacitor.config.ts`.
 - L'URL distante chargée par la WebView est paramétrée par `VIBE_WEB_URL` (défaut : `https://mai-vibe.vercel.app`).
 - Les builds Android/iOS et leurs releases sont intégrés dans `.github/workflows/build.yml`.
+
+---
+
+## 4. 🗄️ Données : lectures pré-hydratées, écritures API
+
+Les lectures de premier écran sont servies par `lib/vibe/server/` (Postgres
+direct, `DATABASE_URL` partagé avec le backend) ; les **écritures, l'IA et le
+SSE restent sur l'API** `mai.val.run`. Details et contrats :
+`docs/2-vibe/INTEGRATION.md` § 7bis. Points d'attention pour un agent :
+
+- Une page `app/(chat)/vibe/**` est **générée** : le gabarit async vit dans
+  `scripts/build-vibe-routes.mjs` (clé `cle` de la table `ROUTES`) ; la graine
+  transite par `getVibeHydration()` → `vibe-routes.tsx` → prop `hydration`.
+- Les lecteurs (`lib/vibe/server/queries/*`) sont des **répliques lecture
+  seule** des handlers backend, alias snake_case et clauses de visibilité
+  compris — jamais de DDL, jamais d'écriture ; toute erreur ⇒ graine `null`
+  ⇒ repli API automatique.
+- Injecter une donnée en base dans le cache client passe exclusivement par
+  `ApiService.seedEndpointFor`/`profileEndpoint`/`feedEndpoint` : une clé qui
+  diverge du getter re-déclenche l'appel API supprimé, silencieusement.
+- Suppression de routes backend : un handler ne meurt que si NI le portage NI
+  `apps/vibe/src` (app mobile) ne l'appellent, et la suppression s'applique
+  aux **deux copies** (`vibe-*.ts` racine et `scripts/vibe-*.ts`, identiques
+  au byte près).
+
+---
+
+## 5. 🎞️ Stories : contrats à ne pas casser
+
+Guide complet : [STORIES.md](./STORIES.md). Ce qui engage une modification :
+
+- **Les tables Vibe ne sont pas dans Drizzle.** Le DDL des stories vit à deux
+  endroits qui doivent décrire la même structure : `ensureStoriesTables()` dans
+  `vibe-stories.ts` et `apps/vibe/lib/db/migrations/026_vibe_stories.sql`. Le
+  migrateur Vibe vérifie les sommes de contrôle : une migration appliquée ne se
+  retouche pas, elle se remplace par une `027`.
+- **Deux plafonds média différents, en sens inverse.** Upload `/v1/upload-file` :
+  50 Mo en Free, 1 Go en Plus/Pro/Max (`MEDIA_UPLOAD_LIMITS_BYTES`). Média d'une
+  story : **50 Mo quel que soit le forfait** (`STORY_MEDIA_MAX_BYTES`). Les
+  « réaligner » l'un sur l'autre casse un des deux contrats. Le contrôle de la
+  story se fait par `HEAD` sur l'objet, jamais sur la taille déclarée par le
+  navigateur.
+- **Origine des médias.** Seules les origines du pool (`getStorageNodes()`) et le
+  namespace `uploads/` sont acceptés, comparés sur `URL.origin` — un `startsWith`
+  sur une URL se contourne avec un hôte fabriqué.
+- **Le quota se renouvelle à minuit heure de Paris**, par une clé de jour calculée
+  dans le module (`Intl`, `Europe/Paris`) et passée à l'upsert. `CURRENT_DATE` est
+  UTC : l'utiliser remettrait le compteur à 1 h ou 2 h du matin. La divergence avec
+  le quota d'images (UTC) est délibérée.
+- **Forme des erreurs Vibe.** `error` est une chaîne, les champs machine sont à
+  plat : `ApiService` fabrique `new Error(errJson.error)`, un objet imbriqué
+  s'affiche « [object Object] ».
+- **L'anneau est une coque externe.** `ProfileAvatar` ne reçoit aucune prop
+  d'anneau (une vingtaine de sites de rendu, un jumeau dans `apps/vibe/src` aux
+  imports différents). États portés par `data-live` / `data-seen`, jamais par des
+  classes conditionnelles. Styles dans `apps/vibe/src/index.css`, puis
+  `node scripts/build-vibe-css.mjs`.
+- **Le rail n'est pas pré-hydraté** : le gabarit de page n'admet qu'une graine par
+  route, celle du fil est prise. Ne pas ajouter une clé `stories` au registre
+  d'hydratation sans page qui la consomme.
+- **Le portail du lecteur se rend dans `.vibe-root`**, pas dans `document.body` :
+  sinon il perd les tokens de thème du conteneur.

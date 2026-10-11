@@ -5,7 +5,14 @@
  * ============================================================================
  */
 
-import { ActivityIcon as Activity, EyeIcon as Eye, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, XIcon as X, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  ActivityIcon as Activity,
+  EyeIcon as Eye,
+  ShieldCheckIcon as ShieldCheck,
+  SparklesIcon as Sparkles,
+  XIcon as X,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import type React from "react";
 import type { Post } from "@/lib/vibe/types/vibe";
 

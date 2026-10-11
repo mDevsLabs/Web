@@ -1,6 +1,9 @@
 "use client";
 
-import { CheckCircle2Icon as CheckCircle2, LaptopIcon as Laptop } from "@mdevs/icons";
+import {
+  CheckCircle2Icon as CheckCircle2,
+  LaptopIcon as Laptop,
+} from "@mdevs/icons";
 import type { RefObject } from "react";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import {

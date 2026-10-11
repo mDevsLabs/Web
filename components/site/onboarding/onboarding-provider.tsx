@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
   type ReactNode,
@@ -11,6 +10,10 @@ import {
   useState,
 } from "react";
 import { useAuth } from "@/components/site/auth-provider";
+import {
+  useSitePathname as usePathname,
+  useSiteRouter as useRouter,
+} from "@/components/site/router";
 import {
   getMainStore,
   getUpgradeStore,

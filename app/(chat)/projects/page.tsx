@@ -1,6 +1,22 @@
 "use client";
 
-import { ArchiveIcon, ArchiveRestoreIcon, Edit2Icon, FolderIcon, FolderKanbanIcon, LayoutGridIcon, ListIcon, MoreHorizontalIcon, PinIcon, PinOffIcon, PlusIcon, SearchIcon, SparklesIcon, TagIcon, Trash2Icon } from "@mdevs/icons";
+import {
+  ArchiveIcon,
+  ArchiveRestoreIcon,
+  Edit2Icon,
+  FolderIcon,
+  FolderKanbanIcon,
+  LayoutGridIcon,
+  ListIcon,
+  MoreHorizontalIcon,
+  PinIcon,
+  PinOffIcon,
+  PlusIcon,
+  SearchIcon,
+  SparklesIcon,
+  TagIcon,
+  Trash2Icon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";

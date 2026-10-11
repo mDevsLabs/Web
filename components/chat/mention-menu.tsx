@@ -1,6 +1,16 @@
 "use client";
 
-import { BrainIcon, CalendarClockIcon, CpuIcon, FolderArchiveIcon, GlobeIcon, NotebookIcon, PlusIcon, SparklesIcon, SquareSlashIcon } from "@mdevs/icons";
+import {
+  BrainIcon,
+  CalendarClockIcon,
+  CpuIcon,
+  FolderArchiveIcon,
+  GlobeIcon,
+  NotebookIcon,
+  PlusIcon,
+  SparklesIcon,
+  SquareSlashIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";

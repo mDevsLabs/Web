@@ -8,7 +8,16 @@ export function mergePageSnapshot(known: Page[], incoming: Page[]): Page[] {
   const pages = new Map(known.map((page) => [page.id, page]));
   for (const page of incoming) {
     const previous = pages.get(page.id);
-    if (!previous || page.revision > previous.revision)
+    // Révision plus récente : le contenu a changé. Révision ÉGALE mais
+    // `updatedAt` plus récent : écriture qui ne touche pas le document — épingle
+    // ou réglage de lecture. La refuser ici rendrait le clic invisible jusqu'au
+    // prochain rechargement.
+    if (
+      !previous ||
+      page.revision > previous.revision ||
+      (page.revision === previous.revision &&
+        page.updatedAt > previous.updatedAt)
+    )
       pages.set(page.id, page);
   }
   return [...pages.values()];

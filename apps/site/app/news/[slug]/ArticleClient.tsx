@@ -184,7 +184,7 @@ function CommentForm({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+          <label className="block text-sm font-medium text-slate-700 mb-2">Adresse e-mail</label>
           <input
             type="email"
             value={authorEmail}

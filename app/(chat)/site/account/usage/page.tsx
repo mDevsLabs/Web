@@ -1,9 +1,19 @@
 "use client";
 
-import { ActivityIcon as Activity, AlertTriangleIcon as AlertTriangle, ArrowDownToLineIcon as ArrowDownToLine, CheckCircle2Icon as CheckCircle2, ClockIcon as Clock, DatabaseIcon as Database, Loader2Icon as Loader2, NetworkIcon as Network, SparklesIcon as Sparkles, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  ActivityIcon as Activity,
+  AlertTriangleIcon as AlertTriangle,
+  ArrowDownToLineIcon as ArrowDownToLine,
+  CheckCircle2Icon as CheckCircle2,
+  ClockIcon as Clock,
+  DatabaseIcon as Database,
+  Loader2Icon as Loader2,
+  NetworkIcon as Network,
+  SparklesIcon as Sparkles,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { getUserApiUsage } from "@/app/(chat)/site/actions/api-keys";
@@ -12,7 +22,7 @@ import { ApiKeysUsageTable } from "@/components/site/account/usage/api-keys-usag
 import type { UsageChartPoint } from "@/components/site/account/usage/api-usage-charts";
 import { UsageMetricCard } from "@/components/site/account/usage/usage-metric-card";
 import { useAuth } from "@/components/site/auth-provider";
-import Link from "@/components/site/router";
+import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 
 const ApiUsageCharts = dynamic(
   () => import("@/components/site/account/usage/api-usage-charts"),

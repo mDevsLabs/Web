@@ -1,6 +1,11 @@
 "use client";
 
-import { ArrowLeftIcon as ArrowLeft, ArrowRightIcon as ArrowRight, SparklesIcon as Sparkles, XIcon as X } from "@mdevs/icons";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ArrowRightIcon as ArrowRight,
+  SparklesIcon as Sparkles,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import Link from "@/components/site/router";

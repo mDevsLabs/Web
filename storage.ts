@@ -3,6 +3,7 @@ import {
   extractTierFromApiKey,
   extractToken,
   getDb,
+  getTierMediaUploadLimitBytes,
   getTierStorageLimitBytes,
   verifyToken,
 } from "./config.ts";
@@ -527,18 +528,28 @@ export function registerStorageRoutes(app: Hono) {
   app.post("/upload-avatar/", handleUploadAvatar);
   app.post("/v1/upload-avatar/", handleUploadAvatar);
 
-  // POST /upload-file & /v1/upload-file (sécurisé: auth + validation 10MB + allowlist)
+  // POST /upload-file & /v1/upload-file (sécurisé: auth + taille bornée par
+  // forfait + allowlist de types)
   const handleUploadFile = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
       if (!token) {
         return c.json({ error: "Non authentifié." }, 401);
       }
+      let payload: { sub?: string; tier?: string } | null = null;
       try {
-        await verifyToken(token);
+        payload = await verifyToken(token);
       } catch {
         return c.json({ error: "Token invalide." }, 401);
       }
+
+      // Le plafond dépend du forfait, et il est résolu avant toute autre décision
+      // sur le fichier : le JWT porte un `tier`, et les clés API `mai-<tier>-…` le
+      // portent dans leur préfixe quand le jeton n'en dit rien. Un forfait
+      // illisible retombe sur Free via `normalizeTier` : la limite se réduit, elle
+      // ne s'étend jamais.
+      const tier = payload?.tier || extractTierFromApiKey(token);
+      const maxFileBytes = getTierMediaUploadLimitBytes(tier);
 
       const body = await c.req.parseBody();
       const file = body.file;
@@ -547,9 +558,19 @@ export function registerStorageRoutes(app: Hono) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
       }
 
-      const MAX_FILE_SIZE = 50 * 1024 * 1024;
-      if (file.size > MAX_FILE_SIZE) {
-        return c.json({ error: "Fichier trop volumineux (max 50 MB)." }, 413);
+      // Comparaison sur `file.size` : la taille est connue sans lire le corps.
+      // Rien ne doit être matérialisé en mémoire avant ce refus, un gros fichier
+      // d'un forfait qui n'y a pas droit ne doit jamais coûter autre chose qu'une
+      // requête.
+      if (file.size > maxFileBytes) {
+        return c.json(
+          {
+            error: `Fichier trop volumineux (max ${formatQuotaBytes(
+              maxFileBytes
+            )} avec votre forfait).`,
+          },
+          413
+        );
       }
       if (file.size === 0) {
         return c.json({ error: "Fichier vide." }, 400);
@@ -666,10 +687,10 @@ export function registerStorageRoutes(app: Hono) {
       const [userRes, usageRes] = await Promise.all([
         sql`SELECT tier FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`,
         sql`
-          SELECT COALESCE(SUM(bytes_used::numeric), 0) as bytes_used, COALESCE(SUM(files_count::numeric), 0) as files_count 
-          FROM cloud_storage_usage 
+          SELECT COALESCE(SUM(bytes_used::numeric), 0) as bytes_used, COALESCE(SUM(files_count::numeric), 0) as files_count
+          FROM cloud_storage_usage
           WHERE (
-            user_id = ${userId}::text 
+            user_id = ${userId}::text
             OR user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
@@ -746,7 +767,7 @@ export function registerStorageRoutes(app: Hono) {
         SELECT id, filename, original_name, url, size_bytes, mime_type, uploaded_at
         FROM cloud_files
         WHERE (
-          user_id = ${userId}::text 
+          user_id = ${userId}::text
           OR user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
           OR user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
           OR user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
@@ -832,7 +853,9 @@ export function registerStorageRoutes(app: Hono) {
           {
             bytes_limit: bytesLimit,
             bytes_used: bytesUsed,
-            error: `Quota de stockage dépassé. Vous utilisez ${formatQuotaBytes(bytesUsed)} sur ${formatQuotaBytes(bytesLimit)} (tier ${tier}).`,
+            error: `Quota de stockage dépassé. Vous utilisez ${formatQuotaBytes(bytesUsed)} sur ${formatQuotaBytes(
+              bytesLimit
+            )} (tier ${tier}).`,
             over_limit: true,
           },
           413

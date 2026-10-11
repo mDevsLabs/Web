@@ -8,10 +8,7 @@
   "compiledEntry": "../../components/wakies/workspace-app.tsx",
   "referenceOnly": [
     "apps/mobile",
-    "apps/server",
-    "apps/worker",
-    "apps/computer",
-    "packages"
+    "packages/domain"
   ],
   "adaptations": [
     "integration/web"
@@ -19,5 +16,12 @@
   "replacedUpstreamFiles": {
     "README.md": "UPSTREAM_README.md",
     "package.json": "upstream.package.json"
-  }
+  },
+  "retiredReferenceServices": [
+    "apps/server",
+    "apps/worker",
+    "apps/computer",
+    "packages/backends",
+    "packages/integrations"
+  ]
 }

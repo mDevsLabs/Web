@@ -1,6 +1,9 @@
 "use client";
 
-import { AudioWaveformIcon as AudioWaveform, MicIcon as Mic } from "@mdevs/icons";
+import {
+  AudioWaveformIcon as AudioWaveform,
+  MicIcon as Mic,
+} from "@mdevs/icons";
 
 const DEFAULT_VOICES = [
   {

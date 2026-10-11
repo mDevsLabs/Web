@@ -1,6 +1,12 @@
 "use client";
 
-import { BrainIcon, EyeIcon, ImageIcon, Volume2Icon, WrenchIcon } from "@mdevs/icons";
+import {
+  BrainIcon,
+  EyeIcon,
+  ImageIcon,
+  Volume2Icon,
+  WrenchIcon,
+} from "@mdevs/icons";
 import {
   type Dispatch,
   memo,

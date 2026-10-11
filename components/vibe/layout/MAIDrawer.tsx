@@ -5,8 +5,23 @@
  * ============================================================================
  */
 
+import {
+  ChevronDownIcon as ChevronDown,
+  FileTextIcon as FileText,
+  ImageIcon,
+  Loader2Icon as Loader2,
+  MessagesSquareIcon as MessagesSquare,
+  MicIcon as Mic,
+  MicOffIcon as MicOff,
+  RefreshCwIcon as RefreshCw,
+  SearchIcon as Search,
+  SendIcon as Send,
+  SparklesIcon as Sparkles,
+  SquarePenIcon as SquarePen,
+  XIcon as X,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { ChevronDownIcon as ChevronDown, FileTextIcon as FileText, ImageIcon, Loader2Icon as Loader2, MessagesSquareIcon as MessagesSquare, MicIcon as Mic, MicOffIcon as MicOff, RefreshCwIcon as RefreshCw, SearchIcon as Search, SendIcon as Send, SparklesIcon as Sparkles, SquarePenIcon as SquarePen, XIcon as X, ZapIcon as Zap } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {

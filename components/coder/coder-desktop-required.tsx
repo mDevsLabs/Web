@@ -1,6 +1,12 @@
 "use client";
 
-import { ArrowLeftIcon, DownloadIcon, ExternalLinkIcon, MonitorIcon, TriangleAlertIcon } from "@mdevs/icons";
+import {
+  ArrowLeftIcon,
+  DownloadIcon,
+  ExternalLinkIcon,
+  MonitorIcon,
+  TriangleAlertIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";

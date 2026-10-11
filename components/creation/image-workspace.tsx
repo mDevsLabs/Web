@@ -1,6 +1,31 @@
 "use client";
 
-import { AlertCircleIcon, CheckIcon, CopyIcon, DownloadIcon, EyeIcon, ImageIcon, LayersIcon, Loader2Icon, Maximize2Icon, MonitorIcon, PencilIcon, PinIcon, PinOffIcon, PlusIcon, RectangleVerticalIcon, RefreshCwIcon, SlidersHorizontalIcon, SmartphoneIcon, SparklesIcon, SquareIcon, Trash2Icon, UploadCloudIcon, Wand2Icon, XIcon } from "@mdevs/icons";
+import {
+  AlertCircleIcon,
+  CheckIcon,
+  CopyIcon,
+  DownloadIcon,
+  EyeIcon,
+  ImageIcon,
+  LayersIcon,
+  Loader2Icon,
+  Maximize2Icon,
+  MonitorIcon,
+  PencilIcon,
+  PinIcon,
+  PinOffIcon,
+  PlusIcon,
+  RectangleVerticalIcon,
+  RefreshCwIcon,
+  SlidersHorizontalIcon,
+  SmartphoneIcon,
+  SparklesIcon,
+  SquareIcon,
+  Trash2Icon,
+  UploadCloudIcon,
+  Wand2Icon,
+  XIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -10,7 +35,7 @@ import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL } from "@/lib/constants";
 import {
   cn,
   downloadImage,
@@ -474,8 +499,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
           {isQuotaExhausted && (
             <Link
               className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 active:scale-95"
-              href={MAI_UPGRADE_URL}
-              target="_blank"
+              href={APP_PRICING_URL}
             >
               <SparklesIcon className="size-3.5" />
               <span>Débloquer plus</span>
@@ -770,8 +794,7 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
                       minuit UTC ou{" "}
                       <Link
                         className="underline font-semibold"
-                        href={MAI_UPGRADE_URL}
-                        target="_blank"
+                        href={APP_PRICING_URL}
                       >
                         passez à un forfait supérieur
                       </Link>

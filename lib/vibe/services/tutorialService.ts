@@ -9,12 +9,15 @@
 import { type Driver, driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import "@/components/vibe/tutorial/tour.css";
+import { stripVibeBasePath } from "@/components/vibe/router";
 import {
   TOUR_STEPS,
   type TourStepDef,
 } from "@/components/vibe/tutorial/TourSteps";
 
 const TOUR_DONE_KEY = "vibe_tour_completed_v1";
+/** Rejet explicite (fermeture du tour) : ne jamais relancer l'auto-démarrage. */
+const TOUR_DISMISS_KEY = "vibe_tour_dismissed_v1";
 
 let activeDriver: Driver | null = null;
 let tourRunning = false;
@@ -30,6 +33,33 @@ export function isTourCompleted(): boolean {
 export function markTourCompleted(): void {
   try {
     window.localStorage.setItem(TOUR_DONE_KEY, "1");
+  } catch {}
+}
+
+/** L'utilisateur a fermé le tour lui-même : c'est durable. */
+export function skipFullTour(): void {
+  try {
+    window.localStorage.setItem(TOUR_DISMISS_KEY, "1");
+  } catch {}
+}
+
+/** Le tour n'a jamais été fini ni rejeté : un nouveau compte peut le voir. */
+export function shouldAutoStartTour(): boolean {
+  try {
+    return (
+      !isTourCompleted() &&
+      window.localStorage.getItem(TOUR_DISMISS_KEY) !== "1"
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** « Refaire le tutoriel » efface fini ET rejet — sinon le retour serait muet. */
+export function clearTourFlags(): void {
+  try {
+    window.localStorage.removeItem(TOUR_DONE_KEY);
+    window.localStorage.removeItem(TOUR_DISMISS_KEY);
   } catch {}
 }
 
@@ -115,7 +145,10 @@ export async function startFullTour(
       return;
     }
     const group = groups[gi];
-    if (window.location.pathname !== group.route) {
+    // Règle d'or n° 3 : `/vibe` est un préfixe d'hôte. Comparer le pathname
+    // brut à la route relative du groupe les rendait toujours différentes —
+    // d'où un `navigate()` superflu à chaque page du tour.
+    if (stripVibeBasePath(window.location.pathname) !== group.route) {
       navigate(group.route);
     }
     // Laisse la route + le lazy() se monter, puis résout les cibles visibles.
@@ -147,6 +180,8 @@ export async function startFullTour(
         try {
           opts.driver.destroy();
         } catch {}
+        // Fermeture explicite : le tour ne se relancera plus tout seul.
+        skipFullTour();
         finish(false);
       },
       onNextClick: (_el, _step, opts) => {
@@ -175,14 +210,21 @@ export async function startFullTour(
       overlayOpacity: 0.72,
       popoverClass: "vibe-tour-popover",
       prevBtnText: "Retour",
-      progressText: `{{current}} / ${TOUR_STEPS.length}`,
+      // driver.js 1.9 ne supporte qu'une chaîne : le compteur est donc local
+      // au groupe ({{current}}/{{total}} exacts), et la position GLOBALE du
+      // parcours est portée par le titre de chaque étape — « 1 / 10 » qui
+      // re-tombe à 1 trompait sur l'avancement réel.
+      progressText: "{{current}} / {{total}}",
       showProgress: true,
       smoothScroll: true,
       stagePadding: 6,
       stageRadius: 12,
-      steps: resolved.map((r) => ({
+      steps: resolved.map((r, idx) => ({
         element: r.el as Element,
-        popover: { description: r.def.description, title: r.def.title },
+        popover: {
+          description: r.def.description,
+          title: `${r.def.title} — étape ${group.startIndex + idx + 1}/${TOUR_STEPS.length}`,
+        },
       })),
     });
     activeDriver = d;

@@ -45,27 +45,6 @@ export function registerVibeMAISettingsRoutes(
     handleMAIQuotas
   );
 
-  // 3. mAI MODULATE
-  const handleMAIModulate = async (c: any) => {
-    try {
-      const token = extractToken(c.req.raw);
-      if (!token) return c.json({ error: "Non authentifié." }, 401);
-      await verifyToken(token);
-
-      const { text, tone = "executive" } = await c.req.json();
-      const modulated = await MAIAgentFleet.modulateText({ text, tone });
-      return c.json({ modulated, success: true });
-    } catch {
-      return c.json({ error: "Erreur modulation." }, 500);
-    }
-  };
-
-  registerMulti(
-    "post",
-    ["/api/vibe/mai/modulate", "/vibe/mai/modulate", "/v1/mai/modulate"],
-    handleMAIModulate
-  );
-
   // 4. CATALOGUE DES OUTILS mAI (vibe-tools.ts, filtré par réglages)
   const handleMAITools = async (c: any) => {
     try {
@@ -93,44 +72,5 @@ export function registerVibeMAISettingsRoutes(
     "get",
     ["/api/vibe/mai/tools", "/vibe/mai/tools", "/v1/mai/tools"],
     handleMAITools
-  );
-
-  // 5. MISE À JOUR DES OUTILS ACTIVÉS (Paramètres → Outils mAI)
-  const handleUpdateMAITools = async (c: any) => {
-    try {
-      const token = extractToken(c.req.raw);
-      if (!token) return c.json({ error: "Non authentifié." }, 401);
-      const payload = await verifyToken(token);
-      const userId = Number(payload.sub || (payload as any).id);
-      const body = await c.req.json().catch(() => ({}));
-      const ids = Array.isArray(body?.enabled_tool_ids)
-        ? Array.from(new Set(body.enabled_tool_ids.map(String)))
-        : [];
-      const validIds = new Set(
-        MAI_TOOLS_CATALOG.filter((t) => t.enabled).map((t) => t.id)
-      );
-      const filtered = ids.filter((id) => validIds.has(id));
-      const sql = getDb();
-      await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS mai_enabled_tools JSONB DEFAULT NULL`.catch(
-        () => {}
-      );
-      await sql`
-        INSERT INTO user_settings (user_id, mai_enabled_tools) VALUES (${userId}, ${JSON.stringify(filtered)}::jsonb)
-        ON CONFLICT (user_id) DO UPDATE SET mai_enabled_tools = ${JSON.stringify(filtered)}::jsonb, updated_at = NOW()
-      `;
-      invalidateUserToolsCache(userId);
-      return c.json({
-        count: filtered.length,
-        enabled_tool_ids: filtered,
-        success: true,
-      });
-    } catch {
-      return c.json({ error: "Erreur sauvegarde outils mAI." }, 500);
-    }
-  };
-  registerMulti(
-    "post",
-    ["/api/vibe/mai/tools", "/vibe/mai/tools", "/v1/mai/tools"],
-    handleUpdateMAITools
   );
 }

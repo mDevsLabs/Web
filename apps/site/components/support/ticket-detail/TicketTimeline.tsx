@@ -41,7 +41,7 @@ export function TicketTimeline({ messages, user, messagesEndRef }: TicketTimelin
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-sm font-bold text-slate-900">{isFromAdmin ? "mAI" : message.sender_name}</span>
-                      {isFromAdmin ? <span className="rounded-md bg-purple-600 px-2 py-0.5 text-[10px] font-black uppercase text-white">mAI • Support</span> : null}
+                      {isFromAdmin ? <span className="rounded-md bg-purple-600 px-2 py-0.5 text-[10px] font-black uppercase text-white">mAI • Assistance</span> : null}
                       {isOriginalPost ? <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">Demande initiale</span> : null}
                       {message.is_ai_generated ? <span className="flex items-center gap-1 rounded-full border border-amber-200 bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800"><Bot className="h-3 w-3" aria-hidden="true" /> Contenu créé par IA</span> : null}
                     </div>

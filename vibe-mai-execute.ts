@@ -1,3 +1,4 @@
+import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — mAI : RÉGÉNÉRATION & EXÉCUTION D'OUTILS
@@ -60,11 +61,14 @@ export function registerVibeMAIExecuteRoutes(
         userId,
         body?.conversation_id
       );
-      if (conv.invalid)
+      if (conv.invalid) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const conversationId =
         conv.id || (await getOrCreateConversation(sql, userId));
 
+      if (!conversationId)
+        return c.json({ error: "Conversation indisponible." }, 503);
       const lastUserRows = conversationId
         ? await sql`
             SELECT id, content, created_at FROM mai_messages
@@ -130,7 +134,7 @@ export function registerVibeMAIExecuteRoutes(
         ].filter(Boolean);
         for (const candidate of Array.from(new Set(modelsToTry))) {
           try {
-            const aiRes = await fetch(
+            const aiRes = await fetchOpenRouter(
               "https://openrouter.ai/api/v1/chat/completions",
               {
                 body: JSON.stringify({
@@ -257,8 +261,9 @@ export function registerVibeMAIExecuteRoutes(
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(sql, userId, conversation_id);
-      if (conv.invalid)
+      if (conv.invalid) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const conversationId =
         conv.id || (await getOrCreateConversation(sql, userId));
 
@@ -271,7 +276,7 @@ export function registerVibeMAIExecuteRoutes(
           status: "disabled",
         });
         let savedAssistant: any = null;
-        if (conversationId)
+        if (conversationId) {
           savedAssistant = await saveMAIMessage(
             sql,
             conversationId,
@@ -279,6 +284,7 @@ export function registerVibeMAIExecuteRoutes(
             reply,
             { toolCalls: [record] }
           );
+        }
         return c.json({
           assistant_message_id: savedAssistant?.id || null,
           conversation_id: conversationId || null,
@@ -406,8 +412,9 @@ export function registerVibeMAIExecuteRoutes(
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(sql, userId, conversation_id);
-      if (conv.invalid)
+      if (conv.invalid) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const conversationId =
         conv.id || (await getOrCreateConversation(sql, userId));
 

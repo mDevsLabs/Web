@@ -12,10 +12,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type UpgradeDialogProps = {
-  feature?: "skills" | "mcp" | "agents" | "plugins" | "wakies" | "generic";
+  // Aucun libellé « agents » ici : les bots sont ouverts à tous les forfaits et
+  // bornés par quota (`getTierAgentLimit`), ils ne relèvent donc plus d'un
+  // plan requis. Conserver ce texte aurait fait revivre une promesse fausse.
+  feature?: "skills" | "mcp" | "plugins" | "wakies" | "generic";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
@@ -24,11 +26,6 @@ const FEATURE_COPY: Record<
   NonNullable<UpgradeDialogProps["feature"]>,
   { description: string; title: string }
 > = {
-  agents: {
-    description:
-      "Créez des bots IA personnalisés avec instructions système, modèle, skills et connexions MCP. Réservé aux forfaits Plus, Pro et Max.",
-    title: "Bots IA — Plan requis",
-  },
   generic: {
     description:
       "Cette fonctionnalité avancée est réservée aux forfaits payants. Passez à un forfait supérieur pour continuer.",

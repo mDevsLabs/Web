@@ -1,6 +1,17 @@
 "use client";
 
-import { ChevronDownIcon, ChevronUpIcon, MonitorIcon, PauseIcon, PlayIcon, SmartphoneIcon, TabletIcon, TerminalIcon, TrashIcon, ZapIcon } from "@mdevs/icons";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  MonitorIcon,
+  PauseIcon,
+  PlayIcon,
+  SmartphoneIcon,
+  TabletIcon,
+  TerminalIcon,
+  TrashIcon,
+  ZapIcon,
+} from "@mdevs/icons";
 import {
   type CSSProperties,
   useEffect,

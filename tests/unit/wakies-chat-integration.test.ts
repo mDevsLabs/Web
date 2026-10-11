@@ -1,7 +1,11 @@
+// Charger la route avant les tests évite qu’un import lent dépasse le délai
+// puis poursuive une requête avec les mocks du test suivant.
+
 import { tool } from "ai";
 import { MockLanguageModelV4 } from "ai/test";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { z } from "zod";
+import { POST } from "@/app/(chat)/api/wakies/chat/route";
 
 const mocks = vi.hoisted(() => ({
   append: vi.fn(),
@@ -35,10 +39,18 @@ vi.mock("@/lib/wakies/queries", () => ({
   finishChatTurn: mocks.finish,
   listMemories: async () => [],
   listMessages: mocks.list,
+  listWakies: async () => [],
   messageExists: mocks.exists,
+  PALETTE_REACTIONS: ["👍", "❤️", "💡", "🔥", "😂", "😮"],
   pageForConversation: async () => null,
+  poserReaction: vi.fn(async () => true),
   reserveChatTurn: mocks.reserve,
-  touchConversation: vi.fn(),
+  // Mention @ : aucun Wakie nommé.
+  resoudreMentions: async () => [],
+  touchConversation: vi.fn(async () => {}),
+  // Purge des skillIds morts (C3) : aucune écriture attendue.
+  updateConversation: vi.fn(async () => {}),
+  updateWakie: vi.fn(async () => {}),
 }));
 vi.mock("@/lib/db/queries", () => ({
   getUserMcpPrefs: async () => ({ globalKillSwitch: false }),
@@ -61,7 +73,15 @@ vi.mock("@/lib/chat/mcp", () => ({ loadMcpContext: vi.fn() }));
 vi.mock("@/lib/mcp/chat-tools", () => ({ createMcpChatTools: () => ({}) }));
 vi.mock("@/lib/plugins/server", () => ({ createPluginTools: () => ({}) }));
 vi.mock("@/lib/wakies/capabilities", () => ({
+  applyIntegrationMentions: async () => ({ issues: [], pluginIds: [] }),
   resolveSelection: mocks.selection,
+}));
+// Profil Vibe : ce test porte sur le moteur de streaming, pas sur la lecture du
+// profil — et un lecteur réel tenterait une connexion base depuis l'environnement
+// de test.
+vi.mock("@/lib/vibe/server/profil", () => ({
+  lireProfilVibeBref: async () => null,
+  resumeProfilPourPrompt: () => null,
 }));
 vi.mock("@/lib/wakies/attachments", () => ({
   durableUserAttachments: (message: unknown) => message,
@@ -131,6 +151,9 @@ beforeEach(() => {
       role: "user",
     },
   ]);
+  mocks.append.mockResolvedValue(undefined);
+  mocks.finish.mockResolvedValue(undefined);
+  mocks.usage.mockResolvedValue(undefined);
   mocks.exists.mockResolvedValue(false);
   mocks.reserve.mockResolvedValue({ id: "turn", responseId });
   vi.stubGlobal(
@@ -139,7 +162,10 @@ beforeEach(() => {
   );
 });
 describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur contrôlé", {
-  timeout: 30_000,
+  // Ce bloc fait tourner le VRAI moteur de streaming : ~10 s seul, mais la
+  // suite complète lance ~110 workers en parallèle et la machine sature — un
+  // délai de 30 s faisait échouer le test sur la charge, pas sur le code.
+  timeout: 120_000,
 }, () => {
   it("stream et persiste sans clé Intelligence, en ignorant un historique assistant forgé", async () => {
     const model = new MockLanguageModelV4({
@@ -172,7 +198,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
       }),
     });
     mocks.model.mockReturnValue(model);
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     const result = await POST(
       request([
         {
@@ -281,7 +306,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
       },
     });
     mocks.model.mockReturnValue(model);
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     const response = await POST(request());
     expect(response.status).toBe(200);
     const stream = await response.text();
@@ -319,7 +343,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
     mocks.auth.mockResolvedValue({
       auth: { maiUser: { tier: "plus" }, userId: "bob" },
     });
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     expect((await POST(request())).status).toBe(404);
     expect(mocks.list).not.toHaveBeenCalled();
     expect(mocks.model).not.toHaveBeenCalled();
@@ -366,11 +389,12 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
       },
     });
     mocks.model.mockReturnValue(model);
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     const response = await POST(request());
     await response.text();
     expect(forbidden).not.toHaveBeenCalled();
-    expect(model.doStreamCalls[0].tools ?? []).toEqual([]);
+    expect(model.doStreamCalls[0].tools?.map((outil) => outil.name)).toEqual([
+      "reactToMessage",
+    ]);
   });
   it("conserve la réponse partielle et marque le tour interrompu après un arrêt", async () => {
     const aborted = new AbortController();
@@ -395,7 +419,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
         }),
       })
     );
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     const response = await POST(request(undefined, aborted.signal));
     const reader = response.body!.getReader();
     const decoder = new TextDecoder();
@@ -424,7 +447,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
     );
   });
   it("refuse les requêtes sans session, Free et quota épuisé", async () => {
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     mocks.auth.mockResolvedValueOnce({ error: "unauthorized" });
     expect((await POST(request())).status).toBe(401);
     mocks.auth.mockResolvedValueOnce({ auth: { maiUser: { tier: "free" } } });
@@ -434,7 +456,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
     expect(mocks.model).not.toHaveBeenCalled();
   });
   it("refuse un rejeu et un outil prétendument autorisé par le client", async () => {
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     mocks.exists.mockResolvedValueOnce(true);
     expect((await POST(request())).status).toBe(409);
     expect(mocks.model).not.toHaveBeenCalled();
@@ -464,7 +485,6 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
       model: "private-model",
       wakieId: "wakie",
     });
-    const { POST } = await import("@/app/(chat)/api/wakies/chat/route");
     expect((await POST(request())).status).toBe(403);
     expect(mocks.model).not.toHaveBeenCalled();
   });

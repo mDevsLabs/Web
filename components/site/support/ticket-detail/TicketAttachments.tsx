@@ -1,6 +1,10 @@
 "use client";
 
-import { ExternalLinkIcon as ExternalLink, FileTextIcon as FileText, PaperclipIcon as Paperclip } from "@mdevs/icons";
+import {
+  ExternalLinkIcon as ExternalLink,
+  FileTextIcon as FileText,
+  PaperclipIcon as Paperclip,
+} from "@mdevs/icons";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 
 export function TicketAttachments({

@@ -1,8 +1,14 @@
 "use client";
 
-import { ArrowRightIcon as ArrowRight, GithubIcon as Github, InstagramIcon as Instagram, YoutubeIcon as Youtube } from "@mdevs/icons";
+import {
+  ArrowRightIcon as ArrowRight,
+  GithubIcon as Github,
+  InstagramIcon as Instagram,
+  SparklesIcon as SiHuggingface,
+  SparklesIcon as SiOllama,
+  YoutubeIcon as Youtube,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
-import { SparklesIcon as SiHuggingface, SparklesIcon as SiOllama } from "@mdevs/icons";
 import Link from "@/components/site/router";
 
 export function CommunitySection() {

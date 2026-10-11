@@ -1,9 +1,9 @@
 "use client";
 
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { ArrowUpIcon } from "@mdevs/icons";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
-import { ArrowUpIcon } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -79,6 +79,7 @@ import { memoryLimitForTier } from "@/lib/auth/plan";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import { readToolIds } from "@/lib/plugins/tool-effect";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -233,7 +234,10 @@ function PureMultimodalInput({
     agents: Agent[];
     limit: number | null;
   }>(
-    isFree ? null : "/api/agents",
+    // Les bots sont ouverts à tous les forfaits (quota de 8 en Free) : le menu
+    // @ doit les proposer à un compte Free, contrairement aux commandes
+    // personnalisées, qui restent payantes ci-dessous.
+    "/api/agents",
     (url: string) => jsonObject<{ agents: Agent[]; limit: number | null }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
@@ -413,9 +417,11 @@ function PureMultimodalInput({
           `Compétence appliquée à la discussion : ${payload.skill.name}`
         );
       } else if (payload.type === "plugin") {
-        for (const pluginTool of payload.plugin.tools) {
-          if (!pendingTools.includes(pluginTool.id as any)) {
-            togglePendingTool(pluginTool.id as any);
+        // Seule la lecture est servie par le canal Chat : demander une écriture
+        // au serveur serait lui réclamer un outil qu'il n'instancie pas ici.
+        for (const pluginToolId of readToolIds(payload.plugin)) {
+          if (!pendingTools.includes(pluginToolId as any)) {
+            togglePendingTool(pluginToolId as any);
           }
         }
         toast.success(
@@ -651,7 +657,7 @@ function PureMultimodalInput({
   const submitForm = useCallback(() => {
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait sur https://mai-devs.vercel.app pour continuer !`
+        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Consultez les forfaits pour continuer.`
       );
       return;
     }

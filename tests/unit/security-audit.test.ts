@@ -96,9 +96,24 @@ describe("Sécurité — Isolation Proxy et contrôle d'accès", () => {
   });
 
   it("autorise les crons et agents externes sans cookie de session", () => {
+    // La liste des préfixes autonomes a quitté `proxy.ts` pour
+    // `lib/security/proxy-policy.ts`, module pur où cette frontière se teste sans
+    // runtime Next (voir `tests/unit/proxy-api-autonome.test.ts`, qui contrôle
+    // aussi les tentatives de contournement). Ce que ce test garantissait — les
+    // préfixes sont bien exemptés — est désormais vérifié là où la liste vit.
     const proxyContent = codeOnly("proxy.ts");
-    expect(proxyContent).toContain('pathname.startsWith("/api/cron/")');
-    expect(proxyContent).toContain('pathname.startsWith("/api/site/v1/")');
+    expect(proxyContent).toContain("estRouteApiAutonome");
+
+    const politique = codeOnly("lib/security/proxy-policy.ts");
+    for (const prefixe of [
+      '"/api/cron/',
+      '"/api/site/v1/',
+      '"/api/site/v1beta/',
+      '"/api/site/github/',
+      '"/api/skills/share/',
+    ]) {
+      expect(politique).toContain(prefixe);
+    }
   });
 });
 

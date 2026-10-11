@@ -179,7 +179,7 @@ export function CommandMenu({
                     </Command.Group>
 
                     <Command.Group
-                      heading="Support & Assistance"
+                      heading="Aide et assistance"
                       className="text-xs font-semibold text-slate-500 px-2 pt-4 pb-2"
                     >
                       <Command.Item
@@ -188,7 +188,7 @@ export function CommandMenu({
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                       >
                         <LifeBuoy className="w-4 h-4 text-purple-600" />
-                        <span>Centre de Support &amp; Assistance</span>
+                        <span>Centre d’assistance</span>
                       </Command.Item>
                       <Command.Item
                         value="support-ticket-new"
@@ -212,7 +212,7 @@ export function CommandMenu({
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
                       >
                         <BarChart3 className="w-4 h-4 text-amber-600" />
-                        <span>Statistiques &amp; Analyse du Support</span>
+                        <span>Statistiques et analyse de l’assistance</span>
                       </Command.Item>
                     </Command.Group>
 

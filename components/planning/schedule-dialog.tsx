@@ -1,7 +1,22 @@
 "use client";
 
-import { BlocksIcon, CalendarIcon, CheckCircle2Icon, CircleSlashIcon, ClockIcon, CloudIcon, Loader2Icon, MessagesSquareIcon, RepeatIcon, SparklesIcon, WandSparklesIcon, WrenchIcon, XCircleIcon, XIcon } from "@mdevs/icons";
-import { useEffect, useState } from "react";
+import {
+  BlocksIcon,
+  CalendarIcon,
+  CheckCircle2Icon,
+  CircleSlashIcon,
+  ClockIcon,
+  CloudIcon,
+  Loader2Icon,
+  MessagesSquareIcon,
+  RepeatIcon,
+  SparklesIcon,
+  WandSparklesIcon,
+  WrenchIcon,
+  XCircleIcon,
+  XIcon,
+} from "@mdevs/icons";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
@@ -21,6 +36,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import {
+  buildScheduleFromRecord,
+  computeUpcomingOccurrences,
+  formatInZone,
+  listIANATimezones,
+} from "@/lib/planning/recurrence";
 import {
   DEFAULT_SCHEDULE_TOOL_MODE,
   deriveScheduleToolMode,
@@ -64,6 +85,17 @@ export function ScheduleDialog({
   const [recurrence, setRecurrence] = useState<
     "none" | "daily" | "weekly" | "monthly"
   >("none");
+  // Récurrence calendaire (migration 0046) : fuseau IANA, heure/minute
+  // murales, jour du mois et politique des mois courts. L'aperçu affiche les
+  // dix prochaines exécutions, recalculées à chaque frappe (aucun aller-retour
+  // réseau : le même moteur que l'exécuteur sert prévision et réalité).
+  const [timezone, setTimezone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Paris"
+  );
+  const [dayOfMonth, setDayOfMonth] = useState<number>(1);
+  const [monthlyPolicy, setMonthlyPolicy] = useState<
+    "clamp" | "report" | "skip"
+  >("clamp");
   const [toolMode, setToolMode] = useState<ScheduleToolMode>(
     DEFAULT_SCHEDULE_TOOL_MODE
   );
@@ -89,6 +121,20 @@ export function ScheduleDialog({
       setCreateMode((initialData.createMode as any) || "new_chat");
       setSelectedChatId(initialData.chatId || "");
       setRecurrence((initialData.recurrence as any) || "none");
+      setTimezone(
+        (initialData as { timezone?: string | null }).timezone ||
+          Intl.DateTimeFormat().resolvedOptions().timeZone ||
+          "Europe/Paris"
+      );
+      setDayOfMonth(
+        (initialData as { dayOfMonth?: number | null }).dayOfMonth || 1
+      );
+      setMonthlyPolicy(
+        ((initialData as { monthlyPolicy?: string | null }).monthlyPolicy as
+          | "clamp"
+          | "report"
+          | "skip") || "clamp"
+      );
       setToolMode(
         deriveScheduleToolMode({
           enabledTools: initialData.enabledTools,
@@ -111,6 +157,11 @@ export function ScheduleDialog({
       setCreateMode("new_chat");
       setSelectedChatId("");
       setRecurrence("none");
+      setTimezone(
+        Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Paris"
+      );
+      setDayOfMonth(new Date(Date.now() + 60 * 60 * 1000).getDate());
+      setMonthlyPolicy("clamp");
       setToolMode(DEFAULT_SCHEDULE_TOOL_MODE);
       setCloudFileUrls([]);
       setCustomInstructions("");
@@ -127,6 +178,34 @@ export function ScheduleDialog({
       revalidateOnFocus: false,
     }
   );
+
+  // Aperçu des dix prochaines exécutions : le même moteur que l'exécuteur
+  // tourne côté client. Le point de départ est « maintenant » — l'aperçu
+  // montre ce qui se passera réellement à l'enregistrement.
+  const upcoming = useMemo(() => {
+    if (recurrence === "none") return [];
+    // L'heure murale de la première occurrence découle du datetime-local
+    // choisi : on le projette dans le fuseau de la tâche.
+    const chosen = scheduledAt ? new Date(scheduledAt) : new Date();
+    const schedule = buildScheduleFromRecord(
+      {
+        dayOfMonth: recurrence === "monthly" ? dayOfMonth : null,
+        hour: chosen.getHours(),
+        minute: chosen.getMinutes(),
+        monthlyPolicy,
+        recurrence,
+        timezone,
+      },
+      { scheduledAt: chosen }
+    );
+    try {
+      return computeUpcomingOccurrences(schedule, new Date(), 10);
+    } catch {
+      return [];
+    }
+  }, [recurrence, scheduledAt, timezone, dayOfMonth, monthlyPolicy]);
+
+  const availableTimezones = useMemo(() => listIANATimezones(), []);
 
   const setPresetTime = (minutesFromNow: number) => {
     const d = new Date(Date.now() + minutesFromNow * 60 * 1000);
@@ -169,6 +248,21 @@ export function ScheduleDialog({
         scheduledAt: scheduledDate.toISOString(),
         title: title.trim() || "Envoi planifié",
         toolMode,
+        // Champs calendaires envoyés pour toute récurrence : le serveur
+        // recalcule l'UTC depuis l'heure murale et le fuseau.
+        ...(recurrence === "none"
+          ? {}
+          : {
+              hour: scheduledDate.getHours(),
+              minute: scheduledDate.getMinutes(),
+              timezone,
+              ...(recurrence === "monthly"
+                ? {
+                    dayOfMonth,
+                    monthlyPolicy,
+                  }
+                : {}),
+            }),
         ...(createMode === "existing_chat" ? { chatId: selectedChatId } : {}),
       };
 
@@ -430,16 +524,136 @@ export function ScheduleDialog({
               ))}
             </div>
             {recurrence !== "none" && (
-              <p className="mt-1.5 text-[11px] text-muted-foreground">
-                Le message sera réexécuté automatiquement{" "}
-                {recurrence === "daily"
-                  ? "chaque jour"
-                  : recurrence === "weekly"
-                    ? "chaque semaine"
-                    : "chaque mois"}{" "}
-                à la même heure, et une notification vous informera à chaque
-                exécution.
-              </p>
+              <>
+                <p className="mt-1.5 text-[11px] text-muted-foreground">
+                  Le message sera réexécuté automatiquement{" "}
+                  {recurrence === "daily"
+                    ? "chaque jour"
+                    : recurrence === "weekly"
+                      ? "chaque semaine"
+                      : "chaque mois"}{" "}
+                  à la même heure, et une notification vous informera à chaque
+                  exécution.
+                </p>
+
+                {/* Fuseau IANA explicite + réglages mensuels */}
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <div>
+                    <Label className="text-xs font-semibold text-muted-foreground">
+                      Fuseau horaire
+                    </Label>
+                    <select
+                      className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                      onChange={(e) => setTimezone(e.target.value)}
+                      value={timezone}
+                    >
+                      {availableTimezones.map((tz) => (
+                        <option key={tz} value={tz}>
+                          {tz}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {recurrence === "monthly" && (
+                    <div>
+                      <Label className="text-xs font-semibold text-muted-foreground">
+                        Jour du mois (1–31)
+                      </Label>
+                      <Input
+                        className="mt-1"
+                        max={31}
+                        min={1}
+                        onChange={(e) => {
+                          const v = Number.parseInt(e.target.value, 10);
+                          if (!Number.isNaN(v)) {
+                            setDayOfMonth(Math.min(31, Math.max(1, v)));
+                          }
+                        }}
+                        type="number"
+                        value={dayOfMonth}
+                      />
+                    </div>
+                  )}
+                </div>
+                {recurrence === "monthly" && (
+                  <div className="mt-2">
+                    <Label className="text-xs font-semibold text-muted-foreground">
+                      Si le jour n'existe pas (ex. 31 en février)
+                    </Label>
+                    <div className="mt-1 grid grid-cols-3 gap-1.5">
+                      {(
+                        [
+                          {
+                            hint: "31 janv. → 28 févr.",
+                            id: "clamp",
+                            label: "Dernier jour",
+                          },
+                          {
+                            hint: "pas d'exécution en février",
+                            id: "skip",
+                            label: "Sauter",
+                          },
+                          {
+                            hint: "31 janv. → 3 mars",
+                            id: "report",
+                            label: "Reporter",
+                          },
+                        ] as const
+                      ).map((p) => (
+                        <button
+                          className={cn(
+                            "rounded-lg border px-2 py-1.5 text-center text-[11px] font-medium transition cursor-pointer",
+                            monthlyPolicy === p.id
+                              ? "border-primary bg-primary/10 text-primary"
+                              : "border-border/60 text-muted-foreground hover:bg-muted/50"
+                          )}
+                          key={p.id}
+                          onClick={() => setMonthlyPolicy(p.id)}
+                          type="button"
+                        >
+                          <div>{p.label}</div>
+                          <div className="text-[10px] opacity-75">{p.hint}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Aperçu des dix prochaines exécutions */}
+                {upcoming.length > 0 && (
+                  <div className="mt-3 rounded-xl border border-border/60 bg-muted/40 p-3">
+                    <div className="flex items-center gap-1.5">
+                      <ClockIcon className="size-3.5 text-muted-foreground" />
+                      <span className="text-xs font-semibold text-foreground">
+                        Dix prochaines exécutions
+                      </span>
+                    </div>
+                    <ol className="mt-2 space-y-1">
+                      {upcoming.map((at, i) => (
+                        <li
+                          className="flex items-baseline justify-between gap-2 text-[11px]"
+                          key={at.toISOString()}
+                        >
+                          <span className="w-6 shrink-0 text-muted-foreground">
+                            #{i + 1}
+                          </span>
+                          <span className="font-mono text-foreground">
+                            {formatInZone(timezone, at)}
+                          </span>
+                          <span className="font-mono text-[10px] text-muted-foreground">
+                            {at.toISOString().slice(0, 16).replace("T", " ")}{" "}
+                            UTC
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                    <p className="mt-1.5 text-[10px] text-muted-foreground">
+                      Heures affichées dans le fuseau {timezone}, avec la
+                      conversion UTC correspondante.
+                    </p>
+                  </div>
+                )}
+              </>
             )}
           </div>
 

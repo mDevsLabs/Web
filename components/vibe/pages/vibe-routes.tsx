@@ -32,13 +32,21 @@ import { ProfilePage } from "@/components/vibe/pages/ProfilePage";
 import { SettingsPage } from "@/components/vibe/pages/SettingsPage";
 import { StatsPage } from "@/components/vibe/pages/StatsPage";
 import { useNavigate, useParams } from "@/components/vibe/router";
-import type { Post } from "@/lib/vibe/types/vibe";
+import type { Post, VibeHydrationSeed } from "@/lib/vibe/types/vibe";
+
+/**
+ * Seed serveur optionnel, produit par `getVibeHydration` dans les pages
+ * générées. Le type miroir vient de `lib/vibe/types/vibe.ts` : le module
+ * d'hydratation lui-même est `server-only` et ne doit jamais être importé ici.
+ */
+type VibeRouteProps = { hydration?: VibeHydrationSeed<unknown> };
 
 /** Fil principal (/vibe) */
-export function VibeFeedRoute() {
+export function VibeFeedRoute({ hydration }: VibeRouteProps) {
   const navigate = useNavigate();
   return (
     <HomePage
+      hydration={hydration}
       onOpenProfile={(username: string) =>
         navigate(`/@${username.replace(/^@/, "")}`)
       }
@@ -48,10 +56,11 @@ export function VibeFeedRoute() {
 }
 
 /** Exploration (/vibe/explore, /vibe/explore/:tab) */
-export function VibeExploreRoute() {
+export function VibeExploreRoute({ hydration }: VibeRouteProps) {
   const navigate = useNavigate();
   return (
     <ExplorePage
+      hydration={hydration}
       onOpenProfile={(username: string) =>
         navigate(`/@${username.replace(/^@/, "")}`)
       }
@@ -61,11 +70,12 @@ export function VibeExploreRoute() {
 }
 
 /** Détail d'une publication (/vibe/post/:postId) */
-export function VibePostRoute() {
+export function VibePostRoute({ hydration }: VibeRouteProps) {
   const navigate = useNavigate();
   const { postId } = useParams<{ postId?: string }>();
   return (
     <PostDetailPage
+      hydration={hydration}
       onBack={() => navigate(-1)}
       onOpenProfile={(username: string) =>
         navigate(`/@${username.replace(/^@/, "")}`)
@@ -79,12 +89,13 @@ export function VibePostRoute() {
  * Profil — couvre `/vibe/u/:username`, `/vibe/profile/:username` et le profil
  * propre `/vibe/profile`. L'adaptateur normalise le `@` en tête de segment.
  */
-export function VibeProfileRoute() {
+export function VibeProfileRoute({ hydration }: VibeRouteProps) {
   const navigate = useNavigate();
   const { username } = useParams<{ username?: string }>();
   const clean = username ? username.replace(/^@/, "") : undefined;
   return (
     <ProfilePage
+      hydration={hydration}
       onBack={() => navigate(-1)}
       onOpenProfile={(u: string) => navigate(`/@${u.replace(/^@/, "")}`)}
       onOpenThread={(post: Post) => navigate(`/post/${post.id}`)}
@@ -93,33 +104,33 @@ export function VibeProfileRoute() {
   );
 }
 
-export function VibeNotificationsRoute() {
-  return <NotificationsPage />;
+export function VibeNotificationsRoute({ hydration }: VibeRouteProps) {
+  return <NotificationsPage hydration={hydration} />;
 }
 
-export function VibeMessagesRoute() {
-  return <MessagesPage />;
+export function VibeMessagesRoute({ hydration }: VibeRouteProps) {
+  return <MessagesPage hydration={hydration} />;
 }
 
 export function VibeMaiRoute() {
   return <MAIStudioPage />;
 }
 
-export function VibeSettingsRoute() {
-  return <SettingsPage />;
+export function VibeSettingsRoute({ hydration }: VibeRouteProps) {
+  return <SettingsPage hydration={hydration} />;
 }
 
 /** Livres — `/vibe/books` liste, `/vibe/books/:bookId` ouvre un livre. */
-export function VibeBooksRoute() {
-  return <BooksPage />;
+export function VibeBooksRoute({ hydration }: VibeRouteProps) {
+  return <BooksPage hydration={hydration} />;
 }
 
 /** Invitation à rejoindre un livre (`/vibe/books/join/:code`) */
-export function VibeBooksJoinRoute() {
-  return <BooksJoinPage />;
+export function VibeBooksJoinRoute({ hydration }: VibeRouteProps) {
+  return <BooksJoinPage hydration={hydration} />;
 }
 
 /** Statistiques créateur (`/vibe/stats`) */
-export function VibeStatsRoute() {
-  return <StatsPage />;
+export function VibeStatsRoute({ hydration }: VibeRouteProps) {
+  return <StatsPage hydration={hydration} />;
 }

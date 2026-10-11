@@ -1,7 +1,6 @@
 "use client";
 
 import { AlertCircleIcon, HomeIcon, RotateCcwIcon } from "@mdevs/icons";
-import Link from "next/link";
 import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,13 @@ export function ErrorView({
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Button
             className="flex items-center gap-2 rounded-xl"
-            onClick={() => reset()}
+            onClick={() => {
+              try {
+                reset();
+              } catch {
+                window.location.reload();
+              }
+            }}
             variant="default"
           >
             <RotateCcwIcon className="size-4" />
@@ -56,10 +61,10 @@ export function ErrorView({
             className="flex items-center gap-2 rounded-xl"
             variant="outline"
           >
-            <Link href="/">
+            <a href="/">
               <HomeIcon className="size-4" />
               Accueil
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

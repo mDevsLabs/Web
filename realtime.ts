@@ -209,8 +209,9 @@ export function registerRealtimeRoutes(app: Hono) {
               for (const n of notifs) {
                 if (seenNotificationIds.has(String(n.id))) continue;
                 seenNotificationIds.add(String(n.id));
-                if (!maxNotifAt || String(n.created_at) > maxNotifAt)
+                if (!maxNotifAt || String(n.created_at) > maxNotifAt) {
                   maxNotifAt = String(n.created_at);
+                }
                 await sse.writeSSE({
                   data: JSON.stringify(n),
                   event: "notification",

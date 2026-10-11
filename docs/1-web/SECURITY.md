@@ -1,6 +1,11 @@
-# 0.9.0 — Durcissement sécurité, corrections Agent et fiabilité des migrations
+# Durcissement sécurité, corrections Agent et fiabilité des migrations (0.9.0)
 
-> Ce document sert de **description de pull request** et de **notes de version**.
+> **Nature de ce document : une description de version, pas une référence de
+> sécurité vivante.** Il conserve le titre de la livraison 0.9.0 parce qu'il en
+> décrit les décisions. Pour l'état actuel des garde-fous, lire
+> [AGENTS.md](AGENTS.md) §3-§4 et `lib/security/`. Les vulnérabilités signalées
+> ici peuvent être corrigées depuis : ne pas traiter ce fichier comme un état.
+
 > Il accompagne la branche `canary` (commit examiné : `31bdd6402d32ea7ba5dcb8fe447cf318bde8f9fa`).
 
 ## Pourquoi

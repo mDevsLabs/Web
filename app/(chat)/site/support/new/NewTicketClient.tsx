@@ -1,12 +1,19 @@
 "use client";
 
-import { AlertTriangleIcon as AlertTriangle, ArrowLeftIcon as ArrowLeft, BugIcon as Bug, HelpCircleIcon as HelpCircle, Loader2Icon as Loader2, SparklesIcon as Sparkles } from "@mdevs/icons";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  AlertTriangleIcon as AlertTriangle,
+  ArrowLeftIcon as ArrowLeft,
+  BugIcon as Bug,
+  HelpCircleIcon as HelpCircle,
+  Loader2Icon as Loader2,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
+import { useSearchParams } from "next/navigation";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { createSupportTicket } from "@/app/(chat)/site/actions/support";
 import { useAuth } from "@/components/site/auth-provider";
-import Link from "@/components/site/router";
+import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 import {
   PRIORITY_OPTIONS,
   type SupportPriority,

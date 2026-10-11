@@ -7,7 +7,7 @@ Ce document définit le style retenu pour `@mdevs/ui` et `@mdevs/icons` 0.2.0. I
 | Sujet | Règle retenue |
 | --- | --- |
 | Framework | React 18.3/19 et TypeScript strict ; imports nommés et modules indépendants |
-| Surfaces | Liquid Glass discret : flou léger, reflet fin, contenu net |
+| Surfaces | Liquid Glass discret par défaut ; variante `chatgpt` noire et blanche, mate et sans flou |
 | Espacement | Interface aérée, unités régulières, adaptation au contenu |
 | Arrondis | 16–20 px pour les surfaces, 10–12 px pour les contrôles courants |
 | Typographie | Inter variable 4.1, fournie localement en WOFF2 et chargée par le CSS UI |
@@ -74,6 +74,8 @@ Les tokens d’état succès/erreur/attention et les ombres sont détaillés dan
 
 Utiliser `md-glass` pour une surface de verre et les tokens existants pour les contrôles. `glass={false}`, le fallback sans `backdrop-filter` et la préférence de transparence réduite rendent opaques les surfaces `md-glass` ; d’autres contrôles peuvent garder un fond légèrement translucide. Vérifier le fond réel de l’application.
 
+La prop `variant="chatgpt"` de `ThemeProvider` applique une palette achromatique, des surfaces mates, des contours discrets et des rayons plus sobres. Elle fonctionne avec `theme="light"`, `theme="dark"` et `theme="system"`, et se propage aux overlays portalisés. La variante Liquid Glass reste celle par défaut ; les couleurs sémantiques de succès, d’erreur et d’attention restent disponibles dans les deux styles.
+
 Les règles sont dans `@layer mdevs`. Les styles non stratifiés du projet peuvent les remplacer. Le système ne fournit pas un reset complet du document. Les nouvelles règles UI sont dans `src/extensions.css`, concaténées au CSS principal pendant le build ; l’utilisateur continue d’importer une seule feuille publique.
 
 ## 4. Espacement, responsivité et interactions
@@ -82,7 +84,7 @@ Employer une grille d’espacement de 4 px : 4, 8, 12, 16, 20, 24, 32. Un groupe
 
 Utiliser `min-width:0` dans les panneaux flex/grid, `minmax(0,1fr)` pour les colonnes et une région locale de défilement pour les tables/code. Ne pas masquer un débordement de page par `overflow-x:hidden` pour faire passer un test. Les layouts nouveaux s’empilent sous 640 px lorsque leur structure le demande ; les composants ne détectent pas un appareil par user-agent.
 
-Une action principale garde une cible pratique de 44 × 44 px. Certains contrôles compacts, comme les suppressions de filtre, utilisent 36 px dans cette version ; agrandir selon le contexte tactile. Une icône de 20 px n’est pas une zone de clic de 20 px. Ne pas réduire l’anneau de focus pour obtenir un rendu plus discret.
+Une action principale mesure 32 px de haut (28 px en compact, 34 px en élargi), soit l’échelle des boutons de barre latérale de l’hôte. Les champs, les interrupteurs et les affords natifs gardent 44 px. Une icône de 20 px n’est pas une zone de clic de 20 px : sur un support tactile, le style hôte doit élargir la cible. Ne pas réduire l’anneau de focus pour obtenir un rendu plus discret.
 
 Préférer les contrôles HTML natifs lorsque leur contrat suffit. La combobox spécialisée conserve le focus sur son input et utilise `aria-activedescendant` ; les listes simples et le master/detail utilisent leurs éléments natifs sans recevoir un rôle ARIA complexe arbitraire. Les dialogues/menu utilisent Radix et les tokens de `PortalScope`.
 

@@ -67,15 +67,15 @@ function namespaceDe(userId: string): string {
 }
 
 /**
- * Le pathname appartient-il à ce compte ?
+ * Le pathname est-il bien DANS l'espace de ce compte ?
  *
- * Refuse tout ce qui n'est pas `uploads/<userId>/…` : un nom d'espace
+ * Refuse tout ce qui n'est pas `uploads/<ownerUserId>/…` : un nom d'espace
  * différent, un chemin qui remonte (`..`), ou un pathname absent. C'est un
  * contrôle de forme et de préfixe, pas une preuve — la preuve reste la
  * signature du blob, qu'on ne peut pas forger sans la clé du compte.
  */
-export function pathnameDuCompte(
-  userId: string,
+function pathnameDansEspace(
+  ownerUserId: string,
   pathname: unknown
 ): string | null {
   if (typeof pathname !== "string" || pathname.length === 0) {
@@ -89,7 +89,7 @@ export function pathnameDuCompte(
   ) {
     return null;
   }
-  const prefixe = namespaceDe(userId);
+  const prefixe = namespaceDe(ownerUserId);
   if (!pathname.startsWith(prefixe)) {
     return null;
   }
@@ -98,6 +98,35 @@ export function pathnameDuCompte(
     return null;
   }
   return pathname;
+}
+
+/** Variante publique : le pathname doit être dans l'espace de CET utilisateur. */
+export function pathnameDuCompte(
+  userId: string,
+  pathname: unknown
+): string | null {
+  return pathnameDansEspace(userId, pathname);
+}
+
+/**
+ * Signe un blob appartenant à un AUTRE compte, pour une surface PUBLIQUE.
+ *
+ * Pourquoi une fonction distincte plutôt qu'un `userId` libre : un `userId`
+ * quelconque transformerait `signerPieceJointe` en oracle de signature — il
+ * suffirait de deviner un préfixe pour lire les blobs d'autrui. Ici le
+ * propriétaire est EXPLICITE, et l'appelant est tenu de l'obtenir d'une ligne
+ * en base (« ce Wakie m'appartient » OU « ce Wakie est public ») : le
+ * pathname ne vient jamais du client, il vient de `WakiesWakieImage` ou de
+ * `WakiesWakieProfile`, dont on re-signera les chemins stockés.
+ *
+ * Un fichier supprimé ou un stockage indisponible rend `null` : la fiche
+ * s'affiche sans l'image au lieu d'échouer entièrement.
+ */
+export async function signerBlobDuProprietaire(
+  ownerUserId: string,
+  pathname: unknown
+): Promise<string | null> {
+  return signerPathname(pathnameDansEspace(ownerUserId, pathname));
 }
 
 /**
@@ -109,7 +138,15 @@ export async function signerPieceJointe(
   userId: string,
   pathname: unknown
 ): Promise<string | null> {
-  const valide = pathnameDuCompte(userId, pathname);
+  return signerPathname(pathnameDuCompte(userId, pathname));
+}
+
+/**
+ * Signature d'un pathname DÉJÀ validé. Rend `null` — jamais une exception —
+ * si le blob n'est plus lisible : l'historique doit rester consultable et
+ * annoncer « fichier indisponible », pas échouer en bloc.
+ */
+async function signerPathname(valide: string | null): Promise<string | null> {
   if (!valide) {
     return null;
   }

@@ -21,11 +21,13 @@ import {
   incrementCustomCommandUsage,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
-  createPluginTools,
-  getToolIdsForPluginIds,
-} from "@/lib/plugins/server";
+  getPluginManifest,
+  getReadToolIdsForPluginIds,
+  isPluginOnlyToolId,
+} from "@/lib/plugins/catalog";
+import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
@@ -93,7 +95,7 @@ export async function POST(request: Request) {
           used: auth.maiUser.tokensUsed,
         },
         message:
-          "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
+          "Votre limite hebdomadaire de tokens est atteinte. Consultez la page des forfaits mAI pour continuer.",
       });
     }
 
@@ -158,7 +160,10 @@ export async function POST(request: Request) {
         ? [plugin.id]
         : [];
     });
-    const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
+    // Le canal Chat ne sert que la LECTURE : annoncer au modèle un outil
+    // d'écriture que `createPluginTools` n'instancie pas ici le ferait échouer
+    // sur un outil inexistant.
+    const installedPluginToolIds = getReadToolIdsForPluginIds(enabledPluginIds);
 
     // 5. Addendum de prompt (instructions, mémoire, outils, commande)
     const { effectiveAddendum, requestedTools, unavailableTools } =
@@ -236,12 +241,19 @@ export async function POST(request: Request) {
             chatModel: ctx.chatModel,
             dataStream,
             isGhostMode: ctx.isGhostMode,
+            // Un plugin connecté lit le compte de l'utilisateur : sans
+            // identité, `createPluginTools` l'écarte. En mode fantôme, aucun
+            // plugin n'est installé de toute façon.
+            secretResolver: ctx.isGhostMode
+              ? undefined
+              : createIntegrationSecretResolver({ userId: ctx.userId }),
             session: {
               token: ctx.sessionToken,
               user: ctx.isGhostMode
                 ? null
                 : { email: ctx.userEmail, id: ctx.userId },
             },
+            userId: ctx.isGhostMode ? undefined : ctx.userId,
           },
           enabledPluginIds
         );

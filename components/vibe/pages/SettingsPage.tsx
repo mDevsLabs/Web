@@ -5,7 +5,37 @@
  * ============================================================================
  */
 
-import { BanIcon as Ban, BellIcon as Bell, CheckIcon as Check, CpuIcon as Cpu, DownloadIcon as Download, EyeOffIcon as EyeOff, FileTextIcon as FileText, GlobeIcon as Globe, GraduationCapIcon as GraduationCap, LanguagesIcon as Languages, LaptopIcon as Laptop, Loader2Icon as Loader2, LockIcon as Lock, MoonIcon as Moon, PaletteIcon as Palette, RotateCcwIcon as RotateCcw, SearchIcon as Search, SettingsIcon as Settings, ShieldIcon as Shield, SlidersIcon as Sliders, SmartphoneIcon as Smartphone, SparklesIcon as Sparkles, SunIcon as Sun, TypeIcon as Type, UserPlusIcon as UserPlus, UsersIcon as Users, Volume2Icon as Volume2, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
+import {
+  BanIcon as Ban,
+  BellIcon as Bell,
+  CheckIcon as Check,
+  CpuIcon as Cpu,
+  DownloadIcon as Download,
+  EyeOffIcon as EyeOff,
+  FileTextIcon as FileText,
+  GlobeIcon as Globe,
+  GraduationCapIcon as GraduationCap,
+  LanguagesIcon as Languages,
+  LaptopIcon as Laptop,
+  Loader2Icon as Loader2,
+  LockIcon as Lock,
+  MoonIcon as Moon,
+  PaletteIcon as Palette,
+  RotateCcwIcon as RotateCcw,
+  SearchIcon as Search,
+  SettingsIcon as Settings,
+  ShieldIcon as Shield,
+  SlidersIcon as Sliders,
+  SmartphoneIcon as Smartphone,
+  SparklesIcon as Sparkles,
+  SunIcon as Sun,
+  TypeIcon as Type,
+  UserPlusIcon as UserPlus,
+  UsersIcon as Users,
+  Volume2Icon as Volume2,
+  WrenchIcon as Wrench,
+  XIcon as X,
+} from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { InstallAppHint } from "@/components/vibe/common/InstallAppHint";
@@ -34,7 +64,10 @@ import {
 } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
-import { startFullTour } from "@/lib/vibe/services/tutorialService";
+import {
+  clearTourFlags,
+  startFullTour,
+} from "@/lib/vibe/services/tutorialService";
 import { useNavigate } from "../router";
 
 /** Encart indiquant l'état réel de la permission notifications de l'appareil */
@@ -68,7 +101,9 @@ const DevicePermissionHint: React.FC = () => {
   );
 };
 
-export const SettingsPage: React.FC = () => {
+export const SettingsPage: React.FC<{
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}> = ({ hydration }) => {
   const { user, restartOnboarding } = useAuth();
   const navigate = useNavigate();
   const {
@@ -194,10 +229,19 @@ export const SettingsPage: React.FC = () => {
       ["plus", "pro", "max"].includes((user?.tier || "").toLowerCase().trim())
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: chargement unique au montage ; la graine et l'identité ne font que précéder le premier GET.
   useEffect(() => {
     const loadSettings = async () => {
       try {
-        const res = await ApiService.getSettings();
+        // Graine de réglages lue en base par la page serveur (mêmes défauts
+        // que `GET /v1/settings`) ; à défaut, l'API.
+        const d = hydration?.data as { settings?: Record<string, any> } | null;
+        const seedOk =
+          !!d?.settings &&
+          (hydration!.as === null
+            ? !user
+            : !user || String(hydration!.as) === String(user.id ?? ""));
+        const res = seedOk ? d! : await ApiService.getSettings();
         if (res.settings) {
           const s = res.settings;
           setFeedDefaultMode(s.feed_default_mode || "for_you");
@@ -433,6 +477,7 @@ export const SettingsPage: React.FC = () => {
   >([]);
   const [isLoadingAccounts, setIsLoadingAccounts] = useState(true);
 
+  // Listes sans rapport avec l'identité : un seul aller au montage suffit.
   useEffect(() => {
     Promise.all([
       ApiService.getBlockedUsers().catch(() => ({ blocked: [] })),
@@ -451,11 +496,31 @@ export const SettingsPage: React.FC = () => {
     ApiService.getSpeechVoices()
       .then((res) => setVoices(res.voices || []))
       .catch(() => {});
-    // Membres du Cercle Privé
+  }, []);
+
+  // Membres du Cercle Privé — graine serveur si présente ET du bon viewer.
+  // L'identité arrive parfois après le montage : avant que `user` soit connu,
+  // on ne peut ni valider la graine ni déclencher le repli. L'ancien effet la
+  // validait avec `!user` en secours, ce qui acceptait la graine d'un autre
+  // viewer le temps que la session se charge.
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    const seedData = hydration?.data as {
+      circle?: { members: any[] };
+      settings?: Record<string, any>;
+    } | null;
+    const seedViewerOk =
+      hydration?.as === null || String(hydration?.as) === String(user.id ?? "");
+    if (seedData?.circle?.members && seedViewerOk) {
+      setCircleMembers(seedData.circle.members);
+      return;
+    }
     ApiService.getCircle()
       .then((res) => setCircleMembers(res.members || []))
       .catch(() => {});
-  }, []);
+  }, [hydration?.as, hydration?.data, user]);
 
   // Recherche en direct d'utilisateurs pour le Cercle Privé
   useEffect(() => {
@@ -1943,7 +2008,12 @@ export const SettingsPage: React.FC = () => {
           <div className="flex flex-wrap gap-2">
             <button
               className="py-2.5 px-5 rounded-2xl bg-white text-black text-xs font-bold hover:bg-zinc-200 transition-all flex items-center gap-2"
-              onClick={() => startFullTour(navigate)}
+              onClick={() => {
+                // Rejeu manuel : on efface « vu » et « rejeté », sinon le tour
+                // se rejoue mais ne pourra plus se relancer seul ensuite.
+                clearTourFlags();
+                void startFullTour(navigate);
+              }}
               type="button"
             >
               <RotateCcw className="w-4 h-4" />
@@ -1995,9 +2065,7 @@ export const SettingsPage: React.FC = () => {
           </div>
           <a
             className="py-2.5 px-5 rounded-2xl bg-zinc-900 border border-zinc-700 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-zinc-800 transition-all flex items-center gap-2"
-            href="https://mai-devs.vercel.app"
-            rel="noopener noreferrer"
-            target="_blank"
+            href="/site/legal/terms"
           >
             <FileText className="w-4 h-4" />
             Conditions d'utilisation (CGU)

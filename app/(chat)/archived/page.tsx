@@ -1,6 +1,13 @@
 "use client";
 
-import { ArchiveRestoreIcon, CopyIcon, Edit2Icon, Loader2Icon, SearchIcon, TrashIcon } from "@mdevs/icons";
+import {
+  ArchiveRestoreIcon,
+  CopyIcon,
+  Edit2Icon,
+  Loader2Icon,
+  SearchIcon,
+  TrashIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";

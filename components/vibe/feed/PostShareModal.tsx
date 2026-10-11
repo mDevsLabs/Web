@@ -8,7 +8,20 @@
  * ============================================================================
  */
 
-import { CheckIcon as Check, CopyIcon as Copy, DownloadIcon as Download, Link2Icon as Link2, Loader2Icon as Loader2, MessageSquareIcon as MessageSquare, QrCodeIcon as QrCode, SearchIcon as Search, SendIcon as Send, Share2Icon as Share2, UserPlusIcon as UserPlus, XIcon as X } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  CopyIcon as Copy,
+  DownloadIcon as Download,
+  Link2Icon as Link2,
+  Loader2Icon as Loader2,
+  MessageSquareIcon as MessageSquare,
+  QrCodeIcon as QrCode,
+  SearchIcon as Search,
+  SendIcon as Send,
+  Share2Icon as Share2,
+  UserPlusIcon as UserPlus,
+  XIcon as X,
+} from "@mdevs/icons";
 import QRCode from "qrcode";
 import type React from "react";
 import { useEffect, useMemo, useState } from "react";

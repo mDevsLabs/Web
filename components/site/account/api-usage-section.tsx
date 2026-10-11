@@ -1,6 +1,9 @@
 "use client";
 
-import { KeyRoundIcon as KeyRound, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
+import {
+  KeyRoundIcon as KeyRound,
+  RefreshCwIcon as RefreshCw,
+} from "@mdevs/icons";
 import Link from "@/components/site/router";
 
 import { getTierQuotaLimit } from "@/lib/site/tiers";

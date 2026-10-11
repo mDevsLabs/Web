@@ -1,6 +1,18 @@
 "use client";
 
-import { ArrowUpDownIcon as ArrowUpDown, Building2Icon as Building2, CheckSquareIcon as CheckSquare, ChevronDownIcon as ChevronDown, FilterIcon as Filter, RatioIcon as Ratio, SearchIcon as Search, SlidersHorizontalIcon as SlidersHorizontal, SquareIcon as Square, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
+import {
+  ArrowUpDownIcon as ArrowUpDown,
+  Building2Icon as Building2,
+  CheckSquareIcon as CheckSquare,
+  ChevronDownIcon as ChevronDown,
+  FilterIcon as Filter,
+  RatioIcon as Ratio,
+  SearchIcon as Search,
+  SlidersHorizontalIcon as SlidersHorizontal,
+  SquareIcon as Square,
+  WrenchIcon as Wrench,
+  XIcon as X,
+} from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import type { ImageModelItem } from "./image-model-types";
 

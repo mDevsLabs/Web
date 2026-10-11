@@ -1,6 +1,7 @@
 "use client";
 
 import { KeyIcon as Key } from "@mdevs/icons";
+import Link from "@/components/site/router";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
 
 type RequestKeySelectorProps = {
@@ -21,12 +22,12 @@ export function RequestKeySelector({
           <Key className="w-3.5 h-3.5 text-purple-600" />
           Clé API d&apos;exécution :
         </span>
-        <a
+        <Link
           className="text-[10px] text-purple-700 font-bold hover:underline"
           href="/account/keys"
         >
           Mes Clés
-        </a>
+        </Link>
       </label>
 
       {keys.length > 0 ? (
@@ -45,9 +46,9 @@ export function RequestKeySelector({
         <p className="text-[11px] text-purple-700 italic">
           Aucune clé active. Les routes publiques restent disponibles ; les
           autres nécessitent une clé.{" "}
-          <a className="underline font-bold" href="/account/keys">
+          <Link className="underline font-bold" href="/account/keys">
             Gérer les clés
-          </a>
+          </Link>
           .
         </p>
       )}

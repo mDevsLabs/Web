@@ -1,6 +1,33 @@
 "use client";
 
-import { ArchiveIcon, ArrowRightIcon, CalendarClockIcon, CheckIcon, ChevronDownIcon, Code2Icon, FolderKanbanIcon, GlobeIcon, ImageIcon, LibraryIcon, LockIcon, MessageCircleIcon, MoreHorizontalIcon, PanelLeftIcon, PenSquareIcon, PlusIcon, PuzzleIcon, SearchIcon, SettingsIcon, SlidersHorizontalIcon, SparkleIcon, SparklesIcon, TerminalIcon, TrashIcon, UsersIcon, Volume2Icon } from "@mdevs/icons";
+import {
+  ArchiveIcon,
+  ArrowRightIcon,
+  CalendarClockIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  Code2Icon,
+  FolderKanbanIcon,
+  GlobeIcon,
+  ImageIcon,
+  LibraryIcon,
+  LockIcon,
+  MessageCircleIcon,
+  MoreHorizontalIcon,
+  PanelLeftIcon,
+  PenSquareIcon,
+  PlusIcon,
+  PuzzleIcon,
+  SearchIcon,
+  SettingsIcon,
+  SlidersHorizontalIcon,
+  SparkleIcon,
+  SparklesIcon,
+  TerminalIcon,
+  TrashIcon,
+  UsersIcon,
+  Volume2Icon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -354,7 +381,7 @@ export function AppSidebar({
   const pathname = usePathname();
   const { setOpenMobile, toggleSidebar } = useSidebar();
   const [upgradeFeature, setUpgradeFeature] = useState<
-    "skills" | "mcp" | "agents" | "wakies" | null
+    "skills" | "mcp" | "wakies" | null
   >(null);
 
   const { isDesktop } = useIsDesktopApp();
@@ -828,8 +855,8 @@ export function AppSidebar({
                 </SidebarMenuItem>
 
                 {/* 2. Wakies : l'espace Wakies (agents coworkers persistants,
-                    espaces de pages, tâches planifiées). Réservé aux forfaits payants
-                    (Plus, Pro, Max), bloqué avec cadenas pour Free comme les Bots. */}
+                    espaces de pages, tâches planifiées). Réservé aux forfaits
+                    payants (Plus, Pro, Max), bloqué avec cadenas pour Free. */}
                 <SidebarMenuItem>
                   <LockedSidebarNavItem
                     closeMobile={handleNavClick}
@@ -887,18 +914,22 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 2. Bots — réservés aux forfaits payants — avant
-                    Applications (ordre produit validé). La clé de montée en
-                    niveau reste « agents » : elle est technique, pas affichée. */}
+                {/* 2. Bots : ouverts à tous les forfaits, bornés par quota
+                    (8 en Free, `getTierAgentLimit`). L'entrée n'est donc plus
+                    verrouillée : ce qui limite un Free est un nombre de bots,
+                    pas un cadenas. La clé de montée en niveau « agents » reste
+                    technique et n'est plus déclenchée ici. */}
                 <SidebarMenuItem>
-                  <LockedSidebarNavItem
-                    closeMobile={handleNavClick}
-                    href="/agents"
-                    icon={<BotGlyph className="size-4" />}
-                    label="Bots"
-                    onLockedClick={() => setUpgradeFeature("agents")}
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Bots IA"
-                  />
+                  >
+                    <Link href="/agents" onClick={handleNavClick}>
+                      <BotGlyph className="size-4" />
+                      <span>Bots</span>
+                    </Link>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
 
                 {/* 3. Applications : Plugins, MCP & Skills sur une page unifiée */}

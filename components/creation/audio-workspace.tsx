@@ -1,6 +1,25 @@
 "use client";
 
-import { AlertCircleIcon, CheckIcon, CopyIcon, DownloadIcon, HeadphonesIcon, LayersIcon, Loader2Icon, MusicIcon, PencilIcon, PinIcon, PinOffIcon, RefreshCwIcon, SlidersHorizontalIcon, SparklesIcon, Trash2Icon, Volume2Icon, Wand2Icon, XIcon } from "@mdevs/icons";
+import {
+  AlertCircleIcon,
+  CheckIcon,
+  CopyIcon,
+  DownloadIcon,
+  HeadphonesIcon,
+  LayersIcon,
+  Loader2Icon,
+  MusicIcon,
+  PencilIcon,
+  PinIcon,
+  PinOffIcon,
+  RefreshCwIcon,
+  SlidersHorizontalIcon,
+  SparklesIcon,
+  Trash2Icon,
+  Volume2Icon,
+  Wand2Icon,
+  XIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -10,7 +29,7 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { VoiceOptionSelector } from "@/components/settings/option-selectors";
 import { useAudioUsage } from "@/hooks/use-settings";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL } from "@/lib/constants";
 import { cn, formatAudioModelName } from "@/lib/utils";
 
 interface SpeechModel {
@@ -423,8 +442,7 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
           {isQuotaExhausted && (
             <Link
               className="inline-flex items-center gap-1.5 rounded-xl bg-info px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-95"
-              href={MAI_UPGRADE_URL}
-              target="_blank"
+              href={APP_PRICING_URL}
             >
               <SparklesIcon className="size-3.5" />
               <span>Débloquer plus</span>
@@ -477,7 +495,7 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
                 <div className="flex items-center justify-between mb-3">
                   <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                     <HeadphonesIcon className="size-3.5 text-info" />
-                    <span>Modèle Audio & Speech</span>
+                    <span>Modèle audio et de synthèse vocale</span>
                   </label>
                   {selectedModel && (
                     <span className="text-[11px] text-muted-foreground font-mono truncate max-w-[180px]">
@@ -657,8 +675,7 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
                       Quota de tokens Speech atteint.{" "}
                       <Link
                         className="underline font-semibold"
-                        href={MAI_UPGRADE_URL}
-                        target="_blank"
+                        href={APP_PRICING_URL}
                       >
                         Passez à un forfait supérieur
                       </Link>

@@ -1,9 +1,9 @@
 "use client";
 
 import { Loader2Icon as Loader2 } from "@mdevs/icons";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useAuth } from "@/components/site/auth-provider";
+import { useSiteRouter as useRouter } from "@/components/site/router";
 import RequestsClient from "./RequestsClient";
 
 export default function ApiRequestsPage() {

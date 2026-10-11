@@ -1,3 +1,4 @@
+import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — mAI : CHAT (vibe-mai-chat.ts)
@@ -61,7 +62,7 @@ export async function generateMAICommentAnswer(
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 20_000);
         try {
-          const aiRes = await fetch(
+          const aiRes = await fetchOpenRouter(
             "https://openrouter.ai/api/v1/chat/completions",
             {
               body: JSON.stringify({
@@ -151,8 +152,9 @@ export function registerVibeMAIChatRoutes(
         userId,
         conversation_id
       );
-      if (requestedConv.invalid)
+      if (requestedConv.invalid) {
         return c.json({ error: "Conversation introuvable." }, 404);
+      }
       const conversationId =
         requestedConv.id || (await getOrCreateConversation(sql, userId));
       let savedUser: any = null;
@@ -169,12 +171,13 @@ export function registerVibeMAIChatRoutes(
             SELECT COUNT(*) AS n FROM mai_messages
             WHERE conversation_id = ${conversationId}::uuid AND sender_role = 'user'
           `;
-          if (Number(cnt[0]?.n || 0) === 1)
+          if (Number(cnt[0]?.n || 0) === 1) {
             await maybeAutoTitleConversation(
               sql,
               conversationId,
               String(message)
             );
+          }
         } catch {}
       }
       // Historique récent (20 derniers échanges, sans le message courant)
@@ -317,7 +320,7 @@ export function registerVibeMAIChatRoutes(
           status: "disabled",
         });
         let savedAssistant: any = null;
-        if (conversationId)
+        if (conversationId) {
           savedAssistant = await saveMAIMessage(
             sql,
             conversationId,
@@ -325,6 +328,7 @@ export function registerVibeMAIChatRoutes(
             reply,
             { toolCalls: [record] }
           );
+        }
         return c.json({
           assistant_message_id: savedAssistant?.id || null,
           conversation_id: conversationId || null,
@@ -350,7 +354,7 @@ export function registerVibeMAIChatRoutes(
             status: "pending_approval",
           });
           let savedAssistant: any = null;
-          if (conversationId)
+          if (conversationId) {
             savedAssistant = await saveMAIMessage(
               sql,
               conversationId,
@@ -358,6 +362,7 @@ export function registerVibeMAIChatRoutes(
               reply,
               { toolCalls: [record] }
             );
+          }
           return c.json({
             assistant_message_id: savedAssistant?.id || null,
             conversation_id: conversationId || null,
@@ -401,8 +406,9 @@ export function registerVibeMAIChatRoutes(
             m === "default" ||
             m === "mai-1.5-light" ||
             m === "openrouter/free"
-          )
+          ) {
             return "poolside/laguna-xs-2.1:free";
+          }
           if (m === "mai-1.5-apex") return "openai/gpt-4o";
           return m;
         };
@@ -415,13 +421,16 @@ export function registerVibeMAIChatRoutes(
         }
         const modelsToTry = [primaryModel];
         if (hasImages) {
-          if (!modelsToTry.includes("google/gemini-2.5-flash"))
+          if (!modelsToTry.includes("google/gemini-2.5-flash")) {
             modelsToTry.push("google/gemini-2.5-flash");
+          }
         } else {
-          if (!modelsToTry.includes("poolside/laguna-xs-2.1:free"))
+          if (!modelsToTry.includes("poolside/laguna-xs-2.1:free")) {
             modelsToTry.push("poolside/laguna-xs-2.1:free");
-          if (!modelsToTry.includes("nvidia/nemotron-3.5-lightning:free"))
+          }
+          if (!modelsToTry.includes("nvidia/nemotron-3.5-lightning:free")) {
             modelsToTry.push("nvidia/nemotron-3.5-lightning:free");
+          }
         }
 
         const userText = `${message.trim()}${postContextBlock}${personalContextBlock}`;
@@ -441,7 +450,7 @@ export function registerVibeMAIChatRoutes(
         if (openRouterApiKey) {
           for (const candidate of modelsToTry) {
             try {
-              const aiRes = await fetch(
+              const aiRes = await fetchOpenRouter(
                 "https://openrouter.ai/api/v1/chat/completions",
                 {
                   body: JSON.stringify({

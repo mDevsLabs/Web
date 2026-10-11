@@ -1,7 +1,11 @@
 "use client";
 
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, Loader2Icon as Loader2, RefreshCwIcon as RefreshCw } from "@mdevs/icons";
-import { useRouter } from "next/navigation";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  Loader2Icon as Loader2,
+  RefreshCwIcon as RefreshCw,
+} from "@mdevs/icons";
 import {
   type FormEvent,
   useCallback,
@@ -26,7 +30,7 @@ import {
   type SupportTicketStatus,
 } from "@/app/(chat)/site/actions/support-utils";
 import { useAuth } from "@/components/site/auth-provider";
-import Link from "@/components/site/router";
+import Link, { useSiteRouter as useRouter } from "@/components/site/router";
 import { TicketDetailHeader } from "@/components/site/support/ticket-detail/TicketDetailHeader";
 import { TicketReplyComposer } from "@/components/site/support/ticket-detail/TicketReplyComposer";
 import { TicketTimeline } from "@/components/site/support/ticket-detail/TicketTimeline";

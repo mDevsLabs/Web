@@ -1,6 +1,15 @@
 "use client";
 
-import { ActivityIcon as Activity, ChevronDownIcon as ChevronDown, CloudIcon as Cloud, GaugeIcon as Gauge, ImageIcon, LogOutIcon as LogOut, UserRoundIcon as UserRound, Volume2Icon as Volume2 } from "@mdevs/icons";
+import {
+  ActivityIcon as Activity,
+  ChevronDownIcon as ChevronDown,
+  CloudIcon as Cloud,
+  GaugeIcon as Gauge,
+  ImageIcon,
+  LogOutIcon as LogOut,
+  UserRoundIcon as UserRound,
+  Volume2Icon as Volume2,
+} from "@mdevs/icons";
 import toast from "react-hot-toast";
 import { handleAccountAnchorClick } from "@/components/site/navbar/account-anchor";
 import { StorageMeter } from "@/components/site/navbar/storage-meter";

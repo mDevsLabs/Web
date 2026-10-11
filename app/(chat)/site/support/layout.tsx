@@ -1,11 +1,16 @@
-import { BarChart3Icon as BarChart3, LifeBuoyIcon as LifeBuoy, MessageSquareIcon as MessageSquare, PlusCircleIcon as PlusCircle } from "@mdevs/icons";
+import {
+  BarChart3Icon as BarChart3,
+  LifeBuoyIcon as LifeBuoy,
+  MessageSquareIcon as MessageSquare,
+  PlusCircleIcon as PlusCircle,
+} from "@mdevs/icons";
 import type { Metadata } from "next";
 import Link from "@/components/site/router";
 
 export const metadata: Metadata = {
   description:
     "Espace officiel d'assistance technique, signalement d'anomalies et suivi des tickets pour l'écosystème mAI et mDevsLabs.",
-  title: "Centre de Support & Assistance | mAI",
+  title: "Centre d’assistance | mAI",
 };
 
 export default function SupportLayout({

@@ -45,8 +45,9 @@ export function registerDMGroupRoutes(
             )
           ).slice(0, 49)
         : [];
-      if (memberIds.length === 0)
+      if (memberIds.length === 0) {
         return c.json({ error: "Au moins un membre est requis." }, 400);
+      }
 
       const sql = getDb();
       await ensureDMTables().catch(() => {});
@@ -60,7 +61,9 @@ export function registerDMGroupRoutes(
       for (const mid of allMembers) {
         await sql`
           INSERT INTO dm_group_members (conversation_id, user_id, role, added_by)
-          VALUES (${conversationId}::uuid, ${mid}, ${mid === userId ? "admin" : "member"}, ${userId})
+          VALUES (${conversationId}::uuid, ${mid}, ${
+            mid === userId ? "admin" : "member"
+          }, ${userId})
           ON CONFLICT (conversation_id, user_id) DO NOTHING
         `;
         if (mid !== userId) {
@@ -110,8 +113,9 @@ export function registerDMGroupRoutes(
             new Set(member_ids.map((x: any) => Number(x)).filter(Boolean))
           ).slice(0, 49)
         : [];
-      if (memberIds.length === 0)
+      if (memberIds.length === 0) {
         return c.json({ error: "Aucun membre à ajouter." }, 400);
+      }
 
       const sql = getDb();
       await ensureDMTables().catch(() => {});
@@ -119,13 +123,14 @@ export function registerDMGroupRoutes(
         await sql`SELECT is_group, group_name, created_by FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1`;
       const conv = convRows[0];
       if (!conv?.is_group) return c.json({ error: "Groupe introuvable." }, 404);
-      if (Number(conv.created_by) !== userId)
+      if (Number(conv.created_by) !== userId) {
         return c.json(
           {
             error: "Seul l'administrateur du groupe peut ajouter des membres.",
           },
           403
         );
+      }
 
       const groupName = String(conv.group_name || "Groupe");
       let added = 0;
@@ -181,20 +186,23 @@ export function registerDMGroupRoutes(
       await ensureDMTables().catch(() => {});
       const convRows =
         await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1`;
-      if (convRows.length === 0)
+      if (convRows.length === 0) {
         return c.json({ error: "Groupe introuvable." }, 404);
+      }
       const isAdmin = Number(convRows[0].created_by) === userId;
       // Soit l'admin retire quelqu'un, soit chacun se retire lui-même
-      if (!isAdmin && targetId !== userId)
+      if (!isAdmin && targetId !== userId) {
         return c.json(
           { error: "Seul l'administrateur peut retirer un membre." },
           403
         );
-      if (targetId === Number(convRows[0].created_by))
+      }
+      if (targetId === Number(convRows[0].created_by)) {
         return c.json(
           { error: "L'administrateur ne peut pas quitter son propre groupe." },
           400
         );
+      }
 
       await sql`DELETE FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${targetId}`;
       try {
@@ -236,8 +244,9 @@ export function registerDMGroupRoutes(
         WHERE dm.id = ${groupId}::uuid
         LIMIT 1
       `;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Groupe introuvable." }, 404);
+      }
       const members = await sql`
         SELECT gm.user_id, gm.role, gm.joined_at, u.username,
                pr.display_name, pr.avatar_url
@@ -280,8 +289,9 @@ export function registerDMGroupRoutes(
       const sql = getDb();
       await ensureDMTables().catch(() => {});
       const access = await assertMessageAccess(sql, userId, messageId);
-      if (!access.ok)
+      if (!access.ok) {
         return c.json({ error: access.error }, access.code as any);
+      }
       await sql`
         INSERT INTO dm_hidden_messages (user_id, message_id)
         VALUES (${userId}, ${messageId}::uuid)
@@ -326,13 +336,15 @@ export function registerDMGroupRoutes(
       const cleanText = String(text || "")
         .trim()
         .slice(0, 5000);
-      if (!cleanLang || !cleanText)
+      if (!cleanLang || !cleanText) {
         return c.json({ error: "Langue et texte requis." }, 400);
+      }
       const sql = getDb();
       await ensureDMTables().catch(() => {});
       const access = await assertMessageAccess(sql, userId, messageId);
-      if (!access.ok)
+      if (!access.ok) {
         return c.json({ error: access.error }, access.code as any);
+      }
 
       const rows =
         await sql`SELECT translations FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
@@ -356,7 +368,9 @@ export function registerDMGroupRoutes(
           .slice(0, keys.length - 3)
           .forEach((k) => delete current[k]);
       }
-      await sql`UPDATE direct_messages SET translations = ${JSON.stringify(current)}::jsonb WHERE id = ${messageId}::uuid`;
+      await sql`UPDATE direct_messages SET translations = ${JSON.stringify(
+        current
+      )}::jsonb WHERE id = ${messageId}::uuid`;
       return c.json({ success: true, translations: current });
     } catch (err: any) {
       console.error("[vibe-dms] Save translation error:", err);
@@ -387,8 +401,9 @@ export function registerDMGroupRoutes(
       await ensureDMTables().catch(() => {});
       const convRows =
         await sql`SELECT created_by, group_name, group_avatar_url FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
-      if (convRows.length === 0)
+      if (convRows.length === 0) {
         return c.json({ error: "Groupe introuvable." }, 404);
+      }
       if (Number(convRows[0].created_by) !== userId) {
         return c.json(
           { error: "Seul l'administrateur du groupe peut le modifier." },
@@ -398,8 +413,9 @@ export function registerDMGroupRoutes(
 
       if (name !== undefined) {
         const groupName = String(name).trim().slice(0, 100);
-        if (!groupName)
+        if (!groupName) {
           return c.json({ error: "Le nom du groupe est requis." }, 400);
+        }
         await sql`UPDATE dm_conversations SET group_name = ${groupName} WHERE id = ${groupId}::uuid`;
       }
       if (avatar_url !== undefined) {
@@ -448,8 +464,9 @@ export function registerDMGroupRoutes(
       await ensureDMTables().catch(() => {});
       const convRows =
         await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
-      if (convRows.length === 0)
+      if (convRows.length === 0) {
         return c.json({ error: "Groupe introuvable." }, 404);
+      }
       if (Number(convRows[0].created_by) !== userId) {
         return c.json(
           { error: "Seul l'administrateur du groupe peut le supprimer." },
@@ -494,15 +511,17 @@ export function registerDMGroupRoutes(
       const userId = Number(payload.sub || (payload as any).id);
       const groupId = c.req.param("groupId");
       const targetId = Number(c.req.param("userId"));
-      if (!targetId || targetId === userId)
+      if (!targetId || targetId === userId) {
         return c.json({ error: "Cible invalide." }, 400);
+      }
 
       const sql = getDb();
       await ensureDMTables().catch(() => {});
       const convRows =
         await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
-      if (convRows.length === 0)
+      if (convRows.length === 0) {
         return c.json({ error: "Groupe introuvable." }, 404);
+      }
       if (Number(convRows[0].created_by) !== userId) {
         return c.json(
           { error: "Seul l'administrateur peut transférer son rôle." },
@@ -512,11 +531,12 @@ export function registerDMGroupRoutes(
       const targetMember = await sql`
         SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${targetId} LIMIT 1
       `;
-      if (targetMember.length === 0)
+      if (targetMember.length === 0) {
         return c.json(
           { error: "Ce membre ne fait pas partie du groupe." },
           404
         );
+      }
 
       await sql`UPDATE dm_group_members SET role = 'member' WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId}`;
       await sql`UPDATE dm_group_members SET role = 'admin' WHERE conversation_id = ${groupId}::uuid AND user_id = ${targetId}`;

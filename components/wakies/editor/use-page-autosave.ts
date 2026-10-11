@@ -7,12 +7,7 @@ import type { Page } from "@/lib/wakies/pages";
 export function usePageAutosave(page: Page, onSaved: (page: Page) => void) {
   const [controller] = useState(() => {
     const instance = new PageAutosave(async (id, patch, signal) => {
-      const result = await api<Page>(
-        `/spaces/${page.spaceId}/pages/${id}`,
-        "PATCH",
-        patch,
-        signal
-      );
+      const result = await api<Page>(`/pages/${id}`, "PATCH", patch, signal);
       onSaved(result);
       return result;
     });

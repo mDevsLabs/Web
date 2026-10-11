@@ -1,66 +1,17 @@
-import { BotAvatar } from "@/components/agents/bot-avatar";
-import { PageBackButton } from "@/components/chat/page-back-button";
-import { isPaidTier } from "@/lib/auth/plan";
-import { getMaiUser } from "@/lib/auth/session";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 import AgentsClient from "./agents-client";
 
 // La route reste `/agents` : elle fait partie des signets et des liens
 // enregistrés. Seule la fonctionnalité s'appelle « Bots » dans l'interface.
+//
+// Aucun contrôle de forfait ici : les bots sont ouverts à tous les forfaits et
+// bornés par quota (`getTierAgentLimit`, appliqué par POST /api/agents). La page
+// n'a donc rien à décider — `proxy.ts` écarte les visiteurs sans session, et le
+// client affiche la limite que l'API lui renvoie.
 
 export const metadata = {
   title: "Bots — Instructions, modèle et outils | mAI",
 };
 
 export default async function AgentsPage() {
-  const user = await getMaiUser();
-  const eligible = isPaidTier(user?.tier);
-
-  if (!eligible) {
-    return (
-      <div className="flex flex-col min-h-screen bg-background text-foreground">
-        <header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-3">
-            <PageBackButton fallbackHref="/" label="Retour au chat" />
-            <div className="flex items-center gap-2.5">
-              <BotAvatar size={36} />
-              <div>
-                <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                  Bots IA
-                </h1>
-                <p className="text-xs text-muted-foreground">
-                  Forfait Plus, Pro ou Max requis
-                </p>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 max-w-2xl mx-auto text-center gap-6">
-          <BotAvatar size={64} />
-          <div>
-            <h2 className="text-2xl font-bold mb-2">
-              Les bots sont réservés aux forfaits payants
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Créez des bots personnalisés avec instructions système (5000c),
-              icône, modèle par défaut, skills, MCP et fichiers cloud : 15 bots
-              avec Plus, 25 avec Pro, illimité avec Max. Passez à un forfait
-              Plus, Pro ou Max pour y accéder.
-            </p>
-          </div>
-          <a
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
-            href={MAI_UPGRADE_URL}
-            rel="noopener"
-            target="_blank"
-          >
-            Mettre à niveau mon forfait
-          </a>
-        </main>
-      </div>
-    );
-  }
-
   return <AgentsClient />;
 }

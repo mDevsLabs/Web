@@ -156,14 +156,16 @@ export function registerVibeCircleRoutes(
       await ensureCircleTable();
       const target =
         await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
-      if (target.length === 0)
+      if (target.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
       const memberId = Number(target[0].id);
-      if (memberId === userId)
+      if (memberId === userId) {
         return c.json(
           { error: "Vous ne pouvez pas vous ajouter vous-même." },
           400
         );
+      }
 
       const circle = await getOrCreateUserCircle(userId);
       await sql`
@@ -205,11 +207,14 @@ export function registerVibeCircleRoutes(
       await ensureCircleTable();
       const target =
         await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
-      if (target.length === 0)
+      if (target.length === 0) {
         return c.json({ error: "Utilisateur introuvable." }, 404);
+      }
 
       const circle = await getOrCreateUserCircle(userId);
-      await sql`DELETE FROM circle_members WHERE user_id = ${userId} AND member_user_id = ${Number(target[0].id)}`;
+      await sql`DELETE FROM circle_members WHERE user_id = ${userId} AND member_user_id = ${Number(
+        target[0].id
+      )}`;
       await sql`UPDATE user_circles SET updated_at = NOW() WHERE id = ${circle.id}`;
       return c.json({ in_circle: false, success: true });
     } catch (err: any) {

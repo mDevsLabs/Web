@@ -56,7 +56,7 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
       const document = await getDocumentById({ id });
 
       if (!document) {
-        return { error: "Document not found" };
+        return { error: "Document introuvable" };
       }
 
       const sessionUserId =

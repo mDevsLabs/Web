@@ -1207,7 +1207,7 @@ function initDb() {
 
   if (!connectionString) {
     throw new Error(
-      "DATABASE_URL or POSTGRES_URL is missing in environment variables. Please check your .env configuration."
+      "La variable DATABASE_URL ou POSTGRES_URL est absente. Vérifiez la configuration de l'environnement."
     );
   }
 
@@ -2240,7 +2240,7 @@ export async function updateChatProjectById({
         userId,
       });
       if (!access) {
-        throw new ChatbotError("not_found:database", "Project not found");
+        throw new ChatbotError("not_found:database", "Projet introuvable");
       }
     }
     const [updated] = await db
@@ -2390,7 +2390,7 @@ export async function bulkUpdateChats({
         userId,
       });
       if (!access) {
-        throw new ChatbotError("not_found:database", "Project not found");
+        throw new ChatbotError("not_found:database", "Projet introuvable");
       }
     }
     await db
@@ -2643,7 +2643,7 @@ export async function updateDocumentContent({
 
     const [latest] = docs;
     if (!latest) {
-      throw new ChatbotError("not_found:database", "Document not found");
+      throw new ChatbotError("not_found:database", "Document introuvable");
     }
 
     return await db
@@ -3950,9 +3950,11 @@ export async function logChatToolExecution(data: {
         input: (redactMcpValue(data.input) ?? null) as never,
         output: (redactMcpValue(data.output) ?? null) as never,
         runId: null,
-        // Pas d'approbation demandée : un plugin du canal Chat ne peut pas
-        // écrire de donnée utilisateur (createPluginTools refuse ces plugins
-        // hors canal Agent), donc rien n'a pu être soumis à validation.
+        // Pas d'approbation rattachable : hors du canal Agent, les outils
+        // d'ÉCRITURE d'un plugin ne sont même pas instanciés
+        // (`createPluginTools` les filtre par effet), donc toute exécution
+        // journalisée depuis le Chat est une lecture et n'a rien soumis à
+        // validation.
         startedAt: now,
         status: data.status ?? "completed",
         toolId: data.toolId,
@@ -5698,6 +5700,13 @@ export async function createScheduledMessage(params: {
   customInstructions?: string | null;
   temperature?: number | null;
   recurrence?: "none" | "daily" | "weekly" | "monthly";
+  // Récurrence calendaire (migration 0046) : vérité = heure murale dans le
+  // fuseau de la tâche ; l'instant UTC n'est qu'une conséquence recalculée.
+  timezone?: string | null;
+  hour?: number | null;
+  minute?: number | null;
+  dayOfMonth?: number | null;
+  monthlyPolicy?: "clamp" | "report" | "skip" | null;
 }): Promise<ScheduledMessage> {
   const database = await getDb();
   const [created] = await database
@@ -5708,15 +5717,23 @@ export async function createScheduledMessage(params: {
       cloudFileUrls: params.cloudFileUrls || [],
       createMode: params.createMode || "new_chat",
       customInstructions: params.customInstructions || null,
+      dayOfMonth: params.dayOfMonth ?? null,
       // Conservé pour la compat ascendante, plus lu par l'exécuteur : le
       // périmètre d'outils est désormais porté par "toolMode".
       enabledTools: params.enabledTools || [],
+      hour: params.hour ?? null,
+      minute: params.minute ?? null,
       modelId: params.modelId || DEFAULT_CHAT_MODEL,
+      monthlyPolicy: params.monthlyPolicy || undefined,
       prompt: params.prompt,
       recurrence: params.recurrence || "none",
       scheduledAt: params.scheduledAt,
       status: "pending",
       temperature: params.temperature ?? null,
+      timezone:
+        typeof params.timezone === "string" && params.timezone.length > 0
+          ? params.timezone
+          : undefined,
       title: params.title || "Envoi planifié",
       toolMode: normalizeScheduleToolMode(params.toolMode),
       userId: params.userId,
@@ -5774,6 +5791,11 @@ export async function updateScheduledMessage(params: {
   customInstructions?: string | null;
   temperature?: number | null;
   recurrence?: "none" | "daily" | "weekly" | "monthly";
+  timezone?: string | null;
+  hour?: number | null;
+  minute?: number | null;
+  dayOfMonth?: number | null;
+  monthlyPolicy?: "clamp" | "report" | "skip" | null;
   executedAt?: Date | null;
   lastError?: string | null;
   resultChatId?: string | null;
@@ -5806,6 +5828,14 @@ export async function updateScheduledMessage(params: {
     updateData.temperature = updates.temperature;
   if (updates.recurrence !== undefined)
     updateData.recurrence = updates.recurrence;
+  if (updates.timezone !== undefined && updates.timezone !== null)
+    updateData.timezone = updates.timezone;
+  if (updates.hour !== undefined) updateData.hour = updates.hour;
+  if (updates.minute !== undefined) updateData.minute = updates.minute;
+  if (updates.dayOfMonth !== undefined)
+    updateData.dayOfMonth = updates.dayOfMonth;
+  if (updates.monthlyPolicy !== undefined && updates.monthlyPolicy !== null)
+    updateData.monthlyPolicy = updates.monthlyPolicy;
   if (updates.executedAt !== undefined)
     updateData.executedAt = updates.executedAt;
   if (updates.lastError !== undefined) updateData.lastError = updates.lastError;

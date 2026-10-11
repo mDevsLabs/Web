@@ -912,7 +912,10 @@ async function callCometImageGeneration(params: {
   } catch {}
 
   throw new Error(
-    `Erreur fournisseur Comet API: ${lastErrorText || "Impossible de générer l'image après plusieurs tentatives"}`
+    `Erreur fournisseur Comet API: ${
+      lastErrorText ||
+      "Impossible de générer l'image après plusieurs tentatives"
+    }`
   );
 }
 
@@ -1153,14 +1156,14 @@ export function registerImageRoutes(app: Hono) {
       const [uRows, countRows] = await Promise.all([
         sql`SELECT tier FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`,
         sql`
-          SELECT COALESCE(SUM(images_generated::numeric), 0) as images_generated 
-          FROM mprojects_daily_image_usage 
+          SELECT COALESCE(SUM(images_generated::numeric), 0) as images_generated
+          FROM mprojects_daily_image_usage
           WHERE (
-            user_id = ${userId}::text 
+            user_id = ${userId}::text
             OR user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
-          ) AND usage_date = CURRENT_DATE 
+          ) AND usage_date = CURRENT_DATE
           LIMIT 1
         `.catch(() => []),
       ]);
@@ -1292,8 +1295,10 @@ export function registerImageRoutes(app: Hono) {
       }
 
       values.push(id, userId);
-      const query = `UPDATE mprojects_image_generations SET ${sets.join(", ")} WHERE id::text = $${idx++}::text AND user_id = $${idx}::text RETURNING id, title, pinned`;
-      const result = await sql.unsafe(query, values);
+      const query = `UPDATE mprojects_image_generations SET ${sets.join(
+        ", "
+      )} WHERE id::text = $${idx++}::text AND user_id = $${idx}::text RETURNING id, title, pinned`;
+      const result = await sql.query(query, values);
 
       return c.json({ data: result[0] || null, success: true });
     } catch (err: unknown) {
@@ -1505,8 +1510,8 @@ export function registerImageRoutes(app: Hono) {
 
       // Vérifier le forfait utilisateur réel
       const uRows = await sql`
-        SELECT tier FROM users 
-        WHERE id::text = ${userId}::text OR username = ${userId}::text 
+        SELECT tier FROM users
+        WHERE id::text = ${userId}::text OR username = ${userId}::text
         LIMIT 1
       `;
       const keyTier = extractTierFromApiKey(token);
@@ -1537,9 +1542,9 @@ export function registerImageRoutes(app: Hono) {
       const imageBoost = await getUserQuotaBoost(sql, userId, "images");
       const dailyLimit = getTierDailyImageLimit(effectiveTier) + imageBoost;
       const usageRows = await sql`
-        SELECT images_generated 
-        FROM mprojects_daily_image_usage 
-        WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
+        SELECT images_generated
+        FROM mprojects_daily_image_usage
+        WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE
         LIMIT 1
       `;
       const currentDailyUsage = Number(usageRows[0]?.images_generated || 0);
@@ -1639,7 +1644,9 @@ export function registerImageRoutes(app: Hono) {
           }
         }
       } else {
-        generatedImageUrl = `https://picsum.photos/seed/${encodeURIComponent(prompt.slice(0, 20))}/${width}/${height}`;
+        generatedImageUrl = `https://picsum.photos/seed/${encodeURIComponent(
+          prompt.slice(0, 20)
+        )}/${width}/${height}`;
         cometResultData = [{ revised_prompt: prompt, url: generatedImageUrl }];
       }
 
@@ -1648,7 +1655,7 @@ export function registerImageRoutes(app: Hono) {
         INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
         VALUES (${userId}::text, CURRENT_DATE, ${n}, NOW())
         ON CONFLICT (user_id, usage_date)
-        DO UPDATE SET 
+        DO UPDATE SET
           images_generated = mprojects_daily_image_usage.images_generated + ${n},
           updated_at = NOW()
       `;
@@ -1685,7 +1692,9 @@ export function registerImageRoutes(app: Hono) {
       try {
         await sql`
           INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-          VALUES (${apiKey || "anonymous"}::text, ${reqPath || "/v1/images/generations"}::text, 'POST', 200, 1500, NOW())
+          VALUES (${apiKey || "anonymous"}::text, ${
+            reqPath || "/v1/images/generations"
+          }::text, 'POST', 200, 1500, NOW())
         `;
       } catch {}
 

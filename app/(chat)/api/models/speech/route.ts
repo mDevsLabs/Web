@@ -18,7 +18,7 @@ const FLUX_FALLBACK_VOICES = [
 const FALLBACK_SPEECH_MODELS = [
   {
     description:
-      "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram.",
+      "Modèle de synthèse vocale (TTS) ultra-rapide et haute fidélité par Deepgram.",
     id: "deepgram/flux-tts:free",
     name: "Deepgram: Flux TTS",
     voices: [

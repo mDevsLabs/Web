@@ -1,6 +1,14 @@
 "use client";
 
-import { CheckIcon, ChevronDownIcon, Code2Icon, GlobeIcon, LockIcon, MessageCircleIcon, TerminalIcon } from "@mdevs/icons";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  Code2Icon,
+  GlobeIcon,
+  LockIcon,
+  MessageCircleIcon,
+  TerminalIcon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import type React from "react";

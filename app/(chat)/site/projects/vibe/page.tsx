@@ -1,6 +1,16 @@
 "use client";
 
-import { ArrowRightIcon as ArrowRight, BookMarkedIcon as BookMarked, DownloadIcon as Download, GithubIcon as Github, MessagesSquareIcon as MessagesSquare, SendIcon as Send, SmartphoneIcon as Smartphone, SparklesIcon as Sparkles, UsersIcon as Users } from "@mdevs/icons";
+import {
+  ArrowRightIcon as ArrowRight,
+  BookMarkedIcon as BookMarked,
+  DownloadIcon as Download,
+  GithubIcon as Github,
+  MessagesSquareIcon as MessagesSquare,
+  SendIcon as Send,
+  SmartphoneIcon as Smartphone,
+  SparklesIcon as Sparkles,
+  UsersIcon as Users,
+} from "@mdevs/icons";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";
 import { GithubRepoStats } from "@/components/site/github-repo-stats";

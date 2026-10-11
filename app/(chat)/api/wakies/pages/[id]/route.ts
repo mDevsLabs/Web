@@ -9,7 +9,7 @@ import {
   toErrorResponse,
 } from "@/lib/wakies/http";
 import { pagePatch } from "@/lib/wakies/pages";
-import { findPage, updatePage } from "@/lib/wakies/queries";
+import { deletePage, findPage, updatePage } from "@/lib/wakies/queries";
 
 /**
  * GET   /api/wakies/pages/:id — lecture.
@@ -70,4 +70,18 @@ export async function PATCH(
       ? badRequest(erreur.message)
       : toErrorResponse(erreur);
   }
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const originError = rejectCrossOriginMutation(request);
+  if (originError) return originError;
+  const identite = await requireWakiesUser();
+  if (isResponse(identite)) return identite;
+  const { id } = await params;
+  return (await deletePage(identite.userId, id))
+    ? json({ success: true })
+    : notFound("Page introuvable.");
 }

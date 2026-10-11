@@ -5,12 +5,24 @@
  * ============================================================================
  */
 
-import { BellIcon as Bell, CompassIcon as Compass, HomeIcon as Home, LibraryIcon as Library, LogOutIcon as LogOut, MailIcon as Mail, PenSquareIcon as PenSquare, SettingsIcon as Settings, SparklesIcon as Sparkles, UserIcon } from "@mdevs/icons";
+import {
+  BellIcon as Bell,
+  CompassIcon as Compass,
+  HomeIcon as Home,
+  LibraryIcon as Library,
+  LogOutIcon as LogOut,
+  MailIcon as Mail,
+  PenSquareIcon as PenSquare,
+  SettingsIcon as Settings,
+  SparklesIcon as Sparkles,
+  UserIcon,
+} from "@mdevs/icons";
 import type React from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
 import { GlobalSearchBar } from "@/components/vibe/layout/GlobalSearchBar";
 import { VibeLogo } from "@/components/vibe/layout/VibeLogo";
+import { ProfileStoryRing } from "@/components/vibe/stories/ProfileStoryRing";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { Link, useLocation, useNavigate } from "../router";
 
@@ -216,13 +228,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }
             title="Voir mon profil"
           >
-            <ProfileAvatar
-              alt="Avatar"
-              className="border border-zinc-700 shrink-0"
-              fallbackName={user?.username}
-              size="sm"
-              src={activeAvatar}
-            />
+            <span className="relative flex shrink-0">
+              {user?.username ? (
+                <ProfileStoryRing compact username={user.username} />
+              ) : null}
+              <ProfileAvatar
+                alt="Avatar"
+                className="border border-zinc-700 shrink-0"
+                fallbackName={user?.username}
+                size="sm"
+                src={activeAvatar}
+              />
+            </span>
             <div className="hidden xl:flex flex-col truncate min-w-0">
               <div className="flex items-center gap-1">
                 <span className="text-xs font-bold text-white truncate">

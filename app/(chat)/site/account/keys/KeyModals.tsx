@@ -1,6 +1,16 @@
 "use client";
 
-import { AlertTriangleIcon as AlertTriangle, CheckIcon as Check, CopyIcon as Copy, EditIcon as Edit, Loader2Icon as Loader2, LockIcon as Lock, PlusIcon as Plus, Trash2Icon as Trash2, XIcon as X } from "@mdevs/icons";
+import {
+  AlertTriangleIcon as AlertTriangle,
+  CheckIcon as Check,
+  CopyIcon as Copy,
+  EditIcon as Edit,
+  Loader2Icon as Loader2,
+  LockIcon as Lock,
+  PlusIcon as Plus,
+  Trash2Icon as Trash2,
+  XIcon as X,
+} from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import type { FormEvent } from "react";
 import type {

@@ -15,6 +15,7 @@ import { registerVibeFeedRoutes } from "./vibe-feed.ts";
 import { registerVibeMAIRoutes } from "./vibe-mai.ts";
 import { registerVibePostsRoutes } from "./vibe-posts.ts";
 import { registerVibeSettingsRoutes } from "./vibe-settings.ts";
+import { registerVibeStoriesRoutes } from "./vibe-stories.ts";
 import { registerVibeUsersRoutes } from "./vibe-users.ts";
 
 export { registerVibeBooksRoutes } from "./vibe-books.ts";
@@ -31,6 +32,7 @@ export {
   type RecommendationSignal,
 } from "./vibe-recommender.ts";
 export { registerVibeSettingsRoutes } from "./vibe-settings.ts";
+export { registerVibeStoriesRoutes } from "./vibe-stories.ts";
 export { registerVibeUsersRoutes } from "./vibe-users.ts";
 
 /**
@@ -50,4 +52,8 @@ export function registerVibeRoutes(app: Hono) {
   registerVibeMAIRoutes(app, registerMulti);
   registerVibeCircleRoutes(app, registerMulti);
   registerVibeBooksRoutes(app, registerMulti);
+  // Stories après les domaines établis : leurs chemins sont sous /v1/stories…,
+  // donc sans collision, mais le module interne enregistre ses statiques
+  // (tray, active, archive, quota) avant ses routes paramétrées /:id.
+  registerVibeStoriesRoutes(app, registerMulti);
 }

@@ -20,7 +20,7 @@ import { DocumentMenu } from "@/components/wakies/editor/DocumentMenu";
 import { inspectMarkdown } from "@/components/wakies/editor/markdown";
 import { usePageAutosave } from "@/components/wakies/editor/use-page-autosave";
 import { PageConversation } from "@/components/wakies/PageConversation";
-import type { Page } from "@/lib/wakies/pages";
+import { type Page, pageSettings } from "@/lib/wakies/pages";
 import type { WorkspaceState } from "@/lib/wakies/shared/types";
 
 const RichEditor = lazy(() => import("@/components/wakies/editor/RichEditor"));
@@ -107,9 +107,7 @@ export function PageDocument({
     )
       return;
     try {
-      controller.receive(
-        await api<Page>(`/spaces/${page.spaceId}/pages/${page.id}`)
-      );
+      controller.receive(await api<Page>(`/pages/${page.id}`));
       controller.useLatest();
       setNotice("");
     } catch (error) {
@@ -194,6 +192,84 @@ export function PageDocument({
               },
               { action: () => setMove(!move), label: "Déplacer la page" },
               { action: onSubpage, label: "Nouvelle sous-page" },
+              {
+                action: () => {
+                  void (async () => {
+                    try {
+                      await api(`/pages/${page.id}/pin`, "POST", {
+                        pinned: !page.pinned,
+                      });
+                      setNotice(
+                        page.pinned
+                          ? "Page désépinglée."
+                          : "Page épinglée : elle passe en tête de l’Espace."
+                      );
+                      onRefresh();
+                    } catch (recue) {
+                      setNotice(
+                        recue instanceof Error
+                          ? recue.message
+                          : "Épingle impossible."
+                      );
+                    }
+                  })();
+                },
+                label: page.pinned ? "Désépingler la page" : "Épingler la page",
+              },
+              {
+                action: () => {
+                  const elargie = pageSettings.parse(page.settings ?? {}).large;
+                  void (async () => {
+                    try {
+                      await api(`/pages/${page.id}/settings`, "POST", {
+                        settings: { large: !elargie },
+                      });
+                      setNotice(
+                        elargie
+                          ? "Colonne de lecture standard."
+                          : "Colonne de lecture élargie."
+                      );
+                      onRefresh();
+                    } catch (recue) {
+                      setNotice(
+                        recue instanceof Error
+                          ? recue.message
+                          : "Réglage impossible."
+                      );
+                    }
+                  })();
+                },
+                label: pageSettings.parse(page.settings ?? {}).large
+                  ? "Colonne standard"
+                  : "Colonne élargie",
+              },
+              {
+                action: () => {
+                  const confirmation =
+                    descendants.size > 1
+                      ? `Supprimer cette page et ses ${descendants.size - 1} sous-page(s) ? Cette action est définitive.`
+                      : "Supprimer cette page ? Cette action est définitive.";
+                  if (!window.confirm(confirmation)) return;
+                  void (async () => {
+                    if (!(await controller.flush(true))) {
+                      setNotice("Enregistrez la page avant de la supprimer.");
+                      return;
+                    }
+                    try {
+                      await api(`/pages/${page.id}`, "DELETE");
+                      onHome();
+                      onRefresh();
+                    } catch (error) {
+                      setNotice(
+                        error instanceof Error
+                          ? error.message
+                          : "Impossible de supprimer la page."
+                      );
+                    }
+                  })();
+                },
+                label: "Supprimer la page",
+              },
               { action: download, label: "Télécharger le Markdown" },
               ...(page.sourceThreadId
                 ? [
@@ -207,7 +283,11 @@ export function PageDocument({
           />
         </header>
         <div className="document-scroll">
-          <article className="document-reading-column">
+          <article
+            className={`document-reading-column${
+              pageSettings.parse(page.settings ?? {}).large ? " large" : ""
+            }`}
+          >
             {state.error && (
               <div
                 className={`document-save-notice ${state.status}`}

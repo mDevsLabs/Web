@@ -1,6 +1,16 @@
 "use client";
 
-import { AlertCircleIcon as AlertCircle, CheckCircle2Icon as CheckCircle2, ChevronRightIcon as ChevronRight, FileQuestionIcon as FileQuestion, Loader2Icon as Loader2, MessageSquareIcon as MessageSquare, PlusCircleIcon as PlusCircle, ShieldCheckIcon as ShieldCheck, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  CheckCircle2Icon as CheckCircle2,
+  ChevronRightIcon as ChevronRight,
+  FileQuestionIcon as FileQuestion,
+  Loader2Icon as Loader2,
+  MessageSquareIcon as MessageSquare,
+  PlusCircleIcon as PlusCircle,
+  ShieldCheckIcon as ShieldCheck,
+  TrendingUpIcon as TrendingUp,
+} from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import {
   getSupportStats,
@@ -176,7 +186,7 @@ export default function SupportDashboardClient() {
             </div>
             <div>
               <p className="text-sm font-bold text-slate-900">
-                Mode Administrateur Support Actif
+                Mode administrateur de l’assistance actif
               </p>
               <p className="text-xs text-slate-500">
                 Connecté en tant que{" "}

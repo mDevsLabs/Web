@@ -16,6 +16,8 @@
     "migrate:ci": "node scripts/migrate.js"
   },
   "dependencies": {
+    "@mdevs/icons": "file:../../packages/icons",
+    "@mdevs/ui": "file:../../packages/ui",
     "@neondatabase/serverless": "^1.2.0",
     "@types/qrcode": "^1.5.6",
     "bcryptjs": "^3.0.3",

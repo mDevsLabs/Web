@@ -51,7 +51,7 @@
   .md-sidebar-navigation {display: grid; gap: 1.5rem;}
   .md-sidebar-navigation h2 {font-size: .8rem; font-weight: 600; color: var(--md-muted);}
   .md-sidebar-navigation ul,.md-navigation-links {list-style: none; padding: 0; margin: .5rem 0; display: grid; gap: .25rem;}
-  .md-sidebar-navigation a,.md-navigation-links a {display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .5rem .75rem; color: var(--md-text); text-decoration: none; border-radius: 12px;}
+  .md-sidebar-navigation a,.md-navigation-links a {display: flex; align-items: center; justify-content: space-between; min-height: 32px; padding: .4rem .75rem; color: var(--md-text); text-decoration: none; border-radius: 12px;}
   .md-sidebar-navigation a[aria-current],.md-navigation-links a[aria-current] {background: color-mix(in srgb,var(--md-accent) 8%,var(--md-solid)); font-weight: 600;}
   .md-anchor-navigation ol {display: grid; gap: .5rem; padding-inline-start: 1.5rem;}
   .md-anchor-navigation a {display: inline-flex; align-items: center; min-height: 36px; color: var(--md-muted);}
@@ -64,8 +64,8 @@
   .md-table [data-selected] {background: color-mix(in srgb,var(--md-accent) 5%,var(--md-solid));}
   .md-table input[type="checkbox"] {width: 1.1rem; height: 1.1rem; accent-color: var(--md-accent);}
   .md-table td .md-input {min-width: 8rem;}
-  .md-column-menu summary {cursor: pointer; min-height: 44px; display: flex; align-items: center;}
-  .md-filter-chips {display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; min-height: 44px;}
+  .md-column-menu summary {cursor: pointer; min-height: 32px; display: flex; align-items: center;}
+  .md-filter-chips {display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; min-height: 32px;}
   .md-filter-chip {display: inline-flex; align-items: center; gap: .5rem; padding: .25rem .5rem .25rem .75rem; border: 1px solid var(--md-border); border-radius: 999px;}
   .md-filter-chip button {min-width: 36px; min-height: 36px; padding: .25rem; border: 0; background: transparent; color: inherit; border-radius: 50%; cursor: pointer;}
   .md-search-results {display: grid; gap: 1rem;}

@@ -1,6 +1,20 @@
 "use client";
 
-import { BrainIcon as Brain, CheckIcon as Check, ChevronDownIcon as ChevronDown, ChevronUpIcon as ChevronUp, Code2Icon as Code2, CopyIcon as Copy, CpuIcon as Cpu, ExternalLinkIcon as ExternalLink, EyeIcon as Eye, LayersIcon as Layers, Loader2Icon as Loader2, SlidersHorizontalIcon as SlidersHorizontal, XIcon as X } from "@mdevs/icons";
+import {
+  BrainIcon as Brain,
+  CheckIcon as Check,
+  ChevronDownIcon as ChevronDown,
+  ChevronUpIcon as ChevronUp,
+  Code2Icon as Code2,
+  CopyIcon as Copy,
+  CpuIcon as Cpu,
+  ExternalLinkIcon as ExternalLink,
+  EyeIcon as Eye,
+  LayersIcon as Layers,
+  Loader2Icon as Loader2,
+  SlidersHorizontalIcon as SlidersHorizontal,
+  XIcon as X,
+} from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import toast from "react-hot-toast";

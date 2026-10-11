@@ -522,7 +522,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
       try {
         await sql`
           INSERT INTO post_views (user_id, post_id, duration_ms, dwell_ms, visible_ratio, completed, source)
-          VALUES (${viewerId}, ${postId}::uuid, ${Math.round(durationMs)}, ${Math.round(dwellMs)}, ${visibleRatio}, ${completed}, ${source})
+          VALUES (${viewerId}, ${postId}::uuid, ${Math.round(durationMs)}, ${Math.round(
+            dwellMs
+          )}, ${visibleRatio}, ${completed}, ${source})
         `;
         // Mise à jour incrémentale de l'affinité topic (fire-and-forget)
         if (viewerId) {
@@ -540,12 +542,18 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
             for (const tag of tags) {
               await sql`
                 INSERT INTO user_topic_affinity (user_id, topic, total_time_ms, views, score, updated_at)
-                VALUES (${viewerId}, ${tag}, ${Math.round(durationMs)}, 1, ${Math.min(1, durationMs / 30_000)}, NOW())
+                VALUES (${viewerId}, ${tag}, ${Math.round(durationMs)}, 1, ${Math.min(
+                  1,
+                  durationMs / 30_000
+                )}, NOW())
                 ON CONFLICT (user_id, topic)
                 DO UPDATE SET
                   total_time_ms = user_topic_affinity.total_time_ms + ${Math.round(durationMs)},
                   views = user_topic_affinity.views + 1,
-                  score = LEAST(1, user_topic_affinity.score * 0.95 + ${Math.min(1, durationMs / 30_000)} * 0.2),
+                  score = LEAST(1, user_topic_affinity.score * 0.95 + ${Math.min(
+                    1,
+                    durationMs / 30_000
+                  )} * 0.2),
                   updated_at = NOW()
               `.catch(() => {});
             }
@@ -864,7 +872,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
 
       const inserted = await sql`
         INSERT INTO comments (post_id, author_id, parent_comment_id, content, depth)
-        VALUES (${postId}::uuid, ${userId}, ${effectiveParentId || null}::uuid, ${String(content || "").trim()}, ${parentDepth + 1})
+        VALUES (${postId}::uuid, ${userId}, ${effectiveParentId || null}::uuid, ${String(
+          content || ""
+        ).trim()}, ${parentDepth + 1})
         RETURNING *
       `;
 
@@ -874,7 +884,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
         try {
           const res = await sql`
             INSERT INTO media_assets (owner_id, post_id, comment_id, url, media_type, alt_text)
-            VALUES (${userId}, ${postId}::uuid, ${inserted[0].id}::uuid, ${m.url}, ${m.media_type}, ${m.alt_text})
+            VALUES (${userId}, ${postId}::uuid, ${
+              inserted[0].id
+            }::uuid, ${m.url}, ${m.media_type}, ${m.alt_text})
             RETURNING id, url, media_type, alt_text
           `;
           if (res?.[0]) insertedCommentMedia.push(res[0]);
@@ -920,7 +932,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
         ) {
           await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
-            VALUES (${notifyId}, ${userId}, 'reply', ${postId}::uuid, ${inserted[0]?.id}::uuid, ${notifMsg})
+            VALUES (${notifyId}, ${userId}, 'reply', ${postId}::uuid, ${
+              inserted[0]?.id
+            }::uuid, ${notifMsg})
           `;
         }
 
@@ -946,7 +960,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
               ) {
                 await sql`
                   INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
-                  VALUES (${u.id}, ${userId}, 'mention', ${postId}::uuid, ${inserted[0]?.id}::uuid, ${`vous a mentionné dans un commentaire : « ${snippet} »`})
+                  VALUES (${u.id}, ${userId}, 'mention', ${postId}::uuid, ${
+                    inserted[0]?.id
+                  }::uuid, ${`vous a mentionné dans un commentaire : « ${snippet} »`})
                 `.catch(() => {});
               }
             }
@@ -1003,7 +1019,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
             try {
               await sql`
                 INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
-                VALUES (${userId}, ${maiUserId}, 'reply', ${postId}::uuid, ${aiInserted[0]?.id}::uuid, 'mAI a répondu à votre question /mai')
+                VALUES (${userId}, ${maiUserId}, 'reply', ${postId}::uuid, ${
+                  aiInserted[0]?.id
+                }::uuid, 'mAI a répondu à votre question /mai')
               `;
             } catch {}
           } catch (aiErr) {
@@ -1112,7 +1130,9 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
         ) {
           await sql`
               INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
-              VALUES (${authorId}, ${userId}, 'like', ${cm[0]?.post_id}::uuid, ${commentId}::uuid, 'a aimé votre commentaire')
+              VALUES (${authorId}, ${userId}, 'like', ${
+                cm[0]?.post_id
+              }::uuid, ${commentId}::uuid, 'a aimé votre commentaire')
             `;
         }
       } catch {}

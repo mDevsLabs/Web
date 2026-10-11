@@ -58,7 +58,7 @@ export const maiModelsList: MAIModelDetail[] = [
     name: "mAI-2",
     releaseDate: "2026-10-25",
     status: "active",
-    tagline: "Our flagship model, for the best price.",
+    tagline: "Notre modèle phare, au meilleur prix.",
     version: "2.0.0",
     vision: true,
   },

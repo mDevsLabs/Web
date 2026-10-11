@@ -48,7 +48,7 @@ export function VibeSessionBridge({
 }: {
   sessionToken: string | null;
 }) {
-  const { loginWithToken } = useAuth();
+  const { isAuthenticated, loginWithToken } = useAuth();
   // Une seule application du jeton par montage : `setToken` purge le cache API
   // quand la valeur change, le rejouer à chaque rendu invaliderait le cache en
   // boucle à chaque navigation Vibe.
@@ -64,13 +64,21 @@ export function VibeSessionBridge({
       applique.current = true;
       return;
     }
+    // Session pré-hydratée par le layout (seed `initialSession` de
+    // l'AuthContext) : l'état est déjà posé et l'effet de montage du provider
+    // stockera le jeton lui-même. Reclencher `loginWithToken` ferait partir
+    // un `GET /v1/me` — la requête précisément supprimée.
+    if (isAuthenticated) {
+      applique.current = true;
+      return;
+    }
     applique.current = true;
     void loginWithToken(sessionToken).catch(() => {
       // Une session invalide se traduit par l'écran de connexion de Vibe :
       // AuthContext ne ferme la session que sur un vrai 401, jamais sur une
       // erreur réseau. Rien à signaler ici.
     });
-  }, [sessionToken, loginWithToken]);
+  }, [isAuthenticated, sessionToken, loginWithToken]);
 
   return null;
 }

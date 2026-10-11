@@ -11,18 +11,63 @@
  *
  * Les reçus d'appel vocal sont conservés : un appel est un événement de la
  * conversation, pas une ligne de log.
+ *
+ * LA BANDE « ÉPINGLÉS » ET LES RÉACTIONS
+ *
+ * La bande en haut du fil liste les messages épinglés par le compte (bouton
+ * de bulle, `pinned=1` serveur) et sauter au message d'un clic. Les réactions
+ * — émojis d'une palette FIXE — se posent depuis la barre sous chaque bulle :
+ * celles des Wakies portent l'avatar de leur auteur, celles du compte restent
+ * anonymes. Aucun rendu n'invente une émoji hors palette.
+ *
+ * LES ACTIONS DE MESSAGERIE
+ *
+ * Chaque bulle porte, au survol : répondre (citation en tête du message),
+ * transférer (copie dans une autre conversation, marquée « Transféré de … »)
+ * et enregistrer en page (épingle + page Markdown). Un message TRANSFÉRÉ
+ * montre sa provenance depuis la part `data-wakies-forward` : c'est une
+ * donnée du message, jamais un texte qu'un modèle aurait pu écrire.
+ *
+ * Les séparateurs de date viennent des horodatages RÉELS (`seq`/`createdAt`
+ * du serveur), fournis par l'appelant : le fil ne devine pas la date d'un
+ * message d'après son ordre d'affichage.
  */
 
 import { PhoneOffIcon } from "@mdevs/icons/communication/phone-off";
 import { FileTextIcon } from "@mdevs/icons/files/file-text";
+import { PinIcon } from "@mdevs/icons/maps/pin";
+import { BookmarkPlusIcon } from "@mdevs/icons/misc/bookmark-plus";
+import { ForwardIcon } from "@mdevs/icons/misc/forward";
+import { ReplyIcon } from "@mdevs/icons/misc/reply";
 import type { UIMessage } from "ai";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { formaterTaille } from "@/components/wakies/attachments";
 import { Markdown } from "@/components/wakies/markdown";
 import { ToolResultCard } from "@/components/wakies/ToolResultCard";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
-import type { CallReceipt } from "@/lib/wakies/shared/types";
+import {
+  type CitationFil,
+  citationDe,
+  elementsDeJour,
+  metaDe,
+  provenanceTransfert,
+} from "@/lib/wakies/shared/transcript";
+import type { CallReceipt, MessageReaction } from "@/lib/wakies/shared/types";
 import { voiceReceiptMessagePrefix } from "@/lib/wakies/shared/voice-receipt";
+
+/** La palette complète — également validée côté serveur (queries.ts). */
+export const PALETTE_REACTIONS_UI = [
+  "👍",
+  "👎",
+  "❤️",
+  "🔥",
+  "😂",
+  "🤔",
+  "🙏",
+  "🎉",
+  "✅",
+  "❌",
+] as const;
 
 /** Les messages techniques ne s'affichent pas : ils portent un préfixe réservé. */
 export function isInternalVoiceReceipt(message: UIMessage): boolean {
@@ -74,6 +119,41 @@ function pieces(message: UIMessage): {
 }
 
 /**
+ * Provenance d'un message transféré : « Transféré de … » est un FAIT du
+ * message (part `data-wakies-forward` écrite par le serveur), pas une phrase
+ * qu'un modèle aurait pu produire.
+ */
+function Provenance({ titre }: { titre: string }) {
+  return (
+    <p className="chat-forwarded">
+      <ForwardIcon size={12} />
+      Transféré de {titre || "une autre conversation"}
+    </p>
+  );
+}
+
+/**
+ * Citation d'une réponse : l'extrait du message visé, cliquable pour y sauter.
+ * Un bouton, pas un lien : la cible est dans la même page.
+ */
+function Citation({ citation }: { citation: CitationFil }) {
+  return (
+    <button
+      className="chat-citation"
+      onClick={() => {
+        document
+          .querySelector(`[data-message-id="${citation.id}"]`)
+          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }}
+      type="button"
+    >
+      <span className="chat-citation-auteur">{citation.auteur}</span>
+      <span className="chat-citation-texte">{citation.extrait}</span>
+    </button>
+  );
+}
+
+/**
  * Carte d'une pièce jointe.
  *
  * L'URL arrives de la route qui relit l'historique, et elle est RE-SIGNÉE à la
@@ -118,13 +198,153 @@ function Piece({
   );
 }
 
+/** Réactions groupées par émoji (compte : count 1; Wakies : liste d'avatar). */
+function ReactionBar({
+  reactions,
+  onPoser,
+}: {
+  reactions: MessageReaction[];
+  onPoser?: (emoji: string) => void;
+}) {
+  if (reactions.length === 0 && !onPoser) return null;
+  const parEmoji = new Map<string, MessageReaction[]>();
+  for (const reaction of reactions) {
+    const groupe = parEmoji.get(reaction.emoji) ?? [];
+    groupe.push(reaction);
+    parEmoji.set(reaction.emoji, groupe);
+  }
+  return (
+    <div
+      className="chat-reactions"
+      onClick={(e) => {
+        // La barre est DANS la bulle : ne pas déclencher l'action de bulle.
+        e.stopPropagation();
+      }}
+    >
+      {[...parEmoji.entries()].map(([emoji, groupe]) => (
+        <span className="chat-reaction" key={emoji} title={emoji}>
+          <span aria-hidden>{emoji}</span>
+          {groupe.length > 1 ? <small>{groupe.length}</small> : null}
+        </span>
+      ))}
+      {onPoser ? (
+        <span className="chat-reaction-ajout">
+          {PALETTE_REACTIONS_UI.map((emoji) => (
+            <button
+              aria-label={`Réagir ${emoji}`}
+              key={emoji}
+              onClick={() => onPoser(emoji)}
+              type="button"
+            >
+              {emoji}
+            </button>
+          ))}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+/** Action d'une bulle : icône + libellé accessible, rien de plus. */
+function BoutonAction({
+  children,
+  label,
+  onClick,
+}: {
+  children: React.ReactNode;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      aria-label={label}
+      className="chat-action"
+      onClick={(e) => {
+        // L'action est DANS la bulle : ne pas déclencher l'action de bulle.
+        e.stopPropagation();
+        onClick();
+      }}
+      title={label}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+}
+
+/** Actions d'une bulle : épingler/retirer. L'épingle est un geste du compte. */
+function BoutonEpingle({
+  estEpingle,
+  onEpingle,
+}: {
+  estEpingle: boolean;
+  onEpingle: (epingle: boolean) => void;
+}) {
+  return (
+    <button
+      aria-label={estEpingle ? "Retirer l'épingle" : "Épingler ce message"}
+      aria-pressed={estEpingle}
+      className="chat-pin-toggle"
+      onClick={(e) => {
+        e.stopPropagation();
+        onEpingle(!estEpingle);
+      }}
+      title={estEpingle ? "Retirer l'épingle" : "Épingler le message"}
+      type="button"
+    >
+      <PinIcon size={13} />
+    </button>
+  );
+}
+
 export function ChatTranscript({
   messages,
   calls,
+  reactionsParMessage,
+  epingles,
+  cibleId,
+  nomsWakies,
+  onEnregistrer,
+  onEpingle,
+  onPoserReaction,
+  onRepondre,
+  onTransferer,
 }: {
   messages: UIMessage[];
   calls: CallReceipt[];
+  /** Réactions par identifiant de message (serveur = seul truteur). */
+  reactionsParMessage?: Map<string, MessageReaction[]>;
+  /** Bande « Épinglés » : messages épinglés par le compte. */
+  epingles?: UIMessage[];
+  /**
+   * Message à METTRE EN ÉVIDENCE (résultat de recherche). L'effet scrolle une
+   * fois : re-cliquer le même résultat ne relance pas un défilement, et le
+   * halo retombe tout seul.
+   */
+  cibleId?: string | null;
+  /** Noms des Wakies du fil, pour nommer l'auteur d'un message cité. */
+  nomsWakies?: Map<string, string>;
+  /** Enregistrer ce message en page (POST /messages/:id/page). */
+  onEnregistrer?: (messageId: string) => void;
+  /** Poser/retirer une épingle (POST /api/wakies/pins). */
+  onEpingle?: (messageId: string, epingle: boolean) => void;
+  /** Poser une réaction (POST /api/wakies/messages/:id/reactions). */
+  onPoserReaction?: (messageId: string, emoji: string) => void;
+  /** Répondre à ce message : la citation part en tête du composer. */
+  onRepondre?: (message: UIMessage) => void;
+  /** Transférer ce message vers une autre conversation. */
+  onTransferer?: (messageId: string) => void;
 }) {
+  const [halo, setHalo] = useState<string | null>(null);
+  useEffect(() => {
+    if (!cibleId) return;
+    setHalo(cibleId);
+    document
+      .querySelector(`[data-message-id="${cibleId}"]`)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const minuteur = window.setTimeout(() => setHalo(null), 2600);
+    return () => window.clearTimeout(minuteur);
+  }, [cibleId]);
   const ids = new Set(messages.map((message) => message.id));
   // Un message ne contenant QUE des pièces jointes (pas de texte) doit rester
   // visible : c'est le cas quand l'utilisateur n'a joint qu'un document.
@@ -142,8 +362,33 @@ export function ChatTranscript({
             part.type === "reasoning"
         ))
   );
+  const epinglesVisibles = (epingles ?? []).filter((message) =>
+    visibles.some((v) => v.id === message.id)
+  );
   return (
     <>
+      {epinglesVisibles.length > 0 ? (
+        <div className="chat-pinned-strip">
+          <span className="chat-pinned-label">Épinglés</span>
+          {epinglesVisibles.map((message) => (
+            <button
+              aria-label="Sauter au message épinglé"
+              className="chat-pinned-item"
+              data-role={message.role}
+              key={`pin-${message.id}`}
+              onClick={() => {
+                const element = document.querySelector(
+                  `[data-message-id="${message.id}"]`
+                );
+                element?.scrollIntoView({ behavior: "smooth" });
+              }}
+              type="button"
+            >
+              {texte(message).slice(0, 60) || "Pièce jointe"}
+            </button>
+          ))}
+        </div>
+      ) : null}
       {calls
         .filter(
           (call) => !call.anchorMessageId || !ids.has(call.anchorMessageId)
@@ -151,28 +396,108 @@ export function ChatTranscript({
         .map((call) => (
           <Receipt call={call} key={call.id} />
         ))}
-      {visibles.map((message) => (
-        <Fragment key={message.id}>
-          <div className={`chat-bubble ${message.role}`}>
-            {pieces(message).map((piece, index) => (
-              // La clé est composite : le serveur ne renvoie pas
-              // d'identifiant de pièce, mais l'identifiant du message la rend
-              // stable entre deux rendus — deux pièces peuvent porter le même
-              // nom sans collision.
-              <Piece key={`${message.id}-piece-${index}`} {...piece} />
-            ))}
-            {texte(message) ? <Markdown>{texte(message)}</Markdown> : null}
-            {message.parts.map((part, index) => (
-              <ToolResultCard key={`${message.id}-part-${index}`} part={part} />
-            ))}
+      {elementsDeJour(visibles).map((element) =>
+        element.type === "jour" ? (
+          // Le séparateur porte une clé qui inclut le message qui l'ouvre :
+          // deux sections ne peuvent pas fusionner parce qu'elles portent le
+          // même libellé.
+          <div className="chat-day" key={element.cle}>
+            <span>{element.label}</span>
           </div>
-          {calls
-            .filter((call) => call.anchorMessageId === message.id)
-            .map((call) => (
-              <Receipt call={call} key={call.id} />
-            ))}
-        </Fragment>
-      ))}
+        ) : (
+          <Fragment key={element.message.id}>
+            {/* `data-message-id` : la bande « Épinglés » et la recherche
+                scrollent au message par ce crochet, jamais par un index. */}
+            <div
+              className={`chat-bubble ${element.message.role}${halo === element.message.id ? " is-cible" : ""}`}
+              data-message-id={element.message.id}
+            >
+              {(() => {
+                const provenance = provenanceTransfert(element.message);
+                return provenance ? (
+                  <Provenance titre={provenance.titre} />
+                ) : null;
+              })()}
+              {(() => {
+                const citation = citationDe(
+                  messages,
+                  metaDe(element.message).replyToId,
+                  nomsWakies
+                );
+                return citation ? <Citation citation={citation} /> : null;
+              })()}
+              {pieces(element.message).map((piece, index) => (
+                // La clé est composite : le serveur ne renvoie pas
+                // d'identifiant de pièce, mais l'identifiant du message la rend
+                // stable entre deux rendus — deux pièces peuvent porter le même
+                // nom sans collision.
+                <Piece
+                  key={`${element.message.id}-piece-${index}`}
+                  {...piece}
+                />
+              ))}
+              {texte(element.message) ? (
+                <Markdown>{texte(element.message)}</Markdown>
+              ) : null}
+              {element.message.parts.map((part, index) => (
+                <ToolResultCard
+                  key={`${element.message.id}-part-${index}`}
+                  part={part}
+                />
+              ))}
+              <div className="chat-bubble-actions">
+                {onRepondre ? (
+                  <BoutonAction
+                    label="Répondre à ce message"
+                    onClick={() => onRepondre(element.message)}
+                  >
+                    <ReplyIcon size={13} />
+                  </BoutonAction>
+                ) : null}
+                {onTransferer ? (
+                  <BoutonAction
+                    label="Transférer ce message"
+                    onClick={() => onTransferer(element.message.id)}
+                  >
+                    <ForwardIcon size={13} />
+                  </BoutonAction>
+                ) : null}
+                {onEnregistrer ? (
+                  <BoutonAction
+                    label="Enregistrer en page"
+                    onClick={() => onEnregistrer(element.message.id)}
+                  >
+                    <BookmarkPlusIcon size={13} />
+                  </BoutonAction>
+                ) : null}
+                {onEpingle ? (
+                  <BoutonEpingle
+                    estEpingle={Boolean(
+                      epinglesVisibles.some((p) => p.id === element.message.id)
+                    )}
+                    onEpingle={(epingle) =>
+                      onEpingle(element.message.id, epingle)
+                    }
+                  />
+                ) : null}
+              </div>
+              <ReactionBar
+                onPoser={
+                  onPoserReaction
+                    ? (emoji) => onPoserReaction(element.message.id, emoji)
+                    : undefined
+                }
+                reactions={reactionsParMessage?.get(element.message.id) ?? []}
+              />
+            </div>
+            {calls
+              .filter((call) => call.anchorMessageId === element.message.id)
+              .map((call) => (
+                <Receipt call={call} key={call.id} />
+              ))}
+          </Fragment>
+        )
+      )}
     </>
   );
 }

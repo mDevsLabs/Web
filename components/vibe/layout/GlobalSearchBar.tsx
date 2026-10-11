@@ -6,7 +6,15 @@
  * ============================================================================
  */
 
-import { BookHeartIcon as BookHeart, FileTextIcon as FileText, Loader2Icon as Loader2, MessageSquareIcon as MessageSquare, SearchIcon as Search, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
+import {
+  BookHeartIcon as BookHeart,
+  FileTextIcon as FileText,
+  Loader2Icon as Loader2,
+  MessageSquareIcon as MessageSquare,
+  SearchIcon as Search,
+  UsersIcon as Users,
+  XIcon as X,
+} from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { makeExcerpt } from "@/components/vibe/common/richTextUtils";

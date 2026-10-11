@@ -21,7 +21,7 @@
 @layer wakies-base, mdevs;@layer wakies-base {.wakies-root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #333641;
-  background: #f8f7f4;
+  background: #fff;
   font-synthesis: none;
   font-weight: 400;
   font-size: 14px;
@@ -1315,6 +1315,9 @@
   max-height: calc(100dvh - 48px);
   overflow: auto;
 }
+.wakies-root .modal.modal-wakie-editor {
+  max-width: 820px;
+}
 .wakies-root .modal h2 {
   font-size: 27px;
   margin: 13px 0 8px;
@@ -1942,7 +1945,7 @@
 .wakies-root .new-chat.nav-item {
   background: #f0f1f6;
   color: #818ba9;
-  margin-bottom: 26px;
+  margin-bottom: 8px;
 }
 .wakies-root .spaces-heading,
 .wakies-root .thread-list .nav-label {
@@ -2250,6 +2253,140 @@
   padding: 13px;
   border-radius: 8px;
 }
+/* Organisateur du fil : les participants de groupe portent cette étiquette. */
+.wakies-root .chat-bubble[data-wakie-name]::before {
+  content: attr(data-wakie-name);
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8a91a0;
+  margin-bottom: 3px;
+}
+
+/* Bande « Épinglés » en haut du fil. */
+.wakies-root .chat-pinned-strip {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background: #efeef8;
+  border: 1px solid #d8d5ea;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.wakies-root .chat-pinned-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a6fb8;
+}
+.wakies-root .chat-pinned-item {
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: #4a4670;
+  background: #ffffff;
+  border: 1px solid #d8d5ea;
+  border-radius: 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.wakies-root .chat-pinned-item:hover {
+  border-color: #b9b1e2;
+}
+.wakies-root .chat-pinned-item[data-role="user"] {
+  background: #e6f2f0;
+  border-color: #b8d9d4;
+  color: #2f6c65;
+}
+
+/* Actions de bulle (épingle) — révélées au survol, comme chez Manus. */
+.wakies-root .chat-bubble-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.wakies-root .chat-bubble:hover .chat-bubble-actions {
+  opacity: 1;
+}
+.wakies-root .chat-pin-toggle {
+  border: none;
+  background: transparent;
+  color: #969dab;
+  cursor: pointer;
+  padding: 3px 5px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+.wakies-root .chat-pin-toggle:hover {
+  background: #e8edf6;
+  color: #3d4354;
+}
+.wakies-root .chat-pin-toggle[aria-pressed="true"] {
+  color: #7a6fb8;
+}
+
+/* Réactions sous une bulle. */
+.wakies-root .chat-reactions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.wakies-root .chat-reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e5ee;
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+.wakies-root .chat-bubble.user .chat-reaction {
+  background: #2a5b56;
+  border-color: #ffffff40;
+}
+.wakies-root .chat-reaction small {
+  font-size: 10px;
+  color: inherit;
+  opacity: 0.8;
+}
+.wakies-root .chat-reaction-ajout {
+  display: inline-flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.wakies-root .chat-bubble:hover .chat-reaction-ajout,
+.wakies-root .chat-reaction-ajout:focus-within {
+  opacity: 1;
+}
+.wakies-root .chat-reaction-ajout button {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 3px;
+  border-radius: 6px;
+}
+.wakies-root .chat-reaction-ajout button:hover {
+  background: #e8edf6;
+}
+.wakies-root .chat-reaction-ajout button:first-child {
+  font-size: 14px;
+  padding: 2px 4px;
+}
+
 .wakies-root .chat-welcome {
   text-align: center;
   margin: 60px auto;
@@ -4459,9 +4596,9 @@
   --blue-dark: #11191c;
   --lavender: #f0f1f2;
   color: var(--ink);
-  background: #fcfcfc;
+  background: #fff;
 }
-.wakies-root .muse-app .workspace { height: 100%; min-height: 0; display: flex; flex-direction: column; background: #fcfcfc; }
+.wakies-root .muse-app .workspace { height: 100%; min-height: 0; display: flex; flex-direction: column; background: #fff; }
 .wakies-root .muse-app .topbar { min-height: 108px; height: 108px; border: 0; background: transparent; position: relative; flex-shrink: 0; }
 .wakies-root .muse-app .topbar .breadcrumbs,
 .wakies-root .muse-app .mode-badge { display: none; }
@@ -4564,4 +4701,71 @@
 .wakies-root .muse-app .chat-compose-row { display: flex; align-items: center; }
 .wakies-root .muse-app .chat-compose-row textarea { flex: 1; min-width: 0; width: 100%; }
 .wakies-root .muse-app .chat-compose-row .send-button { margin-inline-start: auto; flex-shrink: 0; }
+.wakies-root .muse-page-title { min-width: 0; margin-inline-start: 12px; }
+.wakies-root .muse-page-title > span,
+.wakies-root .today-eyebrow { display: flex; align-items: center; gap: 7px; color: #697176; font-size: 10px; font-weight: 650; letter-spacing: .1em; }
+.wakies-root .muse-page-title h1 { margin: 2px 0 0; font-size: 20px; line-height: 1.2; letter-spacing: -.04em; }
+.wakies-root .muse-app .today-screen { display: grid; align-content: start; gap: 22px; padding-top: 26px; padding-bottom: 36px; }
+.wakies-root .today-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 26px; padding: clamp(24px,4vw,42px); border: 1px solid #eceeef; border-radius: 26px; background: #f5f6f6; }
+.wakies-root .today-hero-copy { max-width: 650px; min-width: 0; }
+.wakies-root .today-hero h1 { max-width: 620px; margin: 12px 0 10px; font-size: clamp(32px,5vw,51px); line-height: 1.08; letter-spacing: -.055em; text-wrap: balance; }
+.wakies-root .today-hero p { max-width: 520px; margin: 0; color: #697176; font-size: 15px; line-height: 1.65; }
+.wakies-root .today-hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+.wakies-root .today-hero-actions .md-button { border-radius: 14px; }
+.wakies-root .today-status { display: flex; flex: 0 0 auto; align-items: center; gap: 10px; padding: 13px 15px; border: 1px solid #e9ebec; border-radius: 15px; background: white; }
+.wakies-root .today-status > span:last-child { display: grid; gap: 3px; }
+.wakies-root .today-status strong { font-size: 12px; font-weight: 600; }
+.wakies-root .today-status small { color: #697176; font-size: 11px; }
+.wakies-root .today-status-dot { width: 9px; height: 9px; border-radius: 50%; background: #687b70; box-shadow: 0 0 0 4px #edf2ee; }
+.wakies-root .today-status-dot.is-paused { background: #888b8e; box-shadow: 0 0 0 4px #f0f1f2; }
+.wakies-root .today-shortcuts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 11px; }
+.wakies-root .today-shortcut.md-button { display: flex; width: 100%; min-width: 0; min-height: 78px; justify-content: flex-start; gap: 12px; padding: 13px; text-align: start; white-space: normal; border-color: #eceeef; border-radius: 17px; background: white; color: var(--ink); }
+.wakies-root .today-shortcut > span:nth-child(2) { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.wakies-root .today-shortcut strong { font-size: 13px; font-weight: 600; }
+.wakies-root .today-shortcut small { color: #737a7e; font-size: 11px; line-height: 1.4; }
+.wakies-root .today-shortcut-icon,
+.wakies-root .today-space-icon { display: grid; flex: 0 0 auto; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: #f0f1f2; }
+.wakies-root .today-shortcut-arrow { flex: 0 0 auto; color: #858c90; }
+.wakies-root .today-panels { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(240px,.85fr); align-items: start; gap: 14px; }
+.wakies-root .today-panel { min-width: 0; padding: 20px; border: 1px solid #eceeef; border-radius: 20px; background: white; }
+.wakies-root .today-panel:first-child { grid-row: span 2; }
+.wakies-root .today-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.wakies-root .today-panel-heading h2 { margin: 6px 0 0; font-size: 17px; line-height: 1.3; letter-spacing: -.03em; }
+.wakies-root .today-panel-heading > .md-button { min-height: 36px; padding: 6px 8px; font-size: 11px; }
+.wakies-root .today-conversation-list,
+.wakies-root .today-space-list { display: grid; gap: 4px; padding: 0; margin: 0; list-style: none; }
+.wakies-root .today-conversation.md-button { display: flex; width: 100%; min-width: 0; min-height: 62px; justify-content: flex-start; gap: 11px; padding: 9px; text-align: start; white-space: normal; border-radius: 13px; }
+.wakies-root .today-conversation-copy { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.wakies-root .today-conversation-copy strong,
+.wakies-root .today-space strong { overflow: hidden; font-size: 12px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.wakies-root .today-conversation-copy small,
+.wakies-root .today-space small { color: #737a7e; font-size: 11px; }
+.wakies-root .today-suggestions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.wakies-root .today-suggestions .md-button { min-height: 34px; padding: 6px 10px; border-color: #eceeef; border-radius: 20px; color: #5e666a; font-size: 11px; font-weight: 500; white-space: normal; }
+.wakies-root .today-space.md-button { display: flex; width: 100%; min-width: 0; min-height: 62px; justify-content: flex-start; gap: 10px; padding: 9px 4px; text-align: start; white-space: normal; border-radius: 12px; }
+.wakies-root .today-space > span:nth-child(2) { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.wakies-root .today-space-icon { width: 36px; height: 36px; border: 1px solid #eceeef; background: #fafafa; }
+.wakies-root .today-task-list { display: grid; gap: 3px; padding: 0; margin: 0; list-style: none; }
+.wakies-root .today-task.md-button { display: flex; width: 100%; min-width: 0; min-height: 58px; justify-content: flex-start; gap: 10px; padding: 8px 4px; text-align: start; white-space: normal; border-radius: 12px; }
+.wakies-root .today-task > span:nth-child(2) { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.wakies-root .today-task strong { display: -webkit-box; overflow: hidden; font-size: 12px; font-weight: 550; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.wakies-root .today-task small { color: #737a7e; font-size: 11px; }
+.wakies-root .today-task-mark { width: 8px; height: 8px; flex: 0 0 auto; margin-inline: 5px; border-radius: 50%; background: #a0a5a8; }
+.wakies-root .today-task-mark.is-running { background: #687b70; box-shadow: 0 0 0 4px #edf2ee; }
+.wakies-root .today-task-mark.is-paused { background: #c0c3c5; box-shadow: 0 0 0 4px #f3f4f4; }
+.wakies-root .today-empty { display: grid; justify-items: start; gap: 10px; padding: 18px 10px; color: #737a7e; }
+.wakies-root .today-empty p { margin: 0; font-size: 13px; }
+@media (max-width: 760px) {
+  .wakies-root .muse-app .today-screen { gap: 14px; padding: 14px 16px 24px; }
+  .wakies-root .today-hero { align-items: flex-start; flex-direction: column; gap: 17px; padding: 22px; border-radius: 22px; }
+  .wakies-root .today-hero h1 { font-size: clamp(30px,8vw,42px); }
+  .wakies-root .today-status { width: 100%; }
+  .wakies-root .today-shortcuts { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .wakies-root .today-shortcut.md-button { min-height: 64px; }
+  .wakies-root .today-panels { grid-template-columns: minmax(0,1fr); gap: 10px; }
+  .wakies-root .today-panel:first-child { grid-row: auto; }
+  .wakies-root .today-panel { padding: 16px; }
+  .wakies-root .muse-page-title { margin-inline-start: 48px; }
+  .wakies-root .muse-page-title h1 { font-size: 17px; }
+}
 }

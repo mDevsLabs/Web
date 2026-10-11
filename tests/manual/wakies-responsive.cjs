@@ -325,9 +325,10 @@ let browser;
         sendHeight: send?.getBoundingClientRect().height,
       };
     });
+    // Échelle compacte du rail : 32 px de haut, plus les 44 px d'autrefois.
     if (
-      controls.sendHeight < 44 ||
-      controls.navigationHeight < 44 ||
+      controls.sendHeight < 32 ||
+      controls.navigationHeight < 32 ||
       controls.iconColor !== controls.sendColor
     )
       throw new Error(

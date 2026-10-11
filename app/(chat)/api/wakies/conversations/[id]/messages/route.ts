@@ -33,10 +33,23 @@ import { findConversation, listMessages } from "@/lib/wakies/queries";
  * reste lisible et la pièce est annoncée indisponible, jamais reconstituée.
  */
 
-const QUERIES = z.object({
-  avant: z.coerce.number().int().nonnegative().optional(),
-  limite: z.coerce.number().int().min(1).max(500).optional(),
-});
+const QUERIES = z
+  .object({
+    apres: z.coerce
+      .number()
+      .int()
+      .nonnegative()
+      .max(Number.MAX_SAFE_INTEGER)
+      .optional(),
+    avant: z.coerce
+      .number()
+      .int()
+      .nonnegative()
+      .max(Number.MAX_SAFE_INTEGER)
+      .optional(),
+    limite: z.coerce.number().int().min(1).max(500).optional(),
+  })
+  .refine((value) => value.avant === undefined || value.apres === undefined);
 
 /** Une part qui porte un `pathname` : c'est le cas d'une pièce jointe. */
 type PartAvecBlob = AttachmentPart & { pathname: string };
@@ -63,6 +76,7 @@ export async function GET(
   }
   const url = new URL(request.url);
   const parsed = QUERIES.safeParse({
+    apres: url.searchParams.get("apres") ?? undefined,
     avant: url.searchParams.get("avant") ?? undefined,
     limite: url.searchParams.get("limite") ?? undefined,
   });
@@ -71,14 +85,19 @@ export async function GET(
     return errorResponse("invalid_request", {
       message: "Curseur d’historique invalide.",
     });
-  const { avant, limite } = parsed.data;
+  const { avant, apres, limite } = parsed.data;
   const rows = await listMessages(identite.userId, id, {
+    apresSeq: apres,
     avantSeq: avant,
     limite: (limite ?? 200) + 1,
   });
 
   const hasMore = rows.length > (limite ?? 200);
-  const visible = hasMore ? rows.slice(1) : rows;
+  const visible = hasMore
+    ? apres === undefined
+      ? rows.slice(1)
+      : rows.slice(0, limite ?? 200)
+    : rows;
   // Une seule passe de signature pour toutes les pièces de la page : les
   // URL signées sont courtes, mais elles ne doivent pas être regénérées pour
   // chaque rechargement du transcript si le client ne les demande pas.
@@ -101,9 +120,13 @@ export async function GET(
         })
       );
       return {
+        authorWakieId: row.authorWakieId,
         createdAt: row.createdAt,
         id: row.id,
         parts,
+        // Cible d'une réponse : l'interface affiche la citation, et la clé
+        // suffit — le message cité est presque toujours dans la même page.
+        replyToId: row.replyToId,
         role: row.role,
         seq: row.seq,
       };
@@ -115,7 +138,11 @@ export async function GET(
     {
       messages,
       // `null` quand la page rend le début de l'historique : rien à recharger.
-      seqProchain: hasMore && premier ? premier.seq : null,
+      seqProchain:
+        apres === undefined && hasMore && premier ? premier.seq : null,
+      // Le rattrapage avance sans sauter une page lors de plus de 50 arrivées.
+      seqSuivant:
+        apres !== undefined && hasMore ? (visible.at(-1)?.seq ?? null) : null,
     },
     { headers: { "Cache-Control": "no-store" } }
   );

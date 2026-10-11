@@ -83,7 +83,7 @@ Ne pas réduire l’opacité de tout un conteneur pour créer de la translucence
 - Grid utilise des colonnes fluides avec largeur minimale configurée.
 - Container limite la mesure et centre le contenu.
 
-La plupart des champs et boutons principaux ont une hauteur minimale de 44 px. Les textes secondaires sont compacts ; adapter la densité au public et au support sans réduire la zone d’action à la taille d’une icône.
+La plupart des champs et des affords natifs ont une hauteur minimale de 44 px ; les actions (boutons, onglets, entrées de menu, liens de navigation) mesurent 32 px. Les textes secondaires sont compacts ; adapter la densité au public et au support sans réduire la zone d’action à la taille d’une icône.
 
 Les attributs HTML et `style` restent utiles pour la composition. Éviter de cibler un détail privé de DOM quand un token ou une prop publique exprime déjà le besoin. Si la modification change le comportement du rendu commun, la traiter comme changement de composant et vérifier les usages concernés.
 

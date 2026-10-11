@@ -21,3 +21,5 @@ Cette section documente l’application Next.js principale, son BFF, le backend 
 À la racine du dépôt, installez les dépendances, configurez .env.local à partir de .env.example, préparez une base PostgreSQL puis lancez les migrations et pnpm dev. Les commandes détaillées et leurs prérequis sont dans le [README racine](../../README.md).
 
 Le backend Hono n’est pas démarré par le serveur Next. Il est déployé séparément ; ses fichiers TypeScript à la racine ne sont pas couverts par le typecheck Next.
+
+L’audit actuel est dans [BACKEND_AUDIT.md](BACKEND_AUDIT.md), avec [l’inventaire reproductible des modules et routes](API_INVENTORY.json).

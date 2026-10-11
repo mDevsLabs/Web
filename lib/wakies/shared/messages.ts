@@ -74,9 +74,38 @@ export function fromOpenMuseMessages(input: unknown[]): UIMessage[] {
   }
   return result;
 }
-export function storedMessages(
-  rows: { id: string; role: string; parts: unknown }[]
-): UIMessage[] {
+/**
+ * Ligne de `WakiesMessage` telle que les routes la servent.
+ *
+ * Les champs au-delà de `id`/`role`/`parts` sont FACULTATIFS : le module
+ * convertit aussi bien l'ancienne forme (trois champs) que l'enrichie de la
+ * messagerie (citation, horodatage, ordre d'écriture, auteur).
+ */
+type LigneSwap = {
+  authorWakieId?: string | null;
+  /**
+   * `Date` côté serveur, millisecondes côté client : `versClient` convertit à
+   * la frontière, et la conversion est REFAITE ici pour qu'un appelant serveur
+   * (la route de chat) obtienne la même métadonnée que le navigateur.
+   */
+  createdAt?: Date | number | null;
+  id: string;
+  parts: unknown;
+  replyToId?: string | null;
+  role: string;
+  seq?: number | null;
+};
+
+/**
+ * Conversion lignes → `UIMessage`, MÉTADONNÉES COMPRISES.
+ *
+ * `metadata` est le seul endroit où l'AI SDK transporte des informations que
+ * le modèle ne voit pas. Y placer la citation, l'auteur, l'horodatage et le
+ * `seq` évite de faire voyager un second tableau parallèle dans tous les
+ * composants — et le transcript peut alors décider seul d'afficher une
+ * citation ou un séparateur de jour.
+ */
+export function storedMessages(rows: LigneSwap[]): UIMessage[] {
   return rows
     .filter(
       (row) =>
@@ -86,12 +115,70 @@ export function storedMessages(
           row.role === "system") &&
         Array.isArray(row.parts)
     )
-    .map((row) => ({
-      id: row.id,
-      parts: row.parts as UIMessage["parts"],
-      role: row.role as UIMessage["role"],
-    }));
+    .map((row) => {
+      const metadata: Record<string, unknown> = {};
+      if (row.authorWakieId !== undefined) {
+        metadata.authorWakieId = row.authorWakieId;
+      }
+      if (row.createdAt !== undefined) {
+        metadata.createdAt =
+          row.createdAt instanceof Date
+            ? row.createdAt.getTime()
+            : row.createdAt;
+      }
+      if (row.replyToId !== undefined) metadata.replyToId = row.replyToId;
+      if (row.seq !== undefined) metadata.seq = row.seq;
+      return {
+        id: row.id,
+        // Une ligne sans métadonnée ne porte pas de `metadata` vide : un objet
+        // vide ferait croire à une métadonnée présente et nulle.
+        ...(Object.keys(metadata).length ? { metadata } : {}),
+        parts: row.parts as UIMessage["parts"],
+        role: row.role as UIMessage["role"],
+      };
+    });
 }
+/** Première partie texte d'un message stocké, bornée : c'est l'APERÇU. */
+export function premiereTexte(parts: unknown): string {
+  if (!Array.isArray(parts)) return "";
+  for (const part of parts) {
+    if (
+      typeof part === "object" &&
+      part !== null &&
+      (part as { type?: unknown }).type === "text" &&
+      typeof (part as { text?: unknown }).text === "string"
+    ) {
+      const texte = (part as { text: string }).text.trim();
+      if (texte) return texte;
+    }
+  }
+  return "";
+}
+
+/**
+ * Aperçu d'un message pour la liste des conversations.
+ *
+ * Un message sans texte (appel d'outil, réaction seule, fichier) ne devient
+ * pas une ligne vide silencieuse : il est ANNONCÉ (« appel d'outil », « pièce
+ * jointe »), parce qu'un blanc dans une liste de conversations se lit comme un
+ * bug. La coupe normalise les blancs : un aperçu n'est pas un transcript.
+ */
+export function apercuMessage(parts: unknown, max = 120): string {
+  const texte = premiereTexte(parts).replace(/\s+/g, " ").trim();
+  if (texte) return texte.slice(0, max);
+  if (!Array.isArray(parts)) return "";
+  for (const part of parts) {
+    if (typeof part !== "object" || part === null) continue;
+    const type = (part as { type?: unknown }).type;
+    if (type === "file") return "Pièce jointe";
+    if (type === "dynamic-tool" || type === "tool-invocation") {
+      return "Appel d’outil";
+    }
+    if (type === "reasoning") return "Raisonnement";
+  }
+  return "";
+}
+
 export function safeAttachmentLink(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   try {

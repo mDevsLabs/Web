@@ -43,7 +43,9 @@ const postCharsError = (isPaid: boolean, charLimit: number) => ({
   char_limit: charLimit,
   error: isPaid
     ? "La publication est trop longue."
-    : `Une Vibe est limitée à ${POST_CHARS_LIMIT_FREE.toLocaleString("fr-FR")} caractères (texte) avec le forfait Free. Passez à Plus, Pro ou Max pour publier sans limite.`,
+    : `Une Vibe est limitée à ${POST_CHARS_LIMIT_FREE.toLocaleString(
+        "fr-FR"
+      )} caractères (texte) avec le forfait Free. Passez à Plus, Pro ou Max pour publier sans limite.`,
   plan_required: !isPaid,
 });
 
@@ -574,8 +576,9 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const postId = c.req.param("id");
-      if (!isUuid(postId))
+      if (!isUuid(postId)) {
         return c.json({ error: "Identifiant invalide." }, 400);
+      }
       const body = await c.req.json().catch(() => ({}));
       const optionId = String(body?.option_id || "");
       if (!isUuid(optionId)) return c.json({ error: "Option invalide." }, 400);
@@ -583,16 +586,18 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       await ensurePostColumns();
       const polls =
         await sql`SELECT * FROM post_polls WHERE post_id = ${postId}::uuid LIMIT 1`;
-      if (polls.length === 0)
+      if (polls.length === 0) {
         return c.json({ error: "Aucun sondage sur ce post." }, 404);
+      }
       const poll = polls[0];
       if (new Date(poll.ends_at).getTime() <= Date.now()) {
         return c.json({ error: "Sondage expiré." }, 410);
       }
       const optRows =
         await sql`SELECT * FROM post_poll_options WHERE id = ${optionId}::uuid AND poll_id = ${poll.id}::uuid LIMIT 1`;
-      if (optRows.length === 0)
+      if (optRows.length === 0) {
         return c.json({ error: "Option introuvable pour ce sondage." }, 404);
+      }
       const existing =
         await sql`SELECT option_id FROM post_poll_votes WHERE poll_id = ${poll.id}::uuid AND user_id = ${userId} LIMIT 1`;
       if (existing.length > 0 && String(existing[0].option_id) === optionId) {
@@ -647,8 +652,9 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const postId = c.req.param("id");
-      if (!isUuid(postId))
+      if (!isUuid(postId)) {
         return c.json({ error: "Identifiant invalide." }, 400);
+      }
       const periodParam = String(c.req.query("period") || "7d").toLowerCase();
       const periodDays =
         periodParam === "30d" ? 30 : periodParam === "90d" ? 90 : 7;
@@ -658,10 +664,12 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const sql = getDb();
       const rows =
         await sql`SELECT author_id, views_count, likes_count, reposts_count, replies_count, bookmarks_count FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
-      if (Number(rows[0].author_id) !== userId)
+      }
+      if (Number(rows[0].author_id) !== userId) {
         return c.json({ error: "Réservé à l'auteur." }, 403);
+      }
       const p = rows[0];
       const views = Number(p.views_count || 0);
       const likes = Number(p.likes_count || 0);
@@ -783,8 +791,9 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       }
       const bucket = (rows: any[], key = "day", val = "n") => {
         const m = new Map<string, number>();
-        for (const r of rows as any[])
+        for (const r of rows as any[]) {
           m.set(String(r[key]).slice(0, 10), Number(r[val] || 0));
+        }
         return m;
       };
       let viewsByDay = new Map<string, number>();
@@ -858,11 +867,12 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
           WHERE p.author_id = ${userId} AND pv.created_at >= ${sinceIso}::timestamptz
           GROUP BY 1 ORDER BY views DESC LIMIT 1
         `;
-        if (bd[0])
+        if (bd[0]) {
           best_day = {
             day: String(bd[0].day).slice(0, 10),
             views: Number(bd[0].views || 0),
           };
+        }
       } catch {}
       try {
         const bpd = await sql`
@@ -870,12 +880,13 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
           FROM posts WHERE author_id = ${userId} AND published_at >= ${sinceIso}::timestamptz
           GROUP BY 1 ORDER BY views DESC LIMIT 1
         `;
-        if (bpd[0])
+        if (bpd[0]) {
           best_publish_day = {
             day: String(bpd[0].day).slice(0, 10),
             posts: Number(bpd[0].posts || 0),
             views: Number(bpd[0].views || 0),
           };
+        }
       } catch {}
       // 3. Répartition horaire des vues (0-23) pour trouver les heures optimales
       let hourly: Array<{ hour: number; views: number }> = [];
@@ -978,17 +989,21 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const postId = c.req.param("id");
-      if (!isUuid(postId))
+      if (!isUuid(postId)) {
         return c.json({ error: "Identifiant invalide." }, 400);
+      }
       const sql = getDb();
       await ensurePostColumns();
       const rows =
         await sql`SELECT status FROM post_collaborators WHERE post_id = ${postId}::uuid AND user_id = ${userId} LIMIT 1`;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Aucune invitation." }, 404);
+      }
       await sql`
         UPDATE post_collaborators
-        SET status = ${accept ? "accepted" : "declined"}, accepted_at = ${accept ? new Date().toISOString() : null}::timestamptz
+        SET status = ${accept ? "accepted" : "declined"}, accepted_at = ${
+          accept ? new Date().toISOString() : null
+        }::timestamptz
         WHERE post_id = ${postId}::uuid AND user_id = ${userId}
       `;
       try {
@@ -998,7 +1013,11 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         if (authorId) {
           await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, post_id, message)
-            VALUES (${authorId}, ${userId}, 'mention', ${postId}::uuid, ${accept ? "a accepté votre invitation de co-signature" : "a décliné votre invitation de co-signature"})
+            VALUES (${authorId}, ${userId}, 'mention', ${postId}::uuid, ${
+              accept
+                ? "a accepté votre invitation de co-signature"
+                : "a décliné votre invitation de co-signature"
+            })
           `.catch(() => {});
           await pushRealtimeEvent(authorId, "notification", {
             actor_id: userId,
@@ -1080,16 +1099,19 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const postId = c.req.param("id");
-      if (!isUuid(postId))
+      if (!isUuid(postId)) {
         return c.json({ error: "Identifiant invalide." }, 400);
+      }
       const body = await c.req.json().catch(() => ({}));
       const sql = getDb();
       const existing =
         await sql`SELECT id, author_id FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-      if (existing.length === 0)
+      if (existing.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
-      if (Number(existing[0].author_id) !== userId)
+      }
+      if (Number(existing[0].author_id) !== userId) {
         return c.json({ error: "Réservé à l'auteur." }, 403);
+      }
       const tierRows =
         await sql`SELECT tier FROM users WHERE id = ${userId} LIMIT 1`;
       if (!isPaidTier(tierRows[0]?.tier)) {
@@ -1186,21 +1208,27 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const sql = getDb();
       await ensurePostColumns();
       if (draftId && isUuid(String(draftId))) {
-        const owned =
-          await sql`SELECT id FROM post_drafts WHERE id = ${String(draftId)}::uuid AND user_id = ${userId} LIMIT 1`;
-        if (owned.length === 0)
+        const owned = await sql`SELECT id FROM post_drafts WHERE id = ${String(
+          draftId
+        )}::uuid AND user_id = ${userId} LIMIT 1`;
+        if (owned.length === 0) {
           return c.json({ error: "Brouillon introuvable." }, 404);
+        }
         await sql`
           UPDATE post_drafts
           SET html = ${html}, text = ${text}, visibility = ${visibility}, scheduled_at = ${scheduledAt}::timestamptz,
-              ai_generated = ${aiGenerated}, media_assets = ${JSON.stringify(mediaAssets)}::jsonb, updated_at = NOW()
+              ai_generated = ${aiGenerated}, media_assets = ${JSON.stringify(
+                mediaAssets
+              )}::jsonb, updated_at = NOW()
           WHERE id = ${String(draftId)}::uuid
         `;
         return c.json({ id: String(draftId), success: true });
       }
       const inserted = await sql`
         INSERT INTO post_drafts (user_id, html, text, visibility, scheduled_at, ai_generated, media_assets)
-        VALUES (${userId}, ${html}, ${text}, ${visibility}, ${scheduledAt}::timestamptz, ${aiGenerated}, ${JSON.stringify(mediaAssets)}::jsonb)
+        VALUES (${userId}, ${html}, ${text}, ${visibility}, ${scheduledAt}::timestamptz, ${aiGenerated}, ${JSON.stringify(
+          mediaAssets
+        )}::jsonb)
         RETURNING id
       `;
       return c.json({ id: String(inserted[0]?.id), success: true }, 201);
@@ -1232,10 +1260,13 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const draftId = c.req.param("id");
-      if (!isUuid(String(draftId)))
+      if (!isUuid(String(draftId))) {
         return c.json({ error: "Identifiant invalide." }, 400);
+      }
       const sql = getDb();
-      await sql`DELETE FROM post_drafts WHERE id = ${String(draftId)}::uuid AND user_id = ${userId}`;
+      await sql`DELETE FROM post_drafts WHERE id = ${String(
+        draftId
+      )}::uuid AND user_id = ${userId}`;
       return c.json({ success: true });
     } catch {
       return c.json({ error: "Erreur suppression brouillon." }, 500);
@@ -1269,10 +1300,26 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       await ensureCircleTable().catch(() => {});
       const rows = await sql`
         SELECT p.*, pr.display_name, pr.avatar_url, u.username,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0` : sql`FALSE`} as has_liked,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0` : sql`FALSE`} as has_reposted,
-               ${currentUserId ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0` : sql`FALSE`} as has_bookmarked,
-               ${currentUserId ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)` : sql`NULL`} as my_feedback
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'like') > 0`
+                   : sql`FALSE`
+               } as has_liked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM post_interactions WHERE post_id = p.id AND user_id = ${currentUserId} AND interaction_type = 'repost') > 0`
+                   : sql`FALSE`
+               } as has_reposted,
+               ${
+                 currentUserId
+                   ? sql`(SELECT COUNT(*) FROM bookmarks WHERE post_id = p.id AND user_id = ${currentUserId}) > 0`
+                   : sql`FALSE`
+               } as has_bookmarked,
+               ${
+                 currentUserId
+                   ? sql`(SELECT pi.interaction_type FROM post_interactions pi WHERE pi.post_id = p.id AND pi.user_id = ${currentUserId} AND pi.interaction_type IN ('interest_more', 'interest_less') LIMIT 1)`
+                   : sql`NULL`
+               } as my_feedback
         FROM posts p
         JOIN users u ON u.id = p.author_id
         LEFT JOIN profiles pr ON pr.user_id = u.id
@@ -1280,8 +1327,9 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         LIMIT 1
       `;
 
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
+      }
 
       // Une vibe planifiée n'est visible que par son auteur
       if (
@@ -1456,8 +1504,9 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
 
       // Références de Livres : resynchronisées avec le nouveau contenu
       const updatedBookRefIds = extractBookRefIds(String(content));
-      if (updatedBookRefIds.length > 0)
+      if (updatedBookRefIds.length > 0) {
         await ensureBooksTables(sql).catch(() => {});
+      }
       await syncPostBookRefs(sql, postId, updatedBookRefIds);
 
       // Remplacement des médias (légendes incluses) si la liste est fournie
@@ -1508,8 +1557,15 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
           try {
             res = await sql`
               INSERT INTO media_assets (owner_id, post_id, url, media_type, file_size_bytes, alt_text, position)
-              VALUES (${userId}, ${postId}::uuid, ${urlStr}, ${media.media_type || media.type || inferMediaType(urlStr)},
-                      ${Math.max(0, Math.round(Number(media.file_size_bytes ?? media.size ?? 0) || 0))},
+              VALUES (${userId}, ${postId}::uuid, ${urlStr}, ${
+                media.media_type || media.type || inferMediaType(urlStr)
+              },
+                      ${Math.max(
+                        0,
+                        Math.round(
+                          Number(media.file_size_bytes ?? media.size ?? 0) || 0
+                        )
+                      )},
                       ${media.alt_text || media.alt || ""}, ${position})
               RETURNING id, url, media_type, file_size_bytes, alt_text, position
             `;
@@ -1517,8 +1573,15 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
             // Colonne position absente (base ancienne) : insertion sans ordre
             res = await sql`
               INSERT INTO media_assets (owner_id, post_id, url, media_type, file_size_bytes, alt_text)
-              VALUES (${userId}, ${postId}::uuid, ${urlStr}, ${media.media_type || media.type || inferMediaType(urlStr)},
-                      ${Math.max(0, Math.round(Number(media.file_size_bytes ?? media.size ?? 0) || 0))},
+              VALUES (${userId}, ${postId}::uuid, ${urlStr}, ${
+                media.media_type || media.type || inferMediaType(urlStr)
+              },
+                      ${Math.max(
+                        0,
+                        Math.round(
+                          Number(media.file_size_bytes ?? media.size ?? 0) || 0
+                        )
+                      )},
                       ${media.alt_text || media.alt || ""})
               RETURNING id, url, media_type, file_size_bytes, alt_text
             `;

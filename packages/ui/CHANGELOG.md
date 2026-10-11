@@ -1,5 +1,15 @@
 # Changelog
 
+## Échelle des actions — 2026-10-11
+
+- Boutons et actions compactes par défaut : `.md-button` 44 → 32 px (28 px en `sm`, 34 px en `lg`), `.md-icon-button` 44 → 32 × 32 px, `padding` et `gap` réduits d'autant. Le dimensionnement reprend les boutons de barre latérale de l'hôte (32 px, 10 px de côté, 13 px de texte).
+- Passent avec les boutons : entrées de menu, actions de liste, liens de navigation, onglets, segments, en-têtes d'accordéon (36 px).
+- Restent à 44 px : champs, interrupteurs, curseurs, lignes à cases, arborescence, étoiles — affords natifs et surfaces de saisie, pas des boutons.
+- Les dimensions sont communes aux variantes `liquid-glass` et `chatgpt` : la variante ne porte plus que ce qui la distingue (aplat, survol, absence de flou).
+- `STYLE.md`, `catalog/docs/{STYLE,ACCESSIBILITY,LIQUID_GLASS,ICONS}.md` et `llms-full.txt` réécrits en conséquence ; l'ancienne règle « 44 × 44 px » est abandonnée, la cible tactile revient au style hôte sur support tactile.
+- Distribution : `dist/styles.css` est une concaténation manuelle de `src/styles.css` + `src/extensions.css` (aucun script de build du package, `package.json` a `scripts: null`) ; `components/wakies/wakies-ui.css` en dérive par `node scripts/build-wakies-css.mjs`.
+- Les générateurs Python cités par `AGENTS.md` §10 et §12 (`scripts/foundations.py`, `scripts/extensions.py`, `scripts/generate.py`, `scripts/data/domains.txt`) n'existent pas dans ce dépôt : `src/**` est écrit à la main.
+
 ## Corrections locales — 2026-10-09
 
 - Couleur des icônes héritée du contrôle ; dessins et indicateurs non comprimés dans les boutons.

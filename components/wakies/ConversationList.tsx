@@ -19,15 +19,49 @@ import { Input } from "@mdevs/ui/primitives/input";
  * par la coquille : le composant n'a rien à redemander au serveur. Une
  * pagination ici serait FAUSSE — le compte a au plus quelques centaines de
  * conversations (quota par forfait), pas un flux infini.
+ *
+ * CE QU'UNE LISTE DE MESSAGERIE DOIT MONTRER
+ *
+ * L'aperçu du dernier message, son heure et le compteur de non-lus viennent du
+ * SERVEUR (`listConversations`) : le client ne recalcule ni un aperçu ni un
+ * état de lecture.
+ *
+ * Le filtre local ne remplace pas la recherche serveur : il ne coupe que la
+ * liste déjà chargée, et c'est dit ainsi dans l'interface (le champ renvoie
+ * vers la recherche complète de la barre latérale).
  */
 
 import { MessageCircleIcon } from "@mdevs/icons/communication/message-circle";
 import { PlusIcon } from "@mdevs/icons/controls/plus";
 import { EllipsisVerticalIcon } from "@mdevs/icons/interface/ellipsis-vertical";
 import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
+import { Bell, BellOff, Star } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/components/wakies/api";
+import { trierConversations } from "@/lib/wakies/shared/messaging";
 import type { Conversation, Wakie } from "@/lib/wakies/shared/types";
+
+/**
+ * Heure courte d'un aperçu : l'heure du jour, la date ensuite.
+ *
+ * Le calcul se fait dans le fuseau du navigateur — un message reçu à 23 h 50
+ * doit s'afficher « 23:50 », pas « 21:50 » parce que le serveur est en UTC.
+ */
+function quand(horodatage: number): string {
+  const date = new Date(horodatage);
+  const maintenant = new Date();
+  const memeJour =
+    date.getFullYear() === maintenant.getFullYear() &&
+    date.getMonth() === maintenant.getMonth() &&
+    date.getDate() === maintenant.getDate();
+  if (memeJour) {
+    return date.toLocaleTimeString("fr", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+  return date.toLocaleDateString("fr", { day: "numeric", month: "short" });
+}
 
 export function ConversationList({
   wakies,
@@ -39,6 +73,7 @@ export function ConversationList({
   onChanged,
 }: {
   wakies: Wakie[];
+  /** Wakie du fil ouvert — sert de repli quand la liste ne nomme rien. */
   wakieId: string;
   local: Conversation[];
   selected?: string;
@@ -49,6 +84,35 @@ export function ConversationList({
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const parWakie = new Map(wakies.map((item) => [item.id, item]));
+  /**
+   * Nom affiché d'un fil : le Wakie qui le porte. Un fil n'a qu'un répondant
+   * depuis la suppression des groupes de Wakies.
+   */
+  const nomFil = (conversation: Conversation): string =>
+    parWakie.get(conversation.wakieId)?.name ?? "Conversation";
+  const filtrees = trierConversations(local).filter((conversation) =>
+    conversation.title
+      .toLocaleLowerCase("fr")
+      .includes(search.toLocaleLowerCase("fr"))
+  );
+  const preference = async (
+    conversation: Conversation,
+    champ: "favorite" | "muted"
+  ) => {
+    setBusy(true);
+    setError("");
+    try {
+      await api(`/conversations/${conversation.id}`, "PATCH", {
+        [champ]: !conversation[champ],
+      });
+      await onChanged();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Préférence non enregistrée.");
+    } finally {
+      setBusy(false);
+    }
+  };
   return (
     <section className="thread-list">
       <div className="nav-label">
@@ -73,93 +137,125 @@ export function ConversationList({
           {error}
         </p>
       )}
-      {local
-        .filter((conversation) =>
-          conversation.title
-            .toLocaleLowerCase("fr")
-            .includes(search.toLocaleLowerCase("fr"))
-        )
-        .map((conversation) => (
-          <div className="muse-conversation-row" key={conversation.id}>
-            <Button
-              className={`nav-item ${selected === conversation.id ? "active" : ""}`}
-              key={conversation.id}
-              onClick={() => onSelect(conversation.id)}
-              variant="outline"
-            >
-              <MessageCircleIcon size={15} />
-              <span className="thread-summary">
-                <span>{conversation.title}</span>
-                <small>
-                  {wakies.find((wakie) => wakie.id === conversation.wakieId)
-                    ?.name ?? (conversation.wakieId === wakieId ? "Wakie" : "")}
-                </small>
+      {filtrees.map((conversation) => (
+        <div className="muse-conversation-row" key={conversation.id}>
+          <Button
+            aria-label={`Ouvrir ${conversation.title}`}
+            className={`nav-item ${selected === conversation.id ? "active" : ""}`}
+            onClick={() => onSelect(conversation.id)}
+            variant="outline"
+          >
+            <MessageCircleIcon size={15} />
+            <span className="thread-summary">
+              <span className="thread-title">
+                {conversation.title}
+                {conversation.nonLus ? (
+                  <small className="thread-unread">
+                    {conversation.nonLus > 99 ? "99+" : conversation.nonLus}
+                  </small>
+                ) : null}
               </span>
-            </Button>
-            <Button
-              aria-label={`Renommer ${conversation.title}`}
-              className="icon-button"
-              disabled={busy}
-              onClick={async () => {
-                const title = window.prompt(
-                  "Nouveau titre",
-                  conversation.title
+              <small className="thread-meta">
+                {nomFil(conversation)}
+                {conversation.dernierMessageAt
+                  ? ` · ${quand(conversation.dernierMessageAt)}`
+                  : ""}
+              </small>
+              {conversation.apercuDernierMessage ? (
+                <small className="thread-preview">
+                  {conversation.apercuDernierMessage}
+                </small>
+              ) : null}
+            </span>
+          </Button>
+          <Button
+            aria-label={`${conversation.favorite ? "Retirer des favoris" : "Ajouter aux favoris"} : ${conversation.title}`}
+            aria-pressed={Boolean(conversation.favorite)}
+            className="icon-button"
+            disabled={busy}
+            onClick={() => void preference(conversation, "favorite")}
+            type="button"
+            variant="ghost"
+          >
+            <Star
+              fill={conversation.favorite ? "currentColor" : "none"}
+              size={14}
+            />
+          </Button>
+          <Button
+            aria-label={`${conversation.muted ? "Réactiver les notifications" : "Mettre en sourdine"} : ${conversation.title}`}
+            aria-pressed={Boolean(conversation.muted)}
+            className="icon-button"
+            disabled={busy}
+            onClick={() => void preference(conversation, "muted")}
+            type="button"
+            variant="ghost"
+          >
+            {conversation.muted ? <BellOff size={14} /> : <Bell size={14} />}
+          </Button>
+          <Button
+            aria-label={`Renommer ${conversation.title}`}
+            className="icon-button"
+            disabled={busy}
+            onClick={async () => {
+              const title = window.prompt("Nouveau titre", conversation.title);
+              if (!title?.trim()) return;
+              setBusy(true);
+              setError("");
+              try {
+                await api(`/conversations/${conversation.id}`, "PATCH", {
+                  title: title.trim().slice(0, 120),
+                });
+                await onChanged();
+              } catch (e) {
+                setError(
+                  e instanceof Error ? e.message : "Renommage impossible."
                 );
-                if (!title?.trim()) return;
-                setBusy(true);
-                setError("");
-                try {
-                  await api(`/conversations/${conversation.id}`, "PATCH", {
-                    title: title.trim().slice(0, 120),
-                  });
-                  await onChanged();
-                } catch (e) {
-                  setError(
-                    e instanceof Error ? e.message : "Renommage impossible."
-                  );
-                } finally {
-                  setBusy(false);
-                }
-              }}
-              type="button"
-              variant="ghost"
-            >
-              <EllipsisVerticalIcon size={14} />
-            </Button>
-            <Button
-              aria-label={`Supprimer ${conversation.title}`}
-              className="icon-button"
-              disabled={busy}
-              onClick={async () => {
-                if (
-                  !window.confirm(
-                    "Supprimer cette conversation et ses messages ?"
-                  )
+              } finally {
+                setBusy(false);
+              }
+            }}
+            type="button"
+            variant="ghost"
+          >
+            <EllipsisVerticalIcon size={14} />
+          </Button>
+          <Button
+            aria-label={`Supprimer ${conversation.title}`}
+            className="icon-button"
+            disabled={busy}
+            onClick={async () => {
+              if (
+                !window.confirm(
+                  "Supprimer cette conversation et ses messages ?"
                 )
-                  return;
-                setBusy(true);
-                setError("");
-                try {
-                  await api(`/conversations/${conversation.id}`, "DELETE");
-                  await onChanged();
-                } catch (e) {
-                  setError(
-                    e instanceof Error ? e.message : "Suppression impossible."
-                  );
-                } finally {
-                  setBusy(false);
-                }
-              }}
-              type="button"
-              variant="ghost"
-            >
-              <Trash2Icon size={13} />
-            </Button>
-          </div>
-        ))}
-      {local.length ? null : (
+              )
+                return;
+              setBusy(true);
+              setError("");
+              try {
+                await api(`/conversations/${conversation.id}`, "DELETE");
+                await onChanged();
+              } catch (e) {
+                setError(
+                  e instanceof Error ? e.message : "Suppression impossible."
+                );
+              } finally {
+                setBusy(false);
+              }
+            }}
+            type="button"
+            variant="ghost"
+          >
+            <Trash2Icon size={13} />
+          </Button>
+        </div>
+      ))}
+      {filtrees.length ? null : (
         <p className="sidebar-empty">
-          Votre première conversation apparaîtra ici.
+          {local.length
+            ? "Aucun titre ne correspond. La recherche de la barre latérale cherche aussi dans le texte des messages."
+            : "Votre première conversation apparaîtra ici."}
         </p>
       )}
     </section>

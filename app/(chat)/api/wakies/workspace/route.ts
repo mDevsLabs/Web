@@ -1,5 +1,4 @@
 import { json, requireWakiesUser } from "@/lib/wakies/http";
-import { ensureStarterWorkspace } from "@/lib/wakies/onboarding";
 import {
   listCalls,
   listConversations,
@@ -22,9 +21,8 @@ export async function GET() {
     return identite;
   }
   const userId = identite.userId;
-  // Premier passage : l'espace et le Wakie de départ. Sans eux, l'interface
-  // n'a aucun Wakie à afficher et resterait sur son écran de chargement.
-  await ensureStarterWorkspace(userId);
+  // La lecture du workspace ne crée aucune donnée : un nouveau compte démarre
+  // avec zéro Espace et zéro Wakie, jusqu'à une création explicite.
   const [spaces, wakies, conversations, calls, setup] = await Promise.all([
     listSpaces(userId),
     listWakies(userId),

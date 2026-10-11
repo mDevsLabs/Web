@@ -6,7 +6,12 @@
  * ============================================================================
  */
 
-import { CalendarClockIcon as CalendarClock, ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight, Loader2Icon as Loader2 } from "@mdevs/icons";
+import {
+  CalendarClockIcon as CalendarClock,
+  ChevronLeftIcon as ChevronLeft,
+  ChevronRightIcon as ChevronRight,
+  Loader2Icon as Loader2,
+} from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { makeExcerpt } from "@/components/vibe/common/richTextUtils";

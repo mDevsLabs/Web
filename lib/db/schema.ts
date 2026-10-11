@@ -1,5 +1,6 @@
-import type { InferSelectModel } from "drizzle-orm";
+import { type InferSelectModel, sql } from "drizzle-orm";
 import {
+  type AnyPgColumn,
   bigint,
   boolean,
   date,
@@ -12,6 +13,7 @@ import {
   pgTable,
   primaryKey,
   serial,
+  smallint,
   text,
   timestamp,
   uniqueIndex,
@@ -1047,6 +1049,48 @@ export const pluginInstallation = pgTable(
 
 export type PluginInstallation = InferSelectModel<typeof pluginInstallation>;
 
+// Connexion d'un compte à une application externe (Google Drive, Agenda, Gmail,
+// GitHub). Les jetons sont chiffrés (AES-256-GCM, lib/mcp/encryption.ts) ; les
+// métadonnées servant à décider un rafraîchissement restent en clair, parce que
+// cette lecture se produit à chaque appel d'outil et ne doit pas faire du coffre
+// un chemin chaud. `providerAccountId` garde le schéma prêt pour plusieurs
+// comptes par fournisseur sans seconde migration destructive.
+export const integrationConnection = pgTable(
+  "IntegrationConnection",
+  {
+    accessToken: text("accessToken").notNull(),
+    accountEmail: text("accountEmail"),
+    accountLabel: text("accountLabel"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    expiresAt: timestamp("expiresAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isPrimary: boolean("isPrimary").notNull().default(true),
+    lastRefreshedAt: timestamp("lastRefreshedAt"),
+    provider: varchar("provider", {
+      enum: ["github", "google"] as const,
+    }).notNull(),
+    providerAccountId: text("providerAccountId").notNull(),
+    refreshToken: text("refreshToken"),
+    revokedAt: timestamp("revokedAt"),
+    scopes: text("scopes").notNull().default(""),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    accountUnique: uniqueIndex(
+      "IntegrationConnection_userId_provider_accountId_key"
+    ).on(table.userId, table.provider, table.providerAccountId),
+    providerIdx: index("IntegrationConnection_userId_provider_idx").on(
+      table.userId,
+      table.provider
+    ),
+    userIdIdx: index("IntegrationConnection_userId_idx").on(table.userId),
+  })
+);
+export type IntegrationConnection = InferSelectModel<
+  typeof integrationConnection
+>;
+
 export const agent = pgTable(
   "Agent",
   {
@@ -1155,11 +1199,20 @@ export const scheduledMessage = pgTable(
       .notNull()
       .default("new_chat"),
     customInstructions: text("customInstructions"),
+    dayOfMonth: smallint("dayOfMonth"),
     enabledTools: json("enabledTools").notNull().default([]),
     executedAt: timestamp("executedAt"),
+    hour: smallint("hour"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     lastError: text("lastError"),
+    minute: smallint("minute"),
     modelId: text("modelId").notNull().default(DEFAULT_CHAT_MODEL),
+    monthlyPolicy: varchar("monthlyPolicy", {
+      enum: ["clamp", "report", "skip"],
+      length: 12,
+    })
+      .notNull()
+      .default("clamp"),
     prompt: text("prompt").notNull(),
     recurrence: varchar("recurrence", {
       enum: ["none", "daily", "weekly", "monthly"],
@@ -1174,6 +1227,9 @@ export const scheduledMessage = pgTable(
       .notNull()
       .default("pending"),
     temperature: doublePrecision("temperature"),
+    timezone: varchar("timezone", { length: 64 })
+      .notNull()
+      .default("Europe/Paris"),
     title: text("title").notNull().default("Envoi planifié"),
     // Périmètre d'outils de l'exécution planifiée (cf. lib/planning/tool-mode).
     toolMode: varchar("toolMode", {
@@ -1720,10 +1776,8 @@ export type AgentUserInputRequest = InferSelectModel<
 export const wakiesSettings = pgTable("WakiesSettings", {
   memoryAllowed: boolean("memoryAllowed").notNull().default(true),
   name: varchar("name", { length: 40 }).notNull().default("Wakie"),
-  // Configuration de départ ACHEVÉE. TRUE = le compte a déjà un profil choisi,
-  // donc l'assistant ne doit plus s'afficher. TRUE par défaut pour que les
-  // Wakies historiques restent reconnaissables : seul `ensureStarterWorkspace`
-  // passe la ligne à FALSE, au moment exact où il crée l'espace de départ.
+  // Repère de configuration historique. TRUE par défaut : l'ouverture de
+  // Wakies ne crée plus de profil ni d'espace et ne déclenche pas l'assistant.
   onboardingCompleted: boolean("onboardingCompleted").notNull().default(true),
   paused: boolean("paused").notNull().default(false),
   researchAllowed: boolean("researchAllowed").notNull().default(true),
@@ -1740,11 +1794,25 @@ export const wakiesSpace = pgTable(
     description: text("description").notNull().default(""),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     name: varchar("name", { length: 60 }).notNull(),
+    // Épinglé = affiché en tête de la section « ESPACES ». L'ordre est décidé
+    // ici, par le serveur (`listSpaces`), jamais recomposé par l'interface :
+    // une liste que le client re-trie change d'ordre selon l'appareil.
+    pinned: boolean("pinned").notNull().default(false),
+    // Renommer un Espace doit le faire reconnaître comme récent : sans cette
+    // colonne, la seule date disponible serait `createdAt`, figée à la création.
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),
   },
   (table) => ({
     userCreatedIdx: index("WakiesSpace_userId_createdAt_idx").on(
       table.userId,
+      table.createdAt
+    ),
+    // La liste du rail filtre par compte puis trie épinglés avant création :
+    // sans cet index, chaque ouverture de /wakies relit tous les Espaces.
+    userPinnedCreatedIdx: index("WakiesSpace_userId_pinned_createdAt_idx").on(
+      table.userId,
+      table.pinned,
       table.createdAt
     ),
   })
@@ -1759,12 +1827,28 @@ export type WakiesSpace = InferSelectModel<typeof wakiesSpace>;
 export const wakiesWakie = pgTable(
   "WakiesWakie",
   {
+    // Accent couleur du Wakie (bulle et avatar du fil). NULL = dérivé de la
+    // mascotte côté lecture : aucun Wakie existant ne change sans geste.
+    accent: varchar("accent", { length: 16 }),
     // Mascotte choisie à la création (`/wakies/<avatar>.png`). NULL = déduite
     // de l'identifiant, comportement historique du port.
     avatar: varchar("avatar", { length: 16 }),
+    // Provenance d'un CLONE : le Wakie public dont celui-ci a été copié.
+    // `SET NULL` — supprimer l'original ne supprime jamais le clone, qui
+    // appartient à un autre compte. NULL = création originale.
+    clonedFromWakieId: uuid("clonedFromWakieId").references(
+      (): AnyPgColumn => wakiesWakie.id,
+      { onDelete: "set null" }
+    ),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    // Pseudo recherchable (`@pseudo`), unique quand renseigné. Minuscules,
+    // chiffres, `_` et `-` uniquement, validé côté route.
+    handle: varchar("handle", { length: 30 }),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
+    // Profil social : visible dans l'annuaire quand vrai. Faux par défaut
+    // pour ne jamais exposer un Wakie existant sans geste explicite.
+    isPublic: boolean("isPublic").notNull().default(false),
     // Conteneur d'apprentissage Intelligence : hors périmètre du port (le
     // service n'est pas branché). La colonne est conservée pour ne pas perdre
     // la donnée si un jour un compte l'exploite.
@@ -1782,6 +1866,11 @@ export const wakiesWakie = pgTable(
     model: text("model"),
     name: varchar("name", { length: 40 }).notNull(),
     pluginIds: text("pluginIds").array(),
+    // Persona PUBLIÉE : le seul texte de ce Wakie exposé aux autres comptes
+    // (annuaire, fiche, @mention, clone). Vide par défaut : `instructions`
+    // reste privé, toujours. Un Wakie public sans persona publiée n'expose
+    // rien de son prompt — c'est un état légitime, pas une erreur.
+    publicPersona: text("publicPersona").notNull().default(""),
     researchAllowed: boolean("researchAllowed").notNull().default(true),
     skillDeliveryEnabled: boolean("skillDeliveryEnabled")
       .notNull()
@@ -1810,6 +1899,102 @@ export const wakiesWakie = pgTable(
 );
 export type WakiesWakie = InferSelectModel<typeof wakiesWakie>;
 
+/**
+ * Profil social d'un Wakie : bio, avatar, bannière et liens.
+ * Une ligne par Wakie, créée à la lecture. Les images de la galerie vivent
+ * dans `WakiesWakieImage` (quota par forfait), pas ici.
+ */
+export const wakiesWakieProfile = pgTable("WakiesWakieProfile", {
+  avatarPath: text("avatarPath"),
+  bannerPath: text("bannerPath"),
+  bio: text("bio").notNull().default(""),
+  links: jsonb("links").$type<string[]>().notNull().default([]),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  wakieId: uuid("wakieId")
+    .primaryKey()
+    .notNull()
+    .references(() => wakiesWakie.id, { onDelete: "cascade" }),
+});
+export type WakiesWakieProfile = InferSelectModel<typeof wakiesWakieProfile>;
+
+/** Image de la galerie du profil social d'un Wakie. */
+export const wakiesWakieImage = pgTable(
+  "WakiesWakieImage",
+  {
+    alt: text("alt").notNull().default(""),
+    blobPathname: text("blobPathname").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    position: integer("position").notNull().default(0),
+    wakieId: uuid("wakieId")
+      .notNull()
+      .references(() => wakiesWakie.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    wakiePositionIdx: index("WakiesWakieImage_wakieId_position_idx").on(
+      table.wakieId,
+      table.position
+    ),
+  })
+);
+export type WakiesWakieImage = InferSelectModel<typeof wakiesWakieImage>;
+
+/**
+ * Ami : abonnement d'un compte vers un Wakie public.
+ * `ownerUserId` est dénormalisé pour purger sans jointure. La clé est
+ * (abonné, Wakie) : on ne suit pas deux fois le même Wakie.
+ */
+export const wakiesFriend = pgTable(
+  "WakiesFriend",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    ownerUserId: text("ownerUserId").notNull(),
+    subscriberUserId: text("subscriberUserId").notNull(),
+    wakieId: uuid("wakieId")
+      .notNull()
+      .references(() => wakiesWakie.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.subscriberUserId, table.wakieId] }),
+    subscriberIdx: index("WakiesFriend_subscriber_idx").on(
+      table.subscriberUserId
+    ),
+    wakieIdx: index("WakiesFriend_wakie_idx").on(table.wakieId),
+  })
+);
+export type WakiesFriend = InferSelectModel<typeof wakiesFriend>;
+
+/**
+ * Membre d'une conversation de groupe.
+ *
+ * Le Wakie organisateur (`WakiesConversation.wakieId`) EST membre, avec une
+ * ligne ici — elle porte `isOrganizer = true` et garde la source unifiée
+ * des participants d'un fil. Clé (conversation, Wakie) : on ne mentionne
+ * pas deux fois le même Wakie dans le même fil.
+ */
+export const wakiesConversationMember = pgTable(
+  "WakiesConversationMember",
+  {
+    conversationId: uuid("conversationId")
+      .notNull()
+      .references(() => wakiesConversation.id, { onDelete: "cascade" }),
+    isOrganizer: boolean("isOrganizer").notNull().default(false),
+    joinedAt: timestamp("joinedAt").notNull().defaultNow(),
+    wakieId: uuid("wakieId")
+      .notNull()
+      .references(() => wakiesWakie.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.conversationId, table.wakieId],
+    }),
+    wakieIdx: index("WakiesConversationMember_wakieId_idx").on(table.wakieId),
+  })
+);
+export type WakiesConversationMember = InferSelectModel<
+  typeof wakiesConversationMember
+>;
+
 /** Accès d'un Wakie à un espace (un Wakie accède à plusieurs espaces). */
 export const wakiesWakieSpace = pgTable(
   "WakiesWakieSpace",
@@ -1836,8 +2021,28 @@ export type WakiesWakieSpace = InferSelectModel<typeof wakiesWakieSpace>;
 export const wakiesConversation = pgTable(
   "WakiesConversation",
   {
+    // CONTEXTE PERSISTANT DE CETTE CONVERSATION (mentions `@@`). Même sémantique
+    // que les colonnes de sélection d'outils juste dessous : `null` = rien de
+    // réglé, `[]` = réglage explicite « rien ». Ces identifiants sont des
+    // pointeurs, pas des clés étrangères : la résolution jette chaque tour
+    // celui qui n'existe plus, plutôt que de faire échouer le tour.
+    contextPageIds: uuid("contextPageIds").array(),
+    contextSpaceIds: uuid("contextSpaceIds").array(),
+    contextWakieIds: uuid("contextWakieIds").array(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    favorite: boolean("favorite").notNull().default(false),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
+    // Conversation de GROUPE : plusieurs Wakies participants, mentionnables
+    // individuellement (`@pseudo`) ou collectivement (`@all`). Une conversation
+    // classique garde `false` et le comportement 1:1 historique. La liste des
+    // participants vit dans `WakiesConversationMember`, où le Wakie organisateur
+    // (cette colonne `wakieId`) figure toujours.
+    isGroup: boolean("isGroup").notNull().default(false),
+    // Curseur de LECTURE : `seq` du dernier message vu par le compte. Les
+    // non-lus sont les messages de rôle non-utilisateur dont le `seq` est
+    // strictement supérieur. Défaut 0 = « rien n'a encore été lu », jamais
+    // réécrit à la baisse : `marquerConversationLue` ne recule pas.
+    lastReadSeq: integer("lastReadSeq").notNull().default(0),
     // Figé à la création : une conversation qui ne participe pas à
     // l'apprentissage y porte `null` DÉFINITIVEMENT.
     learningContainerId: text("learningContainerId"),
@@ -1850,6 +2055,7 @@ export const wakiesConversation = pgTable(
     // Modèle IA de CETTE conversation, choisi dans l'en-tête du chat. NULL =
     // repli sur le modèle du Wakie, puis sur le modèle par défaut.
     model: text("model"),
+    muted: boolean("muted").notNull().default(false),
     pluginIds: text("pluginIds").array(),
     skillIds: uuid("skillIds").array(),
     skillParams:
@@ -1867,6 +2073,10 @@ export const wakiesConversation = pgTable(
       table.userId,
       table.createdAt
     ),
+    userReadIdx: index("WakiesConversation_userId_lastRead_idx").on(
+      table.userId,
+      table.lastReadSeq
+    ),
     wakieIdx: index("WakiesConversation_wakieId_idx").on(table.wakieId),
   })
 );
@@ -1880,25 +2090,108 @@ export type WakiesConversation = InferSelectModel<typeof wakiesConversation>;
 export const wakiesMessage = pgTable(
   "WakiesMessage",
   {
+    // Auteur d'une réponse de groupe (lot messagerie). NULL = l'organisateur
+    // du fil : les fils 1:1 existants restent lisibles sans réécriture.
+    authorWakieId: uuid("authorWakieId").references(() => wakiesWakie.id, {
+      onDelete: "set null",
+    }),
     conversationId: uuid("conversationId")
       .notNull()
       .references(() => wakiesConversation.id, { onDelete: "cascade" }),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: text("id").notNull().primaryKey(),
     parts: jsonb("parts").$type<unknown>().notNull(),
+    // Message ÉPINGLÉ par le compte : la bande « Épinglés » en haut du fil sert
+    // ces lignes, jointes à la lecture de l'historique. Épingler est un geste
+    // du compte, jamais du Wakie : la colonne est écrite par la route dédiée.
+    pinned: boolean("pinned").notNull().default(false),
+    pinnedAt: timestamp("pinnedAt"),
+    // Réponse à un message précis (citation structurée, exploitée au lot 2).
+    // `SET NULL` : supprimer la cible ne doit jamais effacer la réponse.
+    replyToId: text("replyToId").references(
+      (): AnyPgColumn => wakiesMessage.id,
+      {
+        onDelete: "set null",
+      }
+    ),
     role: varchar("role", { length: 16 }).notNull(),
     // Ordre d'écriture : deux messages de la même salve partagent leur
     // horodatage, et l'ordre de lecture doit rester celui de l'envoi.
     seq: serial("seq").notNull(),
   },
   (table) => ({
+    authorIdx: index("WakiesMessage_authorWakieId_idx").on(table.authorWakieId),
     conversationSeqIdx: index("WakiesMessage_conversationId_seq_idx").on(
       table.conversationId,
       table.seq
     ),
+    pinnedIdx: index("WakiesMessage_conversationId_pinned_idx").on(
+      table.conversationId,
+      table.pinned
+    ),
   })
 );
 export type WakiesMessage = InferSelectModel<typeof wakiesMessage>;
+
+/** Une réponse terminée produit un événement durable, distinct des messages partiels. */
+export const wakiesNotification = pgTable(
+  "WakiesNotification",
+  {
+    conversationId: uuid("conversationId")
+      .notNull()
+      .references(() => wakiesConversation.id, { onDelete: "cascade" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    messageId: text("messageId")
+      .notNull()
+      .unique()
+      .references(() => wakiesMessage.id, { onDelete: "cascade" }),
+    seq: serial("seq").primaryKey(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    userSeqIdx: index("WakiesNotification_userId_seq_idx").on(
+      table.userId,
+      table.seq
+    ),
+  })
+);
+
+/**
+ * Réaction posée sur un message.
+ *
+ * La clé (message, émoji, auteur) empêche un même auteur d'empiler la même
+ * émoji : reposter une réaction est idempotent. `byWakieId` est NULL quand
+ * l'utilisateur pose lui-même la réaction depuis l'interface ; l'IA la
+ * renseigne avec l'identifiant du Wakie qui réagit. La palette est validée
+ * côté serveur (`lib/wakies/queries.ts`), jamais côté client.
+ */
+export const wakiesMessageReaction = pgTable(
+  "WakiesMessageReaction",
+  {
+    actorKey: text("actorKey")
+      .generatedAlwaysAs(sql`coalesce("byWakieId"::text, 'user')`)
+      .notNull(),
+    byWakieId: uuid("byWakieId").references(() => wakiesWakie.id, {
+      onDelete: "cascade",
+    }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    emoji: varchar("emoji", { length: 16 }).notNull(),
+    messageId: text("messageId")
+      .notNull()
+      .references(() => wakiesMessage.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    messageIdx: index("WakiesMessageReaction_messageId_idx").on(
+      table.messageId
+    ),
+    pk: primaryKey({
+      columns: [table.messageId, table.emoji, table.actorKey],
+    }),
+  })
+);
+export type WakiesMessageReaction = InferSelectModel<
+  typeof wakiesMessageReaction
+>;
 
 /** Page d'un espace : document éditable, versionné par `revision`. */
 export const wakiesPage = pgTable(
@@ -1908,7 +2201,9 @@ export const wakiesPage = pgTable(
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     parentId: uuid("parentId"),
+    pinned: boolean("pinned").notNull().default(false),
     revision: integer("revision").notNull().default(1),
+    settings: jsonb("settings"),
     sourceConversationId: uuid("sourceConversationId"),
     spaceId: uuid("spaceId")
       .notNull()
@@ -1922,6 +2217,10 @@ export const wakiesPage = pgTable(
     spaceCreatedIdx: index("WakiesPage_spaceId_createdAt_idx").on(
       table.spaceId,
       table.createdAt
+    ),
+    spacePinnedIdx: index("WakiesPage_spaceId_pinned_idx").on(
+      table.spaceId,
+      table.pinned
     ),
     userIdx: index("WakiesPage_userId_idx").on(table.userId),
   })
@@ -1988,6 +2287,16 @@ export type WakiesPageReview = InferSelectModel<typeof wakiesPageReview>;
 export const wakiesTask = pgTable(
   "WakiesTask",
   {
+    // Nombre de revendications de l'occurrence en cours : borne les reprises
+    // après crash ou lenteur, comme SCHEDULE_MAX_ATTEMPTS côté Agent
+    // (lib/agent/scheduler/engine.ts). Remis à zéro par une finalisation ou une
+    // relance manuelle, sinon « Exécuter » après trois échecs serait refusé.
+    attempt: integer("attempt").notNull().default(0),
+    // Identité du porteur du bail (`cron-xxxxxxxx`). Le bail seul identifie
+    // l'essai, pas le worker : claimedBy ferme la porte à une invocation qui a
+    // perdu puis récupéré la tâche. Même largeur que
+    // AgentScheduleOccurrence.claimedBy.
+    claimedBy: varchar("claimedBy", { length: 128 }),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     error: text("error"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -2009,6 +2318,13 @@ export const wakiesTask = pgTable(
     dueIdx: index("WakiesTask_status_nextRunAt_idx").on(
       table.status,
       table.nextRunAt
+    ),
+    // La branche « running » du prédicat de claim filtre (status, leaseUntil) :
+    // l'index (status, nextRunAt) ne la couvre pas. Précédent :
+    // AgentScheduleOccurrence_status_leaseUntil_idx.
+    leaseIdx: index("WakiesTask_status_leaseUntil_idx").on(
+      table.status,
+      table.leaseUntil
     ),
     userCreatedIdx: index("WakiesTask_userId_createdAt_idx").on(
       table.userId,
@@ -2155,11 +2471,20 @@ export const wakiesChatTurn = pgTable(
     responseId: uuid("responseId").notNull().defaultRandom(),
     status: varchar("status", { length: 16 }).notNull().default("running"),
     userId: text("userId").notNull(),
+    // Participant qui répond (lot messagerie) : N Wakies répondent au même
+    // message utilisateur, chacun avec son tour. La reprise 0045 remplit les
+    // tours historiques avec l'organisateur de leur conversation.
+    wakieId: uuid("wakieId").references(() => wakiesWakie.id, {
+      onDelete: "cascade",
+    }),
   },
   (table) => ({
-    messageIdx: uniqueIndex("WakiesChatTurn_conversation_message_idx").on(
+    // Un tour par (conversation, message, Wakie) : la deuxième bulle d'un
+    // groupe n'est plus rejetée en 409, mais un rejeu du même Wakie l'est.
+    messageIdx: uniqueIndex("WakiesChatTurn_conversation_message_wakie_idx").on(
       table.conversationId,
-      table.messageId
+      table.messageId,
+      table.wakieId
     ),
     userIdx: index("WakiesChatTurn_user_conversation_idx").on(
       table.userId,
@@ -2167,3 +2492,74 @@ export const wakiesChatTurn = pgTable(
     ),
   })
 );
+
+// ─────────────────────────────────────────────
+// Formulaires utilisateur & récompenses (migration 0054)
+// ─────────────────────────────────────────────
+export const userForm = pgTable(
+  "UserForm",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    endDate: timestamp("endDate"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isActive: boolean("isActive").notNull().default(true),
+    name: text("name").notNull(),
+    options: jsonb("options")
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default({}),
+    questions: jsonb("questions")
+      .$type<
+        Array<{
+          id: string;
+          title: string;
+          description?: string;
+          type: "text" | "single_choice" | "multi_choice" | "rating";
+          options?: string[];
+          required?: boolean;
+        }>
+      >()
+      .notNull()
+      .default([]),
+    startDate: timestamp("startDate").notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    activeIdx: index("UserForm_isActive_idx").on(table.isActive),
+    datesIdx: index("UserForm_startDate_endDate_idx").on(
+      table.startDate,
+      table.endDate
+    ),
+  })
+);
+
+export type UserForm = InferSelectModel<typeof userForm>;
+
+export const userFormResponse = pgTable(
+  "UserFormResponse",
+  {
+    answers: jsonb("answers")
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default({}),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    formId: uuid("formId")
+      .notNull()
+      .references(() => userForm.id, { onDelete: "cascade" }),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    rewardAppliedAt: timestamp("rewardAppliedAt"),
+    rewardResetApplied: boolean("rewardResetApplied").notNull().default(false),
+    rewardType: varchar("rewardType", { length: 20 }),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    formUserKey: uniqueIndex("UserFormResponse_formId_userId_key").on(
+      table.formId,
+      table.userId
+    ),
+    userIdx: index("UserFormResponse_userId_idx").on(table.userId),
+  })
+);
+
+export type UserFormResponse = InferSelectModel<typeof userFormResponse>;

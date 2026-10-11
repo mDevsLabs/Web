@@ -5,12 +5,30 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, BellIcon as Bell, BellOffIcon as BellOff, CheckIcon as Check, CheckCheckIcon as CheckCheck, FileTextIcon as FileText, HeartIcon as Heart, Loader2Icon as Loader2, MailIcon as Mail, MessageSquareIcon as MessageSquare, QuoteIcon, RepeatIcon as Repeat, RotateCcwIcon as RotateCcw, SparklesIcon as Sparkles, Trash2Icon as Trash2, UserPlusIcon as UserPlus } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  BellIcon as Bell,
+  BellOffIcon as BellOff,
+  CheckIcon as Check,
+  CheckCheckIcon as CheckCheck,
+  FileTextIcon as FileText,
+  HeartIcon as Heart,
+  Loader2Icon as Loader2,
+  MailIcon as Mail,
+  MessageSquareIcon as MessageSquare,
+  QuoteIcon,
+  RepeatIcon as Repeat,
+  RotateCcwIcon as RotateCcw,
+  SparklesIcon as Sparkles,
+  Trash2Icon as Trash2,
+  UserPlusIcon as UserPlus,
+} from "@mdevs/icons";
 import type React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
+import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
@@ -70,8 +88,11 @@ function saveReadAllAt(timestamp: number) {
   AppStorage.setItem(STORAGE_KEY_READ_ALL_AT, String(timestamp));
 }
 
-export const NotificationsPage: React.FC = () => {
+export const NotificationsPage: React.FC<{
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}> = ({ hydration }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { confirm, confirmDialog } = useConfirmDialog();
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [filter, setFilter] = useState<
@@ -107,9 +128,42 @@ export const NotificationsPage: React.FC = () => {
     });
   }, []);
 
+  // La liste a été lue en base par la page serveur ? On l'applique une seule
+  // fois (premier écran) ; les rappels — SSE, intervalle, mark-read — doivent
+  // voir l'autorité serveur, pas la graine.
+  const seedConsumedRef = useRef(false);
+  const notificationsSeed = useCallback((): {
+    notifications: NotificationItem[];
+  } | null => {
+    if (!hydration?.data) {
+      return null;
+    }
+    if (hydration.as !== null) {
+      if (user && String(hydration.as) !== String(user.id ?? "")) {
+        return null;
+      }
+    } else if (user) {
+      return null;
+    }
+    const d = hydration.data as { notifications?: NotificationItem[] };
+    return Array.isArray(d.notifications)
+      ? { notifications: d.notifications }
+      : null;
+  }, [hydration, user]);
+
   const fetchNotifications = useCallback(async () => {
     try {
-      const data = await ApiService.getNotifications();
+      let data: { notifications: NotificationItem[] } | null = null;
+      if (!seedConsumedRef.current) {
+        const seed = notificationsSeed();
+        if (seed) {
+          seedConsumedRef.current = true;
+          data = seed;
+        }
+      }
+      if (!data) {
+        data = await ApiService.getNotifications();
+      }
       const rawList: NotificationItem[] = Array.isArray(data?.notifications)
         ? data.notifications
         : [];
@@ -144,7 +198,7 @@ export const NotificationsPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [notificationsSeed]);
 
   useEffect(() => {
     fetchNotifications();

@@ -4,8 +4,9 @@ import airQualityPluginManifest from "./air-quality/index.json";
 import crossrefPluginManifest from "./crossref/index.json";
 import eurostatPluginManifest from "./eurostat/index.json";
 import frHolidaysPluginManifest from "./fr-holidays/index.json";
-import githubPublicPluginManifest from "./github-public/index.json";
+import githubPluginManifest from "./github/index.json";
 import gitlabPublicPluginManifest from "./gitlab-public/index.json";
+import googlePluginManifest from "./google/index.json";
 import jsonToolboxPluginManifest from "./json-toolbox/index.json";
 import mobiliteFrPluginManifest from "./mobilite-fr/index.json";
 import openFoodFactsPluginManifest from "./open-food-facts/index.json";
@@ -26,8 +27,9 @@ export const PLUGIN_MANIFESTS = [
   crossrefPluginManifest,
   eurostatPluginManifest,
   frHolidaysPluginManifest,
-  githubPublicPluginManifest,
+  githubPluginManifest,
   gitlabPublicPluginManifest,
+  googlePluginManifest,
   jsonToolboxPluginManifest,
   mobiliteFrPluginManifest,
   openFoodFactsPluginManifest,

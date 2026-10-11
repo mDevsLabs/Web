@@ -1,6 +1,11 @@
 "use client";
 
-import { ArchiveIcon as Archive, ArchiveRestoreIcon as ArchiveRestore, RotateCcwIcon as RotateCcw, Trash2Icon as Trash2 } from "@mdevs/icons";
+import {
+  ArchiveIcon as Archive,
+  ArchiveRestoreIcon as ArchiveRestore,
+  RotateCcwIcon as RotateCcw,
+  Trash2Icon as Trash2,
+} from "@mdevs/icons";
 import type {
   SupportTicket,
   SupportTicketStatus,

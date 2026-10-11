@@ -1,6 +1,18 @@
 "use client";
 
-import { DownloadIcon, FilesIcon, LightbulbIcon, Loader2Icon, MessageSquareIcon, PinIcon, SparklesIcon, Trash2Icon, UploadIcon, UsersIcon, XIcon } from "@mdevs/icons";
+import {
+  DownloadIcon,
+  FilesIcon,
+  LightbulbIcon,
+  Loader2Icon,
+  MessageSquareIcon,
+  PinIcon,
+  SparklesIcon,
+  Trash2Icon,
+  UploadIcon,
+  UsersIcon,
+  XIcon,
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";

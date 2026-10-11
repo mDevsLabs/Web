@@ -7,7 +7,11 @@
  * ============================================================================
  */
 
-import { CheckIcon as Check, CheckCheckIcon as CheckCheck, MessageSquareIcon as MessageSquare } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  CheckCheckIcon as CheckCheck,
+  MessageSquareIcon as MessageSquare,
+} from "@mdevs/icons";
 import type React from "react";
 import {
   CHAT_BACKGROUND_THEMES,

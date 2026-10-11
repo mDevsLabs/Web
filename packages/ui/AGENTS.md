@@ -108,9 +108,9 @@ Sous Next.js App Router, importer le CSS global dans `app/layout.tsx`. Créer un
 
 ## 7. Thème, CSS et portails
 
-`ThemeProvider` accepte `theme: 'light' | 'dark' | 'system'`, `accent`, `radius`, `glass` et des attributs de `div`. Il n'impose pas un fond de page. Le fond hôte, le contraste et la surface derrière le verre font partie de l'intégration.
+`ThemeProvider` accepte `theme: 'light' | 'dark' | 'system'`, `variant: 'liquid-glass' | 'chatgpt'`, `accent`, `radius`, `glass` et des attributs de `div`. La variante Liquid Glass est le défaut ; `chatgpt` offre un style achromatique et mat sans flou. Il n'impose pas un fond de page. Le fond hôte, le contraste et la surface derrière le verre font partie de l'intégration.
 
-Les overlays portalisés disposent d'un `PortalScope` qui recopie le thème, l'accent, le rayon, le mode verre et les propriétés CSS dont la clé commence par `--` passées à `ThemeProvider.style`. Les styles ordinaires de layout et `className` ne sont pas recopiés. Une variable définie uniquement dans une règle CSS sur le wrapper du provider ne suit pas automatiquement son portail.
+Les overlays portalisés disposent d'un `PortalScope` qui recopie le thème, la variante, l'accent, le rayon, le mode verre et les propriétés CSS dont la clé commence par `--` passées à `ThemeProvider.style`. Les styles ordinaires de layout et `className` ne sont pas recopiés. Une variable définie uniquement dans une règle CSS sur le wrapper du provider ne suit pas automatiquement son portail.
 
 ```tsx
 import type {CSSProperties} from 'react';

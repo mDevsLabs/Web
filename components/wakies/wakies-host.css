@@ -1,3 +1,52 @@
+.wakies-root .wakies-social-head p {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.wakies-root .wakies-social-search .md-input {
+  flex: 1;
+}
+
+.wakies-root .wakies-social-list h2 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .wakies-social-line small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.wakies-root .wakies-public-head p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.wakies-root .wakies-public-card > p,
+.wakies-root .wakies-public-links,
+.wakies-root .wakies-public-gallery,
+.wakies-root .wakies-public-actions {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.wakies-root .wakies-notification-button {
+  justify-content: flex-start;
+  width: 100%;
+  text-align: left;
+}
+
+.wakies-root .wakies-notification-preview {
+  display: block;
+}
+
 /* Les adaptations locales complètent packages/ui sans réinitialiser ses contrôles.
  * Les feuilles historiques vivent dans wakies-base ; mdevs fournit les primitives.
  * Chaque règle reste sous .wakies-root, y compris les dialogues Radix. */
@@ -147,6 +196,407 @@
   border-radius: 8px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Menu « … » d'un Espace, renommage en ligne et pastille d'épingle.
+   Le menu est un composant de l'atelier (`SpaceMenu.tsx`), pas un portail de
+   l'hôte : il reste sous `.wakies-root` et partage ses styles. `z-index` reste
+   sous 90, la valeur de `.modal`, pour qu'un dialogue ouvert passe devant.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.wakies-root .space-nav-row {
+  position: relative;
+}
+
+.wakies-root .space-nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.wakies-root .space-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 4px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  min-width: 184px;
+  padding: 4px;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(24, 24, 27, 0.12);
+}
+
+.wakies-root .space-dropdown-item {
+  padding: 7px 9px;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  color: var(--ink, #333641);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 7px;
+}
+
+.wakies-root .space-dropdown-item:hover,
+.wakies-root .space-dropdown-item:focus-visible {
+  background: #f1f0ed;
+  outline: none;
+}
+
+/* Uniquement l'accent déjà prévu pour l'erreur : le menu d'espace n'invente
+   pas une cinquième couleur. */
+.wakies-root .space-dropdown-item.is-danger {
+  color: #b3261e;
+}
+
+.wakies-root .space-dropdown-groupe {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+  margin-top: 4px;
+  border-top: 1px solid var(--line, #e9e8e6);
+}
+
+.wakies-root .space-dropdown-label {
+  padding: 2px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .space-rename {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 7px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink, #333641);
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 7px;
+}
+
+.wakies-root .space-rename:focus-visible {
+  outline: 2px solid var(--muted, #8c8d97);
+  outline-offset: 1px;
+}
+
+.wakies-root .space-pin-mark {
+  margin-left: auto;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--muted, #8c8d97);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Menu `@` du composeur et puce « Réglages de ce fil ».
+   Le menu est rendu DANS l'atelier (aucun portail) : `.wakies-root` est en
+   `overflow-hidden`, donc il s'ouvre au-dessus du composeur, jamais en dessous.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.wakies-root .chat-composer {
+  position: relative;
+}
+
+.wakies-root .composer-mentions {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(420px, 100%);
+  max-height: 320px;
+  padding: 8px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(24, 24, 27, 0.14);
+}
+
+.wakies-root .composer-mentions-aide {
+  margin: 0;
+  padding: 0 4px;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .composer-mentions-aide code {
+  padding: 1px 4px;
+  font-size: 11px;
+  background: #f1f0ed;
+  border-radius: 4px;
+}
+
+.wakies-root .composer-mentions-groupe {
+  display: flex;
+  flex-direction: column;
+}
+
+.wakies-root .composer-mentions-titre {
+  padding: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .composer-mentions-item {
+  display: grid;
+  grid-template-columns: minmax(84px, auto) 1fr auto;
+  gap: 4px 8px;
+  align-items: baseline;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  color: var(--ink, #333641);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+}
+
+.wakies-root .composer-mentions-item.is-active {
+  background: #f1f0ed;
+}
+
+.wakies-root .composer-mentions-jeton {
+  font-weight: 600;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .composer-mentions-meta {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .composer-mentions-badge {
+  padding: 1px 6px;
+  font-size: 10px;
+  color: var(--muted, #8c8d97);
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 999px;
+}
+
+/* Une ligne refusée reste visible avec sa raison : masquer une capacité
+   indisponible ferait croire qu'elle n'existe pas. */
+.wakies-root .composer-mentions-item.is-indisponible {
+  opacity: 0.62;
+}
+
+.wakies-root .composer-mentions-refus {
+  font-size: 10px;
+  color: #b3261e;
+}
+
+.wakies-root .fil-reglages {
+  position: relative;
+}
+
+.wakies-root .fil-reglages-resume {
+  padding: 6px 9px;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 8px;
+}
+
+.wakies-root .fil-reglages-resume::-webkit-details-marker {
+  display: none;
+}
+
+.wakies-root .fil-reglages[open] .fil-reglages-resume {
+  color: var(--ink, #333641);
+  background: #f1f0ed;
+}
+
+.wakies-root .fil-reglages-compteur {
+  margin-left: 6px;
+  padding: 0 5px;
+  font-size: 10px;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 999px;
+}
+
+.wakies-root .fil-reglages-liste {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(24, 24, 27, 0.12);
+}
+
+.wakies-root .fil-reglages-liste li {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+/* Sort de l'import en bibliothèque cloud, sur la ligne de pièce jointe.
+   Distinct de l'état d'envoi : « prêt, mais non importé » est une phrase
+   complète, et deux puces qui se contredisent seraient un mensonge. */
+.wakies-root .composer-piece-biblio {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .composer-piece-biblio.is-plein,
+.wakies-root .composer-piece-biblio.is-erreur {
+  color: #8a5300;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Page /wakies/settings. Rendue DANS le layout `(wakies)`, donc sous
+   `.wakies-root` : elle prend le thème clair de l'atelier, pas celui du chat.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.wakies-root .wakies-settings-page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.wakies-root .wakies-settings-barre {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(253, 252, 250, 0.9);
+  border-bottom: 1px solid var(--line, #e9e8e6);
+  backdrop-filter: blur(8px);
+}
+
+.wakies-root .wakies-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 16px 56px;
+}
+
+.wakies-root .wakies-settings-tete h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 14px;
+  background: white;
+}
+
+.wakies-root .settings-section h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .settings-field input,
+.wakies-root .settings-field select {
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink, #333641);
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 9px;
+}
+
+.wakies-root .settings-check {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--ink, #333641);
+  cursor: pointer;
+}
+
+.wakies-root .settings-note,
+.wakies-root .settings-aide {
+  margin: 0;
+  font-size: 11px;
+  line-height: 17px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .settings-quotas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+}
+
+.wakies-root .settings-quotas li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--line, #e9e8e6);
+}
+
+.wakies-root .settings-lien {
+  align-self: flex-start;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--ink, #333641);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 8px;
+}
+
+.wakies-root .settings-lien:hover {
+  background: #f1f0ed;
+}
+
 .wakies-root .wakies-model-trigger:hover:not(:disabled) {
   color: var(--ink, #333641);
   background: #f1f0ed;
@@ -160,6 +610,23 @@
   max-width: none;
   color: var(--ink, #333641);
   background: white;
+  border-color: var(--line, #e9e8e6);
+}
+
+/* « Modèle du Wakie » n'est pas une absence de modèle : c'est le modèle du
+   Wakie, et son NOM doit être lisible. Porté par le déclencheur, donc sous
+   `.wakies-root` — la liste, elle, est dans un portail de l'hôte. */
+.wakies-root .wakies-model-defaut {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  font-style: italic;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.wakies-root .wakies-model-trigger[data-statut="identique-au-defaut"] {
   border-color: var(--line, #e9e8e6);
 }
 
@@ -187,7 +654,7 @@
 
 .wakies-root .surface-muted {
   padding: 12px 16px;
-  margin: 12px 0;
+  margin: 2px 0 8px;
   font-size: 12px;
   color: var(--ink, #333641);
   background: #f8f7f5;
@@ -211,11 +678,13 @@
   padding: 14px 16px;
   margin: 12px 0;
   background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(var(--md-blur, 12px));
-  -webkit-backdrop-filter: blur(var(--md-blur, 12px));
   border: 1px solid var(--line, #e9e8e6);
   border-radius: 14px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 4px 16px -4px rgba(27, 44, 81, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 4px 16px -4px rgba(27, 44, 81, 0.08);
+  -webkit-backdrop-filter: blur(var(--md-blur, 12px));
+  backdrop-filter: blur(var(--md-blur, 12px));
 }
 
 .wakies-root .wakies-approval-head {
@@ -350,6 +819,13 @@
 .wakies-root .muse-app .chat-compose-row textarea:focus-visible {
   outline-offset: 0;
 }
+.wakies-root .chat-bubble {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
 .wakies-root .muse-app .chat-bubble {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -395,6 +871,19 @@
   color: #182023;
   background: #eef0f1;
 }
+.wakies-root .chat-date-separator span {
+  position: relative;
+  z-index: 2;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted, #8c8d97);
+  background: #fbfbf9;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
 .wakies-root .muse-navigation .md-button span {
   font-size: 11px;
   line-height: 15px;
@@ -408,6 +897,21 @@
 .wakies-root .muse-app .modal {
   padding: 28px;
   background: var(--md-solid, #fff);
+}
+/* Conception d'un Wakie : la colonne d'édition prend la largeur de la
+   bibliothèque d'espaces, pour juger les modifications sans les scruter. */
+.wakies-root .muse-app .modal.modal-wakie-editor {
+  max-width: min(1040px, calc(100vw - 32px));
+}
+/* Textes et options à gauche : les rangées étaient centrées par des titres et
+   des legendes en align-items center, non par un text-align. */
+.wakies-root .muse-app .modal.modal-wakie-editor fieldset > legend,
+.wakies-root .muse-app .modal.modal-wakie-editor .capability-row-title,
+.wakies-root .muse-app .modal.modal-wakie-editor .capability-row-body,
+.wakies-root .muse-app .modal.modal-wakie-editor .permission-row {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
 }
 .wakies-root .muse-app .modal-close {
   top: 12px;
@@ -493,6 +997,142 @@
   padding: 8px;
   border: 0;
 }
+/* Rangée de tête : sélecteur d'applications, puis notifications et réduction
+   à sa droite. Ces trois commandes restent atteignables quand le rail se réduit,
+   alors que le reste du rail devient une colonne d'icônes. */
+.wakies-root .muse-app .rail-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.wakies-root .muse-app .rail-actions .wordmark {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.wakies-root .muse-app .rail-bell,
+.wakies-root .muse-app .rail-collapse {
+  position: relative;
+  flex: 0 0 auto;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 8px;
+  color: #545e63;
+}
+.wakies-root .muse-app .rail-unread {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  min-width: 14px;
+  padding: 0 3px;
+  color: #fff;
+  background: #182023;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+}
+/* Le panneau reste dans le rail : portalisé sur body, il sortirait de
+   .wakies-root et perdrait son thème. Fixe, il échappe au défilement du rail. */
+.wakies-root .muse-app .rail-notifications {
+  position: static;
+}
+.wakies-root .muse-app .rail-panel {
+  position: fixed;
+  top: 60px;
+  left: 16px;
+  z-index: 45;
+  display: grid;
+  gap: 8px;
+  width: min(320px, calc(100vw - 32px));
+  max-height: min(40vh, 320px);
+  padding: 10px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+.wakies-root .muse-app .rail-panel ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+@media (min-width: 901px) {
+  /* Réduit : une colonne d'icônes praticable, plus une barre invisible qui
+    emportait le bouton permettant de la rouvrir. */
+  .wakies-root .muse-app.nav-collapsed .sidebar {
+    visibility: visible;
+    width: 56px;
+    padding-inline: 12px;
+    transform: none;
+  }
+  .wakies-root .muse-app.nav-collapsed .workspace {
+    margin-left: 56px;
+  }
+  .wakies-root .muse-app.nav-collapsed .sidebar > :not(.rail-actions) {
+    display: none;
+  }
+  .wakies-root .muse-app.nav-collapsed .rail-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .wakies-root .muse-app.nav-collapsed .rail-actions .wordmark,
+  .wakies-root .muse-app.nav-collapsed .rail-bell,
+  .wakies-root .muse-app.nav-collapsed .rail-collapse {
+    width: 32px;
+    justify-content: center;
+    padding: 8px;
+  }
+  .wakies-root .muse-app.nav-collapsed .rail-label {
+    display: none;
+  }
+}
+/* Carte de bibliothèque et son menu « … ». La grille place le CONTENEUR : sans
+   ces règles, la carte ne prendrait pas la largeur de la case et le menu se
+   superposerait au titre. */
+.wakies-root .library-page-item {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+.wakies-root .library-page-item .library-page-card {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.wakies-root .library-page-item .library-card-body {
+  padding-right: 34px;
+}
+.wakies-root .library-page-item .space-nav-menu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+.wakies-root .library-pin {
+  margin-left: 8px;
+  color: #648568;
+  font-size: 11px;
+  font-weight: 600;
+}
+/* Colonne de lecture élargie (réglage de la page) : la bibliothèque d'espaces,
+   pas une largeur inventée. La feuille est générée, l'ajout reste ici. */
+.wakies-root .document-reading-column.large {
+  max-width: min(1040px, 100%);
+}
+.wakies-root .library-page-sign {
+  font-size: 18px;
+  line-height: 1;
+}
+.wakies-root .library-page-item .library-card-body input {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .wakies-root .muse-app .sidebar-sections .muse-navigation {
   display: flex;
   flex-direction: column;
@@ -506,25 +1146,63 @@
 }
 .wakies-root .muse-app .sidebar-sections .muse-navigation .md-button {
   flex-direction: row;
-  gap: 12px;
+  gap: 8px;
   justify-content: flex-start;
-  min-height: 44px;
-  padding: 10px 12px;
+  min-height: 32px;
+  padding: 8px 10px;
   border-radius: 12px;
 }
 .wakies-root .muse-app .sidebar-sections .muse-navigation .md-button span {
-  font-size: 14px;
+  font-size: 13px;
+}
+.wakies-root .muse-app .wakies-sidebar-search {
+  position: relative;
+  margin-bottom: 4px;
+}
+.wakies-root .muse-app .wakies-sidebar-search input {
+  min-height: 40px;
+}
+.wakies-root .muse-app .wakies-search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 20;
+  max-height: 280px;
+  padding: 4px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+.wakies-root .muse-app .wakies-search-results button {
+  display: block;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+}
+.wakies-root .muse-app .wakies-search-results button:hover,
+.wakies-root .muse-app .wakies-search-results button:focus-visible {
+  background: #f0f1f6;
+}
+.wakies-root .muse-app .wakies-search-results p {
+  padding: 8px;
+  margin: 4px;
+  font-size: 13px;
+  color: #777e90;
 }
 .wakies-root .muse-app .workspace > .muse-navigation {
   display: none;
 }
 .wakies-root .muse-app.nav-collapsed .workspace > .muse-navigation {
   display: flex;
-}
-.wakies-root .muse-app .desktop-nav-toggle {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 10px;
 }
 .wakies-root .muse-app .nav-scrim {
   z-index: 55;
@@ -582,9 +1260,6 @@
     z-index: 40;
     display: flex;
   }
-  .wakies-root .muse-app .desktop-nav-toggle {
-    display: none;
-  }
   .wakies-root .muse-app .nav-scrim {
     position: fixed;
     inset: 0;
@@ -613,9 +1288,9 @@
   margin-inline-start: auto;
 }
 .wakies-root .muse-app .pause-button {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 10px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 8px;
   background: transparent;
   border: 0;
 }
@@ -640,4 +1315,957 @@
   .wakies-root .muse-app .wordmark {
     width: calc(100% - 48px);
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Messagerie instantanée & Fil de discussion enrichi                 */
+/* ------------------------------------------------------------------ */
+
+/* Séparateur de date */
+.wakies-root .chat-date-separator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0 10px;
+}
+
+.wakies-root .chat-date-separator::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 1px;
+  content: "";
+  background: var(--line, #e9e8e6);
+}
+
+/* Conteneur de bulle */
+.wakies-root .chat-bubble-container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 16px;
+  transition: background-color 0.15s ease;
+}
+
+.wakies-root .chat-bubble-container.user {
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.wakies-root .chat-bubble-container.assistant {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.wakies-root .chat-bubble-container.is-search-match {
+  padding: 6px;
+  background-color: color-mix(
+    in oklab,
+    var(--warning, #eab308) 12%,
+    transparent
+  );
+  border-radius: 12px;
+}
+
+.wakies-root .chat-bubble-avatar-col {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  margin-top: 2px;
+}
+
+.wakies-root .chat-avatar {
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 9999px;
+}
+
+.wakies-root .chat-avatar.user-avatar {
+  color: var(--ink, #333641);
+  background: #ecebe8;
+}
+
+.wakies-root .chat-bubble-content-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: min(85%, 680px);
+}
+
+.wakies-root .chat-bubble-container.user .chat-bubble-content-col {
+  align-items: flex-end;
+}
+
+.wakies-root .chat-bubble-container.assistant .chat-bubble-content-col {
+  align-items: flex-start;
+}
+
+.wakies-root .chat-bubble-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.wakies-root .chat-bubble-sender {
+  font-weight: 500;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .chat-bubble-time {
+  font-size: 10px;
+  color: var(--muted, #8c8d97);
+}
+
+/* Bulles modernes */
+.wakies-root .chat-bubble.user {
+  padding: 10px 14px;
+  color: white;
+  background: #333641;
+  border-radius: 16px 4px 16px 16px;
+}
+
+.wakies-root .chat-bubble.assistant {
+  padding: 12px 16px;
+  color: var(--ink, #333641);
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 4px 16px 16px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+/* Barre d'outils au survol du message */
+.wakies-root .message-toolbar {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  padding: 2px 4px;
+  margin-top: 4px;
+  pointer-events: none;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.wakies-root .chat-bubble-container:hover .message-toolbar {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.wakies-root .message-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--muted, #8c8d97);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.1s ease;
+}
+
+.wakies-root .message-action-btn:hover {
+  color: var(--ink, #333641);
+  background: #f3f2ef;
+}
+
+.wakies-root .message-action-btn.is-speaking {
+  color: var(--destructive, #c0553f);
+  background: color-mix(in oklab, var(--destructive, #c0553f) 10%, white);
+}
+
+/* Réactions émojis sous la bulle */
+.wakies-root .chat-reactions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.wakies-root .chat-reaction-chip {
+  padding: 2px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 9999px;
+  transition: all 0.1s ease;
+}
+
+.wakies-root .chat-reaction-chip:hover {
+  background: #f1f0ed;
+}
+
+.wakies-root .chat-reaction-chip.active {
+  background: #eeede9;
+  border-color: #c9c7c2;
+}
+
+/* Cartes de pièces jointes */
+.wakies-root .chat-piece {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 8px;
+}
+
+.wakies-root .chat-piece-preview-img img {
+  display: block;
+  max-width: 180px;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.wakies-root .chat-piece-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wakies-root .chat-piece-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.wakies-root .chat-piece-size {
+  font-size: 10px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .chat-piece-open {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink, #333641);
+  text-decoration: underline;
+}
+
+.wakies-root .chat-piece-missing {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--destructive, #c0553f);
+}
+
+/* Barre de recherche dans le chat */
+.wakies-root .chat-inline-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 14px;
+  background: #faf9f6;
+  border-bottom: 1px solid var(--line, #e9e8e6);
+  animation: slideDown 0.15s ease-out;
+}
+
+.wakies-root .chat-inline-search-input {
+  flex: 1;
+  height: 30px;
+  font-size: 13px;
+}
+
+.wakies-root .chat-search-badge {
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted, #8c8d97);
+  white-space: nowrap;
+  background: #f1f0ed;
+  border-radius: 9999px;
+}
+
+/* Bouton flottant pour redescendre */
+.wakies-root .scroll-bottom-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 84px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--ink, #333641);
+  cursor: pointer;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.wakies-root .scroll-bottom-fab:hover {
+  background: #faf9f6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Suggestions rapides au-dessus du composer */
+.wakies-root .quick-prompts-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 16px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+
+.wakies-root .quick-prompt-chips {
+  display: flex;
+  gap: 6px;
+  padding: 2px 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wakies-root .quick-prompt-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.wakies-root .quick-prompt-chip {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink, #333641);
+  cursor: pointer;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.wakies-root .quick-prompt-chip:hover {
+  background: #f1f0ed;
+  border-color: #d8d6d0;
+}
+
+/* Compteur de caractères dans le composer */
+.wakies-root .chat-char-counter {
+  align-self: center;
+  margin-right: 6px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted, #8c8d97);
+}
+
+/* Bouton micro avec pulsation */
+.wakies-root .mic-active {
+  color: var(--destructive, #c0553f) !important;
+  background: color-mix(
+    in oklab,
+    var(--destructive, #c0553f) 12%,
+    white
+  ) !important;
+  animation: wakies-host-pulseMic 1.5s infinite ease-in-out;
+}
+
+@keyframes wakies-host-pulseMic {
+  0% {
+    box-shadow: 0 0 0 0 rgba(192, 85, 63, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(192, 85, 63, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(192, 85, 63, 0);
+  }
+}
+
+/* Regroupement dans la liste des conversations */
+.wakies-root .thread-group {
+  margin-bottom: 12px;
+}
+
+.wakies-root .thread-group-title {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .thread-item-icon {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .pin-badge-icon {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .thread-item-time {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted, #8c8d97);
+}
+
+.wakies-root .thread-search-box {
+  padding: 0 10px 8px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Amis, annuaire et fiche publique                                    */
+/* ------------------------------------------------------------------ */
+
+/* Message d'état (succès d'une action sociale) : même forme que l'erreur,
+   sans la couleur d'alerte — l'information porte le sens. */
+.wakies-root .sidebar-note {
+  padding: 8px 12px;
+  margin: 6px 0;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--ink, #333641);
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.wakies-root .wakies-social {
+  width: 100%;
+  max-width: 760px;
+  padding: 18px 20px 40px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+.wakies-root .wakies-social-head h1 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 650;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-social-search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.wakies-root .wakies-social-list {
+  margin-top: 18px;
+}
+
+.wakies-root .wakies-social-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wakies-root .wakies-social-list li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: #fff;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 12px;
+}
+
+.wakies-root .wakies-social-line {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wakies-root .wakies-social-line strong {
+  font-size: 13px;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-public-card {
+  padding: 0 0 14px;
+  margin-top: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 16px;
+}
+
+.wakies-root .wakies-public-banner {
+  height: 96px;
+  background: #f1f0ed;
+}
+
+.wakies-root .wakies-public-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wakies-root .wakies-public-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: -28px;
+}
+
+.wakies-root .wakies-public-head .mascot {
+  flex-shrink: 0;
+}
+
+.wakies-root .wakies-public-avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+.wakies-root .wakies-public-head strong {
+  font-size: 15px;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-public-badges {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px 0;
+}
+
+.wakies-root .wakies-public-links {
+  padding: 0;
+  font-size: 12px;
+  list-style: none;
+}
+
+.wakies-root .wakies-public-links a {
+  color: var(--blue, #7285d5);
+}
+
+.wakies-root .wakies-public-gallery h3 {
+  margin: 12px 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .wakies-public-gallery ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wakies-root .wakies-public-gallery img {
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 10px;
+}
+
+.wakies-root .wakies-public-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* ============================================================================
+ * MESSAGERIE — citations, actions de bulle, transferts, aperçus de liste
+ * ============================================================================
+ * La feuille générée (wakies.css) porte la bulle, les réactions et l'épingle ;
+ * ce bloc ajoute ce que la messagerie a apporté : la citation d'une réponse,
+ * les actions de bulle (répondre / transférer / enregistrer), la provenance
+ * d'un transfert, le choix de destination, les séparateurs de jour et les
+ * aperçus de la liste des conversations.
+ *
+ * Une couleur n'apparaît que lorsqu'elle porte une information : l'accent
+ * lavande marque l'action choisie (épingle, halo de recherche), jamais une
+ * décoration.
+ */
+
+/* Citation d'une réponse : en tête de bulle, cliquable pour sauter à la cible. */
+.wakies-root .chat-citation {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: 5px 8px;
+  margin-bottom: 6px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(122, 111, 184, 0.08);
+  border: none;
+  border-left: 2px solid rgba(122, 111, 184, 0.55);
+  border-radius: 6px;
+}
+
+.wakies-root .chat-citation:hover {
+  background: rgba(122, 111, 184, 0.14);
+}
+
+.wakies-root .chat-citation-auteur {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7a6fb8;
+}
+
+.wakies-root .chat-citation-texte {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: var(--muted, #8c8d97);
+  white-space: nowrap;
+}
+
+/* Provenance d'un message transféré : un fait du message, pas une citation. */
+.wakies-root .chat-forwarded {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  margin: 0 0 6px;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+}
+
+/* Actions de bulle : les nouvelles (répondre, transférer, enregistrer)
+   partagent l'apparence du bouton d'épingle déjà servi. */
+.wakies-root .chat-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 5px;
+  color: #969dab;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+}
+
+.wakies-root .chat-action:hover {
+  color: #3d4354;
+  background: #e8edf6;
+}
+
+/* Séparateur de jour : une règle, un libellé centré. */
+.wakies-root .chat-day {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted, #8c8d97);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wakies-root .chat-day::before,
+.wakies-root .chat-day::after {
+  flex: 1;
+  height: 1px;
+  content: "";
+  background: var(--line, #e9e8e6);
+}
+
+/* Halo temporaire du message visé par une recherche — il retombe seul. */
+.wakies-root .chat-bubble.is-cible {
+  box-shadow: 0 0 0 2px rgba(122, 111, 184, 0.45);
+  transition: box-shadow 0.4s ease;
+}
+
+/* Bandeau de réponse au-dessus du composer. */
+.wakies-root .chat-reply-banner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 5px 8px;
+  margin: 6px 0;
+  font-size: 12px;
+  background: rgba(122, 111, 184, 0.08);
+  border-left: 2px solid rgba(122, 111, 184, 0.55);
+  border-radius: 6px;
+}
+
+.wakies-root .chat-reply-auteur {
+  font-weight: 600;
+  color: #7a6fb8;
+}
+
+.wakies-root .chat-reply-extrait {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--muted, #8c8d97);
+  white-space: nowrap;
+}
+
+/* Choix de la destination d'un transfert : une liste, pas un tiroir. */
+.wakies-root .chat-forward {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  background: #f7f7f5;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 12px;
+}
+
+.wakies-root .chat-forward ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 220px;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.wakies-root .chat-forward label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.wakies-root .chat-forward-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Liste des conversations : titre, non-lus, participants, aperçu. */
+.wakies-root .thread-title {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.wakies-root .thread-unread {
+  flex: none;
+  min-width: 16px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  background: #7a6fb8;
+  border-radius: 999px;
+}
+
+.wakies-root .thread-meta,
+.wakies-root .thread-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+  white-space: nowrap;
+}
+
+.wakies-root .thread-preview {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* ============================================================================
+ * FICHE D'UN WAKIE — tiroir de publication (Mon profil)
+ * ============================================================================
+ * Le tiroir se pose à droite du contenu, sous .wakies-root : il vit dans la
+ * page (pas de portail) pour que la navigation reste utilisable, et sa galerie
+ * réutilise la grille des vignettes sociales.
+ */
+
+.wakies-root .wakies-profile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(440px, 100vw);
+  height: 100vh;
+  padding: 16px 18px 24px;
+  overflow-y: auto;
+  background: #fff;
+  border-left: 1px solid var(--line, #e9e8e6);
+  box-shadow: -18px 0 40px -30px rgba(27, 44, 81, 0.35);
+}
+
+.wakies-root .wakies-profile-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.wakies-root .wakies-profile-head img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.wakies-root .wakies-profile-head > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wakies-root .wakies-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wakies-root .wakies-profile-form .checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.wakies-root .wakies-profile-gallery h3 {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.wakies-root .wakies-profile-gallery ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 10px;
+  list-style: none;
+}
+
+.wakies-root .wakies-profile-gallery li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wakies-root .wakies-profile-gallery img {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 10px;
+}
+/* Les préférences et alertes de messagerie restent dans le thème Wakies.
+   L'alerte elle-même vit dans la cloche du rail (.rail-panel). */
+.wakies-root .muse-app .rail-panel .muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.wakies-root .muse-conversation-row > .nav-item {
+  flex: 1;
+  min-width: 0;
+}
+.wakies-root .muse-conversation-row {
+  flex-wrap: wrap;
+}
+
+.wakies-root .wakies-public-card > .surface-muted {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+/* ─── Mentions d'applications connectées et cartes d'outils ────────────────
+   Ajouts hôte (règle 9) : le menu `@` de Wakies propose désormais deux familles
+   — les membres de la conversation et les applications externes reliées au
+   compte. Les logos sont rendus en `currentColor` par `.integration-logo`
+   (app/globals.css) ou en image de marque : aucune variante sombre ici, Wakies
+   n'a qu'un seul thème. */
+
+.wakies-root .composer-aides-mentions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wakies-root .composer-pieces-integrations {
+  border-top: 1px solid rgb(15 23 42 / 8%);
+  padding-top: 4px;
+}
+
+.wakies-root .composer-piece-logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: rgb(15 23 42 / 65%);
+}
+
+.wakies-root .composer-piece-logo img,
+.wakies-root .composer-piece-logo .integration-logo {
+  width: 16px;
+  height: 16px;
+}
+
+.wakies-root .tool-card-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.wakies-root .tool-card-logo {
+  display: inline-flex;
+  flex: none;
+  width: 15px;
+  height: 15px;
+  color: rgb(15 23 42 / 60%);
+}
+
+.wakies-root .tool-card-logo img,
+.wakies-root .tool-card-logo .integration-logo {
+  width: 15px;
+  height: 15px;
 }

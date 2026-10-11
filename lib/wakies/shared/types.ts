@@ -79,6 +79,10 @@ export interface Space {
   description: string;
   id: string;
   name: string;
+  /** Épinglé : affiché en tête de la section « ESPACES » par `listSpaces`. */
+  pinned: boolean;
+  /** Date du dernier renommage, distincte de `createdAt`. */
+  updatedAt: number;
 }
 /**
  * Sélection d'outils d'un Wakie ou d'une conversation.
@@ -109,12 +113,23 @@ export interface CapabilitySelection {
   toolIds?: string[] | null;
 }
 
+export interface MessageReaction {
+  byWakieId: string | null;
+  createdAt: number;
+  emoji: string;
+  messageId: string;
+}
+
 export interface Wakie extends CapabilitySelection {
   /** Mascotte choisie (`/wakies/<avatar>.png`) ; null = déduite de l'id. */
   avatar?: string | null;
   createdAt: number;
+  /** Pseudo unique recherchable (@pseudo) pour les Wakies publics. */
+  handle?: string | null;
   id: string;
   instructions: string;
+  /** Visible dans l'annuaire public quand vrai. */
+  isPublic?: boolean;
   learningContainerId?: string | null;
   memoryAllowed: boolean;
   /** Modèle IA par défaut des nouvelles conversations ; null = défaut mAI. */
@@ -128,12 +143,44 @@ export interface Wakie extends CapabilitySelection {
 }
 
 export interface Conversation extends CapabilitySelection {
+  /**
+   * Aperçu du DERNIER message, calculé par le serveur (`listConversations`).
+   *
+   * Il est servi avec la ligne, pas reconstruit par la liste : ouvrir chaque
+   * conversation pour afficher son aperçu ferait N requêtes pour une liste.
+   */
+  apercuDernierMessage?: string;
+  auteurDernierWakieId?: string | null;
+  /**
+   * Contexte persistant du fil, réglé par les mentions `@@` (migration 0053).
+   *
+   * Même sémantique que les sélections d'outils de `CapabilitySelection` :
+   * `null` = rien de réglé, `[]` = réglage explicite « rien ». Ces identifiants
+   * sont relus et validés à chaque tour ; un identifiant qui n'existe plus est
+   * simplement jeté, il ne fait pas échouer l'envoi.
+   */
+  contextPageIds?: string[] | null;
+  contextSpaceIds?: string[] | null;
+  contextWakieIds?: string[] | null;
   createdAt: number;
+  dernierMessageAt?: number | null;
+  dernierMessageId?: string | null;
+  dernierRole?: string | null;
+  /** Préférences du compte, persistées par la route de conversation. */
+  favorite?: boolean;
   id: string;
   /** Frozen at creation; null means this conversation does not participate. */
   learningContainerId?: string | null;
   /** Modèle IA de cette conversation ; null = modèle du Wakie, puis défaut. */
   model?: string | null;
+  muted?: boolean;
+  /**
+   * Nombre de messages non lus, calculé par le serveur depuis `lastReadSeq`.
+   *
+   * `undefined` (et non `0`) quand il n'est pas servi : une liste qui ne
+   * transporte pas cette information ne doit pas afficher « tout lu ».
+   */
+  nonLus?: number;
   /** Envoyée par le serveur mais retirée du contrat : `userId` est supprimé
    * par `versClient`. Conservée pour ne pas casser les lectures existantes. */
   ownerId: string;

@@ -1,6 +1,20 @@
 "use client";
 
-import { BookOpenIcon as BookOpen, CheckIcon as Check, CopyIcon as Copy, ExternalLinkIcon as ExternalLink, FileCodeIcon as FileCode, GithubIcon as Github, GitPullRequestIcon as GitPullRequest, KeyIcon as Key, MessageSquareIcon as MessageSquare, SparklesIcon as Sparkles, TerminalIcon as Terminal, TicketIcon as Ticket, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  BookOpenIcon as BookOpen,
+  CheckIcon as Check,
+  CopyIcon as Copy,
+  ExternalLinkIcon as ExternalLink,
+  FileCodeIcon as FileCode,
+  GithubIcon as Github,
+  GitPullRequestIcon as GitPullRequest,
+  KeyIcon as Key,
+  MessageSquareIcon as MessageSquare,
+  SparklesIcon as Sparkles,
+  TerminalIcon as Terminal,
+  TicketIcon as Ticket,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -258,7 +272,7 @@ export default function MaiCliProjectPage() {
           />
           <FeatureCard
             delay={0.7}
-            description="Bring Your Own Key : utilisez vos propres clés chez le fournisseur IA de votre choix (Ollama, Hugging Face, OpenAI, etc.)."
+            description="Utilisez vos propres clés chez le fournisseur d’IA de votre choix (Ollama, Hugging Face, OpenAI, etc.)."
             icon={<Key className="w-6 h-6 text-purple-600" />}
             title="BYOK & Indépendance"
           />
@@ -272,7 +286,7 @@ export default function MaiCliProjectPage() {
             Dépôt GitHub mDevsLabs/mAI-CLI
           </h4>
           <p className="text-slate-600 text-sm font-light">
-            Un projet open source en accès anticipé auquel vous pouvez
+            Un projet à code source ouvert en accès anticipé auquel vous pouvez
             participer.
           </p>
         </div>

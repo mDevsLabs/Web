@@ -191,7 +191,8 @@ async function getAuthUserId(c: any): Promise<number | null> {
 }
 
 /** Clause d'appartenance : propriétaire OU membre inscrit. */
-const bookAccessClause = (sql: any, userId: number) => sql`
+const bookAccessClause = (sql: any, userId: number) =>
+  sql`
   (b.user_id = ${userId} OR EXISTS (SELECT 1 FROM vibe_book_members m WHERE m.book_id = b.id AND m.user_id = ${userId}))
 `;
 
@@ -230,7 +231,11 @@ export function registerVibeBooksRoutes(
                (SELECT COUNT(*) FROM vibe_book_items bi WHERE bi.book_id = b.id) AS items_count,
                (SELECT COUNT(*) FROM vibe_book_members bm WHERE bm.book_id = b.id) AS members_count,
                (SELECT dm.id FROM dm_conversations dm WHERE dm.book_id = b.id LIMIT 1) AS conversation_id,
-               ${postId ? sql`EXISTS (SELECT 1 FROM vibe_book_items bi2 WHERE bi2.book_id = b.id AND bi2.post_id = ${postId}::uuid)` : sql`FALSE`} AS contains_post
+               ${
+                 postId
+                   ? sql`EXISTS (SELECT 1 FROM vibe_book_items bi2 WHERE bi2.book_id = b.id AND bi2.post_id = ${postId}::uuid)`
+                   : sql`FALSE`
+               } AS contains_post
         FROM vibe_books b
         WHERE ${bookAccessClause(sql, userId)}
         ORDER BY (b.user_id = ${userId}) DESC, b.created_at ASC
@@ -271,13 +276,15 @@ export function registerVibeBooksRoutes(
         .slice(0, 40);
       const isPublic = Boolean(body?.is_public);
 
-      if (!title)
+      if (!title) {
         return c.json(
           { error: "Veuillez donner un titre à votre Livre." },
           400
         );
-      if (title.length > 60)
+      }
+      if (title.length > 60) {
         return c.json({ error: "Le titre est limité à 60 caractères." }, 400);
+      }
 
       const sql = getDb();
       await ensureBooksTables(sql);
@@ -373,8 +380,9 @@ export function registerVibeBooksRoutes(
       const isPublic =
         body?.is_public === undefined ? null : Boolean(body.is_public);
 
-      if (title !== null && !title)
+      if (title !== null && !title) {
         return c.json({ error: "Le titre ne peut pas être vide." }, 400);
+      }
 
       const sql = getDb();
       await ensureBooksTables(sql);
@@ -387,12 +395,14 @@ export function registerVibeBooksRoutes(
         WHERE id = ${bookId}::uuid AND user_id = ${userId}
         RETURNING id, title, icon, created_at, join_code, is_public
       `;
-      if (updated.length === 0)
+      if (updated.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       // Synchro du titre de la conversation Messages du Livre
-      if (title)
+      if (title) {
         await renameBookConversation(sql, bookId, title).catch(() => {});
+      }
 
       return c.json({
         book: {
@@ -429,8 +439,9 @@ export function registerVibeBooksRoutes(
       const deleted = await sql`
         DELETE FROM vibe_books WHERE id = ${bookId}::uuid AND user_id = ${userId} RETURNING id
       `;
-      if (deleted.length === 0)
+      if (deleted.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
       await deleteBookConversation(sql, bookId).catch(() => {});
       return c.json({ success: true });
     } catch (err: any) {
@@ -562,10 +573,14 @@ export function registerVibeBooksRoutes(
       await ensureBooksTables(sql);
 
       const access = await sql`
-        SELECT b.id FROM vibe_books b WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(sql, userId)} LIMIT 1
+        SELECT b.id FROM vibe_books b WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(
+          sql,
+          userId
+        )} LIMIT 1
       `;
-      if (access.length === 0)
+      if (access.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       const members = await fetchBookMembers(sql, bookId);
       return c.json({ members, success: true });
@@ -598,8 +613,9 @@ export function registerVibeBooksRoutes(
 
       const rows =
         await sql`SELECT id, user_id FROM vibe_books WHERE id = ${bookId}::uuid LIMIT 1`;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
       if (Number(rows[0].user_id) === userId) {
         return c.json(
           {
@@ -617,8 +633,9 @@ export function registerVibeBooksRoutes(
         WHERE book_id = ${bookId}::uuid AND user_id = ${userId}
         RETURNING id
       `;
-      if (deleted.length === 0)
+      if (deleted.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       await removeBookConversationMember(sql, bookId, userId).catch(() => {});
       return c.json({ success: true });
@@ -649,8 +666,9 @@ export function registerVibeBooksRoutes(
       const rows = await sql`
         SELECT id FROM vibe_books WHERE id = ${bookId}::uuid AND user_id = ${userId} LIMIT 1
       `;
-      if (rows.length === 0)
+      if (rows.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       for (let attempt = 0; attempt < 5; attempt++) {
         const code = makeBookCode();
@@ -695,15 +713,20 @@ export function registerVibeBooksRoutes(
       await ensureBooksTables(sql);
 
       const access = await sql`
-        SELECT b.id FROM vibe_books b WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(sql, userId)} LIMIT 1
+        SELECT b.id FROM vibe_books b WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(
+          sql,
+          userId
+        )} LIMIT 1
       `;
-      if (access.length === 0)
+      if (access.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       const exists =
         await sql`SELECT 1 FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-      if (exists.length === 0)
+      if (exists.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
+      }
 
       const already = await sql`
         SELECT 1 FROM vibe_book_items WHERE book_id = ${bookId}::uuid AND post_id = ${postId}::uuid
@@ -756,11 +779,15 @@ export function registerVibeBooksRoutes(
                (SELECT COUNT(*) FROM vibe_book_members bm WHERE bm.book_id = b.id) AS members_count,
                (SELECT dm.id FROM dm_conversations dm WHERE dm.book_id = b.id LIMIT 1) AS conversation_id
         FROM vibe_books b
-        WHERE b.id = ${bookId}::uuid AND (${bookAccessClause(sql, userId)} OR COALESCE(b.is_public, FALSE) = TRUE)
+        WHERE b.id = ${bookId}::uuid AND (${bookAccessClause(
+          sql,
+          userId
+        )} OR COALESCE(b.is_public, FALSE) = TRUE)
         LIMIT 1
       `;
-      if (bookRows.length === 0)
+      if (bookRows.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       // Un simple lecteur d'un Livre public ne doit jamais voir le code d'invitation
       const book: any = { ...bookRows[0] };
@@ -827,43 +854,6 @@ export function registerVibeBooksRoutes(
     handleGetBookPosts
   );
 
-  // 11. LIVRES CONTENANT UNE VIBE DONNÉE (badge du PostCard)
-  const handleBooksForPost = async (c: any) => {
-    try {
-      const userId = await getAuthUserId(c);
-      if (!userId) return c.json({ error: "Non authentifié." }, 401);
-      const postId = c.req.param("postId");
-      const sql = getDb();
-      await ensureBooksTables(sql);
-
-      const rows = await sql`
-        SELECT bi.book_id FROM vibe_book_items bi
-        JOIN vibe_books b ON b.id = bi.book_id
-        WHERE bi.post_id = ${postId}::uuid AND ${bookAccessClause(sql, userId)}
-      `;
-
-      return c.json({
-        book_ids: rows.map((r: any) => String(r.book_id)),
-        success: true,
-      });
-    } catch (err: any) {
-      console.error("[vibe-books] Books for post error:", err);
-      return c.json(
-        { error: "Erreur lors de la vérification des Livres." },
-        500
-      );
-    }
-  };
-  registerMulti(
-    "get",
-    [
-      "/api/vibe/books/for-post/:postId",
-      "/vibe/books/for-post/:postId",
-      "/v1/books/for-post/:postId",
-    ],
-    handleBooksForPost
-  );
-
   // 12. ÉPINGLER UNE VIBE DANS UN LIVRE (max 3 par Livre, membres autorisés)
   const handlePinBookPost = async (c: any) => {
     try {
@@ -882,14 +872,16 @@ export function registerVibeBooksRoutes(
         WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(sql, userId)}
         LIMIT 1
       `;
-      if (access.length === 0)
+      if (access.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
 
       const item = await sql`
         SELECT 1 FROM vibe_book_items WHERE book_id = ${bookId}::uuid AND post_id = ${postId}::uuid LIMIT 1
       `;
-      if (item.length === 0)
+      if (item.length === 0) {
         return c.json({ error: "Cette Vibe n'est pas dans ce Livre." }, 404);
+      }
 
       if (pinned) {
         const countRows = await sql`
@@ -947,8 +939,9 @@ export function registerVibeBooksRoutes(
       await ensureBooksTables(sql);
       const bookRows =
         await sql`SELECT user_id, title FROM vibe_books WHERE id = ${bookId}::uuid LIMIT 1`;
-      if (bookRows.length === 0)
+      if (bookRows.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
       if (Number(bookRows[0].user_id) !== userId) {
         return c.json(
           { error: "Seul le créateur du Livre peut exclure un membre." },
@@ -965,15 +958,18 @@ export function registerVibeBooksRoutes(
       const del = await sql`
         DELETE FROM vibe_book_members WHERE book_id = ${bookId}::uuid AND user_id = ${targetId} RETURNING 1
       `;
-      if (del.length === 0)
+      if (del.length === 0) {
         return c.json({ error: "Ce membre ne fait pas partie du Livre." }, 404);
+      }
 
       await removeBookConversationMember(sql, bookId, targetId).catch(() => {});
 
       try {
         await sql`
           INSERT INTO notifications (recipient_id, actor_id, type, message)
-          VALUES (${targetId}, ${userId}, 'book_join', ${`vous a retiré du Livre « ${bookRows[0].title} »`})
+          VALUES (${targetId}, ${userId}, 'book_join', ${`vous a retiré du Livre « ${
+            bookRows[0].title
+          } »`})
         `;
         await pushRealtimeEvent(targetId, "notification", {
           actor_id: userId,
@@ -1007,15 +1003,17 @@ export function registerVibeBooksRoutes(
       if (!userId) return c.json({ error: "Non authentifié." }, 401);
       const bookId = c.req.param("bookId");
       const targetId = Number(c.req.param("userId"));
-      if (!targetId || targetId === userId)
+      if (!targetId || targetId === userId) {
         return c.json({ error: "Cible invalide." }, 400);
+      }
 
       const sql = getDb();
       await ensureBooksTables(sql);
       const bookRows =
         await sql`SELECT user_id, title FROM vibe_books WHERE id = ${bookId}::uuid LIMIT 1`;
-      if (bookRows.length === 0)
+      if (bookRows.length === 0) {
         return c.json({ error: "Livre introuvable." }, 404);
+      }
       if (Number(bookRows[0].user_id) !== userId) {
         return c.json(
           { error: "Seul le créateur du Livre peut transférer la propriété." },
@@ -1025,16 +1023,18 @@ export function registerVibeBooksRoutes(
       const targetMember = await sql`
         SELECT 1 FROM vibe_book_members WHERE book_id = ${bookId}::uuid AND user_id = ${targetId} LIMIT 1
       `;
-      if (targetMember.length === 0)
+      if (targetMember.length === 0) {
         return c.json({ error: "Ce membre ne fait pas partie du Livre." }, 404);
+      }
 
       const updated = await sql`
         UPDATE vibe_books SET user_id = ${targetId}, updated_at = NOW()
         WHERE id = ${bookId}::uuid AND user_id = ${userId}
         RETURNING id
       `;
-      if (updated.length === 0)
+      if (updated.length === 0) {
         return c.json({ error: "Transfert impossible." }, 409);
+      }
 
       await sql`UPDATE vibe_book_members SET role = 'member' WHERE book_id = ${bookId}::uuid AND user_id = ${userId}`;
       await sql`UPDATE vibe_book_members SET role = 'owner' WHERE book_id = ${bookId}::uuid AND user_id = ${targetId}`;
@@ -1049,7 +1049,9 @@ export function registerVibeBooksRoutes(
       try {
         await sql`
           INSERT INTO notifications (recipient_id, actor_id, type, message)
-          VALUES (${targetId}, ${userId}, 'book_join', ${`vous a transféré la propriété du Livre « ${bookRows[0].title} »`})
+          VALUES (${targetId}, ${userId}, 'book_join', ${`vous a transféré la propriété du Livre « ${
+            bookRows[0].title
+          } »`})
         `;
         await pushRealtimeEvent(targetId, "notification", {
           actor_id: userId,
@@ -1071,338 +1073,6 @@ export function registerVibeBooksRoutes(
       "/v1/books/:bookId/members/:userId/transfer-ownership",
     ],
     handleTransferBookOwnership
-  );
-
-  // 15. DISCUSSION DU LIVRE (commentaires au niveau du Livre)
-  const handleGetBookComments = async (c: any) => {
-    try {
-      const userId = await getAuthUserId(c);
-      if (!userId) return c.json({ error: "Non authentifié." }, 401);
-      const bookId = c.req.param("bookId");
-      const limit = Math.min(
-        100,
-        Math.max(1, Number(c.req.query("limit") || 50))
-      );
-      const offset = Math.max(0, Number(c.req.query("offset") || 0));
-
-      const sql = getDb();
-      await ensureBooksTables(sql);
-      const access = await sql`
-        SELECT b.id FROM vibe_books b
-        WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(sql, userId)}
-        LIMIT 1
-      `;
-      if (access.length === 0)
-        return c.json({ error: "Livre introuvable." }, 404);
-
-      const comments = await sql`
-        SELECT bc.id, bc.content, bc.created_at, bc.user_id,
-               u.username, pr.display_name, pr.avatar_url,
-               bc.reply_to_id,
-               rc.content AS reply_content, ru.username AS reply_username
-        FROM vibe_book_comments bc
-        JOIN users u ON u.id = bc.user_id
-        LEFT JOIN profiles pr ON pr.user_id = bc.user_id
-        LEFT JOIN vibe_book_comments rc ON rc.id = bc.reply_to_id
-        LEFT JOIN users ru ON ru.id = rc.user_id
-        WHERE bc.book_id = ${bookId}::uuid
-        ORDER BY bc.created_at DESC
-        LIMIT ${limit} OFFSET ${offset}
-      `;
-
-      // Réactions emoji agrégées { emoji, count, mine } (modèle DMs)
-      try {
-        const ids = (comments as any[]).map((cmt) => cmt.id);
-        if (ids.length > 0) {
-          const reactions = await sql`
-            SELECT comment_id, emoji, user_id FROM vibe_book_comment_reactions
-            WHERE comment_id = ANY(${ids}::uuid[])
-          `;
-          const byComment = new Map<
-            string,
-            { emoji: string; user_id: number }[]
-          >();
-          for (const r of reactions) {
-            const key = String(r.comment_id);
-            if (!byComment.has(key)) byComment.set(key, []);
-            byComment
-              .get(key)!
-              .push({ emoji: r.emoji, user_id: Number(r.user_id) });
-          }
-          for (const cmt of comments as any[]) {
-            const list = byComment.get(String(cmt.id)) || [];
-            const grouped: { emoji: string; count: number; mine: boolean }[] =
-              [];
-            for (const r of list) {
-              const g = grouped.find((x) => x.emoji === r.emoji);
-              if (g) {
-                g.count += 1;
-                g.mine = g.mine || r.user_id === userId;
-              } else {
-                grouped.push({
-                  count: 1,
-                  emoji: r.emoji,
-                  mine: r.user_id === userId,
-                });
-              }
-            }
-            cmt.reactions = grouped;
-          }
-        }
-      } catch {}
-      for (const cmt of comments as any[])
-        if (!cmt.reactions) cmt.reactions = [];
-
-      return c.json({ comments, success: true });
-    } catch (err: any) {
-      console.error("[vibe-books] Comments list error:", err);
-      return c.json(
-        { error: "Erreur lors de la récupération de la discussion." },
-        500
-      );
-    }
-  };
-  registerMulti(
-    "get",
-    [
-      "/api/vibe/books/:bookId/comments",
-      "/vibe/books/:bookId/comments",
-      "/v1/books/:bookId/comments",
-    ],
-    handleGetBookComments
-  );
-
-  const handleAddBookComment = async (c: any) => {
-    try {
-      const userId = await getAuthUserId(c);
-      if (!userId) return c.json({ error: "Non authentifié." }, 401);
-      const bookId = c.req.param("bookId");
-      const body = await c.req.json().catch(() => ({}));
-      const plain = stripHtmlTags(String(body?.content || "")).trim();
-      if (!plain)
-        return c.json(
-          { error: "Le message de la discussion est requis." },
-          400
-        );
-      if (plain.length > 2000)
-        return c.json(
-          { error: "Message trop long (max 2000 caractères)." },
-          400
-        );
-
-      // Réponse citée : le commentaire ciblé doit appartenir au même Livre
-      const rawReplyTo =
-        typeof body?.reply_to_id === "string" ? body.reply_to_id : "";
-      const replyToId =
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-          rawReplyTo
-        )
-          ? rawReplyTo
-          : null;
-
-      const sql = getDb();
-      await ensureBooksTables(sql);
-      const access = await sql`
-        SELECT b.id, b.user_id AS owner_id, b.title FROM vibe_books b
-        WHERE b.id = ${bookId}::uuid AND ${bookAccessClause(sql, userId)}
-        LIMIT 1
-      `;
-      if (access.length === 0)
-        return c.json({ error: "Livre introuvable." }, 404);
-
-      let validReplyTo: string | null = null;
-      if (replyToId) {
-        const replyRows = await sql`
-          SELECT 1 FROM vibe_book_comments
-          WHERE id = ${replyToId}::uuid AND book_id = ${bookId}::uuid
-          LIMIT 1
-        `;
-        if (replyRows.length === 0)
-          return c.json(
-            { error: "Le message auquel vous répondez est introuvable." },
-            400
-          );
-        validReplyTo = replyToId;
-      }
-
-      const inserted = await sql`
-        INSERT INTO vibe_book_comments (book_id, user_id, content, reply_to_id)
-        VALUES (${bookId}::uuid, ${userId}, ${plain}, ${validReplyTo})
-        RETURNING id, content, created_at, user_id
-      `;
-      await sql`UPDATE vibe_books SET updated_at = NOW() WHERE id = ${bookId}::uuid`.catch(
-        () => {}
-      );
-
-      // Notification légère au créateur (best-effort, hors auto-commentaire)
-      const ownerId = Number(access[0].owner_id);
-      if (ownerId !== userId) {
-        try {
-          await sql`
-            INSERT INTO notifications (recipient_id, actor_id, type, message)
-            VALUES (${ownerId}, ${userId}, 'book_join', ${`a commenté la discussion du Livre « ${access[0].title} »`})
-          `;
-          await pushRealtimeEvent(ownerId, "notification", {
-            actor_id: userId,
-            book_id: bookId,
-            type: "book_join",
-          });
-        } catch {}
-      }
-
-      const enriched = await sql`
-        SELECT bc.id, bc.content, bc.created_at, bc.user_id,
-               u.username, pr.display_name, pr.avatar_url,
-               bc.reply_to_id,
-               rc.content AS reply_content, ru.username AS reply_username
-        FROM vibe_book_comments bc
-        JOIN users u ON u.id = bc.user_id
-        LEFT JOIN profiles pr ON pr.user_id = bc.user_id
-        LEFT JOIN vibe_book_comments rc ON rc.id = bc.reply_to_id
-        LEFT JOIN users ru ON ru.id = rc.user_id
-        WHERE bc.id = ${inserted[0].id}::uuid
-        LIMIT 1
-      `;
-      const comment = enriched[0] || inserted[0];
-      if (comment && !comment.reactions) comment.reactions = [];
-      return c.json({ comment, success: true }, 201);
-    } catch (err: any) {
-      console.error("[vibe-books] Add comment error:", err);
-      return c.json({ error: "Erreur lors de l'ajout du commentaire." }, 500);
-    }
-  };
-  registerMulti(
-    "post",
-    [
-      "/api/vibe/books/:bookId/comments",
-      "/vibe/books/:bookId/comments",
-      "/v1/books/:bookId/comments",
-    ],
-    handleAddBookComment
-  );
-
-  const handleDeleteBookComment = async (c: any) => {
-    try {
-      const userId = await getAuthUserId(c);
-      if (!userId) return c.json({ error: "Non authentifié." }, 401);
-      const bookId = c.req.param("bookId");
-      const commentId = c.req.param("commentId");
-
-      const sql = getDb();
-      await ensureBooksTables(sql);
-      const rows = await sql`
-        SELECT bc.user_id AS author_id, b.user_id AS owner_id
-        FROM vibe_book_comments bc
-        JOIN vibe_books b ON b.id = bc.book_id
-        WHERE bc.id = ${commentId}::uuid AND bc.book_id = ${bookId}::uuid
-        LIMIT 1
-      `;
-      if (rows.length === 0)
-        return c.json({ error: "Commentaire introuvable." }, 404);
-      if (
-        Number(rows[0].author_id) !== userId &&
-        Number(rows[0].owner_id) !== userId
-      ) {
-        return c.json(
-          {
-            error:
-              "Seuls l'auteur du commentaire ou le créateur du Livre peuvent le supprimer.",
-          },
-          403
-        );
-      }
-      await sql`DELETE FROM vibe_book_comments WHERE id = ${commentId}::uuid`;
-      return c.json({ success: true });
-    } catch (err: any) {
-      console.error("[vibe-books] Delete comment error:", err);
-      return c.json(
-        { error: "Erreur lors de la suppression du commentaire." },
-        500
-      );
-    }
-  };
-  registerMulti(
-    "delete",
-    [
-      "/api/vibe/books/:bookId/comments/:commentId",
-      "/vibe/books/:bookId/comments/:commentId",
-      "/v1/books/:bookId/comments/:commentId",
-    ],
-    handleDeleteBookComment
-  );
-
-  // Réaction emoji sur un message de la discussion (toggle, membres du Livre)
-  const handleReactBookComment = async (c: any) => {
-    try {
-      const userId = await getAuthUserId(c);
-      if (!userId) return c.json({ error: "Non authentifié." }, 401);
-      const bookId = c.req.param("bookId");
-      const commentId = c.req.param("commentId");
-      const body = await c.req.json().catch(() => ({}));
-      const emoji = String(body?.emoji || "");
-      if (!emoji || emoji.length > 16)
-        return c.json({ error: "Emoji requis." }, 400);
-
-      const sql = getDb();
-      await ensureBooksTables(sql);
-      const access = await sql`
-        SELECT bc.id FROM vibe_book_comments bc
-        JOIN vibe_books b ON b.id = bc.book_id
-        WHERE bc.id = ${commentId}::uuid AND bc.book_id = ${bookId}::uuid
-          AND ${bookAccessClause(sql, userId)}
-        LIMIT 1
-      `;
-      if (access.length === 0)
-        return c.json({ error: "Commentaire introuvable." }, 404);
-
-      const existing = await sql`
-        SELECT id FROM vibe_book_comment_reactions
-        WHERE comment_id = ${commentId}::uuid AND user_id = ${userId} AND emoji = ${emoji}
-        LIMIT 1
-      `;
-      let reacted = false;
-      if (existing.length > 0) {
-        await sql`DELETE FROM vibe_book_comment_reactions WHERE id = ${existing[0].id}`;
-      } else {
-        await sql`
-          INSERT INTO vibe_book_comment_reactions (comment_id, user_id, emoji)
-          VALUES (${commentId}::uuid, ${userId}, ${emoji})
-          ON CONFLICT (comment_id, user_id, emoji) DO NOTHING
-        `;
-        reacted = true;
-      }
-
-      const all = await sql`
-        SELECT emoji, user_id FROM vibe_book_comment_reactions WHERE comment_id = ${commentId}::uuid
-      `;
-      const grouped: { emoji: string; count: number; mine: boolean }[] = [];
-      for (const r of all as any[]) {
-        const g = grouped.find((x) => x.emoji === r.emoji);
-        if (g) {
-          g.count += 1;
-          g.mine = g.mine || Number(r.user_id) === userId;
-        } else {
-          grouped.push({
-            count: 1,
-            emoji: r.emoji,
-            mine: Number(r.user_id) === userId,
-          });
-        }
-      }
-      return c.json({ reacted, reactions: grouped, success: true });
-    } catch (err: any) {
-      console.error("[vibe-books] React comment error:", err);
-      return c.json({ error: "Erreur lors de la réaction." }, 500);
-    }
-  };
-  registerMulti(
-    "post",
-    [
-      "/api/vibe/books/:bookId/comments/:commentId/react",
-      "/vibe/books/:bookId/comments/:commentId/react",
-      "/v1/books/:bookId/comments/:commentId/react",
-    ],
-    handleReactBookComment
   );
 
   // 16. RECHERCHE DE LIVRES PUBLICS (mention @livre / attachement dans un post)

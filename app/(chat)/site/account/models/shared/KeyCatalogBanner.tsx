@@ -1,6 +1,9 @@
 "use client";
 
-import { KeyRoundIcon as KeyRound, ShieldAlertIcon as ShieldAlert } from "@mdevs/icons";
+import {
+  KeyRoundIcon as KeyRound,
+  ShieldAlertIcon as ShieldAlert,
+} from "@mdevs/icons";
 import type { UserApiKeyUsage } from "@/app/(chat)/site/actions/api-keys";
 import Link from "@/components/site/router";
 

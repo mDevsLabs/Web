@@ -1269,3 +1269,171 @@ html.light .vibe-chat-send-btn svg,
 }
 
 
+
+/* ─────────────────────────────────────────────
+   STORIES — anneau, rail, lecteur, compositeur
+   ───────────────────────────────────────────── */
+
+/* L'anneau est une coque autour de ProfileAvatar : le dégradé conique ne se fait
+   pas proprement en classes utilitaires, il vit ici pour rester ajustable en un
+   seul endroit. Deux états seulement — inédit (dégradé) ou vu (gris). */
+.vibe-story-ring {
+  --vibe-story-gradient: conic-gradient(
+    from 210deg,
+    #f56040 0%,
+    #f77737 25%,
+    #fd1d1d 50%,
+    #d62976 75%,
+    #962fbf 90%,
+    #f56040 100%
+  );
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 2px;
+  background: transparent;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vibe-story-ring[data-live="true"] {
+  cursor: pointer;
+  background: var(--vibe-story-gradient);
+}
+
+/* Toutes les stories de l'auteur ont été vues : l'anneau passe en gris, il ne
+   disparaît pas — l'utilisateur doit encore pouvoir rouvrir le lecteur. */
+.vibe-story-ring[data-live="true"][data-seen="true"] {
+  background: #3f3f46;
+}
+
+.vibe-story-ring[data-live="true"]:focus-visible {
+  outline: 2px solid #fafafa;
+  outline-offset: 2px;
+}
+
+/* L'espace entre le dégradé et l'avatar : sans lui, l'anneau mord l'image. */
+.vibe-story-ring[data-live="true"] > * {
+  box-shadow: 0 0 0 2px #09090b;
+}
+
+.vibe-story-ring[data-size="sm"] { padding: 2px; }
+.vibe-story-ring[data-size="md"] { padding: 3px; }
+.vibe-story-ring[data-size="lg"] { padding: 3px; }
+.vibe-story-ring[data-size="xl"] { padding: 4px; }
+
+/* Rail du fil : défilement horizontal, sans barre, collé au-dessus des posts. */
+.vibe-stories-tray {
+  border-bottom: 1px solid #18181b;
+  background: #09090b;
+}
+
+/* Badge « + » de publication, posé au coin bas-droit de mon propre avatar. */
+.vibe-stories-add {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  border: 2px solid #09090b;
+  background: #10b981;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Lecteur plein écran. Le portail se rend dans .vibe-root, jamais sur body : c'est
+   ce qui lui conserve les tokens de thème du conteneur Vibe. */
+.vibe-story-viewer {
+  touch-action: none;
+  user-select: none;
+}
+
+.vibe-story-viewer img,
+.vibe-story-viewer video {
+  -webkit-user-drag: none;
+}
+
+/* Anneau posé AUTOUR d'un avatar déjà en place (en-tête de profil), sans le
+   re-envelopper. Il hérite du dégradé de .vibe-story-ring et ne capte aucun
+   geste : le clic reste celui de l'avatar. */
+.vibe-story-ring-halo {
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  background: conic-gradient(
+    from 210deg,
+    #f56040 0%,
+    #f77737 25%,
+    #fd1d1d 50%,
+    #d62976 75%,
+    #962fbf 90%,
+    #f56040 100%
+  );
+}
+
+.vibe-story-ring-halo[data-seen="true"] {
+  background: #3f3f46;
+}
+
+/* Cible cliquable de l'anneau de profil : un disque posé derrière l'avatar, dont
+   seul le bandeau exposé reçoit le clic. `pointer-events` reste actif sur le
+   bandeau, l'avatar au-dessus continue de gérer son propre geste. */
+.vibe-story-ring-hit {
+  position: absolute;
+  inset: -8px;
+  z-index: 0;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: conic-gradient(
+    from 210deg,
+    #f56040 0%,
+    #f77737 25%,
+    #fd1d1d 50%,
+    #d62976 75%,
+    #962fbf 90%,
+    #f56040 100%
+  );
+  transition: filter 150ms ease;
+}
+
+.vibe-story-ring-hit[data-seen="true"] {
+  background: #3f3f46;
+}
+
+.vibe-story-ring-hit:hover {
+  filter: brightness(1.15);
+}
+
+.vibe-story-ring-hit:focus-visible {
+  outline: 2px solid #fafafa;
+  outline-offset: 3px;
+}
+
+/* Grille d'archive du profil : vignettes 9:16, datées, sans anneau. */
+.vibe-stories-archive {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .vibe-stories-archive {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Variante des avatars de navigation (32 px) : un bandeau de 4 px, sinon l'anneau
+   mord sur le texte adjacent et sur la bordure de la carte. */
+.vibe-story-ring-hit--compact {
+  inset: -4px;
+}

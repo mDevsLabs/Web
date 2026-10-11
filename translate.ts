@@ -97,8 +97,9 @@ async function callDeepl(
   targetLang: string
 ): Promise<{ text: string; detected: string }> {
   const keys = getDeeplKeys();
-  if (keys.length === 0)
+  if (keys.length === 0) {
     throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
+  }
   const errors: string[] = [];
   for (const key of keys) {
     try {
@@ -379,7 +380,11 @@ export function registerTranslateRoutes(app: Hono) {
         const system =
           "Tu es le moteur de traduction du réseau social Vibe. On te donne une publication. " +
           "1) Détecte sa langue d'origine. " +
-          `2) Traduis-la fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(altTarget)} si elle est déjà écrite en ${langLabel(targetLang)}) : sens EXACT, ton préservé, ton naturel de réseau social. ` +
+          `2) Traduis-la fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(
+            altTarget
+          )} si elle est déjà écrite en ${langLabel(
+            targetLang
+          )}) : sens EXACT, ton préservé, ton naturel de réseau social. ` +
           "Conserve les hashtags, mentions @, émojis et liens tels quels (ne les traduis pas). " +
           'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<nom de la langue d\'origine en français>", "target_language": "<code ou nom de la langue cible>", "translation": "<traduction>"} — sans guillemets markdown ni commentaire.';
         const raw = await MAIAgentFleet.callOpenRouter(userId, system, content);

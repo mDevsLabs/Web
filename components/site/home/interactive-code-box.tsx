@@ -1,6 +1,10 @@
 "use client";
 
-import { CheckIcon as Check, CopyIcon as Copy, TerminalIcon as Terminal } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  CopyIcon as Copy,
+  TerminalIcon as Terminal,
+} from "@mdevs/icons";
 import { useState } from "react";
 
 export function InteractiveCodeBox() {

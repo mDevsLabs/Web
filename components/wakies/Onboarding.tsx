@@ -7,11 +7,9 @@
  *
  * POURQUOI CET ASSISTANT ÉDITE LE WAKIE EXISTANT
  *
- * `ensureStarterWorkspace` crée déjà un espace et un profil « Wakie » à la
- * première visite, et pose `onboardingCompleted: false`. L'assistant MODIFIE
- * ce profil au lieu d'en créer un deuxième : aucun quota consommé, aucun espace
- * dupliqué, et surtout « quitter puis reprendre » fonctionne tout seul — le
- * profil à moitié configured EST déjà en base.
+ * Cet assistant reste disponible pour reprendre la configuration de profils
+ * historiques. Les nouveaux comptes commencent sans espace ni Wakie et créent
+ * leurs éléments depuis les formulaires explicites de l'application.
  *
  * C'est aussi ce qui permet de quitter à l'étape 3 et de revenir demain : à la
  * reprise, le formulaire repart des valeurs enregistrées, pas d'un état local

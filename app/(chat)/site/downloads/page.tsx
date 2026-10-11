@@ -1,6 +1,16 @@
 "use client";
 
-import { CheckIcon as Check, CopyIcon as Copy, CpuIcon as Cpu, DownloadIcon as Download, ExternalLinkIcon as ExternalLink, GlobeIcon as Globe, MonitorIcon as Monitor, TerminalIcon as Terminal, UsersIcon as Users } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  CopyIcon as Copy,
+  CpuIcon as Cpu,
+  DownloadIcon as Download,
+  ExternalLinkIcon as ExternalLink,
+  GlobeIcon as Globe,
+  MonitorIcon as Monitor,
+  TerminalIcon as Terminal,
+  UsersIcon as Users,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";

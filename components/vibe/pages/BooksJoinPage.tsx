@@ -6,7 +6,13 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, BookHeartIcon as BookHeart, Loader2Icon as Loader2, UsersIcon as Users } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  BookHeartIcon as BookHeart,
+  Loader2Icon as Loader2,
+  UsersIcon as Users,
+} from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -17,7 +23,9 @@ import { ApiService } from "@/lib/vibe/services/api";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
 import { useNavigate, useParams } from "../router";
 
-export const BooksJoinPage: React.FC = () => {
+export const BooksJoinPage: React.FC<{
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}> = () => {
   const navigate = useNavigate();
   const { code: codeParam } = useParams<{ code: string }>();
 

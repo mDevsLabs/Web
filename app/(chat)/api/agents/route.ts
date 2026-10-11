@@ -1,9 +1,10 @@
 import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
+import {
+  planGuardResponse,
+  requireAuthenticatedTier,
+} from "@/lib/auth/plan-guard";
 import { createAgent, getAgentsByUserId } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 import { agentQuotaMessage, getTierAgentLimit } from "@/lib/plans/tier-limits";
 
 const createAgentSchema = z.object({
@@ -32,15 +33,15 @@ const createAgentSchema = z.object({
 });
 
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }
   const user = guard.user;
   const userId = user.id || user.email;
   const agents = await getAgentsByUserId({ userId });
-  // La limite dépend du forfait (Plus 15 / Pro 25 / Max illimité) : elle est
-  // renvoyée avec la liste pour que chaque affichage affiche la bonne valeur
+  // La limite dépend du forfait (Free 8 / Plus 15 / Pro 25 / Max illimité) : elle
+  // est renvoyée avec la liste pour que chaque affichage affiche la bonne valeur
   // sans avoir à refaire un appel de résolution de forfait.
   return Response.json({
     agents,
@@ -49,14 +50,14 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }
   const user = guard.user;
   const userId = user.id || user.email;
 
-  // Quota d'agents : Plus 15 / Pro 25 / Max illimité (null = pas de contrôle).
+  // Quota d'agents : Free 8 / Plus 15 / Pro 25 / Max illimité (null = pas de contrôle).
   const existing = await getAgentsByUserId({ userId });
   const agentLimit = getTierAgentLimit(user.tier);
   if (agentLimit !== null && existing.length >= agentLimit) {

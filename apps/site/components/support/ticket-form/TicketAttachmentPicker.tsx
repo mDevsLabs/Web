@@ -64,7 +64,7 @@ export function TicketAttachmentPicker({
           className="flex cursor-pointer items-center gap-2 rounded-xl bg-purple-600 px-5 py-2 text-xs font-bold text-white hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {uploading ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Paperclip className="h-4 w-4" aria-hidden="true" />}
-          {uploading ? "Upload Z1…" : "Parcourir les fichiers"}
+          {uploading ? "Envoi en cours…" : "Parcourir les fichiers"}
         </button>
         <p className="text-[11px] text-slate-400">Images, .txt et .md uniquement • 8 Mo par fichier</p>
       </div>

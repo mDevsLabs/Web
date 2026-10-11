@@ -5,8 +5,55 @@
  * ============================================================================
  */
 
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowLeftIcon as ArrowLeft,
+  ArrowUpIcon as ArrowUp,
+  BanIcon as Ban,
+  BellRingIcon as BellRing,
+  BoldIcon as Bold,
+  BookOpenIcon as BookOpen,
+  CheckIcon as Check,
+  ClockIcon as Clock,
+  CopyIcon as Copy,
+  CrownIcon as Crown,
+  DramaIcon as Drama,
+  ExpandIcon as Expand,
+  EyeIcon as Eye,
+  FileTextIcon as FileText,
+  FlagIcon as Flag,
+  ForwardIcon as Forward,
+  ImageIcon,
+  InfoIcon as Info,
+  ItalicIcon as Italic,
+  LanguagesIcon as Languages,
+  Link2Icon as Link2,
+  Loader2Icon as Loader2,
+  LockIcon as Lock,
+  MailIcon as Mail,
+  MicIcon as Mic,
+  MicOffIcon as MicOff,
+  MoreVerticalIcon as MoreVertical,
+  PaletteIcon as Palette,
+  PencilIcon as Pencil,
+  PenLineIcon as PenLine,
+  PinIcon as Pin,
+  PinOffIcon as PinOff,
+  PlusIcon as Plus,
+  ReplyIcon as Reply,
+  ScissorsIcon as Scissors,
+  SearchIcon as Search,
+  SendIcon as Send,
+  SparklesIcon as Sparkles,
+  StrikethroughIcon as Strikethrough,
+  Trash2Icon as Trash2,
+  UnderlineIcon as Underline,
+  UserPlusIcon as UserPlus,
+  UsersIcon as Users,
+  Wand2Icon as Wand2,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { AlertCircleIcon as AlertCircle, ArrowLeftIcon as ArrowLeft, ArrowUpIcon as ArrowUp, BanIcon as Ban, BellRingIcon as BellRing, BoldIcon as Bold, BookOpenIcon as BookOpen, CheckIcon as Check, ClockIcon as Clock, CopyIcon as Copy, CrownIcon as Crown, DramaIcon as Drama, ExpandIcon as Expand, EyeIcon as Eye, FileTextIcon as FileText, FlagIcon as Flag, ForwardIcon as Forward, ImageIcon, InfoIcon as Info, ItalicIcon as Italic, LanguagesIcon as Languages, Link2Icon as Link2, Loader2Icon as Loader2, LockIcon as Lock, MailIcon as Mail, MicIcon as Mic, MicOffIcon as MicOff, MoreVerticalIcon as MoreVertical, PaletteIcon as Palette, PencilIcon as Pencil, PenLineIcon as PenLine, PinIcon as Pin, PinOffIcon as PinOff, PlusIcon as Plus, ReplyIcon as Reply, ScissorsIcon as Scissors, SearchIcon as Search, SendIcon as Send, SparklesIcon as Sparkles, StrikethroughIcon as Strikethrough, Trash2Icon as Trash2, UnderlineIcon as Underline, UserPlusIcon as UserPlus, UsersIcon as Users, Wand2Icon as Wand2, XIcon as X } from "@mdevs/icons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { getBookIcon } from "@/components/vibe/common/bookIcons";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
@@ -81,7 +128,9 @@ const formatFileSize = (bytes: number): string => {
   return `${(bytes / (1024 * 1024)).toFixed(1)} Mo`;
 };
 
-export const MessagesPage: React.FC = () => {
+export const MessagesPage: React.FC<{
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
+}> = ({ hydration }) => {
   const { user } = useAuth();
 
   // Limites par forfait : messages 3 000 (Free) / 10 000 (Plus+) caractères,
@@ -360,9 +409,39 @@ export const MessagesPage: React.FC = () => {
 
   const [currentTimestamp] = useState(() => Date.now());
 
+  // La liste des conversations est strictement privée et lue en base par la
+  // page serveur : premier écran sans `GET /v1/dms/conversations`. Les
+  // rechargements suivants (SSE, envois) repassent par l'API, autorité après
+  // écriture.
+  const conversationsSeedConsumedRef = useRef(false);
+  const conversationsSeed = useCallback(() => {
+    if (conversationsSeedConsumedRef.current || !hydration?.data) {
+      return null;
+    }
+    if (hydration.as !== null) {
+      if (user && String(hydration.as) !== String(user.id ?? "")) {
+        return null;
+      }
+    } else if (user) {
+      return null;
+    }
+    const d = hydration.data as { conversations?: any[] };
+    return Array.isArray(d.conversations)
+      ? { conversations: d.conversations }
+      : null;
+  }, [hydration, user]);
+
   const fetchConversations = useCallback(async () => {
     try {
-      const res = await ApiService.getConversations();
+      const seed = conversationsSeed();
+      let res: { conversations: any[] };
+      if (seed) {
+        conversationsSeedConsumedRef.current = true;
+        res = seed;
+        ApiService.seedCache("/v1/dms/conversations", seed);
+      } else {
+        res = await ApiService.getConversations();
+      }
       // Si une conversation est actuellement affichée, son compteur de non lu passe à 0
       const list = (res.conversations || []).map((c) =>
         activePartnerId && String(c.partner_id) === String(activePartnerId)
@@ -375,7 +454,7 @@ export const MessagesPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [activePartnerId]);
+  }, [activePartnerId, conversationsSeed]);
 
   const fetchMessages = useCallback(
     async (partnerId: string | number) => {

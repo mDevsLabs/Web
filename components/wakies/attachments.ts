@@ -77,6 +77,14 @@ export type EtatPiece = {
   etat: "selectionne" | "envoi" | "pret" | "echec";
   /** Message d'erreur en français, quand `etat === "echec"`. */
   erreur?: string;
+  /**
+   * Sort de la copie vers la bibliothèque cloud mAI.
+   *
+   * Separate de `etat` : l'envoi au chat et l'import en bibliothèque sont deux
+   * gestes dont la réussite n'est pas la même. Une bibliothèque pleine n'annule
+   * PAS le message — `plein` doit donc se voir sans teindre la pièce en échec.
+   */
+  biblio?: "deja" | "erreur" | "ok" | "plein";
   /** L'utilisateur a retiré le fichier : plus rien ne doit le réinsérer. */
   retire?: boolean;
 };
@@ -183,6 +191,37 @@ export async function televerser(
     throw new Error("Le serveur n'a pas renvoyé de fichier exploitable.");
   }
   return { pathname: donnees.pathname, url: donnees.url ?? "" };
+}
+
+/**
+ * Demande la copie d'une pièce jointe dans la bibliothèque cloud mAI.
+ *
+ * Le client ne transporte QUE le pathname : la taille, le type et le quota sont
+ * relus côté serveur, et le refus (409) est rendu par le serveur en français.
+ * Un échec n'est pas propagé comme une exception : la pièce est déjà envoyée
+ * au chat, et l'import est un plus qui ne doit jamais faire échouer le message.
+ */
+export async function importerDansBibliotheque(
+  pathname: string,
+  signal?: AbortSignal
+): Promise<EtatPiece["biblio"]> {
+  try {
+    const reponse = await fetch("/api/wakies/files/library", {
+      body: JSON.stringify({ pathname }),
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      signal,
+    });
+    if (reponse.status === 409) return "plein";
+    if (!reponse.ok) return "erreur";
+    const donnees = (await reponse.json().catch(() => null)) as {
+      dejaPresente?: boolean;
+    } | null;
+    return donnees?.dejaPresente ? "deja" : "ok";
+  } catch {
+    return "erreur";
+  }
 }
 
 /**

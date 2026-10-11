@@ -1,7 +1,8 @@
 -- Migration : versioning des Skills (snapshots + statistiques d'usage).
--- Recrée de façon idempotente les tables du fichier orphelin
--- 01_skills_mcp_marketplace.sql (jamais appliqué par drizzle-kit,
--- absent de meta/_journal.json).
+-- Crée de façon idempotente les tables reprises du fichier d'origine hors
+-- convention (`01_skills_mcp_marketplace.sql`, jamais appliqué par drizzle-kit,
+-- absent du journal et supprimé depuis — `0006` crée déjà SkillTemplate et
+-- McpTemplate).
 
 CREATE TABLE IF NOT EXISTS "SkillVersion" (
   "id" UUID PRIMARY KEY DEFAULT gen_random_uuid(),

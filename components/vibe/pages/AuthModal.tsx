@@ -5,7 +5,17 @@
  * ============================================================================
  */
 
-import { AlertCircleIcon as AlertCircle, ArrowRightIcon as ArrowRight, EyeIcon as Eye, EyeOffIcon as EyeOff, KeyRoundIcon as KeyRound, Loader2Icon as Loader2, LockIcon as Lock, MailIcon as Mail, UserIcon } from "@mdevs/icons";
+import {
+  AlertCircleIcon as AlertCircle,
+  ArrowRightIcon as ArrowRight,
+  EyeIcon as Eye,
+  EyeOffIcon as EyeOff,
+  KeyRoundIcon as KeyRound,
+  Loader2Icon as Loader2,
+  LockIcon as Lock,
+  MailIcon as Mail,
+  UserIcon,
+} from "@mdevs/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { VibeLogo } from "@/components/vibe/layout/VibeLogo";
@@ -380,10 +390,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 J'accepte les{" "}
                 <a
                   className="text-white underline hover:text-zinc-200"
-                  href="https://mai-devs.vercel.app"
+                  href="/site/legal"
                   onClick={(e) => e.stopPropagation()}
-                  rel="noopener noreferrer"
-                  target="_blank"
                 >
                   conditions et politique de confidentialité
                 </a>

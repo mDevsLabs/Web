@@ -159,7 +159,7 @@ Avec plusieurs icônes titrées, `useId()` donne à chaque titre un ID propre à
 
 ### Boutons et cibles tactiles
 
-Un SVG de 20 px peut être placé dans un bouton d'au moins 44 × 44 pixels CSS, cible pratique pour une interface tactile. Ce dimensionnement relève du bouton hôte. Employer un vrai `<button type="button">` pour une action et un `<a href="…">` pour une navigation ; un SVG avec `onClick` ne fournit pas automatiquement clavier, focus ou sémantique de contrôle.
+Un SVG de 20 px tient dans un bouton de 32 px de haut, l'échelle courante des actions ; sur un support tactile, le style hôte élargit la cible jusqu'à 44 × 44 pixels CSS. Ce dimensionnement relève du bouton hôte. Employer un vrai `<button type="button">` pour une action et un `<a href="…">` pour une navigation ; un SVG avec `onClick` ne fournit pas automatiquement clavier, focus ou sémantique de contrôle.
 
 ```tsx
 <button

@@ -2,52 +2,16 @@
   "commit": "1ac68f3909f2478ab6280883f1ab5ea65eb5719d",
   "files": [
     {
-      "file": ".env.example",
-      "target": ".env.example",
-      "sha256": "87b84828a355353df5c6dd57d8563a38f8a089ec667a1c3dac2cf35bb75b13c0",
-      "bytes": 4696
-    },
-    {
       "file": ".gitattributes",
       "target": ".gitattributes",
       "sha256": "8d33f251c0b08de40ba3585814ca51c285d1c0e3c418ad1f843d4a0008e693dd",
       "bytes": 55
     },
     {
-      "file": ".github/ISSUE_TEMPLATE/bug_report.yml",
-      "target": ".github/ISSUE_TEMPLATE/bug_report.yml",
-      "sha256": "3648b91c86e64c34bd5c6e899281da67b7eaaafbe738ff2fe427923e980d5207",
-      "bytes": 1038
-    },
-    {
-      "file": ".github/ISSUE_TEMPLATE/feature_request.yml",
-      "target": ".github/ISSUE_TEMPLATE/feature_request.yml",
-      "sha256": "5e47aabfc511c2475a913eb5fc6dc0d066c010c59ba98cec4e19e1f015c49615",
-      "bytes": 615
-    },
-    {
-      "file": ".github/pull_request_template.md",
-      "target": ".github/pull_request_template.md",
-      "sha256": "9cbf8737852b264232aa41201a280f8ca6a6390c524d93030b077d3d353a2be3",
-      "bytes": 347
-    },
-    {
-      "file": ".github/workflows/ci.yml",
-      "target": ".github/workflows/ci.yml",
-      "sha256": "ade9fb48c016f6c155083daf24a5146e7160be2bfb863ed0da80db9bfac6bfa2",
-      "bytes": 3232
-    },
-    {
       "file": ".gitignore",
       "target": ".gitignore",
       "sha256": "cec4509918d24092b119dd48ae2c981e6ecf104a8fed5b814f816a25fd9edbfc",
       "bytes": 160
-    },
-    {
-      "file": ".npmrc",
-      "target": ".npmrc",
-      "sha256": "b4cc765ce5da67c335016096b7d246c7b82084b1ef9812eee3190a211d16154d",
-      "bytes": 58
     },
     {
       "file": "CHANGELOG.md",
@@ -68,12 +32,6 @@
       "bytes": 1099
     },
     {
-      "file": "README.md",
-      "target": "UPSTREAM_README.md",
-      "sha256": "49dbe0315df7268d6cb8c0d919773ce683f8f1b0ae8c3df42bda2677f7e08e46",
-      "bytes": 19783
-    },
-    {
       "file": "ROADMAP.md",
       "target": "ROADMAP.md",
       "sha256": "8fc98374b8e03307626c01683558efd402ddd0b92c482851d7ea9a36d27ea9c1",
@@ -86,34 +44,10 @@
       "bytes": 6048
     },
     {
-      "file": "apps/computer/.dockerignore",
-      "target": "apps/computer/.dockerignore",
-      "sha256": "743e81b32cd4c2247b9b7b68d3e61b1d413ec5cf1cb1b820f71a9977776edd37",
-      "bytes": 27
-    },
-    {
-      "file": "apps/computer/Dockerfile",
-      "target": "apps/computer/Dockerfile",
-      "sha256": "48a9c9edf84a631004611809155e88487084c0da4f8dde955a9d94c7ae2b3172",
-      "bytes": 477
-    },
-    {
-      "file": "apps/computer/e2b-desktop-smoke.test.ts",
-      "target": "apps/computer/e2b-desktop-smoke.test.ts",
-      "sha256": "35e074424fad342f446fb1b0a781706b5a40801b4edf9f9d977acb331e6e27ab",
-      "bytes": 11502
-    },
-    {
-      "file": "apps/computer/files.py",
-      "target": "apps/computer/files.py",
-      "sha256": "9fbe5dd621cda9b93e50e78eb5b0e65097bf0f948b6dbb2c2b0285add3a6343d",
-      "bytes": 4902
-    },
-    {
-      "file": "apps/computer/smoke.test.ts",
-      "target": "apps/computer/smoke.test.ts",
-      "sha256": "7fa054c9765208008370d7cc697279aa5097ac0a0174d5bfae9e6771fa0b89a5",
-      "bytes": 6010
+      "file": "README.md",
+      "target": "UPSTREAM_README.md",
+      "sha256": "49dbe0315df7268d6cb8c0d919773ce683f8f1b0ae8c3df42bda2677f7e08e46",
+      "bytes": 19783
     },
     {
       "file": "apps/mobile/App.tsx",
@@ -438,6 +372,248 @@
       "target": "apps/mobile/tsconfig.json",
       "sha256": "01ab9018e0a4df304ba2cedb209c7b45eed13354743435727c1870c401535a5a",
       "bytes": 353
+    },
+    {
+      "file": "assets/computer.png",
+      "target": "assets/computer.png",
+      "sha256": "c68c73528ac86dc0bfd00ccf3c48c3bf5547e0f5dceecd0fc8afaab8d0458e90",
+      "bytes": 297001
+    },
+    {
+      "file": "assets/demos/2026-09-16/mobile.gif",
+      "target": "assets/demos/2026-09-16/mobile.gif",
+      "sha256": "1bf92612215d7b7a1e6cd0aa664ab7262c85b2019878f860f86bce5810e7c53f",
+      "bytes": 1416113
+    },
+    {
+      "file": "assets/demos/2026-09-16/mobile.mp4",
+      "target": "assets/demos/2026-09-16/mobile.mp4",
+      "sha256": "1963c62224f175d4a2e339b7794448d99384b36ac1afe9fd371183565002a25e",
+      "bytes": 944964
+    },
+    {
+      "file": "assets/demos/2026-09-16/mobile.png",
+      "target": "assets/demos/2026-09-16/mobile.png",
+      "sha256": "54b2052018a71ac4fd65b7473a4fc340a791724724a362d6c14a8506c8ee223c",
+      "bytes": 268400
+    },
+    {
+      "file": "assets/demos/2026-09-16/web.gif",
+      "target": "assets/demos/2026-09-16/web.gif",
+      "sha256": "8c7d5a814d635115c8faa3d298791e6ee1dbf20c8cb23666f2e97fba0f7a8525",
+      "bytes": 2538112
+    },
+    {
+      "file": "assets/demos/2026-09-16/web.mp4",
+      "target": "assets/demos/2026-09-16/web.mp4",
+      "sha256": "375fcaac8ca80e64ae1b0f5586b308f76d9f0be006eb7fd78c9f7d4daa28e136",
+      "bytes": 1508626
+    },
+    {
+      "file": "assets/demos/2026-09-16/web.png",
+      "target": "assets/demos/2026-09-16/web.png",
+      "sha256": "71cea6460e1c32e4cb03f953a5715b15ff0b58b7ddc78766d48f12749dfa74bc",
+      "bytes": 166128
+    },
+    {
+      "file": "assets/demos/2026-09-23/jev-live-web.mp4",
+      "target": "assets/demos/2026-09-23/jev-live-web.mp4",
+      "sha256": "710fc9c638ed72eea0303f3b3fdf8be989ff0bb86e9b2f9e51cceb27cf4a9dd8",
+      "bytes": 941240
+    },
+    {
+      "file": "assets/demos/2026-09-23/jev-live-web.png",
+      "target": "assets/demos/2026-09-23/jev-live-web.png",
+      "sha256": "7537d7a0cd5a89452610813aad8dc7760d4a6c0acb8bb3a7a1a847763bbfaa68",
+      "bytes": 63624
+    },
+    {
+      "file": "assets/demos/2026-09-23/jev-web.mp4",
+      "target": "assets/demos/2026-09-23/jev-web.mp4",
+      "sha256": "60188632367fce000e97e5a446f62749613d79ae9dac4e12d896445a772301ff",
+      "bytes": 754978
+    },
+    {
+      "file": "assets/demos/2026-09-23/jev-web.png",
+      "target": "assets/demos/2026-09-23/jev-web.png",
+      "sha256": "9b4cce77f85d5b090bd5184ccb233b52c28212a2a5b5f5f4da8865df82834921",
+      "bytes": 71671
+    },
+    {
+      "file": "assets/document.png",
+      "target": "assets/document.png",
+      "sha256": "f57f354db917bec29e522467c2d6707157b907612ed3039a8f3edca43e221410",
+      "bytes": 356598
+    },
+    {
+      "file": "assets/finance.png",
+      "target": "assets/finance.png",
+      "sha256": "358a712a508d5c12c5d3d13233d48324d401b21859ae4a66c485d32fdd4383de",
+      "bytes": 550177
+    },
+    {
+      "file": "assets/openmuse-demo.mp4",
+      "target": "assets/openmuse-demo.mp4",
+      "sha256": "ec059503472f1d8f0cf17c37ffc992e393c85e950822fc2f5f0afbc83e4dc804",
+      "bytes": 726044
+    },
+    {
+      "file": "docs/COMPUTER.md",
+      "target": "docs/COMPUTER.md",
+      "sha256": "57ede91dac17324cc7eaa0a7f876a592cc06d191ba1b9ba33a80abbbe0523e69",
+      "bytes": 12186
+    },
+    {
+      "file": "docs/DEMO.md",
+      "target": "docs/DEMO.md",
+      "sha256": "853a02085b82372931f46dd7708467fce27802841ebb8c40cf4aefbc5be29d44",
+      "bytes": 8921
+    },
+    {
+      "file": "docs/EXPERIENCE.md",
+      "target": "docs/EXPERIENCE.md",
+      "sha256": "4f3c82d0688decf4cafecb7d3ec89de6910644ba9fb2a64bbd4f1d5b8bddf2fc",
+      "bytes": 2515
+    },
+    {
+      "file": "docs/FEATURES.md",
+      "target": "docs/FEATURES.md",
+      "sha256": "c1675342a7a288c10d88b0bc3298dd2c27d1a83cc4d9e5a358e5f4719d82eda3",
+      "bytes": 3140
+    },
+    {
+      "file": "docs/OPENBOT-INTEGRATION.md",
+      "target": "docs/OPENBOT-INTEGRATION.md",
+      "sha256": "963cd1b3d16c5117db2093a6cacdf890a744977462a01d268b90610f4092e27f",
+      "bytes": 8590
+    },
+    {
+      "file": "docs/README.md",
+      "target": "docs/README.md",
+      "sha256": "afb97e24b29a2f6789688ad39cfac037507547c4a90c146b40dedf549c8432b6",
+      "bytes": 1071
+    },
+    {
+      "file": "docs/RICH-THREADS.md",
+      "target": "docs/RICH-THREADS.md",
+      "sha256": "f5b604e50778691811b6d93569e7f48f06e69a842e4adf9cef9893ad43d8d276",
+      "bytes": 4745
+    },
+    {
+      "file": "docs/TELEMETRY.md",
+      "target": "docs/TELEMETRY.md",
+      "sha256": "a5f5d26dfb0a6fe3cac0c143326e96f8cd3955da28ab91ae6a583fe967a018a2",
+      "bytes": 5263
+    },
+    {
+      "file": "docs/VERIFICATION.md",
+      "target": "docs/VERIFICATION.md",
+      "sha256": "f50ce472ddcc431848a5987cc875c8ba38548f206676457eed810d253f9839bf",
+      "bytes": 12325
+    },
+    {
+      "file": "docs/demos/jev-generative-ui.md",
+      "target": "docs/demos/jev-generative-ui.md",
+      "sha256": "1404aa44f4151cd0e2a1e361b0cecd7b72a2fe7e76a7478bcf55215d23633a41",
+      "bytes": 6900
+    },
+    {
+      "file": "packages/domain/src/agent.ts",
+      "target": "packages/domain/src/agent.ts",
+      "sha256": "a0b960e358d247ab854ba600dfa507ee25f28afe23e12fb32417d074f827325a",
+      "bytes": 4554
+    },
+    {
+      "file": "packages/domain/src/computer.ts",
+      "target": "packages/domain/src/computer.ts",
+      "sha256": "fd42ba0dc9c71210724b256473296d623f0a0edd44efd734ebff4186b7d142d0",
+      "bytes": 951
+    },
+    {
+      "file": "packages/domain/src/date-time.ts",
+      "target": "packages/domain/src/date-time.ts",
+      "sha256": "dda617747dfe9d041c4d2e80912466dc19a7f633a4d8d14615ad4089acee7432",
+      "bytes": 1079
+    },
+    {
+      "file": "packages/domain/src/index.ts",
+      "target": "packages/domain/src/index.ts",
+      "sha256": "cb98c906fedd5ebb2ca1b2d479d025961d382ca41345efdffa31e9a1ab59289b",
+      "bytes": 6215
+    },
+    {
+      "file": "packages/domain/src/jev.ts",
+      "target": "packages/domain/src/jev.ts",
+      "sha256": "15b35cb6b43b65aba326d7ba3cdc47c572a247664f2c3991b76ef9d0373564c7",
+      "bytes": 3229
+    }
+  ],
+  "retiredFiles": [
+    {
+      "file": ".env.example",
+      "target": ".env.example",
+      "sha256": "87b84828a355353df5c6dd57d8563a38f8a089ec667a1c3dac2cf35bb75b13c0",
+      "bytes": 4696
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "target": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "3648b91c86e64c34bd5c6e899281da67b7eaaafbe738ff2fe427923e980d5207",
+      "bytes": 1038
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "target": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "5e47aabfc511c2475a913eb5fc6dc0d066c010c59ba98cec4e19e1f015c49615",
+      "bytes": 615
+    },
+    {
+      "file": ".github/pull_request_template.md",
+      "target": ".github/pull_request_template.md",
+      "sha256": "9cbf8737852b264232aa41201a280f8ca6a6390c524d93030b077d3d353a2be3",
+      "bytes": 347
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "target": ".github/workflows/ci.yml",
+      "sha256": "ade9fb48c016f6c155083daf24a5146e7160be2bfb863ed0da80db9bfac6bfa2",
+      "bytes": 3232
+    },
+    {
+      "file": ".npmrc",
+      "target": ".npmrc",
+      "sha256": "b4cc765ce5da67c335016096b7d246c7b82084b1ef9812eee3190a211d16154d",
+      "bytes": 58
+    },
+    {
+      "file": "apps/computer/.dockerignore",
+      "target": "apps/computer/.dockerignore",
+      "sha256": "743e81b32cd4c2247b9b7b68d3e61b1d413ec5cf1cb1b820f71a9977776edd37",
+      "bytes": 27
+    },
+    {
+      "file": "apps/computer/Dockerfile",
+      "target": "apps/computer/Dockerfile",
+      "sha256": "48a9c9edf84a631004611809155e88487084c0da4f8dde955a9d94c7ae2b3172",
+      "bytes": 477
+    },
+    {
+      "file": "apps/computer/e2b-desktop-smoke.test.ts",
+      "target": "apps/computer/e2b-desktop-smoke.test.ts",
+      "sha256": "35e074424fad342f446fb1b0a781706b5a40801b4edf9f9d977acb331e6e27ab",
+      "bytes": 11502
+    },
+    {
+      "file": "apps/computer/files.py",
+      "target": "apps/computer/files.py",
+      "sha256": "9fbe5dd621cda9b93e50e78eb5b0e65097bf0f948b6dbb2c2b0285add3a6343d",
+      "bytes": 4902
+    },
+    {
+      "file": "apps/computer/smoke.test.ts",
+      "target": "apps/computer/smoke.test.ts",
+      "sha256": "7fa054c9765208008370d7cc697279aa5097ac0a0174d5bfae9e6771fa0b89a5",
+      "bytes": 6010
     },
     {
       "file": "apps/server/src/actions.ts",
@@ -788,154 +964,10 @@
       "bytes": 336
     },
     {
-      "file": "assets/computer.png",
-      "target": "assets/computer.png",
-      "sha256": "c68c73528ac86dc0bfd00ccf3c48c3bf5547e0f5dceecd0fc8afaab8d0458e90",
-      "bytes": 297001
-    },
-    {
-      "file": "assets/demos/2026-09-16/mobile.gif",
-      "target": "assets/demos/2026-09-16/mobile.gif",
-      "sha256": "1bf92612215d7b7a1e6cd0aa664ab7262c85b2019878f860f86bce5810e7c53f",
-      "bytes": 1416113
-    },
-    {
-      "file": "assets/demos/2026-09-16/mobile.mp4",
-      "target": "assets/demos/2026-09-16/mobile.mp4",
-      "sha256": "1963c62224f175d4a2e339b7794448d99384b36ac1afe9fd371183565002a25e",
-      "bytes": 944964
-    },
-    {
-      "file": "assets/demos/2026-09-16/mobile.png",
-      "target": "assets/demos/2026-09-16/mobile.png",
-      "sha256": "54b2052018a71ac4fd65b7473a4fc340a791724724a362d6c14a8506c8ee223c",
-      "bytes": 268400
-    },
-    {
-      "file": "assets/demos/2026-09-16/web.gif",
-      "target": "assets/demos/2026-09-16/web.gif",
-      "sha256": "8c7d5a814d635115c8faa3d298791e6ee1dbf20c8cb23666f2e97fba0f7a8525",
-      "bytes": 2538112
-    },
-    {
-      "file": "assets/demos/2026-09-16/web.mp4",
-      "target": "assets/demos/2026-09-16/web.mp4",
-      "sha256": "375fcaac8ca80e64ae1b0f5586b308f76d9f0be006eb7fd78c9f7d4daa28e136",
-      "bytes": 1508626
-    },
-    {
-      "file": "assets/demos/2026-09-16/web.png",
-      "target": "assets/demos/2026-09-16/web.png",
-      "sha256": "71cea6460e1c32e4cb03f953a5715b15ff0b58b7ddc78766d48f12749dfa74bc",
-      "bytes": 166128
-    },
-    {
-      "file": "assets/demos/2026-09-23/jev-live-web.mp4",
-      "target": "assets/demos/2026-09-23/jev-live-web.mp4",
-      "sha256": "710fc9c638ed72eea0303f3b3fdf8be989ff0bb86e9b2f9e51cceb27cf4a9dd8",
-      "bytes": 941240
-    },
-    {
-      "file": "assets/demos/2026-09-23/jev-live-web.png",
-      "target": "assets/demos/2026-09-23/jev-live-web.png",
-      "sha256": "7537d7a0cd5a89452610813aad8dc7760d4a6c0acb8bb3a7a1a847763bbfaa68",
-      "bytes": 63624
-    },
-    {
-      "file": "assets/demos/2026-09-23/jev-web.mp4",
-      "target": "assets/demos/2026-09-23/jev-web.mp4",
-      "sha256": "60188632367fce000e97e5a446f62749613d79ae9dac4e12d896445a772301ff",
-      "bytes": 754978
-    },
-    {
-      "file": "assets/demos/2026-09-23/jev-web.png",
-      "target": "assets/demos/2026-09-23/jev-web.png",
-      "sha256": "9b4cce77f85d5b090bd5184ccb233b52c28212a2a5b5f5f4da8865df82834921",
-      "bytes": 71671
-    },
-    {
-      "file": "assets/document.png",
-      "target": "assets/document.png",
-      "sha256": "f57f354db917bec29e522467c2d6707157b907612ed3039a8f3edca43e221410",
-      "bytes": 356598
-    },
-    {
-      "file": "assets/finance.png",
-      "target": "assets/finance.png",
-      "sha256": "358a712a508d5c12c5d3d13233d48324d401b21859ae4a66c485d32fdd4383de",
-      "bytes": 550177
-    },
-    {
-      "file": "assets/openmuse-demo.mp4",
-      "target": "assets/openmuse-demo.mp4",
-      "sha256": "ec059503472f1d8f0cf17c37ffc992e393c85e950822fc2f5f0afbc83e4dc804",
-      "bytes": 726044
-    },
-    {
       "file": "biome.json",
       "target": "biome.json",
       "sha256": "47b9d64f1346052989b4e725c449c4ee35939f559ee1e7d7d9a2fcec69ac91f2",
       "bytes": 727
-    },
-    {
-      "file": "docs/COMPUTER.md",
-      "target": "docs/COMPUTER.md",
-      "sha256": "57ede91dac17324cc7eaa0a7f876a592cc06d191ba1b9ba33a80abbbe0523e69",
-      "bytes": 12186
-    },
-    {
-      "file": "docs/DEMO.md",
-      "target": "docs/DEMO.md",
-      "sha256": "853a02085b82372931f46dd7708467fce27802841ebb8c40cf4aefbc5be29d44",
-      "bytes": 8921
-    },
-    {
-      "file": "docs/EXPERIENCE.md",
-      "target": "docs/EXPERIENCE.md",
-      "sha256": "4f3c82d0688decf4cafecb7d3ec89de6910644ba9fb2a64bbd4f1d5b8bddf2fc",
-      "bytes": 2515
-    },
-    {
-      "file": "docs/FEATURES.md",
-      "target": "docs/FEATURES.md",
-      "sha256": "c1675342a7a288c10d88b0bc3298dd2c27d1a83cc4d9e5a358e5f4719d82eda3",
-      "bytes": 3140
-    },
-    {
-      "file": "docs/OPENBOT-INTEGRATION.md",
-      "target": "docs/OPENBOT-INTEGRATION.md",
-      "sha256": "963cd1b3d16c5117db2093a6cacdf890a744977462a01d268b90610f4092e27f",
-      "bytes": 8590
-    },
-    {
-      "file": "docs/README.md",
-      "target": "docs/README.md",
-      "sha256": "afb97e24b29a2f6789688ad39cfac037507547c4a90c146b40dedf549c8432b6",
-      "bytes": 1071
-    },
-    {
-      "file": "docs/RICH-THREADS.md",
-      "target": "docs/RICH-THREADS.md",
-      "sha256": "f5b604e50778691811b6d93569e7f48f06e69a842e4adf9cef9893ad43d8d276",
-      "bytes": 4745
-    },
-    {
-      "file": "docs/TELEMETRY.md",
-      "target": "docs/TELEMETRY.md",
-      "sha256": "a5f5d26dfb0a6fe3cac0c143326e96f8cd3955da28ab91ae6a583fe967a018a2",
-      "bytes": 5263
-    },
-    {
-      "file": "docs/VERIFICATION.md",
-      "target": "docs/VERIFICATION.md",
-      "sha256": "f50ce472ddcc431848a5987cc875c8ba38548f206676457eed810d253f9839bf",
-      "bytes": 12325
-    },
-    {
-      "file": "docs/demos/jev-generative-ui.md",
-      "target": "docs/demos/jev-generative-ui.md",
-      "sha256": "1404aa44f4151cd0e2a1e361b0cecd7b72a2fe7e76a7478bcf55215d23633a41",
-      "bytes": 6900
     },
     {
       "file": "infra/compose.yaml",
@@ -954,36 +986,6 @@
       "target": "packages/backends/src/openbot.ts",
       "sha256": "3b72c3165b20a9b0909ccf327bc4b5a12cb2de17e243f5e7347d9894f30de2d8",
       "bytes": 10925
-    },
-    {
-      "file": "packages/domain/src/agent.ts",
-      "target": "packages/domain/src/agent.ts",
-      "sha256": "a0b960e358d247ab854ba600dfa507ee25f28afe23e12fb32417d074f827325a",
-      "bytes": 4554
-    },
-    {
-      "file": "packages/domain/src/computer.ts",
-      "target": "packages/domain/src/computer.ts",
-      "sha256": "fd42ba0dc9c71210724b256473296d623f0a0edd44efd734ebff4186b7d142d0",
-      "bytes": 951
-    },
-    {
-      "file": "packages/domain/src/date-time.ts",
-      "target": "packages/domain/src/date-time.ts",
-      "sha256": "dda617747dfe9d041c4d2e80912466dc19a7f633a4d8d14615ad4089acee7432",
-      "bytes": 1079
-    },
-    {
-      "file": "packages/domain/src/index.ts",
-      "target": "packages/domain/src/index.ts",
-      "sha256": "cb98c906fedd5ebb2ca1b2d479d025961d382ca41345efdffa31e9a1ab59289b",
-      "bytes": 6215
-    },
-    {
-      "file": "packages/domain/src/jev.ts",
-      "target": "packages/domain/src/jev.ts",
-      "sha256": "15b35cb6b43b65aba326d7ba3cdc47c572a247664f2c3991b76ef9d0373564c7",
-      "bytes": 3229
     },
     {
       "file": "packages/integrations/src/google.ts",
@@ -1356,6 +1358,21 @@
       "target": "tsconfig.json",
       "sha256": "02065fa93323cefda21918a72aad3b5faf3d5cad34c098f21d894d7b64120f07",
       "bytes": 488
+    }
+  ],
+  "retirementReason": "Runtimes autonomes non exécutés dans mAI. Sources récupérables au commit de provenance ; médias et licence conservés.",
+  "localAdaptations": [
+    {
+      "target": "apps/mobile/App.tsx",
+      "upstreamSha256": "28223127cc3c11f93d7e4b769361b4f3429615b49fcc570360fbd7c64369d148",
+      "retainedSha256": "84b532d7766e506ca7f368b31846195e196206add018fdd8edf5a0f4991bbd83",
+      "reason": "Adaptation locale antérieure au chantier, conservée intégralement."
+    },
+    {
+      "target": "apps/mobile/src/ui.tsx",
+      "upstreamSha256": "45c90e55bc9cb3b39a80845295f3b616c3f2943fb9f889db533da909772c49de",
+      "retainedSha256": "b31067e17a6789b03e4c1506fa12d44119a7f3f49f93ab08cfdca7c719d7fd2c",
+      "reason": "Adaptation locale antérieure au chantier, conservée intégralement."
     }
   ]
 }

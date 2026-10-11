@@ -14,7 +14,7 @@ Afin d'assurer la continuité des flux pour les utilisateurs actuels, les dispos
 
 ## Solutions recommandées
 
-Pour les utilisateurs souhaitant une solution open source alternative activement maintenue sur des cas d'usage similaires, l'écosystème **LobeHub** constitue une option robuste et recommandée.
+Pour les utilisateurs souhaitant une solution libre alternative activement maintenue pour des usages similaires, l'écosystème **LobeHub** constitue une option robuste et recommandée.
 
 ## Remerciements et perspectives
 

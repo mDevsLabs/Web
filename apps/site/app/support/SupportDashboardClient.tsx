@@ -135,7 +135,7 @@ export default function SupportDashboardClient() {
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
-              <p className="text-sm font-bold text-slate-900">Mode Administrateur Support Actif</p>
+              <p className="text-sm font-bold text-slate-900">Mode administrateur de l’assistance actif</p>
               <p className="text-xs text-slate-500">
                 Connecté en tant que <span className="font-semibold text-purple-700">{user?.email}</span> — vue globale.
               </p>

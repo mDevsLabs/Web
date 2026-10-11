@@ -1,11 +1,11 @@
 # Backend mAI — architecture et routes
 
 > Périmètre : **le graphe d'imports transitif complet de `main.ts`**, c'est-à-dire
-> 42 fichiers / ~26 200 lignes / ~450 handlers. Base URL : `https://mai.val.run`.
+> 52 fichiers / 28 241 lignes / déclarations relevées dans `API_INVENTORY.json`. Base URL : `https://mai.val.run`.
 >
 > Ce document décrit le **backend Hono (Val Town)**, pas l'application Next.js.
-> Pour le BFF Next et l'Agent, voir `AGENTS.md`, `docs/AGENT.md` et
-> `docs/AI_AGENTS_API.md`.
+> Pour le BFF Next et l'Agent, voir `AGENTS.md`, `docs/1-web/AGENT_ENGINE.md` et
+> `docs/1-web/AI_AGENTS_API.md`.
 
 ---
 
@@ -18,7 +18,7 @@
 5. [`config.ts` — forfaits, base, JWT](#5-configts--forfaits-base-jwt)
 6. [Les huit registres de l'API](#6-les-huit-registres-de-lapi)
 7. [Vibe — la plateforme sociale](#7-vibe--la-plateforme-sociale)
-8. [Index des 42 fichiers](#8-index-des-42-fichiers)
+8. [Index des modules backend](#8-index-des-42-fichiers)
 9. [Code mort et pièges connus](#9-code-mort-et-pièges-connus)
 10. [Codes d'erreur et limites](#10-codes-erreur-et-limites)
 
@@ -47,7 +47,9 @@ l'interroge via `MAI_API_URL`.
 
 ## 2. Cycle de vie de `main.ts`
 
-`main.ts` fait exactement cinq choses, dans cet ordre.
+L’import à effets de bord `models-cron.ts` précède le corps du module. Le détail à jour du graphe et des registres est dans [BACKEND_AUDIT.md](BACKEND_AUDIT.md) ; l’inventaire [API_INVENTORY.json](API_INVENTORY.json) se régénère avec `node scripts/audit-backend.mjs`. Les nombres historiques de handlers ne représentent pas une preuve de couverture.
+
+`main.ts` effectue les étapes suivantes, dans cet ordre.
 
 ### 2.1 Initialisation SQLite — non bloquante
 
@@ -89,7 +91,7 @@ utilise `getUserMedia`.
 app.get("/", (c) => c.text("mAI"));
 ```
 
-Chacune des huit — `/`, `/api`, `/api/`, `/v1`, `/v1/`, `/vibe`, `/vibe/`,
+Chacune des neuf — `/`, `/api`, `/api/`, `/v1`, `/v1/`, `/vibe`, `/vibe/`,
 `/api/vibe`, `/api/vibe/` — renvoie le texte `mAI`. C'est la **réponse
 d'identification** : un client détecte qu'il parle bien à mAI et pas à une
 erreur de routage.
@@ -106,6 +108,10 @@ registerAudioRoutes(app);
 registerWebRoutes(app);
 registerProjectRoutes(app);
 registerDeviceRoutes(app);
+registerRealtimeRoutes(app);
+registerVibeAIRoutes(app);
+registerTranslateRoutes(app);
+registerMaiTranslateRoutes(app);
 registerVibeRoutes(app);        // tout le social
 ```
 
@@ -129,45 +135,22 @@ non rattrapée remonte au runtime de la plateforme.
 
 ## 3. Sécurité : CORS et en-têtes
 
-### 3.1 Allowlist stricte — jamais de réflexion
+### 3.1 Origines ouvertes, sans cookies
 
-```ts
-const ALLOWED_ORIGINS = new Set([
-  "https://mai-vibe.vercel.app",
-  "https://mai-vibe-git-main-mcompany.vercel.app",
-  "http://localhost:5173", "http://127.0.0.1:5173",
-  "http://localhost:3000", "http://127.0.0.1:3000",
-  "capacitor://localhost", "https://localhost",
-]);
-```
-
-La fonction `origin` **rejette** au lieu de refléter :
-
-```ts
-origin: (origin) => {
-  if (!origin) return null;
-  if (ALLOWED_ORIGINS.has(origin)) return origin;
-  if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return origin;
-  if (/^https:\/\/mai-vibe[a-z0-9-]*\.vercel\.app$/.test(origin)) return origin;
-  return null;
-},
-```
-
-`credentials: true` est activé. C'est précisément pourquoi **réfléter une
-origine inconnue serait une faille** : n'importe quel site pourrait lire les
-réponses avec les cookies de l'utilisateur. Deux échappatoires sont
-intentionnelles :
-
-- `localhost` / `127.0.0.1` sur **n'importe quel port** — développement ;
-- `*.vercel.app` pour les previews `mai-vibe-*` — le motif
-  `mai-vibe[a-z0-9-]*` limite toutefois la préfixe à `mai-vibe`.
+Le code actuel de `main.ts` configure `origin: "*"` et `credentials: false`.
+Les clients directs utilisent un en-tête `Authorization`, pas les cookies du
+navigateur. Une réponse explicite `OPTIONS *` renvoie 204 avant l’authentification.
+Cette configuration autorise les origines locales, de preview et de production ;
+elle ne constitue pas une allowlist. L’identité et les quotas restent vérifiés
+par les handlers et le middleware. Le cookie mAI du BFF Next constitue un autre
+périmètre et ne doit pas être confondu avec ce CORS.
 
 ### 3.2 En-têtes autorisés
 
 | Catégorie | Valeurs |
 |---|---|
 | `allowHeaders` | `Content-Type`, `Authorization`, `x-user-id`, `x-api-key`, `x-goog-api-key`, `x-web-search`, `x-disable-web-search`, `anthropic-version`, `anthropic-beta` |
-| `allowMethods` | `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS` |
+| `allowMethods` | `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD` |
 | `exposeHeaders` | `Content-Type`, `Authorization`, `x-user-id` |
 | `maxAge` | `86 400` (24 h) |
 
@@ -275,22 +258,37 @@ C'est une frontière de traduction, pas un oubli.
 `normalizeTier` accepte les alias via `TIER_ALIASES` (`free`, `gratuit`, `plus`,
 `pro`, `max`) et retombe sur `Free`.
 
-Sept tables, chacune avec son getter :
+Tables de limites, chacune avec son getter :
 
 | Table | Getter | Rôle |
 |---|---|---|
 | `TIER_LIMITS` | `getTierMaiTokenLimit` | tokens mAI |
 | `TIER_SPEECH_LIMITS` | `getTierSpeechLimit` | tokens speech |
 | `TIER_REQUEST_LIMITS` | `getTierRequestLimit` | requêtes API / semaine |
-| `TIER_AGENT_LIMITS` | `getTierAgentLimit` | agents (`null` = illimité) |
 | `TIER_DAILY_IMAGE_LIMITS` | `getTierDailyImageLimit` | images / jour |
 | `TIER_IMAGE_REQUEST_COST` | `getTierImageRequestCost` | coût multi-crédits |
-| `STORAGE_LIMITS_BYTES` | `getTierStorageLimitBytes` | stockage cloud |
+| `STORAGE_LIMITS_BYTES` | `getTierStorageLimitBytes` | stockage cloud cumulé |
+| `MEDIA_UPLOAD_LIMITS_BYTES` | `getTierMediaUploadLimitBytes` | taille d'**un** envoi (`/upload-file`) |
+| `TIER_DAILY_STORY_LIMITS` | `getTierDailyStoryLimit` | stories Vibe / jour (`null` = illimité) |
 
-> ⚠️ Ces tables sont le **miroir** de `lib/plans/tier-limits.ts`. Toute évolution
-> de forfait doit être répercutée **des deux côtés**, sinon l'interface annonce
-> une limite que le backend n'applique pas (ou l'inverse). Le commentaire en
-> tête de `lib/plans/tier-limits.ts` le rappelle explicitement.
+> ⚠️ **Il n'existe pas de `TIER_AGENT_LIMITS` côté backend.** Les bots vivent dans
+> la base PostgreSQL de l'hôte Next ; leur limite est `TIER_LIMITS.free.agents`
+> dans `lib/plans/tier-limits.ts`, appliquée par la BFF
+> `app/(chat)/api/agents/**` via `getTierAgentLimit`. Un test
+> (`tests/unit/agents-quota-models.test.ts`) refuse d'ailleurs explicitement
+> l'apparition de cette table dans `config.ts` : l'ajouter serait une deuxième
+> source de vérité, pas un miroir.
+
+> ⚠️ `STORAGE_LIMITS_BYTES` et `MEDIA_UPLOAD_LIMITS_BYTES` ne désignent pas la même
+> grandeur : l'une borne le **total stocké** (10/20/40/60 Go), l'autre la taille
+> d'**un seul fichier** envoyé. Les confondre est l'erreur classique.
+
+> Ces tables sont le **miroir** de `lib/plans/tier-limits.ts` pour les grandeurs
+> que l'hôte expose aussi. Toute évolution de forfait doit être répercutée des deux
+> côtés, sinon l'interface annonce une limite que le backend n'applique pas (ou
+> l'inverse). Le commentaire en tête de `lib/plans/tier-limits.ts` le rappelle.
+> Les stories, elles, restent côté backend + Vibe : pas de `storiesPerDay` dans
+> `lib/plans/tier-limits.ts`, car `/settings` n'affiche pas ce quota.
 
 ### 5.2 Base de données
 
@@ -467,82 +465,64 @@ Il définit aussi `registerRealtimeRoutes` — **jamais appelée** (voir section
 
 ---
 
-## 8. Index des 42 fichiers
+## 8. Index des modules backend
 
-Les 42 fichiers du graphe d'imports transitif de `main.ts`, avec leurs
-imports locaux. Toutes les dépendances externes sont listées en fin de section.
+Le graphe ci-dessous est issu de l’inventaire local. Les alias HTTP sont comptés séparément ; les chemins calculés restent explicitement signalés.
 
-### Racine
-
-| Fichier | L. | Importe |
-|---|---|---|
-| `main.ts` | 113 | `api-middleware`, `audio`, `auth`, `config`, `devices`, `images`, `models`, `projects`, `storage`, `vibe`, `web` |
-| `api-middleware.ts` | 359 | `config` |
-| `config.ts` | 534 | *(aucun)* |
-| `auth.ts` | 1 051 | `config`, `email`, `vibe-common` |
-| `email.ts` | 507 | *(aucun)* |
-| `storage.ts` | 1 043 | `config` |
-| `models.ts` | 1 004 | `config`, `maiModels` |
-| `maiModels.ts` | 281 | *(aucun)* |
-| `images.ts` | 1 806 | `config` |
-| `audio.ts` | 835 | `config` |
-| `web.ts` | 438 | *(aucun)* |
-| `projects.ts` | 650 | `config` |
-| `devices.ts` | 153 | `config` |
-| `realtime.ts` | 309 | *(aucun)* |
-
-### Vibe
-
-| Fichier | L. | Importe |
-|---|---|---|
-| `vibe.ts` | 53 | `vibe-books`, `vibe-circle`, `vibe-common`, `vibe-dms`, `vibe-feed`, `vibe-mai`, `vibe-mai-fleet`, `vibe-posts`, `vibe-recommender`, `vibe-settings`, `vibe-users` |
-| `vibe-common.ts` | 98 | `config` |
-| `vibe-feed.ts` | 915 | `config`, `vibe-circle`, `vibe-common`, `vibe-posts-core`, `vibe-recommender` |
-| `vibe-recommender.ts` | 276 | *(aucun)* |
-| `vibe-circle.ts` | 206 | `config`, `vibe-common` |
-| `vibe-posts.ts` | 52 | `vibe-common`, `vibe-feed`, `vibe-posts-core`, `vibe-posts-crud`, `vibe-posts-engage` |
-| `vibe-posts-core.ts` | 562 | *(aucun)* |
-| `vibe-posts-crud.ts` | 1 560 | `realtime` |
-| `vibe-posts-engage.ts` | 1 184 | `realtime` |
-| `vibe-users.ts` | 1 417 | `config`, `storage`, `vibe-circle`, `vibe-common`, `vibe-posts-core` |
-| `vibe-dms.ts` | 42 | `vibe-common`, `vibe-dms-conversations`, `vibe-dms-core`, `vibe-dms-groups`, `vibe-dms-message-actions`, `vibe-dms-moderation`, `vibe-dms-notifications` |
-| `vibe-dms-core.ts` | 716 | `realtime` |
-| `vibe-dms-conversations.ts` | 808 | `realtime` |
-| `vibe-dms-groups.ts` | 547 | `realtime` |
-| `vibe-dms-message-actions.ts` | 667 | *(aucun)* |
-| `vibe-dms-moderation.ts` | 447 | `realtime` |
-| `vibe-dms-notifications.ts` | 232 | *(aucun)* |
-| `vibe-settings.ts` | 348 | `config`, `vibe-common`, `vibe-tools` |
-| `vibe-tools.ts` | 698 | *(aucun)* |
-| `vibe-mai.ts` | 36 | `vibe-common`, `vibe-mai-chat`, `vibe-mai-conversations`, `vibe-mai-core`, `vibe-mai-execute`, `vibe-mai-settings` |
-| `vibe-mai-core.ts` | 1 318 | *(aucun)* |
-| `vibe-mai-chat.ts` | 543 | `vibe-tools` |
-| `vibe-mai-conversations.ts` | 305 | *(aucun)* |
-| `vibe-mai-execute.ts` | 492 | `vibe-tools` |
-| `vibe-mai-settings.ts` | 136 | `vibe-tools` |
-| `vibe-mai-fleet.ts` | 1 728 | *(aucun)* |
-| `vibe-books.ts` | 1 445 | `config`, `realtime`, `vibe-books-conversations`, `vibe-common`, `vibe-dms-core`, `vibe-posts-core` |
-| `vibe-books-conversations.ts` | 309 | *(aucun)* |
-
-### Dépendances externes (7)
-
-| Spécificateur | Utilisé par |
-|---|---|
-| `npm:hono@4` | 31 fichiers |
-| `npm:hono/cors` | `main.ts` |
-| `npm:hono/streaming` | `realtime.ts` |
-| `npm:@neondatabase/serverless` | `config.ts` |
-| `https://esm.town/v/std/sqlite` | `config.ts`, `devices.ts` |
-| `npm:jose` | `config.ts` |
-| `npm:bcryptjs` | `auth.ts` |
-| `npm:nodemailer` | `email.ts` |
-
-**Tous** les imports sont `npm:` ou des URLs — **aucun** module externe
-installé par `package.json`, **aucun** spécificateur nu. C'est ce qui permet au
-backend de vivre dans le même dépôt que l'app Next sans que Vercel ne le
-tente de builder.
-
----
+| Module | Lignes | Imports locaux |
+| --- | ---: | --- |
+| `api-context.ts` | 18 |  |
+| `api-middleware.ts` | 403 | `./config.ts`, `./openrouter-models.ts` |
+| `audio.ts` | 837 | `./config.ts`, `./openrouter-models.ts` |
+| `auth.ts` | 1086 | `./config.ts`, `./email.ts`, `./vibe-common.ts` |
+| `cli-env.ts` | 22 |  |
+| `config.ts` | 552 | `./api-context.ts` |
+| `devices.ts` | 154 | `./config.ts` |
+| `email.ts` | 553 |  |
+| `images.ts` | 1884 | `./config.ts` |
+| `mai-identity.ts` | 143 |  |
+| `mai-translate.ts` | 375 | `./config.ts`, `./vibe-common.ts` |
+| `maiModels.ts` | 339 |  |
+| `main.ts` | 153 | `./api-middleware.ts`, `./audio.ts`, `./auth.ts`, `./config.ts`, `./devices.ts`, `./images.ts`, `./mai-translate.ts`, `./models-cron.ts`, `./models.ts`, `./projects.ts`, `./realtime.ts`, `./storage.ts`, `./translate.ts`, `./vibe-ai.ts`, `./vibe.ts`, `./web.ts` |
+| `models-cron.ts` | 20 | `./config.ts`, `./updateModels.ts` |
+| `models.ts` | 846 | `./config.ts`, `./mai-identity.ts`, `./maiModels.ts`, `./openrouter-models.ts` |
+| `openrouter-fetch.ts` | 38 | `./config.ts`, `./openrouter-models.ts` |
+| `openrouter-models.ts` | 252 |  |
+| `projects.ts` | 633 | `./config.ts` |
+| `realtime.ts` | 311 | `./config.ts`, `./vibe-common.ts` |
+| `storage.ts` | 1005 | `./config.ts` |
+| `translate.ts` | 460 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts` |
+| `updateModels.ts` | 165 | `./cli-env.ts`, `./openrouter-models.ts` |
+| `vibe-ai.ts` | 414 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts` |
+| `vibe-books-conversations.ts` | 313 | `./vibe-dms-core.ts` |
+| `vibe-books.ts` | 1116 | `./config.ts`, `./realtime.ts`, `./vibe-books-conversations.ts`, `./vibe-common.ts`, `./vibe-dms-core.ts`, `./vibe-posts-core.ts` |
+| `vibe-circle.ts` | 236 | `./config.ts`, `./vibe-common.ts` |
+| `vibe-common.ts` | 111 | `./config.ts` |
+| `vibe-dms-conversations.ts` | 832 | `./config.ts`, `./realtime.ts`, `./vibe-books.ts`, `./vibe-common.ts`, `./vibe-dms-core.ts`, `./vibe-posts-core.ts` |
+| `vibe-dms-core.ts` | 727 | `./config.ts`, `./openrouter-fetch.ts`, `./realtime.ts`, `./vibe-posts-core.ts` |
+| `vibe-dms-groups.ts` | 568 | `./config.ts`, `./realtime.ts`, `./vibe-common.ts`, `./vibe-dms-core.ts` |
+| `vibe-dms-message-actions.ts` | 682 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-common.ts`, `./vibe-dms-core.ts`, `./vibe-mai-fleet.ts` |
+| `vibe-dms-moderation.ts` | 455 | `./config.ts`, `./realtime.ts`, `./vibe-common.ts`, `./vibe-dms-core.ts`, `./vibe-posts-core.ts` |
+| `vibe-dms-notifications.ts` | 233 | `./config.ts`, `./vibe-common.ts` |
+| `vibe-dms.ts` | 43 | `./vibe-common.ts`, `./vibe-dms-conversations.ts`, `./vibe-dms-core.ts`, `./vibe-dms-groups.ts`, `./vibe-dms-message-actions.ts`, `./vibe-dms-moderation.ts`, `./vibe-dms-notifications.ts` |
+| `vibe-feed.ts` | 1000 | `./config.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-posts-core.ts`, `./vibe-recommender.ts` |
+| `vibe-mai-chat.ts` | 549 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
+| `vibe-mai-conversations.ts` | 316 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-posts-core.ts` |
+| `vibe-mai-core.ts` | 1143 | `./config.ts`, `./vibe-posts-core.ts` |
+| `vibe-mai-execute.ts` | 471 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
+| `vibe-mai-fleet.ts` | 1812 | `./config.ts`, `./openrouter-fetch.ts`, `./web.ts` |
+| `vibe-mai-settings.ts` | 78 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
+| `vibe-mai.ts` | 37 | `./vibe-common.ts`, `./vibe-mai-chat.ts`, `./vibe-mai-conversations.ts`, `./vibe-mai-core.ts`, `./vibe-mai-execute.ts`, `./vibe-mai-settings.ts` |
+| `vibe-posts-core.ts` | 569 | `./config.ts` |
+| `vibe-posts-crud.ts` | 1624 | `./config.ts`, `./realtime.ts`, `./vibe-books.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts`, `./vibe-posts-core.ts` |
+| `vibe-posts-engage.ts` | 1161 | `./config.ts`, `./realtime.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-dms.ts`, `./vibe-mai-fleet.ts`, `./vibe-mai.ts`, `./vibe-posts-core.ts` |
+| `vibe-posts.ts` | 53 | `./vibe-common.ts`, `./vibe-feed.ts`, `./vibe-posts-core.ts`, `./vibe-posts-crud.ts`, `./vibe-posts-engage.ts` |
+| `vibe-recommender.ts` | 277 |  |
+| `vibe-settings.ts` | 483 | `./config.ts`, `./vibe-common.ts`, `./vibe-tools.ts` |
+| `vibe-tools.ts` | 709 | `./config.ts`, `./vibe-mai-fleet.ts` |
+| `vibe-users.ts` | 1481 | `./config.ts`, `./storage.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-posts-core.ts` |
+| `vibe.ts` | 54 | `./vibe-books.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-dms.ts`, `./vibe-feed.ts`, `./vibe-mai-fleet.ts`, `./vibe-mai.ts`, `./vibe-posts.ts`, `./vibe-recommender.ts`, `./vibe-settings.ts`, `./vibe-users.ts` |
+| `web.ts` | 445 |  |
 
 ## 9. Code mort et pièges connus
 
@@ -577,11 +557,26 @@ contrairement à `registerVibePostsRoutes` qui utilise le fanion
 comportement est correct — mais c'est fragile : une modification d'un des deux
 sites peut créer un doublon silencieux.
 
-### 9.4 `0014_notifications_and_memory.sql` — migration orpheline
+### 9.4 `0014_notifications_and_memory.sql` — orphelin assumé, et non un absent
 
-Ce fichier n'existe **pas** côté Next (migrations numérotées `NNNN_*.sql` de
-`lib/db/migrations/`). Aucun impact ici ; signalé parce que le nom existe aussi
-dans l'autre runtime avec un contenu différent.
+Le fichier **existe** dans `lib/db/migrations/` (suivi par git) : il n'est
+simplement pas journalisé, et c'est voulu. Sa contrainte `CHECK` énumère sept types
+de notification, alors que `lib/db/migrate.ts` pose la même contrainte avec douze
+types en étape de réparation exécutée **avant** les migrations Drizzle. La rendre
+au journal la ferait passer **après**, donc la **rétrécir** — et les notifications
+d'Agent (`agent_run_finished`, `agent_approval_required`…) seraient refusées en
+base.
+
+La liste de ces orphelins assumés vit dans
+`tests/unit/migrations-journal.test.ts` (`ORPHINS_CONNUS`) : c'est un aveu de
+dette, pas une tolérance. Un `.sql` sans entrée de journal reste un **no-op
+silencieux** (AGENTS.md §6.1) — ne jamais « réparer » l'un de ces fichiers sans
+relire ce paragraphe.
+
+`01_skills_mcp_marketplace.sql`, lui, a été **supprimé** : ses quatre tables sont
+créées par les migrations journalisées `0006` (`SkillTemplate`, `McpTemplate`) et
+`0012` (`SkillVersion`, `SkillUsage`). C'était un doublon mort hérité de la 0.5.0,
+dont la seule présence faisait croire à une migration en attente.
 
 ### 9.5 Pas de gestionnaire d'erreurs global
 
@@ -610,27 +605,41 @@ Handlers : `{ error: string }`. C'est un format **différent** de celui du BFF N
 
 ### 10.2 Limites par forfait
 
-Sept quotas, définis en double (voir [5.1](#51-forfaits)). Points d'application :
+Quotas définis en double pour les grandeurs que les deux runtimes possèdent (voir [5.1](#51-forfaits)). Points d'application :
 
 | Quota | Appliqué dans |
 |---|---|
 | Tokens mAI | `models.ts`, `lib/agent/budget` côté Next |
 | Tokens speech | `audio.ts` |
 | Requêtes API / semaine | `api-middleware.ts` (uniquement clés enregistrées) |
-| Agents | `vibe-mai-fleet.ts` |
-| Images / jour | `images.ts` |
+| Images / jour | `images.ts`, et `vibe-mai-fleet.ts` pour la flotte MAI de Vibe |
 | Coût multi-crédits image | `images.ts`, via `quotaDebitedByHandler` |
-| Stockage | `storage.ts` |
+| Stockage cloud cumulé | `storage.ts` (`/cloud/upload`), via `getTierStorageLimitBytes` |
+| Taille d'un envoi média | `storage.ts` (`/upload-file`), via `getTierMediaUploadLimitBytes` |
+| Stories / jour (Vibe) | `vibe-stories.ts`, via `getTierDailyStoryLimit` |
+
+**Les bots n'ont pas de quota backend.** Le nombre de bots n'est limité que par la
+BFF Next `app/(chat)/api/agents/**` (8 en Free), et `vibe-mai-fleet.ts` n'en traite
+pas : il applique les limites d'images et de tokens de la flotte MAI du réseau
+social. Voir l'avertissement de [5.1](#51-forfaits) sur `TIER_AGENT_LIMITS`, qui
+n'existe pas.
+
+**Deux plafonds média distincts** : `getTierStorageLimitBytes` borne le total
+stocké, `getTierMediaUploadLimitBytes` la taille d'un seul envoi. La borne des
+stories (50 Mo, tous forfaits) est un troisième contrat, indépendant des deux et
+recontrôlé dans `vibe-stories.ts` — sans quoi un compte Max publierait une story
+d'un gigaoctet en passant par `/upload-file`.
 
 Un niveau d'images, un niveau de parole et un niveau de stockage par compte
 sont aussi contrôlés côté Next via `lib/plans/tier-limits.ts`, qui lit les
-quotas renvoyés par l'API plutôt que de les recalculer.
+quotas renvoyés par l'API plutôt que de les recalculer. Les stories, elles, ne
+remontent pas dans `lib/plans/tier-limits.ts` : `/settings` n'affiche pas ce quota.
 
 ---
 
 ## Voir aussi
 
 - `AGENTS.md` — dépôt, stack, conventions, migrations
-- `docs/AGENT.md` — l'espace Agent (exécution, budgets, outils)
-- `docs/AI_AGENTS_API.md` — API publique pour agents externes
+- `docs/1-web/AGENT_ENGINE.md` — l'espace Agent (exécution, budgets, outils)
+- `docs/1-web/AI_AGENTS_API.md` — API publique pour agents externes
 - `docs/plugins-public-apis.md` — API HTTP tierless utilisées par les plugins

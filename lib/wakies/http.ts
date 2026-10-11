@@ -41,8 +41,8 @@ export type WakiesIdentity = {
  * Identité de la requête, ou la réponse 401/403 correspondante.
  *
  * Wakies est réservé aux forfaits payants (Plus, Pro, Max). Un utilisateur
- * Free reçoit un code `plan_required` (403), identique aux bots ou au mode
- * Agent.
+ * Free reçoit un code `plan_required` (403), identique au mode Agent. Les bots
+ * ne relèvent plus de ce cas : ouverts à tous les forfaits, bornés par quota.
  *
  * `userId` est `id || email` comme partout ailleurs dans l'hôte : `users.id`
  * est une colonne texte libre et certains comptes n'ont qu'un email.

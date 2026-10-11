@@ -70,6 +70,11 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
   const initialAgentId = rawAgentCookie
     ? decodeURIComponent(rawAgentCookie)
     : undefined;
+  const rawAgentModeCookie = cookieStore.get("agent-mode")?.value;
+  const initialAgentMode =
+    rawAgentModeCookie === "agent" || rawAgentModeCookie === "chat"
+      ? rawAgentModeCookie
+      : undefined;
 
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
@@ -87,12 +92,10 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
           initialAgentId={initialAgentId}
           initialModelId={initialModelId}
         >
-          <AgentModeProvider>
+          <AgentModeProvider initialMode={initialAgentMode}>
             <AppSidebar hasDeadSession={hasDeadSession} user={user} />
             <SidebarInset className="flex flex-col has-[.site-root]:bg-white has-[.site-root]:[transform:none]">
-              <Suspense fallback={<div className="flex h-dvh" />}>
-                <ChatShell />
-              </Suspense>
+              <ChatShell />
               <div className="flex flex-1 flex-col">
                 <div className="flex-1">{children}</div>
               </div>

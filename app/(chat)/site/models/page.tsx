@@ -1,6 +1,14 @@
 "use client";
 
-import { ArrowRightIcon as ArrowRight, CalendarIcon as Calendar, CloudIcon as Cloud, CpuIcon as Cpu, EyeIcon as Eye, EyeOffIcon as EyeOff, LayersIcon as Layers } from "@mdevs/icons";
+import {
+  ArrowRightIcon as ArrowRight,
+  CalendarIcon as Calendar,
+  CloudIcon as Cloud,
+  CpuIcon as Cpu,
+  EyeIcon as Eye,
+  EyeOffIcon as EyeOff,
+  LayersIcon as Layers,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "@/components/site/router";
@@ -46,7 +54,7 @@ const models2: ModelCardData[] = [
     serieColor: "text-sky-600",
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(14,165,233,0.25)]",
     squareImage: "/site/mai-2/icon.png",
-    tagline: "Our flagship model, for the best price.",
+    tagline: "Notre modèle phare, au meilleur prix.",
     tags: ["Cloud (API mAI)", "Contexte 1M", "Texte + images", "Flagship"],
     vision: true,
   },

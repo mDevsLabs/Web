@@ -26,10 +26,21 @@ type FileDetails = Omit<SavedFile, "uploadedAt"> & {
 };
 export function FileLibrary({
   onSelect,
+  open: openControle,
+  onOpenChange,
+  sansDeclencheur = false,
 }: {
   onSelect: (piece: EtatPiece) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  sansDeclencheur?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [openLocal, setOpenLocal] = useState(false);
+  const open = openControle ?? openLocal;
+  const changerOuverture = (suivant: boolean) => {
+    setOpenLocal(suivant);
+    onOpenChange?.(suivant);
+  };
   const [container, setContainer] = useState<HTMLElement | null>(null);
   const [files, setFiles] = useState<SavedFile[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
@@ -69,20 +80,22 @@ export function FileLibrary({
   const detail = (file: SavedFile) =>
     api<FileDetails>(`/files?pathname=${encodeURIComponent(file.pathname)}`);
   return (
-    <Dialog.Root onOpenChange={setOpen} open={open}>
-      <Dialog.Trigger asChild>
-        <Button
-          aria-label="Choisir un fichier enregistré"
-          className="icon-button"
-          onClick={() =>
-            setContainer(document.querySelector<HTMLElement>(".wakies-root"))
-          }
-          type="button"
-          variant="ghost"
-        >
-          <FileTextIcon size={18} />
-        </Button>
-      </Dialog.Trigger>
+    <Dialog.Root onOpenChange={changerOuverture} open={open}>
+      {sansDeclencheur ? null : (
+        <Dialog.Trigger asChild>
+          <Button
+            aria-label="Choisir un fichier enregistré"
+            className="icon-button"
+            onClick={() =>
+              setContainer(document.querySelector<HTMLElement>(".wakies-root"))
+            }
+            type="button"
+            variant="ghost"
+          >
+            <FileTextIcon size={18} />
+          </Button>
+        </Dialog.Trigger>
+      )}
       <Dialog.Portal container={container}>
         <Dialog.Overlay className="wakies-file-overlay" />
         <Dialog.Content className="wakies-file-dialog">
@@ -126,7 +139,7 @@ export function FileLibrary({
                         taille: metadata.size,
                         type: metadata.mediaType,
                       });
-                      setOpen(false);
+                      changerOuverture(false);
                     } catch (error) {
                       setError(
                         error instanceof Error

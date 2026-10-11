@@ -7,8 +7,12 @@ import {
   getWeekData,
   verifyToken,
 } from "./config.ts";
+import type { SqlClient } from "./openrouter-models.ts";
 
-export function registerMiddleware(app: Hono) {
+export function registerMiddleware(
+  app: Hono,
+  database: () => SqlClient = getDb
+) {
   // Middleware global pour Auth, Rate limiting & Logging sur toutes les routes d'API
   app.use("*", async (c, next) => {
     // Preflight CORS : laisser passer sans auth (géré par le middleware CORS de main.ts)
@@ -175,11 +179,11 @@ export function registerMiddleware(app: Hono) {
       }
 
       try {
-        // `getDb()` doit rester DANS le try : une base injoignable au moment de
+        // `database()` doit rester DANS le try : une base injoignable au moment de
         // l'ouverture est exactement le cas que ce bloc doit attraper, sinon
         // l'exception remonte hors du middleware et la requête n'est ni servie
         // ni refusée proprement.
-        const sql = getDb();
+        const sql = database();
         const rows = await sql`
           SELECT k.*, u.tier as user_tier, u.id as u_id
           FROM mprojects_api_keys k
@@ -270,10 +274,10 @@ export function registerMiddleware(app: Hono) {
       } else {
         // Aucune auth vérifiée
         try {
-          const sql = getDb();
+          const sql = database();
           const uRows = await sql`
-            SELECT tier FROM users 
-            WHERE id::text = ${reqUserId}::text OR username = ${reqUserId}::text OR email = ${reqUserId}::text 
+            SELECT tier FROM users
+            WHERE id::text = ${reqUserId}::text OR username = ${reqUserId}::text OR email = ${reqUserId}::text
             LIMIT 1
           `;
           if (uRows.length > 0) {
@@ -308,24 +312,25 @@ export function registerMiddleware(app: Hono) {
     // (lundi 00:00 UTC), marquée par usage_period_start pour un reset idempotent.
     // Un token JWT de session ne consomme pas ce quota : la requête est exécutée directement.
     if (isRegisteredApiKey && currentUserId && currentUserId !== "system-mai") {
-      const sql = getDb();
+      const sql = database();
       const { nextResetIso, weekStartStr } = getWeekData();
-      const apiBoost = await getUserQuotaBoost(sql, currentUserId, "api");
-      const limit = getTierRequestLimit(userPlan) + apiBoost;
-
       try {
-        await sql`
-          UPDATE mprojects_api_keys
-          SET request_count = 0, usage_period_start = ${weekStartStr}::date
-          WHERE user_id::text = ${currentUserId}::text
-            AND usage_period_start IS DISTINCT FROM ${weekStartStr}::date
-        `;
-
-        const countRows = await sql`
-          SELECT SUM(request_count) as total_requests
-          FROM mprojects_api_keys
-          WHERE user_id::text = ${currentUserId}::text
-        `;
+        const [apiBoost, countRows] = await Promise.all([
+          getUserQuotaBoost(sql, currentUserId, "api"),
+          sql`
+            WITH reset AS (
+              UPDATE mprojects_api_keys
+              SET request_count = 0, usage_period_start = ${weekStartStr}::date
+              WHERE user_id::text = ${currentUserId}::text
+                AND usage_period_start IS DISTINCT FROM ${weekStartStr}::date
+              RETURNING api_key
+            )
+            SELECT COALESCE(SUM(CASE WHEN usage_period_start = ${weekStartStr}::date
+              THEN request_count ELSE 0 END), 0) AS total_requests
+            FROM mprojects_api_keys WHERE user_id::text = ${currentUserId}::text
+          `,
+        ]);
+        const limit = getTierRequestLimit(userPlan) + apiBoost;
         // Neon renvoie les bigint en chaîne: Number() est obligatoire pour comparer
         const used = Number(countRows[0]?.total_requests || 0);
         const remaining = Math.max(0, limit - used);
@@ -374,23 +379,21 @@ export function registerMiddleware(app: Hono) {
       path === "/status";
     if (!isExcludedRoute && isRegisteredApiKey) {
       try {
-        const sql = getDb();
+        const sql = database();
         const effectiveKeyToLog = matchedApiKey || apiKey;
 
+        const shouldDebit =
+          status === 200 && !(c as any).get?.("quotaDebitedByHandler");
         await sql`
-          INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms)
-          VALUES (${effectiveKeyToLog}::text, ${endpoint}::text, ${method}::text, ${status}::integer, ${latency}::integer)
+          WITH log AS (
+            INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms)
+            VALUES (${effectiveKeyToLog}::text, ${endpoint}::text, ${method}::text, ${status}::integer, ${latency}::integer)
+            RETURNING api_key
+          )
+          UPDATE mprojects_api_keys
+          SET request_count = request_count + 1, last_used_at = NOW()
+          WHERE api_key = ${effectiveKeyToLog}::text AND ${shouldDebit}::boolean
         `;
-
-        // Les routes qui débitent elles-mêmes un coût multi-crédits (images) posent le fanion
-        // pour éviter le double débit `cout + 1` sur la même requête.
-        if (status === 200 && !(c as any).get?.("quotaDebitedByHandler")) {
-          await sql`
-            UPDATE mprojects_api_keys
-            SET request_count = request_count + 1, last_used_at = NOW()
-            WHERE api_key = ${effectiveKeyToLog}::text
-          `;
-        }
       } catch (err) {
         console.error("Erreur logging API & mise à jour quota:", err);
       }

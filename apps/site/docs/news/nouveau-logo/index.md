@@ -12,7 +12,7 @@ Ce nouveau symbole en forme de **M tridimensionnel et fluide** incarne la conver
 
 * **Nuances rouge et orange** : Réactivité et vitesse d'exécution des moteurs d'inférence locaux.
 * **Nuances violet et bleu** : Rigueur algorithmique, robustesse architecturale et sécurité des données.
-* **Nuances cyan et émeraude** : Modularité, intégration open source et légèreté des modèles de la gamme.
+* **Nuances cyan et émeraude** : modularité, intégration des logiciels libres et légèreté des modèles de la gamme.
 
 ## Déploiement transversal
 

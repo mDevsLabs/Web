@@ -50,7 +50,7 @@ export const modelsData: Omit<ModelInfo, "readmeContent">[] = [
     name: "mAI-2",
     releaseDate: "25/10/2026",
     squareImage: "/site/mai-2/icon.png",
-    tagline: "Our flagship model, for the best price.",
+    tagline: "Notre modèle phare, au meilleur prix.",
     vision: true,
   },
   {

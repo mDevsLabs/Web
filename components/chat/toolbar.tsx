@@ -1,8 +1,8 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { WrenchIcon, XIcon } from "@mdevs/icons";
 import cx from "classnames";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { WrenchIcon, XIcon } from "@mdevs/icons";
 import { nanoid } from "nanoid";
 import {
   type Dispatch,

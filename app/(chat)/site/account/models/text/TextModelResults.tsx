@@ -1,6 +1,15 @@
 "use client";
 
-import { CheckIcon as Check, ChevronDownIcon as ChevronDown, ChevronUpIcon as ChevronUp, CopyIcon as Copy, LayersIcon as Layers, Loader2Icon as Loader2, WrenchIcon as Wrench, XIcon as X } from "@mdevs/icons";
+import {
+  CheckIcon as Check,
+  ChevronDownIcon as ChevronDown,
+  ChevronUpIcon as ChevronUp,
+  CopyIcon as Copy,
+  LayersIcon as Layers,
+  Loader2Icon as Loader2,
+  WrenchIcon as Wrench,
+  XIcon as X,
+} from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import toast from "react-hot-toast";

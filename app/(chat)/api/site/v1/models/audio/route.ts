@@ -11,7 +11,7 @@ const FALLBACK_AUDIO_MODELS = [
     },
     created: Math.floor(Date.now() / 1000) - 86_400 * 30,
     description:
-      "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram avec rendu naturel des voix.",
+      "Modèle de synthèse vocale (TTS) ultra-rapide et haute fidélité par Deepgram avec rendu naturel des voix.",
     id: "deepgram/flux-tts:free",
     name: "Deepgram: Flux TTS",
     object: "model",

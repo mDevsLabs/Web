@@ -458,7 +458,7 @@ export const PromptInput = ({
       if (accepted.length > 0 && sized.length === 0) {
         onError?.({
           code: "max_file_size",
-          message: "All files exceed the maximum size.",
+          message: "Tous les fichiers dépassent la taille maximale.",
         });
         return;
       }
@@ -473,7 +473,7 @@ export const PromptInput = ({
         if (typeof capacity === "number" && sized.length > capacity) {
           onError?.({
             code: "max_files",
-            message: "Too many files. Some were not added.",
+            message: "Trop de fichiers. Certains n’ont pas été ajoutés.",
           });
         }
         const next: (FileUIPart & { id: string })[] = [];
@@ -522,7 +522,7 @@ export const PromptInput = ({
       if (accepted.length > 0 && sized.length === 0) {
         onError?.({
           code: "max_file_size",
-          message: "All files exceed the maximum size.",
+          message: "Tous les fichiers dépassent la taille maximale.",
         });
         return;
       }
@@ -537,7 +537,7 @@ export const PromptInput = ({
       if (typeof capacity === "number" && sized.length > capacity) {
         onError?.({
           code: "max_files",
-          message: "Too many files. Some were not added.",
+          message: "Trop de fichiers. Certains n’ont pas été ajoutés.",
         });
       }
 

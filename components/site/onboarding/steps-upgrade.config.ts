@@ -1,6 +1,10 @@
 "use client";
 
-import { GaugeIcon as Gauge, RocketIcon as Rocket, SparklesIcon as Sparkles } from "@mdevs/icons";
+import {
+  GaugeIcon as Gauge,
+  RocketIcon as Rocket,
+  SparklesIcon as Sparkles,
+} from "@mdevs/icons";
 import type { StepDef } from "./types";
 
 export const UPGRADE_STEPS: StepDef[] = [

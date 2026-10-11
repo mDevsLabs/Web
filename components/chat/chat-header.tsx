@@ -1,6 +1,20 @@
 "use client";
 
-import { ArchiveIcon, ArchiveRestoreIcon, BrainIcon, CopyIcon, DownloadIcon, Edit2Icon, GhostIcon, MoreHorizontalIcon, PanelLeftIcon, PinIcon, PinOffIcon, SearchIcon, TrashIcon } from "@mdevs/icons";
+import {
+  ArchiveIcon,
+  ArchiveRestoreIcon,
+  BrainIcon,
+  CopyIcon,
+  DownloadIcon,
+  Edit2Icon,
+  GhostIcon,
+  MoreHorizontalIcon,
+  PanelLeftIcon,
+  PinIcon,
+  PinOffIcon,
+  SearchIcon,
+  TrashIcon,
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";

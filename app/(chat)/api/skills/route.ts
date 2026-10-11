@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { valeurParametreAcceptable } from "@/lib/ai/skill-params";
 import {
   errorResponse,
   logError,
@@ -6,6 +7,31 @@ import {
 } from "@/lib/api/error-response";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
+
+/**
+ * Garde d'homogénéité des contenus APPLIQUÉE à l'écriture — et non seulement
+ * à la substitution au tour. Un Skill importé (fichier JSON, copié/collé puis
+ * POST) entre en base avec ses valeurs de paramètres d'exemple : la garde de
+ * `lib/ai/skill-params.ts` ne le verrait qu'au premier tour, après un comptage
+ * d'usage déjà débité. Le contrôle se fait donc AUSSI à l'écriture.
+ */
+const valeurParametreSure = z
+  .string()
+  .refine((valeur) => valeurParametreAcceptable(valeur) === null, {
+    message:
+      "valeur de paramètre refusée : elle usurpe un marqueur du prompt système ou dépasse la borne de taille",
+  });
+
+const parametersImportes = z.array(
+  z.object({
+    defaultValue: valeurParametreSure.optional(),
+    description: z.string().max(500).optional(),
+    enumValues: z.array(valeurParametreSure).optional(),
+    name: z.string().min(1).max(50),
+    required: z.boolean().optional(),
+    type: z.enum(["string", "number", "integer", "boolean", "enum"]).optional(),
+  })
+);
 
 const createSkillSchema = z.object({
   color: z
@@ -21,20 +47,7 @@ const createSkillSchema = z.object({
     .record(z.string(), z.array(z.string()).nullable())
     .optional(),
   name: z.string().min(1).max(100),
-  parameters: z
-    .array(
-      z.object({
-        defaultValue: z.string().optional(),
-        description: z.string().optional(),
-        enumValues: z.array(z.string()).optional(),
-        name: z.string().min(1).max(50),
-        required: z.boolean().optional(),
-        type: z
-          .enum(["string", "number", "integer", "boolean", "enum"])
-          .optional(),
-      })
-    )
-    .optional(),
+  parameters: parametersImportes.optional(),
   pinned: z.boolean().optional(),
   tags: z.array(z.string().max(50)).optional(),
   templateId: z.string().min(1).max(64).nullable().optional(),

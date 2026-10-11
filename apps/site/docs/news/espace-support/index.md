@@ -1,6 +1,6 @@
 # Déploiement du centre de support et de signalement mAI
 
-![Centre de Support mAI](https://upload.fs.fr/acJN4xd9ys.png)
+![Centre d’assistance mAI](https://upload.fs.fr/acJN4xd9ys.png)
 
 Dans le cadre de l'extension continue de l'écosystème technologique **mAI**, **mDevsLabs** annonce l'ouverture officielle de son nouvel **Espace Support**. Conçu pour répondre aux exigences des développeurs, entreprises et utilisateurs individuels, ce centre d'assistance unifié permet de soumettre des demandes techniques, de signaler des anomalies de fonctionnement et de suivre avec rigueur le traitement de chaque dossier.
 

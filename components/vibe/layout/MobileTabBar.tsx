@@ -6,8 +6,17 @@
  * ============================================================================
  */
 
+import {
+  BellIcon as Bell,
+  CompassIcon as Compass,
+  HomeIcon as Home,
+  MessageCircleIcon as MessageCircle,
+  PenSquareIcon as PenSquare,
+  SearchIcon as Search,
+  SparklesIcon as Sparkles,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { BellIcon as Bell, CompassIcon as Compass, HomeIcon as Home, MessageCircleIcon as MessageCircle, PenSquareIcon as PenSquare, SearchIcon as Search, SparklesIcon as Sparkles, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useState } from "react";
 import { flushSync } from "react-dom";

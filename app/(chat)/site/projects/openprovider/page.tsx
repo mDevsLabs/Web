@@ -1,6 +1,15 @@
 "use client";
 
-import { BookOpenIcon as BookOpen, GithubIcon as Github, GlobeIcon as Globe, LockIcon as Lock, ServerIcon as Server, ShieldIcon as Shield, TerminalIcon as Terminal, ZapIcon as Zap } from "@mdevs/icons";
+import {
+  BookOpenIcon as BookOpen,
+  GithubIcon as Github,
+  GlobeIcon as Globe,
+  LockIcon as Lock,
+  ServerIcon as Server,
+  ShieldIcon as Shield,
+  TerminalIcon as Terminal,
+  ZapIcon as Zap,
+} from "@mdevs/icons";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GithubRelease } from "@/components/site/github-release";
@@ -160,13 +169,13 @@ export default function OpenProviderProjectPage() {
             delay={0.6}
             description="Code entièrement ouvert et vérifiable. Vous gardez le contrôle total sur l'outil."
             icon={<Github className="w-6 h-6 text-pink-600" />}
-            title="100% Open Source"
+            title="100 % en code ouvert"
           />
           <FeatureCard
             delay={0.7}
             description="Utilisez vos propres clés d'API sans intermédiaire pour une flexibilité maximale."
             icon={<Shield className="w-6 h-6 text-pink-600" />}
-            title="BYOK (Bring Your Own Key)"
+            title="BYOK (utilisez votre propre clé)"
           />
         </div>
       </div>
@@ -178,7 +187,7 @@ export default function OpenProviderProjectPage() {
             Dépôt GitHub mDevsLabs/OpenProvider
           </h4>
           <p className="text-slate-600 text-sm font-light">
-            Un projet open source auquel vous pouvez participer.
+            Un projet à code source ouvert auquel vous pouvez participer.
           </p>
         </div>
         <div>

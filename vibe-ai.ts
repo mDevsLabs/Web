@@ -113,8 +113,9 @@ export function registerVibeAIRoutes(app: Hono) {
       const tone = String(body?.tone || "");
 
       if (!text.trim()) return c.json({ error: "Texte requis." }, 400);
-      if (!TEXT_ACTIONS.has(action))
+      if (!TEXT_ACTIONS.has(action)) {
         return c.json({ error: "Action invalide." }, 400);
+      }
       // Anti-abus : la continuation se déclenche en tapant, on la plafonne plus fort
       if (
         !rateLimit(`ai-text:${userId}`, action === "complete" ? 40 : 20, 60_000)
@@ -253,7 +254,9 @@ export function registerVibeAIRoutes(app: Hono) {
         const systemRaw =
           "Tu es le moteur de traduction du réseau social Vibe. On te donne un message privé. " +
           "1) Détecte sa langue d'origine. " +
-          `2) Traduis-le fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(altTargetRaw)} s'il est déjà rédigé en ${langLabel(targetLang)}) : sens EXACT, ton préservé. ` +
+          `2) Traduis-le fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(
+            altTargetRaw
+          )} s'il est déjà rédigé en ${langLabel(targetLang)}) : sens EXACT, ton préservé. ` +
           "Conserve les mentions @, émojis et liens tels quels. " +
           'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<langue d\'origine en français>", "target_language": "<langue cible>", "translation": "<traduction>"} — sans markdown ni commentaire.';
         const sqlRaw = getDb();
@@ -262,13 +265,14 @@ export function registerVibeAIRoutes(app: Hono) {
           systemRaw,
           rawText
         );
-        if (!raw)
+        if (!raw) {
           return c.json(
             {
               error: "mAI est indisponible pour le moment (modèle ou clé IA).",
             },
             502
           );
+        }
         await debitWeeklyTokens(sqlRaw, userId, rawText.length + raw.length);
         const parsedRaw = extractJsonObject(raw);
         let detectedRaw = "";
@@ -323,8 +327,9 @@ export function registerVibeAIRoutes(app: Hono) {
       // 2. Génération : détection de langue + traduction en un seul appel
       const postRows =
         await sql`SELECT content FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-      if (postRows.length === 0)
+      if (postRows.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
+      }
       const content = String(postRows[0].content || "").trim();
       if (!content) return c.json({ error: "Publication vide." }, 400);
 
@@ -332,16 +337,21 @@ export function registerVibeAIRoutes(app: Hono) {
       const system =
         "Tu es le moteur de traduction du réseau social Vibe. On te donne une publication. " +
         "1) Détecte sa langue d'origine. " +
-        `2) Traduis-la fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(altTarget)} si elle est déjà rédigée en ${langLabel(targetLang)}) : sens EXACT, ton préservé, ton naturel de réseau social. ` +
+        `2) Traduis-la fidèlement en ${langLabel(targetLang)} (ou en ${langLabel(
+          altTarget
+        )} si elle est déjà rédigée en ${langLabel(
+          targetLang
+        )}) : sens EXACT, ton préservé, ton naturel de réseau social. ` +
         "Conserve les hashtags, mentions @, émojis et liens tels quels (ne les traduis pas). " +
         'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<nom de la langue d\'origine en français>", "target_language": "<nom de la langue cible>", "translation": "<traduction>"} — sans guillemets markdown ni commentaire.';
 
       const raw = await MAIAgentFleet.callOpenRouter(userId, system, content);
-      if (!raw)
+      if (!raw) {
         return c.json(
           { error: "mAI est indisponible pour le moment (modèle ou clé IA)." },
           502
         );
+      }
 
       await debitWeeklyTokens(sql, userId, content.length + raw.length);
 

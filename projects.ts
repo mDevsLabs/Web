@@ -525,7 +525,9 @@ export function registerProjectRoutes(app: Hono) {
 
     await sql`
       INSERT INTO mprojects_projects (user_id, project_id, name, description, is_public)
-      VALUES (${userId}, ${projectId}, ${body.name}, ${body.description || ""}, ${body.isPublic || false})
+      VALUES (${userId}, ${projectId}, ${body.name}, ${body.description || ""}, ${
+        body.isPublic || false
+      })
     `;
 
     return c.json({ name: body.name, project_id: projectId, success: true });
@@ -542,8 +544,8 @@ export function registerProjectRoutes(app: Hono) {
     const sql = getDb();
     const userId = c.get("userId");
     const projects = await sql`
-      SELECT * FROM mprojects_projects 
-      WHERE (user_id = ${userId} OR is_public = TRUE) AND LOWER(project_id) = ${projectId} 
+      SELECT * FROM mprojects_projects
+      WHERE (user_id = ${userId} OR is_public = TRUE) AND LOWER(project_id) = ${projectId}
       LIMIT 1
     `;
 
@@ -594,7 +596,7 @@ export function registerProjectRoutes(app: Hono) {
     const projectId = c.req.param("id");
 
     const result = await sql`
-      DELETE FROM mprojects_projects 
+      DELETE FROM mprojects_projects
       WHERE user_id = ${userId} AND project_id = ${projectId}
       RETURNING id
     `;

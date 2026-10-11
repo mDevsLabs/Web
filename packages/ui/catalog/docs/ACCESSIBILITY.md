@@ -105,7 +105,7 @@ Le verre est dépendant du fond hôte. Un flou ne garantit pas le contraste sur 
 
 `glass=false` retire le flou et rend opaques les surfaces `.md-glass` ; les autres contrôles peuvent conserver des fonds translucides. `prefers-reduced-motion` désactive les animations ; `prefers-reduced-transparency` retire le flou lorsque le navigateur le reconnaît. En couleurs forcées, le système utilise des couleurs natives.
 
-Les boutons principaux ont une hauteur minimale de 44 px. Les boutons de fermeture et certaines suppressions compactes ont des cibles plus petites dans cette version ; adapter la densité et les styles hôtes lorsque le contexte tactile le demande.
+Les champs et les affords natifs ont une hauteur minimale de 44 px ; les actions mesurent 32 px depuis l’échelle compacte. Les boutons de fermeture et certaines suppressions compactes ont des cibles plus petites dans cette version ; adapter la densité et les styles hôtes lorsque le contexte tactile le demande.
 
 ## 9. Vérification pratique d’une intégration
 

@@ -6,8 +6,24 @@
  * ============================================================================
  */
 
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  ChevronRightIcon as ChevronRight,
+  CrownIcon as Crown,
+  FileTextIcon as FileText,
+  HashIcon as Hash,
+  HeartIcon as Heart,
+  Loader2Icon as Loader2,
+  SearchIcon as Search,
+  SparklesIcon as Sparkles,
+  TrendingUpIcon as TrendingUp,
+  TrophyIcon as Trophy,
+  UserCheckIcon as UserCheck,
+  UserPlusIcon as UserPlus,
+  UsersIcon as Users,
+  XIcon as X,
+} from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon as ArrowUpRight, ChevronRightIcon as ChevronRight, CrownIcon as Crown, FileTextIcon as FileText, HashIcon as Hash, HeartIcon as Heart, Loader2Icon as Loader2, SearchIcon as Search, SparklesIcon as Sparkles, TrendingUpIcon as TrendingUp, TrophyIcon as Trophy, UserCheckIcon as UserCheck, UserPlusIcon as UserPlus, UsersIcon as Users, XIcon as X } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
@@ -15,6 +31,7 @@ import { makeExcerpt } from "@/components/vibe/common/richTextUtils";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
 import { PostCard } from "@/components/vibe/feed/PostCard";
 import { formatCompactCount } from "@/lib/vibe/algorithms";
+import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
@@ -22,6 +39,8 @@ import type { Post } from "@/lib/vibe/types/vibe";
 import { useLocation } from "../router";
 
 interface ExplorePageProps {
+  /** Seed serveur de premier écran (voir lib/vibe/server/hydration.ts). */
+  hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
   onOpenProfile: (username: string) => void;
   onOpenThread: (post: Post) => void;
 }
@@ -47,10 +66,12 @@ interface TrendItem {
 }
 
 export const ExplorePage: React.FC<ExplorePageProps> = ({
+  hydration,
   onOpenProfile,
   onOpenThread,
 }) => {
   const location = useLocation();
+  const { user } = useAuth();
   const [query, setQuery] = useState(() => {
     try {
       return new URLSearchParams(window.location.search).get("q") || "";
@@ -98,10 +119,6 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({
     }
   }, []);
 
-  useEffect(() => {
-    fetchTrends();
-  }, [fetchTrends]);
-
   // ─── Chargement de la découverte (Top Vibe / Top Vibers / suggestions) ───
   const fetchDiscovery = useCallback(async () => {
     setIsLoadingDiscovery(true);
@@ -121,9 +138,66 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({
     setIsLoadingDiscovery(false);
   }, []);
 
+  // ─── Graine serveur : les quatre panneaux sont lus en base au premier rendu ───
+  const exploreSeed = useCallback((): {
+    onboardingSuggestions?: { users: UserResult[] } | null;
+    topPosts?: { posts: Post[]; success: boolean } | null;
+    topVibers?: { users: UserResult[] } | null;
+    trends?: { success: boolean; trends: TrendItem[] } | null;
+  } | null => {
+    if (!hydration?.data) {
+      return null;
+    }
+    // Le seed porte les drapeaux « is_following » du visiteur de la lecture
+    // serveur ; un seed d'une autre identité serait mensonger.
+    if (hydration.as !== null) {
+      if (user && String(hydration.as) !== String(user.id ?? "")) {
+        return null;
+      }
+    } else if (user) {
+      return null;
+    }
+    return hydration.data as {
+      onboardingSuggestions?: { users: UserResult[] } | null;
+      topPosts?: { posts: Post[]; success: boolean } | null;
+      topVibers?: { users: UserResult[] } | null;
+      trends?: { success: boolean; trends: TrendItem[] } | null;
+    };
+  }, [hydration, user]);
+
   useEffect(() => {
-    fetchDiscovery();
-  }, [fetchDiscovery]);
+    const seed = exploreSeed();
+    const discovery =
+      seed?.topPosts && seed.topVibers && seed.onboardingSuggestions
+        ? {
+            posts: seed.topPosts,
+            suggestions: seed.onboardingSuggestions,
+            vibers: seed.topVibers,
+          }
+        : null;
+
+    if (seed?.trends) {
+      setTrends(seed.trends.trends || []);
+      setIsLoadingTrends(false);
+      // Clé exacte du getter (api.ts) : la sidebar, elle, ne reçoit pas la
+      // graine — elle lit le cache et ne redemande pas l'API.
+      ApiService.seedCache("/v1/trends", seed.trends);
+    } else {
+      fetchTrends();
+    }
+
+    if (discovery) {
+      setTopPosts(discovery.posts.posts || []);
+      setTopVibers(discovery.vibers.users || []);
+      setDiscoverVibers((discovery.suggestions.users || []).slice(0, 5));
+      setIsLoadingDiscovery(false);
+      ApiService.seedCache("/v1/posts/top?limit=5&days=30", discovery.posts);
+      ApiService.seedCache("/v1/users/top?limit=10", discovery.vibers);
+      ApiService.seedCache("/v1/onboarding/suggestions", discovery.suggestions);
+    } else {
+      fetchDiscovery();
+    }
+  }, [exploreSeed, fetchDiscovery, fetchTrends]);
 
   const isFollowingUser = useCallback(
     (u: UserResult) => followOverrides[u.username] ?? Boolean(u.is_following),

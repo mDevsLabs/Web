@@ -1,10 +1,11 @@
 # Notes de version
 
-## 0.9.2 — 3 octobre 2026
+## 0.9.1 — 11 octobre 2026
 
-Cette version est surtout une version de corrections. Elle rétablit des
-fonctionnalités qui répondaient « non authentifié » alors que la session était
-valide, et referme une faille d'authentification côté API.
+Cette version renforce la sécurité et la fiabilité des services, améliore le
+suivi des tâches planifiées et harmonise l'expérience dans les espaces de
+travail. Elle rétablit également plusieurs accès qui échouaient avec certains
+formats d'identifiant, alors que la session était valide.
 
 ### Nouveautés
 
@@ -14,19 +15,16 @@ valide, et referme une faille d'authentification côté API.
   indique le temps d'attente restant.
 - **Import de mémoires borné** : le nombre d'éléments par import est plafonné,
   ce qui évite qu'une seule requête déclenche des centaines d'écritures.
-- **Rapports de violations CSP** : le mode d'observation de la politique de
-  sécurité recueille désormais les violations et les journalisent, ce qui
-  permet de basculer une directive à la fois.
-- **`.env.example`** : le dépôt documente désormais les variables
-  d'environnement attendues, avec les raisons des verrous à ne pas contourner.
-- **Fichiers de l'espace de travail** : les lists de compétences, de serveurs
+- **Surveillance de la politique de sécurité** : les violations de la politique
+  de sécurité du navigateur sont désormais recueillies pour faciliter son
+  durcissement progressif.
+- **Fichiers de l'espace de travail** : les listes de compétences, de serveurs
   MCP, d'applications, de projets, de bibliothèque, d'images, de synthèse
   vocale, de tâches planifiées, de robots, d'archivage et de statistiques
   affichent désormais un squelette de chargement pendant leur préparation, au
   lieu d'un écran vide.
-- **Tick des tâches Agent planifiées** : les tâches planifiées de l'Agent sont
-  déclenchées automatiquement toutes les cinq minutes. Ce déclenchement
-  n'existait pas et la fonctionnalité était inopérante en production.
+- **Tâches Agent planifiées** : elles sont désormais déclenchées
+  automatiquement toutes les cinq minutes.
 
 ### Corrections
 
@@ -34,6 +32,9 @@ valide, et referme une faille d'authentification côté API.
   « Préférences » fonctionnaient pour tous les comptes sauf ceux dont
   l'identifiant est l'adresse. Ils sont de nouveau accessibles, comme le reste
   de l'application.
+- **Accès aux projets** : l'identification de la session est désormais
+  cohérente entre les espaces de projets et les autres pages protégées, y
+  compris pour les comptes dont l'identifiant n'est pas un e-mail.
 - **Tâches planifiées et quota atteint** : une tâche planifiée dont le quota
   hebdomadaire était épuisé était marquée en échec, ce qui arrêtait définitivement
   une récurrence. Elle est désormais reportée et repart automatiquement. Les
@@ -62,18 +63,18 @@ valide, et referme une faille d'authentification côté API.
   d'être transmis.
 - **Images** : les avatars et fichiers venus du stockage sont de nouveau
   visibles, et le format le plus léger est proposé aux navigateurs compatibles.
-- **Application dans un cadre tiers** : l'interdiction d'intégration en iframe
-  est appliquée, avec un équivalent pour les navigateurs anciens.
+- **Protection contre l'intégration externe** : l'application refuse désormais
+  l'intégration dans un cadre tiers, y compris dans les navigateurs anciens.
 - **Textes en anglais dans l'interface** : plusieurs libellés et une fenêtre de
   confirmation étaient restés en anglais, y compris sur toutes les pages de
   l'espace de travail. L'interface est désormais entièrement en français.
-- **Envoi d'un fichier dans la bibliothèque** : la taille n'était pas limitée et
-  différait de celle des autres envois de fichier. Le téléversement d'un fichier
-  de projet indiquait une erreur interne lorsque le stockage était plein au lieu
-  de proposer une formule supérieure.
+- **Envoi de fichiers** : la taille des fichiers de la bibliothèque est
+  désormais limitée comme pour les autres envois. Le téléversement d'un fichier
+  de projet propose une formule supérieure lorsque le stockage est plein, au
+  lieu de signaler une erreur interne.
 - **Compteurs de la console d'aperçu** : « 1 erreur(s) » est devenu « 1 erreur ».
 
-## 0.9.1 — 30 septembre 2026
+## 0.9.0 — 30 septembre 2026
 
 ### Nouveautés
 
@@ -84,7 +85,7 @@ valide, et referme une faille d'authentification côté API.
 - **Langues** : réglages de dictée vocale et traduction des messages vers la langue choisie.
 - **Bots personnalisables** : éditeur d’instructions, réglage de température, choix d’icône et de couleur.
 - **Skills et MCP personnels** : accès direct à la création et à la gestion de ses Skills et de ses configurations de serveurs MCP depuis Applications.
-- **Notes de version** : nouvelle page accessible depuis Support, affichant ce fichier Markdown.
+- **Notes de version** : nouvelle page accessible depuis l’assistance, avec l’historique des évolutions.
 
 ### Améliorations
 

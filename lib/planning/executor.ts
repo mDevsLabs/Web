@@ -27,7 +27,14 @@ import {
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
+import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
+import {
+  buildScheduleFromRecord,
+  computeNextOccurrence,
+  type PlanningRecurrence,
+  type RecurrenceSchedule,
+} from "@/lib/planning/recurrence";
 import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
 import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import { getPluginManifest } from "@/lib/plugins/catalog";
@@ -41,27 +48,7 @@ import {
 } from "@/lib/prompts/personal";
 import { generateUUID } from "@/lib/utils";
 
-export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
-
-export function computeNextOccurrence(
-  from: Date,
-  recurrence: PlanningRecurrence
-): Date | null {
-  const next = new Date(from.getTime());
-  switch (recurrence) {
-    case "daily":
-      next.setDate(next.getDate() + 1);
-      return next;
-    case "weekly":
-      next.setDate(next.getDate() + 7);
-      return next;
-    case "monthly":
-      next.setMonth(next.getMonth() + 1);
-      return next;
-    default:
-      return null;
-  }
-}
+export type { PlanningRecurrence };
 
 /**
  * Le quota hebdomadaire est-il épuisé pour cet utilisateur ?
@@ -345,11 +332,17 @@ export async function executeScheduledMessage(scheduledId: string) {
             const plugin = getPluginManifest(installation.pluginId);
             return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
           });
+    // La planification n'est pas un canal interactif : `createPluginTools` n'y
+    // sert que la lecture des connecteurs. Une écriture planifiée relève de
+    // l'Agent, seule voie où le moteur de permissions peut la soumettre à
+    // approbation.
     const pluginTools = createPluginTools(
       {
         channel: "planning",
         chatModel: effectiveModel,
         isGhostMode: false,
+        secretResolver: createIntegrationSecretResolver({ userId }),
+        userId,
       },
       enabledPluginIds
     );
@@ -498,17 +491,23 @@ export async function executeScheduledMessage(scheduledId: string) {
     });
 
     // Planification récurrente : reprogrammer la prochaine occurrence au lieu
-    // de terminer définitivement.
+    // de terminer définitivement. Le moteur est calendaire (migration 0046) :
+    // la prochaine occurrence est reconstruite depuis l'heure murale de la
+    // tâche dans SON fuseau — plus de dérive DST ni de débordement de mois.
     const recurrence = (item.recurrence as PlanningRecurrence) || "none";
     if (recurrence !== "none") {
-      const nextDate = computeNextOccurrence(
-        // Si l'exécution a eu lieu en retard, la suivante part de l'heure
-        // planifiée pour conserver le rythme, sinon de maintenant.
-        new Date(item.scheduledAt) > new Date(Date.now() - 60 * 60 * 1000)
-          ? new Date(item.scheduledAt)
-          : new Date(),
-        recurrence
-      );
+      // Si l'exécution a eu lieu à l'heure (ou en léger retard), la suivante
+      // part de l'occurrence planifiée pour conserver le rythme, sinon de
+      // maintenant — même règle qu'avant la migration.
+      const onTime =
+        new Date(item.scheduledAt) > new Date(Date.now() - 60 * 60 * 1000);
+      const reference = onTime ? new Date(item.scheduledAt) : new Date();
+      // Lignes créées avant 0046 : les champs calendaires sont NULL et le
+      // fallback reconstruit l'heure murale depuis scheduledAt.
+      const schedule: RecurrenceSchedule = buildScheduleFromRecord(item, {
+        scheduledAt: reference,
+      });
+      const nextDate = computeNextOccurrence(schedule, reference);
       if (nextDate) {
         await rescheduleRecurringMessage({
           id: item.id,

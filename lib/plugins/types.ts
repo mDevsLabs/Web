@@ -17,6 +17,13 @@ export type PluginCategory = {
 // SDK AI et par les mentions @) et hint injecté dans le prompt système.
 export type PluginToolManifest = {
   description: string;
+  /**
+   * Effet de CET outil. Un plugin peut mélanger lecture et écriture (Google
+   * Agenda lit le calendrier et y crée des événements) : la garde de canal se
+   * prend par outil, jamais par plugin. Par défaut, déduit des permissions du
+   * plugin — donc aucun des manifestes existants n'a besoin de ce champ.
+   */
+  effect?: "read" | "write";
   id: string;
   label: string;
   systemHint: string;

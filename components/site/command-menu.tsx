@@ -1,7 +1,15 @@
 "use client";
 
+import {
+  BarChart3Icon as BarChart3,
+  FileTextIcon as FileText,
+  FolderIcon as Folder,
+  LifeBuoyIcon as LifeBuoy,
+  Loader2Icon as Loader2,
+  PlusCircleIcon as PlusCircle,
+  SearchIcon as Search,
+} from "@mdevs/icons";
 import { Command } from "cmdk";
-import { BarChart3Icon as BarChart3, FileTextIcon as FileText, FolderIcon as Folder, LifeBuoyIcon as LifeBuoy, Loader2Icon as Loader2, PlusCircleIcon as PlusCircle, SearchIcon as Search } from "@mdevs/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import {
@@ -197,7 +205,7 @@ export function CommandMenu({
 
                     <Command.Group
                       className="text-xs font-semibold text-slate-500 px-2 pt-4 pb-2"
-                      heading="Support & Assistance"
+                      heading="Aide et assistance"
                     >
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
@@ -207,7 +215,7 @@ export function CommandMenu({
                         value="support-centre"
                       >
                         <LifeBuoy className="w-4 h-4 text-purple-600" />
-                        <span>Centre de Support &amp; Assistance</span>
+                        <span>Centre d’assistance</span>
                       </Command.Item>
                       <Command.Item
                         className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 rounded-lg cursor-pointer aria-selected:bg-black/5 aria-selected:text-slate-900 transition-colors"
@@ -237,7 +245,7 @@ export function CommandMenu({
                         value="support-stats"
                       >
                         <BarChart3 className="w-4 h-4 text-amber-600" />
-                        <span>Statistiques &amp; Analyse du Support</span>
+                        <span>Statistiques et analyse de l’assistance</span>
                       </Command.Item>
                     </Command.Group>
 

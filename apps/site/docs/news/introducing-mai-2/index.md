@@ -1,4 +1,4 @@
-# Introducing mAI-2 : Une intelligence qui profite à tous
+# Présentation de mAI-2 : une intelligence qui profite à tous
 
 ![mAI-2 — Cover](https://upload.fs.fr/hH9tc27Hi6.png)
 

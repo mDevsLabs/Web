@@ -6,7 +6,10 @@
  * ============================================================================
  */
 
-import { ChevronLeftIcon as ChevronLeft, ChevronRightIcon as ChevronRight } from "@mdevs/icons";
+import {
+  ChevronLeftIcon as ChevronLeft,
+  ChevronRightIcon as ChevronRight,
+} from "@mdevs/icons";
 import type React from "react";
 import { useRef, useState } from "react";
 import { haptics } from "@/lib/vibe/services/haptics";

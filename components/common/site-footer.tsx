@@ -15,15 +15,13 @@ export function SiteFooter() {
 
         <nav className="flex items-center gap-3 text-[11px] font-medium">
           {LEGAL_LINKS.map((link) => (
-            <a
+            <Link
               className="text-muted-foreground transition-colors hover:text-foreground hover:underline"
               href={link.href}
               key={link.href}
-              rel="noopener noreferrer"
-              target="_blank"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <span className="text-border">•</span>
           <Link

@@ -187,7 +187,10 @@ export async function renameBookConversation(
     const conversationId = await getBookConversationId(sql, bookId);
     if (!conversationId) return;
     await sql`
-      UPDATE dm_conversations SET group_name = ${title.slice(0, 100)} WHERE id = ${conversationId}::uuid
+      UPDATE dm_conversations SET group_name = ${title.slice(
+        0,
+        100
+      )} WHERE id = ${conversationId}::uuid
     `.catch(() => {});
     const memberIds = await fetchConversationMemberIds(sql, conversationId);
     await pushToUsers(memberIds, "group_updated", {
