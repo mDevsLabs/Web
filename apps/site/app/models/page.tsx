@@ -57,7 +57,7 @@ const models2: ModelCardData[] = [
     badge: "Cloud • Texte + images • 1M",
     description:
       "Le modèle équilibré de la génération mAI-2 : une expérience plus légère et accessible, qui conserve les fondations essentielles — raisonnement, codage et multimodalité texte + images.",
-    tagline: "Our balanced model, for increased price.",
+    tagline: "Notre modèle équilibré pour les tâches du quotidien.",
     cloud: true,
     vision: true,
     context: "1M tokens",

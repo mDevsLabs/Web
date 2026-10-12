@@ -1,6 +1,8 @@
 # mAI Mobile
 
-Cette application Capacitor ouvre le site mAI officiel dans une WebView Android ou iOS. Elle n’embarque pas le serveur Next.js ; une connexion réseau et un site distant accessible sont nécessaires.
+Cette application Capacitor ouvre **https://mai-officiel.vercel.app** dans une WebView Android ou iOS. Elle n’embarque pas le serveur Next.js ; une connexion réseau et un site distant accessible sont nécessaires.
+
+Une nouvelle version Web est détectée toutes les minutes et au retour au premier plan ou en ligne. L’application attend la fin des réponses IA, des générations et des saisies avant de recharger. Les changements de Capacitor et de la configuration native demandent un nouvel installateur. Le CLI et Coder, qui utilisent des terminaux et des fichiers locaux, sont fournis par l’application de bureau.
 
 ## Développement
 
@@ -16,6 +18,8 @@ pnpm run sync
 ~~~
 
 Pour iOS, utilisez pnpm run add:ios sur macOS. La configuration du client distant et les options d’écran d’accueil se trouvent dans capacitor.config.ts.
+
+La WebView locale iOS utilise le schéma `capacitor` ; `http` et `https` sont réservés par WKWebView et ne sont pas des schémas locaux valides. `server.url` conserve l’origine HTTPS du site officiel.
 
 ## Compilation
 

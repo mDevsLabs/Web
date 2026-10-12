@@ -3,6 +3,7 @@
 import "@/lib/editor/patch-prosemirror";
 import { Suspense, useEffect } from "react";
 import { useAppAutoRedirect } from "@/hooks/use-app-auto-redirect";
+import { useNativeAppUpdate } from "@/hooks/use-native-app-update";
 import { detectPlatform } from "@/lib/platform";
 
 // Pose data-platform sur <html> (CSS conditionnel/tests) pour distinguer
@@ -10,6 +11,7 @@ import { detectPlatform } from "@/lib/platform";
 // et gère la redirection automatique vers l'espace Coder ou Vibe.
 function PlatformBridgeInner() {
   useAppAutoRedirect();
+  useNativeAppUpdate();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-platform", detectPlatform());

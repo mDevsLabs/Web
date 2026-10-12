@@ -1020,6 +1020,7 @@ export const MAIStudioPage: React.FC = () => {
     <>
       <div
         className="flex-1 h-screen border-r border-zinc-800 bg-black flex select-none"
+        data-app-update-blocked={isExecuting || isRegenerating || isApproving}
         style={{ height: "calc(100dvh - var(--vibe-kb-offset, 0px))" }}
       >
         {/* Sidebar desktop : multi-conversations mAI */}

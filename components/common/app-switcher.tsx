@@ -75,7 +75,7 @@ export function AppSwitcherMenu({
 }: AppSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const { isDesktop } = useIsDesktopApp();
+  const { isDesktop, openCoder } = useIsDesktopApp();
   const { favorite } = useFavoriteApp();
   const currentApp =
     currentAppOverride === undefined
@@ -160,9 +160,10 @@ export function AppSwitcherMenu({
           );
           return;
         }
-        if (typeof window !== "undefined" && window.maiDesktop?.openCoder) {
-          window.maiDesktop.openCoder().catch(() => {});
-        }
+        void openCoder().then((result) => {
+          if (!result.success)
+            toast.error(result.error || "Impossible de lancer Coder");
+        });
         router.push("/coder");
         return;
       }
@@ -175,7 +176,7 @@ export function AppSwitcherMenu({
 
       router.push(path);
     },
-    [currentApp, isAuthed, isDesktop, resetChat, router]
+    [currentApp, isAuthed, isDesktop, openCoder, resetChat, router]
   );
 
   const handleOpenCli = useCallback(async () => {

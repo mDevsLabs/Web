@@ -56,7 +56,7 @@ export const modelsData: Omit<ModelInfo, 'readmeContent'>[] = [
   {
     id: 'mai-2-mini',
     name: 'mAI-2-Mini',
-    tagline: 'Our balanced model, for increased price.',
+    tagline: 'Notre modèle équilibré pour les tâches du quotidien.',
     badge: 'Cloud • Texte + images • 1M',
     vision: true,
     context: '1M',

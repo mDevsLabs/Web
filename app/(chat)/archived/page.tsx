@@ -140,6 +140,7 @@ export default function ArchivedPage() {
             <div className="relative flex-1 max-w-md">
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
+                aria-label="Rechercher dans les conversations archivées"
                 className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher dans les archivés..."

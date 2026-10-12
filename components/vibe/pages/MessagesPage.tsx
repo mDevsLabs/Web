@@ -1866,7 +1866,17 @@ export const MessagesPage: React.FC<{
   };
 
   return (
-    <div className="vibe-chat-page flex-1 flex min-h-screen border-r pb-16 md:pb-0 select-none">
+    <div
+      className="vibe-chat-page flex-1 flex min-h-screen border-r pb-16 md:pb-0 select-none"
+      data-app-update-blocked={
+        isGeneratingSuggestion ||
+        isSending ||
+        isUploading ||
+        groupSaving ||
+        groupAvatarUploading ||
+        isCreatingGroup
+      }
+    >
       {/* Left Column: Conversations List */}
       <div
         className={`vibe-chat-sidebar w-full md:w-80 lg:w-96 border-r flex flex-col ${activePartnerId ? "hidden md:flex" : "flex"}`}

@@ -1030,6 +1030,14 @@
       "path": "/api/agents/templates"
     },
     {
+      "file": "app/api/app-version/route.ts",
+      "imports": [],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/app-version"
+    },
+    {
       "file": "app/(chat)/api/audio/generations/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -2850,6 +2858,23 @@
       "path": "/api/wakies/files"
     },
     {
+      "file": "app/(chat)/api/wakies/files/library/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@/lib/wakies/library",
+        "@/lib/web/safe-fetch",
+        "@vercel/blob",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/files/library"
+    },
+    {
       "file": "app/(chat)/api/wakies/friends/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -2912,6 +2937,18 @@
         "PUT"
       ],
       "path": "/api/wakies/memories/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/mentions/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/mentions",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/mentions"
     },
     {
       "file": "app/(chat)/api/wakies/messages/[id]/forward/route.ts",
@@ -2996,6 +3033,20 @@
       "path": "/api/wakies/pages/[id]/pin"
     },
     {
+      "file": "app/(chat)/api/wakies/pages/[id]/settings/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/pages",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/pages/[id]/settings"
+    },
+    {
       "file": "app/(chat)/api/wakies/pins/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -3024,11 +3075,14 @@
       "file": "app/(chat)/api/wakies/settings/route.ts",
       "imports": [
         "@/lib/api/error-response",
+        "@/lib/plans/tier-limits",
         "@/lib/wakies/http",
         "@/lib/wakies/queries",
+        "@/lib/wakies/setup",
         "zod"
       ],
       "methods": [
+        "GET",
         "PATCH"
       ],
       "path": "/api/wakies/settings"

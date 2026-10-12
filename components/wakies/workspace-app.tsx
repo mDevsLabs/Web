@@ -652,7 +652,7 @@ function WakiesWorkspaceContent({
               variant="ghost"
             >
               <img
-                alt="Wakies"
+                alt=""
                 className="size-5.5 object-contain shrink-0"
                 src="/wakies/logo.png"
               />
@@ -985,7 +985,9 @@ function WakiesWorkspaceContent({
                           ? "Mémoires"
                           : view === "profil"
                             ? "Mon profil"
-                            : "Espaces"}
+                            : view === "amis"
+                              ? "Amis"
+                              : "Espaces"}
               </h1>
             </div>
           )}

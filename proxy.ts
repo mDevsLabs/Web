@@ -88,6 +88,7 @@ export async function proxy(request: NextRequest) {
     isStaticAsset ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api/auth") ||
+    pathname === "/api/app-version" ||
     pathname === "/favicon.ico" ||
     pathname === "/favicon.png" ||
     pathname === "/logo.png" ||

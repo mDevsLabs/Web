@@ -994,6 +994,7 @@ export default function LibraryPage() {
             <div className="relative w-full min-w-44 sm:w-64">
               <SearchIcon className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
+                aria-label="Chercher dans la bibliothèque"
                 className="h-10 rounded-full border-border/60 bg-card pl-10 pr-3 text-sm"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Chercher dans Bibliothèque"

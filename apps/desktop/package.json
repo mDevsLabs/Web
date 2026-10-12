@@ -8,29 +8,30 @@
   "homepage": "https://mai-officiel.vercel.app",
   "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "pnpm run build && electron .",
+    "dev": "pnpm run prepare:coder && pnpm run build && electron .",
     "build": "tsc && node scripts/build-terminal.mjs",
-    "pack": "pnpm run build && electron-builder --dir",
-    "dist": "pnpm run build && electron-builder",
-    "dist:win": "pnpm run build && electron-builder --win",
-    "dist:mac": "pnpm run build && electron-builder --mac",
-    "dist:linux": "pnpm run build && electron-builder --linux",
+    "pack": "pnpm run prepare:coder && pnpm run build && electron-builder --dir",
+    "dist": "pnpm run prepare:coder && pnpm run build && electron-builder",
+    "dist:win": "pnpm run prepare:coder && pnpm run build && electron-builder --win",
+    "dist:mac": "pnpm run prepare:coder x64 && pnpm run prepare:coder arm64 && pnpm run build && electron-builder --mac",
+    "dist:linux": "pnpm run prepare:coder && pnpm run build && electron-builder --linux",
     "generate:icons": "node scripts/generate-icons.mjs",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "prepare:coder": "node scripts/prepare-coder.mjs"
   },
   "build": {
     "appId": "app.mai.officiel.desktop",
     "productName": "mAI",
     "copyright": "Copyright © 2026 mAI",
-    "npmRebuild": false,
+    "npmRebuild": true,
     "directories": {
       "buildResources": "build",
       "output": "dist-elec"
     },
     "files": [
       "dist/**/*",
-      "build/**/*",
-      "package.json"
+      "package.json",
+      "build/icon.*"
     ],
     "extraMetadata": {
       "main": "dist/main.js"
@@ -117,7 +118,20 @@
       "description": "Application desktop mAI – https://mai-officiel.vercel.app"
     },
     "publish": null,
-    "forceCodeSigning": false
+    "forceCodeSigning": false,
+    "extraResources": [
+      {
+        "from": "build/coder-${arch}",
+        "to": "coder",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "beforePack": "scripts/check-coder.mjs"
   },
   "dependencies": {
     "@xterm/addon-fit": "^0.11.0",

@@ -276,11 +276,19 @@ function SettingsPageInner() {
 
   useEffect(() => {
     const t = searchParams.get("tab") as SettingsTab | null;
-    if (t && SETTINGS_TABS.some((tab) => tab.id === t) && t !== activeTab) {
-      setActiveTab(t);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, activeTab]);
+    // Seule une nouvelle URL synchronise l'état : relire l'ancienne URL au
+    // clic annulait le nouvel onglet avant la fin de router.replace.
+    setActiveTab(
+      t && SETTINGS_TABS.some((tab) => tab.id === t) ? t : "profile"
+    );
+  }, [searchParams]);
+
+  useEffect(() => {
+    document.getElementById(`settings-tab-${activeTab}`)?.scrollIntoView({
+      block: "nearest",
+      inline: "nearest",
+    });
+  }, [activeTab]);
 
   // Scroll vers ancre usage si tab=usage
   useEffect(() => {
@@ -392,9 +400,7 @@ function SettingsPageInner() {
   const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
     "truncate"
   );
-  const [browserPerm, setBrowserPerm] = useState<string>(
-    typeof Notification === "undefined" ? "default" : Notification.permission
-  );
+  const [browserPerm, setBrowserPerm] = useState<string>("default");
 
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
@@ -652,11 +658,17 @@ function SettingsPageInner() {
   useEffect(() => {
     if (typeof window !== "undefined" && "Notification" in window) {
       setBrowserPerm(Notification.permission);
+    } else {
+      setBrowserPerm("unsupported");
     }
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !navigator.permissions?.query) {
+    if (
+      typeof window === "undefined" ||
+      !("Notification" in window) ||
+      !navigator.permissions?.query
+    ) {
       return;
     }
     let permStatus: PermissionStatus | null = null;
@@ -1608,8 +1620,8 @@ function SettingsPageInner() {
                 className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-favorite-app"
               >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <div className="shrink-0 p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
                     <StarIcon className="size-5" />
                   </div>
                   <div>
@@ -1651,10 +1663,10 @@ function SettingsPageInner() {
                 </div>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">
                   Les <strong>Bots</strong> remplacent les Modes IA. Créez des
-                  bots personnalisés (instructions 5000c, icône, modèle par
-                  défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec Pro,
-                  illimité avec Max. Sélection globale via le menu à côté du
-                  modèle ou{" "}
+                  bots personnalisés (instructions de 5 000 caractères, icône,
+                  modèle par défaut, skills, MCP et fichiers) : 15 avec Plus, 25
+                  avec Pro, illimité avec Max. Sélection globale via le menu à
+                  côté du modèle ou{" "}
                   <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
                     @
                   </code>{" "}
@@ -1711,7 +1723,10 @@ function SettingsPageInner() {
                   </label>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label className="text-xs font-medium text-muted-foreground">
+                  <Label
+                    className="text-xs font-medium text-muted-foreground"
+                    htmlFor="settings-custom-instructions"
+                  >
                     Qui êtes-vous ? Que doit savoir mAI sur vous ?{" "}
                     {customInstructionsHint(tierRaw)
                       ? "(illimité)"
@@ -1719,6 +1734,7 @@ function SettingsPageInner() {
                   </Label>
                   <textarea
                     className="field-input resize-y"
+                    id="settings-custom-instructions"
                     maxLength={getCustomInstructionsEffectiveMax(tierRaw)}
                     onChange={(e) => setCustomInstructions(e.target.value)}
                     placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
@@ -2064,6 +2080,8 @@ function SettingsPageInner() {
                     </span>
                   </div>
                   <input
+                    aria-label="Vitesse de lecture audio"
+                    aria-valuetext={`${defaultAudioSpeed.toLocaleString("fr-FR")} fois la vitesse normale`}
                     className="w-full accent-foreground"
                     max={2.0}
                     min={0.5}
@@ -2258,7 +2276,7 @@ function SettingsPageInner() {
                   <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
                     <BellIcon className="size-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="text-base font-semibold text-foreground">
                       Notifications
                     </h3>
@@ -2266,7 +2284,7 @@ function SettingsPageInner() {
                       Gérez l'envoi et la personnalisation de vos notifications.
                     </p>
                   </div>
-                  <div className="ml-auto flex items-center gap-2">
+                  <div className="flex w-full flex-wrap items-center gap-2 sm:ml-auto sm:w-auto">
                     <span
                       className={`text-xs px-2 py-1 rounded-full border font-medium ${
                         notifEnabled
@@ -2310,21 +2328,25 @@ function SettingsPageInner() {
                   </div>
                 ) : (
                   <div className="p-3 rounded-xl border border-warning/20 bg-warning/5 flex flex-col gap-2">
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex flex-col">
                         <span className="text-sm font-medium text-foreground">
                           Permission du navigateur
                         </span>
                         <span className="text-xs text-muted-foreground">
-                          État actuel :{" "}
-                          <span className="font-mono font-semibold">
-                            {browserPerm}
-                          </span>{" "}
-                          — requise pour les notifications système.
+                          {browserPerm === "denied"
+                            ? "Les notifications sont bloquées. Autorisez-les dans les réglages de votre navigateur."
+                            : browserPerm === "unsupported"
+                              ? "Ce navigateur ne prend pas en charge les notifications système."
+                              : "Autorisez les notifications pour les recevoir sur cet appareil."}
                         </span>
                       </div>
                       <button
-                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0 disabled:cursor-not-allowed disabled:opacity-50"
+                        disabled={
+                          browserPerm === "denied" ||
+                          browserPerm === "unsupported"
+                        }
                         onClick={handleRequestNotificationPermission}
                         type="button"
                       >
@@ -2347,19 +2369,19 @@ function SettingsPageInner() {
                 )}
 
                 {/* Toggle global */}
-                <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
+                <label className="flex items-center justify-between gap-3 p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
                   <div className="flex flex-col">
                     <span className="text-sm font-semibold text-foreground">
                       Activer les notifications
                     </span>
                     <span className="text-xs text-muted-foreground">
-                      Maître — désactive tout si off. À l'activation, «
-                      Actualités d'mAI » est activé par défaut.
+                      Ce réglage active ou coupe toutes les notifications. Les
+                      actualités mAI sont activées par défaut.
                     </span>
                   </div>
                   <input
                     checked={notifEnabled}
-                    className="size-5 accent-primary"
+                    className="size-5 shrink-0 accent-primary"
                     onChange={(e) => {
                       const v = e.target.checked;
                       setNotifEnabled(v);
@@ -2403,7 +2425,7 @@ function SettingsPageInner() {
                       value: notifMcp,
                     },
                     {
-                      desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
+                      desc: "Lorsqu’un outil MCP demande une autorisation d’écriture ou d’exécution",
                       key: "mcpAccess",
                       label: "Demande d'accès MCP",
                       setter: setNotifMcpAccess,
@@ -2412,7 +2434,7 @@ function SettingsPageInner() {
                     {
                       desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
                       key: "news",
-                      label: "Actualités d'mAI",
+                      label: "Actualités mAI",
                       setter: setNotifNews,
                       value: notifNews,
                     },
@@ -2445,7 +2467,8 @@ function SettingsPageInner() {
                       </div>
                       <input
                         checked={item.value}
-                        className="size-4 accent-primary"
+                        className="size-4 shrink-0 accent-primary"
+                        disabled={!notifEnabled}
                         onChange={(e) => (item.setter as any)(e.target.checked)}
                         type="checkbox"
                       />

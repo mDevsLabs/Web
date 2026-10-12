@@ -121,25 +121,25 @@ export function CommunitySection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-          <Link href="/account" className="w-full sm:w-auto">
-            <motion.button
+          <Link href="/account/keys" className="w-full sm:w-auto">
+            <motion.span
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 font-bold text-xs sm:text-sm text-white flex items-center justify-center gap-2 shadow-md hover:shadow-purple-500/25 transition-all"
             >
               Gérer mes Clés API
               <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            </motion.span>
           </Link>
 
           <Link href="/docs" className="w-full sm:w-auto">
-            <motion.button
+            <motion.span
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 font-bold text-xs sm:text-sm text-white flex items-center justify-center gap-2 transition-all"
             >
               Consulter la Documentation
-            </motion.button>
+            </motion.span>
           </Link>
         </div>
       </motion.div>

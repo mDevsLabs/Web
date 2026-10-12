@@ -99,16 +99,6 @@ export function CoderExperienceView() {
   >("win");
   const [isLaunching, setIsLaunching] = useState(false);
 
-  // Porte d'accès : hors application de bureau, /coder affiche une erreur
-  // bloquante (l'utilisateur ne peut rien faire d'un IDE agentique dans un
-  // onglet). La vitrine et le lancement natif restent la vue bureau.
-  if (isChecking) {
-    return <CoderGateSkeleton />;
-  }
-  if (!isDesktop) {
-    return <CoderDesktopRequired />;
-  }
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const ua = navigator.userAgent.toLowerCase();
@@ -123,6 +113,14 @@ export function CoderExperienceView() {
       }
     }
   }, []);
+
+  // Tous les hooks sont appelés avant la garde, y compris pendant la détection.
+  if (isChecking) {
+    return <CoderGateSkeleton />;
+  }
+  if (!isDesktop) {
+    return <CoderDesktopRequired />;
+  }
 
   const handleLaunchCoder = async () => {
     setIsLaunching(true);
@@ -173,10 +171,9 @@ export function CoderExperienceView() {
               mAI Coder
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-2xl">
-              Un atelier de développement complet et local-first combinant un
-              **Agent IA autonome**, l'**éditeur Monaco**, vos **terminaux PTY
-              natifs** et une gestion **Git intégrée**. Conçu pour construire,
-              tester et itérer sur vos projets à la vitesse de la pensée.
+              Un atelier de développement sur votre ordinateur combinant un
+              agent IA autonome, l’éditeur Monaco, des terminaux natifs et une
+              gestion Git intégrée pour construire et tester vos projets.
             </p>
           </div>
         </div>
@@ -195,8 +192,8 @@ export function CoderExperienceView() {
                     Environnement de bureau détecté
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Votre session mAI est connectée. Vous pouvez ouvrir
-                    l'atelier Coder dans une fenêtre dédiée.
+                    Coder est inclus avec mAI Desktop et s’ouvre dans son
+                    application dédiée, avec ses propres réglages.
                   </div>
                 </div>
               </div>

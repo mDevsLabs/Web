@@ -127,7 +127,8 @@ function SidebarProjects() {
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
-            className="text-muted-foreground hover:text-foreground"
+            aria-label="Gérer les dossiers"
+            className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
             href="/projects"
           >
             <PlusIcon className="size-3.5" />
@@ -147,7 +148,8 @@ function SidebarProjects() {
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
-            className="text-muted-foreground hover:text-foreground"
+            aria-label="Gérer les dossiers"
+            className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
             href="/projects"
           >
             <PlusIcon className="size-3.5" />
@@ -161,7 +163,8 @@ function SidebarProjects() {
       <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
         <span>Dossiers</span>
         <Link
-          className="text-muted-foreground hover:text-foreground"
+          aria-label="Gérer les dossiers"
+          className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
           href="/projects"
         >
           <PlusIcon className="size-3.5" />
@@ -211,6 +214,7 @@ function SidebarProjects() {
 }
 
 function LockedSidebarNavItem({
+  badge,
   closeMobile,
   href,
   icon,
@@ -218,6 +222,7 @@ function LockedSidebarNavItem({
   onLockedClick,
   tooltip,
 }: {
+  badge?: string;
   closeMobile: () => void;
   href: string;
   /**
@@ -278,6 +283,11 @@ function LockedSidebarNavItem({
             })
           : icon}
         <span>{label}</span>
+        {badge && (
+          <span className="rounded bg-info/10 px-1.5 py-0.5 text-[10px] font-medium text-info group-data-[collapsible=icon]:hidden">
+            {badge}
+          </span>
+        )}
         {locked && <LockIcon className="ml-auto size-3 text-warning" />}
       </Link>
     </SidebarMenuButton>
@@ -384,7 +394,7 @@ export function AppSidebar({
     "skills" | "mcp" | "wakies" | null
   >(null);
 
-  const { isDesktop } = useIsDesktopApp();
+  const { isDesktop, openCoder } = useIsDesktopApp();
   type NavMenuKey = "plus";
   const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
 
@@ -478,9 +488,10 @@ export function AppSidebar({
           return;
         }
         // Coder : redirection vers son espace, avec déclenchement de la fenêtre native si disponible
-        if (typeof window !== "undefined" && window.maiDesktop?.openCoder) {
-          window.maiDesktop.openCoder().catch(() => {});
-        }
+        void openCoder().then((result) => {
+          if (!result.success)
+            toast.error(result.error || "Impossible de lancer Coder");
+        });
         router.push("/coder");
         return;
       }
@@ -492,7 +503,7 @@ export function AppSidebar({
       resetChat();
       router.push("/");
     },
-    [handleNavClick, isDesktop, isUserLoggedIn, resetChat, router]
+    [handleNavClick, isDesktop, isUserLoggedIn, openCoder, resetChat, router]
   );
 
   const handleOpenCli = useCallback(async () => {
@@ -819,7 +830,6 @@ export function AppSidebar({
           </SidebarMenu>
         </SidebarHeader>
 
-        <SearchDialog />
         <SidebarContent>
           <SidebarGroup className="pt-2">
             <SidebarGroupContent>
@@ -859,11 +869,12 @@ export function AppSidebar({
                     payants (Plus, Pro, Max), bloqué avec cadenas pour Free. */}
                 <SidebarMenuItem>
                   <LockedSidebarNavItem
+                    badge="Bêta"
                     closeMobile={handleNavClick}
                     href="/wakies"
                     icon={
                       <Image
-                        alt="Wakies"
+                        alt=""
                         className="size-4 rounded-sm object-contain dark:invert"
                         height={16}
                         src="/wakies/logo.png"
@@ -1066,6 +1077,10 @@ export function AppSidebar({
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
+
+      {/* Le panneau mobile fermé démonte ses enfants : la recherche doit
+          rester disponible au clavier et depuis le compositeur. */}
+      <SearchDialog />
 
       <UpgradeDialog
         feature={upgradeFeature ?? "generic"}

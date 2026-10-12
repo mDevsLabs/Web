@@ -132,11 +132,13 @@ export function NotificationBell() {
 
   const handleMarkAllRead = async () => {
     try {
-      await fetch("/api/notifications", {
+      const response = await fetch("/api/notifications", {
         body: JSON.stringify({ action: "markAllRead" }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
+      if (!response.ok)
+        throw new Error("La mise à jour des notifications a échoué");
       mutate(
         (prev) =>
           prev
@@ -165,7 +167,11 @@ export function NotificationBell() {
       return;
     }
     try {
-      await fetch("/api/notifications?all=true", { method: "DELETE" });
+      const response = await fetch("/api/notifications?all=true", {
+        method: "DELETE",
+      });
+      if (!response.ok)
+        throw new Error("La suppression des notifications a échoué");
       mutate(
         (prev) =>
           prev
@@ -185,11 +191,13 @@ export function NotificationBell() {
 
   const handleMarkOne = async (id: string, isRead = true) => {
     try {
-      await fetch(`/api/notifications/${id}`, {
+      const response = await fetch(`/api/notifications/${id}`, {
         body: JSON.stringify({ action: isRead ? "read" : "unread", isRead }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
+      if (!response.ok)
+        throw new Error("La mise à jour de la notification a échoué");
       mutate((prev) => {
         if (!prev) {
           return prev;
@@ -207,12 +215,18 @@ export function NotificationBell() {
           unreadCount: Math.max(0, (prev.unreadCount ?? 0) + diff),
         };
       }, false);
-    } catch {}
+    } catch {
+      toast.error("Impossible de mettre à jour la notification");
+    }
   };
 
   const handleDelete = async (id: string) => {
     try {
-      await fetch(`/api/notifications/${id}`, { method: "DELETE" });
+      const response = await fetch(`/api/notifications/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok)
+        throw new Error("La suppression de la notification a échoué");
       mutate(
         (prev) =>
           prev
@@ -228,7 +242,9 @@ export function NotificationBell() {
             : prev,
         false
       );
-    } catch {}
+    } catch {
+      toast.error("Impossible de supprimer la notification");
+    }
   };
 
   // Demande la permission système au premier clic sur la cloche (geste
@@ -257,7 +273,7 @@ export function NotificationBell() {
         >
           <BellIcon className="size-4" />
           {unread > 0 && (
-            <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white ring-2 ring-background">
+            <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-destructive-foreground ring-2 ring-background">
               {unread > 9 ? "9+" : unread}
             </span>
           )}
@@ -265,7 +281,7 @@ export function NotificationBell() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-[360px] p-0 overflow-hidden border-border/60 shadow-xl"
+        className="w-[360px] max-w-[calc(100vw-1rem)] p-0 overflow-hidden border-border/60 shadow-xl"
         sideOffset={8}
       >
         <div className="flex items-center justify-between border-b border-border/50 bg-muted/20 px-3 py-2.5">

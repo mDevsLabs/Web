@@ -914,7 +914,10 @@ function WakieChat({
   }, [messages.at(-1)?.id, enCours]);
 
   return (
-    <div className="live-chat">
+    <div
+      className="live-chat"
+      data-app-update-blocked={enCours || pieces.length > 0 || transfertEnCours}
+    >
       <header className="chat-persona">
         <Mascot
           avatar={wakie.avatar}

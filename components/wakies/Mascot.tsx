@@ -45,7 +45,7 @@ export function Mascot({
   return (
     <span className={`mascot ${state} ${small ? "small" : ""}`}>
       <img
-        alt={decorative ? "" : `${name} is ${state}`}
+        alt={decorative ? "" : state === "working" ? `${name} travaille` : name}
         className="dot-body"
         draggable={false}
         height={512}

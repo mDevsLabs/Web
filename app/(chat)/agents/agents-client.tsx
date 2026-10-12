@@ -406,7 +406,7 @@ export default function AgentsClient() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <PageBackButton fallbackHref="/" label="Retour au chat" />
             <div className="flex items-center gap-2.5">
@@ -418,14 +418,14 @@ export default function AgentsClient() {
                 <p className="text-xs text-muted-foreground">
                   {agents.length}/{agentLimit ?? "∞"} bots • Sélection globale •{" "}
                   <span className="font-mono text-[10px]">
-                    5000c max instructions
+                    Instructions : 5 000 caractères maximum
                   </span>
                 </p>
               </div>
             </div>
           </div>
           <Button
-            className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+            className="h-8 self-start gap-1.5 text-xs font-medium shadow-xs sm:self-auto"
             disabled={isAtAgentLimit}
             onClick={() => handleNewAgent()}
             title={
@@ -439,10 +439,11 @@ export default function AgentsClient() {
           </Button>
         </div>
         <div className="flex flex-col gap-3 pt-1">
-          <div className="flex items-center gap-2 border-b border-border/40 sm:border-0 pb-2 sm:pb-0">
+          <div className="flex items-center gap-2 overflow-x-auto border-b border-border/40 sm:border-0 pb-2 sm:pb-0">
             <button
+              aria-pressed={activeTab === "agents"}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                "flex shrink-0 items-center gap-2 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
                 activeTab === "agents"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -454,8 +455,9 @@ export default function AgentsClient() {
               <span>Mes bots ({agents.length})</span>
             </button>
             <button
+              aria-pressed={activeTab === "templates"}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                "flex shrink-0 items-center gap-2 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
                 activeTab === "templates"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -467,8 +469,9 @@ export default function AgentsClient() {
               <span>Types de bots ({templates.length})</span>
             </button>
             <button
+              aria-pressed={activeTab === "stats"}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                "flex shrink-0 items-center gap-2 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
                 activeTab === "stats"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -486,6 +489,7 @@ export default function AgentsClient() {
               <div className="relative w-full sm:w-64">
                 <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
                 <Input
+                  aria-label="Rechercher un bot"
                   className="h-8 pl-8 text-xs bg-muted/40"
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Rechercher un bot..."
@@ -502,6 +506,7 @@ export default function AgentsClient() {
                   />{" "}
                   Actif : {activeAgent.name}
                   <button
+                    aria-label="Désactiver le bot sélectionné"
                     className="ml-1 rounded-full p-0.5 hover:bg-primary/20"
                     onClick={() => clearActiveAgent()}
                   >
@@ -525,6 +530,7 @@ export default function AgentsClient() {
                 <div className="relative w-full sm:w-72">
                   <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
                   <Input
+                    aria-label="Rechercher un type de bot"
                     className="h-8 pl-8 text-xs bg-muted/40"
                     onChange={(e) => setTemplateQuery(e.target.value)}
                     placeholder="Rechercher un type de bot..."

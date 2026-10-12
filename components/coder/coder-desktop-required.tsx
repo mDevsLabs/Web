@@ -72,7 +72,7 @@ export function CoderDesktopRequired() {
 
         <div className="flex flex-col gap-2">
           <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            mAI Code nécessite l&apos;application de bureau
+            mAI Coder nécessite l&apos;application de bureau
           </h1>
           <p className="text-sm leading-relaxed text-muted-foreground">
             L&apos;outil de codage pour IA s&apos;exécute sur votre machine :
@@ -87,7 +87,7 @@ export function CoderDesktopRequired() {
             <span>
               {detectedOs === "mobile"
                 ? "Vous êtes sur mobile ou tablette : ouvrez cette page depuis un ordinateur (Windows, macOS ou Linux) pour télécharger l'application."
-                : "Téléchargez l'application de bureau, connectez-vous avec votre compte mAI, puis ouvrez Code depuis le menu de l'application."}
+                : "Téléchargez l'application de bureau mAI : Coder y est inclus et un terminal permet d'installer et d'utiliser le CLI. Ouvrez ensuite Coder depuis le menu de l'application."}
             </span>
           </div>
         </div>

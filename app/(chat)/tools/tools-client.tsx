@@ -64,6 +64,7 @@ export default function ToolsClient({
           <div className="relative min-w-[220px] flex-1 sm:max-w-md">
             <SearchIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
+              aria-label="Rechercher dans les applications"
               className="h-9 rounded-full border-border/60 bg-muted/30 pr-3 pl-9 text-sm"
               data-testid="tools-global-search"
               onChange={(event) => setSearchQuery(event.target.value)}

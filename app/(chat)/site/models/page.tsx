@@ -75,7 +75,7 @@ const models2: ModelCardData[] = [
     serieColor: "text-teal-600",
     shadowHover: "hover:shadow-[0_8px_32px_0_rgba(45,212,191,0.25)]",
     squareImage: "/site/mai-2/mai-galaxy.png",
-    tagline: "Our balanced model, for increased price.",
+    tagline: "Notre modèle équilibré pour les tâches du quotidien.",
     tags: ["Cloud (API mAI)", "Contexte 1M", "Texte + images", "Équilibré"],
     vision: true,
   },

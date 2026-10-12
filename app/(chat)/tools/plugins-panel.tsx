@@ -259,10 +259,14 @@ export default function PluginsPanel({
       ) : null}
 
       {/* Catégories */}
-      <section className="flex flex-wrap items-center gap-2">
+      <section
+        aria-label="Catégories de plugins"
+        className="flex max-w-full items-center gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0"
+      >
         <button
+          aria-pressed={category === null}
           className={cn(
-            "min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+            "min-h-11 shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
             category === null
               ? "border-primary/40 bg-primary/10 text-primary"
               : "border-border/60 text-muted-foreground hover:text-foreground"
@@ -274,8 +278,9 @@ export default function PluginsPanel({
         </button>
         {PLUGIN_CATEGORIES.map((cat) => (
           <button
+            aria-pressed={category === cat.id}
             className={cn(
-              "flex items-center gap-1.5 min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+              "flex shrink-0 items-center gap-1.5 whitespace-nowrap min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
               category === cat.id
                 ? "border-primary/40 bg-primary/10 text-primary"
                 : "border-border/60 text-muted-foreground hover:text-foreground"

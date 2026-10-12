@@ -33,7 +33,7 @@ const REWARD_ICONS: Record<RewardType, typeof MessageSquareIcon> = {
 };
 
 export function FormsTab() {
-  const { data, error, isLoading, mutate } = useSWR<{
+  const { data, error, isLoading, isValidating, mutate } = useSWR<{
     data?: UserFormDetail[];
     success: boolean;
   }>("/api/forms", fetcher, {
@@ -84,7 +84,7 @@ export function FormsTab() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedForm) return;
+    if (!selectedForm || isSubmitting) return;
 
     // Vérifier les questions requises
     for (const q of selectedForm.questions) {
@@ -93,7 +93,7 @@ export function FormsTab() {
         if (
           val === undefined ||
           val === null ||
-          val === "" ||
+          (typeof val === "string" && !val.trim()) ||
           (Array.isArray(val) && val.length === 0)
         ) {
           toast.error(`Veuillez répondre à la question : « ${q.title} »`);
@@ -138,7 +138,12 @@ export function FormsTab() {
   };
 
   return (
-    <div className="space-y-6">
+    <div
+      className="space-y-6"
+      data-app-update-blocked={
+        isSubmitting || selectedForm ? "true" : undefined
+      }
+    >
       {/* En-tête de section */}
       <div className="surface-card flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -154,7 +159,7 @@ export function FormsTab() {
         </div>
       </div>
 
-      {isLoading && (
+      {isLoading && !error && (
         <div className="surface-card flex items-center justify-center py-12 text-muted-foreground">
           <Loader2Icon className="mr-2 size-5 animate-spin" />
           Chargement des formulaires…
@@ -162,8 +167,21 @@ export function FormsTab() {
       )}
 
       {error && (
-        <div className="surface-card text-sm text-destructive">
-          Impossible de charger les formulaires pour le moment.
+        <div
+          className="surface-card flex flex-wrap items-center justify-between gap-3 text-sm"
+          role="alert"
+        >
+          <p className="text-destructive">
+            Impossible de charger les formulaires pour le moment.
+          </p>
+          <Button
+            disabled={isValidating}
+            onClick={() => void mutate().catch(() => undefined)}
+            size="sm"
+            variant="outline"
+          >
+            Réessayer
+          </Button>
         </div>
       )}
 
@@ -215,12 +233,21 @@ export function FormsTab() {
                 const qValue = answers[question.id];
 
                 return (
-                  <div
+                  <fieldset
+                    aria-labelledby={`form-question-label-${question.id}`}
                     className="surface-muted rounded-xl p-4 sm:p-5 space-y-3"
                     key={question.id}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <label className="text-sm font-semibold text-foreground">
+                      <label
+                        className="text-sm font-semibold text-foreground"
+                        htmlFor={
+                          question.type === "text"
+                            ? `form-question-${question.id}`
+                            : undefined
+                        }
+                        id={`form-question-label-${question.id}`}
+                      >
                         {index + 1}. {question.title}
                         {question.required && (
                           <span className="text-destructive ml-1">*</span>
@@ -238,10 +265,13 @@ export function FormsTab() {
                     {question.type === "text" && (
                       <Textarea
                         className="field-input min-h-[90px]"
+                        disabled={isSubmitting}
+                        id={`form-question-${question.id}`}
                         onChange={(e) =>
                           handleTextAnswerChange(question.id, e.target.value)
                         }
                         placeholder="Votre réponse ici…"
+                        required={question.required}
                         value={(qValue as string) || ""}
                       />
                     )}
@@ -253,12 +283,14 @@ export function FormsTab() {
                           const isSelected = qValue === option;
                           return (
                             <button
+                              aria-pressed={isSelected}
                               className={cn(
                                 "flex items-center gap-2.5 rounded-lg border p-3 text-left text-sm transition-colors",
                                 isSelected
                                   ? "border-primary bg-primary/10 font-medium text-foreground"
                                   : "border-border/60 bg-card/40 hover:bg-muted/50 text-muted-foreground"
                               )}
+                              disabled={isSubmitting}
                               key={option}
                               onClick={() =>
                                 handleSingleChoiceChange(question.id, option)
@@ -294,12 +326,14 @@ export function FormsTab() {
                           const isSelected = currentArr.includes(option);
                           return (
                             <button
+                              aria-pressed={isSelected}
                               className={cn(
                                 "flex items-center gap-2.5 rounded-lg border p-3 text-left text-sm transition-colors",
                                 isSelected
                                   ? "border-primary bg-primary/10 font-medium text-foreground"
                                   : "border-border/60 bg-card/40 hover:bg-muted/50 text-muted-foreground"
                               )}
+                              disabled={isSubmitting}
                               key={option}
                               onClick={() =>
                                 handleMultiChoiceToggle(question.id, option)
@@ -332,12 +366,15 @@ export function FormsTab() {
                           const isSelected = Number(qValue) >= star;
                           return (
                             <button
+                              aria-label={`Note de ${star} sur 5`}
+                              aria-pressed={Number(qValue) === star}
                               className={cn(
                                 "size-10 rounded-lg border text-sm font-semibold transition-all flex items-center justify-center",
                                 isSelected
                                   ? "border-warning bg-warning/15 text-warning font-bold scale-105"
                                   : "border-border/60 bg-card/50 text-muted-foreground hover:bg-muted/50"
                               )}
+                              disabled={isSubmitting}
                               key={star}
                               onClick={() =>
                                 handleRatingChange(question.id, star)
@@ -350,7 +387,7 @@ export function FormsTab() {
                         })}
                       </div>
                     )}
-                  </div>
+                  </fieldset>
                 );
               })}
             </div>
@@ -379,12 +416,14 @@ export function FormsTab() {
 
                   return (
                     <button
+                      aria-pressed={isSelected}
                       className={cn(
                         "flex flex-col gap-2 rounded-xl border p-4 text-left transition-all",
                         isSelected
                           ? "border-primary bg-primary/10 ring-1 ring-primary text-foreground shadow-sm"
                           : "border-border/60 bg-card/50 hover:bg-muted/40 text-muted-foreground"
                       )}
+                      disabled={isSubmitting}
                       key={type}
                       onClick={() => setSelectedReward(type)}
                       type="button"
@@ -421,7 +460,7 @@ export function FormsTab() {
             </div>
 
             {/* Boutons d'action */}
-            <div className="flex items-center justify-end gap-3 pt-2">
+            <div className="flex flex-col-reverse items-stretch justify-end gap-3 pt-2 sm:flex-row sm:items-center">
               <Button
                 disabled={isSubmitting}
                 onClick={handleCancelForm}

@@ -242,7 +242,9 @@ app.whenReady().then(async () => {
   void syncBotControllerFromSettings(getSettings());
   lap("botController init");
 
-  const restored = getRestorableWorkspace();
+  // L'application mAI peut ouvrir directement un espace local, sans shell.
+  const workspaceArg = process.argv.find((arg) => arg.startsWith("--workspace="));
+  const restored = workspaceArg?.slice("--workspace=".length) || getRestorableWorkspace();
   lap("restorableWorkspace resolved");
 
   const restoredUsable = restored && existsSync(restored) ? restored : null;

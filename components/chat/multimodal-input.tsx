@@ -801,6 +801,12 @@ function PureMultimodalInput({
   return (
     <div
       className={cn("relative flex w-full flex-col gap-3 md:gap-4", className)}
+      data-app-update-blocked={
+        status === "submitted" ||
+        status === "streaming" ||
+        attachments.length > 0 ||
+        Boolean(editingMessage)
+      }
     >
       {isGhostMode ? <GhostBanner toggleGhostMode={toggleGhostMode} /> : null}
 

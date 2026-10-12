@@ -397,7 +397,10 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
   };
 
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6">
+    <div
+      className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6"
+      data-app-update-blocked={isGenerating}
+    >
       {/* En-tête de la page */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
         <div className="flex items-start gap-3 min-w-0">

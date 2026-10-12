@@ -26,7 +26,7 @@ const config: CapacitorConfig = {
   server: {
     androidScheme: "https",
     cleartext: false,
-    iosScheme: "https",
+    iosScheme: "capacitor",
     url: "https://mai-officiel.vercel.app",
   },
   webDir: "www",

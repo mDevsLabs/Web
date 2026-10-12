@@ -46,7 +46,7 @@ jobs:
             }
             core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
   quality:
-    name: 🌐 Types et build Web
+    name: 🌐 Qualité, tests et build Web
     needs: [version]
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -64,6 +64,10 @@ jobs:
           cache: pnpm
       - name: 📥 Installer les dépendances
         run: pnpm install --frozen-lockfile
+      - name: 🔍 Lint et formatage
+        run: pnpm check
+      - name: 🧪 Tests unitaires
+        run: pnpm test:unit
       - name: 🔍 Vérification des types
         run: pnpm typecheck
       - name: 🏗️ Compiler l'application
@@ -73,12 +77,12 @@ jobs:
     name: 🔀 Filtrer les chemins modifiés
     runs-on: ubuntu-latest
     outputs:
+      vibe: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') || steps.filter.outputs.vibe == 'true' }}
+      mobile: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') || steps.filter.outputs.mobile == 'true' }}
       desktop: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
         steps.filter.outputs.desktop == 'true' }}
-      vibe: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.vibe == 'true' }}
       coder: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
         steps.filter.outputs.coder == 'true' }}
-      site: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.site == 'true' }}
     steps:
       - name: 📦 Checkout du code
         if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
@@ -94,27 +98,28 @@ jobs:
         with:
           base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || github.event.before }}
           filters: |-
+            vibe:
+              - "apps/vibe/**"
+              - "packages/ui/**"
+              - "packages/icons/**"
+              - ".github/workflows/build.yml"
+              - "package.json"
             desktop:
               - "apps/desktop/**"
-              - "apps/mobile/**"
+              - "apps/coder/**"
+              - "packages/ui/**"
+              - "packages/icons/**"
               - "public/logo.png"
               - ".github/workflows/build.yml"
               - "package.json"
-            vibe:
-              - "apps/vibe/**"
+            mobile:
+              - "apps/mobile/**"
+              - "public/logo.png"
               - ".github/workflows/build.yml"
-              - "package.json"
             coder:
               - "apps/coder/**"
-              - ".github/workflows/build.yml"
-              - "package.json"
-            site:
-              - "apps/site/**"
-              - "components/site/**"
-              - "lib/site/**"
-              - "app/(chat)/site/**"
-              - "app/(chat)/api/site/**"
-              - "scripts/build-site-css.mjs"
+              - "packages/ui/**"
+              - "packages/icons/**"
               - ".github/workflows/build.yml"
               - "package.json"
 
@@ -165,14 +170,6 @@ jobs:
         run: node scripts/print-db-target.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: 🛡️ Garde de schéma avant migration en production
-        if: env.DEPLOY_TARGET == 'production'
-        run: |-
-          node scripts/check-db-schema.mjs \
-            || echo "::warning::Le schema sera verifie a nouveau apres la migration."
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        continue-on-error: true
       - name: 🗄️ Migrer la base de données
         run: |-
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
@@ -188,14 +185,6 @@ jobs:
         run: node scripts/check-db-schema.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: 🩺 Diagnostic du garde de schéma
-        if: ${{ steps.guard.outcome == 'failure' }}
-        run: >-
-          echo "::error::La migration a termine, mais le schema reste non conforme."
-
-          echo "::error::Comparez l empreinte de la base migree avec DATABASE_URL dans l environnement
-          Vercel."
-        continue-on-error: true
       - name: 🏗️ Construire les artefacts Vercel
         run: |-
           if [ "$DEPLOY_TARGET" = "production" ]; then
@@ -221,7 +210,7 @@ jobs:
             arch: x64
             target: linux
           - os: macos-latest
-            arch: universal
+            arch: x64 et arm64
             target: mac
           - os: windows-latest
             arch: x64
@@ -243,15 +232,32 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libarchive-tools rpm fakeroot build-essential python3
+      - name: 🐍 Python pour les dépendances natives Windows
+        if: matrix.target == 'win'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: ⚙️ Compilateur natif Windows
+        if: matrix.target == 'win'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
       - name: 📥 Install desktop deps
         working-directory: apps/desktop
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
+      - name: 📥 Installer les dépendances Coder
+        working-directory: apps/coder
+        run: pnpm install --frozen-lockfile
+      - name: 📦 Préparer Coder pour le paquet bureau
+        working-directory: apps/desktop
+        run: pnpm run prepare:coder x64
+      - name: 📦 Préparer Coder ARM64 sur macOS
+        if: matrix.target == 'mac'
+        working-directory: apps/desktop
+        run: pnpm run prepare:coder arm64
       - name: 🎨 Générer icônes (logo → ico/icns/png)
         working-directory: apps/desktop
         run: node scripts/generate-icons.mjs
-      - name: 🔍 Vérifier icônes
-        shell: bash
-        run: ls -lh apps/desktop/build/
       - name: 🏗️ Build – TypeScript
         working-directory: apps/desktop
         run: pnpm run build
@@ -275,10 +281,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
-      - name: 📋 Lister artefacts
-        if: always()
-        shell: bash
-        run: ls -R apps/desktop/dist-elec || echo "no dist-elec"
       - name: 📤 Upload artefact – Linux
         if: matrix.target == 'linux'
         uses: actions/upload-artifact@v4
@@ -289,7 +291,7 @@ jobs:
             apps/desktop/dist-elec/*.deb
             apps/desktop/dist-elec/*.rpm
             apps/desktop/dist-elec/*.snap
-          if-no-files-found: warn
+          if-no-files-found: error
       - name: 📤 Upload artefact – macOS
         if: matrix.target == 'mac'
         uses: actions/upload-artifact@v4
@@ -298,7 +300,7 @@ jobs:
           path: |
             apps/desktop/dist-elec/*.dmg
             apps/desktop/dist-elec/*.zip
-          if-no-files-found: warn
+          if-no-files-found: error
       - name: 📤 Upload artefact – Windows
         if: matrix.target == 'win'
         uses: actions/upload-artifact@v4
@@ -307,12 +309,14 @@ jobs:
           path: |
             apps/desktop/dist-elec/*.exe
             apps/desktop/dist-elec/*.msi
-          if-no-files-found: warn
+          if-no-files-found: error
     needs:
       - changes
+      - coder-check
+      - quality
     if: needs.changes.outputs.desktop == 'true'
   mobile-android:
-    name: 🤖 Mobile Android (APK non signé)
+    name: 🤖 Mobile Android (APK de développement)
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Checkout
@@ -324,7 +328,7 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
       - name: ☕ Setup Java 21
         uses: actions/setup-java@v4
@@ -332,16 +336,16 @@ jobs:
           distribution: temurin
           java-version: "21"
       - name: 🤖 Accepter licences Android SDK
-        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
+      - name: 🔍 Vérifier la configuration mobile
+        working-directory: apps/mobile
+        run: pnpm run build
       - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 🔍 Vérifier
-        shell: bash
-        run: ls -lh apps/mobile/resources/ && ls -lh apps/mobile/www/
       - name: 🔧 Capacitor – add & sync android
         working-directory: apps/mobile
         run: |
@@ -349,8 +353,6 @@ jobs:
             npx cap add android
           fi
           npx cap sync android
-          echo "Capacitor sync ok"
-          ls -lh android/ || true
       - name: 🎨 Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -359,34 +361,16 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew assembleDebug --no-daemon --stacktrace
-      - name: 🏗️ Build Android – Release unsigned
-        working-directory: apps/mobile/android
-        run: >
-          chmod +x ./gradlew
-
-          # AssembleRelease sans keystore → APK non signé (ou partiellement)
-
-          ./gradlew assembleRelease --no-daemon --stacktrace -Pandroid.injected.signing.store.file=""
-          -Pandroid.injected.signing.store.password="" -Pandroid.injected.signing.key.alias=""
-          -Pandroid.injected.signing.key.password="" || echo "Release unsigned : gradle peut échouer si
-          signing requis, debug reste valide"
-
-          ls -lh app/build/outputs/apk/ || true
-      - name: 📋 Lister APK
-        if: always()
-        shell: bash
-        run: find apps/mobile/android -name "*.apk" -type f -exec ls -lh {} \; || echo "no apk"
       - name: 📤 Upload APK – Debug
         uses: actions/upload-artifact@v4
         with:
           name: mai-mobile-android-debug
           path: |
             apps/mobile/android/app/build/outputs/apk/debug/*.apk
-            apps/mobile/android/app/build/outputs/apk/release/*.apk
-          if-no-files-found: warn
+          if-no-files-found: error
     needs:
       - changes
-    if: needs.changes.outputs.desktop == 'true'
+    if: needs.changes.outputs.mobile == 'true'
   mobile-ios:
     name: 🍏 Mobile iOS (IPA non signé)
     runs-on: macos-latest
@@ -400,16 +384,14 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
-      - name: 🍎 Select Xcode
-        run: |
-          sudo xcode-select -p || true
-          xcodebuild -version || true
-          xcrun --find codesign || true
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
+      - name: 🔍 Vérifier la configuration mobile
+        working-directory: apps/mobile
+        run: pnpm run build
       - name: 🎨 Générer icônes mobiles
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -420,74 +402,42 @@ jobs:
             npx cap add ios
           fi
           npx cap sync ios
-          ls -lh ios/App/App.xcworkspace || true
       - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 📦 Install CocoaPods
-        working-directory: apps/mobile/ios/App
-        run: pod install --repo-update || echo "pod install skipped"
-      - name: 🏗️ Build iOS – Archive unsigned (CODE_SIGNING_ALLOWED=NO)
+      - name: 🏗️ Construire l’archive iOS non signée
         working-directory: apps/mobile
         run: |
-          set -o pipefail
           xcodebuild archive \
             -workspace ios/App/App.xcworkspace \
-            -scheme App \
-            -configuration Release \
+            -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' \
             -archivePath ios/App/build/App.xcarchive \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            AD_HOC_CODE_SIGNING_ALLOWED=YES \
-            | xcpretty || xcodebuild archive \
-            -workspace ios/App/App.xcworkspace \
-            -scheme App \
-            -configuration Release \
-            -archivePath ios/App/build/App.xcarchive \
-            CODE_SIGNING_ALLOWED=NO || true
-          ls -R ios/App/build/ || echo "no archive"
-      - name: 📦 Créer IPA non signé (Payload)
-        shell: bash
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+      - name: 📦 Créer l’IPA à partir de l’archive réelle
+        working-directory: apps/mobile
         run: |
-          set -e
-          ARCHIVE="apps/mobile/ios/App/build/App.xcarchive"
-          if [ -d "$ARCHIVE/Products/Applications/App.app" ]; then
-            rm -rf Payload
-            mkdir -p Payload
-            cp -R "$ARCHIVE/Products/Applications/App.app" Payload/
-            # Supprime signature si présente
-            codesign --remove-signature Payload/App.app 2>/dev/null || true
-            zip -r apps/mobile/ios/App/build/mAI-unsigned.ipa Payload
-            ls -lh apps/mobile/ios/App/build/*.ipa
-          else
-            echo "Archive non trouvée, tentative build/App"
-            find apps/mobile/ios -name "*.app" -type d | head -20
-            # Fallback : créer IPA depuis DerivedData si archive échoué (simulé)
-            # On crée au moins un placeholder pour que l'upload ne fail pas
-            mkdir -p apps/mobile/ios/App/build
-            echo "unsigned placeholder" > apps/mobile/ios/App/build/mAI-unsigned.ipa || true
-          fi
-      - name: 📋 Lister IPA
-        if: always()
-        shell: bash
-        run: find apps/mobile -name "*.ipa" -o -name "*.xcarchive" | head -20; ls -lh apps/mobile/ios/App/build/ ||
-          true
+          mkdir -p ios/App/build/Payload
+          cp -R ios/App/build/App.xcarchive/Products/Applications/App.app ios/App/build/Payload/
+          cd ios/App/build
+          zip -r mAI-unsigned.ipa Payload
       - name: 📤 Upload IPA – unsigned
         uses: actions/upload-artifact@v4
         with:
           name: mai-mobile-ios-unsigned
           path: |
             apps/mobile/ios/App/build/*.ipa
-            apps/mobile/ios/App/build/*.xcarchive
-          if-no-files-found: warn
+          if-no-files-found: error
     needs:
       - changes
-    if: needs.changes.outputs.desktop == 'true'
+    if: needs.changes.outputs.mobile == 'true' && (github.event_name != 'workflow_dispatch' || inputs.build_ios)
   # La publication de la release est gérée par le job 'publish' en fin de workflow après toutes les validations de paquets et déploiements.
 
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOBS — Vibe mobile (application distincte chargeant le portage /vibe)
+  # ─────────────────────────────────────────────────────────────────────────────
   build-android:
-    name: 🤖 Android APK
+    name: 🤖 Vibe Android (APK de développement)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -495,10 +445,10 @@ jobs:
     steps:
       - name: 📦 Checkout du code
         uses: actions/checkout@v4
-      - name: 🟢 Setup Node.js 20
+      - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: apps/vibe/package-lock.json
       - name: ☕ Setup Java 21
@@ -506,6 +456,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
+      - name: 🤖 Accepter les licences Android SDK
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
       - name: 📥 Installer les dépendances
         run: npm ci
       - name: 🔍 Linter le code source
@@ -516,55 +468,15 @@ jobs:
           VITE_API_BASE: https://mai.val.run
       - name: 🔧 Ajouter les plateformes Capacitor
         run: |
-          npm i -D @capacitor/cli
-          npm i @capacitor/core @capacitor/android @capacitor/haptics
+          npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
           if [ ! -d "android" ]; then
-            npx cap add android || true
+            npx cap add android
           fi
           npx cap sync android
-      - name: 🩹 Corriger les classes Kotlin dupliquées
-        run: |
-          cat << 'EOF' >> android/app/build.gradle
-
-          configurations.all {
-              resolutionStrategy {
-                  force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
-                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
-                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
-              }
-          }
-
-          dependencies {
-              implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.22")
-              constraints {
-                  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22") {
-                      because("kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
-                  }
-                  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22") {
-                      because("kotlin-stdlib-jdk8 is now part of kotlin-stdlib")
-                  }
-              }
-          }
-          EOF
       - name: ⚙️ Rendre gradlew exécutable
         run: chmod +x android/gradlew
-      - name: 🏗️ Compiler l'APK Android (Release si keystore, sinon Debug)
-        env:
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: >
-          if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
-            echo "🔑 Keystore détecté : compilation de l'APK Release signé..."
-            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
-            printf "storeFile=../release.keystore\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n" \
-              "$ANDROID_KEYSTORE_PASSWORD" "$ANDROID_KEY_ALIAS" "$ANDROID_KEY_PASSWORD" > android/keystore.properties
-            cd android && ./gradlew assembleRelease
-          else
-            echo "⚙️ Aucun keystore fourni : compilation de l'APK Debug (installable sans certificat de release)..."
-            cd android && ./gradlew assembleDebug
-          fi
+      - name: 🏗️ Compiler l'APK Android de développement
+        run: cd android && ./gradlew assembleDebug --no-daemon --stacktrace
       - name: 📤 Uploader l'artefact APK
         uses: actions/upload-artifact@v4
         with:
@@ -575,7 +487,7 @@ jobs:
       - changes
     if: needs.changes.outputs.vibe == 'true'
   build-ios:
-    name: 🍏 iOS IPA
+    name: 🍏 Vibe iOS (IPA non signé)
     runs-on: macos-latest
     if: ${{ needs.changes.outputs.vibe == 'true' && ((github.event_name == 'workflow_dispatch' &&
       inputs.build_ios) || github.event_name == 'push' || github.event_name == 'pull_request') }}
@@ -585,10 +497,10 @@ jobs:
     steps:
       - name: 📦 Checkout du code
         uses: actions/checkout@v4
-      - name: 🟢 Setup Node.js 20
+      - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: apps/vibe/package-lock.json
       - name: 📥 Installer les dépendances
@@ -601,20 +513,10 @@ jobs:
           VITE_API_BASE: https://mai.val.run
       - name: 🔧 Ajouter la plateforme Capacitor iOS
         run: >
-          npm i -D @capacitor/cli
-
-          npm i @capacitor/core @capacitor/ios @capacitor/haptics
+          npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
 
           if [ ! -d "ios" ]; then
-            npx cap add ios || true
-          fi
-
-          if [ -f "ios/App/Podfile" ]; then
-            sed -i '' "s/platform :ios, '[0-9.]*'/platform :ios, '15.0'/" ios/App/Podfile
-          fi
-
-          if [ -f "ios/App/App.xcodeproj/project.pbxproj" ]; then
-            sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*;/IPHONEOS_DEPLOYMENT_TARGET = 15.0;/g" ios/App/App.xcodeproj/project.pbxproj
+            npx cap add ios
           fi
 
           npx cap sync ios
@@ -639,16 +541,12 @@ jobs:
     needs:
       - changes
 
-  # ─────────────────────────────────────────────────────────────────────────────
-  # JOBS — mAI Coder (apps/coder)
-  # Compilé avec pnpm, comme le reste du dépôt (apps/desktop). Le job coder-check
-  # valide types + tests + bundles avant les trois builds d'installateurs.
-  # ─────────────────────────────────────────────────────────────────────────────
+  # Coder est validé avant ses installateurs autonomes et le paquet desktop.
   coder-check:
     name: 💻 Coder – Types et build
     runs-on: ubuntu-latest
     needs: [changes]
-    if: needs.changes.outputs.coder == 'true'
+    if: needs.changes.outputs.coder == 'true' || needs.changes.outputs.desktop == 'true'
     timeout-minutes: 30
     defaults:
       run:
@@ -665,13 +563,15 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: 📥 Installer les dépendances
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: 🔍 Vérification des types (typecheck)
         run: pnpm run typecheck
+      - name: 🧪 Tests Coder
+        run: pnpm test
       - name: 🏗️ Compiler le Main (esbuild)
         run: pnpm run build:main
       - name: 🏗️ Compiler le Renderer (Vite)
@@ -690,7 +590,7 @@ jobs:
       GYP_MSVS_VERSION: "2022"
       npm_config_msvs_version: "2022"
       npm_config_python: "python"
-      NODE_VERSION: 20
+      NODE_VERSION: 22
     steps:
       - name: 📦 Checkout du code
         uses: actions/checkout@v4
@@ -712,7 +612,7 @@ jobs:
       - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: ⚙️ Configuration de l'environnement MSVC
@@ -721,20 +621,7 @@ jobs:
           arch: x64
       - name: 📥 Installer les dépendances
         shell: pwsh
-        run: pnpm install --frozen-lockfile --ignore-scripts || pnpm install --no-frozen-lockfile --ignore-scripts
-      - name: 🧹 Supprimer cpu-features (dépendance optionnelle ssh2)
-        shell: pwsh
-        run: |
-          $dirs = @(Get-ChildItem -Path "node_modules/.pnpm" -Directory -ErrorAction SilentlyContinue |
-            Where-Object { $_.Name -like "cpu-features@*" })
-          foreach ($d in $dirs) {
-            Remove-Item -Recurse -Force $d.FullName -ErrorAction SilentlyContinue
-            Write-Host "cpu-features removed: $($d.Name)"
-          }
-          if (Test-Path "node_modules/cpu-features") {
-            Remove-Item -Recurse -Force "node_modules/cpu-features" -ErrorAction SilentlyContinue
-            Write-Host "cpu-features removed (npm layout)"
-          }
+        run: pnpm install --frozen-lockfile --ignore-scripts
       - name: 🏗️ Compiler les installateurs Windows
         run: pnpm run release:win
       - name: 📤 Uploader les artefacts de release Windows
@@ -776,11 +663,11 @@ jobs:
       - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: 📥 Installer les dépendances
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: 🏗️ Compiler les paquets macOS (non signés)
         run: pnpm run release:mac:unsigned
       - name: 📤 Uploader les artefacts de release macOS
@@ -825,11 +712,11 @@ jobs:
       - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: 📥 Installer les dépendances
-        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: 🏗️ Compiler les paquets Linux
         run: pnpm run release:linux
       - name: 📤 Uploader les artefacts de release Linux
@@ -841,37 +728,8 @@ jobs:
             apps/coder/release/*.deb
             apps/coder/release/*.blockmap
             apps/coder/release/latest*.yml
-          if-no-files-found: warn
+          if-no-files-found: error
 
-
-  # ─────────────────────────────────────────────────────────────────────────────
-  # JOB — mAI Site (apps/site)
-  # ─────────────────────────────────────────────────────────────────────────────
-  site-check-build:
-    name: 🌐 Site – Lint, Typecheck & Build
-    runs-on: ubuntu-latest
-    needs: [changes]
-    if: needs.changes.outputs.site == 'true'
-    defaults:
-      run:
-        working-directory: apps/site
-    steps:
-      - name: 📦 Checkout du code
-        uses: actions/checkout@v4
-      - name: 🟢 Configuration de Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: apps/site/package-lock.json
-      - name: 📥 Installation des dépendances
-        run: npm install
-      - name: 🔍 Validation du lint et des types
-        run: |
-          npm run lint
-          npm run typecheck
-      - name: 🏗️ Compilation Next.js
-        run: npm run build
 
   # ─────────────────────────────────────────────────────────────────────────────
   # JOB — Publication de la release (GitHub Releases)
@@ -893,7 +751,6 @@ jobs:
       - coder-windows
       - coder-macos
       - coder-linux
-      - site-check-build
     if: |
       always() &&
       (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
@@ -908,10 +765,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: ⚡ Configuration de pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
       - name: 🟢 Configuration de Node.js
         uses: actions/setup-node@v4
         with:
@@ -986,12 +839,12 @@ jobs:
               '---',
               '',
               '### 📦 Applications et Paquets inclus',
-              'Tous les paquets ci-dessous ont été construits et validés lors de cette exécution :',
-              '- 🖥️ **mAI Desktop** : Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`, `.rpm`)',
+              'Les chemins modifiés déterminent les applications compilées. Les fichiers joints correspondent aux builds réussis de cette exécution :',
+              '- 🖥️ **mAI Desktop** : Windows (`.exe`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`, `.rpm`)',
               '- 💻 **mAI Coder** : Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`)',
-              '- 📱 **mAI Mobile** : Android (`.apk`), iOS (`.ipa`)',
-              '- 🌐 **Vibe** : Android (`.apk`), iOS (`.ipa`)',
-              '- ☁️ **Web** : Déploiement Vercel validé et opérationnel',
+              '- 📱 **mAI Mobile** : Android (`.apk` de développement), iOS (`.ipa` non signé)',
+              '- 🌐 **Vibe** : Android (`.apk` de développement), iOS (`.ipa` non signé)',
+              '- ☁️ **Web** : Déploiement Vercel sur les branches et événements prévus par le workflow',
               '',
               '---',
               '',
@@ -1024,7 +877,6 @@ jobs:
             core.setOutput('url', release.html_url);
       - name: 📥 Télécharger tous les artefacts du build
         uses: actions/download-artifact@v4
-        continue-on-error: true
         with:
           path: release-artifacts
       - name: 📎 Joindre les fichiers construits à la release

@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export interface MaiDesktopBridge {
   getCoderStatus?: () => Promise<{
-    running: boolean;
+    installed?: boolean;
+    running?: boolean;
     activeWorkspace?: string | null;
   }>;
   hasCoder?: boolean;
@@ -44,6 +45,7 @@ export function useIsDesktopApp(): {
   const [hasCoder, setHasCoder] = useState<boolean>(false);
 
   useEffect(() => {
+    let active = true;
     if (typeof window !== "undefined") {
       const desktop = window.maiDesktop;
       const shell = window.maiShell;
@@ -52,16 +54,39 @@ export function useIsDesktopApp(): {
       setPlatform(desktop?.platform);
       setVersion(desktop?.version);
       setHasCoder(Boolean(desktop?.hasCoder || shell));
+      if (desktop?.getCoderStatus) {
+        void desktop
+          .getCoderStatus()
+          .then((status) => {
+            if (active && typeof status.installed === "boolean")
+              setHasCoder(status.installed);
+          })
+          .catch(() => {});
+      }
       setIsChecking(false);
     }
+    return () => {
+      active = false;
+    };
   }, []);
 
-  const openCoder = async (opts?: { workspacePath?: string }) => {
-    if (typeof window !== "undefined" && window.maiDesktop?.openCoder) {
-      return await window.maiDesktop.openCoder(opts);
+  const openCoder = useCallback(async (opts?: { workspacePath?: string }) => {
+    try {
+      if (typeof window !== "undefined" && window.maiDesktop?.openCoder) {
+        return await window.maiDesktop.openCoder(opts);
+      }
+      return {
+        error: "Environnement de bureau non disponible",
+        success: false,
+      };
+    } catch {
+      return {
+        error:
+          "Le lancement de Coder a échoué. Réessayez depuis l’application de bureau.",
+        success: false,
+      };
     }
-    return { error: "Environnement Desktop non disponible", success: false };
-  };
+  }, []);
 
   return {
     hasCoder,

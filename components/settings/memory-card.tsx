@@ -47,6 +47,7 @@ import { Input } from "@/components/ui/input";
 import { useTier } from "@/hooks/use-tier";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { memoryLimitForTier } from "@/lib/auth/plan";
+import { readJson } from "@/lib/client/read-json";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -129,12 +130,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     : projectId
       ? `?projectId=${projectId}`
       : "";
-  const { data, mutate, isLoading } = useSWR(
+  const { data, error, mutate, isLoading, isValidating } = useSWR(
     allScopes ? "/api/memory?scope=all" : `/api/memory${scopeQuery}`,
-    (url: string) =>
-      fetch(url)
-        .then((r) => (r.ok ? r.json() : null))
-        .catch(() => null),
+    readJson<{ memories: MemoryEntry[]; limit?: number }>,
     { dedupingInterval: 10_000 }
   );
 
@@ -223,7 +221,8 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   // Ajouter une mémoire
   const handleAdd = async () => {
     const content = newContent.trim();
-    if (!content) return;
+    if (!content || isSaving || isAtLimit || isLoading || (!data && error))
+      return;
     setIsSaving(true);
     try {
       const tags = newTagsInput
@@ -550,7 +549,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const remainingSlots = Math.max(0, limit - scopeCount);
 
   return (
-    <div className="surface-card flex flex-col gap-4">
+    <div
+      className="surface-card flex flex-col gap-4"
+      data-app-update-blocked={
+        isSaving || isUpdating || deletingId || isImporting || isSummarizing
+          ? "true"
+          : undefined
+      }
+    >
       {/* En-tête */}
       <div className="flex items-center gap-2.5 flex-wrap">
         <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
@@ -619,7 +625,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
           {/* Badge quota */}
           <span className="text-[11px] bg-muted/60 px-2.5 py-1 rounded-lg text-muted-foreground font-semibold">
-            {scopeCount}/{limit}
+            {data ? `${scopeCount}/${limit}` : "Quota indisponible"}
           </span>
         </div>
       </div>
@@ -631,6 +637,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           <div className="relative flex-1">
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
+              aria-label="Rechercher dans la mémoire"
               className="pl-9 pr-8 h-9 text-xs rounded-xl bg-muted/30 border-border/60"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher dans la mémoire (texte, #tag, catégorie)..."
@@ -638,6 +645,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             />
             {searchQuery ? (
               <button
+                aria-label="Effacer la recherche de mémoire"
                 className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
                 onClick={() => setSearchQuery("")}
                 type="button"
@@ -663,6 +671,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                 ).length;
                 return (
                   <button
+                    aria-pressed={scopeFilter === filter.id}
                     className="chip"
                     data-active={scopeFilter === filter.id}
                     key={filter.id}
@@ -680,6 +689,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             </>
           ) : null}
           <button
+            aria-pressed={importantOnly}
             className="chip"
             data-active={importantOnly}
             onClick={() => setImportantOnly((v) => !v)}
@@ -695,6 +705,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       {/* Formulaire d'ajout */}
       <div className="flex flex-col gap-2.5 p-3 rounded-xl border border-border/60 bg-muted/20">
         <textarea
+          aria-label="Nouvelle mémoire"
           className="w-full rounded-lg border border-border/60 bg-background/80 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
           maxLength={MEMORY_CONTENT_MAX_LENGTH}
           onChange={(e) => setNewContent(e.target.value)}
@@ -715,6 +726,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-background px-2 h-7">
               <TagIcon className="size-3 text-muted-foreground" />
               <input
+                aria-label="Tags de la nouvelle mémoire"
                 className="w-28 text-[11px] bg-transparent outline-none placeholder:text-muted-foreground/60"
                 onChange={(e) => setNewTagsInput(e.target.value)}
                 placeholder="Tags (#ui, #ts)..."
@@ -724,6 +736,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
             {/* Étoile importante */}
             <button
+              aria-pressed={newIsImportant}
               className={cn(
                 "inline-flex items-center gap-1 h-7 px-2 rounded-lg text-[11px] font-medium transition cursor-pointer border",
                 newIsImportant
@@ -746,14 +759,23 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             </span>
             <button
               className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-medium transition-all hover:opacity-90 active:scale-95 shadow-xs cursor-pointer disabled:opacity-50"
-              disabled={isSaving || !newContent.trim() || isAtLimit}
+              disabled={
+                isSaving ||
+                !newContent.trim() ||
+                isAtLimit ||
+                isLoading ||
+                (!data && Boolean(error))
+              }
               onClick={handleAdd}
               type="button"
             >
               {isAtLimit ? (
                 "Limite atteinte"
               ) : isSaving ? (
-                <Loader2Icon className="size-3.5 animate-spin" />
+                <>
+                  <Loader2Icon className="size-3.5 animate-spin" />
+                  <span>Enregistrement…</span>
+                </>
               ) : (
                 <>
                   <CheckIcon className="size-3.5" />
@@ -766,11 +788,30 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       </div>
 
       {/* Liste des mémoires */}
-      {isLoading ? (
+      {error && (
+        <div
+          className="surface-muted flex flex-wrap items-center justify-between gap-3 text-sm"
+          role="alert"
+        >
+          <p className="text-destructive">
+            Impossible de charger la mémoire. Vos données n’ont pas été
+            supprimées.
+          </p>
+          <Button
+            disabled={isValidating}
+            onClick={() => void mutate().catch(() => undefined)}
+            size="sm"
+            variant="outline"
+          >
+            Réessayer
+          </Button>
+        </div>
+      )}
+      {isLoading && !error ? (
         <div className="flex items-center justify-center py-6 text-muted-foreground">
           <Loader2Icon className="size-5 animate-spin" />
         </div>
-      ) : filteredMemories.length === 0 ? (
+      ) : !data && error ? null : filteredMemories.length === 0 ? (
         <div className="text-center py-6 text-xs text-muted-foreground space-y-1">
           <p>
             {memories.length === 0
@@ -801,6 +842,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                   /* Mode Édition */
                   <div className="flex flex-col gap-2.5">
                     <textarea
+                      aria-label="Modifier le contenu de la mémoire"
                       className="w-full rounded-lg border border-border/60 bg-background px-2.5 py-2 text-xs outline-none focus:ring-2 focus:ring-primary/20 resize-y"
                       maxLength={MEMORY_CONTENT_MAX_LENGTH}
                       onChange={(e) => setEditContent(e.target.value)}
@@ -819,6 +861,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     <div className="flex items-center justify-between gap-2 flex-wrap">
                       <div className="flex items-center gap-2">
                         <input
+                          aria-label="Modifier les tags de la mémoire"
                           className="h-7 w-32 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none"
                           onChange={(e) => setEditTagsInput(e.target.value)}
                           placeholder="Tags séparés par virgule"

@@ -3,17 +3,14 @@
 /**
  * Menu « … » d'un Espace du rail.
  *
- * Ce n'est PAS le `DropdownMenu` de `@mdevs/ui` ni un `Popover` de l'hôte :
- * ces deux-là rendent dans un portail posé sur `document.body`, donc hors de
- * `.wakies-root`. Un menu d'espace doit rester dans l'atelier, partager ses
- * styles, et obéir au test d'isolation CSS (`tests/unit/wakies-style-isolation.test.ts`)
- * qui ancre chaque règle sous `.wakies-root`. D'où ce composant, même forme
- * que `components/wakies/editor/DocumentMenu.tsx` : bouton, liste, focus,
- * `Escape`.
+ * Le portail reste sous `.wakies-root`, dans le rail ou la coquille de l'atelier :
+ * il garde son thème et échappe aux listes défilantes qui coupaient ses options.
+ * Le focus, les flèches et Escape restent pilotés depuis le bouton d'origine.
  */
 
 import { MoreHorizontalIcon as MoreHorizontal } from "@mdevs/icons";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export type EspaceMenuAction =
   | {
@@ -40,16 +37,68 @@ export function SpaceMenu({
   libelle: string;
 }) {
   const [open, setOpen] = useState(false);
+  const menuId = useId();
   const root = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+  const portal =
+    root.current?.closest(".sidebar") ??
+    root.current?.closest(".muse-app") ??
+    root.current?.closest(".wakies-root");
+
+  useLayoutEffect(() => {
+    if (!open) {
+      setPosition(null);
+      return;
+    }
+    const place = () => {
+      if (!trigger.current || !panel.current) return;
+      const anchor = trigger.current.getBoundingClientRect();
+      const menu = panel.current.getBoundingClientRect();
+      const top =
+        anchor.bottom + menu.height + 8 <= window.innerHeight
+          ? anchor.bottom + 4
+          : Math.max(8, anchor.top - menu.height - 4);
+      setPosition({
+        left: Math.max(
+          8,
+          Math.min(
+            anchor.right - menu.width,
+            window.innerWidth - menu.width - 8
+          )
+        ),
+        top: Math.max(8, Math.min(top, window.innerHeight - menu.height - 8)),
+      });
+    };
+    place();
+    window.addEventListener("resize", place);
+    document.addEventListener("scroll", place, true);
+    return () => {
+      window.removeEventListener("resize", place);
+      document.removeEventListener("scroll", place, true);
+    };
+  }, [open]);
+
+  const positioned = position !== null;
+  useEffect(() => {
+    if (!open || !positioned) return;
+    panel.current
+      ?.querySelector<HTMLButtonElement>('[role="menuitem"]')
+      ?.focus();
+  }, [open, positioned]);
 
   useEffect(() => {
     if (!open) return;
-    root.current
-      ?.querySelector<HTMLButtonElement>('[role="menuitem"]')
-      ?.focus();
     const outside = (event: PointerEvent) => {
-      if (!root.current?.contains(event.target as Node)) setOpen(false);
+      if (
+        !root.current?.contains(event.target as Node) &&
+        !panel.current?.contains(event.target as Node)
+      )
+        setOpen(false);
     };
     document.addEventListener("pointerdown", outside);
     return () => document.removeEventListener("pointerdown", outside);
@@ -62,10 +111,13 @@ export function SpaceMenu({
 
   return (
     <div
-      aria-expanded={open}
       className="space-nav-menu"
+      data-open={open}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+        if (
+          !event.currentTarget.contains(event.relatedTarget as Node | null) &&
+          !panel.current?.contains(event.relatedTarget as Node | null)
+        ) {
           setOpen(false);
         }
       }}
@@ -81,7 +133,7 @@ export function SpaceMenu({
         ) {
           event.preventDefault();
           const boutons = Array.from(
-            root.current?.querySelectorAll<HTMLButtonElement>(
+            panel.current?.querySelectorAll<HTMLButtonElement>(
               '[role="menuitem"]'
             ) ?? []
           );
@@ -98,11 +150,19 @@ export function SpaceMenu({
                     boutons.length) %
                   boutons.length;
           boutons[index]?.focus();
+        } else if (
+          !open &&
+          (event.key === "ArrowDown" || event.key === "ArrowUp")
+        ) {
+          event.preventDefault();
+          setOpen(true);
         }
       }}
       ref={root}
     >
       <button
+        aria-controls={open ? menuId : undefined}
+        aria-expanded={open}
         aria-haspopup="menu"
         aria-label={`${libelle} — actions`}
         className="icon-button"
@@ -112,48 +172,57 @@ export function SpaceMenu({
       >
         <MoreHorizontal size={16} />
       </button>
-      {open ? (
-        <div
-          aria-label={`${libelle} — actions`}
-          className="space-dropdown"
-          role="menu"
-        >
-          {actions.map((action) =>
-            action.kind === "groupe" ? (
-              <div className="space-dropdown-groupe" key={action.id}>
-                <span className="space-dropdown-label">{action.label}</span>
-                {action.options.map((option) => (
+      {open && portal
+        ? createPortal(
+            <div
+              aria-label={`${libelle} — actions`}
+              className="space-dropdown"
+              id={menuId}
+              ref={panel}
+              role="menu"
+              style={{
+                ...position,
+                visibility: position ? "visible" : "hidden",
+              }}
+            >
+              {actions.map((action) =>
+                action.kind === "groupe" ? (
+                  <div className="space-dropdown-groupe" key={action.id}>
+                    <span className="space-dropdown-label">{action.label}</span>
+                    {action.options.map((option) => (
+                      <button
+                        className="space-dropdown-item"
+                        key={option.id}
+                        onClick={() => {
+                          fermer();
+                          option.onSelect();
+                        }}
+                        role="menuitem"
+                        type="button"
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
                   <button
-                    className="space-dropdown-item"
-                    key={option.id}
+                    className={`space-dropdown-item${action.danger ? " is-danger" : ""}`}
+                    key={action.id}
                     onClick={() => {
                       fermer();
-                      option.onSelect();
+                      action.onSelect();
                     }}
                     role="menuitem"
                     type="button"
                   >
-                    {option.label}
+                    {action.label}
                   </button>
-                ))}
-              </div>
-            ) : (
-              <button
-                className={`space-dropdown-item${action.danger ? " is-danger" : ""}`}
-                key={action.id}
-                onClick={() => {
-                  fermer();
-                  action.onSelect();
-                }}
-                role="menuitem"
-                type="button"
-              >
-                {action.label}
-              </button>
-            )
-          )}
-        </div>
-      ) : null}
+                )
+              )}
+            </div>,
+            portal
+          )
+        : null}
     </div>
   );
 }

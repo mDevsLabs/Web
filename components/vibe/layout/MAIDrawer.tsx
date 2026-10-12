@@ -627,6 +627,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   return (
     <div
       className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-fadeIn select-none"
+      data-app-update-blocked={isLoading || isRegenerating || isApproving}
       onClick={onClose}
     >
       <motion.div

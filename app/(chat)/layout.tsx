@@ -21,7 +21,7 @@ import { MAI_SESSION_COOKIE } from "@/lib/constants";
 function WorkspaceSkeleton() {
   return (
     <div className="flex h-dvh bg-sidebar">
-      <div className="w-64 shrink-0 border-r border-sidebar-border">
+      <div className="hidden w-64 shrink-0 border-r border-sidebar-border md:block">
         <SidebarSkeleton />
       </div>
       <div className="min-w-0 flex-1 bg-background">

@@ -1,9 +1,12 @@
+import { randomUUID } from "node:crypto";
 import { withBotId } from "botid/next/config";
 import type { NextConfig } from "next";
 
 const basePath = process.env.IS_DEMO === "1" ? "/demo" : "";
 const isDev = process.env.NODE_ENV === "development";
 const isProd = process.env.NODE_ENV === "production";
+// Identifiant commun au bundle client et au serveur, même sans numéro de release.
+const webBuildId = process.env.VERCEL_DEPLOYMENT_ID || randomUUID();
 
 // CSP pragmatique : pas de nonce (incompatible avec cacheComponents/PPR, qui
 // sert du HTML statique partagé). Les hôtes externes reflètent les usages
@@ -155,6 +158,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_MAI_WEB_BUILD_ID: webBuildId,
   },
   experimental: {
     appNewScrollHandler: true,
@@ -184,6 +188,10 @@ const nextConfig: NextConfig = {
       "sonner",
     ],
     prefetchInlining: true,
+    // Aucun cache .next restauré en CI ; option locale pour les disques contraints.
+    turbopackFileSystemCacheForBuild:
+      process.env.GITHUB_ACTIONS !== "true" &&
+      process.env.MAI_DISABLE_BUILD_CACHE !== "1",
     // Désactivé : provoque un panic Turbopack (inner_of_upper_lost_follower)
     // quand le cache sur disque se corrompt. À réactiver quand Next.js aura
     // corrigé le bug — https://github.com/vercel/next.js/discussions

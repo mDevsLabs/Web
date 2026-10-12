@@ -66,7 +66,7 @@ export const modelsData: Omit<ModelInfo, "readmeContent">[] = [
     name: "mAI-2-Mini",
     releaseDate: "25/10/2026",
     squareImage: "/site/mai-2/mai-galaxy.png",
-    tagline: "Our balanced model, for increased price.",
+    tagline: "Notre modèle équilibré pour les tâches du quotidien.",
     vision: true,
   },
   // ─── Série mAI-1.5 (nouvelle génération 1.5) ───────────────────────────────

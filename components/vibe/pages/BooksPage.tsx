@@ -746,7 +746,12 @@ export const BooksPage: React.FC<{
     };
 
     return (
-      <div className="flex-1 border-r border-zinc-800 min-h-screen bg-black pb-16 md:pb-0">
+      <div
+        className="flex-1 border-r border-zinc-800 min-h-screen bg-black pb-16 md:pb-0"
+        data-app-update-blocked={
+          isRegenerating || isSaving || isJoining || isLeaving || isSendingBook
+        }
+      >
         <div className="flex min-h-screen">
           <div className="flex-1 min-w-0">
             <header className="sticky top-0 z-10 backdrop-blur-md bg-black/70 border-b border-zinc-800">
@@ -1180,7 +1185,12 @@ export const BooksPage: React.FC<{
 
   // ─────────────── Liste des Livres ───────────────
   return (
-    <div className="flex-1 border-r border-zinc-800 min-h-screen bg-black pb-16 md:pb-0">
+    <div
+      className="flex-1 border-r border-zinc-800 min-h-screen bg-black pb-16 md:pb-0"
+      data-app-update-blocked={
+        isRegenerating || isSaving || isJoining || isLeaving || isSendingBook
+      }
+    >
       <header className="sticky top-0 z-10 backdrop-blur-md bg-black/70 border-b border-zinc-800 p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="p-2 rounded-xl text-sky-300 bg-sky-500/10 border border-sky-500/30">

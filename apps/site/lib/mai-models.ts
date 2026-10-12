@@ -83,7 +83,7 @@ export const maiModelsList: MAIModelDetail[] = [
     name: "mAI-2-Mini",
     releaseDate: "2026-10-25",
     status: "active",
-    tagline: "Our balanced model, for increased price.",
+    tagline: "Notre modèle équilibré pour les tâches du quotidien.",
     version: "2.0.0",
     vision: true,
   },

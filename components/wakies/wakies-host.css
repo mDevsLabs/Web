@@ -208,18 +208,28 @@
 }
 
 .wakies-root .space-nav-menu {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
+}
+
+/* Le menu ouvert dépasse les autres lignes du rail et les cartes voisines. */
+.wakies-root .space-nav-row:has(.space-nav-menu[data-open="true"]),
+.wakies-root .library-page-item:has(.space-nav-menu[data-open="true"]) {
+  z-index: 41;
 }
 
 .wakies-root .space-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 4px;
-  z-index: 40;
+  position: fixed;
+  z-index: 80;
   display: flex;
   flex-direction: column;
   min-width: 184px;
+  max-width: calc(100vw - 16px);
+  max-height: calc(100dvh - 16px);
+  overflow-y: auto;
   padding: 4px;
   background: white;
   border: 1px solid var(--line, #e9e8e6);
@@ -228,6 +238,8 @@
 }
 
 .wakies-root .space-dropdown-item {
+  justify-content: flex-start;
+  width: 100%;
   padding: 7px 9px;
   font: inherit;
   font-size: 12px;
@@ -760,6 +772,11 @@
   height: 100%;
   min-height: 0;
 }
+
+/* La racine doit porter une hauteur réelle : 100 % dépendait d’un parent auto. */
+.wakies-root {
+  height: 100dvh;
+}
 .wakies-root .wakies-model-trigger {
   min-height: 44px;
   font-size: 12px;
@@ -1009,14 +1026,25 @@
 .wakies-root .muse-app .rail-actions .wordmark {
   flex: 1 1 auto;
   min-width: 0;
+  height: 36px;
+  min-height: 36px;
+  margin: 0;
+  gap: 8px;
+  font-size: 18px;
+  letter-spacing: -0.5px;
 }
 .wakies-root .muse-app .rail-bell,
 .wakies-root .muse-app .rail-collapse {
   position: relative;
   flex: 0 0 auto;
   width: 32px;
+  height: 36px;
   min-width: 32px;
-  min-height: 32px;
+  min-height: 36px;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   padding: 8px;
   color: #545e63;
 }
@@ -1037,6 +1065,9 @@
    .wakies-root et perdrait son thème. Fixe, il échappe au défilement du rail. */
 .wakies-root .muse-app .rail-notifications {
   position: static;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
 }
 .wakies-root .muse-app .rail-panel {
   position: fixed;
@@ -1245,13 +1276,34 @@
   }
   .wakies-root .muse-app .sidebar.open {
     visibility: visible;
-    transform: translateX(0);
+    /* Une transformation créerait un repère local pour les menus position: fixed. */
+    transform: none;
   }
   .wakies-root .muse-app .sidebar-sections {
     display: none;
   }
   .wakies-root .muse-app .workspace > .muse-navigation {
     display: flex;
+    gap: 4px;
+    max-width: calc(100% - 24px);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border-radius: 24px;
+    scrollbar-width: thin;
+  }
+  .wakies-root .muse-app .workspace > .muse-navigation .nav-label {
+    display: none;
+  }
+  .wakies-root .muse-app .workspace > .muse-navigation .md-button {
+    flex: 0 0 68px;
+    min-width: 68px;
+  }
+  .wakies-root .muse-app .workspace > .muse-navigation .md-button span {
+    white-space: nowrap;
+  }
+  .wakies-root .muse-app .top-actions > .md-button {
+    min-width: 40px;
+    min-height: 40px;
   }
   .wakies-root .muse-app .mobile-menu {
     position: fixed;
@@ -1312,8 +1364,11 @@
     right: 16px;
     display: inline-flex;
   }
-  .wakies-root .muse-app .wordmark {
-    width: calc(100% - 48px);
+  .wakies-root .muse-app .rail-actions {
+    padding-right: 36px;
+  }
+  .wakies-root .muse-app .rail-collapse {
+    display: none;
   }
 }
 

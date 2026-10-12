@@ -49,21 +49,25 @@ export const GlobalSearchBar: React.FC<GlobalSearchBarProps> = ({ autoFocus, onN
     if (q.length < 2) {
       setResults(null);
       setIsSearching(false);
+      setIsOpen(false);
       return;
     }
+    let active = true;
     setIsSearching(true);
     debounceRef.current = setTimeout(async () => {
       try {
         const res = await ApiService.searchUnified(q, 5);
+        if (!active) return;
         setResults(res);
         setIsOpen(true);
       } catch {
-        setResults(null);
+        if (active) setResults(null);
       } finally {
-        setIsSearching(false);
+        if (active) setIsSearching(false);
       }
     }, 300);
     return () => {
+      active = false;
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
   }, [query]);
@@ -98,6 +102,7 @@ export const GlobalSearchBar: React.FC<GlobalSearchBarProps> = ({ autoFocus, onN
           <Search className="w-4 h-4 text-zinc-500 shrink-0" />
         )}
         <input
+          aria-label="Rechercher des publications, comptes, livres et messages"
           ref={inputRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -111,6 +116,7 @@ export const GlobalSearchBar: React.FC<GlobalSearchBarProps> = ({ autoFocus, onN
         />
         {query && (
           <button
+            aria-label="Effacer la recherche"
             onClick={() => {
               setQuery('');
               setResults(null);

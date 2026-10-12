@@ -251,6 +251,7 @@ function PureChatHeader({
         </Button>
       )}
       <Button
+        aria-label="Ouvrir la barre latérale"
         className="md:hidden min-h-[44px] min-w-[44px] h-11 w-11 -ml-1"
         onClick={toggleSidebar}
         size="icon-sm"

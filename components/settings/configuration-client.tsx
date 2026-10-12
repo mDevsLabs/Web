@@ -31,6 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useTier } from "@/hooks/use-tier";
 import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
+import { readJson } from "@/lib/client/read-json";
 import {
   COMMAND_ACTION_LABELS,
   COMMAND_ACTION_TYPES,
@@ -39,7 +40,7 @@ import {
 import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = readJson;
 
 type CommandPayloadForm = {
   agentId?: string;
@@ -80,10 +81,13 @@ type CommandForm = ReturnType<typeof emptyForm>;
 
 export function ConfigurationSection() {
   const { isFree } = useTier();
-  const { data: commands = [], mutate } = useSWR<CustomCommand[]>(
-    isFree ? null : "/api/commands",
-    fetcher
-  );
+  const {
+    data: commands = [],
+    error: commandsError,
+    isLoading: commandsLoading,
+    isValidating: commandsValidating,
+    mutate,
+  } = useSWR<CustomCommand[]>(isFree ? null : "/api/commands", fetcher);
   const { data: mcpData } = useSWR<{
     servers: Array<{ id: string; name: string; isEnabled: boolean }>;
   }>("/api/mcp", fetcher);
@@ -250,6 +254,30 @@ export function ConfigurationSection() {
             </p>
           </div>
         </div>
+      ) : commandsError ? (
+        <div
+          className="surface-muted flex flex-wrap items-center justify-between gap-3 text-sm"
+          role="alert"
+        >
+          <p className="text-destructive">
+            Impossible de charger les commandes personnalisées.
+          </p>
+          <Button
+            disabled={commandsValidating}
+            onClick={() => void mutate().catch(() => undefined)}
+            size="sm"
+            variant="outline"
+          >
+            Réessayer
+          </Button>
+        </div>
+      ) : commandsLoading ? (
+        <p
+          className="py-8 text-center text-sm text-muted-foreground"
+          role="status"
+        >
+          Chargement des commandes…
+        </p>
       ) : commands.length === 0 ? (
         <div className="p-8 rounded-2xl border border-dashed border-border/60 text-center text-sm text-muted-foreground">
           Aucune commande personnalisée. Créez-en une pour commencer, par
@@ -262,7 +290,7 @@ export function ConfigurationSection() {
             const prefix = command.kind === "slash" ? "/" : "@";
             return (
               <div
-                className="flex items-center gap-3 p-3 rounded-xl border border-border/50 bg-card/60"
+                className="flex flex-wrap items-center gap-3 p-3 rounded-xl border border-border/50 bg-card/60"
                 key={command.id}
               >
                 <span
@@ -271,7 +299,7 @@ export function ConfigurationSection() {
                 >
                   <AgentIcon icon={command.icon} size={16} variant="plain" />
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 basis-[calc(100%-3rem)] sm:basis-auto flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <code className="font-semibold text-[13px] text-foreground">
                       {prefix}
@@ -333,7 +361,10 @@ export function ConfigurationSection() {
 
       {/* Modal éditeur */}
       <Dialog onOpenChange={setEditorOpen} open={editorOpen}>
-        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
+        <DialogContent
+          className="max-w-lg max-h-[85dvh] overflow-y-auto"
+          data-app-update-blocked={isSaving ? "true" : undefined}
+        >
           <DialogHeader>
             <DialogTitle>
               {editingId ? "Modifier la commande" : "Nouvelle commande"}
@@ -347,14 +378,14 @@ export function ConfigurationSection() {
           <div className="flex flex-col gap-4 py-2">
             {/* Type de commande */}
             <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">
+              <Label className="text-xs font-semibold" htmlFor="command-kind">
                 Type de commande *
               </Label>
               <Select
                 onValueChange={(v) => setFormPartial({ kind: v as any })}
                 value={form.kind}
               >
-                <SelectTrigger>
+                <SelectTrigger id="command-kind">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -369,15 +400,19 @@ export function ConfigurationSection() {
             </div>
 
             {/* Déclencheur + nom */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="command-trigger"
+                >
                   Déclencheur *{" "}
                   <span className="font-normal text-muted-foreground">
                     ({form.kind === "slash" ? "/" : "@"}…)
                   </span>
                 </Label>
                 <Input
+                  id="command-trigger"
                   maxLength={32}
                   onChange={(e) =>
                     setFormPartial({
@@ -394,8 +429,11 @@ export function ConfigurationSection() {
                 />
               </div>
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Nom *</Label>
+                <Label className="text-xs font-semibold" htmlFor="command-name">
+                  Nom *
+                </Label>
                 <Input
+                  id="command-name"
                   maxLength={100}
                   onChange={(e) => setFormPartial({ name: e.target.value })}
                   placeholder="Traduction en anglais"
@@ -405,8 +443,14 @@ export function ConfigurationSection() {
             </div>
 
             <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">Description</Label>
+              <Label
+                className="text-xs font-semibold"
+                htmlFor="command-description"
+              >
+                Description
+              </Label>
               <Input
+                id="command-description"
                 maxLength={500}
                 onChange={(e) =>
                   setFormPartial({ description: e.target.value })
@@ -419,9 +463,10 @@ export function ConfigurationSection() {
             {/* Icône + couleur */}
             <div className="space-y-2 rounded-xl border border-border/50 p-3 bg-muted/20">
               <Label className="text-xs font-semibold">Apparence</Label>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
                 {AGENT_ICONS.map((o) => (
                   <button
+                    aria-pressed={form.icon === o.id}
                     className={cn(
                       "flex w-full flex-col items-center gap-1 p-2 rounded-xl border text-xs",
                       form.icon === o.id
@@ -438,7 +483,9 @@ export function ConfigurationSection() {
                     >
                       <AgentIcon icon={o.id} size={16} variant="plain" />
                     </span>
-                    <span className="text-[10px]">{o.label}</span>
+                    <span className="max-w-full break-words text-center text-[10px]">
+                      {o.label}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -452,7 +499,7 @@ export function ConfigurationSection() {
 
             {/* Action */}
             <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">
+              <Label className="text-xs font-semibold" htmlFor="command-action">
                 Action déclenchée *
               </Label>
               <Select
@@ -464,7 +511,7 @@ export function ConfigurationSection() {
                 }
                 value={form.actionType}
               >
-                <SelectTrigger>
+                <SelectTrigger id="command-action">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -480,11 +527,15 @@ export function ConfigurationSection() {
             {/* Payload par action */}
             {form.actionType === "prompt" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="command-prompt"
+                >
                   Consignes injectées au prochain message * (max 4000
                   caractères)
                 </Label>
                 <Textarea
+                  id="command-prompt"
                   maxLength={4000}
                   onChange={(e) =>
                     setFormPartial({
@@ -500,7 +551,12 @@ export function ConfigurationSection() {
 
             {form.actionType === "agent" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Bot activé *</Label>
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="command-agent"
+                >
+                  Bot activé *
+                </Label>
                 <Select
                   onValueChange={(v) =>
                     setFormPartial({
@@ -509,7 +565,7 @@ export function ConfigurationSection() {
                   }
                   value={form.payload.agentId ?? ""}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="command-agent">
                     <SelectValue placeholder="Choisir un bot" />
                   </SelectTrigger>
                   <SelectContent>
@@ -525,7 +581,12 @@ export function ConfigurationSection() {
 
             {form.actionType === "skill" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Skill activé *</Label>
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="command-skill"
+                >
+                  Skill activé *
+                </Label>
                 <Select
                   onValueChange={(v) =>
                     setFormPartial({
@@ -534,7 +595,7 @@ export function ConfigurationSection() {
                   }
                   value={form.payload.skillId ?? ""}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="command-skill">
                     <SelectValue placeholder="Choisir un skill" />
                   </SelectTrigger>
                   <SelectContent>
@@ -641,7 +702,10 @@ export function ConfigurationSection() {
 
             {form.actionType === "navigation" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
+                <Label
+                  className="text-xs font-semibold"
+                  htmlFor="command-destination"
+                >
                   Page de destination *
                 </Label>
                 <Select
@@ -650,7 +714,7 @@ export function ConfigurationSection() {
                   }
                   value={form.payload.route ?? ""}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="command-destination">
                     <SelectValue placeholder="Choisir une page" />
                   </SelectTrigger>
                   <SelectContent>

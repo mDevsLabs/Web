@@ -9,6 +9,8 @@ const isWatch = process.argv.includes("--watch");
 const ctx = await esbuild.context({
   bundle: true,
   define: {
+    // Le bundle Electron est CommonJS : import.meta.dirname y serait vide.
+    "import.meta.dirname": "__dirname",
     "process.env.NODE_ENV": isWatch ? '"development"' : '"production"',
   },
   entryPoints: [path.join(__dirname, "main-src", "index.ts")],

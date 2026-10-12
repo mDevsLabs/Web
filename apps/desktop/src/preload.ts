@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld("maiDesktop", {
   targetApp: (() => {
     const arg = process.argv.find((a) => a.startsWith("--app="));
     if (arg) return arg.split("=")[1].toLowerCase().trim();
-    return process.env.MAI_APP?.toLowerCase().trim() || null;
+    return null;
   })(),
-  version: process.env.npm_package_version ?? "3.1.0",
+  version: process.argv.find((arg) => arg.startsWith("--mai-version="))?.slice("--mai-version=".length),
 });

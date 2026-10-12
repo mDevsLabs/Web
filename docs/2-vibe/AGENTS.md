@@ -39,7 +39,7 @@ Ce document contient les règles fondamentales et les consignes de développemen
 ## 3. 📱 Application Mobile (Capacitor)
 
 - La configuration mobile se trouve dans `apps/vibe/capacitor.config.ts`.
-- L'URL distante chargée par la WebView est paramétrée par `VIBE_WEB_URL` (défaut : `https://mai-vibe.vercel.app`).
+- L'URL distante chargée par la WebView est paramétrée par `VIBE_WEB_URL` (défaut : `https://mai-officiel.vercel.app/vibe`, le portage dans l'hôte mAI).
 - Les builds Android/iOS et leurs releases sont intégrés dans `.github/workflows/build.yml`.
 
 ---
