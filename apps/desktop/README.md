@@ -2,7 +2,7 @@
 
 Ce client Electron ouvre **https://mai-officiel.vercel.app** dans une fenêtre de bureau. L’interface et les fonctions IA viennent du site distant. L’application complète mAI Coder est incluse dans l’installateur. Le terminal natif permet d’utiliser le CLI et propose son installation s’il est absent ; cette installation exige Node.js et npm sur la machine.
 
-L’application vérifie le déploiement Web toutes les minutes et au retour au premier plan ou en ligne. Elle recharge une nouvelle version lorsque l’écran est libre, après les réponses IA, les générations et les saisies en cours. Les changements du runtime Electron, du CLI ou de Coder demandent un nouvel installateur.
+L’application vérifie le déploiement Web toutes les minutes et au retour au premier plan. Quand une nouvelle version est disponible, elle attend 30 secondes sans activité puis 20 secondes pendant lesquelles l’écran reste libre avant de recharger. Les réponses IA, les générations, les pièces jointes, les brouillons du chat et les formulaires avec des modifications non enregistrées retardent le rechargement. Les changements du runtime Electron, du CLI ou de Coder demandent un nouvel installateur.
 
 ## Développement
 
@@ -14,7 +14,7 @@ pnpm run generate:icons
 pnpm run dev
 ~~~
 
-La cible distante est définie dans `src/main.ts`. Les liens externes HTTP(S) et mail s’ouvrent dans le navigateur système.
+La cible distante est définie dans `src/main.ts`. Les liens externes HTTP(S) et mail s’ouvrent dans le navigateur système. La version de `apps/desktop/package.json` doit toujours correspondre à celle du `package.json` racine ; `pnpm run build` vérifie cet alignement avant de compiler.
 
 `dev`, `pack` et `dist` préparent Coder avant le lancement ou l’empaquetage. Installez aussi ses dépendances depuis `apps/coder` avec `pnpm install --frozen-lockfile`. La préparation compile les deux bundles et copie son runtime Electron complet, ses ressources et ses modules natifs dans `build/coder-<architecture>`. Sur Windows, la compilation native demande Python et les outils C++ Visual Studio ; sur macOS, les outils Xcode ; sur Linux, Python, make et un compilateur C++.
 

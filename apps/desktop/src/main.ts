@@ -14,6 +14,191 @@ if (!gotLock) {
 }
 
 let mainWindow: BrowserWindow | null = null;
+let currentWebBuildId: string | null = null;
+let pendingWebBuildId: string | null = null;
+let reloadTargetBuildId: string | null = null;
+let webReloadInProgress = false;
+let reloadSafetyCheckInProgress = false;
+let versionCheckInProgress = false;
+let lastUserActivityAt = Date.now();
+let safePageSince: number | null = null;
+let pendingUpdateTimer: NodeJS.Timeout | null = null;
+
+const WEB_VERSION_POLL_INTERVAL_MS = 60_000;
+const PENDING_UPDATE_RETRY_INTERVAL_MS = 10_000;
+const USER_IDLE_BEFORE_RELOAD_MS = 30_000;
+const SAFE_PAGE_GRACE_MS = 20_000;
+
+async function readWebBuildId(): Promise<string | null> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(`${APP_URL}/api/app-version`, {
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+    if (!response.ok) return null;
+
+    const data: unknown = await response.json();
+    if (!data || typeof data !== "object" || !("buildId" in data)) {
+      return null;
+    }
+    const buildId = (data as { buildId?: unknown }).buildId;
+    return typeof buildId === "string" && buildId.trim() ? buildId : null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function isWebPageSafeToReload(window: BrowserWindow): Promise<boolean> {
+  if (
+    window.isDestroyed() ||
+    window.webContents.isDestroyed() ||
+    !window.isFocused() ||
+    window.webContents.isLoadingMainFrame()
+  ) {
+    return false;
+  }
+
+  try {
+    return await window.webContents.executeJavaScript(`
+      (() => {
+        if (document.visibilityState !== "visible") return false;
+
+        const blocked = [...document.querySelectorAll("[data-app-update-blocked]")]
+          .some((element) => {
+            const value = element.getAttribute("data-app-update-blocked");
+            return value !== null && !["false", "0", ""].includes(value.toLowerCase());
+          });
+        if (blocked) return false;
+
+        const hasUnsavedFormValue = [...document.querySelectorAll(
+          'input:not([type="file"]):not([type="hidden"]), textarea, select'
+        )].some((field) => {
+          if (field instanceof HTMLInputElement) {
+            if (field.readOnly || field.disabled) return false;
+            if (["checkbox", "radio"].includes(field.type)) {
+              return field.checked !== field.defaultChecked;
+            }
+            return field.value !== field.defaultValue;
+          }
+          if (field instanceof HTMLTextAreaElement) {
+            return !field.readOnly && !field.disabled && field.value !== field.defaultValue;
+          }
+          if (field instanceof HTMLSelectElement) {
+            return !field.disabled && [...field.options].some(
+              (option) => option.selected !== option.defaultSelected
+            );
+          }
+          return false;
+        });
+        if (hasUnsavedFormValue) return false;
+
+        if (document.querySelector(
+          '[role="dialog"][data-state="open"], [role="alertdialog"][data-state="open"], dialog[open]'
+        )) return false;
+
+        const active = document.activeElement;
+        if (active instanceof HTMLElement) {
+          const editable = active.matches(
+            'input:not([type="file"]):not([type="hidden"]), textarea, select'
+          ) || active.isContentEditable;
+          if (editable) {
+            const isEmptyComposer = active instanceof HTMLTextAreaElement &&
+              active.closest("[data-app-update-blocked]")?.getAttribute("data-app-update-blocked") === "false" &&
+              !active.value.trim();
+            if (!isEmptyComposer) return false;
+          }
+        }
+
+        return true;
+      })()
+    `);
+  } catch {
+    return false;
+  }
+}
+
+function stopPendingUpdateChecks(): void {
+  if (pendingUpdateTimer) {
+    clearInterval(pendingUpdateTimer);
+    pendingUpdateTimer = null;
+  }
+}
+
+function schedulePendingUpdateChecks(): void {
+  if (pendingUpdateTimer) return;
+  pendingUpdateTimer = setInterval(() => {
+    void tryReloadForPendingWebUpdate();
+  }, PENDING_UPDATE_RETRY_INTERVAL_MS);
+  pendingUpdateTimer.unref();
+}
+
+async function tryReloadForPendingWebUpdate(): Promise<void> {
+  const window = mainWindow;
+  if (
+    !window ||
+    !pendingWebBuildId ||
+    webReloadInProgress ||
+    reloadSafetyCheckInProgress
+  ) {
+    return;
+  }
+
+  reloadSafetyCheckInProgress = true;
+  try {
+    if (!(await isWebPageSafeToReload(window))) {
+      safePageSince = null;
+      return;
+    }
+
+    const now = Date.now();
+    safePageSince ??= now;
+    if (
+      now - lastUserActivityAt < USER_IDLE_BEFORE_RELOAD_MS ||
+      now - safePageSince < SAFE_PAGE_GRACE_MS
+    ) {
+      return;
+    }
+
+    reloadTargetBuildId = pendingWebBuildId;
+    webReloadInProgress = true;
+    window.webContents.reload();
+  } finally {
+    reloadSafetyCheckInProgress = false;
+  }
+}
+
+async function checkForWebUpdate(): Promise<void> {
+  if (versionCheckInProgress || !mainWindow || mainWindow.isDestroyed()) return;
+  versionCheckInProgress = true;
+
+  try {
+    const buildId = await readWebBuildId();
+    if (!buildId) return;
+
+    if (currentWebBuildId === null) {
+      currentWebBuildId = buildId;
+      return;
+    }
+
+    if (buildId === currentWebBuildId) {
+      pendingWebBuildId = null;
+      safePageSince = null;
+      stopPendingUpdateChecks();
+      return;
+    }
+
+    pendingWebBuildId = buildId;
+    schedulePendingUpdateChecks();
+    await tryReloadForPendingWebUpdate();
+  } finally {
+    versionCheckInProgress = false;
+  }
+}
 
 function getIconPath(): string | undefined {
   if (process.platform === "win32") {
@@ -53,6 +238,23 @@ function createWindow(): void {
   mainWindow.once("ready-to-show", () => {
     mainWindow?.show();
     mainWindow?.focus();
+  });
+
+  mainWindow.webContents.on("did-finish-load", () => {
+    if (reloadTargetBuildId) {
+      currentWebBuildId = reloadTargetBuildId;
+      pendingWebBuildId = null;
+      reloadTargetBuildId = null;
+      safePageSince = null;
+      stopPendingUpdateChecks();
+    }
+    webReloadInProgress = false;
+    void checkForWebUpdate();
+  });
+
+  mainWindow.on("focus", () => {
+    lastUserActivityAt = Date.now();
+    void checkForWebUpdate();
   });
 
   // Charge l'URL officielle (iframe = loadURL en Electron)
@@ -107,7 +309,11 @@ function createWindow(): void {
   });
 
   // Gestion des erreurs de chargement (offline)
-  mainWindow.webContents.on("did-fail-load", (_event, errorCode, errorDescription, validatedURL) => {
+  mainWindow.webContents.on("did-fail-load", (_event, errorCode, errorDescription, validatedURL, isMainFrame) => {
+    if (isMainFrame && webReloadInProgress) {
+      webReloadInProgress = false;
+      reloadTargetBuildId = null;
+    }
     // Ignore les erreurs d'abandon (ex: navigation interrompue)
     if (errorCode === -3) return; // ERR_ABORTED
     console.error(`[mAI] did-fail-load ${errorCode} ${errorDescription} @ ${validatedURL}`);
@@ -249,6 +455,11 @@ app.whenReady().then(() => {
 
   createWindow();
 
+  const versionPoll = setInterval(() => {
+    void checkForWebUpdate();
+  }, WEB_VERSION_POLL_INTERVAL_MS);
+  versionPoll.unref();
+
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
@@ -266,7 +477,9 @@ app.on("web-contents-created", (_event, contents) => {
 });
 
 // Les fonctions locales sont réservées au frame principal du site officiel.
-function trustedSender(event: Electron.IpcMainInvokeEvent): boolean {
+function trustedSender(
+  event: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent
+): boolean {
   try {
     return event.sender === mainWindow?.webContents &&
       event.senderFrame === event.sender.mainFrame &&
@@ -275,6 +488,12 @@ function trustedSender(event: Electron.IpcMainInvokeEvent): boolean {
     return false;
   }
 }
+
+ipcMain.on("desktop:user-activity", (event) => {
+  if (trustedSender(event)) {
+    lastUserActivityAt = Date.now();
+  }
+});
 
 ipcMain.handle("desktop:open-cli", async (event) => {
   if (!trustedSender(event)) return { success: false, error: "Ouverture du CLI refusée depuis cette fenêtre." };

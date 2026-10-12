@@ -804,7 +804,9 @@ function PureMultimodalInput({
       data-app-update-blocked={
         status === "submitted" ||
         status === "streaming" ||
+        input.trim().length > 0 ||
         attachments.length > 0 ||
+        uploadQueue.length > 0 ||
         Boolean(editingMessage)
       }
     >
@@ -976,6 +978,9 @@ function PureMultimodalInput({
             </div>
           ) : null}
           <PromptInputTextarea
+            aria-label={
+              editingMessage ? "Modifier votre message" : "Message à mAI"
+            }
             className={cn(
               "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
               pendingTools.length > 0 ||

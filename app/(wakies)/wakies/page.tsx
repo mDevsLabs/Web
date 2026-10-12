@@ -19,6 +19,7 @@ import {
   estNavReduite,
   WAKIES_NAV_COOKIE,
 } from "@/lib/wakies/client/nav-collapsed";
+import { WAKIE_ID_PATTERN } from "@/lib/wakies/shared/sharing";
 
 export const instant = false;
 
@@ -26,14 +27,24 @@ export const metadata = {
   title: "Wakies — Espace de travail IA | mAI",
 };
 
-export default async function WakiesPage() {
+export default async function WakiesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ fiche?: string | string[] }>;
+}) {
   const cookieStore = await cookies();
   const user = await getMaiUser();
   const garde = deguarderSansPlan(user);
   if (garde) return garde;
+  const { fiche } = await searchParams;
 
   return (
     <WakiesWorkspace
+      fichePartageeId={
+        typeof fiche === "string" && WAKIE_ID_PATTERN.test(fiche)
+          ? fiche
+          : undefined
+      }
       initialNavCollapsed={estNavReduite(
         cookieStore.get(WAKIES_NAV_COOKIE)?.value
       )}

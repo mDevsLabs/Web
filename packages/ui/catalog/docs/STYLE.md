@@ -57,18 +57,18 @@ Une surface combine un fond opaque de secours, une couche translucide, un reflet
 | --- | --- | --- | --- |
 | `--md-font` | Inter puis polices système | Même pile | Typographie |
 | `--md-icon-color` | `currentColor` | `currentColor` | Couleur du contrôle parent |
-| `--md-blur` | `12px` | `12px` | Flou discret |
-| `--md-radius` | `20px` | `20px` | Surfaces |
-| `--md-input-radius` | `12px` | `12px` | Contrôles |
-| `--md-surface` | `rgba(255,255,255,.76)` | `rgba(30,42,61,.83)` | Translucence |
-| `--md-solid` | `#fff` | `#1e2a3d` | Fond opaque |
-| `--md-border` | `rgba(85,105,141,.22)` | `rgba(182,203,237,.22)` | Contour |
-| `--md-highlight` | `rgba(255,255,255,.92)` | `rgba(255,255,255,.13)` | Reflet |
-| `--md-text` | `#182339` | `#f3f6fc` | Texte UI |
-| `--md-muted` | `#536079` | `#b5c1d4` | Texte secondaire |
-| `--md-accent` | `#4f46e5` | Même valeur par défaut | Actions et choix actifs |
-| `--md-focus` | `#4338ca` | `#a5b4fc` | Focus visible |
-| `--md-motion` | `160ms` | `160ms` | Transition courte |
+| `--md-blur` | `10px` | `10px` | Flou discret |
+| `--md-radius` | `14px` | `14px` | Surfaces |
+| `--md-input-radius` | `8px` | `8px` | Contrôles |
+| `--md-surface` | `rgba(255,255,255,.88)` | `rgba(18,18,20,.88)` | Translucence |
+| `--md-solid` | `#fff` | `#121214` | Fond opaque |
+| `--md-border` | `rgba(0,0,0,.08)` | `rgba(255,255,255,.1)` | Contour |
+| `--md-highlight` | `rgba(255,255,255,.95)` | `rgba(255,255,255,.06)` | Reflet |
+| `--md-text` | `#09090b` | `#f4f4f5` | Texte UI |
+| `--md-muted` | `#71717a` | `#a1a1aa` | Texte secondaire |
+| `--md-accent` | `#09090b` | `#ffffff` | Actions et choix actifs |
+| `--md-focus` | `#09090b` | `#ffffff` | Focus visible |
+| `--md-motion` | `150ms` | `150ms` | Transition courte |
 
 Les tokens d’état succès/erreur/attention et les ombres sont détaillés dans le guide Liquid Glass. L’interface peut employer ces couleurs sémantiques ; les dessins d’icônes restent monochromes par défaut. Ne pas ajouter plusieurs couches de flou pour rendre un composant plus distinctif.
 

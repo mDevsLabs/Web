@@ -12,8 +12,9 @@ import {
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import type React from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { useOptionalAuth } from "@/components/site/auth-provider";
 import {
   DropdownMenu,
@@ -26,6 +27,7 @@ import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import type { AppKey } from "@/lib/apps/catalog";
 import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
+import { readAuthentication } from "@/lib/client/authentication";
 import { cn } from "@/lib/utils";
 
 function VibeGlyph({ className }: { className?: string }) {
@@ -82,33 +84,19 @@ export function AppSwitcherMenu({
       ? appKeyFromPath(pathname)
       : currentAppOverride;
 
-  // Authentification : prop explicite, ou contexte du site, ou présence de session client
+  // Le cookie mAI est HttpOnly : document.cookie ne peut pas indiquer la connexion.
   const siteAuth = useOptionalAuth();
-  const [hasCookieSession, setHasCookieSession] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    return Boolean(
-      document.cookie.includes("mai_session_token=") ||
-        document.cookie.includes("mai_user=") ||
-        localStorage.getItem("mai_auth")
-    );
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const authed = Boolean(
-      document.cookie.includes("mai_session_token=") ||
-        document.cookie.includes("mai_user=") ||
-        localStorage.getItem("mai_auth")
-    );
-    setHasCookieSession(authed);
-  }, []);
-
-  const isAuthed =
+  const { data: verifiedAuthentication } = useSWR(
     isAuthenticated === undefined
-      ? siteAuth === null
-        ? hasCookieSession
-        : siteAuth.isAuthenticated
-      : isAuthenticated;
+      ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/me`
+      : null,
+    readAuthentication,
+    { dedupingInterval: 15_000, revalidateOnFocus: true }
+  );
+  const isAuthed =
+    isAuthenticated ??
+    verifiedAuthentication ??
+    (siteAuth?.isAuthenticated ? true : undefined);
 
   let resetChat: (() => void) | undefined;
   try {
@@ -128,7 +116,13 @@ export function AppSwitcherMenu({
       }
 
       // VÉRIFICATION OBLIGATOIRE : Bloquer si non connecté à un compte mAI
-      if (!isAuthed) {
+      if (key !== "site" && isAuthed !== true) {
+        if (isAuthed === undefined) {
+          toast.info(
+            "La connexion est en cours de vérification. Réessayez dans un instant."
+          );
+          return;
+        }
         toast.error(
           "Veuillez vous connecter à votre compte mAI pour accéder aux autres applications.",
           {
@@ -181,7 +175,13 @@ export function AppSwitcherMenu({
 
   const handleOpenCli = useCallback(async () => {
     // VÉRIFICATION OBLIGATOIRE : Bloquer si non connecté à un compte mAI
-    if (!isAuthed) {
+    if (isAuthed !== true) {
+      if (isAuthed === undefined) {
+        toast.info(
+          "La connexion est en cours de vérification. Réessayez dans un instant."
+        );
+        return;
+      }
       toast.error(
         "Veuillez vous connecter à votre compte mAI pour accéder au CLI.",
         {
@@ -247,7 +247,7 @@ export function AppSwitcherMenu({
       >
         <div className="px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
           <span>Applications mAI</span>
-          {!isAuthed && (
+          {isAuthed === false && (
             <span className="flex items-center gap-1 text-[10px] text-warning font-medium lowercase">
               <LockIcon className="size-2.5" />
               Connexion requise
@@ -255,7 +255,7 @@ export function AppSwitcherMenu({
           )}
         </div>
 
-        {!isAuthed && (
+        {isAuthed === false && (
           <div className="mx-1 mb-1.5 rounded-lg border border-warning/30 bg-warning/10 p-2 text-[11px] leading-snug text-warning">
             Connectez-vous à votre compte mAI pour basculer vers les autres
             applications.
@@ -267,7 +267,8 @@ export function AppSwitcherMenu({
           const isFavorite = favorite === entry.key;
           const AppGlyph = APP_SWITCHER_ICONS[entry.key];
           const isCodeDisabled = entry.key === "code" && !isDesktop;
-          const isLocked = !isAuthed && !isCurrent;
+          const isLocked =
+            isAuthed === false && !isCurrent && entry.key !== "site";
 
           return (
             <DropdownMenuItem
@@ -327,7 +328,7 @@ export function AppSwitcherMenu({
           asChild
           className={cn(
             "cursor-pointer rounded-lg",
-            (!isDesktop || !isAuthed) && "opacity-60"
+            (!isDesktop || isAuthed === false) && "opacity-60"
           )}
           onSelect={() => {
             void handleOpenCli();
@@ -345,7 +346,7 @@ export function AppSwitcherMenu({
                     Bureau
                   </span>
                 )}
-                {!isAuthed && (
+                {isAuthed === false && (
                   <LockIcon className="ml-auto size-3 text-warning" />
                 )}
               </div>

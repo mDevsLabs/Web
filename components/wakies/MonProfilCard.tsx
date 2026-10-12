@@ -9,7 +9,9 @@
  */
 
 import { Button } from "@mdevs/ui/primitives/button";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useId } from "react";
+import useSWR from "swr";
 import { api } from "@/components/wakies/api";
 
 type MonProfil = {
@@ -20,35 +22,68 @@ type MonProfil = {
 };
 
 export function MonProfilCard() {
-  const [profil, setProfil] = useState<MonProfil | null>(null);
-  const [erreur, setErreur] = useState("");
-
-  useEffect(() => {
-    void api<MonProfil>("/me/profile")
-      .then(setProfil)
-      .catch(() => setErreur("Profil indisponible pour l'instant."));
-  }, []);
-
-  if (erreur) return <p className="muted">{erreur}</p>;
-  if (!profil) return <p className="muted">Chargement de votre profil…</p>;
+  const instance = useId();
+  const {
+    data: profil,
+    error: erreur,
+    isLoading,
+    mutate,
+  } = useSWR<MonProfil>(
+    ["wakies-my-profile", instance],
+    () => api("/me/profile"),
+    { revalidateOnFocus: true }
+  );
   return (
     <article className="memory-card">
-      <div>
-        <strong>{profil.displayName || profil.username}</strong>
-        <small> @{profil.username}</small>
-        <p className="muted">
-          {profil.bio ||
-            "Ajoutez une bio dans Vibe : vos Wakies vous connaîtront mieux."}
+      {erreur ? (
+        <div className="sidebar-error" role="alert">
+          <p>
+            {erreur instanceof Error
+              ? erreur.message
+              : "Profil indisponible pour l’instant."}
+          </p>
+          <Button
+            disabled={isLoading}
+            onClick={() => void mutate().catch(() => {})}
+            variant="outline"
+          >
+            Recharger mon profil
+          </Button>
+        </div>
+      ) : null}
+      {isLoading ? (
+        <p className="muted" role="status">
+          Chargement de votre profil…
         </p>
-        <small>
-          Synchronisé depuis Vibe · modifiable dans Vibe uniquement.
-        </small>
-      </div>
-      <a className="text-button" href="/vibe">
-        <Button type="button" variant="outline">
-          Modifier dans Vibe
-        </Button>
-      </a>
+      ) : null}
+      {profil ? (
+        <div className="wakies-account-profile">
+          {profil.avatarUrl ? (
+            <img
+              alt=""
+              className="wakies-account-avatar"
+              src={profil.avatarUrl}
+            />
+          ) : null}
+          <div>
+            <strong>{profil.displayName || profil.username}</strong>
+            <small> @{profil.username}</small>
+            <p className="muted">
+              {profil.bio ||
+                "Ajoutez une bio dans Vibe : vos Wakies vous connaîtront mieux."}
+            </p>
+            <small>
+              Synchronisé depuis Vibe · modifiable dans Vibe uniquement.
+            </small>
+          </div>
+        </div>
+      ) : null}
+      <Link
+        className="md-button md-button-outline md-button-md wakies-profile-link"
+        href="/vibe"
+      >
+        Modifier dans Vibe
+      </Link>
     </article>
   );
 }

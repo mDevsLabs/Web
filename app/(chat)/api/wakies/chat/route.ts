@@ -12,7 +12,10 @@ import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
-import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
+import {
+  filterModelsForTier,
+  isModelAllowedForTier,
+} from "@/lib/ai/registry/tiers";
 import { MCP_TOOL_SENTINEL } from "@/lib/ai/tools/ids";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -48,7 +51,7 @@ import {
   contexteRegleSurLeFil,
   resoudreMentionsCapacites,
 } from "@/lib/wakies/mentions";
-import { resolveWakieModelId } from "@/lib/wakies/model";
+import { resolveWakieCatalogModel } from "@/lib/wakies/model";
 import { createWakiePageTools } from "@/lib/wakies/page-tools";
 import { inviteSysteme } from "@/lib/wakies/prompt";
 import {
@@ -325,8 +328,12 @@ export async function POST(request: Request) {
   // Modèle de CETTE conversation, sinon du Wakie, sinon défaut : c'est le
   // choix fait dans le menu de modèle (le même composant que le Chat et le
   // mode Agent), appliqué à l'appel réel.
-  const modelId = resolveWakieModelId(conversation.model, wakie.model);
   const models = await fetchUserModels();
+  const modelId = resolveWakieCatalogModel(
+    filterModelsForTier(models, auth.maiUser.tier),
+    conversation.model,
+    wakie.model
+  );
   if (
     !models.some((candidate) => candidate.id === modelId) ||
     !isModelAllowedForTier(modelId, auth.maiUser.tier)

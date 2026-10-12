@@ -16,6 +16,7 @@ export type EspaceMenuAction =
   | {
       /** Action destructrice : le libellé porte l'accent, la confirmation vient après. */
       danger?: boolean;
+      checked?: boolean;
       id: string;
       kind: "action";
       label: string;
@@ -32,9 +33,11 @@ export type EspaceMenuAction =
 export function SpaceMenu({
   actions,
   libelle,
+  disabled = false,
 }: {
   actions: EspaceMenuAction[];
   libelle: string;
+  disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
@@ -87,7 +90,7 @@ export function SpaceMenu({
   useEffect(() => {
     if (!open || !positioned) return;
     panel.current
-      ?.querySelector<HTMLButtonElement>('[role="menuitem"]')
+      ?.querySelector<HTMLButtonElement>('[role^="menuitem"]')
       ?.focus();
   }, [open, positioned]);
 
@@ -134,7 +137,7 @@ export function SpaceMenu({
           event.preventDefault();
           const boutons = Array.from(
             panel.current?.querySelectorAll<HTMLButtonElement>(
-              '[role="menuitem"]'
+              '[role^="menuitem"]'
             ) ?? []
           );
           const actif = boutons.indexOf(
@@ -152,6 +155,7 @@ export function SpaceMenu({
           boutons[index]?.focus();
         } else if (
           !open &&
+          !disabled &&
           (event.key === "ArrowDown" || event.key === "ArrowUp")
         ) {
           event.preventDefault();
@@ -166,6 +170,7 @@ export function SpaceMenu({
         aria-haspopup="menu"
         aria-label={`${libelle} — actions`}
         className="icon-button"
+        disabled={disabled}
         onClick={() => setOpen((etat) => !etat)}
         ref={trigger}
         type="button"
@@ -206,13 +211,18 @@ export function SpaceMenu({
                   </div>
                 ) : (
                   <button
+                    aria-checked={action.checked}
                     className={`space-dropdown-item${action.danger ? " is-danger" : ""}`}
                     key={action.id}
                     onClick={() => {
                       fermer();
                       action.onSelect();
                     }}
-                    role="menuitem"
+                    role={
+                      action.checked === undefined
+                        ? "menuitem"
+                        : "menuitemcheckbox"
+                    }
                     type="button"
                   >
                     {action.label}

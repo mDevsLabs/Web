@@ -15,6 +15,21 @@
 
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 
+/** Un défaut retiré du catalogue suit le premier modèle disponible ; un choix explicite reste contrôlé par le serveur. */
+export function resolveWakieCatalogModel(
+  models: { id: string }[],
+  conversationModel?: string | null,
+  wakieModel?: string | null
+): string {
+  if (conversationModel?.trim() || wakieModel?.trim())
+    return resolveWakieModelId(conversationModel, wakieModel);
+  return (
+    models.find((model) => model.id === DEFAULT_CHAT_MODEL)?.id ??
+    models[0]?.id ??
+    DEFAULT_CHAT_MODEL
+  );
+}
+
 export function resolveWakieModelId(
   ...candidates: (string | null | undefined)[]
 ): string {

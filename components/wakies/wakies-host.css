@@ -2263,7 +2263,25 @@
   min-width: 0;
 }
 .wakies-root .muse-conversation-row {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+
+/* Le titre conserve la largeur restante ; les quatre actions vivent dans le menu. */
+.wakies-root .thread-title-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wakies-root .thread-unread {
+  flex: none;
+}
+
+.wakies-root .muse-conversation-row .space-nav-menu > button {
+  width: 32px;
+  height: 32px;
+  opacity: 1;
 }
 
 .wakies-root .wakies-public-card > .surface-muted {
@@ -2323,4 +2341,190 @@
 .wakies-root .tool-card-logo .integration-logo {
   width: 15px;
   height: 15px;
+}
+
+/* La modale centre ses labels génériques : les choix de capacités doivent
+   garder la case, le titre et la description au bord gauche, dans tous les réglages. */
+.wakies-root .muse-app .capability-picker .capability-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  text-align: left;
+}
+.wakies-root .muse-app .capability-picker .capability-row > input {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+}
+.wakies-root .muse-app .capability-picker .capability-row-body {
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+  text-align: left;
+}
+.wakies-root .muse-app .capability-picker .capability-row-title {
+  justify-content: flex-start;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.wakies-root .muse-app .capability-picker fieldset > legend {
+  text-align: left;
+}
+
+.wakies-root .muse-app .chat-compose-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 0 4px 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.wakies-root .muse-app .wakies-attachment-trigger {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 8px;
+}
+.wakies-root .muse-app .permission-row > input[type="checkbox"],
+.wakies-root .muse-app .space-access-option > input[type="checkbox"] {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+}
+
+/* Les fiches publiques gardent leurs cases et leurs libellés au bord gauche. */
+.wakies-root .wakies-profile-form {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.wakies-root .wakies-profile-form .field-label.checkbox {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+.wakies-root .wakies-profile-form .checkbox > input[type="checkbox"] {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+}
+.wakies-root .wakies-social-search-status {
+  min-height: 18px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.wakies-root .wakies-social-list li {
+  flex-wrap: wrap;
+}
+.wakies-root .wakies-social-list .wakies-social-line {
+  flex-basis: 120px;
+}
+.wakies-root .wakies-social-line strong,
+.wakies-root .wakies-public-head strong {
+  overflow-wrap: anywhere;
+}
+.wakies-root .wakies-account-profile {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.wakies-root .wakies-account-profile > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.wakies-root .wakies-account-avatar {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.wakies-root .wakies-profile-link {
+  align-self: flex-start;
+  text-decoration: none;
+}
+
+.wakies-root .wakies-share {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.wakies-root .wakies-share > p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.wakies-root .wakies-share-dialog {
+  inset-inline: 0;
+  margin-inline: auto;
+  z-index: 111;
+  width: min(440px, calc(100vw - 24px));
+  gap: 14px;
+}
+.wakies-root .wakies-share-dialog .field-label {
+  min-width: 0;
+  text-align: left;
+}
+.wakies-root .wakies-share-dialog input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.wakies-root .wakies-share-qr {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.wakies-root .wakies-share-qr img {
+  width: min(256px, 100%);
+  height: auto;
+  background: #fff;
+}
+.wakies-root .wakies-shared-page {
+  width: 100%;
+  height: 100dvh;
+  padding: 24px 16px;
+  overflow-y: auto;
+  color: var(--ink);
+  background: var(--md-bg, white);
+}
+.wakies-root .wakies-shared-page > * {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.wakies-root .wakies-shared-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.wakies-root .wakies-shared-page h1 {
+  overflow-wrap: anywhere;
+  font-size: 24px;
+}
+.wakies-root .wakies-shared-page h2 {
+  font-size: 16px;
+}
+.wakies-root .wakies-shared-page p {
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }

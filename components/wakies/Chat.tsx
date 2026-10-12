@@ -84,6 +84,11 @@ import { resolveWakieModelId } from "@/lib/wakies/model";
 import type { Page } from "@/lib/wakies/pages";
 import { storedMessages } from "@/lib/wakies/shared/messages";
 import { fusionnerHistorique } from "@/lib/wakies/shared/messaging";
+import {
+  acceptePiece,
+  type CapacitesPieces,
+  formatsPieces,
+} from "@/lib/wakies/shared/model-attachments";
 import { dernierSeq, texteDe } from "@/lib/wakies/shared/transcript";
 import type {
   CallReceipt,
@@ -262,7 +267,14 @@ function WakieChat({
   const [capabilityIssues, setCapabilityIssues] = useState<string[]>([]);
   const [source, setSource] = useState("");
   const [sourceOpen, setSourceOpen] = useState(false);
-  const [accepteFichiers, setAccepteFichiers] = useState(false);
+  const [capacitesFichiers, setCapacitesFichiers] = useState<CapacitesPieces>({
+    documents: false,
+    images: false,
+  });
+  const accepteFichiers =
+    capacitesFichiers.images || capacitesFichiers.documents;
+  const [modeleEnCours, setModeleEnCours] = useState(false);
+  const changementModele = useRef(false);
   const [bibliothequeOuverte, setBibliothequeOuverte] = useState(false);
   const [erreur, setErreur] = useState("");
   const [epingles, setEpingles] = useState<UIMessage[]>([]);
@@ -450,12 +462,15 @@ function WakieChat({
    */
   const changerModele = useCallback(
     async (choisi: string | null) => {
+      if (changementModele.current) return;
+      changementModele.current = true;
+      setModeleEnCours(true);
       const precedent = modelId;
       setErreur("");
       setModelId(choisi ?? resolveWakieModelId(null, wakie.model));
       try {
         await api(`/conversations/${thread.id}`, "PATCH", { model: choisi });
-        onSaved();
+        await onSaved();
       } catch (e) {
         setModelId(precedent);
         setErreur(
@@ -463,6 +478,9 @@ function WakieChat({
             ? e.message
             : "Le modèle n'a pas pu être enregistré."
         );
+      } finally {
+        changementModele.current = false;
+        setModeleEnCours(false);
       }
     },
     [modelId, onSaved, thread.id, wakie.model]
@@ -475,66 +493,79 @@ function WakieChat({
    * avant de se rendre visible : sans ce drapeau, un fichier retiré pendant
    * que sa requête était en vol réapparaîtrait dans le composer.
    */
-  const ajouterPieces = useCallback(async (fichiers: File[]) => {
-    const acceptes: EtatPiece[] = [];
-    for (const fichier of fichiers) {
-      acceptes.push(pieceSelectionnee(fichier));
-    }
-    setPieces((precedentes) => [...precedentes, ...acceptes]);
-
-    for (const piece of acceptes) {
-      if (!piece.fichier || piece.etat === "echec") {
-        continue;
+  const ajouterPieces = useCallback(
+    async (fichiers: File[]) => {
+      if (changementModele.current) {
+        setErreur("Patientez pendant l’enregistrement du modèle.");
+        return;
       }
-      setPieces((precedentes) =>
-        precedentes.map((p) =>
-          p.idLocal === piece.idLocal
-            ? { ...p, etat: "envoi", progression: 0.4 }
-            : p
-        )
-      );
-      try {
-        const { pathname } = await televerser(piece.fichier);
+      const acceptes: EtatPiece[] = [];
+      for (const fichier of fichiers) {
+        if (!acceptePiece(fichier.type, capacitesFichiers)) {
+          setErreur(
+            "Ce format n’est pas pris en charge par le modèle choisi. Sélectionnez un modèle compatible."
+          );
+          continue;
+        }
+        acceptes.push(pieceSelectionnee(fichier));
+      }
+      setPieces((precedentes) => [...precedentes, ...acceptes]);
+
+      for (const piece of acceptes) {
+        if (!piece.fichier || piece.etat === "echec") {
+          continue;
+        }
         setPieces((precedentes) =>
           precedentes.map((p) =>
-            // `retire` gagne toujours : une réponse tardive ne ressuscite pas
-            // un fichier que l'utilisateur a retiré.
-            p.idLocal !== piece.idLocal || p.retire
-              ? p
-              : { ...p, etat: "pret", pathname, progression: 1 }
+            p.idLocal === piece.idLocal
+              ? { ...p, etat: "envoi", progression: 0.4 }
+              : p
           )
         );
-        // Copie en bibliothèque cloud, SANS bloquer l'envoi : la pièce est déjà
-        // prête pour le message. Le sort de l'import s'affiche sur la ligne, et
-        // une bibliothèque pleine ne doit jamais faire échouer un tour.
-        void importerDansBibliotheque(pathname).then((sort) => {
+        try {
+          const { pathname } = await televerser(piece.fichier);
+          setPieces((precedentes) =>
+            precedentes.map((p) =>
+              // `retire` gagne toujours : une réponse tardive ne ressuscite pas
+              // un fichier que l'utilisateur a retiré.
+              p.idLocal !== piece.idLocal || p.retire
+                ? p
+                : { ...p, etat: "pret", pathname, progression: 1 }
+            )
+          );
+          // Copie en bibliothèque cloud, SANS bloquer l'envoi : la pièce est déjà
+          // prête pour le message. Le sort de l'import s'affiche sur la ligne, et
+          // une bibliothèque pleine ne doit jamais faire échouer un tour.
+          void importerDansBibliotheque(pathname).then((sort) => {
+            setPieces((precedentes) =>
+              precedentes.map((p) =>
+                p.idLocal !== piece.idLocal || p.retire
+                  ? p
+                  : { ...p, biblio: sort }
+              )
+            );
+          });
+        } catch (e) {
           setPieces((precedentes) =>
             precedentes.map((p) =>
               p.idLocal !== piece.idLocal || p.retire
                 ? p
-                : { ...p, biblio: sort }
+                : {
+                    ...p,
+                    erreur:
+                      e instanceof Error
+                        ? e.message
+                        : "Ce fichier n'a pas pu être envoyé.",
+                    etat: "echec",
+                    progression: 0,
+                  }
             )
           );
-        });
-      } catch (e) {
-        setPieces((precedentes) =>
-          precedentes.map((p) =>
-            p.idLocal !== piece.idLocal || p.retire
-              ? p
-              : {
-                  ...p,
-                  erreur:
-                    e instanceof Error
-                      ? e.message
-                      : "Ce fichier n'a pas pu être envoyé.",
-                  etat: "echec",
-                  progression: 0,
-                }
-          )
-        );
+        }
       }
-    }
-  }, []);
+    },
+    [capacitesFichiers]
+  );
 
   const retirerPiece = useCallback((idLocal: string) => {
     setPieces((precedentes) =>
@@ -758,6 +789,11 @@ function WakieChat({
 
   const envoyer = useCallback(
     async (texte: string, avecPieces = true, messageId?: string) => {
+      // Une erreur garde le message dans la file si le modèle change pendant
+      // son traitement : un retour silencieux le ferait disparaître.
+      if (changementModele.current) {
+        throw new Error("Patientez pendant l’enregistrement du modèle.");
+      }
       if (!texte.trim() || paused || !contextePret) {
         return;
       }
@@ -772,6 +808,19 @@ function WakieChat({
       const pretes = (avecPieces ? pieces : [])
         .filter((p) => p.etat === "pret" && p.pathname)
         .map(partDePiece);
+      if (
+        avecPieces &&
+        pieces.some(
+          (piece) =>
+            piece.etat === "pret" &&
+            !acceptePiece(piece.type, capacitesFichiers)
+        )
+      ) {
+        setErreur(
+          "Une pièce jointe est incompatible avec le modèle choisi. Changez de modèle ou retirez-la."
+        );
+        return;
+      }
       setErreur("");
       failure.current = null;
       // La citation part avec CE message : la ref est lue par le transport au
@@ -824,6 +873,7 @@ function WakieChat({
     },
     [
       contextePret,
+      capacitesFichiers,
       envoiEnCours,
       enCours,
       pageContext,
@@ -882,6 +932,7 @@ function WakieChat({
   useEffect(() => {
     if (
       !enCours &&
+      !modeleEnCours &&
       contextePret &&
       !envoiEnCours &&
       queued.pending.length &&
@@ -902,6 +953,7 @@ function WakieChat({
     queue,
     queued.paused,
     queued.pending.length,
+    modeleEnCours,
   ]);
   useEffect(
     () => () => {
@@ -916,7 +968,9 @@ function WakieChat({
   return (
     <div
       className="live-chat"
-      data-app-update-blocked={enCours || pieces.length > 0 || transfertEnCours}
+      data-app-update-blocked={
+        enCours || pieces.length > 0 || transfertEnCours || modeleEnCours
+      }
     >
       <header className="chat-persona">
         <Mascot
@@ -939,20 +993,6 @@ function WakieChat({
           </span>
         </div>
         <div className="chat-persona-actions">
-          {/* Le sélecteur affiche la valeur PERSISTÉE (`thread.model`), qui peut être
-              vide : ce vide signifie « suit le Wakie » et non « aucun modèle ».
-              `modelId` n'est plus qu'un tampon de retour arrière — le serveur
-              fait autorité, donc on n'affiche jamais une valeur optimiste que
-              l'enregistrement n'a pas confirmée. */}
-          <span className="wakies-model-picker">
-            <ModelPicker
-              disabled={enCours}
-              modeleEffectif={resolveWakieModelId(thread.model, wakie.model)}
-              onCapacitesFichiers={setAccepteFichiers}
-              onChoisir={(choisi) => void changerModele(choisi)}
-              valeur={thread.model ?? ""}
-            />
-          </span>
           {/* Ce que les `@@` du fil ont réglé, et où l'enlever. */}
           <ReglagesDuFil
             conversation={thread}
@@ -1336,26 +1376,65 @@ function WakieChat({
             </Button>
           </div>
         )}
+        <div className="chat-compose-toolbar">
+          {/* Le sélecteur affiche la valeur PERSISTÉE (`thread.model`), qui peut être
+              vide : ce vide signifie « suit le Wakie » et non « aucun modèle ».
+              `modelId` n'est plus qu'un tampon de retour arrière — le serveur
+              fait autorité, donc on n'affiche jamais une valeur optimiste que
+              l'enregistrement n'a pas confirmée. */}
+          <span className="wakies-model-picker">
+            <ModelPicker
+              disabled={enCours || modeleEnCours}
+              modeleEffectif={thread.model || wakie.model || undefined}
+              onCapacitesPieces={setCapacitesFichiers}
+              onChoisir={(choisi) => void changerModele(choisi)}
+              valeur={thread.model ?? ""}
+            />
+          </span>
+          <Button
+            aria-label="Importer des fichiers ou images"
+            className="wakies-attachment-trigger"
+            disabled={!accepteFichiers || modeleEnCours || paused || enCours}
+            onClick={() => inputFichier.current?.click()}
+            title={
+              accepteFichiers
+                ? "Joindre des fichiers compatibles avec ce modèle"
+                : "Choisissez un modèle acceptant les images ou documents"
+            }
+            type="button"
+            variant="ghost"
+          >
+            <FilePlus2Icon size={16} /> Joindre
+          </Button>
+          {modeleEnCours ? (
+            <span role="status">Enregistrement du modèle…</span>
+          ) : null}
+        </div>
         <div className="chat-compose-row">
           {accepteFichiers && (
             <FileLibrary
               onOpenChange={setBibliothequeOuverte}
-              onSelect={(piece) =>
+              onSelect={(piece) => {
+                if (!acceptePiece(piece.type, capacitesFichiers))
+                  throw new Error(
+                    "Ce fichier est incompatible avec le modèle choisi."
+                  );
                 setPieces((current) =>
                   current.some(
                     (item) => item.pathname === piece.pathname && !item.retire
                   )
                     ? current
                     : [...current, piece]
-                )
-              }
+                );
+              }}
               open={bibliothequeOuverte}
               sansDeclencheur
             />
           )}
           <input
-            accept="image/*,application/pdf,text/plain,text/markdown,text/csv,application/json,.json,.md,.txt,.csv"
+            accept={formatsPieces(capacitesFichiers)}
             className="visually-hidden-input"
+            disabled={!accepteFichiers || modeleEnCours || paused || enCours}
             multiple
             onChange={(event) => {
               const fichiers = [...(event.target.files ?? [])];
@@ -1367,6 +1446,7 @@ function WakieChat({
               event.target.value = "";
             }}
             ref={inputFichier}
+            tabIndex={-1}
             type="file"
           />
           <DropdownMenu
@@ -1478,7 +1558,11 @@ function WakieChat({
               aria-label="Envoyer le message"
               className="send-button"
               disabled={
-                !draft.trim() || !contextePret || paused || envoiEnCours
+                !draft.trim() ||
+                !contextePret ||
+                paused ||
+                envoiEnCours ||
+                modeleEnCours
               }
               type="submit"
               variant="solid"

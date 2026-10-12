@@ -50,11 +50,12 @@
 import { ChevronDownIcon } from "@mdevs/icons/arrows/chevron-down";
 import { CheckIcon } from "@mdevs/icons/controls/check";
 import { Button } from "@mdevs/ui/primitives/button";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
 import {
   ModelSelector,
   ModelSelectorContent,
+  ModelSelectorEmpty,
   ModelSelectorGroup,
   ModelSelectorInput,
   ModelSelectorItem,
@@ -69,6 +70,11 @@ import {
   type SharedModel,
 } from "@/components/chat/model-selector-compact";
 import { cn } from "@/lib/utils";
+import { resolveWakieCatalogModel } from "@/lib/wakies/model";
+import {
+  type CapacitesPieces,
+  capacitesPieces,
+} from "@/lib/wakies/shared/model-attachments";
 
 /** `model: null` — la conversation suit à nouveau le modèle de son Wakie. */
 export const MODE_DEFAUT_WAKIE = "";
@@ -86,6 +92,7 @@ type ModelPickerProps = {
   modeleEffectif?: string;
   /** Informe le composer des capacités du modèle réellement sélectionné. */
   onCapacitesFichiers?: (accepte: boolean) => void;
+  onCapacitesPieces?: (capacites: CapacitesPieces) => void;
   /** Rendu en pleine largeur (dialogue de personnalisation). */
   bloc?: boolean;
   disabled?: boolean;
@@ -141,6 +148,7 @@ export function ModelPicker({
   onChoisir,
   modeleEffectif,
   onCapacitesFichiers,
+  onCapacitesPieces,
   bloc = false,
   disabled = false,
 }: ModelPickerProps) {
@@ -167,8 +175,12 @@ export function ModelPicker({
   );
 
   const modeleSelectionne = tous.find((modele) => modele.id === valeur);
-  const idEffectif = valeur || modeleEffectif || "";
+  const idEffectif = valeur || modeleEffectif || resolveWakieCatalogModel(tous);
   const capacitesEffectives = data?.capabilities?.[idEffectif];
+  const piecesSupportees = useMemo(
+    () => capacitesPieces(capacitesEffectives),
+    [capacitesEffectives]
+  );
   const accepteFichiers = Boolean(
     capacitesEffectives?.file ||
       capacitesEffectives?.image ||
@@ -176,11 +188,19 @@ export function ModelPicker({
   );
   const nomDuModele = tous.find((modele) => modele.id === valeur)?.name;
   /** Nom du modèle réellement employé — le Wakie quand la conversation ne surcharge pas. */
-  const nomEffectif = tous.find((modele) => modele.id === idEffectif)?.name;
+  const nomEffectif =
+    tous.find((modele) => modele.id === idEffectif)?.name ||
+    (tous.length ? idEffectif : undefined);
 
   useEffect(() => {
     onCapacitesFichiers?.(accepteFichiers);
-  }, [accepteFichiers, onCapacitesFichiers]);
+    onCapacitesPieces?.(piecesSupportees);
+  }, [
+    accepteFichiers,
+    onCapacitesFichiers,
+    onCapacitesPieces,
+    piecesSupportees,
+  ]);
 
   /**
    * Ce que le modèle effectivement sélectionné NE SAIT PAS faire.
@@ -208,6 +228,7 @@ export function ModelPicker({
     <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
         <Button
+          aria-label="Choisir le modèle IA"
           className={cn(
             "wakies-model-trigger",
             bloc && "wakies-model-trigger-block",
@@ -247,13 +268,21 @@ export function ModelPicker({
         side={bloc ? "bottom" : "top"}
         style={{ zIndex: 120 }}
       >
-        <ModelSelectorInput placeholder="Rechercher un modèle…" />
+        <ModelSelectorInput
+          aria-label="Rechercher un modèle IA"
+          placeholder="Rechercher un modèle…"
+        />
         {avis.length > 0 ? (
           <p className="border-b border-border/60 px-3 py-2 text-[11px] leading-snug text-muted-foreground">
             {avis.join(" ")}
           </p>
         ) : null}
         <ModelSelectorList>
+          {tous.length > 0 ? (
+            <ModelSelectorEmpty>
+              Aucun modèle ne correspond à votre recherche.
+            </ModelSelectorEmpty>
+          ) : null}
           {/* L'entrée « modèle du Wakie » est l'ABSENCE de choix de modèle,
               pas un modèle nommé : elle émet `null`. */}
           <ModelSelectorItem

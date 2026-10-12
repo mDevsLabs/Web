@@ -246,6 +246,7 @@ export function Onboarding({
                   key={choix}
                 >
                   <input
+                    aria-label={`Mascotte ${choix}`}
                     checked={avatar === choix}
                     name="onboarding-avatar"
                     onChange={() => setAvatar(choix)}

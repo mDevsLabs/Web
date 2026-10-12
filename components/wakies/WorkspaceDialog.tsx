@@ -305,6 +305,7 @@ export function WorkspaceDialog({
                     key={choice}
                   >
                     <input
+                      aria-label={`Mascotte ${choice}`}
                       checked={avatar === choice}
                       name="wakie-avatar"
                       onChange={() => setAvatar(choice)}

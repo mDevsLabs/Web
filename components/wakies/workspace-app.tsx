@@ -74,21 +74,28 @@ import type {
  */
 export function WakiesWorkspace({
   initialNavCollapsed = false,
+  fichePartageeId,
 }: {
   /** Lu côté serveur : éviter que le rail ne se replie après l'hydratation. */
   initialNavCollapsed?: boolean;
+  fichePartageeId?: string;
 }) {
   return (
     <WakiesDraftProvider>
-      <WakiesWorkspaceContent initialNavCollapsed={initialNavCollapsed} />
+      <WakiesWorkspaceContent
+        fichePartageeId={fichePartageeId}
+        initialNavCollapsed={initialNavCollapsed}
+      />
     </WakiesDraftProvider>
   );
 }
 
 function WakiesWorkspaceContent({
   initialNavCollapsed,
+  fichePartageeId,
 }: {
   initialNavCollapsed: boolean;
+  fichePartageeId?: string;
 }) {
   const [state, setState] = useState<State>();
   const routeur = useRouter();
@@ -104,7 +111,9 @@ function WakiesWorkspaceContent({
   const [workspace, setWorkspace] = useState<WorkspaceState>();
   const [selectedWakie, setSelectedWakie] = useState("");
   const [selectedThread, setSelectedThread] = useState<string>();
-  const [view, rawSetView] = useState<WakiesSection>("today");
+  const [view, rawSetView] = useState<WakiesSection>(
+    fichePartageeId ? "amis" : "today"
+  );
   const dirtyPage = useRef(false);
   const [spaceId, setSpaceId] = useState("");
   const [pageId, setPageId] = useState<string>();
@@ -1350,6 +1359,7 @@ function WakiesWorkspaceContent({
             </section>
             {ficheWakie ? (
               <WakieProfileDrawer
+                key={ficheWakie.id}
                 onChanged={refresh}
                 onClose={() => setFicheWakie(undefined)}
                 wakie={ficheWakie}
@@ -1362,6 +1372,7 @@ function WakiesWorkspaceContent({
               id: espace.id,
               name: espace.name,
             }))}
+            fichePartageeId={fichePartageeId}
             onChanged={refresh}
             onOuvrirWakie={(wakieId, conversationId) => {
               if (conversationId) {
@@ -1375,6 +1386,7 @@ function WakiesWorkspaceContent({
               );
               if (cible) chooseWakie(cible);
             }}
+            wakiesDuCompte={workspace.wakies}
           />
         ) : (
           <main className="main-content">

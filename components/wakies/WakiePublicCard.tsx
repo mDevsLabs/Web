@@ -17,6 +17,7 @@
 
 import { Button } from "@mdevs/ui/primitives/button";
 import { Mascot } from "@/components/wakies/Mascot";
+import { WakieShare } from "@/components/wakies/WakieShare";
 
 /** Ligne d'annuaire, telle que `GET /api/wakies/directory` la renvoie. */
 export type InscritAnnuaire = {
@@ -43,19 +44,26 @@ export type FichePublique = {
     links: string[];
     name: string;
     personaPubliee?: string;
+    isPublic?: boolean;
+    avatar?: string | null;
   };
 };
 
 export function WakiePublicCard({
   busy,
+  clonageDisponible = true,
+  erreurFiche,
   fiche,
   inscription,
   onAjouter,
   onCloner,
   onDiscuter,
   onRetirer,
+  onReessayer,
 }: {
   busy: boolean;
+  clonageDisponible?: boolean;
+  erreurFiche?: string;
   /** Null tant que la fiche détaillée n'est pas chargée. */
   fiche: FichePublique | null;
   inscription: InscritAnnuaire;
@@ -63,12 +71,14 @@ export function WakiePublicCard({
   onCloner: (wakieId: string) => void;
   onDiscuter: (wakieId: string) => void;
   onRetirer: (wakieId: string) => void;
+  onReessayer?: () => void;
 }) {
   const bio = fiche?.profil.bio || inscription.bio;
   const persona = fiche?.profil.personaPubliee ?? inscription.personaPubliee;
   const liens = fiche?.profil.links ?? [];
   const banniere = fiche?.profil.bannerUrl ?? null;
   const portrait = fiche?.profil.avatarUrl ?? null;
+  const nombreImages = fiche?.images.length ?? inscription.nombreImages;
   return (
     <article className="wakies-public-card">
       <div className={`wakies-public-banner${banniere ? "" : " is-vide"}`}>
@@ -89,9 +99,9 @@ export function WakiePublicCard({
           <strong>{fiche?.profil.name ?? inscription.name}</strong>
           {inscription.handle ? <small> @{inscription.handle}</small> : null}
           <p className="muted">
-            {inscription.nombreImages} image
-            {inscription.nombreImages > 1 ? "s" : ""} publiée
-            {inscription.nombreImages > 1 ? "s" : ""}
+            {nombreImages} image
+            {nombreImages > 1 ? "s" : ""} publiée
+            {nombreImages > 1 ? "s" : ""}
           </p>
         </div>
       </header>
@@ -131,8 +141,19 @@ export function WakiePublicCard({
       ) : null}
       <section className="wakies-public-gallery">
         <h3>Images</h3>
-        {fiche === null ? (
-          <p className="muted">Chargement de la galerie…</p>
+        {erreurFiche ? (
+          <div className="sidebar-error" role="alert">
+            <p>{erreurFiche}</p>
+            {onReessayer ? (
+              <Button onClick={onReessayer} variant="outline">
+                Recharger la fiche
+              </Button>
+            ) : null}
+          </div>
+        ) : fiche === null ? (
+          <p className="muted" role="status">
+            Chargement de la galerie…
+          </p>
         ) : fiche.images.length === 0 ? (
           <p className="muted">Aucune image publiée.</p>
         ) : (
@@ -150,6 +171,13 @@ export function WakiePublicCard({
         )}
       </section>
       <footer className="wakies-public-actions">
+        <WakieShare
+          disabled={busy || !fiche || Boolean(erreurFiche)}
+          id={inscription.wakieId}
+          isPublic={fiche?.profil.isPublic !== false}
+          key={inscription.wakieId}
+          name={inscription.name}
+        />
         {inscription.estMien ? (
           <Button onClick={() => onDiscuter(inscription.wakieId)} type="button">
             Discuter
@@ -174,8 +202,13 @@ export function WakiePublicCard({
         )}
         {inscription.estMien ? null : (
           <Button
-            disabled={busy || !persona}
+            disabled={busy || !persona || !clonageDisponible}
             onClick={() => onCloner(inscription.wakieId)}
+            title={
+              clonageDisponible
+                ? undefined
+                : "Créez un Espace avant de cloner ce Wakie."
+            }
             type="button"
             variant="outline"
           >

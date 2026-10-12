@@ -31,9 +31,9 @@ const ARTIFACT = "components/chat/artifact.tsx";
 describe("La pile d'accueil ne doit pas être recouverte par le conteneur de messages", () => {
   it("la pile d'accueil porte un z-index supérieur au conteneur de messages", () => {
     const src = source(MESSAGES);
-    // La pile d'accueil : absolute inset-0 + z-10 + pointer-events-none.
+    // La pile reste au-dessus des messages et reçoit les gestes de défilement.
     expect(src).toContain(
-      '"pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-y-auto p-4"'
+      '"absolute inset-0 z-10 flex flex-col items-center overflow-y-auto overscroll-contain p-4"'
     );
     // Le conteneur de messages reste sans z-index (frère suivant, z auto) :
     // sa présence est vérifiée pour documenter le rapport d'empilement.
@@ -44,8 +44,7 @@ describe("La pile d'accueil ne doit pas être recouverte par le conteneur de mes
 
   it("la zone cliquable du sélecteur reste active (pointer-events-auto)", () => {
     const src = source(MESSAGES);
-    // Le parent est pointer-events-none ; seul le wrapper du sélecteur
-    // réactive les pointeurs. Le greeting reste volontairement non cliquable.
+    // Le sélecteur reste actif au sein de la pile défilante.
     expect(src).toContain("pointer-events-auto mb-8");
     expect(src).toContain("<Greeting />");
   });

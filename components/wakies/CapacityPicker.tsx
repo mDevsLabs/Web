@@ -34,7 +34,6 @@
  */
 
 import { ServerCogIcon } from "@mdevs/icons/cloud/server-cog";
-import { CheckIcon } from "@mdevs/icons/controls/check";
 import { XIcon } from "@mdevs/icons/controls/x";
 import { AlertTriangleIcon } from "@mdevs/icons/misc/alert-triangle";
 import { BotIcon } from "@mdevs/icons/misc/bot";
@@ -218,10 +217,7 @@ function Ligne({
         type="checkbox"
       />
       <span className="capability-row-body">
-        <span className="capability-row-title">
-          {libelle}
-          {actif ? <CheckIcon size={14} /> : null}
-        </span>
+        <span className="capability-row-title">{libelle}</span>
         {statut ? (
           <small className={`capability-row-status is-${statut.ton}`}>
             {statut.texte}

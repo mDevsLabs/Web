@@ -235,7 +235,7 @@ function PureMessages({
         </div>
       )}
       {messages.length === 0 && !isLoading && (
-        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-y-auto p-4">
+        <div className="absolute inset-0 z-10 flex flex-col items-center overflow-y-auto overscroll-contain p-4">
           {/* Pile d'accueil centrée : mêmes largeur maximale, espacement et
               paddings que la pile Agent (agent-home.tsx), pour une position
               identique du sélecteur et du titre dans les deux modes.
@@ -245,7 +245,7 @@ function PureMessages({
               supérieur, il peint au-dessus de la pile et avale les clics
               réels sur le sélecteur Chat | Agent (clics programmatiques
               épargnés, d'où un bug invisible aux tests automatisés). */}
-          <div className="flex w-full max-w-3xl flex-col items-center py-8">
+          <div className="my-auto flex w-full max-w-3xl shrink-0 flex-col items-center py-8">
             {modeSwitcher ? (
               <div className="pointer-events-auto mb-8">{modeSwitcher}</div>
             ) : null}

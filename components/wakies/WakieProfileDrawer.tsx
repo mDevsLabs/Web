@@ -24,8 +24,10 @@ import { Input } from "@mdevs/ui/primitives/input";
 import { Textarea } from "@mdevs/ui/primitives/textarea";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "@/components/wakies/api";
-import { televerser } from "@/components/wakies/attachments";
+import { motifRefus, televerser } from "@/components/wakies/attachments";
 import { Mascot } from "@/components/wakies/Mascot";
+import { WakieShare } from "@/components/wakies/WakieShare";
+import { acceptePiece } from "@/lib/wakies/shared/model-attachments";
 import type { Wakie } from "@/lib/wakies/shared/types";
 
 type Fiche = {
@@ -55,7 +57,9 @@ export function WakieProfileDrawer({
   wakie: Wakie;
 }) {
   const [fiche, setFiche] = useState<Fiche | null>(null);
-  const [quota, setQuota] = useState<number | null>(null);
+  const [quota, setQuota] = useState<number | null>();
+  const [chargement, setChargement] = useState(true);
+  const [reprise, setReprise] = useState(0);
   const [bio, setBio] = useState("");
   const [handle, setHandle] = useState("");
   const [liens, setLiens] = useState("");
@@ -66,50 +70,82 @@ export function WakieProfileDrawer({
   const [busy, setBusy] = useState(false);
   const [televerse, setTeleverse] = useState(false);
   const fichier = useRef<HTMLInputElement>(null);
+  const operation = useRef(false);
+  const formulaireCharge = useRef(false);
+  const publicInitial = useRef(wakie.isPublic ?? false);
+  const indisponible = chargement || fiche === null || busy || televerse;
+  const limiteAtteinte =
+    quota !== undefined &&
+    quota !== null &&
+    (fiche?.images.length ?? 0) >= quota;
+  const brouillonModifie =
+    fiche !== null &&
+    (bio !== (fiche.profil.bio ?? "") ||
+      handle !== (fiche.profil.handle ?? "") ||
+      liens !== (fiche.profil.links ?? []).join("\n") ||
+      persona !== (fiche.profil.personaPubliee ?? "") ||
+      publie !== (fiche.profil.isPublic ?? publicInitial.current));
 
   /**
-   * Recharge la fiche ET la galerie, puis remplit le formulaire.
+   * Recharge la fiche ET la galerie. Seule la lecture initiale ou la sauvegarde
+   * remplit le formulaire : modifier la galerie ne doit pas effacer le brouillon.
    *
    * Elle dépend de l'identifiant du Wakie — donc changer de Wakie recharge la
    * fiche, et modifier un champ du formulaire ne la recharge pas.
    */
-  const charger = useCallback(async () => {
-    const [donnees, galerie] = await Promise.all([
-      api<Fiche>(`/wakies/${wakie.id}/profile`),
-      api<{ images: Fiche["images"]; quota: number | null }>(
-        `/wakies/${wakie.id}/images`
-      ),
-    ]);
-    setFiche({ ...donnees, images: galerie.images });
-    setQuota(galerie.quota ?? null);
-    setBio(donnees.profil.bio ?? "");
-    setHandle(donnees.profil.handle ?? "");
-    setLiens((donnees.profil.links ?? []).join("\n"));
-    setPersona(donnees.profil.personaPubliee ?? "");
-    setPublie(donnees.profil.isPublic ?? wakie.isPublic ?? false);
-  }, [wakie.id, wakie.isPublic]);
+  const charger = useCallback(
+    async (remplir = false, signal?: AbortSignal) => {
+      const [donnees, galerie] = await Promise.all([
+        api<Fiche>(`/wakies/${wakie.id}/profile`, "GET", undefined, signal),
+        api<{ images: Fiche["images"]; quota: number | null }>(
+          `/wakies/${wakie.id}/images`,
+          "GET",
+          undefined,
+          signal
+        ),
+      ]);
+      if (signal?.aborted) return;
+      setFiche({ ...donnees, images: galerie.images });
+      setQuota(galerie.quota);
+      if (remplir) {
+        setBio(donnees.profil.bio ?? "");
+        setHandle(donnees.profil.handle ?? "");
+        setLiens((donnees.profil.links ?? []).join("\n"));
+        setPersona(donnees.profil.personaPubliee ?? "");
+        setPublie(donnees.profil.isPublic ?? publicInitial.current);
+        formulaireCharge.current = true;
+      }
+    },
+    [wakie.id]
+  );
 
   useEffect(() => {
-    let actif = true;
+    const controleur = new AbortController();
+    setChargement(true);
     setErreur("");
-    void charger().catch((probleme) => {
-      if (actif) {
-        setErreur(
-          probleme instanceof Error
-            ? probleme.message
-            : "La fiche n'a pas pu être chargée."
-        );
-      }
-    });
-    return () => {
-      actif = false;
-    };
-  }, [charger]);
+    void charger(!formulaireCharge.current, controleur.signal)
+      .catch((probleme) => {
+        if (!controleur.signal.aborted) {
+          setErreur(
+            probleme instanceof Error
+              ? probleme.message
+              : "La fiche n'a pas pu être chargée."
+          );
+        }
+      })
+      .finally(() => {
+        if (!controleur.signal.aborted) setChargement(false);
+      });
+    return () => controleur.abort();
+  }, [charger, reprise]);
 
   const enregistrer = async () => {
+    if (indisponible || operation.current) return;
+    operation.current = true;
     setBusy(true);
     setErreur("");
     setAvis("");
+    let enregistre = false;
     try {
       const liensPropres = liens
         .split("\n")
@@ -123,24 +159,56 @@ export function WakieProfileDrawer({
         links: liensPropres,
         publicPersona: persona,
       });
-      await charger();
+      enregistre = true;
+      setAvis(publie ? "Fiche publiée." : "Fiche privée enregistrée.");
+      await charger(true);
       await onChanged?.();
-      setAvis("Fiche publiée.");
     } catch (probleme) {
       setErreur(
-        probleme instanceof Error ? probleme.message : "Publication impossible."
+        enregistre
+          ? "La fiche a été enregistrée, mais son actualisation a échoué. Réessayez la lecture."
+          : probleme instanceof Error
+            ? probleme.message
+            : "Publication impossible."
       );
     } finally {
+      operation.current = false;
       setBusy(false);
     }
   };
 
   const ajouterImage = async (fichiers: File[]) => {
+    if (indisponible || operation.current || quota === undefined) return;
+    if (fichiers.length > 4) {
+      setErreur("Sélectionnez au maximum quatre images à la fois.");
+      return;
+    }
+    if (
+      limiteAtteinte ||
+      (quota !== null && fichiers.length > quota - (fiche?.images.length ?? 0))
+    ) {
+      setErreur("Cette sélection dépasse la limite d’images de votre fiche.");
+      return;
+    }
+    if (
+      fichiers.some(
+        (image) => !acceptePiece(image.type, { documents: false, images: true })
+      )
+    ) {
+      setErreur("Choisissez une image JPEG, PNG, WebP ou GIF.");
+      return;
+    }
+    const refus = fichiers.map(motifRefus).find(Boolean);
+    if (refus) {
+      setErreur(refus);
+      return;
+    }
+    operation.current = true;
     setTeleverse(true);
     setErreur("");
     setAvis("");
     try {
-      for (const image of fichiers.slice(0, 4)) {
+      for (const image of fichiers) {
         const { pathname } = await televerser(image);
         await api(`/wakies/${wakie.id}/images`, "POST", {
           alt: image.name.slice(0, 140),
@@ -156,11 +224,14 @@ export function WakieProfileDrawer({
           : "L'image n'a pas pu être publiée."
       );
     } finally {
+      operation.current = false;
       setTeleverse(false);
     }
   };
 
   const retirerImage = async (imageId: string) => {
+    if (indisponible || operation.current) return;
+    operation.current = true;
     setBusy(true);
     setErreur("");
     try {
@@ -176,14 +247,17 @@ export function WakieProfileDrawer({
           : "L'image n'a pas pu être retirée."
       );
     } finally {
+      operation.current = false;
       setBusy(false);
     }
   };
 
   return (
     <aside
+      aria-busy={chargement || busy || televerse}
       aria-label={`Fiche de ${wakie.name}`}
       className="wakies-profile-drawer"
+      data-app-update-blocked={busy || televerse || brouillonModifie}
     >
       <header className="wakies-profile-head">
         {fiche?.profil.avatarUrl ? (
@@ -206,7 +280,9 @@ export function WakieProfileDrawer({
         <Button
           aria-label="Fermer la fiche"
           className="icon-button"
+          disabled={busy || televerse}
           onClick={onClose}
+          type="button"
           variant="ghost"
         >
           Fermer
@@ -218,13 +294,30 @@ export function WakieProfileDrawer({
           {erreur}
         </p>
       ) : null}
+      {erreur && !chargement ? (
+        <Button
+          disabled={busy || televerse}
+          onClick={() => setReprise((value) => value + 1)}
+          variant="outline"
+        >
+          Recharger la fiche
+        </Button>
+      ) : null}
       {avis ? (
         <p className="sidebar-note" role="status">
           {avis}
         </p>
       ) : null}
 
-      <section className="wakies-profile-form">
+      {chargement ? (
+        <p className="muted" role="status">
+          Chargement de la fiche…
+        </p>
+      ) : null}
+      <fieldset className="wakies-profile-form" disabled={indisponible}>
+        <legend className="visually-hidden">
+          Informations publiques du Wakie
+        </legend>
         <label className="field-label">
           Pseudo public
           <Input
@@ -269,30 +362,52 @@ export function WakieProfileDrawer({
           Visible dans l&apos;annuaire public
         </label>
         <Button
-          disabled={busy}
+          disabled={indisponible}
           onClick={() => void enregistrer()}
           type="button"
           variant="solid"
         >
-          {busy ? "Enregistrement…" : "Publier la fiche"}
+          {busy
+            ? "Enregistrement…"
+            : publie
+              ? "Publier la fiche"
+              : "Enregistrer la fiche privée"}
         </Button>
-      </section>
+      </fieldset>
+      {fiche ? (
+        <WakieShare
+          disabled={indisponible}
+          id={wakie.id}
+          isPublic={fiche.profil.isPublic ?? publicInitial.current}
+          name={wakie.name}
+        />
+      ) : null}
 
       <section className="wakies-profile-gallery">
         <h3>
           Images
           <small className="muted">
             {fiche ? ` ${fiche.images.length}` : " …"}
-            {quota === null ? " · illimitées" : ` / ${quota}`}
+            {quota === undefined
+              ? " · limite indisponible"
+              : quota === null
+                ? " · illimitées"
+                : ` / ${quota}`}
           </small>
         </h3>
         {fiche === null ? (
-          <p className="muted">Chargement de la galerie…</p>
+          !chargement && erreur ? (
+            <p className="muted">Galerie indisponible.</p>
+          ) : (
+            <p className="muted" role="status">
+              Chargement de la galerie…
+            </p>
+          )
         ) : fiche.images.length === 0 ? (
           <p className="muted">Aucune image publiée.</p>
         ) : (
           <ul>
-            {fiche.images.map((image) => (
+            {fiche.images.map((image, index) => (
               <li key={image.id}>
                 {image.url ? (
                   <img alt={image.alt} src={image.url} />
@@ -300,9 +415,9 @@ export function WakieProfileDrawer({
                   <span className="muted">Image indisponible</span>
                 )}
                 <Button
-                  aria-label="Retirer cette image"
+                  aria-label={`Retirer l’image ${index + 1}`}
                   className="icon-button"
-                  disabled={busy}
+                  disabled={indisponible}
                   onClick={() => void retirerImage(image.id)}
                   variant="ghost"
                 >
@@ -313,8 +428,10 @@ export function WakieProfileDrawer({
           </ul>
         )}
         <input
-          accept="image/*"
+          accept="image/jpeg,image/png,image/webp,image/gif"
+          aria-label="Importer des images dans la fiche"
           className="visually-hidden-input"
+          disabled={indisponible || limiteAtteinte || quota === undefined}
           multiple
           onChange={(evenement) => {
             const choisis = [...(evenement.target.files ?? [])];
@@ -324,10 +441,11 @@ export function WakieProfileDrawer({
             evenement.target.value = "";
           }}
           ref={fichier}
+          tabIndex={-1}
           type="file"
         />
         <Button
-          disabled={televerse || busy}
+          disabled={indisponible || limiteAtteinte || quota === undefined}
           onClick={() => fichier.current?.click()}
           type="button"
           variant="outline"
@@ -335,6 +453,9 @@ export function WakieProfileDrawer({
           {televerse ? "Envoi…" : "Ajouter une image"}
         </Button>
       </section>
+      {limiteAtteinte ? (
+        <p className="muted">Limite d’images atteinte pour votre forfait.</p>
+      ) : null}
     </aside>
   );
 }

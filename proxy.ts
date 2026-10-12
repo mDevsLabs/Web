@@ -4,6 +4,7 @@ import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { isLiveSessionToken } from "./lib/auth/token-liveness";
 import { MAI_SESSION_COOKIE } from "./lib/constants";
 import { estRouteApiAutonome } from "./lib/security/proxy-policy";
+import { estPagePartageWakie } from "./lib/wakies/shared/sharing";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,6 +29,11 @@ export async function proxy(request: NextRequest) {
   }
 
   if (pathname === "/changelog") {
+    return NextResponse.next();
+  }
+
+  // Seule la fiche publiée est publique ; l’espace de travail et ses API gardent leur garde.
+  if (estPagePartageWakie(pathname, process.env.NEXT_PUBLIC_BASE_PATH ?? "")) {
     return NextResponse.next();
   }
 
@@ -129,12 +135,12 @@ export async function proxy(request: NextRequest) {
         { status: API_ERROR_STATUS.auth_required }
       );
     }
-    // Conserve le chemin + la query pour retour après login
+    // Le visiteur découvre le site public ; l'invitation garde le retour après connexion.
     const nextUrl = request.nextUrl.clone();
     const redirectTarget = `${nextUrl.pathname}${nextUrl.search}`;
     return NextResponse.redirect(
       new URL(
-        `${base}/login?redirectUrl=${encodeURIComponent(redirectTarget)}`,
+        `${base}/site?connexion=1&redirectUrl=${encodeURIComponent(redirectTarget)}`,
         request.url
       )
     );

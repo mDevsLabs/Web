@@ -1,5 +1,30 @@
 import { contextBridge, ipcRenderer } from "electron";
 
+// Signale seulement l’activité récente pour différer le rechargement Web ;
+// aucune saisie ni donnée de page ne quitte le renderer.
+let derniereActiviteSignalee = 0;
+const signalerActivite = () => {
+  const maintenant = Date.now();
+  if (maintenant - derniereActiviteSignalee < 1000) return;
+  derniereActiviteSignalee = maintenant;
+  ipcRenderer.send("desktop:user-activity");
+};
+
+for (const type of [
+  "pointerdown",
+  "keydown",
+  "input",
+  "change",
+  "focusin",
+  "scroll",
+  "touchstart",
+]) {
+  document.addEventListener(type, signalerActivite, {
+    capture: true,
+    passive: true,
+  });
+}
+
 // Expose une API minimale et sécurisée au renderer mAI Web
 contextBridge.exposeInMainWorld("maiDesktop", {
   getCoderStatus: () => ipcRenderer.invoke("desktop:get-coder-status"),

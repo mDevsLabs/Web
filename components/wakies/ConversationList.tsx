@@ -33,11 +33,9 @@ import { Input } from "@mdevs/ui/primitives/input";
 
 import { MessageCircleIcon } from "@mdevs/icons/communication/message-circle";
 import { PlusIcon } from "@mdevs/icons/controls/plus";
-import { EllipsisVerticalIcon } from "@mdevs/icons/interface/ellipsis-vertical";
-import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
-import { Bell, BellOff, Star } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/components/wakies/api";
+import { SpaceMenu } from "@/components/wakies/SpaceMenu";
 import { trierConversations } from "@/lib/wakies/shared/messaging";
 import type { Conversation, Wakie } from "@/lib/wakies/shared/types";
 
@@ -148,7 +146,9 @@ export function ConversationList({
             <MessageCircleIcon size={15} />
             <span className="thread-summary">
               <span className="thread-title">
-                {conversation.title}
+                <span className="thread-title-text" title={conversation.title}>
+                  {conversation.title}
+                </span>
                 {conversation.nonLus ? (
                   <small className="thread-unread">
                     {conversation.nonLus > 99 ? "99+" : conversation.nonLus}
@@ -168,87 +168,82 @@ export function ConversationList({
               ) : null}
             </span>
           </Button>
-          <Button
-            aria-label={`${conversation.favorite ? "Retirer des favoris" : "Ajouter aux favoris"} : ${conversation.title}`}
-            aria-pressed={Boolean(conversation.favorite)}
-            className="icon-button"
+          <SpaceMenu
+            actions={[
+              {
+                checked: Boolean(conversation.favorite),
+                id: "favori",
+                kind: "action",
+                label: conversation.favorite
+                  ? "Retirer des favoris"
+                  : "Ajouter aux favoris",
+                onSelect: () => void preference(conversation, "favorite"),
+              },
+              {
+                checked: Boolean(conversation.muted),
+                id: "sourdine",
+                kind: "action",
+                label: conversation.muted
+                  ? "Réactiver les notifications"
+                  : "Mettre en sourdine",
+                onSelect: () => void preference(conversation, "muted"),
+              },
+              {
+                id: "renommer",
+                kind: "action",
+                label: "Renommer",
+                onSelect: async () => {
+                  const title = window.prompt(
+                    "Nouveau titre",
+                    conversation.title
+                  );
+                  if (!title?.trim()) return;
+                  setBusy(true);
+                  setError("");
+                  try {
+                    await api(`/conversations/${conversation.id}`, "PATCH", {
+                      title: title.trim().slice(0, 120),
+                    });
+                    await onChanged();
+                  } catch (e) {
+                    setError(
+                      e instanceof Error ? e.message : "Renommage impossible."
+                    );
+                  } finally {
+                    setBusy(false);
+                  }
+                },
+              },
+              {
+                danger: true,
+                id: "supprimer",
+                kind: "action",
+                label: "Supprimer",
+                onSelect: async () => {
+                  if (
+                    !window.confirm(
+                      "Supprimer cette conversation et ses messages ?"
+                    )
+                  )
+                    return;
+                  setBusy(true);
+                  setError("");
+                  try {
+                    await api(`/conversations/${conversation.id}`, "DELETE");
+                    await onChanged();
+                  } catch (e) {
+                    setError(
+                      e instanceof Error ? e.message : "Suppression impossible."
+                    );
+                  } finally {
+                    setBusy(false);
+                  }
+                },
+              },
+            ]}
             disabled={busy}
-            onClick={() => void preference(conversation, "favorite")}
-            type="button"
-            variant="ghost"
-          >
-            <Star
-              fill={conversation.favorite ? "currentColor" : "none"}
-              size={14}
-            />
-          </Button>
-          <Button
-            aria-label={`${conversation.muted ? "Réactiver les notifications" : "Mettre en sourdine"} : ${conversation.title}`}
-            aria-pressed={Boolean(conversation.muted)}
-            className="icon-button"
-            disabled={busy}
-            onClick={() => void preference(conversation, "muted")}
-            type="button"
-            variant="ghost"
-          >
-            {conversation.muted ? <BellOff size={14} /> : <Bell size={14} />}
-          </Button>
-          <Button
-            aria-label={`Renommer ${conversation.title}`}
-            className="icon-button"
-            disabled={busy}
-            onClick={async () => {
-              const title = window.prompt("Nouveau titre", conversation.title);
-              if (!title?.trim()) return;
-              setBusy(true);
-              setError("");
-              try {
-                await api(`/conversations/${conversation.id}`, "PATCH", {
-                  title: title.trim().slice(0, 120),
-                });
-                await onChanged();
-              } catch (e) {
-                setError(
-                  e instanceof Error ? e.message : "Renommage impossible."
-                );
-              } finally {
-                setBusy(false);
-              }
-            }}
-            type="button"
-            variant="ghost"
-          >
-            <EllipsisVerticalIcon size={14} />
-          </Button>
-          <Button
-            aria-label={`Supprimer ${conversation.title}`}
-            className="icon-button"
-            disabled={busy}
-            onClick={async () => {
-              if (
-                !window.confirm(
-                  "Supprimer cette conversation et ses messages ?"
-                )
-              )
-                return;
-              setBusy(true);
-              setError("");
-              try {
-                await api(`/conversations/${conversation.id}`, "DELETE");
-                await onChanged();
-              } catch (e) {
-                setError(
-                  e instanceof Error ? e.message : "Suppression impossible."
-                );
-              } finally {
-                setBusy(false);
-              }
-            }}
-            type="button"
-            variant="ghost"
-          >
-            <Trash2Icon size={13} />
-          </Button>
+            libelle={`Conversation ${conversation.title}`}
+          />
         </div>
       ))}
       {filtrees.length ? null : (

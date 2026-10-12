@@ -10,15 +10,12 @@ import {
   requireWakiesUser,
   toErrorResponse,
 } from "@/lib/wakies/http";
+import { lireFicheWakiePartagee } from "@/lib/wakies/public-profile";
 import {
   ensureProfilWakie,
-  extraitPersonaPublique,
   findWakie,
-  lireProfilPublic,
   listerImagesWakie,
   mettreAJourProfilWakie,
-  proprietaireWakiePublic,
-  trouverWakiePublic,
   type WakieImageRow,
   type WakieProfilRow,
 } from "@/lib/wakies/queries";
@@ -127,25 +124,13 @@ export async function GET(
       })
     );
   }
-  const proprietaire = await proprietaireWakiePublic(id);
-  const publique = await trouverWakiePublic(id);
-  if (!proprietaire || !publique) return notFound("Wakie introuvable.");
-  return json(
-    await ficheAffichee({
-      images: await listerImagesWakie(id, { publicSeulement: true }),
-      meta: {
-        accent: publique.accent ?? null,
-        avatar: publique.avatar ?? null,
-        bio: publique.bio ?? "",
-        handle: publique.handle ?? null,
-        isPublic: true,
-        name: publique.name,
-        personaPubliee: extraitPersonaPublique(publique, 280),
-      },
-      profil: await lireProfilPublic(id),
-      proprietaire,
-    })
-  );
+  const publique = await lireFicheWakiePartagee(id);
+  if (!publique) return notFound("Wakie introuvable.");
+  // Seuls les champs publiés sortent : les chemins de stockage contiennent le propriétaire.
+  return json({
+    images: publique.images,
+    profil: { ...publique.profil, avatar: publique.avatar },
+  });
 }
 
 export async function PATCH(

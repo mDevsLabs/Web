@@ -23,6 +23,7 @@ import {
   verifyCode as apiVerifyCode,
   getCloudStorage,
   getUsage,
+  MaiApiError,
   type MaiCloudStorageUsage,
   type MaiUsage,
 } from "@/lib/site/mai-api";
@@ -120,7 +121,7 @@ export function AuthProvider({
   const refreshCloudStorage =
     useCallback(async (): Promise<MaiCloudStorageUsage | null> => {
       const session = getSession();
-      const tok = session?.token || token;
+      const tok = token || session?.token;
       if (!tok) {
         setCloudStorage(null);
         return null;
@@ -136,7 +137,7 @@ export function AuthProvider({
 
   const refreshUsage = useCallback(async (): Promise<MaiUsage | null> => {
     const session = getSession();
-    const tok = session?.token || token;
+    const tok = token || session?.token;
     if (!tok) {
       setUsage(null);
       setCloudStorage(null);
@@ -150,12 +151,15 @@ export function AuthProvider({
       applyUsage(tok, data);
       if (storageData) setCloudStorage(storageData);
       return data;
-    } catch {
-      clearSession();
-      setToken(null);
-      setUser(null);
-      setUsage(null);
-      setCloudStorage(null);
+    } catch (error) {
+      // Une coupure réseau conserve la session ; seul un refus d’authentification la retire.
+      if (error instanceof MaiApiError && [401, 403].includes(error.status)) {
+        clearSession();
+        setToken(null);
+        setUser(null);
+        setUsage(null);
+        setCloudStorage(null);
+      }
       return null;
     }
   }, [applyUsage, token]);
@@ -165,14 +169,14 @@ export function AuthProvider({
 
     async function hydrate() {
       const session = getSession();
-      const effectiveToken = session?.token || initialToken;
+      const effectiveToken = initialToken || session?.token;
       if (!effectiveToken) {
         if (!cancelled) setLoading(false);
         return;
       }
 
       setToken(effectiveToken);
-      const partial = session ? sessionToUser(session) : initialUser;
+      const partial = initialUser || (session ? sessionToUser(session) : null);
       if (partial) setUser(partial);
 
       try {
@@ -183,13 +187,15 @@ export function AuthProvider({
         if (cancelled) return;
         applyUsage(effectiveToken, data);
         if (storageData) setCloudStorage(storageData);
-      } catch {
+      } catch (error) {
         if (cancelled) return;
-        clearSession();
-        setToken(null);
-        setUser(null);
-        setUsage(null);
-        setCloudStorage(null);
+        if (error instanceof MaiApiError && [401, 403].includes(error.status)) {
+          clearSession();
+          setToken(null);
+          setUser(null);
+          setUsage(null);
+          setCloudStorage(null);
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }

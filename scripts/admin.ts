@@ -3,6 +3,7 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
+import { runFormManager } from "./admin-forms.ts";
 import { runModelManager } from "./admin-models.ts";
 import { loadLocalEnv } from "./cli-env.ts";
 import { updateModels } from "./updateModels.ts";
@@ -1235,6 +1236,15 @@ export async function runAdminCli() {
     await runNotificationManager();
     process.exit(0);
   }
+  if (args.includes("--forms")) {
+    const rl = readline.createInterface({ input, output });
+    try {
+      await runFormManager(sql, rl);
+    } finally {
+      rl.close();
+    }
+    process.exit(0);
+  }
 
   console.log("");
   console.log(
@@ -1286,11 +1296,14 @@ export async function runAdminCli() {
     console.log(
       `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et rafraîchir les modèles sauvegardés`
     );
+    console.log(
+      `  ${c.brightCyan}[12]${c.reset} 📝 Gérer les formulaires & sondages (création intelligente, stats, activation)`
+    );
     console.log(`  ${c.white}[0]${c.reset} 🚪 Quitter`);
     console.log("");
 
     const choice = (
-      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-11] : ${c.reset}`)
+      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-12] : ${c.reset}`)
     ).trim();
 
     switch (choice) {
@@ -1341,6 +1354,16 @@ export async function runAdminCli() {
         } catch (error) {
           console.error(
             "❌ Échec du cron de synchronisation des modèles :",
+            error instanceof Error ? error.message : error
+          );
+        }
+        break;
+      case "12":
+        try {
+          await runFormManager(sql, rl);
+        } catch (error) {
+          console.error(
+            "❌ Erreur gestionnaire de formulaires :",
             error instanceof Error ? error.message : error
           );
         }

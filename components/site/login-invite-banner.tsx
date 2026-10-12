@@ -4,6 +4,8 @@ import { XIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/site/auth-provider";
+import { getSafeReturnTo } from "@/lib/auth/return-to";
 
 // Bandeau d'invitation à la connexion du site (/site), affiché après une
 // déconnexion de l'application (redirection vers /site?connexion=1).
@@ -17,12 +19,14 @@ const DISMISS_KEY = "mai.site.login-invite-dismissed";
 
 export function LoginInviteBanner() {
   const searchParams = useSearchParams();
+  const { isAuthenticated, loading } = useAuth();
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    if (searchParams.get("connexion") !== "1") {
+    if (loading || isAuthenticated) {
+      setVisible(false);
       return;
     }
     try {
@@ -33,9 +37,9 @@ export function LoginInviteBanner() {
       // Stockage indisponible : on affiche, c'est le choix le moins mauvais.
     }
     setVisible(true);
-  }, [searchParams]);
+  }, [searchParams, loading, isAuthenticated]);
 
-  if (!mounted || !visible) {
+  if (!mounted || !visible || loading || isAuthenticated) {
     return null;
   }
 
@@ -57,7 +61,7 @@ export function LoginInviteBanner() {
       <div className="surface-muted flex flex-col gap-3 rounded-2xl border-border/40 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-semibold text-foreground">
-            Vous êtes déconnecté
+            Découvrez mAI avec votre compte
           </span>
           <span className="text-xs leading-snug text-muted-foreground">
             Connectez-vous pour retrouver vos conversations, vos projets et vos
@@ -67,7 +71,7 @@ export function LoginInviteBanner() {
         <div className="flex shrink-0 items-center gap-2">
           <Link
             className="inline-flex items-center justify-center rounded-lg bg-foreground px-4 py-2 text-xs font-semibold text-background transition-opacity hover:opacity-90"
-            href="/login"
+            href={`/login?redirectUrl=${encodeURIComponent(getSafeReturnTo(searchParams.get("redirectUrl")))}`}
           >
             Se connecter
           </Link>

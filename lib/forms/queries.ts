@@ -1,9 +1,10 @@
 import "server-only";
 
-import { and, desc, eq, isNull, lte, or, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { invalidateMaiUserCache } from "@/lib/auth/session";
 import { dbReady, getDb, getRawClient } from "@/lib/db/queries";
 import { userForm, userFormResponse } from "@/lib/db/schema";
+import { buildActiveFormsFilter } from "@/lib/forms/query-filters";
 import type { FormQuestion, RewardType, UserFormDetail } from "./types";
 
 /**
@@ -38,13 +39,7 @@ export async function getActiveForms(
   const forms = await db
     .select()
     .from(userForm)
-    .where(
-      and(
-        eq(userForm.isActive, true),
-        lte(userForm.startDate, now),
-        or(isNull(userForm.endDate), sql`${userForm.endDate} >= ${now}`)
-      )
-    )
+    .where(buildActiveFormsFilter(now))
     .orderBy(desc(userForm.createdAt));
 
   if (forms.length === 0) {

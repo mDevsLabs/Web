@@ -88,15 +88,11 @@ export default async function SiteLayout({
                 </div>
               </div>
 
-              {/* Bandeau d'invitation à la connexion après déconnexion
-                  (?connexion=1, posé par la déconnexion de l'application).
-                  useSearchParams exige une frontière Suspense sous
-                  cacheComponents : sans elle, le prérendu du layout échoue. */}
-              <Suspense fallback={null}>
-                <LoginInviteBanner />
-              </Suspense>
-
               <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-12 md:pb-32 pt-24 sm:pt-28 z-10">
+                {/* L’invitation vient après l’espace réservé à la navigation fixe. */}
+                <Suspense fallback={null}>
+                  <LoginInviteBanner />
+                </Suspense>
                 {children}
               </main>
 

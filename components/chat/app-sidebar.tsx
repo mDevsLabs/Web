@@ -123,7 +123,7 @@ function SidebarProjects() {
 
   if (isLoading) {
     return (
-      <SidebarGroup className="py-1">
+      <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
@@ -144,7 +144,7 @@ function SidebarProjects() {
 
   if (projects.length === 0) {
     return (
-      <SidebarGroup className="py-1">
+      <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
@@ -159,7 +159,7 @@ function SidebarProjects() {
     );
   }
   return (
-    <SidebarGroup className="py-1">
+    <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
       <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
         <span>Dossiers</span>
         <Link
@@ -322,6 +322,7 @@ function SidebarNavCollapsible({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
+              aria-label={label}
               className={cn(
                 "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-foreground",
                 isActive && "text-sidebar-foreground font-medium"
@@ -824,7 +825,10 @@ export function AppSidebar({
                 >
                   <SearchIcon />
                 </Button>
-                <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
+                <SidebarTrigger
+                  aria-label="Afficher ou réduire la barre latérale"
+                  className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground"
+                />
               </div>
             </SidebarMenuItem>
           </SidebarMenu>
