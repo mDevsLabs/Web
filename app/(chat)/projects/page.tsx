@@ -31,6 +31,7 @@ import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import "react-data-grid/lib/styles.css";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -595,7 +596,9 @@ function ProjectsPageInner() {
                   className="text-destructive"
                   onClick={async () => {
                     if (
-                      !confirm("Supprimer définitivement cette conversation ?")
+                      !(await confirmInApp(
+                        "Supprimer définitivement cette conversation ?"
+                      ))
                     ) {
                       return;
                     }

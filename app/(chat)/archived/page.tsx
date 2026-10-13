@@ -15,6 +15,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { fetcher } from "@/lib/utils";
 
 type ArchivedChat = {
@@ -64,7 +65,11 @@ export default function ArchivedPage() {
 
   const handleDelete = useCallback(
     async (id: string) => {
-      if (!confirm("Supprimer définitivement cette conversation archivée ?")) {
+      if (
+        !(await confirmInApp(
+          "Supprimer définitivement cette conversation archivée ?"
+        ))
+      ) {
         return;
       }
       setLoadingId(id);

@@ -54,6 +54,7 @@ import {
   WorkspaceNavigation,
 } from "@/components/wakies/WorkspaceNavigation";
 import { APP_PRICING_URL } from "@/lib/constants";
+import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
 import { memoriserNavReduite } from "@/lib/wakies/client/nav-collapsed";
 import type { Page } from "@/lib/wakies/pages";
 import type {
@@ -209,10 +210,12 @@ function WakiesWorkspaceContent({
   const setDirtyPage = useCallback((value: boolean) => {
     dirtyPage.current = value;
   }, []);
-  const setView = (next: typeof view) => {
+  const setView = async (next: typeof view) => {
     if (
       dirtyPage.current &&
-      !window.confirm("Abandonner votre brouillon de page non enregistré ?")
+      !(await confirmInApp(
+        "Abandonner votre brouillon de page non enregistré ?"
+      ))
     )
       return false;
     dirtyPage.current = false;
@@ -224,7 +227,7 @@ function WakiesWorkspaceContent({
   };
   useEffect(() => {
     let acceptedHash = location.hash;
-    const navigate = () => {
+    const navigate = async () => {
       const match = location.hash.match(
         /^#\/spaces\/([^/]+)(?:\/pages\/([^/]+))?$/
       );
@@ -232,7 +235,9 @@ function WakiesWorkspaceContent({
       if (dirtyPage.current && location.hash === acceptedHash) return;
       if (
         dirtyPage.current &&
-        !window.confirm("Abandonner votre brouillon de page non enregistré ?")
+        !(await confirmInApp(
+          "Abandonner votre brouillon de page non enregistré ?"
+        ))
       ) {
         history.replaceState(null, "", acceptedHash || location.pathname);
         return;
@@ -324,8 +329,8 @@ function WakiesWorkspaceContent({
     view === "chat" ? selectedThread : undefined
   );
   /** Une notification mène à son fil, puis sort du compteur. */
-  const ouvrirNotification = (conversationId: string) => {
-    if (!setView("chat")) return;
+  const ouvrirNotification = async (conversationId: string) => {
+    if (!(await setView("chat"))) return;
     const cible = workspace?.conversations.find(
       (conversation) => conversation.id === conversationId
     );
@@ -465,8 +470,8 @@ function WakiesWorkspaceContent({
       );
     }
   }, [mutate]);
-  const chooseWakie = (next: Wakie) => {
-    if (!setView("chat")) return;
+  const chooseWakie = async (next: Wakie) => {
+    if (!(await setView("chat"))) return;
     setSelectedWakie(next.id);
     setSelectedThread(
       workspace?.conversations.find((item) => item.wakieId === next.id)?.id
@@ -476,7 +481,7 @@ function WakiesWorkspaceContent({
   };
   const newConversation = async (text?: string) => {
     if (!wakie || !configured || busy) return;
-    if (!setView("chat")) return;
+    if (!(await setView("chat"))) return;
     setBusy(true);
     setError("");
     try {
@@ -488,7 +493,7 @@ function WakiesWorkspaceContent({
       setSelectedThread(next.id);
       setPendingPrompt(text);
       setPrompt("");
-      setView("chat");
+      await setView("chat");
       setMobile(false);
     } catch (e) {
       setError(
@@ -721,13 +726,13 @@ function WakiesWorkspaceContent({
                 .map((item) => (
                   <button
                     key={`conversation-${item.id}`}
-                    onClick={() => {
+                    onClick={async () => {
+                      if (!(await setView("chat"))) return;
                       const owner = workspace.wakies.find(
                         (candidate) => candidate.id === item.wakieId
                       );
                       if (owner) setSelectedWakie(owner.id);
                       setSelectedThread(item.id);
-                      setView("chat");
                     }}
                     type="button"
                   >
@@ -783,7 +788,7 @@ function WakiesWorkspaceContent({
                 return (
                   <button
                     key={`message-${message.id}`}
-                    onClick={() => {
+                    onClick={async () => {
                       const cible = workspace.conversations.find(
                         (item) => item.id === message.conversationId
                       );
@@ -791,10 +796,10 @@ function WakiesWorkspaceContent({
                       const proprietaire = workspace.wakies.find(
                         (candidat) => candidat.id === cible.wakieId
                       );
+                      if (!(await setView("chat"))) return;
                       if (proprietaire) setSelectedWakie(proprietaire.id);
                       setSelectedThread(cible.id);
                       setCibleMessageId(message.id);
-                      setView("chat");
                       setMobile(false);
                       setSidebarSearch("");
                     }}
@@ -902,7 +907,7 @@ function WakiesWorkspaceContent({
               onSupprime={(id) => {
                 // L'écran ouvert vient de cesser d'exister : y rester
                 // afficherait un espace fantôme jusqu'au prochain clic.
-                if (view === "space" && spaceId === id) setView("today");
+                if (view === "space" && spaceId === id) void setView("today");
               }}
               pageId={pageId}
               space={space}
@@ -914,14 +919,14 @@ function WakiesWorkspaceContent({
             local={workspace.conversations}
             onChanged={refresh}
             onNew={() => void newConversation()}
-            onSelect={(id: string) => {
-              if (!setView("chat")) return;
+            onSelect={async (id: string) => {
+              if (!(await setView("chat"))) return;
               const conversation = workspace.conversations.find(
                 (item) => item.id === id
               );
               if (conversation) setSelectedWakie(conversation.wakieId);
               setSelectedThread(id);
-              setView("chat");
+              await setView("chat");
               setMobile(false);
             }}
             selected={view === "chat" ? selectedThread : undefined}
@@ -932,8 +937,8 @@ function WakiesWorkspaceContent({
         <div className="sidebar-bottom">
           <Button
             className={`nav-item ${view === "memories" ? "active" : ""}`}
-            onClick={() => {
-              setView("memories");
+            onClick={async () => {
+              await setView("memories");
               setMobile(false);
             }}
             variant="outline"
@@ -1086,14 +1091,14 @@ function WakiesWorkspaceContent({
             configured={configured}
             conversations={workspace.conversations}
             onCreateConversation={(prompt) => void newConversation(prompt)}
-            onOpenConversation={(conversation) => {
+            onOpenConversation={async (conversation) => {
+              if (!(await setView("chat"))) return;
               const owner = workspace.wakies.find(
                 (candidate) => candidate.id === conversation.wakieId
               );
               if (owner) {
-                chooseWakie(owner);
+                setSelectedWakie(owner.id);
                 setSelectedThread(conversation.id);
-                setView("chat");
               }
             }}
             onOpenSpace={(id) => openPage(id)}
@@ -1125,10 +1130,10 @@ function WakiesWorkspaceContent({
               setDialog({ conversationId, type: "schedule" })
             }
             onSettings={() => ouvrirReglages()}
-            onThread={(id) => {
+            onThread={async (id) => {
               const target = workspace.conversations.find((t) => t.id === id);
               if (target) {
-                setView("chat");
+                if (!(await setView("chat"))) return;
                 setSelectedWakie(target.wakieId);
                 setSelectedThread(id);
               }
@@ -1374,11 +1379,11 @@ function WakiesWorkspaceContent({
             }))}
             fichePartageeId={fichePartageeId}
             onChanged={refresh}
-            onOuvrirWakie={(wakieId, conversationId) => {
+            onOuvrirWakie={async (wakieId, conversationId) => {
               if (conversationId) {
+                if (!(await setView("chat"))) return;
                 setSelectedWakie(wakieId);
                 setSelectedThread(conversationId);
-                setView("chat");
                 return;
               }
               const cible = workspace.wakies.find(
@@ -1509,7 +1514,7 @@ function WakiesWorkspaceContent({
                         )
                       }
                       onSchedule={async () => {
-                        const raw = window.prompt(
+                        const raw = await promptInApp(
                           "Intervalle de répétition en minutes (0 supprime la planification)",
                           String((taskDetail.task.intervalSeconds ?? 0) / 60)
                         );

@@ -1,4 +1,10 @@
 import type { Interface } from "node:readline/promises";
+import QRCode from "qrcode";
+import {
+  REWARD_LABELS,
+  REWARD_TYPES,
+  type RewardType,
+} from "../lib/forms/types.ts";
 import type { SqlClient } from "./openrouter-models.ts";
 
 // Styles & Palette ANSI
@@ -334,10 +340,39 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     endDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
   }
 
+  console.log("\nRécompenses proposées :");
+  REWARD_TYPES.forEach((type, index) =>
+    console.log(`  ${index + 1}. ${REWARD_LABELS[type].title}`)
+  );
+  const rewardInput = (
+    await rl.question("👉 Choix séparés par des virgules [1,2,3,4] : ")
+  ).trim();
+  const rewardTypes = (rewardInput || "1,2,3,4")
+    .split(",")
+    .map((value) => Number.parseInt(value.trim(), 10) - 1)
+    .map((index) => REWARD_TYPES[index])
+    .filter((value): value is RewardType => Boolean(value));
+  const uniqueRewardTypes = [...new Set(rewardTypes)];
+  if (uniqueRewardTypes.length === 0) {
+    console.log(`${c.red}Choisissez au moins une récompense valide.${c.reset}`);
+    return;
+  }
+
+  const activeInput = (
+    await rl.question("👉 Activer le formulaire dès sa création ? (O/n) : ")
+  )
+    .trim()
+    .toLowerCase();
+  const isActive = activeInput !== "n" && activeInput !== "non";
+
   // Aperçu avant confirmation
   console.log(`\n${c.bold}RÉCAPITULATIF DU FORMULAIRE :${c.reset}`);
   console.log(`  Nom         : ${c.brightCyan}${formName}${c.reset}`);
   console.log(`  Description : ${formDescription || "(aucune)"}`);
+  console.log(
+    `  Récompenses : ${uniqueRewardTypes.map((type) => REWARD_LABELS[type].title).join(", ")}`
+  );
+  console.log(`  Statut      : ${isActive ? "Actif" : "Inactif"}`);
   console.log(
     `  Questions   : ${c.brightGreen}${questions.length} question(s)${c.reset}`
   );
@@ -376,8 +411,8 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
       ${startDate},
       ${endDate},
       ${JSON.stringify(questions)}::jsonb,
-      '{}'::jsonb,
-      true
+      ${JSON.stringify({ rewardTypes: uniqueRewardTypes })}::jsonb,
+      ${isActive}
     )
     RETURNING id, name;
   `;
@@ -387,8 +422,32 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     `\n${c.brightGreen}✔ Formulaire enregistré avec succès !${c.reset} ID: ${created.id}`
   );
   console.log(
-    `💡 Il est dès à présent disponible pour les utilisateurs dans ${c.underline}/settings?tab=forms${c.reset}`
+    isActive
+      ? `💡 Disponible pour les utilisateurs dans ${c.underline}/settings?tab=forms${c.reset}`
+      : `💡 Le formulaire apparaîtra dans ${c.underline}/settings?tab=forms${c.reset} après son activation.`
   );
+  const baseUrl = (
+    process.env.MAI_WEB_URL ||
+    process.env.NEXTAUTH_URL ||
+    "http://localhost:3000"
+  ).replace(/\/$/, "");
+  const formUrl = `${baseUrl}/settings?tab=forms&form=${encodeURIComponent(created.id)}`;
+  console.log(`🔗 Lien direct : ${formUrl}`);
+  if (!isActive) {
+    console.log("ℹ️ Ce lien fonctionnera une fois le formulaire activé.");
+  }
+  const makeQr = (
+    await rl.question(
+      "👉 Afficher le QR Code du lien dans le terminal ? (O/n) : "
+    )
+  )
+    .trim()
+    .toLowerCase();
+  if (makeQr !== "n" && makeQr !== "non") {
+    console.log(
+      await QRCode.toString(formUrl, { small: true, type: "terminal" })
+    );
+  }
 }
 
 /**

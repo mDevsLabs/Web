@@ -11,6 +11,7 @@ import {
   type EspaceMenuAction,
   SpaceMenu,
 } from "@/components/wakies/SpaceMenu";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import type { Page } from "@/lib/wakies/pages";
 import type { Space } from "@/lib/wakies/shared/types";
 
@@ -173,7 +174,7 @@ export function SpaceNav({
       signaler(erreurRecue, "Comptage des pages impossible.");
       return;
     }
-    if (!window.confirm(texte)) {
+    if (!(await confirmInApp(texte))) {
       return;
     }
     try {

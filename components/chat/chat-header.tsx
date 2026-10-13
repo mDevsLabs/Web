@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
@@ -153,7 +154,7 @@ function PureChatHeader({
 
   const handleRename = useCallback(async () => {
     const currentTitle = (chatData as any)?.title ?? "";
-    const next = window.prompt(
+    const next = await promptInApp(
       "Nouveau titre de la conversation :",
       currentTitle
     );
@@ -219,7 +220,9 @@ function PureChatHeader({
   }, [chatId, isPinned, mutate]);
 
   const handleDelete = useCallback(async () => {
-    if (!confirm("Supprimer définitivement cette conversation ?")) {
+    if (
+      !(await confirmInApp("Supprimer définitivement cette conversation ?"))
+    ) {
       return;
     }
     try {

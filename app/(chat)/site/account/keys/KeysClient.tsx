@@ -22,6 +22,7 @@ import type {
 } from "@/lib/site/api-key-types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { formatDisplayDateTime } from "@/lib/site/date-format";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { KeyModals } from "./KeyModals";
 
 export default function KeysClient() {
@@ -214,10 +215,10 @@ export default function KeysClient() {
 
   const handleBulkRevoke = async () => {
     if (selectedKeys.length === 0) return;
-    const confirm = window.confirm(
+    const confirmed = await confirmInApp(
       `Voulez-vous vraiment supprimer ${selectedKeys.length} clé(s) sélectionnée(s) ?`
     );
-    if (!confirm) return;
+    if (!confirmed) return;
 
     for (const id of selectedKeys) {
       await handleConfirmRevoke(id);

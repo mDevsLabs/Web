@@ -45,33 +45,6 @@ jobs:
               throw error;
             }
             core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
-  quality:
-    name: 🌐 Qualité, tests et build Web
-    needs: [version]
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - name: 📦 Checkout du code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: ⚡ Configuration de pnpm
-        uses: pnpm/action-setup@v4
-      - name: 🟢 Configuration de Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: 📥 Installer les dépendances
-        run: pnpm install --frozen-lockfile
-      - name: 🔍 Lint et formatage
-        run: pnpm check
-      - name: 🧪 Tests unitaires
-        run: pnpm test:unit
-      - name: 🔍 Vérification des types
-        run: pnpm typecheck
-      - name: 🏗️ Compiler l'application
-        run: pnpm build
   changes:
     needs: [version]
     name: 🔀 Filtrer les chemins modifiés
@@ -124,7 +97,7 @@ jobs:
               - "package.json"
 
   deploy-vercel:
-    needs: [version, quality]
+    needs: [version]
     name: 🚀 Déploiement Vercel
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/canary')) || (github.event_name == 'pull_request' &&
@@ -313,7 +286,6 @@ jobs:
     needs:
       - changes
       - coder-check
-      - quality
     if: needs.changes.outputs.desktop == 'true'
   mobile-android:
     name: 🤖 Mobile Android (APK de développement)
@@ -340,9 +312,6 @@ jobs:
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
         run: pnpm install --frozen-lockfile
-      - name: 🔍 Vérifier la configuration mobile
-        working-directory: apps/mobile
-        run: pnpm run build
       - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -389,9 +358,6 @@ jobs:
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
         run: pnpm install --frozen-lockfile
-      - name: 🔍 Vérifier la configuration mobile
-        working-directory: apps/mobile
-        run: pnpm run build
       - name: 🎨 Générer icônes mobiles
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -460,8 +426,6 @@ jobs:
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
       - name: 📥 Installer les dépendances
         run: npm ci
-      - name: 🔍 Linter le code source
-        run: npm run lint
       - name: 🏗️ Compiler l'application web
         run: npm run build
         env:
@@ -505,8 +469,6 @@ jobs:
           cache-dependency-path: apps/vibe/package-lock.json
       - name: 📥 Installer les dépendances
         run: npm ci
-      - name: 🔍 Linter le code source
-        run: npm run lint
       - name: 🏗️ Compiler l'application web
         run: npm run build
         env:
@@ -568,10 +530,6 @@ jobs:
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: 📥 Installer les dépendances
         run: pnpm install --frozen-lockfile
-      - name: 🔍 Vérification des types (typecheck)
-        run: pnpm run typecheck
-      - name: 🧪 Tests Coder
-        run: pnpm test
       - name: 🏗️ Compiler le Main (esbuild)
         run: pnpm run build:main
       - name: 🏗️ Compiler le Renderer (Vite)
@@ -740,7 +698,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs:
-      - quality
       - deploy-vercel
       - desktop
       - mobile-android

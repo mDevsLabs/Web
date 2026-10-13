@@ -21,6 +21,7 @@ import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
@@ -116,12 +117,11 @@ export default function PluginsPanel({
     );
   };
 
-  const handleUninstall = (plugin: PluginCatalogEntry) => {
+  const handleUninstall = async (plugin: PluginCatalogEntry) => {
     if (
-      typeof window !== "undefined" &&
-      !window.confirm(
+      !(await confirmInApp(
         `Désinstaller ${plugin.name} ? Cette action est définitive sur cet appareil.`
-      )
+      ))
     ) {
       return;
     }

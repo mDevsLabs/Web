@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
+import { AppDialogHost } from "@/components/common/app-dialog-host";
 import { PlatformBridge } from "@/components/common/platform-bridge";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -119,6 +120,7 @@ export default function RootLayout({
               <PlatformBridge />
             </Suspense>
             {children}
+            <AppDialogHost />
             <Toaster
               position="top-center"
               theme="system"

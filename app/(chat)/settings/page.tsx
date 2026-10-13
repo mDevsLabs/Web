@@ -249,8 +249,8 @@ function SettingsPageInner() {
   const handleTabKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
       if (
-        event.key !== "ArrowRight" &&
-        event.key !== "ArrowLeft" &&
+        event.key !== "ArrowDown" &&
+        event.key !== "ArrowUp" &&
         event.key !== "Home" &&
         event.key !== "End"
       ) {
@@ -262,7 +262,7 @@ function SettingsPageInner() {
           ? 0
           : event.key === "End"
             ? SETTINGS_TABS.length - 1
-            : event.key === "ArrowRight"
+            : event.key === "ArrowDown"
               ? (index + 1) % SETTINGS_TABS.length
               : (index - 1 + SETTINGS_TABS.length) % SETTINGS_TABS.length;
       const nextTab = SETTINGS_TABS[nextIndex];
@@ -1222,46 +1222,44 @@ function SettingsPageInner() {
         </div>
       </div>
 
-      {/* Onglets — même design que les pages Audio / Images */}
-      <div className="border-b border-border/40 bg-muted/20 px-4 py-1.5 sm:px-6">
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
+        <aside className="w-full shrink-0 lg:sticky lg:top-6 lg:w-56">
+          <div
+            aria-label="Sections des paramètres"
+            className="surface-card flex flex-col gap-1 p-2"
+            role="tablist"
+          >
+            {SETTINGS_TABS.map((tab, index) => (
+              <button
+                aria-controls={`settings-panel-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition-colors cursor-pointer text-left",
+                  activeTab === tab.id
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                )}
+                id={`settings-tab-${tab.id}`}
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+                role="tab"
+                tabIndex={activeTab === tab.id ? 0 : -1}
+                type="button"
+              >
+                <tab.icon className="size-3.5 shrink-0" />
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+          <SettingsAnchorNav items={anchorItems} />
+        </aside>
         <div
-          aria-label="Sections des paramètres"
-          className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5"
-          role="tablist"
+          aria-labelledby={`settings-tab-${activeTab}`}
+          className="flex-1 min-w-0"
+          id={`settings-panel-${activeTab}`}
+          role="tabpanel"
         >
-          {SETTINGS_TABS.map((tab, index) => (
-            <button
-              aria-controls={`settings-panel-${tab.id}`}
-              aria-selected={activeTab === tab.id}
-              className={cn(
-                "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer",
-                activeTab === tab.id
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
-              )}
-              id={`settings-tab-${tab.id}`}
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              onKeyDown={(event) => handleTabKeyDown(event, index)}
-              role="tab"
-              tabIndex={activeTab === tab.id ? 0 : -1}
-              type="button"
-            >
-              <tab.icon className="size-3.5" />
-              <span>{tab.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div
-        aria-labelledby={`settings-tab-${activeTab}`}
-        className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start"
-        id={`settings-panel-${activeTab}`}
-        role="tabpanel"
-      >
-        <SettingsAnchorNav items={anchorItems} />
-        <div className="flex-1 min-w-0">
           {isLoading ? (
             <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
               <Loader2Icon className="size-6 animate-spin text-primary" />

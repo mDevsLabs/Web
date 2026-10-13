@@ -16,6 +16,17 @@ export type FormQuestion = {
 export const REWARD_TYPES = ["mai", "api", "images", "audio"] as const;
 export type RewardType = (typeof REWARD_TYPES)[number];
 
+export function getFormRewardTypes(
+  options: Record<string, unknown>
+): RewardType[] {
+  const configured = options.rewardTypes;
+  if (!Array.isArray(configured)) return [...REWARD_TYPES];
+  const allowed = configured.filter((value): value is RewardType =>
+    REWARD_TYPES.includes(value as RewardType)
+  );
+  return allowed;
+}
+
 export const REWARD_LABELS: Record<
   RewardType,
   { title: string; description: string; icon: string }

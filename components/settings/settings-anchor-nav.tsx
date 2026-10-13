@@ -13,7 +13,7 @@ export type AnchorItem = {
  * Barre latérale fixée à l'écran (sticky dans le conteneur scrollable)
  * listant les ancres de l'onglet actif des paramètres. La section visible
  * est détectée via le scroll du conteneur [data-scroll-root] et surlignée.
- * Masquée sous xl pour laisser toute la largeur au contenu.
+ * Affiche les sous-sections imbriquées sous la section active.
  */
 export function SettingsAnchorNav({ items }: { items: AnchorItem[] }) {
   const [activeId, setActiveId] = useState<string>(items[0]?.id ?? "");
@@ -76,18 +76,18 @@ export function SettingsAnchorNav({ items }: { items: AnchorItem[] }) {
   };
 
   return (
-    <aside
-      className="hidden w-60 shrink-0 xl:block"
+    <div
+      className="mt-2 border-l border-border/60 pl-3"
       data-testid="settings-anchor-nav"
     >
-      <nav className="sticky top-6 flex flex-col gap-1 rounded-2xl border border-border/50 bg-card/60 p-3 backdrop-blur-md">
-        <p className="px-2 pb-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-          Sur cette page
+      <nav aria-label="Sous-sections" className="flex flex-col gap-0.5">
+        <p className="px-2 pb-1 text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
+          Sous-sections
         </p>
         {items.map((item) => (
           <button
             className={cn(
-              "rounded-lg px-2.5 py-1.5 text-left text-xs font-medium transition-colors cursor-pointer",
+              "rounded-lg px-2 py-1 text-left text-[10px] font-medium transition-colors cursor-pointer",
               activeId === item.id
                 ? "bg-primary/10 text-primary"
                 : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -100,6 +100,6 @@ export function SettingsAnchorNav({ items }: { items: AnchorItem[] }) {
           </button>
         ))}
       </nav>
-    </aside>
+    </div>
   );
 }

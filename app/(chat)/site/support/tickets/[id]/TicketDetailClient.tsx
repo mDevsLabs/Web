@@ -36,6 +36,7 @@ import { TicketReplyComposer } from "@/components/site/support/ticket-detail/Tic
 import { TicketTimeline } from "@/components/site/support/ticket-detail/TicketTimeline";
 import type { TicketReplyStatus } from "@/components/site/support/ticket-detail/ticket-detail-types";
 import { useTicketDetailAttachments } from "@/components/site/support/ticket-detail/useTicketDetailAttachments";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 
 export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
@@ -212,9 +213,9 @@ export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
     if (!user || !ticket) return;
     const shouldArchive = ticket.status !== "archived" && !ticket.is_archived;
     if (
-      !confirm(
+      !(await confirmInApp(
         shouldArchive ? "Archiver ce ticket ?" : "Désarchiver ce ticket ?"
-      )
+      ))
     )
       return;
     setSubmitting(true);
@@ -239,12 +240,12 @@ export default function TicketDetailClient({ ticketId }: { ticketId: string }) {
   const handleDelete = async () => {
     if (!user || !ticket) return;
     if (
-      !confirm(
+      !(await confirmInApp(
         `Supprimer définitivement #TICK-${ticket.ticket_number} ? Irréversible, fichiers Z1 purgés.`
-      )
+      ))
     )
       return;
-    if (!confirm("Confirmation finale : supprimer ?")) return;
+    if (!(await confirmInApp("Confirmation finale : supprimer ?"))) return;
     setSubmitting(true);
     try {
       const response = await deleteTicket({ ticketId: ticket.id });

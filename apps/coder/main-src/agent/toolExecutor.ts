@@ -44,7 +44,9 @@ import { getMcpManager } from "../mcp";
 import type { ShellSettings } from "../settingsStore.js";
 import { executeShellCommand } from "../shell/commandExecutor.js";
 import {
+  decodeTextBuffer,
   isProbablyTextBuffer,
+  readTextFileBufferSync,
   readTextFileIfExistsSync,
   readTextFileSyncWithMetadata,
   type TextEncoding,
@@ -2423,7 +2425,7 @@ function executeReadFile(
     };
   }
 
-  const buf = fs.readFileSync(full);
+  const buf = readTextFileBufferSync(full);
   if (!isProbablyTextBuffer(buf)) {
     return {
       content: `Skipped binary file: ${display}`,
@@ -2433,7 +2435,9 @@ function executeReadFile(
     };
   }
 
-  const text = readTextFileSyncWithMetadata(full).text.replace(/\r\n/g, "\n");
+  // Le tampon ci-dessus a déjà été validé : le redécoder, plutôt que relire le
+  // fichier, évite une seconde lecture qui pourrait contredire ce contrôle.
+  const text = decodeTextBuffer(buf).text.replace(/\r\n/g, "\n");
   const lines = text.split("\n");
 
   let offset = Math.max(1, Number(call.arguments.offset) || 1);
@@ -2629,8 +2633,23 @@ function executeStrReplace(
     };
   }
 
-  const buf = fs.readFileSync(full);
-  if (!isProbablyTextBuffer(buf)) {
+  // Une seule lecture du fichier : le lire une fois pour le test « binaire »
+  // puis une autre fois pour le décodage laissait une fenêtre pendant laquelle
+  // le contenu pouvait changer, et les deux lectures pouvaient contredire le
+  // contrôle de binarité. `decodeTextBuffer` fait le même travail que
+  // `readTextFileSyncWithMetadata`, sans sa relecture ni son rejet binaire.
+  let buffer: Buffer;
+  try {
+    buffer = readTextFileBufferSync(full);
+  } catch (e) {
+    return {
+      content: `Error: cannot read ${relPath}: ${e instanceof Error ? e.message : String(e)}`,
+      isError: true,
+      name: call.name,
+      toolCallId: call.id,
+    };
+  }
+  if (!isProbablyTextBuffer(buffer)) {
     return {
       content: `Skipped binary file: ${relPath}`,
       isError: true,
@@ -2639,7 +2658,7 @@ function executeStrReplace(
     };
   }
 
-  const meta = readTextFileSyncWithMetadata(full);
+  const meta = decodeTextBuffer(buffer);
   const source = meta.text;
   const fileHasCRLF = source.includes("\r\n");
 

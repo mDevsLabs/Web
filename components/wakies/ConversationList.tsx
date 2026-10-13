@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@mdevs/ui/primitives/button";
 import { Input } from "@mdevs/ui/primitives/input";
+import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
 
 /**
  * Liste des conversations d'un Wakie.
@@ -193,7 +194,7 @@ export function ConversationList({
                 kind: "action",
                 label: "Renommer",
                 onSelect: async () => {
-                  const title = window.prompt(
+                  const title = await promptInApp(
                     "Nouveau titre",
                     conversation.title
                   );
@@ -221,9 +222,9 @@ export function ConversationList({
                 label: "Supprimer",
                 onSelect: async () => {
                   if (
-                    !window.confirm(
+                    !(await confirmInApp(
                       "Supprimer cette conversation et ses messages ?"
-                    )
+                    ))
                   )
                     return;
                   setBusy(true);

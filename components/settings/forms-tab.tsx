@@ -12,13 +12,15 @@ import {
   MicIcon,
   SparklesIcon,
 } from "@mdevs/icons";
-import { useCallback, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  getFormRewardTypes,
   REWARD_LABELS,
   type RewardType,
   type UserFormDetail,
@@ -33,6 +35,7 @@ const REWARD_ICONS: Record<RewardType, typeof MessageSquareIcon> = {
 };
 
 export function FormsTab() {
+  const searchParams = useSearchParams();
   const { data, error, isLoading, isValidating, mutate } = useSWR<{
     data?: UserFormDetail[];
     success: boolean;
@@ -41,16 +44,33 @@ export function FormsTab() {
   });
 
   const [selectedForm, setSelectedForm] = useState<UserFormDetail | null>(null);
+  const openedLinkRef = useRef<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, unknown>>({});
   const [selectedReward, setSelectedReward] = useState<RewardType>("mai");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const forms = data?.data || [];
 
+  useEffect(() => {
+    const formId = searchParams.get("form");
+    if (!formId) {
+      openedLinkRef.current = null;
+      return;
+    }
+    if (openedLinkRef.current === formId) return;
+    const form = forms.find((item) => item.id === formId && !item.hasSubmitted);
+    if (form && selectedForm?.id !== form.id) {
+      openedLinkRef.current = form.id;
+      setSelectedForm(form);
+      setAnswers({});
+      setSelectedReward(getFormRewardTypes(form.options)[0] ?? "mai");
+    }
+  }, [forms, searchParams, selectedForm?.id]);
+
   const handleStartForm = useCallback((form: UserFormDetail) => {
     setSelectedForm(form);
     setAnswers({});
-    setSelectedReward("mai");
+    setSelectedReward(getFormRewardTypes(form.options)[0] ?? "mai");
   }, []);
 
   const handleCancelForm = useCallback(() => {
@@ -409,7 +429,7 @@ export function FormsTab() {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                {(Object.keys(REWARD_LABELS) as RewardType[]).map((type) => {
+                {getFormRewardTypes(selectedForm.options).map((type) => {
                   const info = REWARD_LABELS[type];
                   const Icon = REWARD_ICONS[type];
                   const isSelected = selectedReward === type;

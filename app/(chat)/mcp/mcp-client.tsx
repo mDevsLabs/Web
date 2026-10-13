@@ -68,6 +68,7 @@ import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 
 // Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
@@ -312,9 +313,9 @@ export default function McpClient({
   };
   const handlePurgeMcp = async () => {
     if (
-      !window.confirm(
+      !(await confirmInApp(
         "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
-      )
+      ))
     ) {
       return;
     }
@@ -672,9 +673,9 @@ export default function McpClient({
   };
   const handlePurgeLogs = async () => {
     if (
-      !window.confirm(
+      !(await confirmInApp(
         "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
-      )
+      ))
     ) {
       return;
     }

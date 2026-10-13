@@ -5,7 +5,12 @@ import { invalidateMaiUserCache } from "@/lib/auth/session";
 import { dbReady, getDb, getRawClient } from "@/lib/db/queries";
 import { userForm, userFormResponse } from "@/lib/db/schema";
 import { buildActiveFormsFilter } from "@/lib/forms/query-filters";
-import type { FormQuestion, RewardType, UserFormDetail } from "./types";
+import {
+  type FormQuestion,
+  getFormRewardTypes,
+  type RewardType,
+  type UserFormDetail,
+} from "./types";
 
 /**
  * Calcule le début de la semaine courante (lundi 00:00 UTC)
@@ -275,6 +280,13 @@ export async function submitFormResponse(params: {
   }
   if (f.endDate && f.endDate < now) {
     throw new Error("Ce formulaire est expiré.");
+  }
+  if (
+    !getFormRewardTypes((f.options as Record<string, unknown>) || {}).includes(
+      rewardType
+    )
+  ) {
+    throw new Error("Cette récompense n'est pas proposée pour ce formulaire.");
   }
 
   // 2. Vérifier si l'utilisateur a déjà répondu

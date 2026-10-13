@@ -28,6 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useNotifications } from "@/hooks/use-notifications";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn } from "@/lib/utils";
 
 function formatRelative(dateStr: string) {
@@ -163,7 +164,11 @@ export function NotificationBell() {
     if (!notifications.length) {
       return;
     }
-    if (!confirm("Voulez-vous vraiment supprimer toutes vos notifications ?")) {
+    if (
+      !(await confirmInApp(
+        "Voulez-vous vraiment supprimer toutes vos notifications ?"
+      ))
+    ) {
       return;
     }
     try {

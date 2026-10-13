@@ -1,7 +1,33 @@
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+// Un antivirus ou l'indexeur Windows ouvrent brièvement la cible : le rename
+// qui la remplace échoue alors que rien n'est réellement cassé. On injecte ces
+// échecs pour vérifier que l'écriture les encaisse au lieu de les remonter.
+const injected = vi.hoisted(() => ({ renameFailures: 0, renames: 0 }));
+
+vi.mock("node:fs", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:fs")>();
+  return {
+    ...actual,
+    default: actual,
+    renameSync(from: fs.PathLike, to: fs.PathLike) {
+      injected.renames += 1;
+      if (injected.renameFailures > 0) {
+        injected.renameFailures -= 1;
+        const error = new Error(
+          "EPERM: operation not permitted, rename"
+        ) as NodeJS.ErrnoException;
+        error.code = "EPERM";
+        throw error;
+      }
+      return actual.renameSync(from, to);
+    },
+  };
+});
+
 import {
   decodeTextBuffer,
   encodeTextBuffer,
@@ -48,5 +74,50 @@ describe("text encoding helpers", () => {
     const raw = fs.readFileSync(file);
     expect([...raw.subarray(0, 2)]).toEqual([0xff, 0xfe]);
     expect(readTextFileSyncWithMetadata(file).text).toBe("你好\r\nnew");
+  });
+
+  it("retries the atomic replace when the rename is transiently blocked", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "async-encoding-"));
+    const file = path.join(dir, "replace.txt");
+    fs.writeFileSync(file, "before");
+
+    injected.renameFailures = 2;
+    injected.renames = 0;
+    writeTextFileAtomicSync(file, "after", "utf8");
+
+    expect(injected.renames).toBe(3);
+    expect(fs.readFileSync(file, "utf8")).toBe("after");
+    // Chaque essai repart d'un fichier temporaire neuf : aucun ne doit rester.
+    expect(fs.readdirSync(dir).filter((e) => e.includes(".tmp-"))).toEqual([]);
+  });
+
+  it("gives up once the transient failures outlast the retries", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "async-encoding-"));
+    const file = path.join(dir, "doomed.txt");
+    fs.writeFileSync(file, "before");
+
+    injected.renameFailures = Number.MAX_SAFE_INTEGER;
+    injected.renames = 0;
+    try {
+      expect(() => writeTextFileAtomicSync(file, "after", "utf8")).toThrow(
+        /EPERM/
+      );
+    } finally {
+      injected.renameFailures = 0;
+    }
+
+    expect(injected.renames).toBe(5);
+    expect(fs.readFileSync(file, "utf8")).toBe("before");
+    expect(fs.readdirSync(dir).filter((e) => e.includes(".tmp-"))).toEqual([]);
+  });
+
+  it("surfaces a missing file instead of retrying it", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "async-encoding-"));
+    const missing = path.join(dir, "absent.txt");
+
+    injected.renames = 0;
+    // Un ENOENT est définitif : le retenter retarderait le message d'erreur
+    // sans jamais le changer.
+    expect(() => readTextFileSyncWithMetadata(missing)).toThrow(/ENOENT/);
   });
 });

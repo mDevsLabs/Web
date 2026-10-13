@@ -8,8 +8,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { HomeIcon as Home, CompassIcon as Compass, BellIcon as Bell, MailIcon as Mail, SparklesIcon as Sparkles, LibraryIcon as Library, UserIcon, SettingsIcon as Settings, PenSquareIcon as PenSquare, LogOutIcon as LogOut } from "@mdevs/icons";
-import { Button } from "@mdevs/ui/primitives/button";
-import { ThemeProvider } from "@mdevs/ui/primitives/theme-provider";
 import { useAuth } from '../../context/AuthContext';
 import { VibeLogo } from './VibeLogo';
 import { VerifiedBadge } from '../common/VerifiedBadge';
@@ -177,17 +175,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Action Button: Publier */}
         <div className="pt-2 space-y-2 flex flex-col items-center xl:items-stretch">
-          <ThemeProvider theme="dark" accent="var(--vibe-accent, #ffffff)" style={{ display: 'contents' }}>
-            <Button
-              onClick={onOpenComposer}
-              className="w-12 h-12 xl:w-full xl:h-auto xl:py-3.5 xl:px-4 !rounded-full text-black font-bold text-sm xl:text-base hover:brightness-90 transition-all !flex items-center justify-center gap-2 shadow-md active:scale-95"
-              title="Poster une vibe"
-              aria-label="Poster une vibe"
-            >
-              <PenSquare className="w-5 h-5 shrink-0" />
-              <span className="hidden xl:inline">Poster une vibe</span>
-            </Button>
-          </ThemeProvider>
+          {/* Bouton natif : le portage Next (components/vibe/layout/Sidebar.tsx) et
+              toutes les autres actions Vibe utilisent l'accent Vibe, pas les
+              primitives @mdevs/ui — un ThemeProvider y poserait un data-md-theme
+              étranger à la racine .vibe-root et ferait perdre l'accent au bouton. */}
+          <button
+            onClick={onOpenComposer}
+            style={{ backgroundColor: 'var(--vibe-accent, #ffffff)' }}
+            className="w-12 h-12 xl:w-full xl:h-auto xl:py-3.5 xl:px-4 rounded-full text-black font-bold text-sm xl:text-base hover:brightness-90 transition-all flex items-center justify-center gap-2 shadow-md active:scale-95"
+            title="Poster une vibe"
+            aria-label="Poster une vibe"
+          >
+            <PenSquare className="w-5 h-5 shrink-0" />
+            <span className="hidden xl:inline">Poster une vibe</span>
+          </button>
         </div>
       </div>
 

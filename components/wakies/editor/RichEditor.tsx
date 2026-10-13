@@ -19,6 +19,7 @@ import { useEffect, useRef } from "react";
 import { documentExtensions } from "@/components/wakies/editor/markdown";
 import { SlashCommands } from "@/components/wakies/editor/slash-commands";
 import { openPageLink } from "@/components/wakies/page-navigation";
+import { promptInApp } from "@/lib/ui/app-dialog";
 export default function RichEditor({
   value,
   onChange,
@@ -169,8 +170,8 @@ export default function RichEditor({
         </button>
         <button
           aria-label="Ajouter un lien"
-          onClick={() => {
-            const url = window.prompt(
+          onClick={async () => {
+            const url = await promptInApp(
               "Link URL (https:// or an internal page link)",
               editor.getAttributes("link").href ?? ""
             );

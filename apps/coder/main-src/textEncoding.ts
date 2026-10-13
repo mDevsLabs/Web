@@ -328,10 +328,66 @@ export function isProbablyTextBuffer(buffer: Buffer): boolean {
   return control / Math.max(1, sample.length) < 0.05;
 }
 
+/**
+ * Erreurs de système de fichiers qui ne signalent pas un état durable du
+ * disque : un antivirus, l'indexeur Windows ou un lecteur réseau ouvrent
+ * brièvement les fichiers qu'ils analysent, et l'opération échoue alors que
+ * le fichier est parfaitement sain. Les retenter est donc la seule réaction
+ * utile ; un ENOENT, lui, est définitif et doit remonter tel quel.
+ */
+const TRANSIENT_FS_ERROR_CODES = new Set([
+  "EACCES",
+  "EAGAIN",
+  "EBUSY",
+  "EMFILE",
+  "ENFILE",
+  "EPERM",
+]);
+
+const TRANSIENT_FS_RETRY_DELAYS_MS = [10, 25, 50, 100];
+
+function isTransientFsError(error: unknown): boolean {
+  const code = (error as NodeJS.ErrnoException | null | undefined)?.code;
+  return typeof code === "string" && TRANSIENT_FS_ERROR_CODES.has(code);
+}
+
+/**
+ * Pause synchrone courte. `Atomics.wait` est le seul moyen de dormir sans
+ * rendre l'API asynchrone — ces helpers sont appelés depuis des handlers IPC
+ * synchrones. Node l'autorise sur le thread principal, contrairement au
+ * navigateur où il lève `TypeError`.
+ */
+function sleepSync(ms: number): void {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+/** Exécute `operation` en réessayant les seules erreurs transitoires. */
+function withTransientFsRetry<T>(operation: () => T): T {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return operation();
+    } catch (error) {
+      const delay = TRANSIENT_FS_RETRY_DELAYS_MS[attempt];
+      if (delay === undefined || !isTransientFsError(error)) {
+        throw error;
+      }
+      sleepSync(delay);
+    }
+  }
+}
+
+/**
+ * Lecture brute d'un fichier, retentée sur erreur transitoire. Ne filtre rien :
+ * à l'appelant de dire si le contenu est du texte, une fois pour toutes.
+ */
+export function readTextFileBufferSync(filePath: string): Buffer {
+  return withTransientFsRetry(() => fs.readFileSync(filePath));
+}
+
 export function readTextFileSyncWithMetadata(
   filePath: string
 ): TextFileMetadata {
-  const buffer = fs.readFileSync(filePath);
+  const buffer = readTextFileBufferSync(filePath);
   if (!isProbablyTextBuffer(buffer)) {
     throw new Error("File appears to be binary.");
   }
@@ -378,10 +434,6 @@ export function writeTextFileAtomicSync(
   const targetPath = filePath;
 
   const bytes = encodeTextBuffer(content, encoding);
-  const tempPath = path.join(
-    path.dirname(targetPath),
-    `.${path.basename(targetPath)}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`
-  );
   let mode: number | undefined;
   try {
     mode = fs.statSync(targetPath).mode;
@@ -389,22 +441,31 @@ export function writeTextFileAtomicSync(
     mode = undefined;
   }
 
-  try {
-    fs.writeFileSync(
-      tempPath,
-      bytes,
-      mode === undefined ? undefined : { mode }
+  // Le rename qui remplace la cible est l'étape exposée : c'est elle que
+  // l'antivirus ou l'indexeur bloquent. Chaque tentative repart d'un fichier
+  // temporaire neuf, car un essai précédent a pu rester sur le disque.
+  withTransientFsRetry(() => {
+    const tempPath = path.join(
+      path.dirname(targetPath),
+      `.${path.basename(targetPath)}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`
     );
-    if (mode !== undefined) {
-      fs.chmodSync(tempPath, mode);
-    }
-    fs.renameSync(tempPath, targetPath);
-  } catch (error) {
     try {
-      if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
-    } catch {
-      // Ignore cleanup failures and surface the original write failure.
+      fs.writeFileSync(
+        tempPath,
+        bytes,
+        mode === undefined ? undefined : { mode }
+      );
+      if (mode !== undefined) {
+        fs.chmodSync(tempPath, mode);
+      }
+      fs.renameSync(tempPath, targetPath);
+    } catch (error) {
+      try {
+        if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
+      } catch {
+        // Ignore cleanup failures and surface the original write failure.
+      }
+      throw error;
     }
-    throw error;
-  }
+  });
 }

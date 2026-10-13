@@ -2,6 +2,7 @@
 import { Button } from "@mdevs/ui/primitives/button";
 import { Input } from "@mdevs/ui/primitives/input";
 import { Textarea } from "@mdevs/ui/primitives/textarea";
+import { promptInApp } from "@/lib/ui/app-dialog";
 
 /**
  * ============================================================================
@@ -1005,7 +1006,7 @@ function WakieChat({
             className="icon-button"
             disabled={enCours}
             onClick={async () => {
-              const titre = window.prompt("Titre de la page", thread.title);
+              const titre = await promptInApp("Titre de la page", thread.title);
               if (!titre) return;
               try {
                 const page = await api<Page>(

@@ -36,6 +36,7 @@ import {
 import { useAuth } from "@/components/site/auth-provider";
 import Link from "@/components/site/router";
 import { formatDisplayDate } from "@/lib/site/date-format";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 
 const STATUS_TABS = [
   { id: "all", label: "Tous (actifs)" },
@@ -179,11 +180,11 @@ export default function TicketsListClient() {
     if (!user) return;
     const shouldArchive = ticket.status !== "archived" && !ticket.is_archived;
     if (
-      !confirm(
+      !(await confirmInApp(
         shouldArchive
           ? "Archiver ce ticket ? Il sera masqué de la liste active."
           : "Désarchiver ce ticket ?"
-      )
+      ))
     )
       return;
     setActionLoading(ticket.id);
@@ -207,13 +208,13 @@ export default function TicketsListClient() {
   const handleDelete = async (ticket: SupportTicket) => {
     if (!user) return;
     if (
-      !confirm(
+      !(await confirmInApp(
         `Supprimer définitivement le ticket #TICK-${ticket.ticket_number} ? Cette action est irréversible et supprimera aussi les fichiers Z1 associés.`
-      )
+      ))
     )
       return;
     // second confirm for safety
-    if (!confirm("Confirmez la suppression définitive ?")) return;
+    if (!(await confirmInApp("Confirmez la suppression définitive ?"))) return;
     setActionLoading(ticket.id);
     try {
       const res = await deleteTicket({

@@ -34,6 +34,7 @@ import { FileLibrary } from "@/components/wakies/FileLibrary";
 import { ModelPicker } from "@/components/wakies/ModelPicker";
 import { getIntegrationProvider } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import type { SetupStatus, Wakie } from "@/lib/wakies/shared/types";
 import { WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
 
@@ -178,9 +179,9 @@ export function WakiesSettings() {
   ) => {
     if (!wakie || !donnees) return;
     if (
-      !window.confirm(
+      !(await confirmInApp(
         `Reproduire ces réglages sur les ${donnees.wakies.length} Wakies de ce compte ? Chacun recevra aussi le modèle « ${wakie.model ?? "défaut"} ».`
-      )
+      ))
     ) {
       return;
     }

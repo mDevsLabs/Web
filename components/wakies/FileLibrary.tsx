@@ -11,6 +11,7 @@ import {
   FORMATS_TELEVERSABLES,
   formaterTaille,
 } from "@/components/wakies/attachments";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
 
 type SavedFile = {
@@ -178,9 +179,9 @@ export function FileLibrary({
                   disabled={busy}
                   onClick={async () => {
                     if (
-                      !window.confirm(
+                      !(await confirmInApp(
                         "Supprimer définitivement ce fichier ? Les pièces jointes existantes deviendront indisponibles."
-                      )
+                      ))
                     )
                       return;
                     setBusy(true);

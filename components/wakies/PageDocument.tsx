@@ -20,6 +20,7 @@ import { DocumentMenu } from "@/components/wakies/editor/DocumentMenu";
 import { inspectMarkdown } from "@/components/wakies/editor/markdown";
 import { usePageAutosave } from "@/components/wakies/editor/use-page-autosave";
 import { PageConversation } from "@/components/wakies/PageConversation";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { type Page, pageSettings } from "@/lib/wakies/pages";
 import type { WorkspaceState } from "@/lib/wakies/shared/types";
 
@@ -101,9 +102,9 @@ export function PageDocument({
   };
   const latest = async () => {
     if (
-      !window.confirm(
+      !(await confirmInApp(
         "Charger la dernière version enregistrée de la page et remplacer ce brouillon ? Téléchargez d’abord le brouillon si vous voulez le conserver."
-      )
+      ))
     )
       return;
     try {
@@ -244,12 +245,12 @@ export function PageDocument({
                   : "Colonne élargie",
               },
               {
-                action: () => {
+                action: async () => {
                   const confirmation =
                     descendants.size > 1
                       ? `Supprimer cette page et ses ${descendants.size - 1} sous-page(s) ? Cette action est définitive.`
                       : "Supprimer cette page ? Cette action est définitive.";
-                  if (!window.confirm(confirmation)) return;
+                  if (!(await confirmInApp(confirmation))) return;
                   void (async () => {
                     if (!(await controller.flush(true))) {
                       setNotice("Enregistrez la page avant de la supprimer.");
