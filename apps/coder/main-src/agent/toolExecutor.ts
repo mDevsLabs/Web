@@ -2194,12 +2194,30 @@ function resolveAgentFilePath(
   raw: string,
   execCtx: ToolExecutionContext
 ): { rel: string; full: string } {
-  const root = requireWorkspace(execCtx);
+  const rawRoot = requireWorkspace(execCtx);
+  // Sur macOS, os.tmpdir() (/var/…) est un lien symbolique vers
+  // /private/var/… : `resolveWorkspacePath` renvoie `full` sous forme
+  // canonique (realpath) tandis que `root` gardait la forme symbollée. Le
+  // contrôle « escapes workspace » comparait alors deux formes différentes
+  // et rejetait à tort les écritures/éditions dans le workspace (Write
+  // UTF-16LE, Edit GB18030, …). On canonise donc la racine avant tout.
+  let root: string;
+  try {
+    root = fs.realpathSync(rawRoot);
+  } catch {
+    root = path.resolve(rawRoot);
+  }
   const trimmed = raw.trim();
   if (!trimmed) throw new Error("file_path is required");
-  const full = path.isAbsolute(trimmed)
-    ? path.normalize(trimmed)
-    : resolveWorkspacePath(trimmed.replace(/^[/\\]+/, ""), root);
+  let full: string;
+  try {
+    full = path.isAbsolute(trimmed)
+      ? resolveWorkspacePath(trimmed, root)
+      : resolveWorkspacePath(trimmed.replace(/^[/\\]+/, ""), root);
+  } catch {
+    // Message historique attendu par les appelants et les tests.
+    throw new Error("Path escapes workspace boundary.");
+  }
   if (!isPathInsideRoot(full, root))
     throw new Error("Path escapes workspace boundary.");
   const rel = path.relative(root, full).replace(/\\/g, "/") || ".";

@@ -24,6 +24,48 @@ function ensureDirs() {
   fs.mkdirSync(wwwDir, { recursive: true });
 }
 
+/** Dimensions d'un PNG sans dépendance (en-tête IHDR), ou null si illisible. */
+function readPngDimensions(pngPath) {
+  try {
+    const buf = fs.readFileSync(pngPath);
+    if (buf.length < 24) return null;
+    if (
+      buf[0] !== 0x89 ||
+      buf[1] !== 0x50 ||
+      buf[2] !== 0x4e ||
+      buf[3] !== 0x47
+    ) {
+      return null;
+    }
+    return {
+      height: buf.readUInt32BE(20),
+      width: buf.readUInt32BE(16),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/** Copie `src` vers `dst` sauf si `dst` existe déjà en plus grand (jamais de
+ *  réduction : committé 1024/2732 > logo 676). */
+function copyUnlessLargerExists(src, dst, label) {
+  const srcDims = readPngDimensions(src);
+  const dstDims = readPngDimensions(dst);
+  if (
+    dstDims &&
+    srcDims &&
+    dstDims.width >= srcDims.width &&
+    dstDims.height >= srcDims.height
+  ) {
+    console.log(
+      `[mobile-icons] ${label} existant conservé (${dstDims.width}x${dstDims.height}, sharp absent)`
+    );
+    return;
+  }
+  fs.copyFileSync(src, dst);
+  console.log(`[mobile-icons] ${label} copié (fallback) -> ${dst}`);
+}
+
 async function trySharp(pngBuffer) {
   try {
     const sharp = (await import("sharp")).default;
@@ -163,18 +205,25 @@ async function main() {
 
   const sharpOk = await trySharp(pngBuffer);
   if (!sharpOk) {
-    // Fallback : copie brute du logo comme icon + splash (capacitor-assets accepte, stores scalent)
-    const dstIcon = path.join(resourcesDir, "icon.png");
-    fs.copyFileSync(srcPng, dstIcon);
-    console.log(`[mobile-icons] icon.png copié (fallback) -> ${dstIcon}`);
-
-    const dstSplash = path.join(resourcesDir, "splash.png");
-    fs.copyFileSync(srcPng, dstSplash);
-    console.log(`[mobile-icons] splash.png copié (fallback) -> ${dstSplash}`);
-
-    const dstWwwIcon = path.join(wwwDir, "icon.png");
-    fs.copyFileSync(srcPng, dstWwwIcon);
-    console.log(`[mobile-icons] www/icon.png copié -> ${dstWwwIcon}`);
+    // Fallback sans redimensionnement : ne jamais réduire un asset existant
+    // (icon 1024 / splash 2732 committés > logo 676). Sinon tous les slots
+    // AppIcon iOS reçoivent une mauvaise taille et `xcodebuild archive`
+    // échoue sur « AppIcon did not have any applicable content ».
+    copyUnlessLargerExists(
+      srcPng,
+      path.join(resourcesDir, "icon.png"),
+      "icon.png"
+    );
+    copyUnlessLargerExists(
+      srcPng,
+      path.join(resourcesDir, "splash.png"),
+      "splash.png"
+    );
+    copyUnlessLargerExists(
+      srcPng,
+      path.join(wwwDir, "icon.png"),
+      "www/icon.png"
+    );
   }
 
   // Patch natif si dossiers existent (après `npx cap add`)

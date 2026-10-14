@@ -848,26 +848,46 @@ jobs:
             const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
               ...context.repo, release_id: releaseId, per_page: 100
             });
-            async function visit(dir) {
+            const collected = [];
+            async function collect(dir) {
               for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
                 const file = path.join(dir, entry.name);
                 if (entry.isSymbolicLink()) continue;
-                if (entry.isDirectory()) { await visit(file); continue; }
+                if (entry.isDirectory()) { await collect(file); continue; }
                 if (!/\.(exe|msi|dmg|zip|deb|rpm|AppImage|snap|apk|ipa|aab|blockmap|yml)$/i.test(entry.name)) continue;
                 // Le préfixe d'artefact évite les collisions entre applications.
                 const relative = path.relative('release-artifacts', file);
                 const name = relative.split(path.sep).join('-');
-                if (existing.some(asset => asset.name === name)) continue;
-                console.log(`Upload de l'artefact: ${name}`);
-                await github.rest.repos.uploadReleaseAsset({
-                  ...context.repo, release_id: releaseId, name,
-                  data: await fs.readFile(file),
-                  headers: { 'content-type': 'application/octet-stream' }
-                });
+                collected.push({ base: entry.name, file, name });
               }
             }
             try { await fs.access('release-artifacts'); }
             catch { core.info('Cette exécution ne contient aucun artefact téléchargeable.'); return; }
-            await visit('release-artifacts');
+            await collect('release-artifacts');
+            const prefixedByBase = new Map(collected.map(c => [c.base, c.name]));
+            for (const { base, file, name } of collected) {
+              // electron-updater découvre `latest.yml` / `latest-mac.yml` /
+              // `latest-linux.yml` sous leur nom d'origine : les renommer les
+              // rend invisibles et leur champ `path:` ne correspond plus au
+              // binaire préfixé — la mise à jour télécharge alors un 404 HTML
+              // exécuté comme installateur (« Error launching installer »).
+              const isUpdateMetadata = /^latest.*\.yml$/i.test(base);
+              const uploadName = isUpdateMetadata ? base : name;
+              if (existing.some(asset => asset.name === uploadName)) continue;
+              let data = await fs.readFile(file);
+              if (isUpdateMetadata) {
+                const text = data.toString('utf8').replace(/^path:\s*(.+)$/m, (m, p) => {
+                  const target = prefixedByBase.get(p.trim()) || p.trim();
+                  return `path: ${target}`;
+                });
+                data = Buffer.from(text, 'utf8');
+              }
+              console.log(`Upload de l'artefact: ${uploadName}`);
+              await github.rest.repos.uploadReleaseAsset({
+                ...context.repo, release_id: releaseId, name: uploadName,
+                data,
+                headers: { 'content-type': 'application/octet-stream' }
+              });
+            }
 
 

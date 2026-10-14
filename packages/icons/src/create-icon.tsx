@@ -1,5 +1,11 @@
 'use client';
 // La couleur vient du contrôle parent pour préserver le contraste et ses états.
+// Note : ce fichier n'utilise volontairement aucune syntaxe JSX, uniquement
+// `createElement`. Avec JSX, la compilation (automatic runtime) émettrait un
+// import de `react/jsx-runtime` dans `dist/create-icon.js` ; ce sous-chemin se
+// résout mal depuis les consommateurs qui lient le package via `file:` (ex.
+// build Vite/Rolldown de `apps/vibe` en CI : « failed to resolve import
+// "react/jsx-runtime" »). `react` seul, en pair dependency, suffit ici.
 import { createElement, forwardRef, useId, type SVGProps } from 'react';
 export type IconNode = readonly (readonly [
     string,
@@ -17,11 +23,25 @@ export function createIcon(displayName: string, nodes: IconNode) {
         const generated = useId();
         const titleId = `${generated}-title`;
         const labelled = Boolean(title || props['aria-label'] || props['aria-labelledby']);
-        return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" color={color} style={style} stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" role={labelled ? 'img' : undefined} aria-hidden={labelled ? undefined : true} aria-labelledby={title ? titleId : undefined} focusable="false" {...props} ref={ref}>
-      {title && <title id={titleId}>{title}</title>}
-      {nodes.map(([tag, attrs], index) => createElement(tag, { ...attrs, ...(absoluteStrokeWidth ? { vectorEffect: 'non-scaling-stroke' } : {}), key: index }))}
-      {children}
-    </svg>;
+        return createElement('svg', {
+            xmlns: 'http://www.w3.org/2000/svg',
+            width: size,
+            height: size,
+            viewBox: '0 0 24 24',
+            fill: 'none',
+            color,
+            style,
+            stroke: 'currentColor',
+            strokeWidth,
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+            role: labelled ? 'img' : undefined,
+            'aria-hidden': labelled ? undefined : true,
+            'aria-labelledby': title ? titleId : undefined,
+            focusable: 'false',
+            ...props,
+            ref,
+        }, title ? createElement('title', { id: titleId }, title) : null, nodes.map(([tag, attrs], index) => createElement(tag, { ...attrs, ...(absoluteStrokeWidth ? { vectorEffect: 'non-scaling-stroke' } : {}), key: index })), children);
     });
     Icon.displayName = displayName;
     return Icon;

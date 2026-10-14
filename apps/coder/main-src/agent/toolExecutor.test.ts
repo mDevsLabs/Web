@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { EventEmitter } from "node:events";
 import * as fs from "node:fs";
 import * as os from "node:os";
@@ -155,6 +156,45 @@ describe("executeTool file encoding", () => {
       } else {
         process.env.MAI_CODER_LEGACY_TEXT_ENCODING = previous;
       }
+    }
+  });
+
+  it("reste dans le workspace quand sa racine est un lien symbolique (macOS /var -> /private/var)", async () => {
+    // Sur macOS, os.tmpdir() (/var/…) pointe vers /private/var/… : la racine
+    // résolue (realpath) ne partage plus son préfixe avec la racine brute et
+    // le contrôle « escapes workspace » rejetait à tort Write/Edit. Reproduit
+    // avec une jonction (Windows) ou un symlink (macOS/Linux).
+    const real = fs.mkdtempSync(path.join(os.tmpdir(), "async-link-real-"));
+    const link = path.join(os.tmpdir(), `async-link-${process.pid}`);
+    try {
+      fs.rmSync(link, { force: true, recursive: true });
+    } catch {}
+    if (process.platform === "win32") {
+      execFileSync("cmd.exe", ["/d", "/s", "/c", "mklink", "/J", link, real], {
+        stdio: "ignore",
+      });
+    } else {
+      fs.symlinkSync(real, link, "dir");
+    }
+    try {
+      const file = path.join(real, "utf16.txt");
+      fs.writeFileSync(file, encodeTextBuffer("旧内容", "utf16le-bom"));
+
+      const result = await executeTool(
+        {
+          arguments: { content: "新内容", file_path: "utf16.txt" },
+          id: "write-link-1",
+          name: "Write",
+        },
+        undefined,
+        { workspaceRoot: link }
+      );
+
+      expect(result.isError).toBe(false);
+      expect(readTextFileSyncWithMetadata(file).text).toBe("新内容");
+    } finally {
+      fs.rmSync(link, { force: true, recursive: true });
+      fs.rmSync(real, { force: true, recursive: true });
     }
   });
 });

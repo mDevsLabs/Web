@@ -67,11 +67,14 @@ function configureUpdater(): void {
   autoUpdater.autoInstallOnAppQuit = true;
   syncDifferentialDownloadSetting();
 
-  // 设置 GitHub 仓库（从 package.json 的 repository 或硬编码）
+  // Dépôt des releases (doit rester aligné avec `publish` de package.json :
+  // `owner: mDevsLabs`, `repo: Web`). Une URL obsolète fait télécharger des
+  // 404 HTML à la place de l'installateur, que le système exécute ensuite —
+  // d'où « Error launching installer » côté NSIS.
   autoUpdater.setFeedURL({
-    owner: "ZYKJShadow",
+    owner: "mDevsLabs",
     provider: "github",
-    repo: "mAI-Coder",
+    repo: "Web",
   });
 
   autoUpdater.on("checking-for-update", () => {

@@ -218,10 +218,10 @@ describe("AutoUpdate Settings Configuration", () => {
       const packageConfig = {
         build: {
           publish: {
-            owner: "ZYKJShadow",
+            owner: "mDevsLabs",
             provider: "github",
             releaseType: "release",
-            repo: "mAI-Coder",
+            repo: "Web",
           },
         },
       };

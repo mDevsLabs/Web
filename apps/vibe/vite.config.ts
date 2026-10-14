@@ -8,6 +8,19 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  resolve: {
+    // @mdevs/icons et @mdevs/ui sont liés via `file:../../packages/*`
+    // (symlinks npm, cf. package-lock.json `"link": true`). Sans
+    // preserveSymlinks, Rolldown résout leurs pairs (`react`,
+    // `react/jsx-runtime`) depuis `packages/*/` au lieu de
+    // `apps/vibe/node_modules/` — où seul `npm ci` a installé les
+    // dépendances en CI — et le build échoue sur :
+    // « Rolldown failed to resolve import "react/jsx-runtime" from
+    // ".../packages/icons/dist/create-icon.js" ».
+    // dedupe évite les doublons de React une fois les liens préservés.
+    dedupe: ['react', 'react-dom'],
+    preserveSymlinks: true,
+  },
   server: {
     port: 3000,
     // Le proxy local doit rester sur le port attendu par l'API_BASE relatif.

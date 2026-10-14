@@ -21,18 +21,14 @@ __export(stdin_exports, {
   createIcon: () => createIcon
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_jsx_runtime = require("react/jsx-runtime");
+// Voir `src/create-icon.tsx` : pas de JSX ici, donc pas de `react/jsx-runtime`.
 var import_react = require("react");
 function createIcon(displayName, nodes) {
   const Icon = (0, import_react.forwardRef)(function Icon2({ size = 24, title, absoluteStrokeWidth = false, children, strokeWidth = 1.5, color, style, ...props }, ref) {
     const generated = (0, import_react.useId)();
     const titleId = `${generated}-title`;
     const labelled = Boolean(title || props["aria-label"] || props["aria-labelledby"]);
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", width: size, height: size, viewBox: "0 0 24 24", fill: "none", color, style, stroke: "currentColor", strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", role: labelled ? "img" : void 0, "aria-hidden": labelled ? void 0 : true, "aria-labelledby": title ? titleId : void 0, focusable: "false", ...props, ref, children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("title", { id: titleId, children: title }),
-      nodes.map(([tag, attrs], index) => (0, import_react.createElement)(tag, { ...attrs, ...absoluteStrokeWidth ? { vectorEffect: "non-scaling-stroke" } : {}, key: index })),
-      children
-    ] });
+    return /* @__PURE__ */ (0, import_react.createElement)("svg", { xmlns: "http://www.w3.org/2000/svg", width: size, height: size, viewBox: "0 0 24 24", fill: "none", color, style, stroke: "currentColor", strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", role: labelled ? "img" : void 0, "aria-hidden": labelled ? void 0 : true, "aria-labelledby": title ? titleId : void 0, focusable: "false", ...props, ref }, title ? /* @__PURE__ */ (0, import_react.createElement)("title", { id: titleId }, title) : null, nodes.map(([tag, attrs], index) => (0, import_react.createElement)(tag, { ...attrs, ...absoluteStrokeWidth ? { vectorEffect: "non-scaling-stroke" } : {}, key: index })), children);
   });
   Icon.displayName = displayName;
   return Icon;
