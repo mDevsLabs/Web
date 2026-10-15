@@ -13,7 +13,7 @@
     "add:ios": "npx cap add ios",
     "build:android": "npx cap sync android && cd android && ./gradlew assembleDebug --no-daemon",
     "build:android:release": "npx cap sync android && cd android && ./gradlew assembleRelease --no-daemon -Pandroid.injected.signing.store.file=\"\" -Pandroid.injected.signing.store.password=\"\" -Pandroid.injected.signing.key.alias=\"\" -Pandroid.injected.signing.key.password=\"\"",
-    "build:ios": "npx cap sync ios && xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -archivePath ios/App/build/App.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\"\" archive"
+    "build:ios": "npx cap sync ios && sh -c 'if [ -d ios/App/App.xcworkspace ]; then T=\"-workspace ios/App/App.xcworkspace\"; else T=\"-project ios/App/App.xcodeproj\"; fi; xcodebuild archive $T -scheme App -configuration Release -archivePath ios/App/build/App.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO'"
   },
   "dependencies": {
     "@capacitor/android": "^6.2.2",

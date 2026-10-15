@@ -1,306 +1,50 @@
 "use client";
 
 // Page Bibliothèque (ex-« Stockage de fichiers »).
-// Pourquoi cette refonte : l'ancienne page empilait un bandeau quota lourd,
-// une zone de dépôt envahissante et huit filtres à puces. La maquette cible
-// impose un en-tête unique (tri, vue, recherche, « Nouveau »), cinq onglets
-// simples et une grille masonry. Les couleurs restent achromatiques : une
-// pastille ne porte une couleur que si elle transporte une information
-// (épinglage → `--warning`, erreur → `--destructive`).
+// Refactorisée et modularisée : logique d'en-tête, tableau, cartes masonry,
+// modales de renommage, prévisualisation et suppression extraites dans @/components/library.
 
 import {
-  AlertCircleIcon,
-  ArchiveIcon,
   ArrowLeftIcon,
-  CheckSquareIcon,
   ChevronDownIcon,
   CloudUploadIcon,
-  CodeIcon,
-  CopyIcon,
-  DownloadIcon,
-  Edit2Icon,
-  EyeIcon,
-  FileIcon,
-  FileSpreadsheetIcon,
-  FileTextIcon,
-  FolderIcon,
-  ImageIcon,
-  LayoutGridIcon,
-  LibraryIcon,
-  ListFilterIcon,
-  ListIcon,
   Loader2Icon,
-  MoreHorizontalIcon,
-  MusicIcon,
-  PinIcon,
-  SearchIcon,
-  SlidersHorizontalIcon,
-  SparklesIcon,
-  SquareIcon,
-  Trash2Icon,
-  VideoIcon,
-  XIcon,
 } from "@mdevs/icons";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
-import { BotGlyph } from "@/components/agents/bot-avatar";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  BulkActionsBar,
+  CATEGORY_ICONS,
+  CATEGORY_LABELS,
+  type CloudFile,
+  DeleteModals,
+  EmptyState,
+  type ExtraCategory,
+  type FileCategory,
+  FilesArea,
+  FOLDER_CATEGORIES,
+  formatBytes,
+  formatDate,
+  getFileCategory,
+  getFileIcon,
+  LibraryHeader,
+  type LibraryTab,
+  type Period,
+  PreviewModal,
+  RenameModal,
+  type SortKey,
+  type StorageUsage,
+} from "@/components/library";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
-import { APP_PRICING_URL, MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
+import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import { fetcher } from "@/lib/utils";
 
-export type CloudFile = {
-  id: string;
-  filename: string;
-  original_name: string;
-  url: string;
-  size_bytes: number;
-  mime_type: string;
-  uploaded_at: string;
-};
-
-export type StorageUsage = {
-  tier: string;
-  bytes_used: number;
-  bytes_limit: number;
-  files_count: number;
-  percent_used: number;
-  over_limit: boolean;
-};
-
-export function formatBytes(bytes: number, decimals = 2) {
-  if (!bytes || bytes === 0) {
-    return "0 Octet";
-  }
-  const k = 1024;
-  const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Octets", "Ko", "Mo", "Go", "To"];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return `${Number.parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
-}
-
-export function formatDate(dateStr: string) {
-  try {
-    const d = new Date(dateStr);
-    return new Intl.DateTimeFormat("fr-FR", {
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      month: "short",
-      year: "numeric",
-    }).format(d);
-  } catch {
-    return dateStr;
-  }
-}
-
-type FileCategory =
-  | "archive"
-  | "audio"
-  | "code"
-  | "document"
-  | "image"
-  | "other"
-  | "video";
-
-// Libellés français des catégories — dossiers virtuels et messages.
-const CATEGORY_LABELS: Record<FileCategory, string> = {
-  archive: "Archives",
-  audio: "Audio",
-  code: "Code",
-  document: "Documents",
-  image: "Images",
-  other: "Autres",
-  video: "Vidéos",
-};
-
-const CATEGORY_ICONS: Record<FileCategory, typeof FileIcon> = {
-  archive: ArchiveIcon,
-  audio: MusicIcon,
-  code: CodeIcon,
-  document: FileTextIcon,
-  image: ImageIcon,
-  other: FileIcon,
-  video: VideoIcon,
-};
-
-// Dossiers virtuels proposés dans l'onglet « Dossiers » (hors images, qui a
-// son propre onglet). Les dossiers vides sont masqués : un dossier fantôme
-// n'aide personne à classer.
-const FOLDER_CATEGORIES: FileCategory[] = [
-  "document",
-  "video",
-  "audio",
-  "code",
-  "archive",
-  "other",
-];
-
-export function getFileCategory(
-  mimeType: string,
-  filename: string
-): FileCategory {
-  const lowerName = filename.toLowerCase();
-  if (
-    mimeType.startsWith("image/") ||
-    /\.(png|jpe?g|gif|webp|svg|bmp|ico)$/i.test(lowerName)
-  ) {
-    return "image";
-  }
-  if (
-    mimeType.startsWith("video/") ||
-    /\.(mp4|webm|mov|avi|mkv)$/i.test(lowerName)
-  ) {
-    return "video";
-  }
-  if (
-    mimeType.startsWith("audio/") ||
-    /\.(mp3|wav|ogg|m4a|aac|flac)$/i.test(lowerName)
-  ) {
-    return "audio";
-  }
-  if (
-    mimeType.includes("pdf") ||
-    mimeType.includes("word") ||
-    mimeType.includes("document") ||
-    mimeType.includes("sheet") ||
-    mimeType.includes("excel") ||
-    /\.(pdf|docx?|pptx?|xlsx?|csv|txt|rtf|md)$/i.test(lowerName)
-  ) {
-    return "document";
-  }
-  if (
-    mimeType.includes("javascript") ||
-    mimeType.includes("typescript") ||
-    mimeType.includes("json") ||
-    mimeType.includes("html") ||
-    mimeType.includes("css") ||
-    /\.(ts|tsx|js|jsx|py|json|html|css|sql|sh|rs|go|c|cpp|java|php)$/i.test(
-      lowerName
-    )
-  ) {
-    return "code";
-  }
-  if (
-    mimeType.includes("zip") ||
-    mimeType.includes("tar") ||
-    mimeType.includes("rar") ||
-    mimeType.includes("7z") ||
-    /\.(zip|tar|gz|rar|7z|bz2)$/i.test(lowerName)
-  ) {
-    return "archive";
-  }
-  return "other";
-}
-
-export function getFileIcon(mimeType: string, filename: string) {
-  const category = getFileCategory(mimeType, filename);
-  if (category === "image") {
-    return <ImageIcon className="size-5 text-muted-foreground" />;
-  }
-  if (category === "video") {
-    return <VideoIcon className="size-5 text-muted-foreground" />;
-  }
-  if (category === "audio") {
-    return <MusicIcon className="size-5 text-muted-foreground" />;
-  }
-  if (category === "code") {
-    return <CodeIcon className="size-5 text-muted-foreground" />;
-  }
-  if (category === "archive") {
-    return <ArchiveIcon className="size-5 text-muted-foreground" />;
-  }
-  if (category === "document") {
-    if (
-      mimeType.includes("sheet") ||
-      mimeType.includes("excel") ||
-      filename.endsWith(".csv")
-    ) {
-      return <FileSpreadsheetIcon className="size-5 text-muted-foreground" />;
-    }
-    return <FileTextIcon className="size-5 text-muted-foreground" />;
-  }
-  return <FileIcon className="size-5 text-muted-foreground" />;
-}
-
-type LibraryTab = "dossiers" | "favoris" | "images" | "suggestions" | "tout";
-type ExtraCategory = FileCategory | null;
-type Period = "all" | "30d" | "7d";
-type SortKey =
-  | "date-asc"
-  | "date-desc"
-  | "name-asc"
-  | "name-desc"
-  | "size-asc"
-  | "size-desc";
-
-const SORT_LABELS: Record<SortKey, string> = {
-  "date-asc": "Plus anciens d'abord",
-  "date-desc": "Plus récents d'abord",
-  "name-asc": "Nom (A → Z)",
-  "name-desc": "Nom (Z → A)",
-  "size-asc": "Taille (croissante)",
-  "size-desc": "Taille (décroissante)",
-};
-
-const PERIOD_LABELS: Record<Period, string> = {
-  "7d": "7 derniers jours",
-  "30d": "30 derniers jours",
-  all: "Toujours",
-};
-
-const EXTRA_CATEGORY_OPTIONS: FileCategory[] = [
-  "document",
-  "code",
-  "audio",
-  "video",
-  "archive",
-];
-
-const TABS: { id: LibraryTab; label: string }[] = [
-  { id: "suggestions", label: "Suggestions" },
-  { id: "favoris", label: "Favoris" },
-  { id: "dossiers", label: "Dossiers" },
-  { id: "images", label: "Images" },
-  { id: "tout", label: "Tout" },
-];
+// Rétrocompatibilité pour les composants qui importent depuis cette page
+export type { CloudFile, StorageUsage };
+export { formatBytes, formatDate, getFileCategory, getFileIcon };
 
 export default function LibraryPage() {
   const router = useRouter();
@@ -381,7 +125,7 @@ export default function LibraryPage() {
     [router, currentModelSupportsFiles]
   );
 
-  // Favoris (ex-épinglés : persistance dans le stockage local)
+  // Favoris (persistance dans le stockage local)
   const [pinnedIds, setPinnedIds] = useState<string[]>([]);
   useEffect(() => {
     try {
@@ -413,10 +157,10 @@ export default function LibraryPage() {
   // Multi-sélection
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
-  // Vue Grille / Liste — la maquette met la grille en premier choix.
+  // Vue Grille / Liste
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  // Onglets simples + filtres avancés (panneau réglages)
+  // Onglets simples + filtres avancés
   const [activeTab, setActiveTab] = useState<LibraryTab>("suggestions");
   const [extraCategory, setExtraCategory] = useState<ExtraCategory>(null);
   const [period, setPeriod] = useState<Period>("all");
@@ -737,8 +481,7 @@ export default function LibraryPage() {
     );
   };
 
-  // ── Filtrage et tri ──────────────────────────────────────────────────────
-  // Pipeline : recherche → onglet → filtres avancés (format, période) → tri.
+  // Filtrage et tri
   const filteredAndSortedFiles = useMemo(() => {
     const now = Date.now();
     const periodCutoff =
@@ -763,7 +506,6 @@ export default function LibraryPage() {
         return false;
       }
 
-      // Dossier virtuel ouvert dans l'onglet Dossiers : ne montrer que lui.
       if (activeTab === "dossiers" && folderFilter) {
         return getFileCategory(f.mime_type, f.original_name) === folderFilter;
       }
@@ -778,8 +520,6 @@ export default function LibraryPage() {
         case "images":
           return getFileCategory(f.mime_type, f.original_name) === "image";
         case "suggestions": {
-          // Suggestions = favoris d'abord, puis récents (7 jours). Le tri
-          // remet les favoris devant, donc ici on garde favoris ∪ récents.
           const isPinned = pinnedIds.includes(f.id);
           const isRecent =
             new Date(f.uploaded_at).getTime() >= now - 7 * 24 * 60 * 60 * 1000;
@@ -840,8 +580,7 @@ export default function LibraryPage() {
     sortBy,
   ]);
 
-  // Dossiers virtuels : comptages et poids par catégorie (recherche incluse,
-  // pour rester cohérent avec ce que voit l'utilisateur).
+  // Dossiers virtuels
   const folders = useMemo(() => {
     const byCategory = new Map<
       FileCategory,
@@ -871,8 +610,6 @@ export default function LibraryPage() {
       }
     : null;
 
-  // Dossiers non vides — une bibliothèque d'images pures n'a aucun dossier à
-  // montrer (les images ont leur propre onglet).
   const visibleFolders = FOLDER_CATEGORIES.filter(
     (cat) => (folders.get(cat)?.count ?? 0) > 0
   );
@@ -883,7 +620,6 @@ export default function LibraryPage() {
     setPeriod("all");
   };
 
-  // Fichiers en cours d'envoi ?
   const isUploading = uploadingFiles.length > 0;
 
   return (
@@ -905,7 +641,6 @@ export default function LibraryPage() {
         multiple
         onChange={(e) => handleFilesSelected(e.target.files)}
         ref={(el) => {
-          // `webkitdirectory` n'est pas un attribut React typé : posé à la main.
           if (el) {
             el.setAttribute("webkitdirectory", "");
             el.setAttribute("directory", "");
@@ -915,273 +650,29 @@ export default function LibraryPage() {
         type="file"
       />
 
-      {/* En-tête : titre + outils, sur une seule ligne comme la maquette */}
-      <header className="flex flex-col gap-4 border-b border-border/50 pb-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-2">
-            <PageBackButton />
-            <LibraryIcon className="size-6 shrink-0 text-foreground" />
-            <h1 className="truncate text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Bibliothèque
-            </h1>
-          </div>
+      <LibraryHeader
+        activeTab={activeTab}
+        extraCategory={extraCategory}
+        hasAdvancedFilters={hasAdvancedFilters}
+        isUploading={isUploading}
+        onImportFilesClick={() => fileInputRef.current?.click()}
+        onImportFolderClick={() => folderInputRef.current?.click()}
+        period={period}
+        resetAdvancedFilters={resetAdvancedFilters}
+        searchQuery={searchQuery}
+        setActiveTab={setActiveTab}
+        setExtraCategory={setExtraCategory}
+        setPeriod={setPeriod}
+        setSearchQuery={setSearchQuery}
+        setSortBy={setSortBy}
+        setViewMode={setViewMode}
+        sortBy={sortBy}
+        storage={storage}
+        uploadingFilesCount={uploadingFiles.length}
+        viewMode={viewMode}
+      />
 
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Tri */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  aria-label="Trier les fichiers"
-                  className="inline-flex size-9 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  title={`Tri : ${SORT_LABELS[sortBy]}`}
-                  type="button"
-                >
-                  <ListFilterIcon className="size-4.5" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuLabel>Trier par</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {(Object.keys(SORT_LABELS) as SortKey[]).map((key) => (
-                  <DropdownMenuItem
-                    className={cnSortItem(sortBy === key)}
-                    key={key}
-                    onClick={() => setSortBy(key)}
-                  >
-                    {SORT_LABELS[key]}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Bascule Grille / Liste — <fieldset> sémantique (groupement
-                de boutons) ; le style neutralise la bordure native */}
-            <fieldset
-              aria-label="Mode d'affichage"
-              className="m-0 flex items-center rounded-full border border-border bg-muted/40 p-0.5"
-            >
-              <button
-                aria-label="Vue grille"
-                aria-pressed={viewMode === "grid"}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors ${
-                  viewMode === "grid"
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                onClick={() => setViewMode("grid")}
-                title="Vue grille"
-                type="button"
-              >
-                <LayoutGridIcon className="size-4" />
-              </button>
-              <button
-                aria-label="Vue liste"
-                aria-pressed={viewMode === "list"}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors ${
-                  viewMode === "list"
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                onClick={() => setViewMode("list")}
-                title="Vue liste"
-                type="button"
-              >
-                <ListIcon className="size-4" />
-              </button>
-            </fieldset>
-
-            {/* Recherche */}
-            <div className="relative w-full min-w-44 sm:w-64">
-              <SearchIcon className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                aria-label="Chercher dans la bibliothèque"
-                className="h-10 rounded-full border-border/60 bg-card pl-10 pr-3 text-sm"
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Chercher dans Bibliothèque"
-                type="text"
-                value={searchQuery}
-              />
-            </div>
-
-            {/* Nouveau : import fichiers ou dossier entier */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-sm font-medium text-background transition-all hover:opacity-90 active:scale-95"
-                  type="button"
-                >
-                  Nouveau
-                  <ChevronDownIcon className="size-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-52">
-                <DropdownMenuItem
-                  className="cursor-pointer gap-2"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <CloudUploadIcon className="size-4" />
-                  Importer des fichiers
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="cursor-pointer gap-2"
-                  onClick={() => folderInputRef.current?.click()}
-                >
-                  <FolderIcon className="size-4" />
-                  Importer un dossier
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Filtres avancés : format complémentaire + période */}
-            <Popover>
-              <PopoverTrigger asChild>
-                <button
-                  aria-label="Filtres avancés"
-                  className={`relative inline-flex size-9 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-muted hover:text-foreground ${
-                    hasAdvancedFilters
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  }`}
-                  title="Filtres avancés"
-                  type="button"
-                >
-                  <SlidersHorizontalIcon className="size-4.5" />
-                  {hasAdvancedFilters && (
-                    <span className="absolute right-1.5 top-1.5 size-1.5 rounded-full bg-primary" />
-                  )}
-                </button>
-              </PopoverTrigger>
-              <PopoverContent align="end" className="w-64">
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-col gap-1.5">
-                    <span className="text-xs font-semibold text-foreground">
-                      Format complémentaire
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {EXTRA_CATEGORY_OPTIONS.map((cat) => {
-                        const Icon = CATEGORY_ICONS[cat];
-                        return (
-                          <button
-                            className="chip"
-                            data-active={extraCategory === cat}
-                            key={cat}
-                            onClick={() =>
-                              setExtraCategory(
-                                extraCategory === cat ? null : cat
-                              )
-                            }
-                            type="button"
-                          >
-                            <Icon className="size-3" />
-                            {CATEGORY_LABELS[cat]}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <span className="text-xs font-semibold text-foreground">
-                      Période
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {(Object.keys(PERIOD_LABELS) as Period[]).map((key) => (
-                        <button
-                          className="chip"
-                          data-active={period === key}
-                          key={key}
-                          onClick={() => setPeriod(key)}
-                          type="button"
-                        >
-                          {PERIOD_LABELS[key]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  {hasAdvancedFilters && (
-                    <Button
-                      onClick={resetAdvancedFilters}
-                      size="sm"
-                      type="button"
-                      variant="outline"
-                    >
-                      Réinitialiser les filtres
-                    </Button>
-                  )}
-                </div>
-              </PopoverContent>
-            </Popover>
-          </div>
-        </div>
-
-        {/* Quota : une ligne discrète, la barre complète vivait mal */}
-        {storage && (
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">
-              {formatBytes(storage.bytes_used)} sur{" "}
-              {formatBytes(storage.bytes_limit)} utilisés
-            </span>
-            <span aria-hidden="true">·</span>
-            <span>
-              {storage.files_count ?? 0} fichier
-              {(storage.files_count ?? 0) > 1 ? "s" : ""}
-            </span>
-            <span aria-hidden="true">·</span>
-            <span>Forfait {storage.tier}</span>
-            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-muted sm:w-48">
-              <div
-                className={`h-full rounded-full transition-all duration-500 ${
-                  storage.percent_used > 90
-                    ? "bg-destructive"
-                    : storage.percent_used > 75
-                      ? "bg-warning"
-                      : "bg-foreground/70"
-                }`}
-                style={{
-                  width: `${Math.min(100, Math.max(1, storage.percent_used))}%`,
-                }}
-              />
-            </div>
-            {storage.percent_used >= 90 && (
-              <span className="flex items-center gap-1 text-warning">
-                <AlertCircleIcon className="size-3.5" />
-                Presque plein —{" "}
-                <Link
-                  className="font-semibold underline underline-offset-2 hover:text-foreground"
-                  href={APP_PRICING_URL}
-                >
-                  mettre à niveau
-                </Link>
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Onglets simples */}
-        <nav
-          aria-label="Filtres de la bibliothèque"
-          className="flex items-center gap-1 overflow-x-auto pb-0.5 no-scrollbar"
-        >
-          {TABS.map((tab) => (
-            <button
-              className="chip px-3.5 py-1.5 text-xs"
-              data-active={activeTab === tab.id}
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              type="button"
-            >
-              {tab.label}
-            </button>
-          ))}
-          {isUploading && (
-            <span className="ml-2 flex items-center gap-1.5 text-[11px] text-primary">
-              <Loader2Icon className="size-3 animate-spin" />
-              {uploadingFiles.length} import(s) en cours
-            </span>
-          )}
-        </nav>
-      </header>
-
-      {/* Zone d'import compacte : le dépôt fonctionne aussi sur toute la page */}
+      {/* Zone d'import compacte */}
       <button
         className={`mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed px-4 py-3 text-xs transition-all ${
           isDragging
@@ -1199,65 +690,13 @@ export default function LibraryPage() {
       </button>
 
       {/* Barre d'actions groupées */}
-      {selectedIds.length > 0 && (
-        <div className="sticky top-4 z-20 mt-4 flex items-center justify-between rounded-2xl bg-foreground p-3 text-background shadow-xl animate-in fade-in-0 slide-in-from-top-2">
-          <div className="flex items-center gap-2 px-2 text-xs font-medium">
-            <CheckSquareIcon className="size-4" />
-            <span>{selectedIds.length} fichier(s) sélectionné(s)</span>
-          </div>
-
-          <div className="flex items-center gap-1.5 text-xs">
-            <button
-              className="flex cursor-pointer items-center gap-1 rounded-lg bg-background/15 px-2.5 py-1.5 transition-colors hover:bg-background/25"
-              onClick={() => handleBulkPin(true)}
-              title="Ajouter la sélection aux favoris"
-              type="button"
-            >
-              <PinIcon className="size-3.5" />
-              <span className="hidden sm:inline">Favoris</span>
-            </button>
-
-            <button
-              className="flex cursor-pointer items-center gap-1 rounded-lg bg-background/15 px-2.5 py-1.5 transition-colors hover:bg-background/25"
-              onClick={() => handleBulkPin(false)}
-              title="Retirer la sélection des favoris"
-              type="button"
-            >
-              <XIcon className="size-3.5" />
-              <span className="hidden sm:inline">Retirer</span>
-            </button>
-
-            <button
-              className="flex cursor-pointer items-center gap-1 rounded-lg bg-background/15 px-2.5 py-1.5 transition-colors hover:bg-background/25"
-              onClick={handleBulkDownload}
-              title="Télécharger la sélection"
-              type="button"
-            >
-              <DownloadIcon className="size-3.5" />
-              <span className="hidden sm:inline">Télécharger</span>
-            </button>
-
-            <button
-              className="flex cursor-pointer items-center gap-1 rounded-lg bg-destructive/80 px-2.5 py-1.5 text-background transition-colors hover:bg-destructive"
-              onClick={() => setBulkDeleteDialogOpen(true)}
-              title="Supprimer la sélection"
-              type="button"
-            >
-              <Trash2Icon className="size-3.5" />
-              <span className="hidden sm:inline">Supprimer</span>
-            </button>
-
-            <button
-              className="ml-1 cursor-pointer rounded-lg p-1.5 transition-colors hover:bg-background/20"
-              onClick={() => setSelectedIds([])}
-              title="Désélectionner tout"
-              type="button"
-            >
-              <XIcon className="size-4" />
-            </button>
-          </div>
-        </div>
-      )}
+      <BulkActionsBar
+        onBulkDownload={handleBulkDownload}
+        onBulkPin={handleBulkPin}
+        onClearSelection={() => setSelectedIds([])}
+        onOpenBulkDelete={() => setBulkDeleteDialogOpen(true)}
+        selectedCount={selectedIds.length}
+      />
 
       {/* Fichiers en cours d'envoi */}
       {isUploading && (
@@ -1284,7 +723,7 @@ export default function LibraryPage() {
         </div>
       )}
 
-      {/* ── Contenu principal ─────────────────────────────────────────────── */}
+      {/* Contenu principal */}
       <div className="mt-4">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center gap-3 py-16 text-muted-foreground">
@@ -1292,7 +731,6 @@ export default function LibraryPage() {
             <span className="text-sm">Chargement de votre bibliothèque…</span>
           </div>
         ) : activeTab === "dossiers" && folderFilter ? (
-          /* Dossier ouvert : fichiers de ce type virtuel */
           <div>
             <div className="mb-4 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
@@ -1334,7 +772,6 @@ export default function LibraryPage() {
             />
           </div>
         ) : activeTab === "dossiers" ? (
-          /* Onglet Dossiers : cartes dossier virtuelles par type */
           folders.size === 0 || visibleFolders.length === 0 ? (
             <EmptyState
               hint="Importez vos premiers documents pour voir apparaître des dossiers."
@@ -1407,748 +844,37 @@ export default function LibraryPage() {
       </div>
 
       {/* Modale de Renommage */}
-      <Dialog
-        onOpenChange={(open) => !open && setFileToRename(null)}
-        open={Boolean(fileToRename)}
-      >
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Renommer le fichier</DialogTitle>
-            <DialogDescription>
-              Modifiez le nom d'affichage de votre document Cloud.
-            </DialogDescription>
-          </DialogHeader>
-          <form className="space-y-4 py-2" onSubmit={handleRenameSubmit}>
-            <div className="space-y-2">
-              <Input
-                autoFocus
-                className="rounded-xl text-xs"
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="Nouveau nom de fichier…"
-                value={newName}
-              />
-            </div>
-            <DialogFooter>
-              <Button
-                disabled={isRenaming}
-                onClick={() => setFileToRename(null)}
-                type="button"
-                variant="outline"
-              >
-                Annuler
-              </Button>
-              <Button disabled={isRenaming || !newName.trim()} type="submit">
-                {isRenaming ? "Enregistrement…" : "Renommer"}
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
+      <RenameModal
+        fileToRename={fileToRename}
+        handleRenameSubmit={handleRenameSubmit}
+        isRenaming={isRenaming}
+        newName={newName}
+        setFileToRename={setFileToRename}
+        setNewName={setNewName}
+      />
 
       {/* Modale de Prévisualisation */}
-      <Dialog
-        onOpenChange={(open) => !open && setPreviewFile(null)}
-        open={Boolean(previewFile)}
-      >
-        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-xl">
-          <DialogHeader>
-            <DialogTitle className="truncate pr-4">
-              {previewFile?.original_name}
-            </DialogTitle>
-            <DialogDescription>
-              {previewFile && formatBytes(previewFile.size_bytes)} •{" "}
-              {previewFile?.mime_type}
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="my-3 flex min-h-48 flex-col items-center justify-center overflow-hidden rounded-xl border border-border/40 bg-muted/30 p-4">
-            {previewFile?.mime_type.startsWith("image/") ? (
-              <img
-                alt={previewFile.original_name}
-                className="max-h-80 w-auto rounded-lg object-contain shadow-sm"
-                loading="lazy"
-                src={previewFile.url}
-              />
-            ) : previewFile?.mime_type.startsWith("video/") ? (
-              <video className="max-h-80 w-full rounded-lg" controls>
-                <source src={previewFile.url} type={previewFile.mime_type} />
-                Votre navigateur ne prend pas en charge la lecture de vidéos.
-              </video>
-            ) : previewFile?.mime_type.startsWith("audio/") ? (
-              <audio className="w-full" controls>
-                <source src={previewFile.url} type={previewFile.mime_type} />
-                Votre navigateur ne prend pas en charge la lecture audio.
-              </audio>
-            ) : previewFile?.mime_type === "application/pdf" ? (
-              <iframe
-                className="h-[60vh] w-full rounded-lg border bg-white"
-                src={previewFile.url}
-                title={previewFile.original_name}
-              />
-            ) : previewFile?.mime_type.startsWith("text/") ||
-              previewFile?.mime_type === "application/json" ||
-              previewFile?.original_name.endsWith(".md") ||
-              previewFile?.original_name.endsWith(".csv") ||
-              previewFile?.original_name.endsWith(".txt") ? (
-              <div className="max-h-80 w-full overflow-auto whitespace-pre-wrap rounded-lg border bg-background p-3 font-mono text-xs">
-                <a
-                  className="mb-2 inline-block text-xs text-primary underline"
-                  href={previewFile.url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Ouvrir le fichier texte
-                </a>
-                <div className="text-muted-foreground">
-                  Aperçu texte disponible via ouverture.
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-3 p-6 text-center">
-                <div className="rounded-2xl bg-muted/80 p-4">
-                  {previewFile &&
-                    getFileIcon(
-                      previewFile.mime_type,
-                      previewFile.original_name
-                    )}
-                </div>
-                <p className="max-w-xs text-xs text-muted-foreground">
-                  Aperçu direct non disponible pour ce format. Vous pouvez
-                  l'ouvrir ou le télécharger directement.
-                </p>
-              </div>
-            )}
-          </div>
-
-          <DialogFooter className="flex-col items-stretch justify-between gap-2.5 border-t border-border/40 pt-2 sm:flex-row sm:items-center">
-            <div className="flex flex-wrap items-center gap-2">
-              <Button
-                className="gap-1.5 rounded-xl text-xs"
-                disabled={!currentModelSupportsFiles}
-                onClick={() => previewFile && handleAskAIWithFile(previewFile)}
-                size="sm"
-                type="button"
-                variant="default"
-              >
-                <BotGlyph className="size-3.5" />
-                Discuter avec ce fichier
-              </Button>
-
-              <Button
-                className="gap-1.5 rounded-xl text-xs"
-                disabled={!currentModelSupportsFiles}
-                onClick={() => previewFile && handleSummarizeFile(previewFile)}
-                size="sm"
-                type="button"
-                variant="secondary"
-              >
-                <SparklesIcon className="size-3.5" />
-                Résumé IA
-              </Button>
-            </div>
-
-            <div className="flex items-center justify-end gap-2">
-              <Button
-                className="gap-1.5 rounded-xl text-xs"
-                onClick={() => previewFile && copyFileLink(previewFile.url)}
-                size="sm"
-                type="button"
-                variant="outline"
-              >
-                <CopyIcon className="size-3.5" />
-                Copier lien
-              </Button>
-
-              <a
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-foreground px-3 py-2 text-xs font-medium text-background transition-opacity hover:opacity-90"
-                href={previewFile?.url}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <DownloadIcon className="size-3.5" />
-                Ouvrir
-              </a>
-            </div>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modale de confirmation de suppression individuelle */}
-      <AlertDialog
-        onOpenChange={(open) => !open && setFileToDelete(null)}
-        open={Boolean(fileToDelete)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer ce fichier ?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Êtes-vous sûr de vouloir supprimer définitivement{" "}
-              <strong>{fileToDelete?.original_name}</strong> de votre
-              bibliothèque ? Cette action libérera{" "}
-              {fileToDelete && formatBytes(fileToDelete.size_bytes)} d'espace.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={isDeleting}>Annuler</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              disabled={isDeleting}
-              onClick={confirmDelete}
-            >
-              {isDeleting ? "Suppression…" : "Supprimer définitivement"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      {/* Modale de confirmation de suppression groupée */}
-      <AlertDialog
-        onOpenChange={(open) => !open && setBulkDeleteDialogOpen(false)}
-        open={bulkDeleteDialogOpen}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Supprimer les fichiers sélectionnés ?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              Êtes-vous sûr de vouloir supprimer définitivement les{" "}
-              <strong>{selectedIds.length} fichier(s)</strong> sélectionnés de
-              votre bibliothèque ? Cette action est irréversible.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={isBulkDeleting}>
-              Annuler
-            </AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              disabled={isBulkDeleting}
-              onClick={confirmBulkDelete}
-            >
-              {isBulkDeleting
-                ? "Suppression en cours…"
-                : "Supprimer la sélection"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </div>
-  );
-}
-
-/** Classe conditionnelle de l'item de tri actif ( coche devant le libellé). */
-function cnSortItem(active: boolean) {
-  return active ? "bg-muted/60 font-medium text-foreground" : "cursor-pointer";
-}
-
-/** État vide réutilisé par les onglets et la recherche. */
-function EmptyState({ hint, title }: { hint: string; title: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-card/30 p-8 py-16 text-center text-muted-foreground">
-      <div className="mb-3 flex size-12 items-center justify-center rounded-full bg-muted/60">
-        <LibraryIcon className="size-6 text-muted-foreground/60" />
-      </div>
-      <p className="text-sm font-medium text-foreground">{title}</p>
-      <p className="mt-1 max-w-sm text-xs text-muted-foreground">{hint}</p>
-    </div>
-  );
-}
-
-/**
- * Zone d'affichage des fichiers : grille masonry (colonnes CSS — les cartes
- * gardent leur hauteur propre, comme la maquette) ou liste tableau.
- */
-function FilesArea({
-  currentModelSupportsFiles,
-  emptyMessage,
-  files,
-  onAskAI,
-  onCopyLink,
-  onDelete,
-  onOpenPreview,
-  onRename,
-  onSelect,
-  onTogglePin,
-  pinnedIds,
-  selectedIds,
-  viewMode,
-}: {
-  currentModelSupportsFiles: boolean;
-  emptyMessage: string;
-  files: CloudFile[];
-  onAskAI: (file: CloudFile) => void;
-  onCopyLink: (url: string) => void;
-  onDelete: (file: CloudFile) => void;
-  onOpenPreview: (file: CloudFile) => void;
-  onRename: (file: CloudFile) => void;
-  onSelect: (id: string) => void;
-  onTogglePin: (id: string) => void;
-  pinnedIds: string[];
-  selectedIds: string[];
-  viewMode: "grid" | "list";
-}) {
-  if (files.length === 0) {
-    return emptyMessage ? (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-card/30 p-8 py-16 text-center text-muted-foreground">
-        <LibraryIcon className="mb-3 size-6 text-muted-foreground/60" />
-        <p className="text-sm font-medium text-foreground">{emptyMessage}</p>
-      </div>
-    ) : null;
-  }
-
-  if (viewMode === "list") {
-    return (
-      <FilesTable
+      <PreviewModal
+        copyFileLink={copyFileLink}
         currentModelSupportsFiles={currentModelSupportsFiles}
-        files={files}
-        onAskAI={onAskAI}
-        onCopyLink={onCopyLink}
-        onDelete={onDelete}
-        onOpenPreview={onOpenPreview}
-        onRename={onRename}
-        onSelect={onSelect}
-        onTogglePin={onTogglePin}
-        pinnedIds={pinnedIds}
-        selectedIds={selectedIds}
+        handleAskAIWithFile={handleAskAIWithFile}
+        handleSummarizeFile={handleSummarizeFile}
+        previewFile={previewFile}
+        setPreviewFile={setPreviewFile}
       />
-    );
-  }
 
-  return (
-    <div className="columns-2 gap-4 sm:columns-3 xl:columns-4">
-      {files.map((file) => (
-        <FileCard
-          currentModelSupportsFiles={currentModelSupportsFiles}
-          file={file}
-          isPinned={pinnedIds.includes(file.id)}
-          isSelected={selectedIds.includes(file.id)}
-          key={file.id}
-          onAskAI={onAskAI}
-          onCopyLink={onCopyLink}
-          onDelete={onDelete}
-          onOpenPreview={onOpenPreview}
-          onRename={onRename}
-          onSelect={onSelect}
-          onTogglePin={onTogglePin}
-        />
-      ))}
-    </div>
-  );
-}
-
-/**
- * Carte masonry : vignette réelle pour les images, grande icône pour les
- * autres formats. Les actions arrivent au survol (toujours visibles sur
- * tactile) ; le clic ouvre l'aperçu.
- */
-function FileCard({
-  currentModelSupportsFiles,
-  file,
-  isPinned,
-  isSelected,
-  onAskAI,
-  onCopyLink,
-  onDelete,
-  onOpenPreview,
-  onRename,
-  onSelect,
-  onTogglePin,
-}: {
-  currentModelSupportsFiles: boolean;
-  file: CloudFile;
-  isPinned: boolean;
-  isSelected: boolean;
-  onAskAI: (file: CloudFile) => void;
-  onCopyLink: (url: string) => void;
-  onDelete: (file: CloudFile) => void;
-  onOpenPreview: (file: CloudFile) => void;
-  onRename: (file: CloudFile) => void;
-  onSelect: (id: string) => void;
-  onTogglePin: (id: string) => void;
-}) {
-  const isImage = file.mime_type.startsWith("image/");
-  const category = getFileCategory(file.mime_type, file.original_name);
-  const CategoryIcon = CATEGORY_ICONS[category];
-
-  return (
-    <div
-      className={`group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border bg-card/60 backdrop-blur-md transition-all ${
-        isSelected
-          ? "border-primary ring-1 ring-primary"
-          : "border-border/60 hover:shadow-sm"
-      }`}
-    >
-      {/* Sélection (au survol, ou toujours si la sélection est active) */}
-      <button
-        className={`absolute left-2 top-2 z-10 rounded-md bg-background/80 p-1 shadow-xs backdrop-blur-sm transition-opacity ${
-          isSelected
-            ? "opacity-100"
-            : "cursor-pointer opacity-0 group-hover:opacity-100"
-        }`}
-        onClick={() => onSelect(file.id)}
-        title={isSelected ? "Désélectionner" : "Sélectionner"}
-        type="button"
-      >
-        {isSelected ? (
-          <CheckSquareIcon className="size-4 text-primary" />
-        ) : (
-          <SquareIcon className="size-4 text-muted-foreground" />
-        )}
-      </button>
-
-      {/* Actions rapides au survol */}
-      <div className="absolute right-2 top-2 z-10 flex items-center gap-1 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
-        <button
-          className={`cursor-pointer rounded-md bg-background/80 p-1 shadow-xs backdrop-blur-sm transition-colors ${
-            isPinned
-              ? "text-warning"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-          onClick={() => onTogglePin(file.id)}
-          title={isPinned ? "Retirer des favoris" : "Ajouter aux favoris"}
-          type="button"
-        >
-          <PinIcon className={`size-4 ${isPinned ? "fill-warning" : ""}`} />
-        </button>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              aria-label="Actions du fichier"
-              className="cursor-pointer rounded-md bg-background/80 p-1 text-muted-foreground shadow-xs backdrop-blur-sm transition-colors hover:text-foreground"
-              title="Plus d'actions"
-              type="button"
-            >
-              <MoreHorizontalIcon className="size-4" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
-            <DropdownMenuItem
-              className="cursor-pointer gap-2"
-              onClick={() => onOpenPreview(file)}
-            >
-              <EyeIcon className="size-4" />
-              Aperçu
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              className="cursor-pointer gap-2"
-              disabled={!currentModelSupportsFiles}
-              onClick={() => onAskAI(file)}
-            >
-              <SparklesIcon className="size-4" />
-              Analyser avec l'IA
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              className="cursor-pointer gap-2"
-              onClick={() => onRename(file)}
-            >
-              <Edit2Icon className="size-4" />
-              Renommer
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              className="cursor-pointer gap-2"
-              onClick={() => onCopyLink(file.url)}
-            >
-              <CopyIcon className="size-4" />
-              Copier le lien
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild className="cursor-pointer gap-2">
-              <a href={file.url} rel="noopener noreferrer" target="_blank">
-                <DownloadIcon className="size-4" />
-                Télécharger
-              </a>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="cursor-pointer gap-2 text-destructive focus:text-destructive"
-              onClick={() => onDelete(file)}
-            >
-              <Trash2Icon className="size-4" />
-              Supprimer
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      {/* Vignette : le clic ouvre l'aperçu */}
-      <button
-        className="block w-full cursor-pointer text-left"
-        onClick={() => onOpenPreview(file)}
-        type="button"
-      >
-        {isImage ? (
-          <img
-            alt={file.original_name}
-            className="max-h-56 w-full bg-muted/30 object-cover"
-            loading="lazy"
-            src={file.url}
-          />
-        ) : (
-          <div className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 bg-muted/30 text-muted-foreground">
-            <CategoryIcon className="size-8" />
-            <span className="px-3 text-[10px] font-mono uppercase tracking-wider">
-              {file.original_name.split(".").pop() || "fichier"}
-            </span>
-          </div>
-        )}
-      </button>
-
-      <figcaption className="flex flex-col gap-0.5 p-3">
-        <span
-          className="cursor-pointer truncate text-xs font-medium text-foreground hover:underline"
-          onClick={() => onOpenPreview(file)}
-          title={file.original_name}
-        >
-          {file.original_name}
-        </span>
-        <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-          {formatBytes(file.size_bytes)}
-          <span aria-hidden="true">·</span>
-          {formatDate(file.uploaded_at)}
-          {isPinned && (
-            <span className="ml-auto flex items-center gap-0.5 text-warning">
-              <PinIcon className="size-3 fill-warning" />
-              Favori
-            </span>
-          )}
-        </span>
-      </figcaption>
-    </div>
-  );
-}
-
-/**
- * Vue liste : tableau complet (nom, taille, format, date, actions) conservé
- * de l'ancienne page — c'est la vue dense pour trier et nettoyer.
- */
-function FilesTable({
-  currentModelSupportsFiles,
-  files,
-  onAskAI,
-  onCopyLink,
-  onDelete,
-  onOpenPreview,
-  onRename,
-  onSelect,
-  onTogglePin,
-  pinnedIds,
-  selectedIds,
-}: {
-  currentModelSupportsFiles: boolean;
-  files: CloudFile[];
-  onAskAI: (file: CloudFile) => void;
-  onCopyLink: (url: string) => void;
-  onDelete: (file: CloudFile) => void;
-  onOpenPreview: (file: CloudFile) => void;
-  onRename: (file: CloudFile) => void;
-  onSelect: (id: string) => void;
-  onTogglePin: (id: string) => void;
-  pinnedIds: string[];
-  selectedIds: string[];
-}) {
-  const allSelected =
-    files.length > 0 && files.every((f) => selectedIds.includes(f.id));
-
-  return (
-    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/60 shadow-sm backdrop-blur-md">
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-xs">
-          <thead>
-            <tr className="border-b border-border/50 bg-muted/40 font-medium text-muted-foreground">
-              <th className="w-10 px-3 py-3 text-center">
-                <button
-                  className="cursor-pointer rounded p-1 text-muted-foreground hover:text-foreground"
-                  onClick={() => {
-                    if (allSelected) {
-                      files.forEach((f) => onSelect(f.id));
-                    } else {
-                      files.forEach((f) => {
-                        if (!selectedIds.includes(f.id)) {
-                          onSelect(f.id);
-                        }
-                      });
-                    }
-                  }}
-                  title={
-                    allSelected ? "Tout désélectionner" : "Tout sélectionner"
-                  }
-                  type="button"
-                >
-                  {allSelected ? (
-                    <CheckSquareIcon className="size-4 text-primary" />
-                  ) : (
-                    <SquareIcon className="size-4" />
-                  )}
-                </button>
-              </th>
-              <th className="px-3 py-3">Nom du fichier</th>
-              <th className="px-4 py-3">Taille</th>
-              <th className="hidden px-4 py-3 sm:table-cell">Format</th>
-              <th className="hidden px-4 py-3 md:table-cell">Date d'ajout</th>
-              <th className="px-4 py-3 text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border/40">
-            {files.map((file) => {
-              const isPinned = pinnedIds.includes(file.id);
-              const isSelected = selectedIds.includes(file.id);
-
-              return (
-                <tr
-                  className={`group transition-colors ${
-                    isSelected ? "bg-primary/5" : "hover:bg-muted/30"
-                  }`}
-                  key={file.id}
-                >
-                  <td className="px-3 py-3 text-center">
-                    <button
-                      className="cursor-pointer rounded p-1 text-muted-foreground hover:text-foreground"
-                      onClick={() => onSelect(file.id)}
-                      type="button"
-                    >
-                      {isSelected ? (
-                        <CheckSquareIcon className="size-4 text-primary" />
-                      ) : (
-                        <SquareIcon className="size-4" />
-                      )}
-                    </button>
-                  </td>
-
-                  <td className="px-3 py-3">
-                    <div className="flex items-center gap-3">
-                      <div className="relative shrink-0 rounded-lg bg-muted/60 p-1.5 ring-1 ring-border/50">
-                        {getFileIcon(file.mime_type, file.original_name)}
-                        {isPinned && (
-                          <span className="absolute -right-1 -top-1 flex size-3.5 items-center justify-center rounded-full bg-warning ring-2 ring-background">
-                            <PinIcon className="size-2 fill-warning text-warning" />
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex min-w-0 flex-col">
-                        <button
-                          className="block max-w-[200px] cursor-pointer truncate text-left font-medium text-foreground hover:underline sm:max-w-xs md:max-w-md"
-                          onClick={() => onOpenPreview(file)}
-                          title={file.original_name}
-                          type="button"
-                        >
-                          {file.original_name}
-                        </button>
-                        {isPinned && (
-                          <span className="flex items-center gap-0.5 text-[10px] font-medium text-warning">
-                            <PinIcon className="size-2.5 fill-warning" />
-                            Favori
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </td>
-
-                  <td className="whitespace-nowrap px-4 py-3 font-mono text-muted-foreground">
-                    {formatBytes(file.size_bytes)}
-                  </td>
-
-                  <td className="hidden whitespace-nowrap px-4 py-3 text-muted-foreground sm:table-cell">
-                    <span className="rounded bg-muted px-2 py-0.5 font-mono text-[11px] uppercase">
-                      {file.original_name.split(".").pop() || "fichier"}
-                    </span>
-                  </td>
-
-                  <td className="hidden whitespace-nowrap px-4 py-3 text-muted-foreground md:table-cell">
-                    {formatDate(file.uploaded_at)}
-                  </td>
-
-                  <td className="whitespace-nowrap px-4 py-3 text-right">
-                    <div className="flex items-center justify-end gap-1">
-                      <button
-                        className={`cursor-pointer rounded-lg p-1.5 transition-colors ${
-                          currentModelSupportsFiles
-                            ? "text-primary hover:bg-primary/10"
-                            : "bg-muted/30 text-muted-foreground/40 opacity-60"
-                        }`}
-                        disabled={!currentModelSupportsFiles}
-                        onClick={() => onAskAI(file)}
-                        title={
-                          currentModelSupportsFiles
-                            ? "Analyser avec l'IA"
-                            : "Ce modèle ne prend pas en charge les fichiers"
-                        }
-                        type="button"
-                      >
-                        <SparklesIcon className="size-3.5" />
-                      </button>
-
-                      <button
-                        className={`cursor-pointer rounded-lg p-1.5 transition-colors ${
-                          isPinned
-                            ? "bg-warning/10 text-warning hover:bg-warning/20"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }`}
-                        onClick={() => onTogglePin(file.id)}
-                        title={
-                          isPinned
-                            ? "Retirer des favoris"
-                            : "Ajouter aux favoris"
-                        }
-                        type="button"
-                      >
-                        <PinIcon
-                          className={`size-3.5 ${isPinned ? "fill-warning" : ""}`}
-                        />
-                      </button>
-
-                      <button
-                        className="cursor-pointer rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        onClick={() => onOpenPreview(file)}
-                        title="Aperçu rapide"
-                        type="button"
-                      >
-                        <EyeIcon className="size-3.5" />
-                      </button>
-
-                      <button
-                        className="cursor-pointer rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        onClick={() => onRename(file)}
-                        title="Renommer"
-                        type="button"
-                      >
-                        <Edit2Icon className="size-3.5" />
-                      </button>
-
-                      <button
-                        className="cursor-pointer rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        onClick={() => onCopyLink(file.url)}
-                        title="Copier le lien"
-                        type="button"
-                      >
-                        <CopyIcon className="size-3.5" />
-                      </button>
-
-                      <a
-                        className="cursor-pointer rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        href={file.url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        title="Télécharger"
-                      >
-                        <DownloadIcon className="size-3.5" />
-                      </a>
-
-                      <button
-                        className="cursor-pointer rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
-                        onClick={() => onDelete(file)}
-                        title="Supprimer"
-                        type="button"
-                      >
-                        <Trash2Icon className="size-3.5" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      {/* Modales de Suppression */}
+      <DeleteModals
+        bulkDeleteDialogOpen={bulkDeleteDialogOpen}
+        confirmBulkDelete={confirmBulkDelete}
+        confirmDelete={confirmDelete}
+        fileToDelete={fileToDelete}
+        isBulkDeleting={isBulkDeleting}
+        isDeleting={isDeleting}
+        selectedIds={selectedIds}
+        setBulkDeleteDialogOpen={setBulkDeleteDialogOpen}
+        setFileToDelete={setFileToDelete}
+      />
     </div>
   );
 }

@@ -21,6 +21,8 @@ import {
 } from "@/lib/wakies/client/nav-collapsed";
 import { WAKIE_ID_PATTERN } from "@/lib/wakies/shared/sharing";
 
+import { getWakiesInitialData } from "@/lib/wakies/workspace-server";
+
 export const instant = false;
 
 export const metadata = {
@@ -38,6 +40,11 @@ export default async function WakiesPage({
   if (garde) return garde;
   const { fiche } = await searchParams;
 
+  const userId = user?.id || user?.email;
+  const initialData = userId
+    ? await getWakiesInitialData(userId).catch(() => undefined)
+    : undefined;
+
   return (
     <WakiesWorkspace
       fichePartageeId={
@@ -45,6 +52,7 @@ export default async function WakiesPage({
           ? fiche
           : undefined
       }
+      initialData={initialData}
       initialNavCollapsed={estNavReduite(
         cookieStore.get(WAKIES_NAV_COOKIE)?.value
       )}

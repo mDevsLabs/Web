@@ -374,17 +374,34 @@ jobs:
       - name: 🏗️ Construire l’archive iOS non signée
         working-directory: apps/mobile
         run: |
+          if [ -d "ios/App/App.xcworkspace" ]; then
+            TARGET="-workspace ios/App/App.xcworkspace"
+          elif [ -d "ios/App/App.xcodeproj" ]; then
+            TARGET="-project ios/App/App.xcodeproj"
+          elif [ -f "ios/App/Podfile" ]; then
+            (cd ios/App && pod install)
+            TARGET="-workspace ios/App/App.xcworkspace"
+          else
+            echo "::error::Aucun projet ou workspace Xcode trouvé dans apps/mobile/ios/App"
+            exit 1
+          fi
+
           xcodebuild archive \
-            -workspace ios/App/App.xcworkspace \
-            -scheme App -configuration Release \
+            $TARGET \
+            -scheme App \
+            -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath ios/App/build/App.xcarchive \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO
       - name: 📦 Créer l’IPA à partir de l’archive réelle
         working-directory: apps/mobile
         run: |
+          rm -rf ios/App/build/Payload
           mkdir -p ios/App/build/Payload
-          cp -R ios/App/build/App.xcarchive/Products/Applications/App.app ios/App/build/Payload/
+          cp -R ios/App/build/App.xcarchive/Products/Applications/*.app ios/App/build/Payload/
           cd ios/App/build
           zip -r mAI-unsigned.ipa Payload
       - name: 📤 Upload IPA – unsigned
@@ -474,25 +491,41 @@ jobs:
         env:
           VITE_API_BASE: https://mai.val.run
       - name: 🔧 Ajouter la plateforme Capacitor iOS
-        run: >
+        run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
-
           if [ ! -d "ios" ]; then
             npx cap add ios
           fi
-
           npx cap sync ios
       - name: 🏗️ Compiler l'archive (non signé sans secrets Apple)
-        run: >
-          cd ios/App
+        run: |
+          if [ -d "ios/App/App.xcworkspace" ]; then
+            TARGET="-workspace ios/App/App.xcworkspace"
+          elif [ -d "ios/App/App.xcodeproj" ]; then
+            TARGET="-project ios/App/App.xcodeproj"
+          elif [ -f "ios/App/Podfile" ]; then
+            (cd ios/App && pod install)
+            TARGET="-workspace ios/App/App.xcworkspace"
+          else
+            echo "::error::Aucun projet ou workspace Xcode trouvé dans apps/vibe/ios/App"
+            exit 1
+          fi
 
-          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -destination
-          'generic/platform=iOS' -archivePath App.xcarchive archive CODE_SIGNING_ALLOWED=NO
-          CODE_SIGN_IDENTITY=""
+          xcodebuild archive \
+            $TARGET \
+            -scheme App \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath ios/App/build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO
       - name: 📦 Exporter l'IPA non signé
         run: |
+          rm -rf Payload vibe-ios-unsigned.ipa
           mkdir -p Payload
-          cp -r ios/App/App.xcarchive/Products/Applications/*.app Payload/
+          cp -R ios/App/build/App.xcarchive/Products/Applications/*.app Payload/
           zip -r vibe-ios-unsigned.ipa Payload
       - name: 📤 Uploader l'artefact IPA
         uses: actions/upload-artifact@v4

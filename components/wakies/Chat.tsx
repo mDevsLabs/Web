@@ -36,15 +36,10 @@ import { promptInApp } from "@/lib/ui/app-dialog";
  */
 
 import { useChat } from "@ai-sdk/react";
-import { ArrowUpIcon } from "@mdevs/icons/arrows/arrow-up";
 import { PlusIcon } from "@mdevs/icons/controls/plus";
 import { XIcon } from "@mdevs/icons/controls/x";
 import { FilePlus2Icon } from "@mdevs/icons/files/file-plus-2";
-import { SquareStopIcon } from "@mdevs/icons/interface/square-stop";
-import { LinkIcon } from "@mdevs/icons/misc/link";
-import { ReplyIcon } from "@mdevs/icons/misc/reply";
 import { TimerIcon } from "@mdevs/icons/time/timer";
-import { DropdownMenu } from "@mdevs/ui/primitives/dropdown-menu";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import {
   useCallback,
@@ -67,15 +62,12 @@ import {
   televerser,
 } from "@/components/wakies/attachments";
 import { ChatTranscript } from "@/components/wakies/ChatTranscript";
-import { ComposerAides } from "@/components/wakies/ComposerAides";
-import {
-  ComposerMentions,
-  type ComposerMentionsHandle,
-} from "@/components/wakies/ComposerMentions";
+import type { ComposerMentionsHandle } from "@/components/wakies/ComposerMentions";
 import { useConversationDraft } from "@/components/wakies/DraftProvider";
-import { FileLibrary } from "@/components/wakies/FileLibrary";
+import { ForwardMessageModal } from "@/components/wakies/ForwardMessageModal";
 import { Mascot } from "@/components/wakies/Mascot";
 import { ModelPicker } from "@/components/wakies/ModelPicker";
+import { WakieChatComposer } from "@/components/wakies/WakieChatComposer";
 import {
   contextualMessage,
   type PageContext,
@@ -1108,55 +1100,16 @@ function WakieChat({
         />
         {/* Le choix de destination : une liste explicite plutôt qu'un
             « transférer » qui déciderait tout seul de la cible. */}
-        {transfert ? (
-          <section aria-label="Transférer le message" className="chat-forward">
-            <strong>Transférer vers…</strong>
-            <ul>
-              {(conversations ?? [])
-                .filter((conversation) => conversation.id !== thread.id)
-                .map((conversation) => (
-                  <li key={conversation.id}>
-                    <label>
-                      <input
-                        checked={transfertVers === conversation.id}
-                        name="transfert"
-                        onChange={() => setTransfertVers(conversation.id)}
-                        type="radio"
-                        value={conversation.id}
-                      />
-                      <span>{conversation.title}</span>
-                    </label>
-                  </li>
-                ))}
-            </ul>
-            {(conversations ?? []).length < 2 ? (
-              <p className="muted">
-                Aucune autre conversation : ouvrez-en une pour y transférer un
-                message.
-              </p>
-            ) : null}
-            <div className="chat-forward-actions">
-              <Button
-                disabled={!transfertVers || transfertEnCours}
-                onClick={() => void transferer()}
-                type="button"
-                variant="solid"
-              >
-                Transférer
-              </Button>
-              <Button
-                onClick={() => {
-                  setTransfert(null);
-                  setTransfertVers("");
-                }}
-                type="button"
-                variant="outline"
-              >
-                Annuler
-              </Button>
-            </div>
-          </section>
-        ) : null}
+        <ForwardMessageModal
+          conversations={conversations}
+          onTransferer={transferer}
+          setTransfert={setTransfert}
+          setTransfertVers={setTransfertVers}
+          threadId={thread.id}
+          transfert={transfert}
+          transfertEnCours={transfertEnCours}
+          transfertVers={transfertVers}
+        />
         {/* Les demandes d'approbation sont rendues APRÈS le transcript : elles
             portent sur ce qui vient d'être proposé, donc juste en dessous. */}
         {messages.flatMap((message) =>
@@ -1235,369 +1188,49 @@ function WakieChat({
           )}
         </section>
       )}
-      <form
-        className="chat-composer"
-        onDragLeave={() => setDepotActif(false)}
-        onDragOver={(event) => {
-          event.preventDefault();
-          setDepotActif(true);
-        }}
-        onDrop={(event) => {
-          event.preventDefault();
-          setDepotActif(false);
-          const fichiers = [...(event.dataTransfer?.files ?? [])];
-          if (fichiers.length > 0) {
-            void ajouterPieces(fichiers);
-          }
-        }}
-        onSubmit={(event) => {
-          event.preventDefault();
-          if (enCours) {
-            if (!draft.trim()) return;
-            if (pieces.length || source) {
-              setErreur(
-                "La file temporaire accepte du texte. Gardez les pièces jointes pour le prochain envoi."
-              );
-              return;
-            }
-            queue.enqueue({ id: crypto.randomUUID(), text: draft });
-            setDraft("");
-          } else void envoyer(draft).catch(() => {});
-        }}
-      >
-        {/* La citation de réponse est EN TÊTE du composer : elle décrit ce que
-            le message en cours de rédaction vise, et se retire d'un clic. */}
-        {reponseA ? (
-          <div className="chat-reply-banner">
-            <ReplyIcon size={13} />
-            <span className="chat-reply-auteur">
-              {reponseA.role === "user"
-                ? "Vous"
-                : (nomsWakies.get(
-                    ((reponseA.metadata ?? {}) as { authorWakieId?: string })
-                      .authorWakieId ?? ""
-                  ) ?? "Wakie")}
-            </span>
-            <span className="chat-reply-extrait">
-              {texteDe(reponseA).replace(/\s+/g, " ").trim().slice(0, 120) ||
-                "Pièce jointe"}
-            </span>
-            <Button
-              aria-label="Annuler la réponse"
-              className="icon-button"
-              onClick={() => {
-                setReponseA(null);
-                reponseRef.current = null;
-              }}
-              type="button"
-              variant="ghost"
-            >
-              <XIcon size={13} />
-            </Button>
-          </div>
-        ) : null}
-        {/* Le survol de dépôt n'ANNULE pas le contenu : c'est une bordure, pas
-            un voile. Un voile masquerait le brouillon qu'on s'apprête à
-            compléter avec le fichier. */}
-        {depotActif ? (
-          <div className="composer-dropzone" role="presentation">
-            Déposez vos fichiers ici
-          </div>
-        ) : null}
-
-        {pieces.length > 0 ? (
-          <ul className="composer-pieces">
-            {pieces.map((piece) => (
-              <li
-                className={`composer-piece is-${piece.etat}`}
-                key={piece.idLocal}
-              >
-                <span className="composer-piece-name">
-                  {assainirNom(piece.nom)}
-                </span>
-                <span className="composer-piece-meta">
-                  {formaterTaille(piece.taille)}
-                  {piece.etat === "envoi"
-                    ? " · envoi en cours…"
-                    : piece.etat === "pret"
-                      ? " · prêt"
-                      : piece.etat === "echec"
-                        ? ` · échec — ${piece.erreur ?? "raison inconnue"}`
-                        : " · en attente"}
-                </span>
-                {/* Sort de la copie en bibliothèque cloud, distinct de l'envoi
-                    au message : une bibliothèque pleine ne doit pas lire
-                    « échec » sur une pièce pourtant prête. */}
-                {piece.biblio ? (
-                  <span className={`composer-piece-biblio is-${piece.biblio}`}>
-                    {piece.biblio === "ok"
-                      ? "copié dans votre bibliothèque"
-                      : piece.biblio === "deja"
-                        ? "déjà dans votre bibliothèque"
-                        : piece.biblio === "plein"
-                          ? "bibliothèque cloud pleine — non importé"
-                          : "bibliothèque injoignable — non importé"}
-                  </span>
-                ) : null}
-                <Button
-                  aria-label={`Retirer ${assainirNom(piece.nom)}`}
-                  className="icon-button"
-                  onClick={() => retirerPiece(piece.idLocal)}
-                  type="button"
-                  variant="ghost"
-                >
-                  <XIcon size={13} />
-                </Button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-
-        {sourceOpen && (
-          <div className="source-input">
-            <LinkIcon size={15} />
-            <Input
-              aria-label="Adresse de la page source"
-              onChange={(event) => setSource(event.target.value)}
-              placeholder="https://exemple.fr/page"
-              type="url"
-              value={source}
-            />
-            <Button
-              aria-label="Retirer la source"
-              className="icon-button"
-              onClick={() => {
-                setSourceOpen(false);
-                setSource("");
-              }}
-              type="button"
-              variant="ghost"
-            >
-              <XIcon size={14} />
-            </Button>
-          </div>
-        )}
-        <div className="chat-compose-toolbar">
-          {/* Le sélecteur affiche la valeur PERSISTÉE (`thread.model`), qui peut être
-              vide : ce vide signifie « suit le Wakie » et non « aucun modèle ».
-              `modelId` n'est plus qu'un tampon de retour arrière — le serveur
-              fait autorité, donc on n'affiche jamais une valeur optimiste que
-              l'enregistrement n'a pas confirmée. */}
-          <span className="wakies-model-picker">
-            <ModelPicker
-              disabled={enCours || modeleEnCours}
-              modeleEffectif={thread.model || wakie.model || undefined}
-              onCapacitesPieces={setCapacitesFichiers}
-              onChoisir={(choisi) => void changerModele(choisi)}
-              valeur={thread.model ?? ""}
-            />
-          </span>
-          <Button
-            aria-label="Importer des fichiers ou images"
-            className="wakies-attachment-trigger"
-            disabled={!accepteFichiers || modeleEnCours || paused || enCours}
-            onClick={() => inputFichier.current?.click()}
-            title={
-              accepteFichiers
-                ? "Joindre des fichiers compatibles avec ce modèle"
-                : "Choisissez un modèle acceptant les images ou documents"
-            }
-            type="button"
-            variant="ghost"
-          >
-            <FilePlus2Icon size={16} /> Joindre
-          </Button>
-          {modeleEnCours ? (
-            <span role="status">Enregistrement du modèle…</span>
-          ) : null}
-        </div>
-        <div className="chat-compose-row">
-          {accepteFichiers && (
-            <FileLibrary
-              onOpenChange={setBibliothequeOuverte}
-              onSelect={(piece) => {
-                if (!acceptePiece(piece.type, capacitesFichiers))
-                  throw new Error(
-                    "Ce fichier est incompatible avec le modèle choisi."
-                  );
-                setPieces((current) =>
-                  current.some(
-                    (item) => item.pathname === piece.pathname && !item.retire
-                  )
-                    ? current
-                    : [...current, piece]
-                );
-              }}
-              open={bibliothequeOuverte}
-              sansDeclencheur
-            />
-          )}
-          <input
-            accept={formatsPieces(capacitesFichiers)}
-            className="visually-hidden-input"
-            disabled={!accepteFichiers || modeleEnCours || paused || enCours}
-            multiple
-            onChange={(event) => {
-              const fichiers = [...(event.target.files ?? [])];
-              if (fichiers.length > 0) {
-                void ajouterPieces(fichiers);
-              }
-              // On vide l'input pour pouvoir re-sélectionner le MÊME fichier
-              // après l'avoir retiré : sinon le `change` ne se déclencherait pas.
-              event.target.value = "";
-            }}
-            ref={inputFichier}
-            tabIndex={-1}
-            type="file"
-          />
-          <DropdownMenu
-            items={[
-              ...(accepteFichiers
-                ? [
-                    {
-                      id: "importer",
-                      label: "Importer un fichier",
-                      onSelect: () => inputFichier.current?.click(),
-                    },
-                    {
-                      id: "bibliotheque",
-                      label: "Choisir dans Mes fichiers",
-                      onSelect: () => setBibliothequeOuverte(true),
-                    },
-                  ]
-                : []),
-              {
-                id: "tache",
-                label: "Planifier une tâche",
-                onSelect: onSchedule,
-              },
-              {
-                id: "source",
-                label: sourceOpen
-                  ? "Retirer le lien source"
-                  : "Ajouter un lien source",
-                onSelect: () => {
-                  if (sourceOpen) setSource("");
-                  setSourceOpen(!sourceOpen);
-                },
-              },
-            ]}
-            label="Ajouter au message"
-            trigger={
-              <Button
-                aria-label="Ajouter au message"
-                className="icon-button"
-                type="button"
-                variant="ghost"
-              >
-                <PlusIcon size={19} />
-              </Button>
-            }
-          />
-          <Textarea
-            aria-label={`Message à ${wakie.name}`}
-            maxLength={4000}
-            onChange={(event) => {
-              setDraft(event.target.value);
-              event.target.style.height = "auto";
-              event.target.style.height = `${Math.min(event.target.scrollHeight, 180)}px`;
-            }}
-            onCompositionEnd={() => {
-              composition.current = false;
-            }}
-            onCompositionStart={() => {
-              composition.current = true;
-            }}
-            onKeyDown={(event) => {
-              // Pendant une composition IME, `Entrée` valide le CANDIDAT
-              // affiché par le clavier du système. L'envoyer à ce moment
-              // enverrait un demi-mot et viderait le brouillon.
-              if (event.nativeEvent.isComposing || composition.current) {
-                return;
-              }
-              // Ensuite seulement le menu `@` : `Entrée` y INSÈRE une mention.
-              // Inverser ces deux tests enverrait un message à moitié écrit
-              // pendant que l'utilisateur choisissait une ligne.
-              if (mentionsRef.current?.traiterCle(event)) {
-                event.preventDefault();
-                return;
-              }
-              if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault();
-                event.currentTarget.form?.requestSubmit();
-              }
-            }}
-            placeholder={`Message à ${wakie.name}…`}
-            ref={textareaRef}
-            rows={1}
-            value={draft}
-          />
-          {enCours && draft.trim() && (
-            <Button
-              disabled={paused || envoiEnCours}
-              type="submit"
-              variant="outline"
-            >
-              Mettre en attente
-            </Button>
-          )}
-          {enCours ? (
-            <Button
-              aria-label="Arrêter la réponse"
-              className="send-button"
-              onClick={() => {
-                queue.pause();
-                void stop();
-              }}
-              type="button"
-              variant="solid"
-            >
-              <SquareStopIcon size={16} />
-            </Button>
-          ) : (
-            <Button
-              aria-label="Envoyer le message"
-              className="send-button"
-              disabled={
-                !draft.trim() ||
-                !contextePret ||
-                paused ||
-                envoiEnCours ||
-                modeleEnCours
-              }
-              type="submit"
-              variant="solid"
-            >
-              <ArrowUpIcon size={19} />
-            </Button>
-          )}
-        </div>
-        <ComposerAides
-          brouillon={draft}
-          onChoisir={setDraft}
-          textareaRef={textareaRef}
-        />
-        <ComposerMentions
-          brouillon={draft}
-          handleRef={mentionsRef}
-          onChoisir={insererMention}
-          textareaRef={textareaRef}
-        />
-        {/* Une pièce en échec n'empêche pas l'envoi du texte : elle est
-            signalée, retirable, et le brouillon reste intact. */}
-        {pieceEnEchec ? (
-          <div className="chat-compose-note is-error">
-            {pieceEnEchec.erreur ?? "Un fichier n'a pas pu être envoyé."} Le
-            texte reste prêt à être envoyé.
-          </div>
-        ) : (
-          <div className="chat-compose-note">
-            {voiceReady
-              ? "Texte et voix, une seule conversation."
-              : "Le texte est prêt. La voix temps réel arrive dans une phase suivante."}
-          </div>
-        )}
-      </form>
+      <WakieChatComposer
+        accepteFichiers={accepteFichiers}
+        ajouterPieces={ajouterPieces}
+        bibliothequeOuverte={bibliothequeOuverte}
+        capacitesFichiers={capacitesFichiers}
+        changerModele={changerModele}
+        composition={composition}
+        contextePret={contextePret}
+        depotActif={depotActif}
+        draft={draft}
+        enCours={enCours}
+        envoiEnCours={envoiEnCours}
+        envoyer={envoyer}
+        inputFichier={inputFichier}
+        insererMention={insererMention}
+        mentionsRef={mentionsRef}
+        modeleEnCours={modeleEnCours}
+        nomsWakies={nomsWakies}
+        onSchedule={onSchedule}
+        paused={paused}
+        pieceEnEchec={pieceEnEchec}
+        pieces={pieces}
+        queue={queue}
+        reponseA={reponseA}
+        reponseRef={reponseRef}
+        retirerPiece={retirerPiece}
+        setBibliothequeOuverte={setBibliothequeOuverte}
+        setCapacitesFichiers={setCapacitesFichiers}
+        setDepotActif={setDepotActif}
+        setDraft={setDraft}
+        setErreur={setErreur}
+        setPieces={setPieces}
+        setReponseA={setReponseA}
+        setSource={setSource}
+        setSourceOpen={setSourceOpen}
+        source={source}
+        sourceOpen={sourceOpen}
+        stop={stop}
+        textareaRef={textareaRef}
+        thread={thread}
+        voiceReady={voiceReady}
+        wakie={wakie}
+      />
     </div>
   );
 }

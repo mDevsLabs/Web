@@ -74,6 +74,33 @@
   border-color: var(--line, #e9e8e6);
 }
 
+.wakies-root .muse-app .chat-compose-row .wakies-model-picker {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.wakies-root .muse-app .chat-compose-row .wakies-model-picker button {
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--line, #e9e8e6);
+  padding: 0 10px;
+  font-size: 12px;
+  background: #fbfbfa;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .muse-app .chat-compose-row .wakies-model-picker button:hover:not(:disabled) {
+  background: #f1f0ed;
+}
+
+.wakies-root .wakies-model-saving {
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+  margin-inline-start: 6px;
+  margin-bottom: 5px;
+}
+
 /* Champ de formulaire (dialogue du Wakie) : le sélecteur y prend la place d'un
    `select` — même largeur, même fond que les champs voisins. */
 .wakies-root .wakies-model-picker.block {

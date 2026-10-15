@@ -5,88 +5,33 @@
  * ============================================================================
  */
 
-import {
-  AlertCircleIcon as AlertCircle,
-  ArrowLeftIcon as ArrowLeft,
-  ArrowUpIcon as ArrowUp,
-  BanIcon as Ban,
-  BellRingIcon as BellRing,
-  BoldIcon as Bold,
-  BookOpenIcon as BookOpen,
-  CheckIcon as Check,
-  ClockIcon as Clock,
-  CopyIcon as Copy,
-  CrownIcon as Crown,
-  DramaIcon as Drama,
-  ExpandIcon as Expand,
-  EyeIcon as Eye,
-  FileTextIcon as FileText,
-  FlagIcon as Flag,
-  ForwardIcon as Forward,
-  ImageIcon,
-  InfoIcon as Info,
-  ItalicIcon as Italic,
-  LanguagesIcon as Languages,
-  Link2Icon as Link2,
-  Loader2Icon as Loader2,
-  LockIcon as Lock,
-  MailIcon as Mail,
-  MicIcon as Mic,
-  MicOffIcon as MicOff,
-  MoreVerticalIcon as MoreVertical,
-  PaletteIcon as Palette,
-  PencilIcon as Pencil,
-  PenLineIcon as PenLine,
-  PinIcon as Pin,
-  PinOffIcon as PinOff,
-  PlusIcon as Plus,
-  ReplyIcon as Reply,
-  ScissorsIcon as Scissors,
-  SearchIcon as Search,
-  SendIcon as Send,
-  SparklesIcon as Sparkles,
-  StrikethroughIcon as Strikethrough,
-  Trash2Icon as Trash2,
-  UnderlineIcon as Underline,
-  UserPlusIcon as UserPlus,
-  UsersIcon as Users,
-  Wand2Icon as Wand2,
-  XIcon as X,
-} from "@mdevs/icons";
-import { motion } from "framer-motion";
+import { MailIcon as Mail } from "@mdevs/icons";
+import { Drama, Expand, PenLine, Scissors, Wand2 } from "lucide-react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { getBookIcon } from "@/components/vibe/common/bookIcons";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
-import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
-import {
-  htmlToPlainText,
-  isRichHtml,
-  RichContent,
-} from "@/components/vibe/common/RichContent";
+import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { sanitizeRichHtml } from "@/components/vibe/common/richSanitizer";
-import { stripUrlsFromHtml } from "@/components/vibe/common/richTextUtils";
-import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
-import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
-import {
-  MessageInfoModal,
-  RenameConversationModal,
-  ReportConversationModal,
-} from "@/components/vibe/messages/ConversationModals";
 import {
   AddMembersModal,
   CreateGroupModal,
-} from "@/components/vibe/messages/GroupModals";
-import {
-  MessageRichInput,
-  type MessageRichInputHandle,
-} from "@/components/vibe/messages/MessageRichInput";
-import { REACTION_EMOJIS } from "@/components/vibe/messages/reactionEmojis";
+  ConversationHeader,
+  ConversationList,
+  ForwardModal,
+  GroupManagementModal,
+  MessageComposer,
+  MessageInfoModal,
+  MessageItem,
+  RenameConversationModal,
+  ReportConversationModal,
+  ThemeModal,
+  type AttachedMedia,
+  type AttachedPostPreview,
+  dmDraftKey,
+} from "@/components/vibe/messages";
+import type { MessageRichInputHandle } from "@/components/vibe/messages/MessageRichInput";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import {
   CHAT_BACKGROUND_THEMES,
-  MESSAGE_BUBBLE_SHAPES,
-  MESSAGE_BUBBLE_THEMES,
-  type MessageBubbleShape,
   useTheme,
 } from "@/lib/vibe/context/ThemeContext";
 import { useMotionPrefs } from "@/lib/vibe/hooks/useMotionPrefs";
@@ -94,7 +39,6 @@ import { useSpeechRecognition } from "@/lib/vibe/hooks/useSpeechRecognition";
 import {
   ApiService,
   browserToDeepLCode,
-  TRANSLATION_LANGUAGES,
 } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
@@ -110,23 +54,6 @@ import type {
   VibeBookPost,
 } from "@/lib/vibe/types/vibe";
 import { toVibeAbsoluteUrl, useNavigate } from "../router";
-
-interface AttachedMedia {
-  fileName?: string;
-  size: number;
-  type: "image" | "video" | "document";
-  url: string;
-}
-
-const dmDraftKey = (partnerId: string | number | null) =>
-  `vibe_dm_draft_${partnerId}`;
-
-const formatFileSize = (bytes: number): string => {
-  if (!bytes) return "";
-  if (bytes < 1024) return `${bytes} o`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} Ko`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} Mo`;
-};
 
 export const MessagesPage: React.FC<{
   hydration?: import("@/lib/vibe/types/vibe").VibeHydrationSeed<unknown>;
@@ -1877,639 +1804,108 @@ export const MessagesPage: React.FC<{
         isCreatingGroup
       }
     >
-      {/* Left Column: Conversations List */}
+      {/* Colonne gauche : liste des conversations */}
+      <ConversationList
+        activePartnerId={activePartnerId}
+        conversations={conversations}
+        dmDraftKeys={dmDraftKeys}
+        formatTime={formatTime}
+        isLoading={isLoading}
+        isSearchingUsers={isSearchingUsers}
+        onClearSearch={() => {
+          setSearchQuery("");
+          setSearchResults([]);
+          setIsSearchingUsers(false);
+        }}
+        onOpenConvMenu={(conv) => {
+          handleSelectConversation(conv);
+          setConvMenuOpen(true);
+        }}
+        onOpenGroupModal={() => setGroupModalOpen(true)}
+        onSearchUsers={handleSearchUsers}
+        onSelectConversation={handleSelectConversation}
+        onStartConversationWith={handleStartConversationWith}
+        searchQuery={searchQuery}
+        searchResults={searchResults}
+      />
+
+      {/* Colonne droite : discussion active */}
       <div
-        className={`vibe-chat-sidebar w-full md:w-80 lg:w-96 border-r flex flex-col ${activePartnerId ? "hidden md:flex" : "flex"}`}
-      >
-        {/* Header */}
-        <div className="vibe-chat-sidebar-header p-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <h1 className="text-base font-bold tracking-tight">Messages</h1>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <button
-              className="vibe-chat-icon-btn p-2 transition-colors"
-              onClick={() => setGroupModalOpen(true)}
-              title="Créer un groupe"
-            >
-              <Users className="w-4 h-4" />
-            </button>
-            <span className="text-[11px] font-mono text-zinc-500 flex items-center gap-1">
-              <Lock className="w-3 h-3" /> Privé
-            </span>
-          </div>
-        </div>
-
-        {/* User Search Bar */}
-        <div className="vibe-chat-search-bar p-3">
-          <div className="relative">
-            <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              className="vibe-chat-search-input w-full py-2 pl-9 pr-8 rounded-2xl text-xs focus:outline-none"
-              onChange={(e) => handleSearchUsers(e.target.value)}
-              placeholder="Rechercher un membre (@nom)..."
-              type="text"
-              value={searchQuery}
-            />
-            {searchQuery && (
-              <button
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-black vibe-dark:hover:text-white"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSearchResults([]);
-                  setIsSearchingUsers(false);
-                }}
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-
-          {/* Loader pendant la recherche */}
-          {isSearchingUsers && (
-            <div className="vibe-chat-modal-content mt-2 p-3 rounded-2xl text-center text-xs text-zinc-600 vibe-dark:text-zinc-400 flex items-center justify-center gap-2">
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-black vibe-dark:text-white" />
-              <span>Recherche des membres...</span>
-            </div>
-          )}
-
-          {/* Search Results Dropdown */}
-          {searchResults.length > 0 && !isSearchingUsers && (
-            <div className="vibe-chat-modal-content mt-2 divide-y divide-zinc-200 vibe-dark:divide-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
-              {searchResults.map((u) => (
-                <button
-                  className="vibe-chat-menu-item w-full p-2.5 flex items-center gap-3 cursor-pointer transition-colors text-left"
-                  key={u.id}
-                  onClick={() => handleStartConversationWith(u)}
-                >
-                  <ProfileAvatar
-                    alt={u.username}
-                    className="border border-zinc-200 vibe-dark:border-zinc-800 shrink-0"
-                    fallbackName={u.username}
-                    size="sm"
-                    src={u.avatar_url}
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-bold text-black vibe-dark:text-white truncate">
-                        {u.display_name || u.username}
-                      </span>
-                      <VerifiedBadge
-                        isVerified={u.is_verified}
-                        size="xs"
-                        tier={u.tier}
-                      />
-                    </div>
-                    <p className="text-[11px] text-zinc-500 font-mono">
-                      @{u.username}
-                    </p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Aucun résultat */}
-          {searchQuery.trim().length > 0 &&
-            searchResults.length === 0 &&
-            !isSearchingUsers && (
-              <div className="vibe-chat-modal-content mt-2 p-4 rounded-2xl text-center text-xs text-zinc-500">
-                <p className="font-semibold text-zinc-600 vibe-dark:text-zinc-400">
-                  Aucun résultat
-                </p>
-                <p className="text-[11px] text-zinc-400 vibe-dark:text-zinc-600 mt-0.5">
-                  Aucun compte trouvé pour « {searchQuery} »
-                </p>
-              </div>
-            )}
-        </div>
-
-        {/* Conversations List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-zinc-100 vibe-dark:divide-zinc-900">
-          {isLoading ? (
-            <div className="p-8 text-center text-xs text-zinc-500 flex items-center justify-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-black vibe-dark:text-white" />
-              <span>Chargement des conversations...</span>
-            </div>
-          ) : conversations.length === 0 ? (
-            <div className="p-8 text-center text-zinc-500 space-y-2">
-              <Mail className="w-8 h-8 mx-auto text-zinc-400 vibe-dark:text-zinc-700" />
-              <p className="text-xs">Aucun message direct pour le moment.</p>
-              <p className="text-[11px] text-zinc-400 vibe-dark:text-zinc-600">
-                Recherchez un utilisateur ci-dessus pour engager la
-                conversation.
-              </p>
-            </div>
-          ) : (
-            conversations.map((conv) => {
-              const isSelected = activePartnerId === conv.partner_id;
-              const hasDraft = dmDraftKeys.includes(
-                dmDraftKey(conv.partner_id)
-              );
-              const BookIcon = conv.is_book
-                ? getBookIcon(conv.book_icon || "BookHeart")
-                : null;
-              return (
-                <div
-                  className={`vibe-chat-conv-item p-3.5 flex items-center gap-3 cursor-pointer transition-colors ${
-                    isSelected ? "active" : ""
-                  }`}
-                  key={conv.partner_id}
-                  onClick={() => handleSelectConversation(conv)}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    handleSelectConversation(conv);
-                    setConvMenuOpen(true);
-                  }}
-                >
-                  {conv.is_book && BookIcon ? (
-                    <span className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800">
-                      <BookIcon className="w-5 h-5 text-zinc-500 vibe-dark:text-zinc-400" />
-                    </span>
-                  ) : (
-                    <ProfileAvatar
-                      alt={conv.partner_username}
-                      className="border border-zinc-200 vibe-dark:border-zinc-800 shrink-0"
-                      fallbackName={conv.is_group ? "#" : conv.partner_username}
-                      size="md"
-                      src={conv.partner_avatar_url}
-                    />
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-black vibe-dark:text-white truncate flex items-center gap-1.5">
-                        {conv.is_book ? (
-                          <span className="px-1.5 py-0.5 rounded-md bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-[9px] font-bold text-zinc-500 shrink-0 flex items-center gap-1">
-                            <BookOpen className="w-2.5 h-2.5" /> Livre
-                          </span>
-                        ) : conv.is_group ? (
-                          <Users className="w-3.5 h-3.5 shrink-0 text-zinc-400" />
-                        ) : null}
-                        <span className="truncate">
-                          {conv.custom_name ||
-                            conv.partner_display_name ||
-                            conv.partner_username}
-                          {!conv.is_group && conv.custom_name && (
-                            <span className="ml-1 text-[10px] text-zinc-500 font-normal">
-                              @{conv.partner_username}
-                            </span>
-                          )}
-                        </span>
-                        {conv.is_group &&
-                          !conv.is_book &&
-                          Boolean(conv.members?.length) && (
-                            <span className="text-[10px] text-zinc-500 font-normal shrink-0">
-                              ({conv.members!.length + 1})
-                            </span>
-                          )}
-                      </h4>
-                      <span className="text-[10px] text-zinc-500 font-mono">
-                        {formatTime(conv.last_message_at)}
-                      </span>
-                    </div>
-                    <p className="text-xs opacity-70 truncate mt-0.5">
-                      {conv.last_message_content || "Nouveau message"}
-                    </p>
-                    {hasDraft && (
-                      <span className="mt-0.5 inline-block px-1.5 py-0.5 rounded-md bg-zinc-200 vibe-dark:bg-zinc-800 text-[9px] font-bold text-zinc-500">
-                        Brouillon
-                      </span>
-                    )}
-                  </div>
-                  {conv.is_blocked && (
-                    <span title="Utilisateur bloqué">
-                      <Ban className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                    </span>
-                  )}
-                  {Boolean(
-                    conv.unread_count &&
-                      conv.unread_count > 0 &&
-                      String(conv.partner_id) !== String(activePartnerId)
-                  ) && (
-                    <span className="vibe-chat-badge-unread w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 animate-pulse">
-                      {conv.unread_count}
-                    </span>
-                  )}
-                </div>
-              );
-            })
-          )}
-        </div>
-      </div>
-
-      {/* Right Column: Active Conversation Chat */}
-      <div
-        className={`vibe-chat-main flex-1 flex flex-col ${activePartnerId ? "flex" : "hidden md:flex"}`}
+        className={`vibe-chat-main flex-1 flex flex-col ${
+          activePartnerId ? "flex" : "hidden md:flex"
+        }`}
       >
         {activePartner ? (
           <>
-            {/* Chat Top Header */}
-            <div className="vibe-chat-header px-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] pb-3.5 border-b flex items-center justify-between sticky top-0 z-10 backdrop-blur-md">
-              <div className="flex items-center gap-3">
-                <button
-                  className="vibe-chat-icon-btn md:hidden p-1.5"
-                  onClick={() => setActivePartnerId(null)}
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                </button>
+            <ConversationHeader
+              activeConv={activeConv}
+              activePartner={activePartner}
+              activePartnerBlocked={activePartnerBlocked}
+              bookId={bookId}
+              convMenuOpen={convMenuOpen}
+              convSearchOpen={convSearchOpen}
+              convSearchQuery={convSearchQuery}
+              errorMessage={errorMessage}
+              groupIsAdmin={groupIsAdmin}
+              groupMembers={groupMembers}
+              isBookConv={isBookConv}
+              isGroupConv={isGroupConv}
+              isModerating={isModerating}
+              onBack={() => setActivePartnerId(null)}
+              onBlockPartner={handleBlockPartner}
+              onChangeSearchQuery={(q) => {
+                setConvSearchQuery(q);
+                setConvSearchIndex(0);
+              }}
+              onCloseConvMenu={() => setConvMenuOpen(false)}
+              onCloseSearch={() => {
+                setConvSearchOpen(false);
+                setConvSearchQuery("");
+              }}
+              onDeleteConversation={handleDeleteConversation}
+              onMarkUnread={handleMarkUnread}
+              onOpenAddMembers={() => setAddMembersOpen(true)}
+              onOpenGroupInfo={() => {
+                setGroupNameDraft(
+                  activeConv?.partner_display_name ||
+                    activeConv?.partner_username ||
+                    ""
+                );
+                setGroupInfoOpen(true);
+                setConvMenuOpen(false);
+              }}
+              onOpenRenameModal={() => setRenameModalOpen(true)}
+              onOpenReportModal={() => setReportModalOpen(true)}
+              onOpenSearch={() => setConvSearchOpen(true)}
+              onOpenThemeModal={() => setThemeModalOpen(true)}
+              onRemoveMember={(userId) => handleRemoveMember(userId)}
+              onScrollToMessage={(id) => {
+                setPinsCollapsed(true);
+                scrollToMessage(id);
+              }}
+              onSearchKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setConvSearchOpen(false);
+                  setConvSearchQuery("");
+                }
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setConvSearchIndex((i) => i + 1);
+                }
+                if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setConvSearchIndex((i) => Math.max(0, i - 1));
+                }
+              }}
+              onToggleConvMenu={() => setConvMenuOpen(!convMenuOpen)}
+              onTogglePinsCollapsed={() => setPinsCollapsed(!pinsCollapsed)}
+              onTransferAdmin={(userId) => handleTransferAdmin(userId)}
+              partnerTyping={partnerTyping}
+              pinnedMessages={pinnedMessages}
+              pinsCollapsed={pinsCollapsed}
+            />
 
-                {isBookConv ? (
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800">
-                    {(() => {
-                      const HeaderBookIcon = getBookIcon(
-                        activeConv?.book_icon || "BookHeart"
-                      );
-                      return (
-                        <HeaderBookIcon className="w-4 h-4 text-zinc-500 vibe-dark:text-zinc-400" />
-                      );
-                    })()}
-                  </span>
-                ) : (
-                  <ProfileAvatar
-                    alt="Avatar"
-                    className="border border-zinc-200 vibe-dark:border-zinc-800 shrink-0"
-                    fallbackName={isGroupConv ? "#" : activePartner.username}
-                    size="sm"
-                    src={activePartner.avatar_url}
-                  />
-                )}
-                <div>
-                  <h3 className="text-xs font-bold text-black vibe-dark:text-white flex items-center gap-1.5">
-                    {isBookConv ? (
-                      <BookOpen className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                    ) : isGroupConv ? (
-                      <Users className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                    ) : null}
-                    {isBookConv && bookId ? (
-                      <button
-                        className="hover:underline underline-offset-2"
-                        onClick={() => navigate(`/books/${bookId}`)}
-                        title="Ouvrir le Livre"
-                        type="button"
-                      >
-                        {activePartner.display_name || activePartner.username}
-                      </button>
-                    ) : (
-                      <span>
-                        {activeConv?.custom_name ||
-                          activePartner.display_name ||
-                          activePartner.username}
-                      </span>
-                    )}
-                    {!isGroupConv && activeConv?.custom_name && (
-                      <span className="text-[10px] text-zinc-500 font-normal">
-                        (@{activePartner.username})
-                      </span>
-                    )}
-                    {!isGroupConv && (
-                      <VerifiedBadge
-                        isVerified={(activePartner as any).is_verified}
-                        size="xs"
-                        tier={(activePartner as any).tier}
-                      />
-                    )}
-                    {isGroupConv && !isBookConv && (
-                      <span className="text-[10px] text-zinc-500 font-normal">
-                        {((activeConv?.members || []) as any[]).length > 0
-                          ? `· ${((activeConv?.members || []) as any[]).length} membre${((activeConv?.members || []) as any[]).length > 1 ? "s" : ""}`
-                          : "· groupe"}
-                      </span>
-                    )}
-                    {isBookConv && (
-                      <span className="px-1.5 py-0.5 rounded-md bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-[9px] font-bold text-zinc-500 shrink-0">
-                        Livre
-                      </span>
-                    )}
-                    {activePartnerBlocked && (
-                      <span className="text-[9px] bg-zinc-100 vibe-dark:bg-zinc-800 text-zinc-600 vibe-dark:text-zinc-400 px-1.5 py-0.5 rounded-full font-bold flex items-center gap-1">
-                        <Ban className="w-2.5 h-2.5" /> Bloqué
-                      </span>
-                    )}
-                  </h3>
-                  <span className="text-[11px] text-zinc-500 font-mono">
-                    {isBookConv
-                      ? "Conversation du Livre · « / » pour joindre une publication"
-                      : isGroupConv
-                        ? `${((activeConv?.members || []) as any[])
-                            .map((mm: any) => `@${mm.username}`)
-                            .slice(0, 3)
-                            .join(
-                              " "
-                            )}${((activeConv?.members || []) as any[]).length > 3 ? "…" : ""}`
-                        : `@${activePartner.username}`}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1">
-                {/* Recherche dans la conversation */}
-                {convSearchOpen ? (
-                  <div className="flex items-center gap-1 rounded-full bg-zinc-100 vibe-dark:bg-zinc-900 px-2 py-1">
-                    <Search className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                    <input
-                      autoFocus
-                      className="w-28 sm:w-40 bg-transparent text-xs text-black vibe-dark:text-white placeholder-zinc-500 focus:outline-none"
-                      onChange={(e) => {
-                        setConvSearchQuery(e.target.value);
-                        setConvSearchIndex(0);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Escape") {
-                          setConvSearchOpen(false);
-                          setConvSearchQuery("");
-                        }
-                        if (e.key === "ArrowDown") {
-                          e.preventDefault();
-                          setConvSearchIndex((i) => i + 1);
-                        }
-                        if (e.key === "ArrowUp") {
-                          e.preventDefault();
-                          setConvSearchIndex((i) => Math.max(0, i - 1));
-                        }
-                      }}
-                      placeholder="Filtrer…"
-                      type="text"
-                      value={convSearchQuery}
-                    />
-                    <button
-                      className="text-zinc-500 hover:text-black vibe-dark:hover:text-white"
-                      onClick={() => {
-                        setConvSearchOpen(false);
-                        setConvSearchQuery("");
-                      }}
-                      title="Fermer la recherche"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    className="vibe-chat-icon-btn p-2 transition-colors"
-                    onClick={() => setConvSearchOpen(true)}
-                    title="Rechercher dans la conversation"
-                    type="button"
-                  >
-                    <Search className="w-4 h-4" />
-                  </button>
-                )}
-                <button
-                  className="vibe-chat-icon-btn p-2 transition-colors"
-                  onClick={() => setThemeModalOpen(true)}
-                  title="Personnaliser les couleurs et le fond de discussion"
-                  type="button"
-                >
-                  <Palette className="w-4 h-4" />
-                </button>
-
-                {/* Menu modération de la conversation */}
-                <div className="relative">
-                  <button
-                    className="vibe-chat-icon-btn p-2 transition-colors"
-                    onClick={() => setConvMenuOpen(!convMenuOpen)}
-                    title="Options de la conversation"
-                  >
-                    <MoreVertical className="w-4 h-4" />
-                  </button>
-
-                  {convMenuOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-20"
-                        onClick={() => setConvMenuOpen(false)}
-                      />
-                      <div className="absolute right-0 top-full mt-1 w-56 z-30 p-1.5 rounded-2xl vibe-menu shadow-2xl animate-fadeIn">
-                        {isBookConv && bookId && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                            onClick={() => {
-                              setConvMenuOpen(false);
-                              navigate(`/books/${bookId}`);
-                            }}
-                          >
-                            <BookOpen className="w-3.5 h-3.5" /> Ouvrir le Livre
-                          </button>
-                        )}
-                        {isGroupConv && !isBookConv && groupIsAdmin && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                            onClick={() => setAddMembersOpen(true)}
-                          >
-                            <UserPlus className="w-3.5 h-3.5" /> Ajouter des
-                            membres
-                          </button>
-                        )}
-                        {isGroupConv && !isBookConv && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                            onClick={() => {
-                              setGroupNameDraft(
-                                activeConv?.partner_display_name ||
-                                  activeConv?.partner_username ||
-                                  ""
-                              );
-                              setGroupInfoOpen(true);
-                              setConvMenuOpen(false);
-                            }}
-                          >
-                            <Info className="w-3.5 h-3.5" /> Infos du groupe
-                          </button>
-                        )}
-                        {isGroupConv && !isBookConv && (
-                          <>
-                            <div className="px-3 pt-1 pb-0.5 text-[9px] uppercase font-bold tracking-wider text-zinc-400">
-                              Membres
-                            </div>
-                            {groupMembers.map((mm) => (
-                              <div
-                                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] text-left"
-                                key={mm.user_id}
-                              >
-                                <ProfileAvatar
-                                  alt={mm.username}
-                                  fallbackName={mm.username}
-                                  size="xs"
-                                  src={mm.avatar_url}
-                                />
-                                <span className="truncate flex-1">
-                                  @{mm.username}
-                                </span>
-                                {mm.role === "admin" && (
-                                  <span className="text-[9px] font-bold text-zinc-400">
-                                    admin
-                                  </span>
-                                )}
-                                {groupIsAdmin &&
-                                  mm.role !== "admin" &&
-                                  String(mm.user_id) !== String(user?.id) && (
-                                    <span className="flex items-center gap-1.5 shrink-0">
-                                      <button
-                                        className="text-amber-500 hover:text-amber-400"
-                                        onClick={() =>
-                                          handleTransferAdmin(mm.user_id)
-                                        }
-                                        title="Nommer administrateur"
-                                      >
-                                        <Crown className="w-3 h-3" />
-                                      </button>
-                                      <button
-                                        className="text-red-500 hover:text-red-400"
-                                        onClick={() =>
-                                          handleRemoveMember(String(mm.user_id))
-                                        }
-                                        title="Retirer du groupe"
-                                      >
-                                        <X className="w-3 h-3" />
-                                      </button>
-                                    </span>
-                                  )}
-                              </div>
-                            ))}
-                            <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
-                          </>
-                        )}
-                        {!isGroupConv && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                            onClick={handleMarkUnread}
-                          >
-                            <Mail className="w-3.5 h-3.5" /> Marquer comme non
-                            lu
-                          </button>
-                        )}
-                        {!isBookConv && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                            onClick={() => setRenameModalOpen(true)}
-                          >
-                            <Pencil className="w-3.5 h-3.5" /> Renommer la
-                            conversation
-                          </button>
-                        )}
-                        {!isGroupConv && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left disabled:opacity-40"
-                            disabled={isModerating}
-                            onClick={handleBlockPartner}
-                          >
-                            <Ban className="w-3.5 h-3.5" />{" "}
-                            {activePartnerBlocked
-                              ? "Débloquer cet utilisateur"
-                              : "Bloquer cet utilisateur"}
-                          </button>
-                        )}
-                        {!isGroupConv && (
-                          <button
-                            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] text-amber-500 hover:bg-amber-500/10 text-left"
-                            onClick={() => setReportModalOpen(true)}
-                          >
-                            <Flag className="w-3.5 h-3.5" /> Signaler la
-                            conversation
-                          </button>
-                        )}
-                        {!isGroupConv && (
-                          <>
-                            <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] text-red-500 hover:bg-red-500/10 text-left disabled:opacity-40"
-                              disabled={isModerating}
-                              onClick={handleDeleteConversation}
-                            >
-                              <Trash2 className="w-3.5 h-3.5" /> Supprimer la
-                              conversation
-                            </button>
-                          </>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Error Banner */}
-            {errorMessage && (
-              <div className="m-3 p-3 rounded-2xl bg-red-500/10 border border-red-500/20 text-xs text-red-600 vibe-dark:text-red-400 flex items-center gap-2 animate-fadeIn">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{errorMessage}</span>
-              </div>
-            )}
-
-            {/* Bandeau utilisateur bloqué */}
-            {activePartnerBlocked && (
-              <div className="vibe-chat-banner m-3 p-3 text-xs flex items-center gap-2">
-                <Ban className="w-4 h-4 text-red-400 shrink-0" />
-                <span>
-                  Vous avez bloqué <strong>@{activePartner.username}</strong>.
-                  Vous ne pouvez plus échanger de messages. Débloquez-le depuis
-                  le menu <strong>⋮</strong> en haut à droite.
-                </span>
-              </div>
-            )}
-
-            {/* Indicateur de frappe du partenaire (temps réel) */}
-            {partnerTyping && !activePartnerBlocked && (
-              <div
-                aria-live="polite"
-                className="px-4 pt-1.5 pb-0.5 flex items-center gap-2 animate-fadeIn"
-              >
-                <div className="vibe-chat-typing flex items-center gap-1.5 px-3 py-1.5 rounded-full">
-                  <span className="flex gap-0.5">
-                    <span
-                      className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce"
-                      style={{ animationDelay: "0ms" }}
-                    />
-                    <span
-                      className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce"
-                      style={{ animationDelay: "150ms" }}
-                    />
-                    <span
-                      className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce"
-                      style={{ animationDelay: "300ms" }}
-                    />
-                  </span>
-                  <span className="text-[11px] text-zinc-600 vibe-dark:text-zinc-400">
-                    @{activePartner?.username} est en train d'écrire…
-                  </span>
-                </div>
-              </div>
-            )}
-
-            {/* Bannière messages épinglés (repliable) */}
-            {pinnedMessages.length > 0 && (
-              <div className="mx-3 mt-2 rounded-2xl border border-zinc-200 vibe-dark:border-zinc-800 bg-zinc-50 vibe-dark:bg-zinc-950 overflow-hidden">
-                <button
-                  className="w-full flex items-center gap-1.5 px-3 py-2 text-[11px] font-bold text-zinc-600 vibe-dark:text-zinc-300 hover:bg-zinc-100 vibe-dark:hover:bg-zinc-900 transition-colors"
-                  onClick={() => setPinsCollapsed(!pinsCollapsed)}
-                >
-                  <Pin className="w-3.5 h-3.5" />
-                  <span>📌 Messages épinglés ({pinnedMessages.length})</span>
-                  <span className="ml-auto text-zinc-400">
-                    {pinsCollapsed ? "▸" : "▾"}
-                  </span>
-                </button>
-                {!pinsCollapsed && (
-                  <div className="px-3 pb-2 space-y-1">
-                    {pinnedMessages.map((p) => (
-                      <button
-                        className="w-full text-left px-2 py-1.5 rounded-xl hover:bg-zinc-100 vibe-dark:hover:bg-zinc-900 transition-colors"
-                        key={p.id}
-                        onClick={() => {
-                          setPinsCollapsed(true);
-                          scrollToMessage(String(p.id));
-                        }}
-                        title="Aller au message"
-                      >
-                        <p className="text-[11px] text-zinc-600 vibe-dark:text-zinc-300 truncate">
-                          {String(p.content || "").slice(0, 40) || "(média)"}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Messages Thread */}
+            {/* Fil de messages */}
             <div
               className="vibe-chat-thread relative flex-1 p-4 space-y-3 overflow-y-auto"
               ref={threadRef}
@@ -2518,7 +1914,8 @@ export const MessagesPage: React.FC<{
                   chatBackgroundTheme === "default"
                     ? undefined
                     : CHAT_BACKGROUND_THEMES[chatBackgroundTheme]?.style,
-                maxHeight: "calc(100dvh - 140px - var(--vibe-kb-offset, 0px))",
+                maxHeight:
+                  "calc(100dvh - 140px - var(--vibe-kb-offset, 0px))",
               }}
             >
               {(() => {
@@ -2549,6 +1946,7 @@ export const MessagesPage: React.FC<{
                         scrollToMessage(String(combined[next]?.id));
                       }}
                       title="Résultat précédent (↑)"
+                      type="button"
                     >
                       ↑
                     </button>
@@ -2563,6 +1961,7 @@ export const MessagesPage: React.FC<{
                         scrollToMessage(String(combined[next]?.id));
                       }}
                       title="Résultat suivant (↓)"
+                      type="button"
                     >
                       ↓
                     </button>
@@ -2570,6 +1969,7 @@ export const MessagesPage: React.FC<{
                       <button
                         className="underline underline-offset-2"
                         onClick={() => scrollToMessage(String(active.id))}
+                        type="button"
                       >
                         Voir
                       </button>
@@ -2577,665 +1977,71 @@ export const MessagesPage: React.FC<{
                   </div>
                 );
               })()}
-              {messages.map((m) => {
-                const isMe =
-                  user &&
-                  (String(m.sender_id) === String(user.id) ||
-                    m.sender_username === user.username);
-                // Contenu riche (HTML de l'éditeur) ou texte brut historique
-                const richMsg = isRichHtml(m.content);
-                const plainSrc = richMsg
-                  ? htmlToPlainText(m.content)
-                  : m.content;
-                // Liens markdown [label](url) : rendus inline par RichContent, pas en média
-                const mdLinkRe = /\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
-                const hasMdLinks = !richMsg && mdLinkRe.test(m.content);
-                const contentForMedia = richMsg
-                  ? plainSrc
-                  : m.content.replace(mdLinkRe, " ");
-                // Extract possible media URLs inside message (hors liens markdown)
-                const urls = contentForMedia.match(/https?:\/\/[^\s]+/g) || [];
-                const nonUrlText = contentForMedia
-                  .replace(/https?:\/\/[^\s]+/g, "")
-                  .trim();
-                // HTML sans les URLs média en texte (les <a href> restent intacts)
-                const richSource =
-                  richMsg && urls.length > 0
-                    ? stripUrlsFromHtml(m.content)
-                    : m.content;
-                const isMediaOnly =
-                  urls.length > 0 &&
-                  !nonUrlText &&
-                  !hasMdLinks &&
-                  !(m as any).reply_to_content;
-                const canEdit =
-                  isMe &&
-                  !String(m.id).startsWith("temp") &&
-                  currentTimestamp - new Date(m.created_at).getTime() <=
-                    60 * 60 * 1000;
 
-                const currentThemeConfig =
-                  MESSAGE_BUBBLE_THEMES[messageBubbleTheme] ||
-                  MESSAGE_BUBBLE_THEMES.monochrome;
-                const currentShapeConfig =
-                  MESSAGE_BUBBLE_SHAPES[messageBubbleShape] ||
-                  MESSAGE_BUBBLE_SHAPES.pill;
-
-                const isFirstUnread =
-                  firstUnreadId !== null &&
-                  String(m.id) === String(firstUnreadId);
-                const searchQ = convSearchOpen ? convSearchQuery.trim() : "";
-                const matchesSearch = searchQ
-                  ? plainSrc.includes(searchQ)
-                  : false;
-                // Groupe : affiche le pseudo de l'expéditeur + surligne les mentions urgentes
-                const isUrgent =
-                  isGroupConv &&
-                  Array.isArray((m as any).urgent_mentions) &&
-                  (m as any).urgent_mentions.length > 0;
-                return (
-                  <React.Fragment key={m.id}>
-                    {/* Mention urgente (@tous / @user) : bandeau au-dessus du message */}
-                    {isUrgent && (
-                      <div className="flex justify-center my-0.5">
-                        <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/15 text-red-500 text-[9px] font-bold uppercase tracking-wide">
-                          <BellRing className="w-2.5 h-2.5" />
-                          Mention urgente —{" "}
-                          {((m as any).urgent_mentions || []).join(", ")}
-                        </span>
-                      </div>
-                    )}
-                    {/* Groupe : nom de l'expéditeur au-dessus des bulles des autres */}
-                    {isGroupConv && !isMe && (
-                      <span className="text-[10px] font-bold text-zinc-500 px-1 mb-0.5">
-                        @{m.sender_username || "membre"}
-                      </span>
-                    )}
-                    {/* Séparateur « Non lus » (style WhatsApp) */}
-                    {isFirstUnread && (
-                      <div
-                        aria-label="Messages non lus"
-                        className="flex items-center gap-2 py-1"
-                      >
-                        <div className="flex-1 h-px bg-red-500/70" />
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-red-500 bg-red-500/10 px-2 py-0.5 rounded-full">
-                          Non lus
-                        </span>
-                        <div className="flex-1 h-px bg-red-500/70" />
-                      </div>
-                    )}
-                    <div
-                      className={`flex flex-col ${isMe ? "items-end" : "items-start"} relative my-1 group ${matchesSearch ? "rounded-2xl ring-1 ring-yellow-400/60" : ""} ${highlightedMessageId === String(m.id) ? "rounded-2xl ring-2 ring-sky-400/70 bg-sky-500/10 px-1" : ""} ${animationsEnabled ? "animate-messageIn" : ""}`}
-                      key={m.id}
-                      ref={(el) => {
-                        if (el) messageRefs.current.set(String(m.id), el);
-                        else messageRefs.current.delete(String(m.id));
-                      }}
-                    >
-                      {/* Ligne de message avec le bouton d'actions parfaitement aligné */}
-                      <div
-                        className={`flex items-center gap-1.5 max-w-[85%] sm:max-w-[75%] ${isMe ? "flex-row-reverse" : "flex-row"}`}
-                      >
-                        {/* Bulle du message */}
-                        {isMediaOnly ? (
-                          <div
-                            className={`vibe-msg-media-bubble relative overflow-hidden shadow-sm ${
-                              isMe
-                                ? currentShapeConfig.meRadius
-                                : currentShapeConfig.partnerRadius
-                            }`}
-                          >
-                            {urls.map((url, i) => {
-                              const isVid =
-                                url.includes(".mp4") ||
-                                url.includes(".webm") ||
-                                url.includes("video");
-                              const isImage =
-                                /\.(png|jpe?g|webp|gif|svg|bmp)(\?|#|$)/i.test(
-                                  url
-                                );
-                              if (isVid) {
-                                return (
-                                  <video
-                                    className="rounded-2xl max-h-64 w-full object-cover"
-                                    controls
-                                    key={i}
-                                    src={url}
-                                  />
-                                );
-                              }
-                              if (!isImage) {
-                                const fileName = (() => {
-                                  try {
-                                    return decodeURIComponent(
-                                      url.split("?")[0].split("/").pop() ||
-                                        "Document"
-                                    );
-                                  } catch {
-                                    return "Document";
-                                  }
-                                })();
-                                return (
-                                  <a
-                                    className="flex items-center gap-2.5 p-2.5 rounded-2xl bg-black/10 vibe-dark:bg-white/10 hover:bg-black/20 vibe-dark:hover:bg-white/20 transition-colors max-w-[240px]"
-                                    href={url}
-                                    key={i}
-                                    onClick={(e) => e.stopPropagation()}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                  >
-                                    <FileText className="w-6 h-6 shrink-0" />
-                                    <span className="min-w-0">
-                                      <span className="block text-[11px] font-bold truncate">
-                                        {fileName}
-                                      </span>
-                                      <span className="block text-[10px] opacity-70">
-                                        Ouvrir le document
-                                      </span>
-                                    </span>
-                                  </a>
-                                );
-                              }
-                              return (
-                                <img
-                                  alt="Pièce jointe"
-                                  className="rounded-2xl max-h-64 w-full object-cover"
-                                  key={i}
-                                  src={url}
-                                />
-                              );
-                            })}
-                          </div>
-                        ) : (
-                          <div
-                            className={`p-3 text-xs leading-relaxed relative shadow-sm min-w-[70px] ${
-                              isMe
-                                ? `${currentShapeConfig.meRadius} ${
-                                    currentThemeConfig.id === "monochrome"
-                                      ? "vibe-msg-bubble-me-mono"
-                                      : currentThemeConfig.textColor === "light"
-                                        ? "vibe-msg-text-light"
-                                        : currentThemeConfig.textColor ===
-                                            "dark"
-                                          ? "vibe-msg-text-dark"
-                                          : "vibe-msg-text-adaptive"
-                                  } font-medium`
-                                : `${currentShapeConfig.partnerRadius} vibe-msg-bubble-partner`
-                            }`}
-                            style={
-                              isMe && currentThemeConfig.id !== "monochrome"
-                                ? {
-                                    background: currentThemeConfig.gradient,
-                                    border: currentThemeConfig.border,
-                                  }
-                                : undefined
-                            }
-                          >
-                            {/* Attribution d'un message transféré */}
-                            {(m as any).forwarded_from?.username && (
-                              <p className="text-[10px] font-semibold opacity-70 mb-1.5 flex items-center gap-1">
-                                <Forward className="w-3 h-3 shrink-0" />
-                                Transféré de @
-                                {(m as any).forwarded_from.username}
-                              </p>
-                            )}
-
-                            {/* Citation du message auquel on répond */}
-                            {(m as any).reply_to_content && (
-                              <div
-                                className={`mb-2 p-2 rounded-xl text-left border-l-4 transition-colors ${
-                                  isMe
-                                    ? currentThemeConfig.id === "monochrome"
-                                      ? "vibe-msg-quote-me-mono"
-                                      : "vibe-msg-quote-gradient"
-                                    : "vibe-msg-quote-partner"
-                                }`}
-                              >
-                                <p className="text-[10px] font-bold flex items-center gap-1 opacity-90 truncate">
-                                  <Reply className="w-3 h-3 shrink-0" />
-                                  <span>
-                                    @{(m as any).reply_to_username || "message"}
-                                  </span>
-                                </p>
-                                <p className="text-[10px] opacity-90 truncate max-w-[240px] mt-0.5">
-                                  {htmlToPlainText((m as any).reply_to_content)}
-                                </p>
-                              </div>
-                            )}
-
-                            {/* Publication du Livre jointe (carte cliquable) */}
-                            {(m as DirectMessage).attached_post && (
-                              <button
-                                className="w-full mb-2 p-2 rounded-xl text-left bg-black/10 vibe-dark:bg-white/10 hover:bg-black/20 vibe-dark:hover:bg-white/20 transition-colors flex items-start gap-2"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  navigate(
-                                    `/post/${(m as DirectMessage).attached_post!.id}`
-                                  );
-                                }}
-                                title="Ouvrir la publication"
-                                type="button"
-                              >
-                                <ProfileAvatar
-                                  alt={
-                                    (m as DirectMessage).attached_post!.username
-                                  }
-                                  className="shrink-0"
-                                  fallbackName={
-                                    (m as DirectMessage).attached_post!.username
-                                  }
-                                  size="xs"
-                                  src={
-                                    (m as DirectMessage).attached_post!
-                                      .avatar_url || undefined
-                                  }
-                                />
-                                <span className="min-w-0 flex-1">
-                                  <span className="block text-[10px] font-bold truncate">
-                                    @
-                                    {
-                                      (m as DirectMessage).attached_post!
-                                        .username
-                                    }{" "}
-                                    · Publication du Livre
-                                  </span>
-                                  <span className="block text-[10px] opacity-80 truncate max-w-[240px]">
-                                    {
-                                      (m as DirectMessage).attached_post!
-                                        .excerpt
-                                    }
-                                  </span>
-                                </span>
-                              </button>
-                            )}
-
-                            {nonUrlText &&
-                              (matchesSearch && searchQ ? (
-                                <p className="leading-relaxed break-words">
-                                  {highlightMatches(nonUrlText, searchQ)}
-                                </p>
-                              ) : (
-                                <RichContent
-                                  className="leading-relaxed"
-                                  content={
-                                    richMsg
-                                      ? richSource
-                                      : hasMdLinks
-                                        ? m.content
-                                        : nonUrlText
-                                  }
-                                />
-                              ))}
-
-                            {urls.length > 0 && (
-                              <div className="mt-2 space-y-1.5">
-                                {urls.map((url, i) => {
-                                  const isVid =
-                                    url.includes(".mp4") ||
-                                    url.includes(".webm") ||
-                                    url.includes("video");
-                                  const isImage =
-                                    /\.(png|jpe?g|webp|gif|svg|bmp)(\?|#|$)/i.test(
-                                      url
-                                    );
-                                  if (isVid) {
-                                    return (
-                                      <video
-                                        className="rounded-xl max-h-48 w-full object-cover"
-                                        controls
-                                        key={i}
-                                        src={url}
-                                      />
-                                    );
-                                  }
-                                  if (!isImage) {
-                                    const fileName = (() => {
-                                      try {
-                                        return decodeURIComponent(
-                                          url.split("?")[0].split("/").pop() ||
-                                            "Document"
-                                        );
-                                      } catch {
-                                        return "Document";
-                                      }
-                                    })();
-                                    return (
-                                      <a
-                                        className="flex items-center gap-2.5 p-2.5 rounded-xl bg-black/10 vibe-dark:bg-white/10 hover:bg-black/20 vibe-dark:hover:bg-white/20 transition-colors max-w-[240px]"
-                                        href={url}
-                                        key={i}
-                                        onClick={(e) => e.stopPropagation()}
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                      >
-                                        <FileText className="w-6 h-6 shrink-0" />
-                                        <span className="min-w-0">
-                                          <span className="block text-[11px] font-bold truncate">
-                                            {fileName}
-                                          </span>
-                                          <span className="block text-[10px] opacity-70">
-                                            Ouvrir le document
-                                          </span>
-                                        </span>
-                                      </a>
-                                    );
-                                  }
-                                  return (
-                                    <img
-                                      alt="Pièce jointe"
-                                      className="rounded-xl max-h-48 w-full object-cover"
-                                      key={i}
-                                      src={url}
-                                    />
-                                  );
-                                })}
-                              </div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Bouton d'options (⋮) : centré verticalement, apparaît au survol sans décaler la page */}
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
-                          <button
-                            className="vibe-chat-icon-btn p-1.5 transition-colors"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setTranslatePickerFor(null);
-                              setActionMenuFor(
-                                actionMenuFor === m.id ? null : m.id
-                              );
-                            }}
-                            title="Options du message"
-                            type="button"
-                          >
-                            <MoreVertical className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Menu d'actions flottant au-dessus du message avec backdrop click-outside */}
-                      {actionMenuFor === m.id && (
-                        <>
-                          <div
-                            className="fixed inset-0 z-30"
-                            onClick={() => setActionMenuFor(null)}
-                          />
-                          <div
-                            className={`absolute z-40 bottom-full ${
-                              isMe ? "right-0" : "left-0"
-                            } mb-2 p-1.5 rounded-2xl vibe-menu shadow-2xl flex flex-col gap-0.5 animate-fadeIn min-w-[210px]`}
-                          >
-                            <div className="flex items-center justify-between px-1.5 py-1">
-                              {REACTION_EMOJIS.map((emoji) => (
-                                <button
-                                  className="p-1 rounded-lg hover:bg-zinc-200/60 vibe-dark:hover:bg-zinc-800/60 text-base transition-transform hover:scale-125"
-                                  key={emoji}
-                                  onClick={() => handleToggleReaction(m, emoji)}
-                                >
-                                  {emoji}
-                                </button>
-                              ))}
-                            </div>
-                            <div className="w-full border-t border-zinc-200 vibe-dark:border-zinc-800 my-0.5" />
-
-                            {/* Option Modifier le message (limite 60 min) */}
-                            {canEdit && (
-                              <button
-                                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                                onClick={() => {
-                                  setEditingMessage(m);
-                                  setActionMenuFor(null);
-                                  requestAnimationFrame(() => {
-                                    richInputRef.current?.setHTML(m.content);
-                                    richInputRef.current?.focus();
-                                  });
-                                }}
-                                type="button"
-                              >
-                                <Pencil className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                                Modifier le message
-                              </button>
-                            )}
-
-                            {/* Option Informations */}
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => {
-                                setInfoModalMessage(m);
-                                setActionMenuFor(null);
-                              }}
-                              type="button"
-                            >
-                              <Info className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                              Informations
-                            </button>
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => {
-                                setReplyTo(m);
-                                setActionMenuFor(null);
-                              }}
-                              type="button"
-                            >
-                              <Reply className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                              Répondre
-                            </button>
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => {
-                                setForwardingMessage(m);
-                                setActionMenuFor(null);
-                              }}
-                              type="button"
-                            >
-                              <Forward className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                              Transférer
-                            </button>
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => handleCopyMessage(m)}
-                              type="button"
-                            >
-                              <Copy className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                              Copier le message
-                            </button>
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => handleCopyMessageLink(m)}
-                              type="button"
-                            >
-                              <Link2 className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                              Copier le lien du message
-                            </button>
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() =>
-                                setTranslatePickerFor(
-                                  translatePickerFor === String(m.id)
-                                    ? null
-                                    : String(m.id)
-                                )
-                              }
-                              type="button"
-                            >
-                              <Languages className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />
-                              Traduire
-                              <span className="ml-auto text-[9px] text-zinc-400 font-mono">
-                                {translateLang ||
-                                  browserToDeepLCode(
-                                    navigator.language || "fr-FR"
-                                  )}
-                              </span>
-                            </button>
-                            {translatePickerFor === String(m.id) && (
-                              <div className="max-h-44 overflow-y-auto border-t border-zinc-200 vibe-dark:border-zinc-800 pt-1 pl-2">
-                                {TRANSLATION_LANGUAGES.map((lg) => (
-                                  <button
-                                    className="w-full text-left px-3 py-1 rounded-lg text-[10px] text-zinc-600 vibe-dark:text-zinc-300 hover:bg-black/5 vibe-dark:hover:bg-zinc-800/60 transition-colors"
-                                    key={lg.code}
-                                    onClick={() =>
-                                      handleTranslateMessage(m, lg.code)
-                                    }
-                                    type="button"
-                                  >
-                                    {lg.label}
-                                  </button>
-                                ))}
-                              </div>
-                            )}
-
-                            <button
-                              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
-                              onClick={() => handleTogglePin(m)}
-                              type="button"
-                            >
-                              {pinnedMessages.some(
-                                (p) => String(p.id) === String(m.id)
-                              ) ? (
-                                <>
-                                  <PinOff className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                                  Désépingler
-                                </>
-                              ) : (
-                                <>
-                                  <Pin className="w-3.5 h-3.5 text-zinc-500 vibe-dark:text-zinc-400" />{" "}
-                                  Épingler
-                                </>
-                              )}
-                            </button>
-
-                            {isMe && !String(m.id).startsWith("temp") && (
-                              <button
-                                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] text-red-500 hover:bg-red-500/10 transition-colors text-left"
-                                onClick={() => handleDeleteMessage(m)}
-                                type="button"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" /> Supprimer
-                                pour tout le monde
-                              </button>
-                            )}
-
-                            {!String(m.id).startsWith("temp") && (
-                              <button
-                                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] text-red-500 hover:bg-red-500/10 transition-colors text-left"
-                                onClick={() => handleHideMessage(m)}
-                                type="button"
-                              >
-                                <X className="w-3.5 h-3.5" /> Supprimer pour moi
-                              </button>
-                            )}
-                          </div>
-                        </>
-                      )}
-
-                      {/* Réactions affichées sous la bulle */}
-                      {Array.isArray((m as any).reactions) &&
-                        (m as any).reactions.length > 0 && (
-                          <div className="flex gap-1 mt-1">
-                            {(m as any).reactions.map(
-                              (r: {
-                                emoji: string;
-                                count: number;
-                                mine: boolean;
-                              }) => (
-                                <motion.button
-                                  className={`vibe-chat-reaction-chip px-1.5 py-0.5 rounded-full text-[10px] border transition-colors ${animationsEnabled ? "animate-reactionPop" : ""} ${
-                                    r.mine
-                                      ? "bg-sky-500/20 border-sky-500 text-sky-600 vibe-dark:text-sky-300"
-                                      : ""
-                                  }`}
-                                  key={r.emoji}
-                                  onClick={() =>
-                                    handleToggleReaction(m, r.emoji)
-                                  }
-                                  transition={{
-                                    damping: 20,
-                                    stiffness: 500,
-                                    type: "spring",
-                                  }}
-                                  whileTap={
-                                    animationsEnabled
-                                      ? { scale: 0.8 }
-                                      : undefined
-                                  }
-                                >
-                                  {r.emoji} {r.count}
-                                </motion.button>
-                              )
-                            )}
-                          </div>
-                        )}
-
-                      {/* Traduction mAI sous la bulle originale */}
-                      {translations[m.id] && (
-                        <div className="max-w-[85%] sm:max-w-[75%] mt-1 pl-2 border-l-2 border-zinc-300 vibe-dark:border-zinc-700">
-                          <p className="text-[11px] italic text-zinc-500 vibe-dark:text-zinc-400 leading-relaxed break-words">
-                            {translations[m.id]}
-                          </p>
-                          <p className="text-[9px] text-zinc-400 vibe-dark:text-zinc-600 mt-0.5">
-                            Traduit avec mAI
-                          </p>
-                        </div>
-                      )}
-                      {translatingIds.has(String(m.id)) && (
-                        <p className="text-[10px] text-zinc-500 mt-1 flex items-center gap-1">
-                          <Loader2 className="w-3 h-3 animate-spin" />{" "}
-                          Traduction…
-                        </p>
-                      )}
-                      {/* Badge envoi programmé */}
-                      {(m as any).status === "scheduled" && (
-                        <span className="mt-1 inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 vibe-dark:text-amber-400">
-                          <Clock className="w-2.5 h-2.5" />
-                          Envoi prévu
-                          {(m as any).send_at
-                            ? ` le ${formatTime((m as any).send_at)}`
-                            : ""}
-                        </span>
-                      )}
-
-                      <div className="flex items-center gap-1.5 mt-1 text-[10px] text-zinc-500 px-1 font-mono">
-                        <span>{formatTime(m.created_at)}</span>
-                        {m.is_edited && (
-                          <span
-                            className="text-[9px] text-zinc-400 italic"
-                            title={
-                              m.edited_at
-                                ? `Modifié à ${formatTime(m.edited_at)}`
-                                : "Modifié"
-                            }
-                          >
-                            (modifié)
-                          </span>
-                        )}
-                        {isMe &&
-                          (m.is_read || (m as any).read_at ? (
-                            <span
-                              className="inline-flex items-center gap-0.5 text-sky-400 font-medium"
-                              title="Vu"
-                            >
-                              <Eye className="w-3 h-3" />
-                              <span className="text-[9px]">Vu</span>
-                            </span>
-                          ) : (
-                            <span
-                              className="inline-flex items-center gap-0.5 text-zinc-400"
-                              title="Envoyé"
-                            >
-                              <Check className="w-3 h-3" />
-                              <span className="text-[9px]">Envoyé</span>
-                            </span>
-                          ))}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                );
-              })}
+              {messages.map((m) => (
+                <MessageItem
+                  actionMenuFor={actionMenuFor}
+                  animationsEnabled={animationsEnabled}
+                  convSearchOpen={convSearchOpen}
+                  convSearchQuery={convSearchQuery}
+                  currentTimestamp={currentTimestamp}
+                  currentUser={user}
+                  firstUnreadId={firstUnreadId}
+                  formatTime={formatTime}
+                  highlightedMessageId={highlightedMessageId}
+                  isGroupConv={isGroupConv}
+                  key={m.id}
+                  message={m}
+                  messageBubbleShape={messageBubbleShape}
+                  messageBubbleTheme={messageBubbleTheme}
+                  onCloseActionMenu={() => setActionMenuFor(null)}
+                  onCopyMessage={handleCopyMessage}
+                  onCopyMessageLink={handleCopyMessageLink}
+                  onDeleteMessage={handleDeleteMessage}
+                  onEditMessage={(msg) => {
+                    setEditingMessage(msg);
+                    setActionMenuFor(null);
+                    requestAnimationFrame(() => {
+                      richInputRef.current?.setHTML(msg.content);
+                      richInputRef.current?.focus();
+                    });
+                  }}
+                  onForward={(msg) => {
+                    setForwardingMessage(msg);
+                    setActionMenuFor(null);
+                  }}
+                  onHideMessage={handleHideMessage}
+                  onOpenInfoModal={(msg) => {
+                    setInfoModalMessage(msg);
+                    setActionMenuFor(null);
+                  }}
+                  onReplyTo={(msg) => {
+                    setReplyTo(msg);
+                    setActionMenuFor(null);
+                  }}
+                  onSetRef={(id, el) => {
+                    if (el) messageRefs.current.set(id, el);
+                    else messageRefs.current.delete(id);
+                  }}
+                  onToggleActionMenu={(id) => {
+                    setTranslatePickerFor(null);
+                    setActionMenuFor(actionMenuFor === id ? null : id);
+                  }}
+                  onTogglePin={handleTogglePin}
+                  onToggleReaction={handleToggleReaction}
+                  onToggleTranslatePicker={(id) =>
+                    setTranslatePickerFor(
+                      translatePickerFor === id ? null : id
+                    )
+                  }
+                  onTranslateMessage={handleTranslateMessage}
+                  pinnedMessages={pinnedMessages}
+                  translateLang={translateLang}
+                  translatePickerFor={translatePickerFor}
+                  translatingIds={translatingIds}
+                  translations={translations}
+                />
+              ))}
               <div ref={messagesEndRef} />
 
               {/* Bouton flottant « ↓ N non lus » */}
@@ -3246,636 +2052,92 @@ export const MessagesPage: React.FC<{
                     scrollToMessage(firstUnreadId);
                     setTimeout(() => setShowJumpToUnread(false), 3000);
                   }}
+                  type="button"
                 >
                   ↓ Non lus
                 </button>
               )}
             </div>
 
-            {/* Attached Multi-Media Preview (images / vidéos / documents, 50 Mo / 1 Go selon forfait) */}
-            {attachedMediaList.length > 0 && (
-              <div className="vibe-chat-bottom-bar p-3 border-t flex items-center gap-2 overflow-x-auto">
-                {attachedMediaList.map((media, idx) => (
-                  <div className="relative group shrink-0" key={idx}>
-                    {media.type === "video" ? (
-                      <video
-                        className="w-16 h-16 object-cover rounded-xl border border-zinc-200 vibe-dark:border-zinc-800"
-                        src={media.url}
-                      />
-                    ) : media.type === "document" ? (
-                      <div className="w-40 h-16 rounded-xl border border-zinc-200 vibe-dark:border-zinc-800 flex items-center gap-2 px-2 overflow-hidden">
-                        <FileText className="w-5 h-5 shrink-0 text-zinc-500" />
-                        <div className="min-w-0">
-                          <p className="text-[10px] font-bold truncate">
-                            {media.fileName || "Document"}
-                          </p>
-                          <p className="text-[9px] text-zinc-500 font-mono">
-                            {formatFileSize(media.size)}
-                          </p>
-                        </div>
-                      </div>
-                    ) : (
-                      <img
-                        alt="Aperçu"
-                        className="w-16 h-16 object-cover rounded-xl border border-zinc-200 vibe-dark:border-zinc-800"
-                        src={media.url}
-                      />
-                    )}
-                    <button
-                      className="vibe-chat-remove-media absolute -top-1 -right-1 p-1 rounded-full shadow"
-                      onClick={() =>
-                        setAttachedMediaList((prev) =>
-                          prev.filter((_, i) => i !== idx)
-                        )
-                      }
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </div>
-                ))}
-                <span className="text-[11px] text-zinc-500 pl-2">
-                  {attachedMediaList.length} fichier(s) (max {mediaLimitLabel})
-                </span>
-              </div>
-            )}
-
-            {/* Message Input Box */}
-            <form
-              className="vibe-chat-bottom-bar p-3 space-y-2 relative"
-              onSubmit={handleSendMessage}
-            >
-              {activePartnerBlocked && (
-                <p className="text-center text-[11px] text-zinc-500 py-1">
-                  Utilisateur bloqué — l'envoi de messages est désactivé.
-                </p>
-              )}
-
-              {/* Bandeau d'édition de message */}
-              {editingMessage && (
-                <div className="vibe-chat-banner flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs animate-fadeIn">
-                  <div className="flex items-center gap-2">
-                    <Pencil className="w-3.5 h-3.5 text-black vibe-dark:text-white" />
-                    <span>
-                      Modification du message{" "}
-                      <span className="text-[10px] text-zinc-500 vibe-dark:text-zinc-400 font-mono">
-                        (limite 60 min)
-                      </span>
-                    </span>
-                  </div>
-                  <button
-                    className="vibe-chat-icon-btn p-1 shrink-0"
-                    onClick={() => {
-                      setEditingMessage(null);
-                      richInputRef.current?.clear();
-                    }}
-                    title="Annuler la modification"
-                    type="button"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-
-              {/* Aperçu de réponse */}
-              {replyTo && !editingMessage && (
-                <div className="vibe-chat-banner flex items-center justify-between px-3 py-1.5 rounded-xl text-[11px]">
-                  <span className="truncate">
-                    Réponse à <strong>@{replyTo.sender_username}</strong> :{" "}
-                    {htmlToPlainText(replyTo.content).slice(0, 60)}
-                  </span>
-                  <button
-                    className="vibe-chat-icon-btn text-zinc-500 shrink-0 ml-2"
-                    onClick={() => setReplyTo(null)}
-                    type="button"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
-
-              {/* Publication du Livre jointe (chip retirable, envoyée avec le message) */}
-              {attachedPost && !editingMessage && (
-                <div className="vibe-chat-banner flex items-center justify-between px-3 py-1.5 rounded-xl text-[11px] animate-fadeIn">
-                  <button
-                    className="flex items-center gap-2 min-w-0 text-left"
-                    onClick={() => navigate(`/post/${attachedPost.id}`)}
-                    title="Ouvrir la publication"
-                    type="button"
-                  >
-                    <BookOpen className="w-3.5 h-3.5 shrink-0" />
-                    <span className="truncate">
-                      Publication de <strong>@{attachedPost.username}</strong> :{" "}
-                      {attachedPost.excerpt.slice(0, 60)}
-                    </span>
-                  </button>
-                  <button
-                    className="vibe-chat-icon-btn text-zinc-500 shrink-0 ml-2"
-                    onClick={() => setAttachedPost(null)}
-                    type="button"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
-
-              {customPresetOpen && !isGeneratingSuggestion && (
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="vibe-chat-banner flex-1 flex items-center gap-2 px-3 py-1.5">
-                    <PenLine className="w-3.5 h-3.5 text-zinc-400 vibe-dark:text-zinc-500 shrink-0" />
-                    <input
-                      autoFocus
-                      className="flex-1 bg-transparent text-xs text-black vibe-dark:text-white placeholder-zinc-400 vibe-dark:placeholder-zinc-500 focus:outline-none"
-                      onChange={(e) => setCustomPresetText(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          handleGenerateSuggestion("custom", customPresetText);
-                        }
-                      }}
-                      placeholder="Votre consigne pour mAI (ex. : rends-le plus drôle)…"
-                      type="text"
-                      value={customPresetText}
-                    />
-                  </div>
-                  <button
-                    className="vibe-chat-send-btn p-1.5 disabled:opacity-40 shrink-0 shadow"
-                    disabled={!customPresetText.trim()}
-                    onClick={() =>
-                      handleGenerateSuggestion("custom", customPresetText)
-                    }
-                    title="Appliquer la consigne"
-                    type="button"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    className="p-1.5 rounded-full text-zinc-500 hover:text-black vibe-dark:hover:text-white shrink-0"
-                    onClick={() => setCustomPresetOpen(false)}
-                    title="Annuler"
-                    type="button"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
-
-              {/* Programmation de l'envoi */}
-              {showSchedule && (
-                <div className="flex items-center gap-2 px-1 animate-fadeIn">
-                  <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                  <input
-                    className="flex-1 min-w-0 px-3 py-2 rounded-xl bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-xs text-black vibe-dark:text-white focus:outline-none"
-                    min={new Date(
-                      Date.now() - new Date().getTimezoneOffset() * 60_000
-                    )
-                      .toISOString()
-                      .slice(0, 16)}
-                    onChange={(e) => setScheduledAt(e.target.value)}
-                    type="datetime-local"
-                    value={scheduledAt}
-                  />
-                  {scheduledAt && (
-                    <button
-                      className="text-zinc-500 hover:text-black vibe-dark:hover:text-white shrink-0"
-                      onClick={() => {
-                        setScheduledAt("");
-                        setShowSchedule(false);
-                      }}
-                      title="Annuler la programmation"
-                      type="button"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
-              )}
-              {scheduledAt && !showSchedule && (
-                <button
-                  className="mx-1 w-fit flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-600 vibe-dark:text-amber-400 text-[10px] font-bold"
-                  onClick={() => setShowSchedule(true)}
-                  type="button"
-                >
-                  <Clock className="w-3 h-3" />
-                  Envoi prévu le{" "}
-                  {new Date(scheduledAt).toLocaleString("fr-FR", {
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    month: "short",
-                  })}
-                </button>
-              )}
-
-              {/* Barre de mise en forme AU-DESSUS de la bulle : gras, italique,
-                  souligné, barré, lien, @tous + compteur de caractères */}
-              {(!editingMessage || messagePlain.length >= 2400) && (
-                <div className="flex items-center gap-0.5 px-1 flex-wrap">
-                  {!editingMessage && (
-                    <>
-                      <button
-                        className="vibe-chat-icon-btn p-1.5"
-                        onClick={() => handleToolbarCommand("bold")}
-                        onMouseDown={(e) => e.preventDefault()}
-                        title="Gras (ou **texte**)"
-                        type="button"
-                      >
-                        <Bold className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        className="vibe-chat-icon-btn p-1.5"
-                        onClick={() => handleToolbarCommand("italic")}
-                        onMouseDown={(e) => e.preventDefault()}
-                        title="Italique (ou *texte*)"
-                        type="button"
-                      >
-                        <Italic className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        className="vibe-chat-icon-btn p-1.5"
-                        onClick={() => handleToolbarCommand("underline")}
-                        onMouseDown={(e) => e.preventDefault()}
-                        title="Souligné"
-                        type="button"
-                      >
-                        <Underline className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        className="vibe-chat-icon-btn p-1.5"
-                        onClick={() => handleToolbarCommand("strikeThrough")}
-                        onMouseDown={(e) => e.preventDefault()}
-                        title="Barré"
-                        type="button"
-                      >
-                        <Strikethrough className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        className="vibe-chat-icon-btn p-1.5"
-                        onClick={handleInsertLink}
-                        onMouseDown={(e) => e.preventDefault()}
-                        title="Insérer un lien"
-                        type="button"
-                      >
-                        <Link2 className="w-3.5 h-3.5" />
-                      </button>
-                      {isGroupConv && (
-                        <>
-                          <button
-                            className="ml-1 px-2 py-1 rounded-full bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black text-[10px] font-bold"
-                            onClick={() =>
-                              richInputRef.current?.insertText("@tous ")
-                            }
-                            onMouseDown={(e) => e.preventDefault()}
-                            title="Mentionner tout le groupe (urgent)"
-                            type="button"
-                          >
-                            @tous
-                          </button>
-                          {hasUrgentMention && (
-                            <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-red-500/15 text-red-600 vibe-dark:text-red-400 text-[10px] font-bold animate-pulse">
-                              <BellRing className="w-3 h-3" /> Mention urgente
-                            </span>
-                          )}
-                        </>
-                      )}
-                    </>
-                  )}
-                  {messagePlain.length >= messageCharLimit * 0.8 && (
-                    <span
-                      className={`ml-auto text-[10px] font-mono ${messagePlain.length > messageCharLimit ? "text-red-500 font-bold" : "text-zinc-500"}`}
-                    >
-                      {messagePlain.length}/
-                      {messageCharLimit.toLocaleString("fr-FR")}
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {/* Autocomplétion @mention (groupes) */}
-              {isGroupConv &&
-                mentionQuery !== null &&
-                mentionSuggestions.length > 0 && (
-                  <>
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setMentionQuery(null)}
-                    />
-                    <div className="absolute bottom-full left-0 mb-2 z-50 w-64 rounded-2xl vibe-menu p-1.5 shadow-2xl animate-fadeIn max-h-48 overflow-y-auto">
-                      {mentionSuggestions.map((mm) => (
-                        <button
-                          className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item text-left"
-                          key={mm.user_id}
-                          onClick={() => handleInsertMention(mm.username)}
-                          type="button"
-                        >
-                          <ProfileAvatar
-                            alt={mm.username}
-                            fallbackName={mm.username}
-                            size="xs"
-                            src={mm.avatar_url}
-                          />
-                          <span className="truncate flex-1">
-                            @{mm.username}
-                          </span>
-                          {mm.role === "admin" && (
-                            <span className="text-[9px] font-bold text-zinc-400">
-                              admin
-                            </span>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-
-              {/* Livre : commande « / » → action « Joindre une publication » */}
-              {isBookConv && toolQuery !== null && !bookPickerOpen && (
-                <>
-                  <div
-                    className="fixed inset-0 z-40"
-                    onClick={() => setToolQuery(null)}
-                  />
-                  <ToolAutocomplete
-                    onClose={() => setToolQuery(null)}
-                    onSelect={() => {}}
-                    query={`/${toolQuery}`}
-                    showTools={false}
-                    specialAction={{
-                      description:
-                        "Sélectionner une Vibe du Livre (carte cliquable)",
-                      label: "/post",
-                      onSelect: openBookPostPicker,
-                      subtitle: "Joindre une publication du Livre",
-                    }}
-                    trigger="/"
-                  />
-                </>
-              )}
-
-              {/* Livre : sélecteur des publications du Livre */}
-              {bookPickerOpen && (
-                <>
-                  <div
-                    className="fixed inset-0 z-40"
-                    onClick={() => setBookPickerOpen(false)}
-                  />
-                  <div className="absolute bottom-full left-0 mb-2 z-50 w-full max-w-md rounded-2xl vibe-menu p-2 shadow-2xl animate-fadeIn">
-                    <div className="flex items-center gap-2 px-1 pb-2">
-                      <BookOpen className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                      <span className="text-[11px] font-bold text-zinc-600 vibe-dark:text-zinc-300 flex-1 truncate">
-                        Publications du Livre
-                      </span>
-                      <button
-                        className="vibe-chat-icon-btn p-1 shrink-0"
-                        onClick={() => setBookPickerOpen(false)}
-                        type="button"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                    <input
-                      autoFocus
-                      className="w-full mb-2 px-3 py-2 rounded-xl bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-xs text-black vibe-dark:text-white focus:outline-none"
-                      onChange={(e) => setBookPickerQuery(e.target.value)}
-                      placeholder="Filtrer par contenu ou @auteur…"
-                      type="text"
-                      value={bookPickerQuery}
-                    />
-                    <div className="max-h-56 overflow-y-auto divide-y divide-zinc-100 vibe-dark:divide-zinc-900">
-                      {bookPickerLoading ? (
-                        <div className="p-4 text-center text-[11px] text-zinc-500 flex items-center justify-center gap-2">
-                          <Loader2 className="w-3.5 h-3.5 animate-spin" />{" "}
-                          Chargement…
-                        </div>
-                      ) : filteredBookPickerPosts.length === 0 ? (
-                        <div className="p-4 text-center text-[11px] text-zinc-500">
-                          Aucune publication dans ce Livre pour le moment.
-                        </div>
-                      ) : (
-                        filteredBookPickerPosts.map((p) => (
-                          <button
-                            className="w-full flex items-start gap-2 px-2 py-2 rounded-xl text-left hover:bg-black/5 vibe-dark:hover:bg-zinc-900 transition-colors"
-                            key={p.id}
-                            onClick={() => {
-                              setAttachedPost({
-                                avatar_url: p.avatar_url || null,
-                                excerpt: htmlToPlainText(p.content || "").slice(
-                                  0,
-                                  120
-                                ),
-                                id: p.id,
-                                username: p.username || "vibe",
-                              });
-                              setBookPickerOpen(false);
-                              setBookPickerQuery("");
-                            }}
-                            type="button"
-                          >
-                            <ProfileAvatar
-                              alt={p.username || "vibe"}
-                              className="shrink-0 mt-0.5"
-                              fallbackName={p.username || "vibe"}
-                              size="xs"
-                              src={p.avatar_url}
-                            />
-                            <span className="min-w-0 flex-1">
-                              <span className="flex items-center gap-1.5">
-                                <span className="text-[10px] font-bold truncate">
-                                  @{p.username}
-                                </span>
-                                {p.is_pinned && (
-                                  <span className="px-1 py-0.5 rounded-md bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-[8px] font-bold text-zinc-500 flex items-center gap-0.5 shrink-0">
-                                    <Pin className="w-2 h-2" /> épinglé
-                                  </span>
-                                )}
-                              </span>
-                              <span className="block text-[10px] opacity-75 truncate">
-                                {htmlToPlainText(p.content || "").slice(0, 100)}
-                              </span>
-                            </span>
-                          </button>
-                        ))
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-
-              <div className="flex items-center gap-2 sm:gap-3">
-                <input
-                  accept="image/*,video/*,application/pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
-                  className="hidden"
-                  multiple
-                  onChange={handleAttachFiles}
-                  ref={fileInputRef}
-                  type="file"
-                />
-
-                {/* Bouton + séparé à gauche avec menu déroulant */}
-                <div className="relative shrink-0">
-                  <button
-                    className={`vibe-chat-plus-btn w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                      plusMenuOpen ? "rotate-45 shadow-md" : ""
-                    }`}
-                    onClick={() => setPlusMenuOpen((prev) => !prev)}
-                    title="Ajouter des médias ou options mAI"
-                    type="button"
-                  >
-                    <Plus className="w-5 h-5 transition-transform" />
-                  </button>
-
-                  {/* Menu déroulant du bouton + */}
-                  {plusMenuOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-40"
-                        onClick={() => setPlusMenuOpen(false)}
-                      />
-                      <div className="absolute bottom-full left-0 mb-2.5 z-50 w-64 rounded-3xl vibe-menu p-2 shadow-2xl animate-fadeIn space-y-1">
-                        {/* Importer fichiers / photos */}
-                        <button
-                          className="vibe-chat-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left"
-                          disabled={isUploading}
-                          onClick={() => {
-                            setPlusMenuOpen(false);
-                            fileInputRef.current?.click();
-                          }}
-                          type="button"
-                        >
-                          <div className="vibe-chat-modal-card p-2 rounded-xl shrink-0">
-                            <ImageIcon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="font-semibold text-zinc-900 vibe-dark:text-white">
-                              Importer photos & vidéos
-                            </p>
-                            <p className="text-[10px] text-zinc-500">
-                              Jusqu'à {mediaLimitLabel} de médias au total
-                            </p>
-                          </div>
-                        </button>
-
-                        <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 my-1" />
-
-                        {/* Presets mAI (1-1 et groupes) */}
-                        <div className="px-3 pt-1 pb-1 text-[10px] uppercase font-bold tracking-wider text-zinc-500 flex items-center gap-1.5">
-                          <Sparkles className="w-3 h-3 text-zinc-700 vibe-dark:text-white" />
-                          <span>Assistant mAI</span>
-                        </div>
-                        {PRESET_OPTIONS.map((opt) => (
-                          <button
-                            className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-colors text-left disabled:opacity-40 disabled:hover:bg-transparent"
-                            disabled={
-                              !messagePlain.trim() && opt.key !== "custom"
-                            }
-                            key={opt.key}
-                            onClick={() => {
-                              setPlusMenuOpen(false);
-                              handleGenerateSuggestion(opt.key);
-                            }}
-                            type="button"
-                          >
-                            <span className="text-zinc-500 vibe-dark:text-zinc-400">
-                              {opt.icon}
-                            </span>
-                            <span>{opt.label}</span>
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Bulle de message ronde et séparée du reste avec bouton de dictée à l'intérieur */}
-                <div className="vibe-chat-input-pill flex-1 flex items-end px-4 py-1.5 min-w-0">
-                  <MessageRichInput
-                    className="flex-1 min-w-0 py-1 text-xs max-h-32 overflow-y-auto whitespace-pre-wrap break-words"
-                    disabled={activePartnerBlocked}
-                    maxChars={messageCharLimit}
-                    onChange={handleRichInputChange}
-                    onEnterSend={() => {
-                      if (!activePartnerBlocked && !isSending)
-                        handleSendMessage();
-                    }}
-                    onUserInput={notifyTyping}
-                    placeholder={
-                      isListening
-                        ? "Parlez, dictée en cours..."
-                        : editingMessage
-                          ? "Modifier votre message..."
-                          : "Écrire un message..."
-                    }
-                    ref={richInputRef}
-                  />
-
-                  {/* Bouton de dictée DANS la bulle de message */}
-                  {isSupported && (
-                    <button
-                      className={`p-1.5 rounded-full transition-colors ml-1.5 shrink-0 ${
-                        isListening
-                          ? "bg-red-500 text-white animate-pulse"
-                          : "vibe-chat-icon-btn"
-                      }`}
-                      onClick={isListening ? stopListening : startListening}
-                      title={
-                        isListening ? "Arrêter la dictée" : "Dicter le message"
-                      }
-                      type="button"
-                    >
-                      {isListening ? (
-                        <MicOff className="w-4 h-4" />
-                      ) : (
-                        <Mic className="w-4 h-4" />
-                      )}
-                    </button>
-                  )}
-                </div>
-
-                {/* Envoi programmé (horloge) : visible si texte ou média, hors groupes */}
-                {(messagePlain.trim() || attachedMediaList.length > 0) &&
-                  !activePartnerBlocked &&
-                  !editingMessage &&
-                  !isGroupConv && (
-                    <button
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                        showSchedule || scheduledAt
-                          ? "bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black"
-                          : "vibe-chat-icon-btn"
-                      }`}
-                      onClick={() => setShowSchedule(!showSchedule)}
-                      title="Programmer l'envoi"
-                      type="button"
-                    >
-                      <Clock className="w-4 h-4" />
-                    </button>
-                  )}
-                {/* Bouton d'envoi séparé : flèche allant vers le haut (ArrowUp) */}
-                <motion.button
-                  className={`vibe-chat-send-btn w-10 h-10 rounded-full flex items-center justify-center transition-all disabled:opacity-40 shrink-0 shadow cursor-pointer ${justSent ? "just-sent animate-pop" : ""}`}
-                  disabled={
-                    activePartnerBlocked ||
-                    (!messagePlain.trim() && attachedMediaList.length === 0) ||
-                    isSending ||
-                    messagePlain.length > messageCharLimit
-                  }
-                  title={
-                    editingMessage
-                      ? "Enregistrer la modification"
-                      : "Envoyer le message"
-                  }
-                  transition={{ damping: 22, stiffness: 500, type: "spring" }}
-                  type="submit"
-                  whileTap={animationsEnabled ? { scale: 0.85 } : undefined}
-                >
-                  {isSending ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : justSent ? (
-                    <Check className="w-5 h-5 stroke-[2.5]" />
-                  ) : (
-                    <ArrowUp className="w-5 h-5 stroke-[2.5]" />
-                  )}
-                </motion.button>
-              </div>
-            </form>
+            {/* Composeur de message */}
+            <MessageComposer
+              activePartnerBlocked={activePartnerBlocked}
+              animationsEnabled={animationsEnabled}
+              attachedMediaList={attachedMediaList}
+              attachedPost={attachedPost}
+              bookPickerLoading={bookPickerLoading}
+              bookPickerOpen={bookPickerOpen}
+              bookPickerQuery={bookPickerQuery}
+              customPresetOpen={customPresetOpen}
+              customPresetText={customPresetText}
+              editingMessage={editingMessage}
+              fileInputRef={fileInputRef}
+              filteredBookPickerPosts={filteredBookPickerPosts}
+              hasUrgentMention={hasUrgentMention}
+              isBookConv={isBookConv}
+              isGeneratingSuggestion={isGeneratingSuggestion}
+              isGroupConv={isGroupConv}
+              isListening={isListening}
+              isSending={isSending}
+              isSupported={isSupported}
+              isUploading={isUploading}
+              justSent={justSent}
+              mediaLimitLabel={mediaLimitLabel}
+              mentionQuery={mentionQuery}
+              mentionSuggestions={mentionSuggestions}
+              messageCharLimit={messageCharLimit}
+              messagePlain={messagePlain}
+              onAttachFiles={handleAttachFiles}
+              onCancelAttachedPost={() => setAttachedPost(null)}
+              onCancelEditing={() => {
+                setEditingMessage(null);
+                richInputRef.current?.clear();
+              }}
+              onCancelReply={() => setReplyTo(null)}
+              onChangeBookPickerQuery={(q) => setBookPickerQuery(q)}
+              onChangeCustomPresetText={(t) => setCustomPresetText(t)}
+              onChangeScheduledAt={(val) => setScheduledAt(val)}
+              onClearSchedule={() => {
+                setScheduledAt("");
+                setShowSchedule(false);
+              }}
+              onCloseBookPicker={() => setBookPickerOpen(false)}
+              onCloseCustomPreset={() => setCustomPresetOpen(false)}
+              onCloseMentionQuery={() => setMentionQuery(null)}
+              onClosePlusMenu={() => setPlusMenuOpen(false)}
+              onCloseToolQuery={() => setToolQuery(null)}
+              onGenerateSuggestion={handleGenerateSuggestion}
+              onInsertLink={handleInsertLink}
+              onInsertMention={handleInsertMention}
+              onOpenBookPostPicker={openBookPostPicker}
+              onRemoveAttachedMedia={(idx) =>
+                setAttachedMediaList((prev) => prev.filter((_, i) => i !== idx))
+              }
+              onRichInputChange={handleRichInputChange}
+              onSelectBookPost={(p) => {
+                setAttachedPost({
+                  avatar_url: p.avatar_url || null,
+                  excerpt: htmlToPlainText(p.content || "").slice(0, 120),
+                  id: p.id,
+                  username: p.username || "vibe",
+                });
+                setBookPickerOpen(false);
+                setBookPickerQuery("");
+              }}
+              onSendMessage={handleSendMessage}
+              onStartListening={startListening}
+              onStopListening={stopListening}
+              onTogglePlusMenu={() => setPlusMenuOpen((prev) => !prev)}
+              onToggleSchedule={() => setShowSchedule(!showSchedule)}
+              onToolbarCommand={handleToolbarCommand}
+              onUserInput={notifyTyping}
+              plusMenuOpen={plusMenuOpen}
+              replyTo={replyTo}
+              richInputRef={richInputRef}
+              scheduledAt={scheduledAt}
+              showSchedule={showSchedule}
+              toolQuery={toolQuery}
+            />
 
             {/* Modale de renommage de conversation */}
             <RenameConversationModal
@@ -3899,245 +2161,34 @@ export const MessagesPage: React.FC<{
             />
 
             {/* Modale d'informations et de gestion du groupe */}
-            {groupInfoOpen && isGroupConv && groupId && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
-                onClick={() => setGroupInfoOpen(false)}
-              >
-                <div
-                  className="w-full max-w-sm vibe-chat-modal-content rounded-3xl p-5 space-y-4 animate-scaleUp text-zinc-900 vibe-dark:text-white"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="flex items-center justify-between border-b border-zinc-200 vibe-dark:border-zinc-800 pb-3">
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4" />
-                      <h3 className="text-sm font-bold">Infos du groupe</h3>
-                    </div>
-                    <button
-                      className="vibe-chat-icon-btn p-1"
-                      onClick={() => setGroupInfoOpen(false)}
-                      type="button"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Photo du groupe */}
-                  <div className="flex flex-col items-center gap-2">
-                    <ProfileAvatar
-                      alt={activeConv?.partner_username || "Groupe"}
-                      fallbackName={
-                        activeConv?.partner_display_name ||
-                        activeConv?.partner_username ||
-                        "Groupe"
-                      }
-                      size="lg"
-                      src={
-                        (activeGroupInfo as any)?.group_avatar_url ||
-                        activeConv?.partner_avatar_url
-                      }
-                    />
-                    <input
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleGroupAvatarSelected}
-                      ref={groupAvatarInputRef}
-                      type="file"
-                    />
-                    {groupIsAdmin && (
-                      <button
-                        className="text-[11px] font-semibold text-sky-600 vibe-dark:text-sky-400 hover:underline disabled:opacity-40 flex items-center gap-1"
-                        disabled={groupAvatarUploading}
-                        onClick={() => groupAvatarInputRef.current?.click()}
-                        type="button"
-                      >
-                        {groupAvatarUploading ? (
-                          <Loader2 className="w-3 h-3 animate-spin" />
-                        ) : (
-                          <ImageIcon className="w-3 h-3" />
-                        )}
-                        {groupAvatarUploading ? "Envoi…" : "Changer la photo"}
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Nom du groupe */}
-                  {groupIsAdmin ? (
-                    <div className="flex items-center gap-2">
-                      <input
-                        className="flex-1 px-3 py-2 rounded-xl bg-zinc-50 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 text-xs outline-none focus:border-zinc-500"
-                        maxLength={100}
-                        onChange={(e) => setGroupNameDraft(e.target.value)}
-                        placeholder="Nom du groupe"
-                        type="text"
-                        value={groupNameDraft}
-                      />
-                      <button
-                        className="px-3 py-2 rounded-xl bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black text-[11px] font-bold disabled:opacity-40 flex items-center gap-1"
-                        disabled={groupSaving || !groupNameDraft.trim()}
-                        onClick={handleSaveGroupName}
-                        type="button"
-                      >
-                        {groupSaving ? (
-                          <Loader2 className="w-3 h-3 animate-spin" />
-                        ) : (
-                          <Check className="w-3 h-3" />
-                        )}
-                        Enregistrer
-                      </button>
-                    </div>
-                  ) : (
-                    <p className="text-center text-sm font-bold">
-                      {activeConv?.partner_display_name ||
-                        activeConv?.partner_username ||
-                        "Groupe"}
-                    </p>
-                  )}
-
-                  {/* Membres + rôles + administration */}
-                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold tracking-wider text-zinc-400 px-1">
-                      Membres ({groupMembers.length})
-                    </p>
-                    <div className="max-h-44 overflow-y-auto divide-y divide-zinc-100 vibe-dark:divide-zinc-900 rounded-2xl border border-zinc-200 vibe-dark:border-zinc-800">
-                      {groupMembers.map((mm) => (
-                        <div
-                          className="flex items-center gap-2 px-3 py-2 text-[11px]"
-                          key={mm.user_id}
-                        >
-                          <ProfileAvatar
-                            alt={mm.username}
-                            fallbackName={mm.username}
-                            size="xs"
-                            src={mm.avatar_url}
-                          />
-                          <div className="min-w-0 flex-1">
-                            <p className="truncate font-semibold">
-                              @{mm.username}
-                            </p>
-                            {mm.display_name && (
-                              <p className="truncate text-[10px] text-zinc-500">
-                                {mm.display_name}
-                              </p>
-                            )}
-                          </div>
-                          {mm.role === "admin" && (
-                            <span className="text-[9px] font-bold text-zinc-400 shrink-0">
-                              admin
-                            </span>
-                          )}
-                          {groupIsAdmin &&
-                            String(mm.user_id) !== String(user?.id) && (
-                              <div className="flex items-center gap-1.5 shrink-0">
-                                <button
-                                  className="text-sky-600 vibe-dark:text-sky-400 hover:underline text-[10px] font-semibold"
-                                  onClick={() =>
-                                    handleTransferAdmin(mm.user_id)
-                                  }
-                                  title="Transférer le rôle d'administrateur"
-                                  type="button"
-                                >
-                                  Transférer
-                                </button>
-                                <button
-                                  className="text-red-500 hover:text-red-400"
-                                  onClick={() =>
-                                    handleRemoveMember(String(mm.user_id))
-                                  }
-                                  title="Exclure du groupe"
-                                  type="button"
-                                >
-                                  <X className="w-3 h-3" />
-                                </button>
-                              </div>
-                            )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions quitter / supprimer */}
-                  <div className="border-t border-zinc-200 vibe-dark:border-zinc-800 pt-3 space-y-1">
-                    {groupIsAdmin ? (
-                      <button
-                        className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-[11px] text-red-500 hover:bg-red-500/10 transition-colors font-semibold"
-                        onClick={handleDeleteGroup}
-                        type="button"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" /> Supprimer le groupe
-                      </button>
-                    ) : (
-                      <button
-                        className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-[11px] text-red-500 hover:bg-red-500/10 transition-colors font-semibold"
-                        onClick={() => {
-                          setGroupInfoOpen(false);
-                          if (user?.id) handleRemoveMember(String(user.id));
-                        }}
-                        type="button"
-                      >
-                        <X className="w-3.5 h-3.5" /> Quitter le groupe
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
+            <GroupManagementModal
+              activeConv={activeConv}
+              activeGroupInfo={activeGroupInfo}
+              currentUserId={user?.id}
+              groupId={groupId}
+              groupAvatarInputRef={groupAvatarInputRef}
+              groupAvatarUploading={groupAvatarUploading}
+              groupIsAdmin={groupIsAdmin}
+              groupMembers={groupMembers}
+              groupNameDraft={groupNameDraft}
+              groupSaving={groupSaving}
+              onAvatarSelected={handleGroupAvatarSelected}
+              onChangeGroupNameDraft={(val) => setGroupNameDraft(val)}
+              onClose={() => setGroupInfoOpen(false)}
+              onDeleteGroup={handleDeleteGroup}
+              onRemoveMember={(userId) => handleRemoveMember(userId)}
+              onSaveGroupName={handleSaveGroupName}
+              onTransferAdmin={(userId) => handleTransferAdmin(userId)}
+              open={groupInfoOpen && isGroupConv && Boolean(groupId)}
+            />
 
             {/* Modale de transfert */}
-            {forwardingMessage && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
-                onClick={() => setForwardingMessage(null)}
-              >
-                <div
-                  className="w-full max-w-sm vibe-chat-modal-content rounded-3xl p-4 space-y-3 animate-scaleUp text-zinc-900 vibe-dark:text-white"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold">Transférer le message</h3>
-                    <button
-                      className="vibe-chat-icon-btn p-1"
-                      onClick={() => setForwardingMessage(null)}
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                  <p className="text-[11px] text-zinc-600 vibe-dark:text-zinc-400 p-2 rounded-xl bg-zinc-50 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800 truncate">
-                    {forwardingMessage.content.slice(0, 120)}
-                  </p>
-                  <div className="max-h-64 overflow-y-auto divide-y divide-zinc-100 vibe-dark:divide-zinc-900 rounded-2xl border border-zinc-200 vibe-dark:border-zinc-800">
-                    {conversations.length === 0 && (
-                      <p className="p-4 text-center text-xs text-zinc-500">
-                        Aucune conversation disponible.
-                      </p>
-                    )}
-                    {conversations.map((conv) => (
-                      <button
-                        className="vibe-chat-menu-item w-full p-3 flex items-center gap-3 transition-colors text-left"
-                        key={conv.partner_id}
-                        onClick={() => handleForwardTo(conv)}
-                      >
-                        <ProfileAvatar
-                          alt={conv.partner_username}
-                          className="border border-zinc-200 vibe-dark:border-zinc-800 shrink-0"
-                          fallbackName={conv.partner_username}
-                          size="sm"
-                          src={conv.partner_avatar_url}
-                        />
-                        <div className="min-w-0">
-                          <p className="text-xs font-bold text-zinc-900 vibe-dark:text-white truncate">
-                            {conv.partner_display_name || conv.partner_username}
-                          </p>
-                          <p className="text-[10px] text-zinc-500 font-mono">
-                            @{conv.partner_username}
-                          </p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
+            <ForwardModal
+              conversations={conversations}
+              message={forwardingMessage}
+              onClose={() => setForwardingMessage(null)}
+              onForwardTo={handleForwardTo}
+            />
 
             {/* Modale d'informations sur le message */}
             <MessageInfoModal
@@ -4146,135 +2197,16 @@ export const MessagesPage: React.FC<{
             />
 
             {/* Modale de personnalisation du thème de discussion */}
-            {themeModalOpen && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
-                onClick={() => setThemeModalOpen(false)}
-              >
-                <div
-                  className="w-full max-w-md vibe-chat-modal-content rounded-3xl p-5 space-y-4 animate-scaleUp text-zinc-900 vibe-dark:text-white max-h-[90vh] overflow-y-auto"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="flex items-center justify-between border-b border-zinc-200 vibe-dark:border-zinc-800 pb-3">
-                    <div className="flex items-center gap-2">
-                      <Palette className="w-4 h-4 text-zinc-900 vibe-dark:text-white" />
-                      <h3 className="text-sm font-bold">
-                        Personnaliser la discussion
-                      </h3>
-                    </div>
-                    <button
-                      className="vibe-chat-icon-btn p-1"
-                      onClick={() => setThemeModalOpen(false)}
-                      type="button"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Section 1 : Couleur ou Dégradé des bulles envoyées */}
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-zinc-700 vibe-dark:text-zinc-300 flex items-center gap-1.5">
-                      <span>Bulle des messages envoyés</span>
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {Object.values(MESSAGE_BUBBLE_THEMES).map((themeOpt) => {
-                        const isSelected = messageBubbleTheme === themeOpt.id;
-                        return (
-                          <button
-                            className={`vibe-chat-modal-card p-2.5 text-left flex items-center gap-2.5 transition-all ${
-                              isSelected ? "selected shadow-md" : ""
-                            }`}
-                            key={themeOpt.id}
-                            onClick={() => setMessageBubbleTheme(themeOpt.id)}
-                            type="button"
-                          >
-                            <span
-                              className="w-6 h-6 rounded-full shrink-0 border border-black/10 vibe-dark:border-white/20 shadow-inner"
-                              style={{
-                                background: themeOpt.gradient,
-                                border: themeOpt.border,
-                              }}
-                            />
-                            <span className="text-[11px] font-semibold truncate text-zinc-800 vibe-dark:text-zinc-200">
-                              {themeOpt.label}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Section 2 : Fond de la zone de messages */}
-                  <div className="space-y-2 pt-2 border-t border-zinc-200 vibe-dark:border-zinc-900">
-                    <label className="text-xs font-bold text-zinc-700 vibe-dark:text-zinc-300">
-                      Fond de la discussion
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {Object.values(CHAT_BACKGROUND_THEMES).map((bgOpt) => {
-                        const isSelected = chatBackgroundTheme === bgOpt.id;
-                        return (
-                          <button
-                            className={`vibe-chat-modal-card p-2.5 text-left flex items-center gap-2.5 transition-all ${
-                              isSelected ? "selected shadow-md" : ""
-                            }`}
-                            key={bgOpt.id}
-                            onClick={() => setChatBackgroundTheme(bgOpt.id)}
-                            type="button"
-                          >
-                            <span
-                              className={`w-6 h-6 rounded-full shrink-0 border border-black/10 vibe-dark:border-white/20 ${bgOpt.previewBg}`}
-                              style={{ background: bgOpt.style || undefined }}
-                            />
-                            <span className="text-[11px] font-semibold truncate text-zinc-800 vibe-dark:text-zinc-200">
-                              {bgOpt.label}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Section 3 : Forme de la bulle */}
-                  <div className="space-y-2 pt-2 border-t border-zinc-200 vibe-dark:border-zinc-900">
-                    <label className="text-xs font-bold text-zinc-700 vibe-dark:text-zinc-300">
-                      Forme de la bulle
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      {(
-                        Object.keys(
-                          MESSAGE_BUBBLE_SHAPES
-                        ) as MessageBubbleShape[]
-                      ).map((shapeKey) => {
-                        const isSelected = messageBubbleShape === shapeKey;
-                        const s = MESSAGE_BUBBLE_SHAPES[shapeKey];
-                        return (
-                          <button
-                            className={`vibe-chat-modal-card py-2 px-2 text-center text-[11px] font-semibold transition-all ${
-                              isSelected ? "selected font-bold shadow" : ""
-                            }`}
-                            key={shapeKey}
-                            onClick={() => setMessageBubbleShape(shapeKey)}
-                            type="button"
-                          >
-                            {s.label.split(" ")[0]}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="pt-2 flex justify-end">
-                    <button
-                      className="vibe-chat-send-btn py-2 px-5 text-xs font-bold transition-colors shadow"
-                      onClick={() => setThemeModalOpen(false)}
-                      type="button"
-                    >
-                      Terminer
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
+            <ThemeModal
+              chatBackgroundTheme={chatBackgroundTheme}
+              messageBubbleShape={messageBubbleShape}
+              messageBubbleTheme={messageBubbleTheme}
+              onChangeChatBackgroundTheme={(bgId) => setChatBackgroundTheme(bgId)}
+              onChangeMessageBubbleShape={(shape) => setMessageBubbleShape(shape)}
+              onChangeMessageBubbleTheme={(themeId) => setMessageBubbleTheme(themeId)}
+              onClose={() => setThemeModalOpen(false)}
+              open={themeModalOpen}
+            />
           </>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-zinc-500 space-y-3">

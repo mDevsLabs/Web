@@ -72,19 +72,19 @@ export default async function SiteLayout({
               <Navbar changelogs={changelogs} news={news} />
               <CookieBanner />
 
-              {/* Background Orbs décoratives */}
+              {/* Background Orbs décoratives optimisées GPU */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+                className="pointer-events-none fixed inset-0 -z-10 overflow-hidden contain-paint"
               >
-                <div className="absolute -top-24 -left-24 h-96 w-96 will-change-transform animate-orb-a">
-                  <div className="h-full w-full rounded-full bg-purple-400/20 blur-[120px]" />
+                <div className="absolute -top-24 -left-24 h-96 w-96 transform-gpu will-change-transform animate-orb-a">
+                  <div className="h-full w-full rounded-full bg-purple-400/20 blur-[90px]" />
                 </div>
-                <div className="absolute top-1/3 -right-24 h-80 w-80 will-change-transform animate-orb-b">
-                  <div className="h-full w-full rounded-full bg-blue-400/20 blur-[100px]" />
+                <div className="absolute top-1/3 -right-24 h-80 w-80 transform-gpu will-change-transform animate-orb-b">
+                  <div className="h-full w-full rounded-full bg-blue-400/20 blur-[80px]" />
                 </div>
-                <div className="absolute -bottom-32 left-1/4 h-80 w-80 will-change-transform animate-orb-c [animation-delay:-24s]">
-                  <div className="h-full w-full rounded-full bg-emerald-300/20 blur-[110px]" />
+                <div className="absolute -bottom-32 left-1/4 h-80 w-80 transform-gpu will-change-transform animate-orb-c [animation-delay:-24s]">
+                  <div className="h-full w-full rounded-full bg-emerald-300/20 blur-[80px]" />
                 </div>
               </div>
 

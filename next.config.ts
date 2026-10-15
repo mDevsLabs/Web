@@ -180,9 +180,15 @@ const nextConfig: NextConfig = {
     // interface déroulée.
     optimizePackageImports: [
       "@mdevs/icons",
+      "@streamdown/code",
+      "@streamdown/math",
+      "@streamdown/mermaid",
       "cmdk",
+      "date-fns",
       "framer-motion",
+      "katex",
       "mermaid",
+      "motion",
       "radix-ui",
       "shiki",
       "sonner",
