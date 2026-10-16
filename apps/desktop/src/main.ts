@@ -1,11 +1,17 @@
 // Le bureau charge le site officiel à jour et réserve les accès locaux aux ponts IPC.
 import { app, BrowserWindow, Menu, shell, dialog, nativeImage, ipcMain } from "electron";
+import fs from "node:fs";
 import path from "node:path";
 import { openCliWindow } from "./cli-window";
 import { launchCoder, resolveCoderExecutable } from "./coder-launcher";
 
-const APP_URL = "https://mai-officiel.vercel.app";
-const APP_TITLE = "mAI";
+// L'URL est résolue au démarrage, jamais figée : voir `resolveAppUrl`.
+const DEFAULT_APP_URL = process.env.MAI_DESKTOP_APP_URL || "https://mai-officiel.vercel.app";
+const DESKTOP_CHANNEL = (process.env.MAI_DESKTOP_CHANNEL || "").toLowerCase().trim();
+const APP_TITLE = DESKTOP_CHANNEL === "beta" ? "mAI (Bêta)" : "mAI";
+const PREFERENCES_FILE = "preferences.json";
+
+let APP_URL = DEFAULT_APP_URL;
 
 // Empêche plusieurs instances
 const gotLock = app.requestSingleInstanceLock();
@@ -28,6 +34,133 @@ const WEB_VERSION_POLL_INTERVAL_MS = 60_000;
 const PENDING_UPDATE_RETRY_INTERVAL_MS = 10_000;
 const USER_IDLE_BEFORE_RELOAD_MS = 30_000;
 const SAFE_PAGE_GRACE_MS = 20_000;
+
+async function readLastAppUrl(): Promise<string | null> {
+  try {
+    const preferencesPath = path.join(app.getPath("userData"), PREFERENCES_FILE);
+    const raw = fs.readFileSync(preferencesPath, "utf8");
+    const parsed = JSON.parse(raw) as { appUrl?: unknown };
+    const value = typeof parsed?.appUrl === "string" ? parsed.appUrl.trim() : "";
+    if (!value) return null;
+    const url = new URL(value);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+function persistAppUrl(url: string): void {
+  try {
+    const preferencesPath = path.join(app.getPath("userData"), PREFERENCES_FILE);
+    fs.writeFileSync(preferencesPath, JSON.stringify({ appUrl: url }, null, 2), "utf8");
+  } catch (error) {
+    console.error("[mAI] persistAppUrl failed:", error);
+  }
+}
+
+function isValidAppUrl(value: string): boolean {
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+async function askAppUrl(prefill: string): Promise<string | null> {
+  // Electron n'a pas de dialogue de saisie natif : on ouvre une petite fenêtre
+  // autonome et on récupère la valeur via executeJavaScript (Promise).
+  const html = `<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; font-family: system-ui, -apple-system, sans-serif; background:#0d0d10; color:#e4e4e7; display:flex; align-items:center; justify-content:center; height:100vh; }
+  .card { background:#17171a; border:1px solid #2a2a30; border-radius:14px; padding:18px; width:360px; max-width:92vw; }
+  h1 { font-size:15px; margin:0 0 6px; font-weight:600; }
+  p { margin:0 0 12px; font-size:12px; color:#a1a1aa; line-height:1.5; }
+  input { width:100%; box-sizing:border-box; padding:9px 11px; border-radius:9px; border:1px solid #2a2a30; background:#0c0c0e; color:#e4e4e7; font-size:13px; }
+  input:focus { outline:2px solid #7f92de; outline-offset:1px; }
+  .actions { display:flex; gap:8px; justify-content:flex-end; margin-top:12px; }
+  button { padding:7px 14px; border-radius:9px; border:1px solid #2a2a30; background:#0c0c0e; color:#e4e4e7; cursor:pointer; font-size:13px; }
+  button.primary { background:#7f92de; color:#0c0c0e; border-color:#7f92de; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Adresse du serveur mAI</h1>
+    <p>Saisissez l'URL du serveur à charger au démarrage. La valeur précédente est préremplie.</p>
+    <input id="u" type="url" value="${prefill.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}">
+    <div class="actions">
+      <button id="cancel">Annuler</button>
+      <button class="primary" id="ok">Charger</button>
+    </div>
+  </div>
+  <script>
+    const u = document.getElementById("u");
+    if (u) { u.focus(); u.select(); }
+  </script>
+</body>
+</html>`;
+  const window = new BrowserWindow({
+    width: 420,
+    height: 210,
+    resizable: false,
+    minimizable: false,
+    maximizable: false,
+    closable: true,
+    alwaysOnTop: true,
+    title: "mAI — serveur",
+    backgroundColor: "#0d0d10",
+    autoHideMenuBar: true,
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+    },
+  });
+  await window.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
+
+  try {
+    const value = await window.webContents.executeJavaScript(
+      `new Promise((resolve) => {
+        const u=document.getElementById("u");
+        const ok=document.getElementById("ok");
+        const cancel=document.getElementById("cancel");
+        const done=(v)=>resolve(v);
+        if (ok) ok.onclick=()=>done(u.value);
+        if (cancel) cancel.onclick=()=>done(null);
+        if (u) {
+          u.addEventListener("keydown",(e)=>{
+            if (e.key==="Enter") done(u.value);
+            if (e.key==="Escape") done(null);
+          });
+          u.focus(); u.select();
+        }
+      })`,
+    );
+    try { if (!window.isDestroyed()) window.close(); } catch {}
+    return typeof value === "string" ? value : null;
+  } catch {
+    try { if (!window.isDestroyed()) window.close(); } catch {}
+    return null;
+  }
+}
+
+async function resolveAppUrl(): Promise<string> {
+  const last = await readLastAppUrl();
+  const prefill = last || DEFAULT_APP_URL;
+  const chosen = await askAppUrl(prefill);
+  const candidate = chosen && chosen.trim() ? chosen.trim() : prefill;
+  if (isValidAppUrl(candidate)) {
+    persistAppUrl(candidate);
+    return candidate;
+  }
+  persistAppUrl(prefill);
+  return prefill;
+}
 
 async function readWebBuildId(): Promise<string | null> {
   const controller = new AbortController();
@@ -442,7 +575,12 @@ app.on("second-instance", () => {
   }
 });
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  try {
+    APP_URL = await resolveAppUrl();
+  } catch (error) {
+    console.error("[mAI] resolveAppUrl failed:", error);
+  }
   // Sur macOS, icône dock (si png disponible)
   if (process.platform === "darwin") {
     try {

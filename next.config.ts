@@ -58,6 +58,10 @@ function buildContentSecurityPolicy(): string {
       "blob:",
       "data:",
       "https://*.public.blob.vercel-storage.com",
+      // Les vidéos de présentation des modèles et la carte d'actualité mAI-2
+      // sont des embeds YouTube : sans ces origines, l'iframe restérait blanche.
+      "https://www.youtube.com",
+      "https://www.youtube-nocookie.com",
       ...storageHosts,
     ],
     "img-src": [
@@ -70,6 +74,11 @@ function buildContentSecurityPolicy(): string {
       "https://www.google.com",
       "https://picsum.photos",
       "https://api.dicebear.com",
+      // Hébergeur historique des visuels du Site (apps/site/docs/news) :
+      // sans lui, les couvertures d'actualités restaient cassées (alt visible).
+      "https://upload.fs.fr",
+      // Vignettes de couverture des vidéos YouTube (cartes d'actualité).
+      "https://i.ytimg.com",
       apiOrigin,
       ...storageHosts,
     ],
@@ -79,6 +88,8 @@ function buildContentSecurityPolicy(): string {
       "data:",
       "blob:",
       "https://*.public.blob.vercel-storage.com",
+      // Même hébergeur pour les éventuelles vidéos d'actualité en lecteur HTML5.
+      "https://upload.fs.fr",
       apiOrigin,
       ...storageHosts,
     ],
@@ -288,6 +299,12 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingIncludes: {
     "/changelog": ["./CHANGELOG.md"],
+    // Les actualités du Site sont lues depuis le système de fichiers à
+    // l'exécution (lib/site/news.ts) : sans ces entrées, un build tracé
+    // (standalone) les oublierait et les pages seraient vides.
+    "/site": ["./apps/site/docs/news/**"],
+    "/site/news": ["./apps/site/docs/news/**"],
+    "/site/news/[slug]": ["./apps/site/docs/news/**"],
   },
   poweredByHeader: false,
   reactCompiler: true,

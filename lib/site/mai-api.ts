@@ -4,8 +4,7 @@
  */
 
 export const MAI_API_BASE =
-  process.env.NEXT_PUBLIC_MAI_API_URL?.replace(/\/$/, "") ||
-  "https://mai.val.run";
+  process.env.MAI_API_URL?.replace(/\/$/, "") || "https://mai.val.run";
 
 export type MaiAuthResponse = {
   success: boolean;

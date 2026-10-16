@@ -75,7 +75,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
-import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
@@ -443,10 +442,10 @@ export function AppSidebar({
     router.push("/");
   }, [handleNavClick, resetChat, router]);
 
-  // Sélecteur d'application du logo (mAI / Site / Vibe / Code). Le favori est
-  // coché en plus de l'application courante : c'est l'écran ouvert après
-  // connexion, l'utilisateur doit pouvoir le reconnaître d'un coup d'œil.
-  const { favorite } = useFavoriteApp();
+  // Sélecteur d'application du logo (mAI / Site / Vibe / Code). Seule
+  // l'application courante est cochée : le réglage « Menu favori » décide de
+  // l'écran ouvert après connexion, sans ajouter une seconde coche qui
+  // laissait croire que deux applications étaient actives.
   const currentApp = appKeyFromPath(pathname);
 
   const isUserLoggedIn = Boolean(user && !hasDeadSession);
@@ -606,7 +605,6 @@ export function AppSidebar({
                   >
                     {APP_ORDER.map((entry) => {
                       const isCurrent = currentApp === entry.key;
-                      const isFavorite = favorite === entry.key;
                       const AppGlyph = APP_ICONS[entry.key];
                       const isCodeDisabled = entry.key === "code" && !isDesktop;
                       return (
@@ -650,15 +648,8 @@ export function AppSidebar({
                                 {entry.description}
                               </span>
                             </div>
-                            {(isCurrent || isFavorite) && (
-                              <CheckIcon
-                                className={cn(
-                                  "mt-1 size-3.5 shrink-0",
-                                  isCurrent
-                                    ? "text-primary"
-                                    : "text-muted-foreground"
-                                )}
-                              />
+                            {isCurrent && (
+                              <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
                             )}
                           </div>
                         </DropdownMenuItem>
@@ -729,7 +720,6 @@ export function AppSidebar({
                 >
                   {APP_ORDER.map((entry) => {
                     const isCurrent = currentApp === entry.key;
-                    const isFavorite = favorite === entry.key;
                     const AppGlyph = APP_ICONS[entry.key];
                     const isCodeDisabled = entry.key === "code" && !isDesktop;
                     return (
@@ -773,15 +763,8 @@ export function AppSidebar({
                               {entry.description}
                             </span>
                           </div>
-                          {(isCurrent || isFavorite) && (
-                            <CheckIcon
-                              className={cn(
-                                "mt-1 size-3.5 shrink-0",
-                                isCurrent
-                                  ? "text-primary"
-                                  : "text-muted-foreground"
-                              )}
-                            />
+                          {isCurrent && (
+                            <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
                           )}
                         </div>
                       </DropdownMenuItem>

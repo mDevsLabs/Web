@@ -10,6 +10,7 @@ import { MotionProvider } from "@/components/site/motion-provider";
 import { Navbar } from "@/components/site/navbar";
 import { OnboardingProvider } from "@/components/site/onboarding/onboarding-provider";
 import { StatusWidget } from "@/components/site/status-widget";
+import { SiteThemeSync } from "@/components/site/theme-sync";
 import { CookieBanner, ToastProvider } from "@/components/site/ui/index";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { getChangelogs } from "@/lib/site/changelog";
@@ -33,7 +34,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   initialScale: 1,
-  themeColor: "#ffffff",
+  // La barre du navigateur suit le thème effectif (clair par défaut, sombre
+  // sous préférence système — le choix mAI pose aussi `dark` sur <html>).
+  themeColor: [
+    { color: "#ffffff", media: "(prefers-color-scheme: light)" },
+    { color: "#0d0d10", media: "(prefers-color-scheme: dark)" },
+  ],
   viewportFit: "cover",
   width: "device-width",
 };
@@ -65,6 +71,7 @@ export default async function SiteLayout({
       className="site-root md-root min-h-screen flex flex-col relative bg-white text-slate-900 w-full overflow-x-hidden selection:bg-purple-100 selection:text-purple-900"
       data-md-theme="light"
     >
+      <SiteThemeSync />
       <MotionProvider>
         <ToastProvider>
           <AuthProvider initialToken={token} initialUser={initialUser}>

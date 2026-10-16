@@ -217,7 +217,7 @@ export function NotificationPermissionGate() {
           ainsi que dans les réglages de votre navigateur.
         </p>
 
-        <DialogFooter className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-between">
+        <DialogFooter className="flex flex-col-reverse gap-2 sm:flex-row">
           <Button
             data-testid="notification-permission-dismiss"
             onClick={dismissForever}
@@ -225,7 +225,7 @@ export function NotificationPermissionGate() {
             variant="ghost"
           >
             <BellOffIcon className="size-4" />
-            Fermer — ne plus afficher
+            Fermer
           </Button>
           <Button
             data-testid="notification-permission-accept"

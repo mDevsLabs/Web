@@ -122,6 +122,10 @@ const REQUIRED_COLUMNS = [
   // Paramètres comme en 0034.
   { column: "defaultApp", table: "user_preferences" },
   { column: "defaultCreationMode", table: "user_preferences" },
+  // Migration 0056 : le thème partagé est lu à chaque chargement par mAI,
+  // Vibe, le Site et Wakies. Une colonne absente ferait tomber la lecture des
+  // préférences en 42703 comme en 0034/0038.
+  { column: "theme", table: "user_preferences" },
   // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
   // retombe sur une jointure `Chat` et les tokens d'une conversation
   // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait

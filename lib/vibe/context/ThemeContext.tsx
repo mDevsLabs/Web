@@ -8,6 +8,11 @@
 
 import type React from "react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import {
+  loadThemePreference,
+  saveThemePreference,
+  THEME_PREFERENCES,
+} from "@/lib/theme/preference";
 import { ApiService } from "@/lib/vibe/services/api";
 
 export type ThemeMode = "light" | "dark" | "system";
@@ -246,6 +251,11 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = "vibe_theme_preference";
+
+/** Valeurs de thème acceptées, alignées sur la préférence partagée. */
+const isThemeMode = (value: unknown): value is ThemeMode =>
+  typeof value === "string" &&
+  (THEME_PREFERENCES as readonly string[]).includes(value);
 const ACCENT_KEY = "vibe_accent_color";
 const FONT_KEY = "vibe_font_size";
 const MSG_BUBBLE_KEY = "vibe_message_bubble_theme";
@@ -465,75 +475,91 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     root.style.fontSize = FONT_SIZES[fontSize];
   }, [accentColor, fontSize]);
 
-  // Synchronisation avec les réglages de la base de données
+  // Synchronisation avec les réglages Val Town ET la préférence de thème
+  // PARTAGÉE par la suite (user_preferences.theme, canal mAI/Site/Wakies).
+  // Les deux réponses arrivent ensemble : deux effets concurrents se
+  // marcheraient dessus (l'un adopterait un ancien user_settings, l'autre le
+  // prendrait pour un choix local récent).
   useEffect(() => {
-    ApiService.getSettings()
-      .then((res) => {
+    Promise.all([
+      ApiService.getSettings().catch(() => null),
+      loadThemePreference(),
+    ])
+      .then(([res, shared]) => {
         const s = res?.settings;
-        if (!s) return;
-        if (
-          s.message_bubble_theme &&
-          s.message_bubble_theme in MESSAGE_BUBBLE_THEMES
-        ) {
-          setMessageBubbleThemeState(
-            s.message_bubble_theme as MessageBubbleTheme
-          );
-          localStorage.setItem(MSG_BUBBLE_KEY, s.message_bubble_theme);
+        if (s) {
+          if (
+            s.message_bubble_theme &&
+            s.message_bubble_theme in MESSAGE_BUBBLE_THEMES
+          ) {
+            setMessageBubbleThemeState(
+              s.message_bubble_theme as MessageBubbleTheme
+            );
+            localStorage.setItem(MSG_BUBBLE_KEY, s.message_bubble_theme);
+          }
+          if (
+            s.chat_background_theme &&
+            s.chat_background_theme in CHAT_BACKGROUND_THEMES
+          ) {
+            setChatBackgroundThemeState(
+              s.chat_background_theme as ChatBackgroundTheme
+            );
+            localStorage.setItem(CHAT_BG_KEY, s.chat_background_theme);
+          }
+          if (
+            s.message_bubble_shape &&
+            s.message_bubble_shape in MESSAGE_BUBBLE_SHAPES
+          ) {
+            setMessageBubbleShapeState(
+              s.message_bubble_shape as MessageBubbleShape
+            );
+            localStorage.setItem(MSG_SHAPE_KEY, s.message_bubble_shape);
+          }
+          if (s.accent_color && s.accent_color in ACCENT_COLORS) {
+            setAccentState(s.accent_color as AccentColor);
+            localStorage.setItem(ACCENT_KEY, s.accent_color);
+          }
+          if (
+            s.font_size &&
+            ["small", "medium", "large"].includes(s.font_size)
+          ) {
+            setFontState(s.font_size as FontSize);
+            localStorage.setItem(FONT_KEY, s.font_size);
+          }
+          if (s.scheduled_theme) {
+            const parsed = parseScheduledTheme(
+              typeof s.scheduled_theme === "string"
+                ? s.scheduled_theme
+                : JSON.stringify(s.scheduled_theme)
+            );
+            setScheduledThemeState(parsed);
+            if (typeof window !== "undefined")
+              localStorage.setItem(SCHED_KEY, JSON.stringify(parsed));
+          }
         }
-        if (
-          s.chat_background_theme &&
-          s.chat_background_theme in CHAT_BACKGROUND_THEMES
-        ) {
-          setChatBackgroundThemeState(
-            s.chat_background_theme as ChatBackgroundTheme
-          );
-          localStorage.setItem(CHAT_BG_KEY, s.chat_background_theme);
-        }
-        if (
-          s.message_bubble_shape &&
-          s.message_bubble_shape in MESSAGE_BUBBLE_SHAPES
-        ) {
-          setMessageBubbleShapeState(
-            s.message_bubble_shape as MessageBubbleShape
-          );
-          localStorage.setItem(MSG_SHAPE_KEY, s.message_bubble_shape);
-        }
-        if (s.accent_color && s.accent_color in ACCENT_COLORS) {
-          setAccentState(s.accent_color as AccentColor);
-          localStorage.setItem(ACCENT_KEY, s.accent_color);
-        }
-        if (s.font_size && ["small", "medium", "large"].includes(s.font_size)) {
-          setFontState(s.font_size as FontSize);
-          localStorage.setItem(FONT_KEY, s.font_size);
-        }
-        if (s.scheduled_theme) {
-          const parsed = parseScheduledTheme(
-            typeof s.scheduled_theme === "string"
-              ? s.scheduled_theme
-              : JSON.stringify(s.scheduled_theme)
-          );
-          setScheduledThemeState(parsed);
-          if (typeof window !== "undefined")
-            localStorage.setItem(SCHED_KEY, JSON.stringify(parsed));
-        }
-        if (
-          s.theme_preference &&
-          ["light", "dark", "system"].includes(s.theme_preference)
-        ) {
-          const local =
-            typeof window === "undefined"
-              ? null
-              : localStorage.getItem(STORAGE_KEY);
-          if (local && ["light", "dark", "system"].includes(local)) {
-            // Si l'utilisateur a changé localement, propager à la base de données
-            if (local !== s.theme_preference) {
-              ApiService.updateSettings({ theme_preference: local }).catch(
-                () => {}
-              );
-            }
-          } else {
-            setThemeState(s.theme_preference as ThemeMode);
-            localStorage.setItem(STORAGE_KEY, s.theme_preference);
+
+        // Thème : le canal partagé est la source ; à défaut le choix local du
+        // navigateur, puis l'ancien user_settings.theme_preference (base Val
+        // Town, conservé pour le mobile). La valeur retenue est recopiée dans
+        // les canaux serveur pour qu'ils ne divergent plus.
+        const local =
+          typeof window === "undefined"
+            ? null
+            : localStorage.getItem(STORAGE_KEY);
+        const preference = shared
+          ? shared
+          : local && isThemeMode(local)
+            ? local
+            : s?.theme_preference && isThemeMode(s.theme_preference)
+              ? s.theme_preference
+              : null;
+        if (preference) {
+          setThemeState(preference);
+          localStorage.setItem(STORAGE_KEY, preference);
+          if (preference !== s?.theme_preference) {
+            ApiService.updateSettings({ theme_preference: preference }).catch(
+              () => {}
+            );
           }
         }
       })
@@ -546,6 +572,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       localStorage.setItem(STORAGE_KEY, newTheme);
     }
     ApiService.updateSettings({ theme_preference: newTheme }).catch(() => {});
+    // Canal partagé par la suite (mAI, Site, Wakies) : un choix explicite dans
+    // Vibe doit s'y refléter. La bascule automatique programmée, elle, reste
+    // locale à Vibe : elle ne doit pas retourner mAI au milieu de la journée.
+    saveThemePreference(newTheme);
   };
 
   const setScheduledTheme = (sched: ScheduledTheme) => {

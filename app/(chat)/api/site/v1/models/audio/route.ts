@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { MAI_API_URL } from "@/lib/constants";
 import { redactApiSecretJson } from "@/lib/site/api-key-redaction";
 import { authenticateCatalogRequest } from "@/lib/site/api-key-session";
 
@@ -64,12 +65,11 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // `NEXT_PUBLIC_*` est inliné dans le bundle client par Next.js : l'utiliser
-    // comme cible de routage serveur expose l'URL dans le JS et invite à la
-    // configurer côté client. Les autres routes codent l'upstream en dur.
-    const backendUrl = (
-      process.env.MAI_API_URL || "https://mai.val.run"
-    ).replace(/\/$/, "");
+    // Source unique pour l'upstream, lue au runtime depuis l'environnement :
+    // `MAI_API_URL` (privée, prioritaire) puis `NEXT_PUBLIC_MAI_API_URL`, puis
+    // `https://mai.val.run`. Sur une preview Vercel (canary/PR), renseigner
+    // `MAI_API_URL` pointe la vitrine contre le backend Val Town voulu.
+    const backendUrl = MAI_API_URL.replace(/\/$/, "");
     const res = await fetch(`${backendUrl}/v1/models/speech`, {
       headers,
       ...(isPublic ? { next: { revalidate: 300 } } : { cache: "no-store" }),

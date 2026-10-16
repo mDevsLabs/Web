@@ -355,8 +355,7 @@ Cinq règles à ne pas contourner :
 - **`components/wakies/wakies.css` et `wakies-editor.css` sont générés**
   (`scripts/build-wakies-css.mjs`). Corriger la source dans
   `apps/wakies/integration/web/`, jamais la sortie.
-- **Pas de variante `wakies-dark`** : Wakies est son propre thème clair, sans
-  Tailwind. Ne pas introduire de `dark:`.
+- **Pas de variante `dark:` Tailwind (pas de Tailwind ici)** : Wakies a son propre design system clair natif. Le mode sombre suit l'hôte via `components/wakies/ThemeProvider.tsx` (`resolvedTheme` de next-themes) et la couche `html.dark .wakies-root …` de `wakies-host.css` ; les feuilles générées restent claires natives. Ne jamais introduire d'état de thème parallèle.
 - **Pas de CopilotKit, pas de `react-markdown`** : `useChat` (AI SDK) et
   `components/wakies/markdown.tsx` (Streamdown, le moteur de l'hôte).
 - **Le vocabulaire est « conversation », pas « thread »** : `conversationId`.

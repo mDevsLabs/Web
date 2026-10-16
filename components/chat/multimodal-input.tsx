@@ -969,7 +969,10 @@ function PureMultimodalInput({
               ref={overlayRef}
             >
               {renderHighlightedMentions(
-                input,
+                // Sentinelle invisible : le textarea rend la ligne vide qui
+                // suit un saut de ligne final, pas ce calque. Sans elle, le
+                // caret d'un Maj+Entrée se posait une ligne sous le texte.
+                input.endsWith("\n") ? `${input}\u200b` : input,
                 userMcpServers,
                 userSkills,
                 userAgents,
@@ -982,7 +985,13 @@ function PureMultimodalInput({
               editingMessage ? "Modifier votre message" : "Message à mAI"
             }
             className={cn(
-              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
+              // Le calque de surlignage superposé doit conserver EXACTEMENT la
+              // même largeur utile que le champ : une barre de défilement
+              // prendrait quelques pixels au textarea (styles globaux
+              // *::-webkit-scrollbar) et décalerait les retours à la ligne
+              // sous le curseur. Masquée, la molette défile toujours et
+              // `onScroll` resynchronise le calque.
+              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans no-scrollbar",
               pendingTools.length > 0 ||
                 attachments.length > 0 ||
                 uploadQueue.length > 0
@@ -1019,7 +1028,11 @@ function PureMultimodalInput({
               status={status}
               supportsTools={supportsTools}
             />
-            <VoiceRecorderButton input={input} setInput={setInput} />
+            <VoiceRecorderButton
+              input={input}
+              setInput={setInput}
+              textareaRef={textareaRef}
+            />
             <ModelSelectorCompact
               fallbackModels={chatModels}
               focusInputAfterSelect

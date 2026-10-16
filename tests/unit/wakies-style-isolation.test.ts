@@ -25,8 +25,10 @@ describe("isolation des feuilles Wakies exécutées", () => {
             return;
           parent = parent.parent;
         }
-        for (const selector of rule.selectors)
-          if (!selector.startsWith(".wakies-root")) violations.push(selector);
+        for (const selector of rule.selectors) {
+          const normalise = selector.replace(/^(:where\(html\.dark\)|html\.dark)\s+/, "");
+          if (!normalise.startsWith(".wakies-root")) violations.push(selector);
+        }
       });
       expect(violations).toEqual([]);
       css.walkAtRules((rule) => {

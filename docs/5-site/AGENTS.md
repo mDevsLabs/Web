@@ -42,3 +42,8 @@ Le layout racine `app/(chat)/site/layout.tsx` enveloppe l'ensemble des pages du 
 ### Règle n° 7 — Deux runtimes : ne jamais importer les modules Deno racine
 - Les fichiers TypeScript à la racine du dépôt (`email.ts`, `main.ts`, etc.) sont réservés au runtime Deno/Val Town (`npm:nodemailer`...).
 - Les modules Next.js du site doivent importer le service compatible Node depuis `@/lib/site/email`, **jamais** depuis `@/email`.
+
+### Règle n° 8 — Mode sombre : piloté par `html.dark`, écrit dans la source
+- Le Site n'a pas de thème parallèle. `components/site/theme-sync.tsx` recopie le thème résolu de l'hôte (next-themes) en classes `dark` + `data-md-theme` sur `.site-root` ; `@mdevs/ui` prend alors ses jetons sombres.
+- Les règles sombres s'écrivent **`html.dark …` dans `apps/site/app/globals.css`** (jamais dans `components/site/site.css`, générée) : le script de build les ré-ancre en `.site-root.dark …`.
+- Les utilitaires Tailwind partagent leurs variables entre propriétés (`bg-white` et `text-white` lisent tous deux `--color-white`) : on ne bascule donc **pas** les jetons `--color-*`, on lève chaque classe réellement employée, **par propriété**. Les classes de l'inventaire du Site se ajoutent au même endroit.

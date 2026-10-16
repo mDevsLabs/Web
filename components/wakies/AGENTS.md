@@ -2,7 +2,10 @@
 
 Lire les règles communes à la racine et [les règles du domaine](../../docs/3-wakies/AGENTS.md).
 
-- Le thème et les dialogues restent dans `.wakies-root`. Les styles générés ne se modifient pas directement ; les ajouts hôte vont dans `wakies-host.css`.
+- Le thème vit dans `.wakies-root` et suit le thème de l'hôte : `wakies-host.css`
+  porte `html.dark .wakies-root …` (wakies-ui.css fournit `data-md-theme`). Les
+  styles générés ne se modifient pas directement ; les ajouts hôte vont dans
+  `wakies-host.css`.
 - « Amis » désigne des agents IA publics suivis. Discuter avec un ami nécessite un clone privé ; retirer un ami ne supprime ni clone ni conversation.
 - Utiliser SWR pour la relève à cinq secondes. Suspendre la synchronisation de l’historique pendant `submitted` et `streaming` ; fusionner par identifiant et `seq`, sans supprimer les pages anciennes ou le brouillon.
 - Un compteur de non-lus vient du serveur. Marquer lu seulement lorsque la fin du fil est visible dans une page visible ; ne jamais anticiper le résultat d’une mutation.

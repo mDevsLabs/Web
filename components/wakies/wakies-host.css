@@ -2550,8 +2550,540 @@
 .wakies-root .wakies-shared-page h2 {
   font-size: 16px;
 }
-.wakies-root .wakies-shared-page p {
-  line-height: 1.6;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+/* ============================================================================
+   MODE SOMBRE — Wakies suit le thème résolu de l'hôte (html.dark, next-themes)
+   ----------------------------------------------------------------------------
+   Wakies vit sous son thème clair natif (feuilles générées, façade host). Le
+   fournisseur `@mdevs/ui` prend maintenant `data-md-theme="dark"` dès que
+   l'hôte est sombre, et `.wakies-root` suit la classe `dark` posée par
+   next-themes. Cette couche host, chargée après les feuilles générées, reprend
+   les mêmes rôles avec les jetons sombres : fond #0c0c0e, carte #17171a, well
+   #232327, ligne #2a2a30. On ne touche jamais à `wakies.css` /
+   `wakies-editor.css` (sources portées) ; l'adaptation reste ici.
+
+   Règles d'écriture :
+     - un sélecteur garde la PROFONDEUR de la règle d'origine (mock, muse-app,
+       template-app) pour gagner la spécificité ;
+     - on préfère `background-color`, qui n'efface pas les images de fond ;
+     - les statuts portent leurs teintes (translucides), ils ne s'achromatisent
+       pas ;
+     - `call-*` et les overlays de voix sont déjà pensés pour l'obscurité :
+       ils restent tels quels.
+   ========================================================================= */
+html.dark .wakies-root {
+  color-scheme: dark;
+  /* Variable locale comme décrit dans docs : pas d'état parallèle. */
+  background-color: #0c0c0e;
+  color: var(--ink);
+
+  /* Inversion des jetons propres à Wakies. */
+  --ink: #e8e8ec;
+  --muted: #9c9ca6;
+  --line: #2a2a30;
+  --blue: #7f92de;
+  --blue-dark: #93a3ec;
+  --lavender: #2b2d47;
+
+  /* Rôles de surface pour cette couche */
+  --w-card: #17171a;
+  --w-panel: #121215;
+  --w-raised: #1d1d21;
+  --w-well: #232327;
+  --w-well-strong: #2f2f36;
+  --w-line-2: #3a3a42;
+
+  /* Primitives @mdevs/ui : l'accent s'éclaircit, l'encre dessus redevient sombre. */
+  --md-accent: #e4e4e7;
+  --md-accent-ink: #17171a;
+  --md-focus: rgb(228 228 231 / 22%);
 }
+
+/* La racine `.wakies-root` porte `md-root` dans le layout (wakies-ui.css pose
+   les jetons dark sur `.md-root[data-md-theme="dark"]`). Réaffirmer ici pour
+   gagner la cascade quand les overrides host précédents existent. */
+html.dark .wakies-root,
+html.dark .wakies-root .md-root {
+  --md-accent: #e4e4e7;
+  --md-accent-ink: #17171a;
+  --md-focus: rgb(228 228 231 / 22%);
+}
+
+/* Base des éléments : les couleurs littérales de la feuille générée (#fff) */
+:where(html.dark) .wakies-root button { background-color: var(--w-card); }
+:where(html.dark) .wakies-root button:hover:not(:disabled) { background-color: var(--w-well); }
+:where(html.dark) .wakies-root input,
+:where(html.dark) .wakies-root textarea,
+:where(html.dark) .wakies-root select {
+  color: var(--ink);
+  background-color: var(--w-card);
+  border-color: var(--w-line);
+}
+
+/* Ombres et barres de défilement douces sous obscurité */
+html.dark .wakies-root .chat-transcript { scrollbar-color: #3a3a44 transparent; }
+html.dark .wakies-root .quick-prompt-chips::-webkit-scrollbar { background: transparent; }
+
+/* Surfaces "carte" (blanc plein) -> carte sombre */
+html.dark .wakies-root .composer,
+html.dark .wakies-root .search-box,
+html.dark .wakies-root .memory-card,
+html.dark .wakies-root .task-row,
+html.dark .wakies-root .source-card,
+html.dark .wakies-root .task-detail-card,
+html.dark .wakies-root .page-toolbar button,
+html.dark .wakies-root .page-meta button,
+html.dark .wakies-root .page-chat-launch button,
+html.dark .wakies-root .page-chat-close,
+html.dark .wakies-root .page-meta select,
+html.dark .wakies-root .page-chat-launch select,
+html.dark .wakies-root .page-chat-panel,
+html.dark .wakies-root .computer-panel input:not([type='checkbox']),
+html.dark .wakies-root .computer-panel textarea,
+html.dark .wakies-root .computer-panel select,
+html.dark .wakies-root .computer-wakie-picker select,
+html.dark .wakies-root .computer-panel button,
+html.dark .wakies-root .computer-panel .computer-screen,
+html.dark .wakies-root .computer-screen-empty,
+html.dark .wakies-root .inline-computer,
+html.dark .wakies-root .inline-computer-preview img,
+html.dark .wakies-root .page-review-card,
+html.dark .wakies-root .page-review-card footer button,
+html.dark .wakies-root .composer-piece,
+html.dark .wakies-root .chat-piece,
+html.dark .wakies-root .wakies-approval,
+html.dark .wakies-root .onboarding-steps li,
+html.dark .wakies-root .onboarding-body,
+html.dark .wakies-root .wakies-file-dialog,
+html.dark .wakies-root .today-status,
+html.dark .wakies-root .today-shortcut.md-button,
+html.dark .wakies-root .today-panel,
+html.dark .wakies-root .muse-app,
+html.dark .wakies-root .muse-app .workspace,
+html.dark .wakies-root .muse-app .chat-composer,
+html.dark .wakies-root .muse-app .composer,
+html.dark .wakies-root .muse-navigation,
+html.dark .wakies-root .template-app,
+html.dark .wakies-root .template-app.app .workspace,
+html.dark .wakies-root .template-app .topbar,
+html.dark .wakies-root .template-app .composer,
+html.dark .wakies-root .template-app .starter-suggestions button,
+html.dark .wakies-root .template-app .chat-composer,
+html.dark .wakies-root .modal,
+html.dark .wakies-root .page-document,
+html.dark .wakies-root .wakies-social-list li,
+html.dark .wakies-root .wakies-public-card,
+html.dark .wakies-root .wakies-public-avatar,
+html.dark .wakies-root .space-dropdown,
+html.dark .wakies-root .space-rename,
+html.dark .wakies-root .composer-mentions,
+html.dark .wakies-root .fil-reglages-liste,
+html.dark .wakies-root .settings-section,
+html.dark .wakies-root .settings-field input,
+html.dark .wakies-root .settings-field select,
+html.dark .wakies-root .wakies-model-trigger-block,
+html.dark .wakies-root .avatar-choice,
+html.dark .wakies-root .wakies-model-picker.block button,
+html.dark .wakies-root .message-toolbar,
+html.dark .wakies-root .chat-reaction-chip,
+html.dark .wakies-root .scroll-bottom-fab,
+html.dark .wakies-root .quick-prompt-chip,
+html.dark .wakies-root .chat-bubble.assistant,
+html.dark .wakies-root .chat-pinned-item,
+html.dark .wakies-root .chat-reaction,
+html.dark .wakies-root .wakies-profile-drawer,
+html.dark .wakies-root .wakies-search-results,
+html.dark .wakies-root .rail-panel,
+html.dark .wakies-root .document-dropdown,
+html.dark .wakies-root .document-chat-dock,
+html.dark .wakies-root .document-chat-setup,
+html.dark .wakies-root .document-chat-panel,
+html.dark .wakies-root .slash-menu,
+html.dark .wakies-root .spaces-surface,
+html.dark .wakies-root .document-session,
+html.dark .wakies-root .library-page-card,
+html.dark .wakies-root .task-row-icon,
+html.dark .wakies-root .wakies-approval-params,
+html.dark .wakies-root .page-chat-context,
+html.dark .wakies-root .computer-wakie-picker select {
+  background-color: var(--w-card);
+}
+
+/* Surfaces "rail / panneau" (off-blanc) -> panneau sombre */
+html.dark .wakies-root .sidebar,
+html.dark .wakies-root .muse-app .sidebar,
+html.dark .wakies-root .template-app.app .sidebar,
+html.dark .wakies-root .topbar,
+html.dark .wakies-root .icon-rail,
+html.dark .wakies-root .muse-app .icon-rail,
+html.dark .wakies-root .result-pane,
+html.dark .wakies-root .pane-header,
+html.dark .wakies-root .template-app .chat-workspace > .result-pane,
+html.dark .wakies-root .template-app .pane-header,
+html.dark .wakies-root .computer-overlay,
+html.dark .wakies-root .ready-pill,
+html.dark .wakies-root .suggestion,
+html.dark .wakies-root .empty-activity,
+html.dark .wakies-root .template-app .setup-card,
+html.dark .wakies-root .onboarding,
+html.dark .wakies-root .onboarding-preview,
+html.dark .wakies-root .today-hero,
+html.dark .wakies-root .computer-browser > .computer-row input,
+html.dark .wakies-root .chat-inline-search,
+html.dark .wakies-root .scroll-bottom-fab:hover,
+html.dark .wakies-root .chat-forward,
+html.dark .wakies-root .sidebar-note,
+html.dark .wakies-root .surface-muted,
+html.dark .wakies-root .wakies-public-banner,
+html.dark .wakies-root .inline-computer-preview,
+html.dark .wakies-root .inline-computer pre,
+html.dark .wakies-root .browser-bar,
+html.dark .wakies-root .today-space-icon,
+html.dark .wakies-root .library-search,
+html.dark .wakies-root .document-outline,
+html.dark .wakies-root .document-source,
+html.dark .wakies-root .document-move,
+html.dark .wakies-root .document-chat-dock-bottom select,
+html.dark .wakies-root .editor-hint kbd,
+html.dark .wakies-root .spaces-surface,
+html.dark .wakies-root .document-prose pre,
+html.dark .wakies-root .document-prose code,
+html.dark .wakies-root .document-prose th,
+html.dark .wakies-root .slash-menu,
+html.dark .wakies-root .wakies-profile-drawer {
+  background-color: var(--w-panel);
+}
+
+/* Surfaces "well" (pastilles, hover, champs code) -> well sombre */
+html.dark .wakies-root .nav-item.active,
+html.dark .wakies-root .nav-item.active small,
+html.dark .wakies-root .mode-badge,
+html.dark .wakies-root .count,
+html.dark .wakies-root .empty-icon,
+html.dark .wakies-root .status,
+html.dark .wakies-root .message-avatar,
+html.dark .wakies-root .avatar,
+html.dark .wakies-root .brief pre,
+html.dark .wakies-root .source-icon,
+html.dark .wakies-root .config-note,
+html.dark .wakies-root .new-chat.nav-item,
+html.dark .wakies-root .wakie-nav.active,
+html.dark .wakies-root .setup-card,
+html.dark .wakies-root .setup-icon,
+html.dark .wakies-root .chat-bubble pre,
+html.dark .wakies-root .chat-pinned-strip,
+html.dark .wakies-root .chat-pin-toggle:hover,
+html.dark .wakies-root .chat-reaction-ajout button:hover,
+html.dark .wakies-root .source-input,
+html.dark .wakies-root .page-tree,
+html.dark .wakies-root .page-tree-item.active,
+html.dark .wakies-root .pane-tabs .selected,
+html.dark .wakies-root .template-app .pane-tabs .selected,
+html.dark .wakies-root .computer-browser > .computer-row,
+html.dark .wakies-root .computer-browser > .computer-row input,
+html.dark .wakies-root .computer-control-pill,
+html.dark .wakies-root .inline-computer header button:hover,
+html.dark .wakies-root .page-review-card footer,
+html.dark .wakies-root .sample-note,
+html.dark .wakies-root .timeline-row > span,
+html.dark .wakies-root .timeline-row > span.current,
+html.dark .wakies-root .muse-app .chat-bubble.user,
+html.dark .wakies-root .muse-app .starter-suggestions button,
+html.dark .wakies-root .muse-navigation button[data-active='true'],
+html.dark .wakies-root .muse-card,
+html.dark .wakies-root .muse-app .queue-list,
+html.dark .wakies-root .muse-app .tool-card,
+html.dark .wakies-root .today-shortcut-icon,
+html.dark .wakies-root .today-space-icon,
+html.dark .wakies-root .wakies-model-picker button:hover:not(:disabled),
+html.dark .wakies-root .space-dropdown-item:hover,
+html.dark .wakies-root .space-dropdown-item:focus-visible,
+html.dark .wakies-root .composer-mentions-aide code,
+html.dark .wakies-root .composer-mentions-item.is-active,
+html.dark .wakies-root .fil-reglages[open] .fil-reglages-resume,
+html.dark .wakies-root .settings-lien:hover,
+html.dark .wakies-root .wakies-model-trigger:hover:not(:disabled),
+html.dark .wakies-root .wakies-approval-origin,
+html.dark .wakies-root .wakies-approval-target code,
+html.dark .wakies-root .chat-reaction-chip:hover,
+html.dark .wakies-root .chat-reaction-chip.active,
+html.dark .wakies-root .message-action-btn:hover,
+html.dark .wakies-root .quick-prompt-chip:hover,
+html.dark .wakies-root .chat-search-badge,
+html.dark .wakies-root .wakies-public-banner,
+html.dark .wakies-root .chat-action:hover,
+html.dark .wakies-root .wakies-search-results button:hover,
+html.dark .wakies-root .wakies-search-results button:focus-visible,
+html.dark .wakies-root .document-icon:hover:not(:disabled),
+html.dark .wakies-root .format-toolbar button:hover:not(:disabled),
+html.dark .wakies-root .format-toolbar button[aria-pressed='true'],
+html.dark .wakies-root .document-dropdown button:hover,
+html.dark .wakies-root .slash-menu button.selected,
+html.dark .wakies-root .muse-app .wakie-nav.active,
+html.dark .wakies-root .template-app .mode-badge,
+html.dark .wakies-root .template-app .nav-item small,
+html.dark .wakies-root .computer-control-pill,
+html.dark .wakies-root .computer-current-url,
+html.dark .wakies-root .computer-section pre,
+html.dark .wakies-root .computer-setup,
+html.dark .wakies-root .icon-rail,
+html.dark .wakies-root .task-row-icon,
+html.dark .wakies-root .call-controls button > span {
+  background-color: var(--w-well);
+}
+
+/* Bulles de chat : assistant = carte, utilisateur = fedele à son accent */
+html.dark .wakies-root .muse-app .chat-bubble.user {
+  background-color: #2f3543;
+  color: var(--ink);
+}
+
+html.dark .wakies-root .muse-app .chat-composer,
+html.dark .wakies-root .muse-app .composer {
+  background-color: var(--w-card);
+  box-shadow: none;
+}
+
+html.dark .wakies-root .muse-app .send-button {
+  color: #17171a;
+}
+
+html.dark .wakies-root .muse-app .send-button:hover:not(:disabled) {
+  background-color: var(--w-well-strong);
+}
+
+html.dark .wakies-root .muse-navigation .md-button {
+  color: #a1a1aa;
+}
+
+html.dark .wakies-root .muse-navigation .md-button[data-active="true"] {
+  color: #f4f4f5;
+  background-color: var(--w-well);
+}
+
+html.dark .wakies-root .muse-app .rail-unread {
+  background-color: #e4e4e7;
+  color: #17171a;
+}
+
+html.dark .wakies-root .muse-app .wakies-search-results button:hover,
+html.dark .wakies-root .muse-app .wakies-search-results button:focus-visible {
+  background-color: #2b2b34;
+}
+
+html.dark .wakies-root .wakies-model-trigger-block { background-color: var(--w-card); }
+
+/* Teintes d'état : on garde la couleur, on la rend translucide */
+html.dark .wakies-root .mode-badge.live {
+  background-color: rgba(79, 125, 114, 0.22);
+}
+
+html.dark .wakies-root .status.completed { background-color: rgba(79, 125, 114, 0.22); }
+html.dark .wakies-root .status.running { background-color: rgba(114, 133, 213, 0.22); }
+html.dark .wakies-root .status.failed { background-color: rgba(179, 64, 47, 0.22); }
+html.dark .wakies-root .status.paused { background-color: rgba(217, 168, 80, 0.2); }
+
+html.dark .wakies-root .notice {
+  background-color: rgba(217, 168, 80, 0.14);
+}
+html.dark .wakies-root .error-banner,
+html.dark .wakies-root .task-error,
+html.dark .wakies-root .chat-error,
+html.dark .wakies-root .computer-error {
+  background-color: rgba(179, 64, 47, 0.16);
+}
+html.dark .wakies-root .capability-issues {
+  background-color: rgba(217, 168, 80, 0.14);
+}
+html.dark .wakies-root .chat-pinned-strip {
+  background-color: rgba(122, 111, 184, 0.18);
+}
+html.dark .wakies-root .chat-pinned-item { background-color: var(--w-card); }
+html.dark .wakies-root .chat-pinned-item[data-role="user"] {
+  background-color: rgba(79, 125, 114, 0.18);
+}
+html.dark .wakies-root .chat-pin-toggle:hover,
+html.dark .wakies-root .chat-reaction-ajout button:hover {
+  background-color: rgba(122, 111, 184, 0.18);
+}
+html.dark .wakies-root .call-receipt { background-color: rgba(79, 125, 114, 0.9); }
+html.dark .wakies-root .voice-strip { background-color: rgba(79, 125, 114, 0.16); }
+html.dark .wakies-root .voice-strip button { background-color: rgba(255, 255, 255, 0.08); }
+html.dark .wakies-root .on-call { background-color: rgba(79, 125, 114, 0.16); }
+html.dark .wakies-root .page-tree-item.active,
+html.dark .wakies-root .page-chat-context {
+  background-color: rgba(79, 125, 114, 0.14);
+}
+html.dark .wakies-root .wakies-approval-params { background-color: #1e1e22; }
+html.dark .wakies-root .onboarding-preview { background-color: var(--w-panel); }
+html.dark .wakies-root .computer-setup { background-color: var(--w-well); }
+html.dark .wakies-root .page-chat-launch button {
+  /* déjà .page-toolbar button -> var(--w-card) ci-dessus */
+}
+html.dark .wakies-root .sample-note { background-color: rgba(122, 111, 184, 0.14); }
+html.dark .wakies-root .timeline-row > span { background-color: rgba(114, 133, 213, 0.22); }
+html.dark .wakies-root .timeline-row > span.current { background-color: rgba(114, 133, 213, 0.35); }
+html.dark .wakies-root .chat-pinned-strip { border-color: rgba(122, 111, 184, 0.4); }
+
+/* Indicateurs d'anneau (box-shadow 0 0 0 4px ...) */
+html.dark .wakies-root .today-status-dot { box-shadow: 0 0 0 4px rgba(79, 125, 114, 0.3); }
+html.dark .wakies-root .today-status-dot.is-paused { box-shadow: 0 0 0 4px var(--w-well); }
+html.dark .wakies-root .today-task-mark.is-running { box-shadow: 0 0 0 4px rgba(79, 125, 114, 0.3); }
+html.dark .wakies-root .today-task-mark.is-paused { box-shadow: 0 0 0 4px var(--w-well); }
+html.dark .wakies-root .call-controls button[aria-pressed='true'] > span {
+  background-color: rgba(79, 125, 114, 0.22);
+}
+html.dark .wakies-root .computer-control-pill button { color: #fff; }
+
+/* États de bordure colorés à ne pas laisser à la règle universelle */
+html.dark .wakies-root .primary { border-color: #7689d3; }
+html.dark .wakies-root .page-review-card footer .review-primary { border-color: #496d61; }
+html.dark .wakies-root .composer-dropzone {
+  border-color: var(--blue);
+  background-color: color-mix(in oklab, var(--lavender, #2b2d47) 22%, var(--w-card));
+}
+html.dark .wakies-root .composer-piece.is-echec { border-color: color-mix(in oklab, var(--danger, #b3402f) 40%, var(--line)); }
+html.dark .wakies-root .composer-piece.is-pause { border-color: var(--warning, #d9a850); }
+html.dark .wakies-root .online-dot { border-color: var(--w-panel); }
+html.dark .wakies-root .computer-tool-tabs button[aria-selected='true'] { border-bottom-color: #e4e4e7; }
+html.dark .wakies-root .call-controls button > span { border-color: rgba(255, 255, 255, 0.12); }
+html.dark .wakies-root .wakies-public-avatar { border-color: #e4e4e7; }
+html.dark .wakies-root .chat-reaction-chip.active { border-color: var(--w-line-2); }
+html.dark .wakies-root .library-page-card:hover:not(:disabled) { border-color: var(--w-line-2); }
+html.dark .wakies-root .document-chat-dock:focus-within { border-color: #8fa483; }
+html.dark .wakies-root .computer-screen-empty { border-color: var(--w-line); }
+html.dark .wakies-root .composer-dropzone { border-style: dashed; }
+html.dark .wakies-root .computer-wakie-picker select { background-color: var(--w-card); }
+html.dark .wakies-root .computer-panel button { background-color: var(--w-card); }
+
+/* Document / éditeur (palette verte dérivée, neutrality en dark) */
+html.dark .wakies-root .document-prose pre { background-color: var(--w-well); }
+html.dark .wakies-root .document-prose code { background-color: var(--w-well); }
+html.dark .wakies-root .document-prose th { background-color: var(--w-well); }
+html.dark .wakies-root .editor-hint kbd { background-color: var(--w-well); }
+html.dark .wakies-root .document-prose blockquote {
+  background-color: var(--w-panel);
+  color: var(--ink);
+  border-left-color: var(--w-line-2);
+}
+html.dark .wakies-root .document-save-notice,
+html.dark .wakies-root .document-notice {
+  background-color: rgba(217, 168, 80, 0.14);
+}
+html.dark .wakies-root .document-load-error { background-color: rgba(179, 64, 47, 0.14); }
+html.dark .wakies-root .document-outline button[aria-current='page'] {
+  background-color: var(--w-well);
+}
+
+/* Toggle */
+html.dark .wakies-root .toggle { background-color: var(--w-well-strong); }
+html.dark .wakies-root .toggle span { background-color: #e4e4e7; }
+
+/* Mentions & règlements & profils & partage & social */
+html.dark .wakies-root .composer-mentions { background-color: var(--w-raised); }
+html.dark .wakies-root .composer-dropzone { background-image: none; }
+html.dark .wakies-root .profile-cover { background-color: var(--w-well); }
+html.dark .wakies-root .fil-reglages-resume { background-color: var(--w-panel); }
+html.dark .wakies-root .settings-section { background-color: var(--w-raised); }
+html.dark .wakies-root .wakies-model-trigger-block { border-color: var(--w-line); }
+html.dark .wakies-root .wakies-model-picker button { background-color: var(--w-card); }
+
+/* chat-citation (accent lavande) */
+html.dark .wakies-root .chat-citation {
+  background-color: rgba(122, 111, 184, 0.16);
+  border-left-color: rgba(122, 111, 184, 0.6);
+}
+html.dark .wakies-root .chat-citation-auteur { color: #b3a6ea; }
+html.dark .wakies-root .chat-citation:hover { background-color: rgba(122, 111, 184, 0.24); }
+
+/* Intégrations & entêtes */
+html.dark .wakies-root .integration-icon { background-color: rgba(228, 228, 231, 0.65); }
+html.dark .wakies-root .composer-pieces-integrations { border-top-color: rgb(255 255 255 / 10%); }
+html.dark .wakies-root .chat-date-separator span { background-color: var(--w-card); }
+
+/* universel : toute bordure claire restante devient la ligne sombre */
+html.dark .wakies-root * { border-color: var(--w-line); }
+
+/* Lavandes (les bordures d'accent gardent leur teinte) */
+html.dark .wakies-root .chat-pinned-strip { border-color: rgba(122, 111, 184, 0.4); }
+html.dark .wakies-root .chat-pinned-item { border-color: rgba(122, 111, 184, 0.4); }
+html.dark .wakies-root .wakies-public-avatar { border-color: #e4e4e7; }
+html.dark .wakies-root .mode-badge.live { border-color: rgba(79, 125, 114, 0.4); }
+html.dark .wakies-root .notice { border-bottom-color: rgba(217, 168, 80, 0.35); }
+html.dark .wakies-root .error-banner,
+html.dark .wakies-root .task-error { border-color: rgba(179, 64, 47, 0.4); }
+html.dark .wakies-root .notice { border-color: rgba(217, 168, 80, 0.35); }
+html.dark .wakies-root .error-banner,
+html.dark .wakies-root .task-error { border-bottom-color: rgba(179, 64, 47, 0.4); }
+html.dark .wakies-root .today-hero,
+html.dark .wakies-root .today-status,
+html.dark .wakies-root .today-panel,
+html.dark .wakies-root .today-shortcut.md-button,
+html.dark .wakies-root .today-suggestions .md-button,
+html.dark .wakies-root .today-space-icon {
+  border-color: var(--w-line);
+}
+html.dark .wakies-root .page-review-card footer .review-primary { border-color: #496d61; }
+html.dark .wakies-root .chat-citation { border-left-color: rgba(122, 111, 184, 0.6); }
+
+/* Texte inversé : les tons d'encre claire restent nets */
+html.dark .wakies-root .template-app .send-button { color: #fff; }
+html.dark .wakies-root .template-app .mode-badge { background-color: var(--w-well); }
+html.dark .wakies-root .template-app .nav-item small { background-color: var(--w-well); }
+html.dark .wakies-root .template-app .page-tree-item.active { background-color: var(--w-well); }
+html.dark .wakies-root .template-app .chat-workspace > .result-pane,
+html.dark .wakies-root .template-app .pane-header { background-color: var(--w-panel); }
+html.dark .wakies-root .template-app .setup-card {
+  background-color: var(--w-raised);
+  border-color: var(--w-line);
+}
+html.dark .wakies-root .template-app .starter-suggestions button { background-color: var(--w-raised); }
+html.dark .wakies-root .template-app .chat-composer,
+html.dark .wakies-root .template-app .composer { background-color: var(--w-card); }
+html.dark .wakies-root .template-app .topbar { background-color: var(--w-raised); }
+html.dark .wakies-root .template-app.app .sidebar { background-color: var(--w-panel); }
+html.dark .wakies-root .template-app.app .workspace { background-color: var(--w-card); }
+html.dark .wakies-root .template-app.app .sidebar-bottom { background-color: var(--w-panel); }
+html.dark .wakies-root .today-hero { background-color: var(--w-panel); }
+html.dark .wakies-root .today-status { background-color: var(--w-card); }
+html.dark .wakies-root .today-panel { background-color: var(--w-card); }
+html.dark .wakies-root .today-shortcut.md-button { background-color: var(--w-card); }
+html.dark .wakies-root .page-tree { background-color: var(--w-panel); }
+html.dark .wakies-root .page-chat-panel { background-color: var(--w-card); }
+html.dark .wakies-root .page-document { background-color: var(--w-raised); }
+html.dark .wakies-root .inline-computer {
+  background-color: var(--w-card);
+  border-color: var(--w-line);
+}
+html.dark .wakies-root .inline-computer-preview { background-color: var(--w-well); }
+html.dark .wakies-root .computer-screen-empty { background-color: var(--w-raised); }
+html.dark .wakies-root .computer-control-pill { background-color: var(--w-well); }
+html.dark .wakies-root .computer-overlay { background-color: var(--w-panel); }
+html.dark .wakies-root .computer-screen,
+html.dark .wakies-root .computer-panel .computer-screen { background-color: var(--w-card); }
+html.dark .wakies-root .page-review-card { background-color: var(--w-card); }
+html.dark .wakies-root .page-review-card footer { background-color: var(--w-panel); }
+html.dark .wakies-root .result-pane,
+html.dark .wakies-root .pane-header { background-color: var(--w-panel); }
+html.dark .wakies-root .task-row { background-color: var(--w-card); }
+
+/* Bulles de chat (feuille host) : la bulle utilisateur de l'hôte était le
+   slate sombre #333641 ; on la relève sur l'encre secondaire pour respirer. */
+html.dark .wakies-root .chat-bubble.user {
+  background-color: #3b4252;
+  color: #f4f4f5;
+}
+
+html.dark .wakies-root .avatar,
+html.dark .wakies-root .message-avatar {
+  background-color: #3a3a44;
+}
+
+html.dark .wakies-root .modal {
+  background-color: #1c1c20;
+}
+
+html.dark .wakies-root .user-message > div {
+  background-color: var(--w-card);
+}
+
+

@@ -23,7 +23,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useActiveChat } from "@/hooks/use-active-chat";
-import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import type { AppKey } from "@/lib/apps/catalog";
 import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
@@ -78,7 +77,6 @@ export function AppSwitcherMenu({
   const pathname = usePathname();
   const router = useRouter();
   const { isDesktop, openCoder } = useIsDesktopApp();
-  const { favorite } = useFavoriteApp();
   const currentApp =
     currentAppOverride === undefined
       ? appKeyFromPath(pathname)
@@ -264,7 +262,6 @@ export function AppSwitcherMenu({
 
         {APP_ORDER.map((entry) => {
           const isCurrent = currentApp === entry.key;
-          const isFavorite = favorite === entry.key;
           const AppGlyph = APP_SWITCHER_ICONS[entry.key];
           const isCodeDisabled = entry.key === "code" && !isDesktop;
           const isLocked =
@@ -314,9 +311,6 @@ export function AppSwitcherMenu({
                 </div>
                 {isCurrent && (
                   <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                )}
-                {!isCurrent && isFavorite && (
-                  <CheckIcon className="mt-1 size-3.5 shrink-0 text-muted-foreground" />
                 )}
               </div>
             </DropdownMenuItem>

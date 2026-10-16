@@ -1365,16 +1365,29 @@
 /* Toutes les stories de l'auteur ont été vues : l'anneau passe en gris, il ne
    disparaît pas — l'utilisateur doit encore pouvoir rouvrir le lecteur. */
 .vibe-root .vibe-story-ring[data-live="true"][data-seen="true"] {
+  background: #d4d4d8;
+}
+
+.vibe-root[data-theme="dark"] .vibe-story-ring[data-live="true"][data-seen="true"] {
   background: #3f3f46;
 }
 
 .vibe-root .vibe-story-ring[data-live="true"]:focus-visible {
-  outline: 2px solid #fafafa;
+  outline: 2px solid #18181b;
   outline-offset: 2px;
 }
 
-/* L'espace entre le dégradé et l'avatar : sans lui, l'anneau mord l'image. */
+.vibe-root[data-theme="dark"] .vibe-story-ring[data-live="true"]:focus-visible {
+  outline-color: #fafafa;
+}
+
+/* L'espace entre le dégradé et l'avatar : sans lui, l'anneau mord l'image.
+   La couleur suit la surface du rail (blanc en clair, encre en sombre). */
 .vibe-root .vibe-story-ring[data-live="true"] > * {
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.vibe-root[data-theme="dark"] .vibe-story-ring[data-live="true"] > * {
   box-shadow: 0 0 0 2px #09090b;
 }
 
@@ -1383,9 +1396,15 @@
 .vibe-root .vibe-story-ring[data-size="lg"] { padding: 3px; }
 .vibe-root .vibe-story-ring[data-size="xl"] { padding: 4px; }
 
-/* Rail du fil : défilement horizontal, sans barre, collé au-dessus des posts. */
+/* Rail du fil : défilement horizontal, sans barre, collé au-dessus des posts.
+   Le rail suit le thème de Vibe : clair par défaut, sombre sur la racine sombre. */
 .vibe-root .vibe-stories-tray {
-  border-bottom: 1px solid #18181b;
+  border-bottom: 1px solid #e4e4e7;
+  background: #ffffff;
+}
+
+.vibe-root[data-theme="dark"] .vibe-stories-tray {
+  border-bottom-color: #18181b;
   background: #09090b;
 }
 
@@ -1399,11 +1418,15 @@
   width: 18px;
   height: 18px;
   border-radius: 9999px;
-  border: 2px solid #09090b;
+  border: 2px solid #ffffff;
   background: #10b981;
   color: #fff;
   font-size: 12px;
   line-height: 1;
+}
+
+.vibe-root[data-theme="dark"] .vibe-stories-add {
+  border-color: #09090b;
 }
 
 /* Lecteur plein écran. Le portail se rend dans .vibe-root, jamais sur body : c'est
@@ -1439,6 +1462,10 @@
 }
 
 .vibe-root .vibe-story-ring-halo[data-seen="true"] {
+  background: #d4d4d8;
+}
+
+.vibe-root[data-theme="dark"] .vibe-story-ring-halo[data-seen="true"] {
   background: #3f3f46;
 }
 
@@ -1466,6 +1493,10 @@
 }
 
 .vibe-root .vibe-story-ring-hit[data-seen="true"] {
+  background: #d4d4d8;
+}
+
+.vibe-root[data-theme="dark"] .vibe-story-ring-hit[data-seen="true"] {
   background: #3f3f46;
 }
 
@@ -1474,8 +1505,12 @@
 }
 
 .vibe-root .vibe-story-ring-hit:focus-visible {
-  outline: 2px solid #fafafa;
+  outline: 2px solid #18181b;
   outline-offset: 3px;
+}
+
+.vibe-root[data-theme="dark"] .vibe-story-ring-hit:focus-visible {
+  outline-color: #fafafa;
 }
 
 /* Grille d'archive du profil : vignettes 9:16, datées, sans anneau. */

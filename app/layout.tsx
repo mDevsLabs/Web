@@ -3,6 +3,7 @@ import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import { AppDialogHost } from "@/components/common/app-dialog-host";
 import { PlatformBridge } from "@/components/common/platform-bridge";
+import { ThemePreferenceSync } from "@/components/common/theme-preference-sync";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -119,6 +120,9 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <PlatformBridge />
             </Suspense>
+            {/* Le thème est partagé par la suite : au montage, la préférence du
+                compte aligne next-themes (voir le composant pour le contrat). */}
+            <ThemePreferenceSync />
             {children}
             <AppDialogHost />
             <Toaster

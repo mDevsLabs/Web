@@ -1,11 +1,13 @@
 /**
- * Rendu d'un média d'article : image ou vidéo selon l'extension de l'URL.
+ * Rendu d'un média d'article : image, vidéo HTML5 ou présentation YouTube.
  * Les vidéos sont déléguées à `NewsVideo` (lecture auto en boucle, son
- * configurable, bouton muet) ; les images restent de simples `<img>`.
+ * configurable, bouton muet), les vidéos YouTube à `NewsYouTube` (vignette de
+ * couverture, ou iframe sur la page article) ; les images restent des `<img>`.
  */
 
-import { isVideoUrl, type MediaKind } from "@/lib/site/media";
+import { isVideoUrl, type MediaKind, youTubeIdFromUrl } from "@/lib/site/media";
 import { NewsVideo } from "./news-video";
+import { NewsYouTube } from "./news-youtube";
 
 export function NewsMedia({
   src,
@@ -27,6 +29,19 @@ export function NewsMedia({
   /** Vidéos : tente une lecture avec son (couvertures), repli muet sinon. */
   sound?: boolean;
 }) {
+  const youTubeId = youTubeIdFromUrl(src);
+  if (youTubeId) {
+    return (
+      <NewsYouTube
+        alt={alt}
+        className={className}
+        fill={fill}
+        id={youTubeId}
+        player={sound}
+      />
+    );
+  }
+
   if (kind === "video" || isVideoUrl(src)) {
     return (
       <NewsVideo

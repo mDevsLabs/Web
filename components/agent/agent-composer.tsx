@@ -73,6 +73,7 @@ import { resolveSlashCommandOutcome } from "@/lib/chat/slash-command-outcomes";
 import { pagePath } from "@/lib/client/api-endpoints";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import { saveThemePreference } from "@/lib/theme/preference";
 import type { Attachment } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -391,9 +392,15 @@ export function AgentComposer({
         case "reset":
           onSlashSideEffect.resetConversation();
           return;
-        case "toggle_theme":
-          setTheme(resolvedTheme === "dark" ? "light" : "dark");
+        case "toggle_theme": {
+          const next = resolvedTheme === "dark" ? "light" : "dark";
+          setTheme(next);
+          // Le thème est partagé par la suite : l'enregistrer permet à Vibe,
+          // au Site et à Wakies de suivre la même décision au prochain
+          // chargement.
+          saveThemePreference(next);
           return;
+        }
         case "open_search":
           window.dispatchEvent(new CustomEvent("open-search-dialog"));
           return;
@@ -793,7 +800,11 @@ export function AgentComposer({
               onOpenChange={pickerOpenChange("reasoning")}
               open={openPicker === "reasoning"}
             />
-            <VoiceRecorderButton input={input} setInput={setInput} />
+            <VoiceRecorderButton
+              input={input}
+              setInput={setInput}
+              textareaRef={textareaRef}
+            />
             <ComposerSendButton
               canSend={canSend}
               loading={uploadQueue.length > 0}

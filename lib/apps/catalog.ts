@@ -24,6 +24,14 @@ export type AppCatalogEntry = {
   path: string;
   /** Préfixe d'URL qui identifie l'application dans location.pathname. */
   pathPrefix: string;
+  /**
+   * Préfixes d'URL supplémentaires appartenant à la même application.
+   * Sert aux alias produits : `/code` est réécrit vers `/coder` par
+   * next.config.ts et RESTE VISIBLE dans l'URL (une rewrite, pas une
+   * redirection) — sans ces alias, l'application courante serait prise pour
+   * mAI sur cette page.
+   */
+  pathAliases?: string[];
 };
 
 export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
@@ -31,9 +39,10 @@ export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
     description: "L'outil de codage pour IA",
     key: "code",
     label: "Coder",
-    // La route réelle est /coder ; l'alias /code est couvert par une
-    // redirection next.config.ts. Le menu pointe vers la route canonique.
+    // La route réelle est /coder ; l'alias /code est réécrit par
+    // next.config.ts. Le menu pointe vers la route canonique.
     path: "/coder",
+    pathAliases: ["/code"],
     pathPrefix: "/coder",
   },
   mai: {
@@ -101,10 +110,16 @@ export function appKeyFromPath(pathname: string | null | undefined): AppKey {
     return DEFAULT_APP_KEY;
   }
   const prefixed = APP_ORDER.filter((entry) => entry.pathPrefix !== "/");
-  const match = prefixed
-    .filter((entry) => pathname.startsWith(entry.pathPrefix))
-    .sort((a, b) => b.pathPrefix.length - a.pathPrefix.length)[0];
-  return match?.key ?? DEFAULT_APP_KEY;
+  const candidates = prefixed
+    .flatMap((entry) =>
+      [entry.pathPrefix, ...(entry.pathAliases ?? [])].map((prefix) => ({
+        entry,
+        prefix,
+      }))
+    )
+    .filter(({ prefix }) => pathname.startsWith(prefix))
+    .sort((a, b) => b.prefix.length - a.prefix.length);
+  return candidates[0]?.entry.key ?? DEFAULT_APP_KEY;
 }
 
 /** Clé de cache localStorage du « menu favori » (miroir de la base). */

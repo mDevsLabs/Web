@@ -16,6 +16,10 @@ import {
   buildCustomInstructionsSchema,
   customInstructionsLimitPayload,
 } from "@/lib/plans/custom-instructions";
+import {
+  normalizeThemePreference,
+  THEME_PREFERENCES,
+} from "@/lib/theme/preference";
 
 // La limite de customInstructions dépend du forfait : le schéma est donc
 // construit par requête. Avant, `z.string().max(4000)` était figé ici comme
@@ -54,6 +58,10 @@ const buildSchema = (tier?: string | null) =>
     ghostMemoryEnabled: z.boolean().optional(),
     showAgentChatIcons: z.boolean().optional(),
     temperature: z.number().min(0).max(2).optional(),
+    // Thème partagé par la suite (mAI, Site, Vibe, Wakies). Une valeur
+    // illisible retombe sur « system » : enregistrer les autres réglages ne
+    // doit pas échouer à cause du thème.
+    theme: z.string().transform(normalizeThemePreference).optional(),
     topP: z.number().min(0).max(1).optional(),
   });
 
@@ -89,6 +97,8 @@ export async function GET() {
       ghostMemoryEnabled: false,
       showAgentChatIcons: true,
       temperature: 0.7,
+      // Valeur par défaut sûre : aucune préférence partagée connue.
+      theme: "system",
       topP: 0.9,
     });
   }

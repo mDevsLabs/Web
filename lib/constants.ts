@@ -12,8 +12,7 @@ export const isTestEnvironment = Boolean(
 );
 
 export const MAI_SESSION_COOKIE = "mai_session_token";
-export const MAI_API_URL =
-  process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
+export const MAI_API_URL = process.env.MAI_API_URL || "https://mai.val.run";
 // URL absolue conservée pour les réponses API consommées hors du navigateur.
 export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app/pricing";
 // Navigation dans l'application intégrée au shell Next.js.

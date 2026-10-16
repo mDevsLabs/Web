@@ -562,7 +562,30 @@ export interface StoryMedia {
   width: number | null;
 }
 
-/** Une story : un instantané de 24 h, une légende, un ou plusieurs médias. */
+/**
+ * Sondage d'une story : question et options figées à la publication, une voix
+ * par spectateur (remplaçable). `counts` suit l'ordre de `options`.
+ */
+export interface StoryPoll {
+  counts: number[];
+  myVote: number | null;
+  options: string[];
+  question: string;
+  total: number;
+}
+
+/** Sticker emoji posé sur le canevas, en coordonnées relatives (0 → 1). */
+export interface StorySticker {
+  emoji: string;
+  x: number;
+  y: number;
+}
+
+/**
+ * Une story : un instantané de 24 h, une légende, un ou plusieurs médias.
+ * Les trois contenus — média, texte (légende seule), sondage — sont indépendants :
+ * une story sans média est une story de texte, rendue sur un canevas à part.
+ */
 export interface Story {
   archivedAt?: string | null;
   caption: string;
@@ -570,6 +593,8 @@ export interface Story {
   expiresAt: string;
   id: string;
   media: StoryMedia[];
+  poll: StoryPoll | null;
+  stickers: StorySticker[];
   visibility: "followers" | "public" | "private";
 }
 

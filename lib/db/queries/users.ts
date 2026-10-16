@@ -16,7 +16,19 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { normalizeAppKey } from "@/lib/apps/catalog";
+import { normalizeCreationMode } from "@/lib/creation/mode";
+import { ChatbotError } from "@/lib/errors";
+import {
+  AUTO_DICTATION_LANGUAGE,
+  DEFAULT_TRANSLATION_TARGET,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+} from "@/lib/i18n/languages";
+import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
+import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
+import { normalizeThemePreference } from "@/lib/theme/preference";
 import {
   agent,
   agentTemplate,
@@ -50,19 +62,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { normalizeAppKey } from "@/lib/apps/catalog";
-import { normalizeCreationMode } from "@/lib/creation/mode";
-import {
-  AUTO_DICTATION_LANGUAGE,
-  DEFAULT_TRANSLATION_TARGET,
-  normalizeDictationLanguage,
-  normalizeTranslationTarget,
-} from "@/lib/i18n/languages";
-import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
-import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 // ==========================================
 // USER AI PREFERENCES QUERIES
@@ -105,6 +105,9 @@ export async function getUserPreferences(userId: string) {
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
         showAgentChatIcons: row.showAgentChatIcons ?? true,
         temperature: row.defaultTemperature ?? 0.7,
+        // Thème partagé par la suite : une valeur illisible retombe sur
+        // « system », jamais sur un thème fantôme.
+        theme: normalizeThemePreference(row.theme),
         topP: row.defaultTopP ?? 0.9,
       };
     }
@@ -131,6 +134,10 @@ export async function getUserPreferences(userId: string) {
     ghostMemoryEnabled: false,
     showAgentChatIcons: true,
     temperature: legacy.defaultTemperature ?? 0.7,
+    // Table user_preferences absente (environnement non migré) : le thème
+    // partagé n'a pas de colonne de repli dans `users`. On répond la valeur
+    // sûre plutôt que d'inventer un thème.
+    theme: "system",
     topP: legacy.defaultTopP ?? 0.9,
   };
 }
@@ -155,6 +162,8 @@ type UserPreferencesPatch = Partial<{
   defaultTranslationLanguage: string;
   ghostMemoryEnabled: boolean;
   showAgentChatIcons: boolean;
+  /** Thème partagé : system | light | dark (normalisé à l'écriture). */
+  theme: string;
 }>;
 
 function isMissingUserPreferencesTable(error: unknown): boolean {
@@ -298,6 +307,9 @@ export async function upsertUserPreferences(
             DEFAULT_TRANSLATION_TARGET,
           ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
           showAgentChatIcons: data.showAgentChatIcons ?? true,
+          // Une valeur illisible retombe sur « system », comme un tier
+          // illisible vaut free.
+          theme: normalizeThemePreference(data.theme),
           userId,
         })
         .returning();
@@ -349,6 +361,8 @@ export async function upsertUserPreferences(
       updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
     if (data.showAgentChatIcons !== undefined)
       updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+    if (data.theme !== undefined)
+      updatePayload.theme = normalizeThemePreference(data.theme);
 
     const [updated] = await db
       .update(userPreferences)

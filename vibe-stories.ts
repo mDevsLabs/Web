@@ -5,13 +5,14 @@
  * par un anneau autour de la photo de profil puis conservées en archive.
  *
  *  - GET    /v1/stories/tray       rail du jour, groupé par auteur
- *  - POST   /v1/stories            publication (médias déjà téléversés)
+ *  - POST   /v1/stories            publication — média, texte, sondage, stickers
  *  - GET    /v1/stories/active     mes stories live
  *  - GET    /v1/stories/archive    mes stories archivées
  *  - PATCH  /v1/stories/:id        légende, visibilité, archive volontaire
  *  - DELETE /v1/stories/:id        suppression (soft, donc réversible)
  *  - POST   /v1/stories/:id/view   vue, idempotente
  *  - POST   /v1/stories/:id/react  réaction dans l'allowlist
+ *  - POST   /v1/stories/:id/vote   vote au sondage, un par compte (modifiable)
  *  - GET    /v1/stories/:id/views  qui a regardé — auteur seul
  *
  * Trois états, dérivés et non stockés comme tels :
@@ -65,6 +66,14 @@ export const STORY_TTL_HOURS = 24;
 export const STORY_MEDIA_MAX_BYTES = 50 * 1024 * 1024;
 /** Nombre maximal de médias dans une même story. */
 export const STORY_MAX_ITEMS = 10;
+/** Longueur maximale d'une légende — c'est aussi la story de texte seul. */
+export const STORY_MAX_CAPTION = 500;
+/** Nombre maximal de stickers posés sur une story. */
+export const STORY_MAX_STICKERS = 6;
+/** Bornes du sondage : une question, deux à quatre options lisibles. */
+export const STORY_POLL_MAX_OPTIONS = 4;
+export const STORY_POLL_MAX_OPTION = 60;
+export const STORY_POLL_MAX_QUESTION = 120;
 /** Réactions proposées par le lecteur. Hors de cette liste : refus. */
 export const STORY_REACTIONS = ["❤️", "🔥", "😮"] as const;
 /** Visibilités admises, en cohérence avec la CHECK de la migration 026. */
@@ -155,6 +164,29 @@ export async function ensureStoriesTables() {
     await sql`
       CREATE INDEX IF NOT EXISTS idx_story_reactions_story
         ON vibe_story_reactions(story_id)
+    `.catch(() => {});
+
+    // Le sondage et les stickers vivent SUR la story (JSONB), les votes dans
+    // leur propre table : un compte = une ligne, rejouable pour changer d'option.
+    await sql`
+      ALTER TABLE vibe_stories ADD COLUMN IF NOT EXISTS poll JSONB
+    `.catch(() => {});
+    await sql`
+      ALTER TABLE vibe_stories ADD COLUMN IF NOT EXISTS stickers JSONB
+    `.catch(() => {});
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS vibe_story_poll_votes (
+        story_id UUID NOT NULL REFERENCES vibe_stories(id) ON DELETE CASCADE,
+        voter_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        option_index SMALLINT NOT NULL,
+        created_at TIMESTAMPTZ DEFAULT NOW(),
+        PRIMARY KEY (story_id, voter_id)
+      )
+    `;
+    await sql`
+      CREATE INDEX IF NOT EXISTS idx_story_poll_votes_story
+        ON vibe_story_poll_votes(story_id, option_index)
     `.catch(() => {});
 
     await sql`
@@ -307,11 +339,43 @@ async function resolveStoryTier(
   return normalizeTier(extractTierFromApiKey(token) || "Free");
 }
 
-/** Regroupe des lignes jointes story×média en rail groupé par auteur. */
+/** JSONB relu par le pool : objet déjà décodé, ou chaîne selon le driver. */
+function lireJsonb(valeur: any): any {
+  if (typeof valeur !== "string") return valeur;
+  try {
+    return JSON.parse(valeur);
+  } catch {
+    return null;
+  }
+}
+
+/** Depuis les agrégats SQL : compteurs par story et mon vote par story. */
+function construireVotes(votesAgreges: any[], mesLignes: any[]) {
+  const parStory = new Map<string, number[]>();
+  for (const ligne of votesAgreges) {
+    const cle = String(ligne.story_id);
+    const compteurs = parStory.get(cle) || [];
+    compteurs[Number(ligne.option_index)] = Number(ligne.votes || 0);
+    parStory.set(cle, compteurs);
+  }
+  const miens = new Map<string, number>();
+  for (const ligne of mesLignes) {
+    miens.set(String(ligne.story_id), Number(ligne.option_index));
+  }
+  return { miens, parStory };
+}
+
+/**
+ * Regroupe des lignes jointes story×média en rail groupé par auteur. Le JOIN est
+ * un LEFT JOIN depuis les stories de texte : une story sans média arrive avec
+ * `media_id` à NULL et n'ajoute simplement aucune entrée à `media`.
+ */
 function assemblerRail(
   lignes: any[],
   viewerId: number | null,
-  vues: Set<string>
+  vues: Set<string>,
+  votesParStory: Map<string, number[]> = new Map(),
+  mesVotes: Map<string, number> = new Map()
 ): any[] {
   const parAuteur = new Map<number, any>();
   const parStory = new Map<string, any>();
@@ -320,12 +384,41 @@ function assemblerRail(
     const cle = String(ligne.id);
     let story = parStory.get(cle);
     if (!story) {
+      const brutPoll = lireJsonb(ligne.poll);
+      const options = Array.isArray(brutPoll?.options)
+        ? brutPoll.options.filter((o: any) => typeof o === "string")
+        : [];
+      const compteurs = votesParStory.get(cle) || [];
+      const counts = options.map((_: any, index: number) =>
+        Number(compteurs[index] || 0)
+      );
+      const stickers = lireJsonb(ligne.stickers);
+
       story = {
         caption: ligne.caption || "",
         createdAt: ligne.created_at,
         expiresAt: ligne.expires_at,
         id: cle,
         media: [],
+        // Un sondage amputé (question vide ou moins de deux options) ne
+        // s'affiche pas : le serveur n'en crée jamais, mais une ligne
+        // historicisée ne doit pas casser le lecteur.
+        poll:
+          brutPoll &&
+          typeof brutPoll.question === "string" &&
+          options.length >= 2
+            ? {
+                counts,
+                myVote: mesVotes.has(cle) ? Number(mesVotes.get(cle)) : null,
+                options,
+                question: brutPoll.question,
+                total: counts.reduce(
+                  (somme: number, n: number) => somme + n,
+                  0
+                ),
+              }
+            : null,
+        stickers: Array.isArray(stickers) ? stickers : [],
         visibility: ligne.visibility,
       };
       parStory.set(cle, story);
@@ -347,15 +440,17 @@ function assemblerRail(
       entree.stories.push(story);
     }
 
-    story.media.push({
-      altText: ligne.alt_text || "",
-      height: ligne.height ?? null,
-      id: String(ligne.media_id),
-      mediaType: ligne.media_type,
-      position: Number(ligne.position || 0),
-      url: ligne.url,
-      width: ligne.width ?? null,
-    });
+    if (ligne.media_id) {
+      story.media.push({
+        altText: ligne.alt_text || "",
+        height: ligne.height ?? null,
+        id: String(ligne.media_id),
+        mediaType: ligne.media_type,
+        position: Number(ligne.position || 0),
+        url: ligne.url,
+        width: ligne.width ?? null,
+      });
+    }
   }
 
   // L'anneau se grise quand TOUTES les stories de l'auteur sont vues ; une seule
@@ -381,30 +476,42 @@ export function registerVibeStoriesRoutes(
       const sql = getDb();
       const viewerId = await storyUserId(c);
 
-      const [lignes, cache, abonnements, vues] = await Promise.all([
-        sql`
+      const [lignes, cache, abonnements, vues, votesAgreges, mesVotesLignes] =
+        await Promise.all([
+          sql`
           SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
+                 s.poll, s.stickers,
                  u.username, p.display_name, p.avatar_url,
                  m.id AS media_id, m.url, m.media_type, m.position,
                  m.width, m.height, m.alt_text
           FROM vibe_stories s
           JOIN users u ON u.id = s.user_id
           LEFT JOIN profiles p ON p.user_id = s.user_id
-          JOIN vibe_story_media m ON m.story_id = s.id
+          LEFT JOIN vibe_story_media m ON m.story_id = s.id
           WHERE s.deleted_at IS NULL
             AND s.archived_at IS NULL
             AND s.expires_at > NOW()
           ORDER BY s.created_at DESC, m.position ASC
           LIMIT 600
         `,
-        resolveHiddenUserIds(viewerId),
-        viewerId
-          ? sql`SELECT following_id FROM follows WHERE follower_id = ${viewerId}`
-          : Promise.resolve([] as any[]),
-        viewerId
-          ? sql`SELECT story_id FROM vibe_story_views WHERE viewer_id = ${viewerId}`
-          : Promise.resolve([] as any[]),
-      ]);
+          resolveHiddenUserIds(viewerId),
+          viewerId
+            ? sql`SELECT following_id FROM follows WHERE follower_id = ${viewerId}`
+            : Promise.resolve([] as any[]),
+          viewerId
+            ? sql`SELECT story_id FROM vibe_story_views WHERE viewer_id = ${viewerId}`
+            : Promise.resolve([] as any[]),
+          sql`
+          SELECT v.story_id, v.option_index, COUNT(*)::int AS votes
+          FROM vibe_story_poll_votes v
+          JOIN vibe_stories s ON s.id = v.story_id
+          WHERE s.deleted_at IS NULL AND s.expires_at > NOW()
+          GROUP BY v.story_id, v.option_index
+        `,
+          viewerId
+            ? sql`SELECT story_id, option_index FROM vibe_story_poll_votes WHERE voter_id = ${viewerId}`
+            : Promise.resolve([] as any[]),
+        ]);
 
       const follows = new Set(
         (abonnements as any[]).map((r) => Number(r.following_id))
@@ -429,11 +536,17 @@ export function registerVibeStoriesRoutes(
         return false;
       };
 
+      const { miens, parStory } = construireVotes(
+        votesAgreges as any[],
+        mesVotesLignes as any[]
+      );
       return c.json({
         stories: assemblerRail(
           (lignes as any[]).filter(autorise),
           viewerId,
-          vuesSet
+          vuesSet,
+          parStory,
+          miens
         ),
         success: true,
       });
@@ -458,16 +571,19 @@ export function registerVibeStoriesRoutes(
       await ensureStoriesTables();
       const sql = getDb();
 
-      const lignes =
+      // Deux requêtes de plus, en parallèle des lignes : les compteurs du
+      // sondage et mon vote, comme le rail — l'auteur voit les résultats.
+      const [lignes, votesAgreges, mesVotesLignes] = await Promise.all([
         etat === "active"
-          ? await sql`
+          ? sql`
               SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
+                     s.poll, s.stickers,
                      NULL::varchar AS display_name, NULL::varchar AS avatar_url,
                      '' AS username,
                      m.id AS media_id, m.url, m.media_type, m.position,
                      m.width, m.height, m.alt_text
               FROM vibe_stories s
-              JOIN vibe_story_media m ON m.story_id = s.id
+              LEFT JOIN vibe_story_media m ON m.story_id = s.id
               WHERE s.user_id = ${userId}
                 AND s.deleted_at IS NULL
                 AND s.archived_at IS NULL
@@ -477,20 +593,43 @@ export function registerVibeStoriesRoutes(
             `
           : await sql`
               SELECT s.id, s.user_id, s.caption, s.visibility, s.created_at, s.expires_at,
+                     s.poll, s.stickers,
                      NULL::varchar AS display_name, NULL::varchar AS avatar_url,
                      '' AS username,
                      m.id AS media_id, m.url, m.media_type, m.position,
                      m.width, m.height, m.alt_text
               FROM vibe_stories s
-              JOIN vibe_story_media m ON m.story_id = s.id
+              LEFT JOIN vibe_story_media m ON m.story_id = s.id
               WHERE s.user_id = ${userId}
                 AND s.deleted_at IS NULL
                 AND (s.archived_at IS NOT NULL OR s.expires_at <= NOW())
               ORDER BY s.created_at DESC, m.position ASC
               LIMIT 400
-            `;
+            `,
+        sql`
+          SELECT v.story_id, v.option_index, COUNT(*)::int AS votes
+          FROM vibe_story_poll_votes v
+          JOIN vibe_stories s ON s.id = v.story_id
+          WHERE s.user_id = ${userId}
+          GROUP BY v.story_id, v.option_index
+        `,
+        sql`
+          SELECT story_id, option_index FROM vibe_story_poll_votes
+          WHERE voter_id = ${userId}
+        `,
+      ]);
 
-      const stories = assemblerRail(lignes as any[], userId, new Set());
+      const { miens, parStory } = construireVotes(
+        votesAgreges as any[],
+        mesVotesLignes as any[]
+      );
+      const stories = assemblerRail(
+        lignes as any[],
+        userId,
+        new Set(),
+        parStory,
+        miens
+      );
       return c.json({ stories: stories[0]?.stories || [], success: true });
     } catch (err) {
       console.error(`[vibe-stories] ${etat} error:`, err);
@@ -526,9 +665,6 @@ export function registerVibeStoriesRoutes(
 
       const body = await c.req.json().catch(() => ({}));
       const items = Array.isArray(body?.items) ? body.items : [];
-      if (items.length === 0) {
-        return c.json({ error: "Aucun média fourni." }, 400);
-      }
       if (items.length > STORY_MAX_ITEMS) {
         return c.json(
           { error: `Une story accepte au plus ${STORY_MAX_ITEMS} médias.` },
@@ -537,12 +673,73 @@ export function registerVibeStoriesRoutes(
       }
 
       const caption =
-        typeof body?.caption === "string" ? body.caption.slice(0, 500) : "";
+        typeof body?.caption === "string"
+          ? body.caption.trim().slice(0, STORY_MAX_CAPTION)
+          : "";
       const visibility = (STORY_VISIBILITIES as readonly string[]).includes(
         body?.visibility
       )
         ? body.visibility
         : "followers";
+
+      // Sondage : une question et au moins deux options lisibles. Un sondage
+      // à moitié rempli est refusé plutôt que publié amputé.
+      let poll: { options: string[]; question: string } | null = null;
+      if (body?.poll && typeof body.poll === "object") {
+        const question =
+          typeof body.poll.question === "string"
+            ? body.poll.question.trim().slice(0, STORY_POLL_MAX_QUESTION)
+            : "";
+        const options = (
+          Array.isArray(body.poll.options) ? body.poll.options : []
+        )
+          .filter((option: any) => typeof option === "string")
+          .map((option: string) =>
+            option.trim().slice(0, STORY_POLL_MAX_OPTION)
+          )
+          .filter((option: string) => option.length > 0)
+          .slice(0, STORY_POLL_MAX_OPTIONS);
+        if (question && options.length >= 2) {
+          poll = { options, question };
+        } else if (question || options.length > 0) {
+          return c.json(
+            {
+              error:
+                "Sondage incomplet : une question et au moins deux options sont requises.",
+            },
+            400
+          );
+        }
+      }
+
+      // Stickers : bornés, replacés dans le canevas. Un point malformé est
+      // ignoré plutôt que de faire échouer la publication.
+      const stickers: Array<{ emoji: string; x: number; y: number }> = [];
+      if (Array.isArray(body?.stickers)) {
+        for (const brut of body.stickers) {
+          const emoji =
+            typeof brut?.emoji === "string" ? brut.emoji.slice(0, 8) : "";
+          const x = Number(brut?.x);
+          const y = Number(brut?.y);
+          if (!emoji || !Number.isFinite(x) || !Number.isFinite(y)) continue;
+          stickers.push({
+            emoji,
+            x: Math.min(1, Math.max(0, x)),
+            y: Math.min(1, Math.max(0, y)),
+          });
+          if (stickers.length >= STORY_MAX_STICKERS) break;
+        }
+      }
+
+      // Une story vide n'a pas de sens : média, légende ou sondage, au moins l'un.
+      if (items.length === 0 && !caption && !poll) {
+        return c.json(
+          {
+            error: "Story vide : ajoutez un média, une légende ou un sondage.",
+          },
+          400
+        );
+      }
 
       // Quota journalier, résolu AVANT toute écriture.
       const tier = await resolveStoryTier(userId, token);
@@ -646,13 +843,15 @@ export function registerVibeStoriesRoutes(
 
       const storyId = crypto.randomUUID();
       await sql`
-        INSERT INTO vibe_stories (id, user_id, caption, visibility, expires_at)
+        INSERT INTO vibe_stories (id, user_id, caption, visibility, expires_at, poll, stickers)
         VALUES (
           ${storyId}::uuid,
           ${userId},
           ${caption || null},
           ${visibility},
-          NOW() + make_interval(hours => ${STORY_TTL_HOURS})
+          NOW() + make_interval(hours => ${STORY_TTL_HOURS}),
+          ${poll ? JSON.stringify(poll) : null}::jsonb,
+          ${stickers.length > 0 ? JSON.stringify(stickers) : null}::jsonb
         )
       `;
 
@@ -885,6 +1084,77 @@ export function registerVibeStoriesRoutes(
       "/v1/stories/:id/react",
     ],
     handleReactStory
+  );
+
+  // ── POST /v1/stories/:id/vote — un vote par compte, modifiable ────────
+  const handleVoteStory = async (c: any) => {
+    try {
+      const userId = await storyUserId(c);
+      if (!userId) return c.json({ error: "Non authentifié." }, 401);
+      const id = String(c.req.param("id") || "");
+      if (!id) return c.json({ error: "Story introuvable." }, 404);
+
+      await ensureStoriesTables();
+      const sql = getDb();
+
+      const body = await c.req.json().catch(() => ({}));
+      const index = Number(body?.option_index ?? body?.optionIndex);
+
+      const [story] = await sql`
+        SELECT poll FROM vibe_stories
+        WHERE id = ${id}::uuid AND deleted_at IS NULL AND expires_at > NOW()
+        LIMIT 1
+      `;
+      const brutPoll = lireJsonb(story?.poll);
+      const options = Array.isArray(brutPoll?.options) ? brutPoll.options : [];
+      if (options.length === 0) {
+        return c.json({ error: "Sondage introuvable." }, 404);
+      }
+      if (!Number.isInteger(index) || index < 0 || index >= options.length) {
+        return c.json({ error: "Option de sondage invalide." }, 400);
+      }
+
+      // Un compte, un vote : le rejouer change l'option choisie.
+      await sql`
+        INSERT INTO vibe_story_poll_votes (story_id, voter_id, option_index)
+        VALUES (${id}::uuid, ${userId}, ${index})
+        ON CONFLICT (story_id, voter_id)
+        DO UPDATE SET option_index = EXCLUDED.option_index, created_at = NOW()
+      `;
+
+      const agreges = await sql`
+        SELECT option_index, COUNT(*)::int AS votes
+        FROM vibe_story_poll_votes
+        WHERE story_id = ${id}::uuid
+        GROUP BY option_index
+      `;
+      const counts = options.map((_: any, optionIndex: number) =>
+        Number(
+          (agreges as any[]).find(
+            (ligne: any) => Number(ligne.option_index) === optionIndex
+          )?.votes || 0
+        )
+      );
+      return c.json({
+        counts,
+        myVote: index,
+        success: true,
+        total: counts.reduce((somme: number, n: number) => somme + n, 0),
+      });
+    } catch (err) {
+      console.error("[vibe-stories] vote error:", err);
+      return c.json({ error: "Erreur lors du vote." }, 500);
+    }
+  };
+
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/stories/:id/vote",
+      "/vibe/stories/:id/vote",
+      "/v1/stories/:id/vote",
+    ],
+    handleVoteStory
   );
 
   // ── GET /v1/stories/:id/views — qui a regardé, auteur seul ───────────

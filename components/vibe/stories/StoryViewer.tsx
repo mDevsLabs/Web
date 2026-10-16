@@ -25,9 +25,12 @@ import type {
  *
  * Navigation : tap gauche/droite pour reculer/avancer d'un média, fin de l'auteur
  * courant ⇒ auteur suivant, swipe vertical ⇒ changer d'auteur, `Escape` fermer.
+ *
+ * Une story SANS média est une story de texte : elle compte pour un item, rendu
+ * sur un canevas à part. Stickers et sondage se superposent aux deux formes.
  */
 
-/** Durée d'affichage d'une photo ; une vidéo avance à la fin de sa lecture. */
+/** Durée d'affichage d'une photo ou d'un texte ; une vidéo avance à la fin. */
 const IMAGE_DURATION_MS = 6000;
 const TICK_MS = 50;
 /** Seuil de swipe, identique à MediaLightbox.tsx:95-104 pour une gesture cohérente. */
@@ -35,12 +38,14 @@ const SWIPE_THRESHOLD_PX = 60;
 
 const REACTIONS = ["❤️", "🔥", "😮"] as const;
 
-type Item = { media: StoryMedia; story: Story };
+type Item = { media: StoryMedia | null; story: Story };
 
 function aplatir(auteur?: StoryAuthor): Item[] {
   if (!auteur) return [];
-  return auteur.stories.flatMap((story) =>
-    story.media.map((media) => ({ media, story }))
+  return auteur.stories.flatMap<Item>((story) =>
+    story.media.length > 0
+      ? story.media.map((media) => ({ media, story }))
+      : [{ media: null, story }]
   );
 }
 
@@ -64,6 +69,10 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   const [envoi, setEnvoi] = useState<"erreur" | "envoye" | "envoi">("envoye");
   const [vues, setVues] = useState<StoryViewerType[] | null>(null);
   const [compteurVues, setCompteurVues] = useState(0);
+  /** Votes de la session, par story : ils priment sur l'instantané du rail. */
+  const [votes, setVotes] = useState<
+    Record<string, { counts: number[]; myVote: number; total: number }>
+  >({});
 
   const auteur = authors[authorIndex];
   const items = useMemo(() => aplatir(auteur), [auteur]);
@@ -122,9 +131,9 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     setProgress(0);
   }, [authorIndex, itemIndex, authors, passerAuteur]);
 
-  // Changement de média : on repart de zéro, et la story est comptée comme vue.
+  // Changement d'item : on repart de zéro, et la story est comptée comme vue.
   const identiteCourante = courant
-    ? `${courant.story.id}:${courant.media.id}`
+    ? `${courant.story.id}:${courant.media?.id ?? "texte"}`
     : "";
   useEffect(() => {
     setProgress(0);
@@ -142,8 +151,11 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     }
   }, [identiteCourante, courant]);
 
-  // Auto-avance des photos. Les vidéos avancent sur `ended`, pas sur un timer.
-  const estPhoto = courant?.media.mediaType === "image";
+  // Auto-avance des photos et des textes. Les vidéos avancent sur `ended`, pas
+  // sur un timer.
+  const estPhoto =
+    Boolean(courant) &&
+    (!courant?.media || courant.media.mediaType === "image");
   useEffect(() => {
     if (!estPhoto || paused || !courant) return;
     const step = (TICK_MS / IMAGE_DURATION_MS) * 100;
@@ -178,6 +190,29 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
       } catch {
         // Une réaction perdue reste affichée localement : rien ne doit bloquer la
         // consultation d'une story pour un échec d'écriture.
+      }
+    },
+    [courant]
+  );
+
+  const voter = useCallback(
+    async (index: number) => {
+      const story = courant?.story;
+      if (!story?.poll) return;
+      haptics.light();
+      try {
+        const res = await ApiService.voteStory(story.id, index);
+        setVotes((actuel) => ({
+          ...actuel,
+          [story.id]: {
+            counts: Array.isArray(res.counts) ? res.counts : [],
+            myVote: Number.isInteger(res.myVote) ? res.myVote : index,
+            total: Number(res.total || 0),
+          },
+        }));
+      } catch {
+        // Un vote perdu n'interrompt pas la lecture : le serveur reste seul
+        // maître du dépouillement, le rail le reflétera au prochain chargement.
       }
     },
     [courant]
@@ -220,11 +255,22 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     return null;
   }
 
-  const estVideo = courant.media.mediaType === "video";
+  const estVideo = courant.media?.mediaType === "video";
+  const sondage = courant.story.poll;
+  const etatSondage = sondage
+    ? (votes[courant.story.id] ?? {
+        counts: sondage.counts,
+        myVote: sondage.myVote,
+        total: sondage.total,
+      })
+    : null;
+  const sondageVerrouille =
+    Boolean(auteur?.isMine) || (etatSondage?.myVote ?? null) !== null;
+  const montrerResultats = sondageVerrouille;
 
   return createPortal(
     <div
-      className="vibe-story-viewer fixed inset-0 z-[90] flex flex-col bg-black"
+      className="vibe-story-viewer fixed inset-0 z-[90] flex flex-col bg-zinc-950"
       onPointerCancel={() => setPaused(false)}
       onPointerDown={(e) => {
         pointerRef.current = { x: e.clientX, y: e.clientY };
@@ -252,15 +298,15 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         else reculer();
       }}
     >
-      {/* Barres de progression : un segment par média de l'auteur. */}
+      {/* Barres de progression : un segment par item de l'auteur. */}
       <div className="flex gap-1 px-3 pt-3 shrink-0">
         {items.map((item, index) => (
           <div
-            className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/25"
-            key={item.media.id}
+            className="h-0.5 flex-1 overflow-hidden rounded-full bg-zinc-500/30"
+            key={item.media?.id ?? item.story.id}
           >
             <div
-              className="h-full bg-white transition-[width] duration-75 ease-linear"
+              className="h-full bg-zinc-500 transition-[width] duration-75 ease-linear vibe-dark:bg-white"
               style={{
                 width:
                   index < itemIndex
@@ -312,31 +358,115 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         </button>
       </div>
 
-      {/* Média. */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+      {/* Média, canevas de texte, stickers, légende et sondage. */}
+      <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-zinc-100 vibe-dark:bg-black">
         {estVideo ? (
           <video
             autoPlay
             className="h-full w-full object-contain"
-            key={courant.media.id}
+            key={identiteCourante}
             muted
             onEnded={avancer}
             playsInline
             ref={videoRef}
-            src={courant.media.url}
+            src={courant.media?.url}
           />
-        ) : (
+        ) : courant.media ? (
           <img
             alt={courant.media.altText || "Story"}
             className="h-full w-full object-contain"
-            key={courant.media.id}
+            key={identiteCourante}
             src={courant.media.url}
           />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800 px-8">
+            <p className="max-h-full overflow-hidden text-balance text-center text-2xl font-semibold leading-snug text-white">
+              {courant.story.caption}
+            </p>
+          </div>
         )}
-        {courant.story.caption ? (
-          <p className="absolute bottom-4 left-1/2 max-w-[90%] -translate-x-1/2 rounded-xl bg-black/45 px-3 py-2 text-center text-sm text-white backdrop-blur-sm">
-            {courant.story.caption}
-          </p>
+
+        {/* Stickers : positions relatives posées à la publication. */}
+        {courant.story.stickers.map((sticker, index) => (
+          <span
+            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 text-4xl drop-shadow"
+            key={`${sticker.emoji}-${index}`}
+            style={{ left: `${sticker.x * 100}%`, top: `${sticker.y * 100}%` }}
+          >
+            {sticker.emoji}
+          </span>
+        ))}
+
+        {/* Légende et sondage empilés en bas, pour ne pas se recouvrir. Une
+            story de texte porte déjà sa légende au centre du canevas. */}
+        {(courant.media && courant.story.caption) ||
+        (sondage && etatSondage) ? (
+          <div className="absolute inset-x-4 bottom-4 space-y-2">
+            {courant.media && courant.story.caption ? (
+              <p className="rounded-xl bg-zinc-950/70 px-3 py-2 text-center text-sm text-white backdrop-blur-sm">
+                {courant.story.caption}
+              </p>
+            ) : null}
+            {sondage && etatSondage ? (
+              <div className="rounded-2xl bg-zinc-950/85 p-3 backdrop-blur-sm">
+                <p className="text-xs font-semibold text-white">
+                  {sondage.question}
+                </p>
+                <div className="mt-2 space-y-1.5">
+                  {sondage.options.map((option, index) => {
+                    const choisi = etatSondage.myVote === index;
+                    const compteur = Number(etatSondage.counts[index] || 0);
+                    const part =
+                      etatSondage.total > 0
+                        ? Math.round((compteur / etatSondage.total) * 100)
+                        : 0;
+                    return (
+                      <button
+                        className={`relative block w-full overflow-hidden rounded-xl border px-3 py-1.5 text-left text-xs transition ${
+                          choisi
+                            ? "border-white/60 text-white"
+                            : "border-white/20 text-white/80 hover:border-white/40"
+                        }`}
+                        key={`${option}-${index}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (!sondageVerrouille) voter(index);
+                        }}
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onPointerUp={(e) => e.stopPropagation()}
+                        type="button"
+                      >
+                        {montrerResultats ? (
+                          <span
+                            className="absolute inset-y-0 left-0 bg-zinc-500/30"
+                            style={{ width: `${part}%` }}
+                          />
+                        ) : null}
+                        <span className="relative flex items-center justify-between gap-2">
+                          <span className="truncate">{option}</span>
+                          {montrerResultats ? (
+                            <span className="shrink-0 text-white/60">
+                              {part}%
+                            </span>
+                          ) : null}
+                          {choisi ? <span className="shrink-0">✓</span> : null}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="mt-2 text-[10px] text-white/50">
+                  {etatSondage.total} vote
+                  {etatSondage.total > 1 ? "s" : ""}
+                  {auteur?.isMine
+                    ? " · sondage de votre story"
+                    : etatSondage.myVote === null
+                      ? " · touchez une option"
+                      : ""}
+                </p>
+              </div>
+            ) : null}
+          </div>
         ) : null}
       </div>
 
@@ -391,7 +521,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           ))}
           {auteur?.isMine ? (
             <button
-              className="ml-auto rounded-full px-3 py-1.5 text-[11px] text-red-300 hover:bg-white/10"
+              className="ml-auto rounded-full px-3 py-1.5 text-[11px] text-red-600 hover:bg-white/10 vibe-dark:text-red-300"
               onClick={supprimer}
               type="button"
             >
@@ -425,7 +555,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           </div>
         )}
         {envoi === "erreur" ? (
-          <p className="text-[11px] text-red-300">
+          <p className="text-[11px] text-red-600 vibe-dark:text-red-300">
             Réponse non envoyée. Vérifiez votre connexion et réessayez.
           </p>
         ) : null}

@@ -9,7 +9,11 @@ Ce document contient les règles fondamentales et les consignes d'architecture �
 ### Règle n° 1 — `.wakies-root` et Route Isolée
 - L'espace Wakies vit dans son propre layout dédié `app/(wakies)/wakies/layout.tsx`.
 - L'élément racine porte impérativement la classe CSS `.wakies-root`.
-- **Aucune variante sombre** : Wakies possède son propre design system clair natif, sans Tailwind. Ne jamais introduire de classe `dark:`.
+- **Thème** : Wakies suit le thème résolu de l'hôte (next-themes) — classe `dark` sur
+  `<html>` → couche ajoutée à la fin de `components/wakies/wakies-host.css`
+  (`html.dark .wakies-root …`). Les feuilles générées restent claires natives ;
+  `wakies-ui.css` fournit `data-md-theme`. Ne jamais réintroduire `dark:` Tailwind
+  (aucun Tailwind ici) ni une état de thème parallèle.
 
 ### Règle n° 2 — Feuilles de Style Générées (Ne pas éditer)
 | Fichier généré | Source | Script |

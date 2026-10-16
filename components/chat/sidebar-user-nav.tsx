@@ -38,6 +38,7 @@ import {
 import { useSettings } from "@/hooks/use-settings";
 import type { MaiUser } from "@/lib/auth/session";
 import { APP_SUPPORT_URL, APP_VERSION } from "@/lib/constants";
+import { saveThemePreference } from "@/lib/theme/preference";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
@@ -46,7 +47,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const { data: settingsData } = useSettings();
 
   const handleThemeSelect = useCallback(() => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    const next = resolvedTheme === "dark" ? "light" : "dark";
+    setTheme(next);
+    // Le thème est partagé par la suite : l'enregistrer permet à Vibe, au Site
+    // et à Wakies de suivre la même décision au prochain chargement.
+    saveThemePreference(next);
   }, [resolvedTheme, setTheme]);
 
   const handleLogout = useCallback(async () => {
@@ -85,7 +90,10 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
               data-onboarding="user-nav"
               data-testid="user-nav-button"
             >
-              <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center">
+              {/* En mode replié, le bouton devient un carré de 32 px avec 8 px
+                  de marge interne (size-8!/p-2! de SidebarMenuButton) : sans
+                  réduction, l'avatar de 28 px était rogné en carré. */}
+              <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center group-data-[collapsible=icon]:size-4">
                 {avatarUrl ? (
                   <Image
                     alt={username}
@@ -102,7 +110,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 )}
               </div>
 
-              <div className="flex flex-col flex-1 min-w-0 text-left">
+              <div className="flex flex-col flex-1 min-w-0 text-left group-data-[collapsible=icon]:hidden">
                 <div className="flex items-center gap-1.5">
                   <span
                     className="truncate text-[13px] font-medium"
@@ -119,7 +127,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 </span>
               </div>
 
-              <ChevronUp className="ml-auto size-3.5 text-sidebar-foreground/50" />
+              <ChevronUp className="ml-auto size-3.5 text-sidebar-foreground/50 group-data-[collapsible=icon]:hidden" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
