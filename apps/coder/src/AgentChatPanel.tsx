@@ -1,12 +1,9 @@
 import {
   type ComponentProps,
   type CSSProperties,
-  type Dispatch,
   isValidElement,
   memo,
   type ReactNode,
-  type RefObject,
-  type SetStateAction,
   useCallback,
   useDeferredValue,
   useEffect,
@@ -16,26 +13,15 @@ import {
   useState,
 } from "react";
 import {
-  AgentBottomTodoPanel,
   type AgentTodoItem,
   type BottomTodoLayoutMode,
 } from "./AgentBottomTodoPanel";
-import { AgentFileChangesPanel } from "./AgentFileChanges";
-import {
-  AgentMistakeLimitDialog,
-  type MistakeLimitPayload,
-} from "./AgentMistakeLimitDialog";
-import { AgentReviewPanel } from "./AgentReviewPanel";
 import {
   assistantMessageUsesAgentToolProtocol,
   extractLastTodosFromContent,
   type segmentAssistantContentUnified,
 } from "./agentChatSegments";
 import { computeMergedAgentFileChanges } from "./agentFileChangesCompute";
-import type {
-  AgentLifecycleStatus,
-  AgentUserInputRequest,
-} from "./agentSessionTypes";
 import {
   buildConversationRenderKey,
   computeTurnSectionSpacerPx,
@@ -44,7 +30,6 @@ import {
   type MeasuredTurnFocusRow,
   resolveStickyUserIndex,
   shouldEnableLatestTurnSpacer,
-  type TurnFocusRow,
 } from "./agentTurnFocus";
 import {
   useAppShellGitFiles,
@@ -56,21 +41,10 @@ import {
   type ComposerSegment,
   userMessageToSegments,
 } from "./composerSegments";
-import type { AgentSessionState } from "./hooks/useAgentSession";
-import type { TeamSessionState } from "./hooks/useTeamSession";
-import type { WizardPending } from "./hooks/useWizardPending";
-import type { TFunction } from "./i18n";
 import { isChatAssistantErrorLine } from "./i18n";
-import { IconArrowDown, IconChevron, IconDoc } from "./icons";
-import type { AgentPendingPatch, TurnTokenUsage } from "./ipcTypes";
+import { IconChevron, IconDoc } from "./icons";
 import { extractTodosFromLiveBlocks } from "./liveAgentBlocks";
 import { partsToSegments, type UserMessagePart } from "./messageParts";
-import { PlanQuestionDialog } from "./PlanQuestionDialog";
-import { PlanReviewPanel } from "./PlanReviewPanel";
-import type { ParsedPlan, PlanQuestion } from "./planParser";
-import { RuleWizardDialog } from "./RuleWizardDialog";
-import { SkillScopeDialog } from "./SkillScopeDialog";
-import { SubagentScopeDialog } from "./SubagentScopeDialog";
 import {
   useLiveAssistantBlocks,
   useStreaming,
@@ -85,222 +59,26 @@ import {
 import { TeamPlanReviewPanel } from "./TeamPlanReviewPanel";
 import { TeamPlanRevisionCard } from "./TeamPlanRevisionCard";
 import { TeamRoleAvatar } from "./TeamRoleAvatar";
-import {
-  ToolApprovalInlineCard,
-  type ToolApprovalPayload,
-} from "./ToolApprovalCard";
 import { buildTeamConversationTimeline } from "./teamChatTimeline";
 import type { ChatMessage } from "./threadTypes";
-import { UserInputRequestDialog } from "./UserInputRequestDialog";
-import { UserMessageRich } from "./UserMessageRich";
+import {
+  AgentChatCommandStack,
+  AgentChatOverlays,
+  type AgentChatPanelProps,
+  AgentUserMessageRow,
+  agentStatusLabel,
+  type ChatRenderRow,
+  ESTIMATED_MESSAGE_ROW_PX,
+  expandStartIndexByPixelBudget,
+  HEIGHT_BUDGET_OVERSCAN_PX,
+  HEIGHT_BUDGET_VIEWPORT_MULT,
+  SCROLL_UP_LOAD_EXTRA_PX,
+  SCROLL_UP_LOAD_VIEWPORT_MULT,
+  sanitizeTeamCriteria,
+  startIndexForHeightBudget,
+} from "./agentChat";
 
-type SharedComposerProps = Omit<
-  ComponentProps<typeof ChatComposer>,
-  | "slot"
-  | "variant"
-  | "segments"
-  | "setSegments"
-  | "canSend"
-  | "extraClass"
-  | "showGitBranchRow"
->;
-
-export type AgentChatPanelProps = {
-  layout?: "agent-center" | "editor-rail";
-  t: TFunction;
-  hasConversation: boolean;
-  /** 持久化的历史消息；live 助手气泡由面板内部通过 streamingStore 订阅合成，不从这里传入 */
-  persistedMessages: ChatMessage[];
-  messagesThreadId: string | null;
-  currentId: string | null;
-  messagesViewportRef: RefObject<HTMLDivElement | null>;
-  messagesTrackRef: RefObject<HTMLDivElement | null>;
-  inlineResendRootRef: RefObject<HTMLDivElement | null>;
-  onMessagesScroll: () => void;
-  awaitingReply: boolean;
-  streamStartedAtRef: RefObject<number | null>;
-  firstTokenAtRef: RefObject<number | null>;
-  thoughtSecondsByThread: Record<string, number>;
-  lastTurnUsage: TurnTokenUsage | null;
-  composerMode: ComponentProps<typeof ChatComposer>["composerMode"];
-  workspace: string | null;
-  workspaceBasename: string;
-  knownSlashCommands: string[];
-  revertedFiles: ReadonlySet<string>;
-  revertedChangeKeys: ReadonlySet<string>;
-  resendFromUserIndex: number | null;
-  inlineResendSegments: ComposerSegment[];
-  setInlineResendSegments: Dispatch<SetStateAction<ComposerSegment[]>>;
-  composerSegments: ComposerSegment[];
-  setComposerSegments: Dispatch<SetStateAction<ComposerSegment[]>>;
-  canSendComposer: boolean;
-  canSendInlineResend: boolean;
-  sharedComposerProps: SharedComposerProps;
-  onStartInlineResend: (
-    userMessageIndex: number,
-    content: string,
-    parts?: UserMessagePart[]
-  ) => void;
-  onOpenWorkspaceFile: (rel: string) => void;
-  onOpenAgentConversationFile: (
-    rel: string,
-    line?: number,
-    end?: number,
-    options?: { diff?: string | null; allowReviewActions?: boolean }
-  ) => void;
-  onRunCommand: (cmd: string) => void;
-  pendingAgentPatches: AgentPendingPatch[];
-  agentReviewBusy: boolean;
-  onApplyAgentPatchOne: (id: string) => void;
-  onApplyAgentPatchesAll: () => void;
-  onDiscardAgentReview: () => void;
-  planQuestion: PlanQuestion | null;
-  onPlanQuestionSubmit: (answer: string) => void;
-  onPlanQuestionSkip: () => void;
-  userInputRequest: AgentUserInputRequest | null;
-  onUserInputSubmit: (answers: Record<string, string>) => Promise<void>;
-  wizardPending: WizardPending | null;
-  setWizardPending: Dispatch<SetStateAction<WizardPending | null>>;
-  executeSkillCreatorSend: (
-    scope: "user" | "project",
-    pending: WizardPending
-  ) => void;
-  executeRuleWizardSend: (
-    ruleScope: "always" | "glob" | "manual",
-    globPattern: string | undefined,
-    pending: WizardPending
-  ) => void;
-  executeSubagentWizardSend: (
-    scope: "user" | "project",
-    pending: WizardPending
-  ) => void;
-  mistakeLimitRequest: MistakeLimitPayload | null;
-  respondMistakeLimit: (
-    action: "continue" | "stop" | "hint",
-    hint?: string
-  ) => void;
-  agentPlanEffectivePlan: ParsedPlan | null;
-  editorPlanReviewDismissed: boolean;
-  planFileRelPath: string | null;
-  planFilePath: string | null;
-  defaultModel: string;
-  modelPickerItems: ComponentProps<typeof PlanReviewPanel>["modelItems"];
-  planReviewIsBuilt: boolean;
-  onPlanBuild: (modelId: string) => void;
-  onPlanReviewClose: () => void;
-  onPlanTodoToggle: (id: string) => void;
-  toolApprovalRequest: ToolApprovalPayload | null;
-  respondToolApproval: (allow: boolean) => void;
-  /** 逐文件忽略改动条；与 Git 合并后的列表在面板内计算，避免 Git fullStatus 拖垮 useAgentChatPanelProps */
-  dismissedFiles: ReadonlySet<string>;
-  snapshotPaths: ReadonlySet<string>;
-  /** main 进程仍持有快照、可以真撤销的相对路径集合；用于按钮置灰。 */
-  revertableSnapshotPaths: ReadonlySet<string>;
-  /** 撤销因为没有快照而失败时的提示文案；非空时面板顶部展示一行警告条。 */
-  revertNotice: string | null;
-  onDismissRevertNotice: () => void;
-  fileChangesDismissed: boolean;
-  onKeepAllEdits: () => void;
-  onRevertAllEdits: () => void;
-  onKeepFileEdit: (rel: string) => void;
-  onRevertFileEdit: (rel: string) => void;
-  showScrollToBottomButton: boolean;
-  scrollMessagesToBottom: (
-    behavior?: ScrollBehavior,
-    options?: { protectActivePreflight?: boolean }
-  ) => void;
-  scheduleMessagesScrollToBottom: () => void;
-  agentPlanSummaryCard: ReactNode;
-  teamSession: TeamSessionState | null;
-  onSelectTeamExpert: (taskId: string) => void;
-  agentSession: AgentSessionState | null;
-  onSelectAgentSession: (agentId: string | null) => void;
-  onTeamPlanApprove: (proposalId: string, feedback?: string) => void;
-  onTeamPlanReject: (proposalId: string, feedback?: string) => void;
-  onChatPanelDropFiles: (files: File[]) => Promise<void>;
-};
-
-/** 未测量行时用于高度预算的估算高度（与旧虚拟列表 estimate 对齐） */
-const ESTIMATED_MESSAGE_ROW_PX = 160;
-/** 目标：已渲染轨道总高度至少为视口高度的倍数 + 额外缓冲，避免首屏过短 */
-const HEIGHT_BUDGET_VIEWPORT_MULT = 2;
-const HEIGHT_BUDGET_OVERSCAN_PX = 400;
-/** 顶部哨兵触发时再往上加载的近似高度（约一整屏 + 边距） */
-const SCROLL_UP_LOAD_VIEWPORT_MULT = 1;
-const SCROLL_UP_LOAD_EXTRA_PX = 250;
-
-function startIndexForHeightBudget(
-  len: number,
-  targetContentPx: number,
-  getRowHeight: (i: number) => number,
-  gapPx: number
-): number {
-  if (len <= 0) {
-    return 0;
-  }
-  let sum = 0;
-  for (let i = len - 1; i >= 0; i--) {
-    sum += getRowHeight(i);
-    if (i < len - 1) {
-      sum += gapPx;
-    }
-    if (sum >= targetContentPx) {
-      return i;
-    }
-  }
-  return 0;
-}
-
-function expandStartIndexByPixelBudget(
-  currentStart: number,
-  pixelBudget: number,
-  getRowHeight: (i: number) => number,
-  gapPx: number
-): number {
-  if (currentStart <= 0 || pixelBudget <= 0) {
-    return currentStart;
-  }
-  let add = 0;
-  let newStart = currentStart;
-  while (newStart > 0 && add < pixelBudget) {
-    newStart--;
-    add += getRowHeight(newStart) + gapPx;
-  }
-  return newStart;
-}
-
-function sanitizeTeamCriteria(criteria?: readonly string[]): string[] {
-  if (!criteria || criteria.length === 0) {
-    return [];
-  }
-  return criteria.map((item) => String(item ?? "").trim()).filter(Boolean);
-}
-
-function agentStatusLabel(t: TFunction, status: AgentLifecycleStatus): string {
-  switch (status) {
-    case "running":
-      return t("agent.session.status.running");
-    case "waiting_input":
-      return t("agent.session.status.waiting");
-    case "completed":
-      return t("agent.session.status.completed");
-    case "failed":
-      return t("agent.session.status.failed");
-    case "closed":
-      return t("agent.session.status.closed");
-    default:
-      return status;
-  }
-}
-
-type ChatRenderRow = TurnFocusRow & {
-  key: string;
-  className: string;
-  content: ReactNode;
-  dataMsgIndex?: number;
-  dataPreflightFor?: number;
-  dataContentBottom?: boolean;
-};
+export * from "./agentChat";
 
 export const AgentChatPanel = memo(function AgentChatPanel({
   layout = "agent-center",
@@ -1527,52 +1305,25 @@ export const AgentChatPanel = memo(function AgentChatPanel({
     const isEditingThisUser =
       userMessageIndex >= 0 && resendFromUserIndex === userMessageIndex;
 
-    if (m.role === "user" && isEditingThisUser) {
-      return (
-        <div
-          className="ref-msg-slot ref-msg-slot--composer"
-          ref={inlineResendRootRef}
-        >
-          <ChatComposer
-            {...sharedComposerProps}
-            canSend={canSendInlineResend}
-            extraClass="ref-capsule--inline-edit"
-            segments={inlineResendSegments}
-            setSegments={setInlineResendSegments}
-            showGitBranchRow={false}
-            slot="inline"
-          />
-        </div>
-      );
-    }
-
     if (m.role === "user") {
       const userSegs = cachedUserMessageToSegments(m.content, m.parts);
-
       return (
-        <div className="ref-msg-slot ref-msg-slot--user">
-          <button
-            className="ref-msg-user"
-            disabled={awaitingReply}
-            onClick={() => {
-              if (awaitingReply) {
-                return;
-              }
-              onStartInlineResend(userMessageIndex, m.content, m.parts);
-            }}
-            title={
-              awaitingReply
-                ? t("app.userMsgGenerating")
-                : t("app.userMsgEditHint")
-            }
-            type="button"
-          >
-            <UserMessageRich
-              onFileClick={onOpenWorkspaceFile}
-              segments={userSegs}
-            />
-          </button>
-        </div>
+        <AgentUserMessageRow
+          awaitingReply={awaitingReply}
+          canSendInlineResend={canSendInlineResend}
+          content={m.content}
+          inlineResendRootRef={inlineResendRootRef}
+          inlineResendSegments={inlineResendSegments}
+          isEditingThisUser={isEditingThisUser}
+          onOpenWorkspaceFile={onOpenWorkspaceFile}
+          onStartInlineResend={onStartInlineResend}
+          parts={m.parts}
+          setInlineResendSegments={setInlineResendSegments}
+          sharedComposerProps={sharedComposerProps}
+          t={t}
+          userMessageIndex={userMessageIndex}
+          userSegments={userSegs}
+        />
       );
     }
 
@@ -2331,203 +2082,76 @@ export const AgentChatPanel = memo(function AgentChatPanel({
   ) : null;
 
   const sharedOverlays = (
-    <>
-      {hasConversation && pendingAgentPatches.length > 0 ? (
-        <AgentReviewPanel
-          busy={agentReviewBusy}
-          onApplyAll={onApplyAgentPatchesAll}
-          onApplyOne={onApplyAgentPatchOne}
-          onDiscard={onDiscardAgentReview}
-          onOpenFile={(rel, line, end, options) =>
-            onOpenAgentConversationFile(rel, line, end, {
-              ...options,
-              allowReviewActions: true,
-            })
-          }
-          patches={pendingAgentPatches}
-          workspaceRoot={workspace}
-        />
-      ) : null}
-
-      {hasConversation &&
-      planQuestion &&
-      (composerMode === "plan" || composerMode === "team") ? (
-        <PlanQuestionDialog
-          onSkip={onPlanQuestionSkip}
-          onSubmit={onPlanQuestionSubmit}
-          question={planQuestion}
-        />
-      ) : null}
-      {hasConversation && userInputRequest ? (
-        <UserInputRequestDialog
-          onSubmit={onUserInputSubmit}
-          request={userInputRequest}
-        />
-      ) : null}
-
-      {wizardPending?.kind === "create-skill" ? (
-        <SkillScopeDialog
-          onCancel={() => setWizardPending(null)}
-          onConfirm={(scope) => {
-            const p = wizardPending;
-            setWizardPending(null);
-            if (p?.kind === "create-skill") {
-              void executeSkillCreatorSend(scope, p);
-            }
-          }}
-          workspaceOpen={!!workspace}
-        />
-      ) : null}
-      {wizardPending?.kind === "create-rule" ? (
-        <RuleWizardDialog
-          onCancel={() => setWizardPending(null)}
-          onConfirm={(ruleScope, globPattern) => {
-            const p = wizardPending;
-            setWizardPending(null);
-            if (p?.kind === "create-rule") {
-              void executeRuleWizardSend(ruleScope, globPattern, p);
-            }
-          }}
-        />
-      ) : null}
-      {wizardPending?.kind === "create-subagent" ? (
-        <SubagentScopeDialog
-          onCancel={() => setWizardPending(null)}
-          onConfirm={(scope) => {
-            const p = wizardPending;
-            setWizardPending(null);
-            if (p?.kind === "create-subagent") {
-              void executeSubagentWizardSend(scope, p);
-            }
-          }}
-          workspaceOpen={!!workspace}
-        />
-      ) : null}
-
-      <AgentMistakeLimitDialog
-        body={
-          mistakeLimitRequest
-            ? t("agent.mistakeLimit.body", {
-                count: mistakeLimitRequest.consecutiveFailures,
-                threshold: mistakeLimitRequest.threshold,
-              })
-            : ""
-        }
-        continueLabel={t("agent.mistakeLimit.continue")}
-        hintFieldLabel={t("agent.mistakeLimit.hintField")}
-        hintPlaceholder={t("agent.mistakeLimit.hintPlaceholder")}
-        onContinue={() => void respondMistakeLimit("continue")}
-        onSendHint={(hint) => void respondMistakeLimit("hint", hint)}
-        onStop={() => void respondMistakeLimit("stop")}
-        open={mistakeLimitRequest !== null}
-        payload={mistakeLimitRequest}
-        sendHintLabel={t("agent.mistakeLimit.sendHint")}
-        stopLabel={t("agent.mistakeLimit.stop")}
-        title={t("agent.mistakeLimit.title")}
-      />
-
-      {isEditorRail &&
-      hasConversation &&
-      agentPlanEffectivePlan &&
-      composerMode === "plan" &&
-      !editorPlanReviewDismissed ? (
-        <PlanReviewPanel
-          buildDisabled={awaitingReply}
-          initialBuildModelId={defaultModel}
-          modelItems={modelPickerItems}
-          onBuild={onPlanBuild}
-          onClose={onPlanReviewClose}
-          onTodoToggle={onPlanTodoToggle}
-          plan={agentPlanEffectivePlan}
-          planBuilt={planReviewIsBuilt}
-          planFileDisplayPath={planFileRelPath ?? planFilePath}
-        />
-      ) : null}
-    </>
+    <AgentChatOverlays
+      agentPlanEffectivePlan={agentPlanEffectivePlan}
+      agentReviewBusy={agentReviewBusy}
+      awaitingReply={awaitingReply}
+      composerMode={composerMode}
+      defaultModel={defaultModel}
+      editorPlanReviewDismissed={editorPlanReviewDismissed}
+      executeRuleWizardSend={executeRuleWizardSend}
+      executeSkillCreatorSend={executeSkillCreatorSend}
+      executeSubagentWizardSend={executeSubagentWizardSend}
+      hasConversation={hasConversation}
+      isEditorRail={isEditorRail}
+      mistakeLimitRequest={mistakeLimitRequest}
+      modelPickerItems={modelPickerItems}
+      onApplyAgentPatchesAll={onApplyAgentPatchesAll}
+      onApplyAgentPatchOne={onApplyAgentPatchOne}
+      onDiscardAgentReview={onDiscardAgentReview}
+      onOpenAgentConversationFile={onOpenAgentConversationFile}
+      onPlanBuild={onPlanBuild}
+      onPlanQuestionSkip={onPlanQuestionSkip}
+      onPlanQuestionSubmit={onPlanQuestionSubmit}
+      onPlanReviewClose={onPlanReviewClose}
+      onPlanTodoToggle={onPlanTodoToggle}
+      onUserInputSubmit={onUserInputSubmit}
+      pendingAgentPatches={pendingAgentPatches}
+      planFilePath={planFilePath}
+      planFileRelPath={planFileRelPath}
+      planQuestion={planQuestion}
+      planReviewIsBuilt={planReviewIsBuilt}
+      respondMistakeLimit={respondMistakeLimit}
+      setWizardPending={setWizardPending}
+      t={t}
+      userInputRequest={userInputRequest}
+      wizardPending={wizardPending}
+      workspace={workspace}
+    />
   );
 
   const commandStack = (
-    <div className="ref-command-stack">
-      {toolApprovalRequest ? (
-        <ToolApprovalInlineCard
-          allowLabel={t("agent.toolApproval.allow")}
-          denyLabel={t("agent.toolApproval.deny")}
-          onAllow={() => void respondToolApproval(true)}
-          onDeny={() => void respondToolApproval(false)}
-          payload={toolApprovalRequest}
-          title={
-            toolApprovalRequest.toolName === "Bash"
-              ? t("agent.toolApproval.titleShell")
-              : t("agent.toolApproval.titleWrite")
-          }
-        />
-      ) : null}
-      {hasConversation &&
-      (composerMode === "agent" || composerMode === "team") &&
-      agentFileChanges.length > 0 &&
-      !fileChangesDismissed ? (
-        <div className={`ref-fcp-slot ${awaitingReply ? "is-reserved" : ""}`}>
-          <AgentFileChangesPanel
-            files={agentFileChanges}
-            onDismissRevertNotice={onDismissRevertNotice}
-            onKeepAll={onKeepAllEdits}
-            onKeepFile={(rel) => void onKeepFileEdit(rel)}
-            onOpenFile={(rel, line, end, options) =>
-              onOpenAgentConversationFile(rel, line, end, {
-                ...options,
-                allowReviewActions: true,
-              })
-            }
-            onRevertAll={() => void onRevertAllEdits()}
-            onRevertFile={(rel) => void onRevertFileEdit(rel)}
-            revertableSnapshotPaths={revertableSnapshotPaths}
-            revertNotice={revertNotice}
-          />
-        </div>
-      ) : null}
-      {hasConversation ? (
-        <div
-          aria-hidden={!showScrollToBottomButton}
-          className={`ref-scroll-jump-anchor ${showScrollToBottomButton ? "is-visible" : ""}`}
-        >
-          <button
-            aria-label={t("app.jumpToLatest")}
-            className="ref-scroll-jump-btn"
-            onClick={() =>
-              scrollMessagesToBottom("smooth", {
-                protectActivePreflight: false,
-              })
-            }
-            tabIndex={showScrollToBottomButton ? 0 : -1}
-            title={t("app.jumpToLatest")}
-            type="button"
-          >
-            <IconArrowDown className="ref-scroll-jump-btn-icon" />
-          </button>
-        </div>
-      ) : null}
-      {isEditorRail ? null : agentPlanSummaryCard}
-      {hasConversation && renderedBottomTodos.length > 0 ? (
-        <AgentBottomTodoPanel
-          isCollapsed={bottomTodoCollapsed}
-          isLeaving={bottomTodoLeaving}
-          layoutMode={bottomTodoLockedMode ?? "overlay"}
-          onToggle={toggleBottomTodoCollapsed}
-          t={t}
-          todos={renderedBottomTodos}
-        />
-      ) : null}
-      {hasConversation || !isEditorRail ? (
-        <ChatComposer
-          {...sharedComposerProps}
-          canSend={canSendComposer}
-          segments={composerSegments}
-          setSegments={setComposerSegments}
-          showGitBranchRow={!isEditorRail}
-          slot="bottom"
-        />
-      ) : null}
-    </div>
+    <AgentChatCommandStack
+      agentFileChanges={agentFileChanges}
+      agentPlanSummaryCard={agentPlanSummaryCard}
+      awaitingReply={awaitingReply}
+      bottomTodoCollapsed={bottomTodoCollapsed}
+      bottomTodoLeaving={bottomTodoLeaving}
+      bottomTodoLockedMode={bottomTodoLockedMode}
+      canSendComposer={canSendComposer}
+      composerMode={composerMode}
+      composerSegments={composerSegments}
+      fileChangesDismissed={fileChangesDismissed}
+      hasConversation={hasConversation}
+      isEditorRail={isEditorRail}
+      onDismissRevertNotice={onDismissRevertNotice}
+      onKeepAllEdits={onKeepAllEdits}
+      onKeepFileEdit={onKeepFileEdit}
+      onOpenAgentConversationFile={onOpenAgentConversationFile}
+      onRevertAllEdits={onRevertAllEdits}
+      onRevertFileEdit={onRevertFileEdit}
+      renderedBottomTodos={renderedBottomTodos}
+      respondToolApproval={respondToolApproval}
+      revertNotice={revertNotice}
+      revertableSnapshotPaths={revertableSnapshotPaths}
+      scrollMessagesToBottom={scrollMessagesToBottom}
+      setComposerSegments={setComposerSegments}
+      sharedComposerProps={sharedComposerProps}
+      showScrollToBottomButton={showScrollToBottomButton}
+      t={t}
+      toggleBottomTodoCollapsed={toggleBottomTodoCollapsed}
+      toolApprovalRequest={toolApprovalRequest}
+    />
   );
 
   if (isEditorRail) {

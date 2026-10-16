@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { useActiveChat } from "@/hooks/use-active-chat";
@@ -46,36 +45,31 @@ export const Greeting = () => {
 
   return (
     <div className="flex flex-col items-center px-4" key="overview">
-      <motion.div
-        animate={{ opacity: 1, scale: 1 }}
-        className="mb-4 size-16 relative flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.8 }}
-        transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {activeAgent ? (
+      {/* Le logo mAI a été retiré : l'en-tête et la barre latérale portent déjà
+          la marque, et ses 64 px plus marge faisaient déborder la pile d'accueil
+          (défilement imposé) dans les fenêtres basses. Seul un agent actif garde
+          son icône, avec l'espacement d'origine. */}
+      {activeAgent ? (
+        <motion.div
+          animate={{ opacity: 1, scale: 1 }}
+          className="mb-4 size-16 relative flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div
             className="size-16 rounded-2xl flex items-center justify-center text-white shadow-lg drop-shadow-md"
             style={{ backgroundColor: activeAgent.color || "#6366f1" }}
           >
             <AgentIcon icon={activeAgent.icon} size={32} variant="plain" />
           </div>
-        ) : (
-          <Image
-            alt="mAI"
-            className="rounded-2xl shadow-lg drop-shadow-md"
-            height={64}
-            priority
-            src="/logo.png"
-            width={64}
-          />
-        )}
-      </motion.div>
+        </motion.div>
+      ) : null}
 
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         className="text-center font-bold text-2xl tracking-tight text-foreground md:text-3xl text-balance px-2"
         initial={{ opacity: 0, y: 10 }}
-        transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         {personalizedGreeting}
       </motion.div>
@@ -83,7 +77,7 @@ export const Greeting = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mt-2.5 text-center text-muted-foreground text-sm max-w-md"
         initial={{ opacity: 0, y: 10 }}
-        transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         {activeAgent?.description ||
           "Posez vos questions du quotidien, rédigez des documents ou explorez vos projets avec mAI Web."}
@@ -94,7 +88,7 @@ export const Greeting = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mt-4 max-w-md text-center text-sm text-muted-foreground rounded-xl border border-border/40 bg-card/70 px-4 py-3 leading-relaxed"
           initial={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           {welcomeMessage}
         </motion.div>
@@ -105,7 +99,7 @@ export const Greeting = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mt-5 flex flex-wrap justify-center gap-2 max-w-lg pointer-events-auto"
           initial={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.7, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.45, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           {visiblePrompts.map((p, i) => (
             <button

@@ -911,10 +911,13 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* Une seule entrée : le mode initial vient des paramètres. */}
+                {/* Une seule entrée : le mode initial vient des paramètres.
+                    Même habillage que Bibliothèque : le rounded-lg arrondit
+                    aussi le fond actif posé par globals.css. */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     isActive={isCreationActive}
                     tooltip="Création"
                   >

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { StoryComposer } from "@/components/vibe/stories/StoryComposer";
 import { StoryRing } from "@/components/vibe/stories/StoryRing";
 import { StoryViewer } from "@/components/vibe/stories/StoryViewer";
+import { useAuth } from "@/lib/vibe/context/AuthContext";
 import { ApiService } from "@/lib/vibe/services/api";
 import type { StoryAuthor } from "@/lib/vibe/types/vibe";
 
@@ -20,6 +21,7 @@ import type { StoryAuthor } from "@/lib/vibe/types/vibe";
  */
 
 export const StoriesTray: React.FC = () => {
+  const { profile, user } = useAuth();
   const [auteurs, setAuteurs] = useState<StoryAuthor[]>([]);
   const [indexOuvert, setIndexOuvert] = useState<number | null>(null);
   const [compositeurOuvert, setCompositeurOuvert] = useState(false);
@@ -51,6 +53,14 @@ export const StoriesTray: React.FC = () => {
 
   const mesStories = useMemo(() => auteurs.find((a) => a.isMine), [auteurs]);
 
+  // Un compte sans story active n'a aucune entrée `isMine` dans le tray : sans
+  // repli sur la session, la tuile « Ajouter » resterait bloquée sur l'état
+  // « Chargement… » de ProfileAvatar (ni `src` ni `fallbackName`). Même repli
+  // que la Sidebar et la MobileTabBar.
+  const monAvatar =
+    mesStories?.avatarUrl || profile?.avatarUrl || user?.avatar_url || null;
+  const monNom = mesStories?.username || user?.username;
+
   const ouvert = indexOuvert === null ? null : auteurs[indexOuvert];
 
   if (chargement) {
@@ -72,8 +82,8 @@ export const StoriesTray: React.FC = () => {
         >
           <span className="relative">
             <StoryRing
-              avatarUrl={mesStories?.avatarUrl ?? null}
-              displayName={mesStories?.username}
+              avatarUrl={monAvatar}
+              displayName={monNom}
               hasStory={false}
               size="md"
             />
