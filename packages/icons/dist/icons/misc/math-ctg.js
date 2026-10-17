@@ -1,0 +1,4 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const MathCtgIcon = /* @__PURE__ */ createIcon('MathCtgIcon', [["path", { "d": "M10 8h4" }], ["path", { "d": "M21 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1" }], ["path", { "d": "M12 8v8" }], ["path", { "d": "M7 10a2 2 0 1 0 -4 0v4a2 2 0 1 0 4 0" }]]);

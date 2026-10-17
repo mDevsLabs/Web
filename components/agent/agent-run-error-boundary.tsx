@@ -1,6 +1,6 @@
 "use client";
 
-import { TriangleAlertIcon } from "lucide-react";
+import { TriangleAlertIcon } from "@mdevs/icons";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 // Frontière d'erreur localisée à la zone d'exécution d'un run.

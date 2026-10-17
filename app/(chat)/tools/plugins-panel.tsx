@@ -6,7 +6,7 @@ import {
   LockIcon,
   PlusIcon,
   Trash2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
@@ -14,14 +14,18 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getIntegrationByPluginId } from "@/lib/integrations/providers";
+import type { IntegrationStatus } from "@/lib/integrations/status";
 import { PLUGIN_CATEGORIES } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
+type IntegrationsResponse = { integrations: IntegrationStatus[] };
 
 export default function PluginsPanel({
   searchQuery = "",
@@ -33,6 +37,18 @@ export default function PluginsPanel({
     "/api/plugins",
     fetcher
   );
+  // Les connecteurs portent en plus un état de compte : un plugin « activé »
+  // mais non connecté ne peut rien lire, et la vignette doit le dire ici plutôt
+  // que de surprendre au premier message.
+  const { data: integrationData, isLoading: isIntegrationLoading } =
+    useSWR<IntegrationsResponse>("/api/integration", fetcher);
+  const connectedByPlugin = useMemo(() => {
+    const map = new Map<string, IntegrationStatus>();
+    for (const item of integrationData?.integrations ?? []) {
+      map.set(item.pluginId, item);
+    }
+    return map;
+  }, [integrationData]);
   const plugins = useMemo(() => data?.plugins ?? [], [data]);
   const [category, setCategory] = useState<string | null>(null);
   const [busyPluginId, setBusyPluginId] = useState<string | null>(null);
@@ -77,6 +93,18 @@ export default function PluginsPanel({
     if (plugin.installed) {
       return;
     }
+    const connector = getIntegrationByPluginId(plugin.id);
+    const connection = connectedByPlugin.get(plugin.id);
+    if (connector && !connection?.connected) {
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+      const returnTo = `${basePath}/tools/plugins/${plugin.id}`;
+      const connectHref = `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
+        returnTo
+      )}&intent=install`;
+      setBusyPluginId(plugin.id);
+      window.location.assign(connectHref);
+      return;
+    }
     runAction(
       plugin.id,
       () =>
@@ -89,12 +117,11 @@ export default function PluginsPanel({
     );
   };
 
-  const handleUninstall = (plugin: PluginCatalogEntry) => {
+  const handleUninstall = async (plugin: PluginCatalogEntry) => {
     if (
-      typeof window !== "undefined" &&
-      !window.confirm(
+      !(await confirmInApp(
         `Désinstaller ${plugin.name} ? Cette action est définitive sur cet appareil.`
-      )
+      ))
     ) {
       return;
     }
@@ -232,10 +259,14 @@ export default function PluginsPanel({
       ) : null}
 
       {/* Catégories */}
-      <section className="flex flex-wrap items-center gap-2">
+      <section
+        aria-label="Catégories de plugins"
+        className="flex max-w-full items-center gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0"
+      >
         <button
+          aria-pressed={category === null}
           className={cn(
-            "min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+            "min-h-11 shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
             category === null
               ? "border-primary/40 bg-primary/10 text-primary"
               : "border-border/60 text-muted-foreground hover:text-foreground"
@@ -247,8 +278,9 @@ export default function PluginsPanel({
         </button>
         {PLUGIN_CATEGORIES.map((cat) => (
           <button
+            aria-pressed={category === cat.id}
             className={cn(
-              "flex items-center gap-1.5 min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+              "flex shrink-0 items-center gap-1.5 whitespace-nowrap min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
               category === cat.id
                 ? "border-primary/40 bg-primary/10 text-primary"
                 : "border-border/60 text-muted-foreground hover:text-foreground"
@@ -279,6 +311,8 @@ export default function PluginsPanel({
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {filtered.map((plugin) => {
               const isBusy = busyPluginId === plugin.id;
+              const connector = connectedByPlugin.get(plugin.id);
+              const connectorDescriptor = getIntegrationByPluginId(plugin.id);
               return (
                 <div
                   className="group flex items-center gap-3 rounded-2xl border border-transparent p-3 transition-colors hover:border-border/50 hover:bg-muted/30"
@@ -300,11 +334,28 @@ export default function PluginsPanel({
                       <span className="truncate text-xs text-muted-foreground">
                         {plugin.description}
                       </span>
+                      {connector ? (
+                        <span className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                          <span
+                            className={cn(
+                              "size-1.5 rounded-full",
+                              connector.connected
+                                ? "bg-success"
+                                : "bg-muted-foreground/40"
+                            )}
+                          />
+                          {connector.connected
+                            ? `Connecté${connector.accountLabel ? ` — ${connector.accountLabel}` : ""}`
+                            : connector.configured
+                              ? "Aucun compte connecté"
+                              : "Non activé sur cette instance"}
+                        </span>
+                      ) : null}
                     </span>
                   </button>
                   {plugin.locked ? (
                     <span
-                      className="flex shrink-0 items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:text-amber-400"
+                      className="flex shrink-0 items-center gap-1 rounded-full border border-warning/40 bg-warning/10 px-2.5 py-1 text-[11px] font-semibold text-warning"
                       title={`Réservé au forfait ${plugin.minTier} : l'installation est refusée par le serveur.`}
                     >
                       <LockIcon className="size-3" />
@@ -325,7 +376,7 @@ export default function PluginsPanel({
                           className={cn(
                             "size-4",
                             plugin.enabled
-                              ? "text-emerald-500"
+                              ? "text-success"
                               : "text-muted-foreground"
                           )}
                         />
@@ -334,9 +385,16 @@ export default function PluginsPanel({
                   ) : (
                     <Button
                       className="size-9 shrink-0 rounded-full"
-                      disabled={isBusy}
+                      disabled={
+                        isBusy ||
+                        Boolean(connectorDescriptor && isIntegrationLoading)
+                      }
                       onClick={() => handleInstall(plugin)}
-                      title="Installer"
+                      title={
+                        connectorDescriptor
+                          ? `Se connecter à ${connectorDescriptor.label} puis installer`
+                          : "Installer"
+                      }
                       variant="ghost"
                     >
                       {isBusy ? (

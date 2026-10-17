@@ -1,0 +1,39 @@
+<svg
+  aria-hidden="true"
+  fill="none"
+  height="96"
+  viewBox="0 0 24 24"
+  width="96"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="async-brand-outer"
+      x1="0"
+      x2="24"
+      y1="24"
+      y2="0"
+    >
+      <stop offset="0" stop-color="#E2E8F0" />
+      <stop offset="0.5" stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#F1F5F9" />
+    </linearGradient>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="async-brand-inner"
+      x1="0"
+      x2="24"
+      y1="24"
+      y2="0"
+    >
+      <stop offset="0" stop-color="#94A3B8" />
+      <stop offset="1" stop-color="#CBD5E1" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M12 3L3.5 18.5H8.5L12 12L15.5 18.5H20.5L12 3Z"
+    fill="url(#async-brand-outer)"
+  />
+  <circle cx="12" cy="16" fill="url(#async-brand-inner)" r="2" />
+</svg>

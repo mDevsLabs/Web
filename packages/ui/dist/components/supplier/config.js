@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Supplier", "label": "Fournisseurs", "description": "G\xE9rez vos fournisseurs depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "contactEmail", "label": "E-mail", "kind": "email", "required": true }, { "key": "leadTimeDays", "label": "D\xE9lai (jours)", "kind": "number", "required": true }, { "key": "country", "label": "Pays", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "pending", "inactive"] }], "titleKey": "name", "settings": [{ "key": "notifySupplier", "label": "Notifications : fournisseurs", "description": "Recevoir un signal lors des changements." }, { "key": "archiveSupplier", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section fournisseurs." }, { "key": "approveSupplier", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

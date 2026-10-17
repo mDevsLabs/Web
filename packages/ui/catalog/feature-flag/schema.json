@@ -1,0 +1,71 @@
+{
+  "model": "FeatureFlag",
+  "config": {
+    "name": "FeatureFlag",
+    "label": "Fonctionnalités expérimentales",
+    "description": "Gérez vos fonctionnalités expérimentales depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "key",
+        "label": "Clé",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "rolloutPercent",
+        "label": "Déploiement (%)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "owner",
+        "label": "Responsable",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "enabled",
+          "disabled",
+          "testing"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyFeatureFlag",
+        "label": "Notifications : fonctionnalités expérimentales",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveFeatureFlag",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section fonctionnalités expérimentales."
+      },
+      {
+        "key": "approveFeatureFlag",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "feature-flag-demo-1",
+    "name": "Nouveau paiement",
+    "key": "Clé démo",
+    "rolloutPercent": 128,
+    "owner": "Marie Dupont",
+    "status": "enabled"
+  }
+}

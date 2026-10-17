@@ -1,4 +1,6 @@
+import { tool } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { z } from "zod";
 import {
   listPluginAgentTools,
   narrowPluginAgentToolsForTask,
@@ -10,9 +12,11 @@ import {
   PLUGIN_PROVIDED_TOOL_IDS,
   TOOL_IDS,
 } from "@/lib/ai/tools/ids";
+import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import { getAirQuality } from "@/lib/plugins/air-quality";
 import {
   getPluginManifest,
+  getReadToolIdsForPluginIds,
   isPluginOnlyToolId,
   PLUGIN_MANIFEST_LIST,
   PLUGIN_ONLY_TOOL_IDS,
@@ -22,16 +26,27 @@ import {
   internationalHolidays,
   isPublicHoliday,
 } from "@/lib/plugins/fr-holidays";
-import { getGithubRepositorySummary } from "@/lib/plugins/github-public";
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
 import { getFoodProduct } from "@/lib/plugins/open-food-facts";
 import { quizQuestionSchema, quizzly } from "@/lib/plugins/quizzly";
-import { createPluginTools, getPluginDefinition } from "@/lib/plugins/server";
+import {
+  createPluginTools,
+  getPluginDefinition,
+  getToolIdsForPluginIds,
+  PLUGIN_DEFINITION_LIST,
+} from "@/lib/plugins/server";
 import {
   fetchPublicJson,
   PUBLIC_API_MAX_BYTES,
 } from "@/lib/plugins/shared/public-api";
+import {
+  hasReadTool,
+  readToolIds,
+  toolEffect,
+  writeToolIds,
+} from "@/lib/plugins/tool-effect";
+import type { PluginDefinition, PluginManifest } from "@/lib/plugins/types";
 import { searchWorldBankIndicators } from "@/lib/plugins/world-bank";
 
 const TOOL_CALL_OPTIONS = {
@@ -64,7 +79,7 @@ afterEach(() => {
 });
 
 describe("Catalogue de plugins", () => {
-  it("expose les seize plugins attendus, avec identifiants uniques", () => {
+  it("expose les dix-sept plugins attendus, avec identifiants uniques", () => {
     const ids = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.id).toSorted(
       (a, b) => a.localeCompare(b)
     );
@@ -73,8 +88,9 @@ describe("Catalogue de plugins", () => {
       "crossref",
       "eurostat",
       "fr-holidays",
-      "github-public",
+      "github",
       "gitlab-public",
+      "google",
       "json-toolbox",
       "mobilite-fr",
       "open-food-facts",
@@ -93,7 +109,7 @@ describe("Catalogue de plugins", () => {
     expect(new Set(toolIds).size).toBe(toolIds.length);
   });
 
-  it("déclare des permissions explicites, un forfait payant et une icône connue", () => {
+  it("déclare des permissions explicites, un forfait valide et une icône connue", () => {
     for (const plugin of PLUGIN_MANIFEST_LIST) {
       expect(plugin.version).toMatch(/^\d+\.\d+\.\d+/);
       expect(plugin.category.length).toBeGreaterThan(0);
@@ -105,8 +121,8 @@ describe("Catalogue de plugins", () => {
         expect(pluginTool.systemHint.length).toBeGreaterThan(0);
       }
 
-      // Les plugins sont réservés aux forfaits payants.
-      expect(["plus", "pro", "max"]).toContain(plugin.minTier);
+      // Les plugins sont autorisés dès le forfait Free.
+      expect(["free", "plus", "pro", "max"]).toContain(plugin.minTier);
 
       // Permissions déclaratives obligatoires.
       expect(["none", "read-only", "read-write"]).toContain(
@@ -180,12 +196,18 @@ describe("Catalogue de plugins", () => {
   });
 
   it("convertit une erreur réseau de plugin en ToolFailure Agent", async () => {
-    const [githubSummary] = listPluginAgentTools(["github-public"]);
+    // Un outil de connecteur authentifié : le jeton vient du coffre, et c'est
+    // bien l'incident de transport (503) qui doit être classé rejouable.
+    const [repositoryDetails] = listPluginAgentTools(["github"], {
+      secretResolver: async ({ kind }) =>
+        kind === "auth" ? "jeton-de-test" : undefined,
+      userId: "user",
+    });
     vi.stubGlobal(
       "fetch",
       vi.fn(async () => new Response("service unavailable", { status: 503 }))
     );
-    const result = await githubSummary.execute(
+    const result = await repositoryDetails.execute(
       { repository: "openai/example" },
       {
         chatId: "chat",
@@ -207,7 +229,9 @@ describe("Catalogue de plugins", () => {
   });
 
   it("n'instancie que les outils des plugins autorisés", () => {
-    const all = createPluginTools({});
+    // Sans canal, le contexte est traité comme Agent : les connecteurs y
+    // servent leurs écritures. Il leur faut en revanche une identité.
+    const all = createPluginTools({ userId: "user" });
     expect(Object.keys(all).toSorted((a, b) => a.localeCompare(b))).toEqual(
       PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
         plugin.tools.map((pluginTool) => pluginTool.id)
@@ -224,30 +248,228 @@ describe("Catalogue de plugins", () => {
     expect(createPluginTools({}, [])).toEqual({});
   });
 
-  it("adapte les outils des plugins à Agent et réduit la sélection automatique", () => {
-    const githubTools = listPluginAgentTools(["github-public"]);
-    expect(githubTools).toHaveLength(4);
+  it("ne retire aucun outil aux plugins qui n'écrivent nulle part", () => {
+    // Les plugins historiques n'ont aucun outil d'écriture : projeter la
+    // lecture seule doit leur rendre la totalité de leurs outils, sinon le
+    // filtre aurait silencieusement amputé un canal existant.
+    const plainPluginIds = PLUGIN_MANIFEST_LIST.filter(
+      (plugin) => !getIntegrationByPluginId(plugin.id)
+    ).map((plugin) => plugin.id);
+    expect(getReadToolIdsForPluginIds(plainPluginIds).toSorted()).toEqual(
+      getToolIdsForPluginIds(plainPluginIds).toSorted()
+    );
+    // Les deux connecteurs, eux, perdent exactement leurs écritures.
     expect(
-      githubTools.every(
-        (agentTool) =>
-          agentTool.source === "plugin" && agentTool.permissions.readOnly
-      )
+      getToolIdsForPluginIds(["github", "google"]).length -
+        getReadToolIdsForPluginIds(["github", "google"]).length
+    ).toBe(5);
+  });
+
+  describe("effet par outil, non par plugin", () => {
+    const mixedManifest: PluginManifest = {
+      author: "mAI",
+      category: "productivite",
+      description: "Lit et écrit le calendrier.",
+      icon: { name: "Calendar", type: "lucide" },
+      id: "mixed-agenda",
+      minTier: "plus",
+      name: "Agenda mixte",
+      permissions: {
+        network: "read-write",
+        readsUserData: true,
+        requiresApproval: true,
+        writesUserData: true,
+      },
+      tags: [],
+      tools: [
+        {
+          description: "d",
+          // Un plugin mixte doit le dire outil par outil : sans cette
+          // déclaration, l'écriture du plugin contamine toute sa lecture.
+          effect: "read",
+          id: "listEvents",
+          label: "l",
+          systemHint: "h",
+        },
+        {
+          description: "d",
+          effect: "write",
+          id: "createEvent",
+          label: "c",
+          systemHint: "h",
+        },
+      ],
+      version: "1.0.0",
+    };
+
+    function stubDefinition() {
+      return {
+        createTools: () => ({
+          createEvent: tool({
+            description: "cr",
+            execute: async () => ({ ok: true }),
+            inputSchema: z.object({}),
+          }),
+          listEvents: tool({
+            description: "li",
+            execute: async () => ({ ok: true }),
+            inputSchema: z.object({}),
+          }),
+        }),
+        manifest: mixedManifest,
+      } as unknown as PluginDefinition;
+    }
+
+    /** Le catalogue généré est un tableau exporté : on l'enrichit, puis on rend. */
+    function withMixedPlugin<T>(run: () => T): T {
+      const definition = stubDefinition();
+      PLUGIN_DEFINITION_LIST.push(definition);
+      try {
+        return run();
+      } finally {
+        PLUGIN_DEFINITION_LIST.splice(
+          PLUGIN_DEFINITION_LIST.indexOf(definition),
+          1
+        );
+      }
+    }
+
+    it("déduit l'effet des permissions quand l'outil ne dit rien", () => {
+      const undeclared = {
+        description: "d",
+        id: "undeclared",
+        label: "u",
+        systemHint: "h",
+      };
+      // Un plugin qui écrit quelque part est présumé écrire partout : c'est le
+      // seul repli qui ne puisse pas exposer une écriture sans approbation.
+      expect(toolEffect(mixedManifest, undeclared)).toBe("write");
+      const declared = mixedManifest.tools.find(
+        (item) => item.id === "listEvents"
+      )!;
+      expect(toolEffect(mixedManifest, declared)).toBe("read");
+      const pureRead = {
+        ...mixedManifest,
+        permissions: {
+          network: "read-only",
+          readsUserData: false,
+          requiresApproval: false,
+          writesUserData: false,
+        },
+      } as PluginManifest;
+      expect(toolEffect(pureRead, undeclared)).toBe("read");
+    });
+
+    it("sert la lecture au Chat et garde l'écriture pour l'Agent", () => {
+      const result = withMixedPlugin(() => ({
+        agent: createPluginTools({ channel: "agent", userId: "user-1" }, [
+          "mixed-agenda",
+        ]),
+        chat: createPluginTools({ channel: "chat", userId: "user-1" }, [
+          "mixed-agenda",
+        ]),
+        planning: createPluginTools({ channel: "planning", userId: "user-1" }, [
+          "mixed-agenda",
+        ]),
+      }));
+      expect(Object.keys(result.agent).toSorted()).toEqual([
+        "createEvent",
+        "listEvents",
+      ]);
+      // Surtout : plus aucune exception au milieu d'un tour de Chat.
+      expect(Object.keys(result.chat)).toEqual(["listEvents"]);
+      expect(Object.keys(result.planning)).toEqual(["listEvents"]);
+    });
+
+    it("écarte un connecteur de compte quand l'appel ne porte pas d'identité", () => {
+      const warnings: unknown[] = [];
+      const warn = console.warn;
+      console.warn = (...args: unknown[]) => warnings.push(args.join(" "));
+      try {
+        const result = withMixedPlugin(() =>
+          createPluginTools({ channel: "chat" }, ["mixed-agenda"])
+        );
+        expect(result).toEqual({});
+      } finally {
+        console.warn = warn;
+      }
+      expect(warnings.join("\n")).toContain("aucun identifiant utilisateur");
+    });
+
+    it("ne laisse aucun outil à servir pour un plugin purement scripté", () => {
+      const writeOnly = {
+        ...mixedManifest,
+        tools: [
+          {
+            description: "d",
+            effect: "write",
+            id: "createEvent",
+            label: "c",
+            systemHint: "h",
+          },
+        ],
+      } as PluginManifest;
+      expect(hasReadTool(writeOnly)).toBe(false);
+      expect(readToolIds(writeOnly)).toEqual([]);
+      expect(readToolIds(mixedManifest)).toEqual(["listEvents"]);
+      expect(writeToolIds(mixedManifest)).toEqual(["createEvent"]);
+    });
+  });
+
+  it("adapte les outils des plugins à Agent et réduit la sélection automatique", () => {
+    const githubTools = listPluginAgentTools(["github"], {
+      secretResolver: async ({ kind }) =>
+        kind === "auth" ? "jeton-de-test" : undefined,
+      userId: "user",
+    });
+    // Neuf outils, dont trois écritures : l'Agent est le seul canal qui les
+    // serve, et chacun de ces trois doit être marqué à approuver.
+    expect(githubTools).toHaveLength(9);
+    expect(
+      githubTools.filter((agentTool) => agentTool.permissions.readOnly)
+    ).toHaveLength(6);
+    expect(
+      githubTools
+        .filter((agentTool) => agentTool.permissions.default === "ask")
+        .map((agentTool) => agentTool.id)
+        .toSorted()
+    ).toEqual([
+      "commentGithubIssue",
+      "createGithubIssue",
+      "createGithubPullRequest",
+    ]);
+    expect(
+      githubTools.every((agentTool) => agentTool.source === "plugin")
     ).toBe(true);
     expect(
       narrowPluginAgentToolsForTask(
         "Montre les issues GitHub ouvertes",
         githubTools,
-        ["github-public"]
+        ["github"]
       ).map((agentTool) => agentTool.id)
     ).toEqual(["listGithubIssues"]);
     expect(
-      narrowPluginAgentToolsForTask(
-        "@GitHub public inspecte ce dépôt",
-        githubTools,
-        ["github-public"]
-      )
-    ).toHaveLength(4);
+      narrowPluginAgentToolsForTask("@GitHub inspecte ce dépôt", githubTools, [
+        "github",
+      ])
+    ).toHaveLength(9);
     expect(listPluginAgentTools([])).toEqual([]);
+  });
+
+  it("ne sert que la lecture d'un connecteur sur un canal non-Agent", () => {
+    // GitHub : 9 outils, 6 en lecture. Google : 12 outils, 10 en lecture
+    // (créer un événement et envoyer un mail restent côté Agent).
+    expect(getReadToolIdsForPluginIds(["github"])).toHaveLength(6);
+    expect(getReadToolIdsForPluginIds(["google"])).toHaveLength(10);
+    expect(getReadToolIdsForPluginIds(["github", "google"])).toHaveLength(16);
+    const chatTools = createPluginTools({ channel: "chat", userId: "user" }, [
+      "github",
+      "google",
+    ]);
+    expect(Object.keys(chatTools)).toHaveLength(16);
+    expect(chatTools.sendGmailMessage).toBeUndefined();
+    expect(chatTools.createCalendarEvent).toBeUndefined();
+    expect(chatTools.searchDriveFiles).toBeDefined();
   });
 });
 
@@ -584,12 +806,16 @@ describe("Connecteurs publics des plugins", () => {
     });
   });
 
-  it("retourne un résumé GitHub borné et une source vérifiable", async () => {
-    const calls: string[] = [];
+  it("porte le jeton du compte sur chaque appel GitHub", async () => {
+    const calls: { authorization: string | null; url: string }[] = [];
     vi.stubGlobal(
       "fetch",
-      vi.fn(async (input: RequestInfo | URL) => {
-        calls.push(String(input));
+      vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+        calls.push({
+          authorization:
+            new Headers(init?.headers).get("authorization") ?? null,
+          url: String(input),
+        });
         return Response.json({
           default_branch: "main",
           description: "Dépôt de test",
@@ -598,39 +824,77 @@ describe("Connecteurs publics des plugins", () => {
           html_url: "https://github.com/openai/example",
           license: { spdx_id: "MIT" },
           open_issues_count: 3,
-          private: false,
+          private: true,
           stargazers_count: 42,
           updated_at: "2026-09-22T00:00:00Z",
         });
       })
     );
-    const result = await runTool(getGithubRepositorySummary, {
+    const tools = createPluginTools(
+      {
+        channel: "agent",
+        secretResolver: async () => "jeton-du-compte",
+        userId: "user",
+      },
+      ["github"]
+    );
+    const result = await runTool(tools.getGithubRepositoryDetails, {
       repository: "openai/example",
     });
-    expect(calls).toEqual(["https://api.github.com/repos/openai/example"]);
+    expect(calls.map((call) => call.url)).toEqual([
+      "https://api.github.com/repos/openai/example",
+    ]);
+    // Le jeton vient du coffre du compte, plus d'une variable d'environnement :
+    // c'est ce qui rend un dépôt privé lisible pour son propriétaire seulement.
+    expect(calls[0]?.authorization).toBe("Bearer jeton-du-compte");
     expect(result).toMatchObject({
+      isPrivate: true,
       name: "openai/example",
       source: { url: "https://github.com/openai/example" },
       stars: 42,
     });
   });
 
-  it("refuse un dépôt GitHub privé même avec un token configuré", async () => {
-    const previous = process.env.GITHUB_PUBLIC_TOKEN;
-    process.env.GITHUB_PUBLIC_TOKEN = "token-public-test";
-    try {
-      vi.stubGlobal(
-        "fetch",
-        vi.fn(async () => Response.json({ private: true }))
-      );
-      const result = await runTool(getGithubRepositorySummary, {
-        repository: "private/example",
-      });
-      expect(String(result.error)).toContain("public");
-    } finally {
-      if (previous === undefined) delete process.env.GITHUB_PUBLIC_TOKEN;
-      else process.env.GITHUB_PUBLIC_TOKEN = previous;
-    }
+  it("conseille de connecter le compte au lieu d'appeler sans jeton", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json({});
+      })
+    );
+    // Aucun `secretResolver` : aucun compte connecté sur ce compte mAI.
+    const tools = createPluginTools({ channel: "agent", userId: "user" }, [
+      "github",
+    ]);
+    const result = await runTool(tools.getGithubRepositories, {});
+    expect(String(result.error)).toContain("Aucune connexion GitHub");
+    expect(calls).toEqual([]);
+  });
+
+  it("refuse une écriture dont le consentement ne porte pas la portée", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => Response.json({ id: "evt" }))
+    );
+    const tools = createPluginTools(
+      {
+        channel: "agent",
+        secretResolver: async ({ key }) =>
+          key.endsWith(".scopes")
+            ? "openid email https://www.googleapis.com/auth/calendar.readonly"
+            : "jeton-du-compte",
+        userId: "user",
+      },
+      ["google"]
+    );
+    const result = await runTool(tools.createCalendarEvent, {
+      endsAt: "2026-10-12T11:00:00Z",
+      startsAt: "2026-10-12T10:00:00Z",
+      summary: "Point mensuel",
+    });
+    expect(String(result.error)).toContain("n'inclut pas la portée");
   });
 
   it("valide les indices et les longueurs du quiz", () => {

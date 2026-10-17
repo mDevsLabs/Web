@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "BuildJob", "label": "T\xE2ches de compilation", "description": "G\xE9rez vos t\xE2ches de compilation depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "branch", "label": "Branche", "kind": "text", "required": true }, { "key": "durationSeconds", "label": "Dur\xE9e (s)", "kind": "number", "required": true }, { "key": "startedOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["queued", "running", "passed", "failed"] }], "titleKey": "name", "settings": [{ "key": "notifyBuildJob", "label": "Notifications : t\xE2ches de compilation", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBuildJob", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section t\xE2ches de compilation." }, { "key": "approveBuildJob", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

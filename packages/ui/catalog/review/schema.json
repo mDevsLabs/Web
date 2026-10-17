@@ -1,0 +1,71 @@
+{
+  "model": "Review",
+  "config": {
+    "name": "Review",
+    "label": "Avis",
+    "description": "Gérez vos avis depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "reviewer",
+        "label": "Auteur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "rating",
+        "label": "Note",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "postedOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "pending",
+          "published",
+          "hidden"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyReview",
+        "label": "Notifications : avis",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveReview",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section avis."
+      },
+      {
+        "key": "approveReview",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "review-demo-1",
+    "title": "Très agréable à utiliser",
+    "reviewer": "Auteur démo",
+    "rating": 128,
+    "postedOn": "2026-10-04",
+    "status": "pending"
+  }
+}

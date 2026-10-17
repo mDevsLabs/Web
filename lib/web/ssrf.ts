@@ -17,7 +17,7 @@
 // Testé par tests/unit/ssrf-network.test.ts.
 
 /** Plages bloquées, en notation CIDR IPv4. */
-const BLOCKED_IPV4_RANGES: Array<[number, number, string]> = [
+const BLOCKED_IPV4_RANGES: [number, number, string][] = [
   [0x00_00_00_00, 0xff_00_00_00, "0.0.0.0/8 (réseau source)"],
   [0x0a_00_00_00, 0xff_00_00_00, "10.0.0.0/8 (privé)"],
   [0x64_40_00_00, 0xff_c0_00_00, "100.64.0.0/10 (CGNAT)"],

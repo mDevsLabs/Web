@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "MediaAsset", "label": "M\xE9dias", "description": "G\xE9rez vos m\xE9dias depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "mediaType", "label": "Type", "kind": "text", "required": true }, { "key": "sizeMb", "label": "Taille (Mo)", "kind": "number", "required": true }, { "key": "uploadedOn", "label": "Ajout", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["processing", "ready", "failed"] }], "titleKey": "name", "settings": [{ "key": "notifyMediaAsset", "label": "Notifications : m\xE9dias", "description": "Recevoir un signal lors des changements." }, { "key": "archiveMediaAsset", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section m\xE9dias." }, { "key": "approveMediaAsset", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

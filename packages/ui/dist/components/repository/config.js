@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Repository", "label": "D\xE9p\xF4ts de code", "description": "G\xE9rez vos d\xE9p\xF4ts de code depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Propri\xE9taire", "kind": "text", "required": true }, { "key": "branch", "label": "Branche", "kind": "text", "required": true }, { "key": "starCount", "label": "\xC9toiles", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["public", "private", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyRepository", "label": "Notifications : d\xE9p\xF4ts de code", "description": "Recevoir un signal lors des changements." }, { "key": "archiveRepository", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section d\xE9p\xF4ts de code." }, { "key": "approveRepository", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

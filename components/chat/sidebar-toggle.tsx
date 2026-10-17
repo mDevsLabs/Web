@@ -18,6 +18,7 @@ export function SidebarToggle({
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
+          aria-label="Afficher ou masquer la barre latérale"
           className={className}
           data-testid="sidebar-toggle-button"
           onClick={toggleSidebar}
@@ -28,7 +29,7 @@ export function SidebarToggle({
         </Button>
       </TooltipTrigger>
       <TooltipContent align="start" className="hidden md:block">
-        Toggle Sidebar
+        Afficher ou masquer la barre latérale
       </TooltipContent>
     </Tooltip>
   );

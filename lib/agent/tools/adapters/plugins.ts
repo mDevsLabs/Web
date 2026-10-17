@@ -10,12 +10,15 @@ import {
   toolSuccess,
 } from "@/lib/agent/types";
 import { getPluginInstallationsByUserId } from "@/lib/db/queries";
+import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import {
   createPluginTools,
   PLUGIN_DEFINITION_LIST,
 } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { toolEffect } from "@/lib/plugins/tool-effect";
+import type { PluginSecretResolver } from "@/lib/plugins/types";
 
 type PublicReference = { title?: unknown; url?: unknown };
 
@@ -95,9 +98,15 @@ function pluginTiers(minTier: string): "all" | string[] {
   return ["plus", "pro", "max"];
 }
 
-export function listPluginAgentTools(pluginIds: string[]) {
+export function listPluginAgentTools(
+  pluginIds: string[],
+  deps: { secretResolver?: PluginSecretResolver; userId?: string } = {}
+) {
   const allowed = new Set(pluginIds);
-  const implementations = createPluginTools({ channel: "agent" }, pluginIds);
+  const implementations = createPluginTools(
+    { channel: "agent", ...deps },
+    pluginIds
+  );
   return PLUGIN_DEFINITION_LIST.filter((definition) =>
     allowed.has(definition.manifest.id)
   ).flatMap((definition) =>
@@ -135,8 +144,7 @@ export function listPluginAgentTools(pluginIds: string[]) {
         id: manifestTool.id,
         name,
         permissions:
-          definition.manifest.permissions.writesUserData ||
-          definition.manifest.permissions.requiresApproval
+          toolEffect(definition.manifest, manifestTool) === "write"
             ? { default: "ask", impact: "external_mutation", readOnly: false }
             : { default: "auto", impact: "read", readOnly: true },
         schema: implementation.inputSchema as ZodType<unknown>,
@@ -159,7 +167,15 @@ export async function listInstalledPluginAgentTools(params: {
     const plugin = getPluginManifest(installation.pluginId);
     return plugin && canUsePlugin(plugin, params.tier) ? [plugin.id] : [];
   });
-  return { pluginIds, tools: listPluginAgentTools(pluginIds) };
+  return {
+    pluginIds,
+    tools: listPluginAgentTools(pluginIds, {
+      secretResolver: createIntegrationSecretResolver({
+        userId: params.userId,
+      }),
+      userId: params.userId,
+    }),
+  };
 }
 
 export function getMentionedPluginToolIds(task: string, pluginIds: string[]) {
@@ -177,6 +193,18 @@ export function getMentionedPluginToolIds(task: string, pluginIds: string[]) {
 }
 
 const TOOL_INTENT_TERMS: Record<string, string[]> = {
+  checkCalendarAvailability: [
+    "mes disponibilités",
+    "suis-je libre",
+    "trous dans mon agenda",
+    "créneaux libres",
+    "quand suis-je disponible",
+  ],
+  commentGithubIssue: [
+    "commenter cette issue",
+    "répondre sur github",
+    "ajouter un commentaire à l'issue",
+  ],
   compareEurostatCountries: [
     "comparer les pays eurostat",
     "comparaison entre pays eurostat",
@@ -201,6 +229,22 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "comparaison entre pays",
     "écart entre pays",
   ],
+  createCalendarEvent: [
+    "crée un événement",
+    "ajouter à mon agenda",
+    "planifie dans google agenda",
+    "nouveau rendez-vous",
+  ],
+  createGithubIssue: [
+    "ouvrir une issue",
+    "crée une issue github",
+    "signaler un bug sur github",
+  ],
+  createGithubPullRequest: [
+    "ouvrir une pull request",
+    "crée une pr",
+    "proposer mes modifications sur github",
+  ],
   frHolidays: [
     "jour férié français",
     "jours fériés français",
@@ -224,6 +268,16 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   getAuthorBooks: ["livres de", "ouvrages de", "bibliographie de", "auteur"],
   getBookWork: ["détails de l'œuvre", "fiche d'œuvre", "ouvrage olid"],
+  getCalendarEvent: [
+    "détail de cet événement",
+    "qui participe à cet événement",
+    "où est ce rendez-vous",
+  ],
+  getDriveFileMetadata: [
+    "métadonnées du fichier",
+    "taille du fichier drive",
+    "type de ce fichier drive",
+  ],
   getEurostatData: [
     "eurostat",
     "données eurostat",
@@ -237,12 +291,18 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   getFoodIngredients: ["ingrédients", "allergènes", "traces alimentaires"],
   getFoodProduct: ["code-barres", "code barre", "ean", "produit alimentaire"],
-  getGithubRepositorySummary: [
+  getGithubRepositories: [
+    "mes dépôts github",
+    "mes repositories",
+    "liste mes dépôts",
+    "dépôts de mon compte",
+  ],
+  getGithubRepositoryDetails: [
     "dépôt github",
     "repository",
     "repo github",
     "étoiles github",
-    "github summary",
+    "licence de ce dépôt",
   ],
   getGitlabProjectSummary: [
     "projet gitlab",
@@ -313,23 +373,35 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "aplatir le json",
     "fusionner deux json",
   ],
+  listCalendarEvents: [
+    "mon agenda",
+    "mes prochains rendez-vous",
+    "qu'est-ce que j'ai cette semaine",
+    "événements à venir",
+    "mes réunions",
+  ],
   listGithubIssues: [
     "issue github",
     "issues github",
     "tickets github",
     "problèmes github",
   ],
-  listGithubReleases: [
-    "release github",
-    "releases",
-    "versions github",
-    "notes de version",
+  listGithubPullRequests: [
+    "pull requests du dépôt",
+    "mes pull requests",
+    "versions en attente sur github",
   ],
   listGitlabIssues: ["issue gitlab", "issues gitlab", "tickets gitlab"],
   listGitlabReleases: ["release gitlab", "releases gitlab", "versions gitlab"],
+  listGmailLabels: ["mes libellés gmail", "dossiers de ma messagerie"],
   listHolidayCountries: [
     "pays pris en charge",
     "pays disponibles pour les jours fériés",
+  ],
+  listRecentDriveFiles: [
+    "mes fichiers récents",
+    "dernier document modifié",
+    "ce sur quoi j'ai travaillé",
   ],
   listTvEpisodes: ["épisodes de", "liste des épisodes", "saison et épisode"],
   listWorldBankCountries: [
@@ -338,6 +410,11 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "niveau de revenu des pays",
   ],
   quizzly: ["quiz", "questionnaire", "tester mes connaissances"],
+  readDriveDocument: [
+    "lis ce document drive",
+    "contenu de ce fichier google",
+    "ouvre mon document drive",
+  ],
   readGithubFile: [
     "fichier github",
     "code github",
@@ -345,6 +422,11 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "contenu du fichier",
   ],
   readGitlabFile: ["fichier gitlab", "code gitlab", "lire le fichier gitlab"],
+  readGmailThread: [
+    "cette conversation mail",
+    "le fil de cet e-mail",
+    "historique de ce message",
+  ],
   searchAuthorPublications: [
     "publications de",
     "articles de l'auteur",
@@ -357,10 +439,21 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "livres sur",
     "catalogue de livres",
   ],
+  searchDriveFiles: [
+    "chercher dans mes fichiers",
+    "retrouver un document drive",
+    "mon fichier intitulé",
+  ],
   searchFoodProducts: [
     "rechercher un aliment",
     "chercher un produit",
     "produits alimentaires",
+  ],
+  searchGmailMessages: [
+    "chercher dans mes mails",
+    "retrouver un e-mail",
+    "messages de",
+    "ma boîte mail",
   ],
   searchJournals: [
     "revue scientifique",
@@ -394,6 +487,12 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "indicateur banque mondiale",
     "indicateurs économiques",
     "indicateur de développement",
+  ],
+  sendGmailMessage: [
+    "envoie un mail",
+    "envoyer un e-mail",
+    "rédige et envoie",
+    "mail à",
   ],
 };
 

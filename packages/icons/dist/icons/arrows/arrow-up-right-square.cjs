@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const ArrowUpRightSquareIcon = /* @__PURE__ */ createIcon('ArrowUpRightSquareIcon', [["path", { "d": "M15 15V9H9" }], ["path", { "d": "m9 15 6-6" }], ["rect", { "x": "3", "y": "3", "width": "18", "height": "18", "rx": "2" }]]);
+exports.ArrowUpRightSquareIcon = ArrowUpRightSquareIcon;

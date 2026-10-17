@@ -583,6 +583,245 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Note sur `0014_notifications_and_memory.sql` : ce fichier n'a AUCUNE entrée
+  // dans `meta/_journal.json`, donc `migrate()` ne l'applique pas — et c'est
+  // volontaire. Sa contrainte `Notification_type_check` énumère sept types ; le
+  // bloc plus haut dans ce fichier pose la même contrainte avec douze types, en
+  // réparation exécutée AVANT les migrations Drizzle. Journaliser 0014 la ferait
+  // passer après, donc la rétrécirait, et les notifications d'Agent
+  // (`agent_run_finished`, `agent_approval_required`…) seraient refusées en base.
+  // Le contrôle `tests/unit/migrations-journal.test.ts` liste ce fichier comme
+  // orphelin assumé : ne pas le « réparer » sans lire ce paragraphe.
+  //
+  // Migration 0040 : colonne dédiée key_name pour mprojects_api_keys
+  try {
+    await connection`ALTER TABLE IF EXISTS "mprojects_api_keys" ADD COLUMN IF NOT EXISTS "key_name" text`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."mprojects_api_keys"') IS NOT NULL THEN
+          UPDATE "mprojects_api_keys"
+          SET "key_name" = "plan"
+          WHERE "key_name" IS NULL AND "plan" IS NOT NULL AND "plan" <> '';
+        END IF;
+      END $$;
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0044 : vie sociale Wakies (profils, amis, groupes, épingles,
+  // réactions). Répété ici pour les environnements au journal incomplet :
+  // sans ces colonnes, la recherche globale, les groupes et la bande
+  // « Épinglés » répondent 500.
+  try {
+    await connection`ALTER TABLE "WakiesWakie" ADD COLUMN IF NOT EXISTS "isPublic" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "WakiesWakie" ADD COLUMN IF NOT EXISTS "handle" varchar(30)`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "WakiesWakieProfile" (
+        "wakieId" UUID PRIMARY KEY NOT NULL REFERENCES "WakiesWakie" ("id") ON DELETE CASCADE,
+        "bio" TEXT DEFAULT '' NOT NULL,
+        "avatarPath" TEXT,
+        "bannerPath" TEXT,
+        "links" JSONB DEFAULT '[]'::jsonb NOT NULL,
+        "updatedAt" TIMESTAMP DEFAULT now() NOT NULL
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "WakiesWakieImage" (
+        "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+        "wakieId" UUID NOT NULL REFERENCES "WakiesWakie" ("id") ON DELETE CASCADE,
+        "blobPathname" TEXT NOT NULL,
+        "alt" TEXT DEFAULT '' NOT NULL,
+        "position" INTEGER DEFAULT 0 NOT NULL,
+        "createdAt" TIMESTAMP DEFAULT now() NOT NULL
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesWakieImage_wakieId_position_idx" ON "WakiesWakieImage" ("wakieId", "position")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "WakiesFriend" (
+        "subscriberUserId" TEXT NOT NULL,
+        "wakieId" UUID NOT NULL REFERENCES "WakiesWakie" ("id") ON DELETE CASCADE,
+        "ownerUserId" TEXT NOT NULL,
+        "createdAt" TIMESTAMP DEFAULT now() NOT NULL,
+        PRIMARY KEY ("subscriberUserId", "wakieId")
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "WakiesWakie_handle_key" ON "WakiesWakie" ("handle") WHERE "handle" IS NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesWakie_isPublic_idx" ON "WakiesWakie" ("isPublic") WHERE "isPublic" = true`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesFriend_subscriber_idx" ON "WakiesFriend" ("subscriberUserId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesFriend_wakie_idx" ON "WakiesFriend" ("wakieId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "WakiesConversation" ADD COLUMN IF NOT EXISTS "isGroup" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "WakiesConversationMember" (
+        "conversationId" UUID NOT NULL REFERENCES "WakiesConversation" ("id") ON DELETE CASCADE,
+        "wakieId" UUID NOT NULL REFERENCES "WakiesWakie" ("id") ON DELETE CASCADE,
+        "isOrganizer" BOOLEAN DEFAULT false NOT NULL,
+        "joinedAt" TIMESTAMP DEFAULT now() NOT NULL,
+        PRIMARY KEY ("conversationId", "wakieId")
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesConversationMember_wakieId_idx" ON "WakiesConversationMember" ("wakieId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "WakiesMessage" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "WakiesMessage" ADD COLUMN IF NOT EXISTS "pinnedAt" timestamp`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesMessage_conversationId_pinned_idx" ON "WakiesMessage" ("conversationId", "pinned")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "WakiesMessageReaction" (
+        "messageId" TEXT NOT NULL REFERENCES "WakiesMessage" ("id") ON DELETE CASCADE,
+        "emoji" VARCHAR(16) NOT NULL,
+        "byWakieId" uuid REFERENCES "WakiesWakie" ("id") ON DELETE CASCADE,
+        "createdAt" TIMESTAMP DEFAULT now() NOT NULL,
+        PRIMARY KEY ("messageId", "emoji", "byWakieId")
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesMessageReaction_messageId_idx" ON "WakiesMessageReaction" ("messageId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0047 : persona PUBLIÉE d'un Wakie et provenance d'un clone.
+  // Répété ici pour les environnements au journal incomplet : sans
+  // `publicPersona`, la requête de lecture la plus large de l'annuaire
+  // sélectionne une colonne absente et répond 500 — la recherche globale, les
+  // fiches publiques et le clonage tombent d'un coup.
+  try {
+    await connection`ALTER TABLE "WakiesWakie" ADD COLUMN IF NOT EXISTS "publicPersona" text DEFAULT '' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "WakiesWakie" ADD COLUMN IF NOT EXISTS "clonedFromWakieId" uuid REFERENCES "WakiesWakie" ("id") ON DELETE SET NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0048 : curseur de lecture des conversations (non-lus). Répété
+  // ici pour les environnements au journal incomplet : `listConversations`
+  // sélectionne toute la ligne, donc une colonne absente fait répondre 500 au
+  // premier chargement de /wakies — l'application entière, pas seulement le
+  // compteur de non-lus.
+  try {
+    await connection`ALTER TABLE "WakiesConversation" ADD COLUMN IF NOT EXISTS "lastReadSeq" integer DEFAULT 0 NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesConversation_userId_lastRead_idx" ON "WakiesConversation" ("userId", "lastReadSeq")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0052 : fencing des tâches planifiées Wakies. Répété ici pour les
+  // environnements au journal incomplet : sans `attempt` ni `claimedBy`, le claim
+  // échoue en 42703 et plus aucune tâche récurrente ne démarre — l'échec est
+  // silencieux côté utilisateur, le tick ne répond qu'un compteur à zéro.
+  try {
+    await connection`ALTER TABLE IF EXISTS "WakiesTask" ADD COLUMN IF NOT EXISTS "attempt" integer DEFAULT 0 NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "WakiesTask" ADD COLUMN IF NOT EXISTS "claimedBy" varchar(128)`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "WakiesTask_status_leaseUntil_idx" ON "WakiesTask" ("status", "leaseUntil")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0057 : Effort de réflexion global et surcharge Agent nullable.
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "reasoningLevel" varchar(10) DEFAULT 'medium' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$ BEGIN
+        ALTER TABLE IF EXISTS "AgentSettings" ALTER COLUMN "reasoningLevel" DROP NOT NULL;
+        ALTER TABLE IF EXISTS "AgentSettings" ALTER COLUMN "reasoningLevel" DROP DEFAULT;
+      EXCEPTION
+        WHEN undefined_column THEN NULL;
+      END $$;
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

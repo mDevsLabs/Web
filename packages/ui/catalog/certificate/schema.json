@@ -1,0 +1,71 @@
+{
+  "model": "Certificate",
+  "config": {
+    "name": "Certificate",
+    "label": "Certificats",
+    "description": "Gérez vos certificats depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "recipient",
+        "label": "Bénéficiaire",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "issuedOn",
+        "label": "Délivrance",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "reference",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "issued",
+          "revoked",
+          "expired"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyCertificate",
+        "label": "Notifications : certificats",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveCertificate",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section certificats."
+      },
+      {
+        "key": "approveCertificate",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "certificate-demo-1",
+    "title": "Certification TypeScript",
+    "recipient": "Bénéficiaire démo",
+    "issuedOn": "2026-10-04",
+    "reference": "Référence démo",
+    "status": "issued"
+  }
+}

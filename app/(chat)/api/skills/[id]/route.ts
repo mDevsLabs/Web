@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { valeurParametreAcceptable } from "@/lib/ai/skill-params";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
@@ -9,6 +10,14 @@ import {
   updateSkill,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+
+/** Même garde que POST /api/skills — une mise à jour n'affaiblit pas la borne. */
+const valeurParametreSure = z
+  .string()
+  .refine((valeur) => valeurParametreAcceptable(valeur) === null, {
+    message:
+      "valeur de paramètre refusée : elle usurpe un marqueur du prompt système ou dépasse la borne de taille",
+  });
 
 const updateSkillSchema = z.object({
   color: z
@@ -26,9 +35,9 @@ const updateSkillSchema = z.object({
   parameters: z
     .array(
       z.object({
-        defaultValue: z.string().optional(),
-        description: z.string().optional(),
-        enumValues: z.array(z.string()).optional(),
+        defaultValue: valeurParametreSure.optional(),
+        description: z.string().max(500).optional(),
+        enumValues: z.array(valeurParametreSure).optional(),
         name: z.string().min(1).max(50),
         required: z.boolean().optional(),
         type: z

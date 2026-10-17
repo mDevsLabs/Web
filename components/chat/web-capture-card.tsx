@@ -1,6 +1,6 @@
 "use client";
 
-import { CameraIcon, ExternalLinkIcon, ShieldCheckIcon } from "lucide-react";
+import { CameraIcon, ExternalLinkIcon, ShieldCheckIcon } from "@mdevs/icons";
 
 type WebCaptureOutput = {
   description?: string;

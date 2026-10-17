@@ -7,31 +7,33 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import { createRegisterMulti } from "./vibe-common.ts";
-import { registerVibePostsRoutes } from "./vibe-posts.ts";
-import { registerVibeFeedRoutes } from "./vibe-feed.ts";
-import { registerVibeUsersRoutes } from "./vibe-users.ts";
-import { registerVibeDMsRoutes } from "./vibe-dms.ts";
-import { registerVibeSettingsRoutes } from "./vibe-settings.ts";
-import { registerVibeMAIRoutes } from "./vibe-mai.ts";
-import { registerVibeCircleRoutes } from "./vibe-circle.ts";
 import { registerVibeBooksRoutes } from "./vibe-books.ts";
+import { registerVibeCircleRoutes } from "./vibe-circle.ts";
+import { createRegisterMulti } from "./vibe-common.ts";
+import { registerVibeDMsRoutes } from "./vibe-dms.ts";
+import { registerVibeFeedRoutes } from "./vibe-feed.ts";
+import { registerVibeMAIRoutes } from "./vibe-mai.ts";
+import { registerVibePostsRoutes } from "./vibe-posts.ts";
+import { registerVibeSettingsRoutes } from "./vibe-settings.ts";
+import { registerVibeStoriesRoutes } from "./vibe-stories.ts";
+import { registerVibeUsersRoutes } from "./vibe-users.ts";
 
+export { registerVibeBooksRoutes } from "./vibe-books.ts";
+export { registerVibeDMsRoutes } from "./vibe-dms.ts";
+export { registerVibeFeedRoutes } from "./vibe-feed.ts";
+export { registerVibeMAIRoutes } from "./vibe-mai.ts";
+export { MAIAgentFleet } from "./vibe-mai-fleet.ts";
+export { registerVibePostsRoutes } from "./vibe-posts.ts";
 // Re-export core classes & types for external modules and tests
 export {
-  HybridRecommender,
   type FeedTunerWeights,
+  HybridRecommender,
   type PostCandidate,
   type RecommendationSignal,
 } from "./vibe-recommender.ts";
-export { MAIAgentFleet } from "./vibe-mai-fleet.ts";
-export { registerVibePostsRoutes } from "./vibe-posts.ts";
-export { registerVibeFeedRoutes } from "./vibe-feed.ts";
-export { registerVibeUsersRoutes } from "./vibe-users.ts";
-export { registerVibeDMsRoutes } from "./vibe-dms.ts";
 export { registerVibeSettingsRoutes } from "./vibe-settings.ts";
-export { registerVibeMAIRoutes } from "./vibe-mai.ts";
-export { registerVibeBooksRoutes } from "./vibe-books.ts";
+export { registerVibeStoriesRoutes } from "./vibe-stories.ts";
+export { registerVibeUsersRoutes } from "./vibe-users.ts";
 
 /**
  * Registers all Vibe Social Network and mAI Engine routes on the main Hono application
@@ -50,4 +52,8 @@ export function registerVibeRoutes(app: Hono) {
   registerVibeMAIRoutes(app, registerMulti);
   registerVibeCircleRoutes(app, registerMulti);
   registerVibeBooksRoutes(app, registerMulti);
+  // Stories après les domaines établis : leurs chemins sont sous /v1/stories…,
+  // donc sans collision, mais le module interne enregistre ses statiques
+  // (tray, active, archive, quota) avant ses routes paramétrées /:id.
+  registerVibeStoriesRoutes(app, registerMulti);
 }

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Contract", "label": "Contrats", "description": "G\xE9rez vos contrats depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "counterparty", "label": "Partenaire", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "endsOn", "label": "Fin", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "review", "signed", "expired"] }], "titleKey": "title", "settings": [{ "key": "notifyContract", "label": "Notifications : contrats", "description": "Recevoir un signal lors des changements." }, { "key": "archiveContract", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section contrats." }, { "key": "approveContract", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

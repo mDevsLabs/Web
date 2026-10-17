@@ -16,16 +16,22 @@ import {
   SparklesIcon,
   TagIcon,
   Trash2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import DataGrid, { SelectColumn } from "react-data-grid";
+import {
+  DataGrid,
+  type RenderCheckboxProps,
+  renderCheckbox,
+  SelectColumn,
+} from "react-data-grid";
 import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import "react-data-grid/lib/styles.css";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -111,6 +117,18 @@ const PROJECT_COLORS = [
   "#84cc16",
 ];
 const _PROJECT_ICONS = PROJECT_ICON_KEYS;
+
+// Conserver la sélection et l’état indéterminé du tableau avec des libellés français.
+const CHAT_GRID_RENDERERS = {
+  renderCheckbox: (props: RenderCheckboxProps) =>
+    renderCheckbox({
+      ...props,
+      "aria-label":
+        props["aria-label"] === "Select All"
+          ? "Sélectionner toutes les discussions"
+          : "Sélectionner cette discussion",
+    }),
+};
 
 export default function ProjectsPage() {
   return (
@@ -391,24 +409,28 @@ function ProjectsPageInner() {
     );
   };
 
-  const _handleSingleAction = useCallback(
+  const handleSingleAction = useCallback(
     async (chatId: string, patch: Record<string, unknown>) => {
-      const res = await fetch(`/api/chats/${chatId}`, {
-        body: JSON.stringify(patch),
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
-      });
-      if (!res.ok) {
-        const d = await res.json().catch(() => ({}));
-        toast.error(extractApiErrorMessage(d) || "Erreur");
-        return;
+      try {
+        const res = await fetch(`/api/chats/${chatId}`, {
+          body: JSON.stringify(patch),
+          headers: { "Content-Type": "application/json" },
+          method: "PATCH",
+        });
+        if (!res.ok) {
+          const d = await res.json().catch(() => ({}));
+          toast.error(extractApiErrorMessage(d) || "Erreur");
+          return;
+        }
+        toast.success("Mis à jour");
+        mutateChats();
+        mutateProjects();
+        globalMutate(
+          (key) => typeof key === "string" && key.includes("/api/history")
+        );
+      } catch {
+        toast.error("Impossible de mettre à jour la discussion. Réessayez.");
       }
-      toast.success("Mis à jour");
-      mutateChats();
-      mutateProjects();
-      globalMutate(
-        (key) => typeof key === "string" && key.includes("/api/history")
-      );
     },
     [mutateChats, mutateProjects]
   );
@@ -520,12 +542,7 @@ function ProjectsPageInner() {
             <Button
               className="h-7 w-7"
               onClick={async () => {
-                await fetch(`/api/chats/${row.id}`, {
-                  body: JSON.stringify({ pinned: !row.pinned }),
-                  headers: { "Content-Type": "application/json" },
-                  method: "PATCH",
-                });
-                mutateChats();
+                await handleSingleAction(row.id, { pinned: !row.pinned });
               }}
               size="icon"
               title={row.pinned ? "Désépingler" : "Épingler"}
@@ -540,12 +557,9 @@ function ProjectsPageInner() {
             <Button
               className="h-7 w-7"
               onClick={async () => {
-                await fetch(`/api/chats/${row.id}`, {
-                  body: JSON.stringify({ isArchived: !row.isArchived }),
-                  headers: { "Content-Type": "application/json" },
-                  method: "PATCH",
+                await handleSingleAction(row.id, {
+                  isArchived: !row.isArchived,
                 });
-                mutateChats();
               }}
               size="icon"
               title={row.isArchived ? "Désarchiver" : "Archiver"}
@@ -559,7 +573,12 @@ function ProjectsPageInner() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="h-7 w-7" size="icon" variant="ghost">
+                <Button
+                  aria-label={`Options de ${row.title}`}
+                  className="h-7 w-7"
+                  size="icon"
+                  variant="ghost"
+                >
                   <MoreHorizontalIcon className="size-3.5" />
                 </Button>
               </DropdownMenuTrigger>
@@ -577,7 +596,9 @@ function ProjectsPageInner() {
                   className="text-destructive"
                   onClick={async () => {
                     if (
-                      !confirm("Supprimer définitivement cette conversation ?")
+                      !(await confirmInApp(
+                        "Supprimer définitivement cette conversation ?"
+                      ))
                     ) {
                       return;
                     }
@@ -607,7 +628,7 @@ function ProjectsPageInner() {
       },
     ];
     return cols;
-  }, [projectMap, mutateChats]);
+  }, [projectMap, mutateChats, handleSingleAction]);
 
   const selectedRows = useMemo(() => {
     const s = new Set<string>();
@@ -653,6 +674,8 @@ function ProjectsPageInner() {
             </Button>
             <div className="flex border rounded-md">
               <Button
+                aria-label="Vue grille"
+                aria-pressed={viewMode === "grid"}
                 className="h-8 w-8 rounded-r-none"
                 onClick={() => setViewMode("grid")}
                 size="icon"
@@ -661,6 +684,8 @@ function ProjectsPageInner() {
                 <LayoutGridIcon className="size-4" />
               </Button>
               <Button
+                aria-label="Vue liste"
+                aria-pressed={viewMode === "list"}
                 className="h-8 w-8 rounded-l-none"
                 onClick={() => setViewMode("list")}
                 size="icon"
@@ -678,6 +703,7 @@ function ProjectsPageInner() {
             <div className="relative">
               <SearchIcon className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
               <Input
+                aria-label="Rechercher une discussion"
                 className="h-8 w-[200px] pl-8 text-xs"
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher..."
@@ -685,6 +711,7 @@ function ProjectsPageInner() {
               />
             </div>
             <Input
+              aria-label="Filtrer les discussions par tag"
               className="h-8 w-[120px] text-xs"
               onChange={(e) => setTagFilter(e.target.value)}
               placeholder="Tag..."
@@ -696,7 +723,10 @@ function ProjectsPageInner() {
             onValueChange={setSelectedProjectFilter}
             value={selectedProjectFilter}
           >
-            <SelectTrigger className="h-8 w-[200px] text-xs">
+            <SelectTrigger
+              aria-label="Filtrer par projet"
+              className="h-8 w-[200px] text-xs"
+            >
               <SelectValue placeholder="Filtrer projet" />
             </SelectTrigger>
             <SelectContent>
@@ -1035,6 +1065,7 @@ function ProjectsPageInner() {
                 defaultColumnOptions={{ resizable: true }}
                 enableVirtualization={true}
                 onSelectedRowsChange={setSelectedChatIds as any}
+                renderers={CHAT_GRID_RENDERERS}
                 rowKeyGetter={(row: Chat) => row.id}
                 rows={chats}
                 selectedRows={selectedRows}

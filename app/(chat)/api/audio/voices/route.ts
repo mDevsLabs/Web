@@ -1,25 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 
 export async function GET(_req: NextRequest) {
-  try {
-    const token = await getMaiSessionToken();
-    const headers: Record<string, string> = {};
-    if (token) {
-      headers.Authorization = `Bearer ${token}`;
-    }
+  const token = await getMaiSessionToken();
+  const result = await upstreamJson({ path: "/v1/audio/voices", token });
 
-    const res = await fetch(`${MAI_API_URL}/v1/audio/voices`, {
-      cache: "no-store",
-      headers,
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      return NextResponse.json(data);
-    }
-  } catch {}
+  if (result.ok) {
+    return NextResponse.json(result.data);
+  }
 
   // Voix par défaut
   return NextResponse.json({

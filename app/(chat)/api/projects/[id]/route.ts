@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   deleteProject,
   getProjectChats,
@@ -35,12 +35,12 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const userEmail = user.email;
+  const { userId } = session;
+  const userEmail = session.user.email;
 
   // Garde centralisée : propriétaire OU membre. Un projectId deviné par un
   // utilisateur extérieur donne un 404, jamais les données du projet.
@@ -76,11 +76,11 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   const userEmail = user.email;
 
   const access = await getProjectAccess({ projectId: id, userEmail, userId });
@@ -141,12 +141,12 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const userEmail = user.email;
+  const { userId } = session;
+  const userEmail = session.user.email;
   const { searchParams } = new URL(request.url);
   const deleteChats = searchParams.get("deleteChats") === "true";
 

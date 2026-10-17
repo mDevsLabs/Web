@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "FeatureFlag", "label": "Fonctionnalit\xE9s exp\xE9rimentales", "description": "G\xE9rez vos fonctionnalit\xE9s exp\xE9rimentales depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "key", "label": "Cl\xE9", "kind": "text", "required": true }, { "key": "rolloutPercent", "label": "D\xE9ploiement (%)", "kind": "number", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["enabled", "disabled", "testing"] }], "titleKey": "name", "settings": [{ "key": "notifyFeatureFlag", "label": "Notifications : fonctionnalit\xE9s exp\xE9rimentales", "description": "Recevoir un signal lors des changements." }, { "key": "archiveFeatureFlag", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section fonctionnalit\xE9s exp\xE9rimentales." }, { "key": "approveFeatureFlag", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

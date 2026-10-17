@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Nutrition", "label": "Suivi nutritionnel", "description": "G\xE9rez vos suivi nutritionnel depuis une interface claire.", "fields": [{ "key": "meal", "label": "Repas", "kind": "text", "required": true }, { "key": "food", "label": "Aliment", "kind": "text", "required": true }, { "key": "calories", "label": "Calories", "kind": "number", "required": true }, { "key": "proteinGrams", "label": "Prot\xE9ines (g)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["planned", "logged", "archived"] }], "titleKey": "meal", "settings": [{ "key": "notifyNutrition", "label": "Notifications : suivi nutritionnel", "description": "Recevoir un signal lors des changements." }, { "key": "archiveNutrition", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section suivi nutritionnel." }, { "key": "approveNutrition", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

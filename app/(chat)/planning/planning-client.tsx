@@ -20,12 +20,13 @@ import {
   Trash2Icon,
   WrenchIcon,
   XCircleIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import { ScheduleDialog } from "@/components/planning/schedule-dialog";
 import {
   AlertDialog,
@@ -43,6 +44,7 @@ import { Input } from "@/components/ui/input";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import { formatInZone } from "@/lib/planning/recurrence";
 import {
   deriveScheduleToolMode,
   SCHEDULE_TOOL_MODE_META,
@@ -72,11 +74,15 @@ export function PlanningClient({
     data: schedules,
     mutate,
     isValidating,
+    error: schedulesError,
   } = useSWR<ScheduledMessage[]>(
     `/api/planning?status=${filterStatus}`,
     fetcher,
     {
-      fallbackData: initialSchedules,
+      fallbackData:
+        filterStatus === "all"
+          ? initialSchedules
+          : initialSchedules.filter((item) => item.status === filterStatus),
       refreshInterval: 15_000,
     }
   );
@@ -273,12 +279,16 @@ export function PlanningClient({
   };
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto bg-background">
+    <div
+      className="flex h-full flex-col overflow-y-auto bg-background"
+      data-app-update-blocked={Boolean(executingId || isTriggeringDue)}
+    >
       {/* Header */}
       <div className="border-b border-border/40 px-6 py-6 sm:px-8">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <div className="flex items-center gap-2.5">
+              <PageBackButton />
               <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary shadow-xs">
                 <CalendarClockIcon className="size-5" />
               </span>
@@ -295,7 +305,7 @@ export function PlanningClient({
           <div className="flex items-center gap-2">
             {dueItems.length > 0 && (
               <Button
-                className="gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 dark:text-amber-400 shadow-xs text-xs"
+                className="gap-2 border-warning/30 bg-warning/10 text-warning hover:bg-warning/20 shadow-xs text-xs"
                 disabled={isTriggeringDue}
                 onClick={handleExecuteAllDue}
                 size="sm"
@@ -339,6 +349,7 @@ export function PlanningClient({
               { id: "cancelled", label: "Annulés" },
             ].map((st) => (
               <button
+                aria-pressed={filterStatus === st.id}
                 className={cn(
                   "rounded-lg px-3 py-1.5 text-xs font-medium transition cursor-pointer",
                   filterStatus === st.id
@@ -357,6 +368,7 @@ export function PlanningClient({
           <div className="relative w-full sm:w-64">
             <SearchIcon className="absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
+              aria-label="Rechercher une planification"
               className="h-8 pl-8 text-xs"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher..."
@@ -368,17 +380,30 @@ export function PlanningClient({
 
       {/* Contenu principal */}
       <div className="flex-1 p-6 sm:p-8">
-        {filteredList.length === 0 ? (
+        {schedulesError ? (
+          <div
+            className="surface-muted flex flex-col items-center gap-3 text-center text-destructive"
+            role="alert"
+          >
+            <p>Impossible d’actualiser les planifications.</p>
+            <Button onClick={() => void mutate()} variant="outline">
+              Réessayer
+            </Button>
+          </div>
+        ) : filteredList.length === 0 ? (
           <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-border/70 p-8 text-center">
             <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
               <CalendarClockIcon className="size-6" />
             </div>
             <h3 className="mt-4 font-semibold text-foreground">
-              Aucun message planifié
+              {searchQuery.trim() || filterStatus !== "all"
+                ? "Aucune planification ne correspond aux filtres"
+                : "Aucun message planifié"}
             </h3>
             <p className="mt-1 max-w-sm text-xs text-muted-foreground">
-              Planifiez dès maintenant un envoi automatique pour automatiser vos
-              résumés, veilles d'actualité ou rappels IA.
+              {searchQuery.trim() || filterStatus !== "all"
+                ? "Essayez une autre recherche ou sélectionnez Tous pour afficher vos planifications."
+                : "Planifiez un envoi automatique pour vos résumés, veilles d’actualité ou rappels IA."}
             </p>
             <Button
               className="mt-5 gap-2"
@@ -437,6 +462,27 @@ export function PlanningClient({
                             </span>
                           )}
                         </div>
+                        {/* Détails techniques : prochain envoi dans le fuseau
+                            de la tâche ET en UTC — la ligne locale ci-dessus
+                            reste dans le fuseau du navigateur. */}
+                        {item.recurrence && item.recurrence !== "none" && (
+                          <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 font-mono text-[10px] text-muted-foreground/80">
+                            <span>
+                              {item.timezone || "Europe/Paris"}:{" "}
+                              {formatInZone(
+                                item.timezone || "Europe/Paris",
+                                new Date(item.scheduledAt)
+                              )}
+                            </span>
+                            <span>
+                              UTC:{" "}
+                              {new Date(item.scheduledAt)
+                                .toISOString()
+                                .slice(0, 16)
+                                .replace("T", " ")}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1">

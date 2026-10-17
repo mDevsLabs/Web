@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Release", "label": "Versions", "description": "G\xE9rez vos versions depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "version", "label": "Version", "kind": "text", "required": true }, { "key": "releasedOn", "label": "Date", "kind": "date", "required": true }, { "key": "changeCount", "label": "Changements", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "prerelease", "stable"] }], "titleKey": "name", "settings": [{ "key": "notifyRelease", "label": "Notifications : versions", "description": "Recevoir un signal lors des changements." }, { "key": "archiveRelease", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section versions." }, { "key": "approveRelease", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

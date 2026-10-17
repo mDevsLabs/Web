@@ -1,0 +1,1297 @@
+import { randomUUID } from "node:crypto";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import {
+  defaultProviderIdentitySettings,
+  type ProviderIdentitySettings,
+} from "../src/providerIdentitySettings.js";
+import type { AgentCustomization } from "./agentSettingsTypes.js";
+import type { BotIntegrationConfig } from "./botSettingsTypes.js";
+import { getCachedMaiDataDir, resolveMaiDataDir } from "./dataDir.js";
+import {
+  normalizeThinkingLevel,
+  type ThinkingLevel,
+} from "./llm/thinkingLevel.js";
+import type { McpServerConfig } from "./mcp/mcpTypes.js";
+import type { AppLocale } from "../src/i18n/types.js";
+
+export type {
+  AgentCommand,
+  AgentCustomization,
+  AgentMemoryExtractionSettings,
+  AgentRule,
+  AgentSkill,
+  AgentSkillExtractionSettings,
+  AgentSubagent,
+  AgentToolPermissionRule,
+  ToolPermissionBehavior,
+} from "./agentSettingsTypes.js";
+export type { BotIntegrationConfig } from "./botSettingsTypes.js";
+export type { ThinkingLevel } from "./llm/thinkingLevel.js";
+export type { McpServerConfig } from "./mcp/mcpTypes.js";
+
+/** 单条用户模型实际请求时使用的协议（与适配器一致） */
+export type ModelRequestParadigm = "openai-compatible" | "anthropic" | "gemini";
+export type OAuthProviderKind = "codex" | "claude" | "antigravity";
+
+/** 用户配置的 LLM 提供商（连接信息在提供商级统一维护） */
+export type UserLlmProvider = {
+  /** 稳定 id */
+  id: string;
+  /** 界面显示名称 */
+  displayName: string;
+  paradigm: ModelRequestParadigm;
+  apiKey?: string;
+  /** OpenAI 兼容 / Anthropic 可选 */
+  baseURL?: string;
+  /** 仅 OpenAI 兼容请求使用的 HTTP(S) 代理 */
+  proxyUrl?: string;
+  /**
+   * 每提供商单独覆盖全局的「模型提供商标识」预设。`undefined` 表示跟随全局。
+   * preset 为 `'inherit'` 也表示跟随全局，便于 UI 显式选择。
+   */
+  providerIdentity?: ProviderIdentitySettings;
+  /** Codex（ChatGPT 登录）OAuth 凭据，由内置登录流程写入。 */
+  codexAuth?: CodexAuthRecord;
+  /** CLIProxyAPI 对齐的 OAuth 凭据（Codex / Claude Code / Antigravity）。 */
+  oauthAuth?: ProviderOAuthAuthRecord;
+};
+
+export type CodexAuthRecord = {
+  idToken: string;
+  accessToken: string;
+  refreshToken: string;
+  apiKey?: string;
+  lastRefreshAt: number;
+  accountId?: string;
+  planType?: string;
+};
+
+export type ProviderOAuthAuthRecord = {
+  provider: OAuthProviderKind;
+  accessToken: string;
+  refreshToken: string;
+  tokenType?: string;
+  idToken?: string;
+  expiresAt?: number;
+  lastRefreshAt: number;
+  accountId?: string;
+  planType?: string;
+  email?: string;
+  projectId?: string;
+  usage?: ProviderOAuthUsageSummary;
+};
+
+export type ProviderOAuthUsageSummary = {
+  provider: OAuthProviderKind;
+  updatedAt: number;
+  known: boolean;
+  available?: boolean;
+  creditType?: string;
+  creditAmount?: number;
+  minCreditAmount?: number;
+  paidTierId?: string;
+};
+
+export type MaiAccountProfile = {
+  id: string;
+  username: string;
+  email: string;
+  phone?: string;
+  avatarUrl?: string;
+  tier?: string;
+};
+
+export type MaiAccountUsage = {
+  tokensUsed: number;
+  limit: number;
+  resetAt?: string;
+  weekStart?: string;
+};
+
+export type MaiAccountState = {
+  jwtToken?: string;
+  user?: MaiAccountProfile;
+  apiKey?: string;
+  /** Clé aléatoire tirée dans mprojects_api_keys pour /v1/models (Q1), réutilisée jusqu'à déconnexion */
+  chosenApiKey?: string;
+  usage?: MaiAccountUsage;
+  lastSyncedAt?: number;
+};
+
+export const DEFAULT_MAI_PROVIDER_ID = "mai";
+
+export const DEFAULT_MAI_PROVIDER: UserLlmProvider = {
+  apiKey: "",
+  baseURL: "https://mai.val.run/v1",
+  displayName: "mAI",
+  id: DEFAULT_MAI_PROVIDER_ID,
+  paradigm: "openai-compatible",
+};
+
+export const DEFAULT_MAI_MODELS: UserModelEntry[] = [
+  {
+    contextWindowTokens: 1_048_576,
+    displayName: "Google: Gemini 2.5 Flash",
+    id: "google/gemini-2.5-flash:free",
+    maxOutputTokens: 65_535,
+    providerId: DEFAULT_MAI_PROVIDER_ID,
+    requestName: "google/gemini-2.5-flash:free",
+    temperatureMode: "auto",
+  },
+  {
+    contextWindowTokens: 131_072,
+    displayName: "Meta: Llama 3.3 70B Instruct",
+    id: "meta-llama/llama-3.3-70b-instruct:free",
+    maxOutputTokens: 128_000,
+    providerId: DEFAULT_MAI_PROVIDER_ID,
+    requestName: "meta-llama/llama-3.3-70b-instruct:free",
+    temperatureMode: "auto",
+  },
+  {
+    contextWindowTokens: 32_768,
+    displayName: "Qwen: Qwen 2.5 Coder 32B Instruct",
+    id: "qwen/qwen-2.5-coder-32b-instruct:free",
+    maxOutputTokens: 8192,
+    providerId: DEFAULT_MAI_PROVIDER_ID,
+    requestName: "qwen/qwen-2.5-coder-32b-instruct:free",
+    temperatureMode: "auto",
+  },
+  {
+    contextWindowTokens: 163_840,
+    displayName: "DeepSeek: DeepSeek R1",
+    id: "deepseek/deepseek-r1:free",
+    maxOutputTokens: 16_000,
+    providerId: DEFAULT_MAI_PROVIDER_ID,
+    requestName: "deepseek/deepseek-r1:free",
+    temperatureMode: "auto",
+  },
+];
+
+export type UserModelTemperatureMode = "auto" | "custom";
+
+export type UserModelEntry = {
+  /** 稳定 id，用于设置与选择器 */
+  id: string;
+  /** 所属提供商 id */
+  providerId: string;
+  /** 界面显示名称 */
+  displayName: string;
+  /** 发给 API 的模型名 */
+  requestName: string;
+  /**
+   * 单次补全最大输出 token 上限（各范式各自映射到 API 参数）。
+   * 未设置时在解析层使用默认（当前为 16384）；若网关上限更低请在模型高级选项中调小。
+   */
+  maxOutputTokens?: number;
+  /**
+   * 模型输入上下文上限（tokens），用于发送前压缩阈值等行为。
+   * 不填则使用 OpenAI 兼容 `/v1/models` 缓存、启发式或默认 200k。
+   */
+  contextWindowTokens?: number;
+  /**
+   * temperature 策略：
+   * - `auto`: 继续沿用应用内默认策略和兼容修正
+   * - `custom`: 对该模型固定发送用户填写的 temperature
+   */
+  temperatureMode?: UserModelTemperatureMode;
+  /** 仅 `temperatureMode === 'custom'` 时使用 */
+  temperature?: number;
+};
+
+export type LLMProviderId = ModelRequestParadigm;
+
+/** 主界面左右侧栏宽度（桌面端持久化，避免 file:// localStorage 因路径变化丢失） */
+export type SidebarLayoutPx = { left: number; right: number };
+
+/** 界面颜色模式：`system` 跟随 OS，有效亮暗由渲染层解析 */
+export type ShellColorMode = "light" | "dark" | "system";
+export type ShellUiFontPreset = "apple" | "inter" | "segoe";
+
+export type ShellUiSettings = {
+  sidebarLayout?: SidebarLayoutPx;
+  colorMode?: ShellColorMode;
+  fontPreset?: ShellUiFontPreset;
+  uiFontPreset?: ShellUiFontPreset;
+  codeFontPreset?: "sfmono" | "monospace" | "jetbrains";
+  themePresetId?:
+    | "mai"
+    | "async"
+    | "cursor"
+    | "graphite"
+    | "forest"
+    | "sunset"
+    | "custom";
+  accentColor?: string;
+  backgroundColor?: string;
+  foregroundColor?: string;
+  translucentSidebar?: boolean;
+  contrast?: number;
+  usePointerCursors?: boolean;
+  uiFontSize?: number;
+  codeFontSize?: number;
+  /** Desktop shell layout: centered agent workspace or classic editor three-column layout. */
+  layoutMode?: "agent" | "editor";
+};
+
+/**
+ * 旧版在 settings.json 中登记 LSP 的方式；**优先推荐**使用插件声明：
+ * 在 `<maiData>/plugins/<name>/` 或 `<workspace>/.mai/plugins/<name>/` 下放置 `.lsp.json` 或 `plugin.json#lspServers`。
+ * 保留本结构仅为兼容已有配置（会合并为 `plugin:settings:<id>`）。
+ */
+export type ShellLspUserServer = {
+  /** 唯一 id，用于日志与多服务器区分 */
+  id: string;
+  command: string;
+  args?: string[];
+  extensions: string[];
+  extensionToLanguage?: Record<string, string>;
+  cwd?: string;
+};
+
+export type ShellLspSettings = {
+  servers?: ShellLspUserServer[];
+};
+
+export type TeamRoleType =
+  | "team_lead"
+  | "frontend"
+  | "backend"
+  | "qa"
+  | "reviewer"
+  | "custom";
+export type TeamSource = "builtin" | "custom";
+export type TeamPresetId = "engineering" | "planning" | "design";
+
+export type TeamExpertConfig = {
+  id: string;
+  name: string;
+  roleType: TeamRoleType;
+  assignmentKey?: string;
+  systemPrompt: string;
+  preferredModelId?: string;
+  allowedTools?: string[];
+  enabled?: boolean;
+};
+
+export type TeamSettings = {
+  source?: TeamSource;
+  experts?: TeamExpertConfig[];
+  useDefaults?: boolean;
+  /** @deprecated 保留仅兼容旧 settings.json */
+  maxParallelExperts?: number;
+  presetId?: TeamPresetId;
+  presetExpertSnapshots?: Partial<Record<TeamPresetId, TeamExpertConfig[]>>;
+  /** 内置团队的全局模型；未设置时回退到当前会话所选模型 */
+  builtinGlobalModelId?: string;
+  /** 内置团队按角色覆盖模型；未命中时回退到 builtinGlobalModelId */
+  builtinExpertModelOverrides?: Record<string, string>;
+  /** Lead 出方案后先等用户确认再派发专家；默认 true */
+  requirePlanApproval?: boolean;
+  /** 执行前先让评审专家评估需求/方案；默认值随 preset 决定（engineering 默认 false） */
+  enablePreflightReview?: boolean;
+  /** 简单请求可由 Team Lead 直接回答，避免不必要的专家派发；默认 false */
+  enableSimpleGoalShortCircuit?: boolean;
+  /** 多个就绪任务同时存在时的排序策略；默认 dependency-first */
+  taskSchedulingStrategy?:
+    | "fifo"
+    | "round-robin"
+    | "least-busy"
+    | "dependency-first"
+    | "capability-match";
+  /** 可选的规划评审专家；为空时复用 reviewer */
+  planReviewer?: TeamExpertConfig | null;
+  /** 可选的交付评审专家；为空时复用 reviewer */
+  deliveryReviewer?: TeamExpertConfig | null;
+};
+
+type PluginMcpServerOverride = {
+  enabled?: boolean;
+  autoStart?: boolean;
+};
+
+export type ShellSettings = {
+  /** Langue de l'interface (Français par défaut) */
+  language?: AppLocale;
+  /** Compte utilisateur mAI (authentification & quotas) */
+  maiAccount?: MaiAccountState;
+  /** @deprecated 已由每条模型的 paradigm 取代，保留仅兼容旧 settings.json */
+  llm?: {
+    provider?: LLMProviderId;
+  };
+  openAI?: {
+    apiKey?: string;
+    baseURL?: string;
+    /** HTTP/HTTPS 代理，如 http://127.0.0.1:7890 */
+    proxyUrl?: string;
+  };
+  anthropic?: {
+    apiKey?: string;
+    baseURL?: string;
+  };
+  gemini?: {
+    apiKey?: string;
+  };
+  /** 类似 Claude Code 的 provider / model 身份信号（UA、headers、system prefix、Anthropic metadata） */
+  providerIdentity?: ProviderIdentitySettings;
+  /** 当前选择的用户模型 id；未选择时为空或省略 */
+  defaultModel?: string;
+  /**
+   * @deprecated 已由 `models.thinkingByModelId` 按模型区分；读入时仅用于一次性迁移到各 id。
+   */
+  thinkingLevel?: ThinkingLevel;
+  models?: {
+    /** 用户配置的提供商（含 Base URL / Key / 代理等） */
+    providers?: UserLlmProvider[];
+    /** 用户自添加的模型条目 */
+    entries?: UserModelEntry[];
+    /** 在选择器中启用的条目 id，顺序决定 Auto 的优先级 */
+    enabledIds?: string[];
+    /** 按选择器 id（`auto` 或某条目的 id）分别存储思考强度 */
+    thinkingByModelId?: Record<string, ThinkingLevel>;
+  };
+  recentWorkspaces?: string[];
+  lastOpenedWorkspace?: string | null;
+  /** Rules / Skills / Subagents / Commands（对话注入） */
+  agent?: AgentCustomization;
+  /** 窗口布局等纯界面状态 */
+  ui?: ShellUiSettings;
+  /** @deprecated 兼容字段；LSP 主要来自插件目录，此项若存在会一并合并 */
+  lsp?: ShellLspSettings;
+  /** MCP 服务器配置 */
+  mcpServers?: McpServerConfig[];
+  /** @deprecated 兼容旧渲染层保存结构；写入时会归并到 mcpServers */
+  mcp?: {
+    servers?: McpServerConfig[];
+  };
+  /** 对插件注入的 MCP 服务器做本地覆盖（如启用/禁用）。 */
+  pluginMcpOverrides?: Record<string, PluginMcpServerOverride>;
+  /**
+   * MCP 工具全名前缀拒绝列表（按 `mcp__server` 等规则做预过滤）。
+   * 若某工具名以列表中任一条目开头，则不会进入模型可见工具表（仅影响动态 MCP 工具，不含 ListMcpResourcesTool 等内置项）。
+   */
+  mcpToolDenyPrefixes?: string[];
+  /**
+   * 统计与用量：默认关闭；开启后写入用户指定目录下的 usage-stats.json（不按工作区分片）。
+   */
+  usageStats?: {
+    enabled?: boolean;
+    /** 绝对路径，用户选择的数据目录 */
+    dataDir?: string | null;
+  };
+  /**
+   * 自动更新：默认开启；从 GitHub Release 拉取更新，支持差异化更新。
+   */
+  autoUpdate?: {
+    /** 是否启用自动更新 */
+    enabled?: boolean;
+    /** 是否允许下载差异化更新包（否则全量更新） */
+    allowDifferential?: boolean;
+  };
+  /** Team 模式角色配置 */
+  team?: TeamSettings;
+  /** 外部机器人接入 */
+  bots?: {
+    integrations?: BotIntegrationConfig[];
+  };
+  /** 插件市场与用户级插件目录 */
+  plugins?: {
+    /** 用户级插件目录；为空时回退到 `<maiData>/plugins` */
+    userPluginsDir?: string | null;
+  };
+};
+
+const defaultSettings: ShellSettings = {
+  bots: {
+    integrations: [],
+  },
+  defaultModel: "google/gemini-2.5-flash:free",
+  language: "fr",
+  lastOpenedWorkspace: null,
+  models: {
+    enabledIds: DEFAULT_MAI_MODELS.map((m) => m.id),
+    entries: DEFAULT_MAI_MODELS,
+    providers: [DEFAULT_MAI_PROVIDER],
+    thinkingByModelId: Object.fromEntries(
+      DEFAULT_MAI_MODELS.map((m) => [m.id, "medium" as ThinkingLevel])
+    ),
+  },
+  providerIdentity: defaultProviderIdentitySettings(),
+  recentWorkspaces: [],
+  team: {
+    builtinExpertModelOverrides: {},
+    builtinGlobalModelId: undefined,
+    deliveryReviewer: null,
+    enablePreflightReview: false,
+    enableSimpleGoalShortCircuit: false,
+    experts: [],
+    planReviewer: null,
+    presetId: "engineering",
+    requirePlanApproval: true,
+    source: "builtin",
+    taskSchedulingStrategy: "dependency-first",
+    useDefaults: true,
+  },
+  thinkingLevel: "medium",
+};
+
+const MAX_RECENTS = 24;
+
+let cached: ShellSettings = { ...defaultSettings };
+let settingsPath = "";
+type LegacyShellSettings = ShellSettings & { indexing?: unknown };
+
+/** 保证每个选择器 id 在 thinkingByModelId 中有条目；无历史 map 时用旧版全局 thinkingLevel 或 medium 填充。 */
+function migrateThinkingByModel(settings: ShellSettings): {
+  next: ShellSettings;
+  didMutate: boolean;
+} {
+  const entries = settings.models?.entries ?? [];
+  const enabledIds = settings.models?.enabledIds ?? [];
+  const ids = new Set<string>();
+  for (const id of enabledIds) {
+    ids.add(String(id));
+  }
+  for (const e of entries) {
+    ids.add(String(e.id));
+  }
+
+  const rawMap = settings.models?.thinkingByModelId;
+  const hadStoredMap =
+    rawMap != null && typeof rawMap === "object" && !Array.isArray(rawMap);
+
+  const map: Record<string, ThinkingLevel> = {};
+  if (hadStoredMap) {
+    for (const [k, v] of Object.entries(rawMap as Record<string, unknown>)) {
+      map[k] = normalizeThinkingLevel(typeof v === "string" ? v : undefined);
+    }
+  }
+
+  let didMutate = false;
+  if (hadStoredMap) {
+    for (const id of ids) {
+      if (map[id] === undefined) {
+        map[id] = "medium";
+        didMutate = true;
+      }
+    }
+  } else {
+    const seed =
+      settings.thinkingLevel == null
+        ? "medium"
+        : normalizeThinkingLevel(settings.thinkingLevel);
+    for (const id of ids) {
+      map[id] = seed;
+    }
+    didMutate = true;
+  }
+
+  return {
+    didMutate,
+    next: {
+      ...settings,
+      models: {
+        ...(settings.models ?? {}),
+        enabledIds,
+        entries,
+        thinkingByModelId: map,
+      },
+    },
+  };
+}
+
+type LegacyModelJson = {
+  id?: string;
+  displayName?: string;
+  requestName?: string;
+  maxOutputTokens?: number;
+  contextWindowTokens?: number;
+  temperatureMode?: UserModelTemperatureMode;
+  temperature?: number;
+  providerId?: string;
+  paradigm?: ModelRequestParadigm;
+  useCustomConnection?: boolean;
+  customBaseURL?: string;
+  customApiKey?: string;
+};
+
+function providerMigrationNeeded(settings: ShellSettings): boolean {
+  const provList = settings.models?.providers;
+  const providers = Array.isArray(provList) ? provList : [];
+  const provIds = new Set(providers.map((p) => p.id));
+  const rawEntries = settings.models?.entries ?? [];
+
+  for (const raw of rawEntries) {
+    if (!raw || typeof raw !== "object") {
+      continue;
+    }
+    const e = raw as LegacyModelJson;
+    if (
+      e.useCustomConnection === true ||
+      e.customApiKey != null ||
+      e.customBaseURL != null
+    ) {
+      return true;
+    }
+    if (
+      e.paradigm != null &&
+      (typeof e.providerId !== "string" || !e.providerId)
+    ) {
+      return true;
+    }
+    if (typeof e.providerId !== "string" || !provIds.has(e.providerId)) {
+      return true;
+    }
+  }
+
+  if (rawEntries.length === 0) {
+    const hasGlobal =
+      !!settings.openAI?.apiKey?.trim() ||
+      !!settings.openAI?.baseURL?.trim() ||
+      !!settings.anthropic?.apiKey?.trim() ||
+      !!settings.gemini?.apiKey?.trim();
+    if (hasGlobal && providers.length === 0) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * 将旧版「每模型独立连接 / 全局密钥」结构迁移为「提供商 + 模型」。
+ */
+function migrateProviderModelLayout(settings: ShellSettings): {
+  next: ShellSettings;
+  didMutate: boolean;
+} {
+  if (!providerMigrationNeeded(settings)) {
+    return { didMutate: false, next: settings };
+  }
+
+  const rawEntries = (settings.models?.entries ?? []) as LegacyModelJson[];
+  const nextProviders: UserLlmProvider[] = [];
+  const defaults: Partial<Record<ModelRequestParadigm, string>> = {};
+  const customKeyToId = new Map<string, string>();
+
+  function ensureDefaultParadigm(p: ModelRequestParadigm): string {
+    const hit = defaults[p];
+    if (hit) {
+      return hit;
+    }
+    const id = randomUUID();
+    defaults[p] = id;
+    if (p === "openai-compatible") {
+      nextProviders.push({
+        apiKey: settings.openAI?.apiKey,
+        baseURL: settings.openAI?.baseURL,
+        displayName: "OpenAI compatible",
+        id,
+        paradigm: p,
+        proxyUrl: settings.openAI?.proxyUrl,
+      });
+    } else if (p === "anthropic") {
+      nextProviders.push({
+        apiKey: settings.anthropic?.apiKey,
+        baseURL: settings.anthropic?.baseURL,
+        displayName: "Anthropic",
+        id,
+        paradigm: p,
+      });
+    } else {
+      nextProviders.push({
+        apiKey: settings.gemini?.apiKey,
+        displayName: "Google Gemini",
+        id,
+        paradigm: p,
+      });
+    }
+    return id;
+  }
+
+  const nextEntries: UserModelEntry[] = [];
+
+  for (const raw of rawEntries) {
+    const id = typeof raw.id === "string" && raw.id ? raw.id : randomUUID();
+    const paradigm: ModelRequestParadigm = raw.paradigm ?? "openai-compatible";
+    let providerId: string;
+
+    if (raw.useCustomConnection === true) {
+      const b = String(raw.customBaseURL ?? "").trim();
+      const k = String(raw.customApiKey ?? "").trim();
+      const mapKey = `${paradigm}\n${b}\n${k}`;
+      const existing = customKeyToId.get(mapKey);
+      if (existing) {
+        providerId = existing;
+      } else {
+        providerId = randomUUID();
+        customKeyToId.set(mapKey, providerId);
+        const labelHint =
+          String(raw.displayName ?? "").trim() ||
+          String(raw.requestName ?? "").trim() ||
+          (paradigm === "openai-compatible"
+            ? "OpenAI endpoint"
+            : paradigm === "anthropic"
+              ? "Anthropic endpoint"
+              : "Gemini endpoint");
+        nextProviders.push({
+          apiKey: k || undefined,
+          baseURL: paradigm === "gemini" ? undefined : b || undefined,
+          displayName: labelHint,
+          id: providerId,
+          paradigm,
+        });
+      }
+    } else {
+      providerId = ensureDefaultParadigm(paradigm);
+    }
+
+    nextEntries.push({
+      contextWindowTokens: raw.contextWindowTokens,
+      displayName: String(raw.displayName ?? ""),
+      id,
+      maxOutputTokens: raw.maxOutputTokens,
+      providerId,
+      requestName: String(raw.requestName ?? ""),
+      temperature: raw.temperature,
+      temperatureMode: raw.temperatureMode,
+    });
+  }
+
+  if (rawEntries.length === 0) {
+    if (settings.openAI?.apiKey?.trim() || settings.openAI?.baseURL?.trim()) {
+      ensureDefaultParadigm("openai-compatible");
+    }
+    if (
+      settings.anthropic?.apiKey?.trim() ||
+      settings.anthropic?.baseURL?.trim()
+    ) {
+      ensureDefaultParadigm("anthropic");
+    }
+    if (settings.gemini?.apiKey?.trim()) {
+      ensureDefaultParadigm("gemini");
+    }
+  }
+
+  const enabledIds = settings.models?.enabledIds ?? [];
+  const validEntryIds = new Set(nextEntries.map((e) => e.id));
+  const saneEnabled = enabledIds.filter((x) => validEntryIds.has(String(x)));
+
+  return {
+    didMutate: true,
+    next: {
+      ...settings,
+      models: {
+        ...(settings.models ?? {}),
+        enabledIds: saneEnabled,
+        entries: nextEntries,
+        providers: nextProviders,
+        thinkingByModelId: settings.models?.thinkingByModelId ?? {},
+      },
+    },
+  };
+}
+
+function migrateDefaultModelRemoveAuto(settings: ShellSettings): {
+  next: ShellSettings;
+  didMutate: boolean;
+} {
+  const dm = settings.defaultModel;
+  if (typeof dm !== "string") {
+    return { didMutate: false, next: settings };
+  }
+  if (dm.trim().toLowerCase() === "auto") {
+    return { didMutate: true, next: { ...settings, defaultModel: undefined } };
+  }
+  return { didMutate: false, next: settings };
+}
+
+function migrateMaiDefaults(settings: ShellSettings): {
+  next: ShellSettings;
+  didMutate: boolean;
+} {
+  let didMutate = false;
+  const currentProviders = settings.models?.providers ?? [];
+  const currentEntries = (settings.models?.entries ?? []).filter((e) => {
+    if (e.id.startsWith("mDevsLabs/")) {
+      didMutate = true;
+      return false;
+    }
+    return true;
+  });
+  const currentEnabledIds = (settings.models?.enabledIds ?? []).filter((id) => {
+    if (id.startsWith("mDevsLabs/")) {
+      didMutate = true;
+      return false;
+    }
+    return true;
+  });
+
+  let nextProviders = [...currentProviders];
+  const nextEntries = [...currentEntries];
+  const nextEnabledIds = [...currentEnabledIds];
+
+  if (!nextProviders.some((p) => p.id === DEFAULT_MAI_PROVIDER_ID)) {
+    nextProviders = [DEFAULT_MAI_PROVIDER, ...nextProviders];
+    didMutate = true;
+  }
+
+  for (const model of DEFAULT_MAI_MODELS) {
+    if (!nextEntries.some((e) => e.id === model.id)) {
+      nextEntries.push(model);
+      if (!nextEnabledIds.includes(model.id)) {
+        nextEnabledIds.push(model.id);
+      }
+      didMutate = true;
+    }
+  }
+
+  let defaultModel = settings.defaultModel;
+  if (
+    !defaultModel ||
+    defaultModel.startsWith("mDevsLabs/") ||
+    !nextEntries.some((e) => e.id === defaultModel)
+  ) {
+    defaultModel = "google/gemini-2.5-flash:free";
+    didMutate = true;
+  }
+
+  const language: AppLocale = (settings.language as AppLocale) || "fr";
+  if (!settings.language) {
+    didMutate = true;
+  }
+
+  // Migration thème : 'async' -> 'mai'
+  let uiMigrated = false;
+  let nextUi: ShellSettings["ui"] = settings.ui;
+  if (
+    (settings.ui as Record<string, unknown> | undefined)?.["themePresetId"] ===
+    "async"
+  ) {
+    nextUi = {
+      ...(settings.ui ?? {}),
+      themePresetId: "mai",
+    } as ShellSettings["ui"];
+    uiMigrated = true;
+    didMutate = true;
+  }
+  // Migration dans appearanceSettings si présent sous ui
+  const appearanceTheme = (
+    settings.ui as Record<string, unknown> | undefined
+  )?.["themePresetId"];
+  if (appearanceTheme === "async") {
+    nextUi = { ...(nextUi ?? {}), themePresetId: "mai" } as ShellSettings["ui"];
+    uiMigrated = true;
+    didMutate = true;
+  }
+
+  // Migration providerIdentity preset : 'async-default' -> 'mai-default'
+  let providerIdentityMigrated = false;
+  let nextProviderIdentity = settings.providerIdentity;
+  if (
+    (settings.providerIdentity as Record<string, unknown> | undefined)?.[
+      "preset"
+    ] === "async-default"
+  ) {
+    nextProviderIdentity = {
+      ...(settings.providerIdentity ?? {}),
+      preset: "mai-default",
+    } as ShellSettings["providerIdentity"];
+    providerIdentityMigrated = true;
+    didMutate = true;
+  }
+
+  if (!didMutate) {
+    return { didMutate: false, next: settings };
+  }
+
+  return {
+    didMutate: true,
+    next: {
+      ...settings,
+      defaultModel,
+      language,
+      models: {
+        ...(settings.models ?? {}),
+        enabledIds: nextEnabledIds,
+        entries: nextEntries,
+        providers: nextProviders,
+      },
+      ...(uiMigrated ? { ui: nextUi } : {}),
+      ...(providerIdentityMigrated
+        ? { providerIdentity: nextProviderIdentity }
+        : {}),
+    },
+  };
+}
+
+export function initSettingsStore(userData: string): void {
+  const dir = resolveMaiDataDir(userData);
+  fs.mkdirSync(dir, { recursive: true });
+  settingsPath = path.join(dir, "settings.json");
+  if (fs.existsSync(settingsPath)) {
+    try {
+      const raw = fs.readFileSync(settingsPath, "utf8");
+      const parsed = JSON.parse(raw) as LegacyShellSettings;
+      const { indexing: _legacyIndexing, ...rest } = parsed;
+      cached = { ...defaultSettings, ...rest };
+    } catch (e) {
+      // settings.json corrompu: backup + defaults au lieu de perte silencieuse.
+      try {
+        const bak = `${settingsPath}.corrupt-${Date.now()}.bak`;
+        fs.copyFileSync(settingsPath, bak);
+        console.error(
+          `[settingsStore] settings.json corrompu, backup ${bak}:`,
+          e
+        );
+        // Tente le .bak précédent si présent.
+        const prevBak = `${settingsPath}.bak`;
+        if (fs.existsSync(prevBak)) {
+          try {
+            const rawBak = fs.readFileSync(prevBak, "utf8");
+            const parsedBak = JSON.parse(rawBak) as LegacyShellSettings;
+            const { indexing: _li, ...restBak } = parsedBak;
+            cached = { ...defaultSettings, ...restBak };
+            return;
+          } catch {
+            /* fall through to defaults */
+          }
+        }
+      } catch {
+        /* ignore backup errors */
+      }
+      cached = { ...defaultSettings };
+    }
+  } else {
+    cached = { ...defaultSettings };
+  }
+  const migratedDm = migrateDefaultModelRemoveAuto(cached);
+  cached = migratedDm.next;
+  const migratedPm = migrateProviderModelLayout(cached);
+  cached = migratedPm.next;
+  const migratedMai = migrateMaiDefaults(cached);
+  cached = migratedMai.next;
+  const migrated = migrateThinkingByModel(cached);
+  cached = migrated.next;
+  if (
+    migratedDm.didMutate ||
+    migratedPm.didMutate ||
+    migratedMai.didMutate ||
+    migrated.didMutate
+  ) {
+    save();
+  } else if (!fs.existsSync(settingsPath)) {
+    save();
+  }
+}
+
+export function getSettings(): ShellSettings {
+  return { ...cached };
+}
+
+export function getDefaultUserPluginsRoot(): string {
+  const root = path.join(getCachedMaiDataDir(), "plugins");
+  fs.mkdirSync(root, { recursive: true });
+  return root;
+}
+
+export function resolveUserPluginsRoot(
+  settings: ShellSettings = cached
+): string {
+  const raw = settings.plugins?.userPluginsDir;
+  if (typeof raw === "string" && raw.trim()) {
+    try {
+      const resolved = path.resolve(raw.trim());
+      if (fs.existsSync(resolved) && !fs.statSync(resolved).isDirectory()) {
+        return getDefaultUserPluginsRoot();
+      }
+      fs.mkdirSync(resolved, { recursive: true });
+      return resolved;
+    } catch {
+      return getDefaultUserPluginsRoot();
+    }
+  }
+  return getDefaultUserPluginsRoot();
+}
+
+/** 已开启且配置了目录时返回解析后的绝对路径，否则 null（不写统计）。 */
+export function resolveUsageStatsDataDir(
+  settings: ShellSettings
+): string | null {
+  const u = settings.usageStats;
+  if (!u?.enabled) {
+    return null;
+  }
+  const dir = typeof u.dataDir === "string" ? u.dataDir.trim() : "";
+  if (!dir) {
+    return null;
+  }
+  try {
+    return path.resolve(dir);
+  } catch {
+    return null;
+  }
+}
+
+export function patchSettings(partial: Partial<ShellSettings>): ShellSettings {
+  const {
+    ui: partialUi,
+    usageStats: partialUsageStats,
+    autoUpdate: partialAutoUpdate,
+    providerIdentity: partialProviderIdentity,
+    plugins: partialPlugins,
+    ...partialRest
+  } = partial;
+
+  const nextModels =
+    partial.models === undefined
+      ? cached.models
+      : {
+          enabledIds:
+            partial.models.enabledIds === undefined
+              ? (cached.models?.enabledIds ?? [])
+              : partial.models.enabledIds,
+          entries:
+            partial.models.entries === undefined
+              ? (cached.models?.entries ?? [])
+              : partial.models.entries,
+          providers:
+            partial.models.providers === undefined
+              ? (cached.models?.providers ?? [])
+              : partial.models.providers,
+          thinkingByModelId:
+            partial.models.thinkingByModelId === undefined
+              ? (cached.models?.thinkingByModelId ?? {})
+              : {
+                  ...(cached.models?.thinkingByModelId ?? {}),
+                  ...partial.models.thinkingByModelId,
+                },
+        };
+
+  const nextAgent =
+    partial.agent === undefined
+      ? cached.agent
+      : {
+          commands: partial.agent.commands ?? cached.agent?.commands ?? [],
+          confirmShellCommands:
+            partial.agent.confirmShellCommands ??
+            cached.agent?.confirmShellCommands,
+          confirmWritesBeforeExecute:
+            partial.agent.confirmWritesBeforeExecute ??
+            cached.agent?.confirmWritesBeforeExecute,
+          importThirdPartyConfigs:
+            partial.agent.importThirdPartyConfigs ??
+            cached.agent?.importThirdPartyConfigs ??
+            true,
+          maxConsecutiveMistakes:
+            partial.agent.maxConsecutiveMistakes ??
+            cached.agent?.maxConsecutiveMistakes,
+          maxToolRounds:
+            partial.agent.maxToolRounds ?? cached.agent?.maxToolRounds,
+          memoryExtraction:
+            partial.agent.memoryExtraction === undefined
+              ? cached.agent?.memoryExtraction
+              : {
+                  ...(cached.agent?.memoryExtraction ?? {}),
+                  ...partial.agent.memoryExtraction,
+                },
+          mistakeLimitEnabled:
+            partial.agent.mistakeLimitEnabled ??
+            cached.agent?.mistakeLimitEnabled,
+          roundHardTimeoutMs:
+            partial.agent.roundHardTimeoutMs ??
+            cached.agent?.roundHardTimeoutMs,
+          rules: partial.agent.rules ?? cached.agent?.rules ?? [],
+          shellPermissionMode:
+            partial.agent.shellPermissionMode === undefined
+              ? cached.agent?.shellPermissionMode
+              : partial.agent.shellPermissionMode,
+          shouldAvoidPermissionPrompts:
+            partial.agent.shouldAvoidPermissionPrompts === undefined
+              ? cached.agent?.shouldAvoidPermissionPrompts
+              : partial.agent.shouldAvoidPermissionPrompts,
+          skills: partial.agent.skills ?? cached.agent?.skills ?? [],
+          skipSafeShellCommandsConfirm:
+            partial.agent.skipSafeShellCommandsConfirm ??
+            cached.agent?.skipSafeShellCommandsConfirm,
+          streamIdleTimeoutMs:
+            partial.agent.streamIdleTimeoutMs ??
+            cached.agent?.streamIdleTimeoutMs,
+          streamIdleWatchdogEnabled:
+            partial.agent.streamIdleWatchdogEnabled ??
+            cached.agent?.streamIdleWatchdogEnabled,
+          subagents: partial.agent.subagents ?? cached.agent?.subagents ?? [],
+          toolPermissionRules:
+            partial.agent.toolPermissionRules === undefined
+              ? (cached.agent?.toolPermissionRules ?? [])
+              : partial.agent.toolPermissionRules,
+        };
+
+  const mergedUi =
+    partialUi === undefined
+      ? cached.ui
+      : { ...(cached.ui ?? {}), ...partialUi };
+
+  const mergedMcp =
+    partial.mcp !== undefined && Array.isArray(partial.mcp.servers)
+      ? partial.mcp.servers
+      : cached.mcpServers;
+
+  const mergedUsageStats =
+    partialUsageStats === undefined
+      ? cached.usageStats
+      : { ...(cached.usageStats ?? {}), ...partialUsageStats };
+
+  const mergedAutoUpdate =
+    partialAutoUpdate === undefined
+      ? cached.autoUpdate
+      : { ...(cached.autoUpdate ?? {}), ...partialAutoUpdate };
+
+  const mergedProviderIdentity =
+    partialProviderIdentity === undefined
+      ? (cached.providerIdentity ?? defaultProviderIdentitySettings())
+      : {
+          ...(cached.providerIdentity ?? defaultProviderIdentitySettings()),
+          ...partialProviderIdentity,
+        };
+
+  const mergedPlugins =
+    partialPlugins === undefined
+      ? cached.plugins
+      : { ...(cached.plugins ?? {}), ...partialPlugins };
+
+  const partialBotsRaw = (
+    partial as Partial<ShellSettings> & {
+      bots?: { integrations?: BotIntegrationConfig[] };
+    }
+  ).bots;
+  const mergedBots =
+    partialBotsRaw === undefined
+      ? cached.bots
+      : {
+          integrations: Array.isArray(partialBotsRaw?.integrations)
+            ? partialBotsRaw.integrations
+            : (cached.bots?.integrations ?? []),
+        };
+
+  const { indexing: _legacyIndexing, ...cachedWithoutLegacyIndexing } =
+    cached as LegacyShellSettings;
+
+  cached = {
+    ...cachedWithoutLegacyIndexing,
+    ...partialRest,
+    agent: nextAgent,
+    anthropic: partial.anthropic
+      ? { ...(cached.anthropic ?? {}), ...partial.anthropic }
+      : cached.anthropic,
+    autoUpdate: mergedAutoUpdate,
+    bots: mergedBots,
+    gemini: partial.gemini
+      ? { ...(cached.gemini ?? {}), ...partial.gemini }
+      : cached.gemini,
+    llm: partial.llm ? { ...(cached.llm ?? {}), ...partial.llm } : cached.llm,
+    mcpServers: mergedMcp,
+    models: nextModels,
+    openAI: partial.openAI
+      ? { ...cached.openAI, ...partial.openAI }
+      : cached.openAI,
+    plugins: mergedPlugins,
+    providerIdentity: mergedProviderIdentity,
+    ui: mergedUi,
+    usageStats: mergedUsageStats,
+  };
+  // Q5 : forcer le provider mAI système (non désactivable / non modifiable)
+  if (cached.models?.providers) {
+    const idx = cached.models.providers.findIndex(
+      (p) => p.id === DEFAULT_MAI_PROVIDER_ID
+    );
+    if (idx === -1) {
+      cached.models.providers = [
+        {
+          ...DEFAULT_MAI_PROVIDER,
+          apiKey:
+            cached.maiAccount?.chosenApiKey ||
+            cached.maiAccount?.apiKey ||
+            (
+              cached.models.providers.find(
+                (p) => p.id === DEFAULT_MAI_PROVIDER_ID
+              ) as any
+            )?.apiKey ||
+            "",
+        },
+        ...cached.models.providers,
+      ];
+    } else {
+      const existing = cached.models.providers[idx]!;
+      cached.models.providers[idx] = {
+        ...existing,
+        // préserver la clé choisie (Q1) sinon celle existante
+        apiKey:
+          existing.apiKey ||
+          cached.maiAccount?.chosenApiKey ||
+          cached.maiAccount?.apiKey ||
+          "",
+        baseURL: "https://mai.val.run/v1",
+        displayName: "mAI",
+        id: DEFAULT_MAI_PROVIDER_ID,
+        paradigm: "openai-compatible",
+      };
+    }
+  }
+  cached = migrateDefaultModelRemoveAuto(cached).next;
+  cached = migrateProviderModelLayout(cached).next;
+  cached = migrateThinkingByModel(cached).next;
+  save();
+  return getSettings();
+}
+
+export function getRecentWorkspaces(): string[] {
+  const raw = cached.recentWorkspaces ?? [];
+  return raw.filter((p) => typeof p === "string" && p.length > 0);
+}
+
+export function rememberWorkspace(root: string): void {
+  const norm = path.resolve(root);
+  const rest = getRecentWorkspaces().filter((p) => path.resolve(p) !== norm);
+  cached.recentWorkspaces = [norm, ...rest].slice(0, MAX_RECENTS);
+  cached.lastOpenedWorkspace = norm;
+  save();
+}
+
+export function removeRecentWorkspace(root: string): void {
+  const norm = path.resolve(root);
+  cached.recentWorkspaces = getRecentWorkspaces().filter(
+    (p) => path.resolve(p) !== norm
+  );
+  if (
+    cached.lastOpenedWorkspace &&
+    path.resolve(cached.lastOpenedWorkspace) === norm
+  ) {
+    cached.lastOpenedWorkspace = cached.recentWorkspaces[0] ?? null;
+  }
+  save();
+}
+
+export function getRestorableWorkspace(): string | null {
+  const p = cached.lastOpenedWorkspace;
+  if (!p || typeof p !== "string") {
+    return null;
+  }
+  const norm = path.resolve(p);
+  try {
+    if (fs.existsSync(norm) && fs.statSync(norm).isDirectory()) {
+      return norm;
+    }
+  } catch {
+    /* ignore */
+  }
+  return null;
+}
+
+function save(): void {
+  if (!settingsPath) {
+    return;
+  }
+  // Atomic tmp+rename + backup: évite la troncation sur coupure (vs writeFileSync direct).
+  try {
+    const json = JSON.stringify(cached, null, 2);
+    const tmp = `${settingsPath}.tmp-${process.pid}-${Date.now()}`;
+    fs.writeFileSync(tmp, json, { encoding: "utf8", mode: 0o600 });
+    try {
+      if (fs.existsSync(settingsPath)) {
+        try {
+          fs.copyFileSync(settingsPath, `${settingsPath}.bak`);
+        } catch {
+          /* backup best-effort */
+        }
+      }
+      fs.renameSync(tmp, settingsPath);
+      try {
+        if (process.platform !== "win32") fs.chmodSync(settingsPath, 0o600);
+      } catch {
+        /* ignore */
+      }
+    } catch (e) {
+      try {
+        if (fs.existsSync(tmp)) fs.unlinkSync(tmp);
+      } catch {
+        /* ignore */
+      }
+      throw e;
+    }
+  } catch (e) {
+    console.error("[settingsStore] save failed:", e);
+  }
+}
+
+/**
+ * Patch the Feishu OAuth tokens for a single bot integration in place and
+ * persist. Used by the OAuth flow and by the silent token refresh path —
+ * neither one wants to round-trip the entire integrations array through the
+ * renderer.
+ */
+export function updateBotIntegrationFeishuTokens(
+  integrationId: string,
+  tokens: {
+    userAccessToken?: string;
+    userRefreshToken?: string;
+    userAccessTokenExpiresAt?: number;
+    userAuthorizedOpenId?: string;
+    userAuthorizedName?: string;
+  }
+): boolean {
+  const integrations = cached.bots?.integrations ?? [];
+  const idx = integrations.findIndex((i) => i.id === integrationId);
+  if (idx < 0) {
+    return false;
+  }
+  const current = integrations[idx]!;
+  if (current.platform !== "feishu") {
+    return false;
+  }
+  const nextIntegration = {
+    ...current,
+    feishu: {
+      ...(current.feishu ?? {}),
+      ...tokens,
+    },
+  };
+  const nextList = integrations.slice();
+  nextList[idx] = nextIntegration;
+  cached = {
+    ...cached,
+    bots: { integrations: nextList },
+  };
+  save();
+  return true;
+}
+
+/** 获取 MCP 服务器配置 */
+export function getMcpServerConfigs(): McpServerConfig[] {
+  return cached.mcpServers ?? [];
+}
+
+/** 更新 MCP 服务器配置 */
+export function patchMcpServerConfigs(servers: McpServerConfig[]): void {
+  cached.mcpServers = servers;
+  save();
+}
+
+/** 添加单个 MCP 服务器配置 */
+export function addMcpServerConfig(config: McpServerConfig): void {
+  const servers = getMcpServerConfigs();
+  const existing = servers.findIndex((s) => s.id === config.id);
+  if (existing >= 0) {
+    servers[existing] = config;
+  } else {
+    servers.push(config);
+  }
+  cached.mcpServers = servers;
+  save();
+}
+
+/** 删除单个 MCP 服务器配置 */
+export function removeMcpServerConfig(id: string): void {
+  cached.mcpServers = (cached.mcpServers ?? []).filter((s) => s.id !== id);
+  save();
+}

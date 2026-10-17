@@ -1,4 +1,4 @@
-import { HomeIcon, SearchIcon } from "lucide-react";
+import { HomeIcon, SearchIcon } from "@mdevs/icons";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";

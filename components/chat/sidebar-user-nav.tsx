@@ -1,19 +1,18 @@
 "use client";
 
 import {
-  ChevronUp,
-  CloudIcon,
-  ExternalLinkIcon,
+  ChevronUpIcon as ChevronUp,
   FileTextIcon,
   HelpCircleIcon,
   InfoIcon,
+  LibraryIcon,
   LineChartIcon,
   LogOutIcon,
   MoonIcon,
   SettingsIcon,
   SunIcon,
   ZapIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,6 +38,7 @@ import {
 import { useSettings } from "@/hooks/use-settings";
 import type { MaiUser } from "@/lib/auth/session";
 import { APP_SUPPORT_URL, APP_VERSION } from "@/lib/constants";
+import { saveThemePreference } from "@/lib/theme/preference";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
@@ -47,7 +47,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const { data: settingsData } = useSettings();
 
   const handleThemeSelect = useCallback(() => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    const next = resolvedTheme === "dark" ? "light" : "dark";
+    setTheme(next);
+    // Le thème est partagé par la suite : l'enregistrer permet à Vibe, au Site
+    // et à Wakies de suivre la même décision au prochain chargement.
+    saveThemePreference(next);
   }, [resolvedTheme, setTheme]);
 
   const handleLogout = useCallback(async () => {
@@ -55,7 +59,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
       setIsLoggingOut(true);
       await logoutAction();
       toast.success("Déconnexion réussie");
-      router.push("/login");
+      // Sortie vers le site public, avec bandeau d'invitation à la connexion
+      // (?connexion=1 lu par components/site/login-invite-banner.tsx). /login
+      // resterait une impasse sans destination : le site est l'accueil naturel
+      // d'un visiteur déconnecté.
+      router.push("/site?connexion=1");
       router.refresh();
     } catch {
       toast.error("Erreur lors de la déconnexion");
@@ -82,7 +90,10 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
               data-onboarding="user-nav"
               data-testid="user-nav-button"
             >
-              <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center">
+              {/* En mode replié, le bouton devient un carré de 32 px avec 8 px
+                  de marge interne (size-8!/p-2! de SidebarMenuButton) : sans
+                  réduction, l'avatar de 28 px était rogné en carré. */}
+              <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center group-data-[collapsible=icon]:size-4">
                 {avatarUrl ? (
                   <Image
                     alt={username}
@@ -99,7 +110,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 )}
               </div>
 
-              <div className="flex flex-col flex-1 min-w-0 text-left">
+              <div className="flex flex-col flex-1 min-w-0 text-left group-data-[collapsible=icon]:hidden">
                 <div className="flex items-center gap-1.5">
                   <span
                     className="truncate text-[13px] font-medium"
@@ -116,7 +127,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 </span>
               </div>
 
-              <ChevronUp className="ml-auto size-3.5 text-sidebar-foreground/50" />
+              <ChevronUp className="ml-auto size-3.5 text-sidebar-foreground/50 group-data-[collapsible=icon]:hidden" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
@@ -162,8 +173,8 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/library"
               >
-                <CloudIcon className="size-4 text-muted-foreground" />
-                <span>Stockage de fichiers</span>
+                <LibraryIcon className="size-4 text-muted-foreground" />
+                <span>Bibliothèque</span>
               </Link>
             </DropdownMenuItem>
 
@@ -191,17 +202,14 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
             <DropdownMenuSub>
               <DropdownMenuSubTrigger className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent">
                 <HelpCircleIcon className="size-4 text-muted-foreground" />
-                <span>Support</span>
+                <span>Assistance</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="w-52 rounded-xl border border-border/60 bg-card/95 p-1.5 backdrop-blur-xl shadow-[var(--shadow-float)]">
                 <DropdownMenuItem asChild>
                   <a
                     className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                     href={APP_SUPPORT_URL}
-                    rel="noopener noreferrer"
-                    target="_blank"
                   >
-                    <ExternalLinkIcon className="size-3.5 text-muted-foreground" />
                     <span>Centre d'aide</span>
                   </a>
                 </DropdownMenuItem>

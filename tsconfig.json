@@ -13,13 +13,16 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.tsbuildinfo",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "electron": ["./tests/stubs/electron.ts"],
+      "node-pty": ["./tests/stubs/node-pty.ts"]
     },
     "strictNullChecks": true
   },
@@ -44,5 +47,30 @@
     "instrumentation-client.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  // Les copies du backend Val Town et sa CLI utilisent Deno/Bun, pas Next.js.
+  // Les scripts Node de maintenance restent inclus dans le contrôle des types.
+  "exclude": [
+    "node_modules",
+    "apps",
+    "scripts/admin*.ts",
+    "scripts/api-*.ts",
+    "scripts/audio.ts",
+    "scripts/auth.ts",
+    "scripts/config.ts",
+    "scripts/create-subscription-code.ts",
+    "scripts/devices.ts",
+    "scripts/email.ts",
+    "scripts/images.ts",
+    "scripts/main.ts",
+    "scripts/mai-*.ts",
+    "scripts/models*.ts",
+    "scripts/openrouter-*.ts",
+    "scripts/projects.ts",
+    "scripts/realtime.ts",
+    "scripts/storage.ts",
+    "scripts/translate.ts",
+    "scripts/updateModels.ts",
+    "scripts/vibe*.ts",
+    "scripts/web.ts"
+  ]
 }

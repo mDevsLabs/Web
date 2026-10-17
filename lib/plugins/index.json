@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.09.25",
+  "catalogVersion": "2026.10.11",
   "categories": [
     {
       "id": "meteo",
@@ -31,7 +31,12 @@
     { "id": "research", "label": "Recherche", "icon": "Atom" },
     { "id": "data", "label": "Données", "icon": "BarChart3" },
     { "id": "culture", "label": "Culture", "icon": "Video" },
-    { "id": "mobilite", "label": "Mobilité", "icon": "Map" }
+    { "id": "mobilite", "label": "Mobilité", "icon": "Map" },
+    {
+      "id": "integrations",
+      "label": "Applications connectées",
+      "icon": "Puzzle"
+    }
   ],
   "plugins": [
     {
@@ -65,10 +70,16 @@
       "manifest": "./fr-holidays/index.json"
     },
     {
-      "id": "github-public",
-      "dir": "github-public",
-      "entry": "./github-public",
-      "manifest": "./github-public/index.json"
+      "id": "github",
+      "dir": "github",
+      "entry": "./github",
+      "manifest": "./github/index.json"
+    },
+    {
+      "id": "google",
+      "dir": "google",
+      "entry": "./google",
+      "manifest": "./google/index.json"
     },
     {
       "id": "open-food-facts",

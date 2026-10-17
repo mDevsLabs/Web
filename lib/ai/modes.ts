@@ -4,7 +4,7 @@ import {
   ScaleIcon,
   SparklesIcon,
   TargetIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 
 export type AIModeId =
   | "standard"

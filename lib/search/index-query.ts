@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, desc, eq, inArray, type SQL, sql } from "drizzle-orm";
+import { and, desc, eq, ilike, inArray, type SQL, sql } from "drizzle-orm";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -24,6 +24,7 @@ import {
   skill,
   usageEvent,
   userMemory,
+  wakiesConversation,
 } from "@/lib/db/schema";
 import { PLUGIN_MANIFEST_LIST } from "@/lib/plugins/catalog";
 import { getAccessibleProjectIds } from "@/lib/projects/access";
@@ -35,6 +36,8 @@ import {
   type SourceResult,
   type SourceSearchContext,
 } from "@/lib/search/types";
+import { getSearchIndex } from "@/lib/site/search-index";
+import { vibeSql } from "@/lib/vibe/server/db";
 
 // Moteur de l'index de recherche interne : une source = un endroit du compte
 // où l'on sait chercher, et qui sait dire combien de lignes il contient.
@@ -1104,6 +1107,265 @@ const cloudFileSource: SourceResolver = {
   },
 };
 
+/**
+ * Site officiel et documentation technique.
+ */
+const siteSource: SourceResolver = {
+  key: "site",
+  search: async (ctx, terms) => {
+    const siteEntries = getSearchIndex();
+    const lower = terms.map((t) => t.raw.toLowerCase());
+    const matches = siteEntries.filter((entry) => {
+      const haystack =
+        `${entry.title} ${entry.description} ${entry.meta || ""} ${entry.content || ""}`.toLowerCase();
+      return lower.every((token) => haystack.includes(token));
+    });
+
+    const page = matches.slice(ctx.offset, ctx.offset + ctx.limit);
+    const hits: SearchHit[] = page.map((entry) => ({
+      external: false,
+      href: `/site${entry.href === "/" ? "" : entry.href}`,
+      id: `site-${entry.href}`,
+      meta: entry.meta || entry.type,
+      snippet: entry.description,
+      source: "site" as const,
+      title: entry.title,
+    }));
+
+    return {
+      capped: matches.length > ctx.offset + ctx.limit,
+      hits,
+      total: matches.length,
+    };
+  },
+};
+
+/**
+ * Wakies : discussions, espaces et agents Wakies.
+ */
+const wakiesSource: SourceResolver = {
+  key: "wakies",
+  search: async (ctx, terms) => {
+    const db = getDb();
+    const [cFirst, ...cRest] = terms.map((term) =>
+      ilike(wakiesConversation.title, term.like)
+    );
+    const cWhere = and(
+      inArray(wakiesConversation.userId, ctx.userIds),
+      cFirst,
+      ...cRest
+    );
+
+    const rows = await db
+      .select({
+        id: wakiesConversation.id,
+        title: wakiesConversation.title,
+        total: sql<number>`count(*) over ()`,
+        updatedAt: wakiesConversation.updatedAt,
+      })
+      .from(wakiesConversation)
+      .where(cWhere)
+      .orderBy(desc(wakiesConversation.updatedAt))
+      .limit(ctx.limit)
+      .offset(ctx.offset);
+
+    const total = rows[0]?.total ? Number(rows[0].total) : 0;
+    const hits: SearchHit[] = rows.map((r) => ({
+      external: false,
+      href: `/wakies/c/${r.id}`,
+      id: r.id,
+      meta: "Conversation Wakies",
+      source: "wakies" as const,
+      title: r.title,
+    }));
+
+    return {
+      capped: total > ctx.offset + ctx.limit,
+      hits,
+      total,
+    };
+  },
+};
+
+const CODER_STATIC_ENTRIES = [
+  {
+    description:
+      "Espace de travail desktop agent-first avec éditeur Monaco, terminaux PTY natifs et Git intégré.",
+    href: "/coder",
+    id: "coder-home",
+    meta: "Espace de travail",
+    title: "mAI Coder (IDE Autonome)",
+  },
+  {
+    description:
+      "Éditeur de code intégré Monaco avec coloration syntaxique et intelligence de code.",
+    href: "/coder",
+    id: "coder-monaco",
+    meta: "Éditeur",
+    title: "Éditeur Monaco & Navigation de fichiers",
+  },
+  {
+    description:
+      "Agents autonomes mAI Coder pour le refactoring, les tests et l'assistance de code.",
+    href: "/coder",
+    id: "coder-agent",
+    meta: "Agent Coder",
+    title: "Agent Coder & Mode Pair Programming",
+  },
+  {
+    description:
+      "Téléchargement de l'application desktop mAI Coder pour macOS, Linux et Windows.",
+    href: "/site/projects/coder",
+    id: "coder-download",
+    meta: "Téléchargement",
+    title: "Télécharger l'IDE Coder",
+  },
+];
+
+/**
+ * Coder : projets et environnement de développement.
+ */
+const coderSource: SourceResolver = {
+  key: "coder",
+  search: async (ctx, terms) => {
+    const lower = terms.map((t) => t.raw.toLowerCase());
+    const matches = CODER_STATIC_ENTRIES.filter((entry) => {
+      const haystack =
+        `${entry.title} ${entry.description} ${entry.meta}`.toLowerCase();
+      return lower.every((token) => haystack.includes(token));
+    });
+
+    const page = matches.slice(ctx.offset, ctx.offset + ctx.limit);
+    const hits: SearchHit[] = page.map((entry) => ({
+      external: false,
+      href: entry.href,
+      id: entry.id,
+      meta: entry.meta,
+      snippet: entry.description,
+      source: "coder" as const,
+      title: entry.title,
+    }));
+
+    return {
+      capped: matches.length > ctx.offset + ctx.limit,
+      hits,
+      total: matches.length,
+    };
+  },
+};
+
+const CLI_STATIC_ENTRIES = [
+  {
+    description:
+      "Outil CLI pour développeurs : analyse de code, scripts automatisés et pipelines CI/CD.",
+    href: "/site/projects/mai-cli",
+    id: "cli-intro",
+    meta: "Outil Terminal",
+    title: "mAI CLI",
+  },
+  {
+    description:
+      "Installation via curl -fsSL https://raw.githubusercontent.com/mDevsLabs/mAI-CLI/main/scripts/install-remote.sh | bash",
+    href: "/site/projects/mai-cli",
+    id: "cli-install-curl",
+    meta: "Installation",
+    title: "Installation mAI CLI (Bash / Linux / macOS)",
+  },
+  {
+    description:
+      "Installation sur Windows via PowerShell : irm https://raw.githubusercontent.com/mDevsLabs/mAI-CLI/main/scripts/install-remote.ps1 | iex",
+    href: "/site/projects/mai-cli",
+    id: "cli-install-ps",
+    meta: "Installation Windows",
+    title: "Installation mAI CLI (PowerShell)",
+  },
+  {
+    description:
+      "Configuration de la clé API MAI_API_KEY et des variables d'environnement dans le terminal.",
+    href: "/site/support?q=cli",
+    id: "cli-env",
+    meta: "Configuration",
+    title: "Variables d'environnement et Clé API CLI",
+  },
+];
+
+/**
+ * mAI CLI : documentation des commandes terminal et scripts.
+ */
+const cliSource: SourceResolver = {
+  key: "cli",
+  search: async (ctx, terms) => {
+    const lower = terms.map((t) => t.raw.toLowerCase());
+    const matches = CLI_STATIC_ENTRIES.filter((entry) => {
+      const haystack =
+        `${entry.title} ${entry.description} ${entry.meta}`.toLowerCase();
+      return lower.every((token) => haystack.includes(token));
+    });
+
+    const page = matches.slice(ctx.offset, ctx.offset + ctx.limit);
+    const hits: SearchHit[] = page.map((entry) => ({
+      external: false,
+      href: entry.href,
+      id: entry.id,
+      meta: entry.meta,
+      snippet: entry.description,
+      source: "cli" as const,
+      title: entry.title,
+    }));
+
+    return {
+      capped: matches.length > ctx.offset + ctx.limit,
+      hits,
+      total: matches.length,
+    };
+  },
+};
+
+/**
+ * Vibe : publications et réseau social.
+ */
+const vibeSource: SourceResolver = {
+  key: "vibe",
+  search: async (ctx, terms) => {
+    const sql = vibeSql();
+    if (!sql) {
+      return { capped: false, hits: [], total: 0 };
+    }
+
+    try {
+      const searchTerm = terms[0]?.like || "%";
+      const rows = await sql`
+        SELECT id, content, author_username, created_at,
+               count(*) OVER () as total_count
+        FROM posts
+        WHERE content ILIKE ${searchTerm}
+        ORDER BY created_at DESC
+        LIMIT ${ctx.limit}
+        OFFSET ${ctx.offset}
+      `;
+
+      const total = rows[0]?.total_count ? Number(rows[0].total_count) : 0;
+      const hits: SearchHit[] = rows.map((r: any) => ({
+        external: false,
+        href: `/vibe/p/${r.id}`,
+        id: String(r.id),
+        meta: `@${r.author_username || "utilisateur"}`,
+        snippet: typeof r.content === "string" ? r.content.slice(0, 160) : "",
+        source: "vibe" as const,
+        title: `Post de @${r.author_username || "utilisateur"}`,
+      }));
+
+      return {
+        capped: total > ctx.offset + ctx.limit,
+        hits,
+        total,
+      };
+    } catch {
+      return { capped: false, hits: [], total: 0 };
+    }
+  },
+};
+
 /** Sources interrogées en base : une requête chacune, total compris. */
 const SQL_SOURCES: SourceResolver[] = [
   chatSource,
@@ -1120,6 +1382,7 @@ const SQL_SOURCES: SourceResolver[] = [
   statsSource,
   imageSource,
   audioSource,
+  wakiesSource,
 ];
 
 /**
@@ -1130,6 +1393,10 @@ const UPSTREAM_SOURCES: SourceResolver[] = [
   modelSource,
   pluginSource,
   cloudFileSource,
+  siteSource,
+  coderSource,
+  cliSource,
+  vibeSource,
 ];
 
 const ALL_SOURCES = [...SQL_SOURCES, ...UPSTREAM_SOURCES];
@@ -1143,10 +1410,13 @@ const ALL_SOURCES = [...SQL_SOURCES, ...UPSTREAM_SOURCES];
 export const SOURCE_ORDER: SearchSourceKey[] = [
   "chat",
   "message",
+  "wakies",
   "project",
   "doc",
+  "coder",
   "skill",
   "command",
+  "cli",
   "mcp",
   "bot",
   "memory",
@@ -1154,6 +1424,8 @@ export const SOURCE_ORDER: SearchSourceKey[] = [
   "run",
   "image",
   "audio",
+  "vibe",
+  "site",
   "model",
   "stats",
   "plugin",
@@ -1174,11 +1446,59 @@ export type IndexQuery = {
 };
 
 /**
+ * Cache LRU serveur en mémoire (45 secondes de durée de vie).
+ * Évite de répéter les requêtes lourdes lors de frappes rapides ou de relectures.
+ */
+type SearchCacheEntry = {
+  data: SearchIndexResponse;
+  expiresAt: number;
+};
+const searchMemoryCache = new Map<string, SearchCacheEntry>();
+const SEARCH_CACHE_TTL_MS = 45_000;
+const SEARCH_CACHE_MAX_ENTRIES = 200;
+
+function getCachedSearch(key: string): SearchIndexResponse | null {
+  const entry = searchMemoryCache.get(key);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) {
+    searchMemoryCache.delete(key);
+    return null;
+  }
+  return entry.data;
+}
+
+function setCachedSearch(key: string, data: SearchIndexResponse): void {
+  if (searchMemoryCache.size >= SEARCH_CACHE_MAX_ENTRIES) {
+    const oldestKey = searchMemoryCache.keys().next().value;
+    if (oldestKey) searchMemoryCache.delete(oldestKey);
+  }
+  searchMemoryCache.set(key, {
+    data,
+    expiresAt: Date.now() + SEARCH_CACHE_TTL_MS,
+  });
+}
+
+function withSourceTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("Timeout")), ms);
+    promise
+      .then((val) => {
+        clearTimeout(timer);
+        resolve(val);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
+/**
  * Interroge les sources demandées et renvoie une page.
  *
  * `Promise.allSettled` est délibéré : une source qui tombe (table absente sur un
  * environnement non migré, amont indisponible) ne doit pas faire échouer les
- * seize autres. Les sources en échec sont nommées dans `failed`, pour que la
+ * autres. Les sources en échec sont nommées dans `failed`, pour que la
  * page dise laquelle manque au lieu d'afficher un « aucun résultat » trompeur.
  */
 export async function searchIndex(
@@ -1192,6 +1512,13 @@ export async function searchIndex(
 
   if (terms.length === 0 || userIds.length === 0) {
     return { counts: {}, failed: [], hits: [], nextOffset: null, total: 0 };
+  }
+
+  // Vérification du cache mémoire
+  const cacheKey = `${userIds.join(",")}:${input.query.trim().toLowerCase()}:${[...input.sources].sort().join(",")}:${input.limit}:${input.offset}`;
+  const cachedResponse = getCachedSearch(cacheKey);
+  if (cachedResponse) {
+    return cachedResponse;
   }
 
   const isPaid = isPaidTier(input.user.tier);
@@ -1214,7 +1541,9 @@ export async function searchIndex(
   );
 
   const settled = await Promise.allSettled(
-    resolvers.map((resolver) => resolver.search(ctx, terms))
+    resolvers.map((resolver) =>
+      withSourceTimeout(resolver.search(ctx, terms), 1500)
+    )
   );
 
   const counts: SearchIndexResponse["counts"] = {};
@@ -1244,13 +1573,14 @@ export async function searchIndex(
     }
   });
 
-  return {
+  const response: SearchIndexResponse = {
     counts,
     failed,
     hits,
-    // Une source plafonnée a forcément des résultats au-delà de la page : le
-    // client peut donc proposer « charger plus ».
     nextOffset: cappedSources > 0 ? input.offset + input.limit : null,
     total,
   };
+
+  setCachedSearch(cacheKey, response);
+  return response;
 }

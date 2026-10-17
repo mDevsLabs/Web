@@ -1,0 +1,71 @@
+{
+  "model": "ApiEndpoint",
+  "config": {
+    "name": "ApiEndpoint",
+    "label": "Points d’API",
+    "description": "Gérez vos points d’api depuis une interface claire.",
+    "fields": [
+      {
+        "key": "path",
+        "label": "Chemin",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "method",
+        "label": "Méthode",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "latencyMs",
+        "label": "Latence (ms)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "requestCount",
+        "label": "Requêtes",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "healthy",
+          "degraded",
+          "disabled"
+        ]
+      }
+    ],
+    "titleKey": "path",
+    "settings": [
+      {
+        "key": "notifyApiEndpoint",
+        "label": "Notifications : points d’api",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveApiEndpoint",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section points d’api."
+      },
+      {
+        "key": "approveApiEndpoint",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "api-endpoint-demo-1",
+    "path": "/api/products",
+    "method": "Méthode démo",
+    "latencyMs": 128,
+    "requestCount": 128,
+    "status": "healthy"
+  }
+}

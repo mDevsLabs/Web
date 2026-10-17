@@ -1,0 +1,71 @@
+{
+  "model": "Employee",
+  "config": {
+    "name": "Employee",
+    "label": "Collaborateurs",
+    "description": "Gérez vos collaborateurs depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "email",
+        "label": "E-mail",
+        "kind": "email",
+        "required": true
+      },
+      {
+        "key": "department",
+        "label": "Service",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "joinedOn",
+        "label": "Arrivée",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "on-leave",
+          "inactive"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyEmployee",
+        "label": "Notifications : collaborateurs",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveEmployee",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section collaborateurs."
+      },
+      {
+        "key": "approveEmployee",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "employee-demo-1",
+    "name": "Léa Bernard",
+    "email": "bonjour@example.com",
+    "department": "Service démo",
+    "joinedOn": "2026-10-04",
+    "status": "active"
+  }
+}

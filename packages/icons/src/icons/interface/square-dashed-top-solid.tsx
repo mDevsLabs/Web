@@ -1,0 +1,3 @@
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const SquareDashedTopSolidIcon = /* @__PURE__ */ createIcon('SquareDashedTopSolidIcon', [["path", { "d": "M14 21h1" }], ["path", { "d": "M21 14v1" }], ["path", { "d": "M21 19a2 2 0 0 1-2 2" }], ["path", { "d": "M21 9v1" }], ["path", { "d": "M3 14v1" }], ["path", { "d": "M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2" }], ["path", { "d": "M3 9v1" }], ["path", { "d": "M5 21a2 2 0 0 1-2-2" }], ["path", { "d": "M9 21h1" }]]);

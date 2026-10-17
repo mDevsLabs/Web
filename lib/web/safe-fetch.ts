@@ -164,11 +164,9 @@ export function isTokenOriginAllowed(
 
 /** Liste blanche d'origines pouvant recevoir un jeton de session mAI. */
 export function tokenOriginAllowlist(): string[] {
-  const origins = [
-    process.env.MAI_API_URL,
-    process.env.MAI_API_ORIGIN,
-    process.env.NEXT_PUBLIC_MAI_API_URL,
-  ].filter((value): value is string => Boolean(value?.trim()));
+  const origins = [process.env.MAI_API_URL, process.env.MAI_API_ORIGIN].filter(
+    (value): value is string => Boolean(value?.trim())
+  );
   return origins;
 }
 

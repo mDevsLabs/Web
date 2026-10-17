@@ -1,6 +1,6 @@
 {
   "name": "mai-desktop",
-  "version": "3.1.0",
+  "version": "0.9.1",
   "description": "mAI Desktop – Application Electron pour https://mai-officiel.vercel.app",
   "author": "mAI",
   "private": true,
@@ -8,28 +8,30 @@
   "homepage": "https://mai-officiel.vercel.app",
   "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "tsc && electron .",
-    "build": "tsc",
-    "pack": "pnpm run build && electron-builder --dir",
-    "dist": "pnpm run build && electron-builder",
-    "dist:win": "pnpm run build && electron-builder --win",
-    "dist:mac": "pnpm run build && electron-builder --mac",
-    "dist:linux": "pnpm run build && electron-builder --linux",
+    "dev": "pnpm run prepare:coder && pnpm run build && electron .",
+    "build": "node scripts/check-version.mjs && tsc && node scripts/build-terminal.mjs",
+    "pack": "pnpm run prepare:coder && pnpm run build && electron-builder --dir",
+    "dist": "pnpm run prepare:coder && pnpm run build && electron-builder",
+    "dist:win": "pnpm run prepare:coder && pnpm run build && electron-builder --win",
+    "dist:mac": "pnpm run prepare:coder x64 && pnpm run prepare:coder arm64 && pnpm run build && electron-builder --mac",
+    "dist:linux": "pnpm run prepare:coder && pnpm run build && electron-builder --linux",
     "generate:icons": "node scripts/generate-icons.mjs",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "prepare:coder": "node scripts/prepare-coder.mjs"
   },
   "build": {
     "appId": "app.mai.officiel.desktop",
     "productName": "mAI",
     "copyright": "Copyright © 2026 mAI",
+    "npmRebuild": true,
     "directories": {
       "buildResources": "build",
       "output": "dist-elec"
     },
     "files": [
       "dist/**/*",
-      "build/**/*",
-      "package.json"
+      "package.json",
+      "build/icon.*"
     ],
     "extraMetadata": {
       "main": "dist/main.js"
@@ -49,8 +51,8 @@
           ]
         }
       ],
+      "artifactName": "mAI-${os}-${arch}-${version}.${ext}",
       "icon": "build/icon.ico",
-      "publisherName": "mAI",
       "verifyUpdateCodeSignature": false
     },
     "nsis": {
@@ -117,13 +119,31 @@
       "description": "Application desktop mAI – https://mai-officiel.vercel.app"
     },
     "publish": null,
-    "forceCodeSigning": false
+    "forceCodeSigning": false,
+    "extraResources": [
+      {
+        "from": "build/coder-${arch}",
+        "to": "coder",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "beforePack": "scripts/check-coder.mjs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^6.0.0",
+    "node-pty": "^1.1.0"
+  },
   "devDependencies": {
-    "@types/node": "^24.13.2",
-    "electron": "^33.4.1",
-    "electron-builder": "^25.1.8",
-    "typescript": "^5.6.3"
+    "@types/node": "^24.19.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.17.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3"
   }
 }

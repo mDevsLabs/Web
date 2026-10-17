@@ -155,6 +155,8 @@ Résultat : **16 icônes distinctes** (doublons corrigés : `Code`×2 → `Githu
 - [x] 9.2 `lib/plugins/icon.tsx` — import + entrée `LUCIDE_ICONS` pour les 10
       (le `Record<LucideIconName, …>` rend cette étape obligatoire)
 - [x] 9.3 `lib/plugins/github-public/index.json` → `Github`
+      (sans objet : `github-public` est retiré au profit du connecteur OAuth
+      `github`, dont l'icône est le logo de marque `public/plugins/github.svg`)
 - [x] 9.4 `lib/plugins/gitlab-public/index.json` → `Gitlab`
 - [x] 9.5 `lib/plugins/openalex/index.json` → `Library`
 - [x] 9.6 `lib/plugins/eurostat/index.json` → `Landmark`

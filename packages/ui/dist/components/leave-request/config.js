@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "LeaveRequest", "label": "Cong\xE9s", "description": "G\xE9rez vos cong\xE9s depuis une interface claire.", "fields": [{ "key": "employee", "label": "Collaborateur", "kind": "text", "required": true }, { "key": "leaveType", "label": "Type", "kind": "text", "required": true }, { "key": "startDate", "label": "D\xE9but", "kind": "date", "required": true }, { "key": "endDate", "label": "Fin", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["pending", "approved", "rejected"] }], "titleKey": "employee", "settings": [{ "key": "notifyLeaveRequest", "label": "Notifications : cong\xE9s", "description": "Recevoir un signal lors des changements." }, { "key": "archiveLeaveRequest", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section cong\xE9s." }, { "key": "approveLeaveRequest", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

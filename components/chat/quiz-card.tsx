@@ -10,7 +10,7 @@ import {
   SparklesIcon,
   TrophyIcon,
   XCircleIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

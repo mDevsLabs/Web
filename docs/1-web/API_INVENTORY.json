@@ -1,0 +1,8096 @@
+{
+  "entrypoint": "main.ts",
+  "files": [
+    {
+      "file": "api-context.ts",
+      "handlers": [],
+      "imports": [
+        "npm:hono@4"
+      ],
+      "lines": 18,
+      "registrations": []
+    },
+    {
+      "file": "api-middleware.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-models.ts",
+        "npm:hono@4"
+      ],
+      "lines": 403,
+      "registrations": []
+    },
+    {
+      "file": "audio.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-models.ts",
+        "npm:hono@4"
+      ],
+      "lines": 837,
+      "registrations": []
+    },
+    {
+      "file": "auth.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./email.ts",
+        "./vibe-common.ts",
+        "npm:bcryptjs",
+        "npm:hono@4"
+      ],
+      "lines": 1086,
+      "registrations": []
+    },
+    {
+      "file": "cli-env.ts",
+      "handlers": [],
+      "imports": [
+        "node:fs",
+        "node:path"
+      ],
+      "lines": 22,
+      "registrations": []
+    },
+    {
+      "file": "config.ts",
+      "handlers": [],
+      "imports": [
+        "./api-context.ts",
+        "https://esm.town/v/std/sqlite",
+        "npm:@neondatabase/serverless",
+        "npm:jose"
+      ],
+      "lines": 601,
+      "registrations": []
+    },
+    {
+      "file": "devices.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "https://esm.town/v/std/sqlite",
+        "npm:hono@4"
+      ],
+      "lines": 154,
+      "registrations": []
+    },
+    {
+      "file": "email.ts",
+      "handlers": [],
+      "imports": [
+        "nodemailer"
+      ],
+      "lines": 553,
+      "registrations": []
+    },
+    {
+      "file": "images.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "npm:hono@4"
+      ],
+      "lines": 1884,
+      "registrations": []
+    },
+    {
+      "file": "mai-identity.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 143,
+      "registrations": []
+    },
+    {
+      "file": "mai-translate.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "npm:hono@4"
+      ],
+      "lines": 375,
+      "registrations": []
+    },
+    {
+      "file": "maiModels.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 339,
+      "registrations": []
+    },
+    {
+      "file": "main.ts",
+      "handlers": [],
+      "imports": [
+        "./api-middleware.ts",
+        "./audio.ts",
+        "./auth.ts",
+        "./config.ts",
+        "./devices.ts",
+        "./images.ts",
+        "./mai-translate.ts",
+        "./models-cron.ts",
+        "./models.ts",
+        "./projects.ts",
+        "./realtime.ts",
+        "./storage.ts",
+        "./translate.ts",
+        "./vibe-ai.ts",
+        "./vibe.ts",
+        "./web.ts",
+        "npm:hono/cors",
+        "npm:hono@4"
+      ],
+      "lines": 153,
+      "registrations": [
+        "registerAudioRoutes",
+        "registerAuthRoutes",
+        "registerDeviceRoutes",
+        "registerImageRoutes",
+        "registerMaiTranslateRoutes",
+        "registerModelRoutes",
+        "registerProjectRoutes",
+        "registerRealtimeRoutes",
+        "registerStorageRoutes",
+        "registerTranslateRoutes",
+        "registerVibeAIRoutes",
+        "registerVibeRoutes",
+        "registerWebRoutes"
+      ]
+    },
+    {
+      "file": "models-cron.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./updateModels.ts"
+      ],
+      "lines": 20,
+      "registrations": []
+    },
+    {
+      "file": "models.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./mai-identity.ts",
+        "./maiModels.ts",
+        "./openrouter-models.ts",
+        "npm:hono@4"
+      ],
+      "lines": 846,
+      "registrations": []
+    },
+    {
+      "file": "openrouter-fetch.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-models.ts"
+      ],
+      "lines": 38,
+      "registrations": []
+    },
+    {
+      "file": "openrouter-models.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 253,
+      "registrations": []
+    },
+    {
+      "file": "projects.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "npm:hono@4"
+      ],
+      "lines": 633,
+      "registrations": []
+    },
+    {
+      "file": "realtime.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "npm:hono/streaming",
+        "npm:hono@4"
+      ],
+      "lines": 311,
+      "registrations": []
+    },
+    {
+      "file": "storage.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "npm:aws4fetch",
+        "npm:hono@4"
+      ],
+      "lines": 1026,
+      "registrations": []
+    },
+    {
+      "file": "translate.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-fleet.ts",
+        "npm:hono@4"
+      ],
+      "lines": 460,
+      "registrations": []
+    },
+    {
+      "file": "updateModels.ts",
+      "handlers": [],
+      "imports": [
+        "./cli-env.ts",
+        "./openrouter-models.ts",
+        "@neondatabase/serverless",
+        "node:path",
+        "node:process",
+        "node:url",
+        "npm:@neondatabase/serverless"
+      ],
+      "lines": 165,
+      "registrations": []
+    },
+    {
+      "file": "vibe-ai.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-fleet.ts",
+        "npm:hono@4"
+      ],
+      "lines": 414,
+      "registrations": []
+    },
+    {
+      "file": "vibe-books-conversations.ts",
+      "handlers": [],
+      "imports": [
+        "./vibe-dms-core.ts"
+      ],
+      "lines": 313,
+      "registrations": []
+    },
+    {
+      "file": "vibe-books.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-books-conversations.ts",
+        "./vibe-common.ts",
+        "./vibe-dms-core.ts",
+        "./vibe-posts-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 1116,
+      "registrations": []
+    },
+    {
+      "file": "vibe-circle.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "npm:hono@4"
+      ],
+      "lines": 236,
+      "registrations": []
+    },
+    {
+      "file": "vibe-common.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "npm:hono@4"
+      ],
+      "lines": 111,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-conversations.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-books.ts",
+        "./vibe-common.ts",
+        "./vibe-dms-core.ts",
+        "./vibe-posts-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 832,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-core.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-fetch.ts",
+        "./realtime.ts",
+        "./vibe-posts-core.ts"
+      ],
+      "lines": 727,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-groups.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-common.ts",
+        "./vibe-dms-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 568,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-message-actions.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-fetch.ts",
+        "./vibe-common.ts",
+        "./vibe-dms-core.ts",
+        "./vibe-mai-fleet.ts",
+        "npm:hono@4"
+      ],
+      "lines": 682,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-moderation.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-common.ts",
+        "./vibe-dms-core.ts",
+        "./vibe-posts-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 455,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms-notifications.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "npm:hono@4"
+      ],
+      "lines": 233,
+      "registrations": []
+    },
+    {
+      "file": "vibe-dms.ts",
+      "handlers": [],
+      "imports": [
+        "./vibe-common.ts",
+        "./vibe-dms-conversations.ts",
+        "./vibe-dms-core.ts",
+        "./vibe-dms-groups.ts",
+        "./vibe-dms-message-actions.ts",
+        "./vibe-dms-moderation.ts",
+        "./vibe-dms-notifications.ts",
+        "npm:hono@4"
+      ],
+      "lines": 43,
+      "registrations": [
+        "registerDMDirectRoutes",
+        "registerDMGroupRoutes",
+        "registerDMMessageActionRoutes",
+        "registerDMModerationRoutes",
+        "registerDMNotificationRoutes"
+      ]
+    },
+    {
+      "file": "vibe-feed.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-circle.ts",
+        "./vibe-common.ts",
+        "./vibe-posts-core.ts",
+        "./vibe-recommender.ts",
+        "npm:hono@4"
+      ],
+      "lines": 1000,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-chat.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-fetch.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-core.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-tools.ts",
+        "npm:hono@4"
+      ],
+      "lines": 549,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-conversations.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-core.ts",
+        "./vibe-posts-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 316,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-core.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-posts-core.ts"
+      ],
+      "lines": 1143,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-execute.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-fetch.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-core.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-tools.ts",
+        "npm:hono@4"
+      ],
+      "lines": 471,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-fleet.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./openrouter-fetch.ts",
+        "./web.ts"
+      ],
+      "lines": 1812,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-settings.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-tools.ts",
+        "npm:hono@4"
+      ],
+      "lines": 77,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai.ts",
+      "handlers": [],
+      "imports": [
+        "./vibe-common.ts",
+        "./vibe-mai-chat.ts",
+        "./vibe-mai-conversations.ts",
+        "./vibe-mai-core.ts",
+        "./vibe-mai-execute.ts",
+        "./vibe-mai-settings.ts",
+        "npm:hono@4"
+      ],
+      "lines": 37,
+      "registrations": [
+        "registerVibeMAIChatRoutes",
+        "registerVibeMAIConversationRoutes",
+        "registerVibeMAIExecuteRoutes",
+        "registerVibeMAISettingsRoutes"
+      ]
+    },
+    {
+      "file": "vibe-posts-core.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts"
+      ],
+      "lines": 569,
+      "registrations": []
+    },
+    {
+      "file": "vibe-posts-crud.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-books.ts",
+        "./vibe-circle.ts",
+        "./vibe-common.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-posts-core.ts"
+      ],
+      "lines": 1624,
+      "registrations": []
+    },
+    {
+      "file": "vibe-posts-engage.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./realtime.ts",
+        "./vibe-circle.ts",
+        "./vibe-common.ts",
+        "./vibe-dms.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-mai.ts",
+        "./vibe-posts-core.ts"
+      ],
+      "lines": 1161,
+      "registrations": []
+    },
+    {
+      "file": "vibe-posts.ts",
+      "handlers": [],
+      "imports": [
+        "./vibe-common.ts",
+        "./vibe-feed.ts",
+        "./vibe-posts-core.ts",
+        "./vibe-posts-crud.ts",
+        "./vibe-posts-engage.ts",
+        "npm:hono@4"
+      ],
+      "lines": 53,
+      "registrations": [
+        "registerPostCrudRoutes",
+        "registerPostEngagementRoutes",
+        "registerVibeFeedRoutes"
+      ]
+    },
+    {
+      "file": "vibe-recommender.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 277,
+      "registrations": []
+    },
+    {
+      "file": "vibe-settings.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-common.ts",
+        "./vibe-tools.ts",
+        "npm:hono@4"
+      ],
+      "lines": 483,
+      "registrations": []
+    },
+    {
+      "file": "vibe-stories.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./storage.ts",
+        "./vibe-common.ts",
+        "npm:hono@4"
+      ],
+      "lines": 1260,
+      "registrations": []
+    },
+    {
+      "file": "vibe-tools.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./vibe-mai-fleet.ts"
+      ],
+      "lines": 709,
+      "registrations": []
+    },
+    {
+      "file": "vibe-users.ts",
+      "handlers": [],
+      "imports": [
+        "./config.ts",
+        "./storage.ts",
+        "./vibe-circle.ts",
+        "./vibe-common.ts",
+        "./vibe-posts-core.ts",
+        "npm:hono@4"
+      ],
+      "lines": 1481,
+      "registrations": []
+    },
+    {
+      "file": "vibe.ts",
+      "handlers": [],
+      "imports": [
+        "./vibe-books.ts",
+        "./vibe-circle.ts",
+        "./vibe-common.ts",
+        "./vibe-dms.ts",
+        "./vibe-feed.ts",
+        "./vibe-mai-fleet.ts",
+        "./vibe-mai.ts",
+        "./vibe-posts.ts",
+        "./vibe-recommender.ts",
+        "./vibe-settings.ts",
+        "./vibe-stories.ts",
+        "./vibe-users.ts",
+        "npm:hono@4"
+      ],
+      "lines": 60,
+      "registrations": [
+        "registerVibeBooksRoutes",
+        "registerVibeCircleRoutes",
+        "registerVibeDMsRoutes",
+        "registerVibeFeedRoutes",
+        "registerVibeMAIRoutes",
+        "registerVibePostsRoutes",
+        "registerVibeSettingsRoutes",
+        "registerVibeStoriesRoutes",
+        "registerVibeUsersRoutes"
+      ]
+    },
+    {
+      "file": "web.ts",
+      "handlers": [],
+      "imports": [
+        "npm:hono@4"
+      ],
+      "lines": 445,
+      "registrations": []
+    }
+  ],
+  "limitations": [
+    "Les chemins sont relevés dans les appels app.<méthode> ; les chemins calculés sont signalés.",
+    "Cet inventaire statique ne certifie ni les réponses des services externes, ni le déploiement Val Town.",
+    "Les imports des routes Next permettent d'identifier BFF et accès directs ; toutes les routes Next ne sont pas des proxys."
+  ],
+  "nextRoutes": [
+    {
+      "file": "app/(chat)/api/agent/route.ts",
+      "imports": [
+        "./schema",
+        "@/lib/agent/approvals/incoming",
+        "@/lib/agent/budget",
+        "@/lib/agent/context/build",
+        "@/lib/agent/context/files",
+        "@/lib/agent/context/project",
+        "@/lib/agent/flags",
+        "@/lib/agent/gate",
+        "@/lib/agent/instructions",
+        "@/lib/agent/notifications/install",
+        "@/lib/agent/runtime",
+        "@/lib/agent/settings",
+        "@/lib/agent/tools/adapters/mcp",
+        "@/lib/agent/tools/adapters/plugins",
+        "@/lib/agent/tools/catalog",
+        "@/lib/agent/tools/permissions",
+        "@/lib/agent/tools/registry",
+        "@/lib/agent/tools/selector",
+        "@/lib/agent/tools/selector/families",
+        "@/lib/agent/types",
+        "@/lib/agent/user-input/inject",
+        "@/lib/ai/models.server",
+        "@/lib/ai/providers",
+        "@/lib/ai/reasoning-details",
+        "@/lib/ai/registry",
+        "@/lib/ai/tools/ids",
+        "@/lib/api/error-response",
+        "@/lib/chat/auth",
+        "@/lib/chat/context",
+        "@/lib/chat/mcp",
+        "@/lib/chat/memory",
+        "@/lib/db/agent-queries",
+        "@/lib/db/agent-user-input-queries",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/prompts/capabilities",
+        "@/lib/types",
+        "@/lib/utils",
+        "ai",
+        "node:crypto"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/agent"
+    },
+    {
+      "file": "app/(chat)/api/agent/flags/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/agent/flags",
+        "@/lib/auth/plan",
+        "@/lib/auth/require-user",
+        "@/lib/db/users"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agent/flags"
+    },
+    {
+      "file": "app/(chat)/api/agent/mode/route.ts",
+      "imports": [
+        "@/lib/agent/flags",
+        "@/lib/agent/settings",
+        "@/lib/api/error-response",
+        "@/lib/auth/plan",
+        "@/lib/auth/require-user",
+        "@/lib/db/users",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/agent/mode"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/agent/flags",
+        "@/lib/agent/params-hash",
+        "@/lib/agent/tools/catalog",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/agent-foundation-queries",
+        "@/lib/db/agent-queries",
+        "@/lib/db/queries",
+        "@/lib/projects/access"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agent/runs"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/route.ts",
+      "imports": [
+        "@/lib/agent/flags",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/agent-queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PATCH"
+      ],
+      "path": "/api/agent/runs/[id]"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/approval/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/agent/contracts",
+        "@/lib/agent/params-hash",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/agent-foundation-queries",
+        "@/lib/db/agent-queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/agent/runs/[id]/approval"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/reorient/route.ts",
+      "imports": [
+        "@/lib/agent/reorientation/service",
+        "@/lib/agent/types",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/agent-queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/agent/runs/[id]/reorient"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/suggested-action/route.ts",
+      "imports": [
+        "@/lib/agent/suggested-actions/registry",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/agent-queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/agent/runs/[id]/suggested-action"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/summary/route.ts",
+      "imports": [
+        "@/lib/agent/usage",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/agent-queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agent/runs/[id]/summary"
+    },
+    {
+      "file": "app/(chat)/api/agent/runs/[id]/user-input/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/agent/contracts",
+        "@/lib/agent/params-hash",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/agent-queries",
+        "@/lib/db/agent-user-input-queries",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/agent/runs/[id]/user-input"
+    },
+    {
+      "file": "app/(chat)/api/agent/schedules/route.ts",
+      "imports": [
+        "@/lib/agent/contracts",
+        "@/lib/agent/gate",
+        "@/lib/agent/scheduler/occurrence",
+        "@/lib/agent/scheduler/once",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/agent-foundation-queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/agent/schedules"
+    },
+    {
+      "file": "app/(chat)/api/agent/schedules/[id]/route.ts",
+      "imports": [
+        "@/lib/agent/contracts",
+        "@/lib/agent/scheduler/occurrence",
+        "@/lib/agent/scheduler/once",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/agent-foundation-queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/agent/schedules/[id]"
+    },
+    {
+      "file": "app/(chat)/api/agent/schedules/[id]/versions/route.ts",
+      "imports": [
+        "@/lib/agent/flags",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/agent-foundation-queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agent/schedules/[id]/versions"
+    },
+    {
+      "file": "app/(chat)/api/agent/settings/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/agent/flags",
+        "@/lib/agent/settings",
+        "@/lib/agent/tools/catalog",
+        "@/lib/ai/models.server",
+        "@/lib/ai/registry",
+        "@/lib/ai/registry/reasoning",
+        "@/lib/api/error-response",
+        "@/lib/auth/plan",
+        "@/lib/auth/require-user",
+        "@/lib/db/users",
+        "@/lib/projects/access",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/agent/settings"
+    },
+    {
+      "file": "app/(chat)/api/agents/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/db/queries",
+        "@/lib/plans/tier-limits",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/agents"
+    },
+    {
+      "file": "app/(chat)/api/agents/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/db/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/agents/[id]"
+    },
+    {
+      "file": "app/(chat)/api/agents/[id]/duplicate/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/db/queries",
+        "@/lib/plans/tier-limits"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/agents/[id]/duplicate"
+    },
+    {
+      "file": "app/(chat)/api/agents/stats/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/db/queries",
+        "@/lib/plans/tier-limits"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agents/stats"
+    },
+    {
+      "file": "app/(chat)/api/agents/templates/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/db/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/agents/templates"
+    },
+    {
+      "file": "app/api/app-version/route.ts",
+      "imports": [],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/app-version"
+    },
+    {
+      "file": "app/(chat)/api/audio/generations/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/rate-limit",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/db/api-keys",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/audio/generations"
+    },
+    {
+      "file": "app/(chat)/api/audio/history/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET"
+      ],
+      "path": "/api/audio/history"
+    },
+    {
+      "file": "app/(chat)/api/audio/usage/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/audio/usage"
+    },
+    {
+      "file": "app/(chat)/api/audio/voices/route.ts",
+      "imports": [
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/audio/voices"
+    },
+    {
+      "file": "app/(auth)/api/auth/[...nextauth]/route.ts",
+      "imports": [
+        "@/app/(auth)/auth"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/auth/[...nextauth]"
+    },
+    {
+      "file": "app/(auth)/api/auth/guest/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/auth/guest"
+    },
+    {
+      "file": "app/(chat)/api/chat/route.ts",
+      "imports": [
+        "./schema",
+        "@/lib/agent/channel",
+        "@/lib/ai/providers",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/chat/context",
+        "@/lib/chat/mcp",
+        "@/lib/chat/memory",
+        "@/lib/chat/prompt",
+        "@/lib/chat/stream",
+        "@/lib/chat/tools",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/integrations/tokens",
+        "@/lib/plugins/catalog",
+        "@/lib/plugins/server",
+        "@/lib/plugins/tier-lock"
+      ],
+      "methods": [
+        "DELETE",
+        "POST"
+      ],
+      "path": "/api/chat"
+    },
+    {
+      "file": "app/(chat)/api/chat/[id]/stream/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/stream-context",
+        "@/lib/db/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/chat/[id]/stream"
+    },
+    {
+      "file": "app/(chat)/api/chats/[id]/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/plans/custom-instructions",
+        "@/lib/projects/access",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/chats/[id]"
+    },
+    {
+      "file": "app/(chat)/api/chats/[id]/export/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/utils",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/chats/[id]/export"
+    },
+    {
+      "file": "app/(chat)/api/chats/[id]/fork/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/utils",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/chats/[id]/fork"
+    },
+    {
+      "file": "app/(chat)/api/commands/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/chat/slash-command-catalog",
+        "@/lib/commands/types",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/commands"
+    },
+    {
+      "file": "app/(chat)/api/commands/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/plan-guard",
+        "@/lib/chat/slash-command-catalog",
+        "@/lib/commands/types",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PATCH"
+      ],
+      "path": "/api/commands/[id]"
+    },
+    {
+      "file": "app/api/cron/agent/route.ts",
+      "imports": [
+        "@/lib/agent/notifications/install",
+        "@/lib/agent/scheduler/engine",
+        "@/lib/api/error-response",
+        "@/lib/security/timing",
+        "next/server",
+        "node:crypto"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/cron/agent"
+    },
+    {
+      "file": "app/api/cron/planning/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/planning/executor",
+        "@/lib/security/timing",
+        "next/server"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/cron/planning"
+    },
+    {
+      "file": "app/api/cron/vibe/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/security/timing",
+        "@/lib/vibe/server/db"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/cron/vibe"
+    },
+    {
+      "file": "app/api/cron/wakies/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/ai/providers",
+        "@/lib/api/error-response",
+        "@/lib/auth/plan",
+        "@/lib/db/users",
+        "@/lib/security/timing",
+        "@/lib/wakies/queries",
+        "ai",
+        "node:crypto"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/cron/wakies"
+    },
+    {
+      "file": "app/(chat)/api/document/route.ts",
+      "imports": [
+        "@/components/chat/artifact",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/document"
+    },
+    {
+      "file": "app/(chat)/api/document/export/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/export/document-export"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/document/export"
+    },
+    {
+      "file": "app/(chat)/api/files/upload/route.ts",
+      "imports": [
+        "@/app/(auth)/auth",
+        "@/lib/api/error-response",
+        "@vercel/blob",
+        "nanoid",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/files/upload"
+    },
+    {
+      "file": "app/(chat)/api/forms/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/forms/queries",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/forms"
+    },
+    {
+      "file": "app/(chat)/api/forms/[id]/submit/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/forms/queries",
+        "@/lib/forms/types",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/forms/[id]/submit"
+    },
+    {
+      "file": "app/(chat)/api/history/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/projects/access",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET"
+      ],
+      "path": "/api/history"
+    },
+    {
+      "file": "app/(chat)/api/history/bulk/route.ts",
+      "imports": [
+        "@/lib/api/rate-limit",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/projects/access",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "POST"
+      ],
+      "path": "/api/history/bulk"
+    },
+    {
+      "file": "app/(chat)/api/history/export/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/utils"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/history/export"
+    },
+    {
+      "file": "app/(chat)/api/images/generations/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/rate-limit",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/images/generations"
+    },
+    {
+      "file": "app/(chat)/api/images/history/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/utils",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/images/history"
+    },
+    {
+      "file": "app/(chat)/api/images/usage/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/images/usage"
+    },
+    {
+      "file": "app/(chat)/api/integration/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/integrations/status"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/integration"
+    },
+    {
+      "file": "app/(chat)/api/integration/[provider]/callback/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/db/queries",
+        "@/lib/db/users",
+        "@/lib/integrations/oauth",
+        "@/lib/integrations/providers",
+        "@/lib/integrations/redirect",
+        "@/lib/integrations/repository",
+        "@/lib/mcp/encryption",
+        "@/lib/plugins/catalog",
+        "@/lib/plugins/tier-lock",
+        "next/headers",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/integration/[provider]/callback"
+    },
+    {
+      "file": "app/(chat)/api/integration/[provider]/connect/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/constants",
+        "@/lib/db/users",
+        "@/lib/integrations/oauth",
+        "@/lib/integrations/providers",
+        "@/lib/integrations/redirect",
+        "@/lib/mcp/encryption",
+        "@/lib/plugins/catalog",
+        "@/lib/plugins/tier-lock",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/integration/[provider]/connect"
+    },
+    {
+      "file": "app/(chat)/api/integration/[provider]/disconnect/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/integrations/oauth",
+        "@/lib/integrations/providers",
+        "@/lib/integrations/repository",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/integration/[provider]/disconnect"
+    },
+    {
+      "file": "app/(chat)/api/integration/[provider]/status/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/integrations/providers",
+        "@/lib/integrations/status",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/integration/[provider]/status"
+    },
+    {
+      "file": "app/(chat)/api/library/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "@/lib/plans/tier-limits",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "path": "/api/library"
+    },
+    {
+      "file": "app/(chat)/api/mcp/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/mcp/client",
+        "@/lib/mcp/dto",
+        "@/lib/mcp/encryption",
+        "@/lib/mcp/policy",
+        "@/lib/mcp/redaction",
+        "@/lib/mcp/secrets-config",
+        "@/lib/mcp/secrets-write",
+        "@/lib/mcp/types",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/mcp"
+    },
+    {
+      "file": "app/(chat)/api/mcp/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/mcp-templates/catalog",
+        "@/lib/mcp/chat-tools",
+        "@/lib/mcp/client",
+        "@/lib/mcp/dto",
+        "@/lib/mcp/encryption",
+        "@/lib/mcp/policy",
+        "@/lib/mcp/redaction",
+        "@/lib/mcp/secrets-config",
+        "@/lib/mcp/secrets-write",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/mcp/[id]"
+    },
+    {
+      "file": "app/(chat)/api/mcp/export/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/export/formatters",
+        "@/lib/mcp/dto"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/mcp/export"
+    },
+    {
+      "file": "app/(chat)/api/mcp/logs/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/mcp/dto"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/mcp/logs"
+    },
+    {
+      "file": "app/(chat)/api/mcp/logs/export/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/export/formatters",
+        "@/lib/mcp/redaction"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/mcp/logs/export"
+    },
+    {
+      "file": "app/(chat)/api/mcp/purge/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mcp/purge"
+    },
+    {
+      "file": "app/(chat)/api/mcp/templates/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/mcp-templates/catalog",
+        "@/lib/mcp-templates/install",
+        "@/lib/mcp/dto",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/mcp/templates"
+    },
+    {
+      "file": "app/(chat)/api/mcp/templates/install/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/mcp-templates/install",
+        "@/lib/mcp/dto",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mcp/templates/install"
+    },
+    {
+      "file": "app/(chat)/api/mcp/test/route.ts",
+      "imports": [
+        "@/lib/api/rate-limit",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/mcp/client",
+        "@/lib/mcp/policy",
+        "@/lib/mcp/redaction",
+        "@/lib/mcp/types",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mcp/test"
+    },
+    {
+      "file": "app/(chat)/api/memory/route.ts",
+      "imports": [
+        "@/lib/auth/plan",
+        "@/lib/auth/require-user",
+        "@/lib/constants",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "path": "/api/memory"
+    },
+    {
+      "file": "app/(chat)/api/memory/import/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/api/rate-limit",
+        "@/lib/auth/plan",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/memory/import"
+    },
+    {
+      "file": "app/(chat)/api/memory/summary/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/ai/providers",
+        "@/lib/api/error-response",
+        "@/lib/api/rate-limit",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "ai",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/memory/summary"
+    },
+    {
+      "file": "app/(chat)/api/messages/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/projects/access",
+        "@/lib/utils"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/messages"
+    },
+    {
+      "file": "app/(chat)/api/models/route.ts",
+      "imports": [
+        "@/lib/ai/models.server",
+        "@/lib/ai/registry"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/models"
+    },
+    {
+      "file": "app/(chat)/api/models/audio/route.ts",
+      "imports": [
+        "../speech/route"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/models/audio"
+    },
+    {
+      "file": "app/(chat)/api/models/images/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/models/images"
+    },
+    {
+      "file": "app/(chat)/api/models/speech/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "@/lib/db/api-keys",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/models/speech"
+    },
+    {
+      "file": "app/(chat)/api/notifications/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/notifications/types",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "path": "/api/notifications"
+    },
+    {
+      "file": "app/(chat)/api/notifications/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "PATCH"
+      ],
+      "path": "/api/notifications/[id]"
+    },
+    {
+      "file": "app/(chat)/api/notifications/preferences/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "path": "/api/notifications/preferences"
+    },
+    {
+      "file": "app/(chat)/api/planning/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/planning/chat-access",
+        "@/lib/planning/recurrence",
+        "@/lib/planning/tool-mode",
+        "@/lib/plans/custom-instructions",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/planning"
+    },
+    {
+      "file": "app/(chat)/api/planning/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/planning/chat-access",
+        "@/lib/planning/recurrence",
+        "@/lib/planning/tool-mode",
+        "@/lib/plans/custom-instructions",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/planning/[id]"
+    },
+    {
+      "file": "app/(chat)/api/planning/[id]/execute/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/chat/auth",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/planning/executor",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/planning/[id]/execute"
+    },
+    {
+      "file": "app/(chat)/api/planning/chats/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/planning/chats"
+    },
+    {
+      "file": "app/(chat)/api/plugins/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/queries",
+        "@/lib/plugins/catalog",
+        "@/lib/plugins/tier-lock",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/plugins"
+    },
+    {
+      "file": "app/(chat)/api/plugins/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/chat/auth",
+        "@/lib/db/queries",
+        "@/lib/plugins/catalog",
+        "@/lib/plugins/tier-lock",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PATCH"
+      ],
+      "path": "/api/plugins/[id]"
+    },
+    {
+      "file": "app/(chat)/api/projects/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/plans/custom-instructions",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/projects"
+    },
+    {
+      "file": "app/(chat)/api/projects/[id]/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/plans/custom-instructions",
+        "@/lib/projects/access",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/projects/[id]"
+    },
+    {
+      "file": "app/(chat)/api/projects/[id]/files/route.ts",
+      "imports": [
+        "@/lib/agent/tools/internal/extract",
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/require-user",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/projects/access",
+        "@/lib/projects/permissions",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/projects/[id]/files"
+    },
+    {
+      "file": "app/(chat)/api/projects/[id]/invites/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/projects/access",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/projects/[id]/invites"
+    },
+    {
+      "file": "app/(chat)/api/projects/join/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/projects/access",
+        "@/lib/projects/permissions",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/projects/join"
+    },
+    {
+      "file": "app/(chat)/api/recherche/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/search/index-query",
+        "@/lib/search/types",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/recherche"
+    },
+    {
+      "file": "app/(chat)/api/search/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/db/queries",
+        "@/lib/db/schema",
+        "drizzle-orm",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/search"
+    },
+    {
+      "file": "app/api/security/csp-report/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/security/csp-report"
+    },
+    {
+      "file": "app/(chat)/api/settings/route.ts",
+      "imports": [
+        "@/lib/account/usage",
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/net/fetch-image",
+        "@/lib/web/safe-fetch",
+        "next/server",
+        "node:crypto",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/settings"
+    },
+    {
+      "file": "app/(chat)/api/site/account/api-executor/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/api-key-routes",
+        "@/lib/site/ollama-url",
+        "@/lib/site/session-auth",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/account/api-executor"
+    },
+    {
+      "file": "app/(chat)/api/site/cron/purge-support/route.ts",
+      "imports": [
+        "@neondatabase/serverless",
+        "aws4fetch",
+        "next/server",
+        "node:crypto"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/site/cron/purge-support"
+    },
+    {
+      "file": "app/(chat)/api/site/dev-keys/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/session-auth",
+        "next/server"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/site/dev-keys"
+    },
+    {
+      "file": "app/(chat)/api/site/dev-keys/[id]/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/session-auth",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "path": "/api/site/dev-keys/[id]"
+    },
+    {
+      "file": "app/(chat)/api/site/github/activity/route.ts",
+      "imports": [
+        "@/lib/site/github-data",
+        "@/lib/site/github-fetch",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/github/activity"
+    },
+    {
+      "file": "app/(chat)/api/site/github/releases/route.ts",
+      "imports": [
+        "@/lib/site/github-data",
+        "@/lib/site/github-fetch",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/github/releases"
+    },
+    {
+      "file": "app/(chat)/api/site/github/stats/route.ts",
+      "imports": [
+        "@/lib/site/github-data",
+        "@/lib/site/github-fetch",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/github/stats"
+    },
+    {
+      "file": "app/(chat)/api/site/ollama/chat/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/ollama-url",
+        "@/lib/site/session-auth",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/ollama/chat"
+    },
+    {
+      "file": "app/(chat)/api/site/ollama/status/route.ts",
+      "imports": [
+        "@/lib/site/ollama-url",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/ollama/status"
+    },
+    {
+      "file": "app/(chat)/api/site/search/route.ts",
+      "imports": [
+        "@/lib/site/search-index",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/search"
+    },
+    {
+      "file": "app/(chat)/api/site/support/upload/route.ts",
+      "imports": [
+        "@/app/(chat)/site/actions/support-utils",
+        "@/lib/site/session-auth",
+        "@neondatabase/serverless",
+        "aws4fetch",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/support/upload"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/chat/completions/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/openai-auth",
+        "@/lib/site/openai-model-mapper",
+        "@/lib/site/openai-types",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/v1/chat/completions"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/devices/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/devices"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/devices/[id]/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "path": "/api/site/v1/devices/[id]"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/images/generations/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/comet",
+        "@/lib/site/openai-auth",
+        "@/lib/site/tiers",
+        "@neondatabase/serverless",
+        "next/server",
+        "node:crypto"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/v1/images/generations"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/images/usage/route.ts",
+      "imports": [
+        "@/lib/site/image-usage",
+        "@/lib/site/openai-auth",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/images/usage"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/messages/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/v1/messages"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/models/route.ts",
+      "imports": [
+        "@/lib/site/api-key-redaction",
+        "@/lib/site/api-key-session",
+        "@/lib/site/openai-types",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/models"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/models/[model]/route.ts",
+      "imports": [
+        "@/lib/site/openai-auth",
+        "@/lib/site/openai-model-mapper",
+        "@/lib/site/openai-types",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/models/[model]"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/models/audio/route.ts",
+      "imports": [
+        "@/lib/constants",
+        "@/lib/site/api-key-redaction",
+        "@/lib/site/api-key-session",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/models/audio"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/models/images/route.ts",
+      "imports": [
+        "@/lib/site/api-key-session",
+        "@/lib/site/comet",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/models/images"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/models/mai/route.ts",
+      "imports": [
+        "@/lib/site/mai-models",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/models/mai"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/projects/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/site/v1/projects"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/projects/[id]/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "path": "/api/site/v1/projects/[id]"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/status/route.ts",
+      "imports": [
+        "@/components/site/support/support-status-types",
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/site/v1/status"
+    },
+    {
+      "file": "app/(chat)/api/site/v1/web/search/route.ts",
+      "imports": [
+        "@/lib/site/web-search",
+        "next/server"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/site/v1/web/search"
+    },
+    {
+      "file": "app/(chat)/api/site/v1beta/models/[...model]/route.ts",
+      "imports": [
+        "@/lib/api/upstream",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/site/v1beta/models/[...model]"
+    },
+    {
+      "file": "app/(chat)/api/skills/route.ts",
+      "imports": [
+        "@/lib/ai/skill-params",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/skills"
+    },
+    {
+      "file": "app/(chat)/api/skills/[id]/route.ts",
+      "imports": [
+        "@/lib/ai/skill-params",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/skills/[id]"
+    },
+    {
+      "file": "app/(chat)/api/skills/[id]/duplicate/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/skills/[id]/duplicate"
+    },
+    {
+      "file": "app/(chat)/api/skills/[id]/preview/route.ts",
+      "imports": [
+        "@/lib/ai/skill-params",
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/skills/[id]/preview"
+    },
+    {
+      "file": "app/(chat)/api/skills/[id]/versions/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/skills/[id]/versions"
+    },
+    {
+      "file": "app/(chat)/api/skills/export/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/export/formatters"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/skills/export"
+    },
+    {
+      "file": "app/(chat)/api/skills/share/[shareId]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/db/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/skills/share/[shareId]"
+    },
+    {
+      "file": "app/(chat)/api/skills/templates/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/skill-templates/catalog",
+        "@/lib/skill-templates/install",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/skills/templates"
+    },
+    {
+      "file": "app/(chat)/api/skills/templates/install/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/skill-templates/install",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/skills/templates/install"
+    },
+    {
+      "file": "app/(chat)/api/stats/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/stats/stats-types",
+        "@/lib/stats/usage-stats",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/stats"
+    },
+    {
+      "file": "app/(chat)/api/suggestions/route.ts",
+      "imports": [
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/errors"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/suggestions"
+    },
+    {
+      "file": "app/(chat)/api/translate/route.ts",
+      "imports": [
+        "@/lib/ai/providers",
+        "@/lib/api/error-response",
+        "@/lib/api/upstream",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/i18n/languages",
+        "ai",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/translate"
+    },
+    {
+      "file": "app/(chat)/api/user/mcp-preferences/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/user/mcp-preferences"
+    },
+    {
+      "file": "app/(chat)/api/user/me/route.ts",
+      "imports": [
+        "@/lib/auth/session"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/user/me"
+    },
+    {
+      "file": "app/(chat)/api/user/preferences/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/apps/catalog",
+        "@/lib/auth/require-user",
+        "@/lib/creation/mode",
+        "@/lib/db/queries",
+        "@/lib/errors",
+        "@/lib/i18n/languages",
+        "@/lib/plans/custom-instructions",
+        "@/lib/theme/preference",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "path": "/api/user/preferences"
+    },
+    {
+      "file": "app/(chat)/api/vote/route.ts",
+      "imports": [
+        "@/lib/agent/channel",
+        "@/lib/auth/session",
+        "@/lib/db/queries",
+        "@/lib/db/schema",
+        "@/lib/errors",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/vote"
+    },
+    {
+      "file": "app/(chat)/api/wakies/route.ts",
+      "imports": [
+        "./state/route"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies"
+    },
+    {
+      "file": "app/(chat)/api/wakies/chat/route.ts",
+      "imports": [
+        "@/lib/agent/usage",
+        "@/lib/ai/models.server",
+        "@/lib/ai/providers",
+        "@/lib/ai/registry",
+        "@/lib/ai/registry/tiers",
+        "@/lib/ai/tools/ids",
+        "@/lib/api/error-response",
+        "@/lib/auth/plan",
+        "@/lib/chat/auth",
+        "@/lib/chat/mcp",
+        "@/lib/chat/tools",
+        "@/lib/constants",
+        "@/lib/db/queries",
+        "@/lib/integrations/tokens",
+        "@/lib/mcp/chat-tools",
+        "@/lib/mcp/policy",
+        "@/lib/plans/tier-limits",
+        "@/lib/plugins/server",
+        "@/lib/vibe/server/profil",
+        "@/lib/wakies/attachments",
+        "@/lib/wakies/capabilities",
+        "@/lib/wakies/http",
+        "@/lib/wakies/mentions",
+        "@/lib/wakies/model",
+        "@/lib/wakies/page-tools",
+        "@/lib/wakies/prompt",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/shared/mentions",
+        "@/lib/wakies/shared/messages",
+        "@/lib/wakies/slash",
+        "@/lib/wakies/tools",
+        "ai",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/chat"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/conversations"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/model-access",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PATCH"
+      ],
+      "path": "/api/wakies/conversations/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/capture/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/conversations/[id]/capture"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/messages/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/conversations/[id]/messages"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/page/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/conversations/[id]/page"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/page-context/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/conversations/[id]/page-context"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/read/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/conversations/[id]/read"
+    },
+    {
+      "file": "app/(chat)/api/wakies/directory/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/directory"
+    },
+    {
+      "file": "app/(chat)/api/wakies/files/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@vercel/blob",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET"
+      ],
+      "path": "/api/wakies/files"
+    },
+    {
+      "file": "app/(chat)/api/wakies/files/library/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@/lib/wakies/library",
+        "@/lib/web/safe-fetch",
+        "@vercel/blob",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/files/library"
+    },
+    {
+      "file": "app/(chat)/api/wakies/friends/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/friends"
+    },
+    {
+      "file": "app/(chat)/api/wakies/integrations/route.ts",
+      "imports": [
+        "@/lib/integrations/status",
+        "@/lib/wakies/http"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/integrations"
+    },
+    {
+      "file": "app/(chat)/api/wakies/me/profile/route.ts",
+      "imports": [
+        "@/lib/vibe/server/profil",
+        "@/lib/wakies/http"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/me/profile"
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/memories"
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "path": "/api/wakies/memories/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/mentions/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/mentions",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/mentions"
+    },
+    {
+      "file": "app/(chat)/api/wakies/messages/[id]/forward/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/messages/[id]/forward"
+    },
+    {
+      "file": "app/(chat)/api/wakies/messages/[id]/page/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/messages/[id]/page"
+    },
+    {
+      "file": "app/(chat)/api/wakies/messages/[id]/reactions/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/messages/[id]/reactions"
+    },
+    {
+      "file": "app/(chat)/api/wakies/notifications/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "node:crypto",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/notifications"
+    },
+    {
+      "file": "app/(chat)/api/wakies/pages/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/pages",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/wakies/pages/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/pages/[id]/pin/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/pages/[id]/pin"
+    },
+    {
+      "file": "app/(chat)/api/wakies/pages/[id]/settings/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/pages",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/pages/[id]/settings"
+    },
+    {
+      "file": "app/(chat)/api/wakies/pins/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/pins"
+    },
+    {
+      "file": "app/(chat)/api/wakies/search/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/search"
+    },
+    {
+      "file": "app/(chat)/api/wakies/settings/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/plans/tier-limits",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/setup",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/wakies/settings"
+    },
+    {
+      "file": "app/(chat)/api/wakies/slash/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/slash"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/slash"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/spaces"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/wakies/spaces/[spaceId]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/export/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/shared/space-export",
+        "fflate",
+        "zod"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/spaces/[spaceId]/export"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/pages/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/spaces/[spaceId]/pages"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/pages/[pageId]/conversation/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/spaces/[spaceId]/pages/[pageId]/conversation"
+    },
+    {
+      "file": "app/(chat)/api/wakies/state/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/setup"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/state"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/tasks"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/tasks/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/actions/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/tasks/[id]/actions"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/schedule/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "PUT"
+      ],
+      "path": "/api/wakies/tasks/[id]/schedule"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/plans/tier-limits",
+        "@/lib/wakies/http",
+        "@/lib/wakies/model-access",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/shared/avatars",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/wakies"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/model-access",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/shared/avatars",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "path": "/api/wakies/wakies/[id]"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/clone/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/plans/tier-limits",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/wakies/wakies/[id]/clone"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/images/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/plans/tier-limits",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "path": "/api/wakies/wakies/[id]/images"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/profile/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/blob",
+        "@/lib/wakies/http",
+        "@/lib/wakies/public-profile",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PATCH"
+      ],
+      "path": "/api/wakies/wakies/[id]/profile"
+    },
+    {
+      "file": "app/(chat)/api/wakies/workspace/route.ts",
+      "imports": [
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "@/lib/wakies/setup"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/wakies/workspace"
+    },
+    {
+      "file": "app/(chat)/site/account/keys/[id]/route.ts",
+      "imports": [
+        "@/lib/site/api-key-manager",
+        "@/lib/site/session-auth",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE"
+      ],
+      "path": "/site/account/keys/[id]"
+    }
+  ],
+  "routes": [
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 111,
+      "method": "OPTIONS",
+      "path": "*"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 124,
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 176,
+      "method": "POST",
+      "path": "/ai/text"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 403,
+      "method": "POST",
+      "path": "/ai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 125,
+      "method": "GET",
+      "path": "/api"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 1002,
+      "method": "GET",
+      "path": "/api-keys"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 126,
+      "method": "GET",
+      "path": "/api/"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 181,
+      "method": "GET",
+      "path": "/api/login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 195,
+      "method": "POST",
+      "path": "/api/login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 23,
+      "method": "GET",
+      "path": "/api/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 37,
+      "method": "POST",
+      "path": "/api/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 465,
+      "method": "POST",
+      "path": "/api/resend-code"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 826,
+      "method": "POST",
+      "path": "/api/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 182,
+      "method": "GET",
+      "path": "/api/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 828,
+      "method": "POST",
+      "path": "/api/v1/audio/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 827,
+      "method": "POST",
+      "path": "/api/v1/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 183,
+      "method": "GET",
+      "path": "/api/v1/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 311,
+      "method": "POST",
+      "path": "/api/verify-login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 95,
+      "method": "POST",
+      "path": "/api/verify-register"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 131,
+      "method": "GET",
+      "path": "/api/vibe"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 132,
+      "method": "GET",
+      "path": "/api/vibe/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 176,
+      "method": "POST",
+      "path": "/api/vibe/ai/text"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 403,
+      "method": "POST",
+      "path": "/api/vibe/ai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 829,
+      "method": "POST",
+      "path": "/api/vibe/audio/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 261,
+      "method": "GET",
+      "path": "/api/vibe/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 363,
+      "method": "POST",
+      "path": "/api/vibe/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 452,
+      "method": "DELETE",
+      "path": "/api/vibe/books/:bookId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 647,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/leave"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 595,
+      "method": "GET",
+      "path": "/api/vibe/books/:bookId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/api/vibe/books/:bookId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1068,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/members/:userId/transfer-ownership"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 847,
+      "method": "GET",
+      "path": "/api/vibe/books/:bookId/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 752,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/posts/:postId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 919,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/posts/:postId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 695,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/regenerate-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 421,
+      "method": "POST",
+      "path": "/api/vibe/books/:bookId/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 560,
+      "method": "POST",
+      "path": "/api/vibe/books/join"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1110,
+      "method": "GET",
+      "path": "/api/vibe/books/public"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 101,
+      "method": "GET",
+      "path": "/api/vibe/circle"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 226,
+      "method": "DELETE",
+      "path": "/api/vibe/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 184,
+      "method": "POST",
+      "path": "/api/vibe/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/api/vibe/circle/check/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 50,
+      "method": "POST",
+      "path": "/api/vibe/dms/block"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 105,
+      "method": "GET",
+      "path": "/api/vibe/dms/blocked"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 182,
+      "method": "GET",
+      "path": "/api/vibe/dms/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 248,
+      "method": "DELETE",
+      "path": "/api/vibe/dms/conversations/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 283,
+      "method": "POST",
+      "path": "/api/vibe/dms/conversations/:partnerId/mark-unread"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 88,
+      "method": "POST",
+      "path": "/api/vibe/dms/conversations/:partnerId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 129,
+      "method": "DELETE",
+      "path": "/api/vibe/dms/conversations/:partnerId/pin/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 209,
+      "method": "POST",
+      "path": "/api/vibe/dms/conversations/:partnerId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/api/vibe/dms/generate-reply/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 96,
+      "method": "POST",
+      "path": "/api/vibe/dms/groups"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 495,
+      "method": "DELETE",
+      "path": "/api/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 264,
+      "method": "GET",
+      "path": "/api/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 444,
+      "method": "POST",
+      "path": "/api/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 165,
+      "method": "POST",
+      "path": "/api/vibe/dms/groups/:groupId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 219,
+      "method": "DELETE",
+      "path": "/api/vibe/dms/groups/:groupId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 558,
+      "method": "POST",
+      "path": "/api/vibe/dms/groups/:groupId/members/:userId/transfer-admin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 826,
+      "method": "POST",
+      "path": "/api/vibe/dms/messages"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 319,
+      "method": "DELETE",
+      "path": "/api/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 436,
+      "method": "PATCH",
+      "path": "/api/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 445,
+      "method": "PUT",
+      "path": "/api/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/api/vibe/dms/messages/:messageId/hide"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/api/vibe/dms/messages/:messageId/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/api/vibe/dms/messages/:messageId/translations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 390,
+      "method": "GET",
+      "path": "/api/vibe/dms/messages/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 198,
+      "method": "GET",
+      "path": "/api/vibe/dms/messages/:partnerId/search"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 141,
+      "method": "POST",
+      "path": "/api/vibe/dms/report"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/api/vibe/dms/suggest-reply"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 305,
+      "method": "POST",
+      "path": "/api/vibe/dms/typing"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 74,
+      "method": "POST",
+      "path": "/api/vibe/dms/unblock"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 55,
+      "method": "GET",
+      "path": "/api/vibe/dms/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1179,
+      "method": "GET",
+      "path": "/api/vibe/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1240,
+      "method": "POST",
+      "path": "/api/vibe/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1276,
+      "method": "DELETE",
+      "path": "/api/vibe/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1245,
+      "method": "PUT",
+      "path": "/api/vibe/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 572,
+      "method": "GET",
+      "path": "/api/vibe/feed"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 181,
+      "method": "GET",
+      "path": "/api/vibe/login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 195,
+      "method": "POST",
+      "path": "/api/vibe/login"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-chat.ts",
+      "line": 543,
+      "method": "POST",
+      "path": "/api/vibe/mai/chat"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 157,
+      "method": "GET",
+      "path": "/api/vibe/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 168,
+      "method": "POST",
+      "path": "/api/vibe/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 254,
+      "method": "DELETE",
+      "path": "/api/vibe/mai/conversations/:conversationId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/api/vibe/mai/conversations/:conversationId/duplicate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 218,
+      "method": "POST",
+      "path": "/api/vibe/mai/conversations/:conversationId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 384,
+      "method": "POST",
+      "path": "/api/vibe/mai/execute-tool"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 81,
+      "method": "GET",
+      "path": "/api/vibe/mai/history"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 107,
+      "method": "POST",
+      "path": "/api/vibe/mai/history/new"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 42,
+      "method": "GET",
+      "path": "/api/vibe/mai/quotas"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 214,
+      "method": "POST",
+      "path": "/api/vibe/mai/regenerate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 461,
+      "method": "POST",
+      "path": "/api/vibe/mai/tool-refused"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 71,
+      "method": "GET",
+      "path": "/api/vibe/mai/tools"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/api/vibe/me"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 169,
+      "method": "DELETE",
+      "path": "/api/vibe/notifications"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 50,
+      "method": "GET",
+      "path": "/api/vibe/notifications"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 169,
+      "method": "DELETE",
+      "path": "/api/vibe/notifications/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/api/vibe/notifications/:id/delete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 114,
+      "method": "PATCH",
+      "path": "/api/vibe/notifications/:id/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 103,
+      "method": "POST",
+      "path": "/api/vibe/notifications/:id/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/api/vibe/notifications/clear"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/api/vibe/notifications/delete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 114,
+      "method": "PATCH",
+      "path": "/api/vibe/notifications/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 103,
+      "method": "POST",
+      "path": "/api/vibe/notifications/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/api/vibe/notifications/unread_count"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 425,
+      "method": "POST",
+      "path": "/api/vibe/onboarding/complete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 392,
+      "method": "GET",
+      "path": "/api/vibe/onboarding/suggestions"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 565,
+      "method": "POST",
+      "path": "/api/vibe/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1391,
+      "method": "DELETE",
+      "path": "/api/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1357,
+      "method": "GET",
+      "path": "/api/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1618,
+      "method": "PATCH",
+      "path": "/api/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 326,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/bookmark"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 326,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/bookmarks"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1038,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/collaborate/accept"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/collaborate/decline"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 449,
+      "method": "GET",
+      "path": "/api/vibe/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1066,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1151,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/comments/:commentId/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 282,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/feedback"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 120,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 120,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/likes"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 644,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 636,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/poll/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 747,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/profile-pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 216,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/repost"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 216,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/reposts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1151,
+      "method": "PATCH",
+      "path": "/api/vibe/posts/:id/reschedule"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 725,
+      "method": "GET",
+      "path": "/api/vibe/posts/:id/stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 573,
+      "method": "POST",
+      "path": "/api/vibe/posts/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1084,
+      "method": "GET",
+      "path": "/api/vibe/posts/scheduled"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 772,
+      "method": "GET",
+      "path": "/api/vibe/posts/top"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 477,
+      "method": "GET",
+      "path": "/api/vibe/privacy/export"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/api/vibe/profile/avatar"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 975,
+      "method": "POST",
+      "path": "/api/vibe/profile/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/api/vibe/profiles/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1122,
+      "method": "POST",
+      "path": "/api/vibe/profiles/:username/follow"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 308,
+      "method": "GET",
+      "path": "/api/vibe/profiles/:username/followers"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 318,
+      "method": "GET",
+      "path": "/api/vibe/profiles/:username/following"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 740,
+      "method": "GET",
+      "path": "/api/vibe/profiles/:username/likes"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1172,
+      "method": "GET",
+      "path": "/api/vibe/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1223,
+      "method": "POST",
+      "path": "/api/vibe/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1416,
+      "method": "POST",
+      "path": "/api/vibe/profiles/:username/view"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 252,
+      "method": "GET",
+      "path": "/api/vibe/realtime/stream"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 23,
+      "method": "GET",
+      "path": "/api/vibe/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 37,
+      "method": "POST",
+      "path": "/api/vibe/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 465,
+      "method": "POST",
+      "path": "/api/vibe/resend-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 863,
+      "method": "GET",
+      "path": "/api/vibe/search/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 989,
+      "method": "GET",
+      "path": "/api/vibe/search/unified"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 360,
+      "method": "GET",
+      "path": "/api/vibe/search/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 201,
+      "method": "GET",
+      "path": "/api/vibe/settings"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 422,
+      "method": "POST",
+      "path": "/api/vibe/settings/update"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 824,
+      "method": "POST",
+      "path": "/api/vibe/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 180,
+      "method": "GET",
+      "path": "/api/vibe/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 898,
+      "method": "POST",
+      "path": "/api/vibe/stories"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/api/vibe/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 957,
+      "method": "PATCH",
+      "path": "/api/vibe/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1079,
+      "method": "POST",
+      "path": "/api/vibe/stories/:id/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1034,
+      "method": "POST",
+      "path": "/api/vibe/stories/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1210,
+      "method": "GET",
+      "path": "/api/vibe/stories/:id/views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1150,
+      "method": "POST",
+      "path": "/api/vibe/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
+      "method": "GET",
+      "path": "/api/vibe/stories/active"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/api/vibe/stories/archive"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1254,
+      "method": "GET",
+      "path": "/api/vibe/stories/quota"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 559,
+      "method": "GET",
+      "path": "/api/vibe/stories/tray"
+    },
+    {
+      "dynamic": false,
+      "file": "translate.ts",
+      "line": 454,
+      "method": "POST",
+      "path": "/api/vibe/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 686,
+      "method": "GET",
+      "path": "/api/vibe/trends"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 166,
+      "method": "POST",
+      "path": "/api/vibe/usage/log"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1298,
+      "method": "POST",
+      "path": "/api/vibe/users/:username/mute"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 973,
+      "method": "GET",
+      "path": "/api/vibe/users/me/creator-stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1471,
+      "method": "GET",
+      "path": "/api/vibe/users/me/profile-views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1335,
+      "method": "GET",
+      "path": "/api/vibe/users/muted"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 168,
+      "method": "GET",
+      "path": "/api/vibe/users/suggested"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/api/vibe/users/top"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 311,
+      "method": "POST",
+      "path": "/api/vibe/verify-login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 95,
+      "method": "POST",
+      "path": "/api/vibe/verify-register"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 823,
+      "method": "POST",
+      "path": "/audio/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 449,
+      "method": "DELETE",
+      "path": "/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 376,
+      "method": "GET",
+      "path": "/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 383,
+      "method": "PATCH",
+      "path": "/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 448,
+      "method": "DELETE",
+      "path": "/audio/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 382,
+      "method": "PATCH",
+      "path": "/audio/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 121,
+      "method": "GET",
+      "path": "/audio/models"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 822,
+      "method": "POST",
+      "path": "/audio/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 270,
+      "method": "GET",
+      "path": "/audio/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 179,
+      "method": "GET",
+      "path": "/audio/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 326,
+      "method": "POST",
+      "path": "/bookmark/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 525,
+      "method": "POST",
+      "path": "/chat/completions"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 786,
+      "method": "GET",
+      "path": "/cloud/files"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 1023,
+      "method": "DELETE",
+      "path": "/cloud/files/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 724,
+      "method": "GET",
+      "path": "/cloud/storage"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 950,
+      "method": "POST",
+      "path": "/cloud/upload"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 952,
+      "method": "POST",
+      "path": "/cloud/upload/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 449,
+      "method": "GET",
+      "path": "/comments/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1066,
+      "method": "POST",
+      "path": "/comments/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 943,
+      "method": "POST",
+      "path": "/confirm-delete-account"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 283,
+      "method": "POST",
+      "path": "/dms/conversations/:partnerId/mark-unread"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 88,
+      "method": "POST",
+      "path": "/dms/conversations/:partnerId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 129,
+      "method": "DELETE",
+      "path": "/dms/conversations/:partnerId/pin/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 198,
+      "method": "GET",
+      "path": "/dms/messages/:partnerId/search"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1179,
+      "method": "GET",
+      "path": "/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1240,
+      "method": "POST",
+      "path": "/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1276,
+      "method": "DELETE",
+      "path": "/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1245,
+      "method": "PUT",
+      "path": "/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 572,
+      "method": "GET",
+      "path": "/feed"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 282,
+      "method": "POST",
+      "path": "/feedback/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 788,
+      "method": "GET",
+      "path": "/files"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1872,
+      "method": "POST",
+      "path": "/images"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1874,
+      "method": "POST",
+      "path": "/images/edits"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1870,
+      "method": "POST",
+      "path": "/images/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1383,
+      "method": "DELETE",
+      "path": "/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1375,
+      "method": "GET",
+      "path": "/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1379,
+      "method": "PATCH",
+      "path": "/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1382,
+      "method": "DELETE",
+      "path": "/images/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1378,
+      "method": "PATCH",
+      "path": "/images/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1075,
+      "method": "GET",
+      "path": "/images/models"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1864,
+      "method": "GET",
+      "path": "/images/tasks/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1836,
+      "method": "POST",
+      "path": "/images/upscale"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1209,
+      "method": "GET",
+      "path": "/images/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1876,
+      "method": "POST",
+      "path": "/images/variations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 120,
+      "method": "POST",
+      "path": "/like/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 268,
+      "method": "POST",
+      "path": "/log-usage"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 270,
+      "method": "POST",
+      "path": "/log-usage/"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 181,
+      "method": "GET",
+      "path": "/login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 195,
+      "method": "POST",
+      "path": "/login"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 348,
+      "method": "GET",
+      "path": "/mai/models"
+    },
+    {
+      "dynamic": false,
+      "file": "mai-translate.ts",
+      "line": 369,
+      "method": "POST",
+      "path": "/mai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/me"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 686,
+      "method": "POST",
+      "path": "/messages"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1793,
+      "method": "POST",
+      "path": "/mj/submit/action"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1797,
+      "method": "POST",
+      "path": "/mj/submit/blend"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1799,
+      "method": "POST",
+      "path": "/mj/submit/change"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1795,
+      "method": "POST",
+      "path": "/mj/submit/describe"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1789,
+      "method": "POST",
+      "path": "/mj/submit/imagine"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1801,
+      "method": "POST",
+      "path": "/mj/submit/modal"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1803,
+      "method": "POST",
+      "path": "/mj/submit/shorten"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1805,
+      "method": "POST",
+      "path": "/mj/submit/swap-face"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1791,
+      "method": "GET",
+      "path": "/mj/task/:id/fetch"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 306,
+      "method": "GET",
+      "path": "/models"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1073,
+      "method": "GET",
+      "path": "/models/images"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1111,
+      "method": "GET",
+      "path": "/models/images/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 347,
+      "method": "GET",
+      "path": "/models/mai"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 117,
+      "method": "GET",
+      "path": "/models/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 425,
+      "method": "POST",
+      "path": "/onboarding/complete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 392,
+      "method": "GET",
+      "path": "/onboarding/suggestions"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 565,
+      "method": "POST",
+      "path": "/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1391,
+      "method": "DELETE",
+      "path": "/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1357,
+      "method": "GET",
+      "path": "/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1618,
+      "method": "PATCH",
+      "path": "/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1038,
+      "method": "POST",
+      "path": "/posts/:id/collaborate/accept"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/posts/:id/collaborate/decline"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 636,
+      "method": "POST",
+      "path": "/posts/:id/poll/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1151,
+      "method": "PATCH",
+      "path": "/posts/:id/reschedule"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 725,
+      "method": "GET",
+      "path": "/posts/:id/stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1084,
+      "method": "GET",
+      "path": "/posts/scheduled"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/profile/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/profiles/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 308,
+      "method": "GET",
+      "path": "/profiles/:username/followers"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 318,
+      "method": "GET",
+      "path": "/profiles/:username/following"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 740,
+      "method": "GET",
+      "path": "/profiles/:username/likes"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 252,
+      "method": "GET",
+      "path": "/realtime/stream"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 23,
+      "method": "GET",
+      "path": "/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 37,
+      "method": "POST",
+      "path": "/register"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 216,
+      "method": "POST",
+      "path": "/repost/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 915,
+      "method": "POST",
+      "path": "/request-delete-account"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 465,
+      "method": "POST",
+      "path": "/resend-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 863,
+      "method": "GET",
+      "path": "/search/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 989,
+      "method": "GET",
+      "path": "/search/unified"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 817,
+      "method": "POST",
+      "path": "/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 819,
+      "method": "POST",
+      "path": "/speech/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 377,
+      "method": "GET",
+      "path": "/speech/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 385,
+      "method": "PATCH",
+      "path": "/speech/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 384,
+      "method": "PATCH",
+      "path": "/speech/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 119,
+      "method": "GET",
+      "path": "/speech/models"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 271,
+      "method": "GET",
+      "path": "/speech/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 177,
+      "method": "GET",
+      "path": "/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 360,
+      "method": "GET",
+      "path": "/status"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 726,
+      "method": "GET",
+      "path": "/storage"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1866,
+      "method": "GET",
+      "path": "/tasks/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "translate.ts",
+      "line": 454,
+      "method": "POST",
+      "path": "/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 686,
+      "method": "GET",
+      "path": "/trends"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 717,
+      "method": "POST",
+      "path": "/update-profile"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 526,
+      "method": "POST",
+      "path": "/upload-avatar"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 528,
+      "method": "POST",
+      "path": "/upload-avatar/"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 642,
+      "method": "POST",
+      "path": "/upload-file"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 644,
+      "method": "POST",
+      "path": "/upload-file/"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 202,
+      "method": "GET",
+      "path": "/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 204,
+      "method": "GET",
+      "path": "/usage/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 166,
+      "method": "POST",
+      "path": "/usage/log"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 272,
+      "method": "GET",
+      "path": "/usage/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 973,
+      "method": "GET",
+      "path": "/users/me/creator-stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 168,
+      "method": "GET",
+      "path": "/users/suggested"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/users/top"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 127,
+      "method": "GET",
+      "path": "/v1"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 128,
+      "method": "GET",
+      "path": "/v1/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 176,
+      "method": "POST",
+      "path": "/v1/ai/text"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 403,
+      "method": "POST",
+      "path": "/v1/ai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 821,
+      "method": "POST",
+      "path": "/v1/audio/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 445,
+      "method": "DELETE",
+      "path": "/v1/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 374,
+      "method": "GET",
+      "path": "/v1/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 379,
+      "method": "PATCH",
+      "path": "/v1/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 444,
+      "method": "DELETE",
+      "path": "/v1/audio/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 378,
+      "method": "PATCH",
+      "path": "/v1/audio/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 120,
+      "method": "GET",
+      "path": "/v1/audio/models"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 820,
+      "method": "POST",
+      "path": "/v1/audio/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 268,
+      "method": "GET",
+      "path": "/v1/audio/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 178,
+      "method": "GET",
+      "path": "/v1/audio/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 261,
+      "method": "GET",
+      "path": "/v1/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 363,
+      "method": "POST",
+      "path": "/v1/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 452,
+      "method": "DELETE",
+      "path": "/v1/books/:bookId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 647,
+      "method": "POST",
+      "path": "/v1/books/:bookId/leave"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 595,
+      "method": "GET",
+      "path": "/v1/books/:bookId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/v1/books/:bookId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1068,
+      "method": "POST",
+      "path": "/v1/books/:bookId/members/:userId/transfer-ownership"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 847,
+      "method": "GET",
+      "path": "/v1/books/:bookId/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 752,
+      "method": "POST",
+      "path": "/v1/books/:bookId/posts/:postId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 919,
+      "method": "POST",
+      "path": "/v1/books/:bookId/posts/:postId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 695,
+      "method": "POST",
+      "path": "/v1/books/:bookId/regenerate-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 421,
+      "method": "POST",
+      "path": "/v1/books/:bookId/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 560,
+      "method": "POST",
+      "path": "/v1/books/join"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1110,
+      "method": "GET",
+      "path": "/v1/books/public"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 524,
+      "method": "POST",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 101,
+      "method": "GET",
+      "path": "/v1/circle"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 226,
+      "method": "DELETE",
+      "path": "/v1/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 184,
+      "method": "POST",
+      "path": "/v1/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/v1/circle/check/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 787,
+      "method": "GET",
+      "path": "/v1/cloud/files"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 1024,
+      "method": "DELETE",
+      "path": "/v1/cloud/files/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 725,
+      "method": "GET",
+      "path": "/v1/cloud/storage"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 951,
+      "method": "POST",
+      "path": "/v1/cloud/upload"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 953,
+      "method": "POST",
+      "path": "/v1/cloud/upload/"
+    },
+    {
+      "dynamic": false,
+      "file": "devices.ts",
+      "line": 7,
+      "method": "GET",
+      "path": "/v1/devices"
+    },
+    {
+      "dynamic": false,
+      "file": "devices.ts",
+      "line": 134,
+      "method": "DELETE",
+      "path": "/v1/devices/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "devices.ts",
+      "line": 124,
+      "method": "PUT",
+      "path": "/v1/devices/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "devices.ts",
+      "line": 92,
+      "method": "DELETE",
+      "path": "/v1/devices/all"
+    },
+    {
+      "dynamic": false,
+      "file": "devices.ts",
+      "line": 59,
+      "method": "DELETE",
+      "path": "/v1/devices/others"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 50,
+      "method": "POST",
+      "path": "/v1/dms/block"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 105,
+      "method": "GET",
+      "path": "/v1/dms/blocked"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 182,
+      "method": "GET",
+      "path": "/v1/dms/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 248,
+      "method": "DELETE",
+      "path": "/v1/dms/conversations/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 283,
+      "method": "POST",
+      "path": "/v1/dms/conversations/:partnerId/mark-unread"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 88,
+      "method": "POST",
+      "path": "/v1/dms/conversations/:partnerId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 129,
+      "method": "DELETE",
+      "path": "/v1/dms/conversations/:partnerId/pin/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 209,
+      "method": "POST",
+      "path": "/v1/dms/conversations/:partnerId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/v1/dms/generate-reply/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 96,
+      "method": "POST",
+      "path": "/v1/dms/groups"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 495,
+      "method": "DELETE",
+      "path": "/v1/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 264,
+      "method": "GET",
+      "path": "/v1/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 444,
+      "method": "POST",
+      "path": "/v1/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 165,
+      "method": "POST",
+      "path": "/v1/dms/groups/:groupId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 219,
+      "method": "DELETE",
+      "path": "/v1/dms/groups/:groupId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 558,
+      "method": "POST",
+      "path": "/v1/dms/groups/:groupId/members/:userId/transfer-admin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 826,
+      "method": "POST",
+      "path": "/v1/dms/messages"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 319,
+      "method": "DELETE",
+      "path": "/v1/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 436,
+      "method": "PATCH",
+      "path": "/v1/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 445,
+      "method": "PUT",
+      "path": "/v1/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/v1/dms/messages/:messageId/hide"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/v1/dms/messages/:messageId/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/v1/dms/messages/:messageId/translations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 390,
+      "method": "GET",
+      "path": "/v1/dms/messages/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 198,
+      "method": "GET",
+      "path": "/v1/dms/messages/:partnerId/search"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 141,
+      "method": "POST",
+      "path": "/v1/dms/report"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/v1/dms/suggest-reply"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 305,
+      "method": "POST",
+      "path": "/v1/dms/typing"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 74,
+      "method": "POST",
+      "path": "/v1/dms/unblock"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 55,
+      "method": "GET",
+      "path": "/v1/dms/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1179,
+      "method": "GET",
+      "path": "/v1/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1240,
+      "method": "POST",
+      "path": "/v1/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1276,
+      "method": "DELETE",
+      "path": "/v1/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1245,
+      "method": "PUT",
+      "path": "/v1/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 572,
+      "method": "GET",
+      "path": "/v1/feed"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 789,
+      "method": "GET",
+      "path": "/v1/files"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1871,
+      "method": "POST",
+      "path": "/v1/images"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1873,
+      "method": "POST",
+      "path": "/v1/images/edits"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1869,
+      "method": "POST",
+      "path": "/v1/images/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1381,
+      "method": "DELETE",
+      "path": "/v1/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1374,
+      "method": "GET",
+      "path": "/v1/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1377,
+      "method": "PATCH",
+      "path": "/v1/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1380,
+      "method": "DELETE",
+      "path": "/v1/images/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1376,
+      "method": "PATCH",
+      "path": "/v1/images/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1074,
+      "method": "GET",
+      "path": "/v1/images/models"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1863,
+      "method": "GET",
+      "path": "/v1/images/tasks/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1835,
+      "method": "POST",
+      "path": "/v1/images/upscale"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1208,
+      "method": "GET",
+      "path": "/v1/images/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1875,
+      "method": "POST",
+      "path": "/v1/images/variations"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 269,
+      "method": "POST",
+      "path": "/v1/log-usage"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 271,
+      "method": "POST",
+      "path": "/v1/log-usage/"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 181,
+      "method": "GET",
+      "path": "/v1/login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 195,
+      "method": "POST",
+      "path": "/v1/login"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-chat.ts",
+      "line": 543,
+      "method": "POST",
+      "path": "/v1/mai/chat"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 157,
+      "method": "GET",
+      "path": "/v1/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 168,
+      "method": "POST",
+      "path": "/v1/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 254,
+      "method": "DELETE",
+      "path": "/v1/mai/conversations/:conversationId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/v1/mai/conversations/:conversationId/duplicate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 218,
+      "method": "POST",
+      "path": "/v1/mai/conversations/:conversationId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 384,
+      "method": "POST",
+      "path": "/v1/mai/execute-tool"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 81,
+      "method": "GET",
+      "path": "/v1/mai/history"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 107,
+      "method": "POST",
+      "path": "/v1/mai/history/new"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 346,
+      "method": "GET",
+      "path": "/v1/mai/models"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 42,
+      "method": "GET",
+      "path": "/v1/mai/quotas"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 214,
+      "method": "POST",
+      "path": "/v1/mai/regenerate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 461,
+      "method": "POST",
+      "path": "/v1/mai/tool-refused"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 71,
+      "method": "GET",
+      "path": "/v1/mai/tools"
+    },
+    {
+      "dynamic": false,
+      "file": "mai-translate.ts",
+      "line": 369,
+      "method": "POST",
+      "path": "/v1/mai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/v1/me"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 685,
+      "method": "POST",
+      "path": "/v1/messages"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1794,
+      "method": "POST",
+      "path": "/v1/mj/submit/action"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1798,
+      "method": "POST",
+      "path": "/v1/mj/submit/blend"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1800,
+      "method": "POST",
+      "path": "/v1/mj/submit/change"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1796,
+      "method": "POST",
+      "path": "/v1/mj/submit/describe"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1790,
+      "method": "POST",
+      "path": "/v1/mj/submit/imagine"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1802,
+      "method": "POST",
+      "path": "/v1/mj/submit/modal"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1804,
+      "method": "POST",
+      "path": "/v1/mj/submit/shorten"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1806,
+      "method": "POST",
+      "path": "/v1/mj/submit/swap-face"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1792,
+      "method": "GET",
+      "path": "/v1/mj/task/:id/fetch"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 305,
+      "method": "GET",
+      "path": "/v1/models"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 843,
+      "method": "POST",
+      "path": "/v1/models/*:generateContent"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1880,
+      "method": "POST",
+      "path": "/v1/models/*:generateImages"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1882,
+      "method": "POST",
+      "path": "/v1/models/*:predict"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 844,
+      "method": "POST",
+      "path": "/v1/models/*:streamGenerateContent"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 833,
+      "method": "POST",
+      "path": "/v1/models/*:synthesizeSpeech"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1072,
+      "method": "GET",
+      "path": "/v1/models/images"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1110,
+      "method": "GET",
+      "path": "/v1/models/images/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 345,
+      "method": "GET",
+      "path": "/v1/models/mai"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 116,
+      "method": "GET",
+      "path": "/v1/models/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 169,
+      "method": "DELETE",
+      "path": "/v1/notifications"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 50,
+      "method": "GET",
+      "path": "/v1/notifications"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 169,
+      "method": "DELETE",
+      "path": "/v1/notifications/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/v1/notifications/:id/delete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 114,
+      "method": "PATCH",
+      "path": "/v1/notifications/:id/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 103,
+      "method": "POST",
+      "path": "/v1/notifications/:id/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/v1/notifications/clear"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 179,
+      "method": "POST",
+      "path": "/v1/notifications/delete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 114,
+      "method": "PATCH",
+      "path": "/v1/notifications/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 103,
+      "method": "POST",
+      "path": "/v1/notifications/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/v1/notifications/unread_count"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 425,
+      "method": "POST",
+      "path": "/v1/onboarding/complete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 392,
+      "method": "GET",
+      "path": "/v1/onboarding/suggestions"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 565,
+      "method": "POST",
+      "path": "/v1/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1391,
+      "method": "DELETE",
+      "path": "/v1/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1357,
+      "method": "GET",
+      "path": "/v1/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1618,
+      "method": "PATCH",
+      "path": "/v1/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 326,
+      "method": "POST",
+      "path": "/v1/posts/:id/bookmark"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1038,
+      "method": "POST",
+      "path": "/v1/posts/:id/collaborate/accept"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/v1/posts/:id/collaborate/decline"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 449,
+      "method": "GET",
+      "path": "/v1/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1066,
+      "method": "POST",
+      "path": "/v1/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1151,
+      "method": "POST",
+      "path": "/v1/posts/:id/comments/:commentId/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 282,
+      "method": "POST",
+      "path": "/v1/posts/:id/feedback"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 120,
+      "method": "POST",
+      "path": "/v1/posts/:id/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 644,
+      "method": "POST",
+      "path": "/v1/posts/:id/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 636,
+      "method": "POST",
+      "path": "/v1/posts/:id/poll/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 747,
+      "method": "POST",
+      "path": "/v1/posts/:id/profile-pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 216,
+      "method": "POST",
+      "path": "/v1/posts/:id/repost"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1151,
+      "method": "PATCH",
+      "path": "/v1/posts/:id/reschedule"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 725,
+      "method": "GET",
+      "path": "/v1/posts/:id/stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 573,
+      "method": "POST",
+      "path": "/v1/posts/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1084,
+      "method": "GET",
+      "path": "/v1/posts/scheduled"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 772,
+      "method": "GET",
+      "path": "/v1/posts/top"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 477,
+      "method": "GET",
+      "path": "/v1/privacy/export"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/v1/profile/avatar"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 975,
+      "method": "POST",
+      "path": "/v1/profile/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/v1/profiles/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1122,
+      "method": "POST",
+      "path": "/v1/profiles/:username/follow"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 308,
+      "method": "GET",
+      "path": "/v1/profiles/:username/followers"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 318,
+      "method": "GET",
+      "path": "/v1/profiles/:username/following"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 740,
+      "method": "GET",
+      "path": "/v1/profiles/:username/likes"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1172,
+      "method": "GET",
+      "path": "/v1/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1223,
+      "method": "POST",
+      "path": "/v1/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1416,
+      "method": "POST",
+      "path": "/v1/profiles/:username/view"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 500,
+      "method": "GET",
+      "path": "/v1/projects"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 516,
+      "method": "POST",
+      "path": "/v1/projects"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 593,
+      "method": "DELETE",
+      "path": "/v1/projects/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 537,
+      "method": "GET",
+      "path": "/v1/projects/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 560,
+      "method": "PUT",
+      "path": "/v1/projects/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "projects.ts",
+      "line": 612,
+      "method": "GET",
+      "path": "/v1/projects/:id/stats"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 252,
+      "method": "GET",
+      "path": "/v1/realtime/stream"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 23,
+      "method": "GET",
+      "path": "/v1/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 37,
+      "method": "POST",
+      "path": "/v1/register"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 465,
+      "method": "POST",
+      "path": "/v1/resend-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 863,
+      "method": "GET",
+      "path": "/v1/search/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 989,
+      "method": "GET",
+      "path": "/v1/search/unified"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 360,
+      "method": "GET",
+      "path": "/v1/search/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 201,
+      "method": "GET",
+      "path": "/v1/settings"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 422,
+      "method": "POST",
+      "path": "/v1/settings/update"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 816,
+      "method": "POST",
+      "path": "/v1/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 835,
+      "method": "POST",
+      "path": "/v1/speech:synthesize"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 818,
+      "method": "POST",
+      "path": "/v1/speech/generations"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 447,
+      "method": "DELETE",
+      "path": "/v1/speech/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 375,
+      "method": "GET",
+      "path": "/v1/speech/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 381,
+      "method": "PATCH",
+      "path": "/v1/speech/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 446,
+      "method": "DELETE",
+      "path": "/v1/speech/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 380,
+      "method": "PATCH",
+      "path": "/v1/speech/history/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 118,
+      "method": "GET",
+      "path": "/v1/speech/models"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 269,
+      "method": "GET",
+      "path": "/v1/speech/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 176,
+      "method": "GET",
+      "path": "/v1/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 359,
+      "method": "GET",
+      "path": "/v1/status"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 727,
+      "method": "GET",
+      "path": "/v1/storage"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 898,
+      "method": "POST",
+      "path": "/v1/stories"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 898,
+      "method": "POST",
+      "path": "/v1/stories/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/v1/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 957,
+      "method": "PATCH",
+      "path": "/v1/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1079,
+      "method": "POST",
+      "path": "/v1/stories/:id/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1034,
+      "method": "POST",
+      "path": "/v1/stories/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1210,
+      "method": "GET",
+      "path": "/v1/stories/:id/views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1150,
+      "method": "POST",
+      "path": "/v1/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
+      "method": "GET",
+      "path": "/v1/stories/active"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/v1/stories/archive"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1254,
+      "method": "GET",
+      "path": "/v1/stories/quota"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 559,
+      "method": "GET",
+      "path": "/v1/stories/tray"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1865,
+      "method": "GET",
+      "path": "/v1/tasks/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "translate.ts",
+      "line": 454,
+      "method": "POST",
+      "path": "/v1/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 686,
+      "method": "GET",
+      "path": "/v1/trends"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 527,
+      "method": "POST",
+      "path": "/v1/upload-avatar"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 529,
+      "method": "POST",
+      "path": "/v1/upload-avatar/"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 643,
+      "method": "POST",
+      "path": "/v1/upload-file"
+    },
+    {
+      "dynamic": false,
+      "file": "storage.ts",
+      "line": 645,
+      "method": "POST",
+      "path": "/v1/upload-file/"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 203,
+      "method": "GET",
+      "path": "/v1/usage"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 205,
+      "method": "GET",
+      "path": "/v1/usage/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 166,
+      "method": "POST",
+      "path": "/v1/usage/log"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1298,
+      "method": "POST",
+      "path": "/v1/users/:username/mute"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 973,
+      "method": "GET",
+      "path": "/v1/users/me/creator-stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1471,
+      "method": "GET",
+      "path": "/v1/users/me/profile-views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1335,
+      "method": "GET",
+      "path": "/v1/users/muted"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 168,
+      "method": "GET",
+      "path": "/v1/users/suggested"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/v1/users/top"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 311,
+      "method": "POST",
+      "path": "/v1/verify-login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 95,
+      "method": "POST",
+      "path": "/v1/verify-register"
+    },
+    {
+      "dynamic": false,
+      "file": "web.ts",
+      "line": 419,
+      "method": "GET",
+      "path": "/v1/web/search"
+    },
+    {
+      "dynamic": false,
+      "file": "web.ts",
+      "line": 395,
+      "method": "POST",
+      "path": "/v1/web/search"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 307,
+      "method": "GET",
+      "path": "/v1beta/models"
+    },
+    {
+      "dynamic": false,
+      "file": "models.ts",
+      "line": 842,
+      "method": "POST",
+      "path": "/v1beta/models/*"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1879,
+      "method": "POST",
+      "path": "/v1beta/models/*:generateImages"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1881,
+      "method": "POST",
+      "path": "/v1beta/models/*:predict"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 832,
+      "method": "POST",
+      "path": "/v1beta/models/*:synthesizeSpeech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 834,
+      "method": "POST",
+      "path": "/v1beta/speech:synthesize"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 513,
+      "method": "POST",
+      "path": "/verify-code"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 311,
+      "method": "POST",
+      "path": "/verify-login"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 881,
+      "method": "POST",
+      "path": "/verify-new-email"
+    },
+    {
+      "dynamic": false,
+      "file": "auth.ts",
+      "line": 95,
+      "method": "POST",
+      "path": "/verify-register"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 129,
+      "method": "GET",
+      "path": "/vibe"
+    },
+    {
+      "dynamic": false,
+      "file": "main.ts",
+      "line": 130,
+      "method": "GET",
+      "path": "/vibe/"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 176,
+      "method": "POST",
+      "path": "/vibe/ai/text"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-ai.ts",
+      "line": 403,
+      "method": "POST",
+      "path": "/vibe/ai/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 261,
+      "method": "GET",
+      "path": "/vibe/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 363,
+      "method": "POST",
+      "path": "/vibe/books"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 452,
+      "method": "DELETE",
+      "path": "/vibe/books/:bookId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 647,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/leave"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 595,
+      "method": "GET",
+      "path": "/vibe/books/:bookId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/vibe/books/:bookId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1068,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/members/:userId/transfer-ownership"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 847,
+      "method": "GET",
+      "path": "/vibe/books/:bookId/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 752,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/posts/:postId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 919,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/posts/:postId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 695,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/regenerate-code"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 421,
+      "method": "POST",
+      "path": "/vibe/books/:bookId/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 560,
+      "method": "POST",
+      "path": "/vibe/books/join"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-books.ts",
+      "line": 1110,
+      "method": "GET",
+      "path": "/vibe/books/public"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 101,
+      "method": "GET",
+      "path": "/vibe/circle"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 226,
+      "method": "DELETE",
+      "path": "/vibe/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 184,
+      "method": "POST",
+      "path": "/vibe/circle/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-circle.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/vibe/circle/check/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 50,
+      "method": "POST",
+      "path": "/vibe/dms/block"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 105,
+      "method": "GET",
+      "path": "/vibe/dms/blocked"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 182,
+      "method": "GET",
+      "path": "/vibe/dms/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 248,
+      "method": "DELETE",
+      "path": "/vibe/dms/conversations/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 283,
+      "method": "POST",
+      "path": "/vibe/dms/conversations/:partnerId/mark-unread"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 88,
+      "method": "POST",
+      "path": "/vibe/dms/conversations/:partnerId/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 129,
+      "method": "DELETE",
+      "path": "/vibe/dms/conversations/:partnerId/pin/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 209,
+      "method": "POST",
+      "path": "/vibe/dms/conversations/:partnerId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/vibe/dms/generate-reply/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 96,
+      "method": "POST",
+      "path": "/vibe/dms/groups"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 495,
+      "method": "DELETE",
+      "path": "/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 264,
+      "method": "GET",
+      "path": "/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 444,
+      "method": "POST",
+      "path": "/vibe/dms/groups/:groupId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 165,
+      "method": "POST",
+      "path": "/vibe/dms/groups/:groupId/members"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 219,
+      "method": "DELETE",
+      "path": "/vibe/dms/groups/:groupId/members/:userId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 558,
+      "method": "POST",
+      "path": "/vibe/dms/groups/:groupId/members/:userId/transfer-admin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 826,
+      "method": "POST",
+      "path": "/vibe/dms/messages"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 319,
+      "method": "DELETE",
+      "path": "/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 436,
+      "method": "PATCH",
+      "path": "/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 445,
+      "method": "PUT",
+      "path": "/vibe/dms/messages/:messageId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/vibe/dms/messages/:messageId/hide"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/vibe/dms/messages/:messageId/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-groups.ts",
+      "line": 380,
+      "method": "POST",
+      "path": "/vibe/dms/messages/:messageId/translations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 390,
+      "method": "GET",
+      "path": "/vibe/dms/messages/:partnerId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 198,
+      "method": "GET",
+      "path": "/vibe/dms/messages/:partnerId/search"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 141,
+      "method": "POST",
+      "path": "/vibe/dms/report"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-message-actions.ts",
+      "line": 669,
+      "method": "POST",
+      "path": "/vibe/dms/suggest-reply"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 305,
+      "method": "POST",
+      "path": "/vibe/dms/typing"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-moderation.ts",
+      "line": 74,
+      "method": "POST",
+      "path": "/vibe/dms/unblock"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-conversations.ts",
+      "line": 55,
+      "method": "GET",
+      "path": "/vibe/dms/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1179,
+      "method": "GET",
+      "path": "/vibe/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1240,
+      "method": "POST",
+      "path": "/vibe/drafts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1276,
+      "method": "DELETE",
+      "path": "/vibe/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1245,
+      "method": "PUT",
+      "path": "/vibe/drafts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 572,
+      "method": "GET",
+      "path": "/vibe/feed"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-chat.ts",
+      "line": 543,
+      "method": "POST",
+      "path": "/vibe/mai/chat"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 157,
+      "method": "GET",
+      "path": "/vibe/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 168,
+      "method": "POST",
+      "path": "/vibe/mai/conversations"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 254,
+      "method": "DELETE",
+      "path": "/vibe/mai/conversations/:conversationId"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 306,
+      "method": "POST",
+      "path": "/vibe/mai/conversations/:conversationId/duplicate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 218,
+      "method": "POST",
+      "path": "/vibe/mai/conversations/:conversationId/rename"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 384,
+      "method": "POST",
+      "path": "/vibe/mai/execute-tool"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 81,
+      "method": "GET",
+      "path": "/vibe/mai/history"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-conversations.ts",
+      "line": 107,
+      "method": "POST",
+      "path": "/vibe/mai/history/new"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 42,
+      "method": "GET",
+      "path": "/vibe/mai/quotas"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 214,
+      "method": "POST",
+      "path": "/vibe/mai/regenerate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-execute.ts",
+      "line": 461,
+      "method": "POST",
+      "path": "/vibe/mai/tool-refused"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-mai-settings.ts",
+      "line": 71,
+      "method": "GET",
+      "path": "/vibe/mai/tools"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 133,
+      "method": "GET",
+      "path": "/vibe/me"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 50,
+      "method": "GET",
+      "path": "/vibe/notifications"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 103,
+      "method": "POST",
+      "path": "/vibe/notifications/read"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-dms-notifications.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/vibe/notifications/unread_count"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 425,
+      "method": "POST",
+      "path": "/vibe/onboarding/complete"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 392,
+      "method": "GET",
+      "path": "/vibe/onboarding/suggestions"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 565,
+      "method": "POST",
+      "path": "/vibe/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1391,
+      "method": "DELETE",
+      "path": "/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1357,
+      "method": "GET",
+      "path": "/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1618,
+      "method": "PATCH",
+      "path": "/vibe/posts/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 326,
+      "method": "POST",
+      "path": "/vibe/posts/:id/bookmark"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1038,
+      "method": "POST",
+      "path": "/vibe/posts/:id/collaborate/accept"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/vibe/posts/:id/collaborate/decline"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 449,
+      "method": "GET",
+      "path": "/vibe/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1066,
+      "method": "POST",
+      "path": "/vibe/posts/:id/comments"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 1151,
+      "method": "POST",
+      "path": "/vibe/posts/:id/comments/:commentId/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 282,
+      "method": "POST",
+      "path": "/vibe/posts/:id/feedback"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 120,
+      "method": "POST",
+      "path": "/vibe/posts/:id/like"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 644,
+      "method": "POST",
+      "path": "/vibe/posts/:id/pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 636,
+      "method": "POST",
+      "path": "/vibe/posts/:id/poll/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 747,
+      "method": "POST",
+      "path": "/vibe/posts/:id/profile-pin"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 216,
+      "method": "POST",
+      "path": "/vibe/posts/:id/repost"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1151,
+      "method": "PATCH",
+      "path": "/vibe/posts/:id/reschedule"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 725,
+      "method": "GET",
+      "path": "/vibe/posts/:id/stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-engage.ts",
+      "line": 573,
+      "method": "POST",
+      "path": "/vibe/posts/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 1084,
+      "method": "GET",
+      "path": "/vibe/posts/scheduled"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 772,
+      "method": "GET",
+      "path": "/vibe/posts/top"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 477,
+      "method": "GET",
+      "path": "/vibe/privacy/export"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1048,
+      "method": "POST",
+      "path": "/vibe/profile/avatar"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 975,
+      "method": "POST",
+      "path": "/vibe/profile/update"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/vibe/profiles/:username"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1122,
+      "method": "POST",
+      "path": "/vibe/profiles/:username/follow"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 308,
+      "method": "GET",
+      "path": "/vibe/profiles/:username/followers"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 318,
+      "method": "GET",
+      "path": "/vibe/profiles/:username/following"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 740,
+      "method": "GET",
+      "path": "/vibe/profiles/:username/likes"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1172,
+      "method": "GET",
+      "path": "/vibe/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1223,
+      "method": "POST",
+      "path": "/vibe/profiles/:username/subscribe"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1416,
+      "method": "POST",
+      "path": "/vibe/profiles/:username/view"
+    },
+    {
+      "dynamic": false,
+      "file": "realtime.ts",
+      "line": 252,
+      "method": "GET",
+      "path": "/vibe/realtime/stream"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 863,
+      "method": "GET",
+      "path": "/vibe/search/posts"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 989,
+      "method": "GET",
+      "path": "/vibe/search/unified"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 360,
+      "method": "GET",
+      "path": "/vibe/search/users"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 201,
+      "method": "GET",
+      "path": "/vibe/settings"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 422,
+      "method": "POST",
+      "path": "/vibe/settings/update"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 825,
+      "method": "POST",
+      "path": "/vibe/speech"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 181,
+      "method": "GET",
+      "path": "/vibe/speech/voices"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 898,
+      "method": "POST",
+      "path": "/vibe/stories"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 989,
+      "method": "DELETE",
+      "path": "/vibe/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 957,
+      "method": "PATCH",
+      "path": "/vibe/stories/:id"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1079,
+      "method": "POST",
+      "path": "/vibe/stories/:id/react"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1034,
+      "method": "POST",
+      "path": "/vibe/stories/:id/view"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1210,
+      "method": "GET",
+      "path": "/vibe/stories/:id/views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1150,
+      "method": "POST",
+      "path": "/vibe/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
+      "method": "GET",
+      "path": "/vibe/stories/active"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 645,
+      "method": "GET",
+      "path": "/vibe/stories/archive"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 1254,
+      "method": "GET",
+      "path": "/vibe/stories/quota"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 559,
+      "method": "GET",
+      "path": "/vibe/stories/tray"
+    },
+    {
+      "dynamic": false,
+      "file": "translate.ts",
+      "line": 454,
+      "method": "POST",
+      "path": "/vibe/translate"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-feed.ts",
+      "line": 686,
+      "method": "GET",
+      "path": "/vibe/trends"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-settings.ts",
+      "line": 166,
+      "method": "POST",
+      "path": "/vibe/usage/log"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1298,
+      "method": "POST",
+      "path": "/vibe/users/:username/mute"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-posts-crud.ts",
+      "line": 973,
+      "method": "GET",
+      "path": "/vibe/users/me/creator-stats"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1471,
+      "method": "GET",
+      "path": "/vibe/users/me/profile-views"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 1335,
+      "method": "GET",
+      "path": "/vibe/users/muted"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 168,
+      "method": "GET",
+      "path": "/vibe/users/suggested"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-users.ts",
+      "line": 223,
+      "method": "GET",
+      "path": "/vibe/users/top"
+    },
+    {
+      "dynamic": true,
+      "file": "vibe-common.ts",
+      "line": 31,
+      "method": "DELETE",
+      "path": "p"
+    },
+    {
+      "dynamic": true,
+      "file": "vibe-common.ts",
+      "line": 27,
+      "method": "GET",
+      "path": "p"
+    },
+    {
+      "dynamic": true,
+      "file": "vibe-common.ts",
+      "line": 30,
+      "method": "PATCH",
+      "path": "p"
+    },
+    {
+      "dynamic": true,
+      "file": "vibe-common.ts",
+      "line": 28,
+      "method": "POST",
+      "path": "p"
+    },
+    {
+      "dynamic": true,
+      "file": "vibe-common.ts",
+      "line": 29,
+      "method": "PUT",
+      "path": "p"
+    }
+  ],
+  "runtime": "Hono / Val Town (imports Deno)"
+}

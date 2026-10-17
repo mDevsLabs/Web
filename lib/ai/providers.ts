@@ -48,10 +48,18 @@ export function getLanguageModel(
   }
 ) {
   const effectiveKey =
-    options?.apiKey ||
-    options?.sessionToken ||
-    process.env.MAI_API_KEY ||
-    "mai-web-default";
+    options?.apiKey || options?.sessionToken || process.env.MAI_API_KEY;
+
+  // Aucun repli sur une chaîne littérale partagée. Un identifiant statique
+  // « par défaut » est inoffensif tant que le backend le refuse, mais il
+  // transforme une configuration absente en tentative d'appel authentifiée : il
+  // suffit qu'un jour le backend l'accepte pour obtenir des appels modèle
+  // non facturés. Une configuration manquante doit échouer franchement.
+  if (!effectiveKey) {
+    throw new Error(
+      "Aucun identifiant d'API disponible : session absente et MAI_API_KEY non défini."
+    );
+  }
 
   const headers: Record<string, string> = {
     "HTTP-Referer": "https://mai.val.run",

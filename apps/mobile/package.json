@@ -5,27 +5,27 @@
   "private": true,
   "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "npx cap sync",
-    "build": "tsc --noEmit || echo \"no ts\"",
+    "dev": "cap sync",
+    "build": "tsc --noEmit",
     "generate:icons": "node scripts/generate-icons.mjs",
-    "sync": "npx cap sync",
-    "add:android": "npx cap add android",
-    "add:ios": "npx cap add ios",
-    "build:android": "npx cap sync android && cd android && ./gradlew assembleDebug --no-daemon",
-    "build:android:release": "npx cap sync android && cd android && ./gradlew assembleRelease --no-daemon -Pandroid.injected.signing.store.file=\"\" -Pandroid.injected.signing.store.password=\"\" -Pandroid.injected.signing.key.alias=\"\" -Pandroid.injected.signing.key.password=\"\"",
-    "build:ios": "npx cap sync ios && xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -archivePath ios/App/build/App.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\"\" archive || echo \"ios build requires macOS\""
+    "sync": "cap sync",
+    "add:android": "cap add android",
+    "add:ios": "cap add ios",
+    "build:android": "cap sync android && cd android && ./gradlew assembleDebug --no-daemon",
+    "build:android:release": "cap sync android && cd android && ./gradlew assembleRelease --no-daemon -Pandroid.injected.signing.store.file=\"\" -Pandroid.injected.signing.store.password=\"\" -Pandroid.injected.signing.key.alias=\"\" -Pandroid.injected.signing.key.password=\"\"",
+    "build:ios": "cap sync ios && sh -c 'if [ -d ios/App/App.xcworkspace ]; then T=\"-workspace ios/App/App.xcworkspace\"; else T=\"-project ios/App/App.xcodeproj\"; fi; xcodebuild archive $T -scheme App -configuration Release -archivePath ios/App/build/App.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO'"
   },
   "dependencies": {
-    "@capacitor/android": "^6.2.1",
-    "@capacitor/app": "^6.0.2",
-    "@capacitor/core": "^6.2.1",
-    "@capacitor/ios": "^6.2.1",
-    "@capacitor/status-bar": "^6.0.2",
-    "@capacitor/splash-screen": "^6.0.2"
+    "@capacitor/android": "^6.2.2",
+    "@capacitor/app": "^6.0.3",
+    "@capacitor/core": "^6.2.2",
+    "@capacitor/ios": "^6.2.2",
+    "@capacitor/status-bar": "^6.0.3",
+    "@capacitor/splash-screen": "^6.0.4"
   },
   "devDependencies": {
-    "@capacitor/cli": "^6.2.1",
-    "@types/node": "^24.13.2",
-    "typescript": "^5.6.3"
+    "@capacitor/cli": "^6.2.2",
+    "@types/node": "^24.19.1",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,0 +1,3 @@
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const ArrowDownRightFromCircleIcon = /* @__PURE__ */ createIcon('ArrowDownRightFromCircleIcon', [["path", { "d": "M12 22a10 10 0 1 1 10-10" }], ["path", { "d": "M22 22 12 12" }], ["path", { "d": "M22 16v6h-6" }]]);

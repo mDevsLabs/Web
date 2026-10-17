@@ -128,7 +128,7 @@ export function PillSwitcher<T extends string>({
               {item.locked ? (
                 <span
                   aria-hidden
-                  className="inline-block size-1.5 rounded-full bg-amber-500"
+                  className="inline-block size-1.5 rounded-full bg-warning"
                   title="Réservé aux forfaits payants"
                 />
               ) : null}

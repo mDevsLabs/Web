@@ -1,0 +1,71 @@
+{
+  "model": "LogEntry",
+  "config": {
+    "name": "LogEntry",
+    "label": "Journaux",
+    "description": "Gérez vos journaux depuis une interface claire.",
+    "fields": [
+      {
+        "key": "message",
+        "label": "Message",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "service",
+        "label": "Service",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "timestamp",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "occurrences",
+        "label": "Occurrences",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "info",
+          "warning",
+          "error"
+        ]
+      }
+    ],
+    "titleKey": "message",
+    "settings": [
+      {
+        "key": "notifyLogEntry",
+        "label": "Notifications : journaux",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveLogEntry",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section journaux."
+      },
+      {
+        "key": "approveLogEntry",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "log-entry-demo-1",
+    "message": "Requête traitée",
+    "service": "Service démo",
+    "timestamp": "2026-10-04",
+    "occurrences": 128,
+    "status": "info"
+  }
+}

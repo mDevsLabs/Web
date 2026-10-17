@@ -1,7 +1,7 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
-import { isPaidTier } from "@/lib/auth/plan";
+import { requireUser } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   authenticateChatRequest,
@@ -21,11 +21,13 @@ import {
   incrementCustomCommandUsage,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
-  createPluginTools,
-  getToolIdsForPluginIds,
-} from "@/lib/plugins/server";
+  getPluginManifest,
+  getReadToolIdsForPluginIds,
+  isPluginOnlyToolId,
+} from "@/lib/plugins/catalog";
+import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
@@ -93,7 +95,7 @@ export async function POST(request: Request) {
           used: auth.maiUser.tokensUsed,
         },
         message:
-          "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
+          "Votre limite hebdomadaire de tokens est atteinte. Consultez la page des forfaits mAI pour continuer.",
       });
     }
 
@@ -147,14 +149,10 @@ export async function POST(request: Request) {
     });
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
-    // peuvent être instanciés, même si le client les mentionne. Les plugins
-    // sont réservés aux forfaits payants : la vérification du forfait est
-    // refaite ici, indépendamment de l'état d'installation.
-    const pluginsAllowed = isPaidTier(ctx.maiUser.tier);
-    const pluginInstallations =
-      ctx.isGhostMode || !pluginsAllowed
-        ? []
-        : await getPluginInstallationsByUserId({ userId: ctx.userId });
+    // peuvent être instanciés, même si le client les mentionne.
+    const pluginInstallations = ctx.isGhostMode
+      ? []
+      : await getPluginInstallationsByUserId({ userId: ctx.userId });
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
@@ -162,7 +160,10 @@ export async function POST(request: Request) {
         ? [plugin.id]
         : [];
     });
-    const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
+    // Le canal Chat ne sert que la LECTURE : annoncer au modèle un outil
+    // d'écriture que `createPluginTools` n'instancie pas ici le ferait échouer
+    // sur un outil inexistant.
+    const installedPluginToolIds = getReadToolIdsForPluginIds(enabledPluginIds);
 
     // 5. Addendum de prompt (instructions, mémoire, outils, commande)
     const { effectiveAddendum, requestedTools, unavailableTools } =
@@ -240,12 +241,19 @@ export async function POST(request: Request) {
             chatModel: ctx.chatModel,
             dataStream,
             isGhostMode: ctx.isGhostMode,
+            // Un plugin connecté lit le compte de l'utilisateur : sans
+            // identité, `createPluginTools` l'écarte. En mode fantôme, aucun
+            // plugin n'est installé de toute façon.
+            secretResolver: ctx.isGhostMode
+              ? undefined
+              : createIntegrationSecretResolver({ userId: ctx.userId }),
             session: {
               token: ctx.sessionToken,
               user: ctx.isGhostMode
                 ? null
                 : { email: ctx.userEmail, id: ctx.userId },
             },
+            userId: ctx.isGhostMode ? undefined : ctx.userId,
           },
           enabledPluginIds
         );
@@ -309,24 +317,18 @@ export async function DELETE(request: Request) {
     return new ChatbotError("bad_request:api").toResponse();
   }
 
-  const maiUser = await getMaiUser();
-  if (!maiUser) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user: maiUser, userId } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  if (
-    !chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: maiUser.email,
-      userId: maiUser.id,
-      username: maiUser.username,
-    })
-  ) {
+  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

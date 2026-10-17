@@ -28,10 +28,9 @@ const patchSchema = z.object({
   defaultModel: z.string().min(1).max(200).nullable().optional(),
   defaultProjectId: z.string().uuid().nullable().optional(),
   enabledCategories: z.array(z.string().max(40)).max(12).nullable().optional(),
-  // Les sept niveaux du fournisseur, pas un triplet : restreindre l'API alors
-  // que la colonne et le registre en acceptent sept rendrait « max » impossible
-  // à enregistrer depuis l'interface.
-  reasoningLevel: z.enum(REASONING_LEVELS).optional(),
+  // Les sept niveaux du fournisseur, ou null pour hériter du niveau global
+  // de compte défini dans user_preferences.
+  reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),
   toolPolicies: z
     .record(z.string().max(80), z.enum(["auto", "ask", "off"]))
     .optional(),

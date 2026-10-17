@@ -12,12 +12,7 @@ import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
-import {
-  BrainIcon,
-  ChevronDownIcon,
-  ScrollTextIcon,
-  TimerIcon,
-} from "lucide-react";
+import { BrainIcon, ChevronDownIcon, ScrollTextIcon, TimerIcon } from "@mdevs/icons";
 import {
   createContext,
   memo,
@@ -251,17 +246,18 @@ export const ReasoningContent = memo(
           "mt-2 animate-in fade-in-0 duration-200 text-muted-foreground/60 [overflow-anchor:none]",
           className
         )}
+        {...props}
       >
         <div className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/50">
           <ScrollTextIcon className="size-3" />
           <span>Journal de raisonnement</span>
         </div>
         <div
-          className="max-h-[240px] overflow-y-auto rounded-lg border border-border/20 bg-muted/30 px-3 py-2 text-[11px] leading-relaxed"
+          className="max-h-[240px] overflow-y-auto rounded-lg border border-border/50 bg-muted/35 backdrop-blur-sm px-3 py-2 text-[11px] leading-relaxed shadow-[inset_0_1px_0_var(--md-highlight)]"
           ref={scrollRef}
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          <Streamdown plugins={streamdownPlugins} {...props}>
+          <Streamdown plugins={streamdownPlugins}>
             {children}
           </Streamdown>
         </div>

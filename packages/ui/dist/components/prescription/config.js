@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Prescription", "label": "Ordonnances", "description": "G\xE9rez vos ordonnances depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "prescriber", "label": "Prescripteur", "kind": "text", "required": true }, { "key": "issuedOn", "label": "D\xE9livrance", "kind": "date", "required": true }, { "key": "validUntil", "label": "Validit\xE9", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "expired", "archived"] }], "titleKey": "reference", "settings": [{ "key": "notifyPrescription", "label": "Notifications : ordonnances", "description": "Recevoir un signal lors des changements." }, { "key": "archivePrescription", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section ordonnances." }, { "key": "approvePrescription", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

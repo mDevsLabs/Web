@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Booking", "label": "R\xE9servations de services", "description": "G\xE9rez vos r\xE9servations de services depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "customer", "label": "Client", "kind": "text", "required": true }, { "key": "scheduledOn", "label": "Date", "kind": "date", "required": true }, { "key": "durationMinutes", "label": "Dur\xE9e (min)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["pending", "confirmed", "cancelled", "completed"] }], "titleKey": "reference", "settings": [{ "key": "notifyBooking", "label": "Notifications : r\xE9servations de services", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBooking", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section r\xE9servations de services." }, { "key": "approveBooking", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

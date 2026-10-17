@@ -291,7 +291,7 @@ async function checkRedisBucket(
   }
 }
 
-async function checkAuthBucket(
+async function checkBucket(
   key: string,
   policy: BucketPolicy
 ): Promise<AuthRateLimitResult> {
@@ -311,7 +311,7 @@ export async function checkAuthRateLimit(params: {
   const policies = AUTH_RATE_LIMITS[action];
 
   if (identifier?.trim()) {
-    const result = await checkAuthBucket(
+    const result = await checkBucket(
       `auth:${action}:id:${hashIdentifier(identifier)}`,
       policies.identifier
     );
@@ -321,8 +321,109 @@ export async function checkAuthRateLimit(params: {
   }
 
   if (ip && ip !== "unknown") {
-    const result = await checkAuthBucket(
-      `auth:${action}:ip:${ip}`,
+    const result = await checkBucket(`auth:${action}:ip:${ip}`, policies.ip);
+    if (!result.allowed) {
+      return result;
+    }
+  }
+
+  return { allowed: true };
+}
+
+// ─── Limitation des routes API coûteuses ────────────────────────────────────
+//
+// `checkIpRateLimit` ne couvre que le Chat et l'Agent (routes partagées avec
+// le runtime). Les autres routes qui déclenchent une dépense — génération
+// d'image, synthèse vocale, traduction, résumé mémoire — en étaient exemptes,
+// alors qu'elles consomment le quota de l'utilisateur.
+//
+// Même mécanique que l'authentification : deux seaux (utilisateur, IP), Redis
+// avec repli mémoire borné, seuils regroupés ici pour rester lisibles.
+export type ApiRateLimitAction =
+  | "image_generation"
+  | "audio_generation"
+  | "memory_import"
+  | "memory_summary"
+  | "message_execute"
+  | "mcp_test"
+  | "file_upload"
+  | "chat_bulk";
+
+type ApiRateLimitResult =
+  | { allowed: true }
+  | { allowed: false; retryAfterSeconds: number };
+
+// Les seuils par utilisateur sont plus stricts que les seuils par IP : un IP
+// partagée (entreprise, box) ne doit pas être pénalisée par l'usage d'une
+// seule personne, alors qu'un compte ne doit pas pouvoir marteler.
+const API_RATE_LIMITS: Record<
+  ApiRateLimitAction,
+  { user: BucketPolicy; ip: BucketPolicy }
+> = {
+  audio_generation: {
+    ip: { limit: 90, windowSeconds: 3600 },
+    user: { limit: 30, windowSeconds: 3600 },
+  },
+  // Archivage/suppression en masse d'historique.
+  chat_bulk: {
+    ip: { limit: 100, windowSeconds: 3600 },
+    user: { limit: 30, windowSeconds: 3600 },
+  },
+  file_upload: {
+    ip: { limit: 100, windowSeconds: 3600 },
+    user: { limit: 30, windowSeconds: 3600 },
+  },
+  // Génération d'image : la dépense la plus unitaire du produit.
+  image_generation: {
+    ip: { limit: 60, windowSeconds: 3600 },
+    user: { limit: 20, windowSeconds: 3600 },
+  },
+  // `/api/mcp/test` déclenche une requête sortante vers une URL fournie : la
+  // route la plus exposée à l'amplification.
+  mcp_test: {
+    ip: { limit: 30, windowSeconds: 3600 },
+    user: { limit: 10, windowSeconds: 3600 },
+  },
+  // Import mémoire : la borne est déjà sur la taille du tableau ; le rate limit
+  // borne le nombre d'appels qui entraînent des écritures en série.
+  memory_import: {
+    ip: { limit: 15, windowSeconds: 3600 },
+    user: { limit: 5, windowSeconds: 3600 },
+  },
+  memory_summary: {
+    ip: { limit: 60, windowSeconds: 3600 },
+    user: { limit: 20, windowSeconds: 3600 },
+  },
+  // Exécution manuelle d'un envoi planifié : une génération complète.
+  message_execute: {
+    ip: { limit: 60, windowSeconds: 3600 },
+    user: { limit: 20, windowSeconds: 3600 },
+  },
+};
+
+export async function checkApiRateLimit(params: {
+  action: ApiRateLimitAction;
+  userId?: string | null;
+  ip?: string | null;
+}): Promise<ApiRateLimitResult> {
+  const policies = API_RATE_LIMITS[params.action];
+  const { userId, ip } = params;
+
+  if (userId?.trim()) {
+    const result = await checkBucket(
+      `api:${params.action}:user:${hashIdentifier(userId)}`,
+      policies.user
+    );
+    if (!result.allowed) {
+      return result;
+    }
+  }
+
+  // L'IP n'est pas hachée : elle n'est pas un identifiant de compte et le
+  // conserver en clair garde les compteurs lisibles dans un `SCAN` Redis.
+  if (ip && ip !== "unknown") {
+    const result = await checkBucket(
+      `api:${params.action}:ip:${ip}`,
       policies.ip
     );
     if (!result.allowed) {

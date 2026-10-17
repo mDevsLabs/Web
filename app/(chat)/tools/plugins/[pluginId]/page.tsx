@@ -15,10 +15,12 @@ export const metadata: Metadata = {
 // depuis la vignette d'un plugin installé sur la page Plugins.
 export default async function PluginDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ pluginId: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { pluginId } = await params;
+  const [{ pluginId }, queries] = await Promise.all([params, searchParams]);
   const [user, manifest] = await Promise.all([
     getMaiUser(),
     Promise.resolve(getPluginManifest(pluginId)),
@@ -62,6 +64,18 @@ export default async function PluginDetailPage({
       installedVersion={installedVersion}
       locked={locked}
       manifest={manifest}
+      notice={{
+        account: first(queries.account),
+        installation: first(queries.installation),
+        outcome: first(queries.integration),
+        provider: first(queries.provider),
+        reason: first(queries.reason),
+      }}
     />
   );
+}
+
+/** Un query param peut arriver dupliqué ; on ne garde que sa première valeur. */
+function first(value: string | string[] | undefined): string | undefined {
+  return Array.isArray(value) ? value[0] : value;
 }

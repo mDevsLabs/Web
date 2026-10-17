@@ -30,13 +30,13 @@ export function registerDeviceRoutes(app: Hono) {
     } else {
       try {
         await sql`UPDATE connected_devices SET last_active = NOW() WHERE token = ${token}`;
-      } catch (_err) {}
+      } catch {}
     }
 
     const rawDevices = await sql`
-      SELECT id, token, os, device_model, device_version, ip_address, device_name, last_active, created_at 
-      FROM connected_devices 
-      WHERE user_id = ${userId}::text 
+      SELECT id, token, os, device_model, device_version, ip_address, device_name, last_active, created_at
+      FROM connected_devices
+      WHERE user_id = ${userId}::text
       ORDER BY last_active DESC
     `;
 
@@ -62,7 +62,7 @@ export function registerDeviceRoutes(app: Hono) {
     const sql = getDb();
 
     const otherDevices = await sql`
-      SELECT token FROM connected_devices 
+      SELECT token FROM connected_devices
       WHERE user_id = ${userId}::text AND token != ${token}
     `;
 
@@ -73,12 +73,12 @@ export function registerDeviceRoutes(app: Hono) {
             args: [row.token],
             sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
           });
-        } catch (_e) {}
+        } catch {}
       }
     }
 
     await sql`
-      DELETE FROM connected_devices 
+      DELETE FROM connected_devices
       WHERE user_id = ${userId}::text AND token != ${token}
     `;
 
@@ -94,7 +94,7 @@ export function registerDeviceRoutes(app: Hono) {
     const sql = getDb();
 
     const allDevices = await sql`
-      SELECT token FROM connected_devices 
+      SELECT token FROM connected_devices
       WHERE user_id = ${userId}::text
     `;
 
@@ -105,12 +105,12 @@ export function registerDeviceRoutes(app: Hono) {
             args: [row.token],
             sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
           });
-        } catch (_e) {}
+        } catch {}
       }
     }
 
     await sql`
-      DELETE FROM connected_devices 
+      DELETE FROM connected_devices
       WHERE user_id = ${userId}::text
     `;
 

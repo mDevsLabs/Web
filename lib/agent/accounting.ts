@@ -1,7 +1,7 @@
 import "server-only";
 
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
-import { MAI_API_URL } from "@/lib/constants";
+import { upstreamJson } from "@/lib/api/upstream";
 import { recordTokenUsage } from "@/lib/db/queries";
 
 // Décompte des tokens : Agent réutilise exactement le quota hebdomadaire du
@@ -94,21 +94,19 @@ export async function recordAgentUsage(params: {
   // part déjà décomposé : le proxy ne doit pas recomposer et risquer un double
   // comptage de la réflexion.
   try {
-    await fetch(`${MAI_API_URL}/log-usage`, {
-      body: JSON.stringify({
+    await upstreamJson({
+      body: {
         inputTokens,
         isGhostMode: false,
         model: params.model,
         outputTokens,
         reasoningTokens,
         tokensUsed: totalTokens,
-      }),
-      headers: {
-        Authorization: `Bearer ${params.sessionToken}`,
-        "Content-Type": "application/json",
       },
       method: "POST",
-      signal: AbortSignal.timeout(3000),
+      path: "/log-usage",
+      timeoutMs: 3000,
+      token: params.sessionToken,
     });
   } catch {
     // Le décompte local a déjà été appliqué : un échec de journalisation ne

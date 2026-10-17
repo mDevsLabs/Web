@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import { toMcpServerDto } from "@/lib/mcp/dto";
 import { MCP_TEMPLATE_LIST } from "@/lib/mcp-templates/catalog";
 import { installMcpTemplate } from "@/lib/mcp-templates/install";
@@ -9,9 +9,9 @@ import { installMcpTemplate } from "@/lib/mcp-templates/install";
 // (source de vérité unique) et plus les lignes de la table McpTemplate, qui
 // pouvaient diverger. Le format de réponse reste compatible avec le client.
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
 
   return Response.json({
@@ -44,11 +44,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
 
   const json = await request.json().catch(() => ({}));

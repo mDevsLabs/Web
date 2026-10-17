@@ -1,6 +1,6 @@
 "use client";
 
-import { CopyIcon, Loader2Icon, PlayIcon } from "lucide-react";
+import { CopyIcon, Loader2Icon, PlayIcon } from "@mdevs/icons";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

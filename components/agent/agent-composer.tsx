@@ -8,7 +8,7 @@ import {
   MicIcon,
   PaperclipIcon,
   XIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCallback, useMemo, useRef, useState } from "react";
@@ -19,7 +19,6 @@ import {
   AgentToolsPicker,
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
-import { ReasoningEffortPicker } from "@/components/agent/reasoning-effort-picker";
 import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import {
@@ -73,6 +72,7 @@ import { resolveSlashCommandOutcome } from "@/lib/chat/slash-command-outcomes";
 import { pagePath } from "@/lib/client/api-endpoints";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import { saveThemePreference } from "@/lib/theme/preference";
 import type { Attachment } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -391,9 +391,15 @@ export function AgentComposer({
         case "reset":
           onSlashSideEffect.resetConversation();
           return;
-        case "toggle_theme":
-          setTheme(resolvedTheme === "dark" ? "light" : "dark");
+        case "toggle_theme": {
+          const next = resolvedTheme === "dark" ? "light" : "dark";
+          setTheme(next);
+          // Le thème est partagé par la suite : l'enregistrer permet à Vibe,
+          // au Site et à Wakies de suivre la même décision au prochain
+          // chargement.
+          saveThemePreference(next);
           return;
+        }
         case "open_search":
           window.dispatchEvent(new CustomEvent("open-search-dialog"));
           return;
@@ -783,17 +789,11 @@ export function AgentComposer({
               placeholder="Modèle d'IA"
               selectedModelId={modelId}
             />
-            <ReasoningEffortPicker
-              level={reasoning.effort ?? defaultReasoningLevel}
-              levels={reasoningLevels}
-              mandatory={capabilities.reasoningMandatory}
-              onLevelChange={(level) =>
-                onOptionsChange({ reasoningLevel: level })
-              }
-              onOpenChange={pickerOpenChange("reasoning")}
-              open={openPicker === "reasoning"}
+            <VoiceRecorderButton
+              input={input}
+              setInput={setInput}
+              textareaRef={textareaRef}
             />
-            <VoiceRecorderButton input={input} setInput={setInput} />
             <ComposerSendButton
               canSend={canSend}
               loading={uploadQueue.length > 0}

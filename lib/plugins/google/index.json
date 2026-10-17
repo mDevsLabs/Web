@@ -1,0 +1,112 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Connectez votre compte Google une seule fois : l'IA cherche et lit vos fichiers Drive, consulte votre agenda et vos e-mails, et — dans l'Agent, avec votre accord — crée un événement ou envoie un message.",
+  "icon": { "src": "/plugins/google.svg", "type": "image" },
+  "id": "google",
+  "minTier": "plus",
+  "name": "Google",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": [
+    "google",
+    "drive",
+    "agenda",
+    "gmail",
+    "mail",
+    "calendar",
+    "fichiers",
+    "oauth"
+  ],
+  "tools": [
+    {
+      "description": "Cherche un fichier dans votre Drive à partir d'une sous-chaîne de son nom.",
+      "effect": "read",
+      "id": "searchDriveFiles",
+      "label": "Rechercher dans mes fichiers",
+      "systemHint": "Utilise-le avant de lire un document dont vous n'avez donné que le titre."
+    },
+    {
+      "description": "Liste les derniers fichiers modifiés de votre Drive.",
+      "effect": "read",
+      "id": "listRecentDriveFiles",
+      "label": "Fichiers récents",
+      "systemHint": "Bon point de départ quand la discussion porte sur « mon dernier document »."
+    },
+    {
+      "description": "Renvoie les métadonnées d'un fichier Drive : type, taille, dates, parent.",
+      "effect": "read",
+      "id": "getDriveFileMetadata",
+      "label": "Métadonnées d'un fichier",
+      "systemHint": "Appelle-le avant la lecture pour vérifier qu'il s'agit bien d'un document texte."
+    },
+    {
+      "description": "Lit le contenu texte d'un fichier Drive ou l'exporte d'un Document Google.",
+      "effect": "read",
+      "id": "readDriveDocument",
+      "label": "Lire un document Drive",
+      "systemHint": "La sortie est plafonnée : citez l'essentiel plutôt que de recopier tout le fichier."
+    },
+    {
+      "description": "Liste vos événements à venir dans une fenêtre de dates.",
+      "effect": "read",
+      "id": "listCalendarEvents",
+      "label": "Événements d'une période",
+      "systemHint": "Sans fenêtre explicite, la période par défaut est les quatorze prochains jours."
+    },
+    {
+      "description": "Récupère le détail d'un événement d'agenda par son identifiant.",
+      "effect": "read",
+      "id": "getCalendarEvent",
+      "label": "Détail d'un événement",
+      "systemHint": "Utilisez-le pour les participants et le lieu d'un événement déjà identifié."
+    },
+    {
+      "description": "Calcule vos créneaux libres entre deux dates, en fusionnant les occupations qui se recouvrent.",
+      "effect": "read",
+      "id": "checkCalendarAvailability",
+      "label": "Mes disponibilités",
+      "systemHint": "Répondez avec les créneaux calculés, jamais en improvisant une disponibilité."
+    },
+    {
+      "description": "Crée un événement dans votre agenda Google.",
+      "effect": "write",
+      "id": "createCalendarEvent",
+      "label": "Créer un événement",
+      "systemHint": "Écriture chez le fournisseur : résumez l'événement proposé et laissez l'utilisateur l'approuver."
+    },
+    {
+      "description": "Recherche des e-mails dans Gmail à l'aide des opérateurs de recherche Google.",
+      "effect": "read",
+      "id": "searchGmailMessages",
+      "label": "Rechercher mes e-mails",
+      "systemHint": "Les opérateurs from:, to:, has:attachment, newer_than:7d fonctionnent dans la requête."
+    },
+    {
+      "description": "Lit une conversation Gmail complète, message par message.",
+      "effect": "read",
+      "id": "readGmailThread",
+      "label": "Lire une conversation",
+      "systemHint": "Citez les passages utiles avec leur auteur ; ne recopiez pas une conversation entière."
+    },
+    {
+      "description": "Liste les libellés et dossiers de votre compte Gmail.",
+      "effect": "read",
+      "id": "listGmailLabels",
+      "label": "Libellés de ma messagerie",
+      "systemHint": "Sert à traduire une demande comme « mes mails classés dans Factures »."
+    },
+    {
+      "description": "Envoie un e-mail depuis votre messagerie Gmail.",
+      "effect": "write",
+      "id": "sendGmailMessage",
+      "label": "Envoyer un e-mail",
+      "systemHint": "Envoi irréversible : montrez le destinataire, l'objet et le corps complet avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

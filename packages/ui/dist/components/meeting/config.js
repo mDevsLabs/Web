@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Meeting", "label": "R\xE9unions", "description": "G\xE9rez vos r\xE9unions depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "host", "label": "Organisateur", "kind": "text", "required": true }, { "key": "scheduledOn", "label": "Date", "kind": "date", "required": true }, { "key": "durationMinutes", "label": "Dur\xE9e (min)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["scheduled", "ongoing", "completed", "cancelled"] }], "titleKey": "title", "settings": [{ "key": "notifyMeeting", "label": "Notifications : r\xE9unions", "description": "Recevoir un signal lors des changements." }, { "key": "archiveMeeting", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section r\xE9unions." }, { "key": "approveMeeting", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

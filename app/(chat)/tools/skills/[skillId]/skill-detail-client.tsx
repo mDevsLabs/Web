@@ -10,7 +10,7 @@ import {
   PlusIcon,
   Trash2Icon,
   WrenchIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";

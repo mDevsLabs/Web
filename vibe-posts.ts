@@ -30,7 +30,10 @@ export {
   visibilityFilter,
 } from "./vibe-posts-core.ts";
 
-export function registerVibePostsRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibePostsRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // Protection contre le double enregistrement (idempotence)
   if ((app as any).__vibe_posts_registered) return;
   (app as any).__vibe_posts_registered = true;

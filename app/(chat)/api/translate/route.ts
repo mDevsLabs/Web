@@ -4,11 +4,10 @@ import { getUtilityModel } from "@/lib/ai/providers";
 import {
   errorResponse,
   logError,
-  normalizeUpstreamError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries";
 import {
   DEFAULT_TRANSLATION_TARGET,
@@ -101,24 +100,22 @@ export async function POST(request: Request) {
 
   try {
     // ── Moteur nominal : DeepL via Val Town ────────────────────────────────
-    const upstream = await fetch(`${MAI_API_URL}/v1/mai/translate`, {
-      body: JSON.stringify({ target_lang: targetLang, text }),
-      headers: {
-        Authorization: `Bearer ${sessionToken}`,
-        "Content-Type": "application/json",
-      },
+    const upstream = await upstreamJson<{
+      cached?: boolean;
+      detected_language?: string;
+      provider?: string;
+      same_language?: boolean;
+      target_lang?: string;
+      translation?: string;
+    }>({
+      body: { target_lang: targetLang, text },
       method: "POST",
+      path: "/v1/mai/translate",
+      token: sessionToken,
     });
 
     if (upstream.ok) {
-      const data = (await upstream.json()) as {
-        cached?: boolean;
-        detected_language?: string;
-        provider?: string;
-        same_language?: boolean;
-        target_lang?: string;
-        translation?: string;
-      };
+      const data = upstream.data;
       if (data?.translation) {
         const result: TranslateResult = {
           cached: Boolean(data.cached),
@@ -131,13 +128,13 @@ export async function POST(request: Request) {
         return Response.json(result, { status: 200 });
       }
       // 200 sans texte : on ne fait pas confiance à la réponse, on tente le repli.
-    } else if (upstream.status !== 503) {
-      // 503 = DeepL indisponible, et ONLY CASE où le repli a du sens.
+    } else if (upstream.payload.status !== 503) {
+      // 503 = DeepL indisponible, et seul cas où le repli a du sens.
       // 400 (entrée refusée), 401 (session expirée), 429 (débit atteint) sont
       // remontés tels quels : les traduire en « réessayez » masquerait la cause.
-      const data = await upstream.json().catch(() => ({}));
-      const payload = normalizeUpstreamError(data, upstream.status);
-      return Response.json(payload, { status: payload.status });
+      return Response.json(upstream.payload, {
+        status: upstream.payload.status,
+      });
     }
 
     // ── Repli mAI ─────────────────────────────────────────────────────────
@@ -146,7 +143,7 @@ export async function POST(request: Request) {
     // s'appliquer au passage.
     const model = await getUtilityModel({
       sessionToken,
-      userId: user.id,
+      userId: user.id || user.email,
     });
 
     const { text: translated, usage } = await generateText({
@@ -171,7 +168,7 @@ export async function POST(request: Request) {
         outputTokens: usage.outputTokens ?? 0,
         totalTokens,
         userEmail: user.email,
-        userId: user.id ?? user.email,
+        userId: user.id || user.email,
       }).catch((error: unknown) => {
         // Un échec de comptage ne doit pas faire perdre la traduction : le
         // quota sera rattrapé par la consommation du message d'origine.

@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const AsteriskIcon = /* @__PURE__ */ createIcon('AsteriskIcon', [["path", { "d": "M12 5v14" }], ["path", { "d": "m18.065 8.496-12.125 7" }], ["path", { "d": "m5.94 8.504 12.125 7" }]]);
+exports.AsteriskIcon = AsteriskIcon;

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   CheckCircle2Icon,
   CircleDashedIcon,
@@ -24,7 +23,8 @@ import {
   TimerIcon,
   TriangleAlertIcon,
   UserIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { AgentStreamState } from "@/components/agent/agent-stream-provider";
 import { Button } from "@/components/ui/button";
@@ -49,6 +49,7 @@ import type {
 } from "@/lib/agent/types";
 import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
+import { IntegrationLogo, integrationForToolId } from "@/lib/integrations/logo";
 import { cn } from "@/lib/utils";
 
 // Timeline d'exécution : uniquement des actions observables — outils, fichiers,
@@ -270,6 +271,9 @@ function ToolRetryGroup({
     0
   );
   const Icon = CATEGORY_ICONS[last.category] ?? STEP_ICONS.tool_result;
+  // Un outil de connecteur externe se reconnaît à son logo : la catégorie
+  // « Plugin » dirait juste « extension », pas « Google ».
+  const connector = last.toolId ? integrationForToolId(last.toolId) : undefined;
 
   return (
     <div className="flex flex-col">
@@ -281,7 +285,11 @@ function ToolRetryGroup({
         type="button"
       >
         <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center">
-          <Icon className="size-3.5 text-muted-foreground" />
+          {connector ? (
+            <IntegrationLogo className="size-3.5" descriptor={connector} />
+          ) : (
+            <Icon className="size-3.5 text-muted-foreground" />
+          )}
         </span>
         <span className="flex min-w-0 flex-1 flex-col">
           <span className="flex items-center gap-2">
@@ -469,7 +477,7 @@ export function AgentRunTimeline({
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-3 rounded-2xl border border-border/40 bg-card/50 p-3",
+        "flex w-full flex-col gap-3 rounded-2xl border border-border/60 bg-card/75 backdrop-blur-md shadow-[inset_0_1px_0_var(--md-highlight),var(--md-shadow)] p-3",
         className
       )}
       data-testid="agent-run-timeline"
@@ -548,6 +556,9 @@ export function AgentRunTimeline({
               (category ? CATEGORY_ICONS[category] : undefined) ??
               STEP_ICONS[step.type] ??
               CircleIcon;
+            const connector = activity?.toolId
+              ? integrationForToolId(activity.toolId)
+              : undefined;
             return (
               <motion.div
                 animate={{ opacity: 1, y: 0 }}
@@ -559,7 +570,14 @@ export function AgentRunTimeline({
                 transition={{ duration: 0.2 }}
               >
                 <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center">
-                  <Icon className="size-3.5 text-muted-foreground" />
+                  {connector ? (
+                    <IntegrationLogo
+                      className="size-3.5"
+                      descriptor={connector}
+                    />
+                  ) : (
+                    <Icon className="size-3.5 text-muted-foreground" />
+                  )}
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="flex min-w-0 flex-wrap items-center gap-2">
@@ -572,7 +590,7 @@ export function AgentRunTimeline({
                       </span>
                     ) : null}
                     {activity?.attempt && activity.attempt > 1 ? (
-                      <span className="shrink-0 rounded-full bg-amber-500/10 px-1.5 text-[10px] font-medium text-amber-600 dark:text-amber-400">
+                      <span className="shrink-0 rounded-full bg-warning/10 px-1.5 text-[10px] font-medium text-warning">
                         Tentative {activity.attempt}
                       </span>
                     ) : null}
@@ -603,7 +621,7 @@ export function AgentRunTimeline({
           <div className="flex flex-wrap gap-2">
             {state.artifacts.map((artifact) => (
               <button
-                className="flex min-h-11 max-w-full cursor-pointer items-center gap-2 rounded-xl border border-border/50 bg-background px-3 py-2 text-xs font-medium transition-colors hover:border-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="flex min-h-11 max-w-full cursor-pointer items-center gap-2 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm px-3 py-2 text-xs font-medium shadow-[inset_0_1px_0_var(--md-highlight)] transition-all hover:bg-muted/40 hover:border-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2"
                 data-testid={`agent-artifact-${artifact.documentId}`}
                 key={artifact.documentId}
                 onClick={() => setOpenArtifact(artifact)}

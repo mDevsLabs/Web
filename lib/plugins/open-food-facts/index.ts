@@ -80,7 +80,7 @@ export const searchFoodProducts = tool({
     url.searchParams.set("page_size", String(limit));
     url.searchParams.set("fields", fields);
     const result = await fetchPublicJson<{
-      products?: Array<Record<string, unknown>>;
+      products?: Record<string, unknown>[];
     }>(url.href, contactHeaders("mAI-Web"));
     if (!result.ok) return { error: result.error };
     const products = (result.data.products ?? [])

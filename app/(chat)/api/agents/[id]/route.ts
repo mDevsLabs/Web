@@ -1,9 +1,10 @@
 import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
+import {
+  planGuardResponse,
+  requireAuthenticatedTier,
+} from "@/lib/auth/plan-guard";
 import { deleteAgent, getAgentById, updateAgent } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 const updateAgentSchema = z.object({
   cloudFileUrls: z.array(z.string()).max(10).optional(),
@@ -31,7 +32,7 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }
@@ -50,7 +51,7 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }
@@ -88,7 +89,7 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
+  const guard = await requireAuthenticatedTier();
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }

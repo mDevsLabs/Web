@@ -146,7 +146,7 @@ export const searchJournals = tool({
     });
     const result = await fetchPublicJson<{
       message?: {
-        items?: Array<Record<string, unknown>>;
+        items?: Record<string, unknown>[];
         "total-results"?: number;
       };
     }>(url.href, headers);

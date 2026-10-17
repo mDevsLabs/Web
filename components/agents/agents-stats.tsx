@@ -9,7 +9,7 @@ import {
   SparklesIcon,
   TrendingUpIcon,
   UsersIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";

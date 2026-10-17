@@ -1,8 +1,10 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { getTableColumns } from "drizzle-orm";
 import { describe, expect, it } from "vitest";
 import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { agent, agentTemplate } from "@/lib/db/schema";
 import {
   DEFAULT_SCHEDULE_TOOL_MODE,
   deriveScheduleToolMode,
@@ -15,6 +17,7 @@ import {
   getTierAgentLimit,
   isAgentLimitUnlimited,
   isAgentQuotaExceeded,
+  TIER_LIMITS,
 } from "@/lib/plans/tier-limits";
 
 const ROOT = path.resolve(import.meta.dirname, "..", "..");
@@ -24,10 +27,10 @@ function source(file: string): string {
 }
 
 describe("Quota d'agents par forfait", () => {
-  it("accorde 15 agents en Plus, 25 en Pro, aucun quota en Free", () => {
+  it("accorde 8 agents en Free, 15 en Plus et 25 en Pro", () => {
+    expect(getTierAgentLimit("free")).toBe(8);
     expect(getTierAgentLimit("plus")).toBe(15);
     expect(getTierAgentLimit("pro")).toBe(25);
-    expect(getTierAgentLimit("free")).toBe(0);
   });
 
   it("traite Max comme un quota illimité", () => {
@@ -37,6 +40,12 @@ describe("Quota d'agents par forfait", () => {
   });
 
   it("ne signale le quota dépassé que pour un quota fini", () => {
+    // Free : 8 bots, donc le 9e est refusé. Les bornes sont verrouillées ici
+    // parce que le quota est la seule barrière du Free — le paywall de la page
+    // `/agents` a été retiré, et sans ce verrou une régression vers un
+    // plafond implicite passerait inaperçue.
+    expect(isAgentQuotaExceeded("free", 7)).toBe(false);
+    expect(isAgentQuotaExceeded("free", 8)).toBe(true);
     expect(isAgentQuotaExceeded("plus", 14)).toBe(false);
     expect(isAgentQuotaExceeded("plus", 15)).toBe(true);
     expect(isAgentQuotaExceeded("pro", 25)).toBe(true);
@@ -46,15 +55,38 @@ describe("Quota d'agents par forfait", () => {
   });
 
   it("normalise un forfait inconnu ou absent sur Free", () => {
-    expect(getTierAgentLimit(null)).toBe(0);
-    expect(getTierAgentLimit("inconnu")).toBe(0);
+    expect(getTierAgentLimit(null)).toBe(getTierAgentLimit("free"));
+    expect(getTierAgentLimit("inconnu")).toBe(getTierAgentLimit("free"));
   });
 
   it("garde le miroir backend (config.ts) aligné sur lib/plans/tier-limits.ts", () => {
     const config = source("config.ts");
-    expect(config).toContain("Plus: 15");
-    expect(config).toContain("Pro: 25");
-    expect(config).toContain("Max: null");
+
+    // Le quota d'agents par forfait n'a PAS de pendant backend : les agents
+    // vivent dans la base Next et la limite est appliquée par la BFF
+    // (`app/(chat)/api/agents/route.ts` via `getTierAgentLimit`). Ce test
+    // vérifiait `Plus: 15 / Pro: 25 / Max: null` dans config.ts — une table qui
+    // n'y existe pas. Il échouait donc depuis la 0.9.1 sans rien protéger, et
+    // laissait croire que le miroir était aligné. Le quota d'agents est donc
+    // asservi à sa vraie source de vérité, et le miroir backend ne porte plus
+    // que les grandeurs que le backend possède réellement.
+    expect(getTierAgentLimit("plus")).toBe(15);
+    expect(getTierAgentLimit("pro")).toBe(25);
+    expect(getTierAgentLimit("max")).toBeNull();
+    expect(config).not.toContain("TIER_AGENT_LIMITS");
+
+    // Grandeurs réellement dupliquées côté backend : tokens de chat, tokens de
+    // parole, images par jour, stockage.
+    const limits = TIER_LIMITS;
+    const tiers = ["Free", "Plus", "Pro", "Max"] as const;
+    for (const tier of tiers) {
+      const entry = limits[tier.toLowerCase() as keyof typeof limits];
+      const numeric = (value: number) =>
+        value.toLocaleString("en-US").replace(/,/g, "_");
+      expect(config).toContain(`${tier}: ${numeric(entry.chatWeeklyTokens)}`);
+      expect(config).toContain(`${tier}: ${numeric(entry.speechWeeklyTokens)}`);
+      expect(config).toContain(`${tier}: ${numeric(entry.imagesPerDay)}`);
+    }
   });
 
   it("n'a plus aucun plafond codé en dur dans l'API des agents", () => {
@@ -141,7 +173,7 @@ describe("Modèles d'agents : pas de doublon", () => {
   });
 
   it("applique la déduplication dans la lecture des modèles", () => {
-    const queries = source("lib/db/queries.ts");
+    const queries = source("lib/db/queries/agents.ts");
     const start = queries.indexOf("export async function getAgentTemplates");
     const body = queries.slice(start, start + 600);
     expect(body).toContain("dedupeAgentTemplatesByName(rows)");
@@ -151,7 +183,7 @@ describe("Modèles d'agents : pas de doublon", () => {
     expect(source("lib/db/schema.ts")).toContain(
       'uniqueIndex("AgentTemplate_name_key")'
     );
-    expect(source("lib/db/queries.ts")).toContain(
+    expect(source("lib/db/queries/connection.ts")).toContain(
       'CREATE UNIQUE INDEX IF NOT EXISTS "AgentTemplate_name_key"'
     );
   });
@@ -188,7 +220,8 @@ describe("Suppression du système emoji", () => {
     expect(migration).toContain(
       'ALTER TABLE "AgentTemplate" DROP COLUMN IF EXISTS "emoji"'
     );
-    expect(source("lib/db/schema.ts")).not.toContain('emoji: varchar("emoji"');
+    expect(getTableColumns(agent)).not.toHaveProperty("emoji");
+    expect(getTableColumns(agentTemplate)).not.toHaveProperty("emoji");
   });
 
   it("ne garde plus ni preset emoji ni prop emoji sur AgentIcon", () => {
@@ -254,8 +287,8 @@ describe("Palette de badges", () => {
     expect(picker).toContain('type="color"');
     expect(picker).toContain("grid-cols-5");
     for (const file of [
-      "app/(chat)/agents/agents-client.tsx",
-      "app/(chat)/skills/skills-client.tsx",
+      "components/agents/agent-editor-dialog.tsx",
+      "components/skills/skill-editor-modal.tsx",
       "components/settings/configuration-client.tsx",
     ]) {
       expect(source(file)).toContain("<ColorPicker");
@@ -271,19 +304,23 @@ describe("Onglet Types de bots", () => {
     // modèles d'IA qu'on choisit ailleurs dans l'interface : l'ambiguïté
     // valait deux lectures du même mot dans la même page.
     expect(client).toContain("Types de bots ({templates.length})");
-    expect(client).toContain("Rechercher un type de bot...");
+    expect(source("components/agents/agent-template-grid.tsx")).toContain(
+      "Rechercher un type de bot..."
+    );
   });
 
   it("filtre les modèles par tag et par modèle", () => {
     const client = source("app/(chat)/agents/agents-client.tsx");
     expect(client).toContain("templateTag");
     expect(client).toContain("templateModel");
-    expect(client).toContain("Filtrer par modèle");
+    expect(source("components/agents/agent-template-grid.tsx")).toContain(
+      "Filtrer par modèle"
+    );
   });
 });
 
 describe("Icônes uniques", () => {
-  it("donne une icône distincte à chacun des 16 plugins", () => {
+  it("donne une icône distincte à chacun des 17 plugins", () => {
     const manifests = readFileSync("lib/plugins/index.json", "utf8");
     expect(manifests).toContain("catalogVersion");
     const dirs = [
@@ -291,8 +328,9 @@ describe("Icônes uniques", () => {
       "crossref",
       "eurostat",
       "fr-holidays",
-      "github-public",
+      "github",
       "gitlab-public",
+      "google",
       "json-toolbox",
       "mobilite-fr",
       "open-food-facts",
@@ -306,12 +344,16 @@ describe("Icônes uniques", () => {
     ];
     const icons = dirs.map((dir) => {
       const manifest = JSON.parse(source(`lib/plugins/${dir}/index.json`)) as {
-        icon: { name: string; type: string };
+        icon: { name?: string; src?: string; type: string };
       };
-      return manifest.icon.name;
+      // Deux natures de repère coexistent : une icône lucide nommée, et le logo
+      // de marque d'un connecteur, désigné par son fichier. Les deux se comparent
+      // par leur identifiant visuel, sinon un connecteur passerait pour un
+      // doublon d'un autre simplement parce qu'il n'a pas de `name`.
+      return manifest.icon.name ?? manifest.icon.src;
     });
-    expect(icons).toHaveLength(16);
-    expect(new Set(icons).size).toBe(16);
+    expect(icons).toHaveLength(17);
+    expect(new Set(icons).size).toBe(17);
   });
 
   it("déclare dans l'allowlist chaque icône utilisée par un manifeste", () => {
@@ -426,7 +468,7 @@ describe("Planification : modes d'outils", () => {
 
   it("n'instancie aucun outil de plugin en mode Aucun", () => {
     const executor = source("lib/planning/executor.ts");
-    expect(executor).toContain('toolMode === "none"\n        ? []');
+    expect(executor).toMatch(/toolMode\s*===\s*"none"\s*\?\s*\[\]/);
   });
 
   it("ajoute toolMode à la table ScheduledMessage avec une contrainte", () => {
@@ -462,16 +504,17 @@ describe("Designer d'agent", () => {
   });
 
   it("réserve la place du bouton de fermeture du dialogue", () => {
-    const client = source("app/(chat)/agents/agents-client.tsx");
     // DialogContent positionne la croix en `absolute top-4 right-4` :
-    // l'en-tête doit réservée la place, sinon elle chevauche le contenu.
-    expect(client).toContain('<DialogHeader className="pr-12">');
+    // l'en-tête doit réserver la place, sinon elle chevauche le contenu.
+    expect(source("components/agents/agent-editor-dialog.tsx")).toContain(
+      '<DialogHeader className="pr-12">'
+    );
   });
 
   it("n'affiche que le sélecteur d'icône, sans toggle emoji", () => {
-    const client = source("app/(chat)/agents/agents-client.tsx");
-    expect(client).toContain("Icône — affichée partout");
-    expect(client).not.toContain("formIconType");
-    expect(client).not.toContain("Emoji Unicode");
+    const editor = source("components/agents/agent-editor-dialog.tsx");
+    expect(editor).toContain("Icône — affichée partout");
+    expect(editor).not.toContain("formIconType");
+    expect(editor).not.toContain("Emoji Unicode");
   });
 });

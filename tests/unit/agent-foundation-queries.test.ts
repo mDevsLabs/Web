@@ -207,8 +207,7 @@ describe.skipIf(!RUN_DB_TESTS)("Fondations Agent — intégration base", () => {
         creates.filter((result) => result.status === "fulfilled")
       ).toHaveLength(1);
       const winner = creates.find((result) => result.status === "fulfilled");
-      if (!winner || winner.status !== "fulfilled")
-        throw new Error("Aucun run créé");
+      if (winner?.status !== "fulfilled") throw new Error("Aucun run créé");
       const run = winner.value;
       expect(
         (

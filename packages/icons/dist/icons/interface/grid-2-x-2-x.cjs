@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const Grid2X2XIcon = /* @__PURE__ */ createIcon('Grid2X2XIcon', [["path", { "d": "M12 3v17a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1H3" }], ["path", { "d": "m16.5 16.5 5 5" }], ["path", { "d": "m16.5 21.5 5-5" }]]);
+exports.Grid2X2XIcon = Grid2X2XIcon;

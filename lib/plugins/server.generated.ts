@@ -5,8 +5,9 @@ import { airQualityPlugin } from "./air-quality";
 import { crossrefPlugin } from "./crossref";
 import { eurostatPlugin } from "./eurostat";
 import { frHolidaysPlugin } from "./fr-holidays";
-import { githubPublicPlugin } from "./github-public";
+import { githubPlugin } from "./github";
 import { gitlabPublicPlugin } from "./gitlab-public";
+import { googlePlugin } from "./google";
 import { jsonToolboxPlugin } from "./json-toolbox";
 import { mobiliteFrPlugin } from "./mobilite-fr";
 import { openFoodFactsPlugin } from "./open-food-facts";
@@ -24,8 +25,9 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   crossrefPlugin,
   eurostatPlugin,
   frHolidaysPlugin,
-  githubPublicPlugin,
+  githubPlugin,
   gitlabPublicPlugin,
+  googlePlugin,
   jsonToolboxPlugin,
   mobiliteFrPlugin,
   openFoodFactsPlugin,

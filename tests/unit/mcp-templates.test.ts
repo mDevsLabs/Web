@@ -46,8 +46,8 @@ describe("Catalogue de modèles MCP", () => {
       // Icône whitelistée : jamais de repli silencieux dans l'interface.
       expect(isLucideIconName(template.icon.name)).toBe(true);
 
-      // Réservé aux forfaits payants.
-      expect(["plus", "pro", "max"]).toContain(template.minTier);
+      // Accessible dès le forfait Free.
+      expect(["free", "plus", "pro", "max"]).toContain(template.minTier);
 
       // Politique d'approbation cohérente : un serveur strictement en lecture
       // ne peut pas exiger une approbation par écriture.
@@ -118,7 +118,6 @@ describe("Catalogue de modèles MCP", () => {
 
   it("expose les connecteurs du Store et marque les stdio non vérifiés", () => {
     const storeIds = [
-      "github",
       "gitlab",
       "notion",
       "brave-search",
@@ -138,10 +137,10 @@ describe("Catalogue de modèles MCP", () => {
     expect(getMcpTemplate("modele-qui-nexiste-pas")).toBeUndefined();
   });
 
-  it("documente GitLab et Airtable comme des connecteurs Bearer Plus read-write", () => {
+  it("documente GitLab et Airtable comme des connecteurs Bearer read-write", () => {
     for (const id of ["gitlab", "airtable"]) {
       const template = getMcpTemplate(id)!;
-      expect(template.minTier).toBe("plus");
+      expect(template.minTier).toBe("free");
       expect(template.transport).toBe("http");
       expect(template.authType).toBe("bearer");
       expect(template.readOnly).toBe(false);
@@ -170,7 +169,7 @@ describe("Recherche et appariement du catalogue MCP", () => {
       dataTemplates.every((template) => template.category === "data")
     ).toBe(true);
 
-    const github = getMcpTemplate("github");
+    const github = getMcpTemplate("gitlab");
     expect(github).toBeDefined();
     expect(matchesMcpTemplateQuery(github!, "token")).toBe(true);
     expect(matchesMcpTemplateQuery(github!, "zzzz-inexistant")).toBe(false);
@@ -182,10 +181,10 @@ describe("Recherche et appariement du catalogue MCP", () => {
         id: "server-1",
         isEnabled: true,
         name: "Nom modifié par l'utilisateur",
-        templateId: "github",
+        templateId: "gitlab",
       },
     ]);
-    const githubEntry = entries.find((entry) => entry.id === "github");
+    const githubEntry = entries.find((entry) => entry.id === "gitlab");
     expect(githubEntry?.installed).toBe(true);
     expect(githubEntry?.enabled).toBe(true);
     expect(githubEntry?.installedServerId).toBe("server-1");
@@ -214,7 +213,7 @@ describe("Préparation d'installation d'un modèle MCP", () => {
   });
 
   it("signale les modèles qui exigent une configuration avant activation", () => {
-    expect(templateRequiresConfiguration(getMcpTemplate("github")!)).toBe(true);
+    expect(templateRequiresConfiguration(getMcpTemplate("gitlab")!)).toBe(true);
     expect(templateRequiresConfiguration(getMcpTemplate("notion")!)).toBe(true);
   });
 });

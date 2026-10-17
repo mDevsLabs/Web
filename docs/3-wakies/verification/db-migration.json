@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-09T09:27:12.580Z",
+  "target": "DATABASE_URL de .env — secret non publié",
+  "command": "pnpm db:migrate",
+  "strict": true,
+  "exitCode": 0,
+  "applied": ["0042_wakies_capabilities_onboarding", "0043_wakies_chat_turns"],
+  "journalWatermark": 1787552940000,
+  "schemaCheck": {
+    "passed": true,
+    "tables": 33,
+    "columns": 42
+  },
+  "wakiesChatTurn": {
+    "columns": [
+      "id",
+      "userId",
+      "conversationId",
+      "messageId",
+      "responseId",
+      "status",
+      "createdAt",
+      "expiresAt"
+    ],
+    "indexes": [
+      "WakiesChatTurn_conversation_message_idx",
+      "WakiesChatTurn_pkey",
+      "WakiesChatTurn_user_conversation_idx"
+    ]
+  },
+  "countsBefore": {
+    "WakiesConversation": 1,
+    "WakiesMessage": 0,
+    "WakiesPage": 0,
+    "WakiesTask": 0,
+    "WakiesWakie": 3
+  },
+  "countsAfter": {
+    "WakiesConversation": 1,
+    "WakiesMessage": 0,
+    "WakiesPage": 0,
+    "WakiesTask": 0,
+    "WakiesWakie": 3
+  }
+}

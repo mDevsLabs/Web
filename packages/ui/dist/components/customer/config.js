@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Customer", "label": "Clients", "description": "G\xE9rez vos clients depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "email", "label": "E-mail", "kind": "email", "required": true }, { "key": "lifetimeValue", "label": "Valeur cumul\xE9e", "kind": "number", "required": true }, { "key": "joinedOn", "label": "Inscription", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "new", "inactive"] }], "titleKey": "name", "settings": [{ "key": "notifyCustomer", "label": "Notifications : clients", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCustomer", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section clients." }, { "key": "approveCustomer", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

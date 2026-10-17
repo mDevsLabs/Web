@@ -1,0 +1,71 @@
+{
+  "model": "Environment",
+  "config": {
+    "name": "Environment",
+    "label": "Environnements",
+    "description": "Gérez vos environnements depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "region",
+        "label": "Région",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "serviceCount",
+        "label": "Services",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "url",
+        "label": "Adresse",
+        "kind": "url",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "provisioning",
+          "disabled"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyEnvironment",
+        "label": "Notifications : environnements",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveEnvironment",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section environnements."
+      },
+      {
+        "key": "approveEnvironment",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "environment-demo-1",
+    "name": "Production Europe",
+    "region": "Europe",
+    "serviceCount": 128,
+    "url": "https://example.com",
+    "status": "active"
+  }
+}

@@ -104,7 +104,15 @@ function extractChatId(pathname: string): string | null {
   return match ? match[1] : null;
 }
 
-export function ActiveChatProvider({ children }: { children: ReactNode }) {
+export function ActiveChatProvider({
+  children,
+  initialModelId,
+  initialAgentId,
+}: {
+  children: ReactNode;
+  initialModelId?: string;
+  initialAgentId?: string;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setDataStream, setWaitingStatus } = useDataStream();
@@ -374,7 +382,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const chatId = chatIdFromUrl ?? newChatIdRef.current;
 
-  const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
+  const [currentModelId, setCurrentModelId] = useState(
+    initialModelId || DEFAULT_CHAT_MODEL
+  );
   const currentModelIdRef = useRef(currentModelId);
   const [defaultVisibility, setDefaultVisibility] =
     useState<VisibilityType>("private");
@@ -391,7 +401,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const [activeAgent, setActiveAgentState] = useState<Agent | null>(null);
   const activeAgentRef = useRef<Agent | null>(null);
   activeAgentRef.current = activeAgent;
-  const activeAgentIdRef = useRef<string | null>(null);
+  const activeAgentIdRef = useRef<string | null>(initialAgentId ?? null);
 
   const setActiveAgent = useCallback((agent: Agent | null) => {
     setActiveAgentState(agent);

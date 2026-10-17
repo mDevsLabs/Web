@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { deleteAllChatsByUserId, getChatsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -26,13 +26,13 @@ export async function GET(request: NextRequest) {
     ).toResponse();
   }
 
-  const user = await getMaiUser();
+  const session = await requireUser();
 
-  if (!user) {
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
 
-  const userId = user.id || user.email;
+  const { user, userId } = session;
 
   const isArchived =
     isArchivedParam === "true"
@@ -94,14 +94,13 @@ export async function GET(request: NextRequest) {
 }
 
 export async function DELETE() {
-  const user = await getMaiUser();
+  const session = await requireUser();
 
-  if (!user) {
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
 
-  const userId = user.id || user.email;
-  const result = await deleteAllChatsByUserId({ userId });
+  const result = await deleteAllChatsByUserId({ userId: session.userId });
 
   return Response.json(result, { status: 200 });
 }

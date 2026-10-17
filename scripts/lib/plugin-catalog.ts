@@ -62,6 +62,8 @@ export const permissionsSchema = z
 
 const pluginToolSchema = z.object({
   description: z.string().min(1),
+  // Absent = déduit des permissions du plugin (voir lib/plugins/tool-effect.ts).
+  effect: z.enum(["read", "write"]).optional(),
   id: z
     .string()
     .min(1)
@@ -87,10 +89,9 @@ export const manifestSchema = z
     description: z.string().min(1),
     icon: iconSchema,
     id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-    // Les plugins sont réservés aux forfaits payants : le plancher est « plus ».
-    minTier: z.enum(["plus", "pro", "max"], {
-      message:
-        "minTier doit valoir plus, pro ou max (les plugins sont payants).",
+    // Les plugins sont autorisés dès le forfait Free.
+    minTier: z.enum(["free", "plus", "pro", "max"], {
+      message: "minTier doit valoir free, plus, pro ou max.",
     }),
     name: z.string().min(1),
     permissions: permissionsSchema,
@@ -103,6 +104,19 @@ export const manifestSchema = z
       new Set(manifest.tools.map((tool) => tool.id)).size ===
       manifest.tools.length,
     { message: "Les identifiants d'outils d'un plugin doivent être uniques." }
+  )
+  // Un outil qui écrit chez le fournisseur oblige à déclarer le plugin comme
+  // écrivant : sinon `tool-effect` le classerait « lecture » par défaut et il
+  // serait exposé au Chat sans passer par l'approbation de l'Agent.
+  .refine(
+    (manifest) =>
+      !manifest.tools.some((tool) => tool.effect === "write") ||
+      manifest.permissions.writesUserData,
+    {
+      message:
+        'Un outil en effect: "write" exige permissions.writesUserData: true.',
+      path: ["permissions", "writesUserData"],
+    }
   );
 
 export const rootCatalogSchema = z.object({

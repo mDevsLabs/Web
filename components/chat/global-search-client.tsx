@@ -4,9 +4,11 @@ import {
   BrainIcon,
   CalendarClockIcon,
   ChevronDownIcon,
+  CodeIcon,
   CpuIcon,
   FileIcon,
   FolderKanbanIcon,
+  GlobeIcon,
   ImageIcon,
   ListChecksIcon,
   Loader2Icon,
@@ -16,8 +18,10 @@ import {
   ServerIcon,
   SparklesIcon,
   SquarePenIcon,
+  TerminalIcon,
+  UsersIcon,
   Volume2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
@@ -74,7 +78,9 @@ const SOURCES: Array<{
 }> = [
   { href: pagePath("/"), icon: MessageSquareIcon, key: "chat" },
   { href: pagePath("/"), icon: MessageSquareIcon, key: "message" },
+  { href: pagePath("/wakies"), icon: BotGlyph, key: "wakies" },
   { href: pagePath("/projects"), icon: FolderKanbanIcon, key: "project" },
+  { href: pagePath("/coder"), icon: CodeIcon, key: "coder" },
   { href: pagePath("/projects"), icon: FileIcon, key: "doc" },
   {
     href: pagePath("/tools?tab=skills"),
@@ -82,6 +88,7 @@ const SOURCES: Array<{
     key: "skill",
   },
   { href: pagePath("/"), icon: SquarePenIcon, key: "command" },
+  { href: pagePath("/site/projects/mai-cli"), icon: TerminalIcon, key: "cli" },
   { href: pagePath("/mcp"), icon: ServerIcon, key: "mcp" },
   { href: pagePath("/agents"), icon: BotGlyph, key: "bot" },
   { href: pagePath("/settings?tab=memory"), icon: BrainIcon, key: "memory" },
@@ -93,6 +100,8 @@ const SOURCES: Array<{
   { href: pagePath("/"), icon: ListChecksIcon, key: "run" },
   { href: pagePath("/images"), icon: ImageIcon, key: "image" },
   { href: pagePath("/audio"), icon: Volume2Icon, key: "audio" },
+  { href: pagePath("/vibe"), icon: UsersIcon, key: "vibe" },
+  { href: pagePath("/site"), icon: GlobeIcon, key: "site" },
   { href: pagePath("/settings"), icon: CpuIcon, key: "model" },
   {
     href: pagePath("/settings/statistiques"),

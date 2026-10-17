@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
+import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
@@ -19,8 +20,19 @@ const memoryImportItemSchema = z.object({
   tags: z.array(z.string().max(30)).optional().default([]),
 });
 
+// Le quota de forfait borne le nombre d'écritures, mais il ne borne pas la
+// TAILLE de la requête : le tableau n'avait pas de plafond, et chacun de ses
+// éléments déclenche un INSERT. On aligne la borne sur le plus grand quota de
+// forfait (Max, 150 entrées) : au-delà, l'appel est de toute façon refusé
+// plus bas par le quota, et le client reçoit un message de forfait explicite
+// plutôt qu'une erreur de validation.
+const MEMORY_IMPORT_MAX_ENTRIES = 150;
+
 const importSchema = z.object({
-  memories: z.array(memoryImportItemSchema).min(1),
+  memories: z
+    .array(memoryImportItemSchema)
+    .min(1)
+    .max(MEMORY_IMPORT_MAX_ENTRIES),
   scope: z
     .enum(["all", "global", "agent", "project"])
     .optional()
@@ -33,6 +45,15 @@ export async function POST(request: Request) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   const userId = user.id || user.email;
+
+  const limited = await enforceApiRateLimit({
+    action: "memory_import",
+    request,
+    userId,
+  });
+  if (limited) {
+    return limited;
+  }
 
   try {
     const body = await request.json();

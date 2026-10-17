@@ -1,6 +1,6 @@
 "use client";
 
-import { PlusIcon } from "lucide-react";
+import { PlusIcon } from "@mdevs/icons";
 import {
   DropdownMenu,
   DropdownMenuContent,

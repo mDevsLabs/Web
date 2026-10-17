@@ -98,7 +98,7 @@ export const listTvEpisodes = tool({
     "Liste les épisodes d'une série TVmaze, triés dans l'ordre de diffusion.",
   execute: async ({ limit, showId }) => {
     const url = `${BASE}/shows/${showId}/episodes`;
-    const result = await fetchPublicJson<Array<Record<string, unknown>>>(
+    const result = await fetchPublicJson<Record<string, unknown>[]>(
       url,
       headers
     );
@@ -129,7 +129,7 @@ export const getTvSchedule = tool({
     const url = new URL(`${BASE}/schedule`);
     url.searchParams.set("country", country.toUpperCase());
     url.searchParams.set("date", date);
-    const result = await fetchPublicJson<Array<Record<string, unknown>>>(
+    const result = await fetchPublicJson<Record<string, unknown>[]>(
       url.href,
       headers
     );

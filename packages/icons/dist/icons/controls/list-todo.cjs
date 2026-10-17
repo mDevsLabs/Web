@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const ListTodoIcon = /* @__PURE__ */ createIcon('ListTodoIcon', [["path", { "d": "M13 5h8" }], ["path", { "d": "M13 12h8" }], ["path", { "d": "M13 19h8" }], ["path", { "d": "m3 17 2 2 4-4" }], ["rect", { "x": "3", "y": "4", "width": "6", "height": "6", "rx": "1" }]]);
+exports.ListTodoIcon = ListTodoIcon;

@@ -9,7 +9,6 @@ import type { McpTemplateManifest } from "./types";
 // identifiant → fichier, établie une fois pour toutes :
 //
 //   brave-search → /mcp/brave-search.svg   (Brave)
-//   github       → /mcp/github.svg         (GitHub)
 //   linear       → /mcp/linear.svg         (Linear)
 //   notion       → /mcp/notion.svg         (Notion)
 //   sentry       → /mcp/sentry.svg         (Sentry)

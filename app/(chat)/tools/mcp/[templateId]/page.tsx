@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { isPaidTier, tierMeetsMinimum } from "@/lib/auth/plan";
+import { tierMeetsMinimum } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getMcpServerByTemplateId,
@@ -45,7 +45,6 @@ export default async function McpDetailPage({
 
   const user = await getMaiUser();
   const userId = user ? user.id || user.email : null;
-  const paid = isPaidTier(user?.tier);
   const locked = !tierMeetsMinimum(user?.tier, manifest.minTier);
 
   let installed = false;
@@ -58,7 +57,7 @@ export default async function McpDetailPage({
       : manifest.activation === "requires_vetted_stdio"
         ? "Cette intégration stdio attend un wrapper vérifié par l'infrastructure. L'exécution de la commande du modèle est bloquée par sécurité."
         : null;
-  if (userId && paid) {
+  if (userId) {
     const server = await getMcpServerByTemplateId({
       templateId: manifest.id,
       userId,

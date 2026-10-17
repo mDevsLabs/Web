@@ -73,10 +73,13 @@ export async function loadAgentSettings({
       enabledCategories && enabledCategories.length > 0
         ? enabledCategories
         : null,
-    reasoningLevel: normalizeReasoningLevel(
-      row.reasoningLevel,
-      AGENT_SETTINGS_DEFAULTS.reasoningLevel
-    ),
+    reasoningLevel:
+      row.reasoningLevel === null
+        ? null
+        : normalizeReasoningLevel(
+            row.reasoningLevel,
+            AGENT_SETTINGS_DEFAULTS.reasoningLevel ?? "medium"
+          ),
     toolPolicies: sanitizeToolPolicies(row.toolPolicies),
     updatedAt: row.updatedAt ?? null,
   };
@@ -123,12 +126,12 @@ export async function saveAgentSettings({
           ? current.defaultProjectId
           : patch.defaultProjectId,
       enabledCategories: nextEnabledCategories,
-      reasoningLevel: normalizeReasoningLevel(
+      reasoningLevel:
         patch.reasoningLevel === undefined
           ? current.reasoningLevel
-          : patch.reasoningLevel,
-        current.reasoningLevel
-      ),
+          : patch.reasoningLevel === null
+            ? null
+            : normalizeReasoningLevel(patch.reasoningLevel, "medium"),
       toolPolicies: nextToolPolicies,
     },
     userId,

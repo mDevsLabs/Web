@@ -9,15 +9,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { PluginToolLogo } from "@/lib/integrations/logo";
+import { getPluginByToolId } from "@/lib/plugins/catalog";
 import { cn } from "@/lib/utils";
-import {
-  CheckCircleIcon,
-  ChevronDownIcon,
-  CircleIcon,
-  ClockIcon,
-  WrenchIcon,
-  XCircleIcon,
-} from "lucide-react";
+import { CheckCircleIcon, ChevronDownIcon, CircleIcon, ClockIcon, WrenchIcon, XCircleIcon } from "@mdevs/icons";
 import { isValidElement } from "react";
 
 import { CodeBlock } from "./code-block";
@@ -107,7 +102,15 @@ export const ToolHeader = ({
 }: ToolHeaderProps) => {
   const rawKey = type === "dynamic-tool" ? (toolName ?? "") : type.replace(/^tool-/, "");
   const friendlyName = TOOL_FRIENDLY_NAMES[rawKey] || (rawKey.startsWith("mcp_") ? `MCP : ${rawKey.replace(/^mcp_/, "").replace(/_/g, " ")}` : rawKey);
-  const derivedName = title ?? (type === "dynamic-tool" ? (toolName ?? "Outil") : friendlyName);
+  // Un outil de connecteur porte un nom français dans son manifeste : s'en
+  // servir évite d'afficher `searchDriveFiles` brut, et c'est ce nom-là qui
+  // dit à l'utilisateur quelle application vient de répondre.
+  const pluginManifest = getPluginByToolId(rawKey);
+  const pluginTool = pluginManifest?.tools.find((item) => item.id === rawKey);
+  const pluginLabel = pluginManifest
+    ? `${pluginManifest.name} · ${pluginTool?.label ?? rawKey}`
+    : undefined;
+  const derivedName = title ?? pluginLabel ?? (type === "dynamic-tool" ? (toolName ?? "Outil") : friendlyName);
 
   return (
     <CollapsibleTrigger
@@ -118,7 +121,10 @@ export const ToolHeader = ({
       {...props}
     >
       <div className="flex items-center gap-2">
-        <WrenchIcon className="size-4 text-muted-foreground" />
+        <PluginToolLogo
+          className="size-4 text-muted-foreground"
+          toolId={rawKey}
+        />
         <span className="font-medium text-sm">{derivedName}</span>
         {getStatusBadge(state)}
       </div>

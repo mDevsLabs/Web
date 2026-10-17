@@ -1,0 +1,724 @@
+{
+  "removed": [
+    {
+      "file": "apps/wakies/.env.example",
+      "sha256": "87b84828a355353df5c6dd57d8563a38f8a089ec667a1c3dac2cf35bb75b13c0",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/.github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "3648b91c86e64c34bd5c6e899281da67b7eaaafbe738ff2fe427923e980d5207",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/.github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "5e47aabfc511c2475a913eb5fc6dc0d066c010c59ba98cec4e19e1f015c49615",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/.github/pull_request_template.md",
+      "sha256": "9cbf8737852b264232aa41201a280f8ca6a6390c524d93030b077d3d353a2be3",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/.github/workflows/ci.yml",
+      "sha256": "ade9fb48c016f6c155083daf24a5146e7160be2bfb863ed0da80db9bfac6bfa2",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/.npmrc",
+      "sha256": "b4cc765ce5da67c335016096b7d246c7b82084b1ef9812eee3190a211d16154d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/computer/.dockerignore",
+      "sha256": "743e81b32cd4c2247b9b7b68d3e61b1d413ec5cf1cb1b820f71a9977776edd37",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/computer/Dockerfile",
+      "sha256": "48a9c9edf84a631004611809155e88487084c0da4f8dde955a9d94c7ae2b3172",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/computer/e2b-desktop-smoke.test.ts",
+      "sha256": "35e074424fad342f446fb1b0a781706b5a40801b4edf9f9d977acb331e6e27ab",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/computer/files.py",
+      "sha256": "9fbe5dd621cda9b93e50e78eb5b0e65097bf0f948b6dbb2c2b0285add3a6343d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/computer/smoke.test.ts",
+      "sha256": "7fa054c9765208008370d7cc697279aa5097ac0a0174d5bfae9e6771fa0b89a5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/actions.ts",
+      "sha256": "6aff7e42aad5a95d47bc03c0fab7769a2723b2b6d4f43e8cf900b70519b1c860",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/agent.ts",
+      "sha256": "b1e4a77520bf77dfefe66d6b6fd9dc8af5addf1495161350a7305a8e1c82e29c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/app.ts",
+      "sha256": "1f94040a219eda9562f0b9b4680316b5c0e68b9745cfe877402f1605c4787106",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/auth.ts",
+      "sha256": "6bcf62c917761979adf86a7cded1879a91c72c5ac0112097ea1cfac8776f31e6",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/browser-console.ts",
+      "sha256": "3c7d1aa52326e29e64aa22252f1df3f385a71c80dedd447d43554f6d5c8ceb38",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/browser.ts",
+      "sha256": "9923a1121692a2138aac30e5137a4687ba06938cf720f2688a0a8bf2d8299214",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-backend.ts",
+      "sha256": "8736763ee28142d071b59412f86c9812b314d4a3279581c33776ec49e5d4b855",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-e2b-desktop.ts",
+      "sha256": "dc581f0dd3e58c8bbe36772b6ecd717649af011add6d6a6bff2096970c2e2ca5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-routes.ts",
+      "sha256": "c14dc5edecf1186b390305e0d77e4ffab85bbfc1a59922beb23dc2724026b6ca",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-tools.ts",
+      "sha256": "b764a3b475dce806dec846194b428a62003bfb7f2e5859dbddeccbd82520aabb",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer.ts",
+      "sha256": "7df35a7c0e064c8063f841bc3e6a3e5f569968e13cafe09b60c3c073365e91b2",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/config.ts",
+      "sha256": "2fc9abe7d4ffa145c1f6c3391b8030c314d2bf65e68b7fd644eabcb80ec36bcd",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/db.ts",
+      "sha256": "b5cc2fcf38e1b955b4b6891e6cb3b23a6e4cb1e3029d00a98d6db95e1c9112a7",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/entry.ts",
+      "sha256": "8dfac90e0ae0d89d49942c1f141258d1542ccd70e9128afc2e9efcee0406cdcb",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/jev-fixture.ts",
+      "sha256": "bc00e8f9ffca751ab0db346238e4414c4a40fa368990edf1e1cf8db4ed9ecb6c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/model.ts",
+      "sha256": "ca201f929605ea45f98ab1da70f9587a51ec1722e7a9159b6c15f0a239a9807b",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/conversation.ts",
+      "sha256": "1042e6ad90174ebc51a4f59f82d9d2e0446aa2f9936edb2e8ee439d6bf3fa47f",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/finance.ts",
+      "sha256": "99ab779fc8cf6d66f0afc770fdcdf317eb33f25179908446485e8801d6df63e6",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/model.ts",
+      "sha256": "071de1c3c8810c4ae9ba2e151a6e43c942cf1f1ff96d098fb6fb3d7a383b3243",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/page-diff.ts",
+      "sha256": "b5c8553f0428451aa83d67c809622bcee13c0876f05c36adf3d2179de26230cf",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/routes.ts",
+      "sha256": "ed70606cc1e81f0eb1c03087e87a557e389a91548cb61b28c80c1c3ecabef46e",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/service.ts",
+      "sha256": "a8b21bd7885db18efbb010a9ea9ea609772402d9e0a166ec728217c6de65a4e5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/tanstack-agent.ts",
+      "sha256": "596f021d7137fdf9e256f5ba0dcb64ba873f4e04143269c4e3080870119943a4",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/worker.ts",
+      "sha256": "e5493e2a38d9ee8720933f648aaff343b5b1e0227661dc78a13882d2d71d3532",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/errors.ts",
+      "sha256": "24e15e248cb7c9d869a6f384ef9feecb0b901148198a8cf45276bf94edb9862a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/files.ts",
+      "sha256": "70187aca385d5b2ee7caa18612b7b05585175ed78a0591a6535fb80b69cf9e71",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/google-auth.ts",
+      "sha256": "d8bc825222b203ee967f806ad3eb137778262b7920d9add28e7bb9e284f3008b",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/index.ts",
+      "sha256": "2a01f10a344f28ff7fbbd3f65dfd1c249975790153505e548d48c17d252409a9",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/adapter.ts",
+      "sha256": "d53019eed45d721ec200e2e8016c89bb0fd4c499584f33eff966ff51e6149956",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/service.ts",
+      "sha256": "836334914444b8c1f19aa68a71514a4b4101f35dadfd1720bea64c4393370d94",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/tools.ts",
+      "sha256": "0c5a3680d40227ddc4cfeedf36b7e14600722ad85907c805f6ce521abaa4e209",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/log.ts",
+      "sha256": "7f564c02ee9083ccbfeeaa984a767d0bb19a725838844ae263aa8eff0fe3a56a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/rate-limit.ts",
+      "sha256": "0d2fa3b3e2209e0119284de289b4c6790d1f4d67d902663f2adc11fb1261bb34",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/search.ts",
+      "sha256": "bebb404091e19122d1c17208c0381249131119fd13449a0a578819ff4ddd6229",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/worker-entry.ts",
+      "sha256": "2f421c69da04f64ad0a4665faccfb6748b8abb2b0ab7d93f315891ecaef805ce",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/server/src/workspace.ts",
+      "sha256": "ecf64e0dbb023198665e89a7f0dd4bbae5727d9b8db98b06a2c090f8289f55a4",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/.dockerignore",
+      "sha256": "f52d4754d56618e92930b8f823e6385c0789c464e14dd2bc7f62f485936c2f4e",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/Dockerfile",
+      "sha256": "703309e871aa7aa1e50dc73e6f98b770a3cb8b5ed9624e5eecc962da27d67991",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/README.md",
+      "sha256": "ecda949634eeb57e1670b66d0c058b73b9e4f779ac639e76899beed6efebb3b9",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/package-lock.json",
+      "sha256": "e29c67829df5ff0e45f43c6e82b8189292fa6e029319c34fb085b12cb34f406a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/package.json",
+      "sha256": "9a31b3aed08e48eceed4940ba41a5eb62e7eaef950b1c22397252bb09f8cc8ad",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/browser.ts",
+      "sha256": "d4756a077a45e7aa03e392949fefec97860f1e2587fd2d613e50be3f97569f47",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/demo-entry.ts",
+      "sha256": "46585452f3927dfb5479355487331663845ba0369d96c8a72badb3fce83e140e",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/downloads.ts",
+      "sha256": "903d2b66c2241ea97935ba6c3a317728595ddec186cd0c3c561ff9c8a49bb7c8",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/errors.ts",
+      "sha256": "65cc3f335b0ac1e2cd6996f20623f91be72ef85e129785c5e83c6170352b83f4",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/index.ts",
+      "sha256": "7e6127c18df328627801b2399563b4ff901f1a5545d1125b6d167a66ad7791a8",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/network.ts",
+      "sha256": "9347423f155d7bcbdb235c3c0e79db7f515e498bdf8081f1b008dfd7d872b199",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/proxy.ts",
+      "sha256": "5bdcfdd85fd0e74eab9a911d18bb204f76b74bb42c730241cd94273eb44e1f95",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/server.ts",
+      "sha256": "b70cbae37e023a0b322ccefa7841e83f9df971ea858be58cfd0c9f25958e552d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/close-resilience.test.ts",
+      "sha256": "3bdd64085271c66ad8f4780f2751d80766787998df7e17b0a52cb2d25fbd7d6e",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/docker.test.ts",
+      "sha256": "7c9c1911f5ffa9ced72c9b99b0cde82fb079acb5c4385b170940347ef846e677",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixture-worker.ts",
+      "sha256": "5817d5722be66dc4809b6c30237e9602b11da4898d12e4bf897fbad84091c3d4",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixtures.ts",
+      "sha256": "947896c3de450ae16e09fd71e7dd1a8e9f7861e00ddf7fc9482a8fe4455f8ca5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixtures/document.pdf",
+      "sha256": "0863b53c5b8c12aa90905dbd36ad535f6224ef1ea898d3f53cdcde86b9eda766",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/lifecycle.test.ts",
+      "sha256": "4aed92fee416fb32269a518dfea1342d4c9610effab40abcb1621c6befdbfacd",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/run-docker.mjs",
+      "sha256": "cc3cb63e24c11bd2ec4ba2af93bd390b0e67a98eb39133ef18c76a88b1cf6d5c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/worker-checks.ts",
+      "sha256": "3698030c87561f2c42f9272b44a5240fe743f5072bf9532ae57b82b016c864be",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/apps/worker/tsconfig.json",
+      "sha256": "1cf62f8fcb7fa5335b081eb6d65fb96faf9a6cc0c80d569696011f0630579e64",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/biome.json",
+      "sha256": "47b9d64f1346052989b4e725c449c4ee35939f559ee1e7d7d9a2fcec69ac91f2",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/infra/compose.yaml",
+      "sha256": "793c30d4a4463c0d349bfe6f0165611b5c3722bb396ed94f969bb4fbcf048119",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/upstream.package.json",
+      "sha256": "a3cae5ea19f8a9f66002e67b8f131db38cb2d6581d41fb1a659559c5ecfc78a0",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/packages/backends/src/openbot.ts",
+      "sha256": "3b72c3165b20a9b0909ccf327bc4b5a12cb2de17e243f5e7347d9894f30de2d8",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/google.ts",
+      "sha256": "755445a283667d1b7eba67b59ccd8a3c66dffecc334bdeaabd6539d15fd0cd28",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/pdf.ts",
+      "sha256": "40c7241dd25d4d3c4dd14dfaee4be2e92621cff290515722a7f8ae751c33fc12",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/vault.ts",
+      "sha256": "6688322eb7214e2f2d0cbe48d6cdc5f81ca2a13f045beba01a16aff400ef87cb",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/patches/metro@0.83.3.patch",
+      "sha256": "99406020e0ea5f39e95a50bc8010554a75f2738d8482ca714690d305ab622c7f",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/pnpm-lock.yaml",
+      "sha256": "adf059f904aa1fb52d0850382fe5f5d18d34a4f478435f4afd552d591754da7c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/pnpm-workspace.yaml",
+      "sha256": "21baa7bbbd49ed9e82ee4790dd250d1113fca3211efd373e6fe7c6e446dfebf8",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/render.yaml",
+      "sha256": "126366efe8bb8986447efe56488fc5ee0c228761ab7abf82f28bc13ed02a2544",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/renovate.json",
+      "sha256": "4f2010323bb733bf37c837e26b147bc935aa99a502a5927f213d285ce62a4e2c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/actions.test.ts",
+      "sha256": "ebfef3b73f8b4e375d9337e537ae7d842680453d2cad84bfe4755e9013a9c7ff",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/agent-api.test.ts",
+      "sha256": "cc9fd86c9c9d7e1b561346b292a121bdb3bca35a1ede5f9f124c98efc7066cf1",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/api.test.ts",
+      "sha256": "aa9c2015c41aa2e235ebf82d1b02971cbc0ae03e3cf843b26405dc22a9214e8b",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/auth-startup.test.ts",
+      "sha256": "71bfd16a7eb483f615d8da87cbff1722e36e958d0d6a3c245ca8d6439c1ad212",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/browser-fixture-runner.test.ts",
+      "sha256": "f8bc125b57b8acb80e6012cd368a4a8651f7f49d3ee5229a0a4d58eccc0a65c6",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/browser-imports-race.test.ts",
+      "sha256": "e7855357abc340e2c3669a73138291bc37b515f1acba36a8243175b5fc569154",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/browser.test.ts",
+      "sha256": "f6ec5b51f7425d294d5483c1968e17bc25b86a3c06b8a6b9a160b6af3ee14f78",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/computer-api.test.ts",
+      "sha256": "9de0e6121fcdf8182d4dcc2e9d3cbc3663e7479d5a1beb16a7f704954bac6ce7",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/computer-e2b-desktop.test.ts",
+      "sha256": "b4665a4b953e950149ee16e36ef7e38963eefeeed4e3e057029b653edbc19e32",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/computer-runner.test.ts",
+      "sha256": "e54059258a7f6a13c8713a70c69d451dc3b6fc76b1b4fa204aa2d0987831ea54",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/computer.test.ts",
+      "sha256": "8416c021da6e6db93fa6583dc2fcf0dd41288bf250745375707187d5d916c825",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/config.test.ts",
+      "sha256": "12b9468b535f33eb9dd0ee6899d1ab039576f1bfba7386330443ad8c089e5d1d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/conversation-browser.test.ts",
+      "sha256": "2987930c384267049d7552e189d140369cfac4bfee9b9c67cc773324d726bb53",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/conversation-calendar.test.ts",
+      "sha256": "c26e06ff58a763bd98b483ba1fb19d64bce69b0bea9ef239a9fff289b3f0fafe",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/conversation-jev.test.ts",
+      "sha256": "ab3f667df2f0f6aec50e34bc898790809c6c815089e4a3b89088a6971cb6f94c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/conversation-sdk.test.ts",
+      "sha256": "351aac3258681464d68a44f266790247d6724d6c7b545d29c36825950776a7ca",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/demo-model.test.ts",
+      "sha256": "08e6029f571067a878906bf39f1043ac53764e153c73bf1b82c91140a35034e3",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/domain.test.ts",
+      "sha256": "8a9d659ac84c797b7e5d109fb394747d2b6bf07196ac0548b9945f1fa1c2b791",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/engine.test.ts",
+      "sha256": "6a1b074156eb2e58b0a3262421396e9bb6eaafb319e11a46bc3a82b04f3f553d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/finance-headers.test.ts",
+      "sha256": "3dfacca5456281598c8ebe6e994396732f46d329685c23993fc5b59c0a86f4ea",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/finance.test.ts",
+      "sha256": "450b69764ad5f0a179a73e06c77ea503761a71900cbf3836168bfb0cb81c8337",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/gateway-chat-completions.test.ts",
+      "sha256": "fb11ccbf3a7b106bcf730597d28f72b0607a651d985365d1052c3879dead12ec",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/google.test.ts",
+      "sha256": "672208c4d585655cfa44c3b5e0d3c1871b24d1acc7a7e3e6d9c43e7d9c242f81",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/helpers/browser.ts",
+      "sha256": "d8aec4faa5bf364c561519ed6e840e5a81fc4fae34ac791953c9664bdf359667",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/helpers/computer.ts",
+      "sha256": "ba8181b86712a2713066f5e54143982c952e55722ba64fdaf84df929cd8d2a6c",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/helpers/model.ts",
+      "sha256": "04edd98e386d26cfd8f64894b3fe9c3e2a898aaca2c6419ef54359eb0f728347",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/helpers/search.ts",
+      "sha256": "da852e435e0da6b0c4c690ed4bd0c0957e3f45e70c220316016f0a36a3b56c02",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/jev-persistence.test.ts",
+      "sha256": "b11ff73673c994d2a60f95820985f2a11eaca3e9415dc6cd9486793397f80a66",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/jev.test.ts",
+      "sha256": "9f9c66f15865c728d8ee301636b359e09431bf378ced662705324c6812a6c35a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/log.test.ts",
+      "sha256": "6fe7e737e19a95182446b37c5f09d688a8228788bb32f645ea88de3d74403022",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/model-outcome.test.ts",
+      "sha256": "8d27211fcc93614a029b43f36e2f6da8f9a37eeeef473c6106be69aa40959d13",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/model-provider.test.ts",
+      "sha256": "3fa8824fc43a0772a284ccd0af2fc693f8f41efef77f4f1681327d93b1989847",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/model-retry.test.ts",
+      "sha256": "739ded8ba9e0563a8841f1989b92b3513a544f6da6c3dac9243006a3f5a5b352",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/model-worker.test.ts",
+      "sha256": "1084122f65243dea06fc65e332430f498e932326ae19955bbfdfe4a273e1a8f2",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/monitor-price-spacing.test.ts",
+      "sha256": "29e6cc838ecbe1cbe4531769648d1035dc09b5d00205d57ae3f67657da358450",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/monitor-recovery.test.ts",
+      "sha256": "58d38cc54f7884c5352e9ef4f5c6409dd9704b1d60d231d3b1f8ed60702576cd",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/oauth.test.ts",
+      "sha256": "1849a63ea9e39eb72649566a6796021a3a302c36b0a0604b497a4fc245f6ae51",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/openbot.test.ts",
+      "sha256": "2ac320257b88f39103a1d5aff6dff5798aeac33f94d638000de2914405fe5c76",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/page-diff.test.ts",
+      "sha256": "ce2af0b32190d4fc13074e13eecfe801f6ccfa8aff77ec91911f1b7bf6929a45",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/pdf.test.ts",
+      "sha256": "1cbef68ec5b5f50e767ddd0c7f530f1f540fd9e4af928052b658e99e32149566",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/persistence.test.ts",
+      "sha256": "9d0afb299b52acc75842c17d3d970d57f2e4ce177b9e89b9d1c73482795f1b29",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/prepare-lease-loss.test.ts",
+      "sha256": "5d8f69dabf1ad5c76fceb70e98967d444faa458779ace5a9fad65fb0e9ca7b3a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/rate-limit.test.ts",
+      "sha256": "d71c28de736c9509384594f5a37045ababf7d5e0a9e1135aeaf54cc2049de55f",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/resource-ids.test.ts",
+      "sha256": "a47764136d4cddf782a93083bd7f87c08ea5a430104540f73e6872e3fdc0287d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/rich-threads.test.ts",
+      "sha256": "3e4ef6607e2d978078392f2883f5abe95a0ca72a4a321bcc536de07c52f4e64b",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/search-results.test.ts",
+      "sha256": "d76a28f20efe34353731f2cfda25cd4e660a85a361237b95d0bbf0f04f630d6a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/search.test.ts",
+      "sha256": "0e1b71ffdfd4c3a5f926d72384712be5ac6f20de561e716263325221735e8ef5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/setup.ts",
+      "sha256": "6f245af3774853207cccc64d3235f730e47a914385a6ad60a2051ec1a22f0590",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/step-limit.test.ts",
+      "sha256": "14eb6cc2cc5ee7d597cf8b9ea65d6e67187b5734c48ad633be153cccbfa0abd5",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/telemetry.test.ts",
+      "sha256": "1fdf1c24ceed7bc4bf4875e26ee39e2013ce1fd0031a62c0082dc662750748a6",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/vault.test.ts",
+      "sha256": "ed9d9defc03e34d92e8537fc8bdab970913c88b5e809cd87dd2ddbcb2722bf3d",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tests/workflows.test.ts",
+      "sha256": "03a1fa1467965c03d3678263125f29bcd3bbea5c2426a03a25815d86b142c71a",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tsconfig.build.json",
+      "sha256": "b069acb88b31e518cfc40bbfca3095daa7311fe21d271d7c84dfbd1f00ad28a3",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "apps/wakies/tsconfig.json",
+      "sha256": "02065fa93323cefda21918a72aad3b5faf3d5cad34c098f21d894d7b64120f07",
+      "reason": "Runtime autonome OpenMuse remplacé par les services mAI ; absent des entrées de build, tests et génération de l’hôte."
+    },
+    {
+      "file": "scripts/tmp-inspect-test.py",
+      "sha256": "532e10d8466b37b43f59a4163b312336728209cdf226eeaf11ab108d246e9b2b",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "scripts/tmp-inspect-test2.py",
+      "sha256": "9f11323afac8cb98c56274d6e4b617aa2998f4fa37c7f48c4cf614ae9f7d197e",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "scripts/tmp-queries-append.py",
+      "sha256": "fd9c58296175708fd7e084cb959a22d70ed9e2049b01b1a91cbbd2b8cc33af05",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "scripts/tmp-route-multiturn.py",
+      "sha256": "73c29bd8a851ecd32de0af60f9a382d968dc0a9ae0147e9505f99ca61f6701c4",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "scripts/tmp-route-reinject.py",
+      "sha256": "56564ebda86d167dd8cab0b05481f08fd6dd79c2a441fbdf2af3cfa5bc86a53c",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "scripts/tmp-schema-fix.py",
+      "sha256": "4914732f0e942ef1a7568ac485f32a50f43f0aebf26a2b9a06bffbd2239c1e77",
+      "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    }
+  ],
+  "preservedImages": true,
+  "retained": [
+    {
+      "target": "apps/mobile/App.tsx",
+      "upstreamSha256": "28223127cc3c11f93d7e4b769361b4f3429615b49fcc570360fbd7c64369d148",
+      "retainedSha256": "84b532d7766e506ca7f368b31846195e196206add018fdd8edf5a0f4991bbd83",
+      "reason": "Adaptation locale antérieure au chantier, conservée intégralement."
+    },
+    {
+      "target": "apps/mobile/src/ui.tsx",
+      "upstreamSha256": "45c90e55bc9cb3b39a80845295f3b616c3f2943fb9f889db533da909772c49de",
+      "retainedSha256": "b31067e17a6789b03e4c1506fa12d44119a7f3f49f93ab08cfdca7c719d7fd2c",
+      "reason": "Adaptation locale antérieure au chantier, conservée intégralement."
+    }
+  ]
+}

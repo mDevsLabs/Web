@@ -141,17 +141,17 @@ describe("Catalogue de modèles de Skills", () => {
 
 describe("Résolution des serveurs MCP d'un modèle de Skill", () => {
   it("rattache uniquement les serveurs réellement installés", () => {
-    const template = getSkillTemplate("github-maintainer")!;
+    const template = getSkillTemplate("notion-organizer")!;
     const resolved = resolveMcpServerIds(template, [
-      { id: "srv-1", name: "github" },
+      { id: "srv-1", name: "notion" },
     ]);
     expect(resolved.ids).toEqual(["srv-1"]);
-    expect(resolved.linked).toEqual(["github"]);
+    expect(resolved.linked).toEqual(["notion"]);
     expect(resolved.unresolved).toEqual([]);
   });
 
   it("signale les serveurs manquants sans inventer d'identifiant", () => {
-    const template = getSkillTemplate("github-maintainer")!;
+    const template = getSkillTemplate("notion-organizer")!;
     const resolved = resolveMcpServerIds(template, []);
     expect(resolved.ids).toEqual([]);
     expect(resolved.unresolved).toEqual(template.mcpServerNames);

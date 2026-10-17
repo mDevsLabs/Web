@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Enrollment", "label": "Inscriptions", "description": "G\xE9rez vos inscriptions depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "student", "label": "Apprenant", "kind": "text", "required": true }, { "key": "course", "label": "Formation", "kind": "text", "required": true }, { "key": "progress", "label": "Avancement (%)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "completed", "cancelled"] }], "titleKey": "reference", "settings": [{ "key": "notifyEnrollment", "label": "Notifications : inscriptions", "description": "Recevoir un signal lors des changements." }, { "key": "archiveEnrollment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section inscriptions." }, { "key": "approveEnrollment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

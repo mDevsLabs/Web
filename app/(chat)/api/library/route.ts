@@ -1,12 +1,11 @@
 import { type NextRequest, NextResponse } from "next/server";
-import {
-  errorResponse,
-  logError,
-  normalizeUpstreamError,
-} from "@/lib/api/error-response";
+import { errorResponse, logError } from "@/lib/api/error-response";
+import { upstreamForm, upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import { getTierStorageBytes } from "@/lib/plans/tier-limits";
+
+// Aligné sur `app/(chat)/api/files/upload/route.ts`.
+const MAX_LIBRARY_FILE_SIZE = 50 * 1024 * 1024;
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -15,20 +14,20 @@ export async function GET() {
   }
 
   try {
-    const [user, storageRes, filesRes] = await Promise.all([
+    const [user, storage, files] = await Promise.all([
       getMaiUser(token),
-      fetch(`${MAI_API_URL}/cloud/storage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
+      upstreamJson<Record<string, any>>({
+        path: "/cloud/storage",
+        token,
       }),
-      fetch(`${MAI_API_URL}/cloud/files`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
+      upstreamJson<{ files?: any[] }>({ path: "/cloud/files", token }),
     ]);
 
-    const storageData = storageRes.ok ? await storageRes.json() : null;
-    const filesData = filesRes.ok ? await filesRes.json() : { files: [] };
+    // Une lecture en échec ne doit pas vider la page : le quota de stockage se
+    // lit dans le forfait, donc l'onglet reste utilisable et affiche « aucun
+    // fichier » si seul le catalogue est injoignable.
+    const storageData = storage.ok ? storage.data : null;
+    const filesData = files.ok ? files.data : { files: [] };
 
     const userTier = (user?.tier || storageData?.tier || "Free").trim();
     const exactLimit = Number(
@@ -78,23 +77,33 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    // `/api/files/upload` plafonne à 50 Mo par fichier ; cette route ne le
+    // faisait pas et laissait le corps entier transiter en mémoire avant d'être
+    // relayé. Même limite, donc même comportement entre les deux chemins
+    // d'envoi de fichier.
+    if (file.size > MAX_LIBRARY_FILE_SIZE) {
+      return errorResponse("invalid_request", {
+        details: { limit: MAX_LIBRARY_FILE_SIZE },
+        message: `Le fichier dépasse la limite de ${Math.round(MAX_LIBRARY_FILE_SIZE / 1024 / 1024)} Mo.`,
+      });
+    }
+
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
 
-    const res = await fetch(`${MAI_API_URL}/cloud/upload`, {
-      body: uploadFormData,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      method: "POST",
+    const upload = await upstreamForm({
+      form: uploadFormData,
+      // Un envoi de fichier dépasse le délai JSON par défaut.
+      path: "/cloud/upload",
+      timeoutMs: 120_000,
+      token,
     });
-
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
+    if (!upload.ok) {
+      return NextResponse.json(upload.payload, {
+        status: upload.payload.status,
+      });
     }
-    return NextResponse.json(data);
+    return NextResponse.json(upload.data);
   } catch (error) {
     logError("Erreur API Library POST", error);
     return errorResponse("internal_error", {
@@ -119,19 +128,17 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/cloud/files/${fileId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    const result = await upstreamJson({
       method: "DELETE",
+      path: `/cloud/files/${fileId}`,
+      token,
     });
-
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
+    if (!result.ok) {
+      return NextResponse.json(result.payload, {
+        status: result.payload.status,
+      });
     }
-    return NextResponse.json(data);
+    return NextResponse.json(result.data);
   } catch (error) {
     logError("Erreur API Library DELETE", error);
     return errorResponse("internal_error", {
@@ -157,27 +164,26 @@ export async function PATCH(req: NextRequest) {
       });
     }
 
-    const res = await fetch(`${MAI_API_URL}/cloud/files/${id}`, {
-      body: JSON.stringify({ name }),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
+    const result = await upstreamJson({
+      body: { name },
       method: "PATCH",
-    }).catch(() => null);
-
-    if (!res) {
-      return errorResponse("service_unavailable", {
-        message:
-          "Le service de fichiers est indisponible. Le nom n'a pas été modifié.",
-      });
+      path: `/cloud/files/${id}`,
+      token,
+    });
+    if (!result.ok) {
+      // Le nom n'a pas été modifié : le dire explicitement évite que
+      // l'interface montre un optimistic update que rien n'a confirmé.
+      return NextResponse.json(
+        {
+          ...result.payload,
+          message: result.payload.message.includes("joignable")
+            ? "Le service de fichiers est indisponible. Le nom n'a pas été modifié."
+            : result.payload.message,
+        },
+        { status: result.payload.status }
+      );
     }
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
-    }
-    return NextResponse.json(data);
+    return NextResponse.json(result.data);
   } catch (error) {
     logError("Erreur API Library PATCH", error);
     return errorResponse("internal_error", {

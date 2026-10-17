@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Article", "label": "Articles", "description": "G\xE9rez vos articles depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "author", "label": "Auteur", "kind": "text", "required": true }, { "key": "publishedOn", "label": "Publication", "kind": "date", "required": true }, { "key": "wordCount", "label": "Mots", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "review", "published", "archived"] }], "titleKey": "title", "settings": [{ "key": "notifyArticle", "label": "Notifications : articles", "description": "Recevoir un signal lors des changements." }, { "key": "archiveArticle", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section articles." }, { "key": "approveArticle", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

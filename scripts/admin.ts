@@ -1,43 +1,17 @@
 import crypto from "node:crypto";
-import fs from "node:fs";
-import path from "node:path";
 import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
-import { runNewsletterStudio, sendEmail } from "./newsletter-send";
+import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
+import { runFormManager } from "./admin-forms.ts";
+import { runModelManager } from "./admin-models.ts";
+import { loadLocalEnv } from "./cli-env.ts";
+import { updateModels } from "./updateModels.ts";
 
 // ─────────────────────────────────────────────
 // Chargement automatique des variables d'environnement
 // ─────────────────────────────────────────────
-function loadEnv() {
-  if (!process.env.DATABASE_URL) {
-    const envPaths = [".env", ".env.local"];
-    for (const envPath of envPaths) {
-      const fullPath = path.resolve(process.cwd(), envPath);
-      if (fs.existsSync(fullPath)) {
-        const content = fs.readFileSync(fullPath, "utf8");
-        for (const line of content.split("\n")) {
-          const trimmed = line.trim();
-          if (trimmed && !trimmed.startsWith("#") && trimmed.includes("=")) {
-            const [key, ...vals] = trimmed.split("=");
-            let val = vals.join("=").trim();
-            if (
-              (val.startsWith('"') && val.endsWith('"')) ||
-              (val.startsWith("'") && val.endsWith("'"))
-            ) {
-              val = val.slice(1, -1);
-            }
-            if (!process.env[key.trim()]) {
-              process.env[key.trim()] = val;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-loadEnv();
+loadLocalEnv();
 
 const dbUrl = process.env.DATABASE_URL;
 if (!dbUrl) {
@@ -47,7 +21,7 @@ if (!dbUrl) {
   process.exit(1);
 }
 
-const sql = neon(dbUrl);
+const sql = neon<false, false>(dbUrl);
 
 // ─────────────────────────────────────────────
 // Styles & Palette ANSI CLI
@@ -92,7 +66,7 @@ function buildQuotaEmailHtml(
     </head>
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
       <div style="max-width:560px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-        
+
         <!-- Header & Logo -->
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:36px 24px 28px 24px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
@@ -103,7 +77,7 @@ function buildQuotaEmailHtml(
         <div style="padding:32px 28px; line-height:1.7; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0; font-size:16px; font-weight:600; color:#ffffff;">Bonjour <strong>${username}</strong>,</p>
           <p>${messageText}</p>
-          
+
           <div style="background:linear-gradient(180deg, #131d31 0%, #0c1322 100%); border:1px solid #334155; border-radius:16px; padding:22px; text-align:center; margin:26px 0;">
             <span style="display:inline-block; background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.35); font-weight:800; font-size:13px; padding:6px 18px; border-radius:100px; text-transform:uppercase; letter-spacing:0.5px;">
               ${badgeLabel}
@@ -430,7 +404,9 @@ function renderCodesTable(codes: any[]) {
 
   console.log(`\n${"=".repeat(95)}`);
   console.log(
-    `| ${"ID".padEnd(4)} | ${"CODE".padEnd(24)} | ${"TIER".padEnd(6)} | ${"UTILISATIONS".padEnd(14)} | ${"STATUT".padEnd(10)} | ${"EXPIRATION".padEnd(20)} |`
+    `| ${"ID".padEnd(4)} | ${"CODE".padEnd(24)} | ${"TIER".padEnd(6)} | ${"UTILISATIONS".padEnd(
+      14
+    )} | ${"STATUT".padEnd(10)} | ${"EXPIRATION".padEnd(20)} |`
   );
   console.log("=".repeat(95));
 
@@ -534,7 +510,11 @@ async function handleCreateCode(rl: readline.Interface) {
     console.log(`⭐ Forfait      : ${item.tier}`);
     console.log(`👥 Utilisations : 0 / ${item.max_uses}`);
     console.log(
-      `📅 Expiration   : ${item.expires_at ? new Date(item.expires_at).toLocaleString("fr-FR") : "Illimitée"}\n`
+      `📅 Expiration   : ${
+        item.expires_at
+          ? new Date(item.expires_at).toLocaleString("fr-FR")
+          : "Illimitée"
+      }\n`
     );
   } catch (err: any) {
     console.error("❌ Erreur lors de la création :", err.message || err);
@@ -558,7 +538,7 @@ async function handleToggleCode(rl: readline.Interface) {
   }
 
   const found = await sql`
-    SELECT * FROM subscription_codes 
+    SELECT * FROM subscription_codes
     WHERE code ILIKE ${search} OR id::text = ${search}
     LIMIT 1;
   `;
@@ -572,13 +552,15 @@ async function handleToggleCode(rl: readline.Interface) {
   const newStatus = !current.is_active;
 
   await sql`
-    UPDATE subscription_codes 
+    UPDATE subscription_codes
     SET is_active = ${newStatus}
     WHERE id = ${current.id};
   `;
 
   console.log(
-    `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais : ${newStatus ? "🟢 ACTIF" : "🔴 INACTIF"}\n`
+    `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais : ${
+      newStatus ? "🟢 ACTIF" : "🔴 INACTIF"
+    }\n`
   );
 }
 
@@ -592,7 +574,7 @@ async function handleEditCode(rl: readline.Interface) {
   }
 
   const found = await sql`
-    SELECT * FROM subscription_codes 
+    SELECT * FROM subscription_codes
     WHERE code ILIKE ${search} OR id::text = ${search}
     LIMIT 1;
   `;
@@ -674,7 +656,7 @@ async function handleDeleteCode(rl: readline.Interface) {
   }
 
   const found = await sql`
-    SELECT * FROM subscription_codes 
+    SELECT * FROM subscription_codes
     WHERE code ILIKE ${search} OR id::text = ${search}
     LIMIT 1;
   `;
@@ -778,7 +760,9 @@ function renderCustomersTable(customers: any[]) {
 
   console.log(`\n${"═".repeat(110)}`);
   console.log(
-    `║ ${"ID/UUID".padEnd(36)} ║ ${"USERNAME".padEnd(20)} ║ ${"EMAIL".padEnd(25)} ║ ${"TIER".padEnd(6)} ║ ${"STATUT".padEnd(10)} ║`
+    `║ ${"ID/UUID".padEnd(36)} ║ ${"USERNAME".padEnd(20)} ║ ${"EMAIL".padEnd(25)} ║ ${"TIER".padEnd(
+      6
+    )} ║ ${"STATUT".padEnd(10)} ║`
   );
   console.log("═".repeat(110));
 
@@ -798,8 +782,8 @@ async function handleListCustomers() {
   console.log(`\n${c.bold}--- 📋 LISTE DES COMPTES CLIENTS ---${c.reset}`);
   try {
     const customers = await sql`
-      SELECT id, username, email, tier, is_blocked 
-      FROM users 
+      SELECT id, username, email, tier, is_blocked
+      FROM users
       ORDER BY created_at DESC;
     `;
     renderCustomersTable(customers);
@@ -826,7 +810,7 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
 
   try {
     const found = await sql`
-      SELECT id, username, email, is_blocked FROM users 
+      SELECT id, username, email, is_blocked FROM users
       WHERE email ILIKE ${search} OR username ILIKE ${search} OR id::text = ${search}
       LIMIT 1;
     `;
@@ -840,14 +824,14 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
     const newStatus = !current.is_blocked;
 
     await sql`
-      UPDATE users 
+      UPDATE users
       SET is_blocked = ${newStatus}
       WHERE id = ${current.id};
     `;
 
     if (newStatus) {
       await sql`
-        DELETE FROM connected_devices 
+        DELETE FROM connected_devices
         WHERE user_id = ${current.id}::text;
       `;
       console.log(
@@ -879,7 +863,7 @@ async function handleDeleteCustomer(rl: readline.Interface) {
 
   try {
     const found = await sql`
-      SELECT id, username, email FROM users 
+      SELECT id, username, email FROM users
       WHERE email ILIKE ${search} OR username ILIKE ${search} OR id::text = ${search}
       LIMIT 1;
     `;
@@ -1097,7 +1081,9 @@ async function handleListRecentNotifications(rl: readline.Interface) {
     }
     console.log(`\n${"─".repeat(110)}`);
     console.log(
-      `| ${"type".padEnd(18)} | ${"title".padEnd(30)} | ${"userId".padEnd(20)} | ${"lu".padEnd(4)} | ${"date".padEnd(20)} |`
+      `| ${"type".padEnd(18)} | ${"title".padEnd(30)} | ${"userId".padEnd(20)} | ${"lu".padEnd(
+        4
+      )} | ${"date".padEnd(20)} |`
     );
     console.log("─".repeat(110));
     for (const r of rows as any[]) {
@@ -1169,9 +1155,39 @@ export async function runNotificationManager() {
 // ─────────────────────────────────────────────
 // MENU PRINCIPAL DE LA SUITE ADMINISTRATIVE
 // ─────────────────────────────────────────────
+async function runModelScheduleNow() {
+  console.log(
+    "\n⏱️ Exécution manuelle du cron de synchronisation des modèles OpenRouter..."
+  );
+  const result = await updateModels(sql);
+  if (result.skipped) {
+    console.log(
+      "ℹ️ Une synchronisation plus récente a été conservée ; aucun changement appliqué."
+    );
+  } else {
+    console.log(
+      `✅ Catalogue sauvegardé rafraîchi : ${result.upserted} modèle(s) synchronisé(s), ${result.retired} archivé(s).`
+    );
+  }
+  return result;
+}
+
 export async function runAdminCli() {
   // Support des flags en ligne de commande pour exécution non interactive / crons
   const args = process.argv.slice(2);
+  if (args.includes("--update-models") || args.includes("--models-cron")) {
+    await runModelScheduleNow();
+    return;
+  }
+  if (args.includes("--models")) {
+    const rl = readline.createInterface({ input, output });
+    try {
+      await runModelManager(sql, rl);
+    } finally {
+      rl.close();
+    }
+    return;
+  }
   if (args.includes("--reset-api")) {
     await resetApiUsage(true);
     process.exit(0);
@@ -1220,6 +1236,15 @@ export async function runAdminCli() {
     await runNotificationManager();
     process.exit(0);
   }
+  if (args.includes("--forms")) {
+    const rl = readline.createInterface({ input, output });
+    try {
+      await runFormManager(sql, rl);
+    } finally {
+      rl.close();
+    }
+    process.exit(0);
+  }
 
   console.log("");
   console.log(
@@ -1265,11 +1290,20 @@ export async function runAdminCli() {
     console.log(
       `  ${c.brightCyan}[9]${c.reset} 🔔 Gérer les Notifications & Actualités (Broadcast)`
     );
+    console.log(
+      `  ${c.brightCyan}[10]${c.reset} 🤖 Gérer les modèles OpenRouter (recherche, édition, activation, lots)`
+    );
+    console.log(
+      `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et rafraîchir les modèles sauvegardés`
+    );
+    console.log(
+      `  ${c.brightCyan}[12]${c.reset} 📝 Gérer les formulaires & sondages (création intelligente, stats, activation)`
+    );
     console.log(`  ${c.white}[0]${c.reset} 🚪 Quitter`);
     console.log("");
 
     const choice = (
-      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-9] : ${c.reset}`)
+      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-12] : ${c.reset}`)
     ).trim();
 
     switch (choice) {
@@ -1304,6 +1338,36 @@ export async function runAdminCli() {
         rl.close();
         await runNotificationManager();
         return;
+      case "10":
+        try {
+          await runModelManager(sql, rl);
+        } catch (error) {
+          console.error(
+            "❌ Catalogue indisponible. Appliquez la migration et lancez --update-models.",
+            error
+          );
+        }
+        break;
+      case "11":
+        try {
+          await runModelScheduleNow();
+        } catch (error) {
+          console.error(
+            "❌ Échec du cron de synchronisation des modèles :",
+            error instanceof Error ? error.message : error
+          );
+        }
+        break;
+      case "12":
+        try {
+          await runFormManager(sql, rl);
+        } catch (error) {
+          console.error(
+            "❌ Erreur gestionnaire de formulaires :",
+            error instanceof Error ? error.message : error
+          );
+        }
+        break;
       case "0":
       case "exit":
       case "quit":

@@ -18,16 +18,9 @@ export default async function ToolsPage({
   const [user, params] = await Promise.all([getMaiUser(), searchParams]);
   const isPaid = isPaidTier(user?.tier);
 
-  // Onglet par défaut : Plugins pour les forfaits payants, Skills pour Free.
-  // Un onglet explicite est respecté, mais les panneaux Plugins/MCP d'un
-  // utilisateur Free n'affichent que l'écran d'upgrade — aucune donnée n'est
-  // chargée (`/api/plugins` et `/api/mcp` sont gardés côté serveur).
+  // Onglet par défaut : Plugins pour tous les forfaits (y compris Free).
   const explicitTab = isToolsTab(params.tab);
-  const activeTab = explicitTab
-    ? normalizeToolsTab(params.tab)
-    : isPaid
-      ? "plugins"
-      : "skills";
+  const activeTab = explicitTab ? normalizeToolsTab(params.tab) : "plugins";
 
   return <ToolsClient initialTab={activeTab} isPaid={isPaid} />;
 }

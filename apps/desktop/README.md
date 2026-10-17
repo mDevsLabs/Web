@@ -1,47 +1,36 @@
 # mAI Desktop
 
-Application desktop Electron – simple conteneur pour https://mai-officiel.vercel.app
+Ce client Electron ouvre **https://mai-officiel.vercel.app** dans une fenêtre de bureau. L’interface et les fonctions IA viennent du site distant. L’application complète mAI Coder est incluse dans l’installateur. Le terminal natif permet d’utiliser le CLI et propose son installation s’il est absent ; cette installation exige Node.js et npm sur la machine.
 
-## Structure
+L’application vérifie le déploiement Web toutes les minutes et au retour au premier plan. Quand une nouvelle version est disponible, elle attend 30 secondes sans activité puis 20 secondes pendant lesquelles l’écran reste libre avant de recharger. Les réponses IA, les générations, les pièces jointes, les brouillons du chat et les formulaires avec des modifications non enregistrées retardent le rechargement. Les changements du runtime Electron, du CLI ou de Coder demandent un nouvel installateur.
 
-```
-apps/desktop/
-  src/
-    main.ts      # Process principal Electron (BrowserWindow + loadURL)
-    preload.ts   # Preload sécurisé (contextIsolation)
-  build/
-    icon.png     # Icône Linux / source
-    icon.ico     # Icône Windows (générée)
-    icon.icns    # Icône macOS (générée)
-    entitlements.mac.plist
-  scripts/
-    generate-icons.mjs  # Génère ico/icns depuis public/logo.png
-```
+## Développement
 
-## Logo
+Depuis ce dossier, installez les dépendances, générez les icônes si nécessaire et lancez l’application :
 
-Le logo est `public/logo.png` (676×676) du site. `generate-icons.mjs` le copie et génère `icon.ico`/`icon.icns` sans dépendance native (embed PNG). Si `sharp` est installé, il génère des variantes multi-résolutions propres.
-
-## Dev
-
-```bash
-cd apps/desktop
+~~~powershell
 pnpm install
 pnpm run generate:icons
 pnpm run dev
-```
+~~~
 
-## Build local
+La cible distante est définie dans `src/main.ts`. Les liens externes HTTP(S) et mail s’ouvrent dans le navigateur système. La version de `apps/desktop/package.json` doit toujours correspondre à celle du `package.json` racine ; `pnpm run build` vérifie cet alignement avant de compiler.
 
-```bash
-pnpm run dist        # build selon OS courant
-pnpm run dist:win    # nécessite Windows ou wine
-pnpm run dist:mac    # nécessite macOS
-pnpm run dist:linux  # Linux
-```
+`dev`, `pack` et `dist` préparent Coder avant le lancement ou l’empaquetage. Installez aussi ses dépendances depuis `apps/coder` avec `pnpm install --frozen-lockfile`. La préparation compile les deux bundles et copie son runtime Electron complet, ses ressources et ses modules natifs dans `build/coder-<architecture>`. Sur Windows, la compilation native demande Python et les outils C++ Visual Studio ; sur macOS, les outils Xcode ; sur Linux, Python, make et un compilateur C++.
 
-Sortie : `apps/desktop/dist-elec/`
+Coder garde son profil local et ses réglages propres. Son bouton lance le binaire inclus et signale les erreurs. Les requêtes IPC de lancement sont réservées à la fenêtre principale du site officiel.
+
+## Compilation
+
+~~~powershell
+pnpm run build
+pnpm run dist
+~~~
+
+Les commandes `dist:win`, `dist:mac` et `dist:linux` produisent les paquets sur leur plateforme respective. `dist:mac` prépare Coder pour x64 et ARM64. Electron Builder recompile aussi les dépendances natives du CLI pour chaque architecture. La garde `scripts/check-coder.mjs` refuse un paquet qui ne contient pas le binaire Coder attendu.
+
+Les projets natifs générés et les artefacts de compilation ne sont pas les sources de l’interface Web.
 
 ## CI
 
-Workflow `.github/workflows/desktop.yml` build les 3 plateformes en parallèle et publie les artefacts + Release GitHub.
+Le workflow de build et de publication est [build.yml](../../.github/workflows/build.yml). Il prend en charge les clients desktop et mobile selon les chemins modifiés et les déclencheurs du workflow.

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Certificate", "label": "Certificats", "description": "G\xE9rez vos certificats depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "recipient", "label": "B\xE9n\xE9ficiaire", "kind": "text", "required": true }, { "key": "issuedOn", "label": "D\xE9livrance", "kind": "date", "required": true }, { "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["issued", "revoked", "expired"] }], "titleKey": "title", "settings": [{ "key": "notifyCertificate", "label": "Notifications : certificats", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCertificate", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section certificats." }, { "key": "approveCertificate", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

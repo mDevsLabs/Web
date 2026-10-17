@@ -1,0 +1,72 @@
+{
+  "model": "Expense",
+  "config": {
+    "name": "Expense",
+    "label": "Notes de frais",
+    "description": "Gérez vos notes de frais depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Libellé",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "employee",
+        "label": "Collaborateur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "amount",
+        "label": "Montant",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "spentOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "submitted",
+          "approved",
+          "reimbursed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyExpense",
+        "label": "Notifications : notes de frais",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveExpense",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section notes de frais."
+      },
+      {
+        "key": "approveExpense",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "expense-demo-1",
+    "title": "Déplacement client",
+    "employee": "Collaborateur démo",
+    "amount": 128,
+    "spentOn": "2026-10-04",
+    "status": "draft"
+  }
+}

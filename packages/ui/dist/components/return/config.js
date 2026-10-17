@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Return", "label": "Retours", "description": "G\xE9rez vos retours depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "orderReference", "label": "Commande", "kind": "text", "required": true }, { "key": "reason", "label": "Motif", "kind": "text", "required": true }, { "key": "refundAmount", "label": "Remboursement", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["requested", "approved", "received", "refunded"] }], "titleKey": "reference", "settings": [{ "key": "notifyReturn", "label": "Notifications : retours", "description": "Recevoir un signal lors des changements." }, { "key": "archiveReturn", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section retours." }, { "key": "approveReturn", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

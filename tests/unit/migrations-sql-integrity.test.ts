@@ -161,7 +161,8 @@ function findCorruptions(
     const char = word[index];
     if (char !== "i" && char !== "I") continue;
     for (const replacement of ["m", "n"]) {
-      const candidate = word.slice(0, index) + replacement + word.slice(index + 1);
+      const candidate =
+        word.slice(0, index) + replacement + word.slice(index + 1);
       if (reference.has(normalize(candidate))) found.push(candidate);
     }
   }
@@ -178,36 +179,31 @@ describe("Intégrité syntaxique des migrations", () => {
     expect(migrationFiles.length).toBeGreaterThan(0);
   });
 
-  it.each(migrationFiles)(
-    "%s n'a aucun mot-clé SQL corrompu",
-    (name) => {
-      const sql = readFileSync(path.join(MIGRATIONS_DIR, name), "utf8");
-      const offenses = new Set<string>();
-      for (const match of sql.matchAll(/[A-Za-z_][A-Za-z0-9_]*/g)) {
-        const word = match[0];
-        // On cible les mots qui se détachent du SQL en majuscules : « COLUiN »
-        // se remarque, « customInstructions » non.
-        if (!/[a-z]i|[iA-Z]/.test(word)) continue;
-        for (const candidate of findCorruptions(word, keywords, (value) =>
-          value.toUpperCase()
-        )) {
-          if (candidate.length === word.length) {
-            offenses.add(`« ${word} » -> « ${candidate.toUpperCase()} »`);
-          }
+  it.each(migrationFiles)("%s n'a aucun mot-clé SQL corrompu", (name) => {
+    const sql = readFileSync(path.join(MIGRATIONS_DIR, name), "utf8");
+    const offenses = new Set<string>();
+    for (const match of sql.matchAll(/[A-Za-z_][A-Za-z0-9_]*/g)) {
+      const word = match[0];
+      // On cible les mots qui se détachent du SQL en majuscules : « COLUiN »
+      // se remarque, « customInstructions » non.
+      if (!/[a-z]i|[iA-Z]/.test(word)) continue;
+      for (const candidate of findCorruptions(word, keywords, (value) =>
+        value.toUpperCase()
+      )) {
+        if (candidate.length === word.length) {
+          offenses.add(`« ${word} » -> « ${candidate.toUpperCase()} »`);
         }
       }
-      expect([...offenses]).toEqual([]);
     }
-  );
+    expect([...offenses]).toEqual([]);
+  });
 
   it.each(migrationFiles)(
     "%s ne cite que des identifiants connus du schéma",
     (name) => {
       const sql = readFileSync(path.join(MIGRATIONS_DIR, name), "utf8");
       // Commentaires et littéraux retirés : on ne contrôle que le SQL exécuté.
-      const code = sql
-        .replace(/--[^\n]*/g, "")
-        .replace(/'([^']|'')*'/g, "''");
+      const code = sql.replace(/--[^\n]*/g, "").replace(/'([^']|'')*'/g, "''");
       const offenses = new Set<string>();
       for (const match of code.matchAll(/[A-Za-z_][A-Za-z0-9_]*/g)) {
         const word = match[0];

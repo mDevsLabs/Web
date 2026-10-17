@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "StorageBucket", "label": "Espaces de stockage", "description": "G\xE9rez vos espaces de stockage depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "region", "label": "R\xE9gion", "kind": "text", "required": true }, { "key": "objectCount", "label": "Objets", "kind": "number", "required": true }, { "key": "sizeGb", "label": "Taille (Go)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["private", "public", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyStorageBucket", "label": "Notifications : espaces de stockage", "description": "Recevoir un signal lors des changements." }, { "key": "archiveStorageBucket", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section espaces de stockage." }, { "key": "approveStorageBucket", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

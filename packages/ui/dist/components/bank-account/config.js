@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "BankAccount", "label": "Comptes bancaires", "description": "G\xE9rez vos comptes bancaires depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "bank", "label": "Banque", "kind": "text", "required": true }, { "key": "balance", "label": "Solde", "kind": "number", "required": true }, { "key": "currency", "label": "Devise", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "frozen", "closed"] }], "titleKey": "name", "settings": [{ "key": "notifyBankAccount", "label": "Notifications : comptes bancaires", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBankAccount", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section comptes bancaires." }, { "key": "approveBankAccount", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

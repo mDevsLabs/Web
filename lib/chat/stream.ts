@@ -8,6 +8,10 @@ import {
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
+import {
+  normalizeReasoningLevel,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import type { MemoryContext } from "@/lib/chat/memory";
@@ -135,6 +139,13 @@ export function createChatStream(params: ChatStreamParams) {
           : {}),
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
+          : {}),
+        ...(ctx.reasoningLevel
+          ? {
+              providerOptions: resolveReasoningProviderOptions(
+                normalizeReasoningLevel(ctx.reasoningLevel)
+              ),
+            }
           : {}),
         onChunk({ chunk }) {
           if (isModelStreamActivity(chunk)) {
