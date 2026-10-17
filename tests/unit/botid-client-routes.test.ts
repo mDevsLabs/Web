@@ -54,9 +54,8 @@ function readRouteFiles(dir: string): string[] {
  * On raisonne toujours en `/` : readdirSync rend des chemins natifs.
  */
 function toPublicPath(file: string): string {
-  const [, dir = ""] = /^app[\\/](.*)[\\/]route\.ts$/.exec(
-    file.replace(/\\/g, "/")
-  ) ?? [];
+  const [, dir = ""] =
+    /^app[\\/](.*)[\\/]route\.ts$/.exec(file.replace(/\\/g, "/")) ?? [];
   return `/${dir
     .split("/")
     .filter((segment) => segment && !segment.startsWith("("))

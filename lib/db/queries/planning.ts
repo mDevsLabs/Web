@@ -16,7 +16,12 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { ChatbotError } from "@/lib/errors";
+import {
+  normalizeScheduleToolMode,
+  type ScheduleToolMode,
+} from "@/lib/planning/tool-mode";
 import {
   agent,
   agentTemplate,
@@ -50,10 +55,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { type ScheduleToolMode, normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 // ============================================================================
 // Planification (ScheduledMessage)

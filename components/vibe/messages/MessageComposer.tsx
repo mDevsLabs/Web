@@ -33,7 +33,7 @@ import {
   XIcon as X,
 } from "@mdevs/icons";
 import { motion } from "framer-motion";
-import React from "react";
+import type React from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
@@ -51,18 +51,27 @@ import {
 
 export interface MessageComposerProps {
   activePartnerBlocked: boolean;
-  editingMessage: DirectMessage | null;
-  replyTo: DirectMessage | null;
+  animationsEnabled: boolean;
+  attachedMediaList: AttachedMedia[];
   attachedPost: AttachedPostPreview | null;
+  bookPickerLoading: boolean;
+  bookPickerOpen: boolean;
+  bookPickerQuery: string;
   customPresetOpen: boolean;
   customPresetText: string;
-  isGeneratingSuggestion: boolean;
-  showSchedule: boolean;
-  scheduledAt: string;
-  messagePlain: string;
-  messageCharLimit: number;
-  isGroupConv: boolean;
+  editingMessage: DirectMessage | null;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  filteredBookPickerPosts: VibeBookPost[];
   hasUrgentMention: boolean;
+  isBookConv: boolean;
+  isGeneratingSuggestion: boolean;
+  isGroupConv: boolean;
+  isListening: boolean;
+  isSending: boolean;
+  isSupported: boolean;
+  isUploading: boolean;
+  justSent: boolean;
+  mediaLimitLabel: string;
   mentionQuery: string | null;
   mentionSuggestions: Array<{
     user_id: string | number;
@@ -70,55 +79,46 @@ export interface MessageComposerProps {
     avatar_url?: string;
     role: string;
   }>;
-  isBookConv: boolean;
-  toolQuery: string | null;
-  bookPickerOpen: boolean;
-  bookPickerQuery: string;
-  bookPickerLoading: boolean;
-  filteredBookPickerPosts: VibeBookPost[];
-  plusMenuOpen: boolean;
-  isUploading: boolean;
-  mediaLimitLabel: string;
-  isListening: boolean;
-  isSupported: boolean;
-  isSending: boolean;
-  justSent: boolean;
-  animationsEnabled: boolean;
-  attachedMediaList: AttachedMedia[];
-  richInputRef: React.RefObject<MessageRichInputHandle | null>;
-  fileInputRef: React.RefObject<HTMLInputElement | null>;
-  onSendMessage: (e?: React.FormEvent) => void;
+  messageCharLimit: number;
+  messagePlain: string;
+  onAttachFiles: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCancelAttachedPost: () => void;
   onCancelEditing: () => void;
   onCancelReply: () => void;
-  onCancelAttachedPost: () => void;
+  onChangeBookPickerQuery: (q: string) => void;
   onChangeCustomPresetText: (t: string) => void;
+  onChangeScheduledAt: (val: string) => void;
+  onClearSchedule: () => void;
+  onCloseBookPicker: () => void;
   onCloseCustomPreset: () => void;
+  onCloseMentionQuery: () => void;
+  onClosePlusMenu: () => void;
+  onCloseToolQuery: () => void;
   onGenerateSuggestion: (
     preset: "improve" | "shorten" | "extend" | "tone" | "custom",
     customPrompt?: string
   ) => void;
-  onChangeScheduledAt: (val: string) => void;
+  onInsertLink: () => void;
+  onInsertMention: (username: string) => void;
+  onOpenBookPostPicker: () => void;
+  onRemoveAttachedMedia: (index: number) => void;
+  onRichInputChange: (plain: string, html: string) => void;
+  onSelectBookPost: (post: VibeBookPost) => void;
+  onSendMessage: (e?: React.FormEvent) => void;
+  onStartListening: () => void;
+  onStopListening: () => void;
+  onTogglePlusMenu: () => void;
   onToggleSchedule: () => void;
-  onClearSchedule: () => void;
   onToolbarCommand: (
     command: "bold" | "italic" | "underline" | "strikeThrough"
   ) => void;
-  onInsertLink: () => void;
-  onInsertMention: (username: string) => void;
-  onCloseMentionQuery: () => void;
-  onCloseToolQuery: () => void;
-  onOpenBookPostPicker: () => void;
-  onCloseBookPicker: () => void;
-  onChangeBookPickerQuery: (q: string) => void;
-  onSelectBookPost: (post: VibeBookPost) => void;
-  onTogglePlusMenu: () => void;
-  onClosePlusMenu: () => void;
-  onAttachFiles: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onRemoveAttachedMedia: (index: number) => void;
-  onRichInputChange: (plain: string, html: string) => void;
   onUserInput: () => void;
-  onStartListening: () => void;
-  onStopListening: () => void;
+  plusMenuOpen: boolean;
+  replyTo: DirectMessage | null;
+  richInputRef: React.RefObject<MessageRichInputHandle | null>;
+  scheduledAt: string;
+  showSchedule: boolean;
+  toolQuery: string | null;
 }
 
 const PRESET_OPTIONS: {
@@ -475,9 +475,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
                   <>
                     <button
                       className="ml-1 px-2 py-1 rounded-full bg-zinc-900 text-white vibe-dark:bg-white vibe-dark:text-black text-[10px] font-bold"
-                      onClick={() =>
-                        richInputRef.current?.insertText("@tous ")
-                      }
+                      onClick={() => richInputRef.current?.insertText("@tous ")}
                       onMouseDown={(e) => e.preventDefault()}
                       title="Mentionner tout le groupe (urgent)"
                       type="button"
@@ -501,8 +499,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
                     : "text-zinc-500"
                 }`}
               >
-                {messagePlain.length}/
-                {messageCharLimit.toLocaleString("fr-FR")}
+                {messagePlain.length}/{messageCharLimit.toLocaleString("fr-FR")}
               </span>
             )}
           </div>
@@ -546,18 +543,14 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
         {/* Livre : commande « / » */}
         {isBookConv && toolQuery !== null && !bookPickerOpen && (
           <>
-            <div
-              className="fixed inset-0 z-40"
-              onClick={onCloseToolQuery}
-            />
+            <div className="fixed inset-0 z-40" onClick={onCloseToolQuery} />
             <ToolAutocomplete
               onClose={onCloseToolQuery}
               onSelect={() => {}}
               query={`/${toolQuery}`}
               showTools={false}
               specialAction={{
-                description:
-                  "Sélectionner une Vibe du Livre (carte cliquable)",
+                description: "Sélectionner une Vibe du Livre (carte cliquable)",
                 label: "/post",
                 onSelect: onOpenBookPostPicker,
                 subtitle: "Joindre une publication du Livre",
@@ -570,10 +563,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
         {/* Livre : sélecteur des publications */}
         {bookPickerOpen && (
           <>
-            <div
-              className="fixed inset-0 z-40"
-              onClick={onCloseBookPicker}
-            />
+            <div className="fixed inset-0 z-40" onClick={onCloseBookPicker} />
             <div className="absolute bottom-full left-0 mb-2 z-50 w-full max-w-md rounded-2xl vibe-menu p-2 shadow-2xl animate-fadeIn">
               <div className="flex items-center gap-2 px-1 pb-2">
                 <BookOpen className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
@@ -668,10 +658,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 
             {plusMenuOpen && (
               <>
-                <div
-                  className="fixed inset-0 z-40"
-                  onClick={onClosePlusMenu}
-                />
+                <div className="fixed inset-0 z-40" onClick={onClosePlusMenu} />
                 <div className="absolute bottom-full left-0 mb-2.5 z-50 w-64 rounded-3xl vibe-menu p-2 shadow-2xl animate-fadeIn space-y-1">
                   <button
                     className="vibe-chat-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left"
@@ -705,9 +692,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
                   {PRESET_OPTIONS.map((opt) => (
                     <button
                       className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-colors text-left disabled:opacity-40 disabled:hover:bg-transparent"
-                      disabled={
-                        !messagePlain.trim() && opt.key !== "custom"
-                      }
+                      disabled={!messagePlain.trim() && opt.key !== "custom"}
                       key={opt.key}
                       onClick={() => {
                         onClosePlusMenu();
@@ -755,9 +740,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
                     : "vibe-chat-icon-btn"
                 }`}
                 onClick={isListening ? onStopListening : onStartListening}
-                title={
-                  isListening ? "Arrêter la dictée" : "Dicter le message"
-                }
+                title={isListening ? "Arrêter la dictée" : "Dicter le message"}
                 type="button"
               >
                 {isListening ? (

@@ -41,7 +41,10 @@ describe("DDL hors du chemin de requête", () => {
 });
 
 describe("Repair weekly_usage — aucune suppression sans sauvegarde vérifiée", () => {
-  for (const file of ["lib/db/queries/connection.ts", "scripts/repair-db-drift.mjs"]) {
+  for (const file of [
+    "lib/db/queries/connection.ts",
+    "scripts/repair-db-drift.mjs",
+  ]) {
     it(`${file} vérifie la sauvegarde AVANT le DELETE`, () => {
       const code = codeOnly(file);
       const insertIndex = code.indexOf("INSERT INTO weekly_usage_drift_backup");

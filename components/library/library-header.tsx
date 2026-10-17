@@ -1,5 +1,3 @@
-import React from "react";
-import Link from "next/link";
 import {
   AlertCircleIcon,
   ChevronDownIcon,
@@ -13,6 +11,8 @@ import {
   SearchIcon,
   SlidersHorizontalIcon,
 } from "@mdevs/icons";
+import Link from "next/link";
+import React from "react";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import {
@@ -237,9 +237,7 @@ export function LibraryHeader({
                           data-active={extraCategory === cat}
                           key={cat}
                           onClick={() =>
-                            setExtraCategory(
-                              extraCategory === cat ? null : cat
-                            )
+                            setExtraCategory(extraCategory === cat ? null : cat)
                           }
                           type="button"
                         >

@@ -517,7 +517,6 @@ print(response.choices[0].message.content)`;
 
           <div className="prose max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700">
             <Markdown
-              remarkPlugins={[remarkGfm]}
               components={{
                 a: ({ node: _node, href, children, ...props }) => (
                   <a
@@ -625,6 +624,7 @@ print(response.choices[0].message.content)`;
                   />
                 ),
               }}
+              remarkPlugins={[remarkGfm]}
             >
               {model.readmeContent}
             </Markdown>

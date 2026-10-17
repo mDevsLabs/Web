@@ -16,18 +16,15 @@ import {
   TypeIcon as Type,
 } from "@mdevs/icons";
 import type React from "react";
-import {
-  ACCENT_COLORS,
-  useTheme,
-} from "@/lib/vibe/context/ThemeContext";
+import { ACCENT_COLORS, useTheme } from "@/lib/vibe/context/ThemeContext";
 import {
   browserToDeepLCode,
   TRANSLATION_LANGUAGES,
 } from "@/lib/vibe/services/api";
 
 export interface AppearanceSettingsSectionProps {
-  uiLanguage: string;
   setUiLanguage: (lang: string) => void;
+  uiLanguage: string;
 }
 
 export const AppearanceSettingsSection: React.FC<
@@ -140,8 +137,8 @@ export const AppearanceSettingsSection: React.FC<
                 <Moon className="w-3 h-3 text-zinc-400" /> Thème programmé
               </p>
               <p className="text-zinc-500 text-[11px]">
-                Bascule automatique clair/sombre (ex. 22h–7h = sombre).
-                Inactif en mode « Système ».
+                Bascule automatique clair/sombre (ex. 22h–7h = sombre). Inactif
+                en mode « Système ».
               </p>
             </div>
             <input
@@ -246,9 +243,7 @@ export const AppearanceSettingsSection: React.FC<
             </p>
             <div className="flex flex-wrap gap-2.5 pt-1">
               {(
-                Object.keys(ACCENT_COLORS) as Array<
-                  keyof typeof ACCENT_COLORS
-                >
+                Object.keys(ACCENT_COLORS) as Array<keyof typeof ACCENT_COLORS>
               ).map((key) => {
                 const c = ACCENT_COLORS[key];
                 const isSelected = accentColor === key;

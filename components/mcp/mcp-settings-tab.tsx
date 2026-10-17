@@ -1,27 +1,27 @@
 "use client";
 
+import { Loader2Icon, SettingsIcon, Trash2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2Icon, SettingsIcon, Trash2Icon } from "lucide-react";
 import type { ApprovalPolicy } from "./mcp-types";
 
 interface McpSettingsTabProps {
-  mcpKillSwitch: boolean;
-  setMcpKillSwitch: (v: boolean) => void;
-  mcpDefaultApproval: ApprovalPolicy;
-  setMcpDefaultApproval: (v: ApprovalPolicy) => void;
-  mcpDefaultTimeout: number;
-  setMcpDefaultTimeout: (v: number) => void;
-  mcpDefaultRateLimit: number;
-  setMcpDefaultRateLimit: (v: number) => void;
-  mcpRetention: number;
-  setMcpRetention: (v: number) => void;
-  mcpAllowStdio: boolean;
-  setMcpAllowStdio: (v: boolean) => void;
   handlePurgeMcp: () => void;
   handleSaveMcpPrefs: () => void;
   isSavingMcpPrefs: boolean;
+  mcpAllowStdio: boolean;
+  mcpDefaultApproval: ApprovalPolicy;
+  mcpDefaultRateLimit: number;
+  mcpDefaultTimeout: number;
+  mcpKillSwitch: boolean;
+  mcpRetention: number;
+  setMcpAllowStdio: (v: boolean) => void;
+  setMcpDefaultApproval: (v: ApprovalPolicy) => void;
+  setMcpDefaultRateLimit: (v: number) => void;
+  setMcpDefaultTimeout: (v: number) => void;
+  setMcpKillSwitch: (v: boolean) => void;
+  setMcpRetention: (v: number) => void;
 }
 
 export function McpSettingsTab({
@@ -96,7 +96,9 @@ export function McpSettingsTab({
             </select>
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label className="text-xs font-medium">Timeout par défaut (ms)</Label>
+            <Label className="text-xs font-medium">
+              Timeout par défaut (ms)
+            </Label>
             <Input
               max={120_000}
               min={1000}
@@ -119,7 +121,9 @@ export function McpSettingsTab({
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label className="text-xs font-medium">Rétention logs (jours)</Label>
+            <Label className="text-xs font-medium">
+              Rétention logs (jours)
+            </Label>
             <Input
               max={50}
               min={1}

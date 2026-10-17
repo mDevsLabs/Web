@@ -7,15 +7,19 @@
 
 import { MailIcon as Mail } from "@mdevs/icons";
 import { Drama, Expand, PenLine, Scissors, Wand2 } from "lucide-react";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import type React from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
 import { htmlToPlainText } from "@/components/vibe/common/RichContent";
 import { sanitizeRichHtml } from "@/components/vibe/common/richSanitizer";
 import {
   AddMembersModal,
-  CreateGroupModal,
+  type AttachedMedia,
+  type AttachedPostPreview,
   ConversationHeader,
   ConversationList,
+  CreateGroupModal,
+  dmDraftKey,
   ForwardModal,
   GroupManagementModal,
   MessageComposer,
@@ -24,9 +28,6 @@ import {
   RenameConversationModal,
   ReportConversationModal,
   ThemeModal,
-  type AttachedMedia,
-  type AttachedPostPreview,
-  dmDraftKey,
 } from "@/components/vibe/messages";
 import type { MessageRichInputHandle } from "@/components/vibe/messages/MessageRichInput";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
@@ -36,10 +37,7 @@ import {
 } from "@/lib/vibe/context/ThemeContext";
 import { useMotionPrefs } from "@/lib/vibe/hooks/useMotionPrefs";
 import { useSpeechRecognition } from "@/lib/vibe/hooks/useSpeechRecognition";
-import {
-  ApiService,
-  browserToDeepLCode,
-} from "@/lib/vibe/services/api";
+import { ApiService, browserToDeepLCode } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
 import { RealtimeService } from "@/lib/vibe/services/realtimeService";
@@ -1914,8 +1912,7 @@ export const MessagesPage: React.FC<{
                   chatBackgroundTheme === "default"
                     ? undefined
                     : CHAT_BACKGROUND_THEMES[chatBackgroundTheme]?.style,
-                maxHeight:
-                  "calc(100dvh - 140px - var(--vibe-kb-offset, 0px))",
+                maxHeight: "calc(100dvh - 140px - var(--vibe-kb-offset, 0px))",
               }}
             >
               {(() => {
@@ -2030,9 +2027,7 @@ export const MessagesPage: React.FC<{
                   onTogglePin={handleTogglePin}
                   onToggleReaction={handleToggleReaction}
                   onToggleTranslatePicker={(id) =>
-                    setTranslatePickerFor(
-                      translatePickerFor === id ? null : id
-                    )
+                    setTranslatePickerFor(translatePickerFor === id ? null : id)
                   }
                   onTranslateMessage={handleTranslateMessage}
                   pinnedMessages={pinnedMessages}
@@ -2165,9 +2160,9 @@ export const MessagesPage: React.FC<{
               activeConv={activeConv}
               activeGroupInfo={activeGroupInfo}
               currentUserId={user?.id}
-              groupId={groupId}
               groupAvatarInputRef={groupAvatarInputRef}
               groupAvatarUploading={groupAvatarUploading}
+              groupId={groupId}
               groupIsAdmin={groupIsAdmin}
               groupMembers={groupMembers}
               groupNameDraft={groupNameDraft}
@@ -2201,9 +2196,15 @@ export const MessagesPage: React.FC<{
               chatBackgroundTheme={chatBackgroundTheme}
               messageBubbleShape={messageBubbleShape}
               messageBubbleTheme={messageBubbleTheme}
-              onChangeChatBackgroundTheme={(bgId) => setChatBackgroundTheme(bgId)}
-              onChangeMessageBubbleShape={(shape) => setMessageBubbleShape(shape)}
-              onChangeMessageBubbleTheme={(themeId) => setMessageBubbleTheme(themeId)}
+              onChangeChatBackgroundTheme={(bgId) =>
+                setChatBackgroundTheme(bgId)
+              }
+              onChangeMessageBubbleShape={(shape) =>
+                setMessageBubbleShape(shape)
+              }
+              onChangeMessageBubbleTheme={(themeId) =>
+                setMessageBubbleTheme(themeId)
+              }
               onClose={() => setThemeModalOpen(false)}
               open={themeModalOpen}
             />

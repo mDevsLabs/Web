@@ -918,16 +918,16 @@ export const userPreferences = pgTable("user_preferences", {
     .notNull()
     .default("EN"),
   ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
-  showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
-  // Préférence de thème partagée par la suite (mAI, Site, Vibe, Wakies) :
-  // system | light | dark. Lecture et normalisation fail-safe :
-  // lib/theme/preference.ts.
-  theme: varchar("theme", { length: 10 }).notNull().default("system"),
   // Effort de réflexion par défaut pour tous les modèles qui le supportent
   // (Chat, Agent, Wakies, Vibe).
   reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
     .notNull()
     .default("medium"),
+  showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
+  // Préférence de thème partagée par la suite (mAI, Site, Vibe, Wakies) :
+  // system | light | dark. Lecture et normalisation fail-safe :
+  // lib/theme/preference.ts.
+  theme: varchar("theme", { length: 10 }).notNull().default("system"),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   userId: text("userId").primaryKey().notNull(),
 });

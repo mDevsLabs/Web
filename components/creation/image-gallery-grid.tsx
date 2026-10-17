@@ -13,7 +13,12 @@ import {
   Trash2Icon,
   Wand2Icon,
 } from "@mdevs/icons";
-import { cn, downloadImage, formatImageModelName, formatImageSrc } from "@/lib/utils";
+import {
+  cn,
+  downloadImage,
+  formatImageModelName,
+  formatImageSrc,
+} from "@/lib/utils";
 import type { GeneratedImage } from "./types";
 
 export function ImageGalleryGrid({
@@ -156,9 +161,7 @@ export function ImageGalleryGrid({
                           ? "text-warning hover:text-warning bg-warning/10"
                           : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
                       )}
-                      onClick={() =>
-                        onTogglePin(item.id, Boolean(item.pinned))
-                      }
+                      onClick={() => onTogglePin(item.id, Boolean(item.pinned))}
                       title={
                         item.pinned
                           ? "Désépingler de la galerie"

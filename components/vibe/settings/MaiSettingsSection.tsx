@@ -16,21 +16,6 @@ import type React from "react";
 
 export interface MaiSettingsSectionProps {
   maiAutoApproveTools: boolean;
-  setMaiAutoApproveTools: (val: boolean) => void;
-  postsAIGeneratedByDefault: boolean;
-  setPostsAIGeneratedByDefault: (val: boolean) => void;
-  maiContextPosts: boolean;
-  setMaiContextPosts: (val: boolean) => void;
-  maiContextDms: boolean;
-  setMaiContextDms: (val: boolean) => void;
-  maiContextBooks: boolean;
-  setMaiContextBooks: (val: boolean) => void;
-  maiDefaultModel: string;
-  setMaiDefaultModel: (val: string) => void;
-  models: Array<{ id: string; name: string; provider?: string }>;
-  maiTtsVoice: string;
-  setMaiTtsVoice: (val: string) => void;
-  voices: Array<{ id: string; name: string }>;
   maiCatalog: Array<{
     id: string;
     name: string;
@@ -39,9 +24,24 @@ export interface MaiSettingsSectionProps {
     sensitive: boolean;
     slash_command: string;
   }>;
+  maiContextBooks: boolean;
+  maiContextDms: boolean;
+  maiContextPosts: boolean;
+  maiDefaultModel: string;
   maiEnabledTools: string[];
-  setMaiEnabledTools: React.Dispatch<React.SetStateAction<string[]>>;
   maiToolsLoaded: boolean;
+  maiTtsVoice: string;
+  models: Array<{ id: string; name: string; provider?: string }>;
+  postsAIGeneratedByDefault: boolean;
+  setMaiAutoApproveTools: (val: boolean) => void;
+  setMaiContextBooks: (val: boolean) => void;
+  setMaiContextDms: (val: boolean) => void;
+  setMaiContextPosts: (val: boolean) => void;
+  setMaiDefaultModel: (val: string) => void;
+  setMaiEnabledTools: React.Dispatch<React.SetStateAction<string[]>>;
+  setMaiTtsVoice: (val: string) => void;
+  setPostsAIGeneratedByDefault: (val: boolean) => void;
+  voices: Array<{ id: string; name: string }>;
 }
 
 export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({

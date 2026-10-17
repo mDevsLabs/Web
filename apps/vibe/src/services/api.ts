@@ -26,6 +26,11 @@ import type {
   Poll,
   UnifiedSearchResult,
   ServerDraft,
+  Story,
+  StoryAuthor,
+  StoryQuota,
+  StorySticker,
+  StoryViewer,
 } from '../types/vibe';
 import { AppStorage } from './storageAdapter';
 
@@ -1642,5 +1647,123 @@ export class ApiService {
         body: JSON.stringify({ endpoint, tokens, action_type: 'api_query' }),
       });
     } catch {}
+  }
+
+  // ─────────────────────────────────────────────
+  // STORIES (v1/stories)
+  // ─────────────────────────────────────────────
+  public static storiesTrayEndpoint(): string {
+    return '/v1/stories/tray';
+  }
+
+  public static async getStoriesTray(): Promise<{
+    stories: StoryAuthor[];
+    success: boolean;
+  }> {
+    return this.cachedRequest(this.storiesTrayEndpoint(), 15000);
+  }
+
+  public static async getStoryQuota(): Promise<StoryQuota> {
+    return this.cachedRequest('/v1/stories/quota', 15000);
+  }
+
+  public static async getActiveStories(): Promise<{
+    stories: Story[];
+    success: boolean;
+  }> {
+    return this.cachedRequest('/v1/stories/active', 15000);
+  }
+
+  public static async getStoriesArchive(): Promise<{
+    stories: Story[];
+    success: boolean;
+  }> {
+    return this.cachedRequest('/v1/stories/archive', 60000);
+  }
+
+  public static async createStory(payload: {
+    caption?: string;
+    items: Array<{
+      alt_text?: string;
+      height?: number | null;
+      media_type: 'image' | 'video';
+      pathname: string;
+      url: string;
+      width?: number | null;
+    }>;
+    poll?: { options: string[]; question: string } | null;
+    stickers?: StorySticker[];
+    visibility?: 'followers' | 'public' | 'private';
+  }): Promise<{ id: string; quota: StoryQuota; success: boolean }> {
+    this.invalidateCache('/v1/stories');
+    return this.request('/v1/stories', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
+  public static async patchStory(
+    id: string,
+    payload: { archived?: boolean; caption?: string; visibility?: string }
+  ): Promise<{ id: string; success: boolean }> {
+    this.invalidateCache('/v1/stories');
+    return this.request(`/v1/stories/${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+    });
+  }
+
+  public static async deleteStory(
+    id: string
+  ): Promise<{ id: string; success: boolean }> {
+    this.invalidateCache('/v1/stories');
+    return this.request(`/v1/stories/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    });
+  }
+
+  public static async viewStory(id: string): Promise<void> {
+    try {
+      await this.request(`/v1/stories/${encodeURIComponent(id)}/view`, {
+        method: 'POST',
+      });
+    } catch {}
+  }
+
+  public static async reactStory(
+    id: string,
+    emoji: string
+  ): Promise<{ emoji: string; success: boolean }> {
+    return this.request(`/v1/stories/${encodeURIComponent(id)}/react`, {
+      method: 'POST',
+      body: JSON.stringify({ emoji }),
+    });
+  }
+
+  public static async voteStory(
+    id: string,
+    optionIndex: number
+  ): Promise<{
+    counts: number[];
+    myVote: number;
+    success: boolean;
+    total: number;
+  }> {
+    this.invalidateCache('/v1/stories');
+    return this.request(`/v1/stories/${encodeURIComponent(id)}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ option_index: optionIndex }),
+    });
+  }
+
+  public static async getStoryViews(id: string): Promise<{
+    count: number;
+    success: boolean;
+    viewers: StoryViewer[];
+  }> {
+    return this.cachedRequest(
+      `/v1/stories/${encodeURIComponent(id)}/views`,
+      10000
+    );
   }
 }

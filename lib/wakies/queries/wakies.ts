@@ -49,6 +49,7 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
+import { spaceExists } from "./spaces";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -63,8 +64,6 @@ import type {
   WakieTaskRunRow,
   WakieWithSpaces,
 } from "./types";
-
-import { spaceExists } from "./spaces";
 
 // ─── Wakies ─────────────────────────────────────────────────────────────────
 

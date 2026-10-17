@@ -24,7 +24,7 @@ import {
   UsersIcon as Users,
   XIcon as X,
 } from "@mdevs/icons";
-import React from "react";
+import type React from "react";
 import { getBookIcon } from "@/components/vibe/common/bookIcons";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
@@ -33,18 +33,13 @@ import { useNavigate } from "../router";
 import type { ActivePartnerInfo } from "./messageTypes";
 
 export interface ConversationHeaderProps {
-  activePartner: ActivePartnerInfo;
   activeConv: DMConversation | null;
-  isGroupConv: boolean;
-  isBookConv: boolean;
-  bookId: string | null;
+  activePartner: ActivePartnerInfo;
   activePartnerBlocked: boolean;
+  bookId: string | null;
+  convMenuOpen: boolean;
   convSearchOpen: boolean;
   convSearchQuery: string;
-  convMenuOpen: boolean;
-  pinnedMessages: DirectMessage[];
-  pinsCollapsed: boolean;
-  partnerTyping: boolean;
   errorMessage: string | null;
   groupIsAdmin: boolean;
   groupMembers: Array<{
@@ -53,26 +48,31 @@ export interface ConversationHeaderProps {
     avatar_url?: string;
     role: string;
   }>;
+  isBookConv: boolean;
+  isGroupConv: boolean;
   isModerating: boolean;
   onBack: () => void;
-  onOpenSearch: () => void;
-  onCloseSearch: () => void;
+  onBlockPartner: () => void;
   onChangeSearchQuery: (q: string) => void;
-  onSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onOpenThemeModal: () => void;
-  onToggleConvMenu: () => void;
   onCloseConvMenu: () => void;
+  onCloseSearch: () => void;
+  onDeleteConversation: () => void;
+  onMarkUnread: () => void;
   onOpenAddMembers: () => void;
   onOpenGroupInfo: () => void;
-  onTransferAdmin: (userId: string | number) => void;
-  onRemoveMember: (userId: string) => void;
-  onMarkUnread: () => void;
   onOpenRenameModal: () => void;
-  onBlockPartner: () => void;
   onOpenReportModal: () => void;
-  onDeleteConversation: () => void;
-  onTogglePinsCollapsed: () => void;
+  onOpenSearch: () => void;
+  onOpenThemeModal: () => void;
+  onRemoveMember: (userId: string) => void;
   onScrollToMessage: (id: string) => void;
+  onSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onToggleConvMenu: () => void;
+  onTogglePinsCollapsed: () => void;
+  onTransferAdmin: (userId: string | number) => void;
+  partnerTyping: boolean;
+  pinnedMessages: DirectMessage[];
+  pinsCollapsed: boolean;
 }
 
 export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
@@ -207,7 +207,9 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                   ? `${((activeConv?.members || []) as any[])
                       .map((mm: any) => `@${mm.username}`)
                       .slice(0, 3)
-                      .join(" ")}${((activeConv?.members || []) as any[]).length > 3 ? "…" : ""}`
+                      .join(
+                        " "
+                      )}${((activeConv?.members || []) as any[]).length > 3 ? "…" : ""}`
                   : `@${activePartner.username}`}
             </span>
           </div>
@@ -268,10 +270,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
 
             {convMenuOpen && (
               <>
-                <div
-                  className="fixed inset-0 z-20"
-                  onClick={onCloseConvMenu}
-                />
+                <div className="fixed inset-0 z-20" onClick={onCloseConvMenu} />
                 <div className="absolute right-0 top-full mt-1 w-56 z-30 p-1.5 rounded-2xl vibe-menu shadow-2xl animate-fadeIn">
                   {isBookConv && bookId && (
                     <button
@@ -339,7 +338,9 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                               </button>
                               <button
                                 className="text-red-500 hover:text-red-400"
-                                onClick={() => onRemoveMember(String(mm.user_id))}
+                                onClick={() =>
+                                  onRemoveMember(String(mm.user_id))
+                                }
                                 title="Retirer du groupe"
                                 type="button"
                               >
@@ -367,7 +368,8 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                       onClick={onOpenRenameModal}
                       type="button"
                     >
-                      <Pencil className="w-3.5 h-3.5" /> Renommer la conversation
+                      <Pencil className="w-3.5 h-3.5" /> Renommer la
+                      conversation
                     </button>
                   )}
                   {!isGroupConv && (
@@ -401,7 +403,8 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                         onClick={onDeleteConversation}
                         type="button"
                       >
-                        <Trash2 className="w-3.5 h-3.5" /> Supprimer la conversation
+                        <Trash2 className="w-3.5 h-3.5" /> Supprimer la
+                        conversation
                       </button>
                     </>
                   )}

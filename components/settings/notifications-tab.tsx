@@ -102,7 +102,9 @@ export function NotificationsTab() {
 
   const handleRequestNotificationPermission = useCallback(async () => {
     if (typeof window === "undefined" || !("Notification" in window)) {
-      toast.error("Les notifications ne sont pas supportées par ce navigateur.");
+      toast.error(
+        "Les notifications ne sont pas supportées par ce navigateur."
+      );
       return;
     }
     try {
@@ -182,13 +184,18 @@ export function NotificationsTab() {
 
   return (
     <div className="py-6 flex flex-col gap-6 max-w-4xl">
-      <div className="surface-card flex flex-col gap-5 scroll-mt-6" id="notif-main">
+      <div
+        className="surface-card flex flex-col gap-5 scroll-mt-6"
+        id="notif-main"
+      >
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
             <BellIcon className="size-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="text-base font-semibold text-foreground">Notifications</h3>
+            <h3 className="text-base font-semibold text-foreground">
+              Notifications
+            </h3>
             <p className="text-xs text-muted-foreground">
               Gérez l'envoi et la personnalisation de vos notifications.
             </p>
@@ -260,7 +267,8 @@ export function NotificationsTab() {
               </button>
             </div>
             <p className="text-[11px] text-muted-foreground">
-              En activant, vous acceptez de recevoir des notifications navigateur et dans l'application. Consultez{" "}
+              En activant, vous acceptez de recevoir des notifications
+              navigateur et dans l'application. Consultez{" "}
               <a className="underline text-primary" href="/site/legal/privacy">
                 la politique de confidentialité
               </a>{" "}
@@ -276,7 +284,8 @@ export function NotificationsTab() {
               Activer les notifications
             </span>
             <span className="text-xs text-muted-foreground">
-              Ce réglage active ou coupe toutes les notifications. Les actualités mAI sont activées par défaut.
+              Ce réglage active ou coupe toutes les notifications. Les
+              actualités mAI sont activées par défaut.
             </span>
           </div>
           <input
@@ -359,7 +368,9 @@ export function NotificationsTab() {
                 <span className="text-sm font-medium text-foreground">
                   {item.label}
                 </span>
-                <span className="text-xs text-muted-foreground">{item.desc}</span>
+                <span className="text-xs text-muted-foreground">
+                  {item.desc}
+                </span>
               </div>
               <input
                 checked={item.value}
@@ -382,7 +393,9 @@ export function NotificationsTab() {
             {isSavingNotif ? (
               <Loader2Icon className="size-4 animate-spin" />
             ) : null}
-            {isSavingNotif ? "Enregistrement..." : "Enregistrer les notifications"}
+            {isSavingNotif
+              ? "Enregistrement..."
+              : "Enregistrer les notifications"}
           </button>
         </div>
       </div>
@@ -395,8 +408,8 @@ export function NotificationsTab() {
         <div className="text-xs text-muted-foreground">
           <p className="font-semibold text-foreground mb-1">RGPD & Données</p>
           <p>
-            Vos préférences et notifications sont sécurisées dans votre profil et
-            synchronisées sur vos appareils. Plus d'infos sur{" "}
+            Vos préférences et notifications sont sécurisées dans votre profil
+            et synchronisées sur vos appareils. Plus d'infos sur{" "}
             <a className="text-primary underline" href="/site/legal/privacy">
               la politique de confidentialité
             </a>

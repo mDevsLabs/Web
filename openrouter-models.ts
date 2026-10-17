@@ -16,9 +16,9 @@ export interface StoredModel {
   name: string;
   overrides: Record<string, any>;
   pricing: Record<string, any>;
+  reasoning?: Record<string, any> | null;
   supported_parameters: string[];
   upstream: Record<string, any>;
-  reasoning?: Record<string, any> | null;
 }
 
 export class ModelAccessError extends Error {
@@ -93,7 +93,13 @@ export function isPublicChatModel(model: StoredModel): boolean {
 export function effectiveModel(model: StoredModel) {
   const o = model.overrides;
   const name = o.name ?? model.name;
-  const rawReasoning = o.reasoning ?? model.reasoning ?? (model.upstream && typeof model.upstream === "object" ? model.upstream.reasoning : null) ?? null;
+  const rawReasoning =
+    o.reasoning ??
+    model.reasoning ??
+    (model.upstream && typeof model.upstream === "object"
+      ? model.upstream.reasoning
+      : null) ??
+    null;
   return {
     architecture: o.architecture ?? model.architecture,
     created: Number(model.created),

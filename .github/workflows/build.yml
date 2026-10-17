@@ -302,6 +302,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+          cache-dependency-path: apps/mobile/pnpm-lock.yaml
       - name: ☕ Setup Java 21
         uses: actions/setup-java@v4
         with:
@@ -311,7 +312,7 @@ jobs:
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-workspace
       - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -319,9 +320,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "android" ]; then
-            pnpm exec cap add android
+            npx --package=@capacitor/cli cap add android
           fi
-          pnpm exec cap sync android
+          npx --package=@capacitor/cli cap sync android
       - name: 🎨 Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -355,9 +356,10 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+          cache-dependency-path: apps/mobile/pnpm-lock.yaml
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-workspace
       - name: 🎨 Générer icônes mobiles
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -365,9 +367,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "ios" ]; then
-            pnpm exec cap add ios
+            npx --package=@capacitor/cli cap add ios
           fi
-          pnpm exec cap sync ios
+          npx --package=@capacitor/cli cap sync ios
       - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs

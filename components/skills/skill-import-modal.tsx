@@ -1,7 +1,7 @@
 "use client";
 
-import type React from "react";
 import { UploadIcon } from "@mdevs/icons";
+import type React from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -64,9 +64,7 @@ export function SkillImportModal({
           </div>
 
           <div className="space-y-1.5">
-            <Label className="text-xs font-semibold">
-              Ou collez le JSON :
-            </Label>
+            <Label className="text-xs font-semibold">Ou collez le JSON :</Label>
             <Textarea
               className="h-32 font-mono text-xs"
               onChange={(e) => onImportJsonChange(e.target.value)}

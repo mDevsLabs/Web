@@ -11,17 +11,17 @@ import { TRANSLATION_LANGUAGES } from "@/lib/vibe/services/api";
 
 export interface PrivacySecuritySettingsSectionProps {
   allowDms: "everyone" | "following" | "nobody";
-  setAllowDms: (val: "everyone" | "following" | "nobody") => void;
-  dmAutoTranslate: boolean;
-  setDmAutoTranslate: (val: boolean) => void;
-  dmTranslateLang: string;
-  setDmTranslateLang: (val: string) => void;
   allowMentions: "everyone" | "following" | "nobody";
-  setAllowMentions: (val: "everyone" | "following" | "nobody") => void;
-  collabAutoAccept: boolean;
-  setCollabAutoAccept: (val: boolean) => void;
   canHideVerifiedBadge: boolean;
+  collabAutoAccept: boolean;
+  dmAutoTranslate: boolean;
+  dmTranslateLang: string;
   hideVerifiedBadge: boolean;
+  setAllowDms: (val: "everyone" | "following" | "nobody") => void;
+  setAllowMentions: (val: "everyone" | "following" | "nobody") => void;
+  setCollabAutoAccept: (val: boolean) => void;
+  setDmAutoTranslate: (val: boolean) => void;
+  setDmTranslateLang: (val: string) => void;
   setHideVerifiedBadge: (val: boolean) => void;
 }
 

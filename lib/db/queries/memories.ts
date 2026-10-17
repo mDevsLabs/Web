@@ -16,7 +16,8 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
+import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,
@@ -50,10 +51,8 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { getAgentById } from "./agents";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 export async function getGlobalMemories({
   userId,

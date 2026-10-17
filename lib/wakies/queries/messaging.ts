@@ -49,6 +49,9 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
+import { touchConversation } from "./conversations";
+
+import { appendMessages, messageExists } from "./messages";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -63,9 +66,6 @@ import type {
   WakieTaskRunRow,
   WakieWithSpaces,
 } from "./types";
-
-import { appendMessages, messageExists } from "./messages";
-import { touchConversation } from "./conversations";
 
 // ─── Messagerie : lecture, citations, transferts, recherche ────────────────
 

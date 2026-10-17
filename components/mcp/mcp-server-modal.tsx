@@ -1,5 +1,17 @@
 "use client";
 
+import {
+  AlertCircleIcon,
+  CheckCircle2Icon,
+  CircleIcon,
+  KeyIcon,
+  Loader2Icon,
+  PlusIcon,
+  RefreshCwIcon,
+  ShieldAlertIcon,
+  Trash2Icon,
+} from "lucide-react";
+import type React from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,18 +25,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import {
-  AlertCircleIcon,
-  CheckCircle2Icon,
-  CircleIcon,
-  KeyIcon,
-  Loader2Icon,
-  PlusIcon,
-  RefreshCwIcon,
-  ShieldAlertIcon,
-  Trash2Icon,
-} from "lucide-react";
-import type React from "react";
 import type {
   ApprovalPolicy,
   McpAuthType,
@@ -33,46 +33,46 @@ import type {
 } from "./mcp-types";
 
 interface McpServerModalProps {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
   editingServer: McpServerItem | null;
-  handleSaveServer: (e: React.FormEvent) => void;
-  formName: string;
-  setFormName: (v: string) => void;
-  formTransport: McpTransport;
-  setFormTransport: (v: McpTransport) => void;
-  formDescription: string;
-  setFormDescription: (v: string) => void;
-  formCommand: string;
-  setFormCommand: (v: string) => void;
   formArgs: string;
-  setFormArgs: (v: string) => void;
+  formAuthType: McpAuthType;
+  formCommand: string;
+  formDescription: string;
   formEnvPairs: Array<{ k: string; v: string }>;
+  formHeaders: string;
+  formName: string;
+  formPassword: string;
+  formRateLimit: number;
+  formRequireApproval: ApprovalPolicy;
+  formTimeoutMs: number;
+  formToken: string;
+  formTransport: McpTransport;
+  formUrl: string;
+  formUsername: string;
+  handleSaveServer: (e: React.FormEvent) => void;
+  handleTestConnection: () => void;
+  isOpen: boolean;
+  isSaving: boolean;
+  isTesting: boolean;
+  setFormArgs: (v: string) => void;
+  setFormAuthType: (v: McpAuthType) => void;
+  setFormCommand: (v: string) => void;
+  setFormDescription: (v: string) => void;
   setFormEnvPairs: React.Dispatch<
     React.SetStateAction<Array<{ k: string; v: string }>>
   >;
-  formUrl: string;
-  setFormUrl: (v: string) => void;
-  formTimeoutMs: number;
-  setFormTimeoutMs: (v: number) => void;
-  formRateLimit: number;
-  setFormRateLimit: (v: number) => void;
-  formAuthType: McpAuthType;
-  setFormAuthType: (v: McpAuthType) => void;
-  formToken: string;
-  setFormToken: (v: string) => void;
-  formUsername: string;
-  setFormUsername: (v: string) => void;
-  formPassword: string;
-  setFormPassword: (v: string) => void;
-  formHeaders: string;
   setFormHeaders: (v: string) => void;
-  formRequireApproval: ApprovalPolicy;
+  setFormName: (v: string) => void;
+  setFormPassword: (v: string) => void;
+  setFormRateLimit: (v: number) => void;
   setFormRequireApproval: (v: ApprovalPolicy) => void;
+  setFormTimeoutMs: (v: number) => void;
+  setFormToken: (v: string) => void;
+  setFormTransport: (v: McpTransport) => void;
+  setFormUrl: (v: string) => void;
+  setFormUsername: (v: string) => void;
+  setIsOpen: (open: boolean) => void;
   testResult: { success: boolean; message: string } | null;
-  isTesting: boolean;
-  handleTestConnection: () => void;
-  isSaving: boolean;
 }
 
 export function McpServerModal({
@@ -144,7 +144,9 @@ export function McpServerModal({
               <Label className="text-xs font-semibold">Moyen d'appel *</Label>
               <select
                 className="w-full rounded-md border border-border bg-background px-3 py-2 text-xs font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                onChange={(e) => setFormTransport(e.target.value as McpTransport)}
+                onChange={(e) =>
+                  setFormTransport(e.target.value as McpTransport)
+                }
                 value={formTransport}
               >
                 <option value="sse">Distant SSE</option>

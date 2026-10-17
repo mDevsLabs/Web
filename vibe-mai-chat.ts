@@ -132,8 +132,14 @@ export function registerVibeMAIChatRoutes(
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const { message, execute_tool, model, context, conversation_id, reasoning_effort } =
-        await c.req.json();
+      const {
+        message,
+        execute_tool,
+        model,
+        context,
+        conversation_id,
+        reasoning_effort,
+      } = await c.req.json();
       if (!message?.trim()) return c.json({ error: "Message requis." }, 400);
 
       // Modèle demandé par le client (sélecteur mAI), sinon réglage utilisateur
@@ -463,7 +469,9 @@ export function registerVibeMAIChatRoutes(
                       { content: userContent, role: "user" },
                     ],
                     model: candidate,
-                    ...(reasoning_effort ? { reasoning: { effort: reasoning_effort } } : {}),
+                    ...(reasoning_effort
+                      ? { reasoning: { effort: reasoning_effort } }
+                      : {}),
                   }),
                   headers: {
                     Authorization: `Bearer ${openRouterApiKey}`,

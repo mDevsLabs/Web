@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { APP_KEYS } from "@/lib/apps/catalog";
 import { requireUser } from "@/lib/auth/require-user";
@@ -20,7 +21,6 @@ import {
   normalizeThemePreference,
   THEME_PREFERENCES,
 } from "@/lib/theme/preference";
-import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 // La limite de customInstructions dépend du forfait : le schéma est donc
 // construit par requête. Avant, `z.string().max(4000)` était figé ici comme
@@ -57,13 +57,13 @@ const buildSchema = (tier?: string | null) =>
       .optional(),
     enabled: z.boolean().optional(),
     ghostMemoryEnabled: z.boolean().optional(),
+    reasoningLevel: z.enum(REASONING_LEVELS).optional(),
     showAgentChatIcons: z.boolean().optional(),
     temperature: z.number().min(0).max(2).optional(),
     // Thème partagé par la suite (mAI, Site, Vibe, Wakies). Une valeur
     // illisible retombe sur « system » : enregistrer les autres réglages ne
     // doit pas échouer à cause du thème.
     theme: z.string().transform(normalizeThemePreference).optional(),
-    reasoningLevel: z.enum(REASONING_LEVELS).optional(),
     topP: z.number().min(0).max(1).optional(),
   });
 

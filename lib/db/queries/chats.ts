@@ -16,7 +16,10 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { resolveBillableTotal } from "@/lib/agent/usage";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,
@@ -50,11 +53,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import type { VisibilityType } from "@/components/chat/visibility-selector";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { resolveBillableTotal } from "@/lib/agent/usage";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 import { getProjectById } from "./projects";
 
 export async function saveChat({

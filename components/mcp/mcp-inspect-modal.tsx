@@ -14,15 +14,15 @@ import { cn } from "@/lib/utils";
 import type { McpServerItem } from "./mcp-types";
 
 interface McpInspectToolsModalProps {
-  isInspectingTools: McpServerItem | null;
-  setIsInspectingTools: (server: McpServerItem | null) => void;
-  handleToggleTool: (server: McpServerItem, toolName: string) => void;
+  handleRefreshTools: (server: McpServerItem) => void;
   handleSetToolApproval: (
     server: McpServerItem,
     toolName: string,
     approval: string | null
   ) => void;
-  handleRefreshTools: (server: McpServerItem) => void;
+  handleToggleTool: (server: McpServerItem, toolName: string) => void;
+  isInspectingTools: McpServerItem | null;
+  setIsInspectingTools: (server: McpServerItem | null) => void;
 }
 
 export function McpInspectToolsModal({

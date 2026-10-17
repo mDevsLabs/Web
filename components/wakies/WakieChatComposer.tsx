@@ -33,51 +33,55 @@ import { texteDe } from "@/lib/wakies/shared/transcript";
 import type { Conversation, Wakie } from "@/lib/wakies/shared/types";
 
 export interface WakieChatComposerProps {
-  depotActif: boolean;
-  setDepotActif: (val: boolean) => void;
+  accepteFichiers: boolean;
   ajouterPieces: (fichiers: File[]) => Promise<void>;
-  retirerPiece: (idLocal: string) => void;
-  enCours: boolean;
+  bibliothequeOuverte: boolean;
+  capacitesFichiers: CapacitesPieces;
+  changerModele: (modele: string | null) => Promise<void>;
+  composition: React.MutableRefObject<boolean>;
+  contextePret: boolean;
+  depotActif: boolean;
   draft: string;
-  setDraft: React.Dispatch<React.SetStateAction<string>>;
+  enCours: boolean;
+  envoiEnCours: boolean;
+  envoyer: (
+    texte: string,
+    avecPieces?: boolean,
+    messageId?: string
+  ) => Promise<void>;
+  inputFichier: React.RefObject<HTMLInputElement | null>;
+  insererMention: (texte: string, curseurApres: number) => void;
+  mentionsRef: React.RefObject<ComposerMentionsHandle | null>;
+  modeleEnCours: boolean;
+  nomsWakies: Map<string, string>;
+  onSchedule: () => void;
+  paused: boolean;
+  pieceEnEchec?: EtatPiece;
   pieces: EtatPiece[];
-  setPieces: React.Dispatch<React.SetStateAction<EtatPiece[]>>;
-  source: string;
-  setSource: (val: string) => void;
-  sourceOpen: boolean;
-  setSourceOpen: (val: boolean) => void;
   queue: {
     enqueue: (item: { id: string; text: string }) => void;
     pause: () => void;
     resume: () => void;
     remove: (id: string) => void;
   };
-  setErreur: (err: string) => void;
-  envoyer: (texte: string, avecPieces?: boolean, messageId?: string) => Promise<void>;
   reponseA: UIMessage | null;
-  setReponseA: (msg: UIMessage | null) => void;
   reponseRef: React.MutableRefObject<string | null>;
-  nomsWakies: Map<string, string>;
-  accepteFichiers: boolean;
-  capacitesFichiers: CapacitesPieces;
-  setCapacitesFichiers: (c: CapacitesPieces) => void;
-  bibliothequeOuverte: boolean;
+  retirerPiece: (idLocal: string) => void;
   setBibliothequeOuverte: (val: boolean) => void;
-  inputFichier: React.RefObject<HTMLInputElement | null>;
-  modeleEnCours: boolean;
-  paused: boolean;
-  onSchedule: () => void;
+  setCapacitesFichiers: (c: CapacitesPieces) => void;
+  setDepotActif: (val: boolean) => void;
+  setDraft: React.Dispatch<React.SetStateAction<string>>;
+  setErreur: (err: string) => void;
+  setPieces: React.Dispatch<React.SetStateAction<EtatPiece[]>>;
+  setReponseA: (msg: UIMessage | null) => void;
+  setSource: (val: string) => void;
+  setSourceOpen: (val: boolean) => void;
+  source: string;
+  sourceOpen: boolean;
+  stop: () => Promise<void> | void;
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>;
   thread: Conversation;
   wakie: Wakie;
-  changerModele: (modele: string | null) => Promise<void>;
-  textareaRef: React.RefObject<HTMLTextAreaElement | null>;
-  composition: React.MutableRefObject<boolean>;
-  mentionsRef: React.RefObject<ComposerMentionsHandle | null>;
-  insererMention: (texte: string, curseurApres: number) => void;
-  envoiEnCours: boolean;
-  contextePret: boolean;
-  stop: () => Promise<void> | void;
-  pieceEnEchec?: EtatPiece;
 }
 
 export const WakieChatComposer: React.FC<WakieChatComposerProps> = ({
@@ -448,8 +452,8 @@ export const WakieChatComposer: React.FC<WakieChatComposerProps> = ({
       */}
       {pieceEnEchec && (
         <div className="chat-compose-note is-error">
-          {pieceEnEchec.erreur ?? "Un fichier n'a pas pu être envoyé."} Le
-          texte reste prêt à être envoyé.
+          {pieceEnEchec.erreur ?? "Un fichier n'a pas pu être envoyé."} Le texte
+          reste prêt à être envoyé.
         </div>
       )}
     </form>

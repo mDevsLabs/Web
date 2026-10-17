@@ -1,4 +1,3 @@
-import type React from "react";
 import {
   ImageIcon,
   MonitorIcon,
@@ -6,6 +5,7 @@ import {
   SmartphoneIcon,
   SquareIcon,
 } from "@mdevs/icons";
+import type React from "react";
 
 export interface ImageModel {
   created?: number;

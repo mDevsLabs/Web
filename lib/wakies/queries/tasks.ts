@@ -49,6 +49,8 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
+import { findConversation } from "./conversations";
+import { ensureSettings } from "./settings";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -63,9 +65,6 @@ import type {
   WakieTaskRunRow,
   WakieWithSpaces,
 } from "./types";
-
-import { findConversation } from "./conversations";
-import { ensureSettings } from "./settings";
 
 // ─── Tâches planifiées ──────────────────────────────────────────────────────
 

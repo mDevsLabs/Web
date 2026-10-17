@@ -15,6 +15,18 @@ import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import {
+  SkillCard,
+  SkillDeleteDialog,
+  SkillEditorModal,
+  SkillImportModal,
+  SkillLibraryTemplates,
+  type SkillParameter,
+  SkillShareModal,
+  SkillStarterGrid,
+  type STARTER_TEMPLATES,
+  VersionHistoryList,
+} from "@/components/skills";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -33,18 +45,6 @@ import type { Skill } from "@/lib/db/schema";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn } from "@/lib/utils";
-import {
-  type SkillParameter,
-  STARTER_TEMPLATES,
-  VersionHistoryList,
-  SkillCard,
-  SkillStarterGrid,
-  SkillLibraryTemplates,
-  SkillShareModal,
-  SkillImportModal,
-  SkillDeleteDialog,
-  SkillEditorModal,
-} from "@/components/skills";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -674,7 +674,9 @@ export default function SkillsClient({
               menu Plus.
             </p>
 
-            <SkillStarterGrid onSelectTemplate={(tmpl) => handleNewSkill(tmpl)} />
+            <SkillStarterGrid
+              onSelectTemplate={(tmpl) => handleNewSkill(tmpl)}
+            />
 
             <Button
               className="gap-2 text-xs font-medium"

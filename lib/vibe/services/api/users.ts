@@ -194,7 +194,9 @@ export class ApiUsersService extends ApiStoriesService {
   }
 
   public static async completeOnboarding(): Promise<{ success: boolean }> {
-    return ApiServiceCore.request("/v1/onboarding/complete", { method: "POST" });
+    return ApiServiceCore.request("/v1/onboarding/complete", {
+      method: "POST",
+    });
   }
 
   public static async getProfileFollowers(
@@ -292,18 +294,24 @@ export class ApiUsersService extends ApiStoriesService {
     username: string
   ): Promise<{ success: boolean }> {
     ApiServiceCore.invalidateCache("/circle");
-    return ApiServiceCore.request(`/v1/circle/${encodeURIComponent(username)}`, {
-      method: "POST",
-    });
+    return ApiServiceCore.request(
+      `/v1/circle/${encodeURIComponent(username)}`,
+      {
+        method: "POST",
+      }
+    );
   }
 
   public static async removeFromCircle(
     username: string
   ): Promise<{ success: boolean }> {
     ApiServiceCore.invalidateCache("/circle");
-    return ApiServiceCore.request(`/v1/circle/${encodeURIComponent(username)}`, {
-      method: "DELETE",
-    });
+    return ApiServiceCore.request(
+      `/v1/circle/${encodeURIComponent(username)}`,
+      {
+        method: "DELETE",
+      }
+    );
   }
 
   public static async checkCircle(

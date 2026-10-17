@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  CheckCircle2Icon,
+  DownloadIcon,
+  RefreshCwIcon,
+  Trash2Icon,
+} from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,26 +17,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import {
-  CheckCircle2Icon,
-  DownloadIcon,
-  RefreshCwIcon,
-  Trash2Icon,
-} from "lucide-react";
-import { toast } from "sonner";
 import type { McpLogItem } from "./mcp-types";
 
 interface McpLogsTabProps {
-  logServerFilter: string;
-  setLogServerFilter: (v: string) => void;
-  logToolFilter: string;
-  setLogToolFilter: (v: string) => void;
-  logActionFilter: string;
-  setLogActionFilter: (v: string) => void;
-  mutateLogs: () => void;
-  handleExport: (fmt: "json" | "csv" | "md" | "txt", scope: "servers" | "logs") => void;
-  handlePurgeLogs: () => void;
   filteredLogs: McpLogItem[];
+  handleExport: (
+    fmt: "json" | "csv" | "md" | "txt",
+    scope: "servers" | "logs"
+  ) => void;
+  handlePurgeLogs: () => void;
+  logActionFilter: string;
+  logServerFilter: string;
+  logToolFilter: string;
+  mutateLogs: () => void;
+  setLogActionFilter: (v: string) => void;
+  setLogServerFilter: (v: string) => void;
+  setLogToolFilter: (v: string) => void;
 }
 
 export function McpLogsTab({

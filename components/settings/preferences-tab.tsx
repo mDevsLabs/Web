@@ -28,15 +28,15 @@ import {
   VoiceOptionSelector,
 } from "@/components/settings/option-selectors";
 import { Label } from "@/components/ui/label";
-import {
-  REASONING_LEVELS,
-  REASONING_LEVEL_LABELS,
-  type ReasoningLevel,
-} from "@/lib/ai/registry/reasoning";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useSettings } from "@/hooks/use-settings";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import {
+  REASONING_LEVEL_LABELS,
+  REASONING_LEVELS,
+  type ReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import {
   APP_ORDER,
@@ -92,7 +92,8 @@ export function PreferencesTab() {
   const profile = settingsData?.user ?? null;
   const tierRaw = profile?.tier;
 
-  const [defaultModelId, setDefaultModelId] = useState<string>(DEFAULT_CHAT_MODEL);
+  const [defaultModelId, setDefaultModelId] =
+    useState<string>(DEFAULT_CHAT_MODEL);
   const [defaultReasoningLevel, setDefaultReasoningLevel] =
     useState<ReasoningLevel>("medium");
   const [defaultChatVisibility, setDefaultChatVisibility] = useState<
@@ -119,7 +120,8 @@ export function PreferencesTab() {
   const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
 
   const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
-  const { favorite: favoriteApp, setFavorite: setFavoriteApp } = useFavoriteApp();
+  const { favorite: favoriteApp, setFavorite: setFavoriteApp } =
+    useFavoriteApp();
   const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
@@ -225,7 +227,9 @@ export function PreferencesTab() {
         setDefaultModelId(customPrefData.defaultChatModel);
       }
       if (customPrefData.reasoningLevel) {
-        setDefaultReasoningLevel(customPrefData.reasoningLevel as ReasoningLevel);
+        setDefaultReasoningLevel(
+          customPrefData.reasoningLevel as ReasoningLevel
+        );
       }
       if (customPrefData.defaultAgentId !== undefined) {
         setDefaultAgentId(customPrefData.defaultAgentId || "none");
@@ -267,8 +271,9 @@ export function PreferencesTab() {
       }
       if (customPrefData.defaultTranslationLanguage !== undefined) {
         setTranslationLanguage(
-          normalizeTranslationTarget(customPrefData.defaultTranslationLanguage) ??
-            DEFAULT_TRANSLATION_TARGET
+          normalizeTranslationTarget(
+            customPrefData.defaultTranslationLanguage
+          ) ?? DEFAULT_TRANSLATION_TARGET
         );
       }
     }
@@ -293,7 +298,12 @@ export function PreferencesTab() {
       return;
     }
     toast.success("Préférences IA enregistrées !");
-  }, [defaultModelId, defaultChatVisibility, defaultReasoningLevel, mutateCustomPref]);
+  }, [
+    defaultModelId,
+    defaultChatVisibility,
+    defaultReasoningLevel,
+    mutateCustomPref,
+  ]);
 
   const handleSaveToolsPreferences = useCallback(async () => {
     setIsSavingToolsPref(true);
@@ -405,15 +415,21 @@ export function PreferencesTab() {
 
   return (
     <div className="py-6 flex flex-col gap-6 max-w-4xl">
-      <div className="surface-card flex flex-col gap-5 scroll-mt-6" id="prefs-defaults">
+      <div
+        className="surface-card flex flex-col gap-5 scroll-mt-6"
+        id="prefs-defaults"
+      >
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
             <SparklesIcon className="size-5" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-foreground">Préférences IA</h3>
+            <h3 className="text-base font-semibold text-foreground">
+              Préférences IA
+            </h3>
             <p className="text-xs text-muted-foreground">
-              Modèle par défaut (enregistré dans votre compte) et réglages généraux.
+              Modèle par défaut (enregistré dans votre compte) et réglages
+              généraux.
             </p>
           </div>
         </div>
@@ -448,7 +464,8 @@ export function PreferencesTab() {
             value={defaultReasoningLevel}
           />
           <span className="text-[11px] text-muted-foreground">
-            Niveau appliqué par défaut à toutes les surfaces IA (Chat, Agent, Wakies, Vibe) pour les modèles compatibles.
+            Niveau appliqué par défaut à toutes les surfaces IA (Chat, Agent,
+            Wakies, Vibe) pour les modèles compatibles.
           </span>
         </div>
 
@@ -480,7 +497,9 @@ export function PreferencesTab() {
             <StarIcon className="size-5" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-foreground">Menu favori</h3>
+            <h3 className="text-base font-semibold text-foreground">
+              Menu favori
+            </h3>
             <p className="text-xs text-muted-foreground">
               L'application ouverte automatiquement à la connexion.
             </p>
@@ -508,7 +527,8 @@ export function PreferencesTab() {
           </span>
         </div>
         <p className="text-[11px] text-muted-foreground leading-relaxed">
-          Les <strong>Bots</strong> remplacent les Modes IA. Créez des bots personnalisés avec des compétences et outils dédiés.
+          Les <strong>Bots</strong> remplacent les Modes IA. Créez des bots
+          personnalisés avec des compétences et outils dédiés.
         </p>
         <Link
           className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
@@ -542,7 +562,8 @@ export function PreferencesTab() {
               Instructions personnalisées
             </h3>
             <p className="text-xs text-muted-foreground">
-              Personnalisez le comportement de mAI — ton, langue, contexte métier.
+              Personnalisez le comportement de mAI — ton, langue, contexte
+              métier.
             </p>
           </div>
           <label className="flex items-center gap-2 cursor-pointer">
@@ -586,13 +607,17 @@ export function PreferencesTab() {
                   : "text-muted-foreground"
               )}
             >
-              {customInstructionsCounterLabel(tierRaw, customInstructions.length)}
+              {customInstructionsCounterLabel(
+                tierRaw,
+                customInstructions.length
+              )}
             </span>
           </div>
           {customInstructionsOverLimit ? (
             <div className="surface-muted border-destructive/30 bg-destructive/5 flex flex-col gap-2 p-3">
               <p className="text-[11px] leading-relaxed text-destructive">
-                Ce texte dépasse la limite du forfait {getTierLimits(tierRaw).label}.
+                Ce texte dépasse la limite du forfait{" "}
+                {getTierLimits(tierRaw).label}.
               </p>
               <Link
                 className="inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold text-foreground hover:underline"
@@ -649,14 +674,19 @@ export function PreferencesTab() {
             onClick={handleSaveCustomInstructions}
             type="button"
           >
-            {isSavingCustom ? <Loader2Icon className="size-4 animate-spin" /> : null}
+            {isSavingCustom ? (
+              <Loader2Icon className="size-4 animate-spin" />
+            ) : null}
             {isSavingCustom ? "Enregistrement..." : "Enregistrer instructions"}
           </button>
         </div>
       </div>
 
       {/* Préférences Outil Audio & Synthèse Vocale */}
-      <div className="surface-card flex flex-col gap-5 scroll-mt-6" id="prefs-audio">
+      <div
+        className="surface-card flex flex-col gap-5 scroll-mt-6"
+        id="prefs-audio"
+      >
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20">
             <Volume2Icon className="size-5" />
@@ -666,7 +696,8 @@ export function PreferencesTab() {
               Outil Synthèse Vocale & Audio
             </h3>
             <p className="text-xs text-muted-foreground">
-              Configurez le modèle vocal, la voix par défaut et le rythme de lecture audio.
+              Configurez le modèle vocal, la voix par défaut et le rythme de
+              lecture audio.
             </p>
           </div>
         </div>
@@ -681,7 +712,11 @@ export function PreferencesTab() {
               onModelChange={(val) => {
                 setDefaultAudioModel(val);
                 const m = audioModels.find((am) => am.id === val);
-                if (m?.voices && Array.isArray(m.voices) && m.voices.length > 0) {
+                if (
+                  m?.voices &&
+                  Array.isArray(m.voices) &&
+                  m.voices.length > 0
+                ) {
                   setDefaultAudioVoice(m.voices[0]);
                 }
               }}
@@ -728,7 +763,9 @@ export function PreferencesTab() {
             className="w-full accent-foreground"
             max={2.0}
             min={0.5}
-            onChange={(e) => setDefaultAudioSpeed(Number.parseFloat(e.target.value))}
+            onChange={(e) =>
+              setDefaultAudioSpeed(Number.parseFloat(e.target.value))
+            }
             step={0.05}
             type="range"
             value={defaultAudioSpeed}
@@ -742,7 +779,9 @@ export function PreferencesTab() {
             onClick={handleSaveToolsPreferences}
             type="button"
           >
-            {isSavingToolsPref ? <Loader2Icon className="size-4 animate-spin" /> : null}
+            {isSavingToolsPref ? (
+              <Loader2Icon className="size-4 animate-spin" />
+            ) : null}
             {isSavingToolsPref
               ? "Enregistrement..."
               : "Enregistrer les outils dans votre profil"}
@@ -762,7 +801,8 @@ export function PreferencesTab() {
           <div>
             <h3 className="text-base font-semibold text-foreground">Langues</h3>
             <p className="text-xs text-muted-foreground">
-              Langue de dictée vocale et langue de traduction par défaut des réponses.
+              Langue de dictée vocale et langue de traduction par défaut des
+              réponses.
             </p>
           </div>
         </div>
@@ -804,8 +844,12 @@ export function PreferencesTab() {
             onClick={handleSaveLanguages}
             type="button"
           >
-            {isSavingLanguages ? <Loader2Icon className="size-4 animate-spin" /> : null}
-            {isSavingLanguages ? "Enregistrement..." : "Enregistrer les langues"}
+            {isSavingLanguages ? (
+              <Loader2Icon className="size-4 animate-spin" />
+            ) : null}
+            {isSavingLanguages
+              ? "Enregistrement..."
+              : "Enregistrer les langues"}
           </button>
         </div>
       </div>
@@ -824,7 +868,8 @@ export function PreferencesTab() {
               Mode régénération des messages
             </h3>
             <p className="text-xs text-muted-foreground">
-              Choisissez le comportement du bouton « Régénérer » sur les messages de l'assistant.
+              Choisissez le comportement du bouton « Régénérer » sur les
+              messages de l'assistant.
             </p>
           </div>
         </div>
@@ -838,9 +883,12 @@ export function PreferencesTab() {
             onClick={() => setRegenerateMode("truncate")}
             type="button"
           >
-            <span className="text-sm font-semibold text-foreground">Tronquer</span>
+            <span className="text-sm font-semibold text-foreground">
+              Tronquer
+            </span>
             <span className="text-xs text-muted-foreground leading-tight">
-              Supprime les messages suivants et régénère à partir du message ciblé.
+              Supprime les messages suivants et régénère à partir du message
+              ciblé.
             </span>
           </button>
           <button
@@ -852,9 +900,12 @@ export function PreferencesTab() {
             onClick={() => setRegenerateMode("fork")}
             type="button"
           >
-            <span className="text-sm font-semibold text-foreground">Fork (Brancher)</span>
+            <span className="text-sm font-semibold text-foreground">
+              Fork (Brancher)
+            </span>
             <span className="text-xs text-muted-foreground leading-tight">
-              Crée une nouvelle conversation branchée, l'historique original reste intact.
+              Crée une nouvelle conversation branchée, l'historique original
+              reste intact.
             </span>
           </button>
         </div>

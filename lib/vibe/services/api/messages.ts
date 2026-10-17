@@ -53,13 +53,10 @@ export class ApiMessagesService extends ApiUsersService {
     messageId: string
   ): Promise<{ success: boolean; pinned: boolean }> {
     ApiServiceCore.invalidateCache("/dms/");
-    return ApiServiceCore.request(
-      `/v1/dms/conversations/${partnerId}/pin`,
-      {
-        body: JSON.stringify({ message_id: messageId }),
-        method: "POST",
-      }
-    );
+    return ApiServiceCore.request(`/v1/dms/conversations/${partnerId}/pin`, {
+      body: JSON.stringify({ message_id: messageId }),
+      method: "POST",
+    });
   }
 
   public static async unpinMessage(
@@ -284,13 +281,10 @@ export class ApiMessagesService extends ApiUsersService {
     customName: string
   ): Promise<{ success: boolean }> {
     ApiServiceCore.invalidateCache("/dms/");
-    return ApiServiceCore.request(
-      `/v1/dms/conversations/${partnerId}/rename`,
-      {
-        body: JSON.stringify({ name: customName }),
-        method: "POST",
-      }
-    );
+    return ApiServiceCore.request(`/v1/dms/conversations/${partnerId}/rename`, {
+      body: JSON.stringify({ name: customName }),
+      method: "POST",
+    });
   }
 
   public static async deleteConversation(

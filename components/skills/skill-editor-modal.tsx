@@ -1,6 +1,5 @@
 "use client";
 
-import type React from "react";
 import {
   CpuIcon,
   HistoryIcon,
@@ -10,6 +9,7 @@ import {
   WrenchIcon,
   ZapIcon,
 } from "@mdevs/icons";
+import type React from "react";
 import { toast } from "sonner";
 import { AGENT_COLORS } from "@/components/agents/agent-presets";
 import { ColorPicker } from "@/components/common/color-picker";
@@ -83,9 +83,7 @@ export function SkillEditorModal({
   formMcpServerIds: string[];
   onFormMcpServerIdsChange: (updater: (prev: string[]) => string[]) => void;
   formMcpToolFilter: Record<string, string[] | null>;
-  onFormMcpToolFilterChange: (
-    filter: Record<string, string[] | null>
-  ) => void;
+  onFormMcpToolFilterChange: (filter: Record<string, string[] | null>) => void;
   mcpServers: any[];
   isSaving: boolean;
   onSaveSkill: (e: React.FormEvent) => void;
@@ -99,8 +97,8 @@ export function SkillEditorModal({
             {editingSkill ? "Modifier le Skill" : "Créer un nouveau Skill"}
           </DialogTitle>
           <DialogDescription>
-            Configurez le comportement, le prompt et les outils accessibles
-            pour cette compétence.
+            Configurez le comportement, le prompt et les outils accessibles pour
+            cette compétence.
           </DialogDescription>
         </DialogHeader>
 
@@ -403,8 +401,8 @@ export function SkillEditorModal({
           {/* Parameters typés */}
           <div className="space-y-2">
             <Label className="text-xs font-semibold flex items-center gap-1.5">
-              <WrenchIcon className="size-3.5 text-primary" /> Paramètres
-              typés (variables {"{{param}}"})
+              <WrenchIcon className="size-3.5 text-primary" /> Paramètres typés
+              (variables {"{{param}}"})
             </Label>
             <p className="text-[11px] text-muted-foreground">
               Définissez des variables utilisables dans les instructions via{" "}
@@ -456,9 +454,7 @@ export function SkillEditorModal({
                     onChange={(e) =>
                       onFormParametersChange((prev) =>
                         prev.map((x, i) =>
-                          i === idx
-                            ? { ...x, defaultValue: e.target.value }
-                            : x
+                          i === idx ? { ...x, defaultValue: e.target.value } : x
                         )
                       )
                     }
@@ -503,9 +499,7 @@ export function SkillEditorModal({
                     onChange={(e) =>
                       onFormParametersChange((prev) =>
                         prev.map((x, i) =>
-                          i === idx
-                            ? { ...x, description: e.target.value }
-                            : x
+                          i === idx ? { ...x, description: e.target.value } : x
                         )
                       )
                     }

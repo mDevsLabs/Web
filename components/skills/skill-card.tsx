@@ -207,10 +207,7 @@ export function SkillCard({
         {Array.isArray(skill.tags) && skill.tags.length > 0 && (
           <div className="flex items-center gap-1 flex-wrap">
             {skill.tags.map((t) => (
-              <span
-                className="text-[10px] text-muted-foreground/70"
-                key={t}
-              >
+              <span className="text-[10px] text-muted-foreground/70" key={t}>
                 #{t}
               </span>
             ))}

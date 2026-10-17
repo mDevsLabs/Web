@@ -1,6 +1,5 @@
 "use client";
 
-import type React from "react";
 import {
   BrainIcon,
   CloudIcon,
@@ -12,11 +11,9 @@ import {
   TriangleAlertIcon,
   XIcon,
 } from "@mdevs/icons";
+import type React from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
-import {
-  AGENT_COLORS,
-  AGENT_ICONS,
-} from "@/components/agents/agent-presets";
+import { AGENT_COLORS, AGENT_ICONS } from "@/components/agents/agent-presets";
 import {
   INSTRUCTIONS_MAX_LENGTH,
   InstructionBuilder,
@@ -43,59 +40,59 @@ import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 export interface AgentEditorDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  editingAgent: Agent | null;
-  formName: string;
-  setFormName: (val: string) => void;
-  formDescription: string;
-  setFormDescription: (val: string) => void;
-  formInstructions: string;
-  setFormInstructions: (val: string) => void;
-  formIcon: string;
-  setFormIcon: (val: string) => void;
-  formColor: string;
-  setFormColor: (val: string) => void;
-  formModelId: string;
-  setFormModelId: (val: string) => void;
-  formSkillIds: string[];
-  setFormSkillIds: React.Dispatch<React.SetStateAction<string[]>>;
-  formMcpIds: string[];
-  setFormMcpIds: React.Dispatch<React.SetStateAction<string[]>>;
-  formCloudUrls: string[];
-  setFormCloudUrls: React.Dispatch<React.SetStateAction<string[]>>;
-  formTemperature: number;
-  setFormTemperature: (val: number) => void;
-  formTopP: number;
-  setFormTopP: (val: number) => void;
-  formMaxTokens: string;
-  setFormMaxTokens: (val: string) => void;
-  formStarterPrompts: string[];
-  updateStarterPrompt: (idx: number, val: string) => void;
-  removeStarterPrompt: (idx: number) => void;
   addStarterPrompt: () => void;
-  formWelcomeMessage: string;
-  setFormWelcomeMessage: (val: string) => void;
-  formPinned: boolean;
-  setFormPinned: (val: boolean) => void;
+  cloudFileNames: Record<string, string>;
+  editingAgent: Agent | null;
+  formCloudUrls: string[];
+  formColor: string;
+  formDescription: string;
+  formIcon: string;
+  formInstructions: string;
+  formMaxTokens: string;
+  formMcpIds: string[];
   formMemoryMode: "global" | "custom";
-  setFormMemoryMode: (val: "global" | "custom") => void;
+  formModelId: string;
+  formName: string;
+  formPinned: boolean;
+  formSkillIds: string[];
+  formStarterPrompts: string[];
+  formTemperature: number;
+  formTopP: number;
+  formWelcomeMessage: string;
+  isCloudPickerOpen: boolean;
   isSaving: boolean;
-  saveError: string | null;
-  onSave: (e: React.FormEvent) => void;
-  skills: Skill[];
   mcpServers: McpServer[];
+  models: any[];
   modelsData?: {
     capabilities: Record<string, ModelCapabilities>;
     models: unknown[];
   };
-  models: any[];
-  isCloudPickerOpen: boolean;
-  setIsCloudPickerOpen: (open: boolean) => void;
-  cloudFileNames: Record<string, string>;
+  onOpenChange: (open: boolean) => void;
+  onSave: (e: React.FormEvent) => void;
+  open: boolean;
+  removeStarterPrompt: (idx: number) => void;
+  saveError: string | null;
   setCloudFileNames: React.Dispatch<
     React.SetStateAction<Record<string, string>>
   >;
+  setFormCloudUrls: React.Dispatch<React.SetStateAction<string[]>>;
+  setFormColor: (val: string) => void;
+  setFormDescription: (val: string) => void;
+  setFormIcon: (val: string) => void;
+  setFormInstructions: (val: string) => void;
+  setFormMaxTokens: (val: string) => void;
+  setFormMcpIds: React.Dispatch<React.SetStateAction<string[]>>;
+  setFormMemoryMode: (val: "global" | "custom") => void;
+  setFormModelId: (val: string) => void;
+  setFormName: (val: string) => void;
+  setFormPinned: (val: boolean) => void;
+  setFormSkillIds: React.Dispatch<React.SetStateAction<string[]>>;
+  setFormTemperature: (val: number) => void;
+  setFormTopP: (val: number) => void;
+  setFormWelcomeMessage: (val: string) => void;
+  setIsCloudPickerOpen: (open: boolean) => void;
+  skills: Skill[];
+  updateStarterPrompt: (idx: number, val: string) => void;
 }
 
 export function AgentEditorDialog({
@@ -418,9 +415,7 @@ export function AgentEditorDialog({
                     <Input
                       className="h-8 text-xs"
                       maxLength={500}
-                      onChange={(e) =>
-                        updateStarterPrompt(idx, e.target.value)
-                      }
+                      onChange={(e) => updateStarterPrompt(idx, e.target.value)}
                       placeholder={`Ex: Peux-tu m'aider à... (${idx + 1})`}
                       value={p}
                     />
@@ -651,8 +646,7 @@ export function AgentEditorDialog({
               <div
                 className={cn(
                   "mt-2 rounded-2xl border bg-card p-4 transition-colors",
-                  formPinned &&
-                    "border-foreground/30 ring-1 ring-foreground/10"
+                  formPinned && "border-foreground/30 ring-1 ring-foreground/10"
                 )}
               >
                 <div className="flex items-start justify-between gap-2 mb-3">

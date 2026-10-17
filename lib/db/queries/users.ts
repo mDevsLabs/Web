@@ -104,12 +104,12 @@ export async function getUserPreferences(userId: string) {
           DEFAULT_TRANSLATION_TARGET,
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
+        reasoningLevel: (row.reasoningLevel as ReasoningLevel) || "medium",
         showAgentChatIcons: row.showAgentChatIcons ?? true,
         temperature: row.defaultTemperature ?? 0.7,
         // Thème partagé par la suite : une valeur illisible retombe sur
         // « system », jamais sur un thème fantôme.
         theme: normalizeThemePreference(row.theme),
-        reasoningLevel: (row.reasoningLevel as ReasoningLevel) || "medium",
         topP: row.defaultTopP ?? 0.9,
       };
     }
@@ -134,13 +134,13 @@ export async function getUserPreferences(userId: string) {
     defaultTranslationLanguage: DEFAULT_TRANSLATION_TARGET,
     enabled: legacy.customInstructionsEnabled,
     ghostMemoryEnabled: false,
+    reasoningLevel: "medium" as const,
     showAgentChatIcons: true,
     temperature: legacy.defaultTemperature ?? 0.7,
     // Table user_preferences absente (environnement non migré) : le thème
     // partagé n'a pas de colonne de repli dans `users`. On répond la valeur
     // sûre plutôt que d'inventer un thème.
     theme: "system",
-    reasoningLevel: "medium" as const,
     topP: legacy.defaultTopP ?? 0.9,
   };
 }
@@ -310,11 +310,11 @@ export async function upsertUserPreferences(
             normalizeTranslationTarget(data.defaultTranslationLanguage) ??
             DEFAULT_TRANSLATION_TARGET,
           ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
+          reasoningLevel: data.reasoningLevel ?? "medium",
           showAgentChatIcons: data.showAgentChatIcons ?? true,
           // Une valeur illisible retombe sur « system », comme un tier
           // illisible vaut free.
           theme: normalizeThemePreference(data.theme),
-          reasoningLevel: data.reasoningLevel ?? "medium",
           userId,
         })
         .returning();

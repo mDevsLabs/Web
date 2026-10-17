@@ -28,7 +28,7 @@ export const ProfileStoryRing: React.FC<ProfileStoryRingProps> = ({
     try {
       const res = await ApiService.getStoriesTray();
       const trouve = (res?.stories || []).find(
-        (a) => String(a.username || "").toLowerCase() === propre
+        (a: StoryAuthor) => String(a.username || "").toLowerCase() === propre
       );
       setAuteur(trouve ?? null);
     } catch {

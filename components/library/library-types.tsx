@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ArchiveIcon,
   CodeIcon,
@@ -9,6 +8,7 @@ import {
   MusicIcon,
   VideoIcon,
 } from "@mdevs/icons";
+import React from "react";
 
 export type CloudFile = {
   id: string;

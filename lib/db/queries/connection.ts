@@ -27,8 +27,10 @@ import { resolveBillableTotal } from "@/lib/agent/usage";
 import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { normalizeAppKey } from "@/lib/apps/catalog";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { normalizeCreationMode } from "@/lib/creation/mode";
 import { resolveDatabaseUrl } from "@/lib/db/connection-string";
+import { ChatbotError } from "@/lib/errors";
 import {
   AUTO_DICTATION_LANGUAGE,
   DEFAULT_TRANSLATION_TARGET,
@@ -42,8 +44,6 @@ import {
 } from "@/lib/mcp/redaction";
 import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
 import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
-import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,

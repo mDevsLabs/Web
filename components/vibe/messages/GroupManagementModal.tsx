@@ -13,16 +13,19 @@ import {
   UsersIcon as Users,
   XIcon as X,
 } from "@mdevs/icons";
-import React from "react";
+import type React from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import type { DMConversation } from "@/lib/vibe/types/vibe";
 import type { ActiveGroupInfo } from "./messageTypes";
 
 export interface GroupManagementModalProps {
-  open: boolean;
-  groupId: string | null;
   activeConv: DMConversation | null;
   activeGroupInfo: ActiveGroupInfo | null;
+  currentUserId?: string | number;
+  groupAvatarInputRef: React.RefObject<HTMLInputElement | null>;
+  groupAvatarUploading: boolean;
+  groupId: string | null;
+  groupIsAdmin: boolean;
   groupMembers: Array<{
     user_id: string | number;
     username: string;
@@ -30,19 +33,16 @@ export interface GroupManagementModalProps {
     avatar_url?: string;
     role: string;
   }>;
-  groupIsAdmin: boolean;
   groupNameDraft: string;
   groupSaving: boolean;
-  groupAvatarUploading: boolean;
-  currentUserId?: string | number;
-  groupAvatarInputRef: React.RefObject<HTMLInputElement | null>;
-  onClose: () => void;
   onAvatarSelected: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeGroupNameDraft: (name: string) => void;
+  onClose: () => void;
+  onDeleteGroup: () => void;
+  onRemoveMember: (userId: string) => void;
   onSaveGroupName: () => void;
   onTransferAdmin: (userId: string | number) => void;
-  onRemoveMember: (userId: string) => void;
-  onDeleteGroup: () => void;
+  open: boolean;
 }
 
 export const GroupManagementModal: React.FC<GroupManagementModalProps> = ({

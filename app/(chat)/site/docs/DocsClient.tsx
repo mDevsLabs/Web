@@ -337,7 +337,6 @@ export function DocsClient({ initialDocs, titleSpan }: DocsClientProps) {
               {/* Corps Markdown Rendu */}
               <div className="prose max-w-none text-slate-800 leading-relaxed font-sans">
                 <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
                   components={{
                     a: ({ node: _node, href, children, ...props }) => (
                       <a
@@ -448,6 +447,7 @@ export function DocsClient({ initialDocs, titleSpan }: DocsClientProps) {
                       />
                     ),
                   }}
+                  remarkPlugins={[remarkGfm]}
                 >
                   {activeDoc.content}
                 </ReactMarkdown>

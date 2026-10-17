@@ -20,16 +20,14 @@ import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
 
 export interface CircleAudienceSectionProps {
+  addingUsername: string | null;
   circleMembers: Array<{
     id: string | number;
     username: string;
     display_name?: string;
     avatar_url?: string;
   }>;
-  defaultVibeAudience: "public" | "followers" | "circle";
-  setDefaultVibeAudience: (aud: "public" | "followers" | "circle") => void;
   circleSearchQuery: string;
-  setCircleSearchQuery: (q: string) => void;
   circleSearchResults: Array<{
     id: number;
     username: string;
@@ -38,11 +36,13 @@ export interface CircleAudienceSectionProps {
     is_verified?: boolean;
     followers_count?: number;
   }>;
-  setCircleSearchResults: (results: any[]) => void;
+  defaultVibeAudience: "public" | "followers" | "circle";
   isSearchingCircleUsers: boolean;
-  addingUsername: string | null;
   onAddToCircle: (username: string) => void;
   onRemoveFromCircle: (username: string) => void;
+  setCircleSearchQuery: (q: string) => void;
+  setCircleSearchResults: (results: any[]) => void;
+  setDefaultVibeAudience: (aud: "public" | "followers" | "circle") => void;
 }
 
 export const CircleAudienceSection: React.FC<CircleAudienceSectionProps> = ({
@@ -234,14 +234,14 @@ export const CircleAudienceSection: React.FC<CircleAudienceSectionProps> = ({
               </div>
             ) : circleSearchResults.length === 0 ? (
               <div className="py-4 text-center text-xs text-zinc-500">
-                Aucun utilisateur trouvé correspondant à « {circleSearchQuery} ».
+                Aucun utilisateur trouvé correspondant à « {circleSearchQuery}{" "}
+                ».
               </div>
             ) : (
               <div className="divide-y divide-zinc-800/60">
                 {circleSearchResults.map((u) => {
                   const isAlreadyMember = circleMembers.some(
-                    (m) =>
-                      m.username.toLowerCase() === u.username.toLowerCase()
+                    (m) => m.username.toLowerCase() === u.username.toLowerCase()
                   );
                   const isAdding = addingUsername === u.username;
                   return (

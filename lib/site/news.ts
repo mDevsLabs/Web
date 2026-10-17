@@ -85,10 +85,7 @@ function attachmentSize(slug: string, fileName: string): number | null {
  * poids affiché est mesuré sur le disque plutôt que recopié dans le JSON, pour
  * qu'un PDF remplacé ne laisse pas un « 388 Ko » faux sous le bouton.
  */
-function readAttachment(
-  slug: string,
-  raw: unknown
-): NewsAttachment | null {
+function readAttachment(slug: string, raw: unknown): NewsAttachment | null {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
     return null;
   }

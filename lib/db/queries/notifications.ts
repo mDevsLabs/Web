@@ -16,7 +16,7 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,
@@ -50,8 +50,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 // ==========================================
 // NOTIFICATIONS QUERIES

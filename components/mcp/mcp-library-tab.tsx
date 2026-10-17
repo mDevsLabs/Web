@@ -1,5 +1,5 @@
-import React from "react";
 import { CopyIcon, PlusIcon } from "@mdevs/icons";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { McpTemplateRow } from "./mcp-types";
@@ -23,7 +23,8 @@ export function McpLibraryTab({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-bold">
-          Bibliothèque MCP — {installableTemplates.length} modèles installables sur {templates.length}
+          Bibliothèque MCP — {installableTemplates.length} modèles installables
+          sur {templates.length}
         </h2>
         <Button onClick={() => mutateTpl()} size="sm" variant="outline">
           Actualiser
@@ -36,7 +37,10 @@ export function McpLibraryTab({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {templates.map((tpl) => (
-            <div className="rounded-2xl border bg-card p-4 flex flex-col" key={tpl.id}>
+            <div
+              className="rounded-2xl border bg-card p-4 flex flex-col"
+              key={tpl.id}
+            >
               <div className="flex items-center justify-between mb-2">
                 <span className="font-semibold text-xs">{tpl.name}</span>
                 <div className="flex items-center gap-1.5">
@@ -97,8 +101,12 @@ export function McpLibraryTab({
               className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
               key={`${t.id}preset`}
             >
-              <span className="font-semibold text-xs mb-1">{t.name} (pré-remplissage)</span>
-              <p className="text-[11px] text-muted-foreground mb-3">{t.description}</p>
+              <span className="font-semibold text-xs mb-1">
+                {t.name} (pré-remplissage)
+              </span>
+              <p className="text-[11px] text-muted-foreground mb-3">
+                {t.description}
+              </p>
               <Button
                 className="h-7 text-xs"
                 onClick={() => handleNewServer(t)}

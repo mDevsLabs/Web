@@ -49,6 +49,7 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
+import { ownedConversationIds } from "./messages";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -63,9 +64,7 @@ import type {
   WakieTaskRunRow,
   WakieWithSpaces,
 } from "./types";
-
 import { createWakie, findWakie, hashCompte, listWakies } from "./wakies";
-import { ownedConversationIds } from "./messages";
 
 // ─── Profils sociaux, galerie et amis ─────────────────────────────────────────
 

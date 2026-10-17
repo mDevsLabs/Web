@@ -34,6 +34,14 @@ import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { McpInspectToolsModal } from "@/components/mcp/mcp-inspect-modal";
+import { McpLibraryTab } from "@/components/mcp/mcp-library-tab";
+import { McpLogsTab } from "@/components/mcp/mcp-logs-tab";
+import { McpServerModal } from "@/components/mcp/mcp-server-modal";
+import { McpServersTab } from "@/components/mcp/mcp-servers-tab";
+import { McpSettingsTab } from "@/components/mcp/mcp-settings-tab";
+import { McpStoreTab } from "@/components/mcp/mcp-store-tab";
+import { McpTutorialTab } from "@/components/mcp/mcp-tutorial-tab";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -70,15 +78,6 @@ import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
-import { McpStoreTab } from "@/components/mcp/mcp-store-tab";
-import { McpServersTab } from "@/components/mcp/mcp-servers-tab";
-import { McpLibraryTab } from "@/components/mcp/mcp-library-tab";
-import { McpTutorialTab } from "@/components/mcp/mcp-tutorial-tab";
-import { McpLogsTab } from "@/components/mcp/mcp-logs-tab";
-import { McpSettingsTab } from "@/components/mcp/mcp-settings-tab";
-import { McpServerModal } from "@/components/mcp/mcp-server-modal";
-import { McpInspectToolsModal } from "@/components/mcp/mcp-inspect-modal";
-
 
 // Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
 // (lib/mcp-templates), source de vérité unique. Aucune liste locale de modèles

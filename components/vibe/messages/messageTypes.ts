@@ -2,7 +2,11 @@
  * Types et utilitaires partagés pour la messagerie privée Vibe.
  */
 
-import type { DirectMessage, DMConversation, VibeBookPost } from "@/lib/vibe/types/vibe";
+import type {
+  DirectMessage,
+  DMConversation,
+  VibeBookPost,
+} from "@/lib/vibe/types/vibe";
 
 export interface AttachedMedia {
   fileName?: string;
@@ -22,12 +26,12 @@ export const formatFileSize = (bytes: number): string => {
 };
 
 export interface ActivePartnerInfo {
-  id: string | number;
-  username: string;
-  display_name?: string;
   avatar_url?: string;
+  display_name?: string;
+  id: string | number;
   is_verified?: boolean;
   tier?: string;
+  username: string;
 }
 
 export interface ActiveGroupInfo {
@@ -43,8 +47,8 @@ export interface ActiveGroupInfo {
 }
 
 export interface AttachedPostPreview {
+  avatar_url?: string | null;
+  excerpt: string;
   id: string;
   username: string;
-  excerpt: string;
-  avatar_url?: string | null;
 }

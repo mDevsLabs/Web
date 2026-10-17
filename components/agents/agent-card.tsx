@@ -26,11 +26,11 @@ export interface AgentCardProps {
   agent: Agent;
   isActive: boolean;
   onActivate: (agent: Agent) => void;
-  onTogglePin: (agent: Agent) => void;
-  onEdit: (agent: Agent) => void;
-  onDuplicate: (agent: Agent) => void;
   onDelete: (agent: Agent) => void;
+  onDuplicate: (agent: Agent) => void;
+  onEdit: (agent: Agent) => void;
   onStartChat: (agent: Agent) => void;
+  onTogglePin: (agent: Agent) => void;
 }
 
 export function AgentCard({

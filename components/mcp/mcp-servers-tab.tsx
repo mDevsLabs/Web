@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CpuIcon,
   Edit2Icon,
@@ -11,6 +10,7 @@ import {
   WrenchIcon,
   ZapIcon,
 } from "@mdevs/icons";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -63,10 +63,13 @@ export function McpServersTab({
           <div className="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
             <CpuIcon className="size-8" />
           </div>
-          <h2 className="text-xl font-bold mb-2">Aucun serveur MCP configuré</h2>
+          <h2 className="text-xl font-bold mb-2">
+            Aucun serveur MCP configuré
+          </h2>
           <p className="text-sm text-muted-foreground mb-8">
-            Le protocole MCP permet à l'IA d'interagir directement avec vos outils, fichiers et bases de
-            données, avec un contrôle strict des autorisations.
+            Le protocole MCP permet à l'IA d'interagir directement avec vos
+            outils, fichiers et bases de données, avec un contrôle strict des
+            autorisations.
           </p>
           <div className="w-full text-left mb-6">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
@@ -81,7 +84,9 @@ export function McpServersTab({
                   type="button"
                 >
                   <div className="flex items-center justify-between w-full mb-1">
-                    <span className="font-semibold text-xs text-foreground">{tmpl.name}</span>
+                    <span className="font-semibold text-xs text-foreground">
+                      {tmpl.name}
+                    </span>
                     <span className="text-[10px] px-1.5 py-0.5 rounded uppercase font-medium bg-muted text-muted-foreground">
                       {tmpl.transport}
                     </span>
@@ -96,7 +101,10 @@ export function McpServersTab({
               ))}
             </div>
           </div>
-          <Button className="gap-2 text-xs font-medium" onClick={() => handleNewServer()}>
+          <Button
+            className="gap-2 text-xs font-medium"
+            onClick={() => handleNewServer()}
+          >
             <PlusIcon className="size-4" />
             <span>Configurer un serveur personnalisé</span>
           </Button>
@@ -109,7 +117,8 @@ export function McpServersTab({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredServers.map((s) => {
             const toolsCount = (s.toolsCache as any[])?.length || 0;
-            const overrides = ((s as any).toolOverrides as Record<string, any>) ?? {};
+            const overrides =
+              ((s as any).toolOverrides as Record<string, any>) ?? {};
             const enabledCount = ((s.toolsCache as any[]) || []).filter(
               (t) => overrides[t.name]?.enabled !== false
             ).length;
@@ -117,7 +126,9 @@ export function McpServersTab({
               <div
                 className={cn(
                   "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md relative group",
-                  s.isEnabled ? "border-border/60" : "border-border/40 opacity-70 bg-muted/20"
+                  s.isEnabled
+                    ? "border-border/60"
+                    : "border-border/40 opacity-70 bg-muted/20"
                 )}
                 key={s.id}
               >
@@ -128,11 +139,15 @@ export function McpServersTab({
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <h3 className="font-semibold text-sm text-foreground truncate">{s.name}</h3>
+                        <h3 className="font-semibold text-sm text-foreground truncate">
+                          {s.name}
+                        </h3>
                         <span
                           className={cn(
                             "size-2 rounded-full",
-                            s.isEnabled ? "bg-emerald-500" : "bg-muted-foreground/40"
+                            s.isEnabled
+                              ? "bg-emerald-500"
+                              : "bg-muted-foreground/40"
                           )}
                           title={s.isEnabled ? "Actif" : "Inactif"}
                         />
@@ -215,14 +230,19 @@ export function McpServersTab({
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                  <Badge className="text-[10px] uppercase font-semibold px-2 py-0.5" variant="outline">
+                  <Badge
+                    className="text-[10px] uppercase font-semibold px-2 py-0.5"
+                    variant="outline"
+                  >
                     {s.transport}
                   </Badge>
                   <Badge
                     className="text-[10px] px-2 py-0.5"
                     variant={s.authType === "none" ? "outline" : "secondary"}
                   >
-                    {s.authType === "none" ? "Pas d'auth" : `Auth: ${s.authType}`}
+                    {s.authType === "none"
+                      ? "Pas d'auth"
+                      : `Auth: ${s.authType}`}
                   </Badge>
                   <Badge
                     className={cn(
@@ -243,7 +263,8 @@ export function McpServersTab({
                         : "Auto-approuvé"}
                   </Badge>
                   <Badge className="text-[10px] px-2 py-0.5" variant="outline">
-                    ⏱ {(s as any).timeoutMs ?? 15_000}ms · {(s as any).rateLimitPerMin ?? 60}/min
+                    ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
+                    {(s as any).rateLimitPerMin ?? 60}/min
                   </Badge>
                 </div>
                 <div className="pt-2 border-t border-border/40 mt-auto flex items-center justify-between text-xs text-muted-foreground">

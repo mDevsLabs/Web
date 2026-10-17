@@ -6,13 +6,13 @@
  */
 
 import { XIcon as X } from "@mdevs/icons";
-import React from "react";
+import type React from "react";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import type { DirectMessage, DMConversation } from "@/lib/vibe/types/vibe";
 
 export interface ForwardModalProps {
-  message: DirectMessage | null;
   conversations: DMConversation[];
+  message: DirectMessage | null;
   onClose: () => void;
   onForwardTo: (conv: DMConversation) => void;
 }
@@ -36,7 +36,11 @@ export const ForwardModal: React.FC<ForwardModalProps> = ({
       >
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-bold">Transférer le message</h3>
-          <button className="vibe-chat-icon-btn p-1" onClick={onClose} type="button">
+          <button
+            className="vibe-chat-icon-btn p-1"
+            onClick={onClose}
+            type="button"
+          >
             <X className="w-4 h-4" />
           </button>
         </div>

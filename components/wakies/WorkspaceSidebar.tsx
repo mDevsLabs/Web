@@ -1,12 +1,12 @@
 "use client";
 
+import { PlusIcon } from "@mdevs/icons/controls/plus";
+import { Settings2Icon } from "@mdevs/icons/controls/settings-2";
+import { XIcon } from "@mdevs/icons/controls/x";
 import { BookOpenIcon } from "@mdevs/icons/files/book-open";
 import { EllipsisVerticalIcon } from "@mdevs/icons/interface/ellipsis-vertical";
 import { MenuIcon } from "@mdevs/icons/interface/menu";
 import { PanelLeftIcon } from "@mdevs/icons/interface/panel-left";
-import { PlusIcon } from "@mdevs/icons/controls/plus";
-import { Settings2Icon } from "@mdevs/icons/controls/settings-2";
-import { XIcon } from "@mdevs/icons/controls/x";
 import { Button } from "@mdevs/ui/primitives/button";
 import { Input } from "@mdevs/ui/primitives/input";
 import type React from "react";
@@ -14,7 +14,7 @@ import { AppSwitcherMenu } from "@/components/common/app-switcher";
 import { ConversationList } from "@/components/wakies/ConversationList";
 import { Mascot } from "@/components/wakies/Mascot";
 import { SpaceNav } from "@/components/wakies/SpaceNav";
-import { useMessagingNotifications } from "@/components/wakies/useMessagingNotifications";
+import type { useMessagingNotifications } from "@/components/wakies/useMessagingNotifications";
 import { WakiesNotificationBell } from "@/components/wakies/WakiesNotificationBell";
 import type { Dialog } from "@/components/wakies/WorkspaceDialog";
 import {
@@ -25,39 +25,39 @@ import type { Page } from "@/lib/wakies/pages";
 import type { State, Wakie, WorkspaceState } from "@/lib/wakies/shared/types";
 
 export interface WorkspaceSidebarProps {
-  mobile: boolean;
-  setMobile: (val: boolean) => void;
-  navCollapsed: boolean;
   basculerNav: () => void;
-  messaging: ReturnType<typeof useMessagingNotifications>;
-  ouvrirNotification: (conversationId: string) => Promise<void>;
-  configured: boolean;
-  newConversation: () => Promise<void>;
-  sidebarSearch: string;
-  setSidebarSearch: (val: string) => void;
-  workspace: WorkspaceState;
-  state: State;
-  view: WakiesSection;
-  setView: (section: WakiesSection) => Promise<boolean>;
-  selectedWakie: string;
-  setSelectedWakie: (id: string) => void;
-  selectedThread?: string;
-  setSelectedThread: (id: string | undefined) => void;
-  setCibleMessageId: (id: string | null) => void;
   chooseWakie: (w: Wakie) => void;
+  configured: boolean;
+  messaging: ReturnType<typeof useMessagingNotifications>;
+  mobile: boolean;
+  navCollapsed: boolean;
+  newConversation: () => Promise<void>;
   openPage: (space: string, page?: string) => void;
-  searchPages: { page: Page; space: WorkspaceState["spaces"][number] }[];
+  ouvrirNotification: (conversationId: string) => Promise<void>;
+  ouvrirReglages: () => void;
+  pageId?: string;
+  refresh: () => Promise<void>;
   searchMessages: Array<{
     conversationId: string;
     extrait: string;
     id: string;
     role: string;
   }>;
+  searchPages: { page: Page; space: WorkspaceState["spaces"][number] }[];
+  selectedThread?: string;
+  selectedWakie: string;
+  setCibleMessageId: (id: string | null) => void;
   setDialog: (d: Dialog | undefined) => void;
-  refresh: () => Promise<void>;
-  pageId?: string;
+  setMobile: (val: boolean) => void;
+  setSelectedThread: (id: string | undefined) => void;
+  setSelectedWakie: (id: string) => void;
+  setSidebarSearch: (val: string) => void;
+  setView: (section: WakiesSection) => Promise<boolean>;
+  sidebarSearch: string;
   spaceId: string;
-  ouvrirReglages: () => void;
+  state: State;
+  view: WakiesSection;
+  workspace: WorkspaceState;
 }
 
 export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({

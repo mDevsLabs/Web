@@ -5,11 +5,9 @@
  * ============================================================================
  */
 
-import {
-  BellIcon as Bell,
-  SmartphoneIcon as Smartphone,
-} from "@mdevs/icons";
-import React, { useState } from "react";
+import { BellIcon as Bell, SmartphoneIcon as Smartphone } from "@mdevs/icons";
+import type React from "react";
+import { useState } from "react";
 import { InstallAppHint } from "@/components/vibe/common/InstallAppHint";
 import {
   getAnimationsEnabled,
@@ -50,15 +48,15 @@ export const DevicePermissionHint: React.FC = () => {
 };
 
 export interface NotificationsHapticsSectionProps {
-  emailNotifs: boolean;
-  setEmailNotifs: (val: boolean) => void;
-  pushNotifs: boolean;
-  setPushNotifs: (val: boolean) => void;
   animationsEnabled: boolean;
-  setAnimationsEnabledState: (val: boolean) => void;
+  emailNotifs: boolean;
   hapticsEnabled: boolean;
-  setHapticsEnabled: (val: boolean) => void;
   hapticsSupported: boolean;
+  pushNotifs: boolean;
+  setAnimationsEnabledState: (val: boolean) => void;
+  setEmailNotifs: (val: boolean) => void;
+  setHapticsEnabled: (val: boolean) => void;
+  setPushNotifs: (val: boolean) => void;
 }
 
 export const NotificationsHapticsSection: React.FC<

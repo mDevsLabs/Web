@@ -23,7 +23,6 @@ import {
   createAgentStreamResponse,
 } from "@/lib/agent/runtime";
 import { loadAgentSettings, toToolCategories } from "@/lib/agent/settings";
-import { getUserPreferences } from "@/lib/db/queries";
 import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
 import {
   getMentionedPluginToolIds,
@@ -64,7 +63,7 @@ import {
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
-import { saveMessages } from "@/lib/db/queries";
+import { getUserPreferences, saveMessages } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";

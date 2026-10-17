@@ -1,9 +1,5 @@
+import { CopyIcon, DownloadIcon, SparklesIcon } from "@mdevs/icons";
 import React from "react";
-import {
-  CopyIcon,
-  DownloadIcon,
-  SparklesIcon,
-} from "@mdevs/icons";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,11 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  type CloudFile,
-  formatBytes,
-  getFileIcon,
-} from "./library-types";
+import { type CloudFile, formatBytes, getFileIcon } from "./library-types";
 
 export function PreviewModal({
   previewFile,

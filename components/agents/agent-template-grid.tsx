@@ -9,17 +9,17 @@ import type { AgentTemplate } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 export interface AgentTemplateGridProps {
-  templates: AgentTemplate[];
   filteredTemplates: AgentTemplate[];
-  templateQuery: string;
-  onTemplateQueryChange: (query: string) => void;
-  templateModel: string | null;
-  onTemplateModelChange: (model: string | null) => void;
-  templateTag: string | null;
-  onTemplateTagChange: (tag: string | null) => void;
-  templateTags: string[];
-  templateModelIds: string[];
   onSelectTemplate: (template: AgentTemplate) => void;
+  onTemplateModelChange: (model: string | null) => void;
+  onTemplateQueryChange: (query: string) => void;
+  onTemplateTagChange: (tag: string | null) => void;
+  templateModel: string | null;
+  templateModelIds: string[];
+  templateQuery: string;
+  templates: AgentTemplate[];
+  templateTag: string | null;
+  templateTags: string[];
 }
 
 export function AgentTemplateGrid({

@@ -10,7 +10,6 @@ import {
   Volume2Icon,
   WrenchIcon,
 } from "@mdevs/icons";
-import { toast } from "sonner";
 import {
   type Dispatch,
   memo,
@@ -21,13 +20,8 @@ import {
   useMemo,
   useState,
 } from "react";
+import { toast } from "sonner";
 import useSWR from "swr";
-import {
-  isReasoningLevel,
-  REASONING_LEVEL_DESCRIPTIONS,
-  REASONING_LEVEL_LABELS,
-  type ReasoningLevel,
-} from "@/lib/ai/registry/reasoning";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -50,6 +44,12 @@ import {
   DEFAULT_CHAT_MODEL,
   type ModelCapabilities,
 } from "@/lib/ai/models";
+import {
+  isReasoningLevel,
+  REASONING_LEVEL_DESCRIPTIONS,
+  REASONING_LEVEL_LABELS,
+  type ReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
 import { cn } from "@/lib/utils";
 
 // Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
@@ -308,7 +308,10 @@ function ModelDetailsPanel({
   return (
     <div className="flex flex-col gap-3 text-xs w-full">
       <div className="flex items-start gap-2.5">
-        <ModelSelectorLogo className="size-5 shrink-0 mt-0.5" provider={logoProvider} />
+        <ModelSelectorLogo
+          className="size-5 shrink-0 mt-0.5"
+          provider={logoProvider}
+        />
         <div className="flex flex-col min-w-0">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="font-semibold text-foreground text-[13px] leading-tight">
@@ -348,7 +351,8 @@ function ModelDetailsPanel({
               {outputStr}
             </span>
           ) : null}
-          {capabilities?.tools || model.supported_parameters?.includes("tools") ? (
+          {capabilities?.tools ||
+          model.supported_parameters?.includes("tools") ? (
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
               <WrenchIcon className="size-3 text-sky-500" />
               Outils
@@ -585,8 +589,9 @@ function PureModelSelectorCompact({
   const [search, setSearch] = useState("");
   const [mounted, setMounted] = useState(false);
   const [hoveredModelId, setHoveredModelId] = useState<string | null>(null);
-  const [mobileExpandedModelId, setMobileExpandedModelId] =
-    useState<string | null>(null);
+  const [mobileExpandedModelId, setMobileExpandedModelId] = useState<
+    string | null
+  >(null);
 
   const { data: userPrefs, mutate: mutateUserPrefs } = useSWR(
     "/api/user/preferences",
@@ -603,9 +608,7 @@ function PureModelSelectorCompact({
           method: "POST",
         });
         mutateUserPrefs({ ...userPrefs, reasoningLevel: level }, false);
-        toast.success(
-          `Effort de réflexion : ${REASONING_LEVEL_LABELS[level]}`
-        );
+        toast.success(`Effort de réflexion : ${REASONING_LEVEL_LABELS[level]}`);
       } catch {
         toast.error("Impossible d'enregistrer l'effort de réflexion");
       }
@@ -707,7 +710,8 @@ function PureModelSelectorCompact({
   }
 
   const activeModel = useMemo(
-    () => models.find((m) => m.id === hoveredModelId) ?? selectedModel ?? models[0],
+    () =>
+      models.find((m) => m.id === hoveredModelId) ?? selectedModel ?? models[0],
     [models, hoveredModelId, selectedModel]
   );
 
@@ -771,7 +775,8 @@ function PureModelSelectorCompact({
                 <ModelSelectorItem
                   className={cn(
                     "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg text-muted-foreground",
-                    !selectedModelId && "bg-muted/80 font-medium text-foreground",
+                    !selectedModelId &&
+                      "bg-muted/80 font-medium text-foreground",
                     "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
                   )}
                   onSelect={() => {

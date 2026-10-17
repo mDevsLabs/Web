@@ -34,4 +34,3 @@ export type SetupStatus = {
   slack: string;
   missing: string[];
 };
-

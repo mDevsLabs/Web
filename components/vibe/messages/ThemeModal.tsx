@@ -6,25 +6,25 @@
  */
 
 import { PaletteIcon as Palette, XIcon as X } from "@mdevs/icons";
-import React from "react";
+import type React from "react";
 import {
   CHAT_BACKGROUND_THEMES,
+  type ChatBackgroundTheme,
   MESSAGE_BUBBLE_SHAPES,
   MESSAGE_BUBBLE_THEMES,
-  type ChatBackgroundTheme,
   type MessageBubbleShape,
   type MessageBubbleTheme,
 } from "@/lib/vibe/context/ThemeContext";
 
 export interface ThemeModalProps {
-  open: boolean;
-  messageBubbleTheme: MessageBubbleTheme;
   chatBackgroundTheme: ChatBackgroundTheme;
   messageBubbleShape: MessageBubbleShape;
-  onClose: () => void;
-  onChangeMessageBubbleTheme: (themeId: MessageBubbleTheme) => void;
+  messageBubbleTheme: MessageBubbleTheme;
   onChangeChatBackgroundTheme: (bgId: ChatBackgroundTheme) => void;
   onChangeMessageBubbleShape: (shape: MessageBubbleShape) => void;
+  onChangeMessageBubbleTheme: (themeId: MessageBubbleTheme) => void;
+  onClose: () => void;
+  open: boolean;
 }
 
 export const ThemeModal: React.FC<ThemeModalProps> = ({
@@ -131,24 +131,24 @@ export const ThemeModal: React.FC<ThemeModalProps> = ({
             Forme de la bulle
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {(
-              Object.keys(MESSAGE_BUBBLE_SHAPES) as MessageBubbleShape[]
-            ).map((shapeKey) => {
-              const isSelected = messageBubbleShape === shapeKey;
-              const s = MESSAGE_BUBBLE_SHAPES[shapeKey];
-              return (
-                <button
-                  className={`vibe-chat-modal-card py-2 px-2 text-center text-[11px] font-semibold transition-all ${
-                    isSelected ? "selected font-bold shadow" : ""
-                  }`}
-                  key={shapeKey}
-                  onClick={() => onChangeMessageBubbleShape(shapeKey)}
-                  type="button"
-                >
-                  {s.label.split(" ")[0]}
-                </button>
-              );
-            })}
+            {(Object.keys(MESSAGE_BUBBLE_SHAPES) as MessageBubbleShape[]).map(
+              (shapeKey) => {
+                const isSelected = messageBubbleShape === shapeKey;
+                const s = MESSAGE_BUBBLE_SHAPES[shapeKey];
+                return (
+                  <button
+                    className={`vibe-chat-modal-card py-2 px-2 text-center text-[11px] font-semibold transition-all ${
+                      isSelected ? "selected font-bold shadow" : ""
+                    }`}
+                    key={shapeKey}
+                    onClick={() => onChangeMessageBubbleShape(shapeKey)}
+                    type="button"
+                  >
+                    {s.label.split(" ")[0]}
+                  </button>
+                );
+              }
+            )}
           </div>
         </div>
 

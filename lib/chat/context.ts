@@ -545,6 +545,10 @@ export async function buildChatContext(
     projectCustomInstructions,
     projectFilesPromptBlock,
     projectId,
+    reasoningLevel:
+      (body.reasoningLevel as string | null | undefined) ??
+      userPrefs.reasoningLevel ??
+      null,
     requestHints,
     selectedChatMode,
     selectedVisibilityType,
@@ -564,10 +568,6 @@ export async function buildChatContext(
     userCustomInstructions: userPrefs.customInstructions,
     userDefaultTemp: userPrefs.defaultTemperature,
     userDefaultTopP: userPrefs.defaultTopP,
-    reasoningLevel:
-      (body.reasoningLevel as string | null | undefined) ??
-      userPrefs.reasoningLevel ??
-      null,
     userEmail: maiUser.email,
     userId,
   };

@@ -16,8 +16,8 @@ import {
   AgentDeleteDialog,
   AgentEditorDialog,
   AgentIcon,
-  AgentTemplateGrid,
   AgentsStats,
+  AgentTemplateGrid,
   BotAvatar,
   BotGlyph,
   DEFAULT_AGENT_COLOR,
@@ -484,9 +484,9 @@ export default function AgentsClient() {
             templateModel={templateModel}
             templateModelIds={templateModelIds}
             templateQuery={templateQuery}
+            templates={templates}
             templateTag={templateTag}
             templateTags={templateTags}
-            templates={templates}
           />
         ) : (
           <>

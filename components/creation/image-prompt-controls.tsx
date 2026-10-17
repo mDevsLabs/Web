@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-import Link from "next/link";
 import {
   AlertCircleIcon,
   Loader2Icon,
@@ -9,6 +7,8 @@ import {
   SparklesIcon,
   Wand2Icon,
 } from "@mdevs/icons";
+import Link from "next/link";
+import type React from "react";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { APP_PRICING_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";

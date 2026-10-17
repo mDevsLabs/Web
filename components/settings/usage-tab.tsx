@@ -55,7 +55,10 @@ export function UsageTab() {
   const cloudUsage = settingsData?.cloudUsage ?? null;
 
   const aiPercent = aiUsage?.limit
-    ? Math.min(100, Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100))
+    ? Math.min(
+        100,
+        Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100)
+      )
     : 0;
 
   const resolvedImagesUsage = resolveImagesUsage(settingsData);
@@ -63,7 +66,9 @@ export function UsageTab() {
     ? Math.min(
         100,
         Math.round(
-          ((resolvedImagesUsage.usedToday || 0) / resolvedImagesUsage.dailyLimit) * 100
+          ((resolvedImagesUsage.usedToday || 0) /
+            resolvedImagesUsage.dailyLimit) *
+            100
         )
       )
     : 0;
@@ -73,7 +78,8 @@ export function UsageTab() {
     ? Math.min(
         100,
         Math.round(
-          ((resolvedSpeechUsage.tokensUsed || 0) / resolvedSpeechUsage.limit) * 100
+          ((resolvedSpeechUsage.tokensUsed || 0) / resolvedSpeechUsage.limit) *
+            100
         )
       )
     : 0;
@@ -99,7 +105,10 @@ export function UsageTab() {
           : "pro";
 
   return (
-    <div className="py-6 flex flex-col gap-6 max-w-4xl scroll-mt-6" id="usage-mAI">
+    <div
+      className="py-6 flex flex-col gap-6 max-w-4xl scroll-mt-6"
+      id="usage-mAI"
+    >
       {/* Forfait actuel */}
       <div
         className="surface-card flex flex-col md:flex-row md:items-center justify-between gap-4 scroll-mt-6"
@@ -143,7 +152,8 @@ export function UsageTab() {
               Statistiques détaillées
             </h3>
             <p className="text-xs text-muted-foreground">
-              Historique de consommation, conversations par mode et modèle le plus utilisé
+              Historique de consommation, conversations par mode et modèle le
+              plus utilisé
             </p>
           </div>
         </div>
@@ -209,7 +219,10 @@ export function UsageTab() {
       </div>
 
       {/* Consommation Images */}
-      <div className="surface-card flex flex-col gap-4 scroll-mt-6" id="usage-images">
+      <div
+        className="surface-card flex flex-col gap-4 scroll-mt-6"
+        id="usage-images"
+      >
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20 shrink-0">
@@ -258,7 +271,10 @@ export function UsageTab() {
       </div>
 
       {/* Consommation Synthèse Vocale */}
-      <div className="surface-card flex flex-col gap-4 scroll-mt-6" id="usage-speech">
+      <div
+        className="surface-card flex flex-col gap-4 scroll-mt-6"
+        id="usage-speech"
+      >
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20 shrink-0">
@@ -308,7 +324,10 @@ export function UsageTab() {
       </div>
 
       {/* Consommation Cloud Storage */}
-      <div className="surface-card flex flex-col gap-4 scroll-mt-6" id="usage-cloud">
+      <div
+        className="surface-card flex flex-col gap-4 scroll-mt-6"
+        id="usage-cloud"
+      >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
@@ -365,8 +384,8 @@ export function UsageTab() {
             Besoin de plus de tokens ou d'espace de stockage ?
           </p>
           <p>
-            Les mises à niveau de forfait (Plus, Pro, Max) et l'activation des codes
-            promotionnels s'effectuent directement sur le portail officiel{" "}
+            Les mises à niveau de forfait (Plus, Pro, Max) et l'activation des
+            codes promotionnels s'effectuent directement sur le portail officiel{" "}
             <Link
               className="text-primary font-medium underline inline-flex items-center gap-0.5"
               href={APP_PRICING_URL}

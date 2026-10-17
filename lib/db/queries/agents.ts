@@ -16,7 +16,9 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,
@@ -50,10 +52,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 // ==========================================
 // AGENT QUERIES (remplace Mode IA)

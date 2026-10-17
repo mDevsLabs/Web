@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CheckSquareIcon,
   CopyIcon,
@@ -10,6 +9,7 @@ import {
   SquareIcon,
   Trash2Icon,
 } from "@mdevs/icons";
+import React from "react";
 import {
   type CloudFile,
   formatBytes,

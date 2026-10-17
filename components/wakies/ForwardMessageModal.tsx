@@ -5,14 +5,14 @@ import type React from "react";
 import type { Conversation } from "@/lib/wakies/shared/types";
 
 export interface ForwardMessageModalProps {
-  transfert: string | null;
-  setTransfert: (val: string | null) => void;
-  transfertVers: string;
-  setTransfertVers: (val: string) => void;
-  transfertEnCours: boolean;
-  onTransferer: () => Promise<void>;
   conversations?: Conversation[];
+  onTransferer: () => Promise<void>;
+  setTransfert: (val: string | null) => void;
+  setTransfertVers: (val: string) => void;
   threadId: string;
+  transfert: string | null;
+  transfertEnCours: boolean;
+  transfertVers: string;
 }
 
 export const ForwardMessageModal: React.FC<ForwardMessageModalProps> = ({

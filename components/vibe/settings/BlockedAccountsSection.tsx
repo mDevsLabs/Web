@@ -13,7 +13,6 @@ import {
 import type React from "react";
 
 export interface BlockedAccountsSectionProps {
-  isLoadingAccounts: boolean;
   blockedAccounts: Array<{
     id: string;
     blocked_user_id: string;
@@ -21,6 +20,7 @@ export interface BlockedAccountsSectionProps {
     blocked_display_name?: string;
     blocked_avatar_url?: string;
   }>;
+  isLoadingAccounts: boolean;
   mutedAccounts: Array<{
     id: string;
     muted_user_id: string;
@@ -65,9 +65,7 @@ export const BlockedAccountsSection: React.FC<BlockedAccountsSectionProps> = ({
               Bloqués ({blockedAccounts.length}) — contact coupé
             </p>
             {blockedAccounts.length === 0 ? (
-              <p className="text-zinc-600 text-[11px]">
-                Aucun compte bloqué.
-              </p>
+              <p className="text-zinc-600 text-[11px]">Aucun compte bloqué.</p>
             ) : (
               <div className="divide-y divide-zinc-900 rounded-2xl border border-zinc-800 max-h-40 overflow-y-auto">
                 {blockedAccounts.map((b) => (
@@ -102,9 +100,7 @@ export const BlockedAccountsSection: React.FC<BlockedAccountsSectionProps> = ({
               Masqués ({mutedAccounts.length}) — silencieux
             </p>
             {mutedAccounts.length === 0 ? (
-              <p className="text-zinc-600 text-[11px]">
-                Aucun compte masqué.
-              </p>
+              <p className="text-zinc-600 text-[11px]">Aucun compte masqué.</p>
             ) : (
               <div className="divide-y divide-zinc-900 rounded-2xl border border-zinc-800 max-h-40 overflow-y-auto">
                 {mutedAccounts.map((m) => (
@@ -113,9 +109,7 @@ export const BlockedAccountsSection: React.FC<BlockedAccountsSectionProps> = ({
                       <span className="font-semibold text-white block truncate">
                         {m.muted_display_name || m.muted_username}
                       </span>
-                      <span className="text-zinc-500">
-                        @{m.muted_username}
-                      </span>
+                      <span className="text-zinc-500">@{m.muted_username}</span>
                     </div>
                     <button
                       className="px-3 py-1 rounded-full border border-zinc-700 text-zinc-300 font-semibold hover:bg-zinc-900 hover:text-white transition-colors shrink-0 text-xs"

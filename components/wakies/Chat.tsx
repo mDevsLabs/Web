@@ -67,12 +67,12 @@ import { useConversationDraft } from "@/components/wakies/DraftProvider";
 import { ForwardMessageModal } from "@/components/wakies/ForwardMessageModal";
 import { Mascot } from "@/components/wakies/Mascot";
 import { ModelPicker } from "@/components/wakies/ModelPicker";
-import { WakieChatComposer } from "@/components/wakies/WakieChatComposer";
 import {
   contextualMessage,
   type PageContext,
 } from "@/components/wakies/page-context";
 import { ReglagesDuFil } from "@/components/wakies/ReglagesDuFil";
+import { WakieChatComposer } from "@/components/wakies/WakieChatComposer";
 import { resolveWakieModelId } from "@/lib/wakies/model";
 import type { Page } from "@/lib/wakies/pages";
 import { storedMessages } from "@/lib/wakies/shared/messages";

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  CopyIcon,
-  PlusIcon,
-  SparklesIcon,
-} from "@mdevs/icons";
+import { CopyIcon, PlusIcon, SparklesIcon } from "@mdevs/icons";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { extractApiErrorMessage } from "@/lib/api/client-error";

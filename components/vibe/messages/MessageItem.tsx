@@ -49,39 +49,39 @@ import type { DirectMessage } from "@/lib/vibe/types/vibe";
 import { useNavigate } from "../router";
 
 export interface MessageItemProps {
-  message: DirectMessage;
-  currentUser: { id?: string | number; username?: string } | null;
-  isGroupConv: boolean;
-  firstUnreadId: string | null;
+  actionMenuFor: string | null;
+  animationsEnabled: boolean;
   convSearchOpen: boolean;
   convSearchQuery: string;
-  highlightedMessageId: string | null;
-  messageBubbleTheme: MessageBubbleTheme;
-  messageBubbleShape: MessageBubbleShape;
-  animationsEnabled: boolean;
   currentTimestamp: number;
-  actionMenuFor: string | null;
-  translatePickerFor: string | null;
-  translateLang: string;
-  translations: Record<string, string>;
-  translatingIds: Set<string>;
-  pinnedMessages: DirectMessage[];
+  currentUser: { id?: string | number; username?: string } | null;
+  firstUnreadId: string | null;
   formatTime: (dateStr: string) => string;
-  onSetRef: (id: string, el: HTMLDivElement | null) => void;
-  onToggleActionMenu: (id: string) => void;
+  highlightedMessageId: string | null;
+  isGroupConv: boolean;
+  message: DirectMessage;
+  messageBubbleShape: MessageBubbleShape;
+  messageBubbleTheme: MessageBubbleTheme;
   onCloseActionMenu: () => void;
-  onToggleReaction: (msg: DirectMessage, emoji: string) => void;
-  onEditMessage: (msg: DirectMessage) => void;
-  onOpenInfoModal: (msg: DirectMessage) => void;
-  onReplyTo: (msg: DirectMessage) => void;
-  onForward: (msg: DirectMessage) => void;
   onCopyMessage: (msg: DirectMessage) => void;
   onCopyMessageLink: (msg: DirectMessage) => void;
+  onDeleteMessage: (msg: DirectMessage) => void;
+  onEditMessage: (msg: DirectMessage) => void;
+  onForward: (msg: DirectMessage) => void;
+  onHideMessage: (msg: DirectMessage) => void;
+  onOpenInfoModal: (msg: DirectMessage) => void;
+  onReplyTo: (msg: DirectMessage) => void;
+  onSetRef: (id: string, el: HTMLDivElement | null) => void;
+  onToggleActionMenu: (id: string) => void;
+  onTogglePin: (msg: DirectMessage) => void;
+  onToggleReaction: (msg: DirectMessage, emoji: string) => void;
   onToggleTranslatePicker: (id: string) => void;
   onTranslateMessage: (msg: DirectMessage, langCode: string) => void;
-  onTogglePin: (msg: DirectMessage) => void;
-  onDeleteMessage: (msg: DirectMessage) => void;
-  onHideMessage: (msg: DirectMessage) => void;
+  pinnedMessages: DirectMessage[];
+  translateLang: string;
+  translatePickerFor: string | null;
+  translatingIds: Set<string>;
+  translations: Record<string, string>;
 }
 
 /** Surlignage des occurrences (découpage React, sans HTML brut). */
@@ -155,14 +155,10 @@ export const MessageItem: React.FC<MessageItemProps> = ({
   // Liens markdown [label](url) : rendus inline par RichContent, pas en média
   const mdLinkRe = /\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
   const hasMdLinks = !richMsg && mdLinkRe.test(m.content);
-  const contentForMedia = richMsg
-    ? plainSrc
-    : m.content.replace(mdLinkRe, " ");
+  const contentForMedia = richMsg ? plainSrc : m.content.replace(mdLinkRe, " ");
   // Extract possible media URLs inside message (hors liens markdown)
   const urls = contentForMedia.match(/https?:\/\/[^\s]+/g) || [];
-  const nonUrlText = contentForMedia
-    .replace(/https?:\/\/[^\s]+/g, "")
-    .trim();
+  const nonUrlText = contentForMedia.replace(/https?:\/\/[^\s]+/g, "").trim();
   // HTML sans les URLs média en texte (les <a href> restent intacts)
   const richSource =
     richMsg && urls.length > 0 ? stripUrlsFromHtml(m.content) : m.content;
@@ -352,9 +348,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({
                 >
                   <p className="text-[10px] font-bold flex items-center gap-1 opacity-90 truncate">
                     <Reply className="w-3 h-3 shrink-0" />
-                    <span>
-                      @{(m as any).reply_to_username || "message"}
-                    </span>
+                    <span>@{(m as any).reply_to_username || "message"}</span>
                   </p>
                   <p className="text-[10px] opacity-90 truncate max-w-[240px] mt-0.5">
                     {htmlToPlainText((m as any).reply_to_content)}
@@ -368,9 +362,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({
                   className="w-full mb-2 p-2 rounded-xl text-left bg-black/10 vibe-dark:bg-white/10 hover:bg-black/20 vibe-dark:hover:bg-white/20 transition-colors flex items-start gap-2"
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigate(
-                      `/post/${(m as DirectMessage).attached_post!.id}`
-                    );
+                    navigate(`/post/${(m as DirectMessage).attached_post!.id}`);
                   }}
                   title="Ouvrir la publication"
                   type="button"
@@ -406,11 +398,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({
                   <RichContent
                     className="leading-relaxed"
                     content={
-                      richMsg
-                        ? richSource
-                        : hasMdLinks
-                          ? m.content
-                          : nonUrlText
+                      richMsg ? richSource : hasMdLinks ? m.content : nonUrlText
                     }
                   />
                 ))}
@@ -498,10 +486,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({
         {/* Menu d'actions flottant au-dessus du message */}
         {actionMenuFor === String(m.id) && (
           <>
-            <div
-              className="fixed inset-0 z-30"
-              onClick={onCloseActionMenu}
-            />
+            <div className="fixed inset-0 z-30" onClick={onCloseActionMenu} />
             <div
               className={`absolute z-40 bottom-full ${
                 isMe ? "right-0" : "left-0"
@@ -710,9 +695,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({
             <span
               className="text-[9px] text-zinc-400 italic"
               title={
-                m.edited_at
-                  ? `Modifié à ${formatTime(m.edited_at)}`
-                  : "Modifié"
+                m.edited_at ? `Modifié à ${formatTime(m.edited_at)}` : "Modifié"
               }
             >
               (modifié)

@@ -395,12 +395,13 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           return (
             <span
               className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${
-                estBadge
-                  ? "vibe-story-badge shadow-xl"
-                  : "text-4xl drop-shadow"
+                estBadge ? "vibe-story-badge shadow-xl" : "text-4xl drop-shadow"
               }`}
               key={`${sticker.emoji}-${index}`}
-              style={{ left: `${sticker.x * 100}%`, top: `${sticker.y * 100}%` }}
+              style={{
+                left: `${sticker.x * 100}%`,
+                top: `${sticker.y * 100}%`,
+              }}
             >
               {sticker.emoji}
             </span>

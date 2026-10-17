@@ -28,118 +28,142 @@ export const SONDAGE_MAX_OPTIONS = 4;
 
 // ── Arrière-plans prédéfinis ─────────────────────────────────────────────────
 export interface BackgroundPreset {
+  className: string;
   id: string;
   name: string;
   preview: string;
-  className: string;
 }
 
 export const BACKGROUND_PRESETS: BackgroundPreset[] = [
   {
+    className: "bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800",
     id: "dark-vibe",
     name: "Sombre",
     preview: "linear-gradient(135deg, #09090b, #18181b, #27272a)",
-    className: "bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800",
   },
   {
+    className: "bg-gradient-to-br from-amber-500 via-rose-500 to-purple-700",
     id: "sunset",
     name: "Coucher de soleil",
     preview: "linear-gradient(135deg, #f59e0b, #f43f5e, #7e22ce)",
-    className: "bg-gradient-to-br from-amber-500 via-rose-500 to-purple-700",
   },
   {
+    className: "bg-gradient-to-br from-fuchsia-600 via-violet-600 to-cyan-500",
     id: "neon-cyber",
     name: "Cyber Néon",
     preview: "linear-gradient(135deg, #c026d3, #7c3aed, #06b6d4)",
-    className: "bg-gradient-to-br from-fuchsia-600 via-violet-600 to-cyan-500",
   },
   {
+    className: "bg-gradient-to-br from-emerald-500 via-teal-600 to-indigo-900",
     id: "aurora",
     name: "Aurore",
     preview: "linear-gradient(135deg, #10b981, #0d9488, #312e81)",
-    className: "bg-gradient-to-br from-emerald-500 via-teal-600 to-indigo-900",
   },
   {
+    className: "bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-950",
     id: "ocean-deep",
     name: "Océan",
     preview: "linear-gradient(135deg, #2563eb, #4338ca, #0f172a)",
-    className: "bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-950",
   },
   {
+    className: "bg-gradient-to-br from-pink-500 via-rose-600 to-rose-950",
     id: "cherry",
     name: "Cerise",
     preview: "linear-gradient(135deg, #ec4899, #e11d48, #4c0519)",
-    className: "bg-gradient-to-br from-pink-500 via-rose-600 to-rose-950",
   },
   {
+    className: "bg-gradient-to-br from-yellow-400 via-orange-500 to-red-700",
     id: "golden-hour",
     name: "Golden Hour",
     preview: "linear-gradient(135deg, #facc15, #f97316, #b91c1c)",
-    className: "bg-gradient-to-br from-yellow-400 via-orange-500 to-red-700",
   },
   {
+    className: "bg-gradient-to-br from-emerald-600 via-teal-800 to-zinc-950",
     id: "emerald-luxe",
     name: "Émeraude",
     preview: "linear-gradient(135deg, #059669, #0f766e, #09090b)",
-    className: "bg-gradient-to-br from-emerald-600 via-teal-800 to-zinc-950",
   },
   {
+    className: "bg-zinc-950",
     id: "solid-black",
     name: "Noir mat",
     preview: "#09090b",
-    className: "bg-zinc-950",
   },
   {
+    className: "bg-purple-600",
     id: "solid-purple",
     name: "Violet Vibe",
     preview: "#8b5cf6",
-    className: "bg-purple-600",
   },
   {
+    className: "bg-sky-600",
     id: "solid-blue",
     name: "Bleu roi",
     preview: "#0284c7",
-    className: "bg-sky-600",
   },
   {
+    className: "bg-pink-600",
     id: "solid-rose",
     name: "Rose Pop",
     preview: "#db2777",
-    className: "bg-pink-600",
   },
 ];
 
 // ── Filtres de retouche média ────────────────────────────────────────────────
 export interface MediaFilter {
+  filter: string;
   id: string;
   name: string;
-  filter: string;
 }
 
 export const MEDIA_FILTERS: MediaFilter[] = [
-  { id: "none", name: "Normal", filter: "none" },
-  { id: "vibrant", name: "Vibrant", filter: "contrast(1.15) saturate(1.4)" },
-  { id: "bw", name: "N&B", filter: "grayscale(1) contrast(1.2)" },
-  { id: "vintage", name: "Vintage", filter: "sepia(0.35) contrast(0.95) saturate(1.2)" },
-  { id: "dramatic", name: "Dramatique", filter: "contrast(1.3) brightness(0.95)" },
-  { id: "warm", name: "Chaud", filter: "sepia(0.2) saturate(1.25) brightness(1.05)" },
-  { id: "cold", name: "Froid", filter: "hue-rotate(170deg) saturate(0.9)" },
-  { id: "cyber", name: "Cyber", filter: "hue-rotate(280deg) saturate(1.5) contrast(1.1)" },
+  { filter: "none", id: "none", name: "Normal" },
+  { filter: "contrast(1.15) saturate(1.4)", id: "vibrant", name: "Vibrant" },
+  { filter: "grayscale(1) contrast(1.2)", id: "bw", name: "N&B" },
+  {
+    filter: "sepia(0.35) contrast(0.95) saturate(1.2)",
+    id: "vintage",
+    name: "Vintage",
+  },
+  {
+    filter: "contrast(1.3) brightness(0.95)",
+    id: "dramatic",
+    name: "Dramatique",
+  },
+  {
+    filter: "sepia(0.2) saturate(1.25) brightness(1.05)",
+    id: "warm",
+    name: "Chaud",
+  },
+  { filter: "hue-rotate(170deg) saturate(0.9)", id: "cold", name: "Froid" },
+  {
+    filter: "hue-rotate(280deg) saturate(1.5) contrast(1.1)",
+    id: "cyber",
+    name: "Cyber",
+  },
 ];
 
 // ── Polices et styles de texte ───────────────────────────────────────────────
 export interface TextFont {
+  className: string;
   id: string;
   name: string;
-  className: string;
 }
 
 export const TEXT_FONTS: TextFont[] = [
-  { id: "sans", name: "Moderne", className: "font-sans font-bold" },
-  { id: "serif", name: "Élégant", className: "font-serif italic font-bold" },
-  { id: "mono", name: "Machine", className: "font-mono font-medium tracking-tight" },
-  { id: "impact", name: "Impact", className: "font-black uppercase tracking-wider" },
-  { id: "cursive", name: "Fantaisie", className: "italic font-semibold" },
+  { className: "font-sans font-bold", id: "sans", name: "Moderne" },
+  { className: "font-serif italic font-bold", id: "serif", name: "Élégant" },
+  {
+    className: "font-mono font-medium tracking-tight",
+    id: "mono",
+    name: "Machine",
+  },
+  {
+    className: "font-black uppercase tracking-wider",
+    id: "impact",
+    name: "Impact",
+  },
+  { className: "italic font-semibold", id: "cursive", name: "Fantaisie" },
 ];
 
 export interface TextStyleOption {
@@ -167,26 +191,58 @@ export const TEXT_COLORS = [
 
 // ── Catégories de stickers ───────────────────────────────────────────────────
 export const STICKER_CATEGORIES = {
-  emotions: {
-    label: "Émotions",
-    stickers: ["❤️", "🔥", "😍", "😂", "🥳", "😎", "🤩", "🥺", "🤯", "💀", "😴", "👏"],
-  },
-  vibes: {
-    label: "Vibes & Fêtes",
-    stickers: ["🎉", "✨", "💯", "🌈", "🚀", "⚡", "🌟", "🍕", "☕", "🎵", "🎈", "🍹"],
-  },
   badges: {
     label: "Badges Vibe",
     // Badges graphiques courts (≤ 8 car. pour respect strict du schéma backend)
     stickers: ["VIBE", "NEW", "LIVE", "TOP", "MOOD", "LOVE", "CHILL", "HOT"],
   },
+  emotions: {
+    label: "Émotions",
+    stickers: [
+      "❤️",
+      "🔥",
+      "😍",
+      "😂",
+      "🥳",
+      "😎",
+      "🤩",
+      "🥺",
+      "🤯",
+      "💀",
+      "😴",
+      "👏",
+    ],
+  },
   infos: {
     label: "Infos & Heure",
     stickers: ["📍 ICI", "⭐ 10/10", "HEURE_LOCALE", "DATE_JOUR"],
   },
+  vibes: {
+    label: "Vibes & Fêtes",
+    stickers: [
+      "🎉",
+      "✨",
+      "💯",
+      "🌈",
+      "🚀",
+      "⚡",
+      "🌟",
+      "🍕",
+      "☕",
+      "🎵",
+      "🎈",
+      "🍹",
+    ],
+  },
 } as const;
 
-export type TabId = "media" | "colors" | "text" | "stickers" | "filters" | "poll";
+export type TabId =
+  | "media"
+  | "colors"
+  | "text"
+  | "stickers"
+  | "filters"
+  | "poll";
 
 type Choix = { fichier: File; objetUrl: string; type: "image" | "video" };
 
@@ -217,17 +273,26 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   // Texte & Typographie
   const [legende, setLegende] = useState("");
   const [textFont, setTextFont] = useState<string>("sans");
-  const [textStyle, setTextStyle] = useState<"clean" | "translucent" | "solid" | "neon">("clean");
+  const [textStyle, setTextStyle] = useState<
+    "clean" | "translucent" | "solid" | "neon"
+  >("clean");
   const [textColor, setTextColor] = useState<string>("#ffffff");
-  const [textAlign, setTextAlign] = useState<"left" | "center" | "right">("center");
-  const [textPosition, setTextPosition] = useState<"top" | "center" | "bottom">("bottom");
+  const [textAlign, setTextAlign] = useState<"left" | "center" | "right">(
+    "center"
+  );
+  const [textPosition, setTextPosition] = useState<"top" | "center" | "bottom">(
+    "bottom"
+  );
 
   // Stickers & Catégories
-  const [stickerCategory, setStickerCategory] = useState<keyof typeof STICKER_CATEGORIES>("emotions");
+  const [stickerCategory, setStickerCategory] =
+    useState<keyof typeof STICKER_CATEGORIES>("emotions");
   const [stickers, setStickers] = useState<StorySticker[]>([]);
 
   // Sondage & Visibilité
-  const [visibilite, setVisibilite] = useState<"followers" | "public" | "private">("followers");
+  const [visibilite, setVisibilite] = useState<
+    "followers" | "public" | "private"
+  >("followers");
   const [sondage, setSondage] = useState<{
     actif: boolean;
     options: string[];
@@ -328,13 +393,13 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   }, []);
 
   // ── Stickers ──────────────────────────────────────────────────────────────
-  const isBadge = useCallback((emoji: string) => {
-    return (
+  const isBadge = useCallback(
+    (emoji: string) =>
       /[a-zA-Z0-9]/.test(emoji) ||
       emoji.startsWith("📍") ||
-      emoji.startsWith("⭐")
-    );
-  }, []);
+      emoji.startsWith("⭐"),
+    []
+  );
 
   const ajouterSticker = useCallback((valeur: string) => {
     setStickers((liste) => {
@@ -349,7 +414,10 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
       } else if (valeur === "DATE_JOUR") {
         const d = new Date();
         const jour = d.getDate();
-        const mois = d.toLocaleDateString("fr-FR", { month: "short" }).toUpperCase().replace(".", "");
+        const mois = d
+          .toLocaleDateString("fr-FR", { month: "short" })
+          .toUpperCase()
+          .replace(".", "");
         finalVal = `${jour} ${mois}`.slice(0, 8);
       }
 
@@ -386,8 +454,14 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
       const index = glissementRef.current;
       const rect = canevasRef.current?.getBoundingClientRect();
       if (index === null || !rect) return;
-      const x = Math.min(0.95, Math.max(0.05, (e.clientX - rect.left) / rect.width));
-      const y = Math.min(0.95, Math.max(0.05, (e.clientY - rect.top) / rect.height));
+      const x = Math.min(
+        0.95,
+        Math.max(0.05, (e.clientX - rect.left) / rect.width)
+      );
+      const y = Math.min(
+        0.95,
+        Math.max(0.05, (e.clientY - rect.top) / rect.height)
+      );
       setStickers((liste) =>
         liste.map((sticker, i) =>
           i === index ? { ...sticker, x, y } : sticker
@@ -447,7 +521,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   const publier = useCallback(async () => {
     if (!peutPublier) return;
     if (sondage.actif && !sondagePret) {
-      setErreur("Sondage incomplet : une question et au moins deux options requises.");
+      setErreur(
+        "Sondage incomplet : une question et au moins deux options requises."
+      );
       return;
     }
     setPublication(true);
@@ -498,7 +574,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
   // Calcul des styles d'affichage
   const presetFondActif =
-    BACKGROUND_PRESETS.find((p) => p.id === backgroundId) || BACKGROUND_PRESETS[0];
+    BACKGROUND_PRESETS.find((p) => p.id === backgroundId) ||
+    BACKGROUND_PRESETS[0];
   const filtreActif =
     MEDIA_FILTERS.find((f) => f.id === activeFilterId) || MEDIA_FILTERS[0];
   const policeTexte =
@@ -520,14 +597,16 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     let textColorStyle: React.CSSProperties = { color: textColor };
 
     if (textStyle === "translucent") {
-      bgBoxClass = "bg-black/70 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-lg";
+      bgBoxClass =
+        "bg-black/70 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-lg";
     } else if (textStyle === "solid") {
       bgBoxClass = "bg-white px-4 py-2.5 rounded-2xl shadow-xl";
       if (textColor === "#ffffff") {
         textColorStyle = { color: "#09090b" };
       }
     } else if (textStyle === "neon") {
-      bgBoxClass = "border border-white/30 backdrop-blur-sm px-3.5 py-2 rounded-2xl";
+      bgBoxClass =
+        "border border-white/30 backdrop-blur-sm px-3.5 py-2 rounded-2xl";
       textColorStyle = {
         color: textColor,
         textShadow: `0 0 10px ${textColor}, 0 0 20px ${textColor}`,
@@ -540,10 +619,10 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     }
 
     return {
-      fontClass: policeTexte.className,
       alignClass,
-      posClass,
       bgBoxClass,
+      fontClass: policeTexte.className,
+      posClass,
       textColorStyle,
     };
   };
@@ -733,7 +812,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 >
                   Miroir
                 </button>
-                {activeFilterId !== "none" ? (
+                {activeFilterId === "none" ? null : (
                   <button
                     className="px-2.5 py-1 rounded-full text-[11px] border border-white/20 text-white/70 hover:border-white/40 transition"
                     onClick={() => setActiveFilterId("none")}
@@ -741,7 +820,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                   >
                     Filtre : {filtreActif.name} ✕
                   </button>
-                ) : null}
+                )}
               </div>
             ) : (
               <p className="mt-2 text-[11px] text-white/40 text-center">
@@ -793,7 +872,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         Médias de la story
                       </h3>
                       <p className="text-[11px] text-white/50">
-                        Photos ou vidéos jusqu'à {formatMediaLimit(STORY_MEDIA_MAX_BYTES)}
+                        Photos ou vidéos jusqu'à{" "}
+                        {formatMediaLimit(STORY_MEDIA_MAX_BYTES)}
                       </p>
                     </div>
                     <span className="text-[11px] text-white/40">
@@ -1085,7 +1165,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         Ajouter des stickers
                       </h3>
                       <p className="text-[11px] text-white/50">
-                        Touchez pour ajouter, glissez sur l'aperçu pour positionner
+                        Touchez pour ajouter, glissez sur l'aperçu pour
+                        positionner
                       </p>
                     </div>
                     <span className="text-[11px] text-white/40">
@@ -1095,7 +1176,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
                   {/* Sous-onglets de catégories */}
                   <div className="flex gap-1 rounded-xl bg-white/5 p-1 border border-white/10">
-                    {(Object.keys(STICKER_CATEGORIES) as Array<keyof typeof STICKER_CATEGORIES>).map((cat) => (
+                    {(
+                      Object.keys(STICKER_CATEGORIES) as Array<
+                        keyof typeof STICKER_CATEGORIES
+                      >
+                    ).map((cat) => (
                       <button
                         className={`flex-1 py-1 rounded-lg text-[11px] font-medium transition ${
                           stickerCategory === cat
@@ -1203,7 +1288,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           </div>
                           <span
                             className={`text-[11px] ${
-                              isSelected ? "text-white font-bold" : "text-white/70"
+                              isSelected
+                                ? "text-white font-bold"
+                                : "text-white/70"
                             }`}
                           >
                             {f.name}
@@ -1304,7 +1391,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
             <div className="p-4 sm:p-5 border-t border-white/10 bg-zinc-950 shrink-0 space-y-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[11px] text-white/50">Visibilité :</span>
+                  <span className="text-[11px] text-white/50">
+                    Visibilité :
+                  </span>
                   {(
                     [
                       ["followers", "Abonnés"],

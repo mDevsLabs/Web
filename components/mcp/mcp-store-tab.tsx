@@ -1,5 +1,5 @@
-import React from "react";
 import { Loader2Icon, PlusIcon, StoreIcon, ZapIcon } from "@mdevs/icons";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { McpServer } from "@/lib/db/schema";
@@ -18,11 +18,17 @@ export function McpStoreTab({
   templates,
   setActiveTab,
 }: {
-  storeConnectors: Array<{ connector: StoreConnectorItem; tpl: McpTemplateRow }>;
+  storeConnectors: Array<{
+    connector: StoreConnectorItem;
+    tpl: McpTemplateRow;
+  }>;
   searchQuery: string;
   servers: McpServer[];
   installingConnector: string | null;
-  handleStoreConnector: (connector: StoreConnectorItem, installed?: McpServer) => void;
+  handleStoreConnector: (
+    connector: StoreConnectorItem,
+    installed?: McpServer
+  ) => void;
   templates: McpTemplateRow[];
   setActiveTab: (tab: any) => void;
 }) {
@@ -36,7 +42,8 @@ export function McpStoreTab({
           <div>
             <h2 className="text-base font-bold">Store de connecteurs</h2>
             <p className="text-xs text-muted-foreground">
-              Activez vos outils favoris en un clic — configuration automatique depuis les templates MCP.
+              Activez vos outils favoris en un clic — configuration automatique
+              depuis les templates MCP.
             </p>
           </div>
         </div>
@@ -64,7 +71,9 @@ export function McpStoreTab({
             <div
               className={cn(
                 "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md",
-                installed?.isEnabled ? "border-emerald-500/40" : "border-border/60"
+                installed?.isEnabled
+                  ? "border-emerald-500/40"
+                  : "border-border/60"
               )}
               key={connector.templateId}
             >
@@ -93,22 +102,32 @@ export function McpStoreTab({
                         <span
                           className={cn(
                             "size-1.5 rounded-full",
-                            installed.isEnabled ? "bg-emerald-500" : "bg-muted-foreground/50"
+                            installed.isEnabled
+                              ? "bg-emerald-500"
+                              : "bg-muted-foreground/50"
                           )}
                         />
                         {installed.isEnabled ? "Actif" : "Inactif"}
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-muted-foreground line-clamp-2">{tpl.description}</p>
+                  <p className="text-[11px] text-muted-foreground line-clamp-2">
+                    {tpl.description}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                <Badge className="text-[10px] uppercase font-semibold px-2 py-0.5" variant="outline">
+                <Badge
+                  className="text-[10px] uppercase font-semibold px-2 py-0.5"
+                  variant="outline"
+                >
                   {tpl.transport}
                 </Badge>
                 {tpl.authType !== "none" && (
-                  <Badge className="text-[10px] px-2 py-0.5" variant="secondary">
+                  <Badge
+                    className="text-[10px] px-2 py-0.5"
+                    variant="secondary"
+                  >
                     {tpl.authType}
                   </Badge>
                 )}
@@ -120,7 +139,8 @@ export function McpStoreTab({
                 <Button
                   className={cn(
                     "w-full gap-2 text-xs font-medium",
-                    installed?.isEnabled && "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                    installed?.isEnabled &&
+                      "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
                   )}
                   disabled={Boolean(installingConnector)}
                   onClick={() => handleStoreConnector(connector, installed)}
@@ -153,8 +173,8 @@ export function McpStoreTab({
         })}
       </div>
       <p className="text-[11px] text-muted-foreground text-center">
-        Un connecteur manquant ? Retrouvez les {templates.length} modèles du catalogue (dont les
-        intégrations OAuth documentées) dans l'onglet{" "}
+        Un connecteur manquant ? Retrouvez les {templates.length} modèles du
+        catalogue (dont les intégrations OAuth documentées) dans l'onglet{" "}
         <button
           className="font-medium text-primary hover:underline"
           onClick={() => setActiveTab("library")}

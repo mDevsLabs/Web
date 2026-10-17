@@ -15,7 +15,7 @@ import {
   UsersIcon as Users,
   XIcon as X,
 } from "@mdevs/icons";
-import React from "react";
+import type React from "react";
 import { getBookIcon } from "@/components/vibe/common/bookIcons";
 import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
 import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
@@ -23,10 +23,23 @@ import type { DMConversation } from "@/lib/vibe/types/vibe";
 import { dmDraftKey } from "./messageTypes";
 
 export interface ConversationListProps {
-  conversations: DMConversation[];
   activePartnerId: string | number | null;
-  isLoading: boolean;
+  conversations: DMConversation[];
   dmDraftKeys: string[];
+  formatTime: (dateStr: string) => string;
+  isLoading: boolean;
+  isSearchingUsers: boolean;
+  onClearSearch: () => void;
+  onOpenConvMenu: (conv: DMConversation) => void;
+  onOpenGroupModal: () => void;
+  onSearchUsers: (query: string) => void;
+  onSelectConversation: (conv: DMConversation) => void;
+  onStartConversationWith: (user: {
+    id: string | number;
+    username: string;
+    display_name?: string;
+    avatar_url?: string;
+  }) => void;
   searchQuery: string;
   searchResults: Array<{
     id: string | number;
@@ -36,19 +49,6 @@ export interface ConversationListProps {
     is_verified?: boolean;
     tier?: string;
   }>;
-  isSearchingUsers: boolean;
-  onSearchUsers: (query: string) => void;
-  onClearSearch: () => void;
-  onStartConversationWith: (user: {
-    id: string | number;
-    username: string;
-    display_name?: string;
-    avatar_url?: string;
-  }) => void;
-  onSelectConversation: (conv: DMConversation) => void;
-  onOpenGroupModal: () => void;
-  onOpenConvMenu: (conv: DMConversation) => void;
-  formatTime: (dateStr: string) => string;
 }
 
 export const ConversationList: React.FC<ConversationListProps> = ({
@@ -187,16 +187,13 @@ export const ConversationList: React.FC<ConversationListProps> = ({
             <Mail className="w-8 h-8 mx-auto text-zinc-400 vibe-dark:text-zinc-700" />
             <p className="text-xs">Aucun message direct pour le moment.</p>
             <p className="text-[11px] text-zinc-400 vibe-dark:text-zinc-600">
-              Recherchez un utilisateur ci-dessus pour engager la
-              conversation.
+              Recherchez un utilisateur ci-dessus pour engager la conversation.
             </p>
           </div>
         ) : (
           conversations.map((conv) => {
             const isSelected = activePartnerId === conv.partner_id;
-            const hasDraft = dmDraftKeys.includes(
-              dmDraftKey(conv.partner_id)
-            );
+            const hasDraft = dmDraftKeys.includes(dmDraftKey(conv.partner_id));
             const BookIcon = conv.is_book
               ? getBookIcon(conv.book_icon || "BookHeart")
               : null;

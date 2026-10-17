@@ -1,5 +1,5 @@
-import React from "react";
 import { BookOpenIcon, TerminalIcon } from "@mdevs/icons";
+import React from "react";
 
 export function McpTutorialTab() {
   return (
@@ -14,14 +14,16 @@ export function McpTutorialTab() {
               Qu'est-ce que le Model Context Protocol (MCP) ?
             </h2>
             <p className="text-xs text-muted-foreground">
-              Le standard ouvert pour connecter l'IA à vos systèmes d'information
+              Le standard ouvert pour connecter l'IA à vos systèmes
+              d'information
             </p>
           </div>
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          Le <strong>Model Context Protocol (MCP)</strong> est un protocole standardisé via JSON-RPC 2.0.
-          Ajoutez un serveur, cochez les outils autorisés, liez-le à un Skill, et contrôlez chaque appel via
-          les permissions per-tool.
+          Le <strong>Model Context Protocol (MCP)</strong> est un protocole
+          standardisé via JSON-RPC 2.0. Ajoutez un serveur, cochez les outils
+          autorisés, liez-le à un Skill, et contrôlez chaque appel via les
+          permissions per-tool.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -66,8 +68,12 @@ export function McpTutorialTab() {
         </h3>
         <div className="space-y-4 text-xs">
           <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
-            <span className="text-muted-foreground block mb-1"># Serveur SSE</span>
-            <span className="text-primary block font-semibold">URL: https://mcp.company.com/sse</span>
+            <span className="text-muted-foreground block mb-1">
+              # Serveur SSE
+            </span>
+            <span className="text-primary block font-semibold">
+              URL: https://mcp.company.com/sse
+            </span>
             <span className="text-muted-foreground block">
               Auth: bearer • timeout 15000ms • rate 60/min
             </span>
@@ -79,7 +85,9 @@ export function McpTutorialTab() {
             <span className="text-primary block font-semibold">
               Commande: npx -y @modelcontextprotocol/server-postgres
             </span>
-            <span className="text-muted-foreground block">Env: PGPASSWORD=••••</span>
+            <span className="text-muted-foreground block">
+              Env: PGPASSWORD=••••
+            </span>
           </div>
         </div>
       </div>

@@ -83,7 +83,8 @@ export function normalizeOpenRouterModels(data: unknown): JsonObject[] {
         ),
         name: displayName,
         pricing: object(m.pricing),
-        reasoning: m.reasoning && typeof m.reasoning === "object" ? m.reasoning : null,
+        reasoning:
+          m.reasoning && typeof m.reasoning === "object" ? m.reasoning : null,
         supported_parameters: [
           ...new Set<string>(m.supported_parameters ?? []),
         ],

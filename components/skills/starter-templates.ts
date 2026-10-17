@@ -53,10 +53,10 @@ export const STARTER_TEMPLATES = [
 ];
 
 export interface SkillParameter {
-  name: string;
+  defaultValue?: string;
   description: string;
+  enumValues?: string[];
+  name: string;
   required: boolean;
   type?: string;
-  defaultValue?: string;
-  enumValues?: string[];
 }

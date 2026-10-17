@@ -48,7 +48,9 @@ export class ApiSettingsService extends ApiServiceCore {
     }
   }
 
-  public static async deleteNotification(id: string): Promise<{ success: boolean }> {
+  public static async deleteNotification(
+    id: string
+  ): Promise<{ success: boolean }> {
     const payload = JSON.stringify({ id });
     try {
       return await ApiServiceCore.request(

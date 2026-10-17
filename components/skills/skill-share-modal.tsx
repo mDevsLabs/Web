@@ -30,7 +30,8 @@ export function SkillShareModal({
         <DialogHeader>
           <DialogTitle>Partager la compétence</DialogTitle>
           <DialogDescription>
-            Permet à d'autres utilisateurs d'importer ou de consulter votre skill.
+            Permet à d'autres utilisateurs d'importer ou de consulter votre
+            skill.
           </DialogDescription>
         </DialogHeader>
 

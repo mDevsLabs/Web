@@ -18,13 +18,13 @@
 import { ApiPostsService } from "./api/posts";
 
 export * from "./api/base";
-export * from "./api/posts";
-export * from "./api/messages";
-export * from "./api/stories";
-export * from "./api/users";
 export * from "./api/books";
 export * from "./api/mai";
+export * from "./api/messages";
+export * from "./api/posts";
 export * from "./api/settings";
+export * from "./api/stories";
+export * from "./api/users";
 
 /**
  * Client API statique principal Vibe.

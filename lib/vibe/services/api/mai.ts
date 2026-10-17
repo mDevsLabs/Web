@@ -70,9 +70,10 @@ export class ApiMaiService extends ApiSettingsService {
     }>;
   }> {
     try {
-      const res = await ApiServiceCore.request<{ data?: any[]; models?: any[] }>(
-        "/v1/models"
-      );
+      const res = await ApiServiceCore.request<{
+        data?: any[];
+        models?: any[];
+      }>("/v1/models");
       const list = res.data || res.models || [];
       if (Array.isArray(list) && list.length > 0) {
         const formatted = list.map((m: any) => {
@@ -125,8 +126,7 @@ export class ApiMaiService extends ApiSettingsService {
           provider: "Poolside",
         },
         {
-          description:
-            "Modèle IA d'élite mAI — Raisonnement profond & Vision",
+          description: "Modèle IA d'élite mAI — Raisonnement profond & Vision",
           id: "mai-1.5-apex",
           name: "mAI 1.5 Apex",
           provider: "mDevsLabs",

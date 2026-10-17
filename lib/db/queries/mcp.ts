@@ -16,7 +16,13 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import type { ToolCategory } from "@/lib/agent/types";
+import { ChatbotError } from "@/lib/errors";
+import {
+  redactMcpError,
+  redactMcpText,
+  redactMcpValue,
+} from "@/lib/mcp/redaction";
 import {
   agent,
   agentTemplate,
@@ -50,14 +56,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import type { ToolCategory } from "@/lib/agent/types";
-import {
-  redactMcpError,
-  redactMcpText,
-  redactMcpValue,
-} from "@/lib/mcp/redaction";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 
 // ==========================================
 // MCP SERVER & LOG QUERIES

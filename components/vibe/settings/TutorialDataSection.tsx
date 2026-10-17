@@ -20,9 +20,9 @@ import {
 import { useNavigate } from "../router";
 
 export interface TutorialDataSectionProps {
-  onRestartOnboarding: () => void;
   isExporting: boolean;
   onExportData: () => void;
+  onRestartOnboarding: () => void;
 }
 
 export const TutorialDataSection: React.FC<TutorialDataSectionProps> = ({
@@ -93,9 +93,7 @@ export const TutorialDataSection: React.FC<TutorialDataSectionProps> = ({
         >
           <Download className="w-4 h-4" />
           <span>
-            {isExporting
-              ? "Exportation..."
-              : "Télécharger mes données (JSON)"}
+            {isExporting ? "Exportation..." : "Télécharger mes données (JSON)"}
           </span>
         </button>
       </div>

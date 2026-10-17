@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CheckSquareIcon,
   DownloadIcon,
@@ -6,6 +5,7 @@ import {
   Trash2Icon,
   XIcon,
 } from "@mdevs/icons";
+import React from "react";
 
 export function BulkActionsBar({
   selectedCount,

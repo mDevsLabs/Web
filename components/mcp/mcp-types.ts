@@ -1,10 +1,10 @@
-import type React from "react";
 import {
   CreditCardIcon,
   DatabaseIcon,
   FileTextIcon,
   SearchIcon,
 } from "@mdevs/icons";
+import type React from "react";
 
 // Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
 // (lib/mcp-templates), source de vérité unique.
@@ -73,7 +73,11 @@ export const MCP_AUTH_TYPES = [
   "oauth2",
   "custom_headers",
 ] as const;
-export const MCP_APPROVALS = ["always_allow", "ask_permission", "write_only"] as const;
+export const MCP_APPROVALS = [
+  "always_allow",
+  "ask_permission",
+  "write_only",
+] as const;
 
 export type McpTransport = (typeof MCP_TRANSPORTS)[number];
 export type McpAuthType = (typeof MCP_AUTH_TYPES)[number];
@@ -90,4 +94,3 @@ export function pickOption<T extends readonly string[]>(
     ? (value as T[number])
     : fallback;
 }
-

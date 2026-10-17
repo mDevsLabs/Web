@@ -16,7 +16,8 @@ import {
   type SQL,
   sql,
 } from "drizzle-orm";
-import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
+import type { ArtifactKind } from "@/components/chat/artifact";
+import { ChatbotError } from "@/lib/errors";
 import {
   agent,
   agentTemplate,
@@ -50,9 +51,7 @@ import {
   userMemory,
   vote,
 } from "../schema";
-import { ChatbotError } from "@/lib/errors";
-
-import type { ArtifactKind } from "@/components/chat/artifact";
+import { _rawClient, dbReady, getDb, getRawClient } from "./connection";
 import { getProjectById } from "./projects";
 
 export async function saveDocument({

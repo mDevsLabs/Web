@@ -1,13 +1,8 @@
 "use client";
 
-import type React from "react";
+import { ImageIcon, LayersIcon, SparklesIcon, Wand2Icon } from "@mdevs/icons";
 import Link from "next/link";
-import {
-  ImageIcon,
-  LayersIcon,
-  SparklesIcon,
-  Wand2Icon,
-} from "@mdevs/icons";
+import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -15,17 +10,14 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { APP_PRICING_URL } from "@/lib/constants";
-import {
-  cn,
-  formatImageSrc,
-} from "@/lib/utils";
-import type { GeneratedImage, ImageModel, ImageWorkspaceProps } from "./types";
-import { ASPECT_RATIOS } from "./types";
-import { ImagePromptControls } from "./image-prompt-controls";
-import { ImageSourceUploader } from "./image-source-uploader";
-import { ImageResultViewer } from "./image-result-viewer";
+import { cn, formatImageSrc } from "@/lib/utils";
 import { ImageGalleryGrid } from "./image-gallery-grid";
 import { ImagePreviewModal, ImageRenameModal } from "./image-modals";
+import { ImagePromptControls } from "./image-prompt-controls";
+import { ImageResultViewer } from "./image-result-viewer";
+import { ImageSourceUploader } from "./image-source-uploader";
+import type { GeneratedImage, ImageModel, ImageWorkspaceProps } from "./types";
+import { ASPECT_RATIOS } from "./types";
 
 const fetcher = (url: string) =>
   fetch(url).then((res) => {
@@ -497,8 +489,8 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
       />
 
       <ImageRenameModal
-        editTitleInput={editTitleInput}
         editingImage={editingImage}
+        editTitleInput={editTitleInput}
         isSavingRename={isSavingRename}
         onClose={() => setEditingImage(null)}
         onSave={handleSaveRename}

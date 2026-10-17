@@ -8,6 +8,10 @@ import {
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
+import {
+  normalizeReasoningLevel,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import type { MemoryContext } from "@/lib/chat/memory";
@@ -28,7 +32,6 @@ import { toolKindFor } from "@/lib/prompts/capabilities";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
-import { resolveReasoningProviderOptions, normalizeReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 export type ChatStreamParams = {
   ctx: ChatRequestContext;

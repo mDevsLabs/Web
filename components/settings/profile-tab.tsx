@@ -25,8 +25,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useSettings } from "@/hooks/use-settings";
 import { requestOnboardingReplay } from "@/hooks/use-onboarding";
+import { useSettings } from "@/hooks/use-settings";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { usePlatform } from "@/lib/platform";
 
@@ -290,7 +290,9 @@ export function ProfileTab() {
 
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <h3 className="font-semibold text-foreground text-base">{username}</h3>
+            <h3 className="font-semibold text-foreground text-base">
+              {username}
+            </h3>
             <span className="text-xs px-2 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
               {profile?.tier || "Free"}
             </span>
@@ -400,7 +402,8 @@ export function ProfileTab() {
                 className="text-xs font-medium text-muted-foreground"
                 htmlFor="settings-current-password"
               >
-                Mot de passe actuel <strong className="text-destructive">*</strong>
+                Mot de passe actuel{" "}
+                <strong className="text-destructive">*</strong>
               </Label>
               <div className="relative">
                 <Input
@@ -488,8 +491,8 @@ export function ProfileTab() {
               type="checkbox"
             />
             <span>
-              M'alerter par e-mail lorsque j'atteins 90% de mes limites de tokens ou
-              stockage
+              M'alerter par e-mail lorsque j'atteins 90% de mes limites de
+              tokens ou stockage
             </span>
           </label>
         </div>
@@ -520,10 +523,13 @@ export function ProfileTab() {
               <ShieldCheckIcon className="size-4" />
               Changement d'adresse e-mail
             </div>
-            <AlertDialogTitle>Confirmez votre nouvelle adresse</AlertDialogTitle>
+            <AlertDialogTitle>
+              Confirmez votre nouvelle adresse
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              Un code de confirmation a été envoyé à <strong>{pendingEmail}</strong>.
-              Veuillez le saisir pour finaliser la mise à jour de votre profil.
+              Un code de confirmation a été envoyé à{" "}
+              <strong>{pendingEmail}</strong>. Veuillez le saisir pour finaliser
+              la mise à jour de votre profil.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
@@ -540,13 +546,17 @@ export function ProfileTab() {
           </div>
 
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isVerifyingEmail}>Annuler</AlertDialogCancel>
+            <AlertDialogCancel disabled={isVerifyingEmail}>
+              Annuler
+            </AlertDialogCancel>
             <AlertDialogAction
               className="bg-primary text-primary-foreground"
               disabled={isVerifyingEmail}
               onClick={handleVerifyNewEmail}
             >
-              {isVerifyingEmail ? "Vérification..." : "Confirmer le nouvel e-mail"}
+              {isVerifyingEmail
+                ? "Vérification..."
+                : "Confirmer le nouvel e-mail"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

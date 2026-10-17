@@ -5,7 +5,11 @@
  * ============================================================================
  */
 
-import type { VibeBook, VibeBookMember, VibeBookPost } from "@/lib/vibe/types/vibe";
+import type {
+  VibeBook,
+  VibeBookMember,
+  VibeBookPost,
+} from "@/lib/vibe/types/vibe";
 import { ApiServiceCore } from "./base";
 import { ApiMaiService } from "./mai";
 
@@ -57,7 +61,9 @@ export class ApiBooksService extends ApiMaiService {
     });
   }
 
-  public static async deleteBook(bookId: string): Promise<{ success: boolean }> {
+  public static async deleteBook(
+    bookId: string
+  ): Promise<{ success: boolean }> {
     ApiServiceCore.invalidateCache("/dms/");
     return ApiServiceCore.request(`/v1/books/${bookId}`, { method: "DELETE" });
   }

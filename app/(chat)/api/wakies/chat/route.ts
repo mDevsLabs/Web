@@ -9,14 +9,14 @@ import {
 } from "ai";
 import { z } from "zod";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
-import {
-  REASONING_LEVELS,
-  resolveReasoningProviderOptions,
-  normalizeReasoningLevel,
-} from "@/lib/ai/registry/reasoning";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import {
+  normalizeReasoningLevel,
+  REASONING_LEVELS,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import {
   filterModelsForTier,
   isModelAllowedForTier,
@@ -32,7 +32,11 @@ import {
 import { loadMcpContext } from "@/lib/chat/mcp";
 import { createChatTools } from "@/lib/chat/tools";
 import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
-import { getUserMcpPrefs, recordTokenUsage, getUserModelPreferences } from "@/lib/db/queries";
+import {
+  getUserMcpPrefs,
+  getUserModelPreferences,
+  recordTokenUsage,
+} from "@/lib/db/queries";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
@@ -162,6 +166,7 @@ const schema = z
   .object({
     conversationId: z.string().uuid(),
     messages: z.array(z.unknown()).min(1).max(200),
+    reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),
     // Message auquel CE message répond. La cible est revalidée en base contre
     // la conversation ET le compte : un identifiant inventé n'entre pas dans
     // le prompt, et une cible d'un autre fil est refusée, pas « citée ».
@@ -170,7 +175,6 @@ const schema = z
     // Participant qui répond (lot messagerie) : absent = organisateur du fil.
     // Le client enchaîne un tour par Wakie mentionné dans l'ordre du texte.
     wakieId: z.string().uuid().optional(),
-    reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),
   })
   .passthrough();
 
@@ -779,13 +783,15 @@ export async function POST(request: Request) {
             type: "data-capability-issues",
           });
 
-        const userPrefs = await getUserModelPreferences(auth.userId).catch(() => null);
+        const userPrefs = await getUserModelPreferences(auth.userId).catch(
+          () => null
+        );
         const chosenEffort =
-          parsed.data.reasoningLevel ??
-          userPrefs?.reasoningLevel ??
-          null;
+          parsed.data.reasoningLevel ?? userPrefs?.reasoningLevel ?? null;
         const providerOptions = chosenEffort
-          ? resolveReasoningProviderOptions(normalizeReasoningLevel(chosenEffort))
+          ? resolveReasoningProviderOptions(
+              normalizeReasoningLevel(chosenEffort)
+            )
           : undefined;
 
         const result = streamText({
