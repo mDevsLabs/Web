@@ -43,6 +43,7 @@ export type ChatRequestBodyShape = {
   pendingPrompt?: { commandId?: string; text: string } | null;
   tags?: string[];
   customInstructions?: string;
+  reasoningLevel?: string | null;
   temperatureOverride?: number | null;
   enabledTools?: string[];
   isGhostMode: boolean;
@@ -103,6 +104,7 @@ export type ChatRequestContext = {
   userCustomEnabled: boolean;
   userDefaultTemp: number | null;
   userDefaultTopP: number | null;
+  reasoningLevel: string | null;
 
   // Overrides au niveau chat
   chatCustomInstructions: string | null;
@@ -562,6 +564,10 @@ export async function buildChatContext(
     userCustomInstructions: userPrefs.customInstructions,
     userDefaultTemp: userPrefs.defaultTemperature,
     userDefaultTopP: userPrefs.defaultTopP,
+    reasoningLevel:
+      (body.reasoningLevel as string | null | undefined) ??
+      userPrefs.reasoningLevel ??
+      null,
     userEmail: maiUser.email,
     userId,
   };

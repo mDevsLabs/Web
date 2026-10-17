@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { GitCommitIcon as GitCommit, StarIcon as Star, ZapIcon as Zap, ArrowLeftIcon as ArrowLeft, ExternalLinkIcon as ExternalLink } from "@mdevs/icons";
 import type { IconProps } from "@mdevs/icons";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { ChangelogsByProject } from "@/lib/changelog";
 import Link from "next/link";
 
@@ -115,7 +116,12 @@ export default function ChangelogView({
             <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-3xl p-6 md:p-8 flex flex-col relative overflow-hidden">
               <div className="prose max-w-none text-slate-600 prose-headings:text-slate-800 prose-a:text-purple-600 prose-strong:text-slate-800 prose-code:text-purple-600 prose-code:bg-purple-50 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-purple-500 prose-blockquote:bg-slate-50 prose-blockquote:py-1 prose-blockquote:px-3 prose-blockquote:not-italic prose-blockquote:text-slate-600">
                 {changelogs?.mAIRaw ? (
-                  <Markdown components={markdownComponents(false)}>{cleanMarkdown(changelogs.mAIRaw)}</Markdown>
+                  <Markdown
+                    components={markdownComponents(false)}
+                    remarkPlugins={[remarkGfm]}
+                  >
+                    {cleanMarkdown(changelogs.mAIRaw)}
+                  </Markdown>
                 ) : (
                   <div className="space-y-10 md:space-y-8 flex-1">
                     {changelogs?.mAI?.map((change, i) => {
@@ -150,7 +156,7 @@ export default function ChangelogView({
                           </h3>
 
                           <div className="prose prose-sm max-w-none text-slate-600 prose-headings:text-slate-800 prose-a:text-purple-600 prose-strong:text-slate-800 prose-code:text-purple-600 prose-code:bg-purple-50 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-purple-500 prose-blockquote:bg-slate-50 prose-blockquote:py-1 prose-blockquote:px-3 prose-blockquote:not-italic prose-blockquote:text-slate-600">
-                            <Markdown>{change.description}</Markdown>
+                            <Markdown remarkPlugins={[remarkGfm]}>{change.description}</Markdown>
                           </div>
                         </motion.div>
                       );
@@ -182,7 +188,12 @@ export default function ChangelogView({
             <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-3xl p-6 md:p-8 flex flex-col relative overflow-hidden">
               <div className="prose max-w-none text-slate-600 prose-headings:text-slate-800 prose-a:text-blue-600 prose-strong:text-slate-800 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-blue-500 prose-blockquote:bg-slate-50 prose-blockquote:py-1 prose-blockquote:px-3 prose-blockquote:not-italic prose-blockquote:text-slate-600">
                 {changelogs?.mSearchRaw ? (
-                  <Markdown components={markdownComponents(true)}>{cleanMarkdown(changelogs.mSearchRaw)}</Markdown>
+                  <Markdown
+                    components={markdownComponents(true)}
+                    remarkPlugins={[remarkGfm]}
+                  >
+                    {cleanMarkdown(changelogs.mSearchRaw)}
+                  </Markdown>
                 ) : (
                   <div className="space-y-10 md:space-y-8 flex-1">
                     {changelogs?.mSearch?.map((change, i) => {
@@ -217,7 +228,7 @@ export default function ChangelogView({
                           </h3>
 
                           <div className="prose prose-sm max-w-none text-slate-600 prose-headings:text-slate-800 prose-a:text-blue-600 prose-strong:text-slate-800 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-blue-500 prose-blockquote:bg-slate-50 prose-blockquote:py-1 prose-blockquote:px-3 prose-blockquote:not-italic prose-blockquote:text-slate-600">
-                            <Markdown>{change.description}</Markdown>
+                            <Markdown remarkPlugins={[remarkGfm]}>{change.description}</Markdown>
                           </div>
                         </motion.div>
                       );

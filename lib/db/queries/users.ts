@@ -17,6 +17,7 @@ import {
   sql,
 } from "drizzle-orm";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { normalizeAppKey } from "@/lib/apps/catalog";
 import { normalizeCreationMode } from "@/lib/creation/mode";
 import { ChatbotError } from "@/lib/errors";
@@ -108,6 +109,7 @@ export async function getUserPreferences(userId: string) {
         // Thème partagé par la suite : une valeur illisible retombe sur
         // « system », jamais sur un thème fantôme.
         theme: normalizeThemePreference(row.theme),
+        reasoningLevel: (row.reasoningLevel as ReasoningLevel) || "medium",
         topP: row.defaultTopP ?? 0.9,
       };
     }
@@ -138,6 +140,7 @@ export async function getUserPreferences(userId: string) {
     // partagé n'a pas de colonne de repli dans `users`. On répond la valeur
     // sûre plutôt que d'inventer un thème.
     theme: "system",
+    reasoningLevel: "medium" as const,
     topP: legacy.defaultTopP ?? 0.9,
   };
 }
@@ -164,6 +167,7 @@ type UserPreferencesPatch = Partial<{
   showAgentChatIcons: boolean;
   /** Thème partagé : system | light | dark (normalisé à l'écriture). */
   theme: string;
+  reasoningLevel: ReasoningLevel;
 }>;
 
 function isMissingUserPreferencesTable(error: unknown): boolean {
@@ -310,6 +314,7 @@ export async function upsertUserPreferences(
           // Une valeur illisible retombe sur « system », comme un tier
           // illisible vaut free.
           theme: normalizeThemePreference(data.theme),
+          reasoningLevel: data.reasoningLevel ?? "medium",
           userId,
         })
         .returning();
@@ -363,6 +368,8 @@ export async function upsertUserPreferences(
       updatePayload.showAgentChatIcons = data.showAgentChatIcons;
     if (data.theme !== undefined)
       updatePayload.theme = normalizeThemePreference(data.theme);
+    if (data.reasoningLevel !== undefined)
+      updatePayload.reasoningLevel = data.reasoningLevel;
 
     const [updated] = await db
       .update(userPreferences)
@@ -392,12 +399,14 @@ export async function getUserModelPreferences(userId: string): Promise<{
   customInstructionsEnabled: boolean;
   defaultTemperature: number | null;
   defaultTopP: number | null;
+  reasoningLevel: ReasoningLevel | null;
 }> {
   const empty = {
     customInstructions: null,
     customInstructionsEnabled: false,
     defaultTemperature: null,
     defaultTopP: null,
+    reasoningLevel: null,
   };
 
   // Source canonique : les préférences écrites par /api/user/preferences.
@@ -413,6 +422,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
         customInstructionsEnabled: userPreferences.customInstructionsEnabled,
         defaultTemperature: userPreferences.defaultTemperature,
         defaultTopP: userPreferences.defaultTopP,
+        reasoningLevel: userPreferences.reasoningLevel,
       })
       .from(userPreferences)
       .where(eq(userPreferences.userId, userId))
@@ -423,6 +433,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
         customInstructionsEnabled: Boolean(row.customInstructionsEnabled),
         defaultTemperature: row.defaultTemperature ?? null,
         defaultTopP: row.defaultTopP ?? null,
+        reasoningLevel: (row.reasoningLevel as ReasoningLevel) ?? null,
       };
     }
   } catch (error) {
@@ -447,6 +458,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
       customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
       defaultTemperature: row.default_temperature ?? null,
       defaultTopP: row.default_top_p ?? null,
+      reasoningLevel: null,
     };
   } catch {
     return empty;

@@ -15,6 +15,7 @@ const fields = [
   "supported_parameters",
   "architecture",
   "pricing",
+  "reasoning",
 ] as const;
 type Field = (typeof fields)[number];
 export type ModelPatch = Partial<Record<Field, unknown>> & {

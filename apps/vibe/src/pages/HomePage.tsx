@@ -14,6 +14,7 @@ import { PostCard } from '../components/feed/PostCard';
 import { ExplainModal } from '../components/feed/ExplainModal';
 import { PostCardSkeleton } from '../components/common/PageSkeleton';
 import { VibeLogo } from '../components/layout/VibeLogo';
+import { StoriesTray } from '../components/stories/StoriesTray';
 import type { Post } from '../types/vibe';
 import { ApiService } from '../services/api';
 import { useInfiniteFeed } from '../hooks/useInfiniteFeed';
@@ -305,6 +306,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenThread, onOpenProfile 
           // Le composer émet vibe:feed_refresh avec le post créé
         }}
       />
+
+      {/* Rail de stories */}
+      {feedType === 'trending' ? null : <StoriesTray />}
 
       {/* Bouton « N nouvelles vibes » */}
       {newCount > 0 && (

@@ -14,14 +14,14 @@ test.describe("Model Selector", () => {
     const modelButton = page.getByTestId("model-selector");
     await modelButton.click();
 
-    await expect(page.getByPlaceholder("Search models...")).toBeVisible();
+    await expect(page.getByPlaceholder("Rechercher un modèle IA...")).toBeVisible();
   });
 
   test("can search for models", async ({ page }) => {
     const modelButton = page.getByTestId("model-selector");
     await modelButton.click();
 
-    const searchInput = page.getByPlaceholder("Search models...");
+    const searchInput = page.getByPlaceholder("Rechercher un modèle IA...");
     await searchInput.fill("DeepSeek");
 
     await expect(
@@ -33,11 +33,11 @@ test.describe("Model Selector", () => {
     const modelButton = page.getByTestId("model-selector");
     await modelButton.click();
 
-    await expect(page.getByPlaceholder("Search models...")).toBeVisible();
+    await expect(page.getByPlaceholder("Rechercher un modèle IA...")).toBeVisible();
 
     await page.keyboard.press("Escape");
 
-    await expect(page.getByPlaceholder("Search models...")).not.toBeVisible();
+    await expect(page.getByPlaceholder("Rechercher un modèle IA...")).not.toBeVisible();
   });
 
   test("shows available models", async ({ page }) => {
@@ -60,7 +60,7 @@ test.describe("Model Selector", () => {
 
     await page.getByRole("option", { name: /DeepSeek V3\.2/ }).click();
 
-    await expect(page.getByPlaceholder("Search models...")).not.toBeVisible();
+    await expect(page.getByPlaceholder("Rechercher un modèle IA...")).not.toBeVisible();
     await expect(modelButton).toContainText("DeepSeek V3.2");
   });
 });

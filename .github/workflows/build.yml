@@ -319,9 +319,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "android" ]; then
-            npx cap add android
+            pnpm exec cap add android
           fi
-          npx cap sync android
+          pnpm exec cap sync android
       - name: 🎨 Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -365,9 +365,9 @@ jobs:
         working-directory: apps/mobile
         run: |
           if [ ! -d "ios" ]; then
-            npx cap add ios
+            pnpm exec cap add ios
           fi
-          npx cap sync ios
+          pnpm exec cap sync ios
       - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -451,9 +451,9 @@ jobs:
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
           if [ ! -d "android" ]; then
-            npx cap add android
+            npx --package=@capacitor/cli cap add android
           fi
-          npx cap sync android
+          npx --package=@capacitor/cli cap sync android
       - name: ⚙️ Rendre gradlew exécutable
         run: chmod +x android/gradlew
       - name: 🏗️ Compiler l'APK Android de développement
@@ -494,9 +494,9 @@ jobs:
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
           if [ ! -d "ios" ]; then
-            npx cap add ios
+            npx --package=@capacitor/cli cap add ios
           fi
-          npx cap sync ios
+          npx --package=@capacitor/cli cap sync ios
       - name: 🏗️ Compiler l'archive (non signé sans secrets Apple)
         run: |
           if [ -d "ios/App/App.xcworkspace" ]; then

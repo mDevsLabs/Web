@@ -9,7 +9,14 @@ export default function checkCoder(context) {
     darwin: "mAI Coder.app/Contents/MacOS/mAI Coder",
     linux: "mai-coder",
   }[context.electronPlatformName];
-  if (!arch || !relative || !existsSync(path.join(context.packager.projectDir, `build/coder-${arch}`, relative))) {
+  const coderDir = path.join(context.packager.projectDir, `build/coder-${arch}`);
+  if (!arch || !relative || !existsSync(path.join(coderDir, relative))) {
     throw new Error(`Coder ${context.electronPlatformName}/${arch} est absent. Exécutez pnpm run prepare:coder ${arch || ""}.`);
+  }
+  const asarPath = context.electronPlatformName === "darwin"
+    ? path.join(coderDir, "mAI Coder.app/Contents/Resources/app.asar")
+    : path.join(coderDir, "resources/app.asar");
+  if (!existsSync(asarPath)) {
+    throw new Error(`Le paquet app.asar de Coder (${context.electronPlatformName}/${arch}) est manquant dans ${coderDir}.`);
   }
 }

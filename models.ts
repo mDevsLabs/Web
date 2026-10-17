@@ -285,6 +285,11 @@ export function registerModelRoutes(
       const cloudModels = buildMaiCloudPublicModels(
         Math.floor(Date.now() / 1000)
       ).flatMap((m) => {
+        // Si le modèle est déjà présent directement en BDD sous cet id, privilégier la BDD
+        const directFromDb = catalog.byId.get(m.id);
+        if (directFromDb && isPublicChatModel(directFromDb)) {
+          return [effectiveModel(directFromDb)];
+        }
         const backend = catalog.byId.get(resolveMaiCloudBackend(m.id)!);
         if (!backend || !isPublicChatModel(backend)) return [];
         const effective = effectiveModel(backend);
@@ -293,6 +298,7 @@ export function registerModelRoutes(
             ...m,
             maxContext: effective.maxContext,
             maxOutput: effective.maxOutput,
+            reasoning: effective.reasoning,
             supported_parameters: effective.supported_parameters,
           },
         ];
@@ -330,10 +336,8 @@ export function registerModelRoutes(
         max_output_tokens: m.maxOutputTokens,
         name: m.name,
         object: "model",
-        ollama_tag: m.ollamaTag,
         owned_by: "mDevsLabs",
         parameters: m.parameters,
-        recommended_hardware: m.recommendedHardware,
         status: m.status,
         tagline: m.tagline,
         usable_in_cloud_chat: false,

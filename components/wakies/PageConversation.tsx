@@ -124,7 +124,6 @@ export function PageConversation({
           onSchedule={() => onSchedule(thread.id)}
           paused={paused}
           thread={thread}
-          voiceReady={workspace.setup.voice}
           wakie={wakie}
         />
       </aside>

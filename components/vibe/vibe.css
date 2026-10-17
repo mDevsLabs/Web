@@ -1531,3 +1531,23 @@
 .vibe-root .vibe-story-ring-hit--compact {
   inset: -4px;
 }
+
+/* Sticker badge graphique de story (mots-clés, heure, badges stylisés) */
+.vibe-root .vibe-story-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: #ffffff;
+  color: #09090b;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  transform: rotate(-3deg);
+  user-select: none;
+}

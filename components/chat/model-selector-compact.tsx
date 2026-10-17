@@ -4,9 +4,13 @@ import {
   BrainIcon,
   EyeIcon,
   ImageIcon,
+  InfoIcon,
+  SlidersIcon,
+  SparklesIcon,
   Volume2Icon,
   WrenchIcon,
 } from "@mdevs/icons";
+import { toast } from "sonner";
 import {
   type Dispatch,
   memo,
@@ -18,6 +22,12 @@ import {
   useState,
 } from "react";
 import useSWR from "swr";
+import {
+  isReasoningLevel,
+  REASONING_LEVEL_DESCRIPTIONS,
+  REASONING_LEVEL_LABELS,
+  type ReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -55,6 +65,7 @@ export type SharedModel = {
   maxOutput?: number;
   owned_by?: string;
   provider?: string;
+  reasoning?: ChatModel["reasoning"];
   supported_parameters?: string[];
   voices?: string[];
 };
@@ -249,6 +260,159 @@ type ModelSelectorCompactProps = {
 
 const DEFAULT_EMPTY_LABEL = "Par défaut / Automatique";
 
+function ModelDetailsPanel({
+  model,
+  capabilities,
+  currentReasoningLevel,
+  onSelectReasoningLevel,
+  source = "chat",
+}: {
+  model: SharedModel;
+  capabilities?: ModelCapabilities;
+  currentReasoningLevel?: ReasoningLevel;
+  onSelectReasoningLevel?: (level: ReasoningLevel) => void;
+  source?: ModelSelectorSource;
+}) {
+  const logoProvider = resolveProviderKey(model);
+  const providerLabel =
+    PROVIDER_NAMES[logoProvider.toLowerCase()] ||
+    PROVIDER_NAMES[model.provider?.toLowerCase() ?? ""] ||
+    model.provider ||
+    "mAI";
+
+  const supportedEfforts = useMemo(() => {
+    const fromCaps = (capabilities as any)?.reasoningLevels;
+    if (Array.isArray(fromCaps) && fromCaps.length > 0) {
+      return fromCaps.filter((l): l is ReasoningLevel => isReasoningLevel(l));
+    }
+    const fromModel = model.reasoning?.supported_efforts;
+    if (Array.isArray(fromModel) && fromModel.length > 0) {
+      return fromModel.filter((l): l is ReasoningLevel => isReasoningLevel(l));
+    }
+    return [];
+  }, [capabilities, model.reasoning]);
+
+  const hasConfigurableReasoning =
+    source === "chat" && supportedEfforts.length > 0;
+
+  const contextStr = model.maxContext
+    ? model.maxContext >= 1_000_000
+      ? `${(model.maxContext / 1_000_000).toFixed(model.maxContext % 1_000_000 === 0 ? 0 : 1)}M ctx`
+      : `${Math.round(model.maxContext / 1000)}k ctx`
+    : null;
+
+  const outputStr = model.maxOutput
+    ? `${Math.round(model.maxOutput / 1000)}k max`
+    : null;
+
+  return (
+    <div className="flex flex-col gap-3 text-xs w-full">
+      <div className="flex items-start gap-2.5">
+        <ModelSelectorLogo className="size-5 shrink-0 mt-0.5" provider={logoProvider} />
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="font-semibold text-foreground text-[13px] leading-tight">
+              {model.name}
+            </span>
+            {model.isFree ? (
+              <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
+                Gratuit
+              </span>
+            ) : null}
+          </div>
+          <span className="text-[11px] text-muted-foreground mt-0.5">
+            Fournisseur : {providerLabel}
+          </span>
+        </div>
+      </div>
+
+      {model.description ? (
+        <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-3">
+          {model.description}
+        </p>
+      ) : null}
+
+      <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Paramètres & Capacités
+        </span>
+        <div className="flex flex-wrap gap-1.5">
+          {contextStr ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              <SparklesIcon className="size-3 text-muted-foreground" />
+              {contextStr}
+            </span>
+          ) : null}
+          {outputStr ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              {outputStr}
+            </span>
+          ) : null}
+          {capabilities?.tools || model.supported_parameters?.includes("tools") ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              <WrenchIcon className="size-3 text-sky-500" />
+              Outils
+            </span>
+          ) : null}
+          {capabilities?.vision || capabilities?.image || capabilities?.file ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              <EyeIcon className="size-3 text-purple-500" />
+              Vision / Fichiers
+            </span>
+          ) : null}
+          {capabilities?.reasoning || model.reasoning ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              <BrainIcon className="size-3 text-amber-500" />
+              Raisonnement
+            </span>
+          ) : null}
+          {model.supported_parameters?.includes("temperature") ? (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
+              <SlidersIcon className="size-3 text-muted-foreground" />
+              Température
+            </span>
+          ) : null}
+        </div>
+      </div>
+
+      {hasConfigurableReasoning ? (
+        <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
+          <div className="flex items-center gap-1.5">
+            <BrainIcon className="size-3.5 text-amber-500" />
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Effort de réflexion
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-1 mt-0.5">
+            {supportedEfforts.map((level) => {
+              const active = currentReasoningLevel === level;
+              return (
+                <button
+                  className={cn(
+                    "px-2 py-0.5 text-[10px] rounded-md transition-colors border font-medium",
+                    active
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-muted/50 hover:bg-muted text-muted-foreground border-border/40"
+                  )}
+                  key={level}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectReasoningLevel?.(level);
+                  }}
+                  title={REASONING_LEVEL_DESCRIPTIONS[level]}
+                  type="button"
+                >
+                  {REASONING_LEVEL_LABELS[level]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function SharedModelSelectorOption({
   capabilities,
   model,
@@ -257,6 +421,11 @@ function SharedModelSelectorOption({
   setOpen,
   focusInputAfterSelect,
   source,
+  onHover,
+  isMobileExpanded,
+  onToggleMobileExpand,
+  currentReasoningLevel,
+  onSelectReasoningLevel,
 }: {
   capabilities?: Record<string, ModelCapabilities>;
   model: SharedModel;
@@ -265,6 +434,11 @@ function SharedModelSelectorOption({
   setOpen: Dispatch<SetStateAction<boolean>>;
   focusInputAfterSelect?: boolean;
   source?: ModelSelectorSource;
+  onHover?: () => void;
+  isMobileExpanded?: boolean;
+  onToggleMobileExpand?: () => void;
+  currentReasoningLevel?: ReasoningLevel;
+  onSelectReasoningLevel?: (level: ReasoningLevel) => void;
 }) {
   const logoProvider = resolveProviderKey(model);
   const maybeWithTooltip = (icon: ReactNode, label: string) => (
@@ -295,66 +469,98 @@ function SharedModelSelectorOption({
   return (
     <ModelSelectorItem
       className={cn(
-        "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg",
+        "flex flex-col w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg",
         model.id === selectedModelId &&
           "bg-muted/80 font-medium text-foreground",
         "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
       )}
+      onPointerEnter={onHover}
       onSelect={handleSelect}
       value={`${model.name} ${model.id} ${model.description ?? ""}`}
     >
-      <ModelSelectorLogo provider={logoProvider} />
-      <div className="flex flex-col min-w-0 pr-2">
-        <ModelSelectorName>{model.name}</ModelSelectorName>
-        {model.description ? (
-          <span className="text-[11px] text-muted-foreground line-clamp-1">
-            {model.description}
-          </span>
-        ) : null}
+      <div className="flex items-center w-full min-w-0">
+        <ModelSelectorLogo provider={logoProvider} />
+        <div className="flex flex-col min-w-0 pr-2">
+          <ModelSelectorName>{model.name}</ModelSelectorName>
+          {model.description ? (
+            <span className="text-[11px] text-muted-foreground line-clamp-1">
+              {model.description}
+            </span>
+          ) : null}
+        </div>
+        <div className="ml-auto flex items-center gap-1.5 text-foreground/70 shrink-0">
+          {model.isFree ? (
+            <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
+              Gratuit
+            </span>
+          ) : null}
+          {source === "images" ? (
+            maybeWithTooltip(
+              <ImageIcon className="size-3.5 text-violet-500" />,
+              "Génération d'images"
+            )
+          ) : source === "speech" ? (
+            maybeWithTooltip(
+              <Volume2Icon className="size-3.5 text-emerald-500" />,
+              model.voices && model.voices.length > 0
+                ? `${model.voices.length} voix disponibles`
+                : "Synthèse vocale"
+            )
+          ) : (
+            <>
+              {capabilities?.[model.id]?.tools
+                ? maybeWithTooltip(
+                    <WrenchIcon className="size-3.5" />,
+                    "Outils supportés"
+                  )
+                : null}
+              {capabilities?.[model.id]?.image ||
+              capabilities?.[model.id]?.file ||
+              capabilities?.[model.id]?.vision
+                ? maybeWithTooltip(
+                    <EyeIcon className="size-3.5" />,
+                    "Fichiers & Images supportés"
+                  )
+                : null}
+              {capabilities?.[model.id]?.reasoning
+                ? maybeWithTooltip(
+                    <BrainIcon className="size-3.5 text-amber-500" />,
+                    "Raisonnement avancé"
+                  )
+                : null}
+            </>
+          )}
+
+          {/* Bouton d'expansion sur mobile */}
+          <button
+            className="md:hidden p-1 rounded-md hover:bg-muted text-muted-foreground transition-colors ml-0.5"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleMobileExpand?.();
+            }}
+            title="Détails du modèle"
+            type="button"
+          >
+            <InfoIcon className="size-3.5" />
+          </button>
+        </div>
       </div>
-      <div className="ml-auto flex items-center gap-2 text-foreground/70 shrink-0">
-        {model.isFree ? (
-          <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
-            Gratuit
-          </span>
-        ) : null}
-        {source === "images" ? (
-          maybeWithTooltip(
-            <ImageIcon className="size-3.5 text-violet-500" />,
-            "Génération d'images"
-          )
-        ) : source === "speech" ? (
-          maybeWithTooltip(
-            <Volume2Icon className="size-3.5 text-emerald-500" />,
-            model.voices && model.voices.length > 0
-              ? `${model.voices.length} voix disponibles`
-              : "Synthèse vocale"
-          )
-        ) : (
-          <>
-            {capabilities?.[model.id]?.tools
-              ? maybeWithTooltip(
-                  <WrenchIcon className="size-3.5" />,
-                  "Outils supportés"
-                )
-              : null}
-            {capabilities?.[model.id]?.image ||
-            capabilities?.[model.id]?.file ||
-            capabilities?.[model.id]?.vision
-              ? maybeWithTooltip(
-                  <EyeIcon className="size-3.5" />,
-                  "Fichiers & Images supportés"
-                )
-              : null}
-            {capabilities?.[model.id]?.reasoning
-              ? maybeWithTooltip(
-                  <BrainIcon className="size-3.5 text-amber-500" />,
-                  "Raisonnement avancé"
-                )
-              : null}
-          </>
-        )}
-      </div>
+
+      {/* Accordéon déplié sur mobile */}
+      {isMobileExpanded ? (
+        <div
+          className="md:hidden w-full mt-2 pt-2 border-t border-border/40 text-left cursor-default"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ModelDetailsPanel
+            capabilities={capabilities?.[model.id]}
+            currentReasoningLevel={currentReasoningLevel}
+            model={model}
+            onSelectReasoningLevel={onSelectReasoningLevel}
+            source={source}
+          />
+        </div>
+      ) : null}
     </ModelSelectorItem>
   );
 }
@@ -378,6 +584,34 @@ function PureModelSelectorCompact({
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [hoveredModelId, setHoveredModelId] = useState<string | null>(null);
+  const [mobileExpandedModelId, setMobileExpandedModelId] =
+    useState<string | null>(null);
+
+  const { data: userPrefs, mutate: mutateUserPrefs } = useSWR(
+    "/api/user/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
+  );
+
+  const handleSelectReasoningLevel = useCallback(
+    async (level: ReasoningLevel) => {
+      try {
+        await fetch("/api/user/preferences", {
+          body: JSON.stringify({ reasoningLevel: level }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        mutateUserPrefs({ ...userPrefs, reasoningLevel: level }, false);
+        toast.success(
+          `Effort de réflexion : ${REASONING_LEVEL_LABELS[level]}`
+        );
+      } catch {
+        toast.error("Impossible d'enregistrer l'effort de réflexion");
+      }
+    },
+    [userPrefs, mutateUserPrefs]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -472,6 +706,11 @@ function PureModelSelectorCompact({
     grouped[p].push(m);
   }
 
+  const activeModel = useMemo(
+    () => models.find((m) => m.id === hoveredModelId) ?? selectedModel ?? models[0],
+    [models, hoveredModelId, selectedModel]
+  );
+
   return (
     <ModelSelector modal={modal} onOpenChange={handleOpenChange} open={open}>
       <ModelSelectorTrigger asChild>
@@ -509,67 +748,102 @@ function PureModelSelectorCompact({
         )}
       </ModelSelectorTrigger>
       <ModelSelectorContent
+        className="w-[min(320px,calc(100vw-1rem))] md:w-[600px] max-w-[calc(100vw-1rem)] p-0 overflow-hidden"
         commandDefaultValue={selectedModel?.id}
         shouldFilter={false}
         side={side ?? (variant === "compact" ? "top" : "bottom")}
       >
-        <ModelSelectorInput
-          onValueChange={setSearch}
-          placeholder={
-            source === "images"
-              ? "Rechercher un modèle d'image..."
-              : source === "speech"
-                ? "Rechercher un modèle audio..."
-                : "Rechercher un modèle IA..."
-          }
-          value={search}
-        />
-        <ModelSelectorList>
-          {allowEmpty && !search.trim() ? (
-            <ModelSelectorItem
-              className={cn(
-                "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg text-muted-foreground",
-                !selectedModelId && "bg-muted/80 font-medium text-foreground",
-                "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
+        <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border/60 max-h-[480px]">
+          <div className="flex flex-col w-full md:w-[320px] shrink-0 min-h-0">
+            <ModelSelectorInput
+              onValueChange={setSearch}
+              placeholder={
+                source === "images"
+                  ? "Rechercher un modèle d'image..."
+                  : source === "speech"
+                    ? "Rechercher un modèle audio..."
+                    : "Rechercher un modèle IA..."
+              }
+              value={search}
+            />
+            <ModelSelectorList className="max-h-[390px] overflow-y-auto p-1">
+              {allowEmpty && !search.trim() ? (
+                <ModelSelectorItem
+                  className={cn(
+                    "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg text-muted-foreground",
+                    !selectedModelId && "bg-muted/80 font-medium text-foreground",
+                    "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
+                  )}
+                  onSelect={() => {
+                    onModelChange?.("");
+                    setOpen(false);
+                  }}
+                  value={emptyLabel}
+                >
+                  <span>{emptyLabel}</span>
+                </ModelSelectorItem>
+              ) : null}
+              {filteredModels.length === 0 ? (
+                <div className="py-6 text-center text-xs text-muted-foreground">
+                  Aucun modèle trouvé pour « {search} »
+                </div>
+              ) : (
+                Object.entries(grouped).map(([groupKey, groupModels]) => (
+                  <ModelSelectorGroup
+                    heading={
+                      PROVIDER_NAMES[groupKey.toLowerCase()] ||
+                      groupKey.toUpperCase()
+                    }
+                    key={groupKey}
+                  >
+                    {groupModels.map((model) => (
+                      <SharedModelSelectorOption
+                        capabilities={capabilities}
+                        currentReasoningLevel={
+                          userPrefs?.reasoningLevel ?? "medium"
+                        }
+                        focusInputAfterSelect={focusInputAfterSelect}
+                        isMobileExpanded={mobileExpandedModelId === model.id}
+                        key={model.id}
+                        model={model}
+                        onHover={() => setHoveredModelId(model.id)}
+                        onModelChange={onModelChange}
+                        onSelectReasoningLevel={handleSelectReasoningLevel}
+                        onToggleMobileExpand={() =>
+                          setMobileExpandedModelId((prev) =>
+                            prev === model.id ? null : model.id
+                          )
+                        }
+                        selectedModelId={selectedModel?.id ?? selectedModelId}
+                        setOpen={setOpen}
+                        source={source}
+                      />
+                    ))}
+                  </ModelSelectorGroup>
+                ))
               )}
-              onSelect={() => {
-                onModelChange?.("");
-                setOpen(false);
-              }}
-              value={emptyLabel}
-            >
-              <span>{emptyLabel}</span>
-            </ModelSelectorItem>
-          ) : null}
-          {filteredModels.length === 0 ? (
-            <div className="py-6 text-center text-xs text-muted-foreground">
-              Aucun modèle trouvé pour « {search} »
-            </div>
-          ) : (
-            Object.entries(grouped).map(([groupKey, groupModels]) => (
-              <ModelSelectorGroup
-                heading={
-                  PROVIDER_NAMES[groupKey.toLowerCase()] ||
-                  groupKey.toUpperCase()
-                }
-                key={groupKey}
-              >
-                {groupModels.map((model) => (
-                  <SharedModelSelectorOption
-                    capabilities={capabilities}
-                    focusInputAfterSelect={focusInputAfterSelect}
-                    key={model.id}
-                    model={model}
-                    onModelChange={onModelChange}
-                    selectedModelId={selectedModel?.id ?? selectedModelId}
-                    setOpen={setOpen}
-                    source={source}
-                  />
-                ))}
-              </ModelSelectorGroup>
-            ))
-          )}
-        </ModelSelectorList>
+            </ModelSelectorList>
+          </div>
+
+          {/* Panneau latéral desktop d'aperçu au survol */}
+          <div className="hidden md:flex flex-col w-[280px] shrink-0 p-3.5 bg-muted/20 overflow-y-auto max-h-[480px]">
+            {activeModel ? (
+              <ModelDetailsPanel
+                capabilities={capabilities?.[activeModel.id]}
+                currentReasoningLevel={userPrefs?.reasoningLevel ?? "medium"}
+                model={activeModel}
+                onSelectReasoningLevel={handleSelectReasoningLevel}
+                source={source}
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full text-muted-foreground text-center p-4">
+                <span className="text-[11px]">
+                  Survolez un modèle pour afficher ses caractéristiques.
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
       </ModelSelectorContent>
     </ModelSelector>
   );

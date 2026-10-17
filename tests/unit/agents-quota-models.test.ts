@@ -173,7 +173,7 @@ describe("Modèles d'agents : pas de doublon", () => {
   });
 
   it("applique la déduplication dans la lecture des modèles", () => {
-    const queries = source("lib/db/queries.ts");
+    const queries = source("lib/db/queries/agents.ts");
     const start = queries.indexOf("export async function getAgentTemplates");
     const body = queries.slice(start, start + 600);
     expect(body).toContain("dedupeAgentTemplatesByName(rows)");
@@ -183,7 +183,7 @@ describe("Modèles d'agents : pas de doublon", () => {
     expect(source("lib/db/schema.ts")).toContain(
       'uniqueIndex("AgentTemplate_name_key")'
     );
-    expect(source("lib/db/queries.ts")).toContain(
+    expect(source("lib/db/queries/connection.ts")).toContain(
       'CREATE UNIQUE INDEX IF NOT EXISTS "AgentTemplate_name_key"'
     );
   });
@@ -287,8 +287,8 @@ describe("Palette de badges", () => {
     expect(picker).toContain('type="color"');
     expect(picker).toContain("grid-cols-5");
     for (const file of [
-      "app/(chat)/agents/agents-client.tsx",
-      "app/(chat)/skills/skills-client.tsx",
+      "components/agents/agent-editor-dialog.tsx",
+      "components/skills/skill-editor-modal.tsx",
       "components/settings/configuration-client.tsx",
     ]) {
       expect(source(file)).toContain("<ColorPicker");
@@ -304,14 +304,18 @@ describe("Onglet Types de bots", () => {
     // modèles d'IA qu'on choisit ailleurs dans l'interface : l'ambiguïté
     // valait deux lectures du même mot dans la même page.
     expect(client).toContain("Types de bots ({templates.length})");
-    expect(client).toContain("Rechercher un type de bot...");
+    expect(source("components/agents/agent-template-grid.tsx")).toContain(
+      "Rechercher un type de bot..."
+    );
   });
 
   it("filtre les modèles par tag et par modèle", () => {
     const client = source("app/(chat)/agents/agents-client.tsx");
     expect(client).toContain("templateTag");
     expect(client).toContain("templateModel");
-    expect(client).toContain("Filtrer par modèle");
+    expect(source("components/agents/agent-template-grid.tsx")).toContain(
+      "Filtrer par modèle"
+    );
   });
 });
 
@@ -500,16 +504,17 @@ describe("Designer d'agent", () => {
   });
 
   it("réserve la place du bouton de fermeture du dialogue", () => {
-    const client = source("app/(chat)/agents/agents-client.tsx");
     // DialogContent positionne la croix en `absolute top-4 right-4` :
-    // l'en-tête doit réservée la place, sinon elle chevauche le contenu.
-    expect(client).toContain('<DialogHeader className="pr-12">');
+    // l'en-tête doit réserver la place, sinon elle chevauche le contenu.
+    expect(source("components/agents/agent-editor-dialog.tsx")).toContain(
+      '<DialogHeader className="pr-12">'
+    );
   });
 
   it("n'affiche que le sélecteur d'icône, sans toggle emoji", () => {
-    const client = source("app/(chat)/agents/agents-client.tsx");
-    expect(client).toContain("Icône — affichée partout");
-    expect(client).not.toContain("formIconType");
-    expect(client).not.toContain("Emoji Unicode");
+    const editor = source("components/agents/agent-editor-dialog.tsx");
+    expect(editor).toContain("Icône — affichée partout");
+    expect(editor).not.toContain("formIconType");
+    expect(editor).not.toContain("Emoji Unicode");
   });
 });

@@ -795,7 +795,6 @@ function WakiesWorkspaceContent({
                   }
                   paused={state.settings.paused}
                   thread={thread}
-                  voiceReady={workspace.setup.voice}
                   wakie={wakie}
                   wakies={workspace.wakies}
                 />

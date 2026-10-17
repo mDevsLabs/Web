@@ -216,7 +216,7 @@ export function AgentTab() {
                 onChange={(id) =>
                   update({ reasoningLevel: id as ReasoningLevel })
                 }
-                value={settings.reasoningLevel}
+                value={settings.reasoningLevel ?? "medium"}
               />
               <p className="mt-2 text-xs text-muted-foreground">
                 {reasoningOptions.mandatory

@@ -118,7 +118,6 @@ export function Chat(props: {
   wakie: Wakie;
   initialPrompt?: string;
   onConsumed: () => void;
-  voiceReady: boolean;
   calls: CallReceipt[];
   paused: boolean;
   onSaved: () => void;
@@ -210,7 +209,6 @@ function WakieChat({
   wakie,
   initialPrompt,
   onConsumed,
-  voiceReady,
   calls,
   paused,
   onSaved,
@@ -227,7 +225,6 @@ function WakieChat({
   wakie: Wakie;
   initialPrompt?: string;
   onConsumed: () => void;
-  voiceReady: boolean;
   calls: CallReceipt[];
   paused: boolean;
   onSaved: () => void;
@@ -1228,7 +1225,6 @@ function WakieChat({
         stop={stop}
         textareaRef={textareaRef}
         thread={thread}
-        voiceReady={voiceReady}
         wakie={wakie}
       />
     </div>

@@ -9,6 +9,11 @@ import {
 } from "ai";
 import { z } from "zod";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
+import {
+  REASONING_LEVELS,
+  resolveReasoningProviderOptions,
+  normalizeReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
@@ -27,7 +32,7 @@ import {
 import { loadMcpContext } from "@/lib/chat/mcp";
 import { createChatTools } from "@/lib/chat/tools";
 import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
-import { getUserMcpPrefs, recordTokenUsage } from "@/lib/db/queries";
+import { getUserMcpPrefs, recordTokenUsage, getUserModelPreferences } from "@/lib/db/queries";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
@@ -165,6 +170,7 @@ const schema = z
     // Participant qui répond (lot messagerie) : absent = organisateur du fil.
     // Le client enchaîne un tour par Wakie mentionné dans l'ordre du texte.
     wakieId: z.string().uuid().optional(),
+    reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),
   })
   .passthrough();
 
@@ -773,8 +779,18 @@ export async function POST(request: Request) {
             type: "data-capability-issues",
           });
 
+        const userPrefs = await getUserModelPreferences(auth.userId).catch(() => null);
+        const chosenEffort =
+          parsed.data.reasoningLevel ??
+          userPrefs?.reasoningLevel ??
+          null;
+        const providerOptions = chosenEffort
+          ? resolveReasoningProviderOptions(normalizeReasoningLevel(chosenEffort))
+          : undefined;
+
         const result = streamText({
           abortSignal: request.signal,
+          ...(providerOptions ? { providerOptions } : {}),
           // Toujours passé : `undefined` réactiverait tout le plateau.
           activeTools: actifs as never,
           messages: await convertToModelMessages(

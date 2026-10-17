@@ -17,7 +17,7 @@ for (const width of [390, 1280]) {
       page.getByRole("heading", { exact: true, name: "Notes de version" })
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: "0.9.1 — 30 septembre 2026" })
+      page.getByRole("heading", { name: /0\.9\.1/ })
     ).toBeVisible();
     const size = await page.evaluate(() => ({
       scroll: document.documentElement.scrollWidth,

@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Edit3Icon as Edit3, EyeIcon as Eye } from "@mdevs/icons";
 
 export function TicketProblemStep({
@@ -72,7 +73,7 @@ export function TicketProblemStep({
         </div>
         {previewMode ? (
           <div className="min-h-[220px] w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-slate-800 prose prose-sm max-w-none" aria-label="Aperçu Markdown de la description">
-            {description.trim() ? <ReactMarkdown>{description}</ReactMarkdown> : <p className="text-xs italic text-slate-400">Aucun texte.</p>}
+            {description.trim() ? <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown> : <p className="text-xs italic text-slate-400">Aucun texte.</p>}
           </div>
         ) : (
           <textarea

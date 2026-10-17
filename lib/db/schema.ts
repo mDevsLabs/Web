@@ -923,6 +923,11 @@ export const userPreferences = pgTable("user_preferences", {
   // system | light | dark. Lecture et normalisation fail-safe :
   // lib/theme/preference.ts.
   theme: varchar("theme", { length: 10 }).notNull().default("system"),
+  // Effort de réflexion par défaut pour tous les modèles qui le supportent
+  // (Chat, Agent, Wakies, Vibe).
+  reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
+    .notNull()
+    .default("medium"),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   userId: text("userId").primaryKey().notNull(),
 });
@@ -1495,9 +1500,9 @@ export const agentSettings = pgTable("AgentSettings", {
     .$type<ToolCategory[]>()
     .notNull()
     .default([]),
-  reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
-    .notNull()
-    .default("medium"),
+  // Surcharge spécifique au mode Agent. Si null, hérite du reasoningLevel
+  // global de user_preferences.
+  reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS }),
   toolPolicies: json("toolPolicies")
     .$type<Record<string, ToolPermission>>()
     .notNull()

@@ -16,7 +16,7 @@ function codeOnly(file: string): string {
 
 describe("DDL hors du chemin de requête", () => {
   it("le runtime n'exécute plus de DDL sans opt-in explicite", () => {
-    const queries = codeOnly("lib/db/queries.ts");
+    const queries = codeOnly("lib/db/queries/connection.ts");
     expect(queries).toContain('process.env.DB_RUNTIME_DDL_REPAIR !== "true"');
 
     // Le garde doit être DANS ensureTableTypes, et la sortie anticipée doit
@@ -41,7 +41,7 @@ describe("DDL hors du chemin de requête", () => {
 });
 
 describe("Repair weekly_usage — aucune suppression sans sauvegarde vérifiée", () => {
-  for (const file of ["lib/db/queries.ts", "scripts/repair-db-drift.mjs"]) {
+  for (const file of ["lib/db/queries/connection.ts", "scripts/repair-db-drift.mjs"]) {
     it(`${file} vérifie la sauvegarde AVANT le DELETE`, () => {
       const code = codeOnly(file);
       const insertIndex = code.indexOf("INSERT INTO weekly_usage_drift_backup");

@@ -9,6 +9,7 @@ import {
   SparklesIcon as Sparkles,
 } from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type {
   SupportAttachment,
   SupportMessage,
@@ -113,7 +114,9 @@ export function TicketTimeline({
                 </div>
               </div>
               <div className="prose prose-sm max-w-none pl-12 leading-relaxed text-slate-800">
-                <ReactMarkdown>{message.message}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {message.message}
+                </ReactMarkdown>
               </div>
               {message.is_ai_generated ? (
                 <div className="ml-12 mt-3 flex gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">

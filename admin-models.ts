@@ -15,6 +15,7 @@ const fields = [
   "supported_parameters",
   "architecture",
   "pricing",
+  "reasoning",
 ] as const;
 type Field = (typeof fields)[number];
 export type ModelPatch = Partial<Record<Field, unknown>> & {
@@ -192,6 +193,229 @@ function displayModels(models: StoredModel[], offset = 0) {
   );
 }
 
+async function askSingleModelInteractivePatch(
+  model: StoredModel,
+  rl: Interface
+): Promise<ModelPatch | null> {
+  const eff = effectiveModel(model);
+  const patch: ModelPatch = {};
+
+  console.log("\n=======================================================");
+  console.log(
+    `🛠️  MODIFICATION DU MODÈLE : #${model.model_number} — ${eff.name}`
+  );
+  console.log("=======================================================");
+  console.log(`  ID OpenRouter   : ${model.id}`);
+  console.log(`  Fournisseur     : ${eff.owned_by}`);
+  console.log(
+    `  Statut actuel   : ${model.isActive ? "✅ ACTIF" : "❌ INACTIF"} (Dispo: ${model.is_available ? "Oui" : "Non"})`
+  );
+  console.log(
+    `  Nom effectif    : ${eff.name} ${model.overrides.name ? "(surchargé)" : "(OpenRouter)"}`
+  );
+  console.log(
+    `  Contexte max    : ${eff.maxContext?.toLocaleString("fr-FR")} tokens`
+  );
+  console.log(
+    `  Sortie max      : ${eff.maxOutput?.toLocaleString("fr-FR")} tokens`
+  );
+  if (eff.description) {
+    const descShort =
+      eff.description.length > 90
+        ? `${eff.description.slice(0, 87)}…`
+        : eff.description;
+    console.log(`  Description     : ${descShort}`);
+  }
+  const ovKeys = Object.keys(model.overrides || {});
+  console.log(
+    `  Surcharges      : ${ovKeys.length ? ovKeys.join(", ") : "aucune (valeurs OpenRouter d'origine)"}`
+  );
+  console.log("-------------------------------------------------------");
+  console.log("👉 Que souhaitez-vous modifier ?");
+  console.log("  1. 🏷️  Nom d'affichage");
+  console.log("  2. 📝 Description");
+  console.log(
+    `  3. 🔘 Basculer Statut (${model.isActive ? "Actif ➔ INACTIF" : "Inactif ➔ ACTIF"})`
+  );
+  console.log("  4. 🧠 Taille de contexte (context_length)");
+  console.log("  5. 📤 Tokens de sortie max (max_output_tokens)");
+  console.log("  6. ⚙️  Paramètres supportés (supported_parameters)");
+  console.log("  7. 💰 Tarifs (pricing prompt / completion)");
+  console.log(
+    "  8. 🔄 Rétablir TOUTES les valeurs d'origine OpenRouter (supprimer surcharges)"
+  );
+  console.log("  9. 🚀 Parcours guidé pas-à-pas (champs clés un par un)");
+  console.log("  0. ↩️  Annuler la modification");
+
+  const action = (await rl.question("\n👉 Votre choix [0-9] : ")).trim();
+
+  if (action === "0") return null;
+
+  if (action === "3") {
+    // Bascule rapide 1 clic
+    patch.isActive = !model.isActive;
+    return patch;
+  }
+
+  if (action === "8") {
+    const confirm = (
+      await rl.question(
+        "⚠️ Réinitialiser toutes les surcharges et rétablir les valeurs OpenRouter ? (o/N) : "
+      )
+    )
+      .trim()
+      .toLowerCase();
+    if (confirm === "o" || confirm === "oui" || confirm === "y") {
+      patch.name = null;
+      patch.description = null;
+      patch.context_length = null;
+      patch.max_output_tokens = null;
+      patch.supported_parameters = null;
+      patch.architecture = null;
+      patch.pricing = null;
+      return patch;
+    }
+    return null;
+  }
+
+  if (action === "1" || action === "9") {
+    const cur = String(model.overrides.name ?? eff.name ?? "");
+    const val = (
+      await rl.question(
+        `👉 Nom d'affichage [${cur}] ('auto' pour OpenRouter) : `
+      )
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.name = null;
+    else if (val && val !== cur) patch.name = val;
+  }
+
+  if (action === "2" || action === "9") {
+    const cur = String(model.overrides.description ?? eff.description ?? "");
+    const preview = cur.length > 50 ? `${cur.slice(0, 47)}…` : cur;
+    const val = (
+      await rl.question(
+        `👉 Description [${preview}] ('auto' pour OpenRouter) : `
+      )
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.description = null;
+    else if (val && val !== cur) patch.description = val;
+  }
+
+  if (action === "9") {
+    const curActive = model.isActive ? "o" : "n";
+    const val = (await rl.question(`👉 Modèle actif ? (o/n) [${curActive}] : `))
+      .trim()
+      .toLowerCase();
+    if (val === "o" || val === "oui" || val === "true") patch.isActive = true;
+    else if (val === "n" || val === "non" || val === "false")
+      patch.isActive = false;
+  }
+
+  if (action === "4" || action === "9") {
+    const cur = Number(model.overrides.context_length ?? eff.maxContext ?? 0);
+    const val = (
+      await rl.question(
+        `👉 Contexte max en tokens [${cur}] ('auto' pour OpenRouter) : `
+      )
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.context_length = null;
+    else if (val && !Number.isNaN(Number(val)) && Number(val) !== cur) {
+      patch.context_length = Number(val);
+    }
+  }
+
+  if (action === "5" || action === "9") {
+    const cur = Number(model.overrides.max_output_tokens ?? eff.maxOutput ?? 0);
+    const val = (
+      await rl.question(
+        `👉 Sortie max en tokens [${cur}] ('auto' pour OpenRouter) : `
+      )
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.max_output_tokens = null;
+    else if (val && !Number.isNaN(Number(val)) && Number(val) !== cur) {
+      patch.max_output_tokens = Number(val);
+    }
+  }
+
+  if (action === "6") {
+    const cur = (eff.supported_parameters || []).join(", ");
+    const val = (
+      await rl.question(`👉 Paramètres [${cur}] ('auto' pour OpenRouter) : `)
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.supported_parameters = null;
+    else if (val) {
+      patch.supported_parameters = val
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+  }
+
+  if (action === "7") {
+    const curPricing = model.overrides.pricing ?? model.pricing ?? {};
+    console.log("Tarification actuelle :", JSON.stringify(curPricing));
+    console.log("Entrez les tarifs au format JSON ou 'auto' pour OpenRouter.");
+    const val = (
+      await rl.question(`👉 JSON pricing ('auto' pour reset) : `)
+    ).trim();
+    if (val.toLowerCase() === "auto") patch.pricing = null;
+    else if (val) {
+      try {
+        patch.pricing = JSON.parse(val);
+      } catch {
+        throw new Error("Format JSON de tarification invalide.");
+      }
+    }
+  }
+
+  if (!Object.keys(patch).length) {
+    console.log("ℹ️ Aucune modification apportée.");
+    return null;
+  }
+
+  validateModelPatch(patch);
+  return patch;
+}
+
+async function askBatchModelPatch(
+  selected: StoredModel[],
+  rl: Interface
+): Promise<ModelPatch | null> {
+  console.log("\n=======================================================");
+  console.log(`⚡ MODIFICATION PAR LOT DE ${selected.length} MODÈLE(S)`);
+  console.log("=======================================================");
+  console.log("  1. ✅ Activer tous les modèles sélectionnés");
+  console.log("  2. ❌ Désactiver tous les modèles sélectionnés");
+  console.log("  3. 🔄 Rétablir les valeurs OpenRouter (auto) pour tous");
+  console.log(
+    "  4. 🛠️  Appliquer une surcharge spécifique (nom, contexte, etc.)"
+  );
+  console.log("  0. ↩️  Annuler");
+
+  const choice = (await rl.question("\n👉 Votre choix [0-4] : ")).trim();
+  if (choice === "0") return null;
+
+  if (choice === "1") return { isActive: true };
+  if (choice === "2") return { isActive: false };
+  if (choice === "3") {
+    return {
+      architecture: null,
+      context_length: null,
+      description: null,
+      max_output_tokens: null,
+      name: null,
+      pricing: null,
+      supported_parameters: null,
+    };
+  }
+
+  if (choice === "4") {
+    return await askPatch(rl);
+  }
+
+  return null;
+}
+
 async function askPatch(rl: Interface): Promise<ModelPatch> {
   console.log(
     "Champs : active, name, description, context_length, max_output_tokens, supported_parameters, architecture, pricing."
@@ -279,23 +503,41 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         }
       } else if (choice === "5") {
         console.log(
-          "Exemples : #1,#4,openai/gpt-4 ; #10-#20 ; tous (tous les résultats de recherche)."
+          "Exemples : #1 ; openai/gpt-4 ; #1,#4 ; #10-#20 ; tous (tous les résultats affichés)."
         );
         const selected = selectModels(
           await rl.question("👉 Sélection : "),
           models
         );
-        const patch = await askPatch(rl);
+
+        let patch: ModelPatch | null = null;
+        if (selected.length === 1) {
+          patch = await askSingleModelInteractivePatch(selected[0], rl);
+        } else {
+          patch = await askBatchModelPatch(selected, rl);
+        }
+
+        if (!patch || !Object.keys(patch).length) {
+          console.log("ℹ️ Aucune modification à enregistrer.");
+          continue;
+        }
+
         console.table(
           selected.map((m) => ({ ID: m.id, "N°": `#${m.model_number}` }))
         );
-        console.log("Modifications :", JSON.stringify(patch, null, 2));
+        console.log(
+          "Modifications à appliquer :",
+          JSON.stringify(patch, null, 2)
+        );
         const confirm = (
           await rl.question(
-            `Appliquer à ${selected.length} modèle(s) ? (o/N) : `
+            `👉 Confirmer l'application à ${selected.length} modèle(s) ? (O/n) : `
           )
-        ).trim();
-        if (/^(o|oui|y|yes)$/i.test(confirm)) {
+        )
+          .trim()
+          .toLowerCase();
+
+        if (confirm !== "n" && confirm !== "non") {
           const result = await applyModelPatch(
             sql,
             selected.map((m) => m.id),
@@ -304,9 +546,11 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           console.log(
             "✅ " +
               result.length +
-              " modèle(s) mis à jour. Prise en compte API sous 10 secondes."
+              " modèle(s) mis à jour avec succès ! Prise en compte API sous 10 secondes."
           );
           models = await searchModels(sql, query);
+        } else {
+          console.log("Modification annulée.");
         }
       } else if (choice === "6") {
         await updateModels(sql);

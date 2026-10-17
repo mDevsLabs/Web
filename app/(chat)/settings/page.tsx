@@ -224,9 +224,16 @@ function SettingsPageInner() {
       className="flex flex-1 flex-col h-full overflow-y-auto bg-background"
       data-scroll-root=""
     >
-      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 pb-0">
+      {/*
+        `md:pb-0` est indispensable et doit rester explicite : le raccourci
+        `md:p-10` est compilé APRÈS les utilitaires de base par Tailwind, donc un
+        simple `pb-0` en fin de liste se faisait écraser par lui et la grille
+        ci-dessous repartait avec 2,5 rem de haut en trop. On étale donc le
+        raccourci en `md:px-*`/`md:pt-*` pour que le zéro du bas tienne.
+      */}
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:px-10 md:pt-10 md:pb-0">
         {/* En-tête de la page */}
-        <div className="pb-6 border-b border-border/50">
+        <div className="pb-4 border-b border-border/50">
           <div className="flex items-start gap-3">
             <PageBackButton />
             <div className="min-w-0">

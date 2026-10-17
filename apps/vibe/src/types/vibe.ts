@@ -490,3 +490,82 @@ export interface UserSettings {
   /** Langue cible de la traduction automatique des messages (code type DeepL). */
   dm_translate_lang?: string | null;
 }
+
+// ─────────────────────────────────────────────
+// STORIES — publications éphémères de 24 h
+// ─────────────────────────────────────────────
+
+/** Un média d'une story : photo ou vidéo, ≤ 50 Mo (contrat recontrôlé serveur). */
+export interface StoryMedia {
+  altText: string;
+  fileSizeBytes?: number;
+  height: number | null;
+  id: string;
+  mediaType: 'image' | 'video';
+  position: number;
+  url: string;
+  width: number | null;
+}
+
+/**
+ * Sondage d'une story : question et options figées à la publication, une voix
+ * par spectateur (remplaçable). `counts` suit l'ordre de `options`.
+ */
+export interface StoryPoll {
+  counts: number[];
+  myVote: number | null;
+  options: string[];
+  question: string;
+  total: number;
+}
+
+/** Sticker emoji posé sur le canevas, en coordonnées relatives (0 → 1). */
+export interface StorySticker {
+  emoji: string;
+  x: number;
+  y: number;
+}
+
+/**
+ * Une story : un instantané de 24 h, une légende, un ou plusieurs médias.
+ */
+export interface Story {
+  archivedAt?: string | null;
+  caption: string;
+  createdAt: string;
+  expiresAt: string;
+  id: string;
+  media: StoryMedia[];
+  poll: StoryPoll | null;
+  stickers: StorySticker[];
+  visibility: 'followers' | 'public' | 'private';
+}
+
+/** Une story et son auteur, tels que les sert le rail : groupés par auteur. */
+export interface StoryAuthor {
+  authorId: number;
+  avatarUrl: string | null;
+  displayName: string;
+  isMine: boolean;
+  seen: boolean;
+  stories: Story[];
+  username: string;
+}
+
+/** Quota de publication du jour. `limit: null` = forfait Max, illimité. */
+export interface StoryQuota {
+  limit: number | null;
+  remaining: number | null;
+  resetsInMs?: number;
+  tier: string;
+  timeZone?: string;
+  used: number;
+}
+
+/** Spectateur relevé dans la liste des vues — visible par l'auteur seul. */
+export interface StoryViewer {
+  avatarUrl: string | null;
+  displayName: string;
+  username: string;
+  viewedAt: string;
+}

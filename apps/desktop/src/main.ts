@@ -11,6 +11,20 @@ const DESKTOP_CHANNEL = (process.env.MAI_DESKTOP_CHANNEL || "").toLowerCase().tr
 const APP_TITLE = DESKTOP_CHANNEL === "beta" ? "mAI (Bêta)" : "mAI";
 const PREFERENCES_FILE = "preferences.json";
 
+// Isoler le dossier de profil et de cache disque entre la version portable et la version installée
+// pour éviter le blocage « Unable to move the cache: Accès refusé (0x5) ».
+const isPortable = Boolean(process.env.PORTABLE_EXECUTABLE_DIR);
+if (isPortable) {
+  const portableData = path.join(process.env.PORTABLE_EXECUTABLE_DIR!, "data");
+  app.setPath("userData", portableData);
+  app.commandLine.appendSwitch("disk-cache-dir", path.join(portableData, "Cache"));
+} else {
+  const baseUserData = app.getPath("userData");
+  app.commandLine.appendSwitch("disk-cache-dir", path.join(baseUserData, "Cache"));
+}
+// Neutraliser l'erreur cosmétique du client Crashpad s'il n'a pas de serveur
+app.commandLine.appendSwitch("disable-crashpad");
+
 let APP_URL = DEFAULT_APP_URL;
 
 // Empêche plusieurs instances
@@ -121,7 +135,13 @@ async function askAppUrl(prefill: string): Promise<string | null> {
       sandbox: true,
     },
   });
-  await window.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
+  const tempHtmlPath = path.join(app.getPath("temp"), `mai-ask-url-${Date.now()}.html`);
+  fs.writeFileSync(tempHtmlPath, html, "utf8");
+  try {
+    await window.loadFile(tempHtmlPath);
+  } finally {
+    try { fs.unlinkSync(tempHtmlPath); } catch {}
+  }
 
   try {
     const value = await window.webContents.executeJavaScript(
@@ -151,6 +171,9 @@ async function askAppUrl(prefill: string): Promise<string | null> {
 
 async function resolveAppUrl(): Promise<string> {
   const last = await readLastAppUrl();
+  if (last && isValidAppUrl(last)) {
+    return last;
+  }
   const prefill = last || DEFAULT_APP_URL;
   const chosen = await askAppUrl(prefill);
   const candidate = chosen && chosen.trim() ? chosen.trim() : prefill;

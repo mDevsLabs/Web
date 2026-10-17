@@ -64,7 +64,7 @@ export const maiModelsList: MAIModelDetail[] = [
   },
   {
     apiAlias: "mai-2-mini",
-    backingModel: "minimax/minimax-m3",
+    backingModel: "z-ai/glm-5.3-flash",
     capabilities: {
       coding: true,
       functionCalling: true,

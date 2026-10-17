@@ -78,7 +78,6 @@ export interface WakieChatComposerProps {
   contextePret: boolean;
   stop: () => Promise<void> | void;
   pieceEnEchec?: EtatPiece;
-  voiceReady: boolean;
 }
 
 export const WakieChatComposer: React.FC<WakieChatComposerProps> = ({
@@ -122,7 +121,6 @@ export const WakieChatComposer: React.FC<WakieChatComposerProps> = ({
   contextePret,
   stop,
   pieceEnEchec,
-  voiceReady,
 }) => {
   return (
     <form
@@ -440,16 +438,18 @@ export const WakieChatComposer: React.FC<WakieChatComposerProps> = ({
         onChoisir={insererMention}
         textareaRef={textareaRef}
       />
-      {pieceEnEchec ? (
+      {/*
+        Aucune note de bas de champ à l'état nominal : l'ancienne promesse
+        « Le texte est prêt. La voix temps réel arrive dans une phase
+        suivante. » s'affichait en permanence parce que
+        `lib/wakies/setup.ts` fige `voice: false`, et n'annonçait rien qui ne
+        soit déjà écrit dans docs/3-wakies/INTEGRATION.md § 6. Il ne reste que
+        l'échec, qui doit, lui, rester visible.
+      */}
+      {pieceEnEchec && (
         <div className="chat-compose-note is-error">
           {pieceEnEchec.erreur ?? "Un fichier n'a pas pu être envoyé."} Le
           texte reste prêt à être envoyé.
-        </div>
-      ) : (
-        <div className="chat-compose-note">
-          {voiceReady
-            ? "Texte et voix, une seule conversation."
-            : "Le texte est prêt. La voix temps réel arrive dans une phase suivante."}
         </div>
       )}
     </form>

@@ -20,6 +20,7 @@ import {
   normalizeThemePreference,
   THEME_PREFERENCES,
 } from "@/lib/theme/preference";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 // La limite de customInstructions dépend du forfait : le schéma est donc
 // construit par requête. Avant, `z.string().max(4000)` était figé ici comme
@@ -62,6 +63,7 @@ const buildSchema = (tier?: string | null) =>
     // illisible retombe sur « system » : enregistrer les autres réglages ne
     // doit pas échouer à cause du thème.
     theme: z.string().transform(normalizeThemePreference).optional(),
+    reasoningLevel: z.enum(REASONING_LEVELS).optional(),
     topP: z.number().min(0).max(1).optional(),
   });
 

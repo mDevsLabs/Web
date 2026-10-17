@@ -126,6 +126,8 @@ const REQUIRED_COLUMNS = [
   // Vibe, le Site et Wakies. Une colonne absente ferait tomber la lecture des
   // préférences en 42703 comme en 0034/0038.
   { column: "theme", table: "user_preferences" },
+  // Migration 0057 : effort de réflexion global dans user_preferences.
+  { column: "reasoningLevel", table: "user_preferences" },
   // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
   // retombe sur une jointure `Chat` et les tokens d'une conversation
   // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait

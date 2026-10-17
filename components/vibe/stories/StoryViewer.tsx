@@ -387,15 +387,25 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         )}
 
         {/* Stickers : positions relatives posées à la publication. */}
-        {courant.story.stickers.map((sticker, index) => (
-          <span
-            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 text-4xl drop-shadow"
-            key={`${sticker.emoji}-${index}`}
-            style={{ left: `${sticker.x * 100}%`, top: `${sticker.y * 100}%` }}
-          >
-            {sticker.emoji}
-          </span>
-        ))}
+        {courant.story.stickers.map((sticker, index) => {
+          const estBadge =
+            /[a-zA-Z0-9]/.test(sticker.emoji) ||
+            sticker.emoji.startsWith("📍") ||
+            sticker.emoji.startsWith("⭐");
+          return (
+            <span
+              className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${
+                estBadge
+                  ? "vibe-story-badge shadow-xl"
+                  : "text-4xl drop-shadow"
+              }`}
+              key={`${sticker.emoji}-${index}`}
+              style={{ left: `${sticker.x * 100}%`, top: `${sticker.y * 100}%` }}
+            >
+              {sticker.emoji}
+            </span>
+          );
+        })}
 
         {/* Légende et sondage empilés en bas, pour ne pas se recouvrir. Une
             story de texte porte déjà sa légende au centre du canevas. */}

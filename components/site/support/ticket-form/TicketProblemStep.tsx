@@ -2,6 +2,7 @@
 
 import { Edit3Icon as Edit3, EyeIcon as Eye } from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export function TicketProblemStep({
   title,
@@ -85,7 +86,9 @@ export function TicketProblemStep({
             className="min-h-[220px] w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-slate-800 prose prose-sm max-w-none"
           >
             {description.trim() ? (
-              <ReactMarkdown>{description}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {description}
+              </ReactMarkdown>
             ) : (
               <p className="text-xs italic text-slate-400">Aucun texte.</p>
             )}

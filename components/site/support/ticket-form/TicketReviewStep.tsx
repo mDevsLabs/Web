@@ -5,6 +5,7 @@ import {
   FileTextIcon as FileText,
 } from "@mdevs/icons";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { SupportAttachment } from "@/app/(chat)/site/actions/support-utils";
 import {
   PRIORITY_OPTIONS,
@@ -72,7 +73,9 @@ export function TicketReviewStep({
           Description
         </p>
         <div className="prose prose-sm max-w-none rounded-2xl border border-slate-200 bg-white p-4 text-slate-800">
-          <ReactMarkdown>{description.trim()}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {description.trim()}
+          </ReactMarkdown>
         </div>
       </div>
 

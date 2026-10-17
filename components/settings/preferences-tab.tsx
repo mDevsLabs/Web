@@ -28,6 +28,11 @@ import {
   VoiceOptionSelector,
 } from "@/components/settings/option-selectors";
 import { Label } from "@/components/ui/label";
+import {
+  REASONING_LEVELS,
+  REASONING_LEVEL_LABELS,
+  type ReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useSettings } from "@/hooks/use-settings";
 import type { ChatModel } from "@/lib/ai/models";
@@ -88,6 +93,8 @@ export function PreferencesTab() {
   const tierRaw = profile?.tier;
 
   const [defaultModelId, setDefaultModelId] = useState<string>(DEFAULT_CHAT_MODEL);
+  const [defaultReasoningLevel, setDefaultReasoningLevel] =
+    useState<ReasoningLevel>("medium");
   const [defaultChatVisibility, setDefaultChatVisibility] = useState<
     "private" | "public"
   >("private");
@@ -217,6 +224,9 @@ export function PreferencesTab() {
       if (customPrefData.defaultChatModel && !getCookie("chat-model")) {
         setDefaultModelId(customPrefData.defaultChatModel);
       }
+      if (customPrefData.reasoningLevel) {
+        setDefaultReasoningLevel(customPrefData.reasoningLevel as ReasoningLevel);
+      }
       if (customPrefData.defaultAgentId !== undefined) {
         setDefaultAgentId(customPrefData.defaultAgentId || "none");
       }
@@ -271,6 +281,7 @@ export function PreferencesTab() {
         body: JSON.stringify({
           defaultChatModel: defaultModelId,
           defaultChatVisibility,
+          reasoningLevel: defaultReasoningLevel,
         }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -282,7 +293,7 @@ export function PreferencesTab() {
       return;
     }
     toast.success("Préférences IA enregistrées !");
-  }, [defaultModelId, defaultChatVisibility, mutateCustomPref]);
+  }, [defaultModelId, defaultChatVisibility, defaultReasoningLevel, mutateCustomPref]);
 
   const handleSaveToolsPreferences = useCallback(async () => {
     setIsSavingToolsPref(true);
@@ -420,6 +431,24 @@ export function PreferencesTab() {
           />
           <span className="text-[11px] text-muted-foreground">
             Ce modèle sera pré-sélectionné pour chaque nouvelle conversation.
+          </span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Label className="text-xs font-medium text-muted-foreground">
+            Effort de réflexion par défaut
+          </Label>
+          <OptionSelector
+            items={REASONING_LEVELS.map((level) => ({
+              id: level,
+              label: REASONING_LEVEL_LABELS[level],
+            }))}
+            onChange={(val) => setDefaultReasoningLevel(val as ReasoningLevel)}
+            placeholder="Effort de réflexion"
+            value={defaultReasoningLevel}
+          />
+          <span className="text-[11px] text-muted-foreground">
+            Niveau appliqué par défaut à toutes les surfaces IA (Chat, Agent, Wakies, Vibe) pour les modèles compatibles.
           </span>
         </div>
 

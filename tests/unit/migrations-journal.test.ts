@@ -120,6 +120,9 @@ describe("Journal des migrations — concordance avec le disque", () => {
   });
 
   it("garde 0053, 0054, 0055 et 0056 dans l'ordre d'ajout du journal", () => {
+    const cinquanteSept = ENTRIES.find(
+      (entree) => entree.tag === "0057_user_reasoning_level"
+    );
     const cinquanteSix = ENTRIES.find(
       (entree) => entree.tag === "0056_user_preferences_theme"
     );
@@ -140,10 +143,12 @@ describe("Journal des migrations — concordance avec le disque", () => {
     expect(cinquanteQuatre).toBeDefined();
     expect(cinquanteCinq).toBeDefined();
     expect(cinquanteSix).toBeDefined();
+    expect(cinquanteSept).toBeDefined();
     expect((cinquanteTrois?.idx ?? 0) > (cinquanteDeux?.idx ?? 0)).toBe(true);
     expect((cinquanteQuatre?.idx ?? 0) > (cinquanteTrois?.idx ?? 0)).toBe(true);
     expect((cinquanteCinq?.idx ?? 0) > (cinquanteQuatre?.idx ?? 0)).toBe(true);
-    expect(cinquanteSix?.idx).toBe(ENTRIES.length - 1);
+    expect((cinquanteSix?.idx ?? 0) > (cinquanteCinq?.idx ?? 0)).toBe(true);
+    expect(cinquanteSept?.idx).toBe(ENTRIES.length - 1);
     expect((cinquanteTrois?.when ?? 0) > (cinquanteDeux?.when ?? 0)).toBe(true);
     expect((cinquanteQuatre?.when ?? 0) > (cinquanteTrois?.when ?? 0)).toBe(
       true
@@ -152,6 +157,7 @@ describe("Journal des migrations — concordance avec le disque", () => {
       true
     );
     expect((cinquanteSix?.when ?? 0) > (cinquanteCinq?.when ?? 0)).toBe(true);
+    expect((cinquanteSept?.when ?? 0) > (cinquanteSix?.when ?? 0)).toBe(true);
   });
 
   it("n'ajoute aucun .sql destructif, la règle étant l'additif only", () => {

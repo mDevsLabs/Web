@@ -15,7 +15,25 @@ export function resolveCoderExecutable(): string | null {
     ? path.join(process.resourcesPath, "coder")
     : path.resolve(__dirname, `../build/coder-${process.arch}`);
   const executable = path.join(root, relative);
-  return existsSync(executable) ? executable : null;
+  if (!existsSync(executable)) {
+    return null;
+  }
+  // Refuser un chemin dont un dossier parent se nomme app.asar (cas de
+  // résolution imbriquée qui casse le résolveur ESM de Node).
+  const segments = path.resolve(executable).split(path.sep);
+  if (segments.slice(0, -1).some((s) => s.toLowerCase() === "app.asar")) {
+    return null;
+  }
+  // En mode packagé, s'assurer que le paquet app.asar interne de Coder existe bien.
+  if (app.isPackaged) {
+    const internalAsar = process.platform === "darwin"
+      ? path.join(root, "mAI Coder.app/Contents/Resources/app.asar")
+      : path.join(root, "resources/app.asar");
+    if (!existsSync(internalAsar)) {
+      return null;
+    }
+  }
+  return executable;
 }
 
 export async function launchCoder(opts?: { workspacePath?: string }): Promise<{ success: boolean; error?: string }> {
@@ -29,10 +47,13 @@ export async function launchCoder(opts?: { workspacePath?: string }): Promise<{ 
   // Retirer le mode Node hérité, sinon Electron exécuterait son binaire comme Node.
   const env = { ...process.env, MAI_CODER_LOAD_DIST: "1" };
   delete (env as NodeJS.ProcessEnv).ELECTRON_RUN_AS_NODE;
+  // Utiliser le home de l'utilisateur comme cwd plutôt que le dossier du payload,
+  // pour éviter que Node/Electron résolve les modules ou exports dans le paquet Coder.
+  const cwd = app.getPath("home");
   const args = opts?.workspacePath ? [`--workspace=${opts.workspacePath}`] : [];
   return new Promise((resolve) => {
     try {
-      const child = spawn(executable, args, { cwd: path.dirname(executable), detached: true, stdio: "ignore", env, windowsHide: false });
+      const child = spawn(executable, args, { cwd, detached: true, stdio: "ignore", env, windowsHide: false });
       child.once("error", (error) => resolve({ success: false, error: `Impossible de lancer Coder : ${error.message}` }));
       child.once("spawn", () => {
         child.unref();

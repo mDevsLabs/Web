@@ -803,6 +803,25 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Migration 0057 : Effort de réflexion global et surcharge Agent nullable.
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "reasoningLevel" varchar(10) DEFAULT 'medium' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$ BEGIN
+        ALTER TABLE IF EXISTS "AgentSettings" ALTER COLUMN "reasoningLevel" DROP NOT NULL;
+        ALTER TABLE IF EXISTS "AgentSettings" ALTER COLUMN "reasoningLevel" DROP DEFAULT;
+      EXCEPTION
+        WHEN undefined_column THEN NULL;
+      END $$;
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

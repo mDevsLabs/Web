@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { CheckCircle2Icon as CheckCircle2, FileTextIcon as FileText } from "@mdevs/icons";
 import type { SupportAttachment } from "@/app/actions/support-utils";
 import { PRIORITY_OPTIONS, type SupportPriority } from "@/components/support/support-config";
@@ -46,7 +47,7 @@ export function TicketReviewStep({
       <div>
         <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">Description</p>
         <div className="prose prose-sm max-w-none rounded-2xl border border-slate-200 bg-white p-4 text-slate-800">
-          <ReactMarkdown>{description.trim()}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{description.trim()}</ReactMarkdown>
         </div>
       </div>
 

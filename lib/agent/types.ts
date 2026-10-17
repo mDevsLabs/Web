@@ -458,7 +458,7 @@ export type AgentSettings = {
   defaultModel: string | null;
   defaultProjectId: string | null;
   enabledCategories: ToolCategory[] | null;
-  reasoningLevel: ReasoningLevel;
+  reasoningLevel: ReasoningLevel | null;
   toolPolicies: Record<string, ToolPermission>;
   updatedAt?: Date | null;
 };

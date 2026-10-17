@@ -28,6 +28,7 @@ import { toolKindFor } from "@/lib/prompts/capabilities";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
+import { resolveReasoningProviderOptions, normalizeReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 export type ChatStreamParams = {
   ctx: ChatRequestContext;
@@ -135,6 +136,13 @@ export function createChatStream(params: ChatStreamParams) {
           : {}),
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
+          : {}),
+        ...(ctx.reasoningLevel
+          ? {
+              providerOptions: resolveReasoningProviderOptions(
+                normalizeReasoningLevel(ctx.reasoningLevel)
+              ),
+            }
           : {}),
         onChunk({ chunk }) {
           if (isModelStreamActivity(chunk)) {

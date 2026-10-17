@@ -3,6 +3,7 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
+import { runFormManager } from "./admin-forms.ts";
 import { runModelManager } from "./admin-models.ts";
 import { loadLocalEnv } from "./cli-env.ts";
 import { updateModels } from "./updateModels.ts";
@@ -1154,11 +1155,28 @@ export async function runNotificationManager() {
 // ─────────────────────────────────────────────
 // MENU PRINCIPAL DE LA SUITE ADMINISTRATIVE
 // ─────────────────────────────────────────────
+async function runModelScheduleNow() {
+  console.log(
+    "\n⏱️ Exécution manuelle du cron de synchronisation des modèles OpenRouter..."
+  );
+  const result = await updateModels(sql);
+  if (result.skipped) {
+    console.log(
+      "ℹ️ Une synchronisation plus récente a été conservée ; aucun changement appliqué."
+    );
+  } else {
+    console.log(
+      `✅ Catalogue sauvegardé rafraîchi : ${result.upserted} modèle(s) synchronisé(s), ${result.retired} archivé(s).`
+    );
+  }
+  return result;
+}
+
 export async function runAdminCli() {
   // Support des flags en ligne de commande pour exécution non interactive / crons
   const args = process.argv.slice(2);
-  if (args.includes("--update-models")) {
-    await updateModels(sql);
+  if (args.includes("--update-models") || args.includes("--models-cron")) {
+    await runModelScheduleNow();
     return;
   }
   if (args.includes("--models")) {
@@ -1218,6 +1236,15 @@ export async function runAdminCli() {
     await runNotificationManager();
     process.exit(0);
   }
+  if (args.includes("--forms")) {
+    const rl = readline.createInterface({ input, output });
+    try {
+      await runFormManager(sql, rl);
+    } finally {
+      rl.close();
+    }
+    process.exit(0);
+  }
 
   console.log("");
   console.log(
@@ -1266,11 +1293,17 @@ export async function runAdminCli() {
     console.log(
       `  ${c.brightCyan}[10]${c.reset} 🤖 Gérer les modèles OpenRouter (recherche, édition, activation, lots)`
     );
+    console.log(
+      `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et rafraîchir les modèles sauvegardés`
+    );
+    console.log(
+      `  ${c.brightCyan}[12]${c.reset} 📝 Gérer les formulaires & sondages (création intelligente, stats, activation)`
+    );
     console.log(`  ${c.white}[0]${c.reset} 🚪 Quitter`);
     console.log("");
 
     const choice = (
-      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-10] : ${c.reset}`)
+      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-12] : ${c.reset}`)
     ).trim();
 
     switch (choice) {
@@ -1312,6 +1345,26 @@ export async function runAdminCli() {
           console.error(
             "❌ Catalogue indisponible. Appliquez la migration et lancez --update-models.",
             error
+          );
+        }
+        break;
+      case "11":
+        try {
+          await runModelScheduleNow();
+        } catch (error) {
+          console.error(
+            "❌ Échec du cron de synchronisation des modèles :",
+            error instanceof Error ? error.message : error
+          );
+        }
+        break;
+      case "12":
+        try {
+          await runFormManager(sql, rl);
+        } catch (error) {
+          console.error(
+            "❌ Erreur gestionnaire de formulaires :",
+            error instanceof Error ? error.message : error
           );
         }
         break;

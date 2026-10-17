@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { BotIcon as Bot, FileTextIcon as FileText, ImageIcon, MessageSquareIcon as MessageSquare, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles } from "@mdevs/icons";
 import type { SupportMessage } from "@/app/actions/support-utils";
 import type { TicketTimelineProps, TicketDetailUser } from "@/components/support/ticket-detail/ticket-detail-types";
@@ -49,7 +50,7 @@ export function TicketTimeline({ messages, user, messagesEndRef }: TicketTimelin
                   </div>
                 </div>
               </div>
-              <div className="prose prose-sm max-w-none pl-12 leading-relaxed text-slate-800"><ReactMarkdown>{message.message}</ReactMarkdown></div>
+              <div className="prose prose-sm max-w-none pl-12 leading-relaxed text-slate-800"><ReactMarkdown remarkPlugins={[remarkGfm]}>{message.message}</ReactMarkdown></div>
               {message.is_ai_generated ? <div className="ml-12 mt-3 flex gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800"><Bot className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" /><span><strong>Note :</strong> Ce message a été généré avec l&apos;assistance de l&apos;IA et relu par l&apos;équipe mAI. Vérifiez les informations critiques.</span></div> : null}
               {message.attachments && message.attachments.length > 0 ? <div className="ml-12 mt-3 grid grid-cols-2 gap-2">{message.attachments.map((attachment) => <a key={attachment.id} href={attachment.file_url} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-2 text-xs hover:border-purple-200">{attachment.mime_type.startsWith("image/") ? <ImageIcon className="h-4 w-4 text-purple-600" aria-hidden="true" /> : <FileText className="h-4 w-4 text-slate-500" aria-hidden="true" />}<span className="truncate font-medium">{attachment.file_name}</span></a>)}</div> : null}
             </div>

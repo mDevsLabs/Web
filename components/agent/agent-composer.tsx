@@ -19,7 +19,6 @@ import {
   AgentToolsPicker,
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
-import { ReasoningEffortPicker } from "@/components/agent/reasoning-effort-picker";
 import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import {
@@ -789,16 +788,6 @@ export function AgentComposer({
               onModelChange={onModelChange}
               placeholder="Modèle d'IA"
               selectedModelId={modelId}
-            />
-            <ReasoningEffortPicker
-              level={reasoning.effort ?? defaultReasoningLevel}
-              levels={reasoningLevels}
-              mandatory={capabilities.reasoningMandatory}
-              onLevelChange={(level) =>
-                onOptionsChange({ reasoningLevel: level })
-              }
-              onOpenChange={pickerOpenChange("reasoning")}
-              open={openPicker === "reasoning"}
             />
             <VoiceRecorderButton
               input={input}

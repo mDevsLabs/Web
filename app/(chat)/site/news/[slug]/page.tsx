@@ -116,6 +116,7 @@ export default async function ArticlePage({
 
         <div className="prose max-w-none text-slate-800 leading-relaxed font-sans">
           <Markdown
+            remarkPlugins={[remarkGfm]}
             components={{
               a: ({ node: _node, href, children, ...props }) => (
                 <a
