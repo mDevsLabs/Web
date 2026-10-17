@@ -199,7 +199,7 @@
       "file": "openrouter-models.ts",
       "handlers": [],
       "imports": [],
-      "lines": 252,
+      "lines": 253,
       "registrations": []
     },
     {
@@ -617,7 +617,7 @@
         "./vibe-common.ts",
         "npm:hono@4"
       ],
-      "lines": 990,
+      "lines": 1260,
       "registrations": []
     },
     {
@@ -2363,6 +2363,7 @@
     {
       "file": "app/(chat)/api/site/v1/models/audio/route.ts",
       "imports": [
+        "@/lib/constants",
         "@/lib/site/api-key-redaction",
         "@/lib/site/api-key-session",
         "next/server"
@@ -2660,6 +2661,7 @@
         "@/lib/errors",
         "@/lib/i18n/languages",
         "@/lib/plans/custom-instructions",
+        "@/lib/theme/preference",
         "next/server",
         "zod"
       ],
@@ -3300,6 +3302,7 @@
         "@/lib/api/error-response",
         "@/lib/wakies/blob",
         "@/lib/wakies/http",
+        "@/lib/wakies/public-profile",
         "@/lib/wakies/queries",
         "zod"
       ],
@@ -4402,70 +4405,77 @@
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 699,
+      "line": 898,
       "method": "POST",
       "path": "/api/vibe/stories"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 790,
+      "line": 989,
       "method": "DELETE",
       "path": "/api/vibe/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 758,
+      "line": 957,
       "method": "PATCH",
       "path": "/api/vibe/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 880,
+      "line": 1079,
       "method": "POST",
       "path": "/api/vibe/stories/:id/react"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 835,
+      "line": 1034,
       "method": "POST",
       "path": "/api/vibe/stories/:id/view"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 940,
+      "line": 1210,
       "method": "GET",
       "path": "/api/vibe/stories/:id/views"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 501,
+      "line": 1150,
+      "method": "POST",
+      "path": "/api/vibe/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
       "method": "GET",
       "path": "/api/vibe/stories/active"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 506,
+      "line": 645,
       "method": "GET",
       "path": "/api/vibe/stories/archive"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 984,
+      "line": 1254,
       "method": "GET",
       "path": "/api/vibe/stories/quota"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 446,
+      "line": 559,
       "method": "GET",
       "path": "/api/vibe/stories/tray"
     },
@@ -6803,77 +6813,84 @@
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 699,
+      "line": 898,
       "method": "POST",
       "path": "/v1/stories"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 699,
+      "line": 898,
       "method": "POST",
       "path": "/v1/stories/"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 790,
+      "line": 989,
       "method": "DELETE",
       "path": "/v1/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 758,
+      "line": 957,
       "method": "PATCH",
       "path": "/v1/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 880,
+      "line": 1079,
       "method": "POST",
       "path": "/v1/stories/:id/react"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 835,
+      "line": 1034,
       "method": "POST",
       "path": "/v1/stories/:id/view"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 940,
+      "line": 1210,
       "method": "GET",
       "path": "/v1/stories/:id/views"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 501,
+      "line": 1150,
+      "method": "POST",
+      "path": "/v1/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
       "method": "GET",
       "path": "/v1/stories/active"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 506,
+      "line": 645,
       "method": "GET",
       "path": "/v1/stories/archive"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 984,
+      "line": 1254,
       "method": "GET",
       "path": "/v1/stories/quota"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 446,
+      "line": 559,
       "method": "GET",
       "path": "/v1/stories/tray"
     },
@@ -7902,70 +7919,77 @@
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 699,
+      "line": 898,
       "method": "POST",
       "path": "/vibe/stories"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 790,
+      "line": 989,
       "method": "DELETE",
       "path": "/vibe/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 758,
+      "line": 957,
       "method": "PATCH",
       "path": "/vibe/stories/:id"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 880,
+      "line": 1079,
       "method": "POST",
       "path": "/vibe/stories/:id/react"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 835,
+      "line": 1034,
       "method": "POST",
       "path": "/vibe/stories/:id/view"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 940,
+      "line": 1210,
       "method": "GET",
       "path": "/vibe/stories/:id/views"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 501,
+      "line": 1150,
+      "method": "POST",
+      "path": "/vibe/stories/:id/vote"
+    },
+    {
+      "dynamic": false,
+      "file": "vibe-stories.ts",
+      "line": 640,
       "method": "GET",
       "path": "/vibe/stories/active"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 506,
+      "line": 645,
       "method": "GET",
       "path": "/vibe/stories/archive"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 984,
+      "line": 1254,
       "method": "GET",
       "path": "/vibe/stories/quota"
     },
     {
       "dynamic": false,
       "file": "vibe-stories.ts",
-      "line": 446,
+      "line": 559,
       "method": "GET",
       "path": "/vibe/stories/tray"
     },

@@ -39,6 +39,12 @@ Conséquences pratiques :
   appellent le backend via `MAI_API_URL` (`lib/constants.ts`, défaut
   `https://mai.val.run`) et normalisent les erreurs amont avec
   `lib/api/error-response.ts`.
+- `cron.ts`, **à la racine hors du graphe de `main.ts`**, est le seul
+  ordonnanceur des quatre ticks `app/api/cron/**` (Agent · planning · Wakies ·
+  Vibe) : c'est un val CRON Val Town, cadence 5 min, authentifié par
+  `CRON_SECRET`, qui les appelle **en parallèle** pour tenir dans le plafond
+  d'exécution d'un val. Il remplace le workflow GitHub supprimé : ne
+  réintroduire aucun second ordonnanceur.
 - Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 52
   fichiers du graphe d'imports transitif de `main.ts`).
 - Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.
@@ -345,7 +351,8 @@ seulement des fichiers :
   — il n'existe pas de quota séparé.
 - **Web** : l'outil `webSearch` de l'hôte, donc `/v1/web/search`.
 - **Tâches planifiées** : plus de `setInterval` ; tick par
-  `app/api/cron/wakies` (à planifier, `CRON_SECRET`), bail transactionnel.
+  `app/api/cron/wakies`, appelé toutes les 5 min par le val CRON Val Town
+  `cron.ts` (`CRON_SECRET`), bail transactionnel.
 
 Cinq règles à ne pas contourner :
 

@@ -50,8 +50,9 @@ function providerFromName(name: unknown, modelId: string): string | null {
 }
 
 function displayProvider(model: StoredModel): string {
+  const upstreamName = model.upstream?.name;
   const nameProvider =
-    providerFromName(model.upstream?.name, model.id) ??
+    providerFromName(upstreamName, model.id) ??
     providerFromName(model.name, model.id);
   if (nameProvider) return nameProvider;
   return (model.id.split("/")[0] || "openrouter")

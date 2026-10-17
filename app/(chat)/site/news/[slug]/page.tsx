@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "@/components/site/router";
+import { ArticleAttachmentButton } from "@/components/site/ui/article-attachment";
 import { NewsMedia } from "@/components/site/ui/media";
 import { getCanonicalUrl } from "@/lib/site/app-url";
 import { getAllNewsArticles, getNewsArticle } from "@/lib/site/news";
@@ -95,6 +96,10 @@ export default async function ArticlePage({
             {readingMinutes} min de lecture
           </span>
         </div>
+
+        {article.attachment && (
+          <ArticleAttachmentButton attachment={article.attachment} />
+        )}
 
         {article.image && (
           <div className="relative mb-10 h-56 sm:h-72 md:h-80 rounded-2xl overflow-hidden bg-slate-100">

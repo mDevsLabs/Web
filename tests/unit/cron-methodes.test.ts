@@ -1,17 +1,21 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 /**
- * Le verbe HTTP du planificateur GitHub contre les exportations de la route.
+ * Le verbe HTTP du planificateur contre les exportations de la route.
  *
- * Régression : `.github/workflows/cron-tasks.yml` appelle `/api/cron/wakies` en
- * `POST`, alors que la route n'exportait que `GET`. Next répond 405, et
- * `continue-on-error: true` masque l'échec : le job reste vert, le tick ne
- * s'exécute jamais, et les tâches récurrentes ne se déclenchent plus depuis des
- * centaines de runs sans un seul signal. Le symptôme observable (« la répétition
- * ne marche pas ») avait été attribué à la persistance de l'intervalle, qui
- * était de fait déjà correct.
+ * Régression : le planificateur appelait `/api/cron/wakies` en `POST`, alors que
+ * la route n'exportait que `GET`. Next répond 405, et le planificateur masquait
+ * l'échec (`continue-on-error` sur l'étape du workflow, isolation par tick dans
+ * le val) : le job restait vert, le tick ne s'exécutait jamais, et les tâches
+ * récurrentes ne se déclenchaient plus depuis des centaines de runs sans un seul
+ * signal. Le symptôme observable (« la répétition ne marche pas ») avait été
+ * attribué à la persistance de l'intervalle, qui était de fait déjà correct.
+ *
+ * Le planificateur est passé de `.github/workflows/cron-tasks.yml` au val CRON
+ * Val Town `cron.ts` : la moitié « accord entre le planificateur et les routes »
+ * du test ne change pas, seul l'artefact lu change.
  *
  * Le test relie les deux artefacts, comme `botid-client-routes.test.ts` relie le
  * client d'instrumentation à ses routes : ni l'un ni l'autre n'est faux seul,
@@ -19,36 +23,32 @@ import { describe, expect, it } from "vitest";
  */
 
 const ROOT = resolve(import.meta.dirname, "..", "..");
-const WORKFLOW = resolve(ROOT, ".github/workflows/cron-tasks.yml");
+const VAL = resolve(ROOT, "cron.ts");
 
 type Appel = { endpoint: string; methode: "DELETE" | "GET" | "POST" | "PUT" };
 
 /**
- * Chaque `curl` du workflow qui vise `/api/cron/<nom>`. `curl` sans `-X` est un
- * GET : c'est le cas de l'étape Vibe, et le deviner ici serait un faux négatif.
+ * Chaque descripteur de tick du val : `{ budgetMs, method, path }`. Le verbe est
+ * explicite partout, y compris pour Vibe — un GET déduit d'un `fetch` sans
+ * `method` serait un faux négatif exactement comme le `curl` sans `-X` l'était.
  */
-function appelsDuWorkflow(): Appel[] {
-  const lignes = readFileSync(WORKFLOW, "utf8").split(/\r?\n/);
+function appelsDuVal(): Appel[] {
+  const source = readFileSync(VAL, "utf8");
   const appels: Appel[] = [];
-  for (const ligne of lignes) {
-    if (!ligne.includes("curl")) {
-      continue;
+  for (const bloc of source.matchAll(/\{[^{}]*\bpath:[^{}]*\}/g)) {
+    const endpoint = /path:\s*"(\/api\/cron\/[a-z-]+)"/.exec(bloc[0])?.[1];
+    const methode = /method:\s*"(GET|POST)"/.exec(bloc[0])?.[1];
+    if (endpoint && methode) {
+      appels.push({ endpoint, methode: methode as Appel["methode"] });
     }
-    const cible = ligne.match(/\$?\{?CLEAN_URL\}?(\/api\/cron\/[a-z-]+)/);
-    if (!cible?.[1]) {
-      continue;
-    }
-    const verbe = ligne.match(/-X\s+(GET|POST|PUT|DELETE|PATCH)/i);
-    const methode = (verbe?.[1] ?? "GET").toUpperCase() as Appel["methode"];
-    appels.push({ endpoint: cible[1], methode });
   }
   return appels;
 }
 
-const APPELS = appelsDuWorkflow();
+const APPELS = appelsDuVal();
 
-describe("Cron — le workflow appelle bien des routes qui l'écoutent", () => {
-  it("trouve au moins quatre appels de tick dans le workflow", () => {
+describe("Cron — le val appelle bien des routes qui l'écoutent", () => {
+  it("trouve au moins quatre appels de tick dans le val", () => {
     // Garde du test lui-même : un motif qui ne matche plus rien le ferait passer
     // à vide, ce qui est pire que son absence.
     expect(APPELS.length).toBeGreaterThanOrEqual(4);
@@ -73,10 +73,36 @@ describe("Cron — le workflow appelle bien des routes qui l'écoutent", () => {
         new RegExp(`export\\s+async\\s+function\\s+${methode}\\s*\\(`).test(
           source
         ),
-        `${endpoint} n'exporte pas ${methode} — le workflow recevra 405`
+        `${endpoint} n'exporte pas ${methode} — le val recevra 405`
       ).toBe(true);
     }
   );
+
+  it("n'est doublement déclenché par aucun workflow résiduel", () => {
+    // Deux ordonnanceurs ne cassent rien (chaque route réserve atomiquement son
+    // occurrence), mais ils paient deux fois le même tick et rendent la lecture
+    // des journaux impossible. Le val est l'unique planificateur.
+    const dossiers = [".github/workflows"];
+    const residuels: string[] = [];
+    for (const dossier of dossiers) {
+      for (const fichier of readdirSync(resolve(ROOT, dossier))) {
+        if (!/\.ya?ml$/i.test(fichier)) {
+          continue;
+        }
+        const chemin = resolve(ROOT, dossier, fichier);
+        if (readFileSync(chemin, "utf8").includes("/api/cron/")) {
+          residuels.push(`${dossier}/${fichier}`);
+        }
+      }
+    }
+    expect(residuels).toEqual([]);
+  });
+
+  it("expose les deux entrées attendues par un déclencheur CRON Val Town", () => {
+    const source = readFileSync(VAL, "utf8");
+    expect(source).toMatch(/export\s+async\s+function\s+cronValHandler\s*\(/);
+    expect(source).toMatch(/export\s+default\s+async\s+function/);
+  });
 });
 
 describe("Cron — l'identité du tick Wakies est celle du porteur du bail", () => {

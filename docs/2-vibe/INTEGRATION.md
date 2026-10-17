@@ -190,8 +190,8 @@ Contrats à respecter en intervenant sur cette couche :
 - **Pas de prefetch** : le `Link` de `components/vibe/router.tsx` pose
   `prefetch={false}`, sinon chaque survol exécuterait des lectures Postgres.
 - La publication des contenus programmés, effet de bord caché des GET du
-  backend, est déportée dans `app/api/cron/vibe` (tick 5 min via
-  `cron-tasks.yml`) ; le backend garde sa publication paresseuse pour mobile.
+  backend, est déportée dans `app/api/cron/vibe` (tick 5 min par le val CRON
+  Val Town `cron.ts`) ; le backend garde sa publication paresseuse pour mobile.
 
 ## 8. Décisions de lint
 

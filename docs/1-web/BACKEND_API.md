@@ -131,6 +131,17 @@ route gère ses erreurs par `try/catch` + `c.json({ error }, status)`, et le
 middleware d'authentification rend directement ses 401/403/429/503. Une exception
 non rattrapée remonte au runtime de la plateforme.
 
+### 2.7 Les vals hors graphe
+
+Deux vals de la racine ne sont **pas** dans le graphe d’imports de `main.ts` : ils ont leur propre déclencheur, donc l’inventaire ne les liste pas.
+
+| Val | Déclencheur | Rôle |
+|---|---|---|
+| `updateModels.ts` | CRON Val Town (`0 */12 * * *`) | Synchronise le catalogue OpenRouter ; importé par `models-cron.ts` pour `Deno.cron` |
+| `cron.ts` | CRON Val Town (`*/5 * * * *`) | Appelle les quatre routes cron de l’application Next (`/api/cron/agent`, `/planning`, `/wakies`, `/vibe`) avec `CRON_SECRET` |
+
+`cron.ts` est le seul planificateur de ces quatre ticks : les quatre appels partent en parallèle pour tenir dans le plafond d’exécution d’un val, et l’échec d’un tick fait échouer la run sans jamais masquer les trois autres. Il remplace `.github/workflows/cron-tasks.yml`, supprimé. Une cadence de 5 minutes suppose le plan Pro de Val Town (intervalle minimal d’une minute).
+
 ---
 
 ## 3. Sécurité : CORS et en-têtes

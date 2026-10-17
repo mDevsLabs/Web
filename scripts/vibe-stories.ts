@@ -44,7 +44,7 @@
 
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey,
+  extractTierFromApiKey as extractApiKeyTier,
   extractToken,
   getDb,
   getTierDailyStoryLimit,
@@ -336,7 +336,7 @@ async function resolveStoryTier(
   } catch {
     // Base muette : on retombe sur le jeton, jamais sur une valeur implicite haute.
   }
-  return normalizeTier(extractTierFromApiKey(token) || "Free");
+  return normalizeTier(extractApiKeyTier(token) || "Free");
 }
 
 /** JSONB relu par le pool : objet déjà décodé, ou chaîne selon le driver. */

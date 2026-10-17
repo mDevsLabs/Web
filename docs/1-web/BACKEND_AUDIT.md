@@ -11,8 +11,9 @@ L’inventaire [API_INVENTORY.json](API_INVENTORY.json) est produit par `node sc
 | Routes BFF Next | Modules sous `app/**/api` qui appellent `MAI_API_URL` | Session mAI, adaptation des erreurs amont |
 | Domaine Wakies | `/api/wakies/**`, `lib/wakies`, tables privées PostgreSQL | Session mAI, propriété des ressources, origine des mutations et quotas |
 | Outils CLI et autres apps | Points d’entrée dédiés sous `scripts/` et `apps/` | Commandes propres à chaque runtime, pas nécessairement couvertes par Next |
+| Ticks planifiés de l’hôte | `cron.ts`, val CRON Val Town, variables `APP_URL` et `CRON_SECRET` | Quatre routes `app/api/cron/**` appelées en parallèle ; cadence 5 min, plan Pro requis |
 
-Un fichier absent du build Next n’est pas nécessairement inutilisé. Les miroirs CLI du backend sous `scripts/` restent conservés : leurs imports et points d’entrée ne relèvent pas du graphe `main.ts` seul.
+Un fichier absent du build Next n’est pas nécessairement inutilisé. Les miroirs CLI du backend sous `scripts/` restent conservés : leurs imports et points d’entrée ne relèvent pas du graphe `main.ts` seul. Il en va de même des vals à déclencheur propre, absents de l’inventaire parce qu’ils ne sont importés par personne : `cron.ts` appelle les quatre routes `app/api/cron/**` de l’application Next (tick de 5 min) et `updateModels.ts` synchronise le catalogue de modèles (12 h).
 
 ## Démarrage et routes Hono
 

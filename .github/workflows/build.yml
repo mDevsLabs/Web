@@ -897,22 +897,38 @@ jobs:
             try { await fs.access('release-artifacts'); }
             catch { core.info('Cette exécution ne contient aucun artefact téléchargeable.'); return; }
             await collect('release-artifacts');
-            const prefixedByBase = new Map(collected.map(c => [c.base, c.name]));
+            const baseCounts = new Map();
+            for (const item of collected) {
+              baseCounts.set(item.base, (baseCounts.get(item.base) || 0) + 1);
+            }
+            const uploadNameByFile = new Map();
+            for (const item of collected) {
+              // Si le nom de base est unique, commence par mAI-Coder / mAI-,
+              // ou est un fichier de métadonnées d'update, on conserve le nom de base canonique.
+              // En cas de doublon (ex. app-debug.apk présent dans deux applications), on préfixe.
+              const isUpdateMetadata = /^latest.*\.yml$/i.test(item.base);
+              const isUnique = baseCounts.get(item.base) === 1;
+              const isCoderOrDesktop = item.base.startsWith('mAI-Coder-') || item.base.startsWith('mAI-') || item.base.startsWith('mai-');
+              const uploadName = (isUpdateMetadata || isUnique || isCoderOrDesktop) ? item.base : item.name;
+              uploadNameByFile.set(item.file, uploadName);
+            }
+            const uploadNameByBase = new Map(collected.map(c => [c.base, uploadNameByFile.get(c.file)]));
             for (const { base, file, name } of collected) {
-              // electron-updater découvre `latest.yml` / `latest-mac.yml` /
-              // `latest-linux.yml` sous leur nom d'origine : les renommer les
-              // rend invisibles et leur champ `path:` ne correspond plus au
-              // binaire préfixé — la mise à jour télécharge alors un 404 HTML
-              // exécuté comme installateur (« Error launching installer »).
               const isUpdateMetadata = /^latest.*\.yml$/i.test(base);
-              const uploadName = isUpdateMetadata ? base : name;
+              const uploadName = uploadNameByFile.get(file);
               if (existing.some(asset => asset.name === uploadName)) continue;
               let data = await fs.readFile(file);
               if (isUpdateMetadata) {
-                const text = data.toString('utf8').replace(/^path:\s*(.+)$/m, (m, p) => {
-                  const target = prefixedByBase.get(p.trim()) || p.trim();
-                  return `path: ${target}`;
-                });
+                let text = data.toString('utf8');
+                // Remplacer toutes les références au nom de base (dans 'path:', 'url:', 'file:', etc.)
+                // par le nom réel sous lequel le binaire a été uploadé dans la release.
+                // Cela évite qu'electron-updater ne télécharge une page 404 HTML exécutée
+                // ensuite comme installateur (« Error launching installer »).
+                for (const [baseName, targetName] of uploadNameByBase.entries()) {
+                  if (baseName !== targetName) {
+                    text = text.replaceAll(baseName, targetName);
+                  }
+                }
                 data = Buffer.from(text, 'utf8');
               }
               console.log(`Upload de l'artefact: ${uploadName}`);

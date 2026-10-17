@@ -169,10 +169,11 @@ async function handleTick(request: Request): Promise<Response> {
 }
 
 /*
- * Les deux verbes, comme `agent` et `planning`. Le planificateur GitHub appelle
- * ce tick en POST : une route qui n'exposait que GET répondait 405, et
- * `continue-on-error` masquait l'échec — les tâches récurrentes ne se déclenchaient
- * jamais, sans que rien ne le dise.
+ * Les deux verbes, comme `agent` et `planning`. Le planificateur appelle ce tick
+ * en POST : une route qui n'exposait que GET répondait 405, et l'isolation par
+ * tick masquait l'échec — les tâches récurrentes ne se déclenchaient jamais,
+ * sans que rien ne le dise. Le planificateur est aujourd'hui le val CRON Val
+ * Town `cron.ts`, qui conserve le POST.
  */
 export async function GET(request: Request) {
   return handleTick(request);

@@ -4,6 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  css: {
+    // Sans configuration explicite, Vite cherche un fichier PostCSS en remontant
+    // depuis apps/vibe et charge le postcss.config.mjs de la racine du dépôt.
+    // Ce dernier tente de charger '@tailwindcss/postcss' (utilisé par Next.js),
+    // qui n'est pas installé dans apps/vibe (qui utilise @tailwindcss/vite).
+    // Déclarer postcss inline avec plugins: [] isole apps/vibe.
+    postcss: { plugins: [] },
+  },
   plugins: [
     react(),
     tailwindcss(),
