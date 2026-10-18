@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>À propos de mAI</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d0d10;
+      --card-bg: #151518;
+      --card-border: #26262b;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #7f92de;
+      --accent-hover: #96a6e8;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --destructive: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .logo-container {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+      flex-shrink: 0;
+    }
+
+    .logo-svg {
+      width: 30px;
+      height: 30px;
+      fill: #ffffff;
+    }
+
+    .app-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .app-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .app-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(127, 146, 222, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(127, 146, 222, 0.3);
+    }
+
+    .app-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+    }
+
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .spec-label {
+      color: var(--text-muted);
+    }
+
+    .spec-val {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .update-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      gap: 12px;
+    }
+
+    .update-header {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-box {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    .release-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .release-card.show {
+      display: flex;
+    }
+
+    .release-title {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .release-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .progress-container {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .progress-container.show {
+      display: flex;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: #27272a;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      border-radius: 4px;
+      transition: width 0.2s ease;
+    }
+
+    .progress-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    button {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      border: 1px solid var(--card-border);
+      background: #1e1e24;
+      color: var(--text);
+    }
+
+    button:hover:not(:disabled) {
+      background: #292932;
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: #0d0d10;
+      border-color: var(--accent);
+    }
+
+    button.primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-container">
+      <svg class="logo-svg" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="app-title-group">
+      <div class="app-name-row">
+        <span class="app-name" id="appName">mAI</span>
+        <span class="badge" id="appVersion">v...</span>
+      </div>
+      <span class="app-desc">Application de bureau officielle mAI</span>
+    </div>
+  </div>
+
+  <div class="specs-grid">
+    <div class="spec-item">
+      <span class="spec-label">Plateforme</span>
+      <span class="spec-val" id="specPlatform">...</span>
+    </div>
+    <div class="spec-item">
+      <span class="spec-label">Electron</span>
+      <span class="spec-val" id="specElectron">...</span>
+    </div>
+    <div class="spec-item">
+      <span class="spec-label">Chromium</span>
+      <span class="spec-val" id="specChromium">...</span>
+    </div>
+    <div class="spec-item">
+      <span class="spec-label">Node.js</span>
+      <span class="spec-val" id="specNode">...</span>
+    </div>
+  </div>
+
+  <div class="update-section">
+    <div class="update-header">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.19"/>
+      </svg>
+      <span>Mise à jour logicielle</span>
+    </div>
+
+    <div class="status-box" id="statusBox">
+      Prêt à vérifier les mises à jour sur GitHub.
+    </div>
+
+    <div class="release-card" id="releaseCard">
+      <div class="release-title" id="releaseTitle"></div>
+      <div class="release-meta" id="releaseMeta"></div>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+      <div class="progress-text">
+        <span id="progressText">Téléchargement en cours...</span>
+        <span id="progressPercent">0%</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btnCheck">
+        <span id="checkBtnIcon">🔄</span>
+        <span id="checkBtnLabel">Rechercher les mises à jour</span>
+      </button>
+      <button class="primary" id="btnDownload" style="display: none;">
+        <span>⬇️ Télécharger la mise à jour</span>
+      </button>
+      <button class="primary" id="btnLaunch" style="display: none;">
+        <span>🚀 Ouvrir l'installateur</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a class="footer-link" id="linkSite">mai-officiel.vercel.app</a>
+    <a class="footer-link" id="linkGithub">GitHub Releases</a>
+  </div>
+
+  <script>
+    const appNameEl = document.getElementById("appName");
+    const appVersionEl = document.getElementById("appVersion");
+    const specPlatformEl = document.getElementById("specPlatform");
+    const specElectronEl = document.getElementById("specElectron");
+    const specChromiumEl = document.getElementById("specChromium");
+    const specNodeEl = document.getElementById("specNode");
+
+    const statusBox = document.getElementById("statusBox");
+    const releaseCard = document.getElementById("releaseCard");
+    const releaseTitle = document.getElementById("releaseTitle");
+    const releaseMeta = document.getElementById("releaseMeta");
+
+    const progressContainer = document.getElementById("progressContainer");
+    const progressBarFill = document.getElementById("progressBarFill");
+    const progressText = document.getElementById("progressText");
+    const progressPercent = document.getElementById("progressPercent");
+
+    const btnCheck = document.getElementById("btnCheck");
+    const checkBtnIcon = document.getElementById("checkBtnIcon");
+    const checkBtnLabel = document.getElementById("checkBtnLabel");
+    const btnDownload = document.getElementById("btnDownload");
+    const btnLaunch = document.getElementById("btnLaunch");
+
+    const linkSite = document.getElementById("linkSite");
+    const linkGithub = document.getElementById("linkGithub");
+
+    let currentUpdateData = null;
+    let downloadedFilePath = null;
+
+    async function init() {
+      try {
+        const info = await window.maiAbout.getInfo();
+        appNameEl.textContent = info.appName;
+        appVersionEl.textContent = `v${info.version}`;
+        specPlatformEl.textContent = `${info.platform} (${info.arch})`;
+        specElectronEl.textContent = `v${info.electronVersion}`;
+        specChromiumEl.textContent = `v${info.chromiumVersion}`;
+        specNodeEl.textContent = `v${info.nodeVersion}`;
+      } catch (err) {
+        console.error("Impossible de récupérer les informations de l'application :", err);
+      }
+    }
+
+    function formatBytes(bytes) {
+      if (!bytes || bytes <= 0) return "";
+      const mb = (bytes / (1024 * 1024)).toFixed(1);
+      return `${mb} Mo`;
+    }
+
+    async function checkUpdates() {
+      btnCheck.disabled = true;
+      checkBtnIcon.className = "spinner";
+      checkBtnIcon.textContent = "";
+      checkBtnLabel.textContent = "Vérification en cours...";
+      statusBox.textContent = "Recherche des versions sur GitHub...";
+      releaseCard.classList.remove("show");
+      btnDownload.style.display = "none";
+      btnLaunch.style.display = "none";
+      progressContainer.classList.remove("show");
+
+      try {
+        const res = await window.maiAbout.checkUpdates();
+        currentUpdateData = res;
+
+        if (res.error) {
+          statusBox.innerHTML = `<span style="color:var(--destructive)">⚠️ ${res.error}</span>`;
+        } else if (res.hasUpdate) {
+          statusBox.innerHTML = `<span style="color:var(--success)">✨ Une mise à jour est disponible !</span>`;
+          releaseTitle.textContent = `${res.releaseName || res.latestVersion}`;
+          releaseMeta.textContent = `Fichier : ${res.fileName} ${res.fileSize ? '(' + formatBytes(res.fileSize) + ')' : ''}`;
+          releaseCard.classList.add("show");
+          btnDownload.style.display = "flex";
+        } else {
+          statusBox.innerHTML = `🎉 Vous disposez déjà de la dernière version (v${res.currentVersion}).`;
+        }
+      } catch (err) {
+        statusBox.innerHTML = `<span style="color:var(--destructive)">Erreur lors de la vérification : ${err.message || err}</span>`;
+      } finally {
+        btnCheck.disabled = false;
+        checkBtnIcon.className = "";
+        checkBtnIcon.textContent = "🔄";
+        checkBtnLabel.textContent = "Rechercher à nouveau";
+      }
+    }
+
+    async function downloadUpdate() {
+      if (!currentUpdateData || !currentUpdateData.downloadUrl) return;
+
+      btnCheck.disabled = true;
+      btnDownload.disabled = true;
+      btnDownload.style.display = "none";
+      progressContainer.classList.add("show");
+      progressBarFill.style.width = "0%";
+      progressPercent.textContent = "0%";
+      progressText.textContent = "Démarrage du téléchargement...";
+      statusBox.textContent = `Téléchargement de ${currentUpdateData.fileName}...`;
+
+      const unsubscribe = window.maiAbout.onDownloadProgress((data) => {
+        const p = data.percent;
+        progressBarFill.style.width = `${p}%`;
+        progressPercent.textContent = `${p}%`;
+        const recStr = formatBytes(data.received);
+        const totStr = formatBytes(data.total);
+        progressText.textContent = totStr ? `${recStr} / ${totStr}` : `${recStr} reçus`;
+      });
+
+      try {
+        const res = await window.maiAbout.downloadUpdate(
+          currentUpdateData.downloadUrl,
+          currentUpdateData.fileName
+        );
+        unsubscribe();
+
+        if (res.success && res.filePath) {
+          downloadedFilePath = res.filePath;
+          progressBarFill.style.width = "100%";
+          progressPercent.textContent = "100%";
+          statusBox.innerHTML = `<span style="color:var(--success)">✅ Téléchargement terminé ! L'installateur s'est ouvert automatiquement.</span>`;
+          btnLaunch.style.display = "flex";
+        } else {
+          statusBox.innerHTML = `<span style="color:var(--destructive)">⚠️ ${res.error || "Échec du téléchargement"}</span>`;
+          btnDownload.disabled = false;
+          btnDownload.style.display = "flex";
+        }
+      } catch (err) {
+        unsubscribe();
+        statusBox.innerHTML = `<span style="color:var(--destructive)">Erreur de téléchargement : ${err.message || err}</span>`;
+        btnDownload.disabled = false;
+        btnDownload.style.display = "flex";
+      } finally {
+        btnCheck.disabled = false;
+      }
+    }
+
+    btnCheck.addEventListener("click", checkUpdates);
+    btnDownload.addEventListener("click", downloadUpdate);
+    btnLaunch.addEventListener("click", () => {
+      if (downloadedFilePath) {
+        window.maiAbout.openInstaller(downloadedFilePath);
+      }
+    });
+
+    linkSite.addEventListener("click", () => {
+      window.maiAbout.openExternal("https://mai-officiel.vercel.app");
+    });
+    linkGithub.addEventListener("click", () => {
+      window.maiAbout.openExternal("https://github.com/mDevsLabs/Web/releases");
+    });
+
+    init();
+  </script>
+</body>
+</html>

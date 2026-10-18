@@ -16,13 +16,34 @@ export interface SearchImageHit {
   title: string;
 }
 
+export interface SearchNewsHit {
+  favicon_url?: string;
+  page_age?: string;
+  snippet: string;
+  source?: string;
+  thumbnail_url?: string;
+  title: string;
+  url: string;
+}
+
+export interface SearchVideoHit {
+  duration?: string;
+  favicon_url?: string;
+  page_url: string;
+  platform?: string;
+  thumbnail?: string;
+  title: string;
+}
+
 export interface SearchResponse {
   cached?: boolean;
   images: SearchImageHit[];
+  news: SearchNewsHit[];
   provider: "you.com" | "fallback";
   query: string;
   results: SearchWebHit[];
   success: boolean;
+  videos: SearchVideoHit[];
 }
 
 // ─────────────────────────────────────────────
@@ -338,22 +359,145 @@ async function fallbackSearch(query: string): Promise<SearchWebHit[]> {
   return results;
 }
 
+export function buildFaviconUrl(urlStr: string): string {
+  try {
+    const domain = new URL(urlStr).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  } catch {
+    return "";
+  }
+}
+
+async function fetchGoogleNews(
+  query: string,
+  limit = 15
+): Promise<SearchNewsHit[]> {
+  try {
+    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`;
+    const res = await fetch(rssUrl, {
+      headers: {
+        Accept: "application/rss+xml, text/xml, */*",
+        "User-Agent": "Mozilla/5.0",
+      },
+      signal: AbortSignal.timeout(3500),
+    });
+    if (!res.ok) return [];
+    const xml = await res.text();
+    const items = xml.split("<item>");
+    const newsHits: SearchNewsHit[] = [];
+
+    for (let i = 1; i < items.length && newsHits.length < limit; i++) {
+      const block = items[i].split("</item>")[0];
+      const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
+      const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/i);
+      const descMatch = block.match(/<description>([\s\S]*?)<\/description>/i);
+      const pubDateMatch = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/i);
+      const sourceMatch = block.match(/<source[^>]*>([\s\S]*?)<\/source>/i);
+
+      const title = titleMatch
+        ? titleMatch[1]
+            .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
+            .replace(/<[^>]+>/g, "")
+            .trim()
+        : "";
+      const link = linkMatch
+        ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim()
+        : "";
+      const snippet = descMatch
+        ? descMatch[1]
+            .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
+            .replace(/<[^>]+>/g, "")
+            .trim()
+        : title;
+      const source = sourceMatch ? sourceMatch[1].trim() : undefined;
+      const page_age = pubDateMatch ? pubDateMatch[1].trim() : undefined;
+
+      if (title && link) {
+        newsHits.push({
+          favicon_url: buildFaviconUrl(link),
+          page_age,
+          snippet,
+          source,
+          title,
+          url: link,
+        });
+      }
+    }
+    return newsHits;
+  } catch {
+    return [];
+  }
+}
+
+function extractVideos(hits: SearchWebHit[]): SearchVideoHit[] {
+  const videos: SearchVideoHit[] = [];
+  const seen = new Set<string>();
+
+  for (const h of hits) {
+    const isVideoSite =
+      h.url.includes("youtube.com") ||
+      h.url.includes("youtu.be") ||
+      h.url.includes("dailymotion.com") ||
+      h.url.includes("vimeo.com") ||
+      h.url.includes("tiktok.com");
+
+    if (isVideoSite && !seen.has(h.url)) {
+      seen.add(h.url);
+      let platform = "Vidéo Web";
+      if (h.url.includes("youtube.com") || h.url.includes("youtu.be")) {
+        platform = "YouTube";
+      } else if (h.url.includes("dailymotion.com")) {
+        platform = "Dailymotion";
+      } else if (h.url.includes("vimeo.com")) {
+        platform = "Vimeo";
+      } else if (h.url.includes("tiktok.com")) {
+        platform = "TikTok";
+      }
+
+      let thumbnail = h.thumbnail_url;
+      if (
+        !thumbnail &&
+        (h.url.includes("youtube.com/watch?v=") ||
+          h.url.includes("youtu.be/"))
+      ) {
+        const idMatch = h.url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        if (idMatch) {
+          thumbnail = `https://img.youtube.com/vi/${idMatch[1]}/hqdefault.jpg`;
+        }
+      }
+
+      videos.push({
+        duration: undefined,
+        favicon_url: buildFaviconUrl(h.url),
+        page_url: h.url,
+        platform,
+        thumbnail,
+        title: h.title,
+      });
+    }
+  }
+
+  return videos;
+}
+
 /**
- * Exécute une recherche complète optimisée (Web + Images en parallèle)
+ * Exécute une recherche complète optimisée (Web, Images, Actualités, Vidéos en parallèle)
  */
 export async function executeMaiSearch(params: {
   count?: number;
   query: string;
-  type?: "web" | "images" | "all";
+  type?: "web" | "images" | "news" | "videos" | "all";
 }): Promise<SearchResponse> {
   const trimmed = params.query.trim();
   if (!trimmed) {
     return {
       images: [],
+      news: [],
       provider: "you.com",
       query: "",
       results: [],
       success: false,
+      videos: [],
     };
   }
 
@@ -361,22 +505,22 @@ export async function executeMaiSearch(params: {
   const cached = getFromCache(cacheKey);
   if (cached) return cached;
 
-  const count = params.count || 10;
-  const wantImages = params.type === "images" || params.type === "all";
-  const wantWeb = params.type === "web" || params.type === "all";
+  const count = params.count || 20;
+  const wantImages =
+    params.type === "images" || params.type === "all" || !params.type;
+  const wantWeb =
+    params.type === "web" || params.type === "all" || !params.type;
+  const wantNews =
+    params.type === "news" || params.type === "all" || !params.type;
 
   // Appels parallèles pour réduire la latence au minimum
-  const promises: [
-    Promise<{ hits: SearchWebHit[]; images: SearchImageHit[] }>,
-    Promise<SearchImageHit[]>,
-  ] = [
+  const [webResult, imagesResult, newsResult] = await Promise.allSettled([
     wantWeb
       ? fetchYouWeb(trimmed, count)
       : Promise.resolve({ hits: [], images: [] }),
-    wantImages ? fetchYouImages(trimmed, 12) : Promise.resolve([]),
-  ];
-
-  const [webResult, imagesResult] = await Promise.allSettled(promises);
+    wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
+    wantNews ? fetchGoogleNews(trimmed, 15) : Promise.resolve([]),
+  ]);
 
   const webData =
     webResult.status === "fulfilled"
@@ -384,6 +528,8 @@ export async function executeMaiSearch(params: {
       : { hits: [], images: [] };
   const dedicatedImages =
     imagesResult.status === "fulfilled" ? imagesResult.value : [];
+  const newsHits =
+    newsResult.status === "fulfilled" ? newsResult.value : [];
 
   let results = webData.hits;
   let allImages = [...dedicatedImages, ...webData.images];
@@ -398,18 +544,33 @@ export async function executeMaiSearch(params: {
 
   let provider: "you.com" | "fallback" = "you.com";
 
-  // Si You.com n'a renvoyé aucun résultat Web (ou pas de clé), repli automatique
+  // Si aucun résultat Web (ou pas de clé), repli automatique
   if (results.length === 0 && wantWeb) {
     results = await fallbackSearch(trimmed);
     provider = "fallback";
   }
 
+  // Extraire les vidéos à partir des résultats web
+  const videos = extractVideos(results);
+
+  // S'assurer que chaque hit a un favicon garanti
+  results = results.map((r) => ({
+    ...r,
+    favicon_url: r.favicon_url || buildFaviconUrl(r.url),
+  }));
+
   const response: SearchResponse = {
     images: allImages,
+    news: newsHits,
     provider,
     query: trimmed,
     results,
-    success: results.length > 0 || allImages.length > 0,
+    success:
+      results.length > 0 ||
+      allImages.length > 0 ||
+      newsHits.length > 0 ||
+      videos.length > 0,
+    videos,
   };
 
   if (response.success) {

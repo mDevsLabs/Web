@@ -691,7 +691,7 @@ function PureModelSelectorCompact({
   // d'hydratation entre le serveur (qui n'a pas de cache SWR) et le client.
   const activeModelsData = mounted ? modelsData : undefined;
 
-  const models: SharedModel[] =
+  const rawModels: SharedModel[] =
     modelsProp ??
     (activeModelsData?.models?.length > 0
       ? activeModelsData.models
@@ -699,6 +699,18 @@ function PureModelSelectorCompact({
         ? activeModelsData.data
         : fallbackModels) ??
     [];
+
+  const models: SharedModel[] = useMemo(() => {
+    const seen = new Set<string>();
+    const res: SharedModel[] = [];
+    for (const m of rawModels) {
+      if (m?.id && !seen.has(m.id)) {
+        seen.add(m.id);
+        res.push(m);
+      }
+    }
+    return res;
+  }, [rawModels]);
 
   const selectedModel =
     models.find((m) => m.id === selectedModelId) ??

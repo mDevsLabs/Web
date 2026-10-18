@@ -102,7 +102,7 @@ BEGIN
       '{"input_modalities":["text","image"],"output_modalities":["text"],"modality":"text+image->text","tokenizer":"Other","instruct_type":null}'::jsonb,
       '{}'::jsonb,
       '["max_tokens","temperature","top_p","tools","tool_choice","reasoning","include_reasoning","response_format","stop","seed"]'::jsonb,
-      '{"id":"mai-2-mini","object":"model","owned_by":"mDevsLabs","reasoning":{"mandatory":false}}'::jsonb,
+      '{"id":"mai-2-mini","object":"model","owned_by":"mDevsLabs","reasoning":{"default_effort":"high","default_enabled":true,"mandatory":false,"supported_efforts":["max","high","low"]}}'::jsonb,
       '{}'::jsonb,
       TRUE,
       TRUE,

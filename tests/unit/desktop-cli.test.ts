@@ -46,7 +46,10 @@ vi.mock("electron", () => {
     }
   }
   const mockElectron = {
-    app: { getPath: () => process.cwd() },
+    app: {
+      getPath: (_name?: string) => process.cwd(),
+      getVersion: () => "0.9.1",
+    },
     BrowserWindow,
     ipcMain: {
       handle: (channel: string, callback: (...args: any[]) => any) =>
@@ -54,7 +57,10 @@ vi.mock("electron", () => {
       on: (channel: string, callback: (...args: any[]) => any) =>
         mocks.listeners.set(channel, callback),
     },
-    shell: { openExternal: mocks.openExternal },
+    shell: {
+      openExternal: mocks.openExternal,
+      openPath: vi.fn(),
+    },
   };
   return {
     ...mockElectron,

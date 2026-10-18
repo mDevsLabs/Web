@@ -386,7 +386,23 @@ export function registerModelRoutes(
           },
         ];
       });
-      return c.json({ data: [...cloudModels, ...filtered], object: "list" });
+      const seenIds = new Set<string>();
+      const deduped: any[] = [];
+      // On privilégie strictement la base de données :
+      for (const m of filtered) {
+        if (!seenIds.has(m.id)) {
+          seenIds.add(m.id);
+          deduped.push(m);
+        }
+      }
+      // Modèles de repli ou cloud uniquement si absents de la base de données :
+      for (const m of cloudModels) {
+        if (!seenIds.has(m.id)) {
+          seenIds.add(m.id);
+          deduped.push(m);
+        }
+      }
+      return c.json({ data: deduped, object: "list" });
     } catch (error) {
       return modelErrorResponse(c, error);
     }

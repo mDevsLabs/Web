@@ -47,6 +47,7 @@ export async function launchCoder(opts?: { workspacePath?: string }): Promise<{ 
   // Retirer le mode Node hérité, sinon Electron exécuterait son binaire comme Node.
   const env = { ...process.env, MAI_CODER_LOAD_DIST: "1" };
   delete (env as NodeJS.ProcessEnv).ELECTRON_RUN_AS_NODE;
+  delete (env as NodeJS.ProcessEnv).NODE_OPTIONS;
   // Utiliser le home de l'utilisateur comme cwd plutôt que le dossier du payload,
   // pour éviter que Node/Electron résolve les modules ou exports dans le paquet Coder.
   const cwd = app.getPath("home");

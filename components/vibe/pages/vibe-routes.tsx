@@ -20,6 +20,7 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { BooksJoinPage } from "@/components/vibe/pages/BooksJoinPage";
 import { BooksPage } from "@/components/vibe/pages/BooksPage";
 import { ExplorePage } from "@/components/vibe/pages/ExplorePage";
@@ -117,7 +118,25 @@ export function VibeMaiRoute() {
 }
 
 export function VibeSettingsRoute({ hydration }: VibeRouteProps) {
-  return <SettingsPage hydration={hydration} />;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.location.href = "/settings?tab=applications#vibe";
+    }
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-center p-12 text-center gap-4 min-h-[50vh]">
+      <p className="text-sm text-zinc-400">
+        Les réglages de Vibe ont été déplacés dans les paramètres globaux mAI.
+      </p>
+      <a
+        className="px-4 py-2 rounded-xl bg-white text-black font-semibold text-xs transition-opacity hover:opacity-90"
+        href="/settings?tab=applications#vibe"
+      >
+        Ouvrir les paramètres mAI
+      </a>
+    </div>
+  );
 }
 
 /** Livres — `/vibe/books` liste, `/vibe/books/:bookId` ouvre un livre. */

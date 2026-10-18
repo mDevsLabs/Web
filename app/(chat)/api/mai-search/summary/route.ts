@@ -70,10 +70,9 @@ export async function POST(request: Request) {
 Ton rôle est de fournir un résumé clair, objectif, sourcé et actualisé basé sur la recherche de l'utilisateur.
 Langue : Français.
 ${lengthInstruction}
-N'invente rien qui ne soit pas corroboré par les informations de recherche.
-Utilise l'outil "searchInformation" uniquement si tu as besoin d'informations complémentaires indispensables pour compléter la synthèse.`;
+N'invente rien qui ne soit pas corroboré par les informations fournies.`;
 
-    const userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRésume ces résultats.`;
+    const userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse de ces informations en français.`;
 
     const result = streamText({
       model,
@@ -83,30 +82,7 @@ Utilise l'outil "searchInformation" uniquement si tu as besoin d'informations co
         }
       },
       prompt: userPrompt,
-      stopWhen: ({ steps }) => steps.length >= 2,
       system: systemPrompt,
-      tools: {
-        searchInformation: tool({
-          description:
-            "Recherche des informations récentes ou complémentaires sur le Web via You.com",
-          execute: async ({ searchTerms }: { searchTerms: string }) => {
-            const search = await executeMaiSearch({
-              query: searchTerms,
-              type: "web",
-            });
-            return search.results.slice(0, 4).map((r) => ({
-              snippet: r.snippet,
-              title: r.title,
-              url: r.url,
-            }));
-          },
-          inputSchema: z.object({
-            searchTerms: z
-              .string()
-              .describe("Les termes précis à rechercher sur le web"),
-          }),
-        }),
-      },
     });
 
     const response = result.toTextStreamResponse();

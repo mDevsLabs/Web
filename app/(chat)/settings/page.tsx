@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   BellIcon,
@@ -6,6 +6,7 @@ import {
   BrainIcon,
   ClipboardListIcon,
   DatabaseIcon,
+  LayersIcon,
   SettingsIcon,
   SparklesIcon,
   UserIcon,
@@ -23,6 +24,7 @@ import {
 } from "react";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { AgentTab } from "@/components/settings/agent-tab";
+import { ApplicationsTab } from "@/components/settings/applications-tab";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
 import { DataTab } from "@/components/settings/data-tab";
 import { FormsTab } from "@/components/settings/forms-tab";
@@ -39,6 +41,7 @@ import { cn } from "@/lib/utils";
 
 type SettingsTab =
   | "agent"
+  | "applications"
   | "configuration"
   | "data"
   | "forms"
@@ -55,6 +58,7 @@ const SETTINGS_TABS: {
 }[] = [
   { icon: UserIcon, id: "profile", label: "Mon Profil" },
   { icon: SparklesIcon, id: "preferences", label: "Préférences IA" },
+  { icon: LayersIcon, id: "applications", label: "Applications" },
   { icon: BotIcon, id: "agent", label: "Agent" },
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
@@ -138,15 +142,20 @@ function SettingsPageInner() {
     });
   }, [activeTab]);
 
-  // Scroll vers ancre usage si tab=usage
+  // Scroll vers ancre usage si tab=usage ou applications si hash présent
   useEffect(() => {
-    if (activeTab === "usage") {
+    if (activeTab === "usage" || activeTab === "applications") {
       const hash = typeof window === "undefined" ? "" : window.location.hash;
-      const targetId = hash ? hash.replace("#", "") : "usage-mAI";
+      const targetId = hash
+        ? hash.replace("#", "")
+        : activeTab === "usage"
+          ? "usage-mAI"
+          : "vibe";
       const el =
         document.getElementById(targetId) ||
-        document.getElementById("usage-mAI") ||
-        document.getElementById("usage");
+        (activeTab === "usage"
+          ? document.getElementById("usage-mAI") || document.getElementById("usage")
+          : document.getElementById("vibe"));
       if (el) {
         setTimeout(
           () => el.scrollIntoView({ behavior: "smooth", block: "start" }),
@@ -184,6 +193,18 @@ function SettingsPageInner() {
           { id: "prefs-audio", label: "Synthèse vocale" },
           { id: "prefs-languages", label: "Langues" },
           { id: "prefs-regenerate", label: "Mode régénération" },
+        ];
+      case "applications":
+        return [
+          { id: "vibe", label: "Vibe — Réseau & Studio IA" },
+          { id: "vibe-ai", label: "↳ IA & Voix (Unifiées)" },
+          { id: "vibe-feed", label: "↳ Fil & Modération" },
+          { id: "vibe-privacy", label: "↳ Confidentialité" },
+          { id: "vibe-circle", label: "↳ Cercle Privé" },
+          { id: "wakies", label: "Wakies — Espaces de travail" },
+          { id: "wakies-general", label: "↳ Atelier & Confidentialité" },
+          { id: "wakies-quotas", label: "↳ Stockage & Quotas" },
+          { id: "wakies-config", label: "↳ Configuration des Wakies" },
         ];
       case "memory":
         return [
@@ -297,6 +318,8 @@ function SettingsPageInner() {
             <ProfileTab />
           ) : activeTab === "preferences" ? (
             <PreferencesTab />
+          ) : activeTab === "applications" ? (
+            <ApplicationsTab />
           ) : activeTab === "agent" ? (
             <div className="py-6 max-w-4xl">
               <AgentTab />

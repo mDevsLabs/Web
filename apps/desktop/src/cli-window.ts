@@ -1,4 +1,5 @@
 // Le terminal reste dans une fenêtre locale ; le web ne reçoit aucun accès PTY.
+import { existsSync } from "node:fs";
 import { execFile } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -21,17 +22,46 @@ const shellPath = windows ? (process.env.ComSpec || "cmd.exe") : (process.env.SH
 const terminalUrl = () => pathToFileURL(path.join(__dirname, "terminal/index.html")).href;
 
 async function commandPath(command: "mai" | "npm" | "node"): Promise<string | null> {
+  const home = app.getPath("home");
+  const desktopExe = path.resolve(process.execPath).toLowerCase();
+  const desktopName = path.basename(desktopExe);
+
   try {
     const { stdout } = windows
-      ? await executeFile("where.exe", [command], { timeout: 6000, windowsHide: true })
-      : await executeFile(shellPath, ["-ilc", "command -v " + command], { timeout: 6000 });
-    const candidates = stdout.trim().split(/\r?\n/);
-    return windows
-      ? (candidates.find((item) => /\.(cmd|exe|bat)$/i.test(item)) ?? null)
-      : (candidates.at(-1)?.trim() || null);
+      ? await executeFile("where.exe", [command], { cwd: home, timeout: 6000, windowsHide: true })
+      : await executeFile(shellPath, ["-ilc", "command -v " + command], { cwd: home, timeout: 6000 });
+    const rawCandidates = stdout.trim().split(/\r?\n/).map((c) => c.trim()).filter(Boolean);
+
+    if (windows) {
+      // Filtrer strictement tout candidat qui correspond à l'application bureau Electron actuelle
+      const safeCandidates = rawCandidates.filter((item) => {
+        const resolved = path.resolve(item).toLowerCase();
+        if (resolved === desktopExe) return false;
+        if (path.basename(resolved) === desktopName) return false;
+        // Ignorer tout binaire extrait dans les dossiers temporaires
+        if (resolved.includes("appdata\\local\\temp") && resolved.endsWith(".exe")) return false;
+        return true;
+      });
+
+      if (command === "mai") {
+        // Pour mai CLI, privilégier les wrappers npm (.cmd, .bat) ou un binaire CLI distinct
+        const scriptCandidate = safeCandidates.find((item) => /\.(cmd|bat)$/i.test(item));
+        if (scriptCandidate) return scriptCandidate;
+        const exeCandidate = safeCandidates.find((item) => /\.exe$/i.test(item));
+        if (exeCandidate) return exeCandidate;
+      }
+
+      const match = safeCandidates.find((item) => /\.(cmd|exe|bat)$/i.test(item));
+      if (match) return match;
+    } else {
+      const match = rawCandidates.at(-1)?.trim();
+      if (match) return match;
+    }
   } catch {
     return null;
   }
+
+  return null;
 }
 
 async function detectCommands() {

@@ -255,7 +255,7 @@ export const ModelSelectorLogo = ({
     <img
       {...props}
       alt={`${provider} logo`}
-      className={cn("size-4", isMai ? "dark:invert" : "dark:invert", className)}
+      className={cn("size-4 shrink-0 mr-2", isMai ? "dark:invert" : "dark:invert", className)}
       height={16}
       loading="lazy"
       decoding="async"

@@ -51,10 +51,10 @@ export const MAI_MODEL_TRAITS: Record<string, MaiModelTraits> = {
     reasoningEfforts: ["max", "high", "low"],
   },
   "mai-2-mini": {
+    defaultReasoningEffort: "high",
     inputModalities: ["text", "image"],
     maxOutputTokens: 128_000,
-    // Mini raisonne mais n'expose aucun niveau : ne jamais inventer une liste.
-    reasoningEfforts: [],
+    reasoningEfforts: ["max", "high", "low"],
   },
 };
 

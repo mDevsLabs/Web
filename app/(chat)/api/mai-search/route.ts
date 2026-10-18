@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     }
 
     const searchResponse = await executeMaiSearch({
-      count: 10,
+      count: 25,
       query,
       type,
     });
@@ -41,11 +41,13 @@ export async function POST(request: Request) {
     return NextResponse.json({
       cached: searchResponse.cached,
       images: searchResponse.images,
+      news: searchResponse.news || [],
       provider: searchResponse.provider,
       query: searchResponse.query,
       results: searchResponse.results,
       searchId,
       success: searchResponse.success,
+      videos: searchResponse.videos || [],
     });
   } catch (error: any) {
     console.error("[mAI-Search-API] Erreur:", error);

@@ -23,10 +23,10 @@ describe("traits des alias mAI-2", () => {
     );
   });
 
-  it("n'invente aucun niveau pour mAI-2-Mini", () => {
+  it("déclare les niveaux de réflexion pour mAI-2-Mini", () => {
     const traits = resolveMaiModelTraits("mai-2-mini");
-    expect(traits?.reasoningEfforts).toEqual([]);
-    expect(traits?.defaultReasoningEffort).toBeUndefined();
+    expect(traits?.reasoningEfforts).toEqual(["max", "high", "low"]);
+    expect(traits?.defaultReasoningEffort).toBe("high");
   });
 
   it("ignore tout autre modèle", () => {
@@ -75,7 +75,7 @@ describe("modèle par défaut d'un Wakie", () => {
 
   it("ignore une préférence absente du catalogue", () => {
     expect(resolveWakieCatalogModel(models, null, null, "modele/retire")).toBe(
-      "gemini/gemini-3.8-flash"
+      "mai-2-mini"
     );
   });
 });

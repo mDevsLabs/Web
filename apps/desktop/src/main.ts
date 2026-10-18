@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { openCliWindow } from "./cli-window";
 import { launchCoder, resolveCoderExecutable } from "./coder-launcher";
+import { openAboutWindow } from "./about-window";
 
 // L'URL est résolue au démarrage, jamais figée : voir `resolveAppUrl`.
 const DEFAULT_APP_URL = process.env.MAI_DESKTOP_APP_URL || "https://mai-officiel.vercel.app";
@@ -509,7 +510,12 @@ function createMenu(): void {
           {
             label: APP_TITLE,
             submenu: [
-              { role: "about" as const },
+              {
+                label: "À propos de mAI",
+                click: () => {
+                  openAboutWindow();
+                },
+              },
               { type: "separator" as const },
               { role: "services" as const },
               { type: "separator" as const },
@@ -578,8 +584,8 @@ function createMenu(): void {
         },
         {
           label: "À propos de mAI",
-          click: async () => {
-            await shell.openExternal(APP_URL);
+          click: () => {
+            openAboutWindow();
           },
         },
       ],

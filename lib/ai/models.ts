@@ -47,34 +47,45 @@ export type ChatModel = {
 // des réglages, modèles d'agents, agents, planification et résumés de mémoire.
 // Toute évolution doit être répercutée dans la migration 0029 (valeurs
 // existantes + DEFAULT des colonnes) pour rester cohérente avec les données.
-export const DEFAULT_CHAT_MODEL = "gemini/gemini-3.8-flash";
+export const DEFAULT_CHAT_MODEL = "mai-2-mini";
 
 export const titleModel = {
-  description: "Modèle rapide pour la génération de titres",
+  description: "Modèle équilibré et rapide de la génération mAI-2",
   id: DEFAULT_CHAT_MODEL,
-  name: "Gemini 3.8 Flash",
-  provider: "google",
+  name: "mAI-2-Mini",
+  provider: "mdevslabs",
 };
 
 export const FALLBACK_MODELS: ChatModel[] = [
   {
     architecture: {
-      input_modalities: ["text", "image", "file"],
+      input_modalities: ["text", "image"],
       modality: "text+image->text",
       output_modalities: ["text"],
     },
-    description: "Modèle multimodal ultra-rapide de Google",
+    description: "Modèle équilibré de la génération mAI-2, rapide et polyvalent",
     id: DEFAULT_CHAT_MODEL,
-    isFree: false,
-    name: "Gemini 3.8 Flash",
-    provider: "google",
+    isFree: true,
+    maxContext: 1_000_000,
+    maxOutput: 128_000,
+    name: "mAI-2-Mini",
+    provider: "mdevslabs",
+    reasoning: {
+      default_effort: "high",
+      default_enabled: true,
+      mandatory: false,
+      supported_efforts: ["max", "high", "low"],
+    },
     supported_parameters: [
       "temperature",
       "top_p",
-      "top_k",
       "max_tokens",
       "tools",
+      "tool_choice",
+      "reasoning",
+      "include_reasoning",
       "response_format",
+      "stop",
     ],
   },
   {
