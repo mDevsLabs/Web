@@ -1,13 +1,16 @@
 -- Migration 0061 : rendre mAI-2 et mAI-2-Mini visibles dans /v1/models.
 --
 -- Le backend Val Town construit son catalogue depuis `openrouter_models`, mais
--- ses alias mAI-2 etaient ajoutes a la main : une base recreee les perdait, et
--- l'application ne pouvait plus les proposer. L'ecriture est gardee par
--- `to_regclass` (la table vit hors du schema Drizzle) et par `ON CONFLICT` :
--- rejouer la migration ne cree aucun doublon et ne casse aucune base.
+-- ses alias mAI-2 étaient ajoutés à la main : une base recréée les perdait, et
+-- l'application ne pouvait plus les proposer. L'écriture est gardée par
+-- `to_regclass` (la table vit hors du schéma Drizzle) et par `ON CONFLICT` :
+-- rejouer la migration ne crée aucun doublon et ne casse aucune base.
 --
--- `model_number` est attribue a la suite du catalogue existant. Il est
--- seulement pose a l'insertion : un modele deja numerote garde son numero.
+-- `model_number` n'est JAMAIS fourni : la colonne est une identité
+-- (`GENERATED ALWAYS AS IDENTITY`), donc Postgres refuse toute valeur explicite
+-- (428C9 « cannot insert a non-DEFAULT value »). Le numéro vient de la
+-- séquence, exactement comme dans `sync_openrouter_models`, et un modèle déjà
+-- présent garde le sien — la branche `ON CONFLICT` ne touche pas la colonne.
 
 --> statement-breakpoint
 DO $$
@@ -15,7 +18,6 @@ BEGIN
   IF to_regclass('public.openrouter_models') IS NOT NULL THEN
     INSERT INTO public.openrouter_models (
       id,
-      model_number,
       provider,
       name,
       description,
@@ -36,7 +38,6 @@ BEGIN
     )
     SELECT
       'mai-2',
-      COALESCE((SELECT MAX(model_number) FROM public.openrouter_models), 0) + 1,
       'mdevslabs',
       'mAI-2',
       'Next-generation flagship cloud model of the mAI family, designed for advanced reasoning, coding, and long-context tasks.',
@@ -72,7 +73,6 @@ BEGIN
 
     INSERT INTO public.openrouter_models (
       id,
-      model_number,
       provider,
       name,
       description,
@@ -93,7 +93,6 @@ BEGIN
     )
     SELECT
       'mai-2-mini',
-      COALESCE((SELECT MAX(model_number) FROM public.openrouter_models), 0) + 1,
       'mdevslabs',
       'mAI-2-Mini',
       'Fast and efficient cloud model of the mAI family, optimized for speed and everyday tasks.',
