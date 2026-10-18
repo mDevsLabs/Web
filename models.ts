@@ -9,13 +9,23 @@ import {
   isPaidTier,
   verifyToken,
 } from "./config.ts";
-import { injectMaiIdentityPrompt } from "./mai-identity.ts";
+import {
+  FALLBACK_IMAGE_MODELS,
+  fetchLiveCometImageModels,
+  formatOpenAiImageModel,
+} from "./images.ts";
+import {
+  injectMaiIdentityPrompt,
+  resolveMaiModelTraits,
+} from "./mai-identity.ts";
 import { maiModelsList } from "./maiModels.ts";
 import {
   effectiveModel,
   getModelCatalog,
   isFreeModelId,
+  isPublicAudioModel,
   isPublicChatModel,
+  isPublicImageModel,
   ModelAccessError,
   requireChatModel,
   type SqlClient,
@@ -56,30 +66,47 @@ function buildMaiCloudPublicModels(nowSec: number) {
   const defs = maiModelsList.filter(
     (m) => resolveMaiCloudBackend(m.id) !== null
   );
-  return defs.map((m) => ({
-    architecture: {
-      input_modalities: ["text"],
-      modality: "text->text",
-      output_modalities: ["text"],
-    },
-    created: Math.floor(new Date(m.releaseDate).getTime() / 1000) || nowSec,
-    description: m.description || "",
-    id: m.id,
-    maxContext: m.contextWindow,
-    maxOutput: m.maxOutputTokens,
-    name: m.name,
-    object: "model",
-    owned_by: "mDevsLabs",
-    supported_parameters: [
-      "temperature",
-      "top_p",
-      "max_tokens",
-      "stream",
-      "stop",
-      "tools",
-      "response_format",
-    ],
-  }));
+  return defs.map((m) => {
+    const traits = resolveMaiModelTraits(m.id);
+    const efforts = traits?.reasoningEfforts ?? [];
+    return {
+      architecture: {
+        input_modalities: [...(traits?.inputModalities ?? ["text"])],
+        modality:
+          (traits?.inputModalities ?? ["text"]).length > 1
+            ? "text+image->text"
+            : "text->text",
+        output_modalities: ["text"],
+      },
+      created: Math.floor(new Date(m.releaseDate).getTime() / 1000) || nowSec,
+      description: m.description || "",
+      id: m.id,
+      maxContext: m.contextWindow,
+      maxOutput: traits?.maxOutputTokens ?? m.maxOutputTokens,
+      name: m.name,
+      object: "model",
+      owned_by: "mDevsLabs",
+      reasoning: {
+        default_enabled: true,
+        ...(traits?.defaultReasoningEffort
+          ? { default_effort: traits.defaultReasoningEffort }
+          : {}),
+        mandatory: false,
+        supported_efforts: [...efforts],
+      },
+      supported_parameters: [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stream",
+        "stop",
+        "tools",
+        "response_format",
+        "reasoning",
+        "include_reasoning",
+      ],
+    };
+  });
 }
 
 function modelErrorResponse(c: any, error: unknown) {
@@ -272,6 +299,62 @@ export function registerModelRoutes(
 
   const handleGetModels = async (c: any) => {
     try {
+      const typeQuery = (c.req.query("type") || "").toLowerCase().trim();
+
+      // Prise en charge de la recherche de modèles d'images (CometAPI)
+      if (typeQuery === "image" || typeQuery === "images") {
+        const userPlan = c.get("userPlan");
+        const shouldFilterFreeOnly = !isPaidTier(userPlan);
+        try {
+          let models = await fetchLiveCometImageModels();
+          if (shouldFilterFreeOnly) {
+            models = models.filter((m) => {
+              const idLower = (m.id || "").toLowerCase();
+              return (
+                idLower.includes("flux") ||
+                idLower.includes("schnell") ||
+                idLower.includes("free")
+              );
+            });
+          }
+          return c.json({ data: models, object: "list" });
+        } catch {
+          let fallback = FALLBACK_IMAGE_MODELS;
+          if (shouldFilterFreeOnly) {
+            fallback = fallback.filter((m) =>
+              m.id.toLowerCase().includes("flux")
+            );
+          }
+          return c.json({
+            data: fallback.map(formatOpenAiImageModel),
+            object: "list",
+          });
+        }
+      }
+
+      // Prise en charge de la recherche de modèles audio
+      if (typeQuery === "audio" || typeQuery === "speech") {
+        const catalog = await getModelCatalog(database());
+        const paid = isPaidTier(c.get("userPlan"));
+        const audioModels = catalog.models
+          .filter(isPublicAudioModel)
+          .filter((m) => paid || isFreeModelId(m.id))
+          .map(effectiveModel);
+        return c.json({ data: audioModels, object: "list" });
+      }
+
+      // Prise en charge de tous les types
+      if (typeQuery === "all") {
+        const catalog = await getModelCatalog(database());
+        const paid = isPaidTier(c.get("userPlan"));
+        const allModels = catalog.models
+          .filter((m) => m.isActive && m.is_available)
+          .filter((m) => paid || isFreeModelId(m.id))
+          .map(effectiveModel);
+        return c.json({ data: allModels, object: "list" });
+      }
+
+      // Par défaut : modèles de chat
       const catalog = await getModelCatalog(database());
       const paid = isPaidTier(c.get("userPlan"));
       const filtered = catalog.models
@@ -316,6 +399,7 @@ export function registerModelRoutes(
     const formatted = maiModelsList.map((m) => {
       if (resolveMaiCloudBackend(m.id) !== null) {
         return {
+          capabilities: m.capabilities,
           description: m.description,
           id: m.id,
           name: m.name,

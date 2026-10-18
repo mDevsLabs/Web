@@ -110,6 +110,7 @@ function VibeSidebarIcon({ className }: { className?: string }) {
 
 // Icônes du sélecteur d'applications du logo.
 const APP_ICONS: Record<AppKey, React.ComponentType<{ className?: string }>> = {
+  cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,
   site: GlobeIcon,
@@ -398,6 +399,7 @@ export function AppSidebar({
   type NavMenuKey = "plus";
   const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
 
+  const isSearchActive = Boolean(pathname?.startsWith("/search"));
   const isCreationActive = Boolean(
     pathname?.startsWith("/creation") ||
       pathname?.startsWith("/images") ||
@@ -890,6 +892,25 @@ export function AppSidebar({
                     >
                       <LibraryIcon className="size-4" />
                       <span>Bibliothèque</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/* 4. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    isActive={isSearchActive}
+                    tooltip="Search"
+                  >
+                    <Link
+                      data-onboarding="nav-search"
+                      href="/search"
+                      onClick={handleNavClick}
+                    >
+                      <SearchIcon className="size-4" />
+                      <span>Search</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

@@ -46,6 +46,7 @@ export const APP_SWITCHER_ICONS: Record<
   AppKey,
   React.ComponentType<{ className?: string }>
 > = {
+  cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,
   site: GlobeIcon,

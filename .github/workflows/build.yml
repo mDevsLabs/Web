@@ -49,13 +49,16 @@ jobs:
     needs: [version]
     name: 🔀 Filtrer les chemins modifiés
     runs-on: ubuntu-latest
+    # Tous les builds d'applications tournent à CHAQUE commit : un changement
+    # partagé (packages/ui, icônes, contrat d'API) casse une application même
+    # quand son dossier n'a pas bougé, et le filtre par chemins laissait passer
+    # ces régressions. Le filtre reste exécuté pour l'information, mais ne
+    # conditionne plus les jobs.
     outputs:
-      vibe: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') || steps.filter.outputs.vibe == 'true' }}
-      mobile: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') || steps.filter.outputs.mobile == 'true' }}
-      desktop: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
-        steps.filter.outputs.desktop == 'true' }}
-      coder: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
-        steps.filter.outputs.coder == 'true' }}
+      vibe: true
+      mobile: true
+      desktop: true
+      coder: true
     steps:
       - name: 📦 Checkout du code
         if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,

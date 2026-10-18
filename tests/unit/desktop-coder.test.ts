@@ -4,7 +4,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({ exists: false, spawn: vi.fn() }));
 vi.mock("node:fs", () => ({ existsSync: () => mocks.exists }));
-vi.mock("electron", () => ({ app: { isPackaged: false } }));
+// `launchCoder` part du home de l'utilisateur : le mock doit exposer `getPath`,
+// sinon le test échoue sur le double Electron et non sur le lanceur.
+vi.mock("electron", () => ({
+  app: { getPath: () => "C:/Users/test", isPackaged: false },
+}));
 vi.mock("node:child_process", () => ({ spawn: mocks.spawn }));
 
 // Charger au runtime pour garder le typecheck Web indépendant des types Electron.

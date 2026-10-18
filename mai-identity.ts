@@ -27,6 +27,44 @@ export function normalizeMaiAliasId(model?: string | null): string {
   return m;
 }
 
+/**
+ * Traits d'un alias mAI-2.
+ *
+ * Le catalogue OpenRouter n'annonce ni les modalites d'entree ni les niveaux
+ * d'effort : sans cette table, mAI-2 s'affichait sans vision et sans
+ * raisonnement, et le selecteur de modele ne proposait aucun effort. Les
+ * efforts sont ceux reellement acceptes par le routeur (`max`, `high`, `low`).
+ */
+export interface MaiModelTraits {
+  defaultReasoningEffort?: string;
+  inputModalities: readonly string[];
+  maxOutputTokens: number;
+  /** Ordre du fournisseur : ce n'est pas un ordre d'intensite. */
+  reasoningEfforts: readonly string[];
+}
+
+export const MAI_MODEL_TRAITS: Record<string, MaiModelTraits> = {
+  "mai-2": {
+    defaultReasoningEffort: "high",
+    inputModalities: ["text", "image", "file"],
+    maxOutputTokens: 384_000,
+    reasoningEfforts: ["max", "high", "low"],
+  },
+  "mai-2-mini": {
+    inputModalities: ["text", "image"],
+    maxOutputTokens: 128_000,
+    // Mini raisonne mais n'expose aucun niveau : ne jamais inventer une liste.
+    reasoningEfforts: [],
+  },
+};
+
+/** Traits de l'alias mAI-2, ou `null` pour tout autre modele. */
+export function resolveMaiModelTraits(
+  model?: string | null
+): MaiModelTraits | null {
+  return MAI_MODEL_TRAITS[normalizeMaiAliasId(model)] ?? null;
+}
+
 /** Prompt d'identite du modele, ou `null` si le modele n'est pas un alias mAI-2. */
 export function resolveMaiIdentityPrompt(model?: string | null): string | null {
   return MAI_IDENTITY_PROMPTS[normalizeMaiAliasId(model)] ?? null;

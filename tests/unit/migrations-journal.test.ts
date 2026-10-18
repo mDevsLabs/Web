@@ -148,7 +148,18 @@ describe("Journal des migrations — concordance avec le disque", () => {
     expect((cinquanteQuatre?.idx ?? 0) > (cinquanteTrois?.idx ?? 0)).toBe(true);
     expect((cinquanteCinq?.idx ?? 0) > (cinquanteQuatre?.idx ?? 0)).toBe(true);
     expect((cinquanteSix?.idx ?? 0) > (cinquanteCinq?.idx ?? 0)).toBe(true);
-    expect(cinquanteSept?.idx).toBe(ENTRIES.length - 1);
+    // Le journal reçoit des entrées dont le NUMÉRO peut être antérieur à une
+    // entrée déjà appliquée (0058 rejoint 0059/0060) : la règle vérifiable
+    // n'est pas « le plus récent est le dernier », c'est que l'index suive la
+    // position et que `when` soit strictement croissant.
+    expect(ENTRIES.map((entree) => entree.idx)).toEqual(
+      ENTRIES.map((_, position) => position)
+    );
+    for (let position = 1; position < ENTRIES.length; position++) {
+      expect(ENTRIES[position].when).toBeGreaterThan(
+        ENTRIES[position - 1].when
+      );
+    }
     expect((cinquanteTrois?.when ?? 0) > (cinquanteDeux?.when ?? 0)).toBe(true);
     expect((cinquanteQuatre?.when ?? 0) > (cinquanteTrois?.when ?? 0)).toBe(
       true

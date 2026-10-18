@@ -28,7 +28,13 @@ import {
  */
 
 const ROOT = resolve(import.meta.dirname, "..", "..");
-const QUERIES = readFileSync(resolve(ROOT, "lib/wakies/queries.ts"), "utf8");
+// Les requêtes sont réparties par domaine ; `queries.ts` n'est qu'un baril de
+// réexport. Lire le baril ne trouve aucune fonction et ferait passer le test au
+// vert à tort : c'est le module qui porte les corps de requête qu'il faut lire.
+const QUERIES = readFileSync(
+  resolve(ROOT, "lib/wakies/queries/tasks.ts"),
+  "utf8"
+);
 
 describe("Bail — durée et bornes", () => {
   it("est strictement plus long que l'exécution maximale autorisée", () => {

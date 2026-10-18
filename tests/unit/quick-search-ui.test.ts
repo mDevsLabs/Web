@@ -83,6 +83,12 @@ describe("contrats de navigation et d'accessibilité", () => {
     const source = readFileSync("app/(chat)/settings/page.tsx", "utf8");
     expect(source).not.toContain("[searchParams, activeTab]");
     expect(source).toContain('inline: "nearest"');
-    expect(source).toContain('htmlFor="settings-custom-instructions"');
+    // Le champ a suivi son formulaire dans l'onglet Préférences ; l'ancrage dans
+    // l'onglet est vérifié là où il vit désormais.
+    const preferences = readFileSync(
+      "components/settings/preferences-tab.tsx",
+      "utf8"
+    );
+    expect(preferences).toContain('htmlFor="settings-custom-instructions"');
   });
 });

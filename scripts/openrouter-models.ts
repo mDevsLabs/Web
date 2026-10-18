@@ -3,11 +3,15 @@ export type SqlClient = (
   ...values: any[]
 ) => Promise<any[]>;
 
+export type ModelType = "chat" | "audio" | "image";
+export type ModelFournisseur = "openrouter" | "cometapi";
+
 export interface StoredModel {
   architecture: Record<string, any>;
   context_length: number;
   created: number;
   description: string;
+  fournisseur: ModelFournisseur | string;
   id: string;
   is_available: boolean;
   isActive: boolean;
@@ -16,8 +20,10 @@ export interface StoredModel {
   name: string;
   overrides: Record<string, any>;
   pricing: Record<string, any>;
+  provider: string;
   reasoning?: Record<string, any> | null;
   supported_parameters: string[];
+  type: ModelType;
   upstream: Record<string, any>;
 }
 
@@ -39,7 +45,7 @@ export function isFreeModelId(id: string): boolean {
 function providerFromName(name: unknown, modelId: string): string | null {
   if (typeof name !== "string") return null;
   const match = name.match(/^\s*([^:]+?)\s*:\s*(.+?)\s*$/);
-  const idProvider = modelId.split("/")[0] || "openrouter";
+  const idProvider = modelId.split("/")[0] || "inconnu";
   if (
     !match ||
     match[1].replace(/[-_\s]/g, "").toLowerCase() !==
@@ -51,12 +57,24 @@ function providerFromName(name: unknown, modelId: string): string | null {
 }
 
 function displayProvider(model: StoredModel): string {
+  if (
+    model.provider &&
+    model.provider !== "openrouter" &&
+    model.provider !== "cometapi"
+  ) {
+    return model.provider
+      .replace(
+        /[-_]+([a-z])/gi,
+        (_match, letter: string) => ` ${letter.toUpperCase()}`
+      )
+      .replace(/^([a-z])/i, (letter) => letter.toUpperCase());
+  }
   const upstreamName = model.upstream?.name;
   const nameProvider =
     providerFromName(upstreamName, model.id) ??
     providerFromName(model.name, model.id);
   if (nameProvider) return nameProvider;
-  return (model.id.split("/")[0] || "openrouter")
+  return (model.id.split("/")[0] || "inconnu")
     .replace(
       /[-_]+([a-z])/gi,
       (_match, letter: string) => ` ${letter.toUpperCase()}`
@@ -84,9 +102,28 @@ export function isPublicChatModel(model: StoredModel): boolean {
   return (
     model.isActive &&
     model.is_available &&
+    (model.type === "chat" || !model.type) &&
     !model.id.startsWith("openrouter/") &&
     !model.id.toLowerCase().includes(":batch") &&
     supportsOutput(model, "text")
+  );
+}
+
+export function isPublicAudioModel(model: StoredModel): boolean {
+  return (
+    model.isActive &&
+    model.is_available &&
+    (model.type === "audio" ||
+      supportsOutput(model, "audio") ||
+      supportsOutput(model, "speech"))
+  );
+}
+
+export function isPublicImageModel(model: StoredModel): boolean {
+  return (
+    model.isActive &&
+    model.is_available &&
+    (model.type === "image" || supportsOutput(model, "image"))
   );
 }
 
@@ -104,14 +141,17 @@ export function effectiveModel(model: StoredModel) {
     architecture: o.architecture ?? model.architecture,
     created: Number(model.created),
     description: o.description ?? model.description,
+    fournisseur: model.fournisseur || "openrouter",
     id: model.id,
     maxContext: o.context_length ?? model.context_length,
     maxOutput: o.max_output_tokens ?? model.max_output_tokens,
     name: displayModelName(name, model.id),
     object: "model",
     owned_by: displayProvider(model),
+    provider: model.provider || model.id.split("/")[0] || "inconnu",
     reasoning: rawReasoning,
     supported_parameters: o.supported_parameters ?? model.supported_parameters,
+    type: (model.type || "chat") as ModelType,
   };
 }
 
@@ -173,7 +213,11 @@ export async function getModelCatalog(sql: SqlClient): Promise<ModelCatalog> {
 
 async function sqlQueryCatalog(sql: SqlClient): Promise<StoredModel[]> {
   return await sql`
-    SELECT id, model_number, name, description, created, context_length,
+    SELECT id, model_number,
+      COALESCE(NULLIF(provider, ''), split_part(id, '/', 1)) as provider,
+      COALESCE(fournisseur, 'openrouter') as fournisseur,
+      COALESCE(type, 'chat') as type,
+      name, description, created, context_length,
       max_output_tokens, architecture, pricing, supported_parameters, upstream,
       overrides, "isActive", is_available
     FROM openrouter_models ORDER BY model_number
@@ -218,6 +262,13 @@ export async function requireChatModel(
       403,
       "model_inactive",
       "Ce modèle a été désactivé."
+    );
+  }
+  if (model.type === "image") {
+    throw new ModelAccessError(
+      400,
+      "image_model_not_supported_on_chat",
+      "Ce modèle est un générateur d'images. Veuillez utiliser l'endpoint d'images (/v1/images/generations)."
     );
   }
   if (!isPublicChatModel(model)) {

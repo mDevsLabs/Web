@@ -256,9 +256,54 @@ type ModelSelectorCompactProps = {
   // le popover portallé hérite du pointer-events:none du body (inerte).
   modal?: boolean;
   side?: "top" | "bottom";
+  /**
+   * Sélection de l'entrée vide. Par défaut le sélecteur émet `""` ; Wakies
+   * a besoin de `null` (« revenir au modèle du Wakie »), deux intentions
+   * distinctes que le composant ne doit pas confondre.
+   */
+  onEmptySelect?: () => void;
+  /** Désactive le déclencheur (ex. enregistrement d'un modèle en cours). */
+  disabled?: boolean;
 };
 
 const DEFAULT_EMPTY_LABEL = "Par défaut / Automatique";
+
+/**
+ * Niveau à afficher comme actif pour CE modèle.
+ *
+ * La préférence globale ne s'applique que si le modèle accepte ce niveau :
+ * mAI-2 expose `max | high | low` et n'a donc aucun « medium ». Sans ce repli,
+ * aucun bouton n'apparaîtrait actif, alors que le fournisseur, lui, a un
+ * défaut (`high`).
+ */
+function displayedReasoningLevel(
+  model: SharedModel,
+  capabilities: ModelCapabilities | undefined,
+  preferred: unknown
+): ReasoningLevel | undefined {
+  const extended = capabilities as
+    | (ModelCapabilities & {
+        reasoningDefault?: ReasoningLevel | null;
+        reasoningLevels?: ReasoningLevel[];
+      })
+    | undefined;
+  const levels = extended?.reasoningLevels?.length
+    ? extended.reasoningLevels
+    : (model.reasoning?.supported_efforts ?? []).filter(
+        (level): level is ReasoningLevel => isReasoningLevel(level)
+      );
+  if (isReasoningLevel(preferred) && levels.includes(preferred)) {
+    return preferred;
+  }
+  const fallback =
+    extended?.reasoningDefault ?? model.reasoning?.default_effort;
+  if (isReasoningLevel(fallback) && levels.includes(fallback)) {
+    return fallback;
+  }
+  // Liste ordonnée du plus intense au moins intense : le dernier est le moins
+  // coûteux, jamais le premier.
+  return levels.at(-1);
+}
 
 function ModelDetailsPanel({
   model,
@@ -318,7 +363,7 @@ function ModelDetailsPanel({
               {model.name}
             </span>
             {model.isFree ? (
-              <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
+              <span className="text-[10px] bg-success/10 text-success font-semibold px-1.5 py-0.5 rounded">
                 Gratuit
               </span>
             ) : null}
@@ -354,19 +399,19 @@ function ModelDetailsPanel({
           {capabilities?.tools ||
           model.supported_parameters?.includes("tools") ? (
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
-              <WrenchIcon className="size-3 text-sky-500" />
+              <WrenchIcon className="size-3 text-info" />
               Outils
             </span>
           ) : null}
           {capabilities?.vision || capabilities?.image || capabilities?.file ? (
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
-              <EyeIcon className="size-3 text-purple-500" />
+              <EyeIcon className="size-3 text-muted-foreground" />
               Vision / Fichiers
             </span>
           ) : null}
           {capabilities?.reasoning || model.reasoning ? (
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] text-foreground font-medium border border-border/40">
-              <BrainIcon className="size-3 text-amber-500" />
+              <BrainIcon className="size-3 text-warning" />
               Raisonnement
             </span>
           ) : null}
@@ -382,7 +427,7 @@ function ModelDetailsPanel({
       {hasConfigurableReasoning ? (
         <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
           <div className="flex items-center gap-1.5">
-            <BrainIcon className="size-3.5 text-amber-500" />
+            <BrainIcon className="size-3.5 text-warning" />
             <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
               Effort de réflexion
             </span>
@@ -494,18 +539,18 @@ function SharedModelSelectorOption({
         </div>
         <div className="ml-auto flex items-center gap-1.5 text-foreground/70 shrink-0">
           {model.isFree ? (
-            <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
+            <span className="text-[10px] bg-success/10 text-success font-semibold px-1.5 py-0.5 rounded">
               Gratuit
             </span>
           ) : null}
           {source === "images" ? (
             maybeWithTooltip(
-              <ImageIcon className="size-3.5 text-violet-500" />,
+              <ImageIcon className="size-3.5 text-info" />,
               "Génération d'images"
             )
           ) : source === "speech" ? (
             maybeWithTooltip(
-              <Volume2Icon className="size-3.5 text-emerald-500" />,
+              <Volume2Icon className="size-3.5 text-success" />,
               model.voices && model.voices.length > 0
                 ? `${model.voices.length} voix disponibles`
                 : "Synthèse vocale"
@@ -528,7 +573,7 @@ function SharedModelSelectorOption({
                 : null}
               {capabilities?.[model.id]?.reasoning
                 ? maybeWithTooltip(
-                    <BrainIcon className="size-3.5 text-amber-500" />,
+                    <BrainIcon className="size-3.5 text-warning" />,
                     "Raisonnement avancé"
                   )
                 : null}
@@ -584,6 +629,8 @@ function PureModelSelectorCompact({
   emptyLabel = DEFAULT_EMPTY_LABEL,
   modal,
   side,
+  onEmptySelect,
+  disabled,
 }: ModelSelectorCompactProps) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -602,11 +649,12 @@ function PureModelSelectorCompact({
   const handleSelectReasoningLevel = useCallback(
     async (level: ReasoningLevel) => {
       try {
-        await fetch("/api/user/preferences", {
+        const response = await fetch("/api/user/preferences", {
           body: JSON.stringify({ reasoningLevel: level }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
         });
+        if (!response.ok) throw new Error("refus serveur");
         mutateUserPrefs({ ...userPrefs, reasoningLevel: level }, false);
         toast.success(`Effort de réflexion : ${REASONING_LEVEL_LABELS[level]}`);
       } catch {
@@ -722,7 +770,9 @@ function PureModelSelectorCompact({
           <Button
             className="h-8 max-w-[min(220px,calc(100vw-9rem))] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:h-7 sm:max-w-[220px]"
             data-testid="model-selector"
+            disabled={disabled}
             suppressHydrationWarning
+            type="button"
             variant="ghost"
           >
             {!isEmptySelection && provider ? (
@@ -736,6 +786,7 @@ function PureModelSelectorCompact({
           <Button
             className="h-9 w-full justify-between gap-2 rounded-lg border border-border/60 bg-background px-3 text-[13px] font-normal text-foreground hover:bg-muted/50 cursor-pointer"
             data-testid="model-selector"
+            disabled={disabled}
             suppressHydrationWarning
             type="button"
             variant="outline"
@@ -780,7 +831,11 @@ function PureModelSelectorCompact({
                     "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
                   )}
                   onSelect={() => {
-                    onModelChange?.("");
+                    if (onEmptySelect) {
+                      onEmptySelect();
+                    } else {
+                      onModelChange?.("");
+                    }
                     setOpen(false);
                   }}
                   value={emptyLabel}
@@ -804,9 +859,11 @@ function PureModelSelectorCompact({
                     {groupModels.map((model) => (
                       <SharedModelSelectorOption
                         capabilities={capabilities}
-                        currentReasoningLevel={
-                          userPrefs?.reasoningLevel ?? "medium"
-                        }
+                        currentReasoningLevel={displayedReasoningLevel(
+                          model,
+                          capabilities?.[model.id],
+                          userPrefs?.reasoningLevel
+                        )}
                         focusInputAfterSelect={focusInputAfterSelect}
                         isMobileExpanded={mobileExpandedModelId === model.id}
                         key={model.id}
@@ -835,7 +892,11 @@ function PureModelSelectorCompact({
             {activeModel ? (
               <ModelDetailsPanel
                 capabilities={capabilities?.[activeModel.id]}
-                currentReasoningLevel={userPrefs?.reasoningLevel ?? "medium"}
+                currentReasoningLevel={displayedReasoningLevel(
+                  activeModel,
+                  capabilities?.[activeModel.id],
+                  userPrefs?.reasoningLevel
+                )}
                 model={activeModel}
                 onSelectReasoningLevel={handleSelectReasoningLevel}
                 source={source}

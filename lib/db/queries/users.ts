@@ -397,6 +397,7 @@ export async function upsertUserPreferences(
 export async function getUserModelPreferences(userId: string): Promise<{
   customInstructions: string | null;
   customInstructionsEnabled: boolean;
+  defaultChatModel: string | null;
   defaultTemperature: number | null;
   defaultTopP: number | null;
   reasoningLevel: ReasoningLevel | null;
@@ -404,6 +405,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
   const empty = {
     customInstructions: null,
     customInstructionsEnabled: false,
+    defaultChatModel: null,
     defaultTemperature: null,
     defaultTopP: null,
     reasoningLevel: null,
@@ -420,6 +422,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
       .select({
         customInstructions: userPreferences.customInstructions,
         customInstructionsEnabled: userPreferences.customInstructionsEnabled,
+        defaultChatModel: userPreferences.defaultChatModel,
         defaultTemperature: userPreferences.defaultTemperature,
         defaultTopP: userPreferences.defaultTopP,
         reasoningLevel: userPreferences.reasoningLevel,
@@ -431,6 +434,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
       return {
         customInstructions: row.customInstructions || null,
         customInstructionsEnabled: Boolean(row.customInstructionsEnabled),
+        defaultChatModel: row.defaultChatModel ?? null,
         defaultTemperature: row.defaultTemperature ?? null,
         defaultTopP: row.defaultTopP ?? null,
         reasoningLevel: (row.reasoningLevel as ReasoningLevel) ?? null,
@@ -456,6 +460,7 @@ export async function getUserModelPreferences(userId: string): Promise<{
     return {
       customInstructions: row.custom_instructions || null,
       customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
+      defaultChatModel: null,
       defaultTemperature: row.default_temperature ?? null,
       defaultTopP: row.default_top_p ?? null,
       reasoningLevel: null,

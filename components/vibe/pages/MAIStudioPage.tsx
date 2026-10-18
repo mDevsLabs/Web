@@ -42,6 +42,7 @@ import { sanitizeRichHtml } from "@/components/vibe/common/richSanitizer";
 import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   buildMAIConversationJSON,
   buildMAIConversationMarkdown,
@@ -110,10 +111,10 @@ const formatConvDate = (iso?: string): string => {
 
 const DEFAULT_MODELS = [
   {
-    description: "Modèle IA par défaut haute performance",
-    id: "poolside/laguna-xs-2.1:free",
-    name: "Laguna XS 2.1",
-    provider: "Poolside",
+    description: "Modèle par défaut de l'application, rapide et multimodal",
+    id: DEFAULT_CHAT_MODEL,
+    name: "Gemini 3.8 Flash",
+    provider: "Google",
   },
   {
     description: "Modèle IA d'élite mAI — Raisonnement profond & Vision",
@@ -164,9 +165,8 @@ export const MAIStudioPage: React.FC = () => {
   const location = useLocation();
   const isCreatingConvRef = useRef(false);
   const lastHandledNewRef = useRef<string | null>(null);
-  const [selectedModel, setSelectedModel] = useState<string>(
-    "poolside/laguna-xs-2.1:free"
-  );
+  const [selectedModel, setSelectedModel] =
+    useState<string>(DEFAULT_CHAT_MODEL);
   const [availableModels, setAvailableModels] =
     useState<
       Array<{
@@ -248,18 +248,30 @@ export const MAIStudioPage: React.FC = () => {
         window.history.replaceState({}, "", window.location.pathname);
       }
     } catch {}
-    ApiService.getSettings()
-      .then((res: any) => {
-        const saved = res?.settings?.mai_default_model;
-        if (
-          saved &&
-          saved !== "openrouter/free" &&
-          !saved.startsWith("openrouter/")
-        ) {
-          setSelectedModel(String(saved));
-        }
-      })
-      .catch(() => {});
+    // Préférence partagée de l'hôte d'abord, ancien réglage Vibe ensuite.
+    Promise.allSettled([
+      fetch(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`
+      ).then((response) => (response.ok ? response.json() : null)),
+      ApiService.getSettings(),
+    ]).then(([preference, settings]) => {
+      const host =
+        preference.status === "fulfilled"
+          ? (preference.value?.defaultChatModel as string | null | undefined)
+          : null;
+      const saved =
+        host ??
+        (settings.status === "fulfilled"
+          ? (settings.value as any)?.settings?.mai_default_model
+          : null);
+      if (
+        saved &&
+        saved !== "openrouter/free" &&
+        !String(saved).startsWith("openrouter/")
+      ) {
+        setSelectedModel(String(saved));
+      }
+    });
     loadModels();
   }, []);
 
@@ -585,6 +597,14 @@ export const MAIStudioPage: React.FC = () => {
 
   const handleSelectModel = (modelId: string) => {
     setSelectedModel(modelId);
+    void fetch(
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
+      {
+        body: JSON.stringify({ defaultChatModel: modelId }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      }
+    ).catch(() => {});
     ApiService.updateSettings({ mai_default_model: modelId }).catch(() => {});
   };
 

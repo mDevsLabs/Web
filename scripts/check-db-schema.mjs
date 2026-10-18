@@ -68,6 +68,8 @@ const REQUIRED_TABLES = [
   // Migration 0054 : formulaires utilisateur et récompenses de réinitialisation
   "UserForm",
   "UserFormResponse",
+  // Migration 0060 : mAI Search
+  "MaiSearchQuery",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -128,6 +130,9 @@ const REQUIRED_COLUMNS = [
   { column: "theme", table: "user_preferences" },
   // Migration 0057 : effort de réflexion global dans user_preferences.
   { column: "reasoningLevel", table: "user_preferences" },
+  // Migration 0059 : typage des modèles (chat, audio, image) et fournisseur.
+  { column: "type", table: "openrouter_models" },
+  { column: "fournisseur", table: "openrouter_models" },
   // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
   // retombe sur une jointure `Chat` et les tokens d'une conversation
   // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait

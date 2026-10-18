@@ -12,8 +12,8 @@ import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
 import {
-  normalizeReasoningLevel,
   REASONING_LEVELS,
   resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
@@ -335,14 +335,19 @@ export async function POST(request: Request) {
       { status: 409 }
     );
 
-  // Modèle de CETTE conversation, sinon du Wakie, sinon défaut : c'est le
-  // choix fait dans le menu de modèle (le même composant que le Chat et le
-  // mode Agent), appliqué à l'appel réel.
+  // Modèle de CETTE conversation, sinon du Wakie, sinon la préférence de
+  // l'hôte, sinon le défaut produit : c'est le choix fait dans le menu de
+  // modèle (le même composant que le Chat et le mode Agent), appliqué à
+  // l'appel réel.
   const models = await fetchUserModels();
+  const userPrefs = await getUserModelPreferences(auth.userId).catch(
+    () => null
+  );
   const modelId = resolveWakieCatalogModel(
     filterModelsForTier(models, auth.maiUser.tier),
     conversation.model,
-    wakie.model
+    wakie.model,
+    userPrefs?.defaultChatModel ?? null
   );
   if (
     !models.some((candidate) => candidate.id === modelId) ||
@@ -783,15 +788,17 @@ export async function POST(request: Request) {
             type: "data-capability-issues",
           });
 
-        const userPrefs = await getUserModelPreferences(auth.userId).catch(
-          () => null
-        );
         const chosenEffort =
           parsed.data.reasoningLevel ?? userPrefs?.reasoningLevel ?? null;
-        const providerOptions = chosenEffort
-          ? resolveReasoningProviderOptions(
-              normalizeReasoningLevel(chosenEffort)
-            )
+        // Le niveau préféré peut ne pas exister sur ce modèle (mAI-2-Mini
+        // n'en expose aucun) : on laisse alors le fournisseur trancher au lieu
+        // d'envoyer un effort qu'il refuserait.
+        const resolvedEffort = resolveReasoningEffort({
+          capabilities,
+          preferred: chosenEffort,
+        });
+        const providerOptions = resolvedEffort.effort
+          ? resolveReasoningProviderOptions(resolvedEffort.effort)
           : undefined;
 
         const result = streamText({

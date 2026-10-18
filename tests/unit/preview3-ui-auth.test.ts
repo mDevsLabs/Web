@@ -164,7 +164,9 @@ describe("contrats visuels des Wakies", () => {
     expect(source).toContain("<SpaceMenu");
     for (const id of ["favori", "sourdine", "renommer", "supprimer"])
       expect(source).toContain(`id: "${id}"`);
-    expect(source).toContain("window.confirm");
+    // Suppression confirmée par la boîte de dialogue commune : un `confirm`
+    // natif est bloqué dans l'application de bureau.
+    expect(source).toContain("confirmInApp(");
     expect(source).not.toContain("aria-pressed");
   });
   it("conserve la navigation clavier des actions à cocher", () => {

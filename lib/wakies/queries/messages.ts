@@ -194,6 +194,47 @@ export async function listMessages(
   return options.apresSeq === undefined ? messages.reverse() : messages;
 }
 
+/**
+ * Réécrit le texte d'un message DU COMPTE.
+ *
+ * Deux gardes dans la requête elle-même, pas seulement dans la route : le
+ * message doit appartenir à une conversation du compte ET avoir le rôle
+ * `user`. Une réponse de Wakie n'est jamais modifiable, même par son
+ * propriétaire. Les pièces jointes d'origine sont conservées ; seul le texte
+ * est remplacé.
+ */
+export async function updateOwnMessageText(
+  userId: string,
+  messageId: string,
+  text: string
+): Promise<boolean> {
+  await dbReady();
+  const [row] = await getDb()
+    .select({ id: wakiesMessage.id, parts: wakiesMessage.parts })
+    .from(wakiesMessage)
+    .innerJoin(
+      wakiesConversation,
+      eq(wakiesMessage.conversationId, wakiesConversation.id)
+    )
+    .where(
+      and(
+        eq(wakiesMessage.id, messageId),
+        eq(wakiesConversation.userId, userId),
+        eq(wakiesMessage.role, "user")
+      )
+    )
+    .limit(1);
+  if (!row) return false;
+
+  const parts = Array.isArray(row.parts) ? (row.parts as any[]) : [];
+  const pieces = parts.filter((part) => part?.type !== "text");
+  await getDb()
+    .update(wakiesMessage)
+    .set({ parts: [{ text, type: "text" }, ...pieces] })
+    .where(eq(wakiesMessage.id, messageId));
+  return true;
+}
+
 /** Message déjà écrit ? Utilisé par le flux pour ne pas le réinsérer. */
 export async function messageExists(
   userId: string,

@@ -808,11 +808,17 @@ export async function poserReaction(
   if (byWakieId !== null && !(await findWakie(userId, byWakieId))) return false;
   await dbReady();
   const [message] = await getDb()
-    .select({ conversationId: wakiesMessage.conversationId })
+    .select({
+      conversationId: wakiesMessage.conversationId,
+      role: wakiesMessage.role,
+    })
     .from(wakiesMessage)
     .where(eq(wakiesMessage.id, messageId))
     .limit(1);
   if (!message) return false;
+  // Le compte ne réagit pas à SON message (l'IA, elle, peut réagir à ceux de
+  // l'utilisateur : `byWakieId` distingue les deux auteurs).
+  if (message.role === "user" && byWakieId === null) return false;
   const autorise = await ownedConversationIds(userId, [message.conversationId]);
   if (!autorise.has(message.conversationId)) return false;
   const [row] = await getDb()

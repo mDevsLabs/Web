@@ -11,7 +11,10 @@
 // unitaires. Aucun import server-only ici — la logique est pure, les chemins
 // sont des constantes statiques.
 
-export const APP_KEYS = ["mai", "site", "vibe", "code"] as const;
+// `cli` n'est pas une application web : c'est une entrée du « Menu favori »
+// qui ouvre le terminal local de l'application de bureau. Elle vit donc dans
+// le catalogue (clé persistée) sans entrer dans APP_ORDER (menu du logo).
+export const APP_KEYS = ["mai", "site", "vibe", "code", "cli"] as const;
 export type AppKey = (typeof APP_KEYS)[number];
 
 export type AppCatalogEntry = {
@@ -35,6 +38,15 @@ export type AppCatalogEntry = {
 };
 
 export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
+  cli: {
+    description: "mAI dans un terminal local (application de bureau)",
+    key: "cli",
+    label: "CLI",
+    // Aucune route web : la redirection post-login ouvre le terminal puis
+    // retombe sur mAI si la fonction n'est pas disponible.
+    path: "/",
+    pathPrefix: "/",
+  },
   code: {
     description: "L'outil de codage pour IA",
     key: "code",

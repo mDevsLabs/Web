@@ -1157,7 +1157,7 @@ export async function runNotificationManager() {
 // ─────────────────────────────────────────────
 async function runModelScheduleNow() {
   console.log(
-    "\n⏱️ Exécution manuelle du cron de synchronisation des modèles OpenRouter..."
+    "\n⏱️ Exécution manuelle du cron de synchronisation des modèles (OpenRouter & CometAPI)..."
   );
   const result = await updateModels(sql);
   if (result.skipped) {
@@ -1168,6 +1168,14 @@ async function runModelScheduleNow() {
     console.log(
       `✅ Catalogue sauvegardé rafraîchi : ${result.upserted} modèle(s) synchronisé(s), ${result.retired} archivé(s).`
     );
+    if ("chatCount" in result) {
+      console.log(
+        `   📊 Répartition : ${result.chatCount} Chat, ${result.audioCount} Audio, ${result.imageCount} Image.`
+      );
+      console.log(
+        `   🔌 Fournisseurs : ${result.openrouterCount} OpenRouter, ${result.cometCount} CometAPI.`
+      );
+    }
   }
   return result;
 }
@@ -1291,10 +1299,10 @@ export async function runAdminCli() {
       `  ${c.brightCyan}[9]${c.reset} 🔔 Gérer les Notifications & Actualités (Broadcast)`
     );
     console.log(
-      `  ${c.brightCyan}[10]${c.reset} 🤖 Gérer les modèles OpenRouter (recherche, édition, activation, lots)`
+      `  ${c.brightCyan}[10]${c.reset} 🤖 Gérer les modèles (Chat, Audio, Image — OpenRouter & CometAPI)`
     );
     console.log(
-      `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et rafraîchir les modèles sauvegardés`
+      `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et synchroniser les modèles (Chat, Audio, Image)`
     );
     console.log(
       `  ${c.brightCyan}[12]${c.reset} 📝 Gérer les formulaires & sondages (création intelligente, stats, activation)`

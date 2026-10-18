@@ -32,6 +32,7 @@ import { makeExcerpt } from "@/components/vibe/common/richTextUtils";
 import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import type { MAITool } from "@/lib/vibe/data/maiTools";
 import { useAvailableMAITools } from "@/lib/vibe/hooks/useAvailableMAITools";
@@ -76,10 +77,10 @@ interface MessageItem {
 
 const DEFAULT_MODELS: AIModel[] = [
   {
-    description: "Modèle IA par défaut haute performance",
-    id: "poolside/laguna-xs-2.1:free",
-    name: "Laguna XS 2.1",
-    provider: "Poolside",
+    description: "Modèle par défaut de l'application, rapide et multimodal",
+    id: DEFAULT_CHAT_MODEL,
+    name: "Gemini 3.8 Flash",
+    provider: "Google",
   },
   {
     description: "Modèle IA d'élite mAI — Raisonnement profond & Vision",
@@ -140,9 +141,8 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   const { user, quotas, refreshQuotas } = useAuth();
   const { animationsEnabled } = useMotionPrefs();
   const availableTools = useAvailableMAITools();
-  const [selectedModel, setSelectedModel] = useState<string>(
-    "poolside/laguna-xs-2.1:free"
-  );
+  const [selectedModel, setSelectedModel] =
+    useState<string>(DEFAULT_CHAT_MODEL);
   const [availableModels, setAvailableModels] =
     useState<AIModel[]>(DEFAULT_MODELS);
   const [messages, setMessages] = useState<MessageItem[]>([]);
@@ -286,27 +286,48 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         }
       } catch {}
     };
-    // Le modèle par défaut choisi ici est persisté (user_settings.mai_default_model)
-    ApiService.getSettings()
-      .then((res: any) => {
-        const saved = res?.settings?.mai_default_model;
-        if (
-          saved &&
-          saved !== "openrouter/free" &&
-          !saved.startsWith("openrouter/")
-        ) {
-          setSelectedModel(String(saved));
-        }
-      })
-      .catch(() => {});
+    // La préférence de l'hôte (`defaultChatModel`) prime : elle est commune à
+    // Chat, Agent et Wakies. `mai_default_model` reste lu pour les comptes qui
+    // avaient choisi un modèle dans Vibe avant l'unification.
+    Promise.allSettled([
+      fetch(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`
+      ).then((response) => (response.ok ? response.json() : null)),
+      ApiService.getSettings(),
+    ]).then(([preference, settings]) => {
+      const host =
+        preference.status === "fulfilled"
+          ? (preference.value?.defaultChatModel as string | null | undefined)
+          : null;
+      const saved =
+        host ??
+        (settings.status === "fulfilled"
+          ? (settings.value as any)?.settings?.mai_default_model
+          : null);
+      if (
+        saved &&
+        saved !== "openrouter/free" &&
+        !String(saved).startsWith("openrouter/")
+      ) {
+        setSelectedModel(String(saved));
+      }
+    });
     if (isOpen) {
       loadModels();
     }
   }, [isOpen]);
 
-  /** Changement de modèle depuis le picker mAI : appliqué et enregistré en base. */
+  /** Changement de modèle : appliqué et enregistré dans la préférence partagée. */
   const handleSelectModel = (modelId: string) => {
     setSelectedModel(modelId);
+    void fetch(
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
+      {
+        body: JSON.stringify({ defaultChatModel: modelId }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      }
+    ).catch(() => {});
     ApiService.updateSettings({ mai_default_model: modelId }).catch(() => {});
   };
 

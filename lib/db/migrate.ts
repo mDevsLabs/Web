@@ -821,6 +821,37 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  try {
+    await connection`ALTER TABLE IF EXISTS "openrouter_models" ADD COLUMN IF NOT EXISTS "type" varchar(20) DEFAULT 'chat' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "openrouter_models" ADD COLUMN IF NOT EXISTS "fournisseur" varchar(50) DEFAULT 'openrouter' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "openrouter_models" DROP CONSTRAINT IF EXISTS "openrouter_models_provider_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "MaiSearchQuery" (
+        "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+        "userId" text NOT NULL,
+        "query" text NOT NULL,
+        "resultsCount" integer DEFAULT 0 NOT NULL,
+        "summary" text,
+        "vote" varchar(10),
+        "createdAt" timestamp DEFAULT now() NOT NULL,
+        "updatedAt" timestamp DEFAULT now() NOT NULL
+      );
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
 
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });

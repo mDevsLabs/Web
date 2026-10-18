@@ -245,6 +245,27 @@ function WakieChat({
   const [modelId, setModelId] = useState(() =>
     resolveWakieModelId(thread.model, wakie.model)
   );
+  // Le fil n'impose pas de modèle : la préférence de l'hôte s'applique, comme
+  // sur Chat et Vibe. On ne l'applique qu'une fois pour ne pas écraser un
+  // choix fait dans le menu juste après le chargement.
+  const preferencesApplied = useRef(false);
+  const { data: preferences } = useSWR<{ defaultChatModel?: string | null }>(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
+    (url: string) => fetch(url).then((response) => response.json()),
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
+  );
+  useEffect(() => {
+    if (preferencesApplied.current) return;
+    if (thread.model?.trim() || wakie.model?.trim()) {
+      preferencesApplied.current = true;
+      return;
+    }
+    const prefere = preferences?.defaultChatModel?.trim();
+    if (prefere) {
+      preferencesApplied.current = true;
+      setModelId(prefere);
+    }
+  }, [preferences, thread.model, wakie.model]);
   const [draft, setDraft, queue] = useConversationDraft(thread.id);
   const queued = useSyncExternalStore(
     queue.subscribe,
@@ -673,6 +694,62 @@ function WakieChat({
     [rechargerSocial]
   );
 
+  /** Copier le texte d'une bulle (les pièces jointes ne sont pas copiées). */
+  const copierMessage = useCallback(async (message: UIMessage) => {
+    const contenu = message.parts
+      .filter(
+        (part): part is { type: "text"; text: string } => part.type === "text"
+      )
+      .map((part) => part.text)
+      .join("\n")
+      .trim();
+    if (!contenu) return;
+    try {
+      await navigator.clipboard.writeText(contenu);
+      setErreur("");
+    } catch {
+      setErreur("Le message n'a pas pu être copié.");
+    }
+  }, []);
+
+  /**
+   * Modifier un message du compte.
+   *
+   * Seuls les messages `user` sont concernés : une réponse de Wakie est un
+   * témoignage du modèle, la réécrire réécrirait l'historique. Le serveur
+   * revérifie la propriété et le rôle, cette fonction ne fait que demander.
+   */
+  const modifierMessage = useCallback(
+    async (message: UIMessage) => {
+      const contenu = message.parts
+        .filter(
+          (part): part is { type: "text"; text: string } => part.type === "text"
+        )
+        .map((part) => part.text)
+        .join("\n")
+        .trim();
+      const nouveau = await promptInApp("Modifier le message", contenu);
+      const texte = nouveau?.trim();
+      if (!texte || texte === contenu) return;
+      try {
+        await api(`/messages/${message.id}`, "PATCH", { text: texte });
+        setMessages((actuels) =>
+          actuels.map((actuel) =>
+            actuel.id === message.id
+              ? { ...actuel, parts: [{ text: texte, type: "text" }] }
+              : actuel
+          )
+        );
+        setErreur("");
+      } catch (e) {
+        setErreur(
+          e instanceof Error ? e.message : "Le message n'a pas pu être modifié."
+        );
+      }
+    },
+    [setMessages]
+  );
+
   /**
    * Noms des Wakies du fil.
    *
@@ -1079,8 +1156,10 @@ function WakieChat({
           epingles={epingles}
           messages={messages}
           nomsWakies={nomsWakies}
+          onCopier={copierMessage}
           onEnregistrer={enregistrerMessage}
           onEpingle={basculerEpingle}
+          onModifier={modifierMessage}
           onPoserReaction={poserReactionBulle}
           onRepondre={setReponseA}
           onTransferer={(messageId) => {

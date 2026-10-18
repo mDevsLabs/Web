@@ -368,6 +368,26 @@ export function ActiveChatProvider({
         } catch {}
       }
     }
+
+    const promptParam = searchParams.get("prompt");
+    if (promptParam) {
+      setInput(promptParam);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("prompt");
+      window.history.replaceState(
+        {},
+        "",
+        url.pathname +
+          (url.search ? `?${url.searchParams.toString()}` : "") +
+          url.hash
+      );
+    } else if (typeof window !== "undefined") {
+      const storedPrompt = sessionStorage.getItem("mai_pending_chat_prompt");
+      if (storedPrompt) {
+        setInput(storedPrompt);
+        sessionStorage.removeItem("mai_pending_chat_prompt");
+      }
+    }
   }, [searchParams]);
 
   const chatIdFromUrl = extractChatId(pathname);

@@ -2572,3 +2572,29 @@ export const userFormResponse = pgTable(
 );
 
 export type UserFormResponse = InferSelectModel<typeof userFormResponse>;
+
+// ─────────────────────────────────────────────
+// mAI Search (migration 0060) : requêtes, résultats et retours utilisateurs
+// ─────────────────────────────────────────────
+export const maiSearchQuery = pgTable(
+  "MaiSearchQuery",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    query: text("query").notNull(),
+    resultsCount: integer("resultsCount").notNull().default(0),
+    summary: text("summary"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+    vote: varchar("vote", { length: 10 }),
+  },
+  (table) => ({
+    userCreatedIdx: index("MaiSearchQuery_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+    userIdIdx: index("MaiSearchQuery_userId_idx").on(table.userId),
+  })
+);
+
+export type MaiSearchQuery = InferSelectModel<typeof maiSearchQuery>;

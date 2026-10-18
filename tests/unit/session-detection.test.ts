@@ -103,11 +103,11 @@ function errorResponse(status = 401) {
 }
 
 const BASE_ENV = {
+  // `lib/constants.ts` lit l'URL du backend côté serveur dans MAI_API_URL.
+  MAI_API_URL: "https://mai.test",
   MAI_JWT_AUDIENCE: undefined,
   MAI_JWT_ISSUER: undefined,
   MAI_JWT_SECRET: LOCAL_SECRET,
-  // `lib/constants.ts` lit l'URL du backend dans NEXT_PUBLIC_MAI_API_URL.
-  NEXT_PUBLIC_MAI_API_URL: "https://mai.test",
 };
 
 // Délai porté : chaque cas recharge le module via `vi.resetModules()` suivi d'un

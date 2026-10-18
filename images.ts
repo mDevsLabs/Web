@@ -103,7 +103,7 @@ const CACHE_TTL_MS = 60_000;
 /**
  * Modèles de repli de haute qualité en cas de défaillance réseau temporaire de CometAPI
  */
-const FALLBACK_IMAGE_MODELS: ImageModelItem[] = [
+export const FALLBACK_IMAGE_MODELS: ImageModelItem[] = [
   {
     capabilities: {
       async_task: true,
@@ -544,7 +544,7 @@ function resolveImageModel(requestedModel: string): string {
 /**
  * Formatage d'un modèle d'image selon le schéma OpenAI Model Specification
  */
-function formatOpenAiImageModel(m: any): ImageModelItem {
+export function formatOpenAiImageModel(m: any): ImageModelItem {
   const modelId = m.id || "image-model";
   const org = m.owned_by || modelId.split("/")[0] || "cometapi";
   const created =
@@ -623,7 +623,7 @@ function formatOpenAiImageModel(m: any): ImageModelItem {
 /**
  * Récupération dynamique et filtrage en temps réel des modèles d'images depuis CometAPI
  */
-async function fetchLiveCometImageModels(): Promise<ImageModelItem[]> {
+export async function fetchLiveCometImageModels(): Promise<ImageModelItem[]> {
   const now = Date.now();
   if (
     cachedCometImageModels.length > 0 &&
@@ -1071,6 +1071,8 @@ export function registerImageRoutes(app: Hono) {
 
   app.get("/v1/models/images", handleGetImageModels);
   app.get("/models/images", handleGetImageModels);
+  app.get("/v1/models/image", handleGetImageModels);
+  app.get("/models/image", handleGetImageModels);
   app.get("/v1/images/models", handleGetImageModels);
   app.get("/images/models", handleGetImageModels);
 
@@ -1109,6 +1111,8 @@ export function registerImageRoutes(app: Hono) {
 
   app.get("/v1/models/images/:id", handleGetSingleImageModel);
   app.get("/models/images/:id", handleGetSingleImageModel);
+  app.get("/v1/models/image/:id", handleGetSingleImageModel);
+  app.get("/models/image/:id", handleGetSingleImageModel);
 
   // ─────────────────────────────────────────────
   // GET /v1/images/usage & /images/usage

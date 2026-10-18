@@ -28,9 +28,7 @@ import {
   MESSAGE_BUBBLE_THEMES,
   useTheme,
 } from "@/lib/vibe/context/ThemeContext";
-import {
-  getAnimationsEnabled,
-} from "@/lib/vibe/services/animationPrefs";
+import { getAnimationsEnabled } from "@/lib/vibe/services/animationPrefs";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import { NotificationService } from "@/lib/vibe/services/notificationService";
@@ -251,6 +249,9 @@ export const SettingsPage: React.FC<{
     setMessageBubbleTheme,
     setChatBackgroundTheme,
     setMessageBubbleShape,
+    hydration?.as,
+    hydration?.data,
+    user,
   ]);
 
   // Charge le catalogue d'outils mAI

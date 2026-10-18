@@ -19,10 +19,16 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 export function resolveWakieCatalogModel(
   models: { id: string }[],
   conversationModel?: string | null,
-  wakieModel?: string | null
+  wakieModel?: string | null,
+  preferredModel?: string | null
 ): string {
   if (conversationModel?.trim() || wakieModel?.trim())
     return resolveWakieModelId(conversationModel, wakieModel);
+  // La préférence de l'hôte ne s'applique que si elle existe encore dans le
+  // catalogue filtré par forfait : un modèle retiré ou verrouillé ne doit pas
+  // devenir un défaut fantôme.
+  if (preferredModel?.trim() && models.some((m) => m.id === preferredModel))
+    return preferredModel.trim();
   return (
     models.find((model) => model.id === DEFAULT_CHAT_MODEL)?.id ??
     models[0]?.id ??

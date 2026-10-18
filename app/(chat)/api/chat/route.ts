@@ -112,6 +112,7 @@ export async function POST(request: Request) {
       messages: (body.messages as any) ?? null,
       pendingPrompt: body.pendingPrompt,
       projectId: body.projectId,
+      reasoningLevel: body.reasoningLevel ?? null,
       selectedAgentId: (body as any).selectedAgentId ?? null,
       selectedChatMode: body.selectedChatMode,
       selectedChatModel: (body as any).selectedChatModel ?? "",

@@ -33,6 +33,7 @@
  * message d'après son ordre d'affichage.
  */
 
+import { CopyIcon, PencilIcon } from "@mdevs/icons";
 import { PhoneOffIcon } from "@mdevs/icons/communication/phone-off";
 import { FileTextIcon } from "@mdevs/icons/files/file-text";
 import { PinIcon } from "@mdevs/icons/maps/pin";
@@ -309,6 +310,8 @@ export function ChatTranscript({
   onPoserReaction,
   onRepondre,
   onTransferer,
+  onCopier,
+  onModifier,
 }: {
   messages: UIMessage[];
   calls: CallReceipt[];
@@ -334,6 +337,10 @@ export function ChatTranscript({
   onRepondre?: (message: UIMessage) => void;
   /** Transférer ce message vers une autre conversation. */
   onTransferer?: (messageId: string) => void;
+  /** Copier le texte du message dans le presse-papiers. */
+  onCopier?: (message: UIMessage) => void;
+  /** Modifier un message du compte (jamais une réponse de Wakie). */
+  onModifier?: (message: UIMessage) => void;
 }) {
   const [halo, setHalo] = useState<string | null>(null);
   useEffect(() => {
@@ -445,50 +452,83 @@ export function ChatTranscript({
                   part={part}
                 />
               ))}
-              <div className="chat-bubble-actions">
-                {onRepondre ? (
-                  <BoutonAction
-                    label="Répondre à ce message"
-                    onClick={() => onRepondre(element.message)}
-                  >
-                    <ReplyIcon size={13} />
-                  </BoutonAction>
-                ) : null}
-                {onTransferer ? (
-                  <BoutonAction
-                    label="Transférer ce message"
-                    onClick={() => onTransferer(element.message.id)}
-                  >
-                    <ForwardIcon size={13} />
-                  </BoutonAction>
-                ) : null}
-                {onEnregistrer ? (
-                  <BoutonAction
-                    label="Enregistrer en page"
-                    onClick={() => onEnregistrer(element.message.id)}
-                  >
-                    <BookmarkPlusIcon size={13} />
-                  </BoutonAction>
-                ) : null}
-                {onEpingle ? (
-                  <BoutonEpingle
-                    estEpingle={Boolean(
-                      epinglesVisibles.some((p) => p.id === element.message.id)
-                    )}
-                    onEpingle={(epingle) =>
-                      onEpingle(element.message.id, epingle)
-                    }
-                  />
-                ) : null}
-              </div>
-              <ReactionBar
-                onPoser={
-                  onPoserReaction
-                    ? (emoji) => onPoserReaction(element.message.id, emoji)
-                    : undefined
-                }
-                reactions={reactionsParMessage?.get(element.message.id) ?? []}
-              />
+              {(() => {
+                // Les actions du COMPTE et celles de l'IA ne se mélangent pas :
+                // on ne répond pas à soi-même, on ne réagit pas à son propre
+                // message, et on ne modifie jamais une réponse de Wakie.
+                const estWakie = element.message.role === "assistant";
+                return (
+                  <>
+                    <div className="chat-bubble-actions">
+                      {estWakie && onRepondre ? (
+                        <BoutonAction
+                          label="Répondre à ce message"
+                          onClick={() => onRepondre(element.message)}
+                        >
+                          <ReplyIcon size={13} />
+                        </BoutonAction>
+                      ) : null}
+                      {onCopier ? (
+                        <BoutonAction
+                          label="Copier le message"
+                          onClick={() => onCopier(element.message)}
+                        >
+                          <CopyIcon size={13} />
+                        </BoutonAction>
+                      ) : null}
+                      {!estWakie && onModifier ? (
+                        <BoutonAction
+                          label="Modifier ce message"
+                          onClick={() => onModifier(element.message)}
+                        >
+                          <PencilIcon size={13} />
+                        </BoutonAction>
+                      ) : null}
+                      {onTransferer ? (
+                        <BoutonAction
+                          label="Transférer ce message"
+                          onClick={() => onTransferer(element.message.id)}
+                        >
+                          <ForwardIcon size={13} />
+                        </BoutonAction>
+                      ) : null}
+                      {estWakie && onEnregistrer ? (
+                        <BoutonAction
+                          label="Enregistrer en page"
+                          onClick={() => onEnregistrer(element.message.id)}
+                        >
+                          <BookmarkPlusIcon size={13} />
+                        </BoutonAction>
+                      ) : null}
+                      {estWakie && onEpingle ? (
+                        <BoutonEpingle
+                          estEpingle={Boolean(
+                            epinglesVisibles.some(
+                              (p) => p.id === element.message.id
+                            )
+                          )}
+                          onEpingle={(epingle) =>
+                            onEpingle(element.message.id, epingle)
+                          }
+                        />
+                      ) : null}
+                    </div>
+                    {estWakie ? (
+                      <ReactionBar
+                        onPoser={
+                          onPoserReaction
+                            ? (emoji) =>
+                                onPoserReaction(element.message.id, emoji)
+                            : undefined
+                        }
+                        reactions={
+                          reactionsParMessage?.get(element.message.id) ?? []
+                        }
+                      />
+                    ) : null}
+                  </>
+                );
+              })()}
             </div>
             {calls
               .filter((call) => call.anchorMessageId === element.message.id)

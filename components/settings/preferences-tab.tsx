@@ -2,14 +2,13 @@
 
 import {
   LanguagesIcon,
-  Loader2Icon,
   SettingsIcon,
   SparklesIcon,
   StarIcon,
   Volume2Icon,
 } from "@mdevs/icons";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
@@ -29,6 +28,7 @@ import {
 } from "@/components/settings/option-selectors";
 import { Label } from "@/components/ui/label";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
+import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useSettings } from "@/hooks/use-settings";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
@@ -37,8 +37,8 @@ import {
   REASONING_LEVELS,
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
-import { extractApiErrorMessage } from "@/lib/api/client-error";
 import {
+  APP_CATALOG,
   APP_ORDER,
   type AppCatalogEntry,
   type AppKey,
@@ -79,7 +79,7 @@ function setCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
 }
 
-const FAVORITE_APP_OPTIONS: OptionSelectorItem[] = APP_ORDER.map(
+const WEB_FAVORITE_OPTIONS: OptionSelectorItem[] = APP_ORDER.map(
   (entry: AppCatalogEntry) => ({
     description: entry.description,
     id: entry.key,
@@ -89,8 +89,25 @@ const FAVORITE_APP_OPTIONS: OptionSelectorItem[] = APP_ORDER.map(
 
 export function PreferencesTab() {
   const { data: settingsData } = useSettings();
+  const { isDesktop } = useIsDesktopApp();
   const profile = settingsData?.user ?? null;
   const tierRaw = profile?.tier;
+  // Le CLI n'apparaît que dans l'application de bureau : sur le web, choisir
+  // ce favori mènerait à une impasse au prochain login.
+  const favoriteAppOptions = useMemo<OptionSelectorItem[]>(
+    () =>
+      isDesktop
+        ? [
+            ...WEB_FAVORITE_OPTIONS,
+            {
+              description: APP_CATALOG.cli.description,
+              id: "cli",
+              label: APP_CATALOG.cli.label,
+            },
+          ]
+        : WEB_FAVORITE_OPTIONS,
+    [isDesktop]
+  );
 
   const [defaultModelId, setDefaultModelId] =
     useState<string>(DEFAULT_CHAT_MODEL);
@@ -103,7 +120,6 @@ export function PreferencesTab() {
   const [customEnabled, setCustomEnabled] = useState(false);
   const [customTemp, setCustomTemp] = useState(0.7);
   const [customTopP, setCustomTopP] = useState(0.9);
-  const [isSavingCustom, setIsSavingCustom] = useState(false);
 
   // Préférences Outils IA
   const [defaultCreationMode, setDefaultCreationMode] =
@@ -117,21 +133,17 @@ export function PreferencesTab() {
   );
   const [defaultAudioVoice, setDefaultAudioVoice] = useState<string>("");
   const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
-  const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
 
   const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
   const { favorite: favoriteApp, setFavorite: setFavoriteApp } =
     useFavoriteApp();
-  const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
-  const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
   const [dictationLanguage, setDictationLanguage] = useState(
     AUTO_DICTATION_LANGUAGE
   );
   const [translationLanguage, setTranslationLanguage] = useState(
     DEFAULT_TRANSLATION_TARGET
   );
-  const [isSavingLanguages, setIsSavingLanguages] = useState(false);
   const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
     "truncate"
   );
@@ -142,6 +154,16 @@ export function PreferencesTab() {
     { dedupingInterval: 60_000 }
   );
   const prefModels: ChatModel[] = prefModelsData?.models || [];
+  // Niveaux réellement acceptés par le modèle par défaut : le catalogue est
+  // l'autorité, une liste universelle proposerait des efforts que le
+  // fournisseur refuse (mAI-2-Mini n'en expose aucun).
+  const selectedCapabilities = prefModelsData?.capabilities?.[defaultModelId];
+  const supportedReasoningLevels: ReasoningLevel[] =
+    selectedCapabilities?.reasoningLevels?.length > 0
+      ? (selectedCapabilities.reasoningLevels as ReasoningLevel[])
+      : selectedCapabilities
+        ? []
+        : [...REASONING_LEVELS];
 
   const { data: imageModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/images`,
@@ -215,10 +237,16 @@ export function PreferencesTab() {
     }
   }, [notifPrefsData]);
 
+  const prevCustomRef = useRef(customInstructions);
+  const prevTempRef = useRef(customTemp);
+  const prevTopPRef = useRef(customTopP);
+
   useEffect(() => {
     if (customPrefData) {
       if (customPrefData.customInstructions !== undefined) {
-        setCustomInstructions(customPrefData.customInstructions || "");
+        const ci = customPrefData.customInstructions || "";
+        setCustomInstructions(ci);
+        prevCustomRef.current = ci;
       }
       if (customPrefData.defaultChatVisibility === "public") {
         setDefaultChatVisibility("public");
@@ -242,9 +270,11 @@ export function PreferencesTab() {
       }
       if (customPrefData.temperature !== undefined) {
         setCustomTemp(customPrefData.temperature);
+        prevTempRef.current = customPrefData.temperature;
       }
       if (customPrefData.topP !== undefined) {
         setCustomTopP(customPrefData.topP);
+        prevTopPRef.current = customPrefData.topP;
       }
       setDefaultCreationMode(
         normalizeCreationMode(customPrefData.defaultCreationMode)
@@ -279,139 +309,259 @@ export function PreferencesTab() {
     }
   }, [customPrefData]);
 
-  const handleSavePreferences = useCallback(async () => {
-    setCookie("chat-model", defaultModelId);
-    try {
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultChatModel: defaultModelId,
-          defaultChatVisibility,
-          reasoningLevel: defaultReasoningLevel,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des préférences IA.");
-      return;
-    }
-    toast.success("Préférences IA enregistrées !");
-  }, [
-    defaultModelId,
-    defaultChatVisibility,
-    defaultReasoningLevel,
-    mutateCustomPref,
-  ]);
-
-  const handleSaveToolsPreferences = useCallback(async () => {
-    setIsSavingToolsPref(true);
-    try {
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultAudioModel,
-          defaultAudioSpeed,
-          defaultAudioVoice,
-          defaultCreationMode,
-          defaultImageModel,
-          defaultImageSize,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
-      toast.success("Préférences d'outils Images & Audio enregistrées !");
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des préférences outils.");
-    } finally {
-      setIsSavingToolsPref(false);
-    }
-  }, [
-    defaultImageModel,
-    defaultCreationMode,
-    defaultImageSize,
-    defaultAudioModel,
-    defaultAudioVoice,
-    defaultAudioSpeed,
-    mutateCustomPref,
-  ]);
-
-  const handleSaveLanguages = useCallback(async () => {
-    setIsSavingLanguages(true);
-    try {
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultDictationLanguage: dictationLanguage,
-          defaultTranslationLanguage: translationLanguage,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
-      toast.success("Langues enregistrées !");
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des langues.");
-    } finally {
-      setIsSavingLanguages(false);
-    }
-  }, [dictationLanguage, translationLanguage, mutateCustomPref]);
-
-  const handleSaveCustomInstructions = useCallback(async () => {
-    setIsSavingCustom(true);
-    try {
-      const payloadText = customInstructions.slice(0, customInstructionsMax);
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          customInstructions: payloadText,
-          enabled: customEnabled,
-          temperature: customTemp,
-          topP: customTopP,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(extractApiErrorMessage(data) || "Erreur");
-      if (payloadText.length === customInstructions.length) {
-        toast.success("Instructions personnalisées enregistrées !");
-      } else {
-        setCustomInstructions(payloadText);
-        toast.warning("Texte tronqué", {
-          description: `Conservé ${formatCharCount(payloadText.length)} caractères sur ${formatCharCount(customInstructions.length)}.`,
+  const savePreference = useCallback(
+    async (
+      payload: Record<string, any>,
+      rollback: () => void | Promise<void>,
+      endpoint = "/api/user/preferences"
+    ) => {
+      try {
+        const res = await fetch(endpoint, {
+          body: JSON.stringify(payload),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
         });
+        if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
+        if (endpoint === "/api/user/preferences") {
+          mutateCustomPref();
+        } else {
+          mutateNotifPrefs();
+        }
+        toast.success("Paramètres enregistrés", {
+          action: {
+            label: "Annuler",
+            onClick: () => {
+              void rollback();
+            },
+          },
+          duration: 5000,
+          position: "top-right",
+        });
+      } catch (e: any) {
+        toast.error(e.message || "Erreur de sauvegarde des préférences.");
       }
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur lors de la sauvegarde");
-    } finally {
-      setIsSavingCustom(false);
-    }
-  }, [
-    customInstructions,
-    customInstructionsMax,
-    customEnabled,
-    customTemp,
-    customTopP,
-    mutateCustomPref,
-  ]);
+    },
+    [mutateCustomPref, mutateNotifPrefs]
+  );
 
-  const handleSaveRegenerateMode = useCallback(async () => {
-    try {
-      const res = await fetch("/api/notifications/preferences", {
-        body: JSON.stringify({ regenerateMode }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
+  const handleModelChange = useCallback(
+    (newModelId: string) => {
+      const prev = defaultModelId;
+      setDefaultModelId(newModelId);
+      setCookie("chat-model", newModelId);
+      savePreference({ defaultChatModel: newModelId }, () => {
+        setDefaultModelId(prev);
+        setCookie("chat-model", prev);
+        savePreference({ defaultChatModel: prev }, () => {});
       });
-      if (!res.ok) throw new Error("Erreur sauvegarde mode régénération");
-      toast.success("Mode régénération enregistré !");
-      mutateNotifPrefs();
-    } catch {
-      toast.error("Erreur sauvegarde mode régénération");
+    },
+    [defaultModelId, savePreference]
+  );
+
+  const handleReasoningLevelChange = useCallback(
+    (val: string) => {
+      const prev = defaultReasoningLevel;
+      const newLevel = val as ReasoningLevel;
+      setDefaultReasoningLevel(newLevel);
+      savePreference({ reasoningLevel: newLevel }, () => {
+        setDefaultReasoningLevel(prev);
+        savePreference({ reasoningLevel: prev }, () => {});
+      });
+    },
+    [defaultReasoningLevel, savePreference]
+  );
+
+  const handleChatVisibilityChange = useCallback(
+    (id: string) => {
+      const prev = defaultChatVisibility;
+      const newVis = id === "public" ? "public" : "private";
+      setDefaultChatVisibility(newVis);
+      savePreference({ defaultChatVisibility: newVis }, () => {
+        setDefaultChatVisibility(prev);
+        savePreference({ defaultChatVisibility: prev }, () => {});
+      });
+    },
+    [defaultChatVisibility, savePreference]
+  );
+
+  const handleFavoriteAppChange = useCallback(
+    (id: string) => {
+      const prev = favoriteApp;
+      const newApp = id as AppKey;
+      setFavoriteApp(newApp);
+      savePreference({ defaultApp: newApp }, () => {
+        setFavoriteApp(prev);
+        savePreference({ defaultApp: prev }, () => {});
+      });
+    },
+    [favoriteApp, setFavoriteApp, savePreference]
+  );
+
+  const handleCustomEnabledChange = useCallback(
+    (checked: boolean) => {
+      const prev = customEnabled;
+      setCustomEnabled(checked);
+      savePreference({ enabled: checked }, () => {
+        setCustomEnabled(prev);
+        savePreference({ enabled: prev }, () => {});
+      });
+    },
+    [customEnabled, savePreference]
+  );
+
+  const handleCustomInstructionsBlur = useCallback(() => {
+    const trimmed = customInstructions.slice(0, customInstructionsMax);
+    if (trimmed !== prevCustomRef.current) {
+      const prev = prevCustomRef.current;
+      prevCustomRef.current = trimmed;
+      savePreference({ customInstructions: trimmed }, () => {
+        setCustomInstructions(prev);
+        prevCustomRef.current = prev;
+        savePreference({ customInstructions: prev }, () => {});
+      });
     }
-  }, [regenerateMode, mutateNotifPrefs]);
+  }, [customInstructions, customInstructionsMax, savePreference]);
+
+  const handleTempCommit = useCallback(() => {
+    if (customTemp !== prevTempRef.current) {
+      const prev = prevTempRef.current;
+      prevTempRef.current = customTemp;
+      savePreference({ temperature: customTemp }, () => {
+        setCustomTemp(prev);
+        prevTempRef.current = prev;
+        savePreference({ temperature: prev }, () => {});
+      });
+    }
+  }, [customTemp, savePreference]);
+
+  const handleTopPCommit = useCallback(() => {
+    if (customTopP !== prevTopPRef.current) {
+      const prev = prevTopPRef.current;
+      prevTopPRef.current = customTopP;
+      savePreference({ topP: customTopP }, () => {
+        setCustomTopP(prev);
+        prevTopPRef.current = prev;
+        savePreference({ topP: prev }, () => {});
+      });
+    }
+  }, [customTopP, savePreference]);
+
+  const handleCreationModeChange = useCallback(
+    (mode: CreationMode) => {
+      const prev = defaultCreationMode;
+      setDefaultCreationMode(mode);
+      savePreference({ defaultCreationMode: mode }, () => {
+        setDefaultCreationMode(prev);
+        savePreference({ defaultCreationMode: prev }, () => {});
+      });
+    },
+    [defaultCreationMode, savePreference]
+  );
+
+  const handleImageModelChange = useCallback(
+    (model: string) => {
+      const prev = defaultImageModel;
+      setDefaultImageModel(model);
+      savePreference({ defaultImageModel: model }, () => {
+        setDefaultImageModel(prev);
+        savePreference({ defaultImageModel: prev }, () => {});
+      });
+    },
+    [defaultImageModel, savePreference]
+  );
+
+  const handleImageSizeChange = useCallback(
+    (size: string) => {
+      const prev = defaultImageSize;
+      setDefaultImageSize(size);
+      savePreference({ defaultImageSize: size }, () => {
+        setDefaultImageSize(prev);
+        savePreference({ defaultImageSize: prev }, () => {});
+      });
+    },
+    [defaultImageSize, savePreference]
+  );
+
+  const handleAudioModelChange = useCallback(
+    (model: string) => {
+      const prev = defaultAudioModel;
+      setDefaultAudioModel(model);
+      savePreference({ defaultAudioModel: model }, () => {
+        setDefaultAudioModel(prev);
+        savePreference({ defaultAudioModel: prev }, () => {});
+      });
+    },
+    [defaultAudioModel, savePreference]
+  );
+
+  const handleAudioVoiceChange = useCallback(
+    (voice: string) => {
+      const prev = defaultAudioVoice;
+      setDefaultAudioVoice(voice);
+      savePreference({ defaultAudioVoice: voice }, () => {
+        setDefaultAudioVoice(prev);
+        savePreference({ defaultAudioVoice: prev }, () => {});
+      });
+    },
+    [defaultAudioVoice, savePreference]
+  );
+
+  const prevAudioSpeedRef = useRef(defaultAudioSpeed);
+  const handleAudioSpeedCommit = useCallback(() => {
+    if (defaultAudioSpeed !== prevAudioSpeedRef.current) {
+      const prev = prevAudioSpeedRef.current;
+      prevAudioSpeedRef.current = defaultAudioSpeed;
+      savePreference({ defaultAudioSpeed }, () => {
+        setDefaultAudioSpeed(prev);
+        prevAudioSpeedRef.current = prev;
+        savePreference({ defaultAudioSpeed: prev }, () => {});
+      });
+    }
+  }, [defaultAudioSpeed, savePreference]);
+
+  const handleDictationLanguageChange = useCallback(
+    (val: string) => {
+      const prev = dictationLanguage;
+      setDictationLanguage(val);
+      savePreference({ defaultDictationLanguage: val }, () => {
+        setDictationLanguage(prev);
+        savePreference({ defaultDictationLanguage: prev }, () => {});
+      });
+    },
+    [dictationLanguage, savePreference]
+  );
+
+  const handleTranslationLanguageChange = useCallback(
+    (val: string) => {
+      const prev = translationLanguage;
+      setTranslationLanguage(val);
+      savePreference({ defaultTranslationLanguage: val }, () => {
+        setTranslationLanguage(prev);
+        savePreference({ defaultTranslationLanguage: prev }, () => {});
+      });
+    },
+    [translationLanguage, savePreference]
+  );
+
+  const handleRegenerateModeChange = useCallback(
+    (mode: "truncate" | "fork") => {
+      const prev = regenerateMode;
+      setRegenerateMode(mode);
+      savePreference(
+        { regenerateMode: mode },
+        () => {
+          setRegenerateMode(prev);
+          savePreference(
+            { regenerateMode: prev },
+            () => {},
+            "/api/notifications/preferences"
+          );
+        },
+        "/api/notifications/preferences"
+      );
+    },
+    [regenerateMode, savePreference]
+  );
 
   return (
     <div className="py-6 flex flex-col gap-6 max-w-4xl">
@@ -441,7 +591,7 @@ export function PreferencesTab() {
           <ModelSelectorCompact
             capabilities={prefModelsData?.capabilities}
             models={prefModels.length > 0 ? prefModels : undefined}
-            onModelChange={setDefaultModelId}
+            onModelChange={handleModelChange}
             selectedModelId={defaultModelId}
             variant="block"
           />
@@ -454,18 +604,31 @@ export function PreferencesTab() {
           <Label className="text-xs font-medium text-muted-foreground">
             Effort de réflexion par défaut
           </Label>
-          <OptionSelector
-            items={REASONING_LEVELS.map((level) => ({
-              id: level,
-              label: REASONING_LEVEL_LABELS[level],
-            }))}
-            onChange={(val) => setDefaultReasoningLevel(val as ReasoningLevel)}
-            placeholder="Effort de réflexion"
-            value={defaultReasoningLevel}
-          />
+          {supportedReasoningLevels.length > 0 ? (
+            <OptionSelector
+              items={supportedReasoningLevels.map((level) => ({
+                id: level,
+                label: REASONING_LEVEL_LABELS[level],
+              }))}
+              onChange={handleReasoningLevelChange}
+              placeholder="Effort de réflexion"
+              value={
+                supportedReasoningLevels.includes(defaultReasoningLevel)
+                  ? defaultReasoningLevel
+                  : supportedReasoningLevels[0]
+              }
+            />
+          ) : (
+            <p className="surface-muted px-3 py-2 text-[11px] text-muted-foreground">
+              {selectedCapabilities?.reasoning
+                ? "Ce modèle raisonne sans exposer de niveau : le fournisseur choisit lui-même l'effort."
+                : "Le modèle par défaut ne prend pas en charge l'effort de réflexion."}
+            </p>
+          )}
           <span className="text-[11px] text-muted-foreground">
-            Niveau appliqué par défaut à toutes les surfaces IA (Chat, Agent,
-            Wakies, Vibe) pour les modèles compatibles.
+            Niveau appliqué par défaut à toutes les surfaces IA compatibles
+            (Chat, Agent, Wakies, Vibe). Un modèle qui n'accepte pas ce niveau
+            reçoit le plus proche niveau inférieur, ou aucun s'il n'en expose.
           </span>
         </div>
 
@@ -478,9 +641,7 @@ export function PreferencesTab() {
               { id: "private", label: "Privée (recommandé)" },
               { id: "public", label: "Publique" },
             ]}
-            onChange={(id) =>
-              setDefaultChatVisibility(id === "public" ? "public" : "private")
-            }
+            onChange={handleChatVisibilityChange}
             placeholder="Visibilité"
             value={defaultChatVisibility}
           />
@@ -510,42 +671,12 @@ export function PreferencesTab() {
             Application préférée
           </Label>
           <OptionSelector
-            items={FAVORITE_APP_OPTIONS}
-            onChange={(id) => setFavoriteApp(id as AppKey)}
+            items={favoriteAppOptions}
+            onChange={handleFavoriteAppChange}
             placeholder="Application"
             value={favoriteApp}
           />
         </div>
-      </div>
-
-      <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
-        <div className="flex items-center gap-2">
-          <BotGlyph className="size-4 text-primary" />
-          <span className="text-xs font-semibold text-foreground">Bots IA</span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
-            Nouveau
-          </span>
-        </div>
-        <p className="text-[11px] text-muted-foreground leading-relaxed">
-          Les <strong>Bots</strong> remplacent les Modes IA. Créez des bots
-          personnalisés avec des compétences et outils dédiés.
-        </p>
-        <Link
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
-          href="/agents"
-        >
-          <BotGlyph className="size-3.5" /> Gérer mes bots →
-        </Link>
-      </div>
-
-      <div className="pt-2 flex justify-end">
-        <button
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
-          onClick={handleSavePreferences}
-          type="button"
-        >
-          Enregistrer les préférences
-        </button>
       </div>
 
       {/* Instructions personnalisées */}
@@ -570,7 +701,7 @@ export function PreferencesTab() {
             <input
               checked={customEnabled}
               className="size-4 rounded border-border accent-primary"
-              onChange={(e) => setCustomEnabled(e.target.checked)}
+              onChange={(e) => handleCustomEnabledChange(e.target.checked)}
               type="checkbox"
             />
             <span className="text-xs font-medium">Activé</span>
@@ -590,6 +721,7 @@ export function PreferencesTab() {
             className="field-input resize-y"
             id="settings-custom-instructions"
             maxLength={getCustomInstructionsEffectiveMax(tierRaw)}
+            onBlur={handleCustomInstructionsBlur}
             onChange={(e) => setCustomInstructions(e.target.value)}
             placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript..."
             rows={5}
@@ -643,6 +775,8 @@ export function PreferencesTab() {
               max={2}
               min={0}
               onChange={(e) => setCustomTemp(Number.parseFloat(e.target.value))}
+              onKeyUp={handleTempCommit}
+              onPointerUp={handleTempCommit}
               step={0.1}
               type="range"
               value={customTemp}
@@ -661,24 +795,13 @@ export function PreferencesTab() {
               max={1}
               min={0}
               onChange={(e) => setCustomTopP(Number.parseFloat(e.target.value))}
+              onKeyUp={handleTopPCommit}
+              onPointerUp={handleTopPCommit}
               step={0.05}
               type="range"
               value={customTopP}
             />
           </div>
-        </div>
-        <div className="flex justify-end">
-          <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-            disabled={isSavingCustom}
-            onClick={handleSaveCustomInstructions}
-            type="button"
-          >
-            {isSavingCustom ? (
-              <Loader2Icon className="size-4 animate-spin" />
-            ) : null}
-            {isSavingCustom ? "Enregistrement..." : "Enregistrer instructions"}
-          </button>
         </div>
       </div>
 
@@ -710,14 +833,14 @@ export function PreferencesTab() {
             <ModelSelectorCompact
               models={audioModels.length > 0 ? audioModels : undefined}
               onModelChange={(val) => {
-                setDefaultAudioModel(val);
+                handleAudioModelChange(val);
                 const m = audioModels.find((am) => am.id === val);
                 if (
                   m?.voices &&
                   Array.isArray(m.voices) &&
                   m.voices.length > 0
                 ) {
-                  setDefaultAudioVoice(m.voices[0]);
+                  handleAudioVoiceChange(m.voices[0]);
                 }
               }}
               placeholder="Modèle audio par défaut"
@@ -737,7 +860,7 @@ export function PreferencesTab() {
               </div>
             ) : (
               <VoiceOptionSelector
-                onChange={setDefaultAudioVoice}
+                onChange={handleAudioVoiceChange}
                 value={defaultAudioVoice}
                 voices={audioModelVoices}
               />
@@ -766,26 +889,12 @@ export function PreferencesTab() {
             onChange={(e) =>
               setDefaultAudioSpeed(Number.parseFloat(e.target.value))
             }
+            onKeyUp={handleAudioSpeedCommit}
+            onPointerUp={handleAudioSpeedCommit}
             step={0.05}
             type="range"
             value={defaultAudioSpeed}
           />
-        </div>
-
-        <div className="pt-2 flex justify-end">
-          <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-            disabled={isSavingToolsPref}
-            onClick={handleSaveToolsPreferences}
-            type="button"
-          >
-            {isSavingToolsPref ? (
-              <Loader2Icon className="size-4 animate-spin" />
-            ) : null}
-            {isSavingToolsPref
-              ? "Enregistrement..."
-              : "Enregistrer les outils dans votre profil"}
-          </button>
         </div>
       </div>
 
@@ -817,7 +926,7 @@ export function PreferencesTab() {
                 id: entry.value,
                 label: entry.label,
               }))}
-              onChange={setDictationLanguage}
+              onChange={handleDictationLanguageChange}
               value={dictationLanguage}
             />
           </div>
@@ -831,26 +940,10 @@ export function PreferencesTab() {
                 id: entry.code,
                 label: entry.label,
               }))}
-              onChange={setTranslationLanguage}
+              onChange={handleTranslationLanguageChange}
               value={translationLanguage}
             />
           </div>
-        </div>
-
-        <div className="pt-2 flex justify-end">
-          <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-            disabled={isSavingLanguages}
-            onClick={handleSaveLanguages}
-            type="button"
-          >
-            {isSavingLanguages ? (
-              <Loader2Icon className="size-4 animate-spin" />
-            ) : null}
-            {isSavingLanguages
-              ? "Enregistrement..."
-              : "Enregistrer les langues"}
-          </button>
         </div>
       </div>
 
@@ -880,7 +973,7 @@ export function PreferencesTab() {
                 ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
                 : "bg-muted/20 border-border/50 hover:bg-muted/40"
             }`}
-            onClick={() => setRegenerateMode("truncate")}
+            onClick={() => handleRegenerateModeChange("truncate")}
             type="button"
           >
             <span className="text-sm font-semibold text-foreground">
@@ -897,7 +990,7 @@ export function PreferencesTab() {
                 ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
                 : "bg-muted/20 border-border/50 hover:bg-muted/40"
             }`}
-            onClick={() => setRegenerateMode("fork")}
+            onClick={() => handleRegenerateModeChange("fork")}
             type="button"
           >
             <span className="text-sm font-semibold text-foreground">
@@ -907,15 +1000,6 @@ export function PreferencesTab() {
               Crée une nouvelle conversation branchée, l'historique original
               reste intact.
             </span>
-          </button>
-        </div>
-        <div className="flex justify-end">
-          <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 cursor-pointer"
-            onClick={handleSaveRegenerateMode}
-            type="button"
-          >
-            Enregistrer le mode
           </button>
         </div>
       </div>

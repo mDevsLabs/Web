@@ -13,6 +13,7 @@
  * ============================================================================
  */
 import { getDb } from "./config.ts";
+import { executePortableTool, PORTABLE_TOOL_IDS } from "./portable-tools.ts";
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
 
 export interface MAICatalogTool {
@@ -429,6 +430,48 @@ export const MAI_TOOLS_CATALOG: MAICatalogTool[] = [
     sensitive: false,
     slash_command: "/hashtags",
   },
+  // Outils PORTABLES, communs à Chat, Agent et Wakies. Leur exécution vient
+  // de `portable-tools.ts` : une seule implémentation par outil, pour que les
+  // quatre surfaces répondent pareil au même appel.
+  {
+    category: "analysis",
+    description:
+      "Calcule une expression arithmétique exacte (+, -, *, /, parenthèses, pourcentage) sans dépendre du modèle.",
+    enabled: true,
+    file: "portable-tools.ts",
+    icon_name: "Calculator",
+    id: "calculator",
+    mention_tag: "@calc",
+    name: "Calculatrice",
+    sensitive: false,
+    slash_command: "/calc",
+  },
+  {
+    category: "analysis",
+    description:
+      "Donne la date et l'heure actuelles (ISO, timestamp, fuseau) pour tout calcul temporel.",
+    enabled: true,
+    file: "portable-tools.ts",
+    icon_name: "Clock",
+    id: "dateTime",
+    mention_tag: "@heure",
+    name: "Date et heure",
+    sensitive: false,
+    slash_command: "/heure",
+  },
+  {
+    category: "search",
+    description:
+      "Lit le contenu texte d'une URL publique et le renvoie pour analyse ou citation.",
+    enabled: true,
+    file: "portable-tools.ts",
+    icon_name: "Globe",
+    id: "readUrl",
+    mention_tag: "@lire",
+    name: "Lire une URL",
+    sensitive: false,
+    slash_command: "/lire",
+  },
 ];
 
 /** Version du catalogue (index.json). */
@@ -445,6 +488,21 @@ export const TOOL_EXECUTORS: Record<
   string,
   (userId: number | string, args: any) => Promise<any>
 > = {
+  ...Object.fromEntries(
+    PORTABLE_TOOL_IDS.map((id) => [
+      id,
+      async (_userId: string | number, args: any) => {
+        try {
+          return { result: await executePortableTool(id, args), success: true };
+        } catch (error: any) {
+          return {
+            error: error?.message || `Échec de ${id}.`,
+            success: false,
+          };
+        }
+      },
+    ])
+  ),
   analyze_audience: fleetExecutor("analyze_audience"),
   analyze_book_stats: fleetExecutor("analyze_book_stats"),
   analyze_content_performance: fleetExecutor("analyze_content_performance"),
