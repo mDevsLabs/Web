@@ -5,7 +5,7 @@ import {
   GlobeIcon,
   LayoutGridIcon,
   ListIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 

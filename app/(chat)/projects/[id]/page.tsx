@@ -12,7 +12,7 @@ import {
   UploadIcon,
   UsersIcon,
   XIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";

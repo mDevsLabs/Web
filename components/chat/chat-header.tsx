@@ -14,7 +14,7 @@ import {
   PinOffIcon,
   SearchIcon,
   TrashIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
@@ -153,7 +154,7 @@ function PureChatHeader({
 
   const handleRename = useCallback(async () => {
     const currentTitle = (chatData as any)?.title ?? "";
-    const next = window.prompt(
+    const next = await promptInApp(
       "Nouveau titre de la conversation :",
       currentTitle
     );
@@ -219,7 +220,9 @@ function PureChatHeader({
   }, [chatId, isPinned, mutate]);
 
   const handleDelete = useCallback(async () => {
-    if (!confirm("Supprimer définitivement cette conversation ?")) {
+    if (
+      !(await confirmInApp("Supprimer définitivement cette conversation ?"))
+    ) {
       return;
     }
     try {
@@ -238,11 +241,11 @@ function PureChatHeader({
 
   return (
     <header
-      className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 bg-sidebar/90 supports-[backdrop-filter]:bg-sidebar/80 backdrop-blur-sm sm:backdrop-blur-md px-2 sm:px-4 border-b border-border/40 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
+      className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 chat-header-glass px-2 sm:px-4 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
     >
       {isCollapsedDesktop && (
         <Button
-          aria-label="Ouvrir sidebar"
+          aria-label="Ouvrir la barre latérale"
           onClick={toggleSidebar}
           size="icon-sm"
           variant="ghost"
@@ -251,6 +254,7 @@ function PureChatHeader({
         </Button>
       )}
       <Button
+        aria-label="Ouvrir la barre latérale"
         className="md:hidden min-h-[44px] min-w-[44px] h-11 w-11 -ml-1"
         onClick={toggleSidebar}
         size="icon-sm"

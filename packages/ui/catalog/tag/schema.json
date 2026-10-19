@@ -1,0 +1,70 @@
+{
+  "model": "Tag",
+  "config": {
+    "name": "Tag",
+    "label": "Étiquettes",
+    "description": "Gérez vos étiquettes depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "slug",
+        "label": "Identifiant",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "usageCount",
+        "label": "Utilisations",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "group",
+        "label": "Groupe",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyTag",
+        "label": "Notifications : étiquettes",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveTag",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section étiquettes."
+      },
+      {
+        "key": "approveTag",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "tag-demo-1",
+    "name": "Design System",
+    "slug": "Identifiant démo",
+    "usageCount": 128,
+    "group": "Groupe démo",
+    "status": "active"
+  }
+}

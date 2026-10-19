@@ -18,6 +18,8 @@ import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 const STORAGE_KEY = "mai.agent-mode";
+export const AGENT_MODE_COOKIE_NAME = "agent-mode";
+const AGENT_MODE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 export function extractChatIdFromPath(pathname: string | null): string | null {
   const match = pathname?.match(/\/chat\/([^/]+)/);
@@ -44,36 +46,41 @@ const AgentModeContext = createContext<AgentModeContextValue | null>(null);
 // (Chat.mode = 'agent') rouvre toujours l'expérience Agent, et la préférence
 // enregistrée porte le mode d'accueil d'une visite à l'autre.
 //
-// Trois sources, par ordre de priorité décroissante :
+// Quatre sources, par ordre de priorité décroissante :
 // 1. la conversation ouverte (Chat.mode), qui ne doit jamais être réécrite ;
-// 2. la préférence en base, qui survit au navigateur et au rechargement ;
-// 3. le localStorage, qui permet l'affichage instantané avant l'aller-retour.
-//
-// Le localStorage est un cache d'affichage, PAS la source de vérité : sans lui,
-// changer de mode depuis un autre appareil ne prendrait effet qu'au rechargement
-// suivant. Écrire dans les deux permet un basculement immédiat tout en gardant
-// la base comme référence.
-export function AgentModeProvider({ children }: { children: ReactNode }) {
+// 2. le cookie serveur (agent-mode), qui garantit la cohérence SSR / hydratation ;
+// 3. la préférence en base, qui survit au navigateur et au rechargement ;
+// 4. le localStorage, qui permet l'affichage instantané avant l'aller-retour.
+export function AgentModeProvider({
+  children,
+  initialMode,
+}: {
+  children: ReactNode;
+  initialMode?: AgentMode;
+}) {
   const pathname = usePathname();
   const chatId = extractChatIdFromPath(pathname);
 
-  const [mode, setModeState] = useState<AgentMode>("chat");
+  const [mode, setModeState] = useState<AgentMode>(initialMode ?? "chat");
   const [isForced, setIsForced] = useState(false);
   const [canUseAgent, setCanUseAgent] = useState(false);
-  // Le preference a-t-elle déjà été lue ? Avant cela, le localStorage peut
+  // La préférence a-t-elle déjà été lue ? Avant cela, le localStorage peut
   // pré-remplir l'écran, mais il ne doit pas écraser la base.
   const preferenceLoadedRef = useRef(false);
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (isAgentMode(stored)) {
+      if (isAgentMode(stored) && stored !== mode) {
         setModeState(stored);
+        if (typeof document !== "undefined") {
+          document.cookie = `${AGENT_MODE_COOKIE_NAME}=${encodeURIComponent(stored)}; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+        }
       }
     } catch {
       // Stockage indisponible : on reste sur Chat.
     }
-  }, []);
+  }, [mode]);
 
   const { data: preference } = useSWR<AgentModePayload>(
     apiEndpoints.agentMode(),
@@ -95,19 +102,31 @@ export function AgentModeProvider({ children }: { children: ReactNode }) {
     // où appliquer « agent » afficherait un écran que le gate refusera.
     if (isAgentMode(preference.defaultMode)) {
       setModeState(preference.defaultMode);
+      if (typeof document !== "undefined") {
+        document.cookie = `${AGENT_MODE_COOKIE_NAME}=${encodeURIComponent(preference.defaultMode)}; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+      }
       return;
     }
     if (preference.canUseAgent) {
       setModeState("chat");
+      if (typeof document !== "undefined") {
+        document.cookie = `${AGENT_MODE_COOKIE_NAME}=chat; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+      }
       return;
     }
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!isAgentMode(stored) || stored === "agent") {
         setModeState("chat");
+        if (typeof document !== "undefined") {
+          document.cookie = `${AGENT_MODE_COOKIE_NAME}=chat; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+        }
       }
     } catch {
       setModeState("chat");
+      if (typeof document !== "undefined") {
+        document.cookie = `${AGENT_MODE_COOKIE_NAME}=chat; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+      }
     }
   }, [preference]);
 
@@ -135,6 +154,9 @@ export function AgentModeProvider({ children }: { children: ReactNode }) {
   const setMode = useCallback((next: AgentMode) => {
     setModeState(next);
     setIsForced(false);
+    if (typeof document !== "undefined") {
+      document.cookie = `${AGENT_MODE_COOKIE_NAME}=${encodeURIComponent(next)}; path=/; max-age=${AGENT_MODE_COOKIE_MAX_AGE}`;
+    }
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {

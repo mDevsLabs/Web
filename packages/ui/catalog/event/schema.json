@@ -1,0 +1,72 @@
+{
+  "model": "Event",
+  "config": {
+    "name": "Event",
+    "label": "Événements",
+    "description": "Gérez vos événements depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "location",
+        "label": "Lieu",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "startsOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "attendeeCount",
+        "label": "Participants",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "scheduled",
+          "cancelled",
+          "completed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyEvent",
+        "label": "Notifications : événements",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveEvent",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section événements."
+      },
+      {
+        "key": "approveEvent",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "event-demo-1",
+    "title": "Rencontre du studio",
+    "location": "Lieu démo",
+    "startsOn": "2026-10-04",
+    "attendeeCount": 128,
+    "status": "draft"
+  }
+}

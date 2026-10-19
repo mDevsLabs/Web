@@ -7,7 +7,7 @@ import {
   Loader2Icon,
   SearchIcon,
   TrashIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
@@ -15,6 +15,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { fetcher } from "@/lib/utils";
 
 type ArchivedChat = {
@@ -64,7 +65,11 @@ export default function ArchivedPage() {
 
   const handleDelete = useCallback(
     async (id: string) => {
-      if (!confirm("Supprimer définitivement cette conversation archivée ?")) {
+      if (
+        !(await confirmInApp(
+          "Supprimer définitivement cette conversation archivée ?"
+        ))
+      ) {
         return;
       }
       setLoadingId(id);
@@ -140,6 +145,7 @@ export default function ArchivedPage() {
             <div className="relative flex-1 max-w-md">
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
+                aria-label="Rechercher dans les conversations archivées"
                 className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher dans les archivés..."

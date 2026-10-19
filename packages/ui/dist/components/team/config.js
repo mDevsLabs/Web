@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Team", "label": "\xC9quipes", "description": "G\xE9rez vos \xE9quipes depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "lead", "label": "Responsable", "kind": "text", "required": true }, { "key": "memberCount", "label": "Membres", "kind": "number", "required": true }, { "key": "department", "label": "Service", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "forming", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyTeam", "label": "Notifications : \xE9quipes", "description": "Recevoir un signal lors des changements." }, { "key": "archiveTeam", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section \xE9quipes." }, { "key": "approveTeam", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

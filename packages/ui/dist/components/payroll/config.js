@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Payroll", "label": "Paie", "description": "G\xE9rez vos paie depuis une interface claire.", "fields": [{ "key": "period", "label": "P\xE9riode", "kind": "text", "required": true }, { "key": "employee", "label": "Collaborateur", "kind": "text", "required": true }, { "key": "grossAmount", "label": "Brut", "kind": "number", "required": true }, { "key": "netAmount", "label": "Net", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "approved", "paid"] }], "titleKey": "period", "settings": [{ "key": "notifyPayroll", "label": "Notifications : paie", "description": "Recevoir un signal lors des changements." }, { "key": "archivePayroll", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section paie." }, { "key": "approvePayroll", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

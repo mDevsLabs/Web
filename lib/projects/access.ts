@@ -81,13 +81,17 @@ async function resolveUserIdentityVariants(params: {
   return Array.from(variants).filter(Boolean);
 }
 
-// Les variantes d'identité sont insérées comme littéraux échappés ('](' n'est
-// pas possible : apostrophes doublées) dans un ARRAY text[] comparé avec
-// ANY(). Elles proviennent exclusivement de la table users et de la session
-// serveur, jamais du client.
+// Les variantes d'identité sont transmises sous forme de paramètres liés
+// (placeholders Drizzle $1, $2...) dans un ARRAY text[] comparé avec ANY().
+// Elles proviennent exclusivement de la table users et de la session serveur.
 function buildTextArrayLiteral(variants: string[]): SQL {
-  const list = variants.map((v) => `'${v.replace(/'/g, "''")}'`).join(", ");
-  return sql.raw(`ARRAY[${list}]::text[]`);
+  if (variants.length === 0) {
+    return sql`ARRAY[]::text[]`;
+  }
+  return sql`ARRAY[${sql.join(
+    variants.map((v) => sql`${v}`),
+    sql`, `
+  )}]::text[]`;
 }
 
 function buildOwnershipCondition(variants: string[]): SQL {

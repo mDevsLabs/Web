@@ -1,0 +1,71 @@
+{
+  "model": "Assignment",
+  "config": {
+    "name": "Assignment",
+    "label": "Travaux à rendre",
+    "description": "Gérez vos travaux à rendre depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "course",
+        "label": "Formation",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "dueDate",
+        "label": "Échéance",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "maxScore",
+        "label": "Note maximale",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "open",
+          "closed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyAssignment",
+        "label": "Notifications : travaux à rendre",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveAssignment",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section travaux à rendre."
+      },
+      {
+        "key": "approveAssignment",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "assignment-demo-1",
+    "title": "Créer un formulaire accessible",
+    "course": "Formation démo",
+    "dueDate": "2026-10-04",
+    "maxScore": 128,
+    "status": "draft"
+  }
+}

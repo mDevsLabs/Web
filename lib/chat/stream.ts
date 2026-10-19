@@ -8,6 +8,12 @@ import {
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
+import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
+import {
+  normalizeReasoningLevel,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import type { MemoryContext } from "@/lib/chat/memory";
@@ -47,6 +53,8 @@ export type ChatStreamParams = {
   effectiveTemperature?: number;
   effectiveTopP?: number;
   effectiveMaxTokens?: number;
+  /** Collecteur branché sur le flux du provider (voir `lib/ai/providers.ts`). */
+  reasoningSink?: ReasoningDetailsSink;
 };
 
 export function createChatStream(params: ChatStreamParams) {
@@ -58,6 +66,7 @@ export function createChatStream(params: ChatStreamParams) {
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
+    reasoningSink,
   } = params;
 
   return createUIMessageStream({
@@ -84,6 +93,14 @@ export function createChatStream(params: ChatStreamParams) {
       const { tools, activeToolsList, effectiveAddendum } =
         await prepareTools(dataStream);
       const supportsTools = activeToolsList.length > 0;
+      // La part est créée avant le premier appel modèle : le collecteur peut
+      // écrire dès le premier chunk de raisonnement reçu.
+      const reasoningWriter = reasoningSink
+        ? createReasoningChunkWriter(dataStream, `reasoning-${generateUUID()}`)
+        : null;
+      if (reasoningSink) {
+        reasoningSink.onDelta = (text) => reasoningWriter?.push(text);
+      }
       // Les hints de plugins complètent (et peuvent surcharger) ceux des outils
       // natifs : source unique côté registre de plugins.
       const toolHints: Record<string, string> = {
@@ -136,12 +153,26 @@ export function createChatStream(params: ChatStreamParams) {
         ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
           ? { maxOutputTokens: effectiveMaxTokens }
           : {}),
+        ...(ctx.reasoningLevel
+          ? {
+              providerOptions: resolveReasoningProviderOptions(
+                normalizeReasoningLevel(ctx.reasoningLevel)
+              ),
+            }
+          : {}),
+        onAbort() {
+          reasoningWriter?.finish();
+        },
         onChunk({ chunk }) {
           if (isModelStreamActivity(chunk)) {
             markModelActive();
           }
         },
+        onError() {
+          reasoningWriter?.finish();
+        },
         onFinish: async ({ text, usage }) => {
+          reasoningWriter?.finish();
           await handleTokenAccounting({
             chatId: ctx.id,
             // Attribution figée ici (migration 0035) : la conversation peut être

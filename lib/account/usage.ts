@@ -1,7 +1,7 @@
 import "server-only";
 
+import { upstreamJson } from "@/lib/api/upstream";
 import type { MaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import {
   getTierChatWeeklyLimit,
   getTierImageDailyLimit,
@@ -60,29 +60,29 @@ export async function fetchUsageBundle({
 }): Promise<UsageBundle> {
   const warnings: string[] = [];
 
-  const fetchJson = async (path: string, label: string) => {
-    try {
-      const res = await fetch(`${MAI_API_URL}${path}`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${sessionToken}` },
-        signal: AbortSignal.timeout(8000),
-      });
-      if (!res.ok) {
-        warnings.push(label);
-        return null;
-      }
-      return await res.json();
-    } catch {
+  // Un endpoint en échec renseigne `warnings` sans faire échouer l'ensemble :
+  // l'interface affiche alors des quotas partiels plutôt qu'un écran vide.
+  const fetchJson = async <T>(
+    path: string,
+    label: string
+  ): Promise<T | null> => {
+    const result = await upstreamJson<T>({
+      path,
+      timeoutMs: 8000,
+      token: sessionToken,
+    });
+    if (!result.ok) {
       warnings.push(label);
       return null;
     }
+    return result.data;
   };
 
   const [usageData, imagesData, cloudData, speechData] = await Promise.all([
-    fetchJson("/usage", "forfait"),
-    fetchJson("/v1/images/usage", "images"),
-    fetchJson("/cloud/storage", "stockage"),
-    fetchJson("/v1/speech/usage", "synthèse vocale"),
+    fetchJson<Record<string, any>>("/usage", "forfait"),
+    fetchJson<Record<string, any>>("/v1/images/usage", "images"),
+    fetchJson<Record<string, any>>("/cloud/storage", "stockage"),
+    fetchJson<Record<string, any>>("/v1/speech/usage", "synthèse vocale"),
   ]);
 
   const userTier = usageData?.tier || fallbackUser?.tier || "Free";

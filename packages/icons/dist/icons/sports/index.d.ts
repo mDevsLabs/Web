@@ -1,0 +1,16 @@
+export { BallAmericanFootballIcon } from './ball-american-football.js';
+export { BallAmericanFootballOffIcon } from './ball-american-football-off.js';
+export { BallBaseballIcon } from './ball-baseball.js';
+export { BallBasketballIcon } from './ball-basketball.js';
+export { BallBowlingIcon } from './ball-bowling.js';
+export { BallFootballIcon } from './ball-football.js';
+export { BallFootballOffIcon } from './ball-football-off.js';
+export { BallTennisIcon } from './ball-tennis.js';
+export { BallVolleyballIcon } from './ball-volleyball.js';
+export { DumbbellIcon } from './dumbbell.js';
+export { GoalIcon } from './goal.js';
+export { MedalIcon } from './medal.js';
+export { SportShoeIcon } from './sport-shoe.js';
+export { SwordsIcon } from './swords.js';
+export { TargetIcon } from './target.js';
+export { TrophyIcon } from './trophy.js';

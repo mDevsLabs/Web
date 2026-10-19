@@ -1,0 +1,123 @@
+:root[data-ui-style="mac-codex"] {
+  --theme-switch-x: calc(100vw - 88px);
+  --theme-switch-y: 60px;
+  --theme-switch-duration: 420ms;
+  --app-frame-padding: 14px;
+  --glass-blur: 26px;
+  --glass-saturate: 180%;
+  --radius-window: 28px;
+  --radius-panel: 22px;
+  --radius-control: 14px;
+  --radius-chip: 999px;
+
+  --color-bg-app: var(--void-bg-0);
+  --color-bg-surface: var(--void-bg-1);
+  --color-bg-elevated: var(--void-bg-2);
+  --color-bg-hover: var(--void-bg-3);
+  --color-text-primary: var(--void-fg-0);
+  --color-text-secondary: var(--void-fg-1);
+  --color-text-tertiary: var(--void-fg-2);
+  --color-border-default: var(--void-border);
+  --color-border-subtle: var(--void-border-soft);
+  --color-accent: var(--void-ring);
+
+  --surface-panel-bg: color-mix(
+    in srgb,
+    var(--color-bg-surface) 82%,
+    transparent
+  );
+  --surface-panel-bg-strong: color-mix(
+    in srgb,
+    var(--color-bg-surface) 92%,
+    transparent
+  );
+  --surface-panel-bg-soft: color-mix(
+    in srgb,
+    var(--color-bg-elevated) 70%,
+    transparent
+  );
+  --surface-glass-stroke: color-mix(
+    in srgb,
+    var(--color-text-primary) 10%,
+    transparent
+  );
+  --surface-tint-soft: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  --surface-tint-strong: color-mix(
+    in srgb,
+    var(--color-accent) 14%,
+    transparent
+  );
+  --surface-search-bg: color-mix(
+    in srgb,
+    var(--color-bg-elevated) 72%,
+    transparent
+  );
+  --shadow-floating: 0 20px 56px rgba(0, 0, 0, 0.18);
+  --shadow-toolbar:
+    0 1px 0 rgba(255, 255, 255, 0.05), 0 16px 48px rgba(0, 0, 0, 0.2);
+  --shadow-pressed: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-popover: 0 22px 60px rgba(0, 0, 0, 0.24);
+  --shadow-accent: 0 14px 28px
+    color-mix(in srgb, var(--color-accent) 18%, transparent);
+  --surface-popover-bg: color-mix(
+    in srgb,
+    var(--surface-panel-bg-strong) 96%,
+    transparent
+  );
+  --surface-control-bg: color-mix(
+    in srgb,
+    var(--surface-panel-bg-soft) 78%,
+    transparent
+  );
+  --surface-control-bg-hover: color-mix(
+    in srgb,
+    var(--surface-control-bg) 82%,
+    var(--surface-tint-soft)
+  );
+  --surface-control-bg-active: color-mix(
+    in srgb,
+    var(--surface-panel-bg-soft) 72%,
+    var(--surface-tint-strong)
+  );
+  --surface-code-bg: color-mix(
+    in srgb,
+    var(--color-bg-elevated) 80%,
+    transparent
+  );
+  --surface-bubble-user: linear-gradient(
+    180deg,
+    color-mix(
+        in srgb,
+        var(--surface-panel-bg-soft) 88%,
+        var(--surface-tint-soft)
+      )
+      0%,
+    color-mix(in srgb, var(--surface-panel-bg-strong) 94%, transparent) 100%
+  );
+  --surface-card-bg: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-panel-bg-strong) 94%, transparent) 0%,
+    color-mix(in srgb, var(--surface-panel-bg) 88%, transparent) 100%
+  );
+  --surface-card-bg-soft: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-panel-bg-soft) 92%, transparent) 0%,
+    color-mix(in srgb, var(--surface-panel-bg) 84%, transparent) 100%
+  );
+  --app-backdrop:
+    radial-gradient(
+      circle at top center,
+      rgba(99, 102, 241, 0.1) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(56, 189, 248, 0.08) 0%,
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(167, 139, 250, 0.08) 0%,
+      transparent 26%
+    );
+}

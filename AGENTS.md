@@ -23,7 +23,7 @@ mais ne se compilent pas ensemble.
 
 | | Application Next.js | Backend Hono (Val Town) |
 |---|---|---|
-| Racine | `app/`, `components/`, `lib/`, `hooks/` | ~45 fichiers `*.ts` **à la racine du dépôt** |
+| Racine | `app/`, `components/`, `lib/`, `hooks/` | 52 modules du graphe `main.ts` **à la racine du dépôt** |
 | Point d'entrée | `app/layout.tsx` | `main.ts` |
 | Build | `next build` | Aucun — déployé sur `https://mai.val.run` |
 | Base | PostgreSQL (Drizzle) | Neon **et** SQLite (`esm.town/v/std/sqlite`) |
@@ -35,20 +35,33 @@ Conséquences pratiques :
 - `main.ts`, `config.ts`, `vibe-*.ts`, `models.ts`, `email.ts`, `realtime.ts`…
   sont **hors du build Next**. Les modifier ne déclenche ni typecheck ni build.
   Ils sont déployés indépendamment sur Val Town.
-- L'application Next est un **BFF** : ses 78 routes `app/(chat)/api/**/route.ts`
+- L'application Next est un **BFF** : ses routes `app/(chat)/api/**/route.ts`
   appellent le backend via `MAI_API_URL` (`lib/constants.ts`, défaut
   `https://mai.val.run`) et normalisent les erreurs amont avec
   `lib/api/error-response.ts`.
-- Le détail du backend est documenté dans **`docs/BACKEND_API.md`** (les 42
+- `cron.ts`, **à la racine hors du graphe de `main.ts`**, est le seul
+  ordonnanceur des quatre ticks `app/api/cron/**` (Agent · planning · Wakies ·
+  Vibe) : c'est un val CRON Val Town, cadence 5 min, authentifié par
+  `CRON_SECRET`, qui les appelle **en parallèle** pour tenir dans le plafond
+  d'exécution d'un val. Il remplace le workflow GitHub supprimé : ne
+  réintroduire aucun second ordonnanceur.
+- Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 52
   fichiers du graphe d'imports transitif de `main.ts`).
-- Le détail de l'Agent est dans **`docs/AGENT.md`**.
-- L'API publique pour agents externes est dans **`docs/AI_AGENTS_API.md`**.
+- Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.
+- Les connexions OAuth aux applications externes (Google, GitHub), leurs
+  portées, leurs jetons et l'ajout d'un connecteur sont dans
+  **`docs/1-web/INTEGRATIONS.md`**.
+- L'API publique pour agents externes est dans **`docs/1-web/AI_AGENTS_API.md`**.
+- Les règles spécifiques par domaine sont réparties dans **`docs/1-web/AGENTS.md`**,
+  **`docs/2-vibe/AGENTS.md`**, **`docs/3-wakies/AGENTS.md`**, **`docs/4-coder/AGENTS.md`**
+  et **`docs/5-site/AGENTS.md`**.
+
 
 ## 2. Stack
 
 | Domaine | Choix |
 |---|---|
-| Framework | Next **16.3.3** (App Router, `cacheComponents`, `reactCompiler`), React 19.2 |
+| Framework | Next **16.3.8** (App Router, `cacheComponents`, `reactCompiler`), React 19.3 |
 | Interception | `proxy.ts` — **pas** `middleware.ts` (renommé en Next 16) |
 | Styles | Tailwind CSS **v4 CSS-first** (aucun `tailwind.config.js`) |
 | UI | Radix (`radix-ui` unifié), `cva`, `cmdk`, `sonner`, `framer-motion`, `lucide-react` |
@@ -70,23 +83,31 @@ générés `lib/plugins/*.generated.ts`.
 app/
 ├── (auth)/                 login, register, NextAuth
 ├── (chat)/                 l'application authentifiée
-│   ├── api/                78 routes BFF
+│   ├── api/                Routes BFF et API locales
 │   ├── agents/ archived/ audio/ chat/[id]/ images/ library/
 │   ├── mcp/ planning/ projects/ skills/ tools/
-│   └── settings/           page.tsx (2561 l.) + agent/page.tsx
+│   ├── settings/           page.tsx + agent/page.tsx
+│   └── vibe/               app sociale portée sous /vibe (pages générées)
 ├── api/cron/               ticks Agent et planification
 ├── globals.css             ← design system (tokens + primitives)
 └── layout.tsx              polices, ThemeProvider, Toaster
 components/
 ├── agent/ agents/ ai-elements/ chat/ common/ onboarding/ planning/ settings/ tools/
-└── ui/                     24 primitives Radix (exclus du lint)
+├── vibe/                   Vibe portée (vibe.css généré) + router.tsx
+│   └── stories/            rail, anneau, lecteur et compositeur de stories
+└── ui/                     primitives Radix (exclus du lint)
 lib/
-├── agent/ (35 f.) ai/ auth/ chat/ commands/ db/ editor/ mcp/ plans/ plugins/
+├── agent/ ai/ auth/ chat/ commands/ db/ editor/ integrations/ mcp/ plans/ plugins/
 ├── projects/ prompts/ security/ skill-templates/ notifications/
+├── vibe/                   services, hooks et contextes de Vibe (api, theme)
+├── wakies/                 données, quotas et utilitaires de /wakies
 └── constants.ts errors.ts ratelimit.ts types.ts utils.ts
-hooks/                      21 hooks, dont use-tier, use-notifications
+hooks/                      dont use-tier, use-notifications
 tests/                      unit/ e2e/ pages/ prompts/
-docs/                       AGENT.md, BACKEND_API.md, AI_AGENTS_API.md, …
+docs/                       README.md, 1-web/, 2-vibe/, 3-wakies/, 4-coder/
+apps/vibe/                  source Vite d'origine (référence, hors build Next)
+
+apps/wakies/                source OpenMuse (Expo/Hono), référence hors build Next
 ```
 
 Alias : `@/*` → racine du dépôt (d'où `app/…`, `lib/…`).
@@ -129,26 +150,65 @@ Quatre `@utility` encapsulent ce qui était dupliqué ~13 fois par fichier :
 
 Quatre forfaits : **Free**, **Plus**, **Pro**, **Max**.
 
-Vocabulaire canonique (`lib/auth/plan.ts`) : `free | plus | pro | max`, rang
-0→3. `normalizeTierKey` mappe l'alias backend `gratuit` → `free`, et **retombe
-sur `free`** pour toute valeur inconnue — fail-safe obligatoire : un tier
-illisible ne doit jamais accorder de privilège.
+Vocabulaire canonique : `free | plus | pro | max`, rang 0→3.
+`normalizeTierKey` (dans `lib/plans/tier-limits.ts`, **pas** dans `plan.ts`) mappe
+l'alias backend `gratuit` → `free`, et **retombe sur `free`** pour toute valeur
+inconnue — fail-safe obligatoire : un tier illisible ne doit jamais accorder de
+privilège. `lib/auth/plan.ts` expose le vocabulaire et les gardes de comparaison
+(`isPaidTier`, `tierAtLeast`, `tierMeetsMinimum`) ; `tierAtLeast` est typé
+`PaidTier` et **ne peut pas** exprimer un seuil « free » — pour autoriser tous les
+forfaits en exigeant la connexion, utiliser `requireAuthenticatedTier()`
+(`lib/auth/plan-guard.ts`).
 
 | Source de vérité | Fichier |
 |---|---|
 | Vocabulaire, rangs, gardes | `lib/auth/plan.ts` |
-| Quotas et plafonds | `lib/plans/tier-limits.ts` |
+| Quotas et plafonds (Next) | `lib/plans/tier-limits.ts` |
 | Durées de run Agent, timeouts techniques | `lib/plans/tier-capabilities.ts` |
 | Miroir backend | `config.ts` (Val Town) |
+| Limites appliquées à Vibe côté client | `lib/vibe/services/tierLimits.ts` |
 
 `lib/plans/tier-limits.ts` est le **point d'entrée** de toute limite produit.
 Les constantes de quotas y sont ajoutées **avec** leurs getters, et le client
 ne recalcule jamais : il lit ce que le serveur applique.
 
+### 5.1 Ce qui est payant, ce qui est borné
+
+Deux régimes différents, à ne pas confondre : une **interdiction** (paywall) ou un
+**quota** (tous les forfaits y ont droit, à des degrés divers).
+
+| Fonctionnalité | Free | Régime |
+|---|---|---|
+| **Bots** (`/agents`, `app/(chat)/api/agents/**`) | 8 bots | quota — ouvert à tous les forfaits |
+| **Mode Agent** du chat (`lib/agent/gate.ts`) | refusé | paywall |
+| **Wakies** (`isWakiesEligible`) | refusé | paywall |
+| **Commandes personnalisées** (`app/(chat)/api/commands/**`) | refusé | paywall |
+| **Stories Vibe** (`vibe-stories.ts`) | 1 par jour | quota |
+
+La limite de bots est portée par `TIER_LIMITS.free.agents` et appliquée par
+`getTierAgentLimit` : aucun nombre ne doit être écrit en dur dans une route, et le
+miroir backend n'existe pas pour cette grandeur (les bots vivent dans la base
+Next). Les trois derniers points sont verrouillés par
+`tests/unit/agents-quota-models.test.ts`.
+
+### 5.2 Deux plafonds média distincts
+
+Ils sont différents **en direction contraire**, et un agent qui les « unifie »
+casse l'un des deux contrats :
+
+| Plafond | Valeur | Autorité |
+|---|---|---|
+| Envoi d'un média (`POST /v1/upload-file`, posts, bannières) | 50 Mo en Free, **1 Go** en Plus/Pro/Max | `MEDIA_UPLOAD_LIMITS_BYTES` (`config.ts`), appliqué par `handleUploadFile` |
+| Média d'une **story** (photo ou vidéo) | **50 Mo, tous forfaits** | `STORY_MEDIA_MAX_BYTES` (`vibe-stories.ts`), recontrôlé serveur par un `HEAD` sur l'objet |
+
+Puisque l'upload accepte 1 Go pour les payants, le passage par `upload-file` ne
+garantit plus la borne de la story : `POST /v1/stories` relit donc la taille réelle
+de l'objet (`file_size_bytes` envoyé par le navigateur étant falsifiable).
+
 ## 6. Base de données
 
 - Schéma : `lib/db/schema.ts` (un seul fichier, lu par `drizzle-kit`)
-- Requêtes : `lib/db/queries.ts` (~5400 l.) et les `lib/agent/*-queries.ts`
+- Requêtes : `lib/db/queries.ts` et les `lib/agent/*-queries.ts`
 - Migrations : `lib/db/migrations/`, Drizzle
 - Moteur : PostgreSQL (Neon)
 
@@ -231,11 +291,107 @@ pnpm test           # playwright (e2e)
 pnpm db:generate    # drizzle-kit generate
 pnpm db:migrate     # tsx lib/db/migrate.ts
 pnpm db:studio      # drizzle-kit studio
+
+node scripts/build-vibe-css.mjs      # régénère components/vibe/vibe.css
+node scripts/build-vibe-routes.mjs   # régénère les 15 pages app/(chat)/vibe/**
+node scripts/build-wakies-css.mjs    # régénère les 2 feuilles de Wakies
 ```
 
 > ⚠️ `pnpm fix` formate **tout** le dépôt, y compris `*.sql` et `*.md`. En cas
 > de travail parallèle dans l'arbre, préférer :
 > `node node_modules/@biomejs/biome/bin/biome check --write <fichiers>`
+
+## 8.1 Intégration Vibe (`/vibe`)
+
+Vibe, l'application sociale, est **portée** depuis `apps/vibe/` (app Vite
+conservée en référence, non compilée par Next) sous `/vibe`. Guide complet :
+`docs/2-vibe/INTEGRATION.md` ; portage des composants : `components/vibe/README.md`.
+Règles dédiées pour agents : `docs/2-vibe/AGENTS.md`. Fonctionnalité à règles
+propres : les **Stories** (`docs/2-vibe/STORIES.md`) — cycle de 24 h, archive,
+quota journalier par forfait, et deux plafonds média qui ne doivent pas être
+unifiés.
+
+Quatre règles à ne pas contourner :
+
+- **`components/vibe/vibe.css` et les pages `app/(chat)/vibe/**/page.tsx` sont
+  générés** (`scripts/build-vibe-css.mjs`, `scripts/build-vibe-routes.mjs`).
+  Corriger la source, jamais la sortie.
+- **Tout Vibe vit sous `.vibe-root`** (thème, `data-theme`, `data-animations`),
+  donc les classes dépendant du thème s'écrivent `vibe-dark:` — jamais `dark:`,
+  qui suit `<html>` (la variante est déclarée dans `app/globals.css`).
+- **Les URL passent par `components/vibe/router.tsx`** : `toVibePath`,
+  `stripVibeBasePath`, `toVibeAbsoluteUrl`. Un chemin écrit à la main mène hors
+  de `/vibe` (404 chez le destinataire). `/vibe/@pseudo` est réécrit vers
+  `/vibe/u/[username]` par `next.config.ts`.
+- **`lib/vibe/context/ThemeContext.tsx` : l'ordre des clés de cinq tables de
+  réglages est l'ordre d'affichage** (protégé par un override `useSortedKeys`).
+
+`components/vibe/vibe.css` et `apps/vibe/**` sont exclus de Biome ; le code
+porté contient deux overrides documentés dans `biome.jsonc`.
+
+## 8.2 Intégration Wakies (`/wakies`)
+
+Wakies, l'espace de travail personnel, est **porté** depuis `apps/wakies/` (source OpenMuse conservée en référence) sous `/wakies`. Guide complet :
+`docs/3-wakies/INTEGRATION.md` ; règles du port : `components/wakies/README.md`.
+Règles dédiées pour agents : `docs/3-wakies/AGENTS.md`.
+
+Contrairement à Vibe, ce port remplace des **services** par l'hôte, pas
+seulement des fichiers :
+
+- **Comptes** : plus d'`OWNER_TOKEN`. Le client (`components/wakies/api.ts`)
+  n'envoie rien ; c'est le cookie de session mAI, et `proxy.ts` protège
+  `/wakies` comme `/api/wakies/**`.
+- **Données** : les deux SQLite du gabarit deviennent les tables
+  `Wakies*` (migration `0037_wakies.sql`, puis migrations des fonctions sociales). Toute ligne porte `userId`, et
+  `lib/wakies/queries.ts` l'exige en premier paramètre : une fonction sans
+  `userId` n'a pas d'existence.
+- **IA** : le chat passe par `/api/wakies/chat` (pipeline de l'hôte), plus par
+  CopilotKit Intelligence. Les messages sont des `UIMessage` stockés dans
+  `WakiesMessage`, et un message Wakie consomme le quota hebdomadaire du compte
+  — il n'existe pas de quota séparé.
+- **Web** : l'outil `webSearch` de l'hôte, donc `/v1/web/search`.
+- **Tâches planifiées** : plus de `setInterval` ; tick par
+  `app/api/cron/wakies`, appelé toutes les 5 min par le val CRON Val Town
+  `cron.ts` (`CRON_SECRET`), bail transactionnel.
+
+Cinq règles à ne pas contourner :
+
+- **Tout Wakies vit sous `.wakies-root`**, et `/wakies` vit dans son PROPRE
+  groupe de routes (`app/(wakies)/wakies`) : son rail est en `position: fixed`,
+  et le layout `(chat)` lui superposerait une seconde navigation.
+- **`components/wakies/wakies.css` et `wakies-editor.css` sont générés**
+  (`scripts/build-wakies-css.mjs`). Corriger la source dans
+  `apps/wakies/integration/web/`, jamais la sortie.
+- **Pas de variante `dark:` Tailwind (pas de Tailwind ici)** : Wakies a son propre design system clair natif. Le mode sombre suit l'hôte via `components/wakies/ThemeProvider.tsx` (`resolvedTheme` de next-themes) et la couche `html.dark .wakies-root …` de `wakies-host.css` ; les feuilles générées restent claires natives. Ne jamais introduire d'état de thème parallèle.
+- **Pas de CopilotKit, pas de `react-markdown`** : `useChat` (AI SDK) et
+  `components/wakies/markdown.tsx` (Streamdown, le moteur de l'hôte).
+- **Le vocabulaire est « conversation », pas « thread »** : `conversationId`.
+  Et l'agent s'appelle un **Wakie**, l'application **Wakies** — plus aucun
+  `Dot`/`OpenDots`, sauf cinq classes CSS qui décrivent un point graphique.
+
+Voix temps réel, ordinateurs persistants (OpenBot), Slack et la carte
+« Approuver et enregistrer » ne sont pas encore branchées : leur code est
+porté, `lib/wakies/setup.ts` déclare honnêtement l'absence, et `docs/3-wakies/INTEGRATION.md`
+§ 6 liste ce qu'il reste.
+
+## 8.3 Intégration Site Officiel (`/site`)
+
+Le site officiel mAI (`apps/site`) est **porté** au sein de l'application hôte
+sous `/site`. Guide complet : `docs/5-site/INTEGRATION.md` ; règles dédiées :
+`docs/5-site/AGENTS.md`.
+
+Cinq règles à ne pas contourner :
+
+- **`components/site/site.css` est généré** (`scripts/build-site-css.mjs`). Ne
+  jamais modifier ce fichier directement.
+- **Tout le site vit sous `.site-root`**, préservant le thème sombre et le
+  design achromatique du chat mAI principal.
+- **Les liens et la navigation passent par `components/site/router.tsx`** :
+  `<Link>`, `toSitePath`, `stripSiteBasePath`, `useSiteRouter`.
+- **SSO transparent** : l'utilisateur authentifié sur mAI est automatiquement
+  authentifié sur `/site` via `AuthProvider` (`initialToken`, `initialUser`).
+- **Deux runtimes** : ne jamais importer `@/email` (runtime Deno) dans les
+  modules du site, utiliser `@/lib/site/email`.
 
 ## 9. Points d'attention historiques
 
@@ -264,3 +420,14 @@ Des pièges déjà payés, à ne pas réintroduire :
   fait qu'afficher. Le serveur tranche.
 - `Notification.permission` ne peut être demandée que depuis un geste
   utilisateur — d'où la modale au chargement avec un bouton explicite.
+
+## 10. Messagerie Wakies et inventaires
+
+Les règles locales sont aussi dans `components/wakies/AGENTS.md`, `lib/wakies/AGENTS.md` et `app/(chat)/api/wakies/AGENTS.md`. Le dossier `.agents` est absent de cette version du dépôt.
+
+- Les amis sont des agents publics suivis ; un clone privé est nécessaire pour discuter. Aucun échange entre utilisateurs humains n’est ajouté.
+- Favoris et sourdine sont persistés en base (migration 0049). Les alertes de réponses terminées et la clé des réactions humaines demandent la migration 0050.
+- SWR relève la messagerie à cinq secondes ; aucune synchronisation ne remplace un streaming actif ou un brouillon. Les notifications navigateur ne fonctionnent que lorsque l’application reste ouverte.
+- Le catalogue MCP GitHub et son modèle de skill dédié sont retirés. Le plugin `github-public` (lecture de dépôts publics avec une clé globale) est retiré à son tour et remplacé par le connecteur OAuth `github`, qui lit les dépôts du compte connecté et peut y écrire avec approbation. Les serveurs MCP déjà enregistrés et les usages Git de Coder restent disponibles.
+- `node scripts/audit-backend.mjs` régénère l’inventaire des 52 modules backend et des routes Next ; ces dernières ne sont pas toutes des proxys.
+- Le nettoyage des services autonomes OpenMuse est tracé dans `docs/CLEANUP_INVENTORY.json`. Les images, la licence, les sources CSS et les références mobiles localement adaptées restent protégées ; le contrôle de provenance distingue les sources conservées des retraits.

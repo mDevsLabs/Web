@@ -8,7 +8,7 @@ import {
   GlobeIcon,
   MicIcon,
   QrCodeIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { toast } from "sonner";
@@ -506,9 +506,21 @@ const PurePreviewMessage = ({
     if (type === "reasoning") {
       if (!mergedReasoning.rendered && mergedReasoning.text) {
         mergedReasoning.rendered = true;
+        // Le raisonnement n'est plus en streaming dès que du texte ou un outil a commencé à être émis
+        const hasStartedGeneratingAnswer = messageParts.some(
+          (p) =>
+            (p.type === "text" && p.text?.trim().length > 0) ||
+            (typeof p.type === "string" && p.type.startsWith("tool-"))
+        );
+        const isReasoningStreaming = Boolean(
+          isLoading &&
+            !hasStartedGeneratingAnswer &&
+            (mergedReasoning.isStreaming || !hasAnyContent)
+        );
+
         return (
           <MessageReasoning
-            isLoading={isLoading || mergedReasoning.isStreaming}
+            isLoading={isReasoningStreaming}
             key={key}
             reasoning={mergedReasoning.text}
           />
@@ -522,7 +534,7 @@ const PurePreviewMessage = ({
       return (
         <MessageContent
           className={cn("text-[14px] sm:text-[13px] leading-[1.65]", {
-            "w-fit max-w-[85%] sm:max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted dark:from-zinc-800 dark:to-zinc-800/80 px-3.5 py-2 sm:py-2 shadow-[var(--shadow-card)]":
+            "w-fit max-w-[85%] sm:max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/60 bg-secondary/85 backdrop-blur-md px-3.5 py-2 sm:py-2 shadow-[inset_0_1px_0_var(--md-highlight),var(--md-shadow)]":
               message.role === "user",
           })}
           data-testid="message-content"
@@ -1388,7 +1400,7 @@ const PurePreviewMessage = ({
       return (
         <Tool
           className="w-[min(100%,450px)]"
-          defaultOpen={state !== "output-available"}
+          defaultOpen
           key={toolCallId ?? key}
         >
           {type === "dynamic-tool" ? (

@@ -1,0 +1,71 @@
+{
+  "model": "Collection",
+  "config": {
+    "name": "Collection",
+    "label": "Collections",
+    "description": "Gérez vos collections depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "curator",
+        "label": "Responsable",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "itemCount",
+        "label": "Éléments",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "updatedOn",
+        "label": "Modification",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "public",
+          "private"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyCollection",
+        "label": "Notifications : collections",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveCollection",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section collections."
+      },
+      {
+        "key": "approveCollection",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "collection-demo-1",
+    "name": "Sélection du mois",
+    "curator": "Responsable démo",
+    "itemCount": 128,
+    "updatedOn": "2026-10-04",
+    "status": "draft"
+  }
+}

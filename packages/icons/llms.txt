@@ -1,0 +1,23 @@
+# @mdevs/icons
+
+> 2600 distinct minimal SVG geometries on 24px grid, React/TypeScript wrappers, responsive sizing, currentColor, decorative/informative accessibility.
+
+- [Agent guide](AGENTS.md)
+- [Icon API](catalog/docs/ICONS.md)
+- [Icon maintenance](catalog/docs/ICON_MAINTENANCE.md)
+- [Detailed agent workflow](catalog/docs/AI_AGENTS.md)
+- [Accessibility](catalog/docs/ACCESSIBILITY.md)
+- [Machine catalog](catalog/manifest.json)
+- [Attribution](NOTICE.md)
+- [Document path index](catalog/documentation.json)
+- [Consolidated guides](llms-full.txt)
+- [Troubleshooting](catalog/docs/TROUBLESHOOTING.md)
+
+Search exact manifest names/imports first, then read catalog/<category>/README.md and src/create-icon.tsx. Category guides contain every matching import, raw SVG, source and provenance. Raw SVG public paths omit .svg because exports appends it; importing assets requires host bundler configuration. Native SVG props are spread after defaults and can override dimensions/ARIA. Name the containing button for decorative icons; provide title or an ARIA name for informative graphics. No automatic RTL mirroring or SVGR loader is supplied. Maintenance scripts require the monorepo.
+
+Names use Icon suffix. Copy imports from manifest. Size accepts numbers/em/rem/percentages. Keep LICENSE-LUCIDE and LICENSE-TABLER. Shapes are sourced from Lucide/Tabler, wrapper MIT.
+
+- [Creation/style rules](STYLE.md)
+- [0.2 component extension guide](catalog/docs/EXTENSIONS.md)
+
+Approved default: local Inter WOFF2 (UI), subtle 12px glass blur, monochrome black/white icons with 1.5px rounded strokes. Preserve asset licences. New entries must have a real contract and distinct purpose/geometry; sizes/colors/aliases do not count.

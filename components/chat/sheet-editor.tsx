@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { parse, unparse } from "papaparse";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import DataGrid, { textEditor } from "react-data-grid";
+import { DataGrid, renderTextEditor } from "react-data-grid";
 import { cn } from "@/lib/utils";
 
 import "react-data-grid/lib/styles.css";
@@ -64,7 +64,7 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
       }),
       key: i.toString(),
       name: String.fromCharCode(65 + i),
-      renderEditCell: textEditor,
+      renderEditCell: renderTextEditor,
       width: 120,
     }));
 
@@ -110,10 +110,15 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
   const handleCellClick = useCallback(
     (args: {
       column: { key: string };
-      selectCell: (enableEditor?: boolean) => void;
+      setActivePosition?: (enableEditor?: boolean) => void;
+      selectCell?: (enableEditor?: boolean) => void;
     }) => {
       if (args.column.key !== "rowNumber") {
-        args.selectCell(true);
+        if (typeof args.setActivePosition === "function") {
+          args.setActivePosition(true);
+        } else if (typeof args.selectCell === "function") {
+          args.selectCell(true);
+        }
       }
     },
     []

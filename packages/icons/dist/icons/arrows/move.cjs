@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const MoveIcon = /* @__PURE__ */ createIcon('MoveIcon', [["path", { "d": "M12 2v20" }], ["path", { "d": "m15 19-3 3-3-3" }], ["path", { "d": "m19 9 3 3-3 3" }], ["path", { "d": "M2 12h20" }], ["path", { "d": "m5 9-3 3 3 3" }], ["path", { "d": "m9 5 3-3 3 3" }]]);
+exports.MoveIcon = MoveIcon;

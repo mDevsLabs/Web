@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2Icon, UsersIcon } from "lucide-react";
+import { Loader2Icon, UsersIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

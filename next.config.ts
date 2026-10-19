@@ -1,9 +1,12 @@
+import { randomUUID } from "node:crypto";
 import { withBotId } from "botid/next/config";
 import type { NextConfig } from "next";
 
 const basePath = process.env.IS_DEMO === "1" ? "/demo" : "";
 const isDev = process.env.NODE_ENV === "development";
 const isProd = process.env.NODE_ENV === "production";
+// Identifiant commun au bundle client et au serveur, même sans numéro de release.
+const webBuildId = process.env.VERCEL_DEPLOYMENT_ID || randomUUID();
 
 // CSP pragmatique : pas de nonce (incompatible avec cacheComponents/PPR, qui
 // sert du HTML statique partagé). Les hôtes externes reflètent les usages
@@ -11,6 +14,20 @@ const isProd = process.env.NODE_ENV === "production";
 // uploads Vercel Blob, stockage S3/R2 des fichiers cloud & avatars,
 // images de secours picsum). BotID et le streaming passent par 'self'.
 function buildContentSecurityPolicy(): string {
+  // Origine de l'API mAI, telle que configurée pour le backend. Elle doit être
+  // déclarée explicitement dans connect-src : les navigateurs refusent de la
+  // déduire, et une politique trop étroite coupe le réseau en silence (des
+  // erreurs de console, pas une page d'explication).
+  const apiOrigin = (() => {
+    try {
+      return new URL(
+        process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run"
+      ).origin;
+    } catch {
+      return "https://mai.val.run";
+    }
+  })();
+
   // Fichiers cloud et avatars servis directement depuis le stockage S3/R2
   // (S3_PUBLIC_URL / S3_PUBLIC_URL_* côté backend Val Town).
   const storageHosts = ["https://s3.z1storage.com", "https://*.r2.dev"];
@@ -20,17 +37,31 @@ function buildContentSecurityPolicy(): string {
       "'self'",
       "https://cdn.jsdelivr.net",
       "https://kroki.io",
+      // Vibe appelle l'API mAI directement depuis le navigateur (lib/vibe/services/api.ts
+      // : `fetch` avec jeton Bearer, flux SSE inclus). Sans cette origine, la
+      // timeline, les messages et le temps réel de /vibe seraient bloqués par
+      // la politique — le reste de l'application passe par des routes BFF, ce
+      // qui explique l'absence de cette origine avant Vibe.
+      apiOrigin,
       ...(isDev ? ["ws:", "wss:", "http://localhost:*"] : []),
     ],
     "default-src": ["'self'"],
     "font-src": ["'self'", "data:"],
     "form-action": ["'self'"],
-    "frame-ancestors": ["'self'"],
+    // `'none'` et non `'self'` : l'application ne doit pas être intégrable dans
+    // une iframe tierce. C'est la protection contre le clickjacking que
+    // `X-Frame-Options` apporte, mais en moderne — et il est ajouté en doublon
+    // plus bas pour les navigateurs anciens.
+    "frame-ancestors": ["'none'"],
     "frame-src": [
       "'self'",
       "blob:",
       "data:",
       "https://*.public.blob.vercel-storage.com",
+      // Les vidéos de présentation des modèles et la carte d'actualité mAI-2
+      // sont des embeds YouTube : sans ces origines, l'iframe restérait blanche.
+      "https://www.youtube.com",
+      "https://www.youtube-nocookie.com",
       ...storageHosts,
     ],
     "img-src": [
@@ -42,6 +73,13 @@ function buildContentSecurityPolicy(): string {
       "https://models.dev",
       "https://www.google.com",
       "https://picsum.photos",
+      "https://api.dicebear.com",
+      // Hébergeur historique des visuels du Site (apps/site/docs/news) :
+      // sans lui, les couvertures d'actualités restaient cassées (alt visible).
+      "https://upload.fs.fr",
+      // Vignettes de couverture des vidéos YouTube (cartes d'actualité).
+      "https://i.ytimg.com",
+      apiOrigin,
       ...storageHosts,
     ],
     "manifest-src": ["'self'"],
@@ -50,9 +88,15 @@ function buildContentSecurityPolicy(): string {
       "data:",
       "blob:",
       "https://*.public.blob.vercel-storage.com",
+      // Même hébergeur pour les éventuelles vidéos d'actualité en lecteur HTML5.
+      "https://upload.fs.fr",
+      apiOrigin,
       ...storageHosts,
     ],
     "object-src": ["'none'"],
+    // Doit être déclarée à part : `report-uri` est une directive propre, pas un
+    // mot-clé acceptant une liste de sources.
+    "report-uri": ["/api/security/csp-report"],
     "script-src": [
       "'self'",
       "'unsafe-inline'",
@@ -65,6 +109,7 @@ function buildContentSecurityPolicy(): string {
     "worker-src": ["'self'", "blob:"],
   };
 
+  // Point de rapport CSP : report-uri /api/security/csp-report
   return Object.entries(directives)
     .map(([directive, values]) => `${directive} ${values.join(" ")}`)
     .join("; ");
@@ -74,6 +119,13 @@ const securityHeaders = [
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
+  },
+  {
+    // Redondance assumée avec `frame-ancestors 'none'` pour les navigateurs
+    // qui ne comprennent pas CSP. Ni le framework ni le backend ne
+    // positionnaient cet en-tête sur l'application.
+    key: "X-Frame-Options",
+    value: "DENY",
   },
   {
     key: "Referrer-Policy",
@@ -117,13 +169,55 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_MAI_WEB_BUILD_ID: webBuildId,
   },
   experimental: {
     appNewScrollHandler: true,
     cachedNavigations: true,
     inlineCss: true,
+    // Barils d'exports massivement importés : sans cette liste, chaque fichier
+    // qui écrit `import { X } from "pkg"` tire la barre entière dans le graphe
+    // de compilation. `@mdevs/icons` est importé par 315 fichiers, `sonner` par
+    // 70, `framer-motion` et `radix-ui` par une vingtaine chacun — c'est le
+    // premier coût de compilation à froid du mode dev.
+    //
+    // `lucide-react` et `recharts` sont absents ici car Next.js les optimise déjà
+    // par défaut (node_modules/next/dist/docs/…/optimizePackageImports.md) : les
+    // lister ne ferait qu'ajouter une clé trompeuse.
+    //
+    // `@mdevs/ui` est volontairement exclu : son manifeste déclare
+    // `sideEffects: ["**/*.css"]`, et la transformation en imports profonds peut
+    // emporter les styles avec eux. Un gain de compilation ne vaut pas une
+    // interface déroulée.
+    optimizePackageImports: [
+      "@mdevs/icons",
+      "@streamdown/code",
+      "@streamdown/math",
+      "@streamdown/mermaid",
+      "cmdk",
+      "date-fns",
+      "framer-motion",
+      "katex",
+      "mermaid",
+      "motion",
+      "radix-ui",
+      "shiki",
+      "sonner",
+    ],
     prefetchInlining: true,
-    turbopackFileSystemCacheForDev: true,
+    // Aucun cache .next restauré en CI ; option locale pour les disques contraints.
+    turbopackFileSystemCacheForBuild:
+      process.env.GITHUB_ACTIONS !== "true" &&
+      process.env.MAI_DISABLE_BUILD_CACHE !== "1",
+    // Désactivé : provoque un panic Turbopack (inner_of_upper_lost_follower)
+    // quand le cache sur disque se corrompt. À réactiver quand Next.js aura
+    // corrigé le bug — https://github.com/vercel/next.js/discussions
+    //
+    // Marche de re-test, pour ne pas la refaire deviner : `rm -rf .next`, passer
+    // cette valeur à `true` sur une branche dédiée, chronométrer deux demarrages
+    // froids puis la premiere requete `/settings`. En cas de panic, reverter —
+    // le cache corrompu survit au changement de code.
+    turbopackFileSystemCacheForDev: false,
   },
   async headers() {
     // CSP_REPORT_ONLY=1 permet un premier déploiement en observation seule.
@@ -145,6 +239,18 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Tailles réellement rendues. Les valeurs par défaut commencent à 640 px,
+    // ce qui fait télécharger une image de 500 Ko à un logo de 24 px.
+    deviceSizes: [360, 640, 768, 1024, 1280, 1536, 1920],
+    // AVIF d'abord : sans `formats`, le défaut est webp seul et le format le
+    // plus efficace n'est jamais négocié.
+    formats: ["image/avif", "image/webp"],
+    imageSizes: [16, 24, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // Aligné sur l'`img-src` de la CSP ci-dessus : les deux listes doivent
+    // accepter les mêmes sources, sinon une URL d'avatar autorisée par la CSP
+    // échoue à l'optimisation et l'image ne s'affiche pas.
+    qualities: [60, 75, 90],
     remotePatterns: [
       {
         hostname: "avatar.vercel.sh",
@@ -157,6 +263,32 @@ const nextConfig: NextConfig = {
         hostname: "models.dev",
         protocol: "https",
       },
+      // Stockage des fichiers cloud (S3/R2), déjà autorisé par la CSP.
+      {
+        hostname: "s3.z1storage.com",
+        protocol: "https",
+      },
+      {
+        hostname: "*.r2.dev",
+        protocol: "https",
+      },
+      // Les trois hôtes suivants figuraient dans l'`img-src` de la CSP sans être
+      // dans cette liste : la politique les admettait, l'optimiseur les refusait.
+      // Un `<Image>` pointant sur l'un d'eux renvoyait une erreur au lieu d'une
+      // image — et en `next/image` non optimisé, le contraste entre les deux
+      // listes passait inaperçu jusqu'à l'affichage.
+      {
+        hostname: "api.dicebear.com",
+        protocol: "https",
+      },
+      {
+        hostname: "picsum.photos",
+        protocol: "https",
+      },
+      {
+        hostname: "www.google.com",
+        protocol: "https",
+      },
     ],
   },
   logging: {
@@ -167,9 +299,67 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingIncludes: {
     "/changelog": ["./CHANGELOG.md"],
+    // Les actualités du Site sont lues depuis le système de fichiers à
+    // l'exécution (lib/site/news.ts) : sans ces entrées, un build tracé
+    // (standalone) les oublierait et les pages seraient vides.
+    "/site": ["./apps/site/docs/news/**"],
+    "/site/news": ["./apps/site/docs/news/**"],
+    "/site/news/[slug]": ["./apps/site/docs/news/**"],
   },
   poweredByHeader: false,
   reactCompiler: true,
+  /**
+   * Vibe nomme les profils `/@pseudo` : la barre latérale, les notifications,
+   * la recherche et le partage construisent tous leurs liens ainsi, et la barre
+   * latérale compare même `location.pathname` à `/@pseudo` pour marquer l'onglet
+   * actif. `/vibe/@pseudo` doit donc répondre. L'App Router ne peut pas porter
+   * un dossier `@[username]` (le préfixe `@` y désigne un slot parallèle) : on
+   * réécrit donc vers la route `/vibe/u/[username]`, qui rend la même page.
+   * La réécriture laisse l'URL visible en `/vibe/@pseudo` — les liens copiés et
+   * partagés restent ceux de Vibe.
+   *
+   * Les deux chemins d'écriture de chemins (rewrites et basePath) sont
+   * préfixés automatiquement par Next en mode démo.
+   */
+  async rewrites() {
+    return [
+      {
+        destination: "/vibe/u/:username",
+        source: "/vibe/@:username",
+      },
+      // Alias produit : l'application s'appelle « Code » dans le menu du logo
+      // et le réglage « Menu favori », mais la route canonique est /coder.
+      // Une REWRITE et non une redirection : Next 16 n'accepte ici que les
+      // champs source/destination, et l'URL visible reste /code — les liens
+      // partagés portent le nom affiché.
+      {
+        destination: "/coder",
+        source: "/code",
+      },
+      {
+        destination: "/coder/:path*",
+        source: "/code/:path*",
+      },
+    ];
+  },
+  /*
+   * `turbopack.root` — volontairement ABSENT, malgré l'avertissement affiché :
+   *
+   *   « Next.js ignored pnpm-lock.yaml in C:\Users\<user> because it is outside
+   *     the current Git repository. To use this directory, set turbopack.root »
+   *
+   * Le définir (`root: process.cwd()`, le motif de apps/site/next.config.ts)
+   * casse la résolution des polices : `app/layout.tsx` ne charge plus, et le
+   * journal de dev remplit « Module not found: Can't resolve
+   * '@vercel/turbopack-next/internal/font/google/font' » — l'import mapping
+   * interne de `next/font/google` ne retrouve plus ses entrées quand la racine
+   * épinglée contient un espace (« Dossiers Mathias »). Vérifié en comparant deux
+   * demarrages, erreurs de police d'un cote, zero de l'autre.
+   *
+   * L'avertissement est cosmétique : Turbopack ignore un lockfile étranger, ce
+   * qui est le comportement voulu. Ne pas « réparer » sans re-tester /login et
+   * /settings complet.
+   */
 };
 
 export default withBotId(nextConfig);

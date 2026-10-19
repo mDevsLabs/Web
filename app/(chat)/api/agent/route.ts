@@ -63,7 +63,7 @@ import {
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
-import { saveMessages } from "@/lib/db/queries";
+import { getUserPreferences, saveMessages } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";
@@ -183,8 +183,11 @@ export async function POST(request: Request) {
     // jamais rejuger le modèle sur un autre catalogue (FALLBACK_MODELS) : un
     // modèle réel de l'utilisateur serait sinon classé « sans outils » et
     // refusé (model_access_denied) alors qu'il est sélectionnable dans l'UI.
-    const models = await fetchUserModels();
-    const settings = await loadAgentSettings({ userId: auth.userId });
+    const [models, settings, userPrefs] = await Promise.all([
+      fetchUserModels(),
+      loadAgentSettings({ userId: auth.userId }),
+      getUserPreferences(auth.userId).catch(() => null),
+    ]);
     const requested = getModelEntry(body.modelId, models);
     const requestedModelExists = models.some(
       (model) => model.id === body.modelId
@@ -293,9 +296,13 @@ export async function POST(request: Request) {
     //    `reasoning` sépare l'intention (persistée) de l'effort applicable au
     //    modèle sélectionné : les deux ne coïncident pas quand le modèle expose
     //    moins de niveaux que la préférence n'en prévoit.
+    const effectiveFallbackReasoning =
+      settings.reasoningLevel ??
+      (userPrefs as { reasoningLevel?: unknown } | null)?.reasoningLevel ??
+      "medium";
     const reasoning = resolveAgentReasoning({
       capabilities,
-      fallback: settings.reasoningLevel,
+      fallback: effectiveFallbackReasoning as any,
       flags,
       requested: body.reasoningLevel,
     });

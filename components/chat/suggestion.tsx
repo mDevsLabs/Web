@@ -67,14 +67,14 @@ export const SuggestionDialog = ({
               onClick={onApply}
               variant="outline"
             >
-              Apply
+              Appliquer
             </Button>
             <Button
               className="w-fit rounded-full px-3 py-1.5"
               onClick={onClose}
               variant="ghost"
             >
-              Dismiss
+              Ignorer
             </Button>
           </div>
         </motion.div>

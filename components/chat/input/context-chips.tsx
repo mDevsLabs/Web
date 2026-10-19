@@ -1,6 +1,6 @@
 "use client";
 
-import { CpuIcon, FolderKanbanIcon, SparklesIcon, XIcon } from "lucide-react";
+import { CpuIcon, FolderKanbanIcon, SparklesIcon, XIcon } from "@mdevs/icons";
 import type { Dispatch, SetStateAction } from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { ProjectIcon } from "@/components/chat/project-icon";

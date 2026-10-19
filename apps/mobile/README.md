@@ -1,50 +1,36 @@
-# mAI Mobile (Android / iOS)
+# mAI Mobile
 
-Application mobile Capacitor – simple WebView vers https://mai-officiel.vercel.app. **Non signée** (debug/unsigned).
+Cette application Capacitor ouvre **https://mai-officiel.vercel.app** dans une WebView Android ou iOS. Elle n’embarque pas le serveur Next.js ; une connexion réseau et un site distant accessible sont nécessaires.
 
-## Structure
+Une nouvelle version Web est détectée toutes les minutes et au retour au premier plan ou en ligne. L’application attend la fin des réponses IA, des générations et des saisies avant de recharger. Les changements de Capacitor et de la configuration native demandent un nouvel installateur. Le CLI et Coder, qui utilisent des terminaux et des fichiers locaux, sont fournis par l’application de bureau.
 
-```
-apps/mobile/
-  capacitor.config.ts  # appId app.mai.officiel.mobile, server.url = https://mai-officiel.vercel.app
-  www/index.html       # fallback iframe plein écran (hors natif)
-  resources/icon.png   # généré depuis public/logo.png
-  scripts/generate-icons.mjs
-  android/             # généré via `npx cap add android` (non committé, créé en CI)
-  ios/                 # généré via `npx cap add ios` (macOS)
-```
+## Développement
 
-## Logo
+Prérequis : Node.js, pnpm et les outils natifs de la plateforme ciblée. Android demande Android Studio et le SDK Android. La génération iOS demande macOS et Xcode.
 
-Même logo que le site `public/logo.png` (676×676) copié vers `resources/` et `www/icon.png`, puis décliné pour Android (`mipmap`) et iOS (`AppIcon`) via `generate-icons.mjs`. Si `sharp` présent, génération multi-résolutions propre.
+Depuis apps/mobile :
 
-## Dev local
-
-```bash
-cd apps/mobile
+~~~powershell
 pnpm install
 pnpm run generate:icons
-npx cap add android   # une fois (nécessite Android SDK)
-npx cap add ios       # sur macOS uniquement
-npx cap sync
-npx cap open android
-npx cap open ios
-```
+pnpm run add:android
+pnpm run sync
+~~~
 
-## Build non signé
+Pour iOS, utilisez pnpm run add:ios sur macOS. La configuration du client distant et les options d’écran d’accueil se trouvent dans capacitor.config.ts.
 
-```bash
-# Android Debug APK (debug keystore, non production)
+La WebView locale iOS utilise le schéma `capacitor` ; `http` et `https` sont réservés par WKWebView et ne sont pas des schémas locaux valides. `server.url` conserve l’origine HTTPS du site officiel.
+
+## Compilation
+
+~~~sh
 pnpm run build:android
-# → android/app/build/outputs/apk/debug/app-debug.apk
-
-# Android Release non signé (vrai unsigned)
 pnpm run build:android:release
-# → android/app/build/outputs/apk/release/app-release-unsigned.apk
-
-# iOS unsigned IPA (macOS uniquement, CODE_SIGNING_ALLOWED=NO)
 pnpm run build:ios
-# → ios/App/build/App.xcarchive + IPA manuel
-```
+~~~
 
-CI : `.github/workflows/desktop.yml` génère les artefacts Android/iOS en parallèle des builds desktop, sans signature.
+Ces scripts synchronisent les assets Capacitor puis appellent les outils natifs. La signature et la distribution de production demandent une configuration de certificats propre à chaque plateforme.
+
+## Automatisation
+
+Le workflow partagé est [.github/workflows/build.yml](../../.github/workflows/build.yml). Il construit les clients WebView selon les règles du workflow ; les étapes mobiles peuvent nécessiter leurs runners et outils natifs dédiés.

@@ -1,0 +1,71 @@
+{
+  "model": "GiftCard",
+  "config": {
+    "name": "GiftCard",
+    "label": "Cartes cadeaux",
+    "description": "Gérez vos cartes cadeaux depuis une interface claire.",
+    "fields": [
+      {
+        "key": "code",
+        "label": "Code",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "recipient",
+        "label": "Bénéficiaire",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "balance",
+        "label": "Solde",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "expiresOn",
+        "label": "Expiration",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "redeemed",
+          "expired"
+        ]
+      }
+    ],
+    "titleKey": "code",
+    "settings": [
+      {
+        "key": "notifyGiftCard",
+        "label": "Notifications : cartes cadeaux",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveGiftCard",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section cartes cadeaux."
+      },
+      {
+        "key": "approveGiftCard",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "gift-card-demo-1",
+    "code": "CADEAU-104",
+    "recipient": "Bénéficiaire démo",
+    "balance": 128,
+    "expiresOn": "2026-10-04",
+    "status": "active"
+  }
+}

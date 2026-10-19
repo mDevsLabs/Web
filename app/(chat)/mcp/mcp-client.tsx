@@ -1,5 +1,5 @@
 "use client";
-import type { LucideIcon } from "lucide-react";
+import type { IconProps } from "@mdevs/icons";
 import {
   ActivityIcon,
   AlertCircleIcon,
@@ -13,7 +13,6 @@ import {
   DownloadIcon,
   Edit2Icon,
   FileTextIcon,
-  GithubIcon,
   KeyIcon,
   Loader2Icon,
   MoreVerticalIcon,
@@ -29,12 +28,20 @@ import {
   Trash2Icon,
   WrenchIcon,
   ZapIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { McpInspectToolsModal } from "@/components/mcp/mcp-inspect-modal";
+import { McpLibraryTab } from "@/components/mcp/mcp-library-tab";
+import { McpLogsTab } from "@/components/mcp/mcp-logs-tab";
+import { McpServerModal } from "@/components/mcp/mcp-server-modal";
+import { McpServersTab } from "@/components/mcp/mcp-servers-tab";
+import { McpSettingsTab } from "@/components/mcp/mcp-settings-tab";
+import { McpStoreTab } from "@/components/mcp/mcp-store-tab";
+import { McpTutorialTab } from "@/components/mcp/mcp-tutorial-tab";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -69,6 +76,7 @@ import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
+import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 
 // Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
@@ -97,17 +105,10 @@ type McpTemplateRow = {
 const STORE_CONNECTORS: ReadonlyArray<{
   color: string;
   highlight: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   templateId: string;
   tint: string;
 }> = [
-  {
-    color: "text-foreground dark:text-foreground",
-    highlight: "Dépôts, issues & PR",
-    icon: GithubIcon,
-    templateId: "github",
-    tint: "bg-foreground/10",
-  },
   {
     color: "text-violet-600 dark:text-violet-400",
     highlight: "Docs & bases Notion",
@@ -320,9 +321,9 @@ export default function McpClient({
   };
   const handlePurgeMcp = async () => {
     if (
-      !window.confirm(
+      !(await confirmInApp(
         "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
-      )
+      ))
     ) {
       return;
     }
@@ -680,9 +681,9 @@ export default function McpClient({
   };
   const handlePurgeLogs = async () => {
     if (
-      !window.confirm(
+      !(await confirmInApp(
         "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
-      )
+      ))
     ) {
       return;
     }
@@ -939,1404 +940,122 @@ export default function McpClient({
       </header>
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
         {activeTab === "store" && (
-          <div className="space-y-5">
-            <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] to-transparent p-5">
-              <div className="flex items-center gap-3 mb-1.5">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <StoreIcon className="size-5" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold">Store de connecteurs</h2>
-                  <p className="text-xs text-muted-foreground">
-                    Activez vos outils favoris en un clic — configuration
-                    automatique depuis les templates MCP.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {sortByRelevance(
-                storeConnectors.filter(({ connector, tpl }) =>
-                  matchesQuery(searchQuery, {
-                    primary: tpl.name,
-                    secondary: [connector.highlight, tpl.description],
-                  })
-                ),
-                searchQuery,
-                ({ connector, tpl }) => ({
-                  primary: tpl.name,
-                  secondary: [connector.highlight, tpl.description],
-                })
-              ).map(({ connector, tpl }) => {
-                const Icon = connector.icon;
-                const installed = servers.find(
-                  (s) =>
-                    (s.templateId ?? null) === tpl.id || s.name === tpl.name
-                );
-                const isBusy = installingConnector === tpl.name;
-                return (
-                  <div
-                    className={cn(
-                      "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md",
-                      installed?.isEnabled
-                        ? "border-emerald-500/40"
-                        : "border-border/60"
-                    )}
-                    key={connector.templateId}
-                  >
-                    <div className="flex items-start gap-3 mb-3">
-                      <div
-                        className={cn(
-                          "flex size-11 shrink-0 items-center justify-center rounded-xl",
-                          connector.tint,
-                          connector.color
-                        )}
-                      >
-                        <Icon className="size-5.5" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-semibold text-sm">{tpl.name}</h3>
-                          {installed && (
-                            <span
-                              className={cn(
-                                "inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold",
-                                installed.isEnabled
-                                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                                  : "bg-muted text-muted-foreground"
-                              )}
-                            >
-                              <span
-                                className={cn(
-                                  "size-1.5 rounded-full",
-                                  installed.isEnabled
-                                    ? "bg-emerald-500"
-                                    : "bg-muted-foreground/50"
-                                )}
-                              />
-                              {installed.isEnabled ? "Actif" : "Inactif"}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-muted-foreground line-clamp-2">
-                          {tpl.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                      <Badge
-                        className="text-[10px] uppercase font-semibold px-2 py-0.5"
-                        variant="outline"
-                      >
-                        {tpl.transport}
-                      </Badge>
-                      {tpl.authType !== "none" && (
-                        <Badge
-                          className="text-[10px] px-2 py-0.5"
-                          variant="secondary"
-                        >
-                          {tpl.authType}
-                        </Badge>
-                      )}
-                      <Badge
-                        className="text-[10px] px-2 py-0.5"
-                        variant="outline"
-                      >
-                        {tpl.minTier.toUpperCase()}
-                      </Badge>
-                    </div>
-                    <div className="mt-auto">
-                      <Button
-                        className={cn(
-                          "w-full gap-2 text-xs font-medium",
-                          installed?.isEnabled &&
-                            "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
-                        )}
-                        disabled={Boolean(installingConnector)}
-                        onClick={() =>
-                          handleStoreConnector(connector, installed)
-                        }
-                        variant={installed?.isEnabled ? "outline" : "default"}
-                      >
-                        {isBusy ? (
-                          <>
-                            <Loader2Icon className="size-3.5 animate-spin" />
-                            {installed
-                              ? installed.isEnabled
-                                ? "Désactivation..."
-                                : "Activation..."
-                              : "Connexion..."}
-                          </>
-                        ) : installed ? (
-                          <>
-                            <ZapIcon className="size-3.5" />
-                            {installed.isEnabled ? "Désactiver" : "Activer"}
-                          </>
-                        ) : (
-                          <>
-                            <PlusIcon className="size-3.5" />
-                            Connecter en 1 clic
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="text-[11px] text-muted-foreground text-center">
-              Un connecteur manquant ? Retrouvez les {templates.length} modèles
-              du catalogue (dont les intégrations OAuth documentées) dans
-              l'onglet{" "}
-              <button
-                className="font-medium text-primary hover:underline"
-                onClick={() => setActiveTab("library")}
-                type="button"
-              >
-                Bibliothèque
-              </button>
-              .
-            </p>
-          </div>
+          <McpStoreTab
+            handleStoreConnector={handleStoreConnector}
+            installingConnector={installingConnector}
+            searchQuery={searchQuery}
+            servers={servers}
+            setActiveTab={setActiveTab}
+            storeConnectors={storeConnectors}
+            templates={templates}
+          />
         )}
         {activeTab === "servers" && (
-          <div>
-            {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    className="h-44 rounded-2xl border border-border/50 bg-muted/20 animate-pulse p-4"
-                    key={i}
-                  />
-                ))}
-              </div>
-            ) : servers.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center max-w-2xl mx-auto">
-                <div className="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
-                  <CpuIcon className="size-8" />
-                </div>
-                <h2 className="text-xl font-bold mb-2">
-                  Aucun serveur MCP configuré
-                </h2>
-                <p className="text-sm text-muted-foreground mb-8">
-                  Le protocole MCP permet à l'IA d'interagir directement avec
-                  vos outils, fichiers et bases de données, avec un contrôle
-                  strict des autorisations.
-                </p>
-                <div className="w-full text-left mb-6">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                    Modèles préconfigurés :
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {installableTemplates.map((tmpl) => (
-                      <button
-                        className="flex flex-col text-left p-3.5 rounded-xl border border-border/60 bg-card hover:bg-muted/40 transition-colors group cursor-pointer"
-                        key={tmpl.id}
-                        onClick={() => handleNewServer(tmpl)}
-                        type="button"
-                      >
-                        <div className="flex items-center justify-between w-full mb-1">
-                          <span className="font-semibold text-xs text-foreground">
-                            {tmpl.name}
-                          </span>
-                          <span className="text-[10px] px-1.5 py-0.5 rounded uppercase font-medium bg-muted text-muted-foreground">
-                            {tmpl.transport}
-                          </span>
-                        </div>
-                        <span className="text-[11px] text-muted-foreground line-clamp-2 mb-2">
-                          {tmpl.description}
-                        </span>
-                        <span className="text-[11px] font-semibold text-primary">
-                          Pré-remplir la configuration →
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <Button
-                  className="gap-2 text-xs font-medium"
-                  onClick={() => handleNewServer()}
-                >
-                  <PlusIcon className="size-4" />
-                  <span>Configurer un serveur personnalisé</span>
-                </Button>
-              </div>
-            ) : filteredServers.length === 0 ? (
-              <div className="py-12 text-center text-muted-foreground text-sm">
-                Aucun serveur ne correspond à votre recherche.
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredServers.map((s) => {
-                  const toolsCount = (s.toolsCache as any[])?.length || 0;
-                  const overrides =
-                    ((s as any).toolOverrides as Record<string, any>) ?? {};
-                  const enabledCount = ((s.toolsCache as any[]) || []).filter(
-                    (t) => overrides[t.name]?.enabled !== false
-                  ).length;
-                  return (
-                    <div
-                      className={cn(
-                        "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md relative group",
-                        s.isEnabled
-                          ? "border-border/60"
-                          : "border-border/40 opacity-70 bg-muted/20"
-                      )}
-                      key={s.id}
-                    >
-                      <div className="flex items-start justify-between gap-2 mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="size-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">
-                            <ServerIcon className="size-5" />
-                          </div>
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-1.5">
-                              <h3 className="font-semibold text-sm text-foreground truncate">
-                                {s.name}
-                              </h3>
-                              <span
-                                className={cn(
-                                  "size-2 rounded-full",
-                                  s.isEnabled
-                                    ? "bg-emerald-500"
-                                    : "bg-muted-foreground/40"
-                                )}
-                                title={s.isEnabled ? "Actif" : "Inactif"}
-                              />
-                            </div>
-                            <p className="text-[11.5px] text-muted-foreground truncate">
-                              {s.description ||
-                                (s.transport === "stdio" ? s.command : s.url) ||
-                                "Aucune description"}
-                            </p>
-                          </div>
-                        </div>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              className="size-7 p-0 text-muted-foreground hover:text-foreground"
-                              variant="ghost"
-                            >
-                              <MoreVerticalIcon className="size-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent
-                            align="end"
-                            className="w-48"
-                            collisionPadding={12}
-                            side="bottom"
-                            sideOffset={6}
-                          >
-                            <DropdownMenuItem
-                              className="gap-2 cursor-pointer text-xs"
-                              onClick={() => handleToggleEnabled(s)}
-                            >
-                              <ZapIcon className="size-3.5" />
-                              <span>
-                                {s.isEnabled ? "Désactiver" : "Activer"}
-                              </span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              className="gap-2 cursor-pointer text-xs"
-                              onClick={() => handleRefreshTools(s)}
-                            >
-                              <RefreshCwIcon className="size-3.5" />
-                              <span>Synchroniser les outils</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              className="gap-2 cursor-pointer text-xs"
-                              onClick={() => setIsInspectingTools(s)}
-                            >
-                              <WrenchIcon className="size-3.5" />
-                              <span>Gérer les outils ({toolsCount})</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              className="gap-2 cursor-pointer text-xs"
-                              onClick={() => handleEditServer(s)}
-                            >
-                              <Edit2Icon className="size-3.5" />
-                              <span>Modifier</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem
-                              className="gap-2 cursor-pointer text-xs text-destructive focus:text-destructive"
-                              onClick={() => setSkillToDelete(s)}
-                            >
-                              <Trash2Icon className="size-3.5" />
-                              <span>Supprimer</span>
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </div>
-                      <div className="flex items-center gap-1.5 flex-wrap mb-2 text-[10.5px] text-muted-foreground">
-                        <span
-                          className={cn(
-                            (s as any).uptimeStatus === "online"
-                              ? "text-emerald-600 dark:text-emerald-400"
-                              : "text-amber-600 dark:text-amber-400"
-                          )}
-                        >
-                          ● {(s as any).uptimeStatus ?? "unknown"}
-                        </span>
-                        <span>·</span>
-                        <span>
-                          {enabledCount}/{toolsCount} actifs
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                        <Badge
-                          className="text-[10px] uppercase font-semibold px-2 py-0.5"
-                          variant="outline"
-                        >
-                          {s.transport}
-                        </Badge>
-                        <Badge
-                          className="text-[10px] px-2 py-0.5"
-                          variant={
-                            s.authType === "none" ? "outline" : "secondary"
-                          }
-                        >
-                          {s.authType === "none"
-                            ? "Pas d'auth"
-                            : `Auth: ${s.authType}`}
-                        </Badge>
-                        <Badge
-                          className={cn(
-                            "text-[10px] px-2 py-0.5",
-                            s.requireApproval === "ask_permission"
-                              ? "bg-amber-500/10 text-amber-600 border-amber-500/30"
-                              : s.requireApproval === "write_only"
-                                ? "bg-sky-500/10 text-sky-600 border-sky-500/30"
-                                : "bg-emerald-500/10 text-emerald-600 border-emerald-500/30"
-                          )}
-                          variant="outline"
-                        >
-                          <ShieldCheckIcon className="size-2.5 mr-1" />
-                          {s.requireApproval === "ask_permission"
-                            ? "Toujours demander"
-                            : s.requireApproval === "write_only"
-                              ? "Accord écriture"
-                              : "Auto-approuvé"}
-                        </Badge>
-                        <Badge
-                          className="text-[10px] px-2 py-0.5"
-                          variant="outline"
-                        >
-                          ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
-                          {(s as any).rateLimitPerMin ?? 60}/min
-                        </Badge>
-                      </div>
-                      <div className="pt-2 border-t border-border/40 mt-auto flex items-center justify-between text-xs text-muted-foreground">
-                        <button
-                          className="hover:underline flex items-center gap-1 text-[11px] font-medium text-foreground"
-                          onClick={() => setIsInspectingTools(s)}
-                          type="button"
-                        >
-                          <WrenchIcon className="size-3 text-primary" />
-                          <span>
-                            {enabledCount}/{toolsCount} outil(s) actif(s)
-                          </span>
-                        </button>
-                        <Button
-                          aria-label="Synchroniser les outils"
-                          className="h-6 w-6 p-0"
-                          onClick={() => handleRefreshTools(s)}
-                          size="sm"
-                          title="Synchroniser les outils"
-                          variant="ghost"
-                        >
-                          <RefreshCwIcon className="size-3" />
-                        </Button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+          <McpServersTab
+            filteredServers={filteredServers}
+            handleEditServer={handleEditServer}
+            handleNewServer={handleNewServer}
+            handleRefreshTools={handleRefreshTools}
+            handleToggleEnabled={handleToggleEnabled}
+            installableTemplates={installableTemplates}
+            isLoading={isLoading}
+            servers={servers}
+            setIsInspectingTools={setIsInspectingTools}
+            setSkillToDelete={setSkillToDelete}
+          />
         )}
         {activeTab === "library" && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-bold">
-                Bibliothèque MCP — {installableTemplates.length} modèles
-                installables sur {templates.length}
-              </h2>
-              <Button onClick={() => mutateTpl()} size="sm" variant="outline">
-                Actualiser
-              </Button>
-            </div>
-            {templates.length === 0 ? (
-              <div className="text-xs text-muted-foreground p-8 border rounded-xl text-center">
-                Chargement marketplace...
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {templates.map((tpl) => (
-                  <div
-                    className="rounded-2xl border bg-card p-4 flex flex-col"
-                    key={tpl.id}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-xs">{tpl.name}</span>
-                      <div className="flex items-center gap-1.5">
-                        <Badge className="text-[10px]" variant="outline">
-                          {tpl.transport}
-                        </Badge>
-                        {tpl.activation === "requires_oauth_flow" ? (
-                          <Badge
-                            className="border-amber-500/30 bg-amber-500/10 text-[10px] text-amber-700 dark:text-amber-400"
-                            variant="outline"
-                          >
-                            OAuth requise
-                          </Badge>
-                        ) : tpl.activation === "requires_vetted_stdio" ? (
-                          <Badge
-                            className="border-amber-500/30 bg-amber-500/10 text-[10px] text-amber-700 dark:text-amber-400"
-                            variant="outline"
-                          >
-                            stdio à vérifier
-                          </Badge>
-                        ) : null}
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
-                      {tpl.description}
-                    </p>
-                    <div className="flex gap-1.5 mt-auto">
-                      <Button
-                        className="flex-1 h-7 text-xs"
-                        disabled={tpl.activation !== "ready"}
-                        onClick={() => handleInstallTemplate(tpl)}
-                        size="sm"
-                        title={
-                          tpl.activation === "ready"
-                            ? undefined
-                            : tpl.activation === "requires_vetted_stdio"
-                              ? "Wrapper stdio non vérifié : installation indisponible pour le moment."
-                              : "Flux OAuth interactif non pris en charge : installation indisponible pour le moment."
-                        }
-                      >
-                        <PlusIcon className="size-3 mr-1" />
-                        Installer
-                      </Button>
-                      <Button
-                        className="h-7 text-xs"
-                        onClick={() => handleCopyTemplate(tpl)}
-                        size="sm"
-                        variant="outline"
-                      >
-                        <CopyIcon className="size-3 mr-1" />
-                        Copier
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-                {installableTemplates.map((t) => (
-                  <div
-                    className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
-                    key={`${t.id}preset`}
-                  >
-                    <span className="font-semibold text-xs mb-1">
-                      {t.name} (pré-remplissage)
-                    </span>
-                    <p className="text-[11px] text-muted-foreground mb-3">
-                      {t.description}
-                    </p>
-                    <Button
-                      className="h-7 text-xs"
-                      onClick={() => handleNewServer(t)}
-                      size="sm"
-                      variant="outline"
-                    >
-                      Utiliser
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <McpLibraryTab
+            handleCopyTemplate={handleCopyTemplate}
+            handleInstallTemplate={handleInstallTemplate}
+            handleNewServer={handleNewServer}
+            installableTemplates={installableTemplates}
+            mutateTpl={mutateTpl}
+            templates={templates}
+          />
         )}
-        {activeTab === "tutorial" && (
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="rounded-2xl border border-border/60 bg-card p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="size-10 rounded-xl bg-sky-500/10 text-sky-600 flex items-center justify-center">
-                  <BookOpenIcon className="size-5" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold">
-                    Qu'est-ce que le Model Context Protocol (MCP) ?
-                  </h2>
-                  <p className="text-xs text-muted-foreground">
-                    Le standard ouvert pour connecter l'IA à vos systèmes
-                    d'information
-                  </p>
-                </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Le <strong>Model Context Protocol (MCP)</strong> est un
-                protocole standardisé via JSON-RPC 2.0. Ajoutez un serveur,
-                cochez les outils autorisés, liez-le à un Skill, et contrôlez
-                chaque appel via les permissions per-tool.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="rounded-2xl border border-border/50 bg-card p-4">
-                <div className="flex items-center gap-2 mb-2 text-primary font-semibold text-xs">
-                  <span className="size-5 rounded-full bg-primary/10 flex items-center justify-center text-xs">
-                    1
-                  </span>
-                  <span>Connectez</span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  URL SSE/HTTP ou commande stdio + timeout/rate-limit.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border/50 bg-card p-4">
-                <div className="flex items-center gap-2 mb-2 text-sky-500 font-semibold text-xs">
-                  <span className="size-5 rounded-full bg-sky-500/10 flex items-center justify-center text-xs">
-                    2
-                  </span>
-                  <span>Autorisez per-tool</span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Activez/désactivez chaque outil + son niveau d'approbation.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border/50 bg-card p-4">
-                <div className="flex items-center gap-2 mb-2 text-purple-500 font-semibold text-xs">
-                  <span className="size-5 rounded-full bg-purple-500/10 flex items-center justify-center text-xs">
-                    3
-                  </span>
-                  <span>Liez à un Skill</span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Dans Skills, whitelist les serveurs/outils pour ce Skill.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-border/60 bg-card p-6">
-              <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
-                <TerminalIcon className="size-4 text-purple-500" />
-                <span>Exemples</span>
-              </h3>
-              <div className="space-y-4 text-xs">
-                <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
-                  <span className="text-muted-foreground block mb-1">
-                    # SSE GitHub
-                  </span>
-                  <span className="text-primary block font-semibold">
-                    URL: https://github-mcp.company.com/sse
-                  </span>
-                  <span className="text-muted-foreground block">
-                    Auth: bearer • timeout 15000ms • rate 60/min
-                  </span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
-                  <span className="text-muted-foreground block mb-1">
-                    # Stdio Postgres (vars chiffrées)
-                  </span>
-                  <span className="text-primary block font-semibold">
-                    Commande: npx -y @modelcontextprotocol/server-postgres
-                  </span>
-                  <span className="text-muted-foreground block">
-                    Env: PGPASSWORD=••••
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {activeTab === "tutorial" && <McpTutorialTab />}
         {activeTab === "logs" && (
-          <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div>
-                <h2 className="text-sm font-bold">Historique d'audit</h2>
-                <p className="text-xs text-muted-foreground">
-                  Filtres + export 4 formats
-                </p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Input
-                  className="h-7 text-xs w-28"
-                  onChange={(e) => setLogServerFilter(e.target.value)}
-                  placeholder="Serveur"
-                  value={logServerFilter}
-                />
-                <Input
-                  className="h-7 text-xs w-28"
-                  onChange={(e) => setLogToolFilter(e.target.value)}
-                  placeholder="Outil"
-                  value={logToolFilter}
-                />
-                <select
-                  className="h-7 rounded-md border bg-background px-2 text-xs"
-                  onChange={(e) => setLogActionFilter(e.target.value)}
-                  value={logActionFilter}
-                >
-                  <option value="">Tous actions</option>
-                  <option value="read">read</option>
-                  <option value="write">write</option>
-                  <option value="delete">delete</option>
-                  <option value="execute">execute</option>
-                </select>
-                <Button
-                  className="h-7 text-xs"
-                  onClick={() => mutateLogs()}
-                  size="sm"
-                  variant="outline"
-                >
-                  <RefreshCwIcon className="size-3 mr-1" />
-                  Actualiser
-                </Button>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button className="h-7 text-xs" size="sm" variant="outline">
-                      <DownloadIcon className="size-3 mr-1" />
-                      Exporter
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem
-                      onClick={() => handleExport("json", "logs")}
-                    >
-                      JSON
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleExport("csv", "logs")}
-                    >
-                      CSV
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleExport("md", "logs")}
-                    >
-                      MD
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleExport("txt", "logs")}
-                    >
-                      TXT
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <Button
-                  className="h-7 text-xs"
-                  onClick={handlePurgeLogs}
-                  size="sm"
-                  variant="destructive"
-                >
-                  <Trash2Icon className="size-3 mr-1" />
-                  Purger
-                </Button>
-              </div>
-            </div>
-            {filteredLogs.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-border/80 p-12 text-center text-muted-foreground text-xs">
-                Aucun log correspondant.
-              </div>
-            ) : (
-              <div className="rounded-2xl border border-border/60 bg-card overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs">
-                    <thead className="border-b border-border/40 bg-muted/40 text-muted-foreground font-medium">
-                      <tr>
-                        <th className="py-2.5 px-3">Date</th>
-                        <th className="py-2.5 px-3">Serveur</th>
-                        <th className="py-2.5 px-3">Outil</th>
-                        <th className="py-2.5 px-3">Action</th>
-                        <th className="py-2.5 px-3">Statut</th>
-                        <th className="py-2.5 px-3">Latence</th>
-                        <th className="py-2.5 px-3 text-right">Détails</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border/30">
-                      {filteredLogs.map((log) => (
-                        <tr className="hover:bg-muted/30" key={log.id}>
-                          <td className="py-2.5 px-3 whitespace-nowrap text-muted-foreground font-mono text-[11px]">
-                            {new Date(log.createdAt).toLocaleTimeString(
-                              "fr-FR",
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                second: "2-digit",
-                              }
-                            )}
-                          </td>
-                          <td className="py-2.5 px-3 font-medium whitespace-nowrap">
-                            {log.serverName}
-                          </td>
-                          <td className="py-2.5 px-3 font-mono text-[11px] text-primary whitespace-nowrap">
-                            {log.toolName}
-                          </td>
-                          <td className="py-2.5 px-3 whitespace-nowrap">
-                            <Badge
-                              className={cn(
-                                "text-[10px] uppercase font-semibold",
-                                log.actionType === "write" ||
-                                  log.actionType === "delete"
-                                  ? "bg-amber-500/10 text-amber-600 border-amber-500/20"
-                                  : "bg-sky-500/10 text-sky-600 border-sky-500/20"
-                              )}
-                              variant="outline"
-                            >
-                              {log.actionType}
-                            </Badge>
-                          </td>
-                          <td className="py-2.5 px-3 whitespace-nowrap">
-                            <span className="inline-flex items-center gap-1 text-[11px]">
-                              {log.error ? (
-                                <span className="text-destructive font-medium">
-                                  Erreur
-                                </span>
-                              ) : (
-                                <span className="text-emerald-600 font-medium flex items-center gap-1">
-                                  <CheckCircle2Icon className="size-3" />
-                                  Succès
-                                </span>
-                              )}
-                            </span>
-                          </td>
-                          <td className="py-2.5 px-3 font-mono text-[11px] text-muted-foreground whitespace-nowrap">
-                            {log.durationMs} ms
-                          </td>
-                          <td className="py-2.5 px-3 text-right whitespace-nowrap">
-                            <Button
-                              className="h-6 px-2 text-[10.5px]"
-                              onClick={() => {
-                                toast.info(
-                                  `Arguments: ${JSON.stringify(log.inputPayload ?? {})}`
-                                );
-                              }}
-                              size="sm"
-                              variant="ghost"
-                            >
-                              Voir payload
-                            </Button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
-          </div>
+          <McpLogsTab
+            filteredLogs={filteredLogs as any}
+            handleExport={handleExport}
+            handlePurgeLogs={handlePurgeLogs}
+            logActionFilter={logActionFilter}
+            logServerFilter={logServerFilter}
+            logToolFilter={logToolFilter}
+            mutateLogs={mutateLogs}
+            setLogActionFilter={setLogActionFilter}
+            setLogServerFilter={setLogServerFilter}
+            setLogToolFilter={setLogToolFilter}
+          />
         )}
         {activeTab === "settings" && (
-          <div className="py-2 max-w-3xl">
-            <div className="p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 ring-1 ring-purple-500/20">
-                  <SettingsIcon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold">
-                    Contrôle global MCP
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Kill-switch, timeout, rate-limit et permissions par défaut.
-                  </p>
-                </div>
-                <span
-                  className={`ml-auto text-xs px-2 py-1 rounded-full border font-medium ${mcpKillSwitch ? "bg-red-500/10 text-red-600 border-red-500/20" : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"}`}
-                >
-                  {mcpKillSwitch ? "MCP OFF" : "MCP ON"}
-                </span>
-              </div>
-              <label className="flex items-center justify-between p-3 rounded-xl border border-red-500/20 bg-red-500/5 cursor-pointer">
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-red-600">
-                    Kill-switch global
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    Désactive tous les appels MCP instantanément
-                  </span>
-                </div>
-                <input
-                  checked={mcpKillSwitch}
-                  className="size-5 accent-red-600"
-                  onChange={(e) => setMcpKillSwitch(e.target.checked)}
-                  type="checkbox"
-                />
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium">
-                    Permission par défaut
-                  </Label>
-                  <select
-                    className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm"
-                    onChange={(e) =>
-                      setMcpDefaultApproval(e.target.value as any)
-                    }
-                    value={mcpDefaultApproval}
-                  >
-                    <option value="always_allow">always_allow (auto)</option>
-                    <option value="write_only">write_only (recommandé)</option>
-                    <option value="ask_permission">
-                      ask_permission (strict)
-                    </option>
-                  </select>
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium">
-                    Timeout par défaut (ms)
-                  </Label>
-                  <Input
-                    max={120_000}
-                    min={1000}
-                    onChange={(e) =>
-                      setMcpDefaultTimeout(Number(e.target.value))
-                    }
-                    step={1000}
-                    type="number"
-                    value={mcpDefaultTimeout}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium">
-                    Rate limit par défaut (/min)
-                  </Label>
-                  <Input
-                    max={1000}
-                    min={1}
-                    onChange={(e) =>
-                      setMcpDefaultRateLimit(Number(e.target.value))
-                    }
-                    type="number"
-                    value={mcpDefaultRateLimit}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium">
-                    Rétention logs (jours)
-                  </Label>
-                  <Input
-                    max={50}
-                    min={1}
-                    onChange={(e) => setMcpRetention(Number(e.target.value))}
-                    type="number"
-                    value={mcpRetention}
-                  />
-                  <span className="text-[11px] text-muted-foreground">
-                    Maximum 50 jours (entre 1 et 50).
-                  </span>
-                </div>
-              </div>
-              <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">
-                    Autoriser transport stdio (local)
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    Si désactivé, toute création stdio sera bloquée (403)
-                  </span>
-                </div>
-                <input
-                  checked={mcpAllowStdio}
-                  className="size-5 accent-primary"
-                  onChange={(e) => setMcpAllowStdio(e.target.checked)}
-                  type="checkbox"
-                />
-              </label>
-              <div className="flex items-center gap-2 justify-end">
-                <Button
-                  className="h-8 text-xs"
-                  onClick={handlePurgeMcp}
-                  size="sm"
-                  variant="destructive"
-                >
-                  <Trash2Icon className="size-3 mr-1" />
-                  Purger tous les logs
-                </Button>
-                <Button
-                  className="h-8 text-xs"
-                  disabled={isSavingMcpPrefs}
-                  onClick={handleSaveMcpPrefs}
-                  size="sm"
-                >
-                  {isSavingMcpPrefs ? (
-                    <>
-                      <Loader2Icon className="size-3 mr-1 animate-spin" />
-                      Enregistrement...
-                    </>
-                  ) : (
-                    "Enregistrer préférences MCP"
-                  )}
-                </Button>
-              </div>
-              <div className="p-3 rounded-xl border border-border/40 bg-muted/20 text-[11px] text-muted-foreground">
-                Ces réglages s'appliquent à tous les serveurs. Exports
-                disponibles en JSON/CSV/MD/TXT depuis /mcp et /skills.
-              </div>
-            </div>
-          </div>
+          <McpSettingsTab
+            handlePurgeMcp={handlePurgeMcp}
+            handleSaveMcpPrefs={handleSaveMcpPrefs}
+            isSavingMcpPrefs={isSavingMcpPrefs}
+            mcpAllowStdio={mcpAllowStdio}
+            mcpDefaultApproval={mcpDefaultApproval as any}
+            mcpDefaultRateLimit={mcpDefaultRateLimit}
+            mcpDefaultTimeout={mcpDefaultTimeout}
+            mcpKillSwitch={mcpKillSwitch}
+            mcpRetention={mcpRetention}
+            setMcpAllowStdio={setMcpAllowStdio}
+            setMcpDefaultApproval={setMcpDefaultApproval as any}
+            setMcpDefaultRateLimit={setMcpDefaultRateLimit}
+            setMcpDefaultTimeout={setMcpDefaultTimeout}
+            setMcpKillSwitch={setMcpKillSwitch}
+            setMcpRetention={setMcpRetention}
+          />
         )}
       </main>
-      <Dialog onOpenChange={setIsServerModalOpen} open={isServerModalOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {editingServer
-                ? "Modifier le serveur MCP"
-                : "Connecter un nouveau serveur MCP"}
-            </DialogTitle>
-            <DialogDescription>
-              Configurez transport, auth, timeout, rate-limit, variables
-              d'environnement et permissions.
-            </DialogDescription>
-          </DialogHeader>
-          <form
-            className="flex flex-col gap-4 py-2"
-            onSubmit={handleSaveServer}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label className="text-xs font-semibold">
-                  Nom du serveur *
-                </Label>
-                <Input
-                  onChange={(e) => setFormName(e.target.value)}
-                  placeholder="Ex: GitHub MCP"
-                  required
-                  value={formName}
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Moyen d'appel *</Label>
-                <select
-                  className="w-full rounded-md border border-border bg-background px-3 py-2 text-xs font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                  onChange={(e) => setFormTransport(e.target.value as any)}
-                  value={formTransport}
-                >
-                  <option value="sse">Distant SSE</option>
-                  <option value="http">Distant HTTP</option>
-                  <option value="stdio">Local Stdio</option>
-                  <option value="websocket">WebSocket</option>
-                </select>
-              </div>
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">Description</Label>
-              <Input
-                onChange={(e) => setFormDescription(e.target.value)}
-                placeholder="Rôle ou données exposées..."
-                value={formDescription}
-              />
-            </div>
-            {formTransport === "stdio" ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-muted/30 border border-border/50">
-                <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold">
-                    Commande système *
-                  </Label>
-                  <Input
-                    onChange={(e) => setFormCommand(e.target.value)}
-                    placeholder="npx ou python"
-                    required
-                    value={formCommand}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold">Arguments</Label>
-                  <Input
-                    onChange={(e) => setFormArgs(e.target.value)}
-                    placeholder="-y @modelcontextprotocol/server-postgres ..."
-                    value={formArgs}
-                  />
-                </div>
-                <div className="sm:col-span-2 space-y-1.5">
-                  <Label className="text-xs font-semibold">
-                    Variables d'environnement
-                  </Label>
-                  {formEnvPairs.map((p, idx) => (
-                    <div className="flex gap-2" key={idx}>
-                      <Input
-                        className="h-8 text-xs flex-1"
-                        onChange={(e) =>
-                          setFormEnvPairs((prev) =>
-                            prev.map((x, i) =>
-                              i === idx ? { ...x, k: e.target.value } : x
-                            )
-                          )
-                        }
-                        placeholder="CLÉ"
-                        value={p.k}
-                      />
-                      <Input
-                        className="h-8 text-xs flex-1"
-                        onChange={(e) =>
-                          setFormEnvPairs((prev) =>
-                            prev.map((x, i) =>
-                              i === idx ? { ...x, v: e.target.value } : x
-                            )
-                          )
-                        }
-                        placeholder="valeur (chiffrée)"
-                        value={p.v}
-                      />
-                      <Button
-                        onClick={() =>
-                          setFormEnvPairs((prev) =>
-                            prev.filter((_, i) => i !== idx)
-                          )
-                        }
-                        size="sm"
-                        type="button"
-                        variant="ghost"
-                      >
-                        <Trash2Icon className="size-3" />
-                      </Button>
-                    </div>
-                  ))}
-                  <Button
-                    className="h-7 text-xs"
-                    onClick={() =>
-                      setFormEnvPairs((prev) => [...prev, { k: "", v: "" }])
-                    }
-                    size="sm"
-                    type="button"
-                    variant="outline"
-                  >
-                    <PlusIcon className="size-3 mr-1" />
-                    Ajouter variable
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
-                  URL du serveur MCP *
-                </Label>
-                <Input
-                  onChange={(e) => setFormUrl(e.target.value)}
-                  placeholder="https://votre-serveur-mcp.com/sse"
-                  required
-                  value={formUrl}
-                />
-              </div>
-            )}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Timeout (ms)</Label>
-                <Input
-                  max={120_000}
-                  min={1000}
-                  onChange={(e) => setFormTimeoutMs(Number(e.target.value))}
-                  step={1000}
-                  type="number"
-                  value={formTimeoutMs}
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Rate limit /min</Label>
-                <Input
-                  max={1000}
-                  min={1}
-                  onChange={(e) => setFormRateLimit(Number(e.target.value))}
-                  type="number"
-                  value={formRateLimit}
-                />
-              </div>
-            </div>
-            <div className="space-y-3 p-3.5 rounded-xl border border-border/60 bg-muted/20">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <KeyIcon className="size-4 text-primary" />
-                  <Label className="text-xs font-semibold">
-                    Authentification
-                  </Label>
-                </div>
-                <select
-                  className="rounded-md border border-border bg-background px-2.5 py-1 text-xs text-foreground"
-                  onChange={(e) => setFormAuthType(e.target.value as any)}
-                  value={formAuthType}
-                >
-                  <option value="none">Aucune</option>
-                  <option value="bearer">Bearer</option>
-                  <option value="basic">Basic</option>
-                  <option value="custom_headers">En-têtes JSON</option>
-                </select>
-              </div>
-              {formAuthType === "bearer" && (
-                <div className="space-y-1.5">
-                  <Label className="text-xs">Jeton Bearer</Label>
-                  <Input
-                    onChange={(e) => setFormToken(e.target.value)}
-                    placeholder="eyJ..."
-                    type="password"
-                    value={formToken}
-                  />
-                </div>
-              )}
-              {formAuthType === "basic" && (
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-1.5">
-                    <Label className="text-xs">Utilisateur</Label>
-                    <Input
-                      onChange={(e) => setFormUsername(e.target.value)}
-                      value={formUsername}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs">Mot de passe</Label>
-                    <Input
-                      onChange={(e) => setFormPassword(e.target.value)}
-                      type="password"
-                      value={formPassword}
-                    />
-                  </div>
-                </div>
-              )}
-              {formAuthType === "custom_headers" && (
-                <div className="space-y-1.5">
-                  <Label className="text-xs">En-têtes JSON</Label>
-                  <Textarea
-                    className="font-mono text-xs h-20"
-                    onChange={(e) => setFormHeaders(e.target.value)}
-                    placeholder='{"X-API-Key":"..."}'
-                    value={formHeaders}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="space-y-2 p-3.5 rounded-xl border border-primary/20 bg-primary/[0.02]">
-              <div className="flex items-center gap-2">
-                <ShieldAlertIcon className="size-4 text-primary" />
-                <Label className="text-xs font-semibold">
-                  Politique globale (héritée par les outils)
-                </Label>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-                <button
-                  className={cn(
-                    "flex flex-col text-left p-2.5 rounded-xl border transition-colors cursor-pointer",
-                    formRequireApproval === "always_allow"
-                      ? "border-emerald-500 bg-emerald-500/10"
-                      : "border-border/50 hover:bg-muted/30"
-                  )}
-                  onClick={() => setFormRequireApproval("always_allow")}
-                  type="button"
-                >
-                  <span className="font-semibold text-xs flex items-center gap-1.5">
-                    <CircleIcon className="size-2.5 fill-emerald-500 text-emerald-500" />
-                    Automatique
-                  </span>
-                  <span className="text-[10px] text-muted-foreground">
-                    Sans confirmation
-                  </span>
-                </button>
-                <button
-                  className={cn(
-                    "flex flex-col text-left p-2.5 rounded-xl border transition-colors cursor-pointer",
-                    formRequireApproval === "write_only"
-                      ? "border-sky-500 bg-sky-500/10"
-                      : "border-border/50 hover:bg-muted/30"
-                  )}
-                  onClick={() => setFormRequireApproval("write_only")}
-                  type="button"
-                >
-                  <span className="font-semibold text-xs flex items-center gap-1.5">
-                    <CircleIcon className="size-2.5 fill-sky-500 text-sky-500" />
-                    Écriture
-                  </span>
-                  <span className="text-[10px] text-muted-foreground">
-                    Lecture directe
-                  </span>
-                </button>
-                <button
-                  className={cn(
-                    "flex flex-col text-left p-2.5 rounded-xl border transition-colors cursor-pointer",
-                    formRequireApproval === "ask_permission"
-                      ? "border-amber-500 bg-amber-500/10"
-                      : "border-border/50 hover:bg-muted/30"
-                  )}
-                  onClick={() => setFormRequireApproval("ask_permission")}
-                  type="button"
-                >
-                  <span className="font-semibold text-xs flex items-center gap-1.5">
-                    <CircleIcon className="size-2.5 fill-amber-500 text-amber-500" />
-                    Systématique
-                  </span>
-                  <span className="text-[10px] text-muted-foreground">
-                    Toujours demander
-                  </span>
-                </button>
-              </div>
-            </div>
-            {testResult && (
-              <div
-                className={cn(
-                  "p-3 rounded-xl border text-xs flex items-center gap-2",
-                  testResult.success
-                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600"
-                    : "border-destructive/30 bg-destructive/10 text-destructive"
-                )}
-              >
-                {testResult.success ? (
-                  <CheckCircle2Icon className="size-4 shrink-0" />
-                ) : (
-                  <AlertCircleIcon className="size-4 shrink-0" />
-                )}
-                <span>{testResult.message}</span>
-              </div>
-            )}
-            <DialogFooter className="pt-2 flex items-center justify-between sm:justify-between w-full">
-              <Button
-                disabled={isTesting}
-                onClick={handleTestConnection}
-                type="button"
-                variant="outline"
-              >
-                {isTesting ? (
-                  <>
-                    <Loader2Icon className="size-3.5 mr-1.5 animate-spin" />
-                    Test...
-                  </>
-                ) : (
-                  <>
-                    <RefreshCwIcon className="size-3.5 mr-1.5" />
-                    Tester
-                  </>
-                )}
-              </Button>
-              <div className="flex items-center gap-2">
-                <Button
-                  onClick={() => setIsServerModalOpen(false)}
-                  type="button"
-                  variant="ghost"
-                >
-                  Annuler
-                </Button>
-                <Button disabled={isSaving} type="submit">
-                  {isSaving ? "Enregistrement..." : "Sauvegarder"}
-                </Button>
-              </div>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
-      <Dialog
-        onOpenChange={(open) => !open && setIsInspectingTools(null)}
-        open={Boolean(isInspectingTools)}
-      >
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>Outils : {isInspectingTools?.name}</DialogTitle>
-            <DialogDescription>
-              {((isInspectingTools?.toolsCache as any[]) || []).length} outil(s)
-              — cochez per-tool + permission.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-3 py-2">
-            {((isInspectingTools?.toolsCache as any[]) || []).length === 0 && (
-              <div className="text-xs text-muted-foreground text-center p-4">
-                Aucun outil — synchronisez.
-              </div>
-            )}
-            {((isInspectingTools?.toolsCache as any[]) || []).map(
-              (t: any, idx: number) => {
-                const overrides =
-                  ((isInspectingTools as any)?.toolOverrides as Record<
-                    string,
-                    any
-                  >) ?? {};
-                const ov = overrides[t.name];
-                const enabled = ov?.enabled !== false;
-                const approval = ov?.requireApproval ?? null;
-                return (
-                  <div
-                    className={cn(
-                      "p-3 rounded-xl border",
-                      enabled
-                        ? "border-border/50 bg-muted/10"
-                        : "border-border/30 bg-muted/5 opacity-60"
-                    )}
-                    key={idx}
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <span className="font-mono text-xs font-semibold text-primary">
-                        {t.name}
-                      </span>
-                      <label className="flex items-center gap-1.5 text-xs cursor-pointer">
-                        <input
-                          checked={enabled}
-                          className="size-4 accent-primary"
-                          onChange={() =>
-                            handleToggleTool(isInspectingTools!, t.name)
-                          }
-                          type="checkbox"
-                        />
-                        <span>{enabled ? "Activé" : "Désactivé"}</span>
-                      </label>
-                    </div>
-                    <p className="text-xs text-muted-foreground mb-2">
-                      {t.description || "Aucune description"}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <Label className="text-[11px]">Permission outil:</Label>
-                      <select
-                        className="h-7 rounded-md border bg-background px-2 text-xs"
-                        onChange={(e) =>
-                          handleSetToolApproval(
-                            isInspectingTools!,
-                            t.name,
-                            e.target.value || null
-                          )
-                        }
-                        value={approval ?? ""}
-                      >
-                        <option value="">
-                          Hérite (
-                          {(isInspectingTools as any)?.requireApproval ??
-                            "write_only"}
-                          )
-                        </option>
-                        <option value="always_allow">always_allow</option>
-                        <option value="write_only">write_only</option>
-                        <option value="ask_permission">ask_permission</option>
-                      </select>
-                    </div>
-                    {t.inputSchema?.properties && (
-                      <div className="pt-2 border-t border-border/30 text-[11px] font-mono">
-                        <span className="block font-sans font-medium text-[10px] uppercase mb-1">
-                          Params:
-                        </span>
-                        {Object.entries(t.inputSchema.properties).map(
-                          ([k, p]: [string, any]) => (
-                            <div className="flex gap-1.5" key={k}>
-                              <span className="text-foreground">{k}</span>
-                              <span className="text-muted-foreground/60">
-                                ({p.type})
-                              </span>
-                              <span className="truncate">{p.description}</span>
-                            </div>
-                          )
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-            )}
-          </div>
-          <DialogFooter>
-            <Button
-              onClick={() =>
-                isInspectingTools && handleRefreshTools(isInspectingTools)
-              }
-              size="sm"
-              variant="outline"
-            >
-              Resynchroniser
-            </Button>
-            <Button onClick={() => setIsInspectingTools(null)} size="sm">
-              Fermer
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <McpServerModal
+        editingServer={editingServer as any}
+        formArgs={formArgs}
+        formAuthType={formAuthType}
+        formCommand={formCommand}
+        formDescription={formDescription}
+        formEnvPairs={formEnvPairs}
+        formHeaders={formHeaders}
+        formName={formName}
+        formPassword={formPassword}
+        formRateLimit={formRateLimit}
+        formRequireApproval={formRequireApproval}
+        formTimeoutMs={formTimeoutMs}
+        formToken={formToken}
+        formTransport={formTransport}
+        formUrl={formUrl}
+        formUsername={formUsername}
+        handleSaveServer={handleSaveServer}
+        handleTestConnection={handleTestConnection}
+        isOpen={isServerModalOpen}
+        isSaving={isSaving}
+        isTesting={isTesting}
+        setFormArgs={setFormArgs}
+        setFormAuthType={setFormAuthType}
+        setFormCommand={setFormCommand}
+        setFormDescription={setFormDescription}
+        setFormEnvPairs={setFormEnvPairs}
+        setFormHeaders={setFormHeaders}
+        setFormName={setFormName}
+        setFormPassword={setFormPassword}
+        setFormRateLimit={setFormRateLimit}
+        setFormRequireApproval={setFormRequireApproval}
+        setFormTimeoutMs={setFormTimeoutMs}
+        setFormToken={setFormToken}
+        setFormTransport={setFormTransport}
+        setFormUrl={setFormUrl}
+        setFormUsername={setFormUsername}
+        setIsOpen={setIsServerModalOpen}
+        testResult={testResult}
+      />
+      <McpInspectToolsModal
+        handleRefreshTools={handleRefreshTools as any}
+        handleSetToolApproval={handleSetToolApproval as any}
+        handleToggleTool={handleToggleTool as any}
+        isInspectingTools={isInspectingTools as any}
+        setIsInspectingTools={(s) => setIsInspectingTools(s as any)}
+      />
       <AlertDialog
         onOpenChange={(open) => !open && setSkillToDelete(null)}
         open={Boolean(serverToDelete)}

@@ -7,7 +7,7 @@ import {
   ImageIcon,
   InfoIcon,
   Volume2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import type { ReactNode } from "react";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
@@ -16,7 +16,6 @@ import {
   formatTokensFr,
 } from "@/lib/account/format";
 import type { UsageSummary } from "@/lib/account/usage";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type AccountUsageCardProps = {
@@ -161,15 +160,24 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
                   Forfait actuel
                 </span>
               </div>
-              <a
-                className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
-                href={MAI_UPGRADE_URL}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Gérer / Mettre à niveau
-                <ExternalLinkIcon className="size-3" />
-              </a>
+              {(() => {
+                const current = (output.tier || "").toLowerCase().trim();
+                const target =
+                  current === "free"
+                    ? "pro"
+                    : current === "plus"
+                      ? "pro"
+                      : "max";
+                return (
+                  <a
+                    className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                    href={`/site/pricing?plan=${target}`}
+                  >
+                    Gérer / Mettre à niveau
+                    <ExternalLinkIcon className="size-3" />
+                  </a>
+                );
+              })()}
             </div>
 
             {output.ai && (

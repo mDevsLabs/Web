@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Budget", "label": "Budgets", "description": "G\xE9rez vos budgets depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "allocated", "label": "Allou\xE9", "kind": "number", "required": true }, { "key": "spent", "label": "D\xE9pens\xE9", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "active", "closed"] }], "titleKey": "name", "settings": [{ "key": "notifyBudget", "label": "Notifications : budgets", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBudget", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section budgets." }, { "key": "approveBudget", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

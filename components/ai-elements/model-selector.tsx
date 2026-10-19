@@ -250,12 +250,15 @@ export const ModelSelectorLogo = ({
   ...props
 }: ModelSelectorLogoProps) => {
   const normalized = normalizeLogoProvider(provider);
+  const isMai = normalized === "mai" || normalized === "mdevslabs" || normalized === "mdevs";
   return (
     <img
       {...props}
       alt={`${provider} logo`}
-      className={cn("size-4 dark:invert", className)}
+      className={cn("size-4 shrink-0 mr-2", isMai ? "dark:invert" : "dark:invert", className)}
       height={16}
+      loading="lazy"
+      decoding="async"
       onError={(event) => {
         const img = event.currentTarget;
         if (img.dataset.logoFallbackApplied) {
@@ -265,7 +268,7 @@ export const ModelSelectorLogo = ({
         img.src = starLogoDataUri();
         img.style.filter = "none";
       }}
-      src={`https://models.dev/logos/${normalized}.svg`}
+      src={isMai ? "/models/mai.svg" : `https://models.dev/logos/${normalized}.svg`}
       width={16}
     />
   );

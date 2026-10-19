@@ -28,7 +28,7 @@ import {
   WalletIcon,
   WrenchIcon,
   ZapIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { BotGlyph, type BotGlyphProps } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";
 

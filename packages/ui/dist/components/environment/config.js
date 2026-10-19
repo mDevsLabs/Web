@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Environment", "label": "Environnements", "description": "G\xE9rez vos environnements depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "region", "label": "R\xE9gion", "kind": "text", "required": true }, { "key": "serviceCount", "label": "Services", "kind": "number", "required": true }, { "key": "url", "label": "Adresse", "kind": "url", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "provisioning", "disabled"] }], "titleKey": "name", "settings": [{ "key": "notifyEnvironment", "label": "Notifications : environnements", "description": "Recevoir un signal lors des changements." }, { "key": "archiveEnvironment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section environnements." }, { "key": "approveEnvironment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

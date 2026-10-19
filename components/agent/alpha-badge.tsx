@@ -1,6 +1,6 @@
 "use client";
 
-import { FlaskConicalIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
+import { FlaskConicalIcon, ShieldCheckIcon, SparklesIcon } from "@mdevs/icons";
 import { type AgentChannel, getAgentChannelInfo } from "@/lib/agent/channel";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +29,9 @@ export function AgentChannelBadge({
   className?: string;
 }) {
   const info = getAgentChannelInfo(channel);
+  if (info.channel === "stable") {
+    return null;
+  }
   const Icon = CHANNEL_ICONS[info.channel];
 
   return (

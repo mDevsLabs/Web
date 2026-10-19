@@ -1,3 +1,4 @@
+import "./models-cron.ts";
 /**
  * mAI — Backend & API Routes
  * Base URL : https://mai.val.run
@@ -107,7 +108,7 @@ app.use(
 );
 
 // Filet preflight explicite : répond 204 avant l'auth (local / preview / SDK).
-app.options("*", (c) => c.text("", 204));
+app.options("*", (c) => c.body(null, 204));
 
 app.use("*", async (c, next) => {
   await next();

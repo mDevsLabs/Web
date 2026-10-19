@@ -9,7 +9,7 @@ import {
   Loader2Icon,
   MicIcon,
   TrashIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";

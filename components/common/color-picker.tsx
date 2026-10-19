@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, PipetteIcon } from "lucide-react";
+import { CheckIcon, PipetteIcon } from "@mdevs/icons";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";

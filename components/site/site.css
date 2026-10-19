@@ -1,0 +1,1347 @@
+/**
+ * FEUILLE DE STYLE SITE PORTÉE — GÉNÉRÉE AUTOMATIQUEMENT
+ * Source : apps/site/app/globals.css
+ * Script : scripts/build-site-css.mjs
+ * NE PAS ÉDITER À LA MAIN — relancer le script après toute modification.
+ */
+
+.site-root {
+  /* Police Inter (next/font, self-hostée) avec repli système. */
+  --font-sans: var(--font-inter, system-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-space-grotesk: var(--font-sans);
+
+  /* Tokens Liquid Glass alignés sur @mdevs/ui */
+  --md-surface: rgba(255, 255, 255, 0.76);
+  --md-solid: #ffffff;
+  --md-border: rgba(85, 105, 141, 0.22);
+  --md-highlight: rgba(255, 255, 255, 0.92);
+  --md-shadow: 0 16px 44px -24px rgba(27, 44, 81, 0.25), 0 3px 9px -5px rgba(27, 44, 81, 0.15);
+  --md-blur: 16px;
+  --md-radius: 20px;
+  --md-input-radius: 12px;
+  --md-motion: 160ms;
+
+  /* Ombres "verre" multi-couches (douces et diffuses, signature Apple) */
+  --shadow-glass-sm: var(--md-shadow, 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px -12px rgba(15, 23, 42, 0.12));
+  --shadow-glass-lg: 0 2px 10px rgba(15, 23, 42, 0.05), 0 18px 44px -18px rgba(15, 23, 42, 0.2);
+}
+
+.site-root .inter-variable {
+  font-family: var(--font-sans);
+}
+
+.site-root .space-grotesk-variable {
+  font-family: var(--font-space-grotesk);
+}
+
+.site-root {
+  background-color: #fafafa;
+  color: #0f172a;
+  overflow-x: hidden;
+  /* Ressenti tactile natif : supprime le flash de surbrillance au tap */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.site-root ::selection {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: #000;
+}
+
+.site-root .prose p, .site-root .prose li {
+  white-space: pre-wrap;
+}
+
+/* Les blocs de code doivent défiler horizontalement sur mobile
+   au lieu d'être tronqués par le overflow-x-hidden global du body */
+.site-root .prose pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.site-root .prose img, .site-root .prose video, .site-root .prose table {
+  max-width: 100%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.site-root .float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.site-root .pulse-animation {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.site-root .gradient-bg {
+  background: linear-gradient(120deg, #a855f7, #3b82f6, #10b981);
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Surfaces "verre" (glassmorphism clair, style Apple/iOS)
+   `.glass` lit des variables CSS : les déclinaisons (glass-elev, etc.) ne font
+   que redéfinir ces variables, ce qui évite tout conflit de cascade et permet
+   de transitionner background-color sans jamais animer le backdrop-filter.
+--------------------------------------------------------------------------- */
+
+/* État "scrolled" : ne change que la teinte et l'ombre (blur identique) */
+
+/* Indicateur de lien actif (pill) : verre teinté violet, signature mAI */
+
+/* ---------------------------------------------------------------------------
+   Safe-areas iOS (actives via viewportFit: "cover")
+--------------------------------------------------------------------------- */
+
+/* Utilitaires globaux pour les menus déroulants (Glassmorphism) */
+
+/* Repli sans backdrop-filter (navigateurs anciens) : surfaces quasi-opaques */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-root .glass, .site-root .glass-card, .site-root .glass-tile, .site-root .glass-pill, .site-root .glass-strong, .site-root .glass-dropdown {
+    background-image: none;
+  }
+  .site-root .glass, .site-root .glass-card, .site-root .glass-tile {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
+  .site-root .glass-pill {
+    background-color: rgba(243, 232, 255, 0.97);
+  }
+  .site-root .glass-strong, .site-root .glass-dropdown {
+    background-color: rgba(255, 255, 255, 0.97);
+  }
+}
+
+/* Accessibilité : neutralise les animations si l'utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+  .site-root *, .site-root ::before, .site-root ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================================
+   MODE SOMBRE — le Site suit le thème de l'hôte
+   ----------------------------------------------------------------------------
+   next-themes pose `dark` sur <html> ; `SiteThemeSync` recopie `dark` et
+   `data-md-theme` sur `.site-root` (aucun état parallèle). Toutes les règles
+   ci-dessous s'écrivent donc `html.dark ...`, re-ancrées `.site-root.dark ...`
+   par scripts/build-site-css.mjs.
+
+   Les utilitaires Tailwind du Site lisent des variables partagées par
+   propriété (bg-*, text-*, border-* pointent tous vers `--color-*`) : on ne
+   peut pas basculer les jetons sans casser les contrastes (le blanc de texte
+   doit rester blanc). Chaque classe réellement employée est donc levée
+   explicitement, par propriété. Le Site n'ayant jamais eu de variante
+   sombre, aucune classe `dark:` n'existe : rien à doubler.
+   ========================================================================= */
+
+.site-root.dark {
+  color-scheme: dark;
+  background-color: #0d0d10;
+  color: #f4f4f5;
+
+  /* Jetons Liquid Glass sombres, alignés sur le mode sombre de l'hôte */
+  --md-surface: rgba(24, 24, 27, 0.82);
+  --md-solid: #17171a;
+  --md-border: rgba(255, 255, 255, 0.1);
+  --md-highlight: rgba(255, 255, 255, 0.08);
+  --md-shadow: 0 18px 48px -20px rgba(0, 0, 0, 0.55), 0 3px 10px -4px rgba(0, 0, 0, 0.4);
+  --shadow-glass-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+  --shadow-glass-lg: 0 2px 10px rgba(0, 0, 0, 0.45), 0 18px 44px -18px rgba(0, 0, 0, 0.6);
+
+  /* Verre clair → verre sombre : mêmes rôles, valeurs inversées */
+  --glass-bg: rgba(24, 24, 27, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+}
+
+.site-root.dark {
+  background-color: #0d0d10;
+  color: #f4f4f5;
+}
+
+.site-root.dark ::selection {
+  background-color: rgba(168, 85, 247, 0.32);
+  color: #fafafa;
+}
+
+/* --- Verre (utilitaires @utility + repli sans backdrop-filter) ------------- */
+
+.site-root.dark .glass {
+  box-shadow: var(--shadow-glass-sm), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.site-root.dark .glass-elev {
+  --glass-bg: rgba(24, 24, 27, 0.88);
+  --glass-shadow: var(--shadow-glass-lg);
+}
+
+.site-root.dark .glass-strong {
+  background-color: rgba(24, 24, 27, 0.82);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-glass-lg), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .glass-card {
+  background-color: rgba(24, 24, 27, 0.7);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-glass-sm), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.site-root.dark .glass-tile {
+  background-color: rgba(24, 24, 27, 0.55);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .glass-pill {
+  background-color: rgba(168, 85, 247, 0.2);
+  border-color: rgba(216, 180, 254, 0.35);
+  box-shadow: 0 2px 10px -4px rgba(147, 51, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.site-root.dark .glass-dropdown {
+  background-color: rgba(24, 24, 27, 0.97);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-root.dark .glass, .site-root.dark .glass-card, .site-root.dark .glass-tile {
+    background-image: none;
+    background-color: rgba(24, 24, 27, 0.94);
+  }
+  .site-root.dark .glass-pill {
+    background-image: none;
+    background-color: rgba(46, 16, 101, 0.97);
+  }
+  .site-root.dark .glass-strong, .site-root.dark .glass-dropdown {
+    background-image: none;
+    background-color: rgba(24, 24, 27, 0.97);
+  }
+}
+
+/* --- Surfaces --------------------------------------------------------------
+   Le blanc plein devient carte (#17171a) ; les voiles translucides (verre)
+   deviennent des voiles blancs très faibles, qui se composent sur le fond.
+   La racine elle-même porte `bg-white` : exclue, son fond de page reste
+   #0d0d10 (règle html.dark ci-dessus).                                       */
+
+.site-root.dark .bg-white:not(.site-root) {
+  background-color: #17171a;
+}
+
+.site-root.dark .bg-white\/95 {
+  background-color: rgba(23, 23, 26, 0.95);
+}
+
+.site-root.dark .bg-white\/90 {
+  background-color: rgba(23, 23, 26, 0.9);
+}
+
+.site-root.dark .bg-white\/80 {
+  background-color: rgba(23, 23, 26, 0.8);
+}
+
+.site-root.dark .bg-white\/70 {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .bg-white\/60 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.site-root.dark .bg-white\/50 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.site-root.dark .bg-white\/40 {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.site-root.dark .bg-white\/30 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.site-root.dark .bg-slate-50 {
+  background-color: #131316;
+}
+
+.site-root.dark .bg-slate-50\/80 {
+  background-color: rgba(19, 19, 22, 0.8);
+}
+
+.site-root.dark .bg-slate-50\/70 {
+  background-color: rgba(19, 19, 22, 0.7);
+}
+
+.site-root.dark .bg-slate-50\/50 {
+  background-color: rgba(19, 19, 22, 0.5);
+}
+
+.site-root.dark .bg-slate-100 {
+  background-color: #18181b;
+}
+
+.site-root.dark .bg-slate-100\/80 {
+  background-color: rgba(24, 24, 27, 0.8);
+}
+
+.site-root.dark .bg-slate-100\/70 {
+  background-color: rgba(24, 24, 27, 0.7);
+}
+
+.site-root.dark .bg-slate-200 {
+  background-color: #27272a;
+}
+
+.site-root.dark .bg-slate-200\/80 {
+  background-color: rgba(39, 39, 42, 0.8);
+}
+
+.site-root.dark .bg-slate-200\/60 {
+  background-color: rgba(39, 39, 42, 0.6);
+}
+
+.site-root.dark .bg-slate-200\/50 {
+  background-color: rgba(39, 39, 42, 0.5);
+}
+
+.site-root.dark .bg-slate-300 {
+  background-color: #3f3f46;
+}
+
+.site-root.dark .bg-slate-400 {
+  background-color: #52525b;
+}
+
+.site-root.dark .bg-slate-800, .site-root.dark .bg-slate-900 {
+  background-color: #27272a;
+}
+
+.site-root.dark .bg-slate-800\/80 {
+  background-color: rgba(39, 39, 42, 0.8);
+}
+
+.site-root.dark .bg-slate-900\/90 {
+  background-color: rgba(24, 24, 27, 0.9);
+}
+
+.site-root.dark .bg-slate-900\/80 {
+  background-color: rgba(24, 24, 27, 0.8);
+}
+
+.site-root.dark .bg-slate-900\/25 {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-root.dark .bg-slate-900\/20 {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .bg-slate-900\/15 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.site-root.dark .bg-slate-900\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.site-root.dark .bg-slate-950 {
+  background-color: #18181b;
+}
+
+.site-root.dark .bg-black\/5 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.site-root.dark .bg-black\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-root.dark .aria-selected\:bg-black\/5[aria-selected="true"] {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Survols de surfaces ------------------------------------------------------- */
+
+.site-root.dark .hover\:bg-white:hover {
+  background-color: #232327;
+}
+
+.site-root.dark .hover\:bg-white\/90:hover {
+  background-color: rgba(23, 23, 26, 0.9);
+}
+
+.site-root.dark .hover\:bg-white\/80:hover {
+  background-color: rgba(23, 23, 26, 0.8);
+}
+
+.site-root.dark .hover\:bg-white\/70:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-root.dark .hover\:bg-white\/60:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .hover\:bg-white\/50:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.site-root.dark .hover\:bg-white\/20:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.site-root.dark .hover\:bg-slate-50:hover {
+  background-color: #18181b;
+}
+
+.site-root.dark .hover\:bg-slate-50\/80:hover {
+  background-color: rgba(24, 24, 27, 0.8);
+}
+
+.site-root.dark .hover\:bg-slate-50\/50:hover {
+  background-color: rgba(24, 24, 27, 0.5);
+}
+
+.site-root.dark .hover\:bg-slate-100:hover {
+  background-color: #1f1f24;
+}
+
+.site-root.dark .hover\:bg-slate-100\/80:hover {
+  background-color: rgba(31, 31, 36, 0.8);
+}
+
+.site-root.dark .hover\:bg-slate-100\/70:hover {
+  background-color: rgba(31, 31, 36, 0.7);
+}
+
+.site-root.dark .hover\:bg-slate-200:hover {
+  background-color: #2b2b31;
+}
+
+.site-root.dark .hover\:bg-slate-200\/60:hover {
+  background-color: rgba(43, 43, 49, 0.6);
+}
+
+.site-root.dark .hover\:bg-slate-700:hover {
+  background-color: #3f3f46;
+}
+
+.site-root.dark .hover\:bg-slate-800:hover {
+  background-color: #323238;
+}
+
+.site-root.dark .hover\:bg-slate-900:hover {
+  background-color: #303036;
+}
+
+.site-root.dark .hover\:bg-black\/5:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-root.dark .hover\:bg-black\/10:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.site-root.dark .focus\:bg-white:focus {
+  background-color: #1f1f24;
+}
+
+.site-root.dark .focus\:bg-white\/80:focus {
+  background-color: rgba(31, 31, 36, 0.8);
+}
+
+/* --- Textes ----------------------------------------------------------------
+   L'échelle slate s'inverse : 900 devient quasi blanc, 500 reste la teinte
+   muette. Les tons posés sur un fond déjà sombre (200/300) ne bougent pas.  */
+
+.site-root.dark .text-slate-950, .site-root.dark .text-slate-900 {
+  color: #f4f4f5;
+}
+
+.site-root.dark .text-slate-800 {
+  color: #e4e4e7;
+}
+
+.site-root.dark .text-slate-700 {
+  color: #d4d4d8;
+}
+
+.site-root.dark .text-slate-600 {
+  color: #b4b4bc;
+}
+
+.site-root.dark .text-slate-500 {
+  color: #a1a1aa;
+}
+
+.site-root.dark .text-slate-400 {
+  color: #85858e;
+}
+
+.site-root.dark .text-neutral-900 {
+  color: #f4f4f5;
+}
+
+.site-root.dark .text-neutral-400 {
+  color: #85858e;
+}
+
+/* Accents éclaircis pour rester lisibles sur fond sombre */
+
+.site-root.dark .text-purple-950, .site-root.dark .text-purple-900, .site-root.dark .text-purple-800 {
+  color: #e9d5ff;
+}
+
+.site-root.dark .text-purple-700 {
+  color: #d8b4fe;
+}
+
+.site-root.dark .text-purple-600, .site-root.dark .text-purple-500 {
+  color: #c084fc;
+}
+
+.site-root.dark .text-purple-400 {
+  color: #a78bfa;
+}
+
+.site-root.dark .text-blue-900, .site-root.dark .text-blue-800 {
+  color: #bfdbfe;
+}
+
+.site-root.dark .text-blue-700 {
+  color: #93c5fd;
+}
+
+.site-root.dark .text-blue-600, .site-root.dark .text-blue-500 {
+  color: #60a5fa;
+}
+
+.site-root.dark .text-emerald-950, .site-root.dark .text-emerald-900, .site-root.dark .text-emerald-800 {
+  color: #a7f3d0;
+}
+
+.site-root.dark .text-emerald-700 {
+  color: #6ee7b7;
+}
+
+.site-root.dark .text-emerald-600, .site-root.dark .text-emerald-500 {
+  color: #34d399;
+}
+
+.site-root.dark .text-emerald-500\/80 {
+  color: rgba(52, 211, 153, 0.8);
+}
+
+.site-root.dark .text-amber-950, .site-root.dark .text-amber-900, .site-root.dark .text-amber-800 {
+  color: #fde68a;
+}
+
+.site-root.dark .text-amber-700 {
+  color: #fcd34d;
+}
+
+.site-root.dark .text-amber-600, .site-root.dark .text-amber-500 {
+  color: #fbbf24;
+}
+
+.site-root.dark .text-red-900, .site-root.dark .text-red-800 {
+  color: #fecaca;
+}
+
+.site-root.dark .text-red-700 {
+  color: #fca5a5;
+}
+
+.site-root.dark .text-red-600, .site-root.dark .text-red-500 {
+  color: #f87171;
+}
+
+.site-root.dark .text-orange-800, .site-root.dark .text-orange-700 {
+  color: #fdba74;
+}
+
+.site-root.dark .text-orange-600, .site-root.dark .text-orange-500 {
+  color: #fb923c;
+}
+
+.site-root.dark .text-pink-700 {
+  color: #f9a8d4;
+}
+
+.site-root.dark .text-pink-600, .site-root.dark .text-pink-500 {
+  color: #f472b6;
+}
+
+.site-root.dark .text-indigo-600, .site-root.dark .text-indigo-500 {
+  color: #818cf8;
+}
+
+.site-root.dark .text-sky-700 {
+  color: #7dd3fc;
+}
+
+.site-root.dark .text-sky-600, .site-root.dark .text-sky-500 {
+  color: #38bdf8;
+}
+
+.site-root.dark .text-cyan-600 {
+  color: #22d3ee;
+}
+
+.site-root.dark .text-rose-800, .site-root.dark .text-rose-700 {
+  color: #fda4af;
+}
+
+.site-root.dark .text-rose-600 {
+  color: #fb7185;
+}
+
+.site-root.dark .text-violet-600 {
+  color: #a78bfa;
+}
+
+.site-root.dark .text-teal-600 {
+  color: #2dd4bf;
+}
+
+/* Survols de texte ---------------------------------------------------------- */
+
+.site-root.dark .hover\:text-slate-900:hover {
+  color: #fafafa;
+}
+
+.site-root.dark .hover\:text-slate-800:hover {
+  color: #f4f4f5;
+}
+
+.site-root.dark .hover\:text-slate-700:hover {
+  color: #e4e4e7;
+}
+
+.site-root.dark .hover\:text-slate-600:hover {
+  color: #d4d4d8;
+}
+
+.site-root.dark .hover\:text-neutral-900:hover {
+  color: #f4f4f5;
+}
+
+.site-root.dark .hover\:text-purple-800:hover {
+  color: #e9d5ff;
+}
+
+.site-root.dark .hover\:text-purple-700:hover {
+  color: #d8b4fe;
+}
+
+.site-root.dark .hover\:text-purple-600:hover {
+  color: #c084fc;
+}
+
+.site-root.dark .hover\:text-blue-800:hover {
+  color: #bfdbfe;
+}
+
+.site-root.dark .hover\:text-blue-700:hover {
+  color: #93c5fd;
+}
+
+.site-root.dark .hover\:text-blue-600:hover {
+  color: #60a5fa;
+}
+
+.site-root.dark .hover\:text-amber-950:hover, .site-root.dark .hover\:text-amber-900:hover {
+  color: #fde68a;
+}
+
+.site-root.dark .hover\:text-amber-700:hover {
+  color: #fcd34d;
+}
+
+.site-root.dark .hover\:text-amber-600:hover {
+  color: #fbbf24;
+}
+
+.site-root.dark .hover\:text-emerald-600:hover {
+  color: #34d399;
+}
+
+.site-root.dark .hover\:text-pink-600:hover {
+  color: #f472b6;
+}
+
+.site-root.dark .hover\:text-red-600:hover {
+  color: #f87171;
+}
+
+.site-root.dark .group-hover\:text-purple-700:is(:where(.group):hover *) {
+  color: #d8b4fe;
+}
+
+.site-root.dark .group-hover\:text-purple-600:is(:where(.group):hover *) {
+  color: #c084fc;
+}
+
+.site-root.dark .group-hover\:text-blue-700:is(:where(.group):hover *) {
+  color: #93c5fd;
+}
+
+.site-root.dark .group-hover\:text-blue-600:is(:where(.group):hover *) {
+  color: #60a5fa;
+}
+
+.site-root.dark .group-hover\:text-emerald-600:is(:where(.group):hover *) {
+  color: #34d399;
+}
+
+.site-root.dark .group-hover\:text-sky-600:is(:where(.group):hover *) {
+  color: #38bdf8;
+}
+
+.site-root.dark .group-hover\:text-orange-500:is(:where(.group):hover *) {
+  color: #fb923c;
+}
+
+/* --- Bordures, séparateurs, anneaux ---------------------------------------- */
+
+.site-root.dark .border-slate-100 {
+  border-color: #232327;
+}
+
+.site-root.dark .border-slate-200 {
+  border-color: #2a2a30;
+}
+
+.site-root.dark .border-slate-200\/90 {
+  border-color: rgba(42, 42, 48, 0.9);
+}
+
+.site-root.dark .border-slate-200\/80 {
+  border-color: rgba(42, 42, 48, 0.8);
+}
+
+.site-root.dark .border-slate-200\/70 {
+  border-color: rgba(42, 42, 48, 0.7);
+}
+
+.site-root.dark .border-slate-200\/60 {
+  border-color: rgba(42, 42, 48, 0.6);
+}
+
+.site-root.dark .border-slate-200\/50 {
+  border-color: rgba(42, 42, 48, 0.5);
+}
+
+.site-root.dark .border-slate-300 {
+  border-color: #3f3f46;
+}
+
+.site-root.dark .border-slate-300\/30 {
+  border-color: rgba(63, 63, 70, 0.3);
+}
+
+.site-root.dark .border-slate-700, .site-root.dark .border-slate-700\/80 {
+  border-color: #3f3f46;
+}
+
+.site-root.dark .border-slate-800, .site-root.dark .border-slate-800\/80 {
+  border-color: #35353b;
+}
+
+.site-root.dark .border-slate-900 {
+  border-color: #52525b;
+}
+
+.site-root.dark .border-black\/5 {
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-root.dark .border-black\/10 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-root.dark .border-white {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.site-root.dark .border-white\/80 {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.site-root.dark .border-white\/70 {
+  border-color: rgba(255, 255, 255, 0.11);
+}
+
+.site-root.dark .border-white\/60 {
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.site-root.dark .border-white\/50, .site-root.dark .border-white\/30 {
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.site-root.dark .border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-root.dark .border-purple-100 {
+  border-color: rgba(168, 85, 247, 0.22);
+}
+
+.site-root.dark .border-purple-100\/60 {
+  border-color: rgba(168, 85, 247, 0.14);
+}
+
+.site-root.dark .border-purple-200 {
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.site-root.dark .border-purple-200\/80 {
+  border-color: rgba(168, 85, 247, 0.26);
+}
+
+.site-root.dark .border-purple-300 {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.site-root.dark .border-purple-400 {
+  border-color: rgba(192, 132, 252, 0.5);
+}
+
+.site-root.dark .border-purple-400\/30 {
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.site-root.dark .border-blue-100 {
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.site-root.dark .border-blue-200 {
+  border-color: rgba(59, 130, 246, 0.32);
+}
+
+.site-root.dark .border-blue-200\/80 {
+  border-color: rgba(59, 130, 246, 0.28);
+}
+
+.site-root.dark .border-emerald-200 {
+  border-color: rgba(16, 185, 129, 0.32);
+}
+
+.site-root.dark .border-emerald-200\/80 {
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.site-root.dark .border-amber-200 {
+  border-color: rgba(245, 158, 11, 0.32);
+}
+
+.site-root.dark .border-amber-300 {
+  border-color: rgba(245, 158, 11, 0.42);
+}
+
+.site-root.dark .border-red-100 {
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.site-root.dark .border-red-200 {
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.site-root.dark .border-red-200\/80 {
+  border-color: rgba(239, 68, 68, 0.28);
+}
+
+.site-root.dark .border-orange-100 {
+  border-color: rgba(249, 115, 22, 0.25);
+}
+
+.site-root.dark .border-orange-200 {
+  border-color: rgba(249, 115, 22, 0.32);
+}
+
+.site-root.dark .border-pink-200 {
+  border-color: rgba(236, 72, 153, 0.32);
+}
+
+.site-root.dark .border-rose-200 {
+  border-color: rgba(244, 63, 94, 0.32);
+}
+
+.site-root.dark .border-neutral-300 {
+  border-color: #3f3f46;
+}
+
+.site-root.dark .hover\:border-slate-300:hover {
+  border-color: #52525b;
+}
+
+.site-root.dark .hover\:border-slate-300\/30:hover {
+  border-color: rgba(82, 82, 91, 0.4);
+}
+
+.site-root.dark .hover\:border-purple-200:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.site-root.dark .hover\:border-purple-300:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+.site-root.dark .hover\:border-blue-200:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.site-root.dark .hover\:border-blue-300:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.site-root.dark .hover\:border-emerald-300:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.site-root.dark .hover\:border-amber-200:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.site-root.dark .hover\:border-sky-300:hover, .site-root.dark .hover\:border-sky-400\/60:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.site-root.dark .divide-slate-100 > :not(:last-child) {
+  border-color: #232327;
+}
+
+.site-root.dark .divide-slate-200\/60 > :not(:last-child) {
+  border-color: rgba(42, 42, 48, 0.6);
+}
+
+.site-root.dark .ring-purple-100 {
+  --tw-ring-color: rgba(168, 85, 247, 0.3);
+}
+
+.site-root.dark .ring-purple-200 {
+  --tw-ring-color: rgba(168, 85, 247, 0.35);
+}
+
+.site-root.dark .ring-slate-200 {
+  --tw-ring-color: #2a2a30;
+}
+
+.site-root.dark .ring-black\/10 {
+  --tw-ring-color: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Teintes d'état --------------------------------------------------------
+   Les fonds teintés pâles (bg-*-50/100) deviennent des voiles translucides :
+   la teinte porte toujours l'information, sans éblouir.                       */
+
+.site-root.dark .bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.14);
+}
+
+.site-root.dark .bg-purple-50\/70 {
+  background-color: rgba(168, 85, 247, 0.11);
+}
+
+.site-root.dark .bg-purple-50\/60 {
+  background-color: rgba(168, 85, 247, 0.1);
+}
+
+.site-root.dark .bg-purple-50\/50 {
+  background-color: rgba(168, 85, 247, 0.09);
+}
+
+.site-root.dark .bg-purple-50\/30 {
+  background-color: rgba(168, 85, 247, 0.08);
+}
+
+.site-root.dark .bg-purple-100 {
+  background-color: rgba(168, 85, 247, 0.2);
+}
+
+.site-root.dark .bg-purple-100\/60 {
+  background-color: rgba(168, 85, 247, 0.14);
+}
+
+.site-root.dark .bg-purple-600\/10 {
+  background-color: rgba(168, 85, 247, 0.16);
+}
+
+.site-root.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.16);
+}
+
+.site-root.dark .bg-blue-50\/80 {
+  background-color: rgba(59, 130, 246, 0.13);
+}
+
+.site-root.dark .bg-blue-50\/50 {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.site-root.dark .bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.22);
+}
+
+.site-root.dark .bg-blue-100\/60 {
+  background-color: rgba(59, 130, 246, 0.14);
+}
+
+.site-root.dark .bg-blue-600\/10 {
+  background-color: rgba(59, 130, 246, 0.16);
+}
+
+.site-root.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.14);
+}
+
+.site-root.dark .bg-emerald-50\/80 {
+  background-color: rgba(16, 185, 129, 0.12);
+}
+
+.site-root.dark .bg-emerald-100 {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.site-root.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.14);
+}
+
+.site-root.dark .bg-amber-100 {
+  background-color: rgba(245, 158, 11, 0.2);
+}
+
+.site-root.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.14);
+}
+
+.site-root.dark .bg-red-50\/80 {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+.site-root.dark .bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.22);
+}
+
+.site-root.dark .bg-orange-50 {
+  background-color: rgba(249, 115, 22, 0.14);
+}
+
+.site-root.dark .bg-orange-50\/80 {
+  background-color: rgba(249, 115, 22, 0.12);
+}
+
+.site-root.dark .bg-orange-100 {
+  background-color: rgba(249, 115, 22, 0.22);
+}
+
+.site-root.dark .bg-pink-50 {
+  background-color: rgba(236, 72, 153, 0.14);
+}
+
+.site-root.dark .bg-pink-100 {
+  background-color: rgba(236, 72, 153, 0.22);
+}
+
+.site-root.dark .bg-rose-100 {
+  background-color: rgba(244, 63, 94, 0.22);
+}
+
+.site-root.dark .bg-cyan-100 {
+  background-color: rgba(6, 182, 212, 0.22);
+}
+
+.site-root.dark .bg-cyan-300 {
+  background-color: rgba(6, 182, 212, 0.35);
+}
+
+.site-root.dark .bg-indigo-100 {
+  background-color: rgba(99, 102, 241, 0.22);
+}
+
+.site-root.dark .bg-violet-100 {
+  background-color: rgba(139, 92, 246, 0.22);
+}
+
+.site-root.dark .hover\:bg-purple-50:hover {
+  background-color: rgba(168, 85, 247, 0.16);
+}
+
+.site-root.dark .hover\:bg-purple-50\/70:hover {
+  background-color: rgba(168, 85, 247, 0.12);
+}
+
+.site-root.dark .hover\:bg-purple-50\/50:hover {
+  background-color: rgba(168, 85, 247, 0.1);
+}
+
+.site-root.dark .hover\:bg-purple-50\/30:hover {
+  background-color: rgba(168, 85, 247, 0.08);
+}
+
+.site-root.dark .hover\:bg-purple-100:hover {
+  background-color: rgba(168, 85, 247, 0.22);
+}
+
+.site-root.dark .hover\:bg-blue-50:hover {
+  background-color: rgba(59, 130, 246, 0.18);
+}
+
+.site-root.dark .hover\:bg-blue-50\/50:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.site-root.dark .hover\:bg-emerald-50:hover {
+  background-color: rgba(16, 185, 129, 0.16);
+}
+
+.site-root.dark .hover\:bg-emerald-100:hover {
+  background-color: rgba(16, 185, 129, 0.22);
+}
+
+.site-root.dark .hover\:bg-amber-50:hover {
+  background-color: rgba(245, 158, 11, 0.16);
+}
+
+.site-root.dark .hover\:bg-red-50:hover {
+  background-color: rgba(239, 68, 68, 0.16);
+}
+
+.site-root.dark .hover\:bg-red-100:hover {
+  background-color: rgba(239, 68, 68, 0.22);
+}
+
+.site-root.dark .hover\:bg-red-200:hover {
+  background-color: rgba(239, 68, 68, 0.28);
+}
+
+.site-root.dark .hover\:bg-orange-50:hover {
+  background-color: rgba(249, 115, 22, 0.16);
+}
+
+.site-root.dark .hover\:bg-orange-100:hover {
+  background-color: rgba(249, 115, 22, 0.22);
+}
+
+/* --- Dégradés décoratifs ---------------------------------------------------
+   Seuls les arrêts clairs se retournent : les dégradés d'accent (violet, bleu,
+   émeraude) restent la signature visuelle de la marque.                       */
+
+.site-root.dark .from-purple-50 {
+  --tw-gradient-from: rgba(168, 85, 247, 0.16);
+}
+
+.site-root.dark .from-purple-50\/90 {
+  --tw-gradient-from: rgba(168, 85, 247, 0.14);
+}
+
+.site-root.dark .from-purple-50\/80 {
+  --tw-gradient-from: rgba(168, 85, 247, 0.13);
+}
+
+.site-root.dark .from-blue-50\/80 {
+  --tw-gradient-from: rgba(59, 130, 246, 0.13);
+}
+
+.site-root.dark .via-blue-50 {
+  --tw-gradient-via: rgba(59, 130, 246, 0.12);
+}
+
+.site-root.dark .to-emerald-50 {
+  --tw-gradient-to: rgba(16, 185, 129, 0.12);
+}
+
+.site-root.dark .to-indigo-50\/40 {
+  --tw-gradient-to: rgba(99, 102, 241, 0.1);
+}
+
+.site-root.dark .to-white {
+  --tw-gradient-to: #17171a;
+}
+
+/* --- Contenu rédactionnel (@tailwindcss/typography) ------------------------ */
+
+.site-root.dark .prose {
+  --tw-prose-body: #d4d4d8;
+  --tw-prose-headings: #f4f4f5;
+  --tw-prose-lead: #d4d4d8;
+  --tw-prose-links: #c084fc;
+  --tw-prose-bold: #f4f4f5;
+  --tw-prose-counters: #a1a1aa;
+  --tw-prose-bullets: #52525b;
+  --tw-prose-hr: #2a2a30;
+  --tw-prose-quotes: #e4e4e7;
+  --tw-prose-quote-borders: rgba(168, 85, 247, 0.4);
+  --tw-prose-captions: #a1a1aa;
+  --tw-prose-code: #e9d5ff;
+  --tw-prose-pre-code: #e4e4e7;
+  --tw-prose-pre-bg: #18181b;
+  --tw-prose-th-borders: #2a2a30;
+  --tw-prose-td-borders: #2a2a30;
+}
+
+.site-root.dark .prose :is(h1, h2, h3, h4, h5, h6) {
+  color: #f4f4f5;
+}
+
+.site-root.dark .prose p, .site-root.dark .prose li, .site-root.dark .prose em {
+  color: #d4d4d8;
+}
+
+.site-root.dark .prose strong {
+  color: #f4f4f5;
+}
+
+.site-root.dark .prose a {
+  color: #c084fc;
+}
+
+.site-root.dark .prose code {
+  color: #e9d5ff;
+  background-color: rgba(168, 85, 247, 0.16);
+}
+
+.site-root.dark .prose blockquote {
+  color: #d4d4d8;
+  background-color: #131316;
+  border-left-color: rgba(168, 85, 247, 0.45);
+}
+
+.site-root {
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --font-sans: var(--font-sans);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  --radius-sheet: 28px;
+
+  --animate-fade-up: fade-up 0.45s var(--ease-ios) both;
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  --animate-scale-in: scale-in 0.3s var(--ease-ios) both;
+  --animate-orb-a: orb-a 64s ease-in-out infinite;
+  --animate-orb-b: orb-b 88s ease-in-out infinite;
+  --animate-orb-c: orb-c 76s ease-in-out infinite;
+}
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes orb-a {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(5vw, 4vh, 0) scale(1.08); }
+  }
+
+  @keyframes orb-b {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+    50% { transform: translate3d(-4vw, 6vh, 0) scale(1); }
+  }
+
+  @keyframes orb-c {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(3vw, -5vh, 0) scale(1.1); }
+  }
+  .site-root button:not(:disabled), .site-root [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  .site-root a, .site-root button, .site-root [role="button"], .site-root summary, .site-root label {
+    touch-action: manipulation;
+  }
+  .site-root .glass {
+  background-color: var(--glass-bg, rgba(255, 255, 255, 0.72));
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12));
+  -webkit-backdrop-filter: blur(var(--glass-blur, 20px)) saturate(180%);
+  backdrop-filter: blur(var(--glass-blur, 20px)) saturate(180%);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.6));
+  box-shadow: var(--glass-shadow, var(--shadow-glass-sm)), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+  .site-root .glass-elev {
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-shadow: var(--shadow-glass-lg);
+}
+  .site-root .glass-strong {
+  background-color: rgba(255, 255, 255, 0.78);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-glass-lg), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+  .site-root .glass-card {
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-glass-sm), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+  .site-root .glass-tile {
+  background-color: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+  .site-root .glass-pill {
+  background-color: rgba(168, 85, 247, 0.12);
+  -webkit-backdrop-filter: blur(10px) saturate(170%);
+  backdrop-filter: blur(10px) saturate(170%);
+  border: 1px solid rgba(216, 180, 254, 0.5);
+  box-shadow: 0 2px 10px -4px rgba(147, 51, 234, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+  .site-root .safe-top-4 {
+  top: calc(env(safe-area-inset-top, 0px) + 1rem);
+}
+  .site-root .safe-bottom-4 {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+}
+  .site-root .pt-safe-header {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 6rem);
+}
+  .site-root .pb-safe-sheet {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+}
+  .site-root .glass-dropdown {
+    /* Fond quasi opaque : le texte du menu doit primer sur le contenu
+       derrière (le hero traversait encore à ~14 % d'opacité effective). */
+    background-color: rgba(255, 255, 255, 0.97);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.52));
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    backdrop-filter: blur(32px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 20px 45px -18px rgba(15, 23, 42, 0.22), 0 2px 6px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border-radius: 1.5rem;
+    padding: 0.75rem;
+  }
+

@@ -697,7 +697,7 @@ export async function upsertAgentSettingsRow({
     defaultModel?: string | null;
     defaultProjectId?: string | null;
     enabledCategories?: ToolCategory[];
-    reasoningLevel?: ReasoningLevel;
+    reasoningLevel?: ReasoningLevel | null;
     toolPolicies?: Record<string, ToolPermission>;
   };
   userId: string;

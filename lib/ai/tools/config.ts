@@ -27,7 +27,7 @@ import {
   UserRoundIcon,
   Volume2Icon,
   WaypointsIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import type { ComponentType } from "react";
 
 // Source unique : `lib/ai/tools/ids.ts` distingue les outils réellement

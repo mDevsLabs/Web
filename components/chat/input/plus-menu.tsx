@@ -8,7 +8,7 @@ import {
   PaperclipIcon,
   PlusIcon,
   Volume2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { memo, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

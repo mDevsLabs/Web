@@ -6,7 +6,7 @@ import {
   FolderIcon,
   GaugeIcon,
   WrenchIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useState } from "react";
 import {
   Popover,

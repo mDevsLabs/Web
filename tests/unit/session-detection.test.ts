@@ -103,14 +103,21 @@ function errorResponse(status = 401) {
 }
 
 const BASE_ENV = {
+  // `lib/constants.ts` lit l'URL du backend côté serveur dans MAI_API_URL.
+  MAI_API_URL: "https://mai.test",
   MAI_JWT_AUDIENCE: undefined,
   MAI_JWT_ISSUER: undefined,
   MAI_JWT_SECRET: LOCAL_SECRET,
-  // `lib/constants.ts` lit l'URL du backend dans NEXT_PUBLIC_MAI_API_URL.
-  NEXT_PUBLIC_MAI_API_URL: "https://mai.test",
 };
 
-describe("getMaiUser — détection de session", () => {
+// Délai porté : chaque cas recharge le module via `vi.resetModules()` suivi d'un
+// `import()` dynamique de `lib/auth/session`, qui tire `jose`, la base et les
+// constantes. Hors de ce fichier, ce chargement prend quelques dizaines de
+// millisecondes ; sous la charge parallèle de la suite complète (85 workers),
+// il dépasse le délai par défaut de 5 s et le test échoue sans que rien de
+// fonctionnel n'ait changé. On rend le budget explicite plutôt que de laisser
+// un échec intermittent que l'on prendra pour une régression.
+describe("getMaiUser — détection de session", { timeout: 20_000 }, () => {
   const savedEnv = { ...process.env };
   let warn: ReturnType<typeof vi.spyOn>;
 

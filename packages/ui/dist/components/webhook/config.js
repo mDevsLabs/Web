@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Webhook", "label": "Webhooks", "description": "G\xE9rez vos webhooks depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "url", "label": "Adresse", "kind": "url", "required": true }, { "key": "deliveryCount", "label": "Livraisons", "kind": "number", "required": true }, { "key": "failureCount", "label": "\xC9checs", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "paused", "failing"] }], "titleKey": "name", "settings": [{ "key": "notifyWebhook", "label": "Notifications : webhooks", "description": "Recevoir un signal lors des changements." }, { "key": "archiveWebhook", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section webhooks." }, { "key": "approveWebhook", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

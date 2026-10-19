@@ -1,0 +1,51 @@
+import * as path from "node:path";
+import { getCachedMaiDataDir } from "../dataDir.js";
+import {
+  resolveUserPluginsRoot,
+  type ShellSettings,
+} from "../settingsStore.js";
+import { getBuiltinTypescriptScopedServers } from "./bundledTypescriptLsp.js";
+import {
+  discoverPluginSubdirs,
+  loadScopedServersForPluginDir,
+  scopedServersFromSettingsLsp,
+} from "./loadPluginLspConfig.js";
+import type { ScopedLspServerConfig } from "./pluginLspTypes.js";
+
+export type GetAllLspServersOptions = {
+  workspaceRoot: string;
+  appPath: string;
+  settings: ShellSettings;
+};
+
+/**
+ * 合并 LSP 来源：插件目录 + 作用域名；Async 另含可选的 TSLS 路径探测与 settings 迁移。
+ * 同一扩展名多服务器时，**后合并的覆盖先合并的**（工作区插件优先于用户目录与内置）。
+ */
+export async function getAllLspServers(
+  opts: GetAllLspServersOptions
+): Promise<Record<string, ScopedLspServerConfig>> {
+  const merged: Record<string, ScopedLspServerConfig> = {};
+
+  Object.assign(merged, getBuiltinTypescriptScopedServers(opts.appPath));
+
+  const maiDataPlugins =
+    resolveUserPluginsRoot(opts.settings) ||
+    path.join(getCachedMaiDataDir(), "plugins");
+  for (const dir of await discoverPluginSubdirs(maiDataPlugins)) {
+    Object.assign(merged, await loadScopedServersForPluginDir(dir));
+  }
+
+  Object.assign(
+    merged,
+    scopedServersFromSettingsLsp(opts.settings.lsp?.servers)
+  );
+
+  const ws = path.resolve(opts.workspaceRoot);
+  const wsPlugins = path.join(ws, ".mai", "plugins");
+  for (const dir of await discoverPluginSubdirs(wsPlugins)) {
+    Object.assign(merged, await loadScopedServersForPluginDir(dir));
+  }
+
+  return merged;
+}

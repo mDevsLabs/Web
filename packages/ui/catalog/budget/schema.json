@@ -1,0 +1,71 @@
+{
+  "model": "Budget",
+  "config": {
+    "name": "Budget",
+    "label": "Budgets",
+    "description": "Gérez vos budgets depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "owner",
+        "label": "Responsable",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "allocated",
+        "label": "Alloué",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "spent",
+        "label": "Dépensé",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "active",
+          "closed"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyBudget",
+        "label": "Notifications : budgets",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveBudget",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section budgets."
+      },
+      {
+        "key": "approveBudget",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "budget-demo-1",
+    "name": "Design 2027",
+    "owner": "Marie Dupont",
+    "allocated": 128,
+    "spent": 128,
+    "status": "draft"
+  }
+}

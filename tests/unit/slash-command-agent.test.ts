@@ -172,8 +172,8 @@ describe("/bots ouvre le sélecteur de bots dans les deux modes", () => {
   // `/bots` remplace `/agents` comme déclencheur affiché. Les anciens restent
   // des alias, mais la commande a gagné deux terrain : elle est proposée dans
   // le mode Agent (le sélecteur y est monté) et au milieu d'une conversation
-  // (le sélecteur y est monté aussi), et elle reste absente des forfaits Free,
-  // où `AgentSelectorCompact` ne rend rien.
+  // (le sélecteur y est monté aussi), y compris pour Free dont les bots sont
+  // ouverts avec un quota dédié.
   const names = (context?: Parameters<typeof getFilteredSlashCommands>[1]) =>
     getFilteredSlashCommands("", context).map((command) => command.name);
 
@@ -204,10 +204,10 @@ describe("/bots ouvre le sélecteur de bots dans les deux modes", () => {
     }
   });
 
-  it("est retirée aux comptes Free, comme les commandes personnalisées", () => {
+  it("reste proposée en Free tandis que les commandes personnalisées restent retirées", () => {
     for (const isHome of [true, false]) {
       const list = names({ isFree: true, isHome, mode: "chat" });
-      expect(list).not.toContain("bots");
+      expect(list).toContain("bots");
       expect(list).not.toContain("custom");
     }
   });

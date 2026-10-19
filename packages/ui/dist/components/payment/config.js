@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Payment", "label": "Paiements", "description": "G\xE9rez vos paiements depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "payer", "label": "Payeur", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "paidOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["pending", "completed", "failed", "refunded"] }], "titleKey": "reference", "settings": [{ "key": "notifyPayment", "label": "Notifications : paiements", "description": "Recevoir un signal lors des changements." }, { "key": "archivePayment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section paiements." }, { "key": "approvePayment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

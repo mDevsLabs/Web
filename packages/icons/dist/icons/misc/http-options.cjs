@@ -1,0 +1,5 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const HttpOptionsIcon = /* @__PURE__ */ createIcon('HttpOptionsIcon', [["path", { "d": "M5 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" }], ["path", { "d": "M10 12h2a2 2 0 1 0 0 -4h-2v8" }], ["path", { "d": "M17 8h4" }], ["path", { "d": "M19 8v8" }]]);
+exports.HttpOptionsIcon = HttpOptionsIcon;

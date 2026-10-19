@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Audience", "label": "Audiences", "description": "G\xE9rez vos audiences depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "segment", "label": "Segment", "kind": "text", "required": true }, { "key": "memberCount", "label": "Membres", "kind": "number", "required": true }, { "key": "growthPercent", "label": "\xC9volution (%)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "building", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyAudience", "label": "Notifications : audiences", "description": "Recevoir un signal lors des changements." }, { "key": "archiveAudience", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section audiences." }, { "key": "approveAudience", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

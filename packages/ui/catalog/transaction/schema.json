@@ -1,0 +1,71 @@
+{
+  "model": "Transaction",
+  "config": {
+    "name": "Transaction",
+    "label": "Transactions",
+    "description": "Gérez vos transactions depuis une interface claire.",
+    "fields": [
+      {
+        "key": "reference",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "description",
+        "label": "Description",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "amount",
+        "label": "Montant",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "postedOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "pending",
+          "posted",
+          "reversed"
+        ]
+      }
+    ],
+    "titleKey": "reference",
+    "settings": [
+      {
+        "key": "notifyTransaction",
+        "label": "Notifications : transactions",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveTransaction",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section transactions."
+      },
+      {
+        "key": "approveTransaction",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "transaction-demo-1",
+    "reference": "TXN-104",
+    "description": "Description démo",
+    "amount": 128,
+    "postedOn": "2026-10-04",
+    "status": "pending"
+  }
+}

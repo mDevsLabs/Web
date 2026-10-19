@@ -5,6 +5,7 @@ import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
 import { pagePath } from "@/lib/client/api-endpoints";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, Skill } from "@/lib/db/schema";
+import { saveThemePreference } from "@/lib/theme/preference";
 
 // Contexte injecté par multimodal-input pour exécuter une commande slash.
 export type SlashCommandContext = {
@@ -341,9 +342,14 @@ export async function runSlashCommand(
       }
       break;
     }
-    case "theme":
-      setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    case "theme": {
+      const next = resolvedTheme === "dark" ? "light" : "dark";
+      setTheme(next);
+      // Le thème est partagé par la suite : l'enregistrer permet à Vibe, au
+      // Site et à Wakies de suivre la même décision au prochain chargement.
+      saveThemePreference(next);
       break;
+    }
     case "delete":
       toast("Supprimer cette discussion ?", {
         action: {

@@ -1,34 +1,18 @@
-"use client";
+﻿"use client";
 
 import {
-  AlertCircleIcon,
   BellIcon,
+  BotIcon,
   BrainIcon,
-  CameraIcon,
-  CloudIcon,
+  ClipboardListIcon,
   DatabaseIcon,
-  ExternalLinkIcon,
-  EyeIcon,
-  EyeOffIcon,
-  ImageIcon,
-  KeyRoundIcon,
-  LanguagesIcon,
-  LineChartIcon,
-  Loader2Icon,
-  LockIcon,
-  MonitorSmartphoneIcon,
-  RefreshCwIcon,
+  LayersIcon,
   SettingsIcon,
-  ShieldCheckIcon,
   SparklesIcon,
-  SquareSlashIcon,
   UserIcon,
-  Volume2Icon,
   WrenchIcon,
   ZapIcon,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+} from "@mdevs/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   type ComponentType,
@@ -36,131 +20,31 @@ import {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
-import { toast } from "sonner";
-import useSWR from "swr";
-import { BotGlyph } from "@/components/agents/bot-avatar";
-import {
-  ModelSelectorCompact,
-  type SharedModel,
-} from "@/components/chat/model-selector-compact";
-import { reopenNotificationPrompt } from "@/components/chat/notification-permission-gate";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { AgentTab } from "@/components/settings/agent-tab";
+import { ApplicationsTab } from "@/components/settings/applications-tab";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
 import { DataTab } from "@/components/settings/data-tab";
+import { FormsTab } from "@/components/settings/forms-tab";
 import { MemoryCard } from "@/components/settings/memory-card";
-import { OptionSelector } from "@/components/settings/option-selector";
-import {
-  ImageSizeOptionSelector,
-  mapVoicesForModel,
-  useVoicePresets,
-  VoiceOptionSelector,
-} from "@/components/settings/option-selectors";
+import { NotificationsTab } from "@/components/settings/notifications-tab";
+import { PreferencesTab } from "@/components/settings/preferences-tab";
+import { ProfileTab } from "@/components/settings/profile-tab";
 import {
   type AnchorItem,
   SettingsAnchorNav,
 } from "@/components/settings/settings-anchor-nav";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { requestOnboardingReplay } from "@/hooks/use-onboarding";
-import {
-  resolveImagesUsage,
-  resolveSpeechUsage,
-  useSettings,
-} from "@/hooks/use-settings";
-import { useTier } from "@/hooks/use-tier";
-import type { ChatModel } from "@/lib/ai/models";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { extractApiErrorMessage } from "@/lib/api/client-error";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
-import {
-  AUTO_DICTATION_LANGUAGE,
-  DEFAULT_TRANSLATION_TARGET,
-  DICTATION_LANGUAGES,
-  normalizeDictationLanguage,
-  normalizeTranslationTarget,
-  TRANSLATION_TARGETS,
-} from "@/lib/i18n/languages";
-import {
-  customInstructionsCounterLabel,
-  customInstructionsHint,
-  formatCharCount,
-} from "@/lib/plans/custom-instructions";
-import {
-  exceedsCustomInstructionsProductLimit,
-  getCustomInstructionsEffectiveMax,
-  getTierChatWeeklyLimit,
-  getTierCustomInstructionsMax,
-  getTierLimits,
-  getTierStorageBytes,
-} from "@/lib/plans/tier-limits";
-import { usePlatform } from "@/lib/platform";
-import { cn, fetcher } from "@/lib/utils";
-
-function formatTokens(n: number) {
-  return new Intl.NumberFormat("fr-FR").format(n);
-}
-
-function formatBytes(bytes: number) {
-  if (!bytes || bytes === 0) {
-    return "0 Mo";
-  }
-  const mb = bytes / (1024 * 1024);
-  if (mb < 1000) {
-    return `${mb.toFixed(1)} Mo`;
-  }
-  return `${(mb / 1024).toFixed(2)} Go`;
-}
-
-function formatDate(dateStr?: string) {
-  if (!dateStr) {
-    return "Prochainement";
-  }
-  try {
-    const d = new Date(dateStr);
-    return new Intl.DateTimeFormat("fr-FR", {
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      month: "long",
-      weekday: "long",
-    }).format(d);
-  } catch {
-    return dateStr;
-  }
-}
-
-function getCookie(name: string): string | null {
-  if (typeof document === "undefined") {
-    return null;
-  }
-  const m = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(`${name}=`));
-  return m ? decodeURIComponent(m.split("=")[1]) : null;
-}
-function setCookie(name: string, value: string) {
-  const maxAge = 60 * 60 * 24 * 365;
-  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
-}
+import { UsageTab } from "@/components/settings/usage-tab";
+import { cn } from "@/lib/utils";
 
 type SettingsTab =
+  | "agent"
+  | "applications"
   | "configuration"
   | "data"
+  | "forms"
   | "memory"
   | "notifications"
   | "preferences"
@@ -174,8 +58,11 @@ const SETTINGS_TABS: {
 }[] = [
   { icon: UserIcon, id: "profile", label: "Mon Profil" },
   { icon: SparklesIcon, id: "preferences", label: "Préférences IA" },
+  { icon: LayersIcon, id: "applications", label: "Applications" },
+  { icon: BotIcon, id: "agent", label: "Agent" },
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
+  { icon: ClipboardListIcon, id: "forms", label: "Formulaires" },
   { icon: BellIcon, id: "notifications", label: "Notifications" },
   { icon: DatabaseIcon, id: "data", label: "Données" },
   { icon: WrenchIcon, id: "configuration", label: "Outils" },
@@ -196,18 +83,12 @@ export default function SettingsPage() {
 function SettingsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const platformInfo = usePlatform();
   const initialTab = searchParams.get("tab") as SettingsTab | null;
   const [activeTab, setActiveTab] = useState<SettingsTab>(
     initialTab && SETTINGS_TABS.some((t) => t.id === initialTab)
       ? initialTab
       : "profile"
   );
-
-  const handleReplayTutorial = useCallback(() => {
-    requestOnboardingReplay();
-    router.push("/");
-  }, [router]);
 
   const handleTabChange = useCallback(
     (tab: SettingsTab) => {
@@ -222,8 +103,8 @@ function SettingsPageInner() {
   const handleTabKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
       if (
-        event.key !== "ArrowRight" &&
-        event.key !== "ArrowLeft" &&
+        event.key !== "ArrowDown" &&
+        event.key !== "ArrowUp" &&
         event.key !== "Home" &&
         event.key !== "End"
       ) {
@@ -235,7 +116,7 @@ function SettingsPageInner() {
           ? 0
           : event.key === "End"
             ? SETTINGS_TABS.length - 1
-            : event.key === "ArrowRight"
+            : event.key === "ArrowDown"
               ? (index + 1) % SETTINGS_TABS.length
               : (index - 1 + SETTINGS_TABS.length) % SETTINGS_TABS.length;
       const nextTab = SETTINGS_TABS[nextIndex];
@@ -249,21 +130,33 @@ function SettingsPageInner() {
 
   useEffect(() => {
     const t = searchParams.get("tab") as SettingsTab | null;
-    if (t && SETTINGS_TABS.some((tab) => tab.id === t) && t !== activeTab) {
-      setActiveTab(t);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, activeTab]);
+    setActiveTab(
+      t && SETTINGS_TABS.some((tab) => tab.id === t) ? t : "profile"
+    );
+  }, [searchParams]);
 
-  // Scroll vers ancre usage si tab=usage
   useEffect(() => {
-    if (activeTab === "usage") {
+    document.getElementById(`settings-tab-${activeTab}`)?.scrollIntoView({
+      block: "nearest",
+      inline: "nearest",
+    });
+  }, [activeTab]);
+
+  // Scroll vers ancre usage si tab=usage ou applications si hash présent
+  useEffect(() => {
+    if (activeTab === "usage" || activeTab === "applications") {
       const hash = typeof window === "undefined" ? "" : window.location.hash;
-      const targetId = hash ? hash.replace("#", "") : "usage-mAI";
+      const targetId = hash
+        ? hash.replace("#", "")
+        : activeTab === "usage"
+          ? "usage-mAI"
+          : "vibe";
       const el =
         document.getElementById(targetId) ||
-        document.getElementById("usage-mAI") ||
-        document.getElementById("usage");
+        (activeTab === "usage"
+          ? document.getElementById("usage-mAI") ||
+            document.getElementById("usage")
+          : document.getElementById("vibe"));
       if (el) {
         setTimeout(
           () => el.scrollIntoView({ behavior: "smooth", block: "start" }),
@@ -272,818 +165,6 @@ function SettingsPageInner() {
       }
     }
   }, [activeTab]);
-
-  // Données utilisateur — source unique partagée (hook use-settings) avec la
-  // page Images et le bandeau de quota du chat : affichage toujours cohérent
-  const {
-    data: settingsData,
-    isLoading,
-    mutate: mutateSettings,
-  } = useSettings({ revalidateOnFocus: true });
-
-  const profile = settingsData?.user ?? null;
-  const aiUsage = settingsData?.aiUsage ?? null;
-  const cloudUsage = settingsData?.cloudUsage ?? null;
-
-  // Synchronisation des champs du formulaire une seule fois au premier
-  // chargement (les revalidations SWR ne doivent pas écraser la saisie)
-  const initialSyncDone = useRef(false);
-  useEffect(() => {
-    if (!initialSyncDone.current && settingsData?.user) {
-      initialSyncDone.current = true;
-      const u = settingsData.user;
-      setUsername(u.username || "");
-      setEmail(u.email || "");
-      setPhone(u.phone || "");
-      setNewsletter(Boolean(u.newsletter));
-      setNotifyLimits(Boolean(u.notify_limits));
-    }
-  }, [settingsData]);
-
-  // Formulaire profil
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [newsletter, setNewsletter] = useState(false);
-  const [notifyLimits, setNotifyLimits] = useState(true);
-
-  // États actions
-  const [isSaving, setIsSaving] = useState(false);
-  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
-
-  // Modale vérification nouvel email
-  const [showEmailOtpModal, setShowEmailOtpModal] = useState(false);
-  const [pendingEmail, setPendingEmail] = useState("");
-  const [emailOtpCode, setEmailOtpCode] = useState("");
-  const [isVerifyingEmail, setIsVerifyingEmail] = useState(false);
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Préférences IA (BDD + cookie)
-  const [defaultModelId, setDefaultModelId] =
-    useState<string>(DEFAULT_CHAT_MODEL);
-  const [defaultChatVisibility, setDefaultChatVisibility] = useState<
-    "private" | "public"
-  >("private");
-  const [customInstructions, setCustomInstructions] = useState("");
-  const [customEnabled, setCustomEnabled] = useState(false);
-  const [customTemp, setCustomTemp] = useState(0.7);
-  const [customTopP, setCustomTopP] = useState(0.9);
-  const [isSavingCustom, setIsSavingCustom] = useState(false);
-
-  // Préférences Outils IA (Génération d'images et Synthèse vocale)
-  const [defaultImageModel, setDefaultImageModel] = useState<string>(
-    "black-forest-labs/flux-schnell"
-  );
-  const [defaultImageSize, setDefaultImageSize] = useState<string>("1024x1024");
-  const [defaultAudioModel, setDefaultAudioModel] = useState<string>(
-    "deepgram/flux-tts:free"
-  );
-  // Voix par défaut : résolue dynamiquement depuis l'API (voix du modèle
-  // sélectionné) — aucune valeur codée en dur dans le client.
-  const [defaultAudioVoice, setDefaultAudioVoice] = useState<string>("");
-  const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
-  const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
-
-  // Notifications prefs
-  const [notifEnabled, setNotifEnabled] = useState(false);
-  const [notifAiResponse, setNotifAiResponse] = useState(true);
-  const [notifProject, setNotifProject] = useState(true);
-  const [notifMcp, setNotifMcp] = useState(true);
-  const [notifMcpAccess, setNotifMcpAccess] = useState(true);
-  const [notifNews, setNotifNews] = useState(true);
-  const [notifPlanningTaskCompleted, setNotifPlanningTaskCompleted] =
-    useState(true);
-  const [notifQuotaWarning, setNotifQuotaWarning] = useState(true);
-  const [isSavingNotif, setIsSavingNotif] = useState(false);
-  const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
-    "truncate"
-  );
-  const [browserPerm, setBrowserPerm] = useState<string>(
-    typeof Notification === "undefined" ? "default" : Notification.permission
-  );
-
-  const { data: prefModelsData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    fetcher,
-    { dedupingInterval: 60_000 }
-  );
-  const prefModels: ChatModel[] = prefModelsData?.models || [];
-
-  const { data: imageModelsData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/images`,
-    fetcher,
-    { dedupingInterval: 60_000 }
-  );
-  const imageModels: SharedModel[] =
-    imageModelsData?.data || imageModelsData?.models || [];
-
-  const { data: audioModelsData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/speech`,
-    fetcher,
-    { dedupingInterval: 60_000 }
-  );
-  const audioModels: SharedModel[] =
-    audioModelsData?.data || audioModelsData?.models || [];
-
-  // Catalogue de voix partagé avec la page Audio (noms, genres, catégories)
-  const voicePresets = useVoicePresets();
-  const audioModelVoices = useMemo(
-    () =>
-      mapVoicesForModel(
-        defaultAudioModel
-          ? audioModels.find((m) => m.id === defaultAudioModel)?.voices
-          : undefined,
-        voicePresets
-      ),
-    [audioModels, defaultAudioModel, voicePresets]
-  );
-
-  // Validation de la voix : la préférence enregistrée est conservée si elle
-  // existe toujours dans le catalogue API du modèle ; sinon on retombe sur la
-  // première voix du modèle (ou aucune si le modèle n'en déclare pas).
-  useEffect(() => {
-    if (audioModelVoices.length === 0) {
-      if (defaultAudioVoice) {
-        setDefaultAudioVoice("");
-      }
-      return;
-    }
-    if (!audioModelVoices.some((v) => v.id === defaultAudioVoice)) {
-      setDefaultAudioVoice(audioModelVoices[0].id);
-    }
-  }, [audioModelVoices, defaultAudioVoice]);
-
-  const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
-    "/api/user/preferences",
-    fetcher,
-    { dedupingInterval: 30_000 }
-  );
-
-  const { isFree } = useTier();
-
-  // Forfait utilisé pour BORNER les instructions personnalisées. On lit le
-  // profil plutôt que `useTier()` : le profil expose `tier` tel que persisté,
-  // alors que useTier dérive des drapeaux à partir de plusieurs sources de la
-  // charge utile /api/settings. Un tier non lu bascule par défaut sur Free
-  // (normalizeTierKey), soit la limite la plus stricte — le bon sens de
-  // fail-safe pour une longueur maximale.
-  const tierRaw = profile?.tier;
-  const customInstructionsMax = getCustomInstructionsEffectiveMax(tierRaw);
-  const customInstructionsOverLimit = exceedsCustomInstructionsProductLimit(
-    tierRaw,
-    customInstructions.length
-  );
-
-  const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
-  const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
-  const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
-  const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
-  const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
-  const [dictationLanguage, setDictationLanguage] = useState(
-    AUTO_DICTATION_LANGUAGE
-  );
-  const [translationLanguage, setTranslationLanguage] = useState(
-    DEFAULT_TRANSLATION_TARGET
-  );
-  const [isSavingLanguages, setIsSavingLanguages] = useState(false);
-  const { data: prefAgentsData } = useSWR<{
-    agents: any[];
-    limit: number | null;
-  }>(isFree ? null : "/api/agents", fetcher, { dedupingInterval: 30_000 });
-  const prefAgents: any[] = Array.isArray(prefAgentsData?.agents)
-    ? prefAgentsData.agents
-    : [];
-
-  const handleSaveDefaultAgent = useCallback(
-    async (next: string) => {
-      if (isFree) {
-        return;
-      }
-      const previous = defaultAgentId;
-      setDefaultAgentId(next);
-      setIsSavingDefaultAgent(true);
-      try {
-        const res = await fetch("/api/user/preferences", {
-          body: JSON.stringify({
-            defaultAgentId: next === "none" ? null : next,
-          }),
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-        });
-        if (!res.ok) {
-          throw new Error("Erreur de sauvegarde du bot par défaut");
-        }
-        toast.success(
-          next === "none"
-            ? "Bot par défaut désactivé — modèle standard utilisé"
-            : "Bot par défaut enregistré — appliqué aux nouvelles discussions"
-        );
-        await mutateCustomPref();
-      } catch (e: any) {
-        setDefaultAgentId(previous);
-        toast.error(e.message || "Erreur de sauvegarde du bot par défaut");
-      } finally {
-        setIsSavingDefaultAgent(false);
-      }
-    },
-    [defaultAgentId, isFree, mutateCustomPref]
-  );
-
-  const handleToggleShowAgentChatIcons = useCallback(
-    async (checked: boolean) => {
-      const prev = showAgentChatIcons;
-      setShowAgentChatIcons(checked);
-      setIsSavingAgentIconsPref(true);
-      try {
-        const res = await fetch("/api/user/preferences", {
-          body: JSON.stringify({ showAgentChatIcons: checked }),
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-        });
-        if (!res.ok) {
-          throw new Error("Erreur de sauvegarde de la préférence");
-        }
-        toast.success("Préférence d'icône de bot enregistrée !");
-        await mutateCustomPref();
-      } catch (e: any) {
-        setShowAgentChatIcons(prev);
-        toast.error(e.message || "Erreur de sauvegarde");
-      } finally {
-        setIsSavingAgentIconsPref(false);
-      }
-    },
-    [showAgentChatIcons, mutateCustomPref]
-  );
-
-  useEffect(() => {
-    if (customPrefData) {
-      if (customPrefData.customInstructions !== undefined) {
-        setCustomInstructions(customPrefData.customInstructions || "");
-      }
-      if (customPrefData.defaultChatVisibility === "public") {
-        setDefaultChatVisibility("public");
-      }
-      if (customPrefData.defaultChatModel && !getCookie("chat-model")) {
-        setDefaultModelId(customPrefData.defaultChatModel);
-      }
-      if (customPrefData.defaultAgentId !== undefined) {
-        setDefaultAgentId(customPrefData.defaultAgentId || "none");
-      }
-      if (typeof customPrefData.showAgentChatIcons === "boolean") {
-        setShowAgentChatIcons(customPrefData.showAgentChatIcons);
-      }
-      if (customPrefData.enabled !== undefined) {
-        setCustomEnabled(!!customPrefData.enabled);
-      }
-      if (customPrefData.temperature !== undefined) {
-        setCustomTemp(customPrefData.temperature);
-      }
-      if (customPrefData.topP !== undefined) {
-        setCustomTopP(customPrefData.topP);
-      }
-      if (customPrefData.defaultImageModel) {
-        setDefaultImageModel(customPrefData.defaultImageModel);
-      }
-      if (customPrefData.defaultImageSize) {
-        setDefaultImageSize(customPrefData.defaultImageSize);
-      }
-      if (customPrefData.defaultAudioModel) {
-        setDefaultAudioModel(customPrefData.defaultAudioModel);
-      }
-      if (customPrefData.defaultAudioVoice) {
-        setDefaultAudioVoice(customPrefData.defaultAudioVoice);
-      }
-      if (customPrefData.defaultAudioSpeed) {
-        setDefaultAudioSpeed(customPrefData.defaultAudioSpeed);
-      }
-      if (customPrefData.defaultDictationLanguage !== undefined) {
-        setDictationLanguage(
-          normalizeDictationLanguage(customPrefData.defaultDictationLanguage)
-        );
-      }
-      if (customPrefData.defaultTranslationLanguage !== undefined) {
-        setTranslationLanguage(
-          normalizeTranslationTarget(
-            customPrefData.defaultTranslationLanguage
-          ) ?? DEFAULT_TRANSLATION_TARGET
-        );
-      }
-    }
-  }, [customPrefData]);
-
-  // Notifications prefs fetch
-  const { data: notifPrefsData, mutate: mutateNotifPrefs } = useSWR(
-    "/api/notifications/preferences",
-    fetcher,
-    { dedupingInterval: 10_000 }
-  );
-
-  useEffect(() => {
-    if (notifPrefsData) {
-      if (typeof notifPrefsData.enabled === "boolean") {
-        setNotifEnabled(notifPrefsData.enabled);
-      }
-      if (typeof notifPrefsData.aiResponse === "boolean") {
-        setNotifAiResponse(notifPrefsData.aiResponse);
-      }
-      if (typeof notifPrefsData.projectCreated === "boolean") {
-        setNotifProject(notifPrefsData.projectCreated);
-      }
-      if (typeof notifPrefsData.mcpCreated === "boolean") {
-        setNotifMcp(notifPrefsData.mcpCreated);
-      }
-      if (typeof notifPrefsData.mcpAccessRequest === "boolean") {
-        setNotifMcpAccess(notifPrefsData.mcpAccessRequest);
-      }
-      if (typeof notifPrefsData.news === "boolean") {
-        setNotifNews(notifPrefsData.news);
-      }
-      if (typeof notifPrefsData.planningTaskCompleted === "boolean") {
-        setNotifPlanningTaskCompleted(notifPrefsData.planningTaskCompleted);
-      }
-      if (typeof notifPrefsData.quotaWarning === "boolean") {
-        setNotifQuotaWarning(notifPrefsData.quotaWarning);
-      }
-      if (
-        notifPrefsData.regenerateMode === "truncate" ||
-        notifPrefsData.regenerateMode === "fork"
-      ) {
-        setRegenerateMode(notifPrefsData.regenerateMode);
-      }
-    }
-  }, [notifPrefsData]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && "Notification" in window) {
-      setBrowserPerm(Notification.permission);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !navigator.permissions?.query) {
-      return;
-    }
-    let permStatus: PermissionStatus | null = null;
-    const syncPerm = () => setBrowserPerm(Notification.permission);
-    navigator.permissions
-      .query({ name: "notifications" as PermissionName })
-      .then((p) => {
-        permStatus = p;
-        syncPerm();
-        p.addEventListener("change", syncPerm);
-      })
-      .catch(() => {});
-    const onFocus = () => {
-      if ("Notification" in window) {
-        setBrowserPerm(Notification.permission);
-      }
-    };
-    window.addEventListener("focus", onFocus);
-    return () => {
-      permStatus?.removeEventListener("change", syncPerm);
-      window.removeEventListener("focus", onFocus);
-    };
-  }, []);
-
-  const handleRequestNotificationPermission = useCallback(async () => {
-    if (typeof window === "undefined" || !("Notification" in window)) {
-      toast.error(
-        "Les notifications ne sont pas supportées par ce navigateur."
-      );
-      return;
-    }
-    try {
-      const perm = await Notification.requestPermission();
-      setBrowserPerm(perm);
-      if (perm === "granted") {
-        toast.success("Permission accordée ! Vous recevrez les notifications.");
-        // auto-enable
-        if (!notifEnabled) {
-          setNotifEnabled(true);
-          // persist
-          fetch("/api/notifications/preferences", {
-            body: JSON.stringify({ enabled: true, news: true }),
-            headers: { "Content-Type": "application/json" },
-            method: "POST",
-          })
-            .then(() => mutateNotifPrefs())
-            .catch(() => {});
-        }
-      } else if (perm === "denied") {
-        toast.error(
-          "Permission refusée. Activez-la dans les paramètres du navigateur."
-        );
-      }
-    } catch {
-      toast.error("Impossible de demander la permission.");
-    }
-  }, [notifEnabled, mutateNotifPrefs]);
-
-  const handleReopenNotificationPrompt = useCallback(() => {
-    reopenNotificationPrompt();
-  }, []);
-
-  const handleSaveNotifPrefs = useCallback(async () => {
-    setIsSavingNotif(true);
-    try {
-      const res = await fetch("/api/notifications/preferences", {
-        body: JSON.stringify({
-          aiResponse: notifAiResponse,
-          enabled: notifEnabled,
-          mcpAccessRequest: notifMcpAccess,
-          mcpCreated: notifMcp,
-          news: notifNews,
-          planningTaskCompleted: notifPlanningTaskCompleted,
-          projectCreated: notifProject,
-          quotaWarning: notifQuotaWarning,
-          regenerateMode,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        throw new Error("Erreur sauvegarde");
-      }
-      toast.success("Préférences de notifications enregistrées !");
-      mutateNotifPrefs();
-      if (
-        notifEnabled &&
-        typeof window !== "undefined" &&
-        "Notification" in window &&
-        Notification.permission === "default"
-      ) {
-        handleRequestNotificationPermission();
-      }
-    } catch (e: any) {
-      toast.error(e.message || "Erreur");
-    } finally {
-      setIsSavingNotif(false);
-    }
-  }, [
-    notifEnabled,
-    notifAiResponse,
-    notifProject,
-    notifMcp,
-    notifMcpAccess,
-    notifNews,
-    notifPlanningTaskCompleted,
-    notifQuotaWarning,
-    regenerateMode,
-    mutateNotifPrefs,
-    handleRequestNotificationPermission,
-  ]);
-
-  const handleSaveRegenerateMode = useCallback(async () => {
-    try {
-      const res = await fetch("/api/notifications/preferences", {
-        body: JSON.stringify({ regenerateMode }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        throw new Error("Erreur sauvegarde mode régénération");
-      }
-      toast.success("Mode régénération enregistré !");
-      mutateNotifPrefs();
-    } catch {
-      toast.error("Erreur sauvegarde mode régénération");
-    }
-  }, [regenerateMode, mutateNotifPrefs]);
-
-  useEffect(() => {
-    const cModel = getCookie("chat-model");
-    if (cModel) {
-      setDefaultModelId(cModel);
-    }
-  }, []);
-
-  const handleSavePreferences = useCallback(async () => {
-    setCookie("chat-model", defaultModelId);
-    try {
-      // Modèle par défaut et visibilité par défaut persistés en BDD
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultChatModel: defaultModelId,
-          defaultChatVisibility,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        throw new Error("Erreur lors de l'enregistrement");
-      }
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des préférences IA.");
-      return;
-    }
-    toast.success("Préférences IA enregistrées !");
-  }, [defaultModelId, defaultChatVisibility, mutateCustomPref]);
-
-  const handleSaveToolsPreferences = useCallback(async () => {
-    setIsSavingToolsPref(true);
-    try {
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultAudioModel,
-          defaultAudioSpeed,
-          defaultAudioVoice,
-          defaultImageModel,
-          defaultImageSize,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        throw new Error("Erreur lors de l'enregistrement");
-      }
-      toast.success("Préférences d'outils Images & Audio enregistrées !");
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des préférences outils.");
-    } finally {
-      setIsSavingToolsPref(false);
-    }
-  }, [
-    defaultImageModel,
-    defaultImageSize,
-    defaultAudioModel,
-    defaultAudioVoice,
-    defaultAudioSpeed,
-    mutateCustomPref,
-  ]);
-
-  const handleSaveLanguages = useCallback(async () => {
-    setIsSavingLanguages(true);
-    try {
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          defaultDictationLanguage: dictationLanguage,
-          defaultTranslationLanguage: translationLanguage,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        throw new Error("Erreur lors de l'enregistrement");
-      }
-      toast.success("Langues enregistrées !");
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur de sauvegarde des langues.");
-    } finally {
-      setIsSavingLanguages(false);
-    }
-  }, [dictationLanguage, translationLanguage, mutateCustomPref]);
-
-  const handleSaveCustomInstructions = useCallback(async () => {
-    setIsSavingCustom(true);
-    try {
-      // Troncature à la limite EFFECTIVE du forfait, pas à une constante :
-      // c'est cette valeur que le serveur valide (même source de vérité).
-      const payloadText = customInstructions.slice(0, customInstructionsMax);
-      const res = await fetch("/api/user/preferences", {
-        body: JSON.stringify({
-          customInstructions: payloadText,
-          enabled: customEnabled,
-          temperature: customTemp,
-          topP: customTopP,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(extractApiErrorMessage(data) || "Erreur");
-      }
-      if (payloadText.length === customInstructions.length) {
-        toast.success("Instructions personnalisées enregistrées !");
-      } else {
-        // Le textarea limite la saisie via maxLength, mais une valeur
-        // ré-hydratée depuis l'API peut dépasser la limite après un changement
-        // de forfait. On le dit plutôt que de tronquer en silence.
-        setCustomInstructions(payloadText);
-        toast.warning("Texte tronqué", {
-          description: `Conservé ${formatCharCount(payloadText.length)} caractères sur ${formatCharCount(customInstructions.length)}.`,
-        });
-      }
-      mutateCustomPref();
-    } catch (e: any) {
-      toast.error(e.message || "Erreur lors de la sauvegarde");
-    } finally {
-      setIsSavingCustom(false);
-    }
-  }, [
-    customInstructions,
-    customInstructionsMax,
-    customEnabled,
-    customTemp,
-    customTopP,
-    mutateCustomPref,
-  ]);
-
-  // Upload d'avatar
-  const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) {
-      return;
-    }
-    const file = files[0];
-
-    setIsUploadingAvatar(true);
-    const formData = new FormData();
-    formData.append("avatar", file);
-
-    try {
-      const res = await fetch("/api/settings", {
-        body: formData,
-        method: "POST",
-      });
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        toast.error(
-          extractApiErrorMessage(data) ||
-            "Erreur lors du téléversement de l'avatar."
-        );
-        return;
-      }
-
-      toast.success("Photo de profil mise à jour !");
-      mutateSettings(
-        (current) =>
-          current?.user
-            ? {
-                ...current,
-                user: { ...current.user, avatarUrl: data.avatarUrl },
-              }
-            : current,
-        { revalidate: false }
-      );
-    } catch {
-      toast.error("Impossible de mettre à jour l'avatar.");
-    } finally {
-      setIsUploadingAvatar(false);
-    }
-  };
-
-  // Sauvegarde des modifications du profil
-  const handleProfileSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const isSensitiveChange =
-      email.trim() !== (profile?.email || "") ||
-      phone.trim() !== (profile?.phone || "") ||
-      username.trim() !== (profile?.username || "") ||
-      (newPassword && newPassword.trim().length > 0);
-    if (isSensitiveChange && !currentPassword) {
-      toast.error(
-        "Votre mot de passe actuel est requis pour modifier e-mail, téléphone, nom ou mot de passe."
-      );
-      return;
-    }
-
-    setIsSaving(true);
-    try {
-      const payload: any = {
-        currentPassword,
-        email: email.trim(),
-        newsletter,
-        notify_limits: notifyLimits,
-        phone: phone.trim() || undefined,
-        username: username.trim(),
-      };
-
-      if (newPassword?.trim()) {
-        if (newPassword.length < 6) {
-          toast.error(
-            "Le nouveau mot de passe doit comporter au moins 6 caractères."
-          );
-          setIsSaving(false);
-          return;
-        }
-        payload.password = newPassword;
-      }
-
-      const res = await fetch("/api/settings", {
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || data.error) {
-        toast.error(
-          extractApiErrorMessage(data) ||
-            "Erreur lors de la mise à jour du profil."
-        );
-        return;
-      }
-
-      // Si changement d'email nécessitant validation OTP
-      if (data.status === "email_verification_required") {
-        setPendingEmail(data.email || email.trim());
-        setShowEmailOtpModal(true);
-        toast.info(
-          "Un code a été envoyé à votre nouvelle adresse e-mail pour validation !"
-        );
-        return;
-      }
-
-      toast.success("Profil mis à jour avec succès !");
-      setCurrentPassword("");
-      setNewPassword("");
-      mutateSettings();
-    } catch {
-      toast.error("Erreur de communication avec le serveur.");
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  // Validation du code OTP pour le nouvel e-mail
-  const handleVerifyNewEmail = async () => {
-    if (!emailOtpCode || emailOtpCode.trim().length < 4) {
-      toast.error("Veuillez saisir le code de vérification.");
-      return;
-    }
-
-    setIsVerifyingEmail(true);
-    try {
-      const res = await fetch("/api/settings", {
-        body: JSON.stringify({
-          action: "verify_new_email",
-          code: emailOtpCode.trim(),
-          email: pendingEmail,
-        }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        toast.error(extractApiErrorMessage(data) || "Code invalide ou expiré.");
-        return;
-      }
-
-      toast.success("Votre nouvelle adresse e-mail est confirmée !");
-      setShowEmailOtpModal(false);
-      setEmailOtpCode("");
-      mutateSettings();
-    } catch {
-      toast.error("Impossible de confirmer l'adresse e-mail.");
-    } finally {
-      setIsVerifyingEmail(false);
-    }
-  };
-
-  const aiPercent = aiUsage?.limit
-    ? Math.min(
-        100,
-        Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100)
-      )
-    : 0;
-
-  // Même résolution que la page Images : valeurs identiques garanties
-  const resolvedImagesUsage = resolveImagesUsage(settingsData);
-  const imagesPercent = resolvedImagesUsage.dailyLimit
-    ? Math.min(
-        100,
-        Math.round(
-          ((resolvedImagesUsage.usedToday || 0) /
-            resolvedImagesUsage.dailyLimit) *
-            100
-        )
-      )
-    : 0;
-
-  const resolvedSpeechUsage = resolveSpeechUsage(settingsData);
-  const speechPercent = resolvedSpeechUsage.limit
-    ? Math.min(
-        100,
-        Math.round(
-          ((resolvedSpeechUsage.tokensUsed || 0) / resolvedSpeechUsage.limit) *
-            100
-        )
-      )
-    : 0;
-
-  const cloudPercent = cloudUsage?.bytesLimit
-    ? Math.min(
-        100,
-        Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100)
-      )
-    : 0;
-
-  // Repli aligné sur le SSOT des quotas (lib/plans/tier-limits.ts)
-  const aiLimitFallback = getTierChatWeeklyLimit(profile?.tier);
-  const storageLimitFallback = getTierStorageBytes(profile?.tier);
 
   // Ancres de la barre latérale pour l'onglet actif (défilement + surlignage)
   const anchorItems: AnchorItem[] = useMemo(() => {
@@ -1094,15 +175,37 @@ function SettingsPageInner() {
           { id: "profile-form", label: "Informations personnelles" },
           { id: "profile-security", label: "Sécurité & mot de passe" },
         ];
+      case "agent":
+        return [
+          { id: "agent-mode", label: "Mode par défaut" },
+          { id: "agent-fallback", label: "Modèle de repli" },
+          { id: "agent-reasoning", label: "Réflexion" },
+          { id: "agent-tools", label: "Outils" },
+          { id: "agent-permissions", label: "Autorisations des outils" },
+          { id: "agent-project", label: "Projet par défaut" },
+          { id: "agent-availability", label: "Disponibilité" },
+          { id: "agent-activity", label: "Activité Agent" },
+        ];
       case "preferences":
         return [
           { id: "prefs-defaults", label: "Modèle & visibilité" },
+          { id: "prefs-favorite-app", label: "Menu favori" },
           { id: "prefs-instructions", label: "Instructions personnalisées" },
-          { id: "prefs-agent", label: "Bot par défaut" },
-          { id: "prefs-tools", label: "Génération d'images" },
           { id: "prefs-audio", label: "Synthèse vocale" },
           { id: "prefs-languages", label: "Langues" },
           { id: "prefs-regenerate", label: "Mode régénération" },
+        ];
+      case "applications":
+        return [
+          { id: "vibe", label: "Vibe — Réseau & Studio IA" },
+          { id: "vibe-ai", label: "↳ IA & Voix (Unifiées)" },
+          { id: "vibe-feed", label: "↳ Fil & Modération" },
+          { id: "vibe-privacy", label: "↳ Confidentialité" },
+          { id: "vibe-circle", label: "↳ Cercle Privé" },
+          { id: "wakies", label: "Wakies — Espaces de travail" },
+          { id: "wakies-general", label: "↳ Atelier & Confidentialité" },
+          { id: "wakies-quotas", label: "↳ Stockage & Quotas" },
+          { id: "wakies-config", label: "↳ Configuration des Wakies" },
         ];
       case "memory":
         return [
@@ -1112,6 +215,7 @@ function SettingsPageInner() {
       case "usage":
         return [
           { id: "usage-plan", label: "Forfait actuel" },
+          { id: "usage-stats", label: "Statistiques" },
           { id: "usage", label: "Utilisation de l'IA" },
           { id: "usage-images", label: "Générations d'images" },
           { id: "usage-speech", label: "Synthèse vocale" },
@@ -1130,6 +234,8 @@ function SettingsPageInner() {
           { id: "data-memory", label: "Mémoire" },
           { id: "data-generations", label: "Images & audios" },
         ];
+      case "forms":
+        return [{ id: "forms-list", label: "Formulaires" }];
       default:
         return [];
     }
@@ -1140,16 +246,23 @@ function SettingsPageInner() {
       className="flex flex-1 flex-col h-full overflow-y-auto bg-background"
       data-scroll-root=""
     >
-      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 pb-0">
+      {/*
+        `md:pb-0` est indispensable et doit rester explicite : le raccourci
+        `md:p-10` est compilé APRÈS les utilitaires de base par Tailwind, donc un
+        simple `pb-0` en fin de liste se faisait écraser par lui et la grille
+        ci-dessous repartait avec 2,5 rem de haut en trop. On étale donc le
+        raccourci en `md:px-*`/`md:pt-*` pour que le zéro du bas tienne.
+      */}
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:px-10 md:pt-10 md:pb-0">
         {/* En-tête de la page */}
-        <div className="pb-6 border-b border-border/50">
+        <div className="pb-4 border-b border-border/50">
           <div className="flex items-start gap-3">
             <PageBackButton />
             <div className="min-w-0">
               <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
                 <span className="flex size-2 rounded-full bg-primary animate-pulse" />
                 <SettingsIcon className="size-4" />
-                mAI Account & Preferences
+                Compte & Préférences mAI
               </div>
               <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
                 Paramètres du compte
@@ -1163,1276 +276,58 @@ function SettingsPageInner() {
         </div>
       </div>
 
-      {/* Onglets — même design que les pages Audio / Images */}
-      <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
-        <div
-          aria-label="Sections des paramètres"
-          className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto"
-          role="tablist"
-        >
-          {SETTINGS_TABS.map((tab, index) => (
-            <button
-              aria-controls={`settings-panel-${tab.id}`}
-              aria-selected={activeTab === tab.id}
-              className={cn(
-                "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer",
-                activeTab === tab.id
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
-              )}
-              id={`settings-tab-${tab.id}`}
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              onKeyDown={(event) => handleTabKeyDown(event, index)}
-              role="tab"
-              tabIndex={activeTab === tab.id ? 0 : -1}
-              type="button"
-            >
-              <tab.icon className="size-3.5" />
-              <span>{tab.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div
-        aria-labelledby={`settings-tab-${activeTab}`}
-        className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start"
-        id={`settings-panel-${activeTab}`}
-        role="tabpanel"
-        tabIndex={0}
-      >
-        <SettingsAnchorNav items={anchorItems} />
-        <div className="flex-1 min-w-0">
-          {isLoading ? (
-            <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
-              <Loader2Icon className="size-6 animate-spin text-primary" />
-              <span className="text-sm">Chargement de vos informations...</span>
-            </div>
-          ) : activeTab === "profile" ? (
-            /* ────────────── SECTION PROFIL ────────────── */
-            <div className="py-6 flex flex-col gap-8 max-w-4xl">
-              {/* Avatar */}
-              <div
-                className="surface-card flex items-center gap-5"
-                id="profile-avatar"
-              >
-                <div className="relative group">
-                  <div className="size-20 rounded-full ring-2 ring-border/80 overflow-hidden bg-muted flex items-center justify-center shadow-md">
-                    {profile?.avatarUrl ? (
-                      <Image
-                        alt={username}
-                        className="size-full object-cover"
-                        height={80}
-                        src={profile.avatarUrl}
-                        unoptimized
-                        width={80}
-                      />
-                    ) : (
-                      <div className="size-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white">
-                        {username.charAt(0).toUpperCase()}
-                      </div>
-                    )}
-                  </div>
-
-                  <button
-                    className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer"
-                    disabled={isUploadingAvatar}
-                    onClick={() => fileInputRef.current?.click()}
-                    title="Changer la photo"
-                    type="button"
-                  >
-                    {isUploadingAvatar ? (
-                      <Loader2Icon className="size-6 animate-spin" />
-                    ) : (
-                      <CameraIcon className="size-6" />
-                    )}
-                  </button>
-
-                  <input
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleAvatarChange}
-                    ref={fileInputRef}
-                    type="file"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-foreground text-base">
-                      {username}
-                    </h3>
-                    <span className="text-xs px-2 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
-                      {profile?.tier || "Free"}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    {email}
-                  </p>
-                  <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-                    <span className="inline-flex items-center gap-1">
-                      <MonitorSmartphoneIcon className="size-3" />
-                      {platformInfo.desktopVersion
-                        ? `${platformInfo.label} v${platformInfo.desktopVersion}`
-                        : platformInfo.label}
-                    </span>
-                    <span aria-hidden="true" className="text-border">
-                      •
-                    </span>
-                    <button
-                      className="font-medium text-primary hover:underline cursor-pointer"
-                      onClick={handleReplayTutorial}
-                      type="button"
-                    >
-                      Revoir le tutoriel
-                    </button>
-                  </div>
-                  <button
-                    className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
-                    disabled={isUploadingAvatar}
-                    onClick={() => fileInputRef.current?.click()}
-                    type="button"
-                  >
-                    <CameraIcon className="size-3.5" />
-                    Changer la photo de profil
-                  </button>
-                </div>
-              </div>
-
-              {/* Formulaire des informations personnelles */}
-              <form
-                className="flex flex-col gap-5 scroll-mt-6"
-                id="profile-form"
-                onSubmit={handleProfileSubmit}
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-2">
-                    <Label
-                      className="text-xs font-medium text-muted-foreground"
-                      htmlFor="settings-username"
-                    >
-                      Nom d'utilisateur
-                    </Label>
-                    <Input
-                      className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                      id="settings-username"
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      value={username}
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <Label
-                      className="text-xs font-medium text-muted-foreground"
-                      htmlFor="settings-email"
-                    >
-                      Adresse e-mail
-                    </Label>
-                    <Input
-                      className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                      id="settings-email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      type="email"
-                      value={email}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label
-                    className="text-xs font-medium text-muted-foreground"
-                    htmlFor="settings-phone"
-                  >
-                    Numéro de téléphone (optionnel)
-                  </Label>
-                  <Input
-                    className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                    id="settings-phone"
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+33 6 12 34 56 78"
-                    type="tel"
-                    value={phone}
-                  />
-                </div>
-
-                {/* Changement de mot de passe */}
-                <div
-                  className="pt-4 border-t border-border/50 flex flex-col gap-4 scroll-mt-6"
-                  id="profile-security"
-                >
-                  <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                    <KeyRoundIcon className="size-4 text-primary" />
-                    Sécurité & Mot de passe
-                  </h3>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-2">
-                      <Label
-                        className="text-xs font-medium text-muted-foreground"
-                        htmlFor="settings-current-password"
-                      >
-                        Mot de passe actuel{" "}
-                        <strong className="text-destructive">*</strong>
-                      </Label>
-                      <div className="relative">
-                        <Input
-                          className="h-10 pr-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                          id="settings-current-password"
-                          onChange={(e) => setCurrentPassword(e.target.value)}
-                          placeholder="Obligatoire pour valider"
-                          required
-                          type={showCurrentPassword ? "text" : "password"}
-                          value={currentPassword}
-                        />
-                        <button
-                          aria-label={
-                            showCurrentPassword
-                              ? "Masquer le mot de passe"
-                              : "Afficher le mot de passe"
-                          }
-                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
-                          onClick={() =>
-                            setShowCurrentPassword((prev) => !prev)
-                          }
-                          type="button"
-                        >
-                          {showCurrentPassword ? (
-                            <EyeOffIcon className="size-4" />
-                          ) : (
-                            <EyeIcon className="size-4" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <Label
-                        className="text-xs font-medium text-muted-foreground"
-                        htmlFor="settings-new-password"
-                      >
-                        Nouveau mot de passe (optionnel)
-                      </Label>
-                      <div className="relative">
-                        <Input
-                          className="h-10 pr-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                          id="settings-new-password"
-                          onChange={(e) => setNewPassword(e.target.value)}
-                          placeholder="Laisser vide si inchangé"
-                          type={showNewPassword ? "text" : "password"}
-                          value={newPassword}
-                        />
-                        <button
-                          aria-label={
-                            showNewPassword
-                              ? "Masquer le mot de passe"
-                              : "Afficher le mot de passe"
-                          }
-                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
-                          onClick={() => setShowNewPassword((prev) => !prev)}
-                          type="button"
-                        >
-                          {showNewPassword ? (
-                            <EyeOffIcon className="size-4" />
-                          ) : (
-                            <EyeIcon className="size-4" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Préférences */}
-                <div className="pt-4 border-t border-border/50 flex flex-col gap-3">
-                  <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
-                    <input
-                      checked={newsletter}
-                      className="rounded border-border size-4 accent-primary"
-                      onChange={(e) => setNewsletter(e.target.checked)}
-                      type="checkbox"
-                    />
-                    <span>
-                      Recevoir les actualités et annonces mAI par e-mail
-                    </span>
-                  </label>
-
-                  <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
-                    <input
-                      checked={notifyLimits}
-                      className="rounded border-border size-4 accent-primary"
-                      onChange={(e) => setNotifyLimits(e.target.checked)}
-                      type="checkbox"
-                    />
-                    <span>
-                      M'alerter par e-mail lorsque j'atteins 90% de mes limites
-                      de tokens ou stockage
-                    </span>
-                  </label>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 cursor-pointer shadow-sm"
-                    disabled={isSaving}
-                    type="submit"
-                  >
-                    {isSaving ? (
-                      <>
-                        <Loader2Icon className="size-4 animate-spin" />
-                        Enregistrement...
-                      </>
-                    ) : (
-                      "Enregistrer les modifications"
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          ) : activeTab === "preferences" ? (
-            /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
-            <div className="py-6 flex flex-col gap-6 max-w-4xl">
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="prefs-defaults"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                    <SparklesIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Préférences IA
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Modèle par défaut (enregistré dans votre compte) et Bots —
-                      styles IA personnalisés remplaçant les Modes.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2 pt-2">
-                  <Label className="text-xs font-medium text-muted-foreground">
-                    Modèle par défaut
-                  </Label>
-                  <ModelSelectorCompact
-                    capabilities={prefModelsData?.capabilities}
-                    models={prefModels.length > 0 ? prefModels : undefined}
-                    onModelChange={setDefaultModelId}
-                    selectedModelId={defaultModelId}
-                    variant="block"
-                  />
-                  <span className="text-[11px] text-muted-foreground">
-                    Ce modèle sera pré-sélectionné pour chaque nouvelle
-                    conversation. Vous pouvez le changer à la volée dans la
-                    barre de saisie.
-                  </span>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label className="text-xs font-medium text-muted-foreground">
-                    Visibilité par défaut des conversations
-                  </Label>
-                  <OptionSelector
-                    items={[
-                      { id: "private", label: "Privée (recommandé)" },
-                      { id: "public", label: "Publique" },
-                    ]}
-                    onChange={(id) =>
-                      setDefaultChatVisibility(
-                        id === "public" ? "public" : "private"
-                      )
-                    }
-                    placeholder="Visibilité"
-                    value={defaultChatVisibility}
-                  />
-                  <span className="text-[11px] text-muted-foreground">
-                    Visibilité appliquée aux nouvelles conversations. Vous
-                    pourrez toujours la modifier par conversation.
-                  </span>
-                </div>
-
-                <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
-                  <div className="flex items-center gap-2">
-                    <BotGlyph className="size-4 text-primary" />
-                    <span className="text-xs font-semibold text-foreground">
-                      Bots IA
-                    </span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
-                      Nouveau
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    Les <strong>Bots</strong> remplacent les Modes IA. Créez des
-                    bots personnalisés (instructions 5000c, icône, modèle par
-                    défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec
-                    Pro, illimité avec Max. Sélection globale via le menu à côté
-                    du modèle ou{" "}
-                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                      @
-                    </code>{" "}
-                    /{" "}
-                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                      /agents
-                    </code>
-                    .
-                  </p>
-                  <Link
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
-                    href="/agents"
-                  >
-                    <BotGlyph className="size-3.5" /> Gérer mes bots →
-                  </Link>
-                </div>
-
-                <div className="pt-2 flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
-                    onClick={handleSavePreferences}
-                    type="button"
-                  >
-                    Enregistrer les préférences
-                  </button>
-                </div>
-              </div>
-
-              {/* Instructions personnalisées */}
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="prefs-instructions"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-warning/10 text-warning ring-1 ring-warning/20">
-                    <BotGlyph className="size-5" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-base font-semibold text-foreground">
-                      Instructions personnalisées
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Personnalisez le comportement de mAI — ton, langue,
-                      contexte métier. Synchronisé sur tous vos appareils.
-                    </p>
-                  </div>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      checked={customEnabled}
-                      className="size-4 rounded border-border accent-primary"
-                      onChange={(e) => setCustomEnabled(e.target.checked)}
-                      type="checkbox"
-                    />
-                    <span className="text-xs font-medium">Activé</span>
-                  </label>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <Label className="text-xs font-medium text-muted-foreground">
-                    Qui êtes-vous ? Que doit savoir mAI sur vous ?{" "}
-                    {customInstructionsHint(tierRaw)
-                      ? "(illimité)"
-                      : `(max ${formatCharCount(getCustomInstructionsEffectiveMax(tierRaw))}c)`}
-                  </Label>
-                  <textarea
-                    className="field-input resize-y"
-                    maxLength={getCustomInstructionsEffectiveMax(tierRaw)}
-                    onChange={(e) => setCustomInstructions(e.target.value)}
-                    placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
-                    rows={5}
-                    value={customInstructions}
-                  />
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="text-[11px] text-muted-foreground">
-                      {customInstructionsHint(tierRaw)}
-                    </span>
-                    <span
-                      className={cn(
-                        "text-[11px] text-right tabular-nums",
-                        customInstructionsOverLimit
-                          ? "font-semibold text-destructive"
-                          : "text-muted-foreground"
-                      )}
-                    >
-                      {customInstructionsCounterLabel(
-                        tierRaw,
-                        customInstructions.length
-                      )}
-                    </span>
-                  </div>
-                  {customInstructionsOverLimit ? (
-                    <div className="surface-muted border-destructive/30 bg-destructive/5 flex flex-col gap-2 p-3">
-                      <p className="text-[11px] leading-relaxed text-destructive">
-                        Ce texte dépasse la limite du forfait{" "}
-                        {getTierLimits(tierRaw).label} (
-                        {formatCharCount(
-                          getTierCustomInstructionsMax(tierRaw) ?? 0
-                        )}{" "}
-                        caractères). Il sera tronqué au prochain enregistrement,
-                        ou refusé à l'enregistrement du champ ci-dessous.
-                      </p>
-                      <Link
-                        className="inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold text-foreground hover:underline"
-                        href={MAI_UPGRADE_URL}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <SparklesIcon className="size-3" />
-                        Voir les forfaits
-                        <ExternalLinkIcon className="size-3" />
-                      </Link>
-                    </div>
-                  ) : null}
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <Label
-                      className="text-xs font-medium text-muted-foreground"
-                      htmlFor="settings-temperature"
-                    >
-                      Température ({customTemp})
-                    </Label>
-                    <input
-                      className="w-full accent-primary"
-                      id="settings-temperature"
-                      max={2}
-                      min={0}
-                      onChange={(e) =>
-                        setCustomTemp(Number.parseFloat(e.target.value))
-                      }
-                      step={0.1}
-                      type="range"
-                      value={customTemp}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      0 = Précis, 2 = Créatif
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <Label
-                      className="text-xs font-medium text-muted-foreground"
-                      htmlFor="settings-top-p"
-                    >
-                      Top P ({customTopP})
-                    </Label>
-                    <input
-                      className="w-full accent-primary"
-                      id="settings-top-p"
-                      max={1}
-                      min={0}
-                      onChange={(e) =>
-                        setCustomTopP(Number.parseFloat(e.target.value))
-                      }
-                      step={0.05}
-                      type="range"
-                      value={customTopP}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      Contrôle diversité
-                    </span>
-                  </div>
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-                    disabled={isSavingCustom}
-                    onClick={handleSaveCustomInstructions}
-                    type="button"
-                  >
-                    {isSavingCustom ? (
-                      <Loader2Icon className="size-4 animate-spin" />
-                    ) : null}
-                    {isSavingCustom
-                      ? "Enregistrement..."
-                      : "Enregistrer instructions"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Bot par défaut */}
-              <div
-                className={`surface-card flex flex-col gap-4 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
-                id="prefs-agent"
-                onClick={
-                  isFree
-                    ? () => {
-                        toast.error(
-                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
-                        );
-                        setAgentsUpgradeOpen(true);
-                      }
-                    : undefined
-                }
-                onKeyDown={
-                  isFree
-                    ? (event) => {
-                        if (event.key !== "Enter" && event.key !== " ") return;
-                        event.preventDefault();
-                        toast.error(
-                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
-                        );
-                        setAgentsUpgradeOpen(true);
-                      }
-                    : undefined
-                }
-                role={isFree ? "button" : undefined}
-                tabIndex={isFree ? 0 : undefined}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                    <BotGlyph className="size-5" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-base font-semibold text-foreground">
-                      Bot par défaut
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Bot activé automatiquement au lancement de chaque nouvelle
-                      discussion.
-                    </p>
-                  </div>
-                  {isSavingDefaultAgent && (
-                    <Loader2Icon className="size-4 animate-spin text-muted-foreground" />
-                  )}
-                </div>
-                {isFree ? (
-                  <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-warning/40 bg-warning/5 text-xs text-warning">
-                    <LockIcon className="size-4 shrink-0" />
-                    <span>
-                      Réservé aux forfaits Plus, Pro et Max — passez à un
-                      forfait supérieur pour choisir un bot par défaut.
-                    </span>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-1.5">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Agent activé au lancement d'une nouvelle conversation
-                    </Label>
-                    <OptionSelector
-                      disabled={isSavingDefaultAgent}
-                      items={[
-                        { id: "none", label: "Aucun (modèle standard)" },
-                        ...prefAgents.map((a) => ({
-                          icon: <BotGlyph className="size-3.5" />,
-                          id: a.id,
-                          label: a.name,
-                        })),
-                      ]}
-                      onChange={handleSaveDefaultAgent}
-                      placeholder="Choisir un bot"
-                      value={defaultAgentId}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      S'applique au prochain chargement du chat. Modifiable à
-                      tout moment via la mention @agent.
-                    </span>
-                  </div>
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
+        <aside className="w-full shrink-0 lg:sticky lg:top-6 lg:w-56">
+          <div
+            aria-label="Sections des paramètres"
+            className="surface-card flex flex-col gap-1 p-2"
+            role="tablist"
+          >
+            {SETTINGS_TABS.map((tab, index) => (
+              <button
+                aria-controls={`settings-panel-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition-colors cursor-pointer text-left",
+                  activeTab === tab.id
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
                 )}
-
-                <div className="pt-2 border-t border-border/40 flex items-center justify-between gap-3">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-semibold text-foreground">
-                      Icônes des agents sur les conversations
-                    </span>
-                    <span className="text-[11px] text-muted-foreground">
-                      Affiche l'icône et la couleur de l'agent configuré pour
-                      chaque conversation dans l'historique latéral.
-                    </span>
-                  </div>
-                  <label className="flex items-center gap-2 cursor-pointer shrink-0">
-                    <input
-                      checked={showAgentChatIcons}
-                      className="size-4 rounded border-border accent-primary cursor-pointer"
-                      disabled={isSavingAgentIconsPref}
-                      onChange={(e) =>
-                        handleToggleShowAgentChatIcons(e.target.checked)
-                      }
-                      type="checkbox"
-                    />
-                    <span className="text-xs font-medium">
-                      {showAgentChatIcons ? "Activé" : "Désactivé"}
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <UpgradeDialog
-                feature="agents"
-                onOpenChange={setAgentsUpgradeOpen}
-                open={agentsUpgradeOpen}
-              />
-
-              {/* Préférences Outils de Génération (Images & Audio) */}
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="prefs-tools"
+                id={`settings-tab-${tab.id}`}
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+                role="tab"
+                tabIndex={activeTab === tab.id ? 0 : -1}
+                type="button"
               >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-violet-500/10 text-violet-500 ring-1 ring-violet-500/20">
-                    <ImageIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Outil Génération d'Images
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Configurez le modèle Black Forest / FLUX et la résolution
-                      par défaut utilisés par l'outil de génération d'images.
-                    </p>
-                  </div>
-                </div>
+                <tab.icon className="size-3.5 shrink-0" />
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+          <SettingsAnchorNav items={anchorItems} />
+        </aside>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Modèle d'image par défaut
-                    </Label>
-                    <ModelSelectorCompact
-                      models={imageModels.length > 0 ? imageModels : undefined}
-                      onModelChange={setDefaultImageModel}
-                      placeholder="Modèle d'image par défaut"
-                      selectedModelId={defaultImageModel}
-                      source="images"
-                      variant="block"
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      {imageModels.length > 0
-                        ? `${imageModels.length} modèles disponibles (synchronisés via l'API).`
-                        : "Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image."}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Format et taille par défaut
-                    </Label>
-                    <ImageSizeOptionSelector
-                      onChange={setDefaultImageSize}
-                      value={defaultImageSize}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      Ratio d'aspect et dimensions par défaut générés.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Préférences Outil Audio & Synthèse Vocale */}
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="prefs-audio"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20">
-                    <Volume2Icon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Outil Synthèse Vocale & Audio
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Configurez le modèle vocal, la voix par défaut et le
-                      rythme de lecture audio.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Modèle audio par défaut
-                    </Label>
-                    <ModelSelectorCompact
-                      models={audioModels.length > 0 ? audioModels : undefined}
-                      onModelChange={(val) => {
-                        setDefaultAudioModel(val);
-                        const m = audioModels.find((am) => am.id === val);
-                        if (
-                          m?.voices &&
-                          Array.isArray(m.voices) &&
-                          m.voices.length > 0
-                        ) {
-                          setDefaultAudioVoice(m.voices[0]);
-                        }
-                      }}
-                      placeholder="Modèle audio par défaut"
-                      selectedModelId={defaultAudioModel}
-                      source="speech"
-                      variant="block"
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      {audioModels.length > 0
-                        ? `${audioModels.length} modèles audio synchronisés via l'API.`
-                        : "Modèle de synthèse vocale par défaut."}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Voix par défaut
-                    </Label>
-                    {audioModelVoices.length === 0 ? (
-                      <div className="h-10 flex items-center rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-muted-foreground">
-                        Voix par défaut du modèle
-                      </div>
-                    ) : (
-                      <VoiceOptionSelector
-                        onChange={setDefaultAudioVoice}
-                        value={defaultAudioVoice}
-                        voices={audioModelVoices}
-                      />
-                    )}
-                    <span className="text-[11px] text-muted-foreground">
-                      Voix récupérées dynamiquement via l'API pour le modèle
-                      sélectionné.
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
-                  <div className="flex items-center justify-between">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Vitesse de lecture ({defaultAudioSpeed.toFixed(2)}x)
-                    </Label>
-                    <span className="text-[11px] text-muted-foreground font-mono">
-                      {defaultAudioSpeed === 1.0
-                        ? "Normal"
-                        : defaultAudioSpeed < 1.0
-                          ? "Plus lent"
-                          : "Plus rapide"}
-                    </span>
-                  </div>
-                  <input
-                    className="w-full accent-foreground"
-                    max={2.0}
-                    min={0.5}
-                    onChange={(e) =>
-                      setDefaultAudioSpeed(Number.parseFloat(e.target.value))
-                    }
-                    step={0.05}
-                    type="range"
-                    value={defaultAudioSpeed}
-                  />
-                </div>
-
-                <div className="pt-2 flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-                    disabled={isSavingToolsPref}
-                    onClick={handleSaveToolsPreferences}
-                    type="button"
-                  >
-                    {isSavingToolsPref ? (
-                      <Loader2Icon className="size-4 animate-spin" />
-                    ) : null}
-                    {isSavingToolsPref
-                      ? "Enregistrement..."
-                      : "Enregistrer les outils dans votre profil"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Langues : dictée vocale + cible de traduction */}
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="prefs-languages"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
-                    <LanguagesIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Langues
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Langue de dictée vocale et langue de traduction par défaut
-                      des réponses de l'IA.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Langue de dictée vocale
-                    </Label>
-                    <OptionSelector
-                      items={DICTATION_LANGUAGES.map((entry) => ({
-                        id: entry.value,
-                        label: entry.label,
-                      }))}
-                      onChange={setDictationLanguage}
-                      value={dictationLanguage}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      La reconnaissance vocale du navigateur ne comprend que les
-                      langues qu'il expose. « Automatique » suit la langue de
-                      votre système.
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xs font-medium text-muted-foreground">
-                      Traduire les réponses en
-                    </Label>
-                    <OptionSelector
-                      items={TRANSLATION_TARGETS.map((entry) => ({
-                        id: entry.code,
-                        label: entry.label,
-                      }))}
-                      onChange={setTranslationLanguage}
-                      value={translationLanguage}
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      Cible du bouton « Traduire » sur chaque réponse. Vous
-                      pourrez en choisir une autre à la volée.
-                    </span>
-                  </div>
-                </div>
-
-                <div className="surface-muted text-[11px] text-muted-foreground">
-                  La dictée est reconnue par votre navigateur : l'audio n'est
-                  pas envoyé à mAI, mais la reconnaissance vocale du navigateur
-                  peut elle-même s'appuyer sur un service tiers (Google, Apple)
-                  selon votre configuration système.
-                </div>
-
-                <div className="pt-2 flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-                    disabled={isSavingLanguages}
-                    onClick={handleSaveLanguages}
-                    type="button"
-                  >
-                    {isSavingLanguages ? (
-                      <Loader2Icon className="size-4 animate-spin" />
-                    ) : null}
-                    {isSavingLanguages
-                      ? "Enregistrement..."
-                      : "Enregistrer les langues"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Mode régénération */}
-              <div
-                className="surface-card flex flex-col gap-4 scroll-mt-6"
-                id="prefs-regenerate"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-500 ring-1 ring-indigo-500/20">
-                    <SettingsIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Mode régénération des messages
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Choisissez le comportement du bouton « Régénérer » sur les
-                      messages de l'assistant.
-                    </p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  <button
-                    className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
-                      regenerateMode === "truncate"
-                        ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
-                        : "bg-muted/20 border-border/50 hover:bg-muted/40"
-                    }`}
-                    onClick={() => setRegenerateMode("truncate")}
-                    type="button"
-                  >
-                    <span className="text-sm font-semibold text-foreground">
-                      Tronquer
-                    </span>
-                    <span className="text-xs text-muted-foreground leading-tight">
-                      Supprime les messages suivants et régénère à partir du
-                      message ciblé (historique réécrit).
-                    </span>
-                  </button>
-                  <button
-                    className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
-                      regenerateMode === "fork"
-                        ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
-                        : "bg-muted/20 border-border/50 hover:bg-muted/40"
-                    }`}
-                    onClick={() => setRegenerateMode("fork")}
-                    type="button"
-                  >
-                    <span className="text-sm font-semibold text-foreground">
-                      Fork (Brancher)
-                    </span>
-                    <span className="text-xs text-muted-foreground leading-tight">
-                      Crée une nouvelle conversation branchée, l'historique
-                      original reste intact.
-                    </span>
-                  </button>
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 cursor-pointer"
-                    onClick={handleSaveRegenerateMode}
-                    type="button"
-                  >
-                    Enregistrer le mode
-                  </button>
-                </div>
-              </div>
+        <div
+          aria-labelledby={`settings-tab-${activeTab}`}
+          className="flex-1 min-w-0"
+          id={`settings-panel-${activeTab}`}
+          role="tabpanel"
+        >
+          {activeTab === "profile" ? (
+            <ProfileTab />
+          ) : activeTab === "preferences" ? (
+            <PreferencesTab />
+          ) : activeTab === "applications" ? (
+            <ApplicationsTab />
+          ) : activeTab === "agent" ? (
+            <div className="py-6 max-w-4xl">
+              <AgentTab />
             </div>
           ) : activeTab === "notifications" ? (
-            /* ────────────── SECTION NOTIFICATIONS ────────────── */
-            <div className="py-6 flex flex-col gap-6 max-w-4xl">
-              <div
-                className="surface-card flex flex-col gap-5 scroll-mt-6"
-                id="notif-main"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
-                    <BellIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Notifications
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Gérez l'envoi et la personnalisation de vos notifications.
-                    </p>
-                  </div>
-                  <div className="ml-auto flex items-center gap-2">
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full border font-medium ${
-                        notifEnabled
-                          ? "bg-success/10 text-success border-success/20"
-                          : "bg-muted text-muted-foreground border-border/50"
-                      }`}
-                    >
-                      {notifEnabled ? "Activées" : "Désactivées"}
-                    </span>
-                    {/* L'invite de chargement est mémorisée par appareil : ce
-                        bouton est le seul moyen de la retrouver après un
-                        « Fermer — ne plus afficher ». */}
-                    <Button
-                      className="h-8 gap-1.5 text-xs"
-                      onClick={handleReopenNotificationPrompt}
-                      type="button"
-                      variant="outline"
-                    >
-                      <BellIcon className="size-3.5" />
-                      Revoir l'invite
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Demande permission */}
-                {browserPerm === "granted" ? (
-                  <div className="p-3 rounded-xl border border-success/20 bg-success/5 flex items-center justify-between gap-3">
-                    <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                      <ShieldCheckIcon className="size-4 text-success shrink-0" />
-                      Permission accordée
-                    </span>
-                    <button
-                      aria-label="Redemander l'autorisation"
-                      className="inline-flex items-center justify-center rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
-                      onClick={handleRequestNotificationPermission}
-                      title="Redemander l'autorisation"
-                      type="button"
-                    >
-                      <RefreshCwIcon className="size-3.5" />
-                    </button>
-                  </div>
-                ) : (
-                  <div className="p-3 rounded-xl border border-warning/20 bg-warning/5 flex flex-col gap-2">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-foreground">
-                          Permission du navigateur
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          État actuel :{" "}
-                          <span className="font-mono font-semibold">
-                            {browserPerm}
-                          </span>{" "}
-                          — requise pour les notifications système.
-                        </span>
-                      </div>
-                      <button
-                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
-                        onClick={handleRequestNotificationPermission}
-                        type="button"
-                      >
-                        <BellIcon className="size-3.5" />
-                        Demander l'autorisation
-                      </button>
-                    </div>
-                    <p className="text-[11px] text-muted-foreground">
-                      En activant, vous acceptez de recevoir des notifications
-                      navigateur et in-app. Consultez{" "}
-                      <a
-                        className="underline text-primary"
-                        href="https://mai-devs.vercel.app"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        mai-devs.vercel.app
-                      </a>{" "}
-                      pour la politique RGPD.
-                    </p>
-                  </div>
-                )}
-
-                {/* Toggle global */}
-                <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">
-                      Activer les notifications
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      Maître — désactive tout si off. À l'activation, «
-                      Actualités d'mAI » est activé par défaut.
-                    </span>
-                  </div>
-                  <input
-                    checked={notifEnabled}
-                    className="size-5 accent-primary"
-                    onChange={(e) => {
-                      const v = e.target.checked;
-                      setNotifEnabled(v);
-                      if (v) {
-                        setNotifNews(true);
-                      }
-                    }}
-                    type="checkbox"
-                  />
-                </label>
-
-                {/* Granulaires */}
-                <div
-                  className={`flex flex-col gap-3 pt-3 border-t border-border/40 ${
-                    notifEnabled ? "" : "opacity-50 pointer-events-none"
-                  }`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Personnalisation
-                  </p>
-                  {[
-                    {
-                      desc: "À chaque réponse de l'IA dans vos conversations",
-                      key: "ai",
-                      label: "Réponse de l'IA",
-                      setter: setNotifAiResponse,
-                      value: notifAiResponse,
-                    },
-                    {
-                      desc: "Lors de la création d'un nouveau dossier/projet",
-                      key: "project",
-                      label: "Nouveau projet",
-                      setter: setNotifProject,
-                      value: notifProject,
-                    },
-                    {
-                      desc: "Lors de l'ajout d'un nouveau serveur MCP",
-                      key: "mcp",
-                      label: "Nouveau MCP",
-                      setter: setNotifMcp,
-                      value: notifMcp,
-                    },
-                    {
-                      desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
-                      key: "mcpAccess",
-                      label: "Demande d'accès MCP",
-                      setter: setNotifMcpAccess,
-                      value: notifMcpAccess,
-                    },
-                    {
-                      desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
-                      key: "news",
-                      label: "Actualités d'mAI",
-                      setter: setNotifNews,
-                      value: notifNews,
-                    },
-                    {
-                      desc: "Lorsqu'une tâche de planification automatique se termine avec succès",
-                      key: "planningTaskCompleted",
-                      label: "Tâche planifiée terminée",
-                      setter: setNotifPlanningTaskCompleted,
-                      value: notifPlanningTaskCompleted,
-                    },
-                    {
-                      desc: "Alerte en cas d'atteinte de 90% ou 100% de votre quota mAI",
-                      key: "quotaWarning",
-                      label: "Alerte de quota",
-                      setter: setNotifQuotaWarning,
-                      value: notifQuotaWarning,
-                    },
-                  ].map((item) => (
-                    <label
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-muted/20 border border-border/30 cursor-pointer"
-                      key={item.key}
-                    >
-                      <div className="flex flex-col pr-3">
-                        <span className="text-sm font-medium text-foreground">
-                          {item.label}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {item.desc}
-                        </span>
-                      </div>
-                      <input
-                        checked={item.value}
-                        className="size-4 accent-primary"
-                        onChange={(e) => (item.setter as any)(e.target.checked)}
-                        type="checkbox"
-                      />
-                    </label>
-                  ))}
-                </div>
-
-                <div className="flex justify-end pt-2">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 cursor-pointer"
-                    disabled={isSavingNotif}
-                    onClick={handleSaveNotifPrefs}
-                    type="button"
-                  >
-                    {isSavingNotif ? (
-                      <Loader2Icon className="size-4 animate-spin" />
-                    ) : null}
-                    {isSavingNotif
-                      ? "Enregistrement..."
-                      : "Enregistrer les notifications"}
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3 scroll-mt-6"
-                id="notif-rgpd"
-              >
-                <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
-                <div className="text-xs text-muted-foreground">
-                  <p className="font-semibold text-foreground mb-1">
-                    RGPD & Données
-                  </p>
-                  <p>
-                    Vos préférences et notifications sont sécurisées dans votre
-                    profil et synchronisées sur vos appareils. Les notifications
-                    Actualités sont envoyées uniquement aux utilisateurs ayant
-                    activé l'option. Plus d'infos sur{" "}
-                    <a
-                      className="text-primary underline"
-                      href="https://mai-devs.vercel.app"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      mai-devs.vercel.app
-                    </a>
-                    .
-                  </p>
-                </div>
-              </div>
-            </div>
+            <NotificationsTab />
           ) : activeTab === "memory" ? (
-            /* ────────────── SECTION MÉMOIRE ────────────── */
             <div className="py-6 flex flex-col gap-6 max-w-4xl">
               <div className="scroll-mt-6" id="memory-card">
                 <MemoryCard allScopes />
@@ -2448,390 +343,28 @@ function SettingsPageInner() {
                   </p>
                   <p>
                     Les informations enregistrées ici sont injectées
-                    automatiquement dans le contexte des réponses de l'IA, selon
-                    leur portée : globales (toutes les conversations), par agent
-                    ou par projet. Vous pouvez aussi demander à l'IA de retenir
-                    une information via la mention <code>@Memory</code> dans le
-                    chat.
+                    automatiquement dans le contexte de vos conversations.
                   </p>
                 </div>
               </div>
             </div>
           ) : activeTab === "configuration" ? (
-            /* ────────────── SECTION CONFIGURATION ────────────── */
-            <div className="scroll-mt-6" id="config-commands">
+            <div className="py-6 max-w-4xl">
               <ConfigurationSection />
             </div>
           ) : activeTab === "data" ? (
-            /* ────────────── SECTION DONNÉES ────────────── */
             <div className="py-6 max-w-4xl">
               <DataTab />
             </div>
-          ) : (
-            /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
-            <div
-              className="py-6 flex flex-col gap-6 max-w-4xl scroll-mt-6"
-              id="usage-mAI"
-            >
-              {/* Forfait actuel */}
-              <div
-                className="surface-card flex flex-col md:flex-row md:items-center justify-between gap-4 scroll-mt-6"
-                id="usage-plan"
-              >
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                    Forfait Actuel
-                  </span>
-                  <div className="flex items-center gap-3 mt-1">
-                    <h2 className="text-2xl font-bold text-foreground">
-                      mAI {profile?.tier || "Free"}
-                    </h2>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
-                      Actif
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {profile?.tier === "Free"
-                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || aiLimitFallback)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || storageLimitFallback)} de stockage cloud.`
-                      : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
-                  </p>
-                </div>
-
-                <Link
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
-                  href={MAI_UPGRADE_URL}
-                  target="_blank"
-                >
-                  <SparklesIcon className="size-4" />
-                  <span>Gérer / Mettre à niveau</span>
-                  <ExternalLinkIcon className="size-3.5" />
-                </Link>
-              </div>
-
-              {/* Les jauges ci-dessous ne disent QUE « où en est-on » sur la
-                  semaine en cours. L'évolution dans le temps, la répartition
-                  texte/image/audio et le classement des modèles vivent sur une
-                  page dédiée : les mêler ici avec quatre jauges ferait du bruit
-                  pour une information déjà lisible ailleurs. */}
-              <div
-                className="surface-card flex flex-col gap-3"
-                id="usage-stats"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-muted/60 text-foreground ring-1 ring-border">
-                    <LineChartIcon className="size-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      Statistiques détaillées
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      Historique de consommation, conversations par mode et
-                      modèle le plus utilisé
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <Link
-                    className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
-                    href="/settings/statistiques"
-                  >
-                    <LineChartIcon className="size-4" />
-                    <span>Ouvrir les statistiques</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Consommation mAI (Tokens hebdomadaires) */}
-              <div className="surface-card flex flex-col gap-4" id="usage">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                      <BotGlyph className="size-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground">
-                        Utilisation de l'IA
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        Consommation calculée sur vos invites et réponses
-                        générées
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className="text-sm font-bold text-foreground">
-                      {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-                      {formatTokens(aiUsage?.limit || aiLimitFallback)}
-                    </span>
-                    <span className="text-xs text-muted-foreground block">
-                      tokens ({aiPercent}%)
-                    </span>
-                  </div>
-                </div>
-
-                {/* Jauge */}
-                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-                  <div
-                    className={`h-full transition-all duration-500 rounded-full ${
-                      aiPercent > 90
-                        ? "bg-destructive"
-                        : aiPercent > 75
-                          ? "bg-warning"
-                          : "bg-gradient-to-r from-indigo-500 to-purple-600"
-                    }`}
-                    style={{ width: `${aiPercent}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-                  <span>Renouvellement hebdomadaire :</span>
-                  <span className="font-medium text-foreground">
-                    {formatDate(aiUsage?.resetAt)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Consommation Images (Quota journalier) */}
-              <div
-                className="surface-card flex flex-col gap-4 scroll-mt-6"
-                id="usage-images"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20 shrink-0">
-                      <ImageIcon className="size-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-foreground truncate">
-                        Générations d'Images
-                      </h3>
-                      <p className="hidden text-xs text-muted-foreground sm:block">
-                        Images générées aujourd'hui (quota réinitialisé à minuit
-                        UTC)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-right shrink-0">
-                    <span className="text-sm font-bold text-foreground">
-                      {resolvedImagesUsage.usedToday} /{" "}
-                      {resolvedImagesUsage.dailyLimit}
-                    </span>
-                    <span className="text-xs text-muted-foreground block">
-                      images ({imagesPercent}%)
-                    </span>
-                  </div>
-                </div>
-
-                {/* Jauge */}
-                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-                  <div
-                    className={`h-full transition-all duration-500 rounded-full ${
-                      imagesPercent >= 100
-                        ? "bg-destructive"
-                        : imagesPercent > 75
-                          ? "bg-warning"
-                          : "bg-gradient-to-r from-purple-500 to-pink-600"
-                    }`}
-                    style={{ width: `${imagesPercent}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-                  <span>Réinitialisation du quota :</span>
-                  <span className="font-medium text-foreground">
-                    {formatDate(resolvedImagesUsage.resetAt)} (Minuit UTC)
-                  </span>
-                </div>
-              </div>
-
-              {/* Consommation Synthèse Vocale (Tokens Speech) */}
-              <div
-                className="surface-card flex flex-col gap-4 scroll-mt-6"
-                id="usage-speech"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20 shrink-0">
-                      <Volume2Icon className="size-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-foreground truncate">
-                        Synthèse Vocale
-                      </h3>
-                      <p className="hidden text-xs text-muted-foreground sm:block">
-                        Tokens consommés pour l'API Speech et Text-to-Speech
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-right shrink-0">
-                    <span className="text-sm font-bold text-foreground">
-                      {formatTokens(resolvedSpeechUsage.tokensUsed)} /{" "}
-                      {formatTokens(resolvedSpeechUsage.limit)}
-                    </span>
-                    <span className="text-xs text-muted-foreground block">
-                      tokens ({speechPercent}%)
-                    </span>
-                  </div>
-                </div>
-
-                {/* Jauge */}
-                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-                  <div
-                    className={`h-full transition-all duration-500 rounded-full ${
-                      speechPercent >= 100
-                        ? "bg-destructive"
-                        : speechPercent > 75
-                          ? "bg-warning"
-                          : "bg-foreground"
-                    }`}
-                    style={{ width: `${speechPercent}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-                  <span>Renouvellement hebdomadaire :</span>
-                  <span className="font-medium text-foreground">
-                    {formatDate(
-                      resolvedSpeechUsage.resetAt || aiUsage?.resetAt
-                    )}
-                  </span>
-                </div>
-              </div>
-
-              {/* Consommation Cloud Storage */}
-              <div
-                className="surface-card flex flex-col gap-4 scroll-mt-6"
-                id="usage-cloud"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
-                      <CloudIcon className="size-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground">
-                        Stockage Cloud mAI
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        Espace utilisé pour vos documents, pièces jointes et
-                        médias
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className="text-sm font-bold text-foreground">
-                      {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
-                      {formatBytes(
-                        cloudUsage?.bytesLimit || storageLimitFallback
-                      )}
-                    </span>
-                    <span className="text-xs text-muted-foreground block">
-                      utilisés ({cloudPercent}%)
-                    </span>
-                  </div>
-                </div>
-
-                {/* Jauge */}
-                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-                  <div
-                    className={`h-full transition-all duration-500 rounded-full ${
-                      cloudPercent > 90
-                        ? "bg-destructive"
-                        : cloudPercent > 75
-                          ? "bg-warning"
-                          : "bg-foreground"
-                    }`}
-                    style={{ width: `${cloudPercent}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-                  <span>Fichiers hébergés :</span>
-                  <span className="font-medium text-foreground">
-                    {cloudUsage?.filesCount || 0} fichier(s)
-                  </span>
-                </div>
-              </div>
-
-              {/* Encadré d'information pour la mise à niveau */}
-              <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
-                <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
-                <div className="text-xs text-muted-foreground">
-                  <p className="font-semibold text-foreground mb-1">
-                    Besoin de plus de tokens ou d'espace de stockage ?
-                  </p>
-                  <p>
-                    Les mises à niveau de forfait (Plus, Pro, Max) et
-                    l'activation des codes promotionnels s'effectuent
-                    directement sur le portail officiel{" "}
-                    <Link
-                      className="text-primary font-medium underline inline-flex items-center gap-0.5"
-                      href={MAI_UPGRADE_URL}
-                      target="_blank"
-                    >
-                      mai-devs.vercel.app
-                      <ExternalLinkIcon className="size-3" />
-                    </Link>
-                    .
-                  </p>
-                </div>
-              </div>
+          ) : activeTab === "forms" ? (
+            <div className="py-6 max-w-4xl scroll-mt-6" id="forms-list">
+              <FormsTab />
             </div>
+          ) : (
+            <UsageTab />
           )}
         </div>
       </div>
-
-      {/* Modale de validation OTP du nouvel e-mail */}
-      <AlertDialog onOpenChange={setShowEmailOtpModal} open={showEmailOtpModal}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <div className="flex items-center gap-2 text-primary font-semibold text-xs mb-1">
-              <ShieldCheckIcon className="size-4" />
-              Changement d'adresse e-mail
-            </div>
-            <AlertDialogTitle>
-              Confirmez votre nouvelle adresse
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              Un code de confirmation a été envoyé à{" "}
-              <strong>{pendingEmail}</strong>. Veuillez le saisir pour finaliser
-              la mise à jour de votre profil.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-
-          <div className="my-3">
-            <Input
-              autoFocus
-              className="h-11 text-center text-lg font-mono tracking-widest font-bold"
-              maxLength={8}
-              onChange={(e) => setEmailOtpCode(e.target.value)}
-              placeholder="123456"
-              type="text"
-              value={emailOtpCode}
-            />
-          </div>
-
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={isVerifyingEmail}>
-              Annuler
-            </AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-primary text-primary-foreground"
-              disabled={isVerifyingEmail}
-              onClick={handleVerifyNewEmail}
-            >
-              {isVerifyingEmail
-                ? "Vérification..."
-                : "Confirmer le nouvel e-mail"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 }

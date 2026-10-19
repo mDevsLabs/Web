@@ -1,0 +1,71 @@
+{
+  "model": "Team",
+  "config": {
+    "name": "Team",
+    "label": "Équipes",
+    "description": "Gérez vos équipes depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "lead",
+        "label": "Responsable",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "memberCount",
+        "label": "Membres",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "department",
+        "label": "Service",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "forming",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyTeam",
+        "label": "Notifications : équipes",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveTeam",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section équipes."
+      },
+      {
+        "key": "approveTeam",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "team-demo-1",
+    "name": "Studio Produit",
+    "lead": "Responsable démo",
+    "memberCount": 128,
+    "department": "Service démo",
+    "status": "active"
+  }
+}

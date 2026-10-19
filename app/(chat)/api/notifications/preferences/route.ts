@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   getUserNotificationPrefs,
   upsertUserNotificationPrefs,
@@ -34,21 +34,19 @@ const prefsSchema = z.object({
 });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const prefs = await getUserNotificationPrefs(userId);
+  const prefs = await getUserNotificationPrefs(session.userId);
   return NextResponse.json(prefs);
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
   const body = await request.json().catch(() => ({}));
   const parsed = prefsSchema.safeParse(body);
   if (!parsed.success) {
@@ -56,7 +54,10 @@ export async function POST(request: Request) {
       message: zodIssuesMessage(parsed.error),
     });
   }
-  const updated = await upsertUserNotificationPrefs(userId, parsed.data);
+  const updated = await upsertUserNotificationPrefs(
+    session.userId,
+    parsed.data
+  );
   return NextResponse.json(updated);
 }
 

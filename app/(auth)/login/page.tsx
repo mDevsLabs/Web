@@ -6,7 +6,7 @@ import {
   EyeOffIcon,
   Loader2Icon,
   ShieldCheckIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,6 +14,8 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { resolveFavoriteAppAfterLogin } from "@/hooks/use-favorite-app";
+import { favoriteAppToPath } from "@/lib/apps/catalog";
 import { getReturnToFromSearch } from "@/lib/auth/return-to";
 import { TERMS_URL } from "@/lib/constants";
 import type { AuthResponse } from "../actions";
@@ -31,9 +33,14 @@ export default function LoginPage() {
   const [otpCode, setOtpCode] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [returnTo, setReturnTo] = useState("/");
+  // Une destination explicite (redirectUrl/next) prime sur le menu favori :
+  // on ne redirige vers l'application préférée QUE pour une entrée neutre.
+  const [hasExplicitReturnTo, setHasExplicitReturnTo] = useState(false);
 
   useEffect(() => {
-    setReturnTo(getReturnToFromSearch(window.location.search));
+    const target = getReturnToFromSearch(window.location.search);
+    setReturnTo(target);
+    setHasExplicitReturnTo(target !== "/");
   }, []);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -119,7 +126,26 @@ export default function LoginPage() {
     }
 
     toast.success("Connexion réussie ! Bienvenue sur mAI Web");
-    router.push(returnTo);
+    if (hasExplicitReturnTo) {
+      router.push(returnTo);
+      router.refresh();
+      return;
+    }
+    // Entrée neutre : ouvrir l'application favorite (réglage « Menu favori »).
+    // Le cache local répond instantanément ; resolveFavoriteAppAfterLogin
+    // rattrape par la base si le cache est absent ou périmé.
+    const favorite = await resolveFavoriteAppAfterLogin();
+    // Le favori CLI n'a pas de page : on ouvre le terminal local, puis on
+    // retombe sur mAI pour ne jamais laisser l'utilisateur sur un écran vide.
+    if (favorite === "cli") {
+      try {
+        await window.maiDesktop?.openCli?.();
+      } catch {
+        // Le CLI est un confort : son échec ne bloque pas la connexion.
+      }
+    }
+    const favoritePath = favoriteAppToPath(favorite);
+    router.push(favoritePath);
     router.refresh();
   };
 

@@ -104,7 +104,15 @@ function extractChatId(pathname: string): string | null {
   return match ? match[1] : null;
 }
 
-export function ActiveChatProvider({ children }: { children: ReactNode }) {
+export function ActiveChatProvider({
+  children,
+  initialModelId,
+  initialAgentId,
+}: {
+  children: ReactNode;
+  initialModelId?: string;
+  initialAgentId?: string;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setDataStream, setWaitingStatus } = useDataStream();
@@ -360,6 +368,26 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         } catch {}
       }
     }
+
+    const promptParam = searchParams.get("prompt");
+    if (promptParam) {
+      setInput(promptParam);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("prompt");
+      window.history.replaceState(
+        {},
+        "",
+        url.pathname +
+          (url.search ? `?${url.searchParams.toString()}` : "") +
+          url.hash
+      );
+    } else if (typeof window !== "undefined") {
+      const storedPrompt = sessionStorage.getItem("mai_pending_chat_prompt");
+      if (storedPrompt) {
+        setInput(storedPrompt);
+        sessionStorage.removeItem("mai_pending_chat_prompt");
+      }
+    }
   }, [searchParams]);
 
   const chatIdFromUrl = extractChatId(pathname);
@@ -374,7 +402,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const chatId = chatIdFromUrl ?? newChatIdRef.current;
 
-  const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
+  const [currentModelId, setCurrentModelId] = useState(
+    initialModelId || DEFAULT_CHAT_MODEL
+  );
   const currentModelIdRef = useRef(currentModelId);
   const [defaultVisibility, setDefaultVisibility] =
     useState<VisibilityType>("private");
@@ -391,7 +421,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const [activeAgent, setActiveAgentState] = useState<Agent | null>(null);
   const activeAgentRef = useRef<Agent | null>(null);
   activeAgentRef.current = activeAgent;
-  const activeAgentIdRef = useRef<string | null>(null);
+  const activeAgentIdRef = useRef<string | null>(initialAgentId ?? null);
 
   const setActiveAgent = useCallback((agent: Agent | null) => {
     setActiveAgentState(agent);

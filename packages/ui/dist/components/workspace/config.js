@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Workspace", "label": "Espaces de travail", "description": "G\xE9rez vos espaces de travail depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Propri\xE9taire", "kind": "text", "required": true }, { "key": "memberCount", "label": "Membres", "kind": "number", "required": true }, { "key": "storageGb", "label": "Stockage (Go)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "trial", "suspended"] }], "titleKey": "name", "settings": [{ "key": "notifyWorkspace", "label": "Notifications : espaces de travail", "description": "Recevoir un signal lors des changements." }, { "key": "archiveWorkspace", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section espaces de travail." }, { "key": "approveWorkspace", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

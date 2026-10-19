@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Expense", "label": "Notes de frais", "description": "G\xE9rez vos notes de frais depuis une interface claire.", "fields": [{ "key": "title", "label": "Libell\xE9", "kind": "text", "required": true }, { "key": "employee", "label": "Collaborateur", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "spentOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "submitted", "approved", "reimbursed"] }], "titleKey": "title", "settings": [{ "key": "notifyExpense", "label": "Notifications : notes de frais", "description": "Recevoir un signal lors des changements." }, { "key": "archiveExpense", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section notes de frais." }, { "key": "approveExpense", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

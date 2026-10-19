@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon } from "@mdevs/icons";
 import { useState } from "react";
 import useSWR from "swr";
 import { AgentIcon } from "@/components/agents/agent-icon";
@@ -12,7 +12,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useActiveChat } from "@/hooks/use-active-chat";
-import { useTier } from "@/hooks/use-tier";
 import type { Agent } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -33,19 +32,14 @@ export function AgentSelectorCompact({
   testId = "agent-selector",
 }: AgentSelectorCompactProps) {
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
-  const { isFree } = useTier();
   const { data } = useSWR<{ agents: Agent[]; limit: number | null }>(
-    isFree ? null : "/api/agents",
+    "/api/agents",
     fetcher
   );
   const agents = data?.agents ?? [];
   // `null` = forfait Max, nombre d'agents illimité.
   const limit = data?.limit ?? null;
   const [open, setOpen] = useState(false);
-
-  if (isFree) {
-    return null;
-  }
 
   const handleSelect = (agent: Agent | null) => {
     if (disabled) {

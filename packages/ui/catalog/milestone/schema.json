@@ -1,0 +1,72 @@
+{
+  "model": "Milestone",
+  "config": {
+    "name": "Milestone",
+    "label": "Jalons",
+    "description": "Gérez vos jalons depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "project",
+        "label": "Projet",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "dueDate",
+        "label": "Échéance",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "progress",
+        "label": "Avancement (%)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "planned",
+          "in-progress",
+          "achieved",
+          "delayed"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyMilestone",
+        "label": "Notifications : jalons",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveMilestone",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section jalons."
+      },
+      {
+        "key": "approveMilestone",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "milestone-demo-1",
+    "name": "Lancement public",
+    "project": "Projet démo",
+    "dueDate": "2026-10-04",
+    "progress": 128,
+    "status": "planned"
+  }
+}

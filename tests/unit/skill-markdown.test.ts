@@ -55,11 +55,7 @@ describe("Templates Skills statiques", () => {
     const expected = [
       ["academic-synthesis", ["openalex"], []],
       ["european-statistics", ["eurostat"], []],
-      [
-        "release-preparation",
-        ["gitlab-public"],
-        ["GitHub", "GitLab", "Sentry"],
-      ],
+      ["release-preparation", ["gitlab-public"], ["GitLab", "Sentry"]],
       ["knowledge-curation", ["wikidata"], ["Airtable"]],
     ] as const;
 
@@ -73,7 +69,7 @@ describe("Templates Skills statiques", () => {
         true
       );
     }
-    expect(SKILL_TEMPLATE_LIST).toHaveLength(21);
+    expect(SKILL_TEMPLATE_LIST).toHaveLength(20);
   });
 
   it("classe séparément les outils natifs, Plugin et MCP", () => {
@@ -123,7 +119,7 @@ describe("Templates Skills statiques", () => {
         tools: ["searchOpenAlexWorks"],
       })
     );
-    expect(freePlugin.valid).toBe(false);
+    expect(freePlugin.valid).toBe(true);
   });
 });
 

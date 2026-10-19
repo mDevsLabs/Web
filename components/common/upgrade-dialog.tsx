@@ -1,6 +1,6 @@
 "use client";
 
-import { CrownIcon, SparklesIcon, ZapIcon } from "lucide-react";
+import { CrownIcon, SparklesIcon, ZapIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -12,10 +12,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type UpgradeDialogProps = {
-  feature?: "skills" | "mcp" | "agents" | "plugins" | "generic";
+  // Aucun libellé « agents » ici : les bots sont ouverts à tous les forfaits et
+  // bornés par quota (`getTierAgentLimit`), ils ne relèvent donc plus d'un
+  // plan requis. Conserver ce texte aurait fait revivre une promesse fausse.
+  feature?: "skills" | "mcp" | "plugins" | "wakies" | "generic";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
@@ -24,11 +26,6 @@ const FEATURE_COPY: Record<
   NonNullable<UpgradeDialogProps["feature"]>,
   { description: string; title: string }
 > = {
-  agents: {
-    description:
-      "Créez des bots IA personnalisés avec instructions système, modèle, skills et connexions MCP. Réservé aux forfaits Plus, Pro et Max.",
-    title: "Bots IA — Plan requis",
-  },
   generic: {
     description:
       "Cette fonctionnalité avancée est réservée aux forfaits payants. Passez à un forfait supérieur pour continuer.",
@@ -48,6 +45,11 @@ const FEATURE_COPY: Record<
     description:
       "Créez des compétences IA personnalisées avec paramètres dynamiques, marketplace de templates et statistiques d'usage. Réservé aux forfaits Plus, Pro et Max.",
     title: "Skills & Outils IA — Plan requis",
+  },
+  wakies: {
+    description:
+      "Accédez à l'espace de travail Wakies avec vos agents coworkers persistants, vos espaces de documents et l'automatisation de tâches autonomes. Réservé aux forfaits Plus, Pro et Max.",
+    title: "Wakies — Plan requis",
   },
 };
 
@@ -126,7 +128,7 @@ export function UpgradeDialog({
             Plus tard
           </Button>
           <Button asChild className="gap-2" type="button">
-            <Link href={MAI_UPGRADE_URL} target="_blank">
+            <Link href="/site/pricing?plan=pro">
               <SparklesIcon className="size-4" />
               Mettre à niveau mon forfait
             </Link>

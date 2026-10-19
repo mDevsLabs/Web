@@ -26,7 +26,7 @@ export const requestSuggestions = ({
 
       if (!document?.content) {
         return {
-          error: "Document not found",
+          error: "Document introuvable",
         };
       }
 

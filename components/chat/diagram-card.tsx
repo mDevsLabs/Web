@@ -1,6 +1,5 @@
 "use client";
 
-import DOMPurify from "dompurify";
 import {
   CodeIcon,
   DownloadIcon,
@@ -11,7 +10,8 @@ import {
   RotateCcwIcon,
   WaypointsIcon,
   XIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
+import DOMPurify from "dompurify";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 

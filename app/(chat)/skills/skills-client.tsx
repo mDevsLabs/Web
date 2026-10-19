@@ -2,50 +2,36 @@
 
 import {
   BookOpenIcon,
-  CopyIcon,
-  CpuIcon,
   DownloadIcon,
-  Edit2Icon,
-  HistoryIcon,
-  MoreVerticalIcon,
   PinIcon,
-  PinOffIcon,
-  PlayIcon,
   PlusIcon,
-  RefreshCwIcon,
-  SearchIcon,
-  Share2Icon,
-  SparklesIcon,
   TagIcon,
-  Trash2Icon,
   UploadIcon,
   WrenchIcon,
-  ZapIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
-import { AGENT_COLORS } from "@/components/agents/agent-presets";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { ColorPicker } from "@/components/common/color-picker";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+  SkillCard,
+  SkillDeleteDialog,
+  SkillEditorModal,
+  SkillImportModal,
+  SkillLibraryTemplates,
+  type SkillParameter,
+  SkillShareModal,
+  SkillStarterGrid,
+  type STARTER_TEMPLATES,
+  VersionHistoryList,
+} from "@/components/skills";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -53,154 +39,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
-import { extractApiErrorMessage } from "@/lib/api/client-error";
-import type { Skill, SkillVersion } from "@/lib/db/schema";
+import type { Skill } from "@/lib/db/schema";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn } from "@/lib/utils";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-const AVAILABLE_TOOLS = [
-  ...TOOL_IDS.map((id) => ({
-    description: TOOLS_META[id].description,
-    icon: TOOLS_META[id].icon as any,
-    id,
-    label: TOOLS_META[id].label,
-  })),
-  {
-    description: "Autoriser l'utilisation de tous les serveurs MCP configurés",
-    icon: CpuIcon as any,
-    id: "mcp",
-    label: "Outils MCP",
-  },
-];
-
-const STARTER_TEMPLATES = [
-  {
-    color: "#6366f1",
-    description:
-      "Expert en analyse de code TypeScript, architecture et bonnes pratiques",
-    icon: "cpu",
-    instructions:
-      "Tu es un architecte logiciel expert en TypeScript, Next.js et design patterns. Analyse le code soumis, propose des refactorisations propres, typées rigoureusement et sans régression.",
-    name: "Architecte TypeScript",
-    tags: ["Dev", "Code", "TypeScript"],
-    tools: ["codeExecution", "createDocument"],
-  },
-  {
-    color: "#06b6d4",
-    description:
-      "Recherche en profondeur sur internet et rédaction de rapports détaillés",
-    icon: "globe",
-    instructions:
-      "Tu es un analyste chercheur web. Pour chaque question, effectue des recherches approfondies, vérifie les sources récentes et synthétise les informations de manière claire et factuelle.",
-    name: "Chercheur Web & Synthèse",
-    tags: ["Recherche", "Veille"],
-    tools: ["webSearch", "createDocument"],
-  },
-  {
-    color: "#10b981",
-    description:
-      "Rédaction de contenu percutant, articles de blog, newsletters et copywriting",
-    icon: "sparkles",
-    instructions:
-      "Tu es un copywriter de haut niveau. Adopte un ton engageant, dynamique et structuré. Utilise des accroches fortes et adapte le niveau de langage à la cible demandée.",
-    name: "Copywriter & Rédaction",
-    tags: ["Marketing", "Rédaction"],
-    tools: ["createDocument"],
-  },
-];
-
-function VersionHistoryList({
-  skill,
-  onRestored,
-}: {
-  skill: Skill;
-  onRestored: () => void;
-}) {
-  const { data: versions = [], isLoading } = useSWR<SkillVersion[]>(
-    `/api/skills/${skill.id}/versions`,
-    fetcher
-  );
-  const [restoringId, setRestoringId] = useState<string | null>(null);
-
-  const handleRestore = async (versionId: string) => {
-    setRestoringId(versionId);
-    try {
-      const res = await fetch(`/api/skills/${skill.id}/versions`, {
-        body: JSON.stringify({ versionId }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(
-          extractApiErrorMessage(data) || "Erreur lors de la restauration"
-        );
-      }
-      toast.success("Version restaurée : un nouveau snapshot a été créé.");
-      onRestored();
-    } catch (err: any) {
-      toast.error(err.message ?? "Erreur lors de la restauration");
-    } finally {
-      setRestoringId(null);
-    }
-  };
-
-  return (
-    <div className="flex flex-col gap-2 max-h-80 overflow-y-auto py-2">
-      {isLoading && (
-        <p className="text-xs text-muted-foreground">Chargement…</p>
-      )}
-      {!isLoading && versions.length === 0 && (
-        <p className="text-xs text-muted-foreground">
-          Aucune version précédente. Modifiez le contenu du skill (nom,
-          instructions, outils, paramètres…) puis enregistrez pour créer un
-          premier snapshot.
-        </p>
-      )}
-      {versions.map((v) => (
-        <div
-          className="flex items-center justify-between gap-3 rounded-xl border border-border/40 bg-muted/20 p-2.5"
-          key={v.id}
-        >
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-xs text-foreground">
-                {v.versionLabel}
-              </span>
-              <span className="text-[11px] text-muted-foreground">
-                {new Date(v.createdAt).toLocaleString("fr-FR")}
-              </span>
-            </div>
-            <p className="truncate text-[11px] text-muted-foreground/80">
-              {v.name}
-              {v.description ? ` — ${v.description}` : ""}
-            </p>
-          </div>
-          <Button
-            disabled={restoringId === v.id}
-            onClick={() => handleRestore(v.id)}
-            size="sm"
-            type="button"
-            variant="outline"
-          >
-            <RefreshCwIcon className="size-3 mr-1" />
-            {restoringId === v.id ? "Restauration…" : "Restaurer"}
-          </Button>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function SkillsClient({
   embedded = false,
@@ -214,19 +60,17 @@ export default function SkillsClient({
   const _router = useRouter();
   const {
     data: skills = [],
-    error,
+    error: _error,
     isLoading,
     mutate,
   } = useSWR<Skill[]>("/api/skills", fetcher);
 
-  // Recherche fournie par la barre globale de la page Outils.
   const [activeTab, setActiveTab] = useState<"all" | "pinned" | "library">(
     "all"
   );
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  // Rangée d'actions globale : les boutons Exporter / Importer / Nouveau y
-  // sont portés quand le panneau est intégré à la page Outils.
   const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+
   useEffect(() => {
     if (embedded) {
       setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
@@ -253,21 +97,13 @@ export default function SkillsClient({
   const [formColor, setFormColor] = useState("#6366f1");
   const [formTools, setFormTools] = useState<string[]>([]);
   const [formTags, setFormTags] = useState<string>("");
-  const [formParameters, setFormParameters] = useState<
-    Array<{
-      name: string;
-      description: string;
-      required: boolean;
-      type?: string;
-      defaultValue?: string;
-      enumValues?: string[];
-    }>
-  >([]);
+  const [formParameters, setFormParameters] = useState<SkillParameter[]>([]);
   const [formMcpServerIds, setFormMcpServerIds] = useState<string[]>([]);
   const [formMcpToolFilter, setFormMcpToolFilter] = useState<
     Record<string, string[] | null>
   >({});
   const [isSaving, setIsSaving] = useState(false);
+
   const { data: mcpData } = useSWR<{ servers: any[] }>("/api/mcp", fetcher);
   const mcpServers: any[] = (mcpData as any)?.servers ?? [];
   const { data: skillTplData } = useSWR<{ templates: any[] }>(
@@ -293,9 +129,7 @@ export default function SkillsClient({
     return Array.from(set);
   }, [skills]);
 
-  // Filtrage des skills : recherche globale + onglet + tag, puis tri par
-  // pertinence (nom > description > instructions > tags), épinglés d'abord,
-  // alphabétiquement à pertinence égale.
+  // Filtrage et tri par pertinence
   const filteredSkills = useMemo(
     () =>
       sortByRelevance(
@@ -454,16 +288,12 @@ export default function SkillsClient({
 
   // Suppression
   const handleDelete = async () => {
-    if (!skillToDelete) {
-      return;
-    }
+    if (!skillToDelete) return;
     try {
       const res = await fetch(`/api/skills/${skillToDelete.id}`, {
         method: "DELETE",
       });
-      if (!res.ok) {
-        throw new Error("Erreur lors de la suppression");
-      }
+      if (!res.ok) throw new Error("Erreur lors de la suppression");
       toast.success(`Skill "${skillToDelete.name}" supprimé`);
       setSkillToDelete(null);
       await mutate();
@@ -503,9 +333,7 @@ export default function SkillsClient({
   // Import depuis fichier
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) {
-      return;
-    }
+    if (!file) return;
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -635,8 +463,7 @@ export default function SkillsClient({
           )
         : null}
 
-      {/* Header — masqué en mode intégré : l'en-tête de la page Outils porte
-          les boutons (voir portail ci-dessus) et la recherche globale. */}
+      {/* Header — masqué en mode intégré */}
       {embedded ? null : (
         <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 px-4 py-3 backdrop-blur-md sm:px-6">
           <div
@@ -725,7 +552,7 @@ export default function SkillsClient({
             </div>
           </div>
 
-          {/* Filtres — la recherche vit dans la barre globale de la page Outils */}
+          {/* Filtres */}
           <div className="flex flex-wrap items-center justify-between gap-2.5 pt-0">
             <div className="flex items-center gap-2">
               <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
@@ -810,7 +637,7 @@ export default function SkillsClient({
         </header>
       )}
 
-      {/* Contenu principal — pleine largeur en mode intégré */}
+      {/* Contenu principal */}
       <main
         className={
           embedded
@@ -828,132 +655,15 @@ export default function SkillsClient({
             ))}
           </div>
         ) : activeTab === "library" ? (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-bold">
-                Bibliothèque — {skillTemplates.length} templates
-              </h2>
-              <Button
-                className="h-7 text-xs"
-                onClick={() => {
-                  const el = document.getElementById("skill-tpl-search");
-                  el?.focus();
-                }}
-                size="sm"
-                variant="outline"
-              >
-                Rechercher
-              </Button>
-            </div>
-            {skillTemplates.length === 0 ? (
-              <div className="rounded-2xl border border-border/60 bg-card p-6 text-center text-xs text-muted-foreground">
-                Chargement marketplace…
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {skillTemplates.map((tpl: any) => (
-                  <div
-                    className="rounded-2xl border bg-card p-4 flex flex-col"
-                    key={tpl.id}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div
-                        className="size-7 rounded-lg flex items-center justify-center text-white"
-                        style={{ backgroundColor: tpl.color || "#6366f1" }}
-                      >
-                        <SparklesIcon className="size-3.5" />
-                      </div>
-                      <span className="font-semibold text-xs truncate">
-                        {tpl.name}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
-                      {tpl.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {(tpl.tags ?? []).map((t: string) => (
-                        <span
-                          className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground"
-                          key={t}
-                        >
-                          #{t}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-1.5 mt-auto">
-                      <Button
-                        className="flex-1 h-7 text-xs"
-                        onClick={async () => {
-                          try {
-                            const r = await fetch("/api/skills/templates", {
-                              body: JSON.stringify({ templateId: tpl.id }),
-                              headers: { "Content-Type": "application/json" },
-                              method: "POST",
-                            });
-                            const d = await r.json();
-                            if (!r.ok) {
-                              throw new Error(
-                                extractApiErrorMessage(d) ||
-                                  "Erreur lors de l'installation du template."
-                              );
-                            }
-                            toast.success(d.message);
-                            mutate();
-                          } catch (e: any) {
-                            toast.error(e.message);
-                          }
-                        }}
-                        size="sm"
-                      >
-                        <PlusIcon className="size-3 mr-1" />
-                        Installer
-                      </Button>
-                      <Button
-                        className="h-7 text-xs"
-                        onClick={async () => {
-                          await navigator.clipboard.writeText(
-                            JSON.stringify(tpl, null, 2)
-                          );
-                          toast.success("Template copié !");
-                        }}
-                        size="sm"
-                        variant="outline"
-                      >
-                        <CopyIcon className="size-3 mr-1" />
-                        Copier
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-                {STARTER_TEMPLATES.map((t) => (
-                  <div
-                    className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
-                    key={`${t.name}starter`}
-                  >
-                    <span className="font-semibold text-xs mb-1">
-                      {t.name} (starter)
-                    </span>
-                    <p className="text-[11px] text-muted-foreground mb-3">
-                      {t.description}
-                    </p>
-                    <Button
-                      className="h-7 text-xs"
-                      onClick={() => handleNewSkill(t as any)}
-                      size="sm"
-                      variant="outline"
-                    >
-                      Utiliser
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <SkillLibraryTemplates
+            onInstallSuccess={() => mutate()}
+            onSelectStarter={(t) => handleNewSkill(t)}
+            skillTemplates={skillTemplates}
+          />
         ) : skills.length === 0 ? (
-          /* Empty State avec Modèles */
           <div className="flex flex-col items-center justify-center py-12 text-center max-w-2xl mx-auto">
             <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-              <SparklesIcon className="size-8" />
+              <WrenchIcon className="size-8" />
             </div>
             <h2 className="text-xl font-bold mb-2">Aucun skill configuré</h2>
             <p className="text-sm text-muted-foreground mb-8">
@@ -964,39 +674,9 @@ export default function SkillsClient({
               menu Plus.
             </p>
 
-            <div className="w-full text-left mb-6">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                Modèles suggérés pour démarrer rapidement :
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {STARTER_TEMPLATES.map((tmpl) => (
-                  <button
-                    className="flex flex-col text-left p-3.5 rounded-xl border border-border/60 bg-card hover:bg-muted/40 transition-colors group cursor-pointer"
-                    key={tmpl.name}
-                    onClick={() => handleNewSkill(tmpl)}
-                    type="button"
-                  >
-                    <div className="flex items-center justify-between w-full mb-2">
-                      <div
-                        className="size-7 rounded-lg flex items-center justify-center text-white text-xs font-bold"
-                        style={{ backgroundColor: tmpl.color }}
-                      >
-                        <SparklesIcon className="size-3.5" />
-                      </div>
-                      <span className="text-[11px] font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Utiliser +
-                      </span>
-                    </div>
-                    <span className="font-semibold text-xs text-foreground mb-1">
-                      {tmpl.name}
-                    </span>
-                    <span className="text-[11px] text-muted-foreground line-clamp-2">
-                      {tmpl.description}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
+            <SkillStarterGrid
+              onSelectTemplate={(tmpl) => handleNewSkill(tmpl)}
+            />
 
             <Button
               className="gap-2 text-xs font-medium"
@@ -1013,729 +693,73 @@ export default function SkillsClient({
             </p>
           </div>
         ) : (
-          /* Liste / Grille des Skills */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredSkills.map((s) => {
-              const skillTools = (s.tools as string[]) || [];
-              const skillParams = (s.parameters as any[]) || [];
-
-              return (
-                <div
-                  className={cn(
-                    "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md relative group",
-                    s.pinned
-                      ? "border-amber-500/30 bg-amber-500/[0.02]"
-                      : "border-border/60 hover:border-border"
-                  )}
-                  key={s.id}
-                >
-                  {/* Header de la carte */}
-                  <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="size-10 rounded-xl flex items-center justify-center text-white shadow-xs shrink-0"
-                        style={{ backgroundColor: s.color || "#6366f1" }}
-                      >
-                        <SparklesIcon className="size-5" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <h3 className="font-semibold text-sm text-foreground truncate">
-                            {s.name}
-                          </h3>
-                          {s.pinned && (
-                            <PinIcon className="size-3 text-amber-500 shrink-0 fill-amber-500" />
-                          )}
-                        </div>
-                        <p className="text-[12px] text-muted-foreground line-clamp-2">
-                          {s.description || "Aucune description"}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Menu d'actions */}
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          className="size-7 p-0 text-muted-foreground hover:text-foreground"
-                          variant="ghost"
-                        >
-                          <MoreVerticalIcon className="size-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-48">
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => handleTogglePin(s)}
-                        >
-                          {s.pinned ? (
-                            <>
-                              <PinOffIcon className="size-3.5" />
-                              <span>Désépingler</span>
-                            </>
-                          ) : (
-                            <>
-                              <PinIcon className="size-3.5 text-amber-500" />
-                              <span>Épingler en haut</span>
-                            </>
-                          )}
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => handleEditSkill(s)}
-                        >
-                          <Edit2Icon className="size-3.5" />
-                          <span>Modifier / Renommer</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => handleDuplicate(s)}
-                        >
-                          <CopyIcon className="size-3.5" />
-                          <span>Dupliquer</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => setVersionHistorySkill(s)}
-                        >
-                          <HistoryIcon className="size-3.5" />
-                          <span>Historique des versions</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => {
-                            setSharingSkill(s);
-                            setIsShareOpen(true);
-                          }}
-                        >
-                          <Share2Icon className="size-3.5" />
-                          <span>Partager</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs"
-                          onClick={() => handleExportSkill(s)}
-                        >
-                          <DownloadIcon className="size-3.5" />
-                          <span>Exporter (.json)</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem
-                          className="gap-2 cursor-pointer text-xs text-destructive focus:text-destructive"
-                          onClick={() => setSkillToDelete(s)}
-                        >
-                          <Trash2Icon className="size-3.5" />
-                          <span>Supprimer</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-
-                  {/* Aperçu Instructions */}
-                  <div className="flex-1 mb-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 overflow-y-auto max-h-28 min-h-[68px] no-scrollbar">
-                    <p className="text-xs text-muted-foreground/90 font-mono break-words leading-relaxed whitespace-pre-wrap">
-                      {s.instructions}
-                    </p>
-                  </div>
-
-                  {/* Outils associés & Tags */}
-                  <div className="flex flex-col gap-2 pt-2 border-t border-border/40">
-                    <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        {skillTools.length > 0 ? (
-                          skillTools.map((t) => (
-                            <span
-                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-muted text-[10.5px] font-medium text-foreground"
-                              key={t}
-                            >
-                              <WrenchIcon className="size-2.5 text-primary" />
-                              {t}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="text-muted-foreground/60 italic">
-                            Aucun outil spécifique
-                          </span>
-                        )}
-                        {skillTools.includes("mcp") &&
-                          Array.isArray((s as any).mcpServerIds) &&
-                          (s as any).mcpServerIds.length > 0 && (
-                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-purple-500/10 text-purple-600 text-[10.5px] font-medium">
-                              <CpuIcon className="size-2.5" />
-                              {(s as any).mcpServerIds.length} MCP
-                            </span>
-                          )}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {skillParams.length > 0 && (
-                          <span className="text-[11px] text-muted-foreground shrink-0">
-                            {skillParams.length} param(s)
-                          </span>
-                        )}
-                        {(s as any).mcpServerIds?.length > 0 && (
-                          <span className="text-[10px] text-purple-600">
-                            {Object.keys((s as any).mcpToolFilter || {}).length}{" "}
-                            filtres
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Tags */}
-                    {Array.isArray(s.tags) && s.tags.length > 0 && (
-                      <div className="flex items-center gap-1 flex-wrap">
-                        {s.tags.map((t) => (
-                          <span
-                            className="text-[10px] text-muted-foreground/70"
-                            key={t}
-                          >
-                            #{t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {filteredSkills.map((s) => (
+              <SkillCard
+                key={s.id}
+                onDeleteRequest={(item) => setSkillToDelete(item)}
+                onDuplicate={handleDuplicate}
+                onEdit={handleEditSkill}
+                onExport={handleExportSkill}
+                onOpenVersions={(item) => setVersionHistorySkill(item)}
+                onShare={(item) => {
+                  setSharingSkill(item);
+                  setIsShareOpen(true);
+                }}
+                onTogglePin={handleTogglePin}
+                skill={s}
+              />
+            ))}
           </div>
         )}
       </main>
 
-      {/* Modal Éditeur de Skill */}
-      <Dialog onOpenChange={setIsEditorOpen} open={isEditorOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {editingSkill ? "Modifier le Skill" : "Créer un nouveau Skill"}
-            </DialogTitle>
-            <DialogDescription>
-              Configurez le comportement, le prompt et les outils accessibles
-              pour cette compétence.
-            </DialogDescription>
-          </DialogHeader>
+      {/* Modale Édition / Création */}
+      <SkillEditorModal
+        editingSkill={editingSkill}
+        formColor={formColor}
+        formDescription={formDescription}
+        formIcon={formIcon}
+        formInstructions={formInstructions}
+        formMcpServerIds={formMcpServerIds}
+        formMcpToolFilter={formMcpToolFilter}
+        formName={formName}
+        formParameters={formParameters}
+        formTags={formTags}
+        formTools={formTools}
+        isSaving={isSaving}
+        mcpServers={mcpServers}
+        onFormColorChange={setFormColor}
+        onFormDescriptionChange={setFormDescription}
+        onFormIconChange={setFormIcon}
+        onFormInstructionsChange={setFormInstructions}
+        onFormMcpServerIdsChange={setFormMcpServerIds}
+        onFormMcpToolFilterChange={setFormMcpToolFilter}
+        onFormNameChange={setFormName}
+        onFormParametersChange={setFormParameters}
+        onFormTagsChange={setFormTags}
+        onFormToolsChange={setFormTools}
+        onOpenChange={setIsEditorOpen}
+        onOpenVersionHistory={() => {
+          if (editingSkill) setVersionHistorySkill(editingSkill);
+        }}
+        onSaveSkill={handleSaveSkill}
+        open={isEditorOpen}
+      />
 
-          <form className="flex flex-col gap-4 py-2" onSubmit={handleSaveSkill}>
-            {/* Nom & Couleur */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label className="text-xs font-semibold">
-                  Nom de la compétence *
-                </Label>
-                <Input
-                  onChange={(e) => setFormName(e.target.value)}
-                  placeholder="Ex: Spécialiste SEO & Rédaction"
-                  required
-                  value={formName}
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
-                  Couleur du badge
-                </Label>
-                <ColorPicker
-                  className="pt-1"
-                  colors={AGENT_COLORS}
-                  onChange={setFormColor}
-                  value={formColor}
-                />
-              </div>
-            </div>
-
-            {/* Description */}
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">
-                Description courte
-              </Label>
-              <Input
-                onChange={(e) => setFormDescription(e.target.value)}
-                placeholder="Rôle ou cas d'usage résumé..."
-                value={formDescription}
-              />
-            </div>
-
-            {/* Instructions Système */}
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <Label className="text-xs font-semibold">
-                  Instructions système (Prompt du Skill) *
-                </Label>
-                <span className="text-[11px] text-muted-foreground">
-                  Variables autorisées : {"{sujet}"}, {"{langue}"}, etc.
-                </span>
-              </div>
-              <Textarea
-                className="min-h-[140px] font-mono text-xs leading-relaxed"
-                onChange={(e) => setFormInstructions(e.target.value)}
-                placeholder="Tu es un expert en... Tes réponses doivent toujours respecter..."
-                required
-                value={formInstructions}
-              />
-            </div>
-
-            {/* Tester le Skill avec variables dynamiques */}
-            <div className="space-y-3 rounded-xl border border-primary/20 bg-primary/[0.02] p-3.5">
-              <div className="flex items-center justify-between">
-                <Label className="text-xs font-semibold flex items-center gap-1.5">
-                  <ZapIcon className="size-3.5 text-amber-500" />
-                  Tester le Skill (variables dynamiques)
-                </Label>
-                <span className="text-[10px] text-muted-foreground">
-                  Variables: {"{sujet}"}, {"{langue}"}
-                </span>
-              </div>
-              <div className="flex gap-2">
-                <Input
-                  className="h-8 text-xs bg-background"
-                  onChange={(e) =>
-                    setFormInstructions((prev) =>
-                      prev.replace(/{testVar}/g, e.target.value)
-                    )
-                  }
-                  placeholder="Valeur de test pour {testVar}..."
-                  value={"test"}
-                />
-                <Button
-                  className="h-8 text-xs gap-1.5"
-                  onClick={() => {
-                    const preview = formInstructions
-                      .replace(/{sujet}/g, "Intelligence Artificielle")
-                      .replace(/{langue}/g, "Français")
-                      .replace(/{testVar}/g, "test");
-                    toast.info(
-                      `Prévisualisation du prompt :\n${preview.slice(0, 300)}`
-                    );
-                  }}
-                  type="button"
-                  variant="outline"
-                >
-                  <PlayIcon className="size-3.5" />
-                  Tester
-                </Button>
-              </div>
-              <p className="text-[11px] text-muted-foreground leading-relaxed">
-                Utilisez des variables entre accolades dans vos instructions. Le
-                bouton "Tester" simule le rendu du prompt avec des valeurs par
-                défaut pour vérifier le comportement.
-              </p>
-            </div>
-
-            {/* Outils autorisés */}
-            <div className="space-y-2">
-              <Label className="text-xs font-semibold">
-                Outils associés à cette compétence
-              </Label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {AVAILABLE_TOOLS.map((tool) => {
-                  const isChecked = formTools.includes(tool.id);
-                  const Icon = tool.icon;
-                  return (
-                    <label
-                      className={cn(
-                        "flex items-center gap-2.5 p-2.5 rounded-xl border transition-colors cursor-pointer",
-                        isChecked
-                          ? "border-primary/40 bg-primary/5 text-foreground"
-                          : "border-border/50 hover:bg-muted/30 text-muted-foreground"
-                      )}
-                      key={tool.id}
-                    >
-                      <input
-                        checked={isChecked}
-                        className="rounded border-border text-primary focus:ring-primary size-4"
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setFormTools((prev) => [...prev, tool.id]);
-                          } else {
-                            setFormTools((prev) =>
-                              prev.filter((id) => id !== tool.id)
-                            );
-                          }
-                        }}
-                        type="checkbox"
-                      />
-                      <Icon className="size-4 text-primary shrink-0" />
-                      <div className="min-w-0">
-                        <span className="font-semibold text-xs block text-foreground">
-                          {tool.label}
-                        </span>
-                        <span className="text-[11px] text-muted-foreground truncate block">
-                          {tool.description}
-                        </span>
-                      </div>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* MCP Whitelist — visible si outil mcp coché */}
-            {formTools.includes("mcp") && (
-              <div className="space-y-3 p-3.5 rounded-xl border border-purple-500/20 bg-purple-500/[0.04]">
-                <Label className="text-xs font-semibold flex items-center gap-1.5">
-                  <CpuIcon className="size-3.5 text-purple-600" /> Serveurs MCP
-                  autorisés pour ce Skill (whitelist)
-                </Label>
-                <p className="text-[11px] text-muted-foreground">
-                  Cochez les serveurs que ce Skill pourra utiliser. Si aucun
-                  coché, le Skill n'aura accès à aucun MCP. Déroulez pour
-                  filtrer les outils per-serveur.
-                </p>
-                {mcpServers.length === 0 ? (
-                  <p className="text-xs text-muted-foreground">
-                    Aucun serveur MCP — créez-en dans /mcp
-                  </p>
-                ) : (
-                  <div className="space-y-2">
-                    {mcpServers.map((srv: any) => {
-                      const isChecked = formMcpServerIds.includes(srv.id);
-                      const tools = (srv.toolsCache as any[]) ?? [];
-                      const overrides = (srv.toolOverrides as any) ?? {};
-                      const allowedTools = tools.filter(
-                        (t) => overrides[t.name]?.enabled !== false
-                      );
-                      return (
-                        <div
-                          className={cn(
-                            "rounded-xl border p-2.5",
-                            isChecked
-                              ? "border-purple-500/40 bg-purple-500/5"
-                              : "border-border/40"
-                          )}
-                          key={srv.id}
-                        >
-                          <label className="flex items-center gap-2 cursor-pointer">
-                            <input
-                              checked={isChecked}
-                              className="size-4 accent-purple-600"
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setFormMcpServerIds((prev) => [
-                                    ...prev,
-                                    srv.id,
-                                  ]);
-                                } else {
-                                  setFormMcpServerIds((prev) =>
-                                    prev.filter((id) => id !== srv.id)
-                                  );
-                                  const nf = { ...formMcpToolFilter };
-                                  delete nf[srv.id];
-                                  setFormMcpToolFilter(nf);
-                                }
-                              }}
-                              type="checkbox"
-                            />
-                            <span className="text-xs font-semibold">
-                              {srv.name}
-                            </span>
-                            <span className="text-[10px] text-muted-foreground">
-                              ({allowedTools.length} outils actifs)
-                            </span>
-                          </label>
-                          {isChecked && allowedTools.length > 0 && (
-                            <div className="mt-2 ml-6 flex flex-wrap gap-1.5">
-                              {allowedTools.map((t: any) => {
-                                const selected =
-                                  !formMcpToolFilter[srv.id] ||
-                                  (formMcpToolFilter[srv.id] ?? []).includes(
-                                    t.name
-                                  );
-                                return (
-                                  <label
-                                    className={cn(
-                                      "inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] border cursor-pointer",
-                                      selected
-                                        ? "bg-purple-600 text-white border-purple-600"
-                                        : "bg-muted text-muted-foreground border-border/40"
-                                    )}
-                                    key={t.name}
-                                  >
-                                    <input
-                                      checked={selected}
-                                      className="hidden"
-                                      onChange={(e) => {
-                                        const cur =
-                                          formMcpToolFilter[srv.id] ?? null;
-                                        let next: string[] | null;
-                                        if (cur === null) {
-                                          next = allowedTools
-                                            .map((x: any) => x.name)
-                                            .filter(
-                                              (n: string) => n !== t.name
-                                            );
-                                        } else {
-                                          next = e.target.checked
-                                            ? [...cur, t.name]
-                                            : cur.filter((n) => n !== t.name);
-                                          if (
-                                            next.length === allowedTools.length
-                                          ) {
-                                            next = null as any;
-                                          }
-                                        }
-                                        setFormMcpToolFilter((prev) => ({
-                                          ...prev,
-                                          [srv.id]: next as any,
-                                        }));
-                                      }}
-                                      type="checkbox"
-                                    />
-                                    {t.name}
-                                  </label>
-                                );
-                              })}
-                              <button
-                                className="text-[11px] underline text-muted-foreground"
-                                onClick={() => {
-                                  const nf = { ...formMcpToolFilter };
-                                  delete nf[srv.id];
-                                  setFormMcpToolFilter(nf);
-                                }}
-                                type="button"
-                              >
-                                Tous
-                              </button>
-                              <button
-                                className="text-[11px] underline text-muted-foreground"
-                                onClick={() =>
-                                  setFormMcpToolFilter((prev) => ({
-                                    ...prev,
-                                    [srv.id]: [],
-                                  }))
-                                }
-                                type="button"
-                              >
-                                Aucun
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Parameters typés */}
-            <div className="space-y-2">
-              <Label className="text-xs font-semibold flex items-center gap-1.5">
-                <WrenchIcon className="size-3.5 text-primary" /> Paramètres
-                typés (variables {"{{param}}"})
-              </Label>
-              <p className="text-[11px] text-muted-foreground">
-                Définissez des variables utilisables dans les instructions via{" "}
-                {"{{nom}}"} — type, requis, défaut, enum.
-              </p>
-              {formParameters.map((p, idx) => (
-                <div
-                  className="grid grid-cols-12 gap-2 items-end p-2 rounded-xl border border-border/40 bg-muted/20"
-                  key={idx}
-                >
-                  <div className="col-span-3 space-y-1">
-                    <Label className="text-[11px]">Nom *</Label>
-                    <Input
-                      className="h-8 text-xs"
-                      onChange={(e) =>
-                        setFormParameters((prev) =>
-                          prev.map((x, i) =>
-                            i === idx ? { ...x, name: e.target.value } : x
-                          )
-                        )
-                      }
-                      placeholder="sujet"
-                      value={p.name}
-                    />
-                  </div>
-                  <div className="col-span-2 space-y-1">
-                    <Label className="text-[11px]">Type</Label>
-                    <select
-                      className="h-8 w-full rounded-md border bg-background px-2 text-xs"
-                      onChange={(e) =>
-                        setFormParameters((prev) =>
-                          prev.map((x, i) =>
-                            i === idx ? { ...x, type: e.target.value } : x
-                          )
-                        )
-                      }
-                      value={p.type || "string"}
-                    >
-                      <option value="string">string</option>
-                      <option value="number">number</option>
-                      <option value="boolean">boolean</option>
-                      <option value="enum">enum</option>
-                    </select>
-                  </div>
-                  <div className="col-span-3 space-y-1">
-                    <Label className="text-[11px]">Valeur défaut</Label>
-                    <Input
-                      className="h-8 text-xs"
-                      onChange={(e) =>
-                        setFormParameters((prev) =>
-                          prev.map((x, i) =>
-                            i === idx
-                              ? { ...x, defaultValue: e.target.value }
-                              : x
-                          )
-                        )
-                      }
-                      placeholder="défaut"
-                      value={p.defaultValue || ""}
-                    />
-                  </div>
-                  <div className="col-span-2 flex items-center gap-1.5 pt-6">
-                    <input
-                      checked={!!p.required}
-                      className="size-4 accent-primary"
-                      onChange={(e) =>
-                        setFormParameters((prev) =>
-                          prev.map((x, i) =>
-                            i === idx ? { ...x, required: e.target.checked } : x
-                          )
-                        )
-                      }
-                      type="checkbox"
-                    />
-                    <span className="text-xs">Requis</span>
-                  </div>
-                  <div className="col-span-2 flex gap-1">
-                    <Button
-                      className="h-8"
-                      onClick={() =>
-                        setFormParameters((prev) =>
-                          prev.filter((_, i) => i !== idx)
-                        )
-                      }
-                      size="sm"
-                      type="button"
-                      variant="ghost"
-                    >
-                      <Trash2Icon className="size-3" />
-                    </Button>
-                  </div>
-                  <div className="col-span-12 space-y-1">
-                    <Label className="text-[11px]">Description</Label>
-                    <Input
-                      className="h-8 text-xs"
-                      onChange={(e) =>
-                        setFormParameters((prev) =>
-                          prev.map((x, i) =>
-                            i === idx
-                              ? { ...x, description: e.target.value }
-                              : x
-                          )
-                        )
-                      }
-                      placeholder="Description courte"
-                      value={p.description}
-                    />
-                  </div>
-                  {p.type === "enum" && (
-                    <div className="col-span-12 space-y-1">
-                      <Label className="text-[11px]">
-                        Valeurs enum (séparées par virgules)
-                      </Label>
-                      <Input
-                        className="h-8 text-xs"
-                        onChange={(e) =>
-                          setFormParameters((prev) =>
-                            prev.map((x, i) =>
-                              i === idx
-                                ? {
-                                    ...x,
-                                    enumValues: e.target.value
-                                      .split(",")
-                                      .map((s) => s.trim())
-                                      .filter(Boolean),
-                                  }
-                                : x
-                            )
-                          )
-                        }
-                        placeholder="opt1, opt2, opt3"
-                        value={(p.enumValues || []).join(", ")}
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
-              <Button
-                className="h-7 text-xs"
-                onClick={() =>
-                  setFormParameters((prev) => [
-                    ...prev,
-                    {
-                      defaultValue: "",
-                      description: "",
-                      name: "",
-                      required: false,
-                      type: "string",
-                    },
-                  ])
-                }
-                size="sm"
-                type="button"
-                variant="outline"
-              >
-                <PlusIcon className="size-3 mr-1" />
-                Ajouter un paramètre
-              </Button>
-            </div>
-
-            {/* Tags */}
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">
-                Tags (séparés par des virgules)
-              </Label>
-              <Input
-                onChange={(e) => setFormTags(e.target.value)}
-                placeholder="Dev, Marketing, Rédaction, Analyse..."
-                value={formTags}
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
-              {editingSkill && (
-                <Button
-                  onClick={() => setVersionHistorySkill(editingSkill)}
-                  size="sm"
-                  type="button"
-                  variant="outline"
-                >
-                  <HistoryIcon className="size-3.5 mr-1" />
-                  Historique
-                </Button>
-              )}
-              <Button
-                onClick={() => setIsEditorOpen(false)}
-                type="button"
-                variant="outline"
-              >
-                Annuler
-              </Button>
-              <Button disabled={isSaving} type="submit">
-                {isSaving ? "Enregistrement..." : "Enregistrer la compétence"}
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modal Historique des versions */}
+      {/* Modale Historique des versions */}
       <Dialog
         onOpenChange={(open) => {
-          if (!open) {
-            setVersionHistorySkill(null);
-          }
+          if (!open) setVersionHistorySkill(null);
         }}
-        open={!!versionHistorySkill}
+        open={Boolean(versionHistorySkill)}
       >
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Historique des versions</DialogTitle>
             <DialogDescription>
               {versionHistorySkill?.name} — un snapshot est créé à chaque
-              enregistrement qui change le contenu du skill. Restaurer crée une
-              nouvelle version à partir de l'ancienne.
+              enregistrement qui change le contenu du skill.
             </DialogDescription>
           </DialogHeader>
           {versionHistorySkill && (
@@ -1750,188 +774,30 @@ export default function SkillsClient({
         </DialogContent>
       </Dialog>
 
-      {/* Modal Importer un Skill */}
-      <Dialog onOpenChange={setIsImportOpen} open={isImportOpen}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Importer un Skill</DialogTitle>
-            <DialogDescription>
-              Téléversez un fichier JSON/Skill ou collez son contenu
-              directement.
-            </DialogDescription>
-          </DialogHeader>
+      {/* Modale Import */}
+      <SkillImportModal
+        fileInputRef={fileInputRef}
+        importJsonText={importJsonText}
+        onFileUpload={handleFileUpload}
+        onImportJsonChange={setImportJsonText}
+        onOpenChange={setIsImportOpen}
+        onProcessImport={handleProcessImport}
+        open={isImportOpen}
+      />
 
-          <div className="flex flex-col gap-4 py-2">
-            {/* Zone drag & drop / fichier */}
-            <div
-              className="border-2 border-dashed border-border/80 hover:border-primary/60 rounded-xl p-6 text-center cursor-pointer transition-colors"
-              onClick={() => fileInputRef.current?.click()}
-            >
-              <UploadIcon className="size-8 mx-auto text-muted-foreground mb-2" />
-              <span className="text-xs font-semibold block">
-                Cliquez pour choisir un fichier (.json ou .skill)
-              </span>
-              <span className="text-[11px] text-muted-foreground block mt-1">
-                Format d'export standard mAI Web
-              </span>
-              <input
-                accept=".json,.skill"
-                className="hidden"
-                onChange={handleFileUpload}
-                ref={fileInputRef}
-                type="file"
-              />
-            </div>
+      {/* Modale Partage */}
+      <SkillShareModal
+        onOpenChange={setIsShareOpen}
+        open={isShareOpen}
+        sharingSkill={sharingSkill}
+      />
 
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">
-                Ou collez le JSON :
-              </Label>
-              <Textarea
-                className="h-32 font-mono text-xs"
-                onChange={(e) => setImportJsonText(e.target.value)}
-                placeholder='{"name": "Mon Skill", "instructions": "...", "tools": []}'
-                value={importJsonText}
-              />
-            </div>
-          </div>
-
-          <DialogFooter>
-            <Button
-              onClick={() => {
-                setIsImportOpen(false);
-                setImportJsonText("");
-              }}
-              type="button"
-              variant="outline"
-            >
-              Annuler
-            </Button>
-            <Button onClick={handleProcessImport} type="button">
-              Importer la compétence
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modal Partager */}
-      <Dialog onOpenChange={setIsShareOpen} open={isShareOpen}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Partager la compétence</DialogTitle>
-            <DialogDescription>
-              Permet à d'autres utilisateurs d'importer ou de consulter votre
-              skill.
-            </DialogDescription>
-          </DialogHeader>
-
-          {sharingSkill && (
-            <div className="flex flex-col gap-3 py-2">
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/40 border border-border/40">
-                <div
-                  className="size-8 rounded-lg flex items-center justify-center text-white text-xs font-bold"
-                  style={{ backgroundColor: sharingSkill.color || "#6366f1" }}
-                >
-                  <SparklesIcon className="size-4" />
-                </div>
-                <div>
-                  <span className="font-semibold text-xs block">
-                    {sharingSkill.name}
-                  </span>
-                  <span className="text-[11px] text-muted-foreground">
-                    {(sharingSkill.tools as string[])?.length || 0} outil(s)
-                    inclus
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">
-                  Payload JSON prêt à être partagé :
-                </Label>
-                <div className="relative">
-                  <Textarea
-                    className="h-28 font-mono text-[11px] bg-muted/50"
-                    readOnly
-                    value={JSON.stringify(
-                      {
-                        color: sharingSkill.color,
-                        description: sharingSkill.description,
-                        icon: sharingSkill.icon,
-                        instructions: sharingSkill.instructions,
-                        name: sharingSkill.name,
-                        parameters: sharingSkill.parameters,
-                        tags: sharingSkill.tags,
-                        tools: sharingSkill.tools,
-                      },
-                      null,
-                      2
-                    )}
-                  />
-                  <Button
-                    className="absolute top-2 right-2 h-7 px-2 text-xs"
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        JSON.stringify(
-                          {
-                            color: sharingSkill.color,
-                            description: sharingSkill.description,
-                            icon: sharingSkill.icon,
-                            instructions: sharingSkill.instructions,
-                            name: sharingSkill.name,
-                            parameters: sharingSkill.parameters,
-                            tags: sharingSkill.tags,
-                            tools: sharingSkill.tools,
-                          },
-                          null,
-                          2
-                        )
-                      );
-                      toast.success("JSON copié dans le presse-papier !");
-                    }}
-                    size="sm"
-                    variant="secondary"
-                  >
-                    <CopyIcon className="size-3 mr-1" />
-                    Copier
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <DialogFooter>
-            <Button onClick={() => setIsShareOpen(false)} type="button">
-              Fermer
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Confirmation Suppression */}
-      <AlertDialog
-        onOpenChange={(open) => !open && setSkillToDelete(null)}
-        open={Boolean(skillToDelete)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer cette compétence ?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Êtes-vous sûr de vouloir supprimer définitivement le skill "
-              {skillToDelete?.name}" ? Cette action est irréversible.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={handleDelete}
-            >
-              Supprimer
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {/* Modale Confirmation Suppression */}
+      <SkillDeleteDialog
+        onClose={() => setSkillToDelete(null)}
+        onConfirmDelete={handleDelete}
+        skillToDelete={skillToDelete}
+      />
     </div>
   );
 }

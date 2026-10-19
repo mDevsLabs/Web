@@ -3,6 +3,7 @@ import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDueScheduledMessages } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
+import { timingSafeCompare } from "@/lib/security/timing";
 
 export const maxDuration = 300;
 
@@ -14,8 +15,8 @@ async function isAuthorized(request: Request): Promise<boolean> {
   // Secret uniquement via header (jamais en query : logs/proxy/history).
   // En prod, CRON_SECRET obligatoire (fail-closed).
   if (cronSecret) {
-    if (authHeader === `Bearer ${cronSecret}`) return true;
-    if (headerSecret === cronSecret) return true;
+    if (timingSafeCompare(authHeader, `Bearer ${cronSecret}`)) return true;
+    if (timingSafeCompare(headerSecret, cronSecret)) return true;
     return false;
   }
 
@@ -57,11 +58,18 @@ async function handleCronExecution(request: Request) {
   const results: Array<
     { id: string; status: string } & Record<string, unknown>
   > = [];
+  let executedCount = 0;
+  let deferredCount = 0;
 
   for (const item of dueItems) {
     try {
       const res = await executeScheduledMessage(item.id);
       results.push({ id: item.id, ...res });
+      if (res.deferred) {
+        deferredCount += 1;
+      } else {
+        executedCount += 1;
+      }
     } catch (err: any) {
       results.push({
         error: err?.message || String(err),
@@ -71,8 +79,11 @@ async function handleCronExecution(request: Request) {
     }
   }
 
+  // `executedCount` comptait auparavant les items différés : un quota épuisé
+  // apparaissait comme une réussite. Les deux sont distingués ici.
   return NextResponse.json({
-    executedCount: results.length,
+    deferredCount,
+    executedCount,
     results,
     timestamp: new Date().toISOString(),
   });

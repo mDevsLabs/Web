@@ -1,0 +1,72 @@
+{
+  "model": "Flight",
+  "config": {
+    "name": "Flight",
+    "label": "Vols",
+    "description": "Gérez vos vols depuis une interface claire.",
+    "fields": [
+      {
+        "key": "number",
+        "label": "Numéro",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "origin",
+        "label": "Départ",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "destination",
+        "label": "Arrivée",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "departsOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "scheduled",
+          "boarding",
+          "departed",
+          "delayed"
+        ]
+      }
+    ],
+    "titleKey": "number",
+    "settings": [
+      {
+        "key": "notifyFlight",
+        "label": "Notifications : vols",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveFlight",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section vols."
+      },
+      {
+        "key": "approveFlight",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "flight-demo-1",
+    "number": "MD 104",
+    "origin": "Départ démo",
+    "destination": "Arrivée démo",
+    "departsOn": "2026-10-04",
+    "status": "scheduled"
+  }
+}

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { errorResponse } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { deleteNotification, markNotificationRead } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -9,11 +9,11 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   const body = await request.json().catch(() => ({}));
   if (
     body.action === "read" ||
@@ -40,12 +40,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const deleted = await deleteNotification({ id, userId });
+  const deleted = await deleteNotification({ id, userId: session.userId });
   if (!deleted) {
     return errorResponse("not_found", {
       message: "Notification introuvable.",

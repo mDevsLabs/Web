@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Workout", "label": "Entra\xEEnements", "description": "G\xE9rez vos entra\xEEnements depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "activity", "label": "Activit\xE9", "kind": "text", "required": true }, { "key": "durationMinutes", "label": "Dur\xE9e (min)", "kind": "number", "required": true }, { "key": "calories", "label": "Calories", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["planned", "completed", "skipped"] }], "titleKey": "title", "settings": [{ "key": "notifyWorkout", "label": "Notifications : entra\xEEnements", "description": "Recevoir un signal lors des changements." }, { "key": "archiveWorkout", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section entra\xEEnements." }, { "key": "approveWorkout", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

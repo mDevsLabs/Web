@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { type NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { fetchUsageBundle } from "@/lib/account/usage";
 import {
   errorResponse,
@@ -19,6 +20,25 @@ import {
   REMOTE_IMAGE_MAX_BYTES,
   sniffImageMime,
 } from "@/lib/net/fetch-image";
+import { safeFetchBuffer } from "@/lib/web/safe-fetch";
+
+// Champs acceptés par `/update-profile` côté backend (cf. auth.ts). `.strict()`
+// rejette toute clé inconnue : c'est lui qui empêche le relais d'un champ que le
+// backend n'attend pas.
+const updateProfileSchema = z
+  .object({
+    action: z.literal("verify_new_email").optional(),
+    auto_logout_minutes: z.number().int().min(0).max(10_080).optional(),
+    code: z.string().min(1).max(16).optional(),
+    currentPassword: z.string().min(1).max(200).optional(),
+    email: z.string().email().max(320).optional(),
+    newsletter: z.boolean().optional(),
+    notify_limits: z.boolean().optional(),
+    password: z.string().min(1).max(200).optional(),
+    phone: z.string().max(30).optional(),
+    username: z.string().max(64).optional(),
+  })
+  .strict();
 
 const settingsCache = new Map<string, { data: any; expiresAt: number }>();
 const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
@@ -82,26 +102,32 @@ async function readAttachmentImage(rawUrl: string): Promise<
   }
 
   try {
-    const res = await fetch(parsed.toString(), {
-      headers: { Accept: "image/jpeg,image/png,image/webp,image/gif" },
-      signal: AbortSignal.timeout(8000),
+    // `safeFetchBuffer` plutôt qu'un `fetch` nu : il épingle la résolution DNS,
+    // revalide CHAQUE saut de redirection, coupe la lecture au plafond et
+    // neutralise la décompression par gzip. L'allow-list d'hôte ci-dessus limite
+    // déjà la destination, mais une redirection servie par le stockage pouvait
+    // encore mener ailleurs — et un `fetch` nu ne revalide rien.
+    const result = await safeFetchBuffer(parsed.toString(), {
+      allowedContentTypes: [
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+        "image/gif",
+      ],
+      maxBytes: REMOTE_IMAGE_MAX_BYTES,
+      timeoutMs: 8000,
     });
-    if (!res.ok) {
+    if (!result.ok) {
       return {
-        message: "La pièce jointe n'est plus accessible.",
+        message:
+          result.error === "HTTP 404"
+            ? "La pièce jointe n'est plus accessible."
+            : "La pièce jointe n'a pas pu être relue.",
         ok: false,
         status: "invalid_request",
       };
     }
-    const declaredLength = Number(res.headers.get("content-length") || 0);
-    if (declaredLength > REMOTE_IMAGE_MAX_BYTES) {
-      return {
-        message: "Image trop volumineuse (max 10 Mo).",
-        ok: false,
-        status: "payload_too_large",
-      };
-    }
-    const bytes = new Uint8Array(await res.arrayBuffer());
+    const bytes = new Uint8Array(result.buffer);
     if (bytes.length > REMOTE_IMAGE_MAX_BYTES) {
       return {
         message: "Image trop volumineuse (max 10 Mo).",
@@ -352,7 +378,25 @@ export async function POST(req: NextRequest) {
 
   // Cas 2 : Modification des informations du profil (JSON)
   try {
-    const body = await req.json();
+    // Le corps était relayé tel quel à `/update-profile`, sans aucune
+    // validation : cette route est un proxy aveugle. Seuls les champs que le
+    // backend sait traiter sont transmis, ce qui empêche d'injecter une clé
+    // inattendue (`tier`, `id`, `password_hash`) dans une mise à jour de profil.
+    // Les longueurs suivent les bornes que le backend applique déjà ; les règles
+    // de format (mot de passe, email) restent son domaine, il répond avec un
+    // message précis que l'on préserve.
+    const raw = await req.json().catch(() => null);
+    const parsed = updateProfileSchema.safeParse(raw);
+    if (!parsed.success) {
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${parsed.error.issues
+          .map(
+            (issue) => `${issue.path.join(".") || "champ"}: ${issue.message}`
+          )
+          .join(" • ")}`,
+      });
+    }
+    const body = parsed.data;
 
     // Vérification du code OTP de changement d'e-mail
     if (body.action === "verify_new_email") {

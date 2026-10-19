@@ -98,4 +98,10 @@ export const apiEndpoints = {
    */
   stats: (queryString: string) =>
     apiUrl(`/api/stats${queryString ? `?${queryString}` : ""}`),
+  /**
+   * Préférences du compte, dont le thème PARTAGÉ par la suite (mAI, Site,
+   * Vibe, Wakies) : la même route sert à lire au montage et à enregistrer un
+   * choix de thème.
+   */
+  userPreferences: () => apiUrl("/api/user/preferences"),
 } as const;

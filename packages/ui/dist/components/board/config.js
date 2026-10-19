@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Board", "label": "Tableaux de travail", "description": "G\xE9rez vos tableaux de travail depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "columnCount", "label": "Colonnes", "kind": "number", "required": true }, { "key": "cardCount", "label": "Cartes", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "private", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyBoard", "label": "Notifications : tableaux de travail", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBoard", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section tableaux de travail." }, { "key": "approveBoard", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

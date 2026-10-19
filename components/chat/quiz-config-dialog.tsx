@@ -1,6 +1,6 @@
 "use client";
 
-import { ShuffleIcon, TrophyIcon } from "lucide-react";
+import { ShuffleIcon, TrophyIcon } from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

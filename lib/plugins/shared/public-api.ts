@@ -73,7 +73,13 @@ function safeStatusMessage(status: number, retryAfterMs?: number): string {
   return `Requête refusée (HTTP ${status}).`;
 }
 
-function describeFailure(
+/**
+ * Décrit une panne de transport en français, dans le vocabulaire que l'adaptateur
+ * Agent sait classer : exportée pour que les appels authentifiés des connecteurs
+ * partagent exactement les mêmes mots, et ne déclarent pas transitoire ce qui est
+ * refusé — ou l'inverse.
+ */
+export function describeFailure(
   failure: {
     kind: BoundedFetchFailureKind | "json";
     status?: number;

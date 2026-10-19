@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 import { buildCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 
 const textPartSchema = z.object({
@@ -88,6 +89,9 @@ export const buildPostRequestBodySchema = (tier?: string | null) =>
       .nullable()
       .optional(),
     projectId: z.string().uuid().nullable().optional(),
+    // Effort de réflexion choisi dans le sélecteur de modèle. Absent : la
+    // préférence enregistrée de l'utilisateur s'applique (lib/chat/context).
+    reasoningLevel: z.enum(REASONING_LEVELS).nullable().optional(),
     selectedAgentId: z.string().uuid().nullable().optional(),
     selectedChatMode: z.string().nullable().optional(),
     selectedChatModel: z.string(),

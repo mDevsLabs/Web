@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Flight", "label": "Vols", "description": "G\xE9rez vos vols depuis une interface claire.", "fields": [{ "key": "number", "label": "Num\xE9ro", "kind": "text", "required": true }, { "key": "origin", "label": "D\xE9part", "kind": "text", "required": true }, { "key": "destination", "label": "Arriv\xE9e", "kind": "text", "required": true }, { "key": "departsOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["scheduled", "boarding", "departed", "delayed"] }], "titleKey": "number", "settings": [{ "key": "notifyFlight", "label": "Notifications : vols", "description": "Recevoir un signal lors des changements." }, { "key": "archiveFlight", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section vols." }, { "key": "approveFlight", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

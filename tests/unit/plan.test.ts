@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   getPaidTierRank,
   isPaidTier,
+  isWakiesEligible,
   parseCanonicalTier,
   tierAtLeast,
 } from "@/lib/auth/plan";
@@ -46,5 +47,13 @@ describe("isPaidTier / getPaidTierRank / tierAtLeast", () => {
     expect(tierAtLeast("max", "pro")).toBe(true);
     expect(tierAtLeast("plus", "pro")).toBe(false);
     expect(tierAtLeast("free", "plus")).toBe(false);
+  });
+
+  it("isWakiesEligible autorise Plus, Pro, Max et refuse Free", () => {
+    expect(isWakiesEligible("plus")).toBe(true);
+    expect(isWakiesEligible("pro")).toBe(true);
+    expect(isWakiesEligible("max")).toBe(true);
+    expect(isWakiesEligible("free")).toBe(false);
+    expect(isWakiesEligible(undefined)).toBe(false);
   });
 });

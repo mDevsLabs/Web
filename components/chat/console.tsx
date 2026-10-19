@@ -95,7 +95,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
   return consoleOutputs.length > 0 ? (
     <>
       <div
-        aria-label="Resize console"
+        aria-label="Redimensionner la console"
         aria-orientation="horizontal"
         aria-valuemax={maxHeight}
         aria-valuemin={minHeight}
@@ -172,7 +172,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
                         key={`${consoleOutput.id}-img-${content.value.slice(0, 32)}`}
                       >
                         <img
-                          alt="output"
+                          alt="Sortie"
                           className="max-w-full rounded-md"
                           src={content.value}
                         />

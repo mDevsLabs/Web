@@ -1,0 +1,151 @@
+"use client";
+
+/** Port des cartes de résultats OpenMuse : le format AI SDK est interprété explicitement, sans exécuter le contenu retourné. */
+import type { UIMessage } from "ai";
+import { ChevronDownIcon, ChevronRightIcon, SparklesIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Markdown } from "@/components/wakies/markdown";
+import { PluginToolLogo } from "@/lib/integrations/logo";
+import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
+
+function WakiesReasoningCard({
+  part,
+}: {
+  part: {
+    type: "reasoning";
+    text?: string;
+    reasoning?: string;
+    /** `streaming` tant que `reasoning-end` n'est pas arrivé. */
+    state?: string;
+  };
+}) {
+  /**
+   * L'état vient de la PART, pas de la présence d'un texte de réponse.
+   *
+   * La carte disait « Réflexion en cours… » tant que le message n'avait pas de
+   * texte : un tour terminé qui n'avait produit qu'une réflexion (ou qui a été
+   * interrompu avant le texte) restait donc éternellement « en cours », alors
+   * que le serveur avait clos la part. `reasoning-end` met la part à `done`.
+   */
+  const isFinished = part.state !== "streaming";
+  const [isOpen, setIsOpen] = useState(!isFinished);
+
+  useEffect(() => {
+    if (isFinished) {
+      setIsOpen(false);
+    }
+  }, [isFinished]);
+
+  const text = part.text ?? part.reasoning ?? "";
+  if (!text) return null;
+
+  return (
+    <div className="wakies-reasoning">
+      <button
+        aria-expanded={isOpen}
+        className="wakies-reasoning-trigger"
+        onClick={() => setIsOpen((prev) => !prev)}
+        type="button"
+      >
+        {isOpen ? (
+          <ChevronDownIcon size={13} />
+        ) : (
+          <ChevronRightIcon size={13} />
+        )}
+        <SparklesIcon className="opacity-70" size={12} />
+        <span>{isFinished ? "A réfléchi" : "Réflexion en cours…"}</span>
+      </button>
+      {isOpen ? (
+        <div className="wakies-reasoning-content">
+          <Markdown>{text}</Markdown>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
+  if (part.type === "source-url") {
+    const url = safeAttachmentLink(part.url);
+    return url ? (
+      <a
+        className="tool-card"
+        href={url}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {part.title || new URL(url).hostname}
+      </a>
+    ) : null;
+  }
+  if (part.type === "reasoning") {
+    return <WakiesReasoningCard part={part} />;
+  }
+  if (!(part.type === "dynamic-tool" || part.type.startsWith("tool-")))
+    return null;
+  const value = part as {
+    type: string;
+    toolName?: string;
+    state?: string;
+    output?: unknown;
+    errorText?: string;
+    toolCallId?: string;
+  };
+  const name = value.toolName ?? value.type.slice(5);
+  // Un outil de connecteur a un nom français dans son manifeste : l'afficher
+  // avec le logo de l'application dit laquelle a répondu, au lieu d'un
+  // identifiant technique en camelCase.
+  const manifest = getPluginByToolId(name);
+  const pluginTool = manifest?.tools.find((item) => item.id === name);
+  const label = manifest
+    ? `${manifest.name} · ${pluginTool?.label ?? name}`
+    : name;
+  const state = value.state;
+  let output = "";
+  if (value.output !== undefined) {
+    try {
+      output =
+        typeof value.output === "string"
+          ? value.output
+          : JSON.stringify(value.output, null, 2);
+    } catch {
+      output = "Résultat non affichable.";
+    }
+  }
+  return (
+    <article aria-label={`Outil ${label}`} className="tool-card">
+      <strong className="tool-card-title">
+        <PluginToolLogo className="tool-card-logo" toolId={name} />
+        {label}
+      </strong>
+      <p role="status">
+        {state === "output-available"
+          ? "Résultat enregistré"
+          : state === "output-error"
+            ? "L’outil a échoué"
+            : state === "output-denied"
+              ? "Exécution refusée"
+              : state === "approval-requested"
+                ? "Validation requise"
+                : "Appel d’outil"}
+      </p>
+      {value.errorText && <p>{value.errorText}</p>}
+      {output && (
+        <details open>
+          <summary>Voir le résultat</summary>
+          <pre>
+            {output.slice(0, 20_000)}
+            {output.length > 20_000 ? "\n[Affichage tronqué.]" : ""}
+          </pre>
+        </details>
+      )}
+      {!output && state === "input-available" && (
+        <small>
+          Pour les actions MCP sensibles, utilisez le mode Agent mAI et son
+          circuit d’approbation.
+        </small>
+      )}
+    </article>
+  );
+}

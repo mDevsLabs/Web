@@ -1,0 +1,71 @@
+{
+  "model": "Monitor",
+  "config": {
+    "name": "Monitor",
+    "label": "Moniteurs",
+    "description": "Gérez vos moniteurs depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "url",
+        "label": "Adresse",
+        "kind": "url",
+        "required": true
+      },
+      {
+        "key": "uptimePercent",
+        "label": "Disponibilité (%)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "intervalSeconds",
+        "label": "Intervalle (s)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "up",
+          "down",
+          "paused"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyMonitor",
+        "label": "Notifications : moniteurs",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveMonitor",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section moniteurs."
+      },
+      {
+        "key": "approveMonitor",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "monitor-demo-1",
+    "name": "Disponibilité du site",
+    "url": "https://example.com",
+    "uptimePercent": 128,
+    "intervalSeconds": 128,
+    "status": "up"
+  }
+}

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Coupon", "label": "Codes promotionnels", "description": "G\xE9rez vos codes promotionnels depuis une interface claire.", "fields": [{ "key": "code", "label": "Code", "kind": "text", "required": true }, { "key": "discountPercent", "label": "R\xE9duction (%)", "kind": "number", "required": true }, { "key": "expiresOn", "label": "Expiration", "kind": "date", "required": true }, { "key": "usageCount", "label": "Utilisations", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "active", "expired"] }], "titleKey": "code", "settings": [{ "key": "notifyCoupon", "label": "Notifications : codes promotionnels", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCoupon", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section codes promotionnels." }, { "key": "approveCoupon", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

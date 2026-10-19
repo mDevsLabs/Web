@@ -4,7 +4,7 @@ import {
   logError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import { enforceChatRateLimit } from "@/lib/chat/auth";
 import {
   getPluginInstallationsByUserId,
@@ -22,11 +22,10 @@ const installPluginSchema = z.object({
 });
 
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
 
   try {
@@ -49,11 +48,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
 
   try {

@@ -4,11 +4,15 @@ import {
   ArchiveIcon,
   ArrowRightIcon,
   CalendarClockIcon,
+  CheckIcon,
   ChevronDownIcon,
-  CloudIcon,
+  Code2Icon,
   FolderKanbanIcon,
+  GlobeIcon,
   ImageIcon,
+  LibraryIcon,
   LockIcon,
+  MessageCircleIcon,
   MoreHorizontalIcon,
   PanelLeftIcon,
   PenSquareIcon,
@@ -17,10 +21,13 @@ import {
   SearchIcon,
   SettingsIcon,
   SlidersHorizontalIcon,
+  SparkleIcon,
   SparklesIcon,
+  TerminalIcon,
   TrashIcon,
+  UsersIcon,
   Volume2Icon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -63,13 +70,15 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarRail,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
+import type { AppKey } from "@/lib/apps/catalog";
+import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
 import type { MaiUser } from "@/lib/auth/session";
 import { pagePath } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
@@ -85,17 +94,40 @@ import {
 } from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
+function VibeSidebarIcon({ className }: { className?: string }) {
+  return (
+    <Image
+      alt="Vibe"
+      className={cn("size-4 rounded-sm object-contain dark:invert", className)}
+      height={16}
+      src="/vibe/logo.png"
+      unoptimized
+      width={16}
+    />
+  );
+}
+
+// Icônes du sélecteur d'applications du logo.
+const APP_ICONS: Record<AppKey, React.ComponentType<{ className?: string }>> = {
+  cli: TerminalIcon,
+  code: Code2Icon,
+  mai: MessageCircleIcon,
+  site: GlobeIcon,
+  vibe: VibeSidebarIcon,
+};
+
 function SidebarProjects() {
   const { projects: allProjects, isLoading } = useProjects();
   const projects = allProjects.slice(0, 6);
 
   if (isLoading) {
     return (
-      <SidebarGroup className="py-1">
+      <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
-            className="text-muted-foreground hover:text-foreground"
+            aria-label="Gérer les dossiers"
+            className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
             href="/projects"
           >
             <PlusIcon className="size-3.5" />
@@ -111,11 +143,12 @@ function SidebarProjects() {
 
   if (projects.length === 0) {
     return (
-      <SidebarGroup className="py-1">
+      <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
         <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           <span>Dossiers</span>
           <Link
-            className="text-muted-foreground hover:text-foreground"
+            aria-label="Gérer les dossiers"
+            className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
             href="/projects"
           >
             <PlusIcon className="size-3.5" />
@@ -125,11 +158,12 @@ function SidebarProjects() {
     );
   }
   return (
-    <SidebarGroup className="py-1">
+    <SidebarGroup className="py-1 group-data-[collapsible=icon]:hidden">
       <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
         <span>Dossiers</span>
         <Link
-          className="text-muted-foreground hover:text-foreground"
+          aria-label="Gérer les dossiers"
+          className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
           href="/projects"
         >
           <PlusIcon className="size-3.5" />
@@ -179,6 +213,7 @@ function SidebarProjects() {
 }
 
 function LockedSidebarNavItem({
+  badge,
   closeMobile,
   href,
   icon,
@@ -186,6 +221,7 @@ function LockedSidebarNavItem({
   onLockedClick,
   tooltip,
 }: {
+  badge?: string;
   closeMobile: () => void;
   href: string;
   /**
@@ -246,6 +282,11 @@ function LockedSidebarNavItem({
             })
           : icon}
         <span>{label}</span>
+        {badge && (
+          <span className="rounded bg-info/10 px-1.5 py-0.5 text-[10px] font-medium text-info group-data-[collapsible=icon]:hidden">
+            {badge}
+          </span>
+        )}
         {locked && <LockIcon className="ml-auto size-3 text-warning" />}
       </Link>
     </SidebarMenuButton>
@@ -280,6 +321,7 @@ function SidebarNavCollapsible({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
+              aria-label={label}
               className={cn(
                 "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-foreground",
                 isActive && "text-sidebar-foreground font-medium"
@@ -349,23 +391,31 @@ export function AppSidebar({
   const pathname = usePathname();
   const { setOpenMobile, toggleSidebar } = useSidebar();
   const [upgradeFeature, setUpgradeFeature] = useState<
-    "skills" | "mcp" | "agents" | null
+    "skills" | "mcp" | "wakies" | null
   >(null);
 
-  type NavMenuKey = "creation" | "plus";
+  const { isDesktop, openCoder } = useIsDesktopApp();
+  type NavMenuKey = "plus";
   const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
 
+  const isSearchActive = Boolean(pathname?.startsWith("/search"));
   const isCreationActive = Boolean(
-    pathname?.startsWith("/images") || pathname?.startsWith("/audio")
+    pathname?.startsWith("/creation") ||
+      pathname?.startsWith("/images") ||
+      pathname?.startsWith("/audio")
   );
   const isToolsActive = Boolean(
     pathname?.startsWith("/tools") ||
       pathname?.startsWith("/skills") ||
       pathname?.startsWith("/mcp")
   );
+  // « Plus » regroupe Paramètres, Messages archivés et Planification.
   const isPlusActive = Boolean(
-    pathname?.startsWith("/settings") || pathname?.startsWith("/archived")
+    pathname?.startsWith("/settings") ||
+      pathname?.startsWith("/archived") ||
+      pathname?.startsWith("/planning")
   );
+  const isLibraryActive = pathname?.startsWith("/library");
 
   const { resetChat } = useActiveChat();
 
@@ -393,6 +443,113 @@ export function AppSidebar({
     router.push("/");
   }, [handleNavClick, resetChat, router]);
 
+  // Sélecteur d'application du logo (mAI / Site / Vibe / Code). Seule
+  // l'application courante est cochée : le réglage « Menu favori » décide de
+  // l'écran ouvert après connexion, sans ajouter une seconde coche qui
+  // laissait croire que deux applications étaient actives.
+  const currentApp = appKeyFromPath(pathname);
+
+  const isUserLoggedIn = Boolean(user && !hasDeadSession);
+
+  const handleAppSelect = useCallback(
+    (path: string) => {
+      handleNavClick();
+
+      // Bloquer le changement d'application si non connecté à son compte mAI
+      if (!isUserLoggedIn) {
+        toast.error(
+          "Veuillez vous connecter à votre compte mAI pour changer d'application.",
+          {
+            action: {
+              label: "Connexion",
+              onClick: () => router.push("/login"),
+            },
+            duration: 5000,
+          }
+        );
+        return;
+      }
+
+      if (path === "/coder") {
+        if (!isDesktop) {
+          toast.error(
+            "mAI Coder nécessite l'application de bureau mAI. Téléchargez l'application de bureau pour y accéder.",
+            {
+              action: {
+                label: "Télécharger",
+                onClick: () =>
+                  window.open(
+                    "https://github.com/mDevsLabs/Web/releases/latest",
+                    "_blank"
+                  ),
+              },
+              duration: 5000,
+            }
+          );
+          return;
+        }
+        // Coder : redirection vers son espace, avec déclenchement de la fenêtre native si disponible
+        void openCoder().then((result) => {
+          if (!result.success)
+            toast.error(result.error || "Impossible de lancer Coder");
+        });
+        router.push("/coder");
+        return;
+      }
+      if (path !== "/") {
+        router.push(path);
+        return;
+      }
+      // Retour à mAI (Web classique) : purge du brouillon et de la conversation active
+      resetChat();
+      router.push("/");
+    },
+    [handleNavClick, isDesktop, isUserLoggedIn, openCoder, resetChat, router]
+  );
+
+  const handleOpenCli = useCallback(async () => {
+    handleNavClick();
+
+    // Bloquer le CLI si non connecté à son compte mAI
+    if (!isUserLoggedIn) {
+      toast.error(
+        "Veuillez vous connecter à votre compte mAI pour accéder au CLI.",
+        {
+          action: {
+            label: "Connexion",
+            onClick: () => router.push("/login"),
+          },
+          duration: 5000,
+        }
+      );
+      return;
+    }
+
+    if (!isDesktop) {
+      toast.error(
+        "Le CLI mAI nécessite l'application de bureau mAI. Téléchargez l'application de bureau pour y accéder.",
+        {
+          action: {
+            label: "Télécharger",
+            onClick: () => router.push("/downloads"),
+          },
+          duration: 5000,
+        }
+      );
+      return;
+    }
+    try {
+      const result = await window.maiDesktop?.openCli?.();
+      if (!result?.success) {
+        toast.error(
+          result?.error || "Mettez à jour mAI Bureau pour ouvrir le CLI."
+        );
+      }
+    } catch {
+      toast.error("Impossible d'ouvrir le terminal CLI.");
+    }
+  }, [handleNavClick, isDesktop, isUserLoggedIn, router]);
+
   const handleNewChat = useCallback(() => {
     handleNavClick();
     resetChat();
@@ -408,6 +565,12 @@ export function AppSidebar({
     router.push(pagePath("/recherche"));
   }, [handleNavClick, router]);
 
+  // La navigation du site remplace cette barre, mais tous les hooks doivent
+  // rester appelés lors des allers-retours entre le chat et /site.
+  if (pathname?.startsWith("/site")) {
+    return null;
+  }
+
   return (
     <>
       <Sidebar collapsible="icon">
@@ -415,28 +578,110 @@ export function AppSidebar({
           <SidebarMenu>
             <SidebarMenuItem className="flex flex-row items-center justify-between">
               <div className="group/logo relative flex items-center justify-center">
-                <SidebarMenuButton
-                  asChild
-                  className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="mAI Web — Accueil"
-                >
-                  <Link
-                    className="flex items-center justify-center"
-                    href="/"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleGoHome();
-                    }}
+                {/* Le logo ouvre le sélecteur d'applications (mAI, Site, Vibe,
+                    Code) : c'est le point d'entrée transverse de la suite, pas
+                    un raccourci vers l'accueil. Le DropdownMenu enveloppe le
+                    SidebarMenuButton (et non l'inverse) : asChild propage la
+                    ref et les props Radix sur le bouton réel. */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <SidebarMenuButton
+                      className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
+                      data-testid="app-switcher"
+                      tooltip="Applications mAI"
+                    >
+                      <Image
+                        alt="mAI"
+                        className="rounded-md"
+                        height={22}
+                        src="/logo.png"
+                        width={22}
+                      />
+                    </SidebarMenuButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    align="start"
+                    className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
+                    side="bottom"
                   >
-                    <Image
-                      alt="mAI"
-                      className="rounded-md"
-                      height={22}
-                      src="/logo.png"
-                      width={22}
-                    />
-                  </Link>
-                </SidebarMenuButton>
+                    {APP_ORDER.map((entry) => {
+                      const isCurrent = currentApp === entry.key;
+                      const AppGlyph = APP_ICONS[entry.key];
+                      const isCodeDisabled = entry.key === "code" && !isDesktop;
+                      return (
+                        <DropdownMenuItem
+                          asChild
+                          className={cn(
+                            "cursor-pointer",
+                            isCodeDisabled && "opacity-55"
+                          )}
+                          key={entry.key}
+                          onSelect={() => handleAppSelect(entry.path)}
+                        >
+                          <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
+                            <AppGlyph
+                              className={cn(
+                                "mt-0.5 size-4 shrink-0",
+                                isCurrent
+                                  ? "text-primary"
+                                  : "text-muted-foreground"
+                              )}
+                            />
+                            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                              <div className="flex items-center gap-1.5">
+                                <span
+                                  className={cn(
+                                    "text-[13px] font-semibold",
+                                    isCurrent
+                                      ? "text-foreground"
+                                      : "text-sidebar-foreground/90"
+                                  )}
+                                >
+                                  {entry.label}
+                                </span>
+                                {isCodeDisabled && (
+                                  <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
+                                    Bureau
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-[11px] leading-snug text-muted-foreground">
+                                {entry.description}
+                              </span>
+                            </div>
+                            {isCurrent && (
+                              <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
+                            )}
+                          </div>
+                        </DropdownMenuItem>
+                      );
+                    })}
+                    <DropdownMenuItem
+                      className={cn(
+                        "cursor-pointer",
+                        !isDesktop && "opacity-55"
+                      )}
+                      onSelect={() => {
+                        void handleOpenCli();
+                      }}
+                    >
+                      <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
+                      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-[13px]">CLI</span>
+                          {!isDesktop && (
+                            <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
+                              Bureau
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          mAI dans un terminal local
+                        </span>
+                      </div>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <SidebarMenuButton
@@ -451,19 +696,104 @@ export function AppSidebar({
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <button
-                className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5 cursor-pointer text-left focus:outline-hidden"
-                onClick={handleGoHome}
-                title="Aller à l'accueil"
-                type="button"
-              >
-                <span className="font-bold text-sm tracking-tight text-foreground hover:text-primary transition-colors">
-                  mAI
-                </span>
-                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground hover:bg-primary/15 hover:text-primary transition-colors">
-                  Web
-                </span>
-              </button>
+              {/* Le nom « mAI ⌄ » ouvre le même sélecteur : un clic sur la
+                  marque ne doit pas surprendre en changeant de page, il
+                  présente le choix (parcours type ChatGPT/Codex). */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5 cursor-pointer text-left focus:outline-hidden"
+                    title="Choisir l'application mAI"
+                    type="button"
+                  >
+                    <span className="font-bold text-sm tracking-tight text-foreground hover:text-primary transition-colors">
+                      mAI
+                    </span>
+                    <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground hover:bg-primary/15 hover:text-primary transition-colors">
+                      Web
+                    </span>
+                    <ChevronDownIcon className="size-3.5 text-muted-foreground" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
+                >
+                  {APP_ORDER.map((entry) => {
+                    const isCurrent = currentApp === entry.key;
+                    const AppGlyph = APP_ICONS[entry.key];
+                    const isCodeDisabled = entry.key === "code" && !isDesktop;
+                    return (
+                      <DropdownMenuItem
+                        asChild
+                        className={cn(
+                          "cursor-pointer",
+                          isCodeDisabled && "opacity-55"
+                        )}
+                        key={entry.key}
+                        onSelect={() => handleAppSelect(entry.path)}
+                      >
+                        <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
+                          <AppGlyph
+                            className={cn(
+                              "mt-0.5 size-4 shrink-0",
+                              isCurrent
+                                ? "text-primary"
+                                : "text-muted-foreground"
+                            )}
+                          />
+                          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                            <div className="flex items-center gap-1.5">
+                              <span
+                                className={cn(
+                                  "text-[13px] font-semibold",
+                                  isCurrent
+                                    ? "text-foreground"
+                                    : "text-sidebar-foreground/90"
+                                )}
+                              >
+                                {entry.label}
+                              </span>
+                              {isCodeDisabled && (
+                                <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
+                                  Bureau
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-[11px] leading-snug text-muted-foreground">
+                              {entry.description}
+                            </span>
+                          </div>
+                          {isCurrent && (
+                            <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
+                          )}
+                        </div>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                  <DropdownMenuItem
+                    className={cn("cursor-pointer", !isDesktop && "opacity-55")}
+                    onSelect={() => {
+                      void handleOpenCli();
+                    }}
+                  >
+                    <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
+                    <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-[13px]">CLI</span>
+                        {!isDesktop && (
+                          <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
+                            Bureau
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-xs text-muted-foreground">
+                        mAI dans un terminal local
+                      </span>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               {/* La recherche est une PAGE, pas une modale : l'icône tient à
                   côté du bouton de rétractation, hors de la liste de navigation.
                   En mode icône, la cellule du logo redevient ce bouton — l'icône
@@ -479,13 +809,15 @@ export function AppSidebar({
                 >
                   <SearchIcon />
                 </Button>
-                <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
+                <SidebarTrigger
+                  aria-label="Afficher ou réduire la barre latérale"
+                  className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground"
+                />
               </div>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
 
-        <SearchDialog />
         <SidebarContent>
           <SidebarGroup className="pt-2">
             <SidebarGroupContent>
@@ -502,23 +834,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Stockage"
-                  >
-                    <Link
-                      data-onboarding="nav-library"
-                      href="/library"
-                      onClick={handleNavClick}
-                    >
-                      <CloudIcon className="size-4" />
-                      <span>Stockage</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-
+                {/* 1. Projets : avant la Bibliothèque (ordre produit validé). */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -536,93 +852,107 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
+                {/* 2. Wakies : l'espace Wakies (agents coworkers persistants,
+                    espaces de pages, tâches planifiées). Réservé aux forfaits
+                    payants (Plus, Pro, Max), bloqué avec cadenas pour Free. */}
+                <SidebarMenuItem>
+                  <LockedSidebarNavItem
+                    closeMobile={handleNavClick}
+                    href="/wakies"
+                    icon={
+                      <Image
+                        alt=""
+                        className="size-4 rounded-sm object-contain dark:invert"
+                        height={16}
+                        src="/wakies/logo.png"
+                        unoptimized
+                        width={16}
+                      />
+                    }
+                    label="Wakies"
+                    onLockedClick={() => setUpgradeFeature("wakies")}
+                    tooltip="Wakies"
+                  />
+                </SidebarMenuItem>
+
+                {/* 3. Bibliothèque : le stockage central des fichiers et
+                    contenus générés (ex « Stockage »). */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Planification"
+                    tooltip="Bibliothèque"
                   >
-                    <Link href="/planning" onClick={handleNavClick}>
-                      <CalendarClockIcon className="size-4" />
-                      <span>Planification</span>
+                    <Link
+                      data-onboarding="nav-library"
+                      href="/library"
+                      onClick={handleNavClick}
+                    >
+                      <LibraryIcon className="size-4" />
+                      <span>Bibliothèque</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 1. Création : Images & Audio */}
-                <SidebarNavCollapsible
-                  dropdownItems={
-                    <>
-                      <DropdownMenuItem
-                        asChild
-                        className="cursor-pointer text-xs py-1.5"
-                      >
-                        <Link
-                          className="flex items-center gap-2"
-                          href="/images"
-                          onClick={handleNavClick}
-                        >
-                          <ImageIcon className="size-4" />
-                          <span>Images</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        asChild
-                        className="cursor-pointer text-xs py-1.5"
-                      >
-                        <Link
-                          className="flex items-center gap-2"
-                          href="/audio"
-                          onClick={handleNavClick}
-                        >
-                          <Volume2Icon className="size-4" />
-                          <span>Audio</span>
-                        </Link>
-                      </DropdownMenuItem>
-                    </>
-                  }
-                  icon={SparklesIcon}
-                  isActive={isCreationActive}
-                  isOpen={openMenu === "creation"}
-                  label="Création"
-                  onOpenChange={(open) => setOpenMenu(open ? "creation" : null)}
-                  tooltip="Création (Images & Audio)"
-                >
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton
-                      asChild
-                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                      isActive={pathname?.startsWith("/images")}
+                {/* 4. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    isActive={isSearchActive}
+                    tooltip="Search"
+                  >
+                    <Link
+                      data-onboarding="nav-search"
+                      href="/search"
+                      onClick={handleNavClick}
                     >
-                      <Link
-                        data-onboarding="nav-images"
-                        href="/images"
-                        onClick={handleNavClick}
-                      >
-                        <ImageIcon className="size-3.5" />
-                        <span>Images</span>
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton
-                      asChild
-                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                      isActive={pathname?.startsWith("/audio")}
-                    >
-                      <Link
-                        data-onboarding="nav-audio"
-                        href="/audio"
-                        onClick={handleNavClick}
-                      >
-                        <Volume2Icon className="size-3.5" />
-                        <span>Audio</span>
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarNavCollapsible>
+                      <SearchIcon className="size-4" />
+                      <span>Search</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
 
-                {/* 2. Applications : Plugins, MCP & Skills sur une page unifiée */}
+                {/* Une seule entrée : le mode initial vient des paramètres.
+                    Même habillage que Bibliothèque : le rounded-lg arrondit
+                    aussi le fond actif posé par globals.css. */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    isActive={isCreationActive}
+                    tooltip="Création"
+                  >
+                    <Link
+                      data-onboarding="nav-images"
+                      href="/creation"
+                      onClick={handleNavClick}
+                    >
+                      <SparklesIcon className="size-4" />
+                      <span>Création</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/* 2. Bots : ouverts à tous les forfaits, bornés par quota
+                    (8 en Free, `getTierAgentLimit`). L'entrée n'est donc plus
+                    verrouillée : ce qui limite un Free est un nombre de bots,
+                    pas un cadenas. La clé de montée en niveau « agents » reste
+                    technique et n'est plus déclenchée ici. */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Bots IA"
+                  >
+                    <Link href="/agents" onClick={handleNavClick}>
+                      <BotGlyph className="size-4" />
+                      <span>Bots</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/* 3. Applications : Plugins, MCP & Skills sur une page unifiée */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -645,20 +975,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* Bots — réservés aux forfaits payants. La clé de montée en
-                    niveau reste « agents » : elle est technique, pas affichée. */}
-                <SidebarMenuItem>
-                  <LockedSidebarNavItem
-                    closeMobile={handleNavClick}
-                    href="/agents"
-                    icon={<BotGlyph className="size-4" />}
-                    label="Bots"
-                    onLockedClick={() => setUpgradeFeature("agents")}
-                    tooltip="Bots IA"
-                  />
-                </SidebarMenuItem>
-
-                {/* 3. Plus : Paramètres, Messages Archivés */}
+                {/* 4. Plus : Paramètres, Messages archivés et Planification */}
                 <SidebarNavCollapsible
                   dropdownItems={
                     <>
@@ -688,6 +1005,20 @@ export function AppSidebar({
                           <span>Messages Archivés</span>
                         </Link>
                       </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        asChild
+                        className="cursor-pointer text-xs py-1.5"
+                      >
+                        <Link
+                          className="flex items-center gap-2"
+                          href="/planning"
+                          onClick={handleNavClick}
+                        >
+                          <CalendarClockIcon className="size-4" />
+                          <span>Planification</span>
+                        </Link>
+                      </DropdownMenuItem>
                     </>
                   }
                   icon={MoreHorizontalIcon}
@@ -695,7 +1026,7 @@ export function AppSidebar({
                   isOpen={openMenu === "plus"}
                   label="Plus"
                   onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
-                  tooltip="Plus (Paramètres, Messages archivés)"
+                  tooltip="Plus (Paramètres, archivés, Planification)"
                 >
                   <SidebarMenuSubItem>
                     <SidebarMenuSubButton
@@ -725,6 +1056,18 @@ export function AppSidebar({
                       </Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton
+                      asChild
+                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      isActive={pathname?.startsWith("/planning")}
+                    >
+                      <Link href="/planning" onClick={handleNavClick}>
+                        <CalendarClockIcon className="size-3.5" />
+                        <span>Planification</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
                 </SidebarNavCollapsible>
               </SidebarMenu>
             </SidebarGroupContent>
@@ -741,8 +1084,11 @@ export function AppSidebar({
         <SidebarFooter className="border-t border-sidebar-border p-2">
           {user ? <SidebarUserNav user={user} /> : null}
         </SidebarFooter>
-        <SidebarRail />
       </Sidebar>
+
+      {/* Le panneau mobile fermé démonte ses enfants : la recherche doit
+          rester disponible au clavier et depuis le compositeur. */}
+      <SearchDialog />
 
       <UpgradeDialog
         feature={upgradeFeature ?? "generic"}

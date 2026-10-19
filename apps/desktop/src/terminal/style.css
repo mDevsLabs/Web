@@ -1,0 +1,13 @@
+/* Surface achromatique du terminal bureau. */
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0a0a0a; color: #ededed; }
+* { box-sizing: border-box; }
+body { margin: 0; height: 100vh; display: flex; flex-direction: column; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid #303030; }
+p { margin: 4px 0 0; font-size: 13px; color: #b4b4b4; }
+.actions { display: flex; gap: 8px; }
+button { border: 1px solid #555; border-radius: 8px; padding: 8px 12px; background: #222; color: #ededed; cursor: pointer; }
+button:disabled { opacity: .5; cursor: wait; }
+button:focus-visible { outline: 2px solid #ededed; outline-offset: 3px; }
+aside { padding: 8px 20px; color: #b4b4b4; font-size: 12px; }
+#terminal { flex: 1; min-height: 0; padding: 8px 16px 16px; }
+[hidden] { display: none !important; }

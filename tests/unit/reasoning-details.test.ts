@@ -169,6 +169,62 @@ describe("La collecte est bornée", () => {
     expect(kept).toBeLessThanOrEqual(256 * 1024);
   });
 
+  it("émet le champ reasoning et ne duplique pas un snapshot cumulé", async () => {
+    const sink = createReasoningDetailsSink();
+    const deltas: string[] = [];
+    sink.onDelta = (text) => deltas.push(text);
+    const response = sink.attach(
+      sseResponse([
+        'data: {"choices":[{"delta":{"reasoning":"Je"}}]}\n',
+        'data: {"choices":[{"delta":{"reasoning":"Je pense"}}]}\n',
+        'data: {"choices":[{"delta":{"reasoning":"Je pense"}}]}\n',
+      ])
+    );
+    await response.text();
+    await flush();
+    expect(deltas.join("")).toBe("Je pense");
+  });
+
+  it("continue à AFFICHER la réflexion après le plafond de blocs", async () => {
+    // OpenRouter/GLM envoie `reasoning_details` à chaque chunk : vingt blocs
+    // valent vingt fragments, et l'affichage s'arrêtait au milieu du
+    // raisonnement alors que la génération continuait.
+    const sink = createReasoningDetailsSink();
+    const deltas: string[] = [];
+    sink.onDelta = (text) => deltas.push(text);
+    const lines: string[] = [];
+    for (let i = 0; i < 200; i++) {
+      lines.push(
+        `data: {"choices":[{"delta":{"reasoning_details":[{"text":"fragment ${i} "}]}}]}\n`
+      );
+    }
+    const response = sink.attach(sseResponse(lines));
+    await response.text();
+    await flush(60);
+    // La collecte reste bornée…
+    expect(sink.details.length).toBeLessThanOrEqual(20);
+    // …mais la réflexion visible va au bout du flux.
+    const affiche = deltas.join("");
+    expect(affiche).toContain("fragment 0 ");
+    expect(affiche).toContain("fragment 199 ");
+  });
+
+  it("branche plusieurs réponses d'un même run", async () => {
+    const sink = createReasoningDetailsSink();
+    const deltas: string[] = [];
+    sink.onDelta = (text) => deltas.push(text);
+    const first = sink.attach(
+      sseResponse(['data: {"choices":[{"delta":{"reasoning":"un"}}]}\n'])
+    );
+    const second = sink.attach(
+      sseResponse(['data: {"choices":[{"delta":{"reasoning":"deux"}}]}\n'])
+    );
+    await first.text();
+    await second.text();
+    await flush();
+    expect(deltas.join("")).toBe("undeux");
+  });
+
   it("reset vide la collecte", async () => {
     const sink = createReasoningDetailsSink();
     const response = sink.attach(

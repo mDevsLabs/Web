@@ -1,7 +1,7 @@
 "use client";
 
+import { AlertTriangleIcon, Settings2Icon } from "@mdevs/icons";
 import { motion } from "framer-motion";
-import { AlertTriangleIcon, Settings2Icon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type {
@@ -116,7 +116,7 @@ export function AgentHome({
         <AgentChannelNotice />
         <Link
           className="flex items-center gap-1.5 text-[11.5px] text-muted-foreground transition-colors hover:text-foreground"
-          href="/settings/agent"
+          href="/settings?tab=agent"
         >
           <Settings2Icon className="size-3" />
           Paramètres Agent

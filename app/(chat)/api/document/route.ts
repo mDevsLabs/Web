@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/chat/artifact";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   deleteDocumentsByIdAfterTimestamp,
   getDocumentsById,
@@ -27,11 +27,12 @@ export async function GET(request: Request) {
     ).toResponse();
   }
 
-  const maiUser = await getMaiUser();
+  const session = await requireUser();
 
-  if (!maiUser) {
+  if (!session) {
     return new ChatbotError("unauthorized:document").toResponse();
   }
+  const { user: maiUser, userId } = session;
 
   const documents = await getDocumentsById({ id });
   const [doc] = documents;
@@ -40,7 +41,6 @@ export async function GET(request: Request) {
     return new ChatbotError("not_found:document").toResponse();
   }
 
-  const userId = maiUser.id || maiUser.email;
   if (doc.userId !== userId && doc.userId !== maiUser.email) {
     return new ChatbotError("forbidden:document").toResponse();
   }
@@ -59,13 +59,12 @@ export async function POST(request: Request) {
     ).toResponse();
   }
 
-  const maiUser = await getMaiUser();
+  const session = await requireUser();
 
-  if (!maiUser) {
+  if (!session) {
     return new ChatbotError("not_found:document").toResponse();
   }
-
-  const userId = maiUser.id || maiUser.email;
+  const { user: maiUser, userId } = session;
 
   let content: string;
   let title: string;
@@ -128,13 +127,12 @@ export async function DELETE(request: Request) {
     ).toResponse();
   }
 
-  const maiUser = await getMaiUser();
+  const session = await requireUser();
 
-  if (!maiUser) {
+  if (!session) {
     return new ChatbotError("unauthorized:document").toResponse();
   }
-
-  const userId = maiUser.id || maiUser.email;
+  const { user: maiUser, userId } = session;
 
   const documents = await getDocumentsById({ id });
   const [doc] = documents;

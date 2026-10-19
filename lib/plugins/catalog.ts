@@ -4,6 +4,8 @@ import {
   PLUGIN_CATEGORIES,
   PLUGIN_MANIFESTS,
 } from "./catalog.generated";
+import type { PluginToolEffect } from "./tool-effect";
+import { toolEffect } from "./tool-effect";
 import type {
   PluginCatalogEntry,
   PluginCategory,
@@ -34,6 +36,29 @@ const PLUGIN_ONLY_TOOL_ID_SET: ReadonlySet<string> = new Set(
 
 export function isPluginOnlyToolId(toolId: string): boolean {
   return PLUGIN_ONLY_TOOL_ID_SET.has(toolId);
+}
+
+/** Identifiants des outils d'un manifeste, triés par effet. */
+export function getPluginToolIdsByEffect(
+  manifest: PluginManifest,
+  effect: PluginToolEffect
+): string[] {
+  return manifest.tools
+    .filter((tool) => toolEffect(manifest, tool) === effect)
+    .map((tool) => tool.id);
+}
+
+/**
+ * Outils de LECTURE des plugins donnés : la seule liste qu'un canal non-Agent
+ * (Chat, Wakies, planification) a le droit d'annoncer au modèle. Annoncer une
+ * écriture là où elle n'est pas instanciée ferait croire au modèle qu'elle
+ * existe.
+ */
+export function getReadToolIdsForPluginIds(pluginIds: string[]): string[] {
+  const allowed = new Set(pluginIds);
+  return PLUGIN_MANIFEST_LIST.filter((plugin) =>
+    allowed.has(plugin.id)
+  ).flatMap((plugin) => getPluginToolIdsByEffect(plugin, "read"));
 }
 
 export function getPluginManifest(

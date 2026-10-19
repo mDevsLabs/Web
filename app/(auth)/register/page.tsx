@@ -6,7 +6,7 @@ import {
   EyeOffIcon,
   Loader2Icon,
   ShieldCheckIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

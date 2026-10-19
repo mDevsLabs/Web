@@ -1,0 +1,71 @@
+{
+  "model": "Template",
+  "config": {
+    "name": "Template",
+    "label": "Modèles",
+    "description": "Gérez vos modèles depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "author",
+        "label": "Auteur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "usageCount",
+        "label": "Utilisations",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "category",
+        "label": "Catégorie",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "published",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyTemplate",
+        "label": "Notifications : modèles",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveTemplate",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section modèles."
+      },
+      {
+        "key": "approveTemplate",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "template-demo-1",
+    "name": "Tableau de bord SaaS",
+    "author": "Auteur démo",
+    "usageCount": 128,
+    "category": "Catégorie démo",
+    "status": "draft"
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { CrownIcon, SparklesIcon, ZapIcon } from "lucide-react";
+import { CrownIcon, SparklesIcon, ZapIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ import {
   AGENT_UPGRADE_DESCRIPTION,
   AGENT_UPGRADE_TITLE,
 } from "@/lib/agent/channel";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { APP_PRICING_URL } from "@/lib/constants";
 
 // Un utilisateur Free voit Agent mais ne peut pas l'utiliser : ce dialogue
 // explique pourquoi et renvoie vers la page de forfaits. La garde réelle reste
@@ -90,7 +90,7 @@ export function AgentUpgradeDialog({
             Plus tard
           </Button>
           <Button asChild className="gap-2" type="button">
-            <Link href={MAI_UPGRADE_URL} rel="noreferrer" target="_blank">
+            <Link href={APP_PRICING_URL}>
               <SparklesIcon className="size-4" />
               {AGENT_UPGRADE_CTA}
             </Link>

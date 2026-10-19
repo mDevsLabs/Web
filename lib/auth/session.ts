@@ -235,6 +235,11 @@ type RemoteResolution =
   // parfaitement valide.
   | { status: "unreachable" };
 
+// Déduplication des résolutions distantes en vol (évite les rafales de requêtes
+// fetch concurrentes vers le backend lors du chargement des routes).
+const inFlightResolutions = new Map<string, Promise<RemoteResolution>>();
+const REMOTE_AUTH_TIMEOUT_MS = 10_000;
+
 // Résolution de l'identité par l'API distante. C'est elle qui a émis le jeton :
 // seule elle peut dire s'il est encore valide. Le payload local n'est
 // consulté que s'il a été VÉRIFIÉ — un jeton dont la signature échoue ne peut
@@ -243,46 +248,67 @@ async function resolveUserFromApi(
   token: string,
   verifiedPayload: any | null
 ): Promise<RemoteResolution> {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 1500);
-    const res = await fetch(`${MAI_API_URL}/usage`, {
-      cache: "no-store",
-      headers: { Authorization: `Bearer ${token}` },
-      signal: controller.signal,
-    }).finally(() => clearTimeout(timeout));
-
-    if (res.ok) {
-      const data = await res.json();
-      if (!data.error) {
-        const userId = data.id
-          ? String(data.id)
-          : verifiedPayload?.sub
-            ? String(verifiedPayload.sub)
-            : undefined;
-
-        return {
-          status: "ok",
-          user: {
-            avatarUrl: data.avatarUrl || null,
-            email: data.email || "",
-            id: userId || data.email,
-            limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
-            phone: data.phone || "",
-            resetAt: data.resetAt,
-            tier: data.tier || "Free",
-            tokensUsed: Number(data.tokensUsed || 0),
-            username: data.username || "Utilisateur",
-            weekStart: data.weekStart,
-          },
-        };
-      }
-    }
-    return { status: "refused" };
-  } catch (error) {
-    console.error("Erreur récupération utilisateur mAI:", error);
-    return { status: "unreachable" };
+  const existing = inFlightResolutions.get(token);
+  if (existing) {
+    return existing;
   }
+
+  const resolutionPromise = (async (): Promise<RemoteResolution> => {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(
+        () => controller.abort(),
+        REMOTE_AUTH_TIMEOUT_MS
+      );
+      const res = await fetch(`${MAI_API_URL}/usage`, {
+        cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
+        signal: controller.signal,
+      }).finally(() => clearTimeout(timeout));
+
+      if (res.ok) {
+        const data = await res.json();
+        if (!data.error) {
+          const userId = data.id
+            ? String(data.id)
+            : verifiedPayload?.sub
+              ? String(verifiedPayload.sub)
+              : undefined;
+
+          return {
+            status: "ok",
+            user: {
+              avatarUrl: data.avatarUrl || null,
+              email: data.email || "",
+              id: userId || data.email,
+              limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
+              phone: data.phone || "",
+              resetAt: data.resetAt,
+              tier: data.tier || "Free",
+              tokensUsed: Number(data.tokensUsed || 0),
+              username: data.username || "Utilisateur",
+              weekStart: data.weekStart,
+            },
+          };
+        }
+      }
+      return { status: "refused" };
+    } catch (error: any) {
+      if (error?.name === "AbortError") {
+        console.warn(
+          `[auth] Délai dépassé (${REMOTE_AUTH_TIMEOUT_MS}ms) lors de la récupération utilisateur mAI.`
+        );
+      } else {
+        console.error("Erreur récupération utilisateur mAI:", error);
+      }
+      return { status: "unreachable" };
+    } finally {
+      inFlightResolutions.delete(token);
+    }
+  })();
+
+  inFlightResolutions.set(token, resolutionPromise);
+  return resolutionPromise;
 }
 
 export async function getMaiUser(

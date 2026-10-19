@@ -10,7 +10,7 @@ import {
   PlusIcon,
   SparklesIcon,
   SquareSlashIcon,
-} from "lucide-react";
+} from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";
@@ -135,9 +135,9 @@ function buildFlatList(
     },
     {
       action: "library",
-      description: "Stockage, fichiers et documents",
+      description: "Bibliothèque, fichiers et documents",
       id: "sys-library",
-      label: "Library",
+      label: "Bibliothèque",
     },
     {
       action: "planning",

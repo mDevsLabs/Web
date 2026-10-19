@@ -1,0 +1,72 @@
+{
+  "model": "Issue",
+  "config": {
+    "name": "Issue",
+    "label": "Tickets de développement",
+    "description": "Gérez vos tickets de développement depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "assignee",
+        "label": "Assigné à",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "number",
+        "label": "Numéro",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "createdOn",
+        "label": "Création",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "open",
+          "in-progress",
+          "resolved",
+          "closed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyIssue",
+        "label": "Notifications : tickets de développement",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveIssue",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section tickets de développement."
+      },
+      {
+        "key": "approveIssue",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "issue-demo-1",
+    "title": "Corriger le focus du menu",
+    "assignee": "Alex Martin",
+    "number": 128,
+    "createdOn": "2026-10-04",
+    "status": "open"
+  }
+}

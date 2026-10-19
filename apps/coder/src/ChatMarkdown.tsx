@@ -1,0 +1,1047 @@
+import {
+  Children,
+  type ComponentProps,
+  Fragment,
+  isValidElement,
+  type KeyboardEvent,
+  memo,
+  type ReactElement,
+  type ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { AgentActivityGroup } from "./AgentActivityGroup";
+import { AgentCommandCard } from "./AgentCommandCard";
+import { AgentDiffCard } from "./AgentDiffCard";
+import { AgentEditCard } from "./AgentEditCard";
+import { AgentPreflightShell } from "./AgentPreflightShell";
+import { AgentResultCard } from "./AgentResultCard";
+import { AgentStreamingFenceCard } from "./AgentStreamingFenceCard";
+import { AnimatedHeightReveal } from "./AnimatedHeightReveal";
+import {
+  type AssistantSegment,
+  buildStreamingToolSegments,
+  fileEditChangeKey,
+  type StreamingToolPreview,
+  segmentAssistantContentUnified,
+} from "./agentChatSegments";
+import { ComposerThoughtBlock } from "./ComposerThoughtBlock";
+import { useI18n } from "./i18n";
+import type { TurnTokenUsage } from "./ipcTypes";
+import {
+  type LiveAgentBlocksState,
+  liveBlocksToAssistantSegments,
+} from "./liveAgentBlocks";
+import { PreflightThinkingItem } from "./PreflightThinkingItem";
+import { useTypewriter } from "./useTypewriter";
+
+type ThinkingSegment = Extract<AssistantSegment, { type: "thinking" }>;
+type RenderUnit =
+  | Exclude<AssistantSegment, { type: "thinking" }>
+  | { type: "thinking_group"; chunks: ThinkingSegment[] };
+type MarkdownComponents = ComponentProps<typeof ReactMarkdown>["components"];
+
+function hasVisibleMarkdownNode(node: ReactNode): boolean {
+  if (node == null || typeof node === "boolean") {
+    return false;
+  }
+  if (typeof node === "string") {
+    return node.trim().length > 0;
+  }
+  if (typeof node === "number") {
+    return true;
+  }
+  if (Array.isArray(node)) {
+    return node.some((item) => hasVisibleMarkdownNode(item));
+  }
+  if (!isValidElement(node)) {
+    return false;
+  }
+  const element = node as ReactElement<{ children?: ReactNode }>;
+  if (
+    typeof node.type === "string" &&
+    ["img", "video", "audio", "svg", "hr"].includes(node.type)
+  ) {
+    return true;
+  }
+  return hasVisibleMarkdownNode(element.props.children);
+}
+
+function visibleMarkdownChildren(children: ReactNode): ReactNode[] {
+  return Children.toArray(children).filter((child) =>
+    hasVisibleMarkdownNode(child)
+  );
+}
+
+function isSafeMarkdownUrl(url: string): boolean {
+  const u = url.trim();
+  if (!u) return false;
+  if (
+    u.startsWith("#") ||
+    u.startsWith("/") ||
+    u.startsWith("./") ||
+    u.startsWith("../")
+  )
+    return true;
+  return /^(https?:|mailto:)/i.test(u);
+}
+
+function markdownUrlTransform(url: string): string {
+  try {
+    return isSafeMarkdownUrl(url) ? url : "#";
+  } catch {
+    return "#";
+  }
+}
+
+const markdownComponents: MarkdownComponents = {
+  a: ({ href, children, ...props }) => {
+    const safeHref =
+      typeof href === "string"
+        ? isSafeMarkdownUrl(href)
+          ? href
+          : "#"
+        : undefined;
+    return (
+      <a
+        {...props}
+        href={safeHref}
+        rel="noopener noreferrer nofollow"
+        target="_blank"
+      >
+        {children}
+      </a>
+    );
+  },
+  hr: ({ ...props }) => <hr {...props} className="ref-md-hr" />,
+  img: ({ src, alt, ...props }) => {
+    const safeSrc =
+      typeof src === "string" &&
+      /^(https?:|data:image\/(png|jpeg|gif|webp);base64,)/i.test(src.trim())
+        ? src
+        : undefined;
+    if (!safeSrc)
+      return (
+        <span className="ref-md-img-blocked">
+          {typeof alt === "string" ? alt : ""}
+        </span>
+      );
+    return (
+      <img
+        {...props}
+        alt={alt}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        src={safeSrc}
+      />
+    );
+  },
+  li: ({ children, ...props }) => {
+    if (!hasVisibleMarkdownNode(children)) {
+      return null;
+    }
+    return <li {...props}>{children}</li>;
+  },
+  ol: ({ children, ...props }) => {
+    const items = visibleMarkdownChildren(children);
+    if (items.length === 0) {
+      return null;
+    }
+    return <ol {...props}>{items}</ol>;
+  },
+  ul: ({ children, ...props }) => {
+    const items = visibleMarkdownChildren(children);
+    if (items.length === 0) {
+      return null;
+    }
+    return <ul {...props}>{items}</ul>;
+  },
+};
+
+function thinkingGroupRenderMeta(
+  chunks: ThinkingSegment[],
+  liveThoughtMeta: Props["liveThoughtMeta"]
+): { phase: "thinking" | "streaming" | "done"; elapsedSeconds: number } {
+  const fallbackPhase = liveThoughtMeta?.phase ?? "thinking";
+  const fallbackElapsed = liveThoughtMeta?.elapsedSeconds ?? 0;
+  const startedAt = chunks.find(
+    (chunk) => typeof chunk.startedAt === "number"
+  )?.startedAt;
+  if (startedAt == null) {
+    return { elapsedSeconds: fallbackElapsed, phase: fallbackPhase };
+  }
+  const lastChunk = chunks[chunks.length - 1];
+  const endedAt =
+    lastChunk?.endedAt ??
+    [...chunks].reverse().find((chunk) => typeof chunk.endedAt === "number")
+      ?.endedAt;
+  const stillRunning = lastChunk?.endedAt == null;
+  const endMs = stillRunning ? Date.now() : (endedAt ?? startedAt);
+  return {
+    elapsedSeconds: Math.max(0, (endMs - startedAt) / 1000),
+    phase: stillRunning ? fallbackPhase : "done",
+  };
+}
+
+/**
+ * 当前块（Explored 分组 / 思考块）之后是否已出现工具类块或收尾输出，
+ * 用于回合未结束时提前把 head 上方的过程容器收成单行 summary。
+ *
+ * 注意：思考块之后只要见到“真正的输出”就该收起，因此 markdown / plan_todo /
+ * file_changes 也算。Explored 分组与 markdown 之间常常正常并存（先搜索再说话），
+ * 不能把 markdown 也算上 —— 该函数对两类块走分支。
+ */
+function unitFollowedByToolLikeWork(
+  units: RenderUnit[],
+  currentIndex: number,
+  currentKind: "activity_group" | "thinking_group"
+): boolean {
+  for (let k = currentIndex + 1; k < units.length; k++) {
+    const u = units[k]!;
+    switch (u.type) {
+      case "diff":
+      case "command":
+      case "streaming_code":
+      case "file_edit":
+      case "tool_call":
+      case "activity":
+      case "sub_agent_markdown":
+        return true;
+      case "markdown":
+      case "plan_todo":
+      case "file_changes":
+        if (currentKind === "thinking_group") {
+          return true;
+        }
+        continue;
+      case "thinking_group":
+      case "activity_group":
+      case "outcome_marker":
+        continue;
+    }
+  }
+  return false;
+}
+
+// preflight / outcome 切分纯函数 + 配套辅助谓词已抽到 ./preflightSplit 以便独立单元测试，
+// 这里 re-export 保持原有公共 API。
+export {
+  preflightHasContent,
+  splitPreflightAndOutcome,
+} from "./preflightSplit";
+
+import { splitPreflightAndOutcome } from "./preflightSplit";
+
+/** 有 tool_input_delta 预览时，解析层也会生成 isStreaming 的 file_edit，避免与预览重复且保证预览优先显示 */
+function dropParsedStreamingFileEditWhilePreview(
+  segments: AssistantSegment[],
+  hasPreview: boolean
+): AssistantSegment[] {
+  if (!hasPreview) return segments;
+  return segments.filter(
+    (seg) => !(seg.type === "file_edit" && seg.isStreaming)
+  );
+}
+
+type Props = {
+  content: string;
+  agentUi?: boolean;
+  planUi?: boolean;
+  workspaceRoot?: string | null;
+  onOpenAgentFile?: (
+    relPath: string,
+    revealLine?: number,
+    revealEndLine?: number,
+    options?: { diff?: string | null; allowReviewActions?: boolean }
+  ) => void;
+  onRunCommand?: (cmd: string) => void;
+  streamingToolPreview?: StreamingToolPreview | null;
+  showAgentWorking?: boolean;
+  hidePendingActivityTextCluster?: boolean;
+  /** 对话错误气泡：强制易读配色并避免 Agent 解析路径漏字 */
+  assistantBubbleVariant?: "default" | "error";
+  /** 实时回合块状态；与 showAgentWorking 同时为真且 blocks 非空时，优先走块渲染，避免整段 content 重解析 */
+  liveAgentBlocksState?: LiveAgentBlocksState | null;
+  liveThoughtMeta?: {
+    phase: "thinking" | "streaming" | "done";
+    elapsedSeconds: number;
+    streamingThinking?: string;
+    tokenUsage?: TurnTokenUsage | null;
+  } | null;
+  revertedPaths?: ReadonlySet<string>;
+  revertedChangeKeys?: ReadonlySet<string>;
+  allowAgentFileActions?: boolean;
+  skipPlanTodo?: boolean;
+  /** 启用打字机效果：流式输出时对 markdown 文本做平滑逐字揭示 */
+  typewriter?: boolean;
+  /** 为最后一轮短回复补出的容器底部高度；挂在 markdown root 上，便于自动置底以容器底为准 */
+  turnFocusFillPx?: number;
+  /**
+   * 渲染范围：
+   * - `'all'`（默认，兼容老调用方）：preflight + outcome 都在本组件渲染（整段一起）。
+   * - `'preflight'`：仅渲染过程区（思考 / 搜索 / 解释 markdown），用于挂在用户气泡正下方。
+   * - `'outcome'`：仅渲染结果区（file_edit / diff / 收尾总结）等，用于 assistant 气泡正文。
+   */
+  renderMode?: "all" | "preflight" | "outcome";
+  preserveLivePreflight?: boolean;
+  preflightInstantToggle?: boolean;
+  shouldInstantTogglePreflight?: () => boolean;
+  onPreflightLayoutChange?: () => void;
+};
+
+function InlineChevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      aria-hidden
+      className={`ref-activity-inline-chevron-svg${open ? " is-open" : ""}`}
+      fill="none"
+      height="11"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2.3"
+      viewBox="0 0 24 24"
+      width="11"
+    >
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function ActivityLine({
+  seg,
+  t,
+  onOpenAgentFile,
+  showAgentWorking,
+  hidePendingTextCluster = false,
+}: {
+  seg: Extract<AssistantSegment, { type: "activity" }>;
+  t: ReturnType<typeof useI18n>["t"];
+  onOpenAgentFile?: Props["onOpenAgentFile"];
+  showAgentWorking?: boolean;
+  hidePendingTextCluster?: boolean;
+}) {
+  const readLink = seg.agentReadLink;
+  const openHintRaw = t("agent.activity.readOpenEditor");
+  const openHint =
+    openHintRaw === "agent.activity.readOpenEditor"
+      ? "Open in editor and highlight this range"
+      : openHintRaw;
+  const hasResultCard = Boolean(
+    seg.resultLines && seg.resultLines.length > 0 && seg.resultKind
+  );
+  const hasExpandableBody = Boolean(seg.detail || hasResultCard);
+  const shouldHideWorkingTextCluster =
+    hidePendingTextCluster && showAgentWorking && !hasExpandableBody;
+  const [expandedBody, setExpandedBody] = useState(false);
+  const onToggleBody = useCallback(() => setExpandedBody((v) => !v), []);
+  const onToggleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onToggleBody();
+      }
+    },
+    [onToggleBody]
+  );
+
+  if (shouldHideWorkingTextCluster && !seg.summary) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`ref-agent-activity ref-agent-activity--${seg.status}${seg.nestParent ? " ref-agent-activity--nested" : ""}`}
+      style={
+        seg.nestParent
+          ? { marginLeft: Math.min(12 + ((seg.nestDepth ?? 1) - 1) * 10, 40) }
+          : undefined
+      }
+    >
+      <div
+        aria-expanded={hasExpandableBody ? expandedBody : undefined}
+        aria-label={
+          hasExpandableBody
+            ? expandedBody
+              ? "收起详情"
+              : "展开详情"
+            : undefined
+        }
+        className={`ref-agent-activity-main${hasExpandableBody ? " ref-agent-activity-main--toggle" : ""}`}
+        onClick={hasExpandableBody ? onToggleBody : undefined}
+        onKeyDown={hasExpandableBody ? onToggleKeyDown : undefined}
+        role={hasExpandableBody ? "button" : undefined}
+        tabIndex={hasExpandableBody ? 0 : undefined}
+      >
+        <span aria-hidden className="ref-agent-activity-dot" />
+        {hasExpandableBody ? (
+          <span className="ref-agent-activity-inline">
+            {readLink && onOpenAgentFile ? (
+              <button
+                className="ref-agent-activity-ref-link"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenAgentFile(
+                    readLink.path,
+                    readLink.startLine,
+                    readLink.endLine
+                  );
+                }}
+                title={openHint}
+                type="button"
+              >
+                {seg.text}
+              </button>
+            ) : (
+              <span className="ref-agent-activity-text">{seg.text}</span>
+            )}
+            <span
+              aria-hidden
+              className={`ref-activity-inline-chevron${expandedBody ? " is-open" : ""}`}
+            >
+              <InlineChevron open={expandedBody} />
+            </span>
+            {seg.summary ? (
+              <span className="ref-agent-activity-summary">{seg.summary}</span>
+            ) : null}
+          </span>
+        ) : (
+          <>
+            {shouldHideWorkingTextCluster ? null : (
+              <span className="ref-agent-activity-text-cluster">
+                {readLink && onOpenAgentFile ? (
+                  <button
+                    className="ref-agent-activity-ref-link"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenAgentFile(
+                        readLink.path,
+                        readLink.startLine,
+                        readLink.endLine
+                      );
+                    }}
+                    title={openHint}
+                    type="button"
+                  >
+                    {seg.text}
+                  </button>
+                ) : (
+                  <span className="ref-agent-activity-text">{seg.text}</span>
+                )}
+              </span>
+            )}
+            {seg.summary ? (
+              <span className="ref-agent-activity-summary">{seg.summary}</span>
+            ) : null}
+          </>
+        )}
+      </div>
+      {hasExpandableBody ? (
+        <AnimatedHeightReveal open={expandedBody}>
+          {seg.detail ? (
+            <pre className="ref-agent-activity-detail">{seg.detail}</pre>
+          ) : null}
+          {hasResultCard ? (
+            <AgentResultCard
+              animateLineReveal={showAgentWorking}
+              forceExpanded
+              hideToggleChrome
+              kind={seg.resultKind!}
+              lines={seg.resultLines!}
+              onOpenFile={onOpenAgentFile}
+              readSourcePath={seg.agentReadLink?.path}
+            />
+          ) : null}
+        </AnimatedHeightReveal>
+      ) : null}
+    </div>
+  );
+}
+
+function LiveThinkingStatus() {
+  const { t } = useI18n();
+  const label = t("agent.preflight.liveThinking");
+  return (
+    <div aria-live="polite" className="ref-live-thinking-status">
+      <span className="ref-live-thinking-status-text" data-text={label}>
+        {label}
+      </span>
+    </div>
+  );
+}
+
+const TypewriterMd = memo(function TypewriterMd({
+  text,
+  enabled,
+}: {
+  text: string;
+  enabled: boolean;
+}) {
+  const display = useTypewriter(text, enabled);
+  return (
+    <ReactMarkdown
+      components={markdownComponents}
+      remarkPlugins={[remarkGfm]}
+      urlTransform={markdownUrlTransform}
+    >
+      {display}
+    </ReactMarkdown>
+  );
+});
+
+export const ChatMarkdown = memo(function ChatMarkdown({
+  content,
+  agentUi = false,
+  planUi = false,
+  workspaceRoot,
+  onOpenAgentFile,
+  onRunCommand,
+  streamingToolPreview,
+  showAgentWorking = false,
+  hidePendingActivityTextCluster: forceHidePendingActivityTextCluster = false,
+  liveAgentBlocksState = null,
+  liveThoughtMeta = null,
+  assistantBubbleVariant = "default",
+  revertedPaths,
+  revertedChangeKeys,
+  allowAgentFileActions = false,
+  skipPlanTodo = false,
+  renderMode = "all",
+  preserveLivePreflight = false,
+  preflightInstantToggle = false,
+  shouldInstantTogglePreflight,
+  onPreflightLayoutChange,
+  typewriter = false,
+  turnFocusFillPx = 0,
+}: Props) {
+  const { t } = useI18n();
+
+  const forcePlainMarkdown = assistantBubbleVariant === "error";
+  const agentMarkdown = agentUi && !forcePlainMarkdown;
+
+  const useLiveBlockRender =
+    agentMarkdown &&
+    showAgentWorking &&
+    (liveThoughtMeta != null ||
+      (liveAgentBlocksState != null && liveAgentBlocksState.blocks.length > 0));
+
+  /**
+   * 将 content 解析与 streamingToolPreview 拆开：
+   * content 解析涉及全量 tool 协议扫描，开销较大；
+   * streamingToolPreview 变化极频繁（每个 tool_input_delta 都触发），
+   * 拆分后 preview 变化只需做轻量合并，避免阻塞 React 渲染导致流式卡片被跳过。
+   *
+   * 正文解析必须用当前 content：useDeferredValue 会在高优先级更新后短暂保留旧值，
+   * 若旧值为空则 segment 结果为空，对话错误等短消息会出现「有气泡无字」。
+   *
+   * Live blocks 主路径下不再对整段 content 做 segmentAssistantContentUnified，也不合并 streamingToolPreview（块内已含）。
+   */
+  const parseInput = content;
+  const parsedSegments = useMemo(() => {
+    if (!agentMarkdown) return [] as AssistantSegment[];
+    const t0 = performance.now();
+    if (useLiveBlockRender && liveAgentBlocksState) {
+      const result = liveBlocksToAssistantSegments(
+        liveAgentBlocksState.blocks,
+        t
+      );
+      if (import.meta.env.DEV) {
+        const elapsed = performance.now() - t0;
+        if (elapsed > 8) {
+          // eslint-disable-next-line no-console
+          console.log(
+            `[ChatMarkdown] parsedSegments (live blocks): ${elapsed.toFixed(1)}ms, blocks=${liveAgentBlocksState.blocks.length}, segs=${result.length}`
+          );
+        }
+      }
+      return result;
+    }
+    const result = segmentAssistantContentUnified(parseInput, { planUi, t });
+    if (import.meta.env.DEV) {
+      const elapsed = performance.now() - t0;
+      if (elapsed > 8) {
+        // eslint-disable-next-line no-console
+        console.log(
+          `[ChatMarkdown] parsedSegments: ${elapsed.toFixed(1)}ms, contentLen=${content.length}, segs=${result.length}`
+        );
+      }
+    }
+    return result;
+  }, [
+    agentMarkdown,
+    useLiveBlockRender,
+    liveAgentBlocksState,
+    parseInput,
+    t,
+    planUi,
+  ]);
+
+  const renderSegments = useMemo(() => {
+    if (!agentMarkdown) {
+      return [] as AssistantSegment[];
+    }
+    const filtered = dropParsedStreamingFileEditWhilePreview(
+      parsedSegments,
+      !useLiveBlockRender && streamingToolPreview != null
+    );
+    const streamingSegments = useLiveBlockRender
+      ? ([] as AssistantSegment[])
+      : buildStreamingToolSegments(streamingToolPreview, { t });
+    const segs: AssistantSegment[] = [...filtered, ...streamingSegments];
+    if (
+      useLiveBlockRender &&
+      liveThoughtMeta &&
+      !segs.some((s) => s.type === "thinking")
+    ) {
+      segs.unshift({
+        id: "live-thinking-fallback",
+        text: liveThoughtMeta.streamingThinking ?? "",
+        type: "thinking",
+      });
+    }
+    const hasPendingTail =
+      segs.some((s) => s.type === "activity" && s.status === "pending") ||
+      streamingToolPreview != null;
+    if (
+      showAgentWorking &&
+      !hasPendingTail &&
+      !segs.some((s) => s.type === "thinking")
+    ) {
+      segs.push({
+        status: "pending",
+        text: t("agent.working"),
+        type: "activity",
+      });
+    }
+    return segs;
+  }, [
+    agentMarkdown,
+    parsedSegments,
+    t,
+    streamingToolPreview,
+    showAgentWorking,
+    useLiveBlockRender,
+    liveThoughtMeta,
+  ]);
+
+  const renderUnits = useMemo(() => {
+    const out: RenderUnit[] = [];
+    for (const seg of renderSegments) {
+      if (seg.type !== "thinking") {
+        out.push(seg);
+        continue;
+      }
+      const last = out[out.length - 1];
+      if (last?.type === "thinking_group") {
+        last.chunks.push(seg);
+      } else {
+        out.push({ chunks: [seg], type: "thinking_group" });
+      }
+    }
+    return out;
+  }, [renderSegments]);
+  // 注意：以下 useMemo 必须在所有条件 return 之前调用，否则违反 Hooks 顺序。
+  // 流式期间 markdown 永远留在 preflight，回合结束（liveTurn=false）才一次性切到 outcome。
+  // 这避免了「文字外置→收回」的视觉抖动 —— 任意 unit 在流式期间不会在 preflight ↔ outcome 之间反向迁移。
+  const splitAsLiveTurn = showAgentWorking || preserveLivePreflight;
+  const showLiveThinkingTail =
+    agentMarkdown &&
+    splitAsLiveTurn &&
+    liveThoughtMeta != null &&
+    liveThoughtMeta.phase !== "done";
+  const { preflight, outcome } = useMemo(
+    () => splitPreflightAndOutcome(renderUnits, { liveTurn: splitAsLiveTurn }),
+    [renderUnits, splitAsLiveTurn]
+  );
+  const hidePendingActivityTextCluster =
+    showAgentWorking &&
+    (forceHidePendingActivityTextCluster ||
+      streamingToolPreview != null ||
+      (liveAgentBlocksState?.blocks.length ?? 0) > 0);
+  const rootTurnFocusFillPxAttr =
+    turnFocusFillPx > 0 ? String(Math.max(0, turnFocusFillPx)) : undefined;
+  const rootTurnFocusFillStyle =
+    turnFocusFillPx > 0
+      ? { paddingBottom: `${Math.max(0, turnFocusFillPx)}px` }
+      : undefined;
+
+  if (!agentMarkdown) {
+    const plainClass =
+      assistantBubbleVariant === "error"
+        ? `ref-md-root ref-md-root--chat-error${agentUi ? " ref-md-root--agent-chat" : ""}`
+        : "ref-md-root";
+    return (
+      <div
+        className={plainClass}
+        data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+        style={rootTurnFocusFillStyle}
+      >
+        <TypewriterMd enabled={typewriter} text={content} />
+      </div>
+    );
+  }
+
+  const agentRootClass = "ref-md-root ref-md-root--agent-chat";
+
+  const renderUnitNode = (
+    seg: RenderUnit,
+    i: number,
+    opts?: { insideShell?: boolean }
+  ): ReactNode => {
+    const insideShell = opts?.insideShell === true;
+    switch (seg.type) {
+      case "markdown":
+        return (
+          <TypewriterMd enabled={typewriter} key={`u-${i}`} text={seg.text} />
+        );
+      case "thinking_group": {
+        if (showLiveThinkingTail) {
+          return null;
+        }
+        const thoughtMeta = thinkingGroupRenderMeta(
+          seg.chunks,
+          liveThoughtMeta
+        );
+        if (insideShell) {
+          return (
+            <PreflightThinkingItem
+              chunks={seg.chunks.map((chunk) => ({
+                id: chunk.id,
+                text: chunk.text,
+              }))}
+              elapsedSeconds={thoughtMeta.elapsedSeconds}
+              key={seg.chunks[0]?.id ?? `thinking-${i}`}
+              phase={thoughtMeta.phase}
+              streamingThinking={liveThoughtMeta?.streamingThinking ?? ""}
+            />
+          );
+        }
+        return (
+          <ComposerThoughtBlock
+            chunks={seg.chunks.map((chunk) => ({
+              id: chunk.id,
+              text: chunk.text,
+            }))}
+            elapsedSeconds={thoughtMeta.elapsedSeconds}
+            followingToolLikeWork={unitFollowedByToolLikeWork(
+              renderUnits,
+              i,
+              "thinking_group"
+            )}
+            key={seg.chunks[0]?.id ?? `thinking-${i}`}
+            phase={thoughtMeta.phase}
+            streamingThinking={liveThoughtMeta?.streamingThinking ?? ""}
+            tokenUsage={
+              thoughtMeta.phase === "done"
+                ? liveThoughtMeta?.tokenUsage
+                : undefined
+            }
+          />
+        );
+      }
+      case "diff":
+        return (
+          <AgentDiffCard
+            diff={seg.diff}
+            key={`u-${i}`}
+            onOpenFile={onOpenAgentFile}
+            workspaceRoot={workspaceRoot}
+          />
+        );
+      case "command":
+        return (
+          <AgentCommandCard
+            body={seg.body}
+            key={`u-${i}`}
+            lang={seg.lang}
+            onRun={onRunCommand ? () => onRunCommand(seg.body) : undefined}
+          />
+        );
+      case "streaming_code":
+        return (
+          <AgentStreamingFenceCard
+            body={seg.body}
+            key={`u-${i}`}
+            lang={seg.lang}
+          />
+        );
+      case "file_edit": {
+        const changeKey = fileEditChangeKey(seg);
+        const isReverted =
+          Boolean(revertedPaths?.has(seg.path)) ||
+          Boolean(changeKey && revertedChangeKeys?.has(changeKey));
+        return (
+          <AgentEditCard
+            allowReviewActions={allowAgentFileActions}
+            edit={seg}
+            isReverted={isReverted}
+            key={`u-${i}`}
+            onOpenFile={onOpenAgentFile}
+          />
+        );
+      }
+      case "activity_group":
+        // preflight 内不渲染 .ref-activity-group 壳：直接把组内 items 摊平成独立活动行，
+        // 视觉上跟其它独立 activity（如 Bash/已运行）一致，过程中无任何额外折叠层。
+        if (insideShell) {
+          return (
+            <Fragment key={`u-${i}`}>
+              {seg.items.map((item, j) => (
+                <ActivityLine
+                  hidePendingTextCluster={hidePendingActivityTextCluster}
+                  key={`u-${i}-${j}`}
+                  onOpenAgentFile={onOpenAgentFile}
+                  seg={item}
+                  showAgentWorking={showAgentWorking}
+                  t={t}
+                />
+              ))}
+            </Fragment>
+          );
+        }
+        return (
+          <AgentActivityGroup
+            animateLineReveal={showAgentWorking}
+            followingToolLikeWork={unitFollowedByToolLikeWork(
+              renderUnits,
+              i,
+              "activity_group"
+            )}
+            group={seg}
+            insideShell={insideShell}
+            key={`u-${i}`}
+            liveTurn={showAgentWorking}
+            onOpenFile={onOpenAgentFile}
+          />
+        );
+      case "file_changes":
+        return null;
+      case "sub_agent_markdown": {
+        return null;
+      }
+      case "activity":
+        return (
+          <ActivityLine
+            hidePendingTextCluster={hidePendingActivityTextCluster}
+            key={`u-${i}`}
+            onOpenAgentFile={onOpenAgentFile}
+            seg={seg}
+            showAgentWorking={showAgentWorking}
+            t={t}
+          />
+        );
+      case "tool_call":
+        if (hidePendingActivityTextCluster && showAgentWorking) {
+          return null;
+        }
+        return (
+          <p className="ref-agent-activity" key={`u-${i}`}>
+            {t("agent.toolPending", { name: seg.name })}
+          </p>
+        );
+      case "plan_todo":
+        if (skipPlanTodo) return null;
+        return (
+          <div className="ref-plan-review-todos" key={`u-${i}`}>
+            <div className="ref-plan-review-todos-head">
+              <span>
+                {t("plan.review.todo", {
+                  done: seg.todos.filter((td) => td.status === "completed")
+                    .length,
+                  total: seg.todos.length,
+                })}
+              </span>
+            </div>
+            <div className="ref-plan-review-todos-list">
+              {seg.todos.map((todo) => {
+                const done = todo.status === "completed";
+                const active = todo.status === "in_progress";
+                return (
+                  <div
+                    className={`ref-plan-todo ${done ? "is-done" : ""} ${active ? "is-active" : ""}`}
+                    key={todo.id}
+                  >
+                    {active ? (
+                      <span aria-hidden className="ref-plan-todo-spinner" />
+                    ) : (
+                      <svg
+                        aria-hidden
+                        fill="none"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                      >
+                        <rect
+                          fill={done ? "#e8a848" : "none"}
+                          height="14"
+                          rx="3"
+                          stroke={done ? "#e8a848" : "#555"}
+                          strokeWidth="1.5"
+                          width="14"
+                          x="1"
+                          y="1"
+                        />
+                        {done ? (
+                          <path
+                            d="M4.5 8l2.5 2.5 4.5-5"
+                            stroke="#1a1a1a"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.8"
+                          />
+                        ) : null}
+                      </svg>
+                    )}
+                    <span className="ref-plan-todo-text">
+                      {active && todo.activeForm
+                        ? todo.activeForm
+                        : todo.content}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const hasOutcome = outcome.some((u) => {
+    // outcome_marker 自身不可见，单独存在不算「有 outcome」
+    if (u.type === "outcome_marker") return false;
+    if (u.type === "markdown") return u.text.trim().length > 0;
+    return true;
+  });
+  const showLiveThinkingTailInOutcome = showLiveThinkingTail && hasOutcome;
+  const showLiveThinkingTailAfterPreflight =
+    showLiveThinkingTail && !showLiveThinkingTailInOutcome;
+  const hasPreflightShellContent = preflight.some((u) => {
+    if (u.type === "thinking_group" && showLiveThinkingTail) {
+      return false;
+    }
+    if (u.type === "markdown") return u.text.trim().length > 0;
+    if (u.type === "outcome_marker") return false;
+    return true;
+  });
+
+  if (renderMode === "preflight") {
+    if (!hasPreflightShellContent && !showLiveThinkingTailAfterPreflight)
+      return null;
+    return (
+      <div
+        className={agentRootClass}
+        data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+        style={rootTurnFocusFillStyle}
+      >
+        {hasPreflightShellContent ? (
+          <AgentPreflightShell
+            hasOutcome={hasOutcome}
+            instantToggle={preflightInstantToggle}
+            liveTurn={showAgentWorking}
+            onLayoutChange={onPreflightLayoutChange}
+            phase={
+              liveThoughtMeta?.phase ?? (showAgentWorking ? "thinking" : "done")
+            }
+            shouldInstantToggle={shouldInstantTogglePreflight}
+            tokenUsage={liveThoughtMeta?.tokenUsage ?? null}
+          >
+            {preflight.map((seg, i) =>
+              renderUnitNode(seg, i, { insideShell: true })
+            )}
+          </AgentPreflightShell>
+        ) : null}
+        {showLiveThinkingTailAfterPreflight ? (
+          <LiveThinkingStatus key="live-thinking-tail" />
+        ) : null}
+      </div>
+    );
+  }
+
+  if (renderMode === "outcome") {
+    if (!hasOutcome) {
+      return (
+        <div
+          className={agentRootClass}
+          data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+          style={rootTurnFocusFillStyle}
+        />
+      );
+    }
+    if (outcome.length === 1 && outcome[0]!.type === "markdown") {
+      return (
+        <div
+          className={agentRootClass}
+          data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+          style={rootTurnFocusFillStyle}
+        >
+          <TypewriterMd enabled={typewriter} text={outcome[0]!.text} />
+          {showLiveThinkingTailInOutcome ? (
+            <LiveThinkingStatus key="live-thinking-tail" />
+          ) : null}
+        </div>
+      );
+    }
+    return (
+      <div
+        className={agentRootClass}
+        data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+        style={rootTurnFocusFillStyle}
+      >
+        {outcome.map((seg, i) => renderUnitNode(seg, i))}
+        {showLiveThinkingTailInOutcome ? (
+          <LiveThinkingStatus key="live-thinking-tail" />
+        ) : null}
+      </div>
+    );
+  }
+
+  if (renderUnits.length === 0) {
+    if (content.trim()) {
+      return (
+        <div
+          className={agentRootClass}
+          data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+          style={rootTurnFocusFillStyle}
+        >
+          <TypewriterMd enabled={typewriter} text={content} />
+        </div>
+      );
+    }
+    return (
+      <div
+        className={agentRootClass}
+        data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+        style={rootTurnFocusFillStyle}
+      />
+    );
+  }
+  if (renderUnits.length === 1 && renderUnits[0]!.type === "markdown") {
+    return (
+      <div
+        className={agentRootClass}
+        data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+        style={rootTurnFocusFillStyle}
+      >
+        <TypewriterMd enabled={typewriter} text={renderUnits[0]!.text} />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={agentRootClass}
+      data-turn-focus-fill-px={rootTurnFocusFillPxAttr}
+      style={rootTurnFocusFillStyle}
+    >
+      {renderUnits.map((seg, i) => renderUnitNode(seg, i))}
+      {showLiveThinkingTail ? (
+        <LiveThinkingStatus key="live-thinking-tail" />
+      ) : null}
+    </div>
+  );
+});

@@ -1,0 +1,55 @@
+<svg
+  aria-hidden="true"
+  fill="none"
+  height="120"
+  viewBox="0 0 120 120"
+  width="120"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="dl-outer"
+      x1="0"
+      x2="120"
+      y1="120"
+      y2="0"
+    >
+      <stop offset="0" stop-color="#E2E8F0" />
+      <stop offset="0.5" stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#F1F5F9" />
+    </linearGradient>
+    <linearGradient
+      gradientUnits="userSpaceOnUse"
+      id="dl-inner"
+      x1="0"
+      x2="120"
+      y1="120"
+      y2="0"
+    >
+      <stop offset="0" stop-color="#94A3B8" />
+      <stop offset="1" stop-color="#CBD5E1" />
+    </linearGradient>
+    <clipPath id="dl-clip">
+      <rect height="120" rx="26" ry="26" width="120" />
+    </clipPath>
+  </defs>
+
+  <!-- dark rounded background -->
+  <rect fill="#0c0c0e" height="120" rx="26" ry="26" width="120" />
+
+  <!--
+    Original paths are on a 24x24 grid.
+    Logo occupies roughly x=[3.5,20.5] y=[3,18.5], span 17 x 15.5 units.
+    We scale to 86% of 120px = 103.2px, then center.
+    scale = 103.2/24 = 4.3
+    offset = (120 - 24*4.3)/2 = (120 - 103.2)/2 = 8.4
+  -->
+  <g clip-path="url(#dl-clip)" transform="translate(8.4 8.4) scale(4.3)">
+    <path
+      d="M12 3L3.5 18.5H8.5L12 12L15.5 18.5H20.5L12 3Z"
+      fill="url(#dl-outer)"
+    />
+    <circle cx="12" cy="16" fill="url(#dl-inner)" r="2" />
+  </g>
+</svg>

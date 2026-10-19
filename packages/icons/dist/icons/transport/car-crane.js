@@ -1,0 +1,4 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const CarCraneIcon = /* @__PURE__ */ createIcon('CarCraneIcon', [["path", { "d": "M3 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" }], ["path", { "d": "M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" }], ["path", { "d": "M7 18h8m4 0h2v-6a5 5 0 0 0 -5 -5h-1l1.5 5h4.5" }], ["path", { "d": "M12 18v-11h3" }], ["path", { "d": "M3 17v-5h9" }], ["path", { "d": "M4 12v-6l18 -3v2" }], ["path", { "d": "M8 12v-4l-4 -2" }]]);

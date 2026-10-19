@@ -1,0 +1,668 @@
+app\(chat)\api\wakies\chat\route.ts:1:1 assist/source/organizeImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━━
+
+  × Sort these imports.
+  
+   > 1 │ import {
+       │ ^^^^^^^^
+   > 2 │   convertToModelMessages,
+   > 3 │   createUIMessageStream,
+   > 4 │   createUIMessageStreamResponse,
+        ...
+  > 74 │ } from "@/lib/wakies/shared/messages";
+  > 75 │ import { analyserMentions } from "@/lib/wakies/shared/mentions";
+       │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    76 │ import {
+    77 │   parseMentions,
+  
+  i Safe fix: Organize imports and exports (Biome)
+  
+     44  44 │   } from "@/lib/wakies/capabilities";
+     45  45 │   import { rejectCrossOriginMutation } from "@/lib/wakies/http";
+     46     │ - import·{·resolveWakieModelId·}·from·"@/lib/wakies/model";
+     47     │ - import·{
+     48     │ - ··appliquerMentionsPersistantes,
+     49     │ - ··contexteRegleSurLeFil,
+     50     │ - ··resoudreMentionsCapacites,
+     51     │ - }·from·"@/lib/wakies/mentions";
+         46 │ + import·{
+         47 │ + ··appliquerMentionsPersistantes,
+         48 │ + ··contexteRegleSurLeFil,
+         49 │ + ··resoudreMentionsCapacites,
+         50 │ + }·from·"@/lib/wakies/mentions";
+         51 │ + import·{·resolveWakieModelId·}·from·"@/lib/wakies/model";
+     52  52 │   import { createWakiePageTools } from "@/lib/wakies/page-tools";
+     53  53 │   import { inviteSysteme } from "@/lib/wakies/prompt";
+    ······· │ 
+     69  69 │     type WakieMessageInput,
+     70  70 │   } from "@/lib/wakies/queries";
+     71     │ - import·{
+     72     │ - ··incomingUserMessage,
+     73     │ - ··storedMessages,
+     74     │ - }·from·"@/lib/wakies/shared/messages";
+     75     │ - import·{·analyserMentions·}·from·"@/lib/wakies/shared/mentions";
+         71 │ + import·{·analyserMentions·}·from·"@/lib/wakies/shared/mentions";
+         72 │ + import·{
+         73 │ + ··incomingUserMessage,
+         74 │ + ··storedMessages,
+         75 │ + }·from·"@/lib/wakies/shared/messages";
+     76  76 │   import {
+     77  77 │     parseMentions,
+  
+
+app\(chat)\api\wakies\chat\route.ts:458:7 assist/source/useSortedKeys  FIXABLE  ━━━━━━━━━━━━━━━━━━━━
+
+  × The object properties are not sorted by key.
+  
+    456 │   const promptDuTour = (dessinateur: typeof wakie) =>
+    457 │     `${inviteSysteme({
+  > 458 │       instructions: dessinateur.instructions,
+        │       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  > 459 │       memories:
+         ...
+  > 493 │       // Pages, Espaces et Wakies invoqués (`@`) ou réglés sur le fil (`@@`).
+  > 494 │       documents: documentsTour,
+        │       ^^^^^^^^^^^^^^^^^^^^^^^^^
+    495 │     })}${
+    496 │       sourceUrl
+  
+  i Safe fix: Sort the object properties by key.
+  
+    456 456 │     const promptDuTour = (dessinateur: typeof wakie) =>
+    457 457 │       `${inviteSysteme({
+    458     │ - ······instructions:·dessinateur.instructions,
+        458 │ + ······//·Pages,·Espaces·et·Wakies·invoqués·(`@`)·ou·réglés·sur·le·fil·(`@@`).
+        459 │ + ······documents:·documentsTour,
+        460 │ + ······instructions:·dessinateur.instructions,
+    459 461 │         memories:
+    460 462 │           reglage.memoryAllowed && dessinateur.memoryAllowed
+    ······· │ 
+    490 492 │             }
+    491 493 │           : null,
+    492     │ - ······skills:·selection.skills.instructions,
+    493     │ - ······//·Pages,·Espaces·et·Wakies·invoqués·(`@`)·ou·réglés·sur·le·fil·(`@@`).
+    494     │ - ······documents:·documentsTour,
+        494 │ + ······skills:·selection.skills.instructions,
+    495 495 │       })}${
+    496 496 │         sourceUrl
+  
+
+app\(chat)\api\wakies\spaces\[spaceId]\export\route.ts:10:1 assist/source/organizeImports  FIXABLE  ━━━━━━━━━━
+
+  × Sort the imported names.
+  
+     8 │ } from "@/lib/wakies/http";
+     9 │ import { findSpace, listPages } from "@/lib/wakies/queries";
+  > 10 │ import {
+       │ ^^^^^^^^
+  > 11 │   ErreurExport,
+        ...
+  > 18 │   slugDeTitre,
+  > 19 │ } from "@/lib/wakies/shared/space-export";
+       │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    20 │ 
+    21 │ /**
+  
+  i Safe fix: Organize imports and exports (Biome)
+  
+      9   9 │   import { findSpace, listPages } from "@/lib/wakies/queries";
+     10  10 │   import {
+     11     │ - ··ErreurExport,
+         11 │ + ··construireArbre,
+     12  12 │     type EnTeteEspace,
+     13     │ - ··type·PageExport,
+     14     │ - ··construireArbre,
+     15     │ - ··espaceEnJSON,
+     16     │ - ··espaceEnMarkdown,
+     17     │ - ··fichiersExport,
+         13 │ + ··ErreurExport,
+         14 │ + ··espaceEnJSON,
+         15 │ + ··espaceEnMarkdown,
+         16 │ + ··fichiersExport,
+         17 │ + ··type·PageExport,
+     18  18 │     slugDeTitre,
+     19  19 │   } from "@/lib/wakies/shared/space-export";
+  
+
+app\(chat)\api\wakies\spaces\[spaceId]\export\route.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     42  42 │    * encodé. `no-store` parce qu'un Espace se modifie entre deux exports.
+     43  43 │    */
+     44     │ - function·reponseFichier(
+     45     │ - ··corps:·BodyInit,
+     46     │ - ··nom:·string,
+     47     │ - ··type:·string
+     48     │ - ):·Response·{
+         44 │ + function·reponseFichier(corps:·BodyInit,·nom:·string,·type:·string):·Response·{
+     49  45 │     return new Response(corps, {
+     50  46 │       headers: {
+  
+
+app\(wakies)\wakies\page.tsx:14:1 assist/source/organizeImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Sort these imports.
+  
+    12 │  */
+    13 │ 
+  > 14 │ import Image from "next/image";
+       │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  > 15 │ import { cookies } from "next/headers";
+       │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    16 │ import { PageBackButton } from "@/components/chat/page-back-button";
+    17 │ import { WakiesWorkspace } from "@/components/wakies/workspace-app";
+  
+  i Safe fix: Organize imports and exports (Biome)
+  
+     12  12 │    */
+     13  13 │   
+     14     │ - import·Image·from·"next/image";
+     15     │ - import·{·cookies·}·from·"next/headers";
+         14 │ + import·{·cookies·}·from·"next/headers";
+         15 │ + import·Image·from·"next/image";
+     16  16 │   import { PageBackButton } from "@/components/chat/page-back-button";
+     17  17 │   import { WakiesWorkspace } from "@/components/wakies/workspace-app";
+  
+
+components\settings\forms-tab.tsx:200:13 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    198 │               )}
+    199 │             </div>
+  > 200 │             <Button
+        │             ^^^^^^^
+  > 201 │               variant="outline"
+  > 202 │               size="sm"
+  > 203 │               onClick={handleCancelForm}
+  > 204 │               disabled={isSubmitting}
+  > 205 │             >
+        │             ^
+    206 │               Retour à la liste
+    207 │             </Button>
+  
+  i Safe fix: Sort the JSX props.
+  
+    199 199 │               </div>
+    200 200 │               <Button
+    201     │ - ··············variant="outline"
+    202     │ - ··············size="sm"
+    203     │ - ··············onClick={handleCancelForm}
+    204     │ - ··············disabled={isSubmitting}
+        201 │ + ··············disabled={isSubmitting}
+        202 │ + ··············onClick={handleCancelForm}
+        203 │ + ··············size="sm"
+        204 │ + ··············variant="outline"
+    205 205 │               >
+    206 206 │                 Retour à la liste
+  
+
+components\settings\forms-tab.tsx:210:11 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    208 │           </div>
+    209 │ 
+  > 210 │           <form onSubmit={handleSubmit} className="space-y-8">
+        │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    211 │             {/* Questions dynamiques */}
+    212 │             <div className="space-y-6">
+  
+  i Safe fix: Sort the JSX props.
+  
+    208 208 │             </div>
+    209 209 │   
+    210     │ - ··········<form·onSubmit={handleSubmit}·className="space-y-8">
+        210 │ + ··········<form·className="space-y-8"·onSubmit={handleSubmit}·>
+    211 211 │               {/* Questions dynamiques */}
+    212 212 │               <div className="space-y-6">
+  
+
+components\settings\forms-tab.tsx:217:19 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    216 │                 return (
+  > 217 │                   <div
+        │                   ^^^^
+  > 218 │                     key={question.id}
+  > 219 │                     className="surface-muted rounded-xl p-4 sm:p-5 space-y-3"
+  > 220 │                   >
+        │                   ^
+    221 │                     <div className="flex items-start justify-between gap-2">
+    222 │                       <label className="text-sm font-semibold text-foreground">
+  
+  i Safe fix: Sort the JSX props.
+  
+    216 216 │                   return (
+    217 217 │                     <div
+    218     │ - ····················key={question.id}
+    219     │ - ····················className="surface-muted·rounded-xl·p-4·sm:p-5·space-y-3"
+        218 │ + ····················className="surface-muted·rounded-xl·p-4·sm:p-5·space-y-3"
+        219 │ + ····················key={question.id}
+    220 220 │                     >
+    221 221 │                       <div className="flex items-start justify-between gap-2">
+  
+
+components\settings\forms-tab.tsx:238:23 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    236 │                     {/* Type Texte */}
+    237 │                     {question.type === "text" && (
+  > 238 │                       <Textarea
+        │                       ^^^^^^^^^
+  > 239 │                         placeholder="Votre réponse ici…"
+         ...
+  > 244 │                         className="field-input min-h-[90px]"
+  > 245 │                       />
+        │                       ^^
+    246 │                     )}
+    247 │ 
+  
+  i Safe fix: Sort the JSX props.
+  
+    237 237 │                       {question.type === "text" && (
+    238 238 │                         <Textarea
+    239     │ - ························placeholder="Votre·réponse·ici…"
+    240     │ - ························value={(qValue·as·string)·||·""}
+    241     │ - ························onChange={(e)·=>
+    242     │ - ··························handleTextAnswerChange(question.id,·e.target.value)
+    243     │ - ························}
+    244     │ - ························className="field-input·min-h-[90px]"
+        239 │ + ························className="field-input·min-h-[90px]"
+        240 │ + ························onChange={(e)·=>
+        241 │ + ··························handleTextAnswerChange(question.id,·e.target.value)
+        242 │ + ························}
+        243 │ + ························placeholder="Votre·réponse·ici…"
+        244 │ + ························value={(qValue·as·string)·||·""}
+    245 245 │                         />
+    246 246 │                       )}
+  
+
+components\settings\forms-tab.tsx:254:29 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    252 │                           const isSelected = qValue === option;
+    253 │                           return (
+  > 254 │                             <button
+        │                             ^^^^^^^
+  > 255 │                               type="button"
+         ...
+  > 265 │                               )}
+  > 266 │                             >
+        │                             ^
+    267 │                               <div
+    268 │                                 className={cn(
+  
+  i Safe fix: Sort the JSX props.
+  
+    253 253 │                             return (
+    254 254 │                               <button
+    255     │ - ······························type="button"
+        255 │ + ······························className={cn(
+        256 │ + ································"flex·items-center·gap-2.5·rounded-lg·border·p-3·text-left·text-sm·transition-colors",
+        257 │ + ································isSelected
+        258 │ + ··································?·"border-primary·bg-primary/10·font-medium·text-foreground"
+        259 │ + ··································:·"border-border/60·bg-card/40·hover:bg-muted/50·text-muted-foreground"
+        260 │ + ······························)}
+    256 261 │                                 key={option}
+    257 262 │                                 onClick={() =>
+    258 263 │                                   handleSingleChoiceChange(question.id, option)
+    259 264 │                                 }
+    260     │ - ······························className={cn(
+    261     │ - ································"flex·items-center·gap-2.5·rounded-lg·border·p-3·text-left·text-sm·transition-colors",
+    262     │ - ································isSelected
+    263     │ - ··································?·"border-primary·bg-primary/10·font-medium·text-foreground"
+    264     │ - ··································:·"border-border/60·bg-card/40·hover:bg-muted/50·text-muted-foreground"
+    265     │ - ······························)}
+        265 │ + ······························type="button"
+    266 266 │                               >
+    267 267 │                                 <div
+  
+
+components\settings\forms-tab.tsx:295:29 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    293 │                           const isSelected = currentArr.includes(option);
+    294 │                           return (
+  > 295 │                             <button
+        │                             ^^^^^^^
+  > 296 │                               type="button"
+         ...
+  > 306 │                               )}
+  > 307 │                             >
+        │                             ^
+    308 │                               <div
+    309 │                                 className={cn(
+  
+  i Safe fix: Sort the JSX props.
+  
+    294 294 │                             return (
+    295 295 │                               <button
+    296     │ - ······························type="button"
+        296 │ + ······························className={cn(
+        297 │ + ································"flex·items-center·gap-2.5·rounded-lg·border·p-3·text-left·text-sm·transition-colors",
+        298 │ + ································isSelected
+        299 │ + ··································?·"border-primary·bg-primary/10·font-medium·text-foreground"
+        300 │ + ··································:·"border-border/60·bg-card/40·hover:bg-muted/50·text-muted-foreground"
+        301 │ + ······························)}
+    297 302 │                                 key={option}
+    298 303 │                                 onClick={() =>
+    299 304 │                                   handleMultiChoiceToggle(question.id, option)
+    300 305 │                                 }
+    301     │ - ······························className={cn(
+    302     │ - ································"flex·items-center·gap-2.5·rounded-lg·border·p-3·text-left·text-sm·transition-colors",
+    303     │ - ································isSelected
+    304     │ - ··································?·"border-primary·bg-primary/10·font-medium·text-foreground"
+    305     │ - ··································:·"border-border/60·bg-card/40·hover:bg-muted/50·text-muted-foreground"
+    306     │ - ······························)}
+        306 │ + ······························type="button"
+    307 307 │                               >
+    308 308 │                                 <div
+  
+
+components\settings\forms-tab.tsx:333:29 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    331 │                           const isSelected = Number(qValue) >= star;
+    332 │                           return (
+  > 333 │                             <button
+        │                             ^^^^^^^
+  > 334 │                               type="button"
+         ...
+  > 342 │                               )}
+  > 343 │                             >
+        │                             ^
+    344 │                               {star}
+    345 │                             </button>
+  
+  i Safe fix: Sort the JSX props.
+  
+    332 332 │                             return (
+    333 333 │                               <button
+    334     │ - ······························type="button"
+        334 │ + ······························className={cn(
+        335 │ + ································"size-10·rounded-lg·border·text-sm·font-semibold·transition-all·flex·items-center·justify-center",
+        336 │ + ································isSelected
+        337 │ + ··································?·"border-warning·bg-warning/15·text-warning·font-bold·scale-105"
+        338 │ + ··································:·"border-border/60·bg-card/50·text-muted-foreground·hover:bg-muted/50"
+        339 │ + ······························)}
+    335 340 │                                 key={star}
+    336 341 │                                 onClick={() => handleRatingChange(question.id, star)}
+    337     │ - ······························className={cn(
+    338     │ - ································"size-10·rounded-lg·border·text-sm·font-semibold·transition-all·flex·items-center·justify-center",
+    339     │ - ································isSelected
+    340     │ - ··································?·"border-warning·bg-warning/15·text-warning·font-bold·scale-105"
+    341     │ - ··································:·"border-border/60·bg-card/50·text-muted-foreground·hover:bg-muted/50"
+    342     │ - ······························)}
+        342 │ + ······························type="button"
+    343 343 │                               >
+    344 344 │                                 {star}
+  
+
+components\settings\forms-tab.tsx:378:21 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    377 │                   return (
+  > 378 │                     <button
+        │                     ^^^^^^^
+  > 379 │                       type="button"
+         ...
+  > 387 │                       )}
+  > 388 │                     >
+        │                     ^
+    389 │                       <div className="flex items-center justify-between w-full">
+    390 │                         <div className="flex items-center gap-2">
+  
+  i Safe fix: Sort the JSX props.
+  
+    377 377 │                     return (
+    378 378 │                       <button
+    379     │ - ······················type="button"
+        379 │ + ······················className={cn(
+        380 │ + ························"flex·flex-col·gap-2·rounded-xl·border·p-4·text-left·transition-all",
+        381 │ + ························isSelected
+        382 │ + ··························?·"border-primary·bg-primary/10·ring-1·ring-primary·text-foreground·shadow-sm"
+        383 │ + ··························:·"border-border/60·bg-card/50·hover:bg-muted/40·text-muted-foreground"
+        384 │ + ······················)}
+    380 385 │                         key={type}
+    381 386 │                         onClick={() => setSelectedReward(type)}
+    382     │ - ······················className={cn(
+    383     │ - ························"flex·flex-col·gap-2·rounded-xl·border·p-4·text-left·transition-all",
+    384     │ - ························isSelected
+    385     │ - ··························?·"border-primary·bg-primary/10·ring-1·ring-primary·text-foreground·shadow-sm"
+    386     │ - ··························:·"border-border/60·bg-card/50·hover:bg-muted/40·text-muted-foreground"
+    387     │ - ······················)}
+        387 │ + ······················type="button"
+    388 388 │                       >
+    389 389 │                         <div className="flex items-center justify-between w-full">
+  
+
+components\settings\forms-tab.tsx:422:15 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    420 │             {/* Boutons d'action */}
+    421 │             <div className="flex items-center justify-end gap-3 pt-2">
+  > 422 │               <Button
+        │               ^^^^^^^
+  > 423 │                 type="button"
+  > 424 │                 variant="outline"
+  > 425 │                 onClick={handleCancelForm}
+  > 426 │                 disabled={isSubmitting}
+  > 427 │               >
+        │               ^
+    428 │                 Annuler
+    429 │               </Button>
+  
+  i Safe fix: Sort the JSX props.
+  
+    421 421 │               <div className="flex items-center justify-end gap-3 pt-2">
+    422 422 │                 <Button
+    423     │ - ················type="button"
+    424     │ - ················variant="outline"
+    425     │ - ················onClick={handleCancelForm}
+    426     │ - ················disabled={isSubmitting}
+        423 │ + ················disabled={isSubmitting}
+        424 │ + ················onClick={handleCancelForm}
+        425 │ + ················type="button"
+        426 │ + ················variant="outline"
+    427 427 │                 >
+    428 428 │                   Annuler
+  
+
+components\settings\forms-tab.tsx:430:15 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    428 │                 Annuler
+    429 │               </Button>
+  > 430 │               <Button type="submit" disabled={isSubmitting}>
+        │               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    431 │                 {isSubmitting && (
+    432 │                   <Loader2Icon className="mr-2 size-4 animate-spin" />
+  
+  i Safe fix: Sort the JSX props.
+  
+    428 428 │                   Annuler
+    429 429 │                 </Button>
+    430     │ - ··············<Button·type="submit"·disabled={isSubmitting}>
+        430 │ + ··············<Button·disabled={isSubmitting}·type="submit"·>
+    431 431 │                   {isSubmitting && (
+    432 432 │                     <Loader2Icon className="mr-2 size-4 animate-spin" />
+  
+
+components\settings\forms-tab.tsx:444:22 lint/style/useConsistentArrowReturn  FIXABLE  ━━━━━━━━━━━━━
+
+  × The body of this arrow function contains a single return statement.
+  
+    442 │       {!selectedForm && forms.length > 0 && (
+    443 │         <div className="grid gap-4 sm:grid-cols-2">
+  > 444 │           {forms.map((form) => {
+        │                      ^^^^^^^^^^^
+  > 445 │             return (
+         ...
+  > 517 │             );
+  > 518 │           })}
+        │           ^
+    519 │         </div>
+    520 │       )}
+  
+  i Safe fix: Remove the return statement.
+  
+    442 442 │         {!selectedForm && forms.length > 0 && (
+    443 443 │           <div className="grid gap-4 sm:grid-cols-2">
+    444     │ - ··········{forms.map((form)·=>·{
+    445     │ - ············return·(
+        444 │ + ··········{forms.map((form)·=>·(
+    446 445 │                 <div
+    447 446 │                   key={form.id}
+    ······· │ 
+    515 514 │                   </div>
+    516 515 │                 </div>
+    517     │ - ············);
+    518     │ - ··········})}
+        516 │ + ············))}
+    519 517 │           </div>
+    520 518 │         )}
+  
+
+components\settings\forms-tab.tsx:446:15 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    444 │           {forms.map((form) => {
+    445 │             return (
+  > 446 │               <div
+        │               ^^^^
+  > 447 │                 key={form.id}
+         ...
+  > 451 │                 )}
+  > 452 │               >
+        │               ^
+    453 │                 <div className="space-y-3">
+    454 │                   <div className="flex items-center justify-between gap-2">
+  
+  i Safe fix: Sort the JSX props.
+  
+    445 445 │               return (
+    446 446 │                 <div
+    447     │ - ················key={form.id}
+    448     │ - ················className={cn(
+    449     │ - ··················"surface-card·flex·flex-col·justify-between·transition-all·hover:border-border",
+    450     │ - ··················form.hasSubmitted·&&·"opacity-80"
+    451     │ - ················)}
+        447 │ + ················className={cn(
+        448 │ + ··················"surface-card·flex·flex-col·justify-between·transition-all·hover:border-border",
+        449 │ + ··················form.hasSubmitted·&&·"opacity-80"
+        450 │ + ················)}
+        451 │ + ················key={form.id}
+    452 452 │                 >
+    453 453 │                   <div className="space-y-3">
+  
+
+components\settings\forms-tab.tsx:507:21 assist/source/useSortedAttributes  FIXABLE  ━━━━━━━━━━━━━━━
+
+  × The attributes are not sorted. 
+  
+    505 │                     </div>
+    506 │                   ) : (
+  > 507 │                     <Button
+        │                     ^^^^^^^
+  > 508 │                       size="sm"
+  > 509 │                       onClick={() => handleStartForm(form)}
+  > 510 │                       className="w-full sm:w-auto"
+  > 511 │                     >
+        │                     ^
+    512 │                       Répondre au formulaire
+    513 │                     </Button>
+  
+  i Safe fix: Sort the JSX props.
+  
+    506 506 │                     ) : (
+    507 507 │                       <Button
+    508     │ - ······················size="sm"
+        508 │ + ······················className="w-full·sm:w-auto"
+    509 509 │                         onClick={() => handleStartForm(form)}
+    510     │ - ······················className="w-full·sm:w-auto"
+        510 │ + ······················size="sm"
+    511 511 │                       >
+    512 512 │                         Répondre au formulaire
+  
+
+components\settings\forms-tab.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    149 149 │             <p className="mt-1 text-sm text-muted-foreground">
+    150 150 │               Répondez à nos formulaires pour partager vos retours et obtenez en
+    151     │ - ············récompense·la·réinitialisation·immédiate·de·la·limite·de·votre·choix.
+        151 │ + ············récompense·la·réinitialisation·immédiate·de·la·limite·de·votre
+        152 │ + ············choix.
+    152 153 │             </p>
+    153 154 │           </div>
+    ······· │ 
+    334 335 │                                 type="button"
+    335 336 │                                 key={star}
+    336     │ - ······························onClick={()·=>·handleRatingChange(question.id,·star)}
+        337 │ + ······························onClick={()·=>
+        338 │ + ································handleRatingChange(question.id,·star)
+        339 │ + ······························}
+    337 340 │                                 className={cn(
+    338 341 │                                   "size-10 rounded-lg border text-sm font-semibold transition-all flex items-center justify-center",
+  
+
+tests\unit\wakies-space-export.test.ts:3:1 assist/source/organizeImports  FIXABLE  ━━━━━━━━━━━━━━━━━
+
+  × Sort the imported names.
+  
+     1 │ import { unzipSync, zipSync } from "fflate";
+     2 │ import { describe, expect, it } from "vitest";
+   > 3 │ import {
+       │ ^^^^^^^^
+   > 4 │   ErreurExport,
+        ...
+  > 12 │   slugDeTitre,
+  > 13 │ } from "@/lib/wakies/shared/space-export";
+       │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    14 │ 
+    15 │ /**
+  
+  i Safe fix: Organize imports and exports (Biome)
+  
+      2   2 │   import { describe, expect, it } from "vitest";
+      3   3 │   import {
+      4     │ - ··ErreurExport,
+      5     │ - ··LIMITES_EXPORT,
+      6     │ - ··type·PageExport,
+      7     │ - ··construireArbre,
+      8     │ - ··espaceEnJSON,
+      9     │ - ··espaceEnMarkdown,
+     10     │ - ··fichiersExport,
+     11     │ - ··nomDeFichierPage,
+          4 │ + ··construireArbre,
+          5 │ + ··ErreurExport,
+          6 │ + ··espaceEnJSON,
+          7 │ + ··espaceEnMarkdown,
+          8 │ + ··fichiersExport,
+          9 │ + ··LIMITES_EXPORT,
+         10 │ + ··nomDeFichierPage,
+         11 │ + ··type·PageExport,
+     12  12 │     slugDeTitre,
+     13  13 │   } from "@/lib/wakies/shared/space-export";
+  
+
+The number of diagnostics exceeds the limit allowed. Use --max-diagnostics to increase it.
+Diagnostics not shown: 47.
+Checked 1490 files in 33s. No fixes applied.
+Found 67 errors.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

@@ -1,0 +1,71 @@
+{
+  "model": "SleepSession",
+  "config": {
+    "name": "SleepSession",
+    "label": "Sommeil",
+    "description": "Gérez vos sommeil depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Session",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "date",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "durationHours",
+        "label": "Durée (h)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "qualityScore",
+        "label": "Qualité",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "logged",
+          "reviewed",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifySleepSession",
+        "label": "Notifications : sommeil",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveSleepSession",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section sommeil."
+      },
+      {
+        "key": "approveSleepSession",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "sleep-session-demo-1",
+    "title": "Nuit du 4 octobre",
+    "date": "2026-10-04",
+    "durationHours": 128,
+    "qualityScore": 128,
+    "status": "logged"
+  }
+}

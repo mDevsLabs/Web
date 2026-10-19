@@ -1,7 +1,7 @@
 "use client";
 
-import { MicIcon, MicOffIcon } from "lucide-react";
-import { useCallback, useRef } from "react";
+import { MicIcon, MicOffIcon } from "@mdevs/icons";
+import { type RefObject, useCallback, useRef } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,21 @@ import { cn } from "@/lib/utils";
 export interface VoiceRecorderButtonProps {
   input: string;
   setInput: (value: string | ((prev: string) => string)) => void;
+  /**
+   * Champ de saisie à replacer à la fin du texte dicté.
+   *
+   * Le textarea est contrôlé : sans ce report après le rendu, la transcription
+   * arrivait dans la `value` mais le caret restait à sa position précédente,
+   * au milieu de la phrase dictée — la frappe suivante s'insérait au mauvais
+   * endroit.
+   */
+  textareaRef?: RefObject<HTMLTextAreaElement | null>;
 }
 
 export function VoiceRecorderButton({
   input,
   setInput,
+  textareaRef,
 }: VoiceRecorderButtonProps) {
   const speechBaseRef = useRef<string>("");
 
@@ -32,14 +42,31 @@ export function VoiceRecorderButton({
 
   const handleSpeechTranscript = useCallback(
     (text: string, isFinal: boolean) => {
-      const base = speechBaseRef.current;
-      const next = base ? `${base} ${text}` : text;
+      // Un seul espace de jonction : le texte déjà tapé peut finir par un
+      // espace et le moteur de dictée peut en fournir un — deux espaces
+      // laissaient un « trou » sous le curseur.
+      const base = speechBaseRef.current.trimEnd();
+      const apport = text.trimStart();
+      if (!apport) {
+        return;
+      }
+      const next = base ? `${base} ${apport}` : apport;
       if (isFinal) {
         speechBaseRef.current = next;
       }
       setInput(next);
+
+      const zone = textareaRef?.current;
+      if (zone) {
+        // Après le rendu du champ contrôlé, pas pendant.
+        requestAnimationFrame(() => {
+          try {
+            zone.setSelectionRange(next.length, next.length);
+          } catch {}
+        });
+      }
     },
-    [setInput]
+    [setInput, textareaRef]
   );
 
   const {
@@ -56,6 +83,9 @@ export function VoiceRecorderButton({
       return;
     }
     if (!isListening) {
+      // La base est le texte présent au démarrage. `trimEnd` au moment de la
+      // jonction évite un second espace si l'utilisateur a déjà tapé une
+      // espace avant de dicter.
       speechBaseRef.current = input;
     }
     toggleListening();

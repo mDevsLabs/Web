@@ -1,0 +1,161 @@
+"use server";
+
+import { neon } from "@neondatabase/serverless";
+import { getSessionIdentity } from "@/lib/site/session-auth";
+
+function colorFor(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++)
+    hash = (hash * 31 + name.charCodeAt(i)) | 0;
+  return `hsl(${Math.abs(hash) % 360} 65% 55%)`;
+}
+
+export async function getDashboardStats() {
+  try {
+    const databaseUrl = process.env.DATABASE_URL;
+    if (!databaseUrl) {
+      throw new Error(
+        "La variable d'environnement DATABASE_URL est manquante."
+      );
+    }
+
+    const identity = await getSessionIdentity();
+    if (!identity) {
+      return { error: "Authentification requise.", success: false };
+    }
+    const userId = identity.userId;
+
+    const sql = neon(databaseUrl);
+
+    // Total des requêtes
+    const totalRequestsResult = await sql`
+      SELECT COUNT(*) as count 
+      FROM mprojects_api_logs l
+      JOIN mprojects_api_keys k ON l.api_key = k.api_key OR l.api_key LIKE (k.api_key || '%') OR k.api_key LIKE (l.api_key || '%')
+      LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+      WHERE k.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text
+    `;
+    const totalRequests = Number.parseInt(totalRequestsResult[0].count, 10);
+
+    // Moyenne de latence
+    const avgLatencyResult = await sql`
+      SELECT AVG(latency_ms) as avg_latency 
+      FROM mprojects_api_logs l
+      JOIN mprojects_api_keys k ON l.api_key = k.api_key OR l.api_key LIKE (k.api_key || '%') OR k.api_key LIKE (l.api_key || '%')
+      LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+      WHERE k.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text
+    `;
+    const avgLatency = avgLatencyResult[0].avg_latency
+      ? Math.round(Number.parseFloat(avgLatencyResult[0].avg_latency))
+      : 0;
+
+    // Taux d'erreur
+    const errorRequestsResult = await sql`
+      SELECT COUNT(*) as error_count 
+      FROM mprojects_api_logs l
+      JOIN mprojects_api_keys k ON l.api_key = k.api_key OR l.api_key LIKE (k.api_key || '%') OR k.api_key LIKE (l.api_key || '%')
+      LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+      WHERE (k.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text) AND status_code >= 400
+    `;
+    const errorCount = Number.parseInt(errorRequestsResult[0].error_count, 10);
+    const successRate =
+      totalRequests > 0
+        ? Math.round(((totalRequests - errorCount) / totalRequests) * 100)
+        : 100;
+
+    // Données par route (Endpoints utilisés)
+    const endpointsResult = await sql`
+      SELECT l.endpoint as name, COUNT(*) as value
+      FROM mprojects_api_logs l
+      JOIN mprojects_api_keys k ON l.api_key = k.api_key OR l.api_key LIKE (k.api_key || '%') OR k.api_key LIKE (l.api_key || '%')
+      LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+      WHERE k.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text
+      GROUP BY l.endpoint
+      ORDER BY value DESC
+    `;
+    const endpointsData = endpointsResult.map((r) => ({
+      color: colorFor(String(r.name || "")),
+      name: r.name,
+      value: Number.parseInt(r.value, 10),
+    }));
+
+    // Données sur les 30 derniers jours (graphique principal)
+    const monthlyDataResult = await sql`
+      WITH date_series AS (
+        SELECT generate_series(
+          current_date - interval '29 days',
+          current_date,
+          '1 day'::interval
+        )::date AS date
+      )
+      SELECT 
+        to_char(d.date, 'DD/MM') as date_label,
+        COALESCE(COUNT(l.id), 0) as requests,
+        COALESCE(SUM(CASE WHEN l.status_code >= 400 THEN 1 ELSE 0 END), 0) as errors
+      FROM date_series d
+      LEFT JOIN (
+        SELECT al.id, al.status_code, al.created_at::date as date
+        FROM mprojects_api_logs al
+        JOIN mprojects_api_keys ak ON al.api_key = ak.api_key OR al.api_key LIKE (ak.api_key || '%') OR ak.api_key LIKE (al.api_key || '%')
+        LEFT JOIN users u ON ak.user_id = u.id::text OR ak.user_id = u.username OR ak.user_id = u.email
+        WHERE ak.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text
+      ) l ON d.date = l.date
+      GROUP BY d.date
+      ORDER BY d.date ASC
+    `;
+    const monthlyData = monthlyDataResult.map((r) => ({
+      date: r.date_label,
+      errors: Number.parseInt(r.errors, 10),
+      requests: Number.parseInt(r.requests, 10),
+    }));
+
+    // Latence sur les 24 dernières heures
+    const hourlyLatencyResult = await sql`
+      WITH hour_series AS (
+        SELECT generate_series(
+          date_trunc('hour', current_timestamp - interval '23 hours'),
+          date_trunc('hour', current_timestamp),
+          '1 hour'::interval
+        ) AS hour_ts
+      )
+      SELECT 
+        to_char(h.hour_ts, 'HH24:MI') as time_label,
+        COALESCE(AVG(l.latency_ms), 0) as latency
+      FROM hour_series h
+      LEFT JOIN (
+        SELECT al.latency_ms, date_trunc('hour', al.created_at) as hour_ts
+        FROM mprojects_api_logs al
+        JOIN mprojects_api_keys ak ON al.api_key = ak.api_key OR al.api_key LIKE (ak.api_key || '%') OR ak.api_key LIKE (al.api_key || '%')
+        LEFT JOIN users u ON ak.user_id = u.id::text OR ak.user_id = u.username OR ak.user_id = u.email
+        WHERE ak.user_id = ${userId}::text OR u.id::text = ${userId}::text OR u.username = ${userId}::text OR u.email = ${userId}::text
+      ) l ON h.hour_ts = l.hour_ts
+      GROUP BY h.hour_ts
+      ORDER BY h.hour_ts ASC
+    `;
+    const hourlyData = hourlyLatencyResult.map((r) => ({
+      latency: Math.round(Number.parseFloat(r.latency)),
+      time: r.time_label,
+    }));
+
+    return {
+      stats: {
+        avgLatency,
+        endpointsData,
+        hourlyData,
+        monthlyData,
+        successRate,
+        totalRequests,
+      },
+      success: true,
+    };
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des stats du dashboard:",
+      error
+    );
+    return {
+      error: "Impossible de récupérer les statistiques du dashboard",
+      success: false,
+    };
+  }
+}

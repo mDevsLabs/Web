@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "AccessToken", "label": "Jetons d\u2019acc\xE8s", "description": "G\xE9rez vos jetons d\u2019acc\xE8s depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Propri\xE9taire", "kind": "text", "required": true }, { "key": "scope", "label": "Permissions", "kind": "text", "required": true }, { "key": "expiresOn", "label": "Expiration", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "expired", "revoked"] }], "titleKey": "name", "settings": [{ "key": "notifyAccessToken", "label": "Notifications : jetons d\u2019acc\xE8s", "description": "Recevoir un signal lors des changements." }, { "key": "archiveAccessToken", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section jetons d\u2019acc\xE8s." }, { "key": "approveAccessToken", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

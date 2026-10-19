@@ -1,0 +1,89 @@
+import { describe, expect, it } from "vitest";
+import {
+  parseAgentAssistantPayload,
+  stringifyAgentAssistantPayload,
+} from "../../src/agentStructuredMessage.js";
+import {
+  expandStructuredAssistantPayloadToAnthropic,
+  expandStructuredAssistantPayloadToOpenAI,
+} from "./structuredAssistantToApi.js";
+
+describe("structuredAssistantToApi", () => {
+  it("expands text + tool + text to OpenAI with assistant after last tool", () => {
+    const raw = stringifyAgentAssistantPayload({
+      _asyncAssistant: 1,
+      parts: [
+        { text: "Hi", type: "text" },
+        {
+          args: { file_path: "x.ts" },
+          name: "Read",
+          result: "1|ok",
+          success: true,
+          toolUseId: "call_a",
+          type: "tool",
+        },
+        { text: "Done.", type: "text" },
+      ],
+      v: 1,
+    });
+    const p = parseAgentAssistantPayload(raw)!;
+    const oa = expandStructuredAssistantPayloadToOpenAI(p);
+    expect(oa.length).toBeGreaterThanOrEqual(3);
+    expect(oa[0]).toMatchObject({
+      role: "assistant",
+      tool_calls: expect.any(Array),
+    });
+    expect(oa[1]).toMatchObject({ role: "tool", tool_call_id: "call_a" });
+    expect(oa[oa.length - 1]).toMatchObject({
+      content: "Done.",
+      role: "assistant",
+    });
+  });
+
+  it("falls back to single assistant string when expansion ends on tool only", () => {
+    const raw = stringifyAgentAssistantPayload({
+      _asyncAssistant: 1,
+      parts: [
+        {
+          args: { pattern: "**/*" },
+          name: "Glob",
+          result: "a\nb",
+          success: true,
+          toolUseId: "call_b",
+          type: "tool",
+        },
+      ],
+      v: 1,
+    });
+    const p = parseAgentAssistantPayload(raw)!;
+    const oa = expandStructuredAssistantPayloadToOpenAI(p);
+    expect(oa).toHaveLength(1);
+    expect(oa[0]!.role).toBe("assistant");
+    expect(String((oa[0] as { content?: unknown }).content)).toContain(
+      "<tool_call"
+    );
+  });
+
+  it("Anthropic: tool-only payload expands to assistant + user tool_result blocks", () => {
+    const raw = stringifyAgentAssistantPayload({
+      _asyncAssistant: 1,
+      parts: [
+        {
+          args: { pattern: "x" },
+          name: "Grep",
+          result: "No matches found.",
+          success: true,
+          toolUseId: "tu_1",
+          type: "tool",
+        },
+      ],
+      v: 1,
+    });
+    const p = parseAgentAssistantPayload(raw)!;
+    const am = expandStructuredAssistantPayloadToAnthropic(p);
+    expect(am).toHaveLength(2);
+    expect(am[0]!.role).toBe("assistant");
+    expect(Array.isArray((am[0] as { content: unknown }).content)).toBe(true);
+    expect(am[1]!.role).toBe("user");
+  });
+});

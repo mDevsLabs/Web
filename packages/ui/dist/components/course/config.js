@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Course", "label": "Formations", "description": "G\xE9rez vos formations depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "instructor", "label": "Formateur", "kind": "text", "required": true }, { "key": "durationHours", "label": "Dur\xE9e (h)", "kind": "number", "required": true }, { "key": "enrollmentCount", "label": "Inscrits", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "published", "archived"] }], "titleKey": "title", "settings": [{ "key": "notifyCourse", "label": "Notifications : formations", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCourse", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section formations." }, { "key": "approveCourse", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

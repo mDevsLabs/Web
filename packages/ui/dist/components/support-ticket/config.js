@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "SupportTicket", "label": "Tickets de support", "description": "G\xE9rez vos tickets de support depuis une interface claire.", "fields": [{ "key": "subject", "label": "Objet", "kind": "text", "required": true }, { "key": "customer", "label": "Client", "kind": "text", "required": true }, { "key": "priority", "label": "Priorit\xE9", "kind": "text", "required": true }, { "key": "createdOn", "label": "Cr\xE9ation", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["open", "in-progress", "resolved", "closed"] }], "titleKey": "subject", "settings": [{ "key": "notifySupportTicket", "label": "Notifications : tickets de support", "description": "Recevoir un signal lors des changements." }, { "key": "archiveSupportTicket", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section tickets de support." }, { "key": "approveSupportTicket", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

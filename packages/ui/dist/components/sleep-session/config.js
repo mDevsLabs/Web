@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "SleepSession", "label": "Sommeil", "description": "G\xE9rez vos sommeil depuis une interface claire.", "fields": [{ "key": "title", "label": "Session", "kind": "text", "required": true }, { "key": "date", "label": "Date", "kind": "date", "required": true }, { "key": "durationHours", "label": "Dur\xE9e (h)", "kind": "number", "required": true }, { "key": "qualityScore", "label": "Qualit\xE9", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["logged", "reviewed", "archived"] }], "titleKey": "title", "settings": [{ "key": "notifySleepSession", "label": "Notifications : sommeil", "description": "Recevoir un signal lors des changements." }, { "key": "archiveSleepSession", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section sommeil." }, { "key": "approveSleepSession", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

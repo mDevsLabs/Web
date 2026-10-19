@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Goal", "label": "Objectifs", "description": "G\xE9rez vos objectifs depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "progress", "label": "Avancement (%)", "kind": "number", "required": true }, { "key": "dueDate", "label": "\xC9ch\xE9ance", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "achieved", "paused"] }], "titleKey": "title", "settings": [{ "key": "notifyGoal", "label": "Notifications : objectifs", "description": "Recevoir un signal lors des changements." }, { "key": "archiveGoal", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section objectifs." }, { "key": "approveGoal", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

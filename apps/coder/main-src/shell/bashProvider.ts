@@ -1,0 +1,266 @@
+/**
+ * Bash Shell Provider
+ *
+ * 提供 Bash/Zsh Shell 的执行逻辑
+ * 适用于 macOS, Linux, WSL 等类 Unix 系统
+ */
+
+import { execFileSync } from "node:child_process";
+import { accessSync, constants } from "node:fs";
+import * as path from "node:path";
+import type {
+  ShellCommandOptions,
+  ShellCommandResult,
+  ShellProvider,
+} from "./shellProvider";
+
+/** Bash Shell Provider 实现 */
+export class BashShellProvider implements ShellProvider {
+  readonly type = "bash" as const;
+  readonly shellPath: string;
+
+  constructor(shellPath: string) {
+    this.shellPath = shellPath;
+  }
+
+  /**
+   * 构建执行命令
+   *
+   * Bash 使用 `-lc` 参数：
+   * -l: 作为 login shell 启动，加载 profile
+   * -c: 执行后面的命令字符串
+   */
+  buildCommand(
+    userCommand: string,
+    _options?: ShellCommandOptions
+  ): ShellCommandResult {
+    return {
+      args: ["-lc", userCommand],
+      command: this.shellPath,
+    };
+  }
+
+  /** Bash 默认为非交互式 */
+  isInteractive(): boolean {
+    return false;
+  }
+
+  /**
+   * 获取交互式 Shell 参数
+   * -i: interactive mode
+   */
+  getInteractiveArgs(): string[] {
+    return ["-i"];
+  }
+}
+
+/**
+ * 检查路径是否为可执行文件
+ */
+function isExecutable(shellPath: string): boolean {
+  try {
+    accessSync(shellPath, constants.X_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isSupportedShellPath(shellPath: string): boolean {
+  return (
+    /(?:^|[\\/])(bash|zsh|sh)(?:\.exe)?$/i.test(shellPath) ||
+    /^(bash|zsh|sh)(?:\.exe)?$/i.test(shellPath)
+  );
+}
+
+function uniquePaths(paths: string[]): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  for (const p of paths) {
+    const normalized = p.trim();
+    if (!normalized) continue;
+    const key =
+      process.platform === "win32" ? normalized.toLowerCase() : normalized;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(normalized);
+  }
+  return out;
+}
+
+function findCommandsOnPath(command: string): string[] {
+  const pathEnv = process.env.PATH ?? "";
+  const pathExts =
+    process.platform === "win32"
+      ? (process.env.PATHEXT ?? ".EXE;.CMD;.BAT;.COM")
+          .split(";")
+          .filter(Boolean)
+      : [""];
+  const names =
+    process.platform === "win32" && !path.extname(command)
+      ? pathExts.map((ext) => `${command}${ext.toLowerCase()}`)
+      : [command];
+  const found: string[] = [];
+  for (const rawDir of pathEnv.split(path.delimiter)) {
+    const dir = rawDir.trim().replace(/^"|"$/g, "");
+    if (!dir) continue;
+    for (const name of names) {
+      const candidate = path.join(dir, name);
+      if (isExecutable(candidate)) {
+        found.push(candidate);
+      }
+    }
+  }
+  return uniquePaths(found);
+}
+
+function getGitBashCandidatesFromGitExe(gitExe: string): string[] {
+  const gitDir = path.dirname(gitExe);
+  const rootFromCmd =
+    path.basename(gitDir).toLowerCase() === "cmd" ? path.dirname(gitDir) : null;
+  const rootFromMingw = path
+    .basename(path.dirname(gitDir))
+    .toLowerCase()
+    .startsWith("mingw")
+    ? path.dirname(path.dirname(gitDir))
+    : null;
+  const root = rootFromCmd ?? rootFromMingw;
+  if (!root) return [];
+  return [
+    path.join(root, "bin", "bash.exe"),
+    path.join(root, "usr", "bin", "bash.exe"),
+  ];
+}
+
+export function probeUnixShell(shellPath: string): boolean {
+  if (!isSupportedShellPath(shellPath) || !isExecutable(shellPath)) {
+    return false;
+  }
+  try {
+    const out = execFileSync(shellPath, ["-lc", "printf __async_bash_ok__"], {
+      stdio: ["ignore", "pipe", "ignore"],
+      timeout: 3000,
+      windowsHide: true,
+    });
+    return (
+      Buffer.isBuffer(out) &&
+      out.toString("ascii").includes("__async_bash_ok__")
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * 常见的 Bash/Zsh 路径列表（按优先级排序）
+ */
+const COMMON_UNIX_SHELLS = [
+  "/bin/bash",
+  "/usr/bin/bash",
+  "/usr/local/bin/bash",
+  "/opt/homebrew/bin/bash",
+  "/bin/zsh",
+  "/usr/bin/zsh",
+  "/usr/local/bin/zsh",
+  "/opt/homebrew/bin/zsh",
+];
+
+/**
+ * Windows 上常见的 POSIX bash 安装位置（Git for Windows / MSYS2 / WSL）。
+ * 顺序：Git Bash 优先（最常见），然后 MSYS2 / Cygwin，最后 WSL。
+ */
+function getWindowsBashCandidates(): string[] {
+  const programFiles = process.env["ProgramFiles"] ?? "C:\\Program Files";
+  const programFilesX86 =
+    process.env["ProgramFiles(x86)"] ?? "C:\\Program Files (x86)";
+  const localAppData = process.env.LOCALAPPDATA ?? "";
+  const systemRoot = process.env.SystemRoot ?? "C:\\Windows";
+
+  const candidates = [
+    "C:\\Git\\bin\\bash.exe",
+    "C:\\Git\\usr\\bin\\bash.exe",
+    `${programFiles}\\Git\\bin\\bash.exe`,
+    `${programFiles}\\Git\\usr\\bin\\bash.exe`,
+    `${programFilesX86}\\Git\\bin\\bash.exe`,
+    `${programFilesX86}\\Git\\usr\\bin\\bash.exe`,
+    "C:\\msys64\\usr\\bin\\bash.exe",
+    "C:\\cygwin64\\bin\\bash.exe",
+    `${systemRoot}\\System32\\bash.exe`, // WSL launcher
+  ];
+  if (localAppData) {
+    candidates.unshift(`${localAppData}\\Programs\\Git\\bin\\bash.exe`);
+  }
+  const fromGitExe = findCommandsOnPath("git").flatMap(
+    getGitBashCandidatesFromGitExe
+  );
+  const fromPath = findCommandsOnPath("bash");
+  return uniquePaths([...candidates, ...fromGitExe, ...fromPath]);
+}
+
+/**
+ * 查找可用的 Unix Shell
+ *
+ * 优先级：
+ * 1. CLAUDE_CODE_SHELL 环境变量（用户自定义）
+ * 2. SHELL 环境变量（如果是 bash 或 zsh）
+ * 3. 平台默认搜索路径（POSIX 系统下的常见 bash/zsh，Windows 下的 Git Bash / MSYS2 / WSL）
+ */
+export async function findUnixShell(): Promise<string | null> {
+  const candidates: string[] = [];
+
+  // 1. 检查自定义 Shell 覆盖
+  const shellOverride = process.env.CLAUDE_CODE_SHELL;
+  if (shellOverride && isSupportedShellPath(shellOverride)) {
+    candidates.push(shellOverride);
+  }
+
+  // 2. 检查 SHELL 环境变量
+  const envShell = process.env.SHELL;
+  if (envShell && isSupportedShellPath(envShell)) {
+    candidates.push(envShell);
+  }
+
+  // 3. 搜索平台默认路径
+  const searchPaths =
+    process.platform === "win32"
+      ? getWindowsBashCandidates()
+      : COMMON_UNIX_SHELLS;
+  candidates.push(...searchPaths);
+  if (process.platform !== "win32") {
+    candidates.push(
+      ...findCommandsOnPath("zsh"),
+      ...findCommandsOnPath("bash"),
+      ...findCommandsOnPath("sh")
+    );
+  }
+
+  for (const shellPath of uniquePaths(candidates)) {
+    if (probeUnixShell(shellPath)) {
+      return shellPath;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * 创建 Bash Shell Provider
+ *
+ * 自动检测可用的 Shell
+ */
+export async function createBashProvider(): Promise<BashShellProvider | null> {
+  const shellPath = await findUnixShell();
+  if (!shellPath) {
+    return null;
+  }
+  return new BashShellProvider(shellPath);
+}
+
+/**
+ * 创建指定路径的 Bash Provider
+ */
+export function createBashProviderWithPath(
+  shellPath: string
+): BashShellProvider {
+  return new BashShellProvider(shellPath);
+}

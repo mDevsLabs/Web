@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Monitor", "label": "Moniteurs", "description": "G\xE9rez vos moniteurs depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "url", "label": "Adresse", "kind": "url", "required": true }, { "key": "uptimePercent", "label": "Disponibilit\xE9 (%)", "kind": "number", "required": true }, { "key": "intervalSeconds", "label": "Intervalle (s)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["up", "down", "paused"] }], "titleKey": "name", "settings": [{ "key": "notifyMonitor", "label": "Notifications : moniteurs", "description": "Recevoir un signal lors des changements." }, { "key": "archiveMonitor", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section moniteurs." }, { "key": "approveMonitor", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

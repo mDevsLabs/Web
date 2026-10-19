@@ -1,9 +1,9 @@
 "use client";
 
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { ArrowUpIcon } from "@mdevs/icons";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
-import { ArrowUpIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -79,6 +79,7 @@ import { memoryLimitForTier } from "@/lib/auth/plan";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import { readToolIds } from "@/lib/plugins/tool-effect";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -233,7 +234,10 @@ function PureMultimodalInput({
     agents: Agent[];
     limit: number | null;
   }>(
-    isFree ? null : "/api/agents",
+    // Les bots sont ouverts à tous les forfaits (quota de 8 en Free) : le menu
+    // @ doit les proposer à un compte Free, contrairement aux commandes
+    // personnalisées, qui restent payantes ci-dessous.
+    "/api/agents",
     (url: string) => jsonObject<{ agents: Agent[]; limit: number | null }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
@@ -413,9 +417,11 @@ function PureMultimodalInput({
           `Compétence appliquée à la discussion : ${payload.skill.name}`
         );
       } else if (payload.type === "plugin") {
-        for (const pluginTool of payload.plugin.tools) {
-          if (!pendingTools.includes(pluginTool.id as any)) {
-            togglePendingTool(pluginTool.id as any);
+        // Seule la lecture est servie par le canal Chat : demander une écriture
+        // au serveur serait lui réclamer un outil qu'il n'instancie pas ici.
+        for (const pluginToolId of readToolIds(payload.plugin)) {
+          if (!pendingTools.includes(pluginToolId as any)) {
+            togglePendingTool(pluginToolId as any);
           }
         }
         toast.success(
@@ -651,7 +657,7 @@ function PureMultimodalInput({
   const submitForm = useCallback(() => {
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait sur https://mai-devs.vercel.app pour continuer !`
+        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Consultez les forfaits pour continuer.`
       );
       return;
     }
@@ -760,7 +766,7 @@ function PureMultimodalInput({
     if (status === "ready" || status === "error") {
       submitForm();
     } else {
-      toast.error("Please wait for the model to finish its response!");
+      toast.error("Attendez que le modèle termine sa réponse !");
     }
   }, [
     attachments.length,
@@ -795,6 +801,14 @@ function PureMultimodalInput({
   return (
     <div
       className={cn("relative flex w-full flex-col gap-3 md:gap-4", className)}
+      data-app-update-blocked={
+        status === "submitted" ||
+        status === "streaming" ||
+        input.trim().length > 0 ||
+        attachments.length > 0 ||
+        uploadQueue.length > 0 ||
+        Boolean(editingMessage)
+      }
     >
       {isGhostMode ? <GhostBanner toggleGhostMode={toggleGhostMode} /> : null}
 
@@ -896,7 +910,7 @@ function PureMultimodalInput({
       {!supportsTools && <NoToolsWarning />}
 
       <PromptInput
-        className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/40 [&>div]:bg-card/85 [&>div]:backdrop-blur-xl [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/70 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
+        className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/60 [&>div]:bg-card/80 [&>div]:backdrop-blur-xl [&>div]:shadow-[inset_0_1px_0_var(--md-highlight),var(--md-shadow)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/90 [&>div]:focus-within:shadow-[inset_0_1px_0_var(--md-highlight),0_4px_24px_-4px_oklch(0_0_0/0.14)]"
         data-onboarding="chat-input"
         onSubmit={handlePromptSubmit}
       >
@@ -940,59 +954,67 @@ function PureMultimodalInput({
           />
         ) : null}
 
-        <div className="relative w-full">
-          {input ? (
-            <div
-              aria-hidden="true"
-              className={cn(
-                "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans",
-                pendingTools.length > 0 ||
-                  attachments.length > 0 ||
-                  uploadQueue.length > 0
-                  ? "pt-1.5"
-                  : "pt-3.5"
-              )}
-              ref={overlayRef}
-            >
-              {renderHighlightedMentions(
-                input,
-                userMcpServers,
-                userSkills,
-                userAgents,
-                installedPlugins
-              )}
+        {/* Détection de mentions pour n'activer le calque transparent que si nécessaire */}
+        {(() => {
+          const hasMention = Boolean(input && /@[\p{L}\p{N}_-]/u.test(input));
+          const topPaddingClass =
+            pendingTools.length > 0 ||
+            attachments.length > 0 ||
+            uploadQueue.length > 0
+              ? "pt-1.5"
+              : "pt-3.5";
+
+          return (
+            <div className="relative w-full">
+              {hasMention ? (
+                <div
+                  aria-hidden="true"
+                  className={cn(
+                    "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed tracking-normal whitespace-pre-wrap break-words text-foreground select-none font-sans box-border border-0 m-0",
+                    topPaddingClass
+                  )}
+                  ref={overlayRef}
+                >
+                  {renderHighlightedMentions(
+                    input.endsWith("\n") ? `${input}\u200b` : input,
+                    userMcpServers,
+                    userSkills,
+                    userAgents,
+                    installedPlugins
+                  )}
+                </div>
+              ) : null}
+              <PromptInputTextarea
+                aria-label={
+                  editingMessage ? "Modifier votre message" : "Message à mAI"
+                }
+                className={cn(
+                  "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed tracking-normal px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans no-scrollbar box-border border-0 m-0",
+                  topPaddingClass,
+                  hasMention
+                    ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent"
+                    : "text-foreground caret-foreground"
+                )}
+                data-testid="multimodal-input"
+                {...textareaProps}
+                onBlur={handleTextareaBlur}
+                onKeyDown={handleTextareaKeyDown}
+                onScroll={(e) => {
+                  if (overlayRef.current) {
+                    overlayRef.current.scrollTop = e.currentTarget.scrollTop;
+                  }
+                }}
+                placeholder={
+                  editingMessage
+                    ? "Modifier votre message..."
+                    : "Poser une question"
+                }
+                ref={textareaRef}
+                value={input}
+              />
             </div>
-          ) : null}
-          <PromptInputTextarea
-            className={cn(
-              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
-              pendingTools.length > 0 ||
-                attachments.length > 0 ||
-                uploadQueue.length > 0
-                ? "pt-1.5"
-                : "pt-3.5",
-              input
-                ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent"
-                : ""
-            )}
-            data-testid="multimodal-input"
-            {...textareaProps}
-            onBlur={handleTextareaBlur}
-            onKeyDown={handleTextareaKeyDown}
-            onScroll={(e) => {
-              if (overlayRef.current) {
-                overlayRef.current.scrollTop = e.currentTarget.scrollTop;
-              }
-            }}
-            placeholder={
-              editingMessage
-                ? "Modifier votre message..."
-                : "Poser une question"
-            }
-            ref={textareaRef}
-            value={input}
-          />
-        </div>
+          );
+        })()}
         <PromptInputFooter className="px-3 pb-2.5 pt-0">
           <PromptInputTools>
             <PlusMenuButton
@@ -1002,7 +1024,11 @@ function PureMultimodalInput({
               status={status}
               supportsTools={supportsTools}
             />
-            <VoiceRecorderButton input={input} setInput={setInput} />
+            <VoiceRecorderButton
+              input={input}
+              setInput={setInput}
+              textareaRef={textareaRef}
+            />
             <ModelSelectorCompact
               fallbackModels={chatModels}
               focusInputAfterSelect
