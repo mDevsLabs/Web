@@ -11,6 +11,8 @@ import { z } from "zod";
 import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import { getModelCapabilitiesFor } from "@/lib/ai/registry";
 import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
 import {
@@ -359,10 +361,6 @@ export async function POST(request: Request) {
     });
   const capabilities = getModelCapabilitiesFor(modelId, models);
   let modelMessages: UIMessage[];
-  const model = getLanguageModel(modelId, {
-    sessionToken: auth.sessionToken,
-    userId: auth.userId,
-  });
 
   /**
    * MENTIONS DE CAPACITÉS ET DE DOCUMENTS — deux temps, une seule validation.
@@ -801,6 +799,21 @@ export async function POST(request: Request) {
           ? resolveReasoningProviderOptions(resolvedEffort.effort)
           : undefined;
 
+        // Un collecteur PAR RÉPONDANT : le modèle est instancié ici et non
+        // plus une fois pour tout le fil, sinon deux Wakies qui répondent
+        // successivement partageraient le même tampon de raisonnement.
+        const reasoningSink = createReasoningDetailsSink();
+        const reasoningWriter = createReasoningChunkWriter(
+          writer,
+          `reasoning-${reservation.responseId}-${repondant.wakieId}`
+        );
+        reasoningSink.onDelta = (text) => reasoningWriter.push(text);
+        const model = getLanguageModel(modelId, {
+          reasoningSink,
+          sessionToken: auth.sessionToken,
+          userId: auth.userId,
+        });
+
         const result = streamText({
           abortSignal: request.signal,
           ...(providerOptions ? { providerOptions } : {}),
@@ -817,7 +830,11 @@ export async function POST(request: Request) {
             ]
           ),
           model,
+          onAbort() {
+            reasoningWriter.finish();
+          },
           onEnd: async ({ totalUsage: usage }) => {
+            reasoningWriter.finish();
             // `promptTokens`/`completionTokens` sont les noms historiques de
             // certains fournisseurs ; ils ne sont pas dans le type de l'AI SDK v7
             // mais restent retournés à l'exécution. On les lit donc sans le
@@ -919,6 +936,9 @@ export async function POST(request: Request) {
                 erreurFlux
               );
             }
+          },
+          onError() {
+            reasoningWriter.finish();
           },
           stopWhen: stepCountIs(8),
           system: promptDuTour(wakieDuTour),

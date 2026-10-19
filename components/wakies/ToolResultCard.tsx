@@ -21,7 +21,7 @@ export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
   }
   if (part.type === "reasoning")
     return (
-      <details className="tool-card">
+      <details className="tool-card" open>
         <summary>Réflexion</summary>
         <p>{part.text}</p>
       </details>
@@ -76,7 +76,7 @@ export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
       </p>
       {value.errorText && <p>{value.errorText}</p>}
       {output && (
-        <details>
+        <details open>
           <summary>Voir le résultat</summary>
           <pre>
             {output.slice(0, 20_000)}

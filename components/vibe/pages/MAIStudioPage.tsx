@@ -41,6 +41,7 @@ import {
 import { sanitizeRichHtml } from "@/components/vibe/common/richSanitizer";
 import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
+import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
@@ -86,6 +87,8 @@ interface ChatMessage {
   content: string;
   id: string;
   modelUsed?: string;
+  /** Réflexion persistée du fournisseur. */
+  reasoning?: string;
   requiresApproval?: boolean;
   sender: "user" | "mai";
   /** Id serveur du message persisté (mai_messages.id). */
@@ -301,6 +304,7 @@ export const MAIStudioPage: React.FC = () => {
         (res.messages || []).map((m) => ({
           content: m.content,
           id: m.id,
+          reasoning: m.reasoning || "",
           sender: m.role === "assistant" ? ("mai" as const) : ("user" as const),
           serverId: m.id,
           time: new Date(m.created_at).toLocaleTimeString("fr-FR", {
@@ -698,6 +702,7 @@ export const MAIStudioPage: React.FC = () => {
         content: res.reply,
         id: (Date.now() + 1).toString(),
         modelUsed: res.modelUsed || selectedModel,
+        reasoning: res.reasoning || "",
         requiresApproval: Boolean(res.requiresApproval),
         sender: "mai",
         serverId: res.assistant_message_id || undefined,
@@ -834,6 +839,7 @@ export const MAIStudioPage: React.FC = () => {
               ...next[i],
               content: res.reply,
               modelUsed: res.modelUsed || next[i].modelUsed,
+              reasoning: res.reasoning || "",
               toolCalls: [],
               toolExecuted: null,
             };
@@ -1213,6 +1219,11 @@ export const MAIStudioPage: React.FC = () => {
                         <span>{m.time}</span>
                       </div>
                     )}
+
+                    <MaiReasoning
+                      defaultOpen={!isMe && idx === messages.length - 1}
+                      text={m.reasoning}
+                    />
 
                     <div className="leading-relaxed space-y-2">
                       <RichContent

@@ -58,6 +58,7 @@ import type {
   RegisteredAgentTool,
 } from "@/lib/agent/types";
 import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
 import {
   getStreamContext,
@@ -218,6 +219,14 @@ export function createAgentStream(params: AgentStreamParams) {
       // réinjecter à chaque étape tout en garantissant qu'elles le sont AVANT
       // l'appel suivant.
       let injectedReorientations = 0;
+      // La réflexion est réinjectée dans le flux UI, au même titre que Chat et
+      // Wakies. Le collecteur est branché sur le provider par la route.
+      const reasoningWriter = params.reasoningSink
+        ? createReasoningChunkWriter(writer, `reasoning-${generateId()}`)
+        : null;
+      if (params.reasoningSink) {
+        params.reasoningSink.onDelta = (text) => reasoningWriter?.push(text);
+      }
 
       // Persistance du checkpoint (révision optimiste). Un échec n'interrompt
       // jamais le run : au pire, la limite est réévaluée depuis le dernier
@@ -398,6 +407,7 @@ export function createAgentStream(params: AgentStreamParams) {
         model: params.model,
         onAbort: async () => {
           aborted = true;
+          reasoningWriter?.finish();
         },
         onChunk({ chunk }) {
           if (isModelStreamActivity(chunk) && !accountingStarted) {
@@ -415,12 +425,14 @@ export function createAgentStream(params: AgentStreamParams) {
           }
         },
         onError: async ({ error }) => {
+          reasoningWriter?.finish();
           failure =
             error instanceof Error
               ? error.message.slice(0, 400)
               : "Erreur inconnue du runtime Agent.";
         },
         onFinish: async ({ usage }) => {
+          reasoningWriter?.finish();
           const totals = await recordAgentUsage({
             chatId: params.chatId,
             idempotencyKey: `agent:${params.runId}:${params.revision ?? 0}`,

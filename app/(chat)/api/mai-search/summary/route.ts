@@ -8,6 +8,10 @@ import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
+import {
+  collectSummarySources,
+  encodeSummaryEvent,
+} from "@/lib/search/summary-stream";
 
 export const maxDuration = 45;
 
@@ -144,6 +148,10 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
     }
 
     // Préparation des messages pour streamText
+    const initialSources = collectSummarySources({
+      initial: searchResults,
+      target,
+    });
     const streamOptions: any = {
       maxOutputTokens: 3000,
       model,
@@ -232,11 +240,57 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
       streamOptions.prompt = userPrompt;
     }
 
-    const result = streamText(streamOptions);
+    // Flux SSE : les sources précèdent le texte, puis un second événement
+    // `sources` ajoute celles découvertes par les appels `webSearch` du tour.
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream<Uint8Array>({
+      async start(controller) {
+        const send = (event: Parameters<typeof encodeSummaryEvent>[0]) => {
+          try {
+            controller.enqueue(encoder.encode(encodeSummaryEvent(event)));
+          } catch {
+            // Client parti : ne pas interrompre le comptage d'usage.
+          }
+        };
+        send({ sources: initialSources, type: "sources" });
+        const result = streamText(streamOptions);
+        try {
+          for await (const delta of result.textStream) {
+            if (delta) {
+              send({ delta, type: "text-delta" });
+            }
+          }
+          const steps = await Promise.resolve(result.steps).catch(() => []);
+          const finalSources = collectSummarySources({
+            initial: searchResults,
+            target,
+            toolResults: steps.flatMap((step: any) => step.toolResults ?? []),
+          });
+          send({ sources: finalSources, type: "sources" });
+          send({ type: "done" });
+        } catch (streamError) {
+          console.error("[mAI-Search-Summary] Erreur de flux:", streamError);
+          send({
+            message:
+              streamError instanceof Error
+                ? streamError.message
+                : "Erreur de génération du résumé",
+            type: "error",
+          });
+        } finally {
+          controller.close();
+        }
+      },
+    });
 
-    const response = result.toTextStreamResponse();
-    response.headers.set("X-Model-Id", modelId);
-    return response;
+    return new Response(stream, {
+      headers: {
+        "Cache-Control": "no-cache, no-transform",
+        Connection: "keep-alive",
+        "Content-Type": "text/event-stream; charset=utf-8",
+        "X-Model-Id": modelId,
+      },
+    });
   } catch (error: any) {
     console.error("[mAI-Search-Summary] Erreur:", error);
     return new Response(error.message || "Erreur de génération du résumé", {

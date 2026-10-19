@@ -35,6 +35,12 @@ export type ReasoningDetailsSink = {
    * double branchement ne serait qu'une source de fuite.
    */
   attach: (response: Response) => Response;
+  /**
+   * Texte de raisonnement au fil de l'eau. Le provider ne le transmet pas au
+   * SDK : c'est le seul chemin qui permet de l'afficher dans Chat, Agent et
+   * Wakies. Le callback est facultatif et ne doit jamais interrompre le flux.
+   */
+  onDelta: ((text: string) => void) | undefined;
   /** Vide la collecte entre deux tours d'un même run. */
   reset: () => void;
 };
@@ -48,35 +54,91 @@ export type ReasoningDetailsSink = {
  */
 export function createReasoningDetailsSink(): ReasoningDetailsSink {
   let details: ReasoningDetail[] = [];
-  let textBytes = 0;
-  let attached = false;
+  let detailsBytes = 0;
+  let emittedBytes = 0;
+  // Un `WeakSet` plutôt qu'un booléen : un run Agent enchaîne plusieurs appels
+  // modèle, et chacun doit être capturé. La faiblesse évite de retenir les
+  // réponses après usage.
+  let attachedResponses = new WeakSet<Response>();
   // Le budget doit être vérifié AVANT d'ajouter un bloc, pas seulement entre
   // deux lectures : un seul bloc de 400 Ko dépasserait la limite à lui seul, et
   // passerait en entier parce que le test n'a lieu qu'au chunk suivant.
   let saturated = false;
+  let onDelta: ((text: string) => void) | undefined;
+  // Texte déjà émis : certains fournisseurs renvoient le raisonnement complet à
+  // chaque chunk au lieu d'un delta. On ne renvoie alors que le suffixe.
+  let emittedText = "";
+  let lastEmitted = "";
+
+  const emit = (raw: string) => {
+    const text = typeof raw === "string" ? raw : "";
+    if (!text || emittedBytes >= MAX_TEXT_BYTES) {
+      return;
+    }
+    if (text === lastEmitted) {
+      return;
+    }
+    // Réponse cumulative : on n'émet que ce qui n'a pas déjà été affiché.
+    if (
+      emittedText.length > 0 &&
+      text.length > emittedText.length &&
+      text.startsWith(emittedText)
+    ) {
+      const suffix = text.slice(emittedText.length);
+      emittedText = text;
+      lastEmitted = text;
+      writeDelta(suffix);
+      return;
+    }
+    emittedText += text;
+    lastEmitted = text;
+    writeDelta(text);
+  };
+
+  const writeDelta = (text: string) => {
+    if (!text || !onDelta) {
+      return;
+    }
+    const remaining = MAX_TEXT_BYTES - emittedBytes;
+    if (remaining <= 0) {
+      return;
+    }
+    const slice = text.length > remaining ? text.slice(0, remaining) : text;
+    emittedBytes += slice.length;
+    try {
+      onDelta(slice);
+    } catch {
+      // Le rendu ne doit jamais casser la lecture du provider.
+    }
+  };
 
   const reset = () => {
     details = [];
-    textBytes = 0;
-    attached = false;
+    detailsBytes = 0;
+    emittedBytes = 0;
+    attachedResponses = new WeakSet<Response>();
     saturated = false;
+    emittedText = "";
+    lastEmitted = "";
   };
 
   const attach = (response: Response): Response => {
     // Un seul branchement par réponse : un second `tee()` doublerait la
     // consommation mémoire pour rien.
-    if (attached || !response.body) {
+    if (attachedResponses.has(response) || !response.body) {
       return response;
     }
     const contentType = response.headers.get("content-type") ?? "";
     if (!contentType.includes("text/event-stream")) {
       return response;
     }
-    attached = true;
+    attachedResponses.add(response);
 
     const [forCaller, forScan] = response.body.tee();
     const withinBudget = () =>
-      !saturated && details.length < MAX_BLOCKS && textBytes < MAX_TEXT_BYTES;
+      !saturated &&
+      details.length < MAX_BLOCKS &&
+      detailsBytes < MAX_TEXT_BYTES;
 
     void scanSse(forScan, {
       onBlock: (block) => {
@@ -88,21 +150,27 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
           saturated = true;
           return;
         }
-        if (textBytes + text.length > MAX_TEXT_BYTES) {
+        if (detailsBytes + text.length > MAX_TEXT_BYTES) {
           saturated = true;
           return;
         }
         details.push(block);
-        textBytes += text.length;
+        detailsBytes += text.length;
+        emit(text);
       },
+      onText: emit,
       shouldContinue: withinBudget,
     });
 
-    return new Response(forCaller, {
+    const transformed = new Response(forCaller, {
       headers: response.headers,
       status: response.status,
       statusText: response.statusText,
     });
+    // Marquer aussi la réponse transformée : un appelant qui la repasse au
+    // collecteur ne doit pas créer un second `tee()`.
+    attachedResponses.add(transformed);
+    return transformed;
   };
 
   return {
@@ -110,12 +178,19 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
     get details() {
       return details;
     },
+    get onDelta() {
+      return onDelta;
+    },
+    set onDelta(next) {
+      onDelta = next;
+    },
     reset,
   };
 }
 
 type ScanOptions = {
   onBlock: (block: ReasoningDetail) => void;
+  onText: (text: string) => void;
   shouldContinue: () => boolean;
 };
 
@@ -147,7 +222,7 @@ async function scanSse(
       while (newline !== -1) {
         const line = buffer.slice(0, newline);
         buffer = buffer.slice(newline + 1);
-        collectFromLine(line, options.onBlock);
+        collectFromLine(line, options.onBlock, options.onText);
         newline = buffer.indexOf("\n");
       }
       // Un chunk unique peut être volumineux (réponse entière d'un modèle non
@@ -171,6 +246,11 @@ async function scanSse(
 }
 
 const REASONING_DETAILS_KEY = "reasoning_details";
+const REASONING_KEYS = new Set([
+  "reasoning",
+  "reasoning_content",
+  "reasoningDetails",
+]);
 
 /**
  * Collecte les blocs d'une ligne `data:`.
@@ -183,7 +263,8 @@ const REASONING_DETAILS_KEY = "reasoning_details";
  */
 function collectFromLine(
   line: string,
-  onBlock: (block: ReasoningDetail) => void
+  onBlock: (block: ReasoningDetail) => void,
+  onText: (text: string) => void
 ) {
   const trimmed = line.trim();
   if (!trimmed.startsWith("data:")) {
@@ -193,7 +274,7 @@ function collectFromLine(
   if (
     !payload ||
     payload === "[DONE]" ||
-    !payload.includes(REASONING_DETAILS_KEY)
+    (!payload.includes(REASONING_DETAILS_KEY) && !payload.includes("reasoning"))
   ) {
     return;
   }
@@ -205,7 +286,7 @@ function collectFromLine(
     // une version complète.
     return;
   }
-  walkForReasoningDetails(parsed, onBlock, 0);
+  walkForReasoningDetails(parsed, onBlock, onText, 0);
 }
 
 /** Profondeur maximale de la recherche : au-delà, la forme n'est pas la nôtre. */
@@ -214,6 +295,7 @@ const MAX_WALK_DEPTH = 6;
 function walkForReasoningDetails(
   node: unknown,
   onBlock: (block: ReasoningDetail) => void,
+  onText: (text: string) => void,
   depth: number
 ): void {
   if (depth > MAX_WALK_DEPTH || node === null || typeof node !== "object") {
@@ -221,7 +303,7 @@ function walkForReasoningDetails(
   }
   if (Array.isArray(node)) {
     for (const item of node) {
-      walkForReasoningDetails(item, onBlock, depth + 1);
+      walkForReasoningDetails(item, onBlock, onText, depth + 1);
     }
     return;
   }
@@ -235,8 +317,19 @@ function walkForReasoningDetails(
       }
       continue;
     }
+    if (
+      REASONING_KEYS.has(key) &&
+      typeof value === "string" &&
+      value.length > 0
+    ) {
+      // `reasoning` et `reasoning_content` sont les deltas texte des
+      // fournisseurs ; `reasoningDetails` est le nom camelCase de l'objet
+      // complet, traité ci-dessus.
+      onText(value);
+      continue;
+    }
     if (value && typeof value === "object") {
-      walkForReasoningDetails(value, onBlock, depth + 1);
+      walkForReasoningDetails(value, onBlock, onText, depth + 1);
     }
   }
 }

@@ -27,6 +27,7 @@ import {
   VISION_CAPABLE_MODELS,
 } from "./vibe-mai-core.ts";
 import { MAIAgentFleet, SENSITIVE_TOOLS } from "./vibe-mai-fleet.ts";
+import { extractMaiReasoning } from "./vibe-mai-reasoning.ts";
 import { isToolEnabledForUser, TOOL_EXECUTORS } from "./vibe-tools.ts";
 
 /**
@@ -107,10 +108,7 @@ export async function generateMAICommentAnswer(
     // Débit quota réel (parité avec le chat mAI)
     const tokensUsed = Number(
       commentUsage?.total_tokens ||
-        Math.max(
-          100,
-          Math.ceil(((userText || "").length + answer.length) / 4)
-        )
+        Math.max(100, Math.ceil(((userText || "").length + answer.length) / 4))
     );
     try {
       const { weekStartStr } = getWeekData();
@@ -463,6 +461,7 @@ export function registerVibeMAIChatRoutes(
             : "");
 
         let capturedUsage: any = null;
+        let capturedReasoning = "";
         if (openRouterApiKey) {
           for (const candidate of modelsToTry) {
             try {
@@ -495,10 +494,12 @@ export function registerVibeMAIChatRoutes(
 
               if (aiRes.ok) {
                 const aiData = await aiRes.json();
-                const textOutput = aiData.choices?.[0]?.message?.content;
+                const message = aiData.choices?.[0]?.message;
+                const textOutput = message?.content;
                 if (textOutput?.trim()) {
                   reply = textOutput.trim();
                   capturedUsage = aiData.usage || null;
+                  capturedReasoning = extractMaiReasoning(message);
                   break;
                 }
               }
@@ -539,7 +540,7 @@ export function registerVibeMAIChatRoutes(
           conversationId,
           "assistant",
           reply,
-          { toolCalls: toolCallRecords }
+          { reasoning: capturedReasoning, toolCalls: toolCallRecords }
         );
       }
 
@@ -572,6 +573,7 @@ export function registerVibeMAIChatRoutes(
         inputTokens,
         modelUsed: effectiveModel,
         outputTokens,
+        reasoning: capturedReasoning,
         reply,
         tokensUsed: totalTokens,
         toolCalls: toolCallRecords,

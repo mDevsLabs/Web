@@ -50,7 +50,7 @@ export function registerVibeMAIConversationRoutes(
       }
 
       const rows = await sql`
-        SELECT id, sender_role, content, tool_calls, created_at FROM mai_messages
+        SELECT id, sender_role, content, tool_calls, reasoning, created_at FROM mai_messages
         WHERE conversation_id = ${conversationId}::uuid AND content IS NOT NULL
         ORDER BY created_at DESC
         LIMIT ${limit} OFFSET ${offset}
@@ -63,6 +63,7 @@ export function registerVibeMAIConversationRoutes(
           content: String(r.content),
           created_at: r.created_at,
           id: String(r.id),
+          reasoning: typeof r.reasoning === "string" ? r.reasoning : "",
           role: r.sender_role === "assistant" ? "assistant" : "user",
           tool_calls: Array.isArray(r.tool_calls) ? r.tool_calls : [],
         }));

@@ -452,6 +452,11 @@ export async function ensureMAIConversations() {
     await sql`ALTER TABLE mai_messages ADD COLUMN IF NOT EXISTS tool_call_id VARCHAR(100)`.catch(
       () => {}
     );
+    // Réflexion affichable : colonne additive, jamais bloquante si la base est
+    // antérieure à cette version.
+    await sql`ALTER TABLE mai_messages ADD COLUMN IF NOT EXISTS reasoning TEXT`.catch(
+      () => {}
+    );
     await sql`CREATE INDEX IF NOT EXISTS idx_mai_messages_conv ON mai_messages(conversation_id, created_at DESC)`.catch(
       () => {}
     );
@@ -528,18 +533,23 @@ export async function saveMAIMessage(
   conversationId: string,
   role: "user" | "assistant",
   content: string,
-  extra?: { toolCalls?: any[] | null; toolCallId?: string | null }
+  extra?: {
+    toolCalls?: any[] | null;
+    toolCallId?: string | null;
+    reasoning?: string | null;
+  }
 ) {
   try {
     const toolCallsJson =
       extra?.toolCalls && extra.toolCalls.length > 0
         ? JSON.stringify(extra.toolCalls)
         : null;
+    const reasoning = extra?.reasoning?.trim() || null;
     const rows = await sql`
-      INSERT INTO mai_messages (conversation_id, sender_role, content, tool_calls, tool_call_id)
+      INSERT INTO mai_messages (conversation_id, sender_role, content, tool_calls, tool_call_id, reasoning)
       VALUES (${conversationId}::uuid, ${role}, ${content}, ${toolCallsJson}::jsonb, ${
         extra?.toolCallId || null
-      })
+      }, ${reasoning})
       RETURNING id, created_at
     `;
     await sql`UPDATE mai_conversations SET updated_at = NOW() WHERE id = ${conversationId}::uuid`;

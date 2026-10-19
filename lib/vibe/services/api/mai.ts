@@ -172,6 +172,7 @@ export class ApiMaiService extends ApiSettingsService {
     context?: { post_id?: string },
     conversationId?: string
   ): Promise<{
+    reasoning?: string;
     reply: string;
     toolExecuted?: any;
     toolCalls?: MaiToolCall[];
@@ -188,6 +189,9 @@ export class ApiMaiService extends ApiSettingsService {
       execute_tool,
       message,
       model,
+      // Demande une vraie réflexion au fournisseur. Les modèles qui ne la
+      // prennent pas en charge ignorent ce champ ; le texte reste prioritaire.
+      reasoning_effort: "medium",
     };
     return ApiServiceCore.request("/v1/mai/chat", {
       body: JSON.stringify(payload),
@@ -201,6 +205,7 @@ export class ApiMaiService extends ApiSettingsService {
     conversationId?: string;
   }): Promise<{
     success: boolean;
+    reasoning?: string;
     reply: string;
     message_id: string | null;
     modelUsed?: string;
@@ -210,6 +215,7 @@ export class ApiMaiService extends ApiSettingsService {
       context: opts?.postId ? { post_id: opts.postId } : undefined,
       conversation_id: opts?.conversationId,
       model: opts?.model,
+      reasoning_effort: "medium",
     });
     return ApiServiceCore.request("/v1/mai/regenerate", {
       body: payload,
@@ -227,6 +233,7 @@ export class ApiMaiService extends ApiSettingsService {
       id: string;
       role: "user" | "assistant";
       content: string;
+      reasoning?: string;
       tool_calls?: MaiToolCall[];
       created_at: string;
     }>;

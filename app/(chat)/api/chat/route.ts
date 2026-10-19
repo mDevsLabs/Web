@@ -1,5 +1,6 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
@@ -186,9 +187,13 @@ export async function POST(request: Request) {
     const effectiveTopP = ctx.agentTopP ?? ctx.userDefaultTopP ?? undefined;
     const effectiveMaxTokens = ctx.agentMaxTokens ?? undefined;
 
-    // 6. Initialiser le modèle de langage mAI
+    // 6. Initialiser le modèle de langage mAI. Le collecteur est propre à la
+    // requête : deux conversations concurrentes ne partagent jamais leur
+    // raisonnement.
+    const reasoningSink = createReasoningDetailsSink();
     const model = getLanguageModel(ctx.chatModel, {
       apiKey: ctx.userApiKey,
+      reasoningSink,
       sessionToken: ctx.sessionToken,
       userId: ctx.maiUser.id,
     });
@@ -288,6 +293,7 @@ export async function POST(request: Request) {
           tools,
         };
       },
+      reasoningSink,
     });
 
     return createChatStreamResponse({

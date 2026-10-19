@@ -261,6 +261,8 @@ export function MaiAccountModal({
 
   const user = account?.user;
   const usage = account?.usage;
+  const syncPending = Boolean(account?.syncPending);
+  const syncError = account?.syncError ?? null;
   const tokensUsed = usage?.tokensUsed ?? 0;
   const limit = usage?.limit ?? 5_000_000;
   const remainingTokens = Math.max(0, limit - tokensUsed);
@@ -348,6 +350,15 @@ export function MaiAccountModal({
             </div>
           ) : null}
 
+          {syncError ? (
+            <div className="ref-mai-alert ref-mai-alert--error" role="alert">
+              <span aria-hidden className="ref-mai-alert-icon">
+                <IconAlertTriangle />
+              </span>
+              <span>{syncError}</span>
+            </div>
+          ) : null}
+
           {isLoggedIn ? (
             /* Profile View */
             <div>
@@ -370,17 +381,27 @@ export function MaiAccountModal({
                 <div className="ref-mai-profile-meta">
                   <div className="ref-mai-username">
                     <span className="ref-mai-username-name">
-                      {user?.username || "Utilisateur mAI"}
+                      {user?.username ||
+                        (syncPending
+                          ? "Synchronisation du compte mAI…"
+                          : "Compte mAI")}
                     </span>
-                    <span className="ref-mai-tier">{user?.tier || "Free"}</span>
+                    {user?.tier ? (
+                      <span className="ref-mai-tier">{user.tier}</span>
+                    ) : null}
                   </div>
-                  <div className="ref-mai-email">
-                    {user?.email || "compte@mai.val.run"}
-                  </div>
+                  {user?.email ? (
+                    <div className="ref-mai-email">{user.email}</div>
+                  ) : syncPending ? (
+                    <div className="ref-mai-email">
+                      Récupération du profil et des modèles…
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
               {/* Detailed Usage progress card */}
+              {usage ? (
               <div className="ref-mai-usage">
                 <div className="ref-mai-usage-head">
                   <div>
@@ -419,6 +440,7 @@ export function MaiAccountModal({
                   ) : null}
                 </div>
               </div>
+              ) : null}
 
               {/* Actions */}
               <div className="ref-mai-btn-row">
@@ -446,7 +468,7 @@ export function MaiAccountModal({
                         gap: 6,
                       }}
                     >
-                      <IconRefresh /> {t("common.refresh") || "Actualiser"}
+                      <IconRefresh /> Actualiser le compte et les modèles
                     </span>
                   )}
                 </button>

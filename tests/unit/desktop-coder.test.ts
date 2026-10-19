@@ -15,6 +15,7 @@ vi.mock("node:child_process", () => ({ spawn: mocks.spawn }));
 const { launchCoder } = await vi.importActual<{
   launchCoder: (opts?: {
     workspacePath?: string;
+    sessionToken?: string;
   }) => Promise<{ success: boolean; error?: string }>;
 }>("../../apps/desktop/src/coder-launcher");
 
@@ -51,6 +52,31 @@ describe("Coder embarqué dans mAI Desktop", () => {
     );
     expect(mocks.spawn.mock.calls[0][2].shell).toBeUndefined();
     expect(child.unref).toHaveBeenCalledOnce();
+  });
+  it("transmet le jeton de session dans l’environnement, jamais dans les arguments", async () => {
+    mocks.exists = true;
+    const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
+    mocks.spawn.mockImplementation(() => {
+      queueMicrotask(() => child.emit("spawn"));
+      return child;
+    });
+    const token = "header.payload.signature";
+    expect(await launchCoder({ sessionToken: token })).toEqual({
+      success: true,
+    });
+    const args = mocks.spawn.mock.calls[0][2];
+    expect(args.env.MAI_SESSION_TOKEN).toBe(token);
+    expect(mocks.spawn.mock.calls[0][1]).toEqual([]);
+  });
+  it("ne transmet aucun jeton quand le handoff est absent", async () => {
+    mocks.exists = true;
+    const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
+    mocks.spawn.mockImplementation(() => {
+      queueMicrotask(() => child.emit("spawn"));
+      return child;
+    });
+    await launchCoder();
+    expect(mocks.spawn.mock.calls[0][2].env.MAI_SESSION_TOKEN).toBeUndefined();
   });
   it("remonte les erreurs du système au bouton de lancement", async () => {
     mocks.exists = true;

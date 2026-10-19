@@ -31,6 +31,7 @@ import {
 import { makeExcerpt } from "@/components/vibe/common/richTextUtils";
 import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
+import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
@@ -66,6 +67,8 @@ interface MessageItem {
   attachment?: AttachedPostInfo;
   content: string;
   id: string;
+  /** Réflexion persistée du fournisseur. */
+  reasoning?: string;
   sender: "user" | "assistant";
   /** Id serveur du message persisté (mai_messages.id). */
   serverId?: string;
@@ -191,6 +194,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         (res.messages || []).map((m) => ({
           content: m.content,
           id: m.id,
+          reasoning: m.reasoning || "",
           sender: (m.role === "assistant"
             ? "assistant"
             : "user") as MessageItem["sender"],
@@ -242,6 +246,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
             next[i] = {
               ...next[i],
               content: res.reply,
+              reasoning: res.reasoning || "",
               toolCalls: [],
               toolResult: null,
             };
@@ -541,6 +546,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       const assistantMsg: MessageItem = {
         content: response.reply,
         id: generateMessageId(),
+        reasoning: response.reasoning || "",
         sender: "assistant",
         serverId: response.assistant_message_id || undefined,
         timestamp: formatCurrentTime(),
@@ -814,6 +820,12 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                     : "bg-zinc-900 border border-zinc-800 text-zinc-200"
                 }`}
               >
+                <MaiReasoning
+                  defaultOpen={
+                    msg.sender === "assistant" && msgIdx === messages.length - 1
+                  }
+                  text={msg.reasoning}
+                />
                 <div className="whitespace-pre-wrap">{msg.content}</div>
 
                 {/* Publication mentionnée jointe au message */}

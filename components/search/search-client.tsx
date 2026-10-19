@@ -29,6 +29,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import {
+  readSummaryStream,
+  type SummarySource,
+} from "@/lib/search/summary-stream";
 import type {
   SearchImageHit,
   SearchNewsHit,
@@ -51,7 +55,42 @@ type DrawerMessage = {
   id: string;
   role: "user" | "assistant";
   content: string;
+  sources?: SummarySource[];
 };
+
+function SummarySources({ sources }: { sources: SummarySource[] }) {
+  if (sources.length === 0) {
+    return null;
+  }
+  return (
+    <div className="mt-4 border-t border-border/40 pt-3">
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        Sources consultées ({sources.length})
+      </p>
+      <ol className="space-y-1.5">
+        {sources.map((source, index) => (
+          <li className="flex gap-2 text-[11px] leading-snug" key={source.url}>
+            <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-muted text-[9px] font-semibold text-muted-foreground">
+              {index + 1}
+            </span>
+            <a
+              className="min-w-0 text-foreground/85 hover:text-primary hover:underline"
+              href={source.url}
+              rel="noopener noreferrer"
+              target="_blank"
+              title={source.url}
+            >
+              <span className="line-clamp-1 font-medium">{source.title}</span>
+              <span className="text-[10px] text-muted-foreground">
+                {source.domain}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
 
 type TargetConversationState = {
   isOpen: boolean;
@@ -191,6 +230,7 @@ export function SearchClient() {
 
   // Synthèse globale
   const [summary, setSummary] = useState("");
+  const [summarySources, setSummarySources] = useState<SummarySource[]>([]);
   const [summaryModel, setSummaryModel] = useState<string | null>(null);
   const [summaryLength, setSummaryLength] = useState<
     "normal" | "short" | "long"
@@ -263,6 +303,7 @@ export function SearchClient() {
 
       setIsSummaryLoading(true);
       setSummary("");
+      setSummarySources([]);
       setVote(null);
 
       try {
@@ -286,21 +327,20 @@ export function SearchClient() {
         const modelHeader = response.headers.get("X-Model-Id");
         if (modelHeader) setSummaryModel(modelHeader);
 
-        const reader = response.body?.getReader();
-        if (!reader) return;
-
-        const decoder = new TextDecoder();
-        let done = false;
         let textAccumulator = "";
-
-        while (!done) {
-          const { done: readerDone, value } = await reader.read();
-          done = readerDone;
-          if (value) {
-            const chunk = decoder.decode(value, { stream: !done });
-            textAccumulator += chunk;
+        let streamError: string | null = null;
+        await readSummaryStream(response, (event) => {
+          if (event.type === "sources") {
+            setSummarySources(event.sources);
+          } else if (event.type === "text-delta") {
+            textAccumulator += event.delta;
             setSummary(textAccumulator);
+          } else if (event.type === "error") {
+            streamError = event.message;
           }
+        });
+        if (streamError) {
+          throw new Error(streamError);
         }
       } catch (err: any) {
         if (err.name !== "AbortError") {
@@ -329,6 +369,7 @@ export function SearchClient() {
         content: "",
         id: "summary-0",
         role: "assistant",
+        sources: [],
       };
 
       setTargetConversation({
@@ -356,18 +397,10 @@ export function SearchClient() {
           throw new Error("Impossible de résumer cette ressource.");
         }
 
-        const reader = response.body?.getReader();
-        if (!reader) return;
-
-        const decoder = new TextDecoder();
-        let done = false;
         let textAccumulator = "";
-
-        while (!done) {
-          const { done: readerDone, value } = await reader.read();
-          done = readerDone;
-          if (value) {
-            textAccumulator += decoder.decode(value, { stream: !done });
+        await readSummaryStream(response, (event) => {
+          if (event.type === "text-delta") {
+            textAccumulator += event.delta;
             setTargetConversation((prev) => {
               const msgs = [...prev.messages];
               if (msgs.length > 0 && msgs[0].role === "assistant") {
@@ -375,8 +408,18 @@ export function SearchClient() {
               }
               return { ...prev, messages: msgs };
             });
+          } else if (event.type === "sources") {
+            setTargetConversation((prev) => {
+              const msgs = [...prev.messages];
+              if (msgs.length > 0 && msgs[0].role === "assistant") {
+                msgs[0] = { ...msgs[0], sources: event.sources };
+              }
+              return { ...prev, messages: msgs };
+            });
+          } else if (event.type === "error") {
+            throw new Error(event.message);
           }
-        }
+        });
       } catch (err: any) {
         if (err.name !== "AbortError") {
           console.error("[SearchClient] Erreur résumé ciblé:", err);
@@ -420,6 +463,7 @@ export function SearchClient() {
       content: "",
       id: `assistant-${Date.now()}`,
       role: "assistant",
+      sources: [],
     };
 
     setTargetConversation((prev) => ({
@@ -454,18 +498,10 @@ export function SearchClient() {
         throw new Error("Erreur lors de la réponse de l'assistant.");
       }
 
-      const reader = response.body?.getReader();
-      if (!reader) return;
-
-      const decoder = new TextDecoder();
-      let done = false;
       let accumulated = "";
-
-      while (!done) {
-        const { done: readerDone, value } = await reader.read();
-        done = readerDone;
-        if (value) {
-          accumulated += decoder.decode(value, { stream: !done });
+      await readSummaryStream(response, (event) => {
+        if (event.type === "text-delta") {
+          accumulated += event.delta;
           setTargetConversation((prev) => {
             const msgs = [...prev.messages];
             const lastIdx = msgs.length - 1;
@@ -474,8 +510,19 @@ export function SearchClient() {
             }
             return { ...prev, messages: msgs };
           });
+        } else if (event.type === "sources") {
+          setTargetConversation((prev) => {
+            const msgs = [...prev.messages];
+            const lastIdx = msgs.length - 1;
+            if (lastIdx >= 0 && msgs[lastIdx].role === "assistant") {
+              msgs[lastIdx] = { ...msgs[lastIdx], sources: event.sources };
+            }
+            return { ...prev, messages: msgs };
+          });
+        } else if (event.type === "error") {
+          throw new Error(event.message);
         }
-      }
+      });
     } catch (err: any) {
       if (err.name !== "AbortError") {
         console.error("[SearchClient] Erreur conversation tiroir:", err);
@@ -696,7 +743,7 @@ export function SearchClient() {
   const hasSearched = Boolean(submittedQuery);
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-3.5rem)] bg-background text-foreground relative">
+    <div className="flex min-h-dvh flex-col bg-background text-foreground relative">
       {/* ─── Mode Résultats (Barre en haut + Contenu) ─── */}
       {hasSearched ? (
         <div className="flex flex-col w-full">
@@ -923,6 +970,7 @@ export function SearchClient() {
                     {summary ? (
                       <div className="prose dark:prose-invert max-w-none text-sm">
                         <Streamdown>{summary}</Streamdown>
+                        <SummarySources sources={summarySources} />
                       </div>
                     ) : isSummaryLoading ? (
                       <div className="space-y-2 py-2">
@@ -1851,6 +1899,7 @@ export function SearchClient() {
                           msg.content ? (
                             <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
                               <Streamdown>{msg.content}</Streamdown>
+                              <SummarySources sources={msg.sources ?? []} />
                             </div>
                           ) : (
                             <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">

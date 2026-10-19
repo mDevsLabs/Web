@@ -1388,7 +1388,7 @@ const PurePreviewMessage = ({
       return (
         <Tool
           className="w-[min(100%,450px)]"
-          defaultOpen={state !== "output-available"}
+          defaultOpen
           key={toolCallId ?? key}
         >
           {type === "dynamic-tool" ? (

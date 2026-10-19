@@ -33,6 +33,7 @@ import {
   saveMAIMessage,
 } from "./vibe-mai-core.ts";
 import { MAIAgentFleet, SENSITIVE_TOOLS } from "./vibe-mai-fleet.ts";
+import { extractMaiReasoning } from "./vibe-mai-reasoning.ts";
 import {
   isToolEnabledForUser,
   MAI_TOOLS_CATALOG,
@@ -54,6 +55,10 @@ export function registerVibeMAIExecuteRoutes(
       const userId = Number(payload.sub || (payload as any).id);
 
       const body = await c.req.json().catch(() => ({}) as any);
+      const reasoningEffort =
+        typeof body?.reasoning_effort === "string"
+          ? body.reasoning_effort
+          : null;
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(
@@ -126,6 +131,7 @@ export function registerVibeMAIExecuteRoutes(
           : "");
 
       let reply = "";
+      let capturedReasoning = "";
       let capturedUsage: any = null;
       if (openRouterApiKey) {
         const modelsToTry = [
@@ -148,6 +154,9 @@ export function registerVibeMAIExecuteRoutes(
                     },
                   ],
                   model: candidate,
+                  ...(reasoningEffort
+                    ? { reasoning: { effort: reasoningEffort } }
+                    : {}),
                 }),
                 headers: {
                   Authorization: `Bearer ${openRouterApiKey}`,
@@ -160,10 +169,12 @@ export function registerVibeMAIExecuteRoutes(
             );
             if (aiRes.ok) {
               const aiData = await aiRes.json();
-              const textOutput = aiData.choices?.[0]?.message?.content;
+              const message = aiData.choices?.[0]?.message;
+              const textOutput = message?.content;
               if (textOutput?.trim()) {
                 reply = textOutput.trim();
                 capturedUsage = aiData.usage || null;
+                capturedReasoning = extractMaiReasoning(message);
                 break;
               }
             }
@@ -186,13 +197,14 @@ export function registerVibeMAIExecuteRoutes(
         sql,
         conversationId,
         "assistant",
-        reply
+        reply,
+        { reasoning: capturedReasoning }
       );
 
       // Décompte précis des tokens
       const inputTokens = Number(
         capturedUsage?.prompt_tokens ||
-          Math.ceil((String(lastUser?.content || "").length) / 4)
+          Math.ceil(String(lastUser?.content || "").length / 4)
       );
       const outputTokens = Number(
         capturedUsage?.completion_tokens || Math.ceil((reply || "").length / 4)
@@ -220,6 +232,7 @@ export function registerVibeMAIExecuteRoutes(
         message_id: saved?.id || null,
         modelUsed: effectiveModel,
         outputTokens,
+        reasoning: capturedReasoning,
         reply,
         success: true,
         tokensUsed: totalTokens,

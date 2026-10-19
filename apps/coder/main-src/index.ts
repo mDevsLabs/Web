@@ -226,16 +226,44 @@ app.whenReady().then(async () => {
   const userData = app.getPath("userData");
   initSettingsStore(userData);
   lap("settingsStore init");
-  // Q1 : au lancement, si compte mAI déjà connecté, rafraîchir modèles via https://mai.val.run/v1/models (clé au hasard)
-  try {
-    const s0 = getSettings();
-    if (s0.maiAccount?.jwtToken) {
-      const { syncMaiAccountWithToken } = await import("./maiAccountStore.js");
-      void syncMaiAccountWithToken(s0.maiAccount.jwtToken).catch((e) =>
-        console.warn("[mAI] auto-sync failed", e)
-      );
+  // Handoff depuis mAI Desktop : le Main a lu le cookie de session httpOnly et
+  // l'a placé dans l'environnement du processus enfant. Le jeton est retiré de
+  // l'environnement immédiatement après lecture.
+  const handoffToken = process.env.MAI_SESSION_TOKEN?.trim();
+  delete (process.env as NodeJS.ProcessEnv).MAI_SESSION_TOKEN;
+  if (handoffToken) {
+    try {
+      const { markMaiAccountSyncPending, syncMaiAccountWithToken } =
+        await import("./maiAccountStore.js");
+      markMaiAccountSyncPending(handoffToken);
+      // Attente bornée : le profil remplace immédiatement l'ancien compte, mais
+      // un réseau lent ne doit pas bloquer l'ouverture de l'éditeur.
+      const sync = syncMaiAccountWithToken(handoffToken).catch((e) => {
+        console.warn("[mAI] handoff sync failed", e);
+        return null;
+      });
+      await Promise.race([
+        sync,
+        new Promise((resolve) => setTimeout(resolve, 4_000)),
+      ]);
+    } catch (e) {
+      console.warn("[mAI] handoff token illisible", e);
     }
-  } catch (_) {}
+  } else {
+    // Q1 : au lancement, si compte mAI déjà connecté, rafraîchir modèles via
+    // https://mai.val.run/v1/models.
+    try {
+      const s0 = getSettings();
+      if (s0.maiAccount?.jwtToken) {
+        const { syncMaiAccountWithToken } = await import(
+          "./maiAccountStore.js"
+        );
+        void syncMaiAccountWithToken(s0.maiAccount.jwtToken).catch((e) =>
+          console.warn("[mAI] auto-sync failed", e)
+        );
+      }
+    } catch (_) {}
+  }
   initBotSessionStore(userData);
   lap("botSessionStore init");
   initBotController(getSettings);

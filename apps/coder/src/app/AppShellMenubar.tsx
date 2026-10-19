@@ -629,7 +629,10 @@ export const AppShellMenubar = memo(function AppShellMenubar({
             }}
             title={
               maiAccount?.jwtToken
-                ? `${maiAccount.user?.username || "mAI Coder"} (${maiAccount.user?.tier || "Free"})`
+                ? maiAccount.user?.username ||
+                  (maiAccount.syncPending
+                    ? "Synchronisation du compte mAI…"
+                    : "Compte mAI")
                 : t("mai.login")
             }
             type="button"
@@ -676,7 +679,11 @@ export const AppShellMenubar = memo(function AppShellMenubar({
               }}
             >
               {maiAccount?.user?.username ||
-                (maiAccount?.jwtToken ? "mAI" : t("mai.login"))}
+                (maiAccount?.jwtToken
+                  ? maiAccount.syncPending
+                    ? "Synchronisation…"
+                    : "mAI"
+                  : t("mai.login"))}
             </span>
             {maiAccount?.usage ? (
               <span

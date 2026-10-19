@@ -183,7 +183,10 @@ export const AppWorkspaceWelcome = memo(function AppWorkspaceWelcome({
                       }}
                     >
                       {isLoggedIn
-                        ? user?.username || "Utilisateur mAI"
+                        ? user?.username ||
+                          (maiAccount?.syncPending
+                            ? "Synchronisation du compte mAI…"
+                            : "Compte mAI")
                         : "Compte mAI Coder"}
                     </span>
                     {isLoggedIn && user?.tier ? (

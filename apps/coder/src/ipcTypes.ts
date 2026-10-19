@@ -453,4 +453,8 @@ export type MaiAccountState = {
   chosenApiKey?: string;
   usage?: MaiAccountUsage;
   lastSyncedAt?: number;
+  /** Synchronisation du profil en cours (handoff depuis mAI Desktop). */
+  syncPending?: boolean;
+  /** Dernière erreur de synchronisation, sans secret ni jeton. */
+  syncError?: string | null;
 };

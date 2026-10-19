@@ -74,7 +74,7 @@ export type MaiUsageResponse =
       resetAt?: string;
       weekStart?: string;
     }
-  | { ok: false; message: string };
+  | { ok: false; message: string; status?: number };
 
 function broadcastMaiAccountUpdate(state: MaiAccountState): void {
   for (const win of BrowserWindow.getAllWindows()) {
@@ -276,6 +276,18 @@ export async function maiFetchUsage(
       method: "GET",
     });
     const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      return {
+        message:
+          typeof json.error === "string" && json.error.trim()
+            ? json.error
+            : res.status === 401
+              ? "Session mAI expirée. Reconnectez-vous."
+              : `Le serveur mAI a répondu ${res.status}.`,
+        ok: false,
+        status: res.status,
+      };
+    }
     const rawTokensUsed =
       json.tokensUsed ??
       json.tokens_used ??
@@ -520,6 +532,27 @@ export async function checkMaiQuotaAvailable(
 /**
  * Synchronise entièrement le compte mAI à partir du token JWT
  */
+/**
+ * Remplace immédiatement le compte local par un état « en synchronisation ».
+ *
+ * Utilisé au handoff depuis mAI Desktop : le jeton est valide, mais le profil
+ * n'est pas encore revenu. Afficher l'ancien compte (souvent un « Free »
+ * factice) pendant ce délai est précisément le bug que l'on corrige.
+ */
+export function markMaiAccountSyncPending(jwtToken: string): MaiAccountState {
+  const rawToken = (unprotectToken(jwtToken) || jwtToken).trim();
+  const nextState: MaiAccountState = {
+    apiKey: protectToken(rawToken),
+    jwtToken: protectToken(rawToken),
+    lastSyncedAt: Date.now(),
+    syncError: null,
+    syncPending: true,
+  };
+  patchSettings({ maiAccount: nextState });
+  broadcastMaiAccountUpdate(nextState);
+  return nextState;
+}
+
 export async function syncMaiAccountWithToken(
   jwtToken: string
 ): Promise<MaiAccountState> {
@@ -528,6 +561,7 @@ export async function syncMaiAccountWithToken(
   const usageRes = await maiFetchUsage(rawToken);
   const effectiveApiKey = rawToken;
   const protectedJwt = protectToken(rawToken);
+  const unauthorized = !usageRes.ok && usageRes.status === 401;
   const userProfile: MaiAccountProfile | undefined = usageRes.ok
     ? {
         avatarUrl: usageRes.avatarUrl,
@@ -535,7 +569,7 @@ export async function syncMaiAccountWithToken(
         id: usageRes.email || "mai-user",
         phone: usageRes.phone,
         tier: usageRes.tier || "Free",
-        username: usageRes.username || "Utilisateur mAI",
+        username: usageRes.username || "Compte mAI",
       }
     : undefined;
 
@@ -549,9 +583,13 @@ export async function syncMaiAccountWithToken(
     : undefined;
 
   const nextState: MaiAccountState = {
-    apiKey: protectToken(effectiveApiKey),
-    jwtToken: protectedJwt,
+    apiKey: unauthorized ? "" : protectToken(effectiveApiKey),
+    jwtToken: unauthorized ? "" : protectedJwt,
     lastSyncedAt: Date.now(),
+    syncError: usageRes.ok
+      ? null
+      : usageRes.message || "Synchronisation mAI impossible.",
+    syncPending: false,
     usage,
     user: userProfile,
   };
@@ -563,12 +601,16 @@ export async function syncMaiAccountWithToken(
   const nextProviders = hasMai
     ? curProviders.map((p) =>
         p.id === "mai"
-          ? { ...p, apiKey: effectiveApiKey, baseURL: `${MAI_API_BASE}/v1` }
+          ? {
+              ...p,
+              apiKey: unauthorized ? "" : effectiveApiKey,
+              baseURL: `${MAI_API_BASE}/v1`,
+            }
           : p
       )
     : [
         {
-          apiKey: effectiveApiKey,
+          apiKey: unauthorized ? "" : effectiveApiKey,
           baseURL: `${MAI_API_BASE}/v1`,
           displayName: "mAI",
           id: "mai",

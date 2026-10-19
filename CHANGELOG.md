@@ -8,10 +8,11 @@
 * **Partage et découverte de Wakies** : publication de profils d’agents sur une page publique dédiée avec code QR, consultation sans session et possibilité de cloner ou d’importer un agent public dans son espace.
 * **Application sociale Vibe** : réseau social intégré proposant un flux interactif de publications, des réactions, des cercles, des clubs de lecture et une messagerie privée (DMs et groupes).
 * **Stories Vibe** : création et consultation de publications éphémères photo et vidéo visibles 24 heures, avec lecteur dédié, quotas quotidiens adaptés au forfait et contrôle strict des médias.
-* **Site officiel mAI** : portail officiel intégré dans l’application avec présentation des modèles d’IA, actualités, benchmarks et connexion transparente par authentification unique (SSO).
+* **Site officiel mAI** : portail officiel intégré dans l’application avec présentation des modèles d’IA, actualités, benchmarks et connexion transparente par authentification unique.
 * **Intégrations externes OAuth** : connexion sécurisée de comptes tiers (Google et GitHub) avec gestion chiffrée des jetons d’accès pour étendre les outils et actions disponibles pour l’Agent.
 * **Formulaires et récompenses** : onglet dédié dans les paramètres pour répondre à des sondages ou signalements de bugs avec attribution de récompenses.
 * **mAI Coder et applications natives** : intégration de l’IDE mAI Coder et du client de bureau, avec détection et synchronisation fluide des mises à jour sans interruption du travail actif.
+* **mAI Search** : intégration d'un moteur de recherche mAI pour résumer, avoir des images, vidéos et plus encore, avec l'aide d'mAI !
 
 ### Améliorations
 

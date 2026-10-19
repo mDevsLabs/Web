@@ -559,8 +559,15 @@ export function useSettings(
     }
     return shell.subscribeMaiAccount((account: MaiAccountState) => {
       setMaiAccount(account);
+      // La synchronisation du Main met aussi à jour les modèles dans
+      // settings.json. Sans ce rechargement, le renderer conservait la liste
+      // chargée au démarrage jusqu'au prochain redémarrage.
+      void shell
+        .invoke("settings:get")
+        .then((st) => applyLoadedSettings(st as LoadedSettingsSnapshot))
+        .catch(() => {});
     });
-  }, [shell]);
+  }, [shell, applyLoadedSettings]);
 
   return {
     // Agent

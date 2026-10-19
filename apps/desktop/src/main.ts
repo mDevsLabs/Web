@@ -669,7 +669,25 @@ ipcMain.handle("desktop:open-cli", async (event) => {
 
 ipcMain.handle("desktop:open-coder", async (event, opts) => {
   if (!trustedSender(event)) return { success: false, error: "Ouverture de Coder refusée depuis cette fenêtre." };
-  return launchCoder(opts);
+  // Le cookie de session mAI est httpOnly : seul le Main peut le lire. Il est
+  // transmis à Coder par l environnement du processus enfant, jamais par un
+  // argument de ligne de commande ni par le renderer.
+  let sessionToken: string | undefined;
+  try {
+    const origin = new URL(event.senderFrame?.url || APP_URL).origin;
+    const cookies = await event.sender.session.cookies.get({
+      name: "mai_session_token",
+      url: origin,
+    });
+    const value = cookies[0]?.value?.trim() ?? "";
+    if (value.split(".").length === 3 && value.length <= 8192) {
+      sessionToken = value;
+    }
+  } catch {
+    // Un cookie illisible ne doit pas empêcher d ouvrir Coder : il retombera
+    // sur son propre compte local.
+  }
+  return launchCoder({ ...(opts ?? {}), sessionToken });
 });
 
 ipcMain.handle("desktop:get-coder-status", (event) => {

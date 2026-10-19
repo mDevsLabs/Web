@@ -72,7 +72,9 @@ export const MaiToolChips: React.FC<{
     <div className={`flex flex-col gap-1.5 ${className || ""}`}>
       {list.map((call, idx) => {
         const key = call.id || `${call.name}-${idx}`;
-        const open = Boolean(expanded[key]);
+        // Ouvertes par défaut : le détail de l'appel et son résultat sont la
+        // raison d'être de la carte. Un clic mémorise la fermeture.
+        const open = expanded[key] ?? true;
         const meta = STATUS_META[call.status] || STATUS_META.executed;
         const imageUrl = call.result?.result?.imageUrl || null;
         const hasArgs = call.args && Object.keys(call.args).length > 0;
