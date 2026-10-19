@@ -325,7 +325,8 @@ export async function maiFetchUsage(
  */
 export async function maiLogUsage(
   jwtToken: string,
-  tokensUsed: number
+  tokensUsed: number,
+  details?: { inputTokens?: number; outputTokens?: number }
 ): Promise<{ ok: boolean; weeklyUsed?: number; limit?: number }> {
   if (
     !Number.isFinite(tokensUsed) ||
@@ -336,7 +337,15 @@ export async function maiLogUsage(
   }
   try {
     const res = await maiFetch(`${MAI_API_BASE}/log-usage`, {
-      body: JSON.stringify({ tokensUsed: Math.floor(tokensUsed) }),
+      body: JSON.stringify({
+        tokensUsed: Math.floor(tokensUsed),
+        ...(details?.inputTokens !== undefined
+          ? { inputTokens: Math.floor(details.inputTokens) }
+          : {}),
+        ...(details?.outputTokens !== undefined
+          ? { outputTokens: Math.floor(details.outputTokens) }
+          : {}),
+      }),
       headers: {
         Authorization: `Bearer ${unprotectToken(jwtToken) || jwtToken.trim()}`,
         "Content-Type": "application/json",
@@ -399,13 +408,16 @@ export async function maiLogUsage(
   }
 }
 
-export async function recordMaiTokenUsage(tokensUsed: number): Promise<void> {
+export async function recordMaiTokenUsage(
+  tokensUsed: number,
+  details?: { inputTokens?: number; outputTokens?: number }
+): Promise<void> {
   if (tokensUsed <= 0) return;
   try {
     const s = getSettings();
     const jwt = s.maiAccount?.jwtToken?.trim() || s.maiAccount?.apiKey?.trim();
     if (jwt) {
-      await maiLogUsage(jwt, tokensUsed);
+      await maiLogUsage(jwt, tokensUsed, details);
     }
   } catch (err) {
     console.warn("[maiAccount] recordMaiTokenUsage failed:", err);

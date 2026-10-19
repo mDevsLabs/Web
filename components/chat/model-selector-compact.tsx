@@ -3,11 +3,9 @@
 import {
   BrainIcon,
   EyeIcon,
-  ImageIcon,
   InfoIcon,
   SlidersIcon,
   SparklesIcon,
-  Volume2Icon,
   WrenchIcon,
 } from "@mdevs/icons";
 import {
@@ -34,11 +32,6 @@ import {
   ModelSelectorTrigger,
 } from "@/components/ai-elements/model-selector";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import {
   type ChatModel,
   DEFAULT_CHAT_MODEL,
@@ -334,8 +327,17 @@ function ModelDetailsPanel({
     if (Array.isArray(fromModel) && fromModel.length > 0) {
       return fromModel.filter((l): l is ReasoningLevel => isReasoningLevel(l));
     }
+    const idLower = (model.id || "").toLowerCase();
+    if (
+      idLower === "mai-2-mini" ||
+      idLower.endsWith("/mai-2-mini") ||
+      idLower === "mai-2" ||
+      idLower.endsWith("/mai-2")
+    ) {
+      return ["max", "high", "low"] as ReasoningLevel[];
+    }
     return [];
-  }, [capabilities, model.reasoning]);
+  }, [capabilities, model.id, model.reasoning]);
 
   const hasConfigurableReasoning =
     source === "chat" && supportedEfforts.length > 0;
@@ -490,16 +492,6 @@ function SharedModelSelectorOption({
   onSelectReasoningLevel?: (level: ReasoningLevel) => void;
 }) {
   const logoProvider = resolveProviderKey(model);
-  const maybeWithTooltip = (icon: ReactNode, label: string) => (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <span className="inline-flex">{icon}</span>
-      </TooltipTrigger>
-      <TooltipContent side="top" sideOffset={8}>
-        {label}
-      </TooltipContent>
-    </Tooltip>
-  );
 
   const handleSelect = useCallback(() => {
     onModelChange?.(model.id);
@@ -537,52 +529,10 @@ function SharedModelSelectorOption({
             </span>
           ) : null}
         </div>
-        <div className="ml-auto flex items-center gap-1.5 text-foreground/70 shrink-0">
-          {model.isFree ? (
-            <span className="text-[10px] bg-success/10 text-success font-semibold px-1.5 py-0.5 rounded">
-              Gratuit
-            </span>
-          ) : null}
-          {source === "images" ? (
-            maybeWithTooltip(
-              <ImageIcon className="size-3.5 text-info" />,
-              "Génération d'images"
-            )
-          ) : source === "speech" ? (
-            maybeWithTooltip(
-              <Volume2Icon className="size-3.5 text-success" />,
-              model.voices && model.voices.length > 0
-                ? `${model.voices.length} voix disponibles`
-                : "Synthèse vocale"
-            )
-          ) : (
-            <>
-              {capabilities?.[model.id]?.tools
-                ? maybeWithTooltip(
-                    <WrenchIcon className="size-3.5" />,
-                    "Outils supportés"
-                  )
-                : null}
-              {capabilities?.[model.id]?.image ||
-              capabilities?.[model.id]?.file ||
-              capabilities?.[model.id]?.vision
-                ? maybeWithTooltip(
-                    <EyeIcon className="size-3.5" />,
-                    "Fichiers & Images supportés"
-                  )
-                : null}
-              {capabilities?.[model.id]?.reasoning
-                ? maybeWithTooltip(
-                    <BrainIcon className="size-3.5 text-warning" />,
-                    "Raisonnement avancé"
-                  )
-                : null}
-            </>
-          )}
-
+        <div className="ml-auto flex items-center shrink-0">
           {/* Bouton d'expansion sur mobile */}
           <button
-            className="md:hidden p-1 rounded-md hover:bg-muted text-muted-foreground transition-colors ml-0.5"
+            className="md:hidden p-1 rounded-md hover:bg-muted text-muted-foreground transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               onToggleMobileExpand?.();

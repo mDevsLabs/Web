@@ -54,6 +54,7 @@ export async function generateMAICommentAnswer(
     const userText = `${opts.question}\n\n${context.text}`;
 
     let answer: string | null = null;
+    let commentUsage: any = null;
     for (const candidate of [
       "poolside/laguna-xs-2.1:free",
       "nvidia/nemotron-3.5-lightning:free",
@@ -87,6 +88,7 @@ export async function generateMAICommentAnswer(
             const textOutput = aiData.choices?.[0]?.message?.content;
             if (textOutput?.trim()) {
               answer = textOutput.trim();
+              commentUsage = aiData.usage || null;
               break;
             }
           }
@@ -102,14 +104,21 @@ export async function generateMAICommentAnswer(
     }
     if (!answer) return null;
 
-    // Débit quota (parité avec le chat mAI)
+    // Débit quota réel (parité avec le chat mAI)
+    const tokensUsed = Number(
+      commentUsage?.total_tokens ||
+        Math.max(
+          100,
+          Math.ceil(((userText || "").length + answer.length) / 4)
+        )
+    );
     try {
       const { weekStartStr } = getWeekData();
       await sql`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${opts.requesterId}, ${weekStartStr}::date, 250)
+        VALUES (${opts.requesterId}, ${weekStartStr}::date, ${tokensUsed})
         ON CONFLICT (user_id, week_start)
-        DO UPDATE SET tokens_used = weekly_usage.tokens_used + 250
+        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${tokensUsed}
       `;
     } catch {}
 
@@ -453,6 +462,7 @@ export function registerVibeMAIChatRoutes(
             ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires."
             : "");
 
+        let capturedUsage: any = null;
         if (openRouterApiKey) {
           for (const candidate of modelsToTry) {
             try {
@@ -488,6 +498,7 @@ export function registerVibeMAIChatRoutes(
                 const textOutput = aiData.choices?.[0]?.message?.content;
                 if (textOutput?.trim()) {
                   reply = textOutput.trim();
+                  capturedUsage = aiData.usage || null;
                   break;
                 }
               }
@@ -532,15 +543,46 @@ export function registerVibeMAIChatRoutes(
         );
       }
 
+      // Décompte précis des tokens
+      const inputTokens = Number(
+        capturedUsage?.prompt_tokens || Math.ceil((message || "").length / 4)
+      );
+      const outputTokens = Number(
+        capturedUsage?.completion_tokens || Math.ceil((reply || "").length / 4)
+      );
+      const totalTokens = Number(
+        capturedUsage?.total_tokens || inputTokens + outputTokens
+      );
+
+      if (totalTokens > 0) {
+        try {
+          const { weekStartStr } = getWeekData();
+          await sql`
+            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+            VALUES (${userId}, ${weekStartStr}::date, ${totalTokens})
+            ON CONFLICT (user_id, week_start)
+            DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${totalTokens}, updated_at = NOW()
+          `;
+        } catch {}
+      }
+
       return c.json({
         assistant_message_id: savedAssistant?.id || null,
         conversation_id: conversationId || null,
+        inputTokens,
         modelUsed: effectiveModel,
+        outputTokens,
         reply,
+        tokensUsed: totalTokens,
         toolCalls: toolCallRecords,
         toolExecuted: toolToRun
           ? { name: toolToRun, result: toolResult }
           : null,
+        usage: {
+          completion_tokens: outputTokens,
+          prompt_tokens: inputTokens,
+          total_tokens: totalTokens,
+        },
         user_message_id: savedUser?.id || null,
       });
     } catch (err: any) {

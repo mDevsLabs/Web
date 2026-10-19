@@ -256,7 +256,7 @@ export function registerModelRoutes(
         body.outputTokens || body.completionTokens || 0
       );
       const tokensUsed = Number(
-        body.tokensUsed || inputTokens + outputTokens || 0
+        body.tokensUsed || body.tokens || inputTokens + outputTokens || 0
       );
       const { weekStartStr } = getWeekData();
 
@@ -381,7 +381,10 @@ export function registerModelRoutes(
             ...m,
             maxContext: effective.maxContext,
             maxOutput: effective.maxOutput,
-            reasoning: effective.reasoning,
+            reasoning:
+              m.reasoning?.supported_efforts?.length
+                ? m.reasoning
+                : (effective.reasoning ?? m.reasoning),
             supported_parameters: effective.supported_parameters,
           },
         ];

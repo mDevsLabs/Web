@@ -397,15 +397,34 @@ export class ApiService {
     // Les GET sont déjà couverts par !isReadRequest. Exclure aussi les trackers
     // de vue POST : une visite simple ne doit pas créer elle-même un usage API.
     // TEST: viewPost/trackProfileView => aucun POST /v1/usage/log.
-    const SKIP_LOG_PATTERNS = ['/usage/log', '/like', '/repost', '/bookmark', '/notifications/read', '/models'];
+    const SKIP_LOG_PATTERNS = ['/usage/log', '/log-usage', '/v1/log-usage', '/like', '/repost', '/bookmark', '/notifications/read', '/models'];
     const isViewEvent = /\/view\/?(?:\?|$)/.test(endpoint);
     const shouldLog = !isReadRequest && !isViewEvent && !SKIP_LOG_PATTERNS.some(p => endpoint.includes(p));
 
-    if (shouldLog) {
-      this.logUsage(endpoint).catch(() => {});
-    }
-
     const json = await response.json();
+
+    if (shouldLog) {
+      const actualTokens =
+        typeof json?.tokensUsed === "number"
+          ? json.tokensUsed
+          : typeof json?.usage?.total_tokens === "number"
+            ? json.usage.total_tokens
+            : typeof json?.tokens === "number"
+              ? json.tokens
+              : 10;
+      const inputTokens =
+        typeof json?.inputTokens === "number"
+          ? json.inputTokens
+          : json?.usage?.prompt_tokens;
+      const outputTokens =
+        typeof json?.outputTokens === "number"
+          ? json.outputTokens
+          : json?.usage?.completion_tokens;
+      this.logUsage(endpoint, actualTokens, {
+        inputTokens,
+        outputTokens,
+      }).catch(() => {});
+    }
 
     if (!isReadRequest) {
       this.invalidateCache();
@@ -1634,9 +1653,30 @@ export class ApiService {
     return this.request('/v1/privacy/export');
   }
 
-  public static async logUsage(endpoint: string, tokens: number = 10): Promise<void> {
+  public static async logUsage(
+    endpoint: string,
+    tokens: number = 10,
+    details?: { inputTokens?: number; outputTokens?: number }
+  ): Promise<void> {
     const token = this.getToken();
     if (!token) return;
+    try {
+      await fetch(`${API_BASE}/log-usage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          action_type: 'api_query',
+          endpoint,
+          inputTokens: details?.inputTokens,
+          outputTokens: details?.outputTokens,
+          tokens,
+          tokensUsed: tokens,
+        }),
+      });
+    } catch {}
     try {
       await fetch(`${API_BASE}/v1/usage/log`, {
         method: 'POST',
@@ -1644,7 +1684,7 @@ export class ApiService {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ endpoint, tokens, action_type: 'api_query' }),
+        body: JSON.stringify({ endpoint, tokens, tokensUsed: tokens, action_type: 'api_query' }),
       });
     } catch {}
   }

@@ -63,15 +63,15 @@ export function openAboutWindow(): BrowserWindow {
   }
 
   aboutWindow = new BrowserWindow({
-    width: 480,
-    height: 560,
-    minWidth: 420,
-    minHeight: 500,
+    width: 440,
+    height: 520,
+    minWidth: 400,
+    minHeight: 480,
     resizable: false,
     minimizable: false,
     maximizable: false,
     title: "À propos de mAI",
-    backgroundColor: "#0d0d10",
+    backgroundColor: "#ffffff",
     autoHideMenuBar: true,
     show: false,
     webPreferences: {

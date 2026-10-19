@@ -124,16 +124,16 @@ export async function checkForUpdates(includePreReleases = true): Promise<Update
       };
     }
 
-    // Filtrer par canal si demandé
-    const eligibleReleases = includePreReleases
-      ? releases
-      : releases.filter((r) => !r.prerelease);
+    // Filtrer par canal si demandé, avec repli si aucune release stable n'est publiée
+    const stableReleases = releases.filter((r) => !r.prerelease);
+    const eligibleReleases =
+      includePreReleases || stableReleases.length === 0 ? releases : stableReleases;
 
     if (eligibleReleases.length === 0) {
       return {
         hasUpdate: false,
         currentVersion,
-        error: "Aucune release stable trouvée.",
+        error: "Aucune mise à jour trouvée sur GitHub.",
       };
     }
 

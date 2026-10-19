@@ -4,6 +4,7 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
+import { recordTokenUsage } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
 import { timingSafeCompare } from "@/lib/security/timing";
 import {
@@ -112,12 +113,31 @@ async function handleTick(request: Request): Promise<Response> {
           throw new Error("La recherche est désactivée pour ce Wakie.");
         }
         const historique = await listMessages(userId, conversationId);
-        const texte = await runTurn({
+        const { texte, usage } = await runTurn({
           conversationId,
           historique,
           model: getLanguageModel(DEFAULT_CHAT_MODEL),
           prompt: claim.task.prompt,
         });
+
+        const inputTokens =
+          (usage as any)?.inputTokens ?? (usage as any)?.promptTokens ?? 0;
+        const outputTokens =
+          (usage as any)?.outputTokens ?? (usage as any)?.completionTokens ?? 0;
+        const totalTokens =
+          (usage as any)?.totalTokens ?? inputTokens + outputTokens;
+        if (totalTokens > 0) {
+          await recordTokenUsage({
+            chatId: null,
+            chatMode: "chat",
+            idempotencyKey: `wakies-task-${claim.task.id}-${claim.lease}`,
+            inputTokens,
+            model: DEFAULT_CHAT_MODEL,
+            outputTokens,
+            totalTokens,
+            userId,
+          }).catch(() => {});
+        }
         // L'identifiant du message est dérivé du bail : `appendMessages` pose un
         // `onConflictDoNothing` dessus, donc une reprise de la MÊME occurrence
         // n'écrirait pas un second brief. Une occurrence distincte a un bail
@@ -193,7 +213,7 @@ async function runTurn(params: {
   historique: { parts: unknown; role: string }[];
   model: ReturnType<typeof getLanguageModel>;
   prompt: string;
-}): Promise<string> {
+}): Promise<{ texte: string; usage: any }> {
   const source = [
     "Tu exécutes une tâche planifiée. Produis un brief court et factuel en français,",
     " appuyé sur ce que tu sais. Si tu n'as pas de fait frais, dis-le clairement.",
@@ -211,7 +231,15 @@ async function runTurn(params: {
     model: params.model,
   });
 
-  return (await result.text).trim() || "Aucune conclusion.";
+  const [text, usage] = await Promise.all([
+    result.text,
+    Promise.resolve(result.usage).catch(() => null),
+  ]);
+
+  return {
+    texte: text.trim() || "Aucune conclusion.",
+    usage,
+  };
 }
 
 /** Les six derniers tours, pour que la tâche s'insère dans l'échange. */

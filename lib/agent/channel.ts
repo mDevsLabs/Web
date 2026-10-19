@@ -4,7 +4,7 @@
 
 export type AgentChannel = "alpha" | "beta" | "stable";
 
-export const AGENT_CHANNEL: AgentChannel = "beta";
+export const AGENT_CHANNEL: AgentChannel = "stable";
 
 export const AGENT_CHANNEL_LABELS: Record<AgentChannel, string> = {
   alpha: "Alpha",

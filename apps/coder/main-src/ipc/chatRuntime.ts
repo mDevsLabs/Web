@@ -398,7 +398,10 @@ export function runChatStream(
               const turnTokens =
                 (usage?.inputTokens ?? 0) + (usage?.outputTokens ?? 0);
               if (turnTokens > 0) {
-                void recordMaiTokenUsage(turnTokens);
+                void recordMaiTokenUsage(turnTokens, {
+                  inputTokens: usage?.inputTokens,
+                  outputTokens: usage?.outputTokens,
+                });
               }
               if (teamSnapshot) {
                 saveTeamSession(threadId, teamSnapshot);
@@ -645,7 +648,10 @@ export function runChatStream(
                 const turnTokens =
                   (usage?.inputTokens ?? 0) + (usage?.outputTokens ?? 0);
                 if (turnTokens > 0) {
-                  void recordMaiTokenUsage(turnTokens);
+                  void recordMaiTokenUsage(turnTokens, {
+                    inputTokens: usage?.inputTokens,
+                    outputTokens: usage?.outputTokens,
+                  });
                 }
                 queueExtractMemories({
                   modelSelection,
@@ -746,7 +752,10 @@ export function runChatStream(
             const turnTokens =
               (usage?.inputTokens ?? 0) + (usage?.outputTokens ?? 0);
             if (turnTokens > 0) {
-              void recordMaiTokenUsage(turnTokens);
+              void recordMaiTokenUsage(turnTokens, {
+                inputTokens: usage?.inputTokens,
+                outputTokens: usage?.outputTokens,
+              });
             }
             queueExtractMemories({
               modelSelection,

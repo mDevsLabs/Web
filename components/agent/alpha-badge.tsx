@@ -29,6 +29,9 @@ export function AgentChannelBadge({
   className?: string;
 }) {
   const info = getAgentChannelInfo(channel);
+  if (info.channel === "stable") {
+    return null;
+  }
   const Icon = CHANNEL_ICONS[info.channel];
 
   return (

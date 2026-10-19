@@ -126,6 +126,7 @@ export function registerVibeMAIExecuteRoutes(
           : "");
 
       let reply = "";
+      let capturedUsage: any = null;
       if (openRouterApiKey) {
         const modelsToTry = [
           primaryModel,
@@ -162,6 +163,7 @@ export function registerVibeMAIExecuteRoutes(
               const textOutput = aiData.choices?.[0]?.message?.content;
               if (textOutput?.trim()) {
                 reply = textOutput.trim();
+                capturedUsage = aiData.usage || null;
                 break;
               }
             }
@@ -187,23 +189,45 @@ export function registerVibeMAIExecuteRoutes(
         reply
       );
 
-      // Débit quota (parité avec le chat mAI)
-      try {
-        const { weekStartStr } = getWeekData();
-        await sql`
-          INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-          VALUES (${userId}, ${weekStartStr}::date, 250)
-          ON CONFLICT (user_id, week_start)
-          DO UPDATE SET tokens_used = weekly_usage.tokens_used + 250
-        `;
-      } catch {}
+      // Décompte précis des tokens
+      const inputTokens = Number(
+        capturedUsage?.prompt_tokens ||
+          Math.ceil((String(lastUser?.content || "").length) / 4)
+      );
+      const outputTokens = Number(
+        capturedUsage?.completion_tokens || Math.ceil((reply || "").length / 4)
+      );
+      const totalTokens = Number(
+        capturedUsage?.total_tokens || inputTokens + outputTokens
+      );
+
+      // Débit quota réel (parité avec le chat mAI)
+      if (totalTokens > 0) {
+        try {
+          const { weekStartStr } = getWeekData();
+          await sql`
+            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+            VALUES (${userId}, ${weekStartStr}::date, ${totalTokens})
+            ON CONFLICT (user_id, week_start)
+            DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${totalTokens}, updated_at = NOW()
+          `;
+        } catch {}
+      }
 
       return c.json({
         conversation_id: conversationId || null,
+        inputTokens,
         message_id: saved?.id || null,
         modelUsed: effectiveModel,
+        outputTokens,
         reply,
         success: true,
+        tokensUsed: totalTokens,
+        usage: {
+          completion_tokens: outputTokens,
+          prompt_tokens: inputTokens,
+          total_tokens: totalTokens,
+        },
         user_message_id: lastUser?.id || null,
       });
     } catch (err: any) {

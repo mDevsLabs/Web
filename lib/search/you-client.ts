@@ -457,8 +457,7 @@ function extractVideos(hits: SearchWebHit[]): SearchVideoHit[] {
       let thumbnail = h.thumbnail_url;
       if (
         !thumbnail &&
-        (h.url.includes("youtube.com/watch?v=") ||
-          h.url.includes("youtu.be/"))
+        (h.url.includes("youtube.com/watch?v=") || h.url.includes("youtu.be/"))
       ) {
         const idMatch = h.url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         if (idMatch) {
@@ -478,6 +477,82 @@ function extractVideos(hits: SearchWebHit[]): SearchVideoHit[] {
   }
 
   return videos;
+}
+
+async function fetchYouTubeVideos(
+  query: string,
+  limit = 9
+): Promise<SearchVideoHit[]> {
+  try {
+    const res = await fetch(
+      `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`,
+      {
+        headers: {
+          "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        },
+        signal: AbortSignal.timeout(3500),
+      }
+    );
+    if (!res.ok) return [];
+    const html = await res.text();
+    const videos: SearchVideoHit[] = [];
+    const seen = new Set<string>();
+
+    const regex =
+      /"videoRenderer":\{"videoId":"([a-zA-Z0-9_-]{11})".*?"title":\{"runs":\[\{"text":"(.*?)"/g;
+    let match: RegExpExecArray | null = null;
+    while ((match = regex.exec(html)) !== null && videos.length < limit) {
+      const id = match[1];
+      const rawTitle = match[2];
+      if (id && rawTitle && !seen.has(id)) {
+        seen.add(id);
+        const title = rawTitle.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) =>
+          String.fromCharCode(Number.parseInt(hex, 16))
+        );
+        videos.push({
+          duration: undefined,
+          favicon_url:
+            "https://www.google.com/s2/favicons?domain=youtube.com&sz=32",
+          page_url: `https://www.youtube.com/watch?v=${id}`,
+          platform: "YouTube",
+          thumbnail: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+          title,
+        });
+      }
+    }
+    return videos;
+  } catch {
+    return [];
+  }
+}
+
+async function fetchWikiImages(
+  query: string,
+  limit = 12
+): Promise<SearchImageHit[]> {
+  try {
+    const lang = /[éèàùçâêîôû]/i.test(query) ? "fr" : "en";
+    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=${limit}&prop=pageimages&pithumbsize=600&format=json`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "mAI-Search-Images/1.0" },
+      signal: AbortSignal.timeout(3500),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const pages = Object.values(data?.query?.pages || {}) as any[];
+    return pages
+      .filter((p) => p.thumbnail?.source)
+      .map((p) => ({
+        image_url: p.thumbnail.source,
+        page_url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(p.title)}`,
+        thumbnail: p.thumbnail.source,
+        title: p.title,
+      }));
+  } catch {
+    return [];
+  }
 }
 
 /**
@@ -528,11 +603,16 @@ export async function executeMaiSearch(params: {
       : { hits: [], images: [] };
   const dedicatedImages =
     imagesResult.status === "fulfilled" ? imagesResult.value : [];
-  const newsHits =
-    newsResult.status === "fulfilled" ? newsResult.value : [];
+  const newsHits = newsResult.status === "fulfilled" ? newsResult.value : [];
 
   let results = webData.hits;
   let allImages = [...dedicatedImages, ...webData.images];
+
+  // Si aucune image reçue, tenter le repli Wikipédia
+  if (allImages.length === 0 && wantImages) {
+    const wikiImages = await fetchWikiImages(trimmed);
+    allImages.push(...wikiImages);
+  }
 
   // Dédupliquer les images par image_url
   const seenImages = new Set<string>();
@@ -551,7 +631,13 @@ export async function executeMaiSearch(params: {
   }
 
   // Extraire les vidéos à partir des résultats web
-  const videos = extractVideos(results);
+  let videos = extractVideos(results);
+
+  // Si aucune vidéo trouvée dans les liens web, rechercher sur YouTube
+  if (videos.length === 0) {
+    const ytVideos = await fetchYouTubeVideos(trimmed);
+    videos = ytVideos;
+  }
 
   // S'assurer que chaque hit a un favicon garanti
   results = results.map((r) => ({

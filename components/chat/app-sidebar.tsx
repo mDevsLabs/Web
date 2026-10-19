@@ -858,7 +858,6 @@ export function AppSidebar({
                     payants (Plus, Pro, Max), bloqué avec cadenas pour Free. */}
                 <SidebarMenuItem>
                   <LockedSidebarNavItem
-                    badge="Bêta"
                     closeMobile={handleNavClick}
                     href="/wakies"
                     icon={

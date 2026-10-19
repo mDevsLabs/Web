@@ -41,12 +41,13 @@ describe("Recherche multi-source — Extension aux 5 univers", () => {
   });
 });
 
-describe("Mode Agent — Passage du canal Alpha à Bêta", () => {
-  it("est configuré sur le canal beta", () => {
-    expect(AGENT_CHANNEL).toBe("beta");
+describe("Mode Agent — Canal de diffusion", () => {
+  it("est configuré sur le canal stable", () => {
+    expect(AGENT_CHANNEL).toBe("stable");
   });
 
-  it("affiche le libellé Bêta en français", () => {
+  it("affiche le libellé Bêta et Stable en français", () => {
     expect(AGENT_CHANNEL_LABELS.beta).toBe("Bêta");
+    expect(AGENT_CHANNEL_LABELS.stable).toBe("Stable");
   });
 });

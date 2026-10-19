@@ -1354,7 +1354,10 @@ async function runBotAsyncTask(args: RunBotAsyncTaskArgs): Promise<string> {
       accumulateTokenUsage(threadId, usage?.inputTokens, usage?.outputTokens);
       const turnTokens = (usage?.inputTokens ?? 0) + (usage?.outputTokens ?? 0);
       if (turnTokens > 0) {
-        void recordMaiTokenUsage(turnTokens);
+        void recordMaiTokenUsage(turnTokens, {
+          inputTokens: usage?.inputTokens,
+          outputTokens: usage?.outputTokens,
+        });
       }
       // Skill self-improve: 记录使用并更新 stats
       if (usedSkillSlug && session.workspaceRoot) {

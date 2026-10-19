@@ -6,17 +6,25 @@
   <title>À propos de mAI</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0d0d10;
-      --card-bg: #151518;
-      --card-border: #26262b;
-      --text: #f4f4f5;
-      --text-muted: #a1a1aa;
-      --accent: #7f92de;
-      --accent-hover: #96a6e8;
-      --success: #34d399;
-      --warning: #fbbf24;
-      --destructive: #f87171;
+      color-scheme: light;
+      --bg: #ffffff;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-subtle: #eff6ff;
+      --accent-border: #bfdbfe;
+      --success: #059669;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
+      --warning-border: #fde68a;
+      --destructive: #dc2626;
+      --destructive-bg: #fef2f2;
+      --destructive-border: #fecaca;
     }
 
     * {
@@ -34,33 +42,25 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      padding: 24px;
+      padding: 22px 24px;
       overflow: hidden;
     }
 
     .header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
-    .logo-container {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--card-border);
       flex-shrink: 0;
-    }
-
-    .logo-svg {
-      width: 30px;
-      height: 30px;
-      fill: #ffffff;
     }
 
     .app-title-group {
@@ -76,19 +76,20 @@
     }
 
     .app-name {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      color: var(--text);
     }
 
     .badge {
       font-size: 11px;
       font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 6px;
-      background: rgba(127, 146, 222, 0.15);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--accent-subtle);
       color: var(--accent);
-      border: 1px solid rgba(127, 146, 222, 0.3);
+      border: 1px solid var(--accent-border);
     }
 
     .app-desc {
@@ -104,7 +105,7 @@
       border: 1px solid var(--card-border);
       border-radius: 10px;
       padding: 10px 14px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .spec-item {
@@ -118,7 +119,7 @@
     }
 
     .spec-val {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text);
     }
 
@@ -129,36 +130,53 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 16px;
-      gap: 12px;
+      padding: 14px 16px;
+      gap: 10px;
     }
 
     .update-header {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      color: var(--text);
     }
 
     .status-box {
       font-size: 12px;
-      line-height: 1.5;
       color: var(--text-muted);
-      min-height: 48px;
+      min-height: 42px;
       display: flex;
       align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+    }
+
+    .status-icon {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-text {
+      flex: 1;
+      line-height: 1.4;
     }
 
     .release-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: #ffffff;
       border: 1px solid var(--card-border);
       border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 12px;
+      padding: 8px 12px;
+      font-size: 11px;
       display: none;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .release-card.show {
@@ -188,17 +206,17 @@
 
     .progress-bar-bg {
       width: 100%;
-      height: 8px;
-      background: #27272a;
-      border-radius: 4px;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
       overflow: hidden;
     }
 
     .progress-bar-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6);
-      border-radius: 4px;
+      background: var(--accent);
+      border-radius: 3px;
       transition: width 0.2s ease;
     }
 
@@ -217,7 +235,7 @@
 
     button {
       flex: 1;
-      padding: 9px 14px;
+      padding: 8px 14px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 600;
@@ -228,17 +246,18 @@
       gap: 6px;
       transition: all 0.15s ease;
       border: 1px solid var(--card-border);
-      background: #1e1e24;
+      background: #ffffff;
       color: var(--text);
     }
 
     button:hover:not(:disabled) {
-      background: #292932;
+      background: #f1f5f9;
+      border-color: #cbd5e1;
     }
 
     button.primary {
       background: var(--accent);
-      color: #0d0d10;
+      color: #ffffff;
       border-color: var(--accent);
     }
 
@@ -248,7 +267,7 @@
     }
 
     button:disabled {
-      opacity: 0.5;
+      opacity: 0.6;
       cursor: not-allowed;
     }
 
@@ -256,7 +275,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: 11px;
       color: var(--text-muted);
     }
@@ -265,21 +284,28 @@
       color: var(--text-muted);
       text-decoration: none;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .footer-link:hover {
       color: var(--accent);
-      text-decoration: underline;
     }
 
     .spinner {
       display: inline-block;
-      width: 12px;
-      height: 12px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: #ffffff;
+      width: 13px;
+      height: 13px;
+      border: 2px solid rgba(15, 23, 42, 0.2);
+      border-top-color: var(--text);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
+    }
+
+    button.primary .spinner {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
     }
 
     @keyframes spin {
@@ -289,17 +315,13 @@
 </head>
 <body>
   <div class="header">
-    <div class="logo-container">
-      <svg class="logo-svg" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
+    <img src="./logo.png" alt="mAI" class="logo-img" id="appLogo" />
     <div class="app-title-group">
       <div class="app-name-row">
         <span class="app-name" id="appName">mAI</span>
         <span class="badge" id="appVersion">v...</span>
       </div>
-      <span class="app-desc">Application de bureau officielle mAI</span>
+      <span class="app-desc">Application officielle</span>
     </div>
   </div>
 
@@ -324,14 +346,24 @@
 
   <div class="update-section">
     <div class="update-header">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.19"/>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+        <path d="M16 21h5v-5"/>
       </svg>
-      <span>Mise à jour logicielle</span>
+      <span>Mise à jour</span>
     </div>
 
     <div class="status-box" id="statusBox">
-      Prêt à vérifier les mises à jour sur GitHub.
+      <span class="status-icon" id="statusIcon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+      </span>
+      <span class="status-text" id="statusText">Prêt à vérifier</span>
     </div>
 
     <div class="release-card" id="releaseCard">
@@ -344,28 +376,41 @@
         <div class="progress-bar-fill" id="progressBarFill"></div>
       </div>
       <div class="progress-text">
-        <span id="progressText">Téléchargement en cours...</span>
+        <span id="progressText">Téléchargement...</span>
         <span id="progressPercent">0%</span>
       </div>
     </div>
 
     <div class="actions">
       <button id="btnCheck">
-        <span id="checkBtnIcon">🔄</span>
-        <span id="checkBtnLabel">Rechercher les mises à jour</span>
+        <span id="checkBtnIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.19"/>
+          </svg>
+        </span>
+        <span id="checkBtnLabel">Vérifier</span>
       </button>
       <button class="primary" id="btnDownload" style="display: none;">
-        <span>⬇️ Télécharger la mise à jour</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Télécharger</span>
       </button>
       <button class="primary" id="btnLaunch" style="display: none;">
-        <span>🚀 Ouvrir l'installateur</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        <span>Installer</span>
       </button>
     </div>
   </div>
 
   <div class="footer">
     <a class="footer-link" id="linkSite">mai-officiel.vercel.app</a>
-    <a class="footer-link" id="linkGithub">GitHub Releases</a>
+    <a class="footer-link" id="linkGithub">GitHub</a>
   </div>
 
   <script>
@@ -377,6 +422,9 @@
     const specNodeEl = document.getElementById("specNode");
 
     const statusBox = document.getElementById("statusBox");
+    const statusIcon = document.getElementById("statusIcon");
+    const statusText = document.getElementById("statusText");
+
     const releaseCard = document.getElementById("releaseCard");
     const releaseTitle = document.getElementById("releaseTitle");
     const releaseMeta = document.getElementById("releaseMeta");
@@ -398,6 +446,28 @@
     let currentUpdateData = null;
     let downloadedFilePath = null;
 
+    const ICONS = {
+      info: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
+      check: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+      alert: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--destructive)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+      update: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+      refresh: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.19"/></svg>`,
+    };
+
+    function setStatus(type, message) {
+      statusIcon.innerHTML = ICONS[type] || ICONS.info;
+      statusText.textContent = message;
+      if (type === "alert") {
+        statusText.style.color = "var(--destructive)";
+      } else if (type === "check") {
+        statusText.style.color = "var(--success)";
+      } else if (type === "update") {
+        statusText.style.color = "var(--accent)";
+      } else {
+        statusText.style.color = "var(--text-muted)";
+      }
+    }
+
     async function init() {
       try {
         const info = await window.maiAbout.getInfo();
@@ -408,7 +478,7 @@
         specChromiumEl.textContent = `v${info.chromiumVersion}`;
         specNodeEl.textContent = `v${info.nodeVersion}`;
       } catch (err) {
-        console.error("Impossible de récupérer les informations de l'application :", err);
+        console.error("Info inaccessible :", err);
       }
     }
 
@@ -420,10 +490,9 @@
 
     async function checkUpdates() {
       btnCheck.disabled = true;
-      checkBtnIcon.className = "spinner";
-      checkBtnIcon.textContent = "";
-      checkBtnLabel.textContent = "Vérification en cours...";
-      statusBox.textContent = "Recherche des versions sur GitHub...";
+      checkBtnIcon.innerHTML = `<span class="spinner"></span>`;
+      checkBtnLabel.textContent = "Recherche...";
+      setStatus("info", "Vérification sur GitHub...");
       releaseCard.classList.remove("show");
       btnDownload.style.display = "none";
       btnLaunch.style.display = "none";
@@ -434,23 +503,22 @@
         currentUpdateData = res;
 
         if (res.error) {
-          statusBox.innerHTML = `<span style="color:var(--destructive)">⚠️ ${res.error}</span>`;
+          setStatus("alert", res.error);
         } else if (res.hasUpdate) {
-          statusBox.innerHTML = `<span style="color:var(--success)">✨ Une mise à jour est disponible !</span>`;
+          setStatus("update", "Nouvelle version disponible");
           releaseTitle.textContent = `${res.releaseName || res.latestVersion}`;
-          releaseMeta.textContent = `Fichier : ${res.fileName} ${res.fileSize ? '(' + formatBytes(res.fileSize) + ')' : ''}`;
+          releaseMeta.textContent = res.fileName + (res.fileSize ? ` · ${formatBytes(res.fileSize)}` : "");
           releaseCard.classList.add("show");
           btnDownload.style.display = "flex";
         } else {
-          statusBox.innerHTML = `🎉 Vous disposez déjà de la dernière version (v${res.currentVersion}).`;
+          setStatus("check", `Application à jour (v${res.currentVersion})`);
         }
       } catch (err) {
-        statusBox.innerHTML = `<span style="color:var(--destructive)">Erreur lors de la vérification : ${err.message || err}</span>`;
+        setStatus("alert", err.message || "Erreur de connexion");
       } finally {
         btnCheck.disabled = false;
-        checkBtnIcon.className = "";
-        checkBtnIcon.textContent = "🔄";
-        checkBtnLabel.textContent = "Rechercher à nouveau";
+        checkBtnIcon.innerHTML = ICONS.refresh;
+        checkBtnLabel.textContent = "Vérifier";
       }
     }
 
@@ -463,8 +531,8 @@
       progressContainer.classList.add("show");
       progressBarFill.style.width = "0%";
       progressPercent.textContent = "0%";
-      progressText.textContent = "Démarrage du téléchargement...";
-      statusBox.textContent = `Téléchargement de ${currentUpdateData.fileName}...`;
+      progressText.textContent = "Téléchargement...";
+      setStatus("info", `Téléchargement en cours...`);
 
       const unsubscribe = window.maiAbout.onDownloadProgress((data) => {
         const p = data.percent;
@@ -472,7 +540,7 @@
         progressPercent.textContent = `${p}%`;
         const recStr = formatBytes(data.received);
         const totStr = formatBytes(data.total);
-        progressText.textContent = totStr ? `${recStr} / ${totStr}` : `${recStr} reçus`;
+        progressText.textContent = totStr ? `${recStr} / ${totStr}` : `${recStr}`;
       });
 
       try {
@@ -486,16 +554,16 @@
           downloadedFilePath = res.filePath;
           progressBarFill.style.width = "100%";
           progressPercent.textContent = "100%";
-          statusBox.innerHTML = `<span style="color:var(--success)">✅ Téléchargement terminé ! L'installateur s'est ouvert automatiquement.</span>`;
+          setStatus("check", "Téléchargement terminé");
           btnLaunch.style.display = "flex";
         } else {
-          statusBox.innerHTML = `<span style="color:var(--destructive)">⚠️ ${res.error || "Échec du téléchargement"}</span>`;
+          setStatus("alert", res.error || "Échec du téléchargement");
           btnDownload.disabled = false;
           btnDownload.style.display = "flex";
         }
       } catch (err) {
         unsubscribe();
-        statusBox.innerHTML = `<span style="color:var(--destructive)">Erreur de téléchargement : ${err.message || err}</span>`;
+        setStatus("alert", err.message || "Erreur réseau");
         btnDownload.disabled = false;
         btnDownload.style.display = "flex";
       } finally {

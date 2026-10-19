@@ -12,3 +12,4 @@ await writeFile("dist/terminal/terminal.css",
   await readFile(xtermCss, "utf8") + "\n" + await readFile("src/terminal/style.css", "utf8"));
 await mkdir("dist/about", { recursive: true });
 await copyFile("src/about/index.html", "dist/about/index.html");
+await copyFile("src/about/logo.png", "dist/about/logo.png");

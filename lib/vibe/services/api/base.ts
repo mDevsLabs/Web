@@ -380,6 +380,8 @@ export class ApiServiceCore {
 
     const SKIP_LOG_PATTERNS = [
       "/usage/log",
+      "/log-usage",
+      "/v1/log-usage",
       "/like",
       "/repost",
       "/bookmark",
@@ -392,11 +394,30 @@ export class ApiServiceCore {
       !isViewEvent &&
       !SKIP_LOG_PATTERNS.some((p) => endpoint.includes(p));
 
-    if (shouldLog) {
-      ApiServiceCore.logUsage(endpoint).catch(() => {});
-    }
-
     const json = await response.json();
+
+    if (shouldLog) {
+      const actualTokens =
+        typeof json?.tokensUsed === "number"
+          ? json.tokensUsed
+          : typeof json?.usage?.total_tokens === "number"
+            ? json.usage.total_tokens
+            : typeof json?.tokens === "number"
+              ? json.tokens
+              : 10;
+      const inputTokens =
+        typeof json?.inputTokens === "number"
+          ? json.inputTokens
+          : json?.usage?.prompt_tokens;
+      const outputTokens =
+        typeof json?.outputTokens === "number"
+          ? json.outputTokens
+          : json?.usage?.completion_tokens;
+      ApiServiceCore.logUsage(endpoint, actualTokens, {
+        inputTokens,
+        outputTokens,
+      }).catch(() => {});
+    }
 
     if (!isReadRequest) {
       ApiServiceCore.invalidateCache();
@@ -466,12 +487,38 @@ export class ApiServiceCore {
     return response.json() as Promise<T>;
   }
 
-  public static async logUsage(endpoint: string, tokens = 10): Promise<void> {
+  public static async logUsage(
+    endpoint: string,
+    tokens = 10,
+    details?: { inputTokens?: number; outputTokens?: number }
+  ): Promise<void> {
     const token = ApiServiceCore.getToken();
     if (!token) return;
     try {
+      await fetch(`${API_BASE}/log-usage`, {
+        body: JSON.stringify({
+          action_type: "api_query",
+          endpoint,
+          inputTokens: details?.inputTokens,
+          outputTokens: details?.outputTokens,
+          tokens,
+          tokensUsed: tokens,
+        }),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+    } catch {}
+    try {
       await fetch(`${API_BASE}/v1/usage/log`, {
-        body: JSON.stringify({ action_type: "api_query", endpoint, tokens }),
+        body: JSON.stringify({
+          action_type: "api_query",
+          endpoint,
+          tokens,
+          tokensUsed: tokens,
+        }),
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

@@ -174,6 +174,24 @@ export async function POST(request: Request) {
         // quota sera rattrapé par la consommation du message d'origine.
         logError("Échec d'enregistrement de l'usage (traduction)", error);
       });
+
+      try {
+        await upstreamJson({
+          body: {
+            inputTokens: usage.inputTokens ?? 0,
+            isGhostMode: false,
+            model: "translation-fallback",
+            outputTokens: usage.outputTokens ?? 0,
+            tokensUsed: totalTokens,
+          },
+          method: "POST",
+          path: "/log-usage",
+          timeoutMs: 3000,
+          token: sessionToken,
+        });
+      } catch {
+        // La journalisation distante est best-effort, le débit local est déjà posé.
+      }
     }
 
     const result: TranslateResult = {
