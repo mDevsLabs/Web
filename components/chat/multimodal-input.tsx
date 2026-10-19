@@ -954,71 +954,67 @@ function PureMultimodalInput({
           />
         ) : null}
 
-        <div className="relative w-full">
-          {input ? (
-            <div
-              aria-hidden="true"
-              className={cn(
-                "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans",
-                pendingTools.length > 0 ||
-                  attachments.length > 0 ||
-                  uploadQueue.length > 0
-                  ? "pt-1.5"
-                  : "pt-3.5"
-              )}
-              ref={overlayRef}
-            >
-              {renderHighlightedMentions(
-                // Sentinelle invisible : le textarea rend la ligne vide qui
-                // suit un saut de ligne final, pas ce calque. Sans elle, le
-                // caret d'un Maj+Entrée se posait une ligne sous le texte.
-                input.endsWith("\n") ? `${input}\u200b` : input,
-                userMcpServers,
-                userSkills,
-                userAgents,
-                installedPlugins
-              )}
+        {/* Détection de mentions pour n'activer le calque transparent que si nécessaire */}
+        {(() => {
+          const hasMention = Boolean(input && /@[\p{L}\p{N}_-]/u.test(input));
+          const topPaddingClass =
+            pendingTools.length > 0 ||
+            attachments.length > 0 ||
+            uploadQueue.length > 0
+              ? "pt-1.5"
+              : "pt-3.5";
+
+          return (
+            <div className="relative w-full">
+              {hasMention ? (
+                <div
+                  aria-hidden="true"
+                  className={cn(
+                    "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed tracking-normal whitespace-pre-wrap break-words text-foreground select-none font-sans box-border border-0 m-0",
+                    topPaddingClass
+                  )}
+                  ref={overlayRef}
+                >
+                  {renderHighlightedMentions(
+                    input.endsWith("\n") ? `${input}\u200b` : input,
+                    userMcpServers,
+                    userSkills,
+                    userAgents,
+                    installedPlugins
+                  )}
+                </div>
+              ) : null}
+              <PromptInputTextarea
+                aria-label={
+                  editingMessage ? "Modifier votre message" : "Message à mAI"
+                }
+                className={cn(
+                  "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed tracking-normal px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans no-scrollbar box-border border-0 m-0",
+                  topPaddingClass,
+                  hasMention
+                    ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent"
+                    : "text-foreground caret-foreground"
+                )}
+                data-testid="multimodal-input"
+                {...textareaProps}
+                onBlur={handleTextareaBlur}
+                onKeyDown={handleTextareaKeyDown}
+                onScroll={(e) => {
+                  if (overlayRef.current) {
+                    overlayRef.current.scrollTop = e.currentTarget.scrollTop;
+                  }
+                }}
+                placeholder={
+                  editingMessage
+                    ? "Modifier votre message..."
+                    : "Poser une question"
+                }
+                ref={textareaRef}
+                value={input}
+              />
             </div>
-          ) : null}
-          <PromptInputTextarea
-            aria-label={
-              editingMessage ? "Modifier votre message" : "Message à mAI"
-            }
-            className={cn(
-              // Le calque de surlignage superposé doit conserver EXACTEMENT la
-              // même largeur utile que le champ : une barre de défilement
-              // prendrait quelques pixels au textarea (styles globaux
-              // *::-webkit-scrollbar) et décalerait les retours à la ligne
-              // sous le curseur. Masquée, la molette défile toujours et
-              // `onScroll` resynchronise le calque.
-              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans no-scrollbar",
-              pendingTools.length > 0 ||
-                attachments.length > 0 ||
-                uploadQueue.length > 0
-                ? "pt-1.5"
-                : "pt-3.5",
-              input
-                ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent"
-                : ""
-            )}
-            data-testid="multimodal-input"
-            {...textareaProps}
-            onBlur={handleTextareaBlur}
-            onKeyDown={handleTextareaKeyDown}
-            onScroll={(e) => {
-              if (overlayRef.current) {
-                overlayRef.current.scrollTop = e.currentTarget.scrollTop;
-              }
-            }}
-            placeholder={
-              editingMessage
-                ? "Modifier votre message..."
-                : "Poser une question"
-            }
-            ref={textareaRef}
-            value={input}
-          />
-        </div>
+          );
+        })()}
         <PromptInputFooter className="px-3 pb-2.5 pt-0">
           <PromptInputTools>
             <PlusMenuButton

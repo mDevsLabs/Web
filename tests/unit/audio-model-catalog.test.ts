@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  detectOpenRouterModelType,
   type StoredModel,
   selectAudioModels,
 } from "../../scripts/openrouter-models";
@@ -7,8 +8,8 @@ import {
 function model(id: string, overrides: Partial<StoredModel> = {}): StoredModel {
   return {
     architecture: {
-      modality: "text->audio",
-      output_modalities: ["audio"],
+      modality: "text->speech",
+      output_modalities: ["speech"],
     },
     context_length: 4096,
     created: 1_700_000_000,
@@ -31,16 +32,13 @@ function model(id: string, overrides: Partial<StoredModel> = {}): StoredModel {
   };
 }
 
-// Les cinq modèles réellement présents dans `openrouter_models` au moment du
-// correctif : aucun ne porte le suffixe `:free`.
+// Modèles réels issus de l'API Speech d'OpenRouter (?output_modalities=speech).
 const PAID_CATALOG = [
-  model("google/lyria-3-clip-preview"),
-  model("google/lyria-3-pro-preview"),
-  model("mistralai/voxtral-small-24b-2507", {
-    architecture: { modality: "text+audio->text", output_modalities: ["text"] },
-  }),
-  model("openai/gpt-audio"),
-  model("openai/gpt-audio-mini"),
+  model("deepgram/flux-tts"),
+  model("fish-audio/s2.1-pro"),
+  model("elevenlabs/eleven-multilingual-v2"),
+  model("google/gemini-3.8-flash-tts"),
+  model("mistralai/voxtral-mini-tts-2603"),
 ];
 
 describe("catalogue audio", () => {
@@ -62,13 +60,83 @@ describe("catalogue audio", () => {
   it("exclut les modèles inactifs, indisponibles ou non audio", () => {
     const catalog = [
       ...PAID_CATALOG,
-      model("openai/gpt-audio", { isActive: false }),
-      model("openai/gpt-audio-mini", { is_available: false }),
+      model("deepgram/flux-tts-inactive", { isActive: false }),
+      model("fish-audio/s2.1-pro-unavail", { is_available: false }),
       model("openai/gpt-4o", {
         architecture: { modality: "text->text", output_modalities: ["text"] },
         type: "chat",
       }),
+      model("openai/gpt-audio", {
+        architecture: {
+          modality: "text+audio->text+audio",
+          output_modalities: ["text", "audio"],
+        },
+        type: "chat",
+      }),
     ];
     expect(selectAudioModels(catalog, true)).toHaveLength(PAID_CATALOG.length);
+  });
+});
+
+describe("détection du type de modèle OpenRouter pour l'audio", () => {
+  it("classe comme audio uniquement les modèles speech ou TTS", () => {
+    expect(
+      detectOpenRouterModelType({
+        architecture: {
+          modality: "text->speech",
+          output_modalities: ["speech"],
+        },
+        id: "deepgram/flux-tts",
+      })
+    ).toBe("audio");
+
+    expect(
+      detectOpenRouterModelType({
+        architecture: {
+          modality: "text->speech",
+          output_modalities: ["speech"],
+        },
+        id: "fish-audio/s2.1-pro",
+      })
+    ).toBe("audio");
+
+    expect(
+      detectOpenRouterModelType({
+        architecture: { modality: "text->audio", output_modalities: ["audio"] },
+        id: "suno/bark",
+      })
+    ).toBe("audio");
+  });
+
+  it("ne classe pas comme audio les modèles purement audio (non speech)", () => {
+    expect(
+      detectOpenRouterModelType({
+        architecture: {
+          modality: "text+audio->text+audio",
+          output_modalities: ["text", "audio"],
+        },
+        id: "openai/gpt-audio",
+      })
+    ).toBe("chat");
+
+    expect(
+      detectOpenRouterModelType({
+        architecture: {
+          modality: "text+image->text+audio",
+          output_modalities: ["text", "audio"],
+        },
+        id: "google/lyria-3-clip-preview",
+      })
+    ).toBe("chat");
+
+    expect(
+      detectOpenRouterModelType({
+        architecture: {
+          modality: "text+file+audio->text",
+          output_modalities: ["text"],
+        },
+        id: "mistralai/voxtral-small-24b-2507",
+      })
+    ).toBe("chat");
   });
 });

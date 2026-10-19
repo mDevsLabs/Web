@@ -249,6 +249,14 @@ html.dark .md-root {
     text-rendering: optimizeLegibility;
     @apply bg-background text-foreground;
   }
+  input,
+  textarea,
+  button,
+  select {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    letter-spacing: inherit;
+  }
 }
 
 @layer base {

@@ -511,7 +511,7 @@ export interface SyncOptions {
   cometApiKey?: string;
   fetcher?: typeof fetch;
   // Fourni par la CLI admin : chaque conflit est arbitré. Absent (cron
-  // automatique), la version de la base est conservée sans interaction.
+  // automatique), la version de la base de données est conservée sans interaction.
   resolveConflict?: ModelConflictResolver;
   signal?: AbortSignal;
 }
@@ -532,14 +532,44 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
     ? AbortSignal.any([options.signal, AbortSignal.timeout(30_000)])
     : AbortSignal.timeout(30_000);
 
-  // 1. Récupération & normalisation OpenRouter (Chat & Audio)
-  const response = await (options.fetcher ?? fetch)(
-    "https://openrouter.ai/api/v1/models",
-    { headers, signal }
+  // 1. Récupération & normalisation OpenRouter (Chat & API Speech pour l'audio)
+  const [chatResponse, speechResponse] = await Promise.all([
+    (options.fetcher ?? fetch)("https://openrouter.ai/api/v1/models", {
+      headers,
+      signal,
+    }),
+    (options.fetcher ?? fetch)(
+      "https://openrouter.ai/api/v1/models?output_modalities=speech",
+      { headers, signal }
+    ),
+  ]);
+  if (!chatResponse.ok)
+    throw new Error(`OpenRouter : HTTP ${chatResponse.status}`);
+  if (!speechResponse.ok)
+    throw new Error(`OpenRouter Speech : HTTP ${speechResponse.status}`);
+
+  const chatJson = await chatResponse.json();
+  const speechJson = await speechResponse.json();
+
+  const chatList = Array.isArray(chatJson?.data) ? chatJson.data : [];
+  const speechList = Array.isArray(speechJson?.data) ? speechJson.data : [];
+
+  const rawMap = new Map<string, any>();
+  for (const item of chatList) {
+    if (item && typeof item === "object" && item.id) {
+      rawMap.set(item.id, item);
+    }
+  }
+  for (const item of speechList) {
+    if (item && typeof item === "object" && item.id) {
+      // Les modèles de l'API speech priment pour garantir la modalité speech/audio
+      rawMap.set(item.id, item);
+    }
+  }
+
+  const openrouterModels = normalizeOpenRouterModels(
+    Array.from(rawMap.values())
   );
-  if (!response.ok) throw new Error(`OpenRouter : HTTP ${response.status}`);
-  const json = await response.json();
-  const openrouterModels = normalizeOpenRouterModels(json?.data);
 
   // 2. Récupération & normalisation CometAPI (Images)
   const cometModels = await fetchCometImageModels(
@@ -558,12 +588,26 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
     options.resolveConflict
   );
 
-  const result = combinedModels.length
-    ? await persistModels(db, combinedModels, startedAt)
+  const deletedIds = new Set(
+    resolutions.filter((r) => r.choice === "delete").map((r) => r.conflict.id)
+  );
+
+  const modelsToPersist = deletedIds.size
+    ? combinedModels.filter((m) => !deletedIds.has(m.id))
+    : combinedModels;
+
+  const result = modelsToPersist.length
+    ? await persistModels(db, modelsToPersist, startedAt)
     : { retired: 0, skipped: true, upserted: 0 };
 
   if (!result.skipped) {
     await applyModelConflictWrites(db, resolutions);
+  }
+
+  if (deletedIds.size) {
+    for (const id of deletedIds) {
+      await db`DELETE FROM openrouter_models WHERE id = ${id}`;
+    }
   }
 
   await db`DELETE FROM openrouter_models WHERE POSITION(':batch' IN LOWER(id)) > 0`;
@@ -584,8 +628,15 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   );
   if (conflicts.length) {
     const kept = resolutions.filter((r) => r.choice === "database").length;
+    const upstream = resolutions.filter((r) => r.choice === "upstream").length;
+    const deleted = deletedIds.size;
+    const details = [
+      `${kept} conservé(s) en base de données`,
+      `${upstream} pris depuis l'amont`,
+    ];
+    if (deleted) details.push(`${deleted} supprimé(s)`);
     console.log(
-      `[updateModels] ${conflicts.length} conflit(s) base/amont : ${kept} conservé(s) en base, ${conflicts.length - kept} pris depuis l'amont.`
+      `[updateModels] ${conflicts.length} conflit(s) base de données/amont : ${details.join(", ")}.`
     );
   }
 
@@ -595,6 +646,7 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
     chatCount,
     cometCount,
     conflicts: conflicts.length,
+    conflictsDeleted: deletedIds.size,
     conflictsKeptInDatabase: resolutions.filter((r) => r.choice === "database")
       .length,
     conflictsTakenFromUpstream: resolutions.filter(

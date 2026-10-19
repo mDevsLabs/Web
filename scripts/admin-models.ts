@@ -297,8 +297,8 @@ function formatConflictValue(value: unknown): string {
 
 /**
  * Résolveur utilisé par la CLI interactive : chaque conflit montre la valeur
- * conservée en base, la valeur amont et leur différence. Entrée ou « b »
- * conserve la base ; « a » prend la version amont.
+ * conservée en base de données, la valeur amont et leur différence. Entrée ou « b »
+ * conserve la base de données ; « a » prend la version amont ; « s » supprime le modèle.
  */
 export function createConflictResolver(rl: Interface): ModelConflictResolver {
   return async (conflict: ModelConflict) => {
@@ -319,11 +319,15 @@ export function createConflictResolver(rl: Interface): ModelConflictResolver {
     for (const line of upstream.split("\n")) console.log(`     + ${line}`);
     const answer = (
       await rl.question(
-        "👉 Conserver [b] la base / [a] l'amont (Entrée = base) : "
+        "👉 Conserver [b] la base de données / [a] l'amont / [s] supprimer ce modèle (Entrée = base de données) : "
       )
     )
       .trim()
       .toLowerCase();
+    if (["s", "supprimer", "d", "delete"].includes(answer)) {
+      console.log(`   🗑️ Modèle ${conflict.id} marqué pour suppression.`);
+      return "delete";
+    }
     return ["a", "amont", "u", "upstream"].includes(answer)
       ? "upstream"
       : "database";

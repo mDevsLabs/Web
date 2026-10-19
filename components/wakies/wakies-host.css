@@ -2050,6 +2050,20 @@
 
 /* Actions de bulle : les nouvelles (répondre, transférer, enregistrer)
    partagent l'apparence du bouton d'épingle déjà servi. */
+.wakies-root .chat-bubble-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.wakies-root .chat-bubble:hover .chat-bubble-actions,
+.wakies-root .chat-bubble-actions:focus-within {
+  opacity: 1;
+}
+
 .wakies-root .chat-action {
   display: inline-flex;
   align-items: center;
@@ -2059,10 +2073,30 @@
   background: transparent;
   border: none;
   border-radius: 6px;
+  transition: all 0.15s ease;
 }
 
-.wakies-root .chat-action:hover {
-  color: #3d4354;
+/* Thème clair : options blanches sur la bulle utilisateur sombre (#333641) */
+.wakies-root .chat-bubble.user .chat-action,
+.wakies-root .chat-bubble.user .chat-pin-toggle {
+  color: #ffffff;
+}
+
+.wakies-root .chat-bubble.user .chat-action:hover,
+.wakies-root .chat-bubble.user .chat-pin-toggle:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Thème clair : options sombres sur la bulle assistant claire (fond blanc) */
+.wakies-root .chat-bubble.assistant .chat-action,
+.wakies-root .chat-bubble.assistant .chat-pin-toggle {
+  color: #4b5563;
+}
+
+.wakies-root .chat-bubble.assistant .chat-action:hover,
+.wakies-root .chat-bubble.assistant .chat-pin-toggle:hover {
+  color: #111827;
   background: #e8edf6;
 }
 
@@ -3084,6 +3118,98 @@ html.dark .wakies-root .modal {
 
 html.dark .wakies-root .user-message > div {
   background-color: var(--w-card);
+}
+
+/* En thème sombre : contraste des icônes d'actions sur bulles assistant et utilisateur */
+html.dark .wakies-root .chat-bubble.assistant .chat-action,
+html.dark .wakies-root .chat-bubble.assistant .chat-pin-toggle {
+  color: #e4e4e7;
+}
+
+html.dark .wakies-root .chat-bubble.assistant .chat-action:hover,
+html.dark .wakies-root .chat-bubble.assistant .chat-pin-toggle:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+html.dark .wakies-root .chat-bubble.user .chat-action,
+html.dark .wakies-root .chat-bubble.user .chat-pin-toggle {
+  color: #ffffff;
+}
+
+html.dark .wakies-root .chat-bubble.user .chat-action:hover,
+html.dark .wakies-root .chat-bubble.user .chat-pin-toggle:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Réflexion de l'IA dans Wakies (ordonnée avant le message texte).
+   ───────────────────────────────────────────────────────────────────────── */
+
+.wakies-root .wakies-reasoning {
+  margin: 6px 0 10px;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 10px;
+  background: #fbfbfa;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.wakies-root .wakies-reasoning-trigger {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted, #8c8d97);
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.wakies-root .wakies-reasoning-trigger:hover {
+  color: var(--ink, #333641);
+  background: #f1f0ed;
+}
+
+.wakies-root .wakies-reasoning-content {
+  padding: 8px 12px 10px;
+  border-top: 1px solid var(--line, #e9e8e6);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink, #333641);
+}
+
+.wakies-root .wakies-reasoning-content p {
+  margin: 0 0 8px;
+}
+
+.wakies-root .wakies-reasoning-content p:last-child {
+  margin-bottom: 0;
+}
+
+html.dark .wakies-root .wakies-reasoning {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+html.dark .wakies-root .wakies-reasoning-trigger {
+  color: #9ca3af;
+}
+
+html.dark .wakies-root .wakies-reasoning-trigger:hover {
+  color: #f4f4f5;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html.dark .wakies-root .wakies-reasoning-content {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
 }
 
 

@@ -12,7 +12,7 @@ import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
-import { BrainIcon, ChevronDownIcon, ScrollTextIcon, TimerIcon } from "@mdevs/icons";
+import { BrainIcon, ChevronDownIcon } from "@mdevs/icons";
 import {
   createContext,
   memo,
@@ -203,12 +203,6 @@ export const ReasoningTrigger = memo(
               )}
             />
             {getThinkingMessage(isStreaming, duration)}
-            {duration !== undefined && duration > 0 && !isStreaming && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium tabular-nums">
-                <TimerIcon className="size-2.5" />
-                {formatDuration(duration)}
-              </span>
-            )}
             <ChevronDownIcon
               className={cn(
                 "size-4 transition-transform",
@@ -243,17 +237,13 @@ export const ReasoningContent = memo(
     return (
       <div
         className={cn(
-          "mt-2 animate-in fade-in-0 duration-200 text-muted-foreground/60 [overflow-anchor:none]",
+          "mt-2 animate-in fade-in-0 duration-200 [overflow-anchor:none]",
           className
         )}
         {...props}
       >
-        <div className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/50">
-          <ScrollTextIcon className="size-3" />
-          <span>Journal de raisonnement</span>
-        </div>
         <div
-          className="max-h-[240px] overflow-y-auto rounded-lg border border-border/50 bg-muted/35 backdrop-blur-sm px-3 py-2 text-[11px] leading-relaxed shadow-[inset_0_1px_0_var(--md-highlight)]"
+          className="max-h-[260px] overflow-y-auto rounded-xl border border-border/60 bg-muted/25 backdrop-blur-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-muted-foreground/85 font-sans shadow-[inset_0_1px_0_var(--md-highlight)]"
           ref={scrollRef}
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >

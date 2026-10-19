@@ -189,6 +189,36 @@ describe("conflits de synchronisation du catalogue", () => {
       release: ["name"],
     });
   });
+
+  it("supprime le modèle lors d'un conflit sur demande explicite et ignore les écritures d'overrides", async () => {
+    const conflicts = findModelConflicts(
+      [incoming({ type: "chat" })],
+      [stored({}, { type: "audio" })]
+    );
+
+    const resolutions = await resolveModelConflicts(conflicts, () => "delete");
+    expect(resolutions.map((item) => item.choice)).toEqual(["delete"]);
+
+    const writes = planModelConflictWrites(resolutions);
+    expect(writes.get("openai/gpt-test")).toBeUndefined();
+  });
+
+  it("déduplique la suppression pour plusieurs conflits sur un même modèle sans réinterroger le résolveur", async () => {
+    const conflicts = findModelConflicts(
+      [incoming({ name: "Nouveau nom", type: "chat" })],
+      [stored({ name: "Nom custom" }, { name: "Ancien nom", type: "audio" })]
+    );
+    expect(conflicts.length).toBe(2);
+
+    let calls = 0;
+    const resolutions = await resolveModelConflicts(conflicts, () => {
+      calls++;
+      return "delete";
+    });
+
+    expect(calls).toBe(1);
+    expect(resolutions.map((item) => item.choice)).toEqual(["delete", "delete"]);
+  });
 });
 
 describe("valeurs effectives des champs structurels", () => {

@@ -1161,7 +1161,7 @@ async function runModelScheduleNow(rl?: readline.Interface) {
   );
   if (!rl) {
     console.log(
-      "   Mode automatique : les conflits conserveront la version de la base."
+      "   Mode automatique : les conflits conserveront la version de la base de données."
     );
   }
   const result = await updateModels(
@@ -1185,8 +1185,15 @@ async function runModelScheduleNow(rl?: readline.Interface) {
       );
     }
     if ("conflicts" in result && result.conflicts) {
+      const summary = [
+        `base de données : ${result.conflictsKeptInDatabase}`,
+        `amont : ${result.conflictsTakenFromUpstream}`,
+      ];
+      if ("conflictsDeleted" in result && result.conflictsDeleted) {
+        summary.push(`supprimé(s) : ${result.conflictsDeleted}`);
+      }
       console.log(
-        `   ⚖️  Conflits : ${result.conflicts} (base : ${result.conflictsKeptInDatabase}, amont : ${result.conflictsTakenFromUpstream}).`
+        `   ⚖️  Conflits : ${result.conflicts} (${summary.join(", ")}).`
       );
     }
   }

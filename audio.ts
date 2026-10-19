@@ -558,10 +558,7 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
       const storedModel = catalog.byId.get(model);
       if (
         !storedModel?.is_available ||
-        !(
-          supportsOutput(storedModel, "speech") ||
-          supportsOutput(storedModel, "audio")
-        )
+        !supportsOutput(storedModel, "speech")
       ) {
         throw new ModelAccessError(
           404,

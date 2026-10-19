@@ -2,10 +2,59 @@
 
 /** Port des cartes de résultats OpenMuse : le format AI SDK est interprété explicitement, sans exécuter le contenu retourné. */
 import type { UIMessage } from "ai";
+import { ChevronDownIcon, ChevronRightIcon, SparklesIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Markdown } from "@/components/wakies/markdown";
 import { PluginToolLogo } from "@/lib/integrations/logo";
 import { getPluginByToolId } from "@/lib/plugins/catalog";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
-export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
+
+function WakiesReasoningCard({
+  part,
+  isFinished = true,
+}: {
+  part: { type: "reasoning"; text?: string; reasoning?: string };
+  isFinished?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(!isFinished);
+
+  useEffect(() => {
+    if (isFinished) {
+      setIsOpen(false);
+    }
+  }, [isFinished]);
+
+  const text = part.text ?? part.reasoning ?? "";
+  if (!text) return null;
+
+  return (
+    <div className="wakies-reasoning">
+      <button
+        aria-expanded={isOpen}
+        className="wakies-reasoning-trigger"
+        onClick={() => setIsOpen((prev) => !prev)}
+        type="button"
+      >
+        {isOpen ? <ChevronDownIcon size={13} /> : <ChevronRightIcon size={13} />}
+        <SparklesIcon className="opacity-70" size={12} />
+        <span>{isFinished ? "A réfléchi" : "Réflexion en cours…"}</span>
+      </button>
+      {isOpen ? (
+        <div className="wakies-reasoning-content">
+          <Markdown>{text}</Markdown>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function ToolResultCard({
+  part,
+  isFinished,
+}: {
+  part: UIMessage["parts"][number];
+  isFinished?: boolean;
+}) {
   if (part.type === "source-url") {
     const url = safeAttachmentLink(part.url);
     return url ? (
@@ -19,13 +68,14 @@ export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
       </a>
     ) : null;
   }
-  if (part.type === "reasoning")
+  if (part.type === "reasoning") {
     return (
-      <details className="tool-card" open>
-        <summary>Réflexion</summary>
-        <p>{part.text}</p>
-      </details>
+      <WakiesReasoningCard
+        isFinished={isFinished}
+        part={part as { type: "reasoning"; text?: string; reasoning?: string }}
+      />
     );
+  }
   if (!(part.type === "dynamic-tool" || part.type.startsWith("tool-")))
     return null;
   const value = part as {

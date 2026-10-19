@@ -151,19 +151,11 @@ export function detectOpenRouterModelType(m: Record<string, any>): ModelType {
     .map((s) => s.trim());
   const idLower = String(m.id || "").toLowerCase();
 
-  const producesAudio =
-    outputModalities.includes("audio") ||
-    outputModalities.includes("speech") ||
-    outputs.includes("audio") ||
-    outputs.includes("speech");
-  if (
-    producesAudio ||
-    idLower.includes("voxtral") ||
-    idLower.includes("whisper") ||
-    idLower.includes("bark") ||
-    idLower.includes("tts") ||
-    idLower.includes("deepgram")
-  ) {
+  // Sortie Audio (synthèse vocale TTS) : uniquement les modèles produisant de la parole
+  // ("speech"), et non la modalité générique "audio" (multimodal, musique ou transcription).
+  const producesSpeech =
+    outputModalities.includes("speech") || outputs.includes("speech");
+  if (producesSpeech || idLower.includes("tts") || idLower.includes("bark")) {
     return "audio";
   }
 
@@ -211,7 +203,7 @@ export interface ModelConflict {
   upstreamValue: unknown;
 }
 
-export type ModelConflictChoice = "database" | "upstream";
+export type ModelConflictChoice = "database" | "upstream" | "delete";
 export type ModelConflictResolver = (
   conflict: ModelConflict
 ) => ModelConflictChoice | Promise<ModelConflictChoice>;
@@ -353,7 +345,7 @@ export function findModelConflicts(
 
 /**
  * Résout chaque conflit. Sans résolveur — donc pour le cron automatique — la
- * base gagne, conformément au contrat : une synchronisation ne doit jamais
+ * base de données gagne, conformément au contrat : une synchronisation ne doit jamais
  * effacer une décision d'administration.
  */
 export async function resolveModelConflicts(
@@ -361,10 +353,25 @@ export async function resolveModelConflicts(
   resolver?: ModelConflictResolver
 ): Promise<ModelConflictResolution[]> {
   const resolutions: ModelConflictResolution[] = [];
+  const deletedModelIds = new Set<string>();
+
   for (const conflict of conflicts) {
+    if (deletedModelIds.has(conflict.id)) {
+      resolutions.push({ choice: "delete", conflict });
+      continue;
+    }
     const answer = resolver ? await resolver(conflict) : "database";
+    const choice =
+      answer === "delete"
+        ? "delete"
+        : answer === "upstream"
+          ? "upstream"
+          : "database";
+    if (choice === "delete") {
+      deletedModelIds.add(conflict.id);
+    }
     resolutions.push({
-      choice: answer === "upstream" ? "upstream" : "database",
+      choice,
       conflict,
     });
   }
@@ -386,6 +393,7 @@ export function planModelConflictWrites(
 ): Map<string, ModelConflictWrites> {
   const changes = new Map<string, ModelConflictWrites>();
   for (const { choice, conflict } of resolutions) {
+    if (choice === "delete") continue;
     if (choice === "upstream") {
       if (conflict.origin !== "override") continue;
       const entry = changes.get(conflict.id) ?? { keep: {}, release: [] };
@@ -437,8 +445,23 @@ export function isPublicAudioModel(model: StoredModel): boolean {
     model.isActive &&
     model.is_available &&
     (type === "audio" ||
-      (model.overrides.type === undefined &&
-        (supportsOutput(model, "audio") || supportsOutput(model, "speech"))))
+      (model.overrides.type === undefined && supportsOutput(model, "speech")))
+  );
+}
+
+/**
+ * Catalogue Speech visible pour un forfait donné.
+ *
+ * La base est l'autorité : un modèle audio payant doit apparaître pour un
+ * compte payant, même sans suffixe `:free`. Le filtre `:free` ne s'applique
+ * qu'aux comptes Free, conformément à la matrice d'accès.
+ */
+export function selectAudioModels(
+  models: StoredModel[],
+  paid: boolean
+): StoredModel[] {
+  return models.filter(
+    (model) => isPublicAudioModel(model) && (paid || isFreeModelId(model.id))
   );
 }
 

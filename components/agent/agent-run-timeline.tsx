@@ -48,6 +48,8 @@ import type {
   ToolCategory,
 } from "@/lib/agent/types";
 import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
+import { chatModels, FALLBACK_MODELS } from "@/lib/ai/models";
+import { useAgentModels } from "@/hooks/use-agent-models";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { IntegrationLogo, integrationForToolId } from "@/lib/integrations/logo";
 import { cn } from "@/lib/utils";
@@ -180,6 +182,13 @@ function formatTokens(count: number): string {
 }
 
 function RunSummary({ run }: { run: AgentRunEvent }) {
+  const { models } = useAgentModels();
+  const modelName =
+    models.find((m) => m.id === run.model)?.name ??
+    chatModels.find((m) => m.id === run.model)?.name ??
+    FALLBACK_MODELS.find((m) => m.id === run.model)?.name ??
+    run.model;
+
   // Même raison que pour l'icône d'étape : `status` est relu depuis une colonne
   // varchar sans CHECK. On affiche le statut brut plutôt que de lever.
   const badge = RUN_STATUS_BADGES[run.status] ?? {
@@ -200,7 +209,7 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
         {badge.label}
       </span>
       {run.model ? (
-        <span className="max-w-full break-all">Modèle : {run.model}</span>
+        <span className="max-w-full break-all">Modèle : {modelName}</span>
       ) : null}
       {/*
         Le libellé vient du libellé lisible, pas de la valeur brute : « high »

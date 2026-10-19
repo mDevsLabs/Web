@@ -506,9 +506,18 @@ const PurePreviewMessage = ({
     if (type === "reasoning") {
       if (!mergedReasoning.rendered && mergedReasoning.text) {
         mergedReasoning.rendered = true;
+        // Le raisonnement n'est plus en streaming dès que du texte ou un outil a commencé à être émis
+        const hasStartedGeneratingAnswer = messageParts.some(
+          (p) =>
+            (p.type === "text" && p.text?.trim().length > 0) ||
+            (typeof p.type === "string" && p.type.startsWith("tool-"))
+        );
+        const isReasoningStreaming =
+          Boolean(isLoading && !hasStartedGeneratingAnswer && (mergedReasoning.isStreaming || !hasAnyContent));
+
         return (
           <MessageReasoning
-            isLoading={isLoading || mergedReasoning.isStreaming}
+            isLoading={isReasoningStreaming}
             key={key}
             reasoning={mergedReasoning.text}
           />

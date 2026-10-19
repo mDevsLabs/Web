@@ -443,15 +443,37 @@ export function ChatTranscript({
                   {...piece}
                 />
               ))}
+              {/* 1. Réflexion (affichée en premier au-dessus du message texte) */}
+              {element.message.parts
+                .filter((part) => part.type === "reasoning")
+                .map((part, index) => (
+                  <ToolResultCard
+                    isFinished={Boolean(
+                      texte(element.message).trim().length > 0
+                    )}
+                    key={`${element.message.id}-reasoning-${index}`}
+                    part={part}
+                  />
+                ))}
+              {/* 2. Texte de la réponse */}
               {texte(element.message) ? (
                 <Markdown>{texte(element.message)}</Markdown>
               ) : null}
-              {element.message.parts.map((part, index) => (
-                <ToolResultCard
-                  key={`${element.message.id}-part-${index}`}
-                  part={part}
-                />
-              ))}
+              {/* 3. Outils et autres cartes de résultat */}
+              {element.message.parts
+                .filter(
+                  (part) =>
+                    part.type !== "reasoning" &&
+                    part.type !== "text" &&
+                    part.type !== "file" &&
+                    !part.type.startsWith("data-")
+                )
+                .map((part, index) => (
+                  <ToolResultCard
+                    key={`${element.message.id}-part-${index}`}
+                    part={part}
+                  />
+                ))}
               {(() => {
                 // Les actions du COMPTE et celles de l'IA ne se mélangent pas :
                 // on ne répond pas à soi-même, on ne réagit pas à son propre
