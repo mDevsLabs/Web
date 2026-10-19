@@ -1,7 +1,16 @@
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
-import { invalidateModelCatalog, type SqlClient } from "./openrouter-models.ts";
+import {
+  applyModelConflictWrites,
+  detectOpenRouterModelType,
+  findModelConflicts,
+  invalidateModelCatalog,
+  type ModelConflictResolver,
+  resolveModelConflicts,
+  type SqlClient,
+  type StoredSyncModel,
+} from "./openrouter-models.ts";
 
 // Deno / Val Town acceptent npm:, tandis que la CLI Bun utilise les dépendances locales.
 const { neon } =
@@ -23,58 +32,6 @@ function positiveInteger(value: unknown, fallback: number): number {
     Number(value) <= 2_147_483_647
     ? Number(value)
     : fallback;
-}
-
-export function detectOpenRouterModelType(
-  m: JsonObject
-): "chat" | "audio" | "image" {
-  const arch = object(m.architecture);
-  const outputModalities = Array.isArray(arch.output_modalities)
-    ? arch.output_modalities.map((o: unknown) => String(o).toLowerCase())
-    : [];
-  const modality = String(arch.modality || "").toLowerCase();
-  const outputFromModality = modality.split("->")[1] || "";
-  const outputs = outputFromModality.split("+").map((s) => s.trim());
-
-  const idLower = String(m.id || "").toLowerCase();
-
-  // Sortie Audio : modèles générant de l'audio ou spécialisés audio (Lyria, GPT-Audio, Voxtral, Whisper, TTS...)
-  const producesAudio =
-    outputModalities.includes("audio") ||
-    outputModalities.includes("speech") ||
-    outputs.includes("audio") ||
-    outputs.includes("speech");
-
-  if (
-    producesAudio ||
-    idLower.includes("voxtral") ||
-    idLower.includes("whisper") ||
-    idLower.includes("bark") ||
-    idLower.includes("tts") ||
-    idLower.includes("deepgram")
-  ) {
-    return "audio";
-  }
-
-  // Sortie Image : modèles générant de l'image (Gemini Image, Diffusion, Midjourney, DALL-E, FLUX...)
-  const producesImage =
-    outputModalities.includes("image") || outputs.includes("image");
-
-  if (
-    (producesImage &&
-      (idLower.includes("image") || !outputModalities.includes("text"))) ||
-    idLower.includes("stable-diffusion") ||
-    idLower.includes("midjourney") ||
-    (idLower.includes("dall-e") && !idLower.includes("chat")) ||
-    (idLower.includes("flux") &&
-      !idLower.includes("chat") &&
-      !idLower.includes("llm"))
-  ) {
-    return "image";
-  }
-
-  // Par défaut, tous les LLM produisant du texte sont des modèles de chat
-  return "chat";
 }
 
 export function normalizeOpenRouterModels(data: unknown): JsonObject[] {
@@ -553,6 +510,9 @@ export interface SyncOptions {
   apiKey?: string;
   cometApiKey?: string;
   fetcher?: typeof fetch;
+  // Fourni par la CLI admin : chaque conflit est arbitré. Absent (cron
+  // automatique), la version de la base est conservée sans interaction.
+  resolveConflict?: ModelConflictResolver;
   signal?: AbortSignal;
 }
 
@@ -591,9 +551,20 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   // 3. Fusion des catalogues (Chat, Audio, Image)
   const combinedModels = [...openrouterModels, ...cometModels];
 
+  const stored = combinedModels.length ? await loadStoredSyncModels(db) : [];
+  const conflicts = findModelConflicts(combinedModels, stored);
+  const resolutions = await resolveModelConflicts(
+    conflicts,
+    options.resolveConflict
+  );
+
   const result = combinedModels.length
     ? await persistModels(db, combinedModels, startedAt)
     : { retired: 0, skipped: true, upserted: 0 };
+
+  if (!result.skipped) {
+    await applyModelConflictWrites(db, resolutions);
+  }
 
   await db`DELETE FROM openrouter_models WHERE POSITION(':batch' IN LOWER(id)) > 0`;
   invalidateModelCatalog(db);
@@ -611,12 +582,24 @@ export async function updateModels(sql?: SqlClient, options: SyncOptions = {}) {
   console.log(
     `[updateModels] ${result.upserted} modèle(s) synchronisé(s) (Chat: ${chatCount}, Audio: ${audioCount}, Image: ${imageCount}). Fournisseurs : OpenRouter (${orCount}), CometAPI (${cometCount}).`
   );
+  if (conflicts.length) {
+    const kept = resolutions.filter((r) => r.choice === "database").length;
+    console.log(
+      `[updateModels] ${conflicts.length} conflit(s) base/amont : ${kept} conservé(s) en base, ${conflicts.length - kept} pris depuis l'amont.`
+    );
+  }
 
   return {
     ...result,
     audioCount,
     chatCount,
     cometCount,
+    conflicts: conflicts.length,
+    conflictsKeptInDatabase: resolutions.filter((r) => r.choice === "database")
+      .length,
+    conflictsTakenFromUpstream: resolutions.filter(
+      (r) => r.choice === "upstream"
+    ).length,
     imageCount,
     openrouterCount: orCount,
     total: combinedModels.length,
@@ -636,6 +619,17 @@ async function persistModels(
   if (!rows[0])
     throw new Error("La synchronisation n'a retourné aucun résultat.");
   return rows[0] as { upserted: number; retired: number; skipped: boolean };
+}
+
+async function loadStoredSyncModels(
+  sql: SqlClient
+): Promise<StoredSyncModel[]> {
+  return (await sql`
+    SELECT id, model_number, name, description, context_length,
+      max_output_tokens, architecture, pricing, supported_parameters,
+      type, provider, fournisseur, upstream, overrides
+    FROM openrouter_models
+  `) as StoredSyncModel[];
 }
 
 // Handler utilisable par un CRON externe (notamment un val CRON Val Town).

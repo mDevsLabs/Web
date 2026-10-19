@@ -7,6 +7,7 @@ export interface MaiDesktopBridge {
     installed?: boolean;
     running?: boolean;
     activeWorkspace?: string | null;
+    version?: string;
   }>;
   hasCoder?: boolean;
   isElectron?: boolean;

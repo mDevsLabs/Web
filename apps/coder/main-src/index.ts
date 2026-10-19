@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync, unlinkSync } from "node:fs";
 import path from "node:path";
 import { app, BrowserWindow, nativeTheme } from "electron";
 import {
@@ -73,19 +73,90 @@ function resolveAppIconPath(): string | undefined {
   }
 }
 
+// Handoff de session depuis mAI Desktop. Le jeton n'apparaît jamais dans les
+// arguments : argv porte un chemin de fichier éphémère, lu puis supprimé.
+function isValidSessionToken(value: string): boolean {
+  return value.split(".").length === 3 && value.length <= 8192;
+}
+
+function readSessionHandoffFile(file: string): string | undefined {
+  try {
+    const value = readFileSync(file, "utf8").trim();
+    try {
+      unlinkSync(file);
+    } catch {
+      /* déjà supprimé */
+    }
+    return isValidSessionToken(value) ? value : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function sessionTokenFromArgs(argv: string[]): string | undefined {
+  const prefix = "--mai-session-token-file=";
+  const arg = argv.find((item) => item.startsWith(prefix));
+  return arg ? readSessionHandoffFile(arg.slice(prefix.length)) : undefined;
+}
+
+// Le handoff peut arriver avant la fin de l'initialisation du stockage quand
+// une seconde instance est lancée très tôt : attendre le settingsStore évite de
+// perdre le jeton dans une écriture prématurée.
+let resolveMaiSettingsReady: (() => void) | null = null;
+const maiSettingsReady = new Promise<void>((resolve) => {
+  resolveMaiSettingsReady = resolve;
+});
+
+// Applique un jeton de session mAI : remplace immédiatement le compte local
+// puis synchronise profil et modèles, sans bloquer l'ouverture de l'éditeur.
+async function applyMaiHandoffToken(token: string): Promise<void> {
+  const value = token.trim();
+  if (!isValidSessionToken(value)) {
+    return;
+  }
+  await maiSettingsReady;
+  try {
+    const { markMaiAccountSyncPending, syncMaiAccountWithToken } = await import(
+      "./maiAccountStore.js"
+    );
+    markMaiAccountSyncPending(value);
+    await Promise.race([
+      syncMaiAccountWithToken(value).catch((e) => {
+        console.warn("[mAI] handoff sync failed", e);
+        return null;
+      }),
+      new Promise((resolve) => setTimeout(resolve, 4_000)),
+    ]);
+  } catch (e) {
+    console.warn("[mAI] handoff token illisible", e);
+  }
+}
+
+const handoffToken =
+  process.env.MAI_SESSION_TOKEN?.trim() || sessionTokenFromArgs(process.argv);
+delete (process.env as NodeJS.ProcessEnv).MAI_SESSION_TOKEN;
+
 initWindowsConsoleUtf8();
 
 // Single-instance: second launch focuses existing window instead of opening
 // a second SQLite writer (prevents SQLITE_BUSY/corruption of session.db).
-const gotLock = app.requestSingleInstanceLock();
+const gotLock = app.requestSingleInstanceLock(
+  handoffToken ? { maiSessionToken: handoffToken } : {}
+);
 if (gotLock) {
-  app.on("second-instance", () => {
+  app.on("second-instance", (_event, argv, _cwd, additionalData) => {
     const wins = BrowserWindow.getAllWindows();
     const first = wins[0];
     if (first && !first.isDestroyed()) {
       if (first.isMinimized()) first.restore();
       first.show();
       first.focus();
+    }
+    const incoming =
+      (additionalData as { maiSessionToken?: string } | undefined)
+        ?.maiSessionToken || sessionTokenFromArgs(argv);
+    if (incoming && isValidSessionToken(incoming)) {
+      void applyMaiHandoffToken(incoming);
     }
   });
 } else {
@@ -225,30 +296,13 @@ app.whenReady().then(async () => {
 
   const userData = app.getPath("userData");
   initSettingsStore(userData);
+  resolveMaiSettingsReady?.();
+  resolveMaiSettingsReady = null;
   lap("settingsStore init");
-  // Handoff depuis mAI Desktop : le Main a lu le cookie de session httpOnly et
-  // l'a placé dans l'environnement du processus enfant. Le jeton est retiré de
-  // l'environnement immédiatement après lecture.
-  const handoffToken = process.env.MAI_SESSION_TOKEN?.trim();
-  delete (process.env as NodeJS.ProcessEnv).MAI_SESSION_TOKEN;
+  // Handoff depuis mAI Desktop : jeton lu depuis l'environnement ou le fichier
+  // transmis par argv, déjà retiré de l'environnement au démarrage.
   if (handoffToken) {
-    try {
-      const { markMaiAccountSyncPending, syncMaiAccountWithToken } =
-        await import("./maiAccountStore.js");
-      markMaiAccountSyncPending(handoffToken);
-      // Attente bornée : le profil remplace immédiatement l'ancien compte, mais
-      // un réseau lent ne doit pas bloquer l'ouverture de l'éditeur.
-      const sync = syncMaiAccountWithToken(handoffToken).catch((e) => {
-        console.warn("[mAI] handoff sync failed", e);
-        return null;
-      });
-      await Promise.race([
-        sync,
-        new Promise((resolve) => setTimeout(resolve, 4_000)),
-      ]);
-    } catch (e) {
-      console.warn("[mAI] handoff token illisible", e);
-    }
+    await applyMaiHandoffToken(handoffToken);
   } else {
     // Q1 : au lancement, si compte mAI déjà connecté, rafraîchir modèles via
     // https://mai.val.run/v1/models.

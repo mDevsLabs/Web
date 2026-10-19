@@ -47,13 +47,17 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { api as wakiesApi } from "@/components/wakies/api";
-import { CapacityPicker, ToolPicker, useCapabilities } from "@/components/wakies/CapacityPicker";
+import {
+  CapacityPicker,
+  ToolPicker,
+  useCapabilities,
+} from "@/components/wakies/CapacityPicker";
 import { ModelPicker as WakiesModelPicker } from "@/components/wakies/ModelPicker";
+import { cn, fetcher } from "@/lib/utils";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
 import type { SetupStatus, Wakie } from "@/lib/wakies/shared/types";
 import { WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
-import { cn, fetcher } from "@/lib/utils";
 
 // --- TYPES WAKIES ---
 type WakiesAccountSettings = {
@@ -91,49 +95,64 @@ export function ApplicationsTab() {
     { dedupingInterval: 15_000 }
   );
 
-  const { data: audioModelsData } = useSWR(
-    "/api/models/speech",
-    fetcher,
-    { dedupingInterval: 60_000 }
-  );
+  const { data: audioModelsData } = useSWR("/api/models/speech", fetcher, {
+    dedupingInterval: 60_000,
+  });
 
   // --- ÉTATS VIBE ---
   const [vibeLoading, setVibeLoading] = useState(true);
   const [vibeSaving, setVibeSaving] = useState(false);
 
   // Fil & Contenu
-  const [feedDefaultMode, setFeedDefaultMode] = useState<"for_you" | "stream" | "trending">("for_you");
+  const [feedDefaultMode, setFeedDefaultMode] = useState<
+    "for_you" | "stream" | "trending"
+  >("for_you");
   const [hideReposts, setHideReposts] = useState(false);
   const [blockedKeywords, setBlockedKeywords] = useState("");
-  const [contentFilter, setContentFilter] = useState<"low" | "medium" | "strict">("medium");
+  const [contentFilter, setContentFilter] = useState<
+    "low" | "medium" | "strict"
+  >("medium");
   const [blurSensitive, setBlurSensitive] = useState(true);
 
   // Confidentialité & Sécurité
-  const [allowDms, setAllowDms] = useState<"everyone" | "following" | "nobody">("everyone");
+  const [allowDms, setAllowDms] = useState<"everyone" | "following" | "nobody">(
+    "everyone"
+  );
   const [dmAutoTranslate, setDmAutoTranslate] = useState(false);
   const [dmTranslateLang, setDmTranslateLang] = useState("FR");
-  const [allowMentions, setAllowMentions] = useState<"everyone" | "following" | "nobody">("everyone");
+  const [allowMentions, setAllowMentions] = useState<
+    "everyone" | "following" | "nobody"
+  >("everyone");
   const [hideVerifiedBadge, setHideVerifiedBadge] = useState(false);
 
   // IA mAI Vibe
   const [maiAutoApproveTools, setMaiAutoApproveTools] = useState(false);
-  const [postsAIGeneratedByDefault, setPostsAIGeneratedByDefault] = useState(false);
+  const [postsAIGeneratedByDefault, setPostsAIGeneratedByDefault] =
+    useState(false);
   const [maiContextPosts, setMaiContextPosts] = useState(false);
   const [maiContextDms, setMaiContextDms] = useState(false);
   const [maiContextBooks, setMaiContextBooks] = useState(false);
 
   // Cercle privé
-  const [defaultVibeAudience, setDefaultVibeAudience] = useState<"public" | "followers" | "circle">("public");
-  const [circleMembers, setCircleMembers] = useState<Array<{ id: string | number; username: string; display_name?: string }>>([]);
+  const [defaultVibeAudience, setDefaultVibeAudience] = useState<
+    "public" | "followers" | "circle"
+  >("public");
+  const [circleMembers, setCircleMembers] = useState<
+    Array<{ id: string | number; username: string; display_name?: string }>
+  >([]);
   const [circleSearchQuery, setCircleSearchQuery] = useState("");
-  const [circleSearchResults, setCircleSearchResults] = useState<Array<{ id: number; username: string; display_name?: string }>>([]);
+  const [circleSearchResults, setCircleSearchResults] = useState<
+    Array<{ id: number; username: string; display_name?: string }>
+  >([]);
   const [isSearchingCircle, setIsSearchingCircle] = useState(false);
   const [circleActionLoading, setCircleActionLoading] = useState(false);
 
   // Notifications Vibe
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [pushNotifs, setPushNotifs] = useState(true);
-  const [hapticsEnabled, setHapticsEnabled] = useState(() => haptics.isEnabled());
+  const [hapticsEnabled, setHapticsEnabled] = useState(() =>
+    haptics.isEnabled()
+  );
 
   // --- ÉTATS UNIFIÉS MODÈLE & VOIX ---
   const [unifiedModel, setUnifiedModel] = useState<string>("mai-2-mini");
@@ -143,7 +162,8 @@ export function ApplicationsTab() {
   const [wakiesLoading, setWakiesLoading] = useState(true);
   const [wakiesSaving, setWakiesSaving] = useState(false);
   const [wakiesData, setWakiesData] = useState<WakiesData | null>(null);
-  const [wakiesAccount, setWakiesAccount] = useState<WakiesAccountSettings | null>(null);
+  const [wakiesAccount, setWakiesAccount] =
+    useState<WakiesAccountSettings | null>(null);
   const [activeWakieId, setActiveWakieId] = useState<string>("");
   const { capabilities: wakiesCapabilities } = useCapabilities(true);
 
@@ -160,13 +180,17 @@ export function ApplicationsTab() {
   // Liste des voix disponibles pour le modèle audio
   const availableVoices = useMemo(() => {
     const list = audioModelsData?.models || audioModelsData?.data || [];
-    const firstWithVoices = list.find((m: any) => Array.isArray(m.voices) && m.voices.length > 0);
-    return firstWithVoices?.voices || [
-      { id: "flux-alexis-fr", name: "Alexis (Français naturel)" },
-      { id: "flux-celeste-fr", name: "Céleste (Français chaleureux)" },
-      { id: "flux-alexis-en", name: "Alexis (Anglais)" },
-      { id: "flux-elena-en", name: "Elena (Anglais doux)" },
-    ];
+    const firstWithVoices = list.find(
+      (m: any) => Array.isArray(m.voices) && m.voices.length > 0
+    );
+    return (
+      firstWithVoices?.voices || [
+        { id: "flux-alexis-fr", name: "Alexis (Français naturel)" },
+        { id: "flux-celeste-fr", name: "Céleste (Français chaleureux)" },
+        { id: "flux-alexis-en", name: "Alexis (Anglais)" },
+        { id: "flux-elena-en", name: "Elena (Anglais doux)" },
+      ]
+    );
   }, [audioModelsData]);
 
   // Chargement des paramètres Vibe
@@ -314,9 +338,13 @@ export function ApplicationsTab() {
         push_notifications: pushNotifs,
       });
 
-      toast.success("Paramètres Vibe enregistrés et synchronisés avec succès ✨");
+      toast.success(
+        "Paramètres Vibe enregistrés et synchronisés avec succès ✨"
+      );
     } catch (err: any) {
-      toast.error(err?.message || "Impossible d'enregistrer les paramètres Vibe.");
+      toast.error(
+        err?.message || "Impossible d'enregistrer les paramètres Vibe."
+      );
     } finally {
       setVibeSaving(false);
     }
@@ -350,10 +378,16 @@ export function ApplicationsTab() {
   };
 
   // --- ACTIONS WAKIES ---
-  const handleSaveWakiesAccount = async (patch: Partial<WakiesAccountSettings>) => {
+  const handleSaveWakiesAccount = async (
+    patch: Partial<WakiesAccountSettings>
+  ) => {
     setWakiesSaving(true);
     try {
-      const updated = await wakiesApi<WakiesAccountSettings>("/settings", "PATCH", patch);
+      const updated = await wakiesApi<WakiesAccountSettings>(
+        "/settings",
+        "PATCH",
+        patch
+      );
       setWakiesAccount((prev) => (prev ? { ...prev, ...updated } : updated));
       toast.success("Paramètres Wakies mis à jour ✨");
     } catch (err: any) {
@@ -366,7 +400,12 @@ export function ApplicationsTab() {
   const activeWakie = wakiesData?.wakies.find((w) => w.id === activeWakieId);
 
   const handleSaveWakieCapabilities = async (
-    patch: Partial<Pick<Wakie, "model" | "pluginIds" | "mcpServerIds" | "skillIds" | "toolIds">>
+    patch: Partial<
+      Pick<
+        Wakie,
+        "model" | "pluginIds" | "mcpServerIds" | "skillIds" | "toolIds"
+      >
+    >
   ) => {
     if (!activeWakie) return;
     setWakiesSaving(true);
@@ -376,7 +415,8 @@ export function ApplicationsTab() {
         instructions: activeWakie.instructions,
         mcpServerIds: patch.mcpServerIds ?? activeWakie.mcpServerIds ?? [],
         memoryAllowed: activeWakie.memoryAllowed,
-        model: patch.model === undefined ? (activeWakie.model ?? null) : patch.model,
+        model:
+          patch.model === undefined ? (activeWakie.model ?? null) : patch.model,
         name: activeWakie.name,
         pluginIds: patch.pluginIds ?? activeWakie.pluginIds ?? [],
         researchAllowed: activeWakie.researchAllowed,
@@ -397,7 +437,12 @@ export function ApplicationsTab() {
 
   const handleApplyWakieToAll = async () => {
     if (!activeWakie || !wakiesData?.wakies) return;
-    if (!window.confirm(`Appliquer la configuration de « ${activeWakie.name} » à tous vos Wakies ?`)) return;
+    if (
+      !window.confirm(
+        `Appliquer la configuration de « ${activeWakie.name} » à tous vos Wakies ?`
+      )
+    )
+      return;
 
     setWakiesSaving(true);
     try {
@@ -439,8 +484,9 @@ export function ApplicationsTab() {
           Paramètres de Vibe & Wakies
         </h2>
         <p className="text-xs sm:text-sm text-muted-foreground">
-          Centralisez la configuration de vos applications satellites mAI. Les modèles et la voix
-          sont fusionnés avec votre compte principal pour une expérience fluide.
+          Centralisez la configuration de vos applications satellites mAI. Les
+          modèles et la voix sont fusionnés avec votre compte principal pour une
+          expérience fluide.
         </p>
 
         {/* Barre de navigation rapide */}
@@ -472,7 +518,9 @@ export function ApplicationsTab() {
               <SparklesIcon className="size-4" />
             </span>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-foreground">Vibe</h3>
+              <h3 className="text-base sm:text-lg font-bold text-foreground">
+                Vibe
+              </h3>
               <p className="text-xs text-muted-foreground">
                 Réseau social autonome & Studio créatif mAI
               </p>
@@ -484,7 +532,11 @@ export function ApplicationsTab() {
             onClick={handleSaveVibeSettings}
             type="button"
           >
-            {vibeSaving ? <Loader2Icon className="size-3.5 animate-spin" /> : <CheckIcon className="size-3.5" />}
+            {vibeSaving ? (
+              <Loader2Icon className="size-3.5 animate-spin" />
+            ) : (
+              <CheckIcon className="size-3.5" />
+            )}
             Enregistrer Vibe
           </button>
         </div>
@@ -497,21 +549,26 @@ export function ApplicationsTab() {
         ) : (
           <div className="flex flex-col gap-6">
             {/* 1. IA & Voix (Unifiées avec mAI) */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="vibe-ai">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="vibe-ai"
+            >
               <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                 <CpuIcon className="size-4 text-primary" />
                 <span>Intelligence Artificielle mAI & Voix (Unifiées)</span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Ce modèle et cette voix sont partagés avec vos préférences globales mAI : modifier ces
-                valeurs ici met à jour le chat mAI et le Studio Vibe.
+                Ce modèle et cette voix sont partagés avec vos préférences
+                globales mAI : modifier ces valeurs ici met à jour le chat mAI
+                et le Studio Vibe.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Modèle IA par défaut */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
-                    <SparklesIcon className="size-3 text-primary" /> Modèle par défaut
+                    <SparklesIcon className="size-3 text-primary" /> Modèle par
+                    défaut
                   </label>
                   <ModelSelectorCompact
                     onModelChange={(modelId) => setUnifiedModel(modelId)}
@@ -525,7 +582,8 @@ export function ApplicationsTab() {
                 {/* Voix TTS par défaut */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
-                    <Volume2Icon className="size-3 text-primary" /> Voix de lecture mAI
+                    <Volume2Icon className="size-3 text-primary" /> Voix de
+                    lecture mAI
                   </label>
                   <select
                     className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
@@ -549,7 +607,9 @@ export function ApplicationsTab() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-border/40">
                 <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
                   <div className="pr-3">
-                    <span className="text-xs font-semibold text-foreground">Approbation auto des outils</span>
+                    <span className="text-xs font-semibold text-foreground">
+                      Approbation auto des outils
+                    </span>
                     <p className="text-[11px] text-muted-foreground">
                       Exécuter les outils dans Vibe sans confirmation manuelle
                     </p>
@@ -564,7 +624,9 @@ export function ApplicationsTab() {
 
                 <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
                   <div className="pr-3">
-                    <span className="text-xs font-semibold text-foreground">Badge IA par défaut</span>
+                    <span className="text-xs font-semibold text-foreground">
+                      Badge IA par défaut
+                    </span>
                     <p className="text-[11px] text-muted-foreground">
                       Activer automatiquement le badge « Créé avec l'IA »
                     </p>
@@ -572,7 +634,9 @@ export function ApplicationsTab() {
                   <input
                     checked={postsAIGeneratedByDefault}
                     className="size-4 accent-primary cursor-pointer shrink-0"
-                    onChange={(e) => setPostsAIGeneratedByDefault(e.target.checked)}
+                    onChange={(e) =>
+                      setPostsAIGeneratedByDefault(e.target.checked)
+                    }
                     type="checkbox"
                   />
                 </label>
@@ -584,11 +648,14 @@ export function ApplicationsTab() {
                   Partage de contexte mAI (Opt-in)
                 </span>
                 <p className="text-[11px] text-muted-foreground">
-                  Permettre à mAI d'adapter ses suggestions en analysant vos contenus Vibe.
+                  Permettre à mAI d'adapter ses suggestions en analysant vos
+                  contenus Vibe.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <label className="flex items-center justify-between p-2.5 rounded-lg border border-border/50 bg-muted/20 cursor-pointer">
-                    <span className="text-xs text-foreground">Publications</span>
+                    <span className="text-xs text-foreground">
+                      Publications
+                    </span>
                     <input
                       checked={maiContextPosts}
                       className="size-3.5 accent-primary cursor-pointer"
@@ -597,7 +664,9 @@ export function ApplicationsTab() {
                     />
                   </label>
                   <label className="flex items-center justify-between p-2.5 rounded-lg border border-border/50 bg-muted/20 cursor-pointer">
-                    <span className="text-xs text-foreground">Messages privés</span>
+                    <span className="text-xs text-foreground">
+                      Messages privés
+                    </span>
                     <input
                       checked={maiContextDms}
                       className="size-3.5 accent-primary cursor-pointer"
@@ -619,7 +688,10 @@ export function ApplicationsTab() {
             </div>
 
             {/* 2. Fil d'actualité & Contenu */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="vibe-feed">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="vibe-feed"
+            >
               <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                 <MessageSquareIcon className="size-4 text-primary" />
                 <span>Fil d'actualité & Modération</span>
@@ -693,7 +765,10 @@ export function ApplicationsTab() {
             </div>
 
             {/* 3. Confidentialité & Sécurité */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="vibe-privacy">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="vibe-privacy"
+            >
               <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                 <ShieldIcon className="size-4 text-primary" />
                 <span>Confidentialité & Interactions</span>
@@ -710,7 +785,9 @@ export function ApplicationsTab() {
                     value={allowDms}
                   >
                     <option value="everyone">Tout le monde</option>
-                    <option value="following">Personnes que je suis uniquement</option>
+                    <option value="following">
+                      Personnes que je suis uniquement
+                    </option>
                     <option value="nobody">Personne</option>
                   </select>
                 </div>
@@ -733,7 +810,9 @@ export function ApplicationsTab() {
 
               <div className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20">
                 <div>
-                  <span className="text-xs font-semibold text-foreground">Traduction automatique des messages</span>
+                  <span className="text-xs font-semibold text-foreground">
+                    Traduction automatique des messages
+                  </span>
                   <p className="text-[11px] text-muted-foreground">
                     Traduire les messages reçus dans votre langue préférée
                   </p>
@@ -762,18 +841,23 @@ export function ApplicationsTab() {
             </div>
 
             {/* 4. Cercle Privé */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="vibe-circle">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="vibe-circle"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                   <LockIcon className="size-4 text-primary" />
                   <span>Cercle Privé</span>
                 </div>
                 <span className="chip text-[11px]">
-                  {circleMembers.length} membre{circleMembers.length > 1 ? "s" : ""}
+                  {circleMembers.length} membre
+                  {circleMembers.length > 1 ? "s" : ""}
                 </span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Partagez des publications exclusives visibles uniquement par les personnes sélectionnées.
+                Partagez des publications exclusives visibles uniquement par les
+                personnes sélectionnées.
               </p>
 
               <div className="flex flex-col gap-1.5">
@@ -782,7 +866,9 @@ export function ApplicationsTab() {
                 </label>
                 <select
                   className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
-                  onChange={(e) => setDefaultVibeAudience(e.target.value as any)}
+                  onChange={(e) =>
+                    setDefaultVibeAudience(e.target.value as any)
+                  }
                   value={defaultVibeAudience}
                 >
                   <option value="public">Publique (Tout le monde)</option>
@@ -813,7 +899,9 @@ export function ApplicationsTab() {
                 {circleSearchResults.length > 0 && (
                   <div className="rounded-xl border border-border/60 bg-card p-2 flex flex-col gap-1 shadow-md">
                     {circleSearchResults.slice(0, 5).map((u) => {
-                      const alreadyIn = circleMembers.some((m) => m.username === u.username);
+                      const alreadyIn = circleMembers.some(
+                        (m) => m.username === u.username
+                      );
                       return (
                         <div
                           className="flex items-center justify-between p-2 rounded-lg hover:bg-muted/30 transition-colors"
@@ -833,7 +921,9 @@ export function ApplicationsTab() {
                             </div>
                           </div>
                           {alreadyIn ? (
-                            <span className="text-[11px] text-muted-foreground font-medium">Déjà membre</span>
+                            <span className="text-[11px] text-muted-foreground font-medium">
+                              Déjà membre
+                            </span>
                           ) : (
                             <button
                               className="rounded-lg bg-primary/10 text-primary px-2.5 py-1 text-[11px] font-semibold hover:bg-primary/20 transition-colors cursor-pointer"
@@ -853,7 +943,9 @@ export function ApplicationsTab() {
                 {/* Liste des membres */}
                 <div className="flex flex-wrap gap-2 pt-2">
                   {circleMembers.length === 0 ? (
-                    <span className="text-xs text-muted-foreground italic">Aucun membre dans le cercle privé.</span>
+                    <span className="text-xs text-muted-foreground italic">
+                      Aucun membre dans le cercle privé.
+                    </span>
                   ) : (
                     circleMembers.map((m) => (
                       <span
@@ -882,14 +974,19 @@ export function ApplicationsTab() {
       {/* ========================================================================= */}
       {/* SECTION WAKIES */}
       {/* ========================================================================= */}
-      <section className="flex flex-col gap-6 scroll-mt-24 pt-4 border-t border-border/50" id="wakies">
+      <section
+        className="flex flex-col gap-6 scroll-mt-24 pt-4 border-t border-border/50"
+        id="wakies"
+      >
         <div className="flex items-center justify-between border-b border-border/50 pb-3">
           <div className="flex items-center gap-2.5">
             <span className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
               <BotIcon className="size-4" />
             </span>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-foreground">Wakies</h3>
+              <h3 className="text-base sm:text-lg font-bold text-foreground">
+                Wakies
+              </h3>
               <p className="text-xs text-muted-foreground">
                 Espaces de travail personnels & Assistants IA
               </p>
@@ -909,12 +1006,16 @@ export function ApplicationsTab() {
           </div>
         ) : !wakiesData || !wakiesAccount ? (
           <div className="surface-card p-6 text-xs text-muted-foreground">
-            L'atelier Wakies n'est pas encore initialisé ou inaccessible pour ce compte.
+            L'atelier Wakies n'est pas encore initialisé ou inaccessible pour ce
+            compte.
           </div>
         ) : (
           <div className="flex flex-col gap-6">
             {/* 1. Général & Confidentialité */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="wakies-general">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="wakies-general"
+            >
               <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                 <BrainIcon className="size-4 text-primary" />
                 <span>Atelier & Confidentialité</span>
@@ -930,10 +1031,14 @@ export function ApplicationsTab() {
                   maxLength={40}
                   onBlur={() => {
                     if (wakiesAccount.name !== wakiesData.settings.name) {
-                      void handleSaveWakiesAccount({ name: wakiesAccount.name });
+                      void handleSaveWakiesAccount({
+                        name: wakiesAccount.name,
+                      });
                     }
                   }}
-                  onChange={(e) => setWakiesAccount({ ...wakiesAccount, name: e.target.value })}
+                  onChange={(e) =>
+                    setWakiesAccount({ ...wakiesAccount, name: e.target.value })
+                  }
                   type="text"
                   value={wakiesAccount.name}
                 />
@@ -942,7 +1047,9 @@ export function ApplicationsTab() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
                   <div className="pr-3">
-                    <span className="text-xs font-semibold text-foreground">Mettre en pause l'atelier</span>
+                    <span className="text-xs font-semibold text-foreground">
+                      Mettre en pause l'atelier
+                    </span>
                     <p className="text-[11px] text-muted-foreground">
                       Désactive temporairement les réponses autonomes
                     </p>
@@ -962,7 +1069,9 @@ export function ApplicationsTab() {
 
                 <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
                   <div className="pr-3">
-                    <span className="text-xs font-semibold text-foreground">Recherche web autonome</span>
+                    <span className="text-xs font-semibold text-foreground">
+                      Recherche web autonome
+                    </span>
                     <p className="text-[11px] text-muted-foreground">
                       Autoriser l'exploration des pages web publiques
                     </p>
@@ -982,9 +1091,12 @@ export function ApplicationsTab() {
 
                 <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer sm:col-span-2">
                   <div className="pr-3">
-                    <span className="text-xs font-semibold text-foreground">Mémoires enregistrées</span>
+                    <span className="text-xs font-semibold text-foreground">
+                      Mémoires enregistrées
+                    </span>
                     <p className="text-[11px] text-muted-foreground">
-                      Permettre aux Wakies d'utiliser les souvenirs et faits mémorisés
+                      Permettre aux Wakies d'utiliser les souvenirs et faits
+                      mémorisés
                     </p>
                   </div>
                   <input
@@ -1003,14 +1115,18 @@ export function ApplicationsTab() {
             </div>
 
             {/* 2. Stockage & Quotas */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="wakies-quotas">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="wakies-quotas"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                   <ZapIcon className="size-4 text-primary" />
                   <span>Stockage & Quotas de l'atelier</span>
                 </div>
                 <span className="text-xs text-muted-foreground">
-                  Stockage : {Math.round(wakiesData.storageBytes / 1024 / 1024)} Mo
+                  Stockage : {Math.round(wakiesData.storageBytes / 1024 / 1024)}{" "}
+                  Mo
                 </span>
               </div>
 
@@ -1022,9 +1138,11 @@ export function ApplicationsTab() {
                       className="p-3 rounded-xl border border-border/40 bg-muted/10 flex flex-col gap-1"
                       key={cle}
                     >
-                      <span className="text-[11px] text-muted-foreground">{label}</span>
+                      <span className="text-[11px] text-muted-foreground">
+                        {label}
+                      </span>
                       <span className="text-sm font-bold text-foreground">
-                        {quotaVal === null ? "Illimité" : quotaVal ?? 0}
+                        {quotaVal === null ? "Illimité" : (quotaVal ?? 0)}
                       </span>
                     </div>
                   );
@@ -1033,7 +1151,10 @@ export function ApplicationsTab() {
             </div>
 
             {/* 3. Configuration des Wakies */}
-            <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24" id="wakies-config">
+            <div
+              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
+              id="wakies-config"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-bold text-foreground">
                   <BotIcon className="size-4 text-primary" />
@@ -1053,7 +1174,8 @@ export function ApplicationsTab() {
 
               {wakiesData.wakies.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
-                  Aucun Wakie configuré. Créez votre premier assistant depuis l'atelier Wakies.
+                  Aucun Wakie configuré. Créez votre premier assistant depuis
+                  l'atelier Wakies.
                 </p>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -1069,7 +1191,8 @@ export function ApplicationsTab() {
                     >
                       {wakiesData.wakies.map((w) => (
                         <option key={w.id} value={w.id}>
-                          {w.name} {w.model ? `(${w.model})` : "(Modèle par défaut)"}
+                          {w.name}{" "}
+                          {w.model ? `(${w.model})` : "(Modèle par défaut)"}
                         </option>
                       ))}
                     </select>
@@ -1083,7 +1206,9 @@ export function ApplicationsTab() {
                         </label>
                         <WakiesModelPicker
                           bloc
-                          onChoisir={(modele) => void handleSaveWakieCapabilities({ model: modele })}
+                          onChoisir={(modele) =>
+                            void handleSaveWakieCapabilities({ model: modele })
+                          }
                           valeur={activeWakie.model ?? ""}
                         />
                       </div>
@@ -1093,7 +1218,9 @@ export function ApplicationsTab() {
                           Outils actifs
                         </label>
                         <ToolPicker
-                          onChanger={(toolIds) => void handleSaveWakieCapabilities({ toolIds })}
+                          onChanger={(toolIds) =>
+                            void handleSaveWakieCapabilities({ toolIds })
+                          }
                           outils={WAKIE_TOOL_CATALOG}
                           valeur={activeWakie.toolIds ?? []}
                         />
@@ -1105,7 +1232,9 @@ export function ApplicationsTab() {
                         </label>
                         <CapacityPicker
                           capabilities={wakiesCapabilities}
-                          onChanger={(suiv) => void handleSaveWakieCapabilities(suiv)}
+                          onChanger={(suiv) =>
+                            void handleSaveWakieCapabilities(suiv)
+                          }
                           valeur={{
                             mcpServerIds: activeWakie.mcpServerIds ?? [],
                             pluginIds: activeWakie.pluginIds ?? [],

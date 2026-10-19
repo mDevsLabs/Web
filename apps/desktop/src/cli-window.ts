@@ -6,14 +6,40 @@ import { pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { app, BrowserWindow, ipcMain, shell } from "electron";
 import type { Event as ElectronEvent, IpcMainEvent, IpcMainInvokeEvent } from "electron";
-import * as pty from "node-pty";
+import type { IPty } from "node-pty";
 import type { CliState } from "./cli-protocol";
+
+// `node-pty` est un module natif dépaqueté à côté de l'asar. S'il manque
+// (installation interrompue, extraction partielle dans %TEMP%), un `require`
+// au chargement tue le processus principal avant toute fenêtre. Le charger à
+// la demande transforme la panne en message dans la fenêtre du terminal.
+type PtyModule = typeof import("node-pty");
+let ptyModule: Promise<PtyModule> | null = null;
+
+function loadPty(): Promise<PtyModule> {
+  if (!ptyModule) {
+    ptyModule = import("node-pty").catch(() => {
+      // Ne pas mémoriser l'échec : une réinstallation peut réparer le module.
+      ptyModule = null;
+      throw new Error(
+        "Le terminal local est indisponible : le module natif node-pty manque dans cette installation. Réinstallez mAI Desktop."
+      );
+    });
+  }
+  return ptyModule;
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error && error.message
+    ? error.message
+    : "Impossible de démarrer le terminal CLI.";
+}
 
 const executeFile = promisify(execFile);
 const sessions = new Map<number, CliSession>();
 type CliSession = {
   window: BrowserWindow;
-  terminal?: pty.IPty;
+  terminal?: IPty;
   state: CliState;
   busy: boolean;
 };
@@ -98,7 +124,11 @@ function quoteCommand(file: string) {
   return "'" + file.replaceAll("'", "'\\''") + "'";
 }
 
-function spawnTerminal(session: CliSession, args: string[]) {
+async function spawnTerminal(
+  session: CliSession,
+  args: string[]
+): Promise<IPty> {
+  const pty = await loadPty();
   const terminal = pty.spawn(shellPath, args, {
     name: "xterm-256color", cols: 100, rows: 30,
     cwd: app.getPath("home"),
@@ -113,8 +143,11 @@ function spawnTerminal(session: CliSession, args: string[]) {
   return terminal;
 }
 
-function launchMai(session: CliSession, mai: string) {
-  const terminal = spawnTerminal(session, windows ? ["/d", "/q"] : ["-l"]);
+async function launchMai(session: CliSession, mai: string) {
+  const terminal = await spawnTerminal(
+    session,
+    windows ? ["/d", "/q"] : ["-l"]
+  );
   terminal.onExit(({ exitCode }: { exitCode: number }) => {
     if (session.terminal !== terminal || session.window.isDestroyed()) { return; }
     session.terminal = undefined;
@@ -135,10 +168,12 @@ ipcMain.handle("cli:start", async (event: IpcMainInvokeEvent) => {
       maiInstalled: Boolean(commands.mai), npmInstalled: Boolean(commands.npm),
       nodeInstalled: Boolean(commands.node), error: undefined,
     });
-    if (commands.mai && commands.node) { return launchMai(session, commands.mai); }
+    if (commands.mai && commands.node) {
+      return await launchMai(session, commands.mai);
+    }
     return session.state;
-  } catch {
-    return publish(session, { error: "Impossible de démarrer le terminal CLI." });
+  } catch (error) {
+    return publish(session, { error: errorMessage(error) });
   } finally { session.busy = false; }
 });
 
@@ -149,14 +184,19 @@ ipcMain.handle("cli:install", async (event: IpcMainInvokeEvent) => {
   try {
     const commands = await detectCommands();
     if (session.window.isDestroyed()) { return session.state; }
-    if (commands.mai && commands.node) { return launchMai(session, commands.mai); }
+    if (commands.mai && commands.node) {
+      return await launchMai(session, commands.mai);
+    }
     if (!commands.npm || !commands.node) {
       return publish(session, { npmInstalled: Boolean(commands.npm), nodeInstalled: Boolean(commands.node),
         error: "Installez Node.js et npm, puis relancez la détection." });
     }
     publish(session, { installing: true, error: undefined });
     const command = quoteCommand(commands.npm) + " install -g @mdevs/mai-cli";
-    const terminal = spawnTerminal(session, windows ? ["/d", "/s", "/c", command] : ["-lc", command]);
+    const terminal = await spawnTerminal(
+      session,
+      windows ? ["/d", "/s", "/c", command] : ["-lc", command]
+    );
     terminal.onExit(({ exitCode }: { exitCode: number }) => {
       if (session.terminal !== terminal || session.window.isDestroyed()) { return; }
       session.terminal = undefined;
@@ -165,16 +205,22 @@ ipcMain.handle("cli:install", async (event: IpcMainInvokeEvent) => {
           const installed = await detectCommands();
           if (session.window.isDestroyed()) { return; }
           publish(session, { installing: false, maiInstalled: Boolean(installed.mai) });
-          if (exitCode === 0 && installed.mai) { launchMai(session, installed.mai); }
-          else { publish(session, { error: "Installation incomplète. Consultez le terminal puis réessayez." }); }
+          if (exitCode === 0 && installed.mai) {
+            await launchMai(session, installed.mai);
+          } else {
+            publish(session, {
+              error:
+                "Installation incomplète. Consultez le terminal puis réessayez.",
+            });
+          }
         } catch {
           publish(session, { installing: false, error: "Impossible de lancer le CLI après l'installation." });
         }
       })();
     });
     return session.state;
-  } catch {
-    return publish(session, { installing: false, error: "Impossible de lancer l'installation du CLI." });
+  } catch (error) {
+    return publish(session, { installing: false, error: errorMessage(error) });
   } finally { session.busy = false; }
 });
 

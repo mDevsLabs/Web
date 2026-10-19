@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 describe("AutoUpdate Settings Configuration", () => {
@@ -221,12 +222,21 @@ describe("AutoUpdate Settings Configuration", () => {
             owner: "mDevsLabs",
             provider: "github",
             releaseType: "release",
-            repo: "Web",
+            repo: "Coder",
           },
         },
       };
 
       expect(packageConfig.build.publish.provider).toBe("github");
+      expect(packageConfig.build.publish.repo).toBe("Coder");
+    });
+
+    it("publie les releases Coder dans le dépôt mDevsLabs/Coder", () => {
+      const real = JSON.parse(
+        readFileSync(new URL("../package.json", import.meta.url), "utf8")
+      );
+      expect(real.build.publish.owner).toBe("mDevsLabs");
+      expect(real.build.publish.repo).toBe("Coder");
     });
 
     it("should have differential package enabled for NSIS", () => {

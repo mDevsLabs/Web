@@ -63,7 +63,8 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text+image->text",
       output_modalities: ["text"],
     },
-    description: "Modèle équilibré de la génération mAI-2, rapide et polyvalent",
+    description:
+      "Modèle équilibré de la génération mAI-2, rapide et polyvalent",
     id: DEFAULT_CHAT_MODEL,
     isFree: true,
     maxContext: 1_000_000,

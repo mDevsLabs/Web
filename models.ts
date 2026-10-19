@@ -23,12 +23,12 @@ import {
   effectiveModel,
   getModelCatalog,
   isFreeModelId,
-  isPublicAudioModel,
   isPublicChatModel,
   isPublicImageModel,
   ModelAccessError,
   requireChatModel,
   type SqlClient,
+  selectAudioModels,
   validateModelRequest,
 } from "./openrouter-models.ts";
 
@@ -336,10 +336,9 @@ export function registerModelRoutes(
       if (typeQuery === "audio" || typeQuery === "speech") {
         const catalog = await getModelCatalog(database());
         const paid = isPaidTier(c.get("userPlan"));
-        const audioModels = catalog.models
-          .filter(isPublicAudioModel)
-          .filter((m) => paid || isFreeModelId(m.id))
-          .map(effectiveModel);
+        const audioModels = selectAudioModels(catalog.models, paid).map(
+          effectiveModel
+        );
         return c.json({ data: audioModels, object: "list" });
       }
 
@@ -381,10 +380,9 @@ export function registerModelRoutes(
             ...m,
             maxContext: effective.maxContext,
             maxOutput: effective.maxOutput,
-            reasoning:
-              m.reasoning?.supported_efforts?.length
-                ? m.reasoning
-                : (effective.reasoning ?? m.reasoning),
+            reasoning: m.reasoning?.supported_efforts?.length
+              ? m.reasoning
+              : (effective.reasoning ?? m.reasoning),
             supported_parameters: effective.supported_parameters,
           },
         ];

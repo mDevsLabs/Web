@@ -2,6 +2,8 @@ import type { Interface } from "node:readline/promises";
 import {
   effectiveModel,
   invalidateModelCatalog,
+  type ModelConflict,
+  type ModelConflictResolver,
   type ModelFournisseur,
   type ModelType,
   type SqlClient,
@@ -187,8 +189,8 @@ async function sqlQuerySearch(
       OR provider ILIKE ${term}
       OR model_number::text = ${rawNum}
     )
-    AND (${typeFilter} = 'all' OR type = ${typeFilter})
-    AND (${fournisseurFilter} = 'all' OR fournisseur = ${fournisseurFilter})
+    AND (${typeFilter} = 'all' OR COALESCE(overrides->>'type', type) = ${typeFilter})
+    AND (${fournisseurFilter} = 'all' OR COALESCE(overrides->>'fournisseur', fournisseur) = ${fournisseurFilter})
     ORDER BY model_number
   `;
 }
@@ -200,7 +202,7 @@ export async function applyModelPatch(
 ) {
   validateModelPatch(patch);
   if (!ids.length) throw new Error("Sélection vide.");
-  const { isActive, type, provider, fournisseur, ...metadata } = patch;
+  const { isActive, ...metadata } = patch;
   const reset = Object.entries(metadata)
     .filter(([, v]) => v === null)
     .map(([k]) => k);
@@ -211,9 +213,6 @@ export async function applyModelPatch(
     sql,
     [...new Set(ids)],
     isActive ?? null,
-    (type as string) ?? null,
-    (provider as string) ?? null,
-    (fournisseur as string) ?? null,
     reset,
     updates
   );
@@ -221,26 +220,28 @@ export async function applyModelPatch(
   return rows;
 }
 
+// Toutes les modifications durables vivent dans `overrides` : les colonnes
+// restent la copie de l'amont et le cron peut les rafraîchir sans effacer un
+// choix d'administration. `isActive` reste une colonne propre, le cron ne la
+// touche pas.
 async function sqlUpdatePatch(
   sql: SqlClient,
   ids: string[],
   active: boolean | null,
-  type: string | null,
-  provider: string | null,
-  fournisseur: string | null,
   reset: string[],
   updates: object
 ) {
   return await sql`
     UPDATE openrouter_models
     SET "isActive" = COALESCE(${active}::boolean, "isActive"),
-      type = COALESCE(${type}::varchar, type),
-      provider = COALESCE(${provider}::text, provider),
-      fournisseur = COALESCE(${fournisseur}::varchar, fournisseur),
-      overrides = (overrides - ${reset}::text[]) || ${JSON.stringify(updates)}::jsonb,
+      overrides = (COALESCE(overrides, '{}'::jsonb) - ${reset}::text[]) || ${JSON.stringify(updates)}::jsonb,
       updated_at = now()
     WHERE id = ANY(${ids}::text[])
-    RETURNING id, model_number, "isActive", type, provider, fournisseur, overrides
+    RETURNING id, model_number, "isActive",
+      COALESCE(overrides->>'type', type) as type,
+      COALESCE(overrides->>'provider', provider) as provider,
+      COALESCE(overrides->>'fournisseur', fournisseur) as fournisseur,
+      overrides
   `;
 }
 
@@ -249,9 +250,9 @@ function displayModels(models: StoredModel[], offset = 0) {
     models.slice(offset, offset + 25).map((m) => {
       const e = effectiveModel(m);
       const typeIcon =
-        m.type === "audio"
+        e.type === "audio"
           ? "🎙️ audio"
-          : m.type === "image"
+          : e.type === "image"
             ? "🖼️ image"
             : "💬 chat";
 
@@ -259,9 +260,9 @@ function displayModels(models: StoredModel[], offset = 0) {
         Actif: m.isActive,
         Contexte: e.maxContext ? e.maxContext.toLocaleString("fr-FR") : "-",
         Disponible: m.is_available,
-        Fournisseur: m.fournisseur || "openrouter",
+        Fournisseur: e.fournisseur,
         ID: m.id,
-        Labo: m.provider || e.owned_by,
+        Labo: e.provider || e.owned_by,
         Nom: e.name,
         "N°": `#${m.model_number}`,
         Sortie: e.maxOutput ? e.maxOutput.toLocaleString("fr-FR") : "-",
@@ -272,6 +273,61 @@ function displayModels(models: StoredModel[], offset = 0) {
   console.log(
     `${models.length} modèle(s) trouvé(s). Les ID sont ceux des APIs amont (OpenRouter / CometAPI).`
   );
+}
+
+const CONFLICT_LABELS: Record<string, string> = {
+  architecture: "Architecture",
+  context_length: "Taille de contexte",
+  description: "Description",
+  fournisseur: "Service fournisseur",
+  max_output_tokens: "Tokens de sortie max",
+  name: "Nom d'affichage",
+  pricing: "Tarifs",
+  provider: "Laboratoire concepteur",
+  supported_parameters: "Paramètres supportés",
+  type: "Type de modèle",
+};
+
+function formatConflictValue(value: unknown): string {
+  const text =
+    typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  const normalized = text ?? "(vide)";
+  return normalized.length > 800 ? `${normalized.slice(0, 797)}…` : normalized;
+}
+
+/**
+ * Résolveur utilisé par la CLI interactive : chaque conflit montre la valeur
+ * conservée en base, la valeur amont et leur différence. Entrée ou « b »
+ * conserve la base ; « a » prend la version amont.
+ */
+export function createConflictResolver(rl: Interface): ModelConflictResolver {
+  return async (conflict: ModelConflict) => {
+    const label = CONFLICT_LABELS[conflict.field] ?? conflict.field;
+    const database = formatConflictValue(conflict.databaseValue);
+    const upstream = formatConflictValue(conflict.upstreamValue);
+    console.log("\n=======================================================");
+    console.log(
+      `⚠️  CONFLIT #${conflict.modelNumber} — ${conflict.id} — ${label}`
+    );
+    console.log("=======================================================");
+    console.log(
+      `   Base de données${conflict.origin === "override" ? " (surcharge admin)" : ""} : ${database}`
+    );
+    console.log(`   Amont (OpenRouter / CometAPI) : ${upstream}`);
+    console.log("   Différence :");
+    for (const line of database.split("\n")) console.log(`     - ${line}`);
+    for (const line of upstream.split("\n")) console.log(`     + ${line}`);
+    const answer = (
+      await rl.question(
+        "👉 Conserver [b] la base / [a] l'amont (Entrée = base) : "
+      )
+    )
+      .trim()
+      .toLowerCase();
+    return ["a", "amont", "u", "upstream"].includes(answer)
+      ? "upstream"
+      : "database";
+  };
 }
 
 async function askSingleModelInteractivePatch(
@@ -287,10 +343,10 @@ async function askSingleModelInteractivePatch(
   );
   console.log("=======================================================");
   console.log(`  Identifiant (ID): ${model.id}`);
-  console.log(`  Laboratoire     : ${model.provider || eff.owned_by}`);
-  console.log(`  Fournisseur     : ${model.fournisseur || "openrouter"}`);
+  console.log(`  Laboratoire     : ${eff.provider || eff.owned_by}`);
+  console.log(`  Fournisseur     : ${eff.fournisseur}`);
   console.log(
-    `  Type de modèle  : ${model.type === "audio" ? "🎙️ AUDIO" : model.type === "image" ? "🖼️ IMAGE (CometAPI)" : "💬 CHAT"}`
+    `  Type de modèle  : ${eff.type === "audio" ? "🎙️ AUDIO" : eff.type === "image" ? "🖼️ IMAGE (CometAPI)" : "💬 CHAT"}`
   );
   console.log(
     `  Statut actuel   : ${model.isActive ? "✅ ACTIF" : "❌ INACTIF"} (Dispo: ${model.is_available ? "Oui" : "Non"})`
@@ -323,12 +379,10 @@ async function askSingleModelInteractivePatch(
     `  3. 🔘 Basculer Statut (${model.isActive ? "Actif ➔ INACTIF" : "Inactif ➔ ACTIF"})`
   );
   console.log(
-    `  4. 🎯 Type de modèle (actuel: ${model.type} ➔ chat, audio, image)`
+    `  4. 🎯 Type de modèle (actuel: ${eff.type} ➔ chat, audio, image)`
   );
-  console.log(`  5. 🏢 Laboratoire concepteur (provider: ${model.provider})`);
-  console.log(
-    `  6. 🔌 Service fournisseur (fournisseur: ${model.fournisseur})`
-  );
+  console.log(`  5. 🏢 Laboratoire concepteur (provider: ${eff.provider})`);
+  console.log(`  6. 🔌 Service fournisseur (fournisseur: ${eff.fournisseur})`);
   console.log("  7. 🧠 Taille de contexte (context_length)");
   console.log("  8. 📤 Tokens de sortie max (max_output_tokens)");
   console.log("  9. ⚙️  Paramètres supportés (supported_parameters)");
@@ -360,7 +414,7 @@ async function askSingleModelInteractivePatch(
   }
 
   if (action === "5") {
-    const cur = model.provider || "inconnu";
+    const cur = eff.provider || "inconnu";
     const val = (
       await rl.question(`👉 Laboratoire concepteur [${cur}] : `)
     ).trim();
@@ -394,6 +448,9 @@ async function askSingleModelInteractivePatch(
       patch.supported_parameters = null;
       patch.architecture = null;
       patch.pricing = null;
+      patch.type = null;
+      patch.provider = null;
+      patch.fournisseur = null;
       return patch;
     }
     return null;
@@ -525,10 +582,13 @@ async function askBatchModelPatch(
       architecture: null,
       context_length: null,
       description: null,
+      fournisseur: null,
       max_output_tokens: null,
       name: null,
       pricing: null,
+      provider: null,
       supported_parameters: null,
+      type: null,
     };
   }
 
@@ -623,14 +683,11 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
             JSON.stringify(
               {
                 ...effectiveModel(m),
-                fournisseur: m.fournisseur,
                 is_available: m.is_available,
                 isActive: m.isActive,
                 model_number: m.model_number,
                 overrides: m.overrides,
                 pricing: m.overrides.pricing ?? m.pricing,
-                provider: m.provider,
-                type: m.type,
                 upstream: m.upstream,
               },
               null,
@@ -656,14 +713,16 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           console.log("ℹ️ Aucune modification à enregistrer.");
           continue;
         }
-
         console.table(
-          selected.map((m) => ({
-            Fournisseur: m.fournisseur,
-            ID: m.id,
-            "N°": `#${m.model_number}`,
-            Type: m.type,
-          }))
+          selected.map((m) => {
+            const eff = effectiveModel(m);
+            return {
+              Fournisseur: eff.fournisseur,
+              ID: m.id,
+              "N°": `#${m.model_number}`,
+              Type: eff.type,
+            };
+          })
         );
         console.log(
           "Modifications à appliquer :",
@@ -697,7 +756,9 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         }
       } else if (choice === "8") {
         console.log("⏳ Synchronisation en cours (OpenRouter & CometAPI)...");
-        await updateModels(sql);
+        await updateModels(sql, {
+          resolveConflict: createConflictResolver(rl),
+        });
         models = await searchModels(sql, query, typeFilter, fournisseurFilter);
       } else {
         console.log("⚠️ Choix invalide.");

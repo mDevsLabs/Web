@@ -88,9 +88,25 @@ export async function GET(_req: NextRequest) {
     // filtrées : seules les voix propres au modèle sont exposées.
     const models = rawList.map((m: any) => ({
       ...m,
+      isFree:
+        typeof m.isFree === "boolean"
+          ? m.isFree
+          : String(m.id || "").endsWith(":free"),
       name: normalizeModelDisplayName(m.id, m.name || m.id),
       voices: resolveModelVoices(m.id, m.voices),
     }));
+
+    // Un catalogue vide n'est pas un catalogue : la base peut n'avoir aucun
+    // modèle accessible au forfait courant, ou l'amont peut avoir filtré trop
+    // strictement. On garde au moins le modèle de repli pour que l'interface
+    // ne présente pas un sélecteur vide.
+    if (models.length === 0) {
+      return NextResponse.json({
+        data: FALLBACK_SPEECH_MODELS,
+        models: FALLBACK_SPEECH_MODELS,
+        object: "list",
+      });
+    }
 
     return NextResponse.json({
       data: models,

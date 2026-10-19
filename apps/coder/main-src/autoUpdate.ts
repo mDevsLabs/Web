@@ -40,8 +40,23 @@ function sendStatusToRenderer(): void {
   }
 }
 
+/**
+ * Coder embarqué dans mAI Desktop : la version est livrée avec mAI et ne doit
+ * jamais être remplacée par une release GitHub autonome. Les mises à jour
+ * passent par mAI Desktop, qui embarque la version correspondante.
+ */
+export function isEmbeddedInMai(): boolean {
+  return (
+    process.env.MAI_CODER_EMBEDDED === "1" ||
+    Boolean(process.env.MAI_CODER_EMBEDDED_VERSION?.trim())
+  );
+}
+
 /** 检查是否启用自动更新 */
 function isAutoUpdateEnabled(): boolean {
+  if (isEmbeddedInMai()) {
+    return false;
+  }
   const settings = getSettings();
   return settings.autoUpdate?.enabled !== false; // 默认开启
 }
@@ -74,7 +89,7 @@ function configureUpdater(): void {
   autoUpdater.setFeedURL({
     owner: "mDevsLabs",
     provider: "github",
-    repo: "Web",
+    repo: "Coder",
   });
 
   autoUpdater.on("checking-for-update", () => {
@@ -153,6 +168,13 @@ function configureUpdater(): void {
 
 /** 检查更新 */
 export async function checkForUpdates(): Promise<AutoUpdateStatus> {
+  if (isEmbeddedInMai()) {
+    console.log(
+      "[AutoUpdate] Désactivé : Coder est embarqué dans mAI Desktop."
+    );
+    currentStatus = { state: "idle" };
+    return currentStatus;
+  }
   if (!isAutoUpdateEnabled()) {
     console.log("[AutoUpdate] Auto-update is disabled");
     currentStatus = { state: "idle" };
@@ -264,6 +286,12 @@ export function getStatus(): AutoUpdateStatus {
 /** 初始化自动更新（在 app.ready 后调用） */
 export function initAutoUpdate(win: BrowserWindow): void {
   setMainWindow(win);
+  if (isEmbeddedInMai()) {
+    console.log(
+      "[AutoUpdate] Désactivé : Coder est embarqué dans mAI Desktop."
+    );
+    return;
+  }
 
   // Timers trackés + nettoyés à la fermeture (évite closure win 1h après close).
   const initialTimer = setTimeout(() => {

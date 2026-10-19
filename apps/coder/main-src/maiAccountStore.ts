@@ -10,7 +10,13 @@ import {
   type UserModelEntry,
 } from "./settingsStore.js";
 
-export const MAI_API_BASE = "https://mai.val.run";
+// Le backend mAI peut être surchargé par l'hôte (Desktop) pour rester aligné
+// sur le même environnement que l'application Web.
+export const MAI_API_BASE = (
+  process.env.MAI_API_BASE ||
+  process.env.MAI_API_URL ||
+  "https://mai.val.run"
+).replace(/\/+$/, "");
 
 async function maiFetch(
   url: string,
@@ -553,6 +559,17 @@ export function markMaiAccountSyncPending(jwtToken: string): MaiAccountState {
   return nextState;
 }
 
+function dedupeModelEntries(entries: UserModelEntry[]): UserModelEntry[] {
+  const seen = new Set<string>();
+  return entries.filter((entry) => {
+    if (seen.has(entry.id)) {
+      return false;
+    }
+    seen.add(entry.id);
+    return true;
+  });
+}
+
 export async function syncMaiAccountWithToken(
   jwtToken: string
 ): Promise<MaiAccountState> {
@@ -653,7 +670,7 @@ export async function syncMaiAccountWithToken(
           temperatureMode: "auto",
         }));
 
-        nextEntries = [...maiEntries, ...otherEntries];
+        nextEntries = dedupeModelEntries([...maiEntries, ...otherEntries]);
         const maiIds = maiEntries.map((m) => m.id);
         nextEnabled = Array.from(new Set([...maiIds, ...nextEnabled]));
 
@@ -667,12 +684,18 @@ export async function syncMaiAccountWithToken(
   }
 
   if (!nextEntries.some((e) => e.providerId === "mai")) {
-    nextEntries = [...DEFAULT_MAI_MODELS, ...nextEntries];
+    nextEntries = dedupeModelEntries([...DEFAULT_MAI_MODELS, ...nextEntries]);
   }
+  nextEntries = dedupeModelEntries(nextEntries);
+  // Un id activé sans entrée correspondante ferait échouer la sélection de
+  // modèle côté éditeur : la synchronisation le retire au lieu de le conserver.
+  const entryIds = new Set(nextEntries.map((e) => e.id));
   const allMaiIds = nextEntries
     .filter((e) => e.providerId === "mai")
     .map((e) => e.id);
-  nextEnabled = Array.from(new Set([...allMaiIds, ...nextEnabled]));
+  nextEnabled = Array.from(new Set([...allMaiIds, ...nextEnabled])).filter(
+    (id) => entryIds.has(id)
+  );
 
   if (!defaultModel || !nextEntries.some((e) => e.id === defaultModel)) {
     defaultModel = nextEntries[0]?.id || "google/gemini-2.5-flash:free";

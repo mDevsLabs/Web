@@ -31,7 +31,17 @@
     "files": [
       "dist/**/*",
       "package.json",
-      "build/icon.*"
+      "build/icon.*",
+      "!**/node_modules/node-pty/build/deps/**",
+      "!**/node_modules/node-pty/build/**/obj/**",
+      "!**/node_modules/node-pty/build/**/*.vcxproj",
+      "!**/node_modules/node-pty/build/**/*.vcxproj.*",
+      "!**/node_modules/node-pty/src/**",
+      "!**/node_modules/node-pty/deps/**",
+      "!**/node_modules/node-pty/third_party/**",
+      "!**/node_modules/node-pty/scripts/**",
+      "!**/node_modules/node-pty/lib/**/*.test.js",
+      "!**/node_modules/node-pty/lib/**/*.map"
     ],
     "extraMetadata": {
       "main": "dist/main.js"
@@ -51,9 +61,17 @@
           ]
         }
       ],
-      "artifactName": "mAI-${os}-${arch}-${version}.${ext}",
+      "artifactName": "mAI-${version}-win-${arch}-setup.${ext}",
+      "files": [
+        "!**/node_modules/node-pty/prebuilds/darwin-*/**",
+        "!**/node_modules/node-pty/prebuilds/linux-*/**",
+        "!**/node_modules/node-pty/prebuilds/win32-arm64/**"
+      ],
       "icon": "build/icon.ico",
       "verifyUpdateCodeSignature": false
+    },
+    "portable": {
+      "artifactName": "mAI-${version}-win-${arch}-portable.${ext}"
     },
     "nsis": {
       "oneClick": false,

@@ -4,7 +4,7 @@ import * as readline from "node:readline/promises";
 import { neon } from "@neondatabase/serverless";
 import { runNewsletterStudio, sendEmail } from "./admin-email.ts";
 import { runFormManager } from "./admin-forms.ts";
-import { runModelManager } from "./admin-models.ts";
+import { createConflictResolver, runModelManager } from "./admin-models.ts";
 import { loadLocalEnv } from "./cli-env.ts";
 import { updateModels } from "./updateModels.ts";
 
@@ -1155,11 +1155,19 @@ export async function runNotificationManager() {
 // ─────────────────────────────────────────────
 // MENU PRINCIPAL DE LA SUITE ADMINISTRATIVE
 // ─────────────────────────────────────────────
-async function runModelScheduleNow() {
+async function runModelScheduleNow(rl?: readline.Interface) {
   console.log(
     "\n⏱️ Exécution manuelle du cron de synchronisation des modèles (OpenRouter & CometAPI)..."
   );
-  const result = await updateModels(sql);
+  if (!rl) {
+    console.log(
+      "   Mode automatique : les conflits conserveront la version de la base."
+    );
+  }
+  const result = await updateModels(
+    sql,
+    rl ? { resolveConflict: createConflictResolver(rl) } : {}
+  );
   if (result.skipped) {
     console.log(
       "ℹ️ Une synchronisation plus récente a été conservée ; aucun changement appliqué."
@@ -1174,6 +1182,11 @@ async function runModelScheduleNow() {
       );
       console.log(
         `   🔌 Fournisseurs : ${result.openrouterCount} OpenRouter, ${result.cometCount} CometAPI.`
+      );
+    }
+    if ("conflicts" in result && result.conflicts) {
+      console.log(
+        `   ⚖️  Conflits : ${result.conflicts} (base : ${result.conflictsKeptInDatabase}, amont : ${result.conflictsTakenFromUpstream}).`
       );
     }
   }
@@ -1358,7 +1371,7 @@ export async function runAdminCli() {
         break;
       case "11":
         try {
-          await runModelScheduleNow();
+          await runModelScheduleNow(rl);
         } catch (error) {
           console.error(
             "❌ Échec du cron de synchronisation des modèles :",

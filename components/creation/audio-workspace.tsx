@@ -183,13 +183,20 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
 
   // Modèle et voix par défaut au chargement
   useEffect(() => {
-    if (userPrefData?.defaultAudioModel && !selectedModelId) {
-      setSelectedModelId(userPrefData.defaultAudioModel);
-    } else if (models.length > 0 && !selectedModelId) {
-      const defaultMod =
-        models.find((m) => m.id.includes("speech") || m.id.includes("tts")) ||
-        models[0];
-      setSelectedModelId(defaultMod.id);
+    const preferred = userPrefData?.defaultAudioModel;
+    if (models.length > 0) {
+      setSelectedModelId((current) => {
+        // Une préférence pointant vers un modèle retiré du catalogue ne doit
+        // pas laisser le sélecteur sur « Modèle indisponible » : la base est
+        // l'autorité, on retombe sur le premier modèle accessible.
+        if (current && models.some((m) => m.id === current)) {
+          return current;
+        }
+        if (preferred && models.some((m) => m.id === preferred)) {
+          return preferred;
+        }
+        return models[0].id;
+      });
     }
 
     // La sélection de voix est gérée par l'effet dédié (après modelVoices)
@@ -197,7 +204,7 @@ export function AudioWorkspace({ modeSwitcher }: AudioWorkspaceProps = {}) {
     if (userPrefData?.defaultAudioSpeed) {
       setSpeed(userPrefData.defaultAudioSpeed);
     }
-  }, [models, selectedModelId, userPrefData]);
+  }, [models, userPrefData]);
 
   // Basculer l'état épinglé
   const handleTogglePin = async (

@@ -154,7 +154,8 @@ function SettingsPageInner() {
       const el =
         document.getElementById(targetId) ||
         (activeTab === "usage"
-          ? document.getElementById("usage-mAI") || document.getElementById("usage")
+          ? document.getElementById("usage-mAI") ||
+            document.getElementById("usage")
           : document.getElementById("vibe"));
       if (el) {
         setTimeout(

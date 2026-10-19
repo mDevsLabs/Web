@@ -3,7 +3,11 @@ import { app, BrowserWindow, Menu, shell, dialog, nativeImage, ipcMain } from "e
 import fs from "node:fs";
 import path from "node:path";
 import { openCliWindow } from "./cli-window";
-import { launchCoder, resolveCoderExecutable } from "./coder-launcher";
+import {
+  launchCoder,
+  readEmbeddedCoderVersion,
+  resolveCoderExecutable,
+} from "./coder-launcher";
 import { openAboutWindow } from "./about-window";
 
 // L'URL est résolue au démarrage, jamais figée : voir `resolveAppUrl`.
@@ -675,12 +679,25 @@ ipcMain.handle("desktop:open-coder", async (event, opts) => {
   let sessionToken: string | undefined;
   try {
     const origin = new URL(event.senderFrame?.url || APP_URL).origin;
-    const cookies = await event.sender.session.cookies.get({
-      name: "mai_session_token",
-      url: origin,
-    });
-    const value = cookies[0]?.value?.trim() ?? "";
-    if (value.split(".").length === 3 && value.length <= 8192) {
+    // Nom historique prioritaire ; variantes sécurisées et ancien alias
+    // `mai_token` pour ne pas rater le handoff si le web change de cookie.
+    const cookies = await event.sender.session.cookies.get({ url: origin });
+    const preference = [
+      "mai_session_token",
+      "__Secure-mai_session_token",
+      "mai_token",
+    ];
+    const ordered = [...cookies].sort((left, right) =>
+      preference.indexOf(left.name) - preference.indexOf(right.name)
+    );
+    const value =
+      ordered
+        .map((cookie) => cookie.value?.trim() ?? "")
+        .find(
+          (candidate) =>
+            candidate.split(".").length === 3 && candidate.length <= 8192
+        ) ?? "";
+    if (value) {
       sessionToken = value;
     }
   } catch {
@@ -692,5 +709,9 @@ ipcMain.handle("desktop:open-coder", async (event, opts) => {
 
 ipcMain.handle("desktop:get-coder-status", (event) => {
   if (!trustedSender(event)) return { installed: false };
-  return { installed: Boolean(resolveCoderExecutable()) };
+  const embedded = readEmbeddedCoderVersion();
+  return {
+    installed: Boolean(resolveCoderExecutable()),
+    version: embedded?.version,
+  };
 });

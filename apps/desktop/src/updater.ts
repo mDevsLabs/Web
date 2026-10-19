@@ -37,16 +37,22 @@ export function selectAssetForCurrentPlatform(assets: ReleaseAsset[]): ReleaseAs
   const arch = process.arch;
 
   if (platform === "win32") {
-    // Windows : installateur .exe (ex: mAI-win-x64-0.9.1.exe ou mAI.Setup.0.9.1.exe)
+    // Windows : uniquement l'installateur. Un paquet « portable » s'extrait dans
+    // %TEMP% à chaque lancement : il ne remplace jamais l'installation et peut
+    // démarrer sur une extraction incomplète (modules natifs absents).
     const winExe = assets.filter(
       (a) =>
         a.name.endsWith(".exe") &&
         !a.name.toLowerCase().includes("coder") &&
-        !a.name.toLowerCase().includes("debug")
+        !a.name.toLowerCase().includes("debug") &&
+        !a.name.toLowerCase().includes("portable") &&
+        !a.name.toLowerCase().includes("uninstall")
     );
-    // Priorité à un asset explicitement nommé avec mAI-win ou Setup
+    // Priorité à l'installateur nommé « setup », puis à l'ancien nom
+    // `mAI-win-<arch>-<version>.exe` des releases déjà publiées.
     const preferred =
-      winExe.find((a) => a.name.toLowerCase().includes("win") || a.name.toLowerCase().includes("setup")) ||
+      winExe.find((a) => a.name.toLowerCase().includes("setup")) ||
+      winExe.find((a) => a.name.toLowerCase().includes("win")) ||
       winExe[0];
     return preferred ?? null;
   }

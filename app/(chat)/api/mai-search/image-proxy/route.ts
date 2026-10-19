@@ -43,7 +43,8 @@ export async function GET(request: NextRequest) {
   try {
     const res = await fetch(parsed.toString(), {
       headers: {
-        Accept: "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        Accept:
+          "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
       },
@@ -57,8 +58,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const contentType =
-      res.headers.get("content-type") || "image/jpeg";
+    const contentType = res.headers.get("content-type") || "image/jpeg";
     const arrayBuffer = await res.arrayBuffer();
 
     return new NextResponse(arrayBuffer, {

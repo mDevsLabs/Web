@@ -1,12 +1,25 @@
 // Le paquet embarque une application Coder complète, avec son runtime et ses
 // dépendances natives pour la même plateforme et architecture que mAI Desktop.
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const desktopRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const coderRoot = path.resolve(desktopRoot, "../coder");
+const desktopPackage = JSON.parse(
+  readFileSync(path.join(desktopRoot, "package.json"), "utf8")
+);
+const coderPackage = JSON.parse(
+  readFileSync(path.join(coderRoot, "package.json"), "utf8")
+);
+// Le Coder embarqué doit porter exactement la version de mAI Desktop : un écart
+// ferait exécuter une autre version que celle annoncée par l'application.
+if (coderPackage.version !== desktopPackage.version) {
+  throw new Error(
+    `La version de Coder (${coderPackage.version}) doit correspondre à celle de mAI Desktop (${desktopPackage.version}).`
+  );
+}
 const arch = process.argv[2] || process.arch;
 if (!["x64", "arm64"].includes(arch)) throw new Error("Architecture Coder non prise en charge.");
 const target = { win32: "win", darwin: "mac", linux: "linux" }[process.platform];
@@ -46,4 +59,14 @@ if (path.dirname(path.resolve(destination)) !== buildRoot) throw new Error("Dest
 rmSync(destination, { recursive: true, force: true });
 mkdirSync(destination, { recursive: true });
 cpSync(source, target === "mac" ? path.join(destination, "mAI Coder.app") : destination, { recursive: true, verbatimSymlinks: true });
-console.log(`Coder ${target}/${arch} est prêt à être embarqué dans mAI Desktop.`);
+// Marqueur lu au lancement : permet de refuser un payload périmé plutôt que
+// d'exécuter silencieusement une autre version que celle incluse dans mAI.
+writeFileSync(
+  path.join(destination, "coder-version.json"),
+  JSON.stringify(
+    { builtAt: new Date().toISOString(), version: coderPackage.version },
+    null,
+    2
+  )
+);
+console.log(`Coder ${target}/${arch} ${coderPackage.version} est prêt à être embarqué dans mAI Desktop.`);

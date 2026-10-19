@@ -2,12 +2,26 @@
 import { EventEmitter } from "node:events";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const mocks = vi.hoisted(() => ({ exists: false, spawn: vi.fn() }));
-vi.mock("node:fs", () => ({ existsSync: () => mocks.exists }));
+const mocks = vi.hoisted(() => ({
+  exists: false,
+  marker: "",
+  spawn: vi.fn(),
+  writes: [] as unknown[][],
+}));
+vi.mock("node:fs", () => ({
+  existsSync: () => mocks.exists,
+  readFileSync: () => mocks.marker,
+  unlinkSync: vi.fn(),
+  writeFileSync: (...args: unknown[]) => mocks.writes.push(args),
+}));
 // `launchCoder` part du home de l'utilisateur : le mock doit exposer `getPath`,
 // sinon le test échoue sur le double Electron et non sur le lanceur.
 vi.mock("electron", () => ({
-  app: { getPath: () => "C:/Users/test", isPackaged: false },
+  app: {
+    getPath: () => "C:/Users/test",
+    getVersion: () => "0.9.1",
+    isPackaged: false,
+  },
 }));
 vi.mock("node:child_process", () => ({ spawn: mocks.spawn }));
 
@@ -19,24 +33,33 @@ const { launchCoder } = await vi.importActual<{
   }) => Promise<{ success: boolean; error?: string }>;
 }>("../../apps/desktop/src/coder-launcher");
 
+function spawnOk() {
+  const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
+  mocks.spawn.mockImplementation(() => {
+    queueMicrotask(() => child.emit("spawn"));
+    return child;
+  });
+  return child;
+}
+
 describe("Coder embarqué dans mAI Desktop", () => {
   beforeEach(() => {
     mocks.exists = false;
+    mocks.marker = "";
     mocks.spawn.mockReset();
+    mocks.writes = [];
   });
+
   it("signale un paquet incomplet sans ouvrir une fausse fenêtre d’éditeur", async () => {
     const result = await launchCoder();
     expect(result.success).toBe(false);
     expect(result.error).toContain("absent du paquet");
     expect(mocks.spawn).not.toHaveBeenCalled();
   });
-  it("lance Coder avec son espace comme argument unique, sans shell", async () => {
+
+  it("lance Coder avec son espace comme argument, sans shell", async () => {
     mocks.exists = true;
-    const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
-    mocks.spawn.mockImplementation(() => {
-      queueMicrotask(() => child.emit("spawn"));
-      return child;
-    });
+    const child = spawnOk();
     const result = await launchCoder({
       workspacePath: "C:/Un projet/espace & test",
     });
@@ -46,38 +69,53 @@ describe("Coder embarqué dans mAI Desktop", () => {
       ["--workspace=C:/Un projet/espace & test"],
       expect.objectContaining({
         detached: true,
-        env: expect.objectContaining({ MAI_CODER_LOAD_DIST: "1" }),
+        env: expect.objectContaining({
+          MAI_CODER_EMBEDDED: "1",
+          MAI_CODER_LOAD_DIST: "1",
+        }),
         stdio: "ignore",
       })
     );
     expect(mocks.spawn.mock.calls[0][2].shell).toBeUndefined();
     expect(child.unref).toHaveBeenCalledOnce();
   });
-  it("transmet le jeton de session dans l’environnement, jamais dans les arguments", async () => {
+
+  it("transmet le jeton par fichier éphémère, jamais dans les arguments", async () => {
     mocks.exists = true;
-    const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
-    mocks.spawn.mockImplementation(() => {
-      queueMicrotask(() => child.emit("spawn"));
-      return child;
-    });
+    spawnOk();
     const token = "header.payload.signature";
     expect(await launchCoder({ sessionToken: token })).toEqual({
       success: true,
     });
     const args = mocks.spawn.mock.calls[0][2];
     expect(args.env.MAI_SESSION_TOKEN).toBe(token);
-    expect(mocks.spawn.mock.calls[0][1]).toEqual([]);
+    const argv = mocks.spawn.mock.calls[0][1] as string[];
+    expect(argv).toHaveLength(1);
+    expect(argv[0]).toMatch(/^--mai-session-token-file=/);
+    expect(JSON.stringify(argv)).not.toContain(token);
+    expect(mocks.writes).toHaveLength(1);
+    expect(mocks.writes[0][1]).toBe(token);
+    expect(mocks.writes[0][2]).toEqual(
+      expect.objectContaining({ mode: 0o600 })
+    );
   });
+
   it("ne transmet aucun jeton quand le handoff est absent", async () => {
     mocks.exists = true;
-    const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
-    mocks.spawn.mockImplementation(() => {
-      queueMicrotask(() => child.emit("spawn"));
-      return child;
-    });
+    spawnOk();
     await launchCoder();
     expect(mocks.spawn.mock.calls[0][2].env.MAI_SESSION_TOKEN).toBeUndefined();
   });
+
+  it("refuse un Coder embarqué dont la version diverge de mAI Desktop", async () => {
+    mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.0.1" });
+    const result = await launchCoder();
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("ne correspond pas à mAI Desktop");
+    expect(mocks.spawn).not.toHaveBeenCalled();
+  });
+
   it("remonte les erreurs du système au bouton de lancement", async () => {
     mocks.exists = true;
     const child = new EventEmitter();

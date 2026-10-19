@@ -265,48 +265,25 @@ function SidebarTrigger({
 }
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
-  const { toggleSidebar, state } = useSidebar()
-  const isCollapsed = state === "collapsed"
+  const { toggleSidebar } = useSidebar()
 
+  // Rail volontairement invisible : aucune ligne ne doit apparaître au survol
+  // et aucune zone de clic ne doit déborder sur le contenu. La bascule reste
+  // possible depuis le bouton explicite de l'en-tête.
   return (
-    <div
+    <button
+      aria-label="Afficher ou masquer la barre latérale"
+      data-sidebar="rail"
       data-slot="sidebar-rail"
+      onClick={toggleSidebar}
+      tabIndex={-1}
+      title="Afficher ou masquer la barre latérale"
       className={cn(
-        "group/rail absolute inset-y-0 z-20 hidden w-4 overflow-visible group-data-[side=left]:-right-4 sm:block",
+        "absolute inset-y-0 z-20 hidden w-1 cursor-w-resize bg-transparent outline-hidden group-data-[side=left]:-right-1 sm:block",
         className
       )}
-    >
-      <button
-        data-sidebar="rail"
-        aria-label="Afficher ou masquer la barre latérale"
-        tabIndex={-1}
-        onClick={toggleSidebar}
-        className="absolute inset-y-0 left-0 w-4 cursor-w-resize [[data-side=left][data-state=collapsed]_&]:cursor-e-resize"
-        {...props}
-      />
-      <button
-        aria-label="Afficher ou masquer la barre latérale"
-        tabIndex={-1}
-        onClick={toggleSidebar}
-        className={cn(
-          "absolute left-0 h-3 w-3 cursor-e-resize",
-          isCollapsed ? "top-0" : "top-[calc(3.5rem-6px)] cursor-w-resize"
-        )}
-      />
-      <button
-        aria-label="Afficher ou masquer la barre latérale"
-        tabIndex={-1}
-        onClick={toggleSidebar}
-        className={cn(
-          "absolute left-3 h-[6px] w-[100vw] cursor-e-resize",
-          isCollapsed ? "top-0" : "top-[calc(3.5rem-6px)] cursor-w-resize"
-        )}
-      />
-      <div className={cn(
-        "pointer-events-none absolute bottom-0 left-0 w-[100vw] rounded-tl-[12px] border-t border-l border-sidebar-border opacity-0 transition-opacity duration-150 group-hover/rail:opacity-100",
-        isCollapsed ? "top-0" : "top-14"
-      )} />
-    </div>
+      {...props}
+    />
   )
 }
 

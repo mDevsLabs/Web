@@ -70,7 +70,6 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarRail,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
@@ -1085,7 +1084,6 @@ export function AppSidebar({
         <SidebarFooter className="border-t border-sidebar-border p-2">
           {user ? <SidebarUserNav user={user} /> : null}
         </SidebarFooter>
-        <SidebarRail />
       </Sidebar>
 
       {/* Le panneau mobile fermé démonte ses enfants : la recherche doit

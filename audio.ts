@@ -6,6 +6,7 @@ import {
   getTierSpeechLimit,
   getUserQuotaBoost,
   getWeekData,
+  isPaidTier,
   verifyToken,
 } from "./config.ts";
 import {
@@ -13,6 +14,7 @@ import {
   getModelCatalog,
   isFreeModelId,
   ModelAccessError,
+  selectAudioModels,
   supportsOutput,
 } from "./openrouter-models.ts";
 
@@ -91,19 +93,12 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
   const handleGetSpeechModels = async (c: any) => {
     try {
       const catalog = await getModelCatalog(database());
-      const models = catalog.models
-        .filter(
-          (m) =>
-            m.isActive &&
-            m.is_available &&
-            isFreeModelId(m.id) &&
-            (supportsOutput(m, "speech") || supportsOutput(m, "audio"))
-        )
-        .map((m) => ({
-          ...effectiveModel(m),
-          name: cleanModelName(effectiveModel(m).name),
-          voices: m.upstream.supported_voices ?? m.upstream.voices ?? [],
-        }));
+      const paid = isPaidTier(c.get("userPlan"));
+      const models = selectAudioModels(catalog.models, paid).map((m) => ({
+        ...effectiveModel(m),
+        name: cleanModelName(effectiveModel(m).name),
+        voices: m.upstream.supported_voices ?? m.upstream.voices ?? [],
+      }));
       return c.json({ data: models, object: "list" });
     } catch {
       return c.json(
@@ -558,21 +553,6 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
         );
       }
 
-      // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
-      if (typeof model !== "string" || !isFreeModelId(model)) {
-        return c.json(
-          {
-            error: {
-              code: "speech_model_free_required",
-              message: `Pour l'API Speech, seuls les modèles avec ':free' sont autorisés (ex: 'deepgram/flux-tts:free'). Le modèle '${model}' n'est pas autorisé.`,
-              param: "model",
-              type: "permission_error",
-            },
-          },
-          403
-        );
-      }
-
       const sql = database();
       const catalog = await getModelCatalog(sql);
       const storedModel = catalog.byId.get(model);
@@ -606,6 +586,24 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
       `.catch(() => []);
       const keyTier = extractTierFromApiKey(token);
       const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
+
+      // Le forfait tranche l'accès au modèle : Free reste limité aux modèles
+      // `:free`, tandis qu'un forfait payant peut utiliser tout le catalogue
+      // audio de la base (y compris les modèles sans suffixe `:free`).
+      if (!isFreeModelId(model) && !isPaidTier(effectiveTier)) {
+        return c.json(
+          {
+            error: {
+              code: "speech_model_free_required",
+              message: `Le forfait ${effectiveTier} autorise uniquement les modèles ':free' pour la synthèse vocale. Le modèle '${model}' nécessite un forfait payant.`,
+              param: "model",
+              type: "permission_error",
+            },
+          },
+          403
+        );
+      }
+
       const audioBoost = await getUserQuotaBoost(sql, userId, "audio");
       const weeklyLimit = getTierSpeechLimit(effectiveTier) + audioBoost;
 
