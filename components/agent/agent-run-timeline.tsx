@@ -35,6 +35,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useAgentModels } from "@/hooks/use-agent-models";
 import {
   hasTimelineContent,
   visiblePlan,
@@ -47,9 +48,8 @@ import type {
   AgentToolActivity,
   ToolCategory,
 } from "@/lib/agent/types";
-import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { chatModels, FALLBACK_MODELS } from "@/lib/ai/models";
-import { useAgentModels } from "@/hooks/use-agent-models";
+import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { IntegrationLogo, integrationForToolId } from "@/lib/integrations/logo";
 import { cn } from "@/lib/utils";

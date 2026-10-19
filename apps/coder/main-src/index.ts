@@ -32,6 +32,7 @@ import {
 import { disposePlaywrightBridge } from "./browser/playwrightBridge.js";
 import { agentRevertSnapshotsByThread } from "./ipc/chatRuntime.js";
 import { registerIpc } from "./ipc/register.js";
+import { isUsableMaiSessionToken } from "./maiSessionToken.js";
 import { getMcpManager } from "./mcp/index.js";
 import { getEffectiveMcpServerConfigs } from "./plugins/pluginRuntimeService.js";
 import {
@@ -75,10 +76,6 @@ function resolveAppIconPath(): string | undefined {
 
 // Handoff de session depuis mAI Desktop. Le jeton n'apparaît jamais dans les
 // arguments : argv porte un chemin de fichier éphémère, lu puis supprimé.
-function isValidSessionToken(value: string): boolean {
-  return value.split(".").length === 3 && value.length <= 8192;
-}
-
 function readSessionHandoffFile(file: string): string | undefined {
   try {
     const value = readFileSync(file, "utf8").trim();
@@ -87,7 +84,7 @@ function readSessionHandoffFile(file: string): string | undefined {
     } catch {
       /* déjà supprimé */
     }
-    return isValidSessionToken(value) ? value : undefined;
+    return isUsableMaiSessionToken(value) ? value : undefined;
   } catch {
     return undefined;
   }
@@ -111,7 +108,7 @@ const maiSettingsReady = new Promise<void>((resolve) => {
 // puis synchronise profil et modèles, sans bloquer l'ouverture de l'éditeur.
 async function applyMaiHandoffToken(token: string): Promise<void> {
   const value = token.trim();
-  if (!isValidSessionToken(value)) {
+  if (!isUsableMaiSessionToken(value)) {
     return;
   }
   await maiSettingsReady;
@@ -155,7 +152,7 @@ if (gotLock) {
     const incoming =
       (additionalData as { maiSessionToken?: string } | undefined)
         ?.maiSessionToken || sessionTokenFromArgs(argv);
-    if (incoming && isValidSessionToken(incoming)) {
+    if (incoming && isUsableMaiSessionToken(incoming)) {
       void applyMaiHandoffToken(incoming);
     }
   });
@@ -304,8 +301,8 @@ app.whenReady().then(async () => {
   if (handoffToken) {
     await applyMaiHandoffToken(handoffToken);
   } else {
-    // Q1 : au lancement, si compte mAI déjà connecté, rafraîchir modèles via
-    // https://mai.val.run/v1/models.
+    // Au lancement, si un compte mAI est déjà connecté, rafraîchir le profil
+    // et le catalogue depuis `MAI_API_V1_BASE` (jamais une URL en dur).
     try {
       const s0 = getSettings();
       if (s0.maiAccount?.jwtToken) {

@@ -4,11 +4,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { openCliWindow } from "./cli-window";
 import {
+  coderVersionError,
   launchCoder,
   readEmbeddedCoderVersion,
   resolveCoderExecutable,
 } from "./coder-launcher";
 import { openAboutWindow } from "./about-window";
+import { pickSessionToken, sessionTokenError } from "./session-token";
 
 // L'URL est résolue au démarrage, jamais figée : voir `resolveAppUrl`.
 const DEFAULT_APP_URL = process.env.MAI_DESKTOP_APP_URL || "https://mai-officiel.vercel.app";
@@ -676,33 +678,26 @@ ipcMain.handle("desktop:open-coder", async (event, opts) => {
   // Le cookie de session mAI est httpOnly : seul le Main peut le lire. Il est
   // transmis à Coder par l environnement du processus enfant, jamais par un
   // argument de ligne de commande ni par le renderer.
-  let sessionToken: string | undefined;
+  let sessionToken: string | null = null;
   try {
     const origin = new URL(event.senderFrame?.url || APP_URL).origin;
-    // Nom historique prioritaire ; variantes sécurisées et ancien alias
-    // `mai_token` pour ne pas rater le handoff si le web change de cookie.
-    const cookies = await event.sender.session.cookies.get({ url: origin });
-    const preference = [
-      "mai_session_token",
-      "__Secure-mai_session_token",
-      "mai_token",
-    ];
-    const ordered = [...cookies].sort((left, right) =>
-      preference.indexOf(left.name) - preference.indexOf(right.name)
-    );
-    const value =
-      ordered
-        .map((cookie) => cookie.value?.trim() ?? "")
-        .find(
-          (candidate) =>
-            candidate.split(".").length === 3 && candidate.length <= 8192
-        ) ?? "";
-    if (value) {
-      sessionToken = value;
+    // 1. Cookies applicables à l'origine affichée : cas normal.
+    const originCookies = await event.sender.session.cookies.get({
+      url: origin,
+    });
+    sessionToken = pickSessionToken(originCookies);
+    // 2. Repli sur l'ensemble du magasin : le cookie de session peut vivre
+    //    sur un autre sous-domaine mAI (ou avoir été renommé) sans que le
+    //    cookie d'origine soit visible ici.
+    if (!sessionToken) {
+      const allCookies = await event.sender.session.cookies.get({});
+      sessionToken = pickSessionToken(allCookies);
     }
-  } catch {
-    // Un cookie illisible ne doit pas empêcher d ouvrir Coder : il retombera
-    // sur son propre compte local.
+  } catch (error) {
+    console.warn("[mAI] lecture du cookie de session impossible :", error);
+  }
+  if (!sessionToken) {
+    return { success: false, error: sessionTokenError() };
   }
   return launchCoder({ ...(opts ?? {}), sessionToken });
 });
@@ -710,8 +705,10 @@ ipcMain.handle("desktop:open-coder", async (event, opts) => {
 ipcMain.handle("desktop:get-coder-status", (event) => {
   if (!trustedSender(event)) return { installed: false };
   const embedded = readEmbeddedCoderVersion();
+  const error = coderVersionError();
   return {
-    installed: Boolean(resolveCoderExecutable()),
+    error: error ?? undefined,
+    installed: Boolean(resolveCoderExecutable()) && !error,
     version: embedded?.version,
   };
 });

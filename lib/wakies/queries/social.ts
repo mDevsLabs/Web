@@ -49,6 +49,7 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
+import { estReactionValide, PALETTE_REACTIONS } from "../shared/reactions";
 import { ownedConversationIds } from "./messages";
 import type {
   SetupStatus,
@@ -783,15 +784,11 @@ export async function definirEpingle(
 
 // ─── Réactions ───────────────────────────────────────────────────────────────
 
-/** Palette FIXE : le serveur la valide, jamais le client. */
-export const PALETTE_REACTIONS = ["👍", "❤️", "💡", "🔥", "😂", "😮"] as const;
-
-export function estReactionValide(emoji: unknown): emoji is string {
-  return (
-    typeof emoji === "string" &&
-    (PALETTE_REACTIONS as readonly string[]).includes(emoji)
-  );
-}
+// La palette vit dans `shared/reactions.ts` : l'interface et le serveur lisent
+// la MÊME liste. Deux copies avaient divergé, et le client proposait des
+// émojis que la validation serveur refusait. Réexportée ici pour que les
+// appelants serveur historiques (`@/lib/wakies/queries`) n'aient rien à changer.
+export { estReactionValide, PALETTE_REACTIONS };
 
 /**
  * Pose une réaction. La clé (message, émoji, auteur) rend l'opération

@@ -46,6 +46,7 @@ import { formaterTaille } from "@/components/wakies/attachments";
 import { Markdown } from "@/components/wakies/markdown";
 import { ToolResultCard } from "@/components/wakies/ToolResultCard";
 import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
+import { PALETTE_REACTIONS } from "@/lib/wakies/shared/reactions";
 import {
   type CitationFil,
   citationDe,
@@ -55,20 +56,6 @@ import {
 } from "@/lib/wakies/shared/transcript";
 import type { CallReceipt, MessageReaction } from "@/lib/wakies/shared/types";
 import { voiceReceiptMessagePrefix } from "@/lib/wakies/shared/voice-receipt";
-
-/** La palette complète — également validée côté serveur (queries.ts). */
-export const PALETTE_REACTIONS_UI = [
-  "👍",
-  "👎",
-  "❤️",
-  "🔥",
-  "😂",
-  "🤔",
-  "🙏",
-  "🎉",
-  "✅",
-  "❌",
-] as const;
 
 /** Les messages techniques ne s'affichent pas : ils portent un préfixe réservé. */
 export function isInternalVoiceReceipt(message: UIMessage): boolean {
@@ -230,7 +217,7 @@ function ReactionBar({
       ))}
       {onPoser ? (
         <span className="chat-reaction-ajout">
-          {PALETTE_REACTIONS_UI.map((emoji) => (
+          {PALETTE_REACTIONS.map((emoji) => (
             <button
               aria-label={`Réagir ${emoji}`}
               key={emoji}
@@ -312,6 +299,7 @@ export function ChatTranscript({
   onTransferer,
   onCopier,
   onModifier,
+  enCours = false,
 }: {
   messages: UIMessage[];
   calls: CallReceipt[];
@@ -341,6 +329,8 @@ export function ChatTranscript({
   onCopier?: (message: UIMessage) => void;
   /** Modifier un message du compte (jamais une réponse de Wakie). */
   onModifier?: (message: UIMessage) => void;
+  /** Un tour est encore en cours : une réponse vide n'est pas encore un échec. */
+  enCours?: boolean;
 }) {
   const [halo, setHalo] = useState<string | null>(null);
   useEffect(() => {
@@ -443,14 +433,14 @@ export function ChatTranscript({
                   {...piece}
                 />
               ))}
-              {/* 1. Réflexion (affichée en premier au-dessus du message texte) */}
+              {/* 1. Réflexion (affichée en premier au-dessus du message texte).
+                  La carte lit l'état de la part : « en cours » tant que
+                  `reasoning-end` n'est pas arrivé, et non tant qu'il n'y a pas
+                  de texte — sinon un tour terminé sans texte mentait. */}
               {element.message.parts
                 .filter((part) => part.type === "reasoning")
                 .map((part, index) => (
                   <ToolResultCard
-                    isFinished={Boolean(
-                      texte(element.message).trim().length > 0
-                    )}
                     key={`${element.message.id}-reasoning-${index}`}
                     part={part}
                   />
@@ -474,6 +464,24 @@ export function ChatTranscript({
                     part={part}
                   />
                 ))}
+              {/*
+                Un tour TERMINÉ qui ne porte ni texte ni carte d'outil ne doit
+                pas rester un blanc silencieux : l'utilisateur croit que le
+                Wakie l'ignore. Un tour encore en cours n'est pas signalé (le
+                texte peut être en train d'arriver).
+              */}
+              {!enCours &&
+              element.message.role === "assistant" &&
+              !texte(element.message).trim() &&
+              !element.message.parts.some(
+                (part) =>
+                  part.type.startsWith("tool-") || part.type === "dynamic-tool"
+              ) ? (
+                <p className="chat-empty-turn" role="status">
+                  Ce tour n'a produit aucune réponse texte. Renvoyez votre
+                  message pour réessayer.
+                </p>
+              ) : null}
               {(() => {
                 // Les actions du COMPTE et celles de l'IA ne se mélangent pas :
                 // on ne répond pas à soi-même, on ne réagit pas à son propre
@@ -535,19 +543,26 @@ export function ChatTranscript({
                         />
                       ) : null}
                     </div>
-                    {estWakie ? (
-                      <ReactionBar
-                        onPoser={
-                          onPoserReaction
-                            ? (emoji) =>
-                                onPoserReaction(element.message.id, emoji)
-                            : undefined
-                        }
-                        reactions={
-                          reactionsParMessage?.get(element.message.id) ?? []
-                        }
-                      />
-                    ) : null}
+                    {/*
+                      Les réactions s'affichent sur TOUTES les bulles : un
+                      Wakie réagit au message de l'utilisateur (l'outil
+                      `reactToMessage` vise ce message-là), et cette réaction
+                      était invisible — un tour répondu par une réaction seule
+                      ressemblait à un silence. Le sélecteur, lui, reste
+                      réservé aux réponses de Wakie : le compte ne réagit pas à
+                      son propre message (le serveur le refuse).
+                    */}
+                    <ReactionBar
+                      onPoser={
+                        estWakie && onPoserReaction
+                          ? (emoji) =>
+                              onPoserReaction(element.message.id, emoji)
+                          : undefined
+                      }
+                      reactions={
+                        reactionsParMessage?.get(element.message.id) ?? []
+                      }
+                    />
                   </>
                 );
               })()}

@@ -1153,6 +1153,7 @@ function WakieChat({
         <ChatTranscript
           calls={calls}
           cibleId={cibleMessageId}
+          enCours={enCours}
           epingles={epingles}
           messages={messages}
           nomsWakies={nomsWakies}

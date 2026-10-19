@@ -2,6 +2,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -24,6 +25,32 @@ export type ModelPickerItem = {
 };
 
 const OPTIONS_PANEL_W = 276;
+
+function normalizeSearch(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLocaleLowerCase("fr")
+    .trim();
+}
+
+function IconSearch({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      fill="none"
+      height="14"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="14"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 function IconGlobe({ className }: { className?: string }) {
   return (
@@ -107,6 +134,7 @@ export function ModelPickerDropdown({
   const [optsOpen, setOptsOpen] = useState(false);
   const [optsModelId, setOptsModelId] = useState<string | null>(null);
   const [rendered, setRendered] = useState(open);
+  const [search, setSearch] = useState("");
 
   const panelModelId = optsOpen ? (optsModelId ?? selectedId) : selectedId;
   const thinkingLevel = getThinkingLevel(panelModelId);
@@ -115,6 +143,9 @@ export function ModelPickerDropdown({
   useEffect(() => {
     if (open) {
       setRendered(true);
+      // Une nouvelle ouverture repart d'une liste complète : conserver le
+      // filtre précédent donnerait l'impression que des modèles ont disparu.
+      setSearch("");
       return;
     }
     if (!rendered) {
@@ -132,6 +163,25 @@ export function ModelPickerDropdown({
     setOptsModelId(null);
   }, [open, rendered]);
 
+  const query = normalizeSearch(search);
+  const filteredItems = useMemo(() => {
+    if (!query) {
+      return items;
+    }
+    return items.filter((item) => {
+      const haystack = normalizeSearch(
+        [
+          item.label,
+          item.description,
+          item.subtitle ?? "",
+          item.providerLabel ?? "",
+          item.id,
+        ].join(" ")
+      );
+      return haystack.includes(query);
+    });
+  }, [items, query]);
+
   const computeLayout = useCallback(() => {
     const el = anchorRef.current;
     if (!el) {
@@ -143,7 +193,10 @@ export function ModelPickerDropdown({
     const vh = window.innerHeight;
     const listMinW = Math.max(420, Math.ceil(r.width));
     const totalW = listMinW + (optsOpen ? OPTIONS_PANEL_W : 0);
-    const estimate = Math.min(420, Math.max(160, items.length * 52 + 140));
+    const estimate = Math.min(
+      420,
+      Math.max(160, filteredItems.length * 52 + 180)
+    );
     const natural =
       menu && menu.scrollHeight > 48
         ? Math.max(menu.scrollHeight, estimate)
@@ -155,7 +208,7 @@ export function ModelPickerDropdown({
       viewportWidth: vw,
     });
     setMenuLayout({ ...L, listMinW, minWidth: totalW });
-  }, [anchorRef, items.length, optsOpen]);
+  }, [anchorRef, filteredItems.length, optsOpen]);
 
   useLayoutEffect(() => {
     if (!open) {
@@ -216,6 +269,8 @@ export function ModelPickerDropdown({
   const focusId =
     optsOpen && optsModelId ? optsModelId : (hoveredId ?? selectedId);
   const focusItem =
+    filteredItems.find((i) => i.id === focusId) ??
+    filteredItems.find((i) => i.id === selectedId) ??
     items.find((i) => i.id === focusId) ??
     items.find((i) => i.id === selectedId);
 
@@ -255,6 +310,33 @@ export function ModelPickerDropdown({
             maxWidth: menuLayout.listMinW,
           }}
         >
+          <div className="ref-model-dd-search-row">
+            <span aria-hidden className="ref-model-dd-search-ico">
+              <IconSearch />
+            </span>
+            <input
+              aria-label={t("modelPicker.searchPlaceholder")}
+              autoFocus
+              className="ref-model-dd-search"
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowDown") {
+                  event.preventDefault();
+                  menuRef.current
+                    ?.querySelector<HTMLElement>(".ref-model-dd-row")
+                    ?.focus();
+                } else if (event.key === "Enter" && filteredItems.length === 1) {
+                  event.preventDefault();
+                  void onSelectModel(filteredItems[0]!.id);
+                  onClose();
+                }
+              }}
+              placeholder={t("modelPicker.searchPlaceholder")}
+              spellCheck={false}
+              type="search"
+              value={search}
+            />
+          </div>
           <div
             aria-label={t("modelPicker.selectAria")}
             className="ref-model-dd-inner"
@@ -267,7 +349,14 @@ export function ModelPickerDropdown({
                 </p>
               </div>
             ) : null}
-            {items.map((m) => {
+            {items.length > 0 && filteredItems.length === 0 ? (
+              <div className="ref-model-dd-empty">
+                <p className="ref-model-dd-empty-text">
+                  {t("modelPicker.noResults", { query: search.trim() })}
+                </p>
+              </div>
+            ) : null}
+            {filteredItems.map((m) => {
               const isSel = selectedId === m.id;
               return (
                 <div

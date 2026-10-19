@@ -11,6 +11,14 @@ const ctx = await esbuild.context({
   define: {
     // Le bundle Electron est CommonJS : import.meta.dirname y serait vide.
     "import.meta.dirname": "__dirname",
+    // SHA du commit compilé : permet à l'updater de reconnaître une build plus
+    // récente même quand les préversions partagent le même numéro de version.
+    __MAI_BUILD_SHA__: JSON.stringify(
+      (process.env.MAI_BUILD_SHA || process.env.GITHUB_SHA || "").trim()
+    ),
+    // Horodatage du build : donne un SENS à la comparaison de SHA, sinon une
+    // release plus ancienne paraîtrait « plus récente ».
+    __MAI_BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     "process.env.NODE_ENV": isWatch ? '"development"' : '"production"',
   },
   entryPoints: [path.join(__dirname, "main-src", "index.ts")],

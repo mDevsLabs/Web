@@ -1,6 +1,29 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { checkMaiQuotaAvailable } from "./maiAccountStore.js";
+import { checkMaiQuotaAvailable, isUsagePayload } from "./maiAccountStore.js";
 import type { ShellSettings } from "./settingsStore.js";
+
+describe("isUsagePayload", () => {
+  it("accepte un profil mAI complet", () => {
+    expect(
+      isUsagePayload({
+        email: "user@example.com",
+        limit: 5_000_000,
+        tier: "Plus",
+        tokensUsed: 10,
+        username: "user",
+      })
+    ).toBe(true);
+  });
+
+  it("refuse un corps vide ou une page d'erreur", () => {
+    expect(isUsagePayload({})).toBe(false);
+    expect(isUsagePayload({ error: "Non authentifié." })).toBe(false);
+  });
+
+  it("refuse un corps sans identité ni compteur", () => {
+    expect(isUsagePayload({ success: true })).toBe(false);
+  });
+});
 
 describe("checkMaiQuotaAvailable", () => {
   beforeEach(() => {

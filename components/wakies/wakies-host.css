@@ -1568,6 +1568,15 @@
 }
 
 /* Réactions émojis sous la bulle */
+/* Tour terminé sans texte ni outil : un constat, pas un silence. */
+.wakies-root .chat-empty-turn {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted, #8c8d97);
+  font-style: italic;
+}
+
 .wakies-root .chat-reactions-row {
   display: flex;
   flex-wrap: wrap;

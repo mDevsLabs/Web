@@ -1,6 +1,7 @@
 import { tool as createTool, type ToolSet } from "ai";
 import { z } from "zod";
-import { PALETTE_REACTIONS, poserReaction } from "./queries";
+import { poserReaction } from "./queries";
+import { PALETTE_REACTIONS } from "./shared/reactions";
 
 /**
  * OUTIL WAKIES — `reactToMessage`

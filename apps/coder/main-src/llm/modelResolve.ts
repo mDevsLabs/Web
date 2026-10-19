@@ -1,4 +1,5 @@
 import type { ProviderIdentitySettings } from "../../src/providerIdentitySettings.js";
+import { MAI_API_V1_BASE } from "../maiApiBase.js";
 import {
   DEFAULT_MAI_PROVIDER,
   type ModelRequestParadigm,
@@ -147,7 +148,7 @@ function resolveProviderCredentials(
         ok: false,
       };
     }
-    const base = (provider.baseURL?.trim() || "https://mai.val.run/v1").replace(
+    const base = (provider.baseURL?.trim() || MAI_API_V1_BASE).replace(
       /\/+$/,
       ""
     );

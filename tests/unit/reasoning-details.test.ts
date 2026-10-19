@@ -185,6 +185,30 @@ describe("La collecte est bornée", () => {
     expect(deltas.join("")).toBe("Je pense");
   });
 
+  it("continue à AFFICHER la réflexion après le plafond de blocs", async () => {
+    // OpenRouter/GLM envoie `reasoning_details` à chaque chunk : vingt blocs
+    // valent vingt fragments, et l'affichage s'arrêtait au milieu du
+    // raisonnement alors que la génération continuait.
+    const sink = createReasoningDetailsSink();
+    const deltas: string[] = [];
+    sink.onDelta = (text) => deltas.push(text);
+    const lines: string[] = [];
+    for (let i = 0; i < 200; i++) {
+      lines.push(
+        `data: {"choices":[{"delta":{"reasoning_details":[{"text":"fragment ${i} "}]}}]}\n`
+      );
+    }
+    const response = sink.attach(sseResponse(lines));
+    await response.text();
+    await flush(60);
+    // La collecte reste bornée…
+    expect(sink.details.length).toBeLessThanOrEqual(20);
+    // …mais la réflexion visible va au bout du flux.
+    const affiche = deltas.join("");
+    expect(affiche).toContain("fragment 0 ");
+    expect(affiche).toContain("fragment 199 ");
+  });
+
   it("branche plusieurs réponses d'un même run", async () => {
     const sink = createReasoningDetailsSink();
     const deltas: string[] = [];

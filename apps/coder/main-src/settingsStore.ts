@@ -8,6 +8,7 @@ import {
 import type { AgentCustomization } from "./agentSettingsTypes.js";
 import type { BotIntegrationConfig } from "./botSettingsTypes.js";
 import { getCachedMaiDataDir, resolveMaiDataDir } from "./dataDir.js";
+import { MAI_API_V1_BASE } from "./maiApiBase.js";
 import {
   normalizeThinkingLevel,
   type ThinkingLevel,
@@ -127,7 +128,7 @@ export const DEFAULT_MAI_PROVIDER_ID = "mai";
 
 export const DEFAULT_MAI_PROVIDER: UserLlmProvider = {
   apiKey: "",
-  baseURL: "https://mai.val.run/v1",
+  baseURL: MAI_API_V1_BASE,
   displayName: "mAI",
   id: DEFAULT_MAI_PROVIDER_ID,
   paradigm: "openai-compatible",
@@ -1135,7 +1136,7 @@ export function patchSettings(partial: Partial<ShellSettings>): ShellSettings {
           cached.maiAccount?.chosenApiKey ||
           cached.maiAccount?.apiKey ||
           "",
-        baseURL: "https://mai.val.run/v1",
+        baseURL: MAI_API_V1_BASE,
         displayName: "mAI",
         id: DEFAULT_MAI_PROVIDER_ID,
         paradigm: "openai-compatible",

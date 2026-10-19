@@ -117,8 +117,9 @@ export function SettingsGeneralPanel({
                 >
                   <span style={{ fontSize: 15, fontWeight: 600 }}>
                     {maiAccount?.user?.username ||
+                      maiAccount?.user?.email ||
                       (maiAccount?.jwtToken
-                        ? "Utilisateur mAI"
+                        ? t("mai.accountTitle")
                         : t("mai.notConnected"))}
                   </span>
                   {maiAccount?.user?.tier ? (

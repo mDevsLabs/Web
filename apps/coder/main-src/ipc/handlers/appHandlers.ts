@@ -52,6 +52,10 @@ export function registerAppHandlers(): void {
   ipcMain.handle("app:getVersion", () => ({
     chrome: process.versions.chrome ?? "",
     electron: process.versions.electron ?? "",
+    // Signalé à l'interface : un Coder embarqué suit les mises à jour de mAI
+    // Desktop et ne doit jamais proposer un installateur autonome.
+    embedded: process.env.MAI_CODER_EMBEDDED === "1",
+    embeddedVersion: process.env.MAI_CODER_EMBEDDED_VERSION?.trim() || "",
     node: process.versions.node ?? "",
     version: app.getVersion(),
   }));

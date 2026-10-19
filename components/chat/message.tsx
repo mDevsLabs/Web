@@ -512,8 +512,11 @@ const PurePreviewMessage = ({
             (p.type === "text" && p.text?.trim().length > 0) ||
             (typeof p.type === "string" && p.type.startsWith("tool-"))
         );
-        const isReasoningStreaming =
-          Boolean(isLoading && !hasStartedGeneratingAnswer && (mergedReasoning.isStreaming || !hasAnyContent));
+        const isReasoningStreaming = Boolean(
+          isLoading &&
+            !hasStartedGeneratingAnswer &&
+            (mergedReasoning.isStreaming || !hasAnyContent)
+        );
 
         return (
           <MessageReasoning

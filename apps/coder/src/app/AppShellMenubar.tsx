@@ -750,9 +750,9 @@ export const AppShellMenubar = memo(function AppShellMenubar({
   );
 });
 
-const HELP_DOC_URL = "https://github.com/mDevsLabs/Coder#readme";
-const HELP_ISSUES_URL = "https://github.com/mDevsLabs/Coder/issues/new";
-const HELP_RELEASES_URL = "https://github.com/mDevsLabs/Coder/releases";
+const HELP_DOC_URL = "https://github.com/mDevsLabs/Web#readme";
+const HELP_ISSUES_URL = "https://github.com/mDevsLabs/Web/issues/new";
+const HELP_RELEASES_URL = "https://github.com/mDevsLabs/Web/releases";
 
 type HelpMenuDropdownProps = {
   t: TFunction;

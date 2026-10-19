@@ -6,13 +6,15 @@ import { ThemeProvider } from "@mdevs/ui/primitives/theme-provider";
 import { BrandLogo } from "./BrandLogo";
 import type { TFunction } from "./i18n";
 
-const REPO_URL = "https://github.com/mDevsLabs/Coder";
+const REPO_URL = "https://github.com/mDevsLabs/Web";
 
 type VersionInfo = {
   version: string;
   electron: string;
   chrome: string;
   node: string;
+  embedded?: boolean;
+  embeddedVersion?: string;
 };
 
 type Props = {
@@ -53,6 +55,8 @@ export function AboutDialog({ open, t, shell, onClose }: Props) {
         setInfo({
           chrome: o.chrome ?? "",
           electron: o.electron ?? "",
+          embedded: Boolean(o.embedded),
+          embeddedVersion: o.embeddedVersion ?? "",
           node: o.node ?? "",
           version: o.version ?? "",
         });
@@ -142,6 +146,11 @@ export function AboutDialog({ open, t, shell, onClose }: Props) {
           </h2>
           <p className="ws-about-tagline">{t("app.help.aboutTagline")}</p>
           <div className="ws-about-version-pill">{versionLabel}</div>
+          {info?.embedded ? (
+            <p className="ws-about-tagline">
+              Fourni avec mAI Desktop {info.embeddedVersion || ""}
+            </p>
+          ) : null}
         </div>
         <div className="ws-about-meta">
           <div className="ws-about-meta-row">

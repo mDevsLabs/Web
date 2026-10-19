@@ -7,23 +7,27 @@ import {
   requireWakiesUser,
 } from "@/lib/wakies/http";
 import {
-  estReactionValide,
   listerReactions,
-  PALETTE_REACTIONS,
   poserReaction,
   retirerReaction,
 } from "@/lib/wakies/queries";
+import {
+  estReactionValide,
+  PALETTE_REACTIONS,
+} from "@/lib/wakies/shared/reactions";
 
 /**
  * GET    ?id=...&id=... — réactions d'un lot de messages (groupées par id).
  * POST   { emoji, byWakieId? }  — pose une réaction.
  * DELETE { emoji, byWakieId? }  — retire une réaction.
  *
- * La palette est FIXE : le serveur la valide, jamais le client. Une réaction
- * posée deux fois du même auteur (compte ou Wakie) n'écrit rien et reste un
- * succès : la pose est idempotente, comme un double-clic ne doit pas
- * produire deux cœurs. `byWakieId` n'est accepté QUE du compte : l'IA ne
- * réagit jamais au nom d'un Wakie étranger.
+ * La palette est FIXE et vit dans `lib/wakies/shared/reactions.ts` — le même
+ * module que celui qui alimente la barre de réaction : le client ne peut donc
+ * pas proposer un émoji que cette route refuse. Une réaction posée deux fois
+ * du même auteur (compte ou Wakie) n'écrit rien et reste un succès : la pose
+ * est idempotente, comme un double-clic ne doit pas produire deux cœurs.
+ * `byWakieId` n'est accepté QUE du compte : l'IA ne réagit jamais au nom d'un
+ * Wakie étranger.
  */
 
 const schema = z.object({
@@ -116,9 +120,12 @@ export async function DELETE(
       message: "Requête de réaction invalide.",
     });
   }
+  // Le retrait accepte exactement la même palette que la pose : un émoji
+  // jamais posable ne doit pas pouvoir être « retiré » avec un autre message
+  // d'erreur, les deux chemins disent la même chose.
   if (!estReactionValide(parsed.data.emoji)) {
     return errorResponse("invalid_request", {
-      message: "Émoji hors palette.",
+      message: `Émoji hors palette. Choix possibles : ${PALETTE_REACTIONS.join(" ")}`,
     });
   }
   const { id } = await params;

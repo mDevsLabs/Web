@@ -217,7 +217,10 @@ describe("conflits de synchronisation du catalogue", () => {
     });
 
     expect(calls).toBe(1);
-    expect(resolutions.map((item) => item.choice)).toEqual(["delete", "delete"]);
+    expect(resolutions.map((item) => item.choice)).toEqual([
+      "delete",
+      "delete",
+    ]);
   });
 });
 

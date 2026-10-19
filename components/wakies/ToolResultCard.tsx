@@ -11,11 +11,24 @@ import { safeAttachmentLink } from "@/lib/wakies/shared/messages";
 
 function WakiesReasoningCard({
   part,
-  isFinished = true,
 }: {
-  part: { type: "reasoning"; text?: string; reasoning?: string };
-  isFinished?: boolean;
+  part: {
+    type: "reasoning";
+    text?: string;
+    reasoning?: string;
+    /** `streaming` tant que `reasoning-end` n'est pas arrivé. */
+    state?: string;
+  };
 }) {
+  /**
+   * L'état vient de la PART, pas de la présence d'un texte de réponse.
+   *
+   * La carte disait « Réflexion en cours… » tant que le message n'avait pas de
+   * texte : un tour terminé qui n'avait produit qu'une réflexion (ou qui a été
+   * interrompu avant le texte) restait donc éternellement « en cours », alors
+   * que le serveur avait clos la part. `reasoning-end` met la part à `done`.
+   */
+  const isFinished = part.state !== "streaming";
   const [isOpen, setIsOpen] = useState(!isFinished);
 
   useEffect(() => {
@@ -35,7 +48,11 @@ function WakiesReasoningCard({
         onClick={() => setIsOpen((prev) => !prev)}
         type="button"
       >
-        {isOpen ? <ChevronDownIcon size={13} /> : <ChevronRightIcon size={13} />}
+        {isOpen ? (
+          <ChevronDownIcon size={13} />
+        ) : (
+          <ChevronRightIcon size={13} />
+        )}
         <SparklesIcon className="opacity-70" size={12} />
         <span>{isFinished ? "A réfléchi" : "Réflexion en cours…"}</span>
       </button>
@@ -48,13 +65,7 @@ function WakiesReasoningCard({
   );
 }
 
-export function ToolResultCard({
-  part,
-  isFinished,
-}: {
-  part: UIMessage["parts"][number];
-  isFinished?: boolean;
-}) {
+export function ToolResultCard({ part }: { part: UIMessage["parts"][number] }) {
   if (part.type === "source-url") {
     const url = safeAttachmentLink(part.url);
     return url ? (
@@ -69,12 +80,7 @@ export function ToolResultCard({
     ) : null;
   }
   if (part.type === "reasoning") {
-    return (
-      <WakiesReasoningCard
-        isFinished={isFinished}
-        part={part as { type: "reasoning"; text?: string; reasoning?: string }}
-      />
-    );
+    return <WakiesReasoningCard part={part} />;
   }
   if (!(part.type === "dynamic-tool" || part.type.startsWith("tool-")))
     return null;

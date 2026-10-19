@@ -64,7 +64,13 @@ export function registerMaiAuthHandlers(): void {
       return { message: "Non authentifié.", ok: false };
     }
     const updated = await syncMaiAccountWithToken(account.jwtToken);
-    return { account: updated, ok: true };
+    // Une synchronisation en échec ne doit pas être annoncée comme réussie :
+    // l'interface afficherait un compte vide comme s'il était à jour.
+    return {
+      account: updated,
+      message: updated.syncError ?? undefined,
+      ok: !updated.syncError,
+    };
   });
 
   ipcMain.handle("mai:logout", () => maiLogout());

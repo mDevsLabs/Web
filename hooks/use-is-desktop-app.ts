@@ -8,6 +8,8 @@ export interface MaiDesktopBridge {
     running?: boolean;
     activeWorkspace?: string | null;
     version?: string;
+    /** Renseigné quand le payload embarqué est incomplet ou incohérent. */
+    error?: string;
   }>;
   hasCoder?: boolean;
   isElectron?: boolean;

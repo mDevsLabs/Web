@@ -82,11 +82,24 @@ export function MaiAccountModal({
       resetForm();
       if (isLoggedIn && shell) {
         // Refresh profile & usage on open
-        void shell.invoke("mai:refreshUsage").then((res: any) => {
-          if (res?.ok && res?.account) {
-            onAccountChange(res.account);
-          }
-        });
+        void shell
+          .invoke("mai:refreshUsage")
+          .then((res: any) => {
+            // L'état renvoyé fait foi même en échec : il porte le profil
+            // conservé ou l'erreur de session, jamais un compte fabriqué.
+            if (res?.account) {
+              onAccountChange(res.account);
+            }
+            if (!res?.ok) {
+              setError(
+                res?.message ||
+                  "La synchronisation du compte mAI a échoué. Vérifiez votre connexion."
+              );
+            }
+          })
+          .catch(() => {
+            setError("Impossible de joindre le service de compte mAI.");
+          });
       }
     }
   }, [open, isLoggedIn, shell, onAccountChange, resetForm]);
@@ -249,10 +262,17 @@ export function MaiAccountModal({
     setLoading(true);
     try {
       const res = (await shell.invoke("mai:refreshUsage")) as any;
-      if (res?.ok && res?.account) {
+      if (res?.account) {
         onAccountChange(res.account);
+      }
+      if (res?.ok) {
         setSuccessMsg("Données d'usage actualisées !");
         setTimeout(() => setSuccessMsg(null), 3000);
+      } else if (res?.account) {
+        setError(
+          res?.message ||
+            "La synchronisation du compte mAI a échoué. Vérifiez votre connexion."
+        );
       }
     } finally {
       setLoading(false);
@@ -382,6 +402,7 @@ export function MaiAccountModal({
                   <div className="ref-mai-username">
                     <span className="ref-mai-username-name">
                       {user?.username ||
+                        user?.email ||
                         (syncPending
                           ? "Synchronisation du compte mAI…"
                           : "Compte mAI")}

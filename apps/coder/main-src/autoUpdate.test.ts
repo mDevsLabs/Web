@@ -222,21 +222,23 @@ describe("AutoUpdate Settings Configuration", () => {
             owner: "mDevsLabs",
             provider: "github",
             releaseType: "release",
-            repo: "Coder",
+            repo: "Web",
           },
         },
       };
 
       expect(packageConfig.build.publish.provider).toBe("github");
-      expect(packageConfig.build.publish.repo).toBe("Coder");
+      expect(packageConfig.build.publish.repo).toBe("Web");
     });
 
-    it("publie les releases Coder dans le dépôt mDevsLabs/Coder", () => {
+    it("publie les releases Coder dans le dépôt qui les héberge réellement", () => {
       const real = JSON.parse(
         readFileSync(new URL("../package.json", import.meta.url), "utf8")
       );
       expect(real.build.publish.owner).toBe("mDevsLabs");
-      expect(real.build.publish.repo).toBe("Coder");
+      // `mDevsLabs/Coder` est resté à 0.5.5 : pointer dessus ne propose jamais
+      // les versions courantes et peut télécharger un installateur périmé.
+      expect(real.build.publish.repo).toBe("Web");
     });
 
     it("should have differential package enabled for NSIS", () => {

@@ -6,13 +6,24 @@ import {
 } from "electron-updater";
 import { copyFileSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
+import {
+  MAI_BUILD_SHA,
+  MAI_BUILD_TIME,
+  MAI_RELEASES_API,
+  MAI_RELEASES_URL,
+} from "./buildInfo.js";
 import { getSettings } from "./settingsStore.js";
 
 /** 自动更新状态 */
 export type AutoUpdateStatus =
   | { state: "idle" }
   | { state: "checking" }
-  | { state: "available"; info: UpdateInfo }
+  | {
+      state: "available";
+      info: UpdateInfo;
+      /** Renseigné quand la build est plus récente que la version sémantique. */
+      releaseUrl?: string;
+    }
   | { state: "not-available" }
   | { state: "downloading"; progress: ProgressInfo }
   | {
@@ -80,16 +91,21 @@ function configureUpdater(): void {
 
   autoUpdater.autoDownload = true;
   autoUpdater.autoInstallOnAppQuit = true;
+  // Les builds de ce dépôt sont publiés en préversion (tags beta/pr).
+  // electron-updater ignore ces releases par défaut : sans ce drapeau, il ne
+  // voit jamais les versions réellement installées par les utilisateurs.
+  autoUpdater.allowPrerelease = true;
   syncDifferentialDownloadSetting();
 
-  // Dépôt des releases (doit rester aligné avec `publish` de package.json :
-  // `owner: mDevsLabs`, `repo: Web`). Une URL obsolète fait télécharger des
-  // 404 HTML à la place de l'installateur, que le système exécute ensuite —
-  // d'où « Error launching installer » côté NSIS.
+  // Dépôt des releases (doit rester aligné avec le workflow de publication :
+  // les installateurs Coder sont attachés aux releases de `mDevsLabs/Web`, pas
+  // au dépôt historique `mDevsLabs/Coder` resté en 0.5.5). Une URL obsolète fait
+  // télécharger des 404 HTML à la place de l'installateur, que le système
+  // exécute ensuite — d'où « Error launching installer » côté NSIS.
   autoUpdater.setFeedURL({
     owner: "mDevsLabs",
     provider: "github",
-    repo: "Coder",
+    repo: "Web",
   });
 
   autoUpdater.on("checking-for-update", () => {
@@ -166,6 +182,106 @@ function configureUpdater(): void {
   });
 }
 
+type GithubRelease = {
+  assets?: { name?: string }[];
+  body?: string;
+  html_url?: string;
+  name?: string;
+  published_at?: string;
+  tag_name?: string;
+};
+
+// Une release du dépôt principal peut ne contenir que le Web ou le mobile.
+// Sans installateur Coder joint, proposer « mise à jour disponible » enverrait
+// l'utilisateur vers une page sans fichier à installer.
+function releaseHasCoderAssets(release: GithubRelease): boolean {
+  return (release.assets ?? []).some((asset) =>
+    (asset.name ?? "").toLowerCase().startsWith("mai-coder-")
+  );
+}
+
+function commitFromReleaseBody(body: string | undefined): string {
+  if (!body) {
+    return "";
+  }
+  const explicit = /\*\*Commit\*\*\s*:\s*`([0-9a-f]{7,40})`/i.exec(body);
+  if (explicit) {
+    return explicit[1]!.toLowerCase();
+  }
+  // Anciennes releases : premier SHA entre backticks.
+  const loose = /`([0-9a-f]{7,40})`/i.exec(body);
+  return loose ? loose[1]!.toLowerCase() : "";
+}
+
+/**
+ * Les préversions gardent le même `version` (0.9.1) et n'avancent que par tag.
+ * electron-updater compare des versions sémantiques et conclut donc à tort
+ * « à jour ». On compare le commit publié dans la dernière release au SHA
+ * compilé dans cette build pour afficher malgré tout la mise à jour.
+ */
+async function checkBuildShaUpdate(): Promise<boolean> {
+  if (!MAI_BUILD_SHA) {
+    return false;
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
+  try {
+    const response = await fetch(MAI_RELEASES_API, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        "User-Agent": "mAI-Coder",
+      },
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
+    if (!response.ok) {
+      return false;
+    }
+    const payload = (await response.json()) as unknown;
+    if (!Array.isArray(payload)) {
+      return false;
+    }
+    const releases = payload as GithubRelease[];
+    const release = releases.find((item) => {
+      if (!(commitFromReleaseBody(item.body) && releaseHasCoderAssets(item))) {
+        return false;
+      }
+      const releaseSha = commitFromReleaseBody(item.body);
+      const sameBuild =
+        releaseSha.startsWith(MAI_BUILD_SHA) ||
+        MAI_BUILD_SHA.startsWith(releaseSha);
+      if (sameBuild) {
+        return false;
+      }
+      // Un SHA différent ne dit pas dans quel sens : sans date, une release
+      // plus ancienne que la build installée serait présentée comme neuve.
+      const publishedAt = Date.parse(item.published_at ?? "");
+      return (
+        MAI_BUILD_TIME <= 0 ||
+        !Number.isFinite(publishedAt) ||
+        publishedAt > MAI_BUILD_TIME
+      );
+    });
+    if (!release) {
+      return false;
+    }
+    currentStatus = {
+      info: {
+        releaseDate: release.published_at,
+        releaseNotes: release.body,
+        version: release.tag_name || release.name || "nouvelle build",
+      } as UpdateInfo,
+      releaseUrl: release.html_url || MAI_RELEASES_URL,
+      state: "available",
+    };
+    sendStatusToRenderer();
+    return true;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 /** 检查更新 */
 export async function checkForUpdates(): Promise<AutoUpdateStatus> {
   if (isEmbeddedInMai()) {
@@ -200,6 +316,13 @@ export async function checkForUpdates(): Promise<AutoUpdateStatus> {
     } finally {
       updateCheckPromise = null;
     }
+    // Repli build-par-build quand la version sémantique n'a pas changé.
+    if (
+      currentStatus.state === "not-available" ||
+      currentStatus.state === "error"
+    ) {
+      await checkBuildShaUpdate();
+    }
   })();
 
   await updateCheckPromise;
@@ -214,6 +337,13 @@ export async function downloadUpdate(): Promise<void> {
 
   if (currentStatus.state !== "available") {
     throw new Error("No update available to download");
+  }
+
+  // Mise à jour détectée par commit (même version sémantique) : on ne peut pas
+  // la télécharger via electron-updater, on ouvre la release officielle.
+  if (currentStatus.releaseUrl) {
+    await shell.openExternal(currentStatus.releaseUrl);
+    return;
   }
 
   // 如果禁用差异化更新，强制全量下载；每次下载前同步，避免设置切回后沿用旧状态。
@@ -291,6 +421,14 @@ export function initAutoUpdate(win: BrowserWindow): void {
       "[AutoUpdate] Désactivé : Coder est embarqué dans mAI Desktop."
     );
     return;
+  }
+
+  // Vérification immédiate au lancement : l'utilisateur doit voir une mise à
+  // jour disponible sans attendre une demi-minute ni ouvrir les paramètres.
+  if (isAutoUpdateEnabled()) {
+    checkForUpdates().catch((err) => {
+      console.error("[AutoUpdate] Initial check failed:", err);
+    });
   }
 
   // Timers trackés + nettoyés à la fermeture (évite closure win 1h après close).

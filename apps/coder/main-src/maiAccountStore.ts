@@ -1,4 +1,6 @@
 import { BrowserWindow, safeStorage } from "electron";
+import { MAI_API_BASE, MAI_API_V1_BASE } from "./maiApiBase.js";
+import { decodeMaiJwtPayload } from "./maiSessionToken.js";
 import {
   DEFAULT_MAI_MODELS,
   getSettings,
@@ -10,13 +12,7 @@ import {
   type UserModelEntry,
 } from "./settingsStore.js";
 
-// Le backend mAI peut être surchargé par l'hôte (Desktop) pour rester aligné
-// sur le même environnement que l'application Web.
-export const MAI_API_BASE = (
-  process.env.MAI_API_BASE ||
-  process.env.MAI_API_URL ||
-  "https://mai.val.run"
-).replace(/\/+$/, "");
+export { MAI_API_BASE } from "./maiApiBase.js";
 
 async function maiFetch(
   url: string,
@@ -267,6 +263,38 @@ export async function maiResendCode(
 }
 
 /**
+ * Un 200 ne prouve pas que /usage a répondu : un proxy ou une page d'erreur
+ * peut renvoyer un corps vide ou HTML. Sans identité ni compteur, fabriquer un
+ * compte « Free » à 0 token afficherait un compte qui n'existe pas.
+ */
+export function isUsagePayload(json: Record<string, unknown>): boolean {
+  if (typeof json.error === "string" && json.error.trim()) {
+    return false;
+  }
+  const identityKeys = ["email", "username", "name", "id", "sub"];
+  const usageKeys = [
+    "tokensUsed",
+    "tokens_used",
+    "used",
+    "weeklyUsed",
+    "weekly_used",
+    "limit",
+    "maxTokens",
+    "max_tokens",
+    "tokenLimit",
+    "token_limit",
+    "tier",
+  ];
+  return [...identityKeys, ...usageKeys].some((key) => {
+    const value = json[key];
+    return (
+      (typeof value === "string" && value.trim().length > 0) ||
+      (typeof value === "number" && Number.isFinite(value))
+    );
+  });
+}
+
+/**
  * 6. Récupérer le profil et l'usage courant depuis /usage
  */
 export async function maiFetchUsage(
@@ -290,6 +318,21 @@ export async function maiFetchUsage(
             : res.status === 401
               ? "Session mAI expirée. Reconnectez-vous."
               : `Le serveur mAI a répondu ${res.status}.`,
+        ok: false,
+        status: res.status,
+      };
+    }
+    if (
+      !json ||
+      typeof json !== "object" ||
+      !isUsagePayload(json as Record<string, unknown>)
+    ) {
+      return {
+        message:
+          typeof (json as { error?: unknown })?.error === "string" &&
+          String((json as { error?: string }).error).trim()
+            ? String((json as { error?: string }).error)
+            : "Réponse inattendue du serveur mAI. Reconnectez-vous.",
         ok: false,
         status: res.status,
       };
@@ -579,16 +622,38 @@ export async function syncMaiAccountWithToken(
   const effectiveApiKey = rawToken;
   const protectedJwt = protectToken(rawToken);
   const unauthorized = !usageRes.ok && usageRes.status === 401;
+  const previous = getSettings().maiAccount;
+  // `/usage` n'est pas tenu de renvoyer l'identité : elle vit aussi dans le
+  // jeton. Sans ce repli, Coder afficherait « Compte mAI » sans email — un
+  // compte qui ne correspond à aucun utilisateur réel.
+  const claims = decodeMaiJwtPayload(rawToken);
+  // Le backend signe `{ sub, tier }` : `sub` reste la seule identité
+  // garantie quand /usage ne résout pas la ligne `users`.
+  const claimSubject =
+    typeof claims?.sub === "string" ? claims.sub.trim() : "";
+  const claimEmail =
+    typeof claims?.email === "string" ? claims.email.trim() : "";
+  const claimUsername =
+    typeof claims?.username === "string"
+      ? claims.username.trim()
+      : typeof claims?.name === "string"
+        ? claims.name.trim()
+        : "";
+  // Une panne réseau ne doit pas effacer l'identité déjà connue : l'interface
+  // afficherait alors un profil vide. Seul un 401, qui prouve que la session
+  // est morte, l'efface.
   const userProfile: MaiAccountProfile | undefined = usageRes.ok
     ? {
         avatarUrl: usageRes.avatarUrl,
-        email: usageRes.email || "",
-        id: usageRes.email || "mai-user",
+        email: usageRes.email || claimEmail,
+        id: usageRes.email || claimEmail || claimSubject || "mai-user",
         phone: usageRes.phone,
         tier: usageRes.tier || "Free",
-        username: usageRes.username || "Compte mAI",
+        username: usageRes.username || claimUsername,
       }
-    : undefined;
+    : unauthorized
+      ? undefined
+      : previous?.user;
 
   const usage: MaiAccountUsage | undefined = usageRes.ok
     ? {
@@ -597,14 +662,28 @@ export async function syncMaiAccountWithToken(
         tokensUsed: usageRes.tokensUsed,
         weekStart: usageRes.weekStart,
       }
-    : undefined;
+    : unauthorized
+      ? undefined
+      : previous?.usage;
+
+  // Un 200 sans email ni nom ne prouve pas qu'un compte existe : le backend
+  // répond 200 avec le tier « Free » même quand la ligne `users` est absente.
+  // Afficher ce profil sans réserve serait exactement le compte fantôme.
+  const profileIncomplete =
+    usageRes.ok &&
+    !userProfile?.email &&
+    !userProfile?.username &&
+    !claimEmail &&
+    !claimUsername;
 
   const nextState: MaiAccountState = {
     apiKey: unauthorized ? "" : protectToken(effectiveApiKey),
     jwtToken: unauthorized ? "" : protectedJwt,
     lastSyncedAt: Date.now(),
     syncError: usageRes.ok
-      ? null
+      ? profileIncomplete
+        ? "Profil mAI incomplet : le serveur n’a renvoyé ni email ni nom d’utilisateur."
+        : null
       : usageRes.message || "Synchronisation mAI impossible.",
     syncPending: false,
     usage,
@@ -621,14 +700,14 @@ export async function syncMaiAccountWithToken(
           ? {
               ...p,
               apiKey: unauthorized ? "" : effectiveApiKey,
-              baseURL: `${MAI_API_BASE}/v1`,
+              baseURL: MAI_API_V1_BASE,
             }
           : p
       )
     : [
         {
           apiKey: unauthorized ? "" : effectiveApiKey,
-          baseURL: `${MAI_API_BASE}/v1`,
+          baseURL: MAI_API_V1_BASE,
           displayName: "mAI",
           id: "mai",
           paradigm: "openai-compatible" as const,
@@ -647,9 +726,9 @@ export async function syncMaiAccountWithToken(
     defaultModel = undefined;
   }
 
-  // Récupération dynamique des modèles disponibles depuis https://mai.val.run/v1/models
+  // Récupération dynamique des modèles disponibles depuis le catalogue mAI.
   try {
-    const modelsRes = await maiFetch(`${MAI_API_BASE}/v1/models`, {
+    const modelsRes = await maiFetch(`${MAI_API_V1_BASE}/models`, {
       headers: {
         Authorization: `Bearer ${effectiveApiKey}`,
       },

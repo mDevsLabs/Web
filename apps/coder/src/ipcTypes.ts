@@ -409,6 +409,8 @@ export type AutoUpdateStatus =
   | {
       state: "available";
       info: { version: string; releaseDate?: string; releaseNotes?: string };
+      /** Présent quand la mise à jour vient d'une build plus récente à version égale. */
+      releaseUrl?: string;
     }
   | { state: "not-available" }
   | {

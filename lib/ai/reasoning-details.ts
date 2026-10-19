@@ -135,10 +135,22 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
     attachedResponses.add(response);
 
     const [forCaller, forScan] = response.body.tee();
-    const withinBudget = () =>
-      !saturated &&
-      details.length < MAX_BLOCKS &&
-      detailsBytes < MAX_TEXT_BYTES;
+    /**
+     * DEUX budgets, pas un.
+     *
+     * `details` sert l'observabilité : il est plafonné en blocs et en volume.
+     * L'affichage, lui, ne doit PAS être coupé par le plafond de blocs : les
+     * fournisseurs de type OpenRouter/GLM envoient `reasoning_details` à chaque
+     * chunk, donc vingt blocs représentent vingt fragments (deux phrases) — et
+     * la réflexion s'arrêtait là, au milieu d'un raisonnement, alors que la
+     * génération continuait. On continue donc à LIRE le flux tant qu'il reste
+     * du budget d'affichage, même quand la collecte est saturée.
+     */
+    const shouldCollect = () =>
+      details.length < MAX_BLOCKS && detailsBytes < MAX_TEXT_BYTES;
+    const shouldStream = () =>
+      Boolean(onDelta) && emittedBytes < MAX_TEXT_BYTES;
+    const shouldContinue = () => !saturated || shouldStream();
 
     void scanSse(forScan, {
       onBlock: (block) => {
@@ -146,20 +158,23 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
         // Un bloc qui ne tient pas dans le budget restant est écarté en
         // entier plutôt que tronqué : une moitié de raisonnement se lirait
         // comme un raisonnement complet.
-        if (saturated || details.length >= MAX_BLOCKS) {
+        if (!saturated && !shouldCollect()) {
           saturated = true;
-          return;
         }
-        if (detailsBytes + text.length > MAX_TEXT_BYTES) {
-          saturated = true;
-          return;
+        if (!saturated) {
+          if (detailsBytes + text.length > MAX_TEXT_BYTES) {
+            saturated = true;
+          } else {
+            details.push(block);
+            detailsBytes += text.length;
+          }
         }
-        details.push(block);
-        detailsBytes += text.length;
+        // L'affichage ne dépend PAS du budget de collecte : la réflexion
+        // visible reste complète tant qu'elle tient dans son propre plafond.
         emit(text);
       },
       onText: emit,
-      shouldContinue: withinBudget,
+      shouldContinue,
     });
 
     const transformed = new Response(forCaller, {
@@ -236,9 +251,12 @@ async function scanSse(
     // surtout aucune raison de propager l'erreur au flux principal.
   } finally {
     // Libère la branche de lecture. `cancel()` est un no-op si le flux est déjà
-    // terminé ; l'ignorer laisserait un reader en suspens.
+    // terminé — et il ne faut PAS l'attendre : sur une branche de `tee()`, sa
+    // promesse ne se résout qu'à la fermeture de l'AUTRE branche. L'attendre
+    // laissait une promesse en suspens pour chaque réponse dont la collecte
+    // s'arrêtait avant la fin du flux (budget atteint, plafond de blocs).
     try {
-      await reader.cancel();
+      reader.cancel().catch(() => {});
     } catch {
       // Le flux est déjà clos : rien à libérer.
     }

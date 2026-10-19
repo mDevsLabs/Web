@@ -80,20 +80,37 @@ export function useAppAutoRedirect(): void {
     const target = resolveTargetApp();
     const platform = detectPlatform();
 
+    // Sur l'écran de connexion, forcer /coder créerait une boucle
+    // /login → /coder → /login. On laisse l'utilisateur se connecter : le
+    // prochain changement de route relancera la redirection.
+    if (pathname === "/login" || pathname === "/register") {
+      return;
+    }
+
     if (target === "coder") {
-      redirectedRef.current = true;
-      if (!pathname?.startsWith("/coder") && !pathname?.startsWith("/code")) {
+      // Ne jamais lancer Coder depuis l'écran de connexion : sans cookie de
+      // session, Coder retomberait sur un ancien compte local. On attend
+      // d'être réellement sur /coder, dont l'accès est protégé par la session.
+      const onCoderPage =
+        pathname?.startsWith("/coder") || pathname?.startsWith("/code");
+      if (!onCoderPage) {
         try {
           router.replace("/coder");
         } catch {
           window.location.replace("/coder");
         }
+        return;
       }
+      redirectedRef.current = true;
       if (
         platform === "electron" &&
         typeof window.maiDesktop?.openCoder === "function"
       ) {
-        window.maiDesktop.openCoder().catch(() => {});
+        void window.maiDesktop.openCoder().then((result) => {
+          if (!result?.success && result?.error) {
+            console.warn("[mAI] ouverture de Coder refusée :", result.error);
+          }
+        });
       }
     } else if (target === "vibe") {
       redirectedRef.current = true;

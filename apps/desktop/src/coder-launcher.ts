@@ -20,6 +20,10 @@ import {
 } from "node:fs";
 import path from "node:path";
 import { app } from "electron";
+import {
+  isUsableSessionToken,
+  sessionTokenError,
+} from "./session-token";
 
 export interface EmbeddedCoderVersion {
   builtAt?: string;
@@ -91,22 +95,19 @@ export function resolveCoderExecutable(): string | null {
   return executable;
 }
 
-// Un marqueur manquant correspond à un ancien paquet : ne pas bloquer, mais un
-// marqueur présent qui ne correspond pas à la version de mAI Desktop est un
-// paquet incohérent, donc refusé.
+// Le marqueur est écrit par `prepare-coder.mjs` pour CHAQUE paquet. Son absence
+// signifie un payload incomplet ou trop ancien : l'exécuter silencieusement
+// ferait tourner une autre version que celle annoncée par mAI Desktop. On
+// refuse donc le lancement et on demande une réinstallation.
 export function coderVersionError(): string | null {
   const embedded = readEmbeddedCoderVersion();
   if (!embedded) {
-    return null;
+    return "Le paquet Coder embarqué est incomplet (marqueur de version absent). Réinstallez mAI Desktop pour obtenir le Coder livré avec cette version.";
   }
   if (embedded.version !== app.getVersion()) {
     return `La version embarquée de Coder (${embedded.version}) ne correspond pas à mAI Desktop (${app.getVersion()}). Réinstallez mAI Desktop pour obtenir le Coder livré avec cette version.`;
   }
   return null;
-}
-
-function isValidSessionToken(value: string): boolean {
-  return value.split(".").length === 3 && value.length <= 8192;
 }
 
 function writeSessionHandoff(token: string): string | null {
@@ -171,12 +172,14 @@ export async function launchCoder(opts?: {
   } else {
     delete (env as NodeJS.ProcessEnv).MAI_CODER_EMBEDDED_VERSION;
   }
+  // Sans jeton valide, Coder afficherait le dernier compte local — un compte
+  // qui ne correspond pas à la session Desktop. On refuse le lancement et le
+  // site invite l'utilisateur à se connecter.
   const token = opts?.sessionToken?.trim();
-  if (token && isValidSessionToken(token)) {
-    env.MAI_SESSION_TOKEN = token;
-  } else {
-    delete (env as NodeJS.ProcessEnv).MAI_SESSION_TOKEN;
+  if (!token || !isUsableSessionToken(token)) {
+    return { success: false, error: sessionTokenError() };
   }
+  env.MAI_SESSION_TOKEN = token;
   // Utiliser le home de l'utilisateur comme cwd plutôt que le dossier du payload,
   // pour éviter que Node/Electron résolve les modules ou exports dans le paquet Coder.
   const cwd = app.getPath("home");
@@ -184,8 +187,7 @@ export async function launchCoder(opts?: {
   if (opts?.workspacePath) {
     args.push(`--workspace=${opts.workspacePath}`);
   }
-  const handoffFile =
-    token && isValidSessionToken(token) ? writeSessionHandoff(token) : null;
+  const handoffFile = writeSessionHandoff(token);
   if (handoffFile) {
     args.push(`--mai-session-token-file=${handoffFile}`);
     scheduleHandoffCleanup(handoffFile);

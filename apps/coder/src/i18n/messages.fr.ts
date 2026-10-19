@@ -1835,6 +1835,8 @@ export const messagesFr: Record<string, string> = {
   "modelPicker.edit": "Modifier",
   "modelPicker.emptyHint":
     "Aucun modèle disponible. Configurez vos modèles dans les paramètres.",
+  "modelPicker.noResults": "Aucun modèle ne correspond à « {{query}} ».",
+  "modelPicker.searchPlaceholder": "Rechercher un modèle…",
   "modelPicker.manageInSettings":
     "Gérer les modèles et clés API dans Paramètres…",
   "modelPicker.requestNameMissing": "Nom de requête non défini",
@@ -2011,6 +2013,10 @@ export const messagesFr: Record<string, string> = {
   "settings.autoUpdate.downloaded": "Mise à jour téléchargée",
   "settings.autoUpdate.downloading": "Téléchargement de la mise à jour",
   "settings.autoUpdate.downloadNow": "Télécharger maintenant",
+  "settings.autoUpdate.embedded":
+    "Fourni avec mAI Desktop {{version}}. Les mises à jour de Coder sont livrées avec mAI Desktop.",
+  "settings.autoUpdate.embeddedStatus":
+    "Les mises à jour sont gérées par mAI Desktop.",
   "settings.autoUpdate.enableAutoUpdate": "Activer la mise à jour automatique",
   "settings.autoUpdate.enableAutoUpdateDesc":
     "Vérifier et télécharger automatiquement les mises à jour au démarrage",
