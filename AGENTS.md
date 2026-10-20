@@ -45,6 +45,14 @@ Conséquences pratiques :
   `CRON_SECRET`, qui les appelle **en parallèle** pour tenir dans le plafond
   d'exécution d'un val. Il remplace le workflow GitHub supprimé : ne
   réintroduire aucun second ordonnanceur.
+- **`APP_URL` du val pointe vers l'application Next, jamais vers le backend.**
+  Le backend Val Town répond « 404 Not Found » sur **toutes** ses routes : les
+  ticks y sont muets, et le journal ne dit pas pourquoi. Le val refuse de
+  partir vers un hôte `*.val.run` et interroge `/api/app-version` — route
+  présente dans tous les déploiements, sans effet de bord — avant de lancer les
+  ticks. Un 404 sur un tick signifie « cette route n'existe pas sur cette
+  cible » (déploiement trop ancien, ou `APP_URL` erroné), jamais « la route a
+  échoué ».
 - Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 52
   fichiers du graphe d'imports transitif de `main.ts`).
 - Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.
@@ -267,6 +275,22 @@ Contraintes impératives :
   `noteIgnoredStep(error)`. Sept SQLSTATE sont tolérés (`42701`, `42703`,
   `42710`, `42883`, `42P01`, `42P07`, `42P16`) ; **tout autre échec fait
   échouer le job** sauf `MIGRATIONS_STRICT=false`.
+- **Le runner épingle son schéma** (`lib/db/working-schema.ts`) : le
+  `search_path` est un paramètre de **connexion**, pas une propriété de la
+  base. Une URL qui transporte `options=-c search_path=`, un rôle configuré
+  ainsi, ou un relais qui le réinitialise laisse la session sans schéma : les
+  CREATE non qualifiés échouent alors en `3F000` et les ALTER en `42P01` —
+  y compris sur des tables qui existent. Le runner détermine donc le schéma
+  qui porte les tables de l'application, l'y épingle, le **vérifie**, et
+  journalise le `search_path` reçu. Ne jamais écrire une migration qui dépend
+  du `search_path` de la session.
+- **Un `SELECT` dans un catalogue se trompe de colonne sans bruit** :
+  `pg_constraint` n'a pas de `table_name` (c'est
+  `information_schema.table_constraints` qui la porte). Interroger
+  `pg_constraint` avec `table_name` échoue en `42703` et fait échouer **toute
+  la transaction** de migration : les migrations suivantes ne sont pas
+  appliquées et le journal n'avance pas. Le nom de la table vient de
+  `pg_class`, joint par `conrelid`.
 - `scripts/check-db-schema.mjs` est la garde bloquante du déploiement
   (`REQUIRED_TABLES`, `REQUIRED_COLUMNS`). Toute colonne ajoutée par une
   migration y entre.

@@ -16,11 +16,18 @@ tests/debug/
 
 # `.env.example` est versionné : c'est le contrat d'environnement du dépôt
 # (`.env*` est ignoré, ce fichier fait exception ligne 9).
-main.ts
-main-projects.ts
-aiModels.ts
-maiModels.ts
-.neon
+#
+# Ces fichiers sont des variantes LOCALES du backend Val Town, et ils
+# appartiennent à la RACINE du dépôt. Les motifs sont donc ANCRÉS (`/` initial) :
+# un motif nu s'applique à TOUTE la profondeur, et il a déjà avalé le point
+# d'entrée du jeu Blackline (`apps/blackline/src/main.ts`) — le fichier existait
+# en local, le build Vite le résolvait, et la CI échouait sur un checkout
+# propre. Un motif ancré ne peut plus rien avaler hors de la racine.
+/main.ts
+/main-projects.ts
+/aiModels.ts
+/maiModels.ts
+/.neon
 
 # AI Agent Docs
 docs/AI_AGENTS_API.md
