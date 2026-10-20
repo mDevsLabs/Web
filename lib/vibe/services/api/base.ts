@@ -1,15 +1,68 @@
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — API CORE CLIENT (base.ts)
- * Configuration, cache, requêtes réseau, tokens et alias Vibe
+ * Configuration, cache, requêtes réseau, tokens et relais BFF
  * ============================================================================
  */
 
-import { MAI_API_URL } from "@/lib/constants";
+import { apiUrl } from "@/lib/client/api-endpoints";
 import { AppStorage } from "@/lib/vibe/services/storageAdapter";
 import type { Post } from "@/lib/vibe/types/vibe";
 
-export const API_BASE = MAI_API_URL;
+/**
+ * Racine du relais BFF de l'hôte.
+ *
+ * Vibe n'appelle PLUS l'API mAI en direct : tout passe par
+ * `/api/vibe/**` (`app/(chat)/api/vibe/[...path]/route.ts`), qui lit le
+ * cookie de session httpOnly de l'hôte et le relaie en `Authorization`.
+ *
+ * Pourquoi ce changement : le client ne détenait son jeton que dans
+ * `localStorage`, posé par `VibeSessionBridge` — qui n'existe QUE sous
+ * `/vibe`. L'onglet « Applications » des paramètres de l'hôte utilise le
+ * même client mais vit ailleurs : la requête partait sans authentification
+ * et le backend répondait « Service Unavailable. API Key missing. ».
+ * Un seul chemin, une seule identité, et le jeton ne quitte plus le
+ * navigateur.
+ */
+export const API_BASE = apiUrl("/api/vibe");
+
+/**
+ * Racine de l'API mAI, pour les appels qui NE passent pas par le relais.
+ *
+ * Deux cas seulement : l'authentification Vibe (`/login`, `/register`,
+ * `/verify-*`, `/resend-code`), pilotée par les Server Actions de l'hôte, et
+ * la révocation de session (route inexistante côté backend, conservée par
+ * prudence). Le flux temps réel, lui, passe par le relais.
+ */
+export const API_DIRECT_BASE =
+  process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
+
+/**
+ * Chemins qui restent en accès direct à l'API mAI.
+ *
+ * L'authentification Vibe est pilotée par les Server Actions de l'hôte, qui
+ * posent le cookie `mai_session_token`. La relayer donnerait au navigateur
+ * une seconde porte d'entrée, sans gain : le client n'a pas de secret à
+ * présenter pour ces routes.
+ */
+const DIRECT_ENDPOINTS = [
+  "/login",
+  "/register",
+  "/resend-code",
+  "/verify-login",
+  "/verify-register",
+];
+
+/** Un endpoint passe-t-il par le relais BFF ? */
+function isRelayed(endpoint: string): boolean {
+  if (endpoint.startsWith("http")) {
+    return false;
+  }
+  if (DIRECT_ENDPOINTS.includes(endpoint)) {
+    return false;
+  }
+  return true;
+}
 
 // ─────────────────────────────────────────────
 // TRADUCTION (DeepL) — langues cibles & types
@@ -278,7 +331,11 @@ export class ApiServiceCore {
   ): Promise<void> {
     if (!token) return;
     try {
-      await fetch(`${API_BASE}/v1/logout`, {
+      // Le backend n'expose pas de route de déconnexion Vibe : la révocation
+      // réelle passe par la déconnexion de l'hôte (Server Action). Cet appel
+      // est conservé par prudence — et il part en accès DIRECT, avec le jeton,
+      // parce que `/v1/logout` n'est pas une route relayable.
+      await fetch(`${API_DIRECT_BASE}/v1/logout`, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
@@ -307,33 +364,53 @@ export class ApiServiceCore {
     return error?.status === 404 || error?.status === 405;
   }
 
-  public static toVibeAliasEndpoint(endpoint: string): string | null {
-    if (
-      typeof endpoint !== "string" ||
-      (endpoint !== "/v1" && !endpoint.startsWith("/v1/"))
-    )
-      return null;
-    return `/api/vibe${endpoint.slice("/v1".length)}`;
+  /**
+   * URL effective d'un endpoint.
+   *
+   * Les routes `/v1/…` passent par le relais BFF (`/api/vibe/…`), qui pose
+   * l'authentification à partir du cookie de session. Les routes
+   * d'authentification Vibe vont en accès direct à l'API mAI.
+   */
+  public static resolveUrl(endpoint: string): string {
+    if (endpoint.startsWith("http")) {
+      return endpoint;
+    }
+    if (!isRelayed(endpoint)) {
+      return `${API_DIRECT_BASE}${endpoint}`;
+    }
+    // `/v1/xxx` → `/api/vibe/xxx`. Le préfixe `/v1` est retiré : le relais
+    // l'ajoute côté amont, et le garder produirait `/api/vibe/v1/xxx`.
+    const suffix = endpoint.startsWith("/v1/")
+      ? endpoint.slice("/v1".length)
+      : endpoint;
+    return `${API_BASE}${suffix}`;
   }
 
   public static async executeRequest<T>(
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const token = ApiServiceCore.getToken();
     const headers: Record<string, string> = {
       Accept: "application/json",
       "Content-Type": "application/json",
       ...((options.headers as Record<string, string>) || {}),
     };
 
-    if (token) {
-      headers.Authorization = `Bearer ${token}`;
+    const relayed = isRelayed(endpoint);
+    if (relayed) {
+      // Relais BFF : le cookie de session de l'hôte fait foi. Poser un
+      // `Authorization` ici écraserait l'identité du relais par celle d'un
+      // jeton de session Vibe, qui n'est pas forcément le même compte.
+      delete headers.Authorization;
+    } else {
+      // Accès direct : l'authentification Vibe porte son propre jeton.
+      const token = ApiServiceCore.getToken();
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
     }
 
-    const url = endpoint.startsWith("http")
-      ? endpoint
-      : `${API_BASE}${endpoint}`;
+    const url = ApiServiceCore.resolveUrl(endpoint);
     const method = (options.method || "GET").toUpperCase();
     const isReadRequest = method === "GET" || method === "HEAD";
 
@@ -341,23 +418,26 @@ export class ApiServiceCore {
     try {
       response = await fetch(url, {
         ...options,
+        credentials: "same-origin",
         headers,
       });
     } catch (networkErr: any) {
+      // Repli de développement : l'hôte local peut ne pas exposer la route
+      // BFF (build de démo, basePath, Capacitor). On retente alors en accès
+      // direct, avec le jeton Vibe.
       const isLocalhost =
         typeof window !== "undefined" &&
         (window.location.hostname === "localhost" ||
           window.location.hostname === "127.0.0.1");
 
-      if (
-        isReadRequest &&
-        url.startsWith("https://mai.val.run") &&
-        isLocalhost
-      ) {
+      if (isReadRequest && relayed && isLocalhost) {
         try {
-          response = await fetch(endpoint, {
+          const token = ApiServiceCore.getToken();
+          response = await fetch(`${API_DIRECT_BASE}${endpoint}`, {
             ...options,
-            headers,
+            headers: token
+              ? { ...headers, Authorization: `Bearer ${token}` }
+              : headers,
           });
         } catch {
           throw networkErr;
@@ -430,16 +510,12 @@ export class ApiServiceCore {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const aliasEndpoint = ApiServiceCore.toVibeAliasEndpoint(endpoint);
-    const sessionGeneration = ApiServiceCore.sessionGeneration;
-    try {
-      return await ApiServiceCore.executeRequest<T>(endpoint, options);
-    } catch (error) {
-      if (sessionGeneration !== ApiServiceCore.sessionGeneration) throw error;
-      if (!aliasEndpoint || !ApiServiceCore.shouldRetryVibeAlias(error))
-        throw error;
-      return ApiServiceCore.executeRequest<T>(aliasEndpoint, options);
-    }
+    // Le repli d'alias (`/v1/…` → `/api/vibe/…`) a disparu : le relais BFF
+    // EST désormais le chemin normal, et le backend expose déjà les deux
+    // alias (`/v1/…` et `/api/vibe/…`). `request` n'est plus qu'un alias de
+    // `executeRequest` — il reste pour la compatibilité de la surface
+    // publique du client.
+    return await ApiServiceCore.executeRequest<T>(endpoint, options);
   }
 
   public static async uploadWithFallback<T>(
@@ -452,11 +528,14 @@ export class ApiServiceCore {
     const send = async (endpoint: string): Promise<Response> => {
       const formData = new FormData();
       formData.append(field, file);
-      const token = ApiServiceCore.getToken();
       const headers: Record<string, string> = { Accept: "application/json" };
-      if (token) headers.Authorization = `Bearer ${token}`;
-      return fetch(`${API_BASE}${endpoint}`, {
+      if (!isRelayed(endpoint)) {
+        const token = ApiServiceCore.getToken();
+        if (token) headers.Authorization = `Bearer ${token}`;
+      }
+      return fetch(ApiServiceCore.resolveUrl(endpoint), {
         body: formData,
+        credentials: "same-origin",
         headers,
         method: "POST",
       });
@@ -492,39 +571,33 @@ export class ApiServiceCore {
     tokens = 10,
     details?: { inputTokens?: number; outputTokens?: number }
   ): Promise<void> {
-    const token = ApiServiceCore.getToken();
-    if (!token) return;
-    try {
-      await fetch(`${API_BASE}/log-usage`, {
-        body: JSON.stringify({
-          action_type: "api_query",
-          endpoint,
-          inputTokens: details?.inputTokens,
-          outputTokens: details?.outputTokens,
-          tokens,
-          tokensUsed: tokens,
-        }),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-    } catch {}
-    try {
-      await fetch(`${API_BASE}/v1/usage/log`, {
-        body: JSON.stringify({
-          action_type: "api_query",
-          endpoint,
-          tokens,
-          tokensUsed: tokens,
-        }),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-    } catch {}
+    // Le relevé de consommation passe par le relais : le cookie de session
+    // authentifie, et le jeton Vibe n'est plus nécessaire. L'appel est « au
+    // feu et forget » — sans session, l'amont le refuse et l'échec est
+    // absorbé, comme avant.
+    const post = async (path: string, body: unknown) => {
+      try {
+        await fetch(ApiServiceCore.resolveUrl(path), {
+          body: JSON.stringify(body),
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+      } catch {}
+    };
+    await post("/v1/log-usage", {
+      action_type: "api_query",
+      endpoint,
+      inputTokens: details?.inputTokens,
+      outputTokens: details?.outputTokens,
+      tokens,
+      tokensUsed: tokens,
+    });
+    await post("/v1/usage/log", {
+      action_type: "api_query",
+      endpoint,
+      tokens,
+      tokensUsed: tokens,
+    });
   }
 }

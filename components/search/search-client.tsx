@@ -224,6 +224,9 @@ export function SearchClient() {
   const [news, setNews] = useState<SearchNewsHit[]>([]);
   const [videos, setVideos] = useState<SearchVideoHit[]>([]);
   const [searchId, setSearchId] = useState<string | null>(null);
+  // Moteurs qui ont répondu : sert à dire d'où viennent les résultats
+  // quand la source principale a échoué.
+  const [provider, setProvider] = useState<string | null>(null);
 
   // Modèle d'IA choisi pour le tiroir de discussion (via ModelSelector)
   const [selectedModelId, setSelectedModelId] = useState<string>("mai-2-mini");
@@ -598,8 +601,12 @@ export function SearchClient() {
       setDomainFilter(null);
 
       try {
+        // Aucune source ni langue n'est envoyée : le serveur applique les
+        // préférences du compte (langue, sources activées, volume, filtre).
+        // Le client propose, le serveur tranche — envoyer `type: "all"`
+        // contournerait le réglage « sources activées ».
         const res = await fetch("/api/mai-search", {
-          body: JSON.stringify({ count: 25, query: q, type: "all" }),
+          body: JSON.stringify({ count: 25, query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
         });
@@ -619,6 +626,7 @@ export function SearchClient() {
         setNews(searchNews);
         setVideos(searchVideos);
         setSearchId(data.searchId || null);
+        setProvider(data.provider || null);
 
         // Lancer immédiatement la synthèse IA en parallèle
         void fetchSummary(q, data.searchId || null, searchResults, "normal");
@@ -868,6 +876,16 @@ export function SearchClient() {
                 <span>Vidéos ({videos.length})</span>
               </button>
 
+              {provider && provider !== "you.com" ? (
+                <span className="chip text-[10px] text-muted-foreground shrink-0">
+                  {provider === "wikipedia"
+                    ? "Wikipédia"
+                    : provider === "mixed"
+                      ? "Wikipédia + Web"
+                      : "Mode dégradé"}
+                </span>
+              ) : null}
+
               {domainFilter ? (
                 <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0">
                   <TagIcon className="size-3" />
@@ -1099,7 +1117,9 @@ export function SearchClient() {
                                 {hostname}
                               </button>
                               <span className="chip text-[10px] py-0.5 px-2 bg-muted/60 text-muted-foreground shrink-0">
-                                Web
+                                {item.origin === "wikipedia"
+                                  ? "Wikipédia"
+                                  : "Web"}
                               </span>
                             </div>
 

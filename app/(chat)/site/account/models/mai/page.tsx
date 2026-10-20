@@ -10,6 +10,7 @@ import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
 import Link, { useSiteRouter as useRouter } from "@/components/site/router";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { ModelNavigation } from "../shared/ModelNavigation";
 import { MaiModelFilters, useMaiModelFilters } from "./MaiModelFilters";
@@ -59,6 +60,23 @@ export default function ApiMaiModelsPage() {
 
   useEffect(() => {
     if (isAuthenticated) void loadModels();
+  }, [isAuthenticated, loadModels]);
+
+  /**
+   * Rafraîchissement automatique du catalogue.
+   *
+   * Le catalogue mAI évolue (sorties de série, dépréciations) : une page
+   * laissée ouverte ne doit pas proposer un modèle retiré. Même cadence que
+   * le reste de l'application : 10 minutes.
+   */
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const timer = setInterval(() => {
+      void loadModels();
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+    return () => {
+      clearInterval(timer);
+    };
   }, [isAuthenticated, loadModels]);
 
   if (authLoading || !isAuthenticated) {

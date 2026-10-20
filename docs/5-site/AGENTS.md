@@ -47,3 +47,18 @@ Le layout racine `app/(chat)/site/layout.tsx` enveloppe l'ensemble des pages du 
 - Le Site n'a pas de thème parallèle. `components/site/theme-sync.tsx` recopie le thème résolu de l'hôte (next-themes) en classes `dark` + `data-md-theme` sur `.site-root` ; `@mdevs/ui` prend alors ses jetons sombres.
 - Les règles sombres s'écrivent **`html.dark …` dans `apps/site/app/globals.css`** (jamais dans `components/site/site.css`, générée) : le script de build les ré-ancre en `.site-root.dark …`.
 - Les utilitaires Tailwind partagent leurs variables entre propriétés (`bg-white` et `text-white` lisent tous deux `--color-white`) : on ne bascule donc **pas** les jetons `--color-*`, on lève chaque classe réellement employée, **par propriété**. Les classes de l'inventaire du Site se ajoutent au même endroit.
+
+### Règle n° 9 — Le sélecteur de modèle du Site a sa propre variante
+- Le Site a sa **propre palette** (`slate-*`, `purple-*`) : les tokens de l'hôte (`bg-card`, `text-muted-foreground`, `border-border/60`) **n'existent pas** dans `apps/site/app/globals.css`. Le sélecteur du Site est donc `components/site/model-selector.tsx` (+ `model-selector-groups.tsx`), jamais celui de `components/ai-elements/`.
+- **Son popover est accroché dans `.site-root`** (`Popover.Portal container={…}`) : le Portal par défaut monte dans `document.body`, hors du périmètre du Site — ce qui viole la Règle n° 2 et perd les variables de thème.
+- **La logique de catalogue est partagée**, pas dupliquée : résolution du fournisseur (`lib/ai/model-selector/provider.ts`), niveaux d'effort (`reasoning.ts`), types (`types.ts`), logo (`logo.tsx`).
+- Le Site lit **ses propres** routes de catalogue (`/api/site/v1/models*`), distinctes de celles de l'hôte (`/api/models*`). La revalidation globale (au changement de modèle) vise donc les **six** clés — voir `lib/ai/model-catalog.ts`.
+
+### Règle n° 10 — Le catalogue de modèles se rafraîchit
+- Les listes de modèles (texte, image, audio) se revalident **toutes les 10 minutes** (`MODEL_CATALOG_REFRESH_INTERVAL` dans `lib/ai/model-catalog.ts`) et **à chaque changement de modèle** : c'est le moment où l'utilisateur regarde le catalogue, donc le moment où il doit être à jour.
+- Le catalogue dépend du forfait : un modèle peut être apparu entre deux consultations. Une revalidation forcée (`revalidate: true`) est nécessaire — servir la copie SWR en cache ne rafraîchirait rien.
+- Un **bouton de rafraîchissement** accompagne la barre de recherche des modèles : le timer est un filet de sécurité, pas une attente.
+
+### Règle n° 11 — Le terrain de jeu (`/site/playground`)
+- La page exécute l'API par l'**exécuteur BFF** (`/api/site/account/api-executor`), jamais en direct : aucune clé ni URL d'API ne doit apparaître côté client. Les routes autorisées sont celles de l'allowlist (`lib/site/api-key-routes.ts`).
+- Le terrain de jeu est un **outil développeur**, pas une page publique : il suppose une session (le jeton de session est transmis à l'exécuteur). Un visiteur non connecté doit voir un message clair, pas une erreur opaque..

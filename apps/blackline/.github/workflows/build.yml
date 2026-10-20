@@ -1,0 +1,140 @@
+name: BLACKLINE — Web, Desktop & Mobile
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: blackline-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run check:bundle
+      - uses: actions/upload-artifact@v6
+        with:
+          name: blackline-web
+          path: dist/
+          if-no-files-found: error
+  desktop:
+    needs: web
+    if: github.event_name != 'pull_request'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win
+            target: --win --x64
+          - os: macos-latest
+            platform: mac
+            target: --mac --arm64 --x64
+          - os: ubuntu-latest
+            platform: linux
+            target: --linux --x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+      - uses: actions/download-artifact@v5
+        with:
+          name: blackline-web
+          path: dist
+      - run: npm ci
+        working-directory: apps/desktop
+      - run: npm run prepare:web
+        working-directory: apps/desktop
+      - run: npm run package -- ${{ matrix.target }}
+        working-directory: apps/desktop
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - uses: actions/upload-artifact@v6
+        with:
+          name: blackline-desktop-${{ matrix.platform }}
+          path: |
+            apps/desktop/release/*.exe
+            apps/desktop/release/*.dmg
+            apps/desktop/release/*.zip
+            apps/desktop/release/*.AppImage
+          if-no-files-found: error
+  android:
+    needs: web
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/mobile/package-lock.json
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - uses: actions/download-artifact@v5
+        with:
+          name: blackline-web
+          path: dist
+      - run: npm ci
+      - run: npm run prepare:web
+      - run: npx cap add android
+      - run: npx cap sync android
+      - run: npm run configure:android
+      - run: bash android/gradlew -p android assembleDebug --no-daemon
+      - uses: actions/upload-artifact@v6
+        with:
+          name: blackline-android-debug
+          path: apps/mobile/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+  ios:
+    needs: web
+    if: github.event_name != 'pull_request'
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/mobile/package-lock.json
+      - run: xcodebuild -version
+      - uses: actions/download-artifact@v5
+        with:
+          name: blackline-web
+          path: dist
+      - run: npm ci
+      - run: npm run prepare:web
+      - run: npx cap add ios
+      - run: npx cap sync ios
+      - run: npm run configure:ios
+      - run: xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+      - run: ditto -c -k --sequesterRsrc --keepParent build/Build/Products/Debug-iphonesimulator/App.app BLACKLINE-iOS-simulator.zip
+      - uses: actions/upload-artifact@v6
+        with:
+          name: blackline-ios-simulator
+          path: apps/mobile/BLACKLINE-iOS-simulator.zip
+          if-no-files-found: error

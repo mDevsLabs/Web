@@ -33,6 +33,7 @@ import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import type { MAITool } from "@/lib/vibe/data/maiTools";
@@ -320,6 +321,30 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     if (isOpen) {
       loadModels();
     }
+  }, [isOpen]);
+
+  /**
+   * Rafraîchissement automatique de la liste de repli.
+   *
+   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes ;
+   * cette liste-ci n'est que le repli affiché avant que le catalogue du
+   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
+   * listes ne proposes pas des modèles différents.
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+    const timer = setInterval(() => {
+      void ApiService.getModels()
+        .then((res) => {
+          if (res?.models && res.models.length > 0) {
+            setAvailableModels(res.models as typeof DEFAULT_MODELS);
+          }
+        })
+        .catch(() => {});
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+    return () => {
+      clearInterval(timer);
+    };
   }, [isOpen]);
 
   /** Changement de modèle : appliqué et enregistré dans la préférence partagée. */

@@ -74,8 +74,10 @@ export const SettingsPage: React.FC<{
     "low" | "medium" | "strict"
   >("medium");
   const [blurSensitive, setBlurSensitive] = useState(true);
-  const [emailNotifs, setEmailNotifs] = useState(true);
-  const [pushNotifs, setPushNotifs] = useState(true);
+  // Les préférences de NOTIFICATION (e-mail, push) ne sont plus gérées ici :
+  // elles appartiennent à l'onglet « Notifications » des paramètres mAI, qui
+  // regroupe mAI, Vibe et Wakies. Les laisser ici créerait deux endroits
+  // pour la même décision.
   const [hapticsEnabled, setHapticsEnabled] = useState(() =>
     haptics.isEnabled()
   );
@@ -178,8 +180,6 @@ export const SettingsPage: React.FC<{
           setAllowMentions(s.allow_mentions || "everyone");
           setContentFilter(s.content_filter_level || "medium");
           setBlurSensitive(s.blur_sensitive_content ?? true);
-          setEmailNotifs(s.email_notifications ?? true);
-          setPushNotifs(s.push_notifications ?? true);
           setMaiAutoApproveTools(s.mai_auto_approve_tools ?? false);
           setPostsAIGeneratedByDefault(
             s.posts_ai_generated_by_default ?? false
@@ -472,7 +472,6 @@ export const SettingsPage: React.FC<{
         dm_auto_translate: dmAutoTranslate,
         dm_translate_lang: dmTranslateLang,
         dms_enabled: dmsEnabled,
-        email_notifications: emailNotifs,
         feed_default_mode: feedDefaultMode,
         font_size: fontSize,
         hide_reposts: hideReposts,
@@ -487,7 +486,6 @@ export const SettingsPage: React.FC<{
         message_bubble_shape: messageBubbleShape,
         message_bubble_theme: messageBubbleTheme,
         posts_ai_generated_by_default: postsAIGeneratedByDefault,
-        push_notifications: pushNotifs,
         theme_preference: theme,
         two_factor_auth: true,
         ui_language: uiLanguage,
@@ -598,14 +596,10 @@ export const SettingsPage: React.FC<{
             />
             <NotificationsHapticsSection
               animationsEnabled={animationsEnabled}
-              emailNotifs={emailNotifs}
               hapticsEnabled={hapticsEnabled}
               hapticsSupported={hapticsSupported}
-              pushNotifs={pushNotifs}
               setAnimationsEnabledState={setAnimationsEnabledState}
-              setEmailNotifs={setEmailNotifs}
               setHapticsEnabled={setHapticsEnabled}
-              setPushNotifs={setPushNotifs}
             />
           </div>
 

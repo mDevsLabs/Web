@@ -472,10 +472,88 @@ export const MAI_TOOLS_CATALOG: MAICatalogTool[] = [
     sensitive: false,
     slash_command: "/lire",
   },
+  {
+    category: "analysis",
+    description:
+      "Analyse la polarité et les termes clés des commentaires d'une publication.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "Activity",
+    id: "analyze_sentiment",
+    mention_tag: "@sentiment",
+    name: "Analyse de Sentiment",
+    sensitive: false,
+    slash_command: "/sentiment",
+  },
+  {
+    category: "analysis",
+    description:
+      "Synthétise les commentaires d'une publication : points clés, désaccords, ton général.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "MessagesSquare",
+    id: "summarize_thread",
+    mention_tag: "@resume",
+    name: "Résumé du Fil",
+    sensitive: false,
+    slash_command: "/resume",
+  },
+  {
+    category: "creation",
+    description:
+      "Réécrit un post pour X, Instagram ou LinkedIn, avec les contraintes de chaque réseau.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "Repeat2",
+    id: "adapt_post",
+    mention_tag: "@adapter",
+    name: "Adapter par Réseau",
+    sensitive: false,
+    slash_command: "/adapter",
+  },
+  {
+    category: "creation",
+    description:
+      "Propose 3 accroches alternatives pour un même contenu, par des angles différents.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "Sparkles",
+    id: "generate_variants",
+    mention_tag: "@variantes",
+    name: "Variantes de Post",
+    sensitive: false,
+    slash_command: "/variantes",
+  },
+  {
+    category: "creation",
+    description:
+      "Rédige une légende prête à publier et son jeu de hashtags à partir d'un visuel.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "Target",
+    id: "generate_caption",
+    mention_tag: "@legende",
+    name: "Légende & Hashtags",
+    sensitive: false,
+    slash_command: "/legende",
+  },
+  {
+    category: "analysis",
+    description:
+      "Exécute le même prompt sur deux modèles et compare réponses, latences et longueurs.",
+    enabled: true,
+    file: "vibe-mai-creative.ts",
+    icon_name: "LayoutGrid",
+    id: "compare_models",
+    mention_tag: "@comparer",
+    name: "Comparer Deux Modèles",
+    sensitive: false,
+    slash_command: "/comparer",
+  },
 ];
 
 /** Version du catalogue (index.json). */
-export const MAI_CATALOG_VERSION = "1.1.0";
+export const MAI_CATALOG_VERSION = "1.2.0";
 
 /** Exécuteur générique : délègue l'outil `id` à la flotte MAIAgentFleet. */
 const fleetExecutor =
@@ -503,12 +581,14 @@ export const TOOL_EXECUTORS: Record<
       },
     ])
   ),
+  adapt_post: fleetExecutor("adapt_post"),
   analyze_audience: fleetExecutor("analyze_audience"),
   analyze_book_stats: fleetExecutor("analyze_book_stats"),
   analyze_content_performance: fleetExecutor("analyze_content_performance"),
   analyze_creator_stats: analyzeCreatorStats,
   analyze_dm_activity: fleetExecutor("analyze_dm_activity"),
   analyze_hashtags: fleetExecutor("analyze_hashtags"),
+  analyze_sentiment: fleetExecutor("analyze_sentiment"),
   // Ces outils ignorent leurs arguments (ex. flotte : {}, pas args).
   analyze_trends: (userId) =>
     MAIAgentFleet.executeTool("analyze_trends", {}, userId),
@@ -517,11 +597,14 @@ export const TOOL_EXECUTORS: Record<
   check_quotas: (userId) =>
     MAIAgentFleet.executeTool("check_quotas", {}, userId),
   comment_post: fleetExecutor("comment_post"),
+  compare_models: fleetExecutor("compare_models"),
   compare_periods: fleetExecutor("compare_periods"),
   create_post: fleetExecutor("create_post"),
   delete_post: fleetExecutor("delete_post"),
   fact_check: fleetExecutor("fact_check"),
   follow_user: fleetExecutor("follow_user"),
+  generate_caption: fleetExecutor("generate_caption"),
+  generate_variants: fleetExecutor("generate_variants"),
   generate_vibe_image: fleetExecutor("generate_vibe_image"),
   get_account_stats: (userId) =>
     MAIAgentFleet.executeTool("get_account_stats", {}, userId),
@@ -536,6 +619,7 @@ export const TOOL_EXECUTORS: Record<
   search_web: fleetExecutor("search_web"),
   send_message: fleetExecutor("send_message"),
   suggest_post: fleetExecutor("suggest_post"),
+  summarize_thread: fleetExecutor("summarize_thread"),
   translate: fleetExecutor("translate"),
   update_profile: fleetExecutor("update_profile"),
   update_settings: fleetExecutor("update_settings"),

@@ -202,10 +202,14 @@ function SettingsPageInner() {
           { id: "vibe-feed", label: "↳ Fil & Modération" },
           { id: "vibe-privacy", label: "↳ Confidentialité" },
           { id: "vibe-circle", label: "↳ Cercle Privé" },
+          { id: "search", label: "Recherche — mAI Search" },
           { id: "wakies", label: "Wakies — Espaces de travail" },
           { id: "wakies-general", label: "↳ Atelier & Confidentialité" },
           { id: "wakies-quotas", label: "↳ Stockage & Quotas" },
           { id: "wakies-config", label: "↳ Configuration des Wakies" },
+          { id: "blackline", label: "Blackline — Jeu 3D" },
+          { id: "blackline-graphics", label: "↳ Image & Énergie" },
+          { id: "blackline-gameplay", label: "↳ Caméra, Visée & Jeu" },
         ];
       case "memory":
         return [
@@ -224,6 +228,9 @@ function SettingsPageInner() {
       case "notifications":
         return [
           { id: "notif-main", label: "Préférences" },
+          { id: "notif-mai", label: "↳ mAI" },
+          { id: "notif-vibe", label: "↳ Vibe" },
+          { id: "notif-wakies", label: "↳ Wakies" },
           { id: "notif-rgpd", label: "RGPD & Données" },
         ];
       case "configuration":

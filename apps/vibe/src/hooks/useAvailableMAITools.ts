@@ -11,6 +11,7 @@ function mapServerTool(tool: {
   description: string;
   icon_name: string;
   category: string;
+  sensitive?: boolean;
 }): MAITool {
   return {
     id: tool.id,
@@ -24,6 +25,10 @@ function mapServerTool(tool: {
     // sinon commande seule (ex. « /audience »)
     samplePrompt:
       FALLBACK_MAI_TOOLS.find((f) => f.id === tool.id)?.samplePrompt || `${tool.slash_command} `,
+    // Le drapeau est conservé : l'interface signale les outils qui agissent
+    // sur le compte ou le contenu public. Il était perdu jusqu'ici, et
+    // l'autocomplétion ne pouvait pas distinguer une écriture d'une lecture.
+    sensitive: Boolean(tool.sensitive),
   };
 }
 

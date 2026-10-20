@@ -1,0 +1,8 @@
+import type { Box,Vec2,Vec3 } from './types.ts';
+const CELL=8,cache=new WeakMap<Box[],Map<string,Box[]>>();
+function index(boxes:Box[]){let grid=cache.get(boxes);if(grid)return grid;grid=new Map();for(const b of boxes){if(b.solid===false)continue;for(let x=Math.floor((b.x-b.w/2)/CELL);x<=Math.floor((b.x+b.w/2)/CELL);x++)for(let z=Math.floor((b.z-b.d/2)/CELL);z<=Math.floor((b.z+b.d/2)/CELL);z++){const key=x+','+z,list=grid.get(key)??[];list.push(b);grid.set(key,list);}}cache.set(boxes,grid);return grid;}
+// Maps are immutable after creation; small transient collider lists remain uncached.
+export function nearBoxes<T extends Box>(boxes:T[],p:Vec2,r=1):T[]{if(boxes.length<80)return boxes;const grid=index(boxes),found=new Set<Box>();for(let x=Math.floor((p.x-r)/CELL);x<=Math.floor((p.x+r)/CELL);x++)for(let z=Math.floor((p.z-r)/CELL);z<=Math.floor((p.z+r)/CELL);z++)for(const b of grid.get(x+','+z)??[])found.add(b);return [...found] as T[];}
+export function rayBoxes<T extends Box>(boxes:T[],origin:Vec3,dir:Vec3,max:number):T[]{if(boxes.length<80||!Number.isFinite(max))return boxes;const grid=index(boxes),out=new Set<Box>();let x=Math.floor(origin.x/CELL),z=Math.floor(origin.z/CELL);const sx=dir.x>=0?1:-1,sz=dir.z>=0?1:-1,dx=Math.abs(dir.x)<1e-8?Infinity:CELL/Math.abs(dir.x),dz=Math.abs(dir.z)<1e-8?Infinity:CELL/Math.abs(dir.z);let tx=Math.abs(dir.x)<1e-8?Infinity:((x+(sx>0?1:0))*CELL-origin.x)/dir.x,tz=Math.abs(dir.z)<1e-8?Infinity:((z+(sz>0?1:0))*CELL-origin.z)/dir.z,t=0;
+  for(let i=0;t<=max&&i<512;i++){for(const b of grid.get(x+','+z)??[])out.add(b);if(tx<tz){t=tx;tx+=dx;x+=sx;}else{t=tz;tz+=dz;z+=sz;}}return [...out] as T[];
+}

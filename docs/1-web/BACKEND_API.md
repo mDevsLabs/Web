@@ -1,7 +1,7 @@
 # Backend mAI — architecture et routes
 
 > Périmètre : **le graphe d'imports transitif complet de `main.ts`**, c'est-à-dire
-> 52 fichiers / 28 241 lignes / déclarations relevées dans `API_INVENTORY.json`. Base URL : `https://mai.val.run`.
+> 56 fichiers / 31 527 lignes / déclarations relevées dans `API_INVENTORY.json`. Base URL : `https://mai.val.run`.
 >
 > Ce document décrit le **backend Hono (Val Town)**, pas l'application Next.js.
 > Pour le BFF Next et l'Agent, voir `AGENTS.md`, `docs/1-web/AGENT_ENGINE.md` et
@@ -18,7 +18,7 @@
 5. [`config.ts` — forfaits, base, JWT](#5-configts--forfaits-base-jwt)
 6. [Les huit registres de l'API](#6-les-huit-registres-de-lapi)
 7. [Vibe — la plateforme sociale](#7-vibe--la-plateforme-sociale)
-8. [Index des modules backend](#8-index-des-42-fichiers)
+8. [Index des modules backend](#8-index-des-modules-backend)
 9. [Code mort et pièges connus](#9-code-mort-et-pièges-connus)
 10. [Codes d'erreur et limites](#10-codes-erreur-et-limites)
 
@@ -520,8 +520,9 @@ Le graphe ci-dessous est issu de l’inventaire local. Les alias HTTP sont compt
 | `vibe-mai-chat.ts` | 549 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
 | `vibe-mai-conversations.ts` | 316 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-posts-core.ts` |
 | `vibe-mai-core.ts` | 1143 | `./config.ts`, `./vibe-posts-core.ts` |
+| `vibe-mai-creative.ts` | 322 | |
 | `vibe-mai-execute.ts` | 471 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-common.ts`, `./vibe-mai-core.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
-| `vibe-mai-fleet.ts` | 1812 | `./config.ts`, `./openrouter-fetch.ts`, `./web.ts` |
+| `vibe-mai-fleet.ts` | 1830 | `./config.ts`, `./openrouter-fetch.ts`, `./vibe-mai-creative.ts`, `./web.ts` |
 | `vibe-mai-settings.ts` | 78 | `./config.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts`, `./vibe-tools.ts` |
 | `vibe-mai.ts` | 37 | `./vibe-common.ts`, `./vibe-mai-chat.ts`, `./vibe-mai-conversations.ts`, `./vibe-mai-core.ts`, `./vibe-mai-execute.ts`, `./vibe-mai-settings.ts` |
 | `vibe-posts-core.ts` | 569 | `./config.ts` |

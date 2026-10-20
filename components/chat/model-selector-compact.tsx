@@ -19,7 +19,7 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -33,204 +33,50 @@ import {
 } from "@/components/ai-elements/model-selector";
 import { Button } from "@/components/ui/button";
 import {
-  type ChatModel,
-  DEFAULT_CHAT_MODEL,
-  type ModelCapabilities,
-} from "@/lib/ai/models";
+  MODEL_CATALOG_ENDPOINTS,
+  MODEL_CATALOG_REFRESH_INTERVAL,
+  MODEL_CATALOG_SWR_KEYS,
+  modelCatalogKey,
+} from "@/lib/ai/model-catalog";
+// Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
+// (audio, provider optionnel) et ImageModel (images, qui expose owned_by) sont
+// tous compatibles. Le provider est résolu à l'affichage par resolveProviderKey.
+//
+// Ces types vivent dans lib/ai/model-selector/types.ts : le sélecteur du Site
+// officiel consomme exactement la même forme.
 import {
-  isReasoningLevel,
+  PROVIDER_NAMES,
+  resolveProviderKey,
+} from "@/lib/ai/model-selector/provider";
+import {
+  displayedReasoningLevel,
+  supportedReasoningLevels,
+} from "@/lib/ai/model-selector/reasoning";
+import type {
+  ModelSelectorSource,
+  SharedModel,
+} from "@/lib/ai/model-selector/types";
+import { DEFAULT_CHAT_MODEL, type ModelCapabilities } from "@/lib/ai/models";
+import {
   REASONING_LEVEL_DESCRIPTIONS,
   REASONING_LEVEL_LABELS,
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
 import { cn } from "@/lib/utils";
 
-// Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
-// (audio, provider optionnel) et ImageModel (images, qui expose owned_by) sont
-// tous compatibles. Le provider est résolu à l'affichage par resolveProviderKey.
-export type SharedModel = {
-  id: string;
-  name: string;
-  architecture?: ChatModel["architecture"];
-  description?: string;
-  isFree?: boolean;
-  maxContext?: number;
-  maxOutput?: number;
-  owned_by?: string;
-  provider?: string;
-  reasoning?: ChatModel["reasoning"];
-  supported_parameters?: string[];
-  voices?: string[];
-};
+export {
+  PROVIDER_NAMES,
+  resolveProviderKey,
+} from "@/lib/ai/model-selector/provider";
+export type {
+  ModelSelectorSource,
+  SharedModel,
+} from "@/lib/ai/model-selector/types";
 
-export type ModelSelectorSource = "chat" | "images" | "speech";
-
-export const PROVIDER_NAMES: Record<string, string> = {
-  "01-ai": "01.AI (Yi)",
-  ai21: "AI21 Labs",
-  aionlabs: "Aion Labs",
-  alibaba: "Alibaba Cloud",
-  amazon: "Amazon Bedrock",
-  "amazon-bedrock": "Amazon Bedrock",
-  anthropic: "Anthropic",
-  arceeai: "Arcee AI",
-  aws: "Amazon AWS",
-  azure: "Microsoft Azure",
-  baichuan: "Baichuan",
-  "black-forest-labs": "Black Forest Labs",
-  bytedance: "ByteDance (Doubao)",
-  cartesia: "Cartesia",
-  cerebras: "Cerebras",
-  cohere: "Cohere",
-  deepgram: "Deepgram",
-  deepinfra: "DeepInfra",
-  deepseek: "DeepSeek",
-  "dots-studio": "Dots Studio",
-  doubao: "ByteDance (Doubao)",
-  elevenlabs: "ElevenLabs",
-  fal: "fal.ai",
-  "fireworks-ai": "Fireworks AI",
-  google: "Google",
-  granite: "IBM Granite",
-  grok: "xAI (Grok)",
-  groq: "Groq",
-  hunyuan: "Tencent Hunyuan",
-  ibm: "IBM Granite",
-  "ideogram-ai": "Ideogram",
-  "inclusion-ai": "Inclusion AI",
-  internlm: "InternLM",
-  kwaipilot: "Kwaipilot (Kuaishou)",
-  lepton: "Lepton AI",
-  "liquid-ai": "Liquid AI (LFM)",
-  luma: "Luma AI",
-  mai: "mAI",
-  mdevslabs: "mAI Exclusif",
-  meituan: "Meituan",
-  "meta-llama": "Meta Llama",
-  midjourney: "Midjourney",
-  minimax: "MiniMax",
-  mistral: "Mistral AI",
-  mistralai: "Mistral AI",
-  moonshotai: "Moonshot AI (Kimi)",
-  nebius: "Nebius AI",
-  nextagi: "Next AGI",
-  nvidia: "NVIDIA",
-  openai: "OpenAI",
-  openrouter: "OpenRouter",
-  perceptron: "Perceptron",
-  perplexity: "Perplexity",
-  playht: "PlayHT",
-  poolside: "Poolside (Laguna)",
-  qwen: "Qwen / Alibaba",
-  "recraft-ai": "Recraft",
-  "reka-ai": "Reka AI",
-  rekaai: "Reka AI",
-  runway: "Runway",
-  sambanova: "SambaNova",
-  sensetime: "SenseTime",
-  "stability-ai": "Stability AI",
-  stabilityai: "Stability AI",
-  stepfun: "StepFun",
-  tencent: "Tencent (Hunyuan)",
-  togetherai: "Together AI",
-  upstage: "Upstage",
-  writer: "Writer (Palmyra)",
-  xai: "xAI (Grok)",
-  zai: "Zhipu AI (Z-AI)",
-  zhipuai: "Zhipu AI (GLM)",
-};
-
-// Les modèles d'image/audio du gateway n'ont pas de champ `provider` : leur
-// laboratoire est porté par `owned_by`, et certains ids ne contiennent pas de
-// préfixe. Une seule fonction de résolution pour que groupe, titre et logo
-// restent d'accord entre eux. Gère aussi le préfixe ~ (modèles Latest).
-export function resolveProviderKey(model: SharedModel): string {
-  const raw = (
-    model.provider ||
-    model.owned_by ||
-    model.id.split("/")[0] ||
-    "mai"
-  )
-    .toLowerCase()
-    .trim();
-
-  // Retirer le préfixe ~ éventuel (~openai, ~anthropic, etc.)
-  const p = raw.replace(/^~+/, "");
-
-  if (p === "granite" || p === "ibm" || p.includes("granite")) return "ibm";
-  if (
-    p === "tencent" ||
-    p === "hunyuan" ||
-    p.startsWith("hy3") ||
-    p.startsWith("hy4")
-  )
-    return "tencent";
-  if (p === "qwen" || p === "alibaba" || p === "alibaba-cn") return "qwen";
-  if (
-    p === "zhipu" ||
-    p === "zhipuai" ||
-    p === "zai" ||
-    p === "z-ai" ||
-    p === "glm" ||
-    p === "bigmodel"
-  )
-    return "zhipuai";
-  if (p === "inclusion" || p === "inclusion-ai" || p === "inclusionai")
-    return "inclusion-ai";
-  if (p === "dots" || p === "dots-studio" || p === "dotsstudio")
-    return "dots-studio";
-  if (p === "bytedance" || p === "doubao" || p === "volcengine")
-    return "bytedance";
-  if (p === "xai" || p === "x-ai" || p === "grok") return "xai";
-  if (p === "liquid" || p === "liquid-ai" || p === "liquidai" || p === "lfm")
-    return "liquid-ai";
-  if (p === "meituan" || p === "longcat") return "meituan";
-  if (p === "kwaipilot" || p === "kuaishou" || p === "kwai" || p === "kolors")
-    return "kwaipilot";
-  if (p === "next-agi" || p === "nextagi") return "nextagi";
-  if (p === "aion" || p === "aion-labs" || p === "aionlabs") return "aionlabs";
-  if (p === "perceptron" || p === "perceptron-ai") return "perceptron";
-  if (
-    p === "mistral" ||
-    p === "mistralai" ||
-    p === "mistral-ai" ||
-    p === "codestral" ||
-    p === "pixtral" ||
-    p === "ministral"
-  )
-    return "mistral";
-  if (p === "arcee" || p === "arcee-ai" || p === "arceeai") return "arceeai";
-  if (p === "reka" || p === "reka-ai" || p === "rekaai") return "rekaai";
-  if (p === "writer" || p === "palmyra") return "writer";
-  if (
-    p === "amazon" ||
-    p === "amazon-bedrock" ||
-    p === "aws" ||
-    p === "nova" ||
-    p === "titan"
-  )
-    return "amazon";
-  if (p === "meta" || p === "meta-llama" || p === "llama") return "meta-llama";
-  if (p === "poolside" || p === "laguna") return "poolside";
-  if (p === "kimi" || p === "moonshot" || p === "moonshotai")
-    return "moonshotai";
-  if (p === "01-ai" || p === "yi") return "01-ai";
-  if (p === "microsoft" || p === "azure") return "azure";
-  if (p === "together" || p === "togetherai") return "togetherai";
-  if (p === "fireworks" || p === "fireworks-ai") return "fireworks-ai";
-  if (p === "stability" || p === "stability-ai" || p === "stabilityai")
-    return "stability-ai";
-  if (p === "recraft" || p === "recraft-ai") return "recraft-ai";
-  if (p === "google-vertex" || p === "google") return "google";
-
-  return p || "mai";
-}
-
-const ENDPOINTS: Record<ModelSelectorSource, string> = {
-  chat: "/api/models",
-  images: "/api/models/images",
-  speech: "/api/models/speech",
-};
+// La table des endpoints vit dans lib/ai/model-catalog.ts : le revalidation
+// global s'appuie sur des clés SWR strictement identiques à celles du
+// `useSWR` ci-dessous, et deux écritures divergentes casseraient ça.
+const ENDPOINTS: Record<ModelSelectorSource, string> = MODEL_CATALOG_ENDPOINTS;
 
 type ModelSelectorCompactProps = {
   selectedModelId: string;
@@ -268,35 +114,10 @@ const DEFAULT_EMPTY_LABEL = "Par défaut / Automatique";
  * mAI-2 expose `max | high | low` et n'a donc aucun « medium ». Sans ce repli,
  * aucun bouton n'apparaîtrait actif, alors que le fournisseur, lui, a un
  * défaut (`high`).
+ *
+ * L'implémentation vit dans lib/ai/model-selector/reasoning.ts : elle est
+ * partagée avec le sélecteur du Site officiel.
  */
-function displayedReasoningLevel(
-  model: SharedModel,
-  capabilities: ModelCapabilities | undefined,
-  preferred: unknown
-): ReasoningLevel | undefined {
-  const extended = capabilities as
-    | (ModelCapabilities & {
-        reasoningDefault?: ReasoningLevel | null;
-        reasoningLevels?: ReasoningLevel[];
-      })
-    | undefined;
-  const levels = extended?.reasoningLevels?.length
-    ? extended.reasoningLevels
-    : (model.reasoning?.supported_efforts ?? []).filter(
-        (level): level is ReasoningLevel => isReasoningLevel(level)
-      );
-  if (isReasoningLevel(preferred) && levels.includes(preferred)) {
-    return preferred;
-  }
-  const fallback =
-    extended?.reasoningDefault ?? model.reasoning?.default_effort;
-  if (isReasoningLevel(fallback) && levels.includes(fallback)) {
-    return fallback;
-  }
-  // Liste ordonnée du plus intense au moins intense : le dernier est le moins
-  // coûteux, jamais le premier.
-  return levels.at(-1);
-}
 
 function ModelDetailsPanel({
   model,
@@ -318,26 +139,10 @@ function ModelDetailsPanel({
     model.provider ||
     "mAI";
 
-  const supportedEfforts = useMemo(() => {
-    const fromCaps = (capabilities as any)?.reasoningLevels;
-    if (Array.isArray(fromCaps) && fromCaps.length > 0) {
-      return fromCaps.filter((l): l is ReasoningLevel => isReasoningLevel(l));
-    }
-    const fromModel = model.reasoning?.supported_efforts;
-    if (Array.isArray(fromModel) && fromModel.length > 0) {
-      return fromModel.filter((l): l is ReasoningLevel => isReasoningLevel(l));
-    }
-    const idLower = (model.id || "").toLowerCase();
-    if (
-      idLower === "mai-2-mini" ||
-      idLower.endsWith("/mai-2-mini") ||
-      idLower === "mai-2" ||
-      idLower.endsWith("/mai-2")
-    ) {
-      return ["max", "high", "low"] as ReasoningLevel[];
-    }
-    return [];
-  }, [capabilities, model.id, model.reasoning]);
+  const supportedEfforts = useMemo(
+    () => supportedReasoningLevels(model, capabilities),
+    [capabilities, model]
+  );
 
   const hasConfigurableReasoning =
     source === "chat" && supportedEfforts.length > 0;
@@ -626,11 +431,41 @@ function PureModelSelectorCompact({
   }, []);
 
   const { data: modelsData } = useSWR(
-    modelsProp
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${ENDPOINTS[source]}`,
+    modelsProp ? null : modelCatalogKey(ENDPOINTS[source]),
     (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 60_000, revalidateOnFocus: true }
+    {
+      dedupingInterval: 60_000,
+      // Le catalogue bouge en arrière-plan (modèles ajoutés ou retirés,
+      // accès par forfait). On le relit périodiquement même sans
+      // interaction : un onglet laissé ouvert ne doit pas proposer un
+      // modèle retiré.
+      refreshInterval: MODEL_CATALOG_REFRESH_INTERVAL,
+      revalidateOnFocus: true,
+    }
+  );
+
+  /**
+   * Sélection d'un modèle : au passage, on revalide les catalogues.
+   *
+   * Changer de modèle, c'est regarder le catalogue — c'est donc le moment où
+   * il doit être à jour. Le contenu de `/v1/models` dépend du forfait : un
+   * modèle peut être apparu entre deux consultations. On force la
+   * revalidation (`revalidate: true`) pour ne pas resservir la copie mise en
+   * cache par SWR.
+   *
+   * Les six clés (hôte + Site) sont visées : les deux interfaces lisent le
+   * même backend filtré par le tier, un catalogue périmé d'un côté l'est
+   * forcément de l'autre.
+   */
+  const { mutate: mutateCatalog } = useSWRConfig();
+  const handleModelChange = useCallback(
+    (modelId: string) => {
+      onModelChange?.(modelId);
+      for (const key of MODEL_CATALOG_SWR_KEYS) {
+        void mutateCatalog(key, undefined, { revalidate: true });
+      }
+    },
+    [mutateCatalog, onModelChange]
   );
 
   const capabilities: Record<string, ModelCapabilities> | undefined =
@@ -796,7 +631,7 @@ function PureModelSelectorCompact({
                     if (onEmptySelect) {
                       onEmptySelect();
                     } else {
-                      onModelChange?.("");
+                      handleModelChange("");
                     }
                     setOpen(false);
                   }}
@@ -831,7 +666,7 @@ function PureModelSelectorCompact({
                         key={model.id}
                         model={model}
                         onHover={() => setHoveredModelId(model.id)}
-                        onModelChange={onModelChange}
+                        onModelChange={handleModelChange}
                         onSelectReasoningLevel={handleSelectReasoningLevel}
                         onToggleMobileExpand={() =>
                           setMobileExpandedModelId((prev) =>

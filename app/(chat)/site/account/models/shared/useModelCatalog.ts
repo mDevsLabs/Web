@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import type { UserApiKeyUsage } from "@/app/(chat)/site/actions/api-keys";
 import { getUserApiUsage } from "@/app/(chat)/site/actions/api-keys";
 import { useAuth } from "@/components/site/auth-provider";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 
 type ModelCatalogOptions<T> = {
   emptyError: string;
@@ -76,6 +77,34 @@ export function useModelCatalog<T>({
 
   useEffect(() => {
     if (isAuthenticated && token) void loadModels();
+  }, [isAuthenticated, loadModels, token]);
+
+  /**
+   * Rafraîchissement automatique du catalogue.
+   *
+   * Le catalogue bouge : un modèle est ajouté, retiré, ou devient accessible
+   * selon le forfait. Une page de catalogue laissée ouverte ne doit pas
+   * proposer un modèle retiré — d'où la relecture périodique, toutes les 10
+   * minutes, comme partout ailleurs.
+   *
+   * Le minuteur est armé une fois (`armedRef`) et se réarme après chaque
+   * passage : changer de clé API ou de cible recharge déjà le catalogue, et
+   * une relecture supplémentaire ne ferait que du bruit.
+   */
+  const armedRef = useRef(true);
+  useEffect(() => {
+    if (!isAuthenticated || !token) return;
+    if (!armedRef.current) return;
+    armedRef.current = false;
+
+    const timer = setInterval(() => {
+      armedRef.current = true;
+      void loadModels();
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, [isAuthenticated, loadModels, token]);
 
   return {

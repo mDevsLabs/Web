@@ -43,3 +43,11 @@ sbom.json
 
 # Builds Electron Desktop
 apps/coder/release/
+
+# Jeu Blackline : artefacts de build servis par l'hôte sous /blackline.
+# Sortie de `scripts/build-blackline.mjs` — reconstruite par `pnpm build`.
+# (Comme pour vibe.css et wakies.css, la FEUILLE générée
+# `components/blackline/blackline.css` est VERSIONNÉE : elle est importée par
+# le build Next, qui ne compile pas le jeu.)
+public/blackline/
+apps/blackline/dist/

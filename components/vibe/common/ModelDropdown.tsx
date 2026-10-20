@@ -19,6 +19,10 @@ import {
   ModelSelectorCompact,
   type SharedModel,
 } from "@/components/chat/model-selector-compact";
+import {
+  MODEL_CATALOG_REFRESH_INTERVAL,
+  modelCatalogKey,
+} from "@/lib/ai/model-catalog";
 
 export interface AIModel {
   contextWindow?: number;
@@ -47,10 +51,18 @@ export const ModelDropdown: React.FC<ModelDropdownProps> = ({
   onSelectModel,
   className = "",
 }) => {
+  // La clé est celle du catalogue de l'hôte : c'est elle que le
+  // revalidation globale (au changement de modèle) atteint.
   const { data } = useSWR<ModelsPayload>(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
+    modelCatalogKey("/api/models"),
     (url: string) => fetch(url).then((response) => response.json()),
-    { dedupingInterval: 60_000, revalidateOnFocus: false }
+    {
+      dedupingInterval: 60_000,
+      // Le catalogue bouge : on le relit périodiquement (toutes les 10
+      // minutes) pour ne pas proposer un modèle retiré.
+      refreshInterval: MODEL_CATALOG_REFRESH_INTERVAL,
+      revalidateOnFocus: false,
+    }
   );
 
   const catalogue = data?.models?.length ? data.models : models;

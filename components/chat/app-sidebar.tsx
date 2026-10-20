@@ -7,6 +7,7 @@ import {
   CheckIcon,
   ChevronDownIcon,
   Code2Icon,
+  CrosshairIcon,
   FolderKanbanIcon,
   GlobeIcon,
   ImageIcon,
@@ -109,6 +110,7 @@ function VibeSidebarIcon({ className }: { className?: string }) {
 
 // Icônes du sélecteur d'applications du logo.
 const APP_ICONS: Record<AppKey, React.ComponentType<{ className?: string }>> = {
+  blackline: CrosshairIcon,
   cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,
@@ -875,7 +877,24 @@ export function AppSidebar({
                   />
                 </SidebarMenuItem>
 
-                {/* 3. Bibliothèque : le stockage central des fichiers et
+                {/* 3. Blackline : le jeu 3D. Ouvert à tous les forfaits — il ne
+                    consomme aucun token IA. L'accès est conditionné à une
+                    confirmation d'âge (PEGI 16), demandée par le jeu lui-même
+                    à chaque lancement. */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Blackline"
+                  >
+                    <Link href="/blackline" onClick={handleNavClick}>
+                      <CrosshairIcon className="size-4" />
+                      <span>Blackline</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/* 4. Bibliothèque : le stockage central des fichiers et
                     contenus générés (ex « Stockage »). */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
@@ -894,7 +913,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 4. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
+                {/* 5. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild

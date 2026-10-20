@@ -29,6 +29,15 @@ import {
 } from "@/lib/i18n/languages";
 import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
 import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
+import {
+  type MaiSearchLanguage,
+  type MaiSearchSafetyLevel,
+  type MaiSearchSourceKey,
+  normalizeMaiSearchLanguage,
+  normalizeMaiSearchResultCount,
+  normalizeMaiSearchSafetyLevel,
+  normalizeMaiSearchSources,
+} from "@/lib/search/sources";
 import { normalizeThemePreference } from "@/lib/theme/preference";
 import {
   agent,
@@ -105,6 +114,13 @@ export async function getUserPreferences(userId: string) {
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
         reasoningLevel: (row.reasoningLevel as ReasoningLevel) || "medium",
+        // Préférences de recherche mAI Search : normalisées à la lecture, une
+        // valeur illisible ne doit jamais faire échouer l'affichage des
+        // paramètres (ni le moteur de recherche).
+        searchLanguage: normalizeMaiSearchLanguage(row.searchLanguage),
+        searchResultCount: normalizeMaiSearchResultCount(row.searchResultCount),
+        searchSafetyLevel: normalizeMaiSearchSafetyLevel(row.searchSafetyLevel),
+        searchSources: normalizeMaiSearchSources(row.searchSources),
         showAgentChatIcons: row.showAgentChatIcons ?? true,
         temperature: row.defaultTemperature ?? 0.7,
         // Thème partagé par la suite : une valeur illisible retombe sur
@@ -135,6 +151,13 @@ export async function getUserPreferences(userId: string) {
     enabled: legacy.customInstructionsEnabled,
     ghostMemoryEnabled: false,
     reasoningLevel: "medium" as const,
+    // Table `user_preferences` absente (environnement non migré) : les
+    // préférences de recherche retombent sur leurs défauts. La recherche
+    // continue de fonctionner, avec toutes les sources.
+    searchLanguage: "fr" as const,
+    searchResultCount: 10,
+    searchSafetyLevel: "medium" as const,
+    searchSources: normalizeMaiSearchSources(undefined),
     showAgentChatIcons: true,
     temperature: legacy.defaultTemperature ?? 0.7,
     // Table user_preferences absente (environnement non migré) : le thème
@@ -168,6 +191,11 @@ type UserPreferencesPatch = Partial<{
   /** Thème partagé : system | light | dark (normalisé à l'écriture). */
   theme: string;
   reasoningLevel: ReasoningLevel;
+  /** Préférences de recherche mAI Search (migration 0062). */
+  searchLanguage: MaiSearchLanguage;
+  searchResultCount: number;
+  searchSafetyLevel: MaiSearchSafetyLevel;
+  searchSources: MaiSearchSourceKey[];
 }>;
 
 function isMissingUserPreferencesTable(error: unknown): boolean {
@@ -311,6 +339,14 @@ export async function upsertUserPreferences(
             DEFAULT_TRANSLATION_TARGET,
           ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
           reasoningLevel: data.reasoningLevel ?? "medium",
+          searchLanguage: normalizeMaiSearchLanguage(data.searchLanguage),
+          searchResultCount: normalizeMaiSearchResultCount(
+            data.searchResultCount
+          ),
+          searchSafetyLevel: normalizeMaiSearchSafetyLevel(
+            data.searchSafetyLevel
+          ),
+          searchSources: normalizeMaiSearchSources(data.searchSources),
           showAgentChatIcons: data.showAgentChatIcons ?? true,
           // Une valeur illisible retombe sur « system », comme un tier
           // illisible vaut free.
@@ -370,6 +406,22 @@ export async function upsertUserPreferences(
       updatePayload.theme = normalizeThemePreference(data.theme);
     if (data.reasoningLevel !== undefined)
       updatePayload.reasoningLevel = data.reasoningLevel;
+    if (data.searchLanguage !== undefined)
+      updatePayload.searchLanguage = normalizeMaiSearchLanguage(
+        data.searchLanguage
+      );
+    if (data.searchResultCount !== undefined)
+      updatePayload.searchResultCount = normalizeMaiSearchResultCount(
+        data.searchResultCount
+      );
+    if (data.searchSafetyLevel !== undefined)
+      updatePayload.searchSafetyLevel = normalizeMaiSearchSafetyLevel(
+        data.searchSafetyLevel
+      );
+    if (data.searchSources !== undefined)
+      updatePayload.searchSources = normalizeMaiSearchSources(
+        data.searchSources
+      );
 
     const [updated] = await db
       .update(userPreferences)

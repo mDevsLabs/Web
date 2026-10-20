@@ -2,6 +2,7 @@
 
 import {
   AlertTriangleIcon as AlertTriangle,
+  AtSignIcon as AtSign,
   BellIcon,
   BotIcon as Bot,
   CalendarClockIcon as CalendarClock,
@@ -9,17 +10,21 @@ import {
   CheckCircle2Icon as CheckCircle2,
   CheckIcon,
   FolderIcon as Folder,
+  HeartIcon as Heart,
   LockIcon as Lock,
   MegaphoneIcon as Megaphone,
   MessageCircleQuestionIcon as MessageCircleQuestion,
+  MessageSquareIcon as MessageSquare,
   PuzzleIcon as Puzzle,
+  QuoteIcon as Quote,
+  RepeatIcon as Repeat,
   ShieldQuestionIcon as ShieldQuestion,
   Trash2Icon,
   TrashIcon,
   UserPlusIcon as UserPlus,
 } from "@mdevs/icons";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,9 +32,15 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useNotifications } from "@/hooks/use-notifications";
+import { toVibePath } from "@/components/vibe/router";
+import {
+  NOTIFICATION_ORIGIN_LABELS,
+  type NotificationOrigin,
+  useNotifications,
+} from "@/hooks/use-notifications";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn } from "@/lib/utils";
+import { ApiService } from "@/lib/vibe/services/api";
 
 function formatRelative(dateStr: string) {
   try {
@@ -85,9 +96,54 @@ function NotificationIcon({ type }: { type: string }) {
       return <ShieldQuestion className="size-4 text-warning" />;
     case "agent_user_input_required":
       return <MessageCircleQuestion className="size-4 text-info" />;
+    // Types Vibe (répliqués) : la nature de l'événement, pas un repli
+    // générique. Sans ces lignes, toute l'activité sociale ressemblerait
+    // à une notification mAI.
+    case "vibe_like":
+      return <Heart className="size-4" />;
+    case "vibe_repost":
+      return <Repeat className="size-4" />;
+    case "vibe_quote":
+      return <Quote className="size-4" />;
+    case "vibe_mention":
+      return <AtSign className="size-4" />;
+    case "vibe_reply":
+      return <MessageSquare className="size-4" />;
+    case "vibe_dm":
+      return <MessageSquare className="size-4" />;
+    case "vibe_follow":
+      return <UserPlus className="size-4" />;
+    // Type Wakies : une réponse d'assistant.
+    case "wakies_reply":
+      return <Bot className="size-4" />;
     default:
       return <BellIcon className="size-4" />;
   }
+}
+
+/**
+ * Le lien de destination d'une notification.
+ *
+ * Les notifications Vibe portent un chemin qui vit sous `/vibe`. La règle du
+ * domaine est que TOUTE URL Vibe passe par `toVibePath` : un chemin écrit à
+ * la main mènerait hors de `/vibe` chez le destinataire, et l'application
+ * mobile comme le site de bureau verraient une 404.
+ *
+ * `toVibePath` est idempotent sur un chemin déjà préfixé : l'appeler
+ * systématiquement est donc sans risque, et protège du cas où la source
+ * stockerait un chemin non préfixé.
+ */
+function notificationHref(notification: {
+  link: string | null;
+  origin: string;
+}): string {
+  if (!notification.link) {
+    return "/";
+  }
+  if (notification.origin === "vibe") {
+    return toVibePath(notification.link);
+  }
+  return notification.link;
 }
 
 export function NotificationBell() {
@@ -95,8 +151,48 @@ export function NotificationBell() {
   const notifications = data?.notifications ?? [];
   const unread = data?.unreadCount ?? 0;
   const [open, setOpen] = useState(false);
+  // Filtre par application : sans lui, la cloche devient un flux unique
+  // où l'activité de Vibe et les alertes d'Agent se confondent.
+  const [origine, setOrigine] = useState<NotificationOrigin | "all">("all");
   const prevUnreadRef = useRef<number>(unread);
   const initializedRef = useRef(false);
+
+  /**
+   * Notifications groupées par origine, dans un ORDRE FIXE.
+   *
+   * L'ordre ne dépend pas de l'arrivée des événements : mAI d'abord, puis
+   * Vibe, puis Wakies. Un ordre dépendant des dates ferait bouger les
+   * en-têtes à chaque rafraîchissement — le lecteur ne retrouverait plus
+   * sa section.
+   */
+  const groupes = useMemo(() => {
+    const parOrigine = new Map<NotificationOrigin, typeof notifications>();
+    for (const notification of notifications) {
+      const source = notification.origin ?? "mai";
+      const liste = parOrigine.get(source) ?? [];
+      liste.push(notification);
+      parOrigine.set(source, liste);
+    }
+    return (["mai", "vibe", "wakies"] as const)
+      .filter((source) => origine === "all" || source === origine)
+      .map((source) => ({
+        notifications: parOrigine.get(source) ?? [],
+        origin: source,
+      }))
+      .filter((groupe) => groupe.notifications.length > 0);
+  }, [notifications, origine]);
+
+  const nonLuesParOrigine = useMemo(() => {
+    const compte = new Map<NotificationOrigin, number>();
+    for (const notification of notifications) {
+      if (notification.isRead) {
+        continue;
+      }
+      const source = notification.origin ?? "mai";
+      compte.set(source, (compte.get(source) ?? 0) + 1);
+    }
+    return compte;
+  }, [notifications]);
 
   useEffect(() => {
     if (!initializedRef.current) {
@@ -140,6 +236,23 @@ export function NotificationBell() {
       });
       if (!response.ok)
         throw new Error("La mise à jour des notifications a échoué");
+      // Propagation Vibe : le backend Vibe s'authentifie par un JWT que seul
+      // le navigateur détient, donc la propagation se fait ici. Les
+      // notifications Vibe encore non lues sont marquées en une passe.
+      const vibeNonLues = notifications.filter(
+        (n) => n.origin === "vibe" && !n.isRead && n.sourceId
+      );
+      if (vibeNonLues.length > 0) {
+        void Promise.all(
+          vibeNonLues.map((n) =>
+            ApiService.markNotificationRead(n.sourceId as string, true).catch(
+              () => {
+                // L'état de l'hôte est déjà à jour.
+              }
+            )
+          )
+        );
+      }
       mutate(
         (prev) =>
           prev
@@ -203,6 +316,19 @@ export function NotificationBell() {
       });
       if (!response.ok)
         throw new Error("La mise à jour de la notification a échoué");
+      // La propagation vers Vibe se fait ICI, et non dans la route : le
+      // backend Vibe s'authentifie par un JWT que seul le NAVIGATEUR
+      // détient. Le serveur n'a pas de jeton à lui présenter.
+      const notification = notifications.find((n) => n.id === id);
+      if (notification?.origin === "vibe" && notification.sourceId) {
+        void ApiService.markNotificationRead(
+          notification.sourceId,
+          isRead
+        ).catch(() => {
+          // L'état de l'hôte est déjà à jour : l'échec de la propagation
+          // ne concerne que la page Vibe, qui se resynchronisera.
+        });
+      }
       mutate((prev) => {
         if (!prev) {
           return prev;
@@ -330,13 +456,56 @@ export function NotificationBell() {
           </div>
         </div>
 
+        {/* Filtre par application : les trois sources partagent une seule
+            cloche, mais l'utilisateur peut n'en vouloir qu'une. */}
+        {notifications.length > 0 && (
+          <div className="flex items-center gap-1 border-b border-border/40 bg-muted/10 px-2 py-1.5">
+            {(
+              [
+                { id: "all" as const, label: "Tout" },
+                { id: "mai" as const, label: "mAI" },
+                { id: "vibe" as const, label: "Vibe" },
+                { id: "wakies" as const, label: "Wakies" },
+              ] as const
+            ).map((option) => {
+              // « Tout » n'est pas une origine : son compteur est le total
+              // des trois, pas une entrée de la table.
+              const nonLues =
+                option.id === "all"
+                  ? notifications.filter((n) => !n.isRead).length
+                  : (nonLuesParOrigine.get(option.id) ?? 0);
+              const actif = origine === option.id;
+              return (
+                <button
+                  aria-pressed={actif}
+                  className={cn(
+                    "rounded-md px-2 py-0.5 text-[11px] font-medium transition-colors cursor-pointer",
+                    actif
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                  data-active={actif ? "true" : undefined}
+                  key={option.id}
+                  onClick={() => setOrigine(option.id)}
+                  type="button"
+                >
+                  {option.label}
+                  {nonLues > 0 ? (
+                    <span className="ml-1 opacity-70">{nonLues}</span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         <div className="max-h-[360px] overflow-y-auto">
           {isLoading ? (
             <div className="flex flex-col gap-2 p-3">
               <div className="h-12 animate-pulse rounded-xl bg-muted/40" />
               <div className="h-12 animate-pulse rounded-xl bg-muted/40" />
             </div>
-          ) : notifications.length === 0 ? (
+          ) : groupes.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-10 text-center px-4">
               <div className="rounded-full bg-muted p-3 mb-3">
                 <BellIcon className="size-5 text-muted-foreground" />
@@ -345,97 +514,121 @@ export function NotificationBell() {
                 Aucune notification
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                Vos alertes IA, projets, MCP et actualités apparaîtront ici.
+                {origine === "all"
+                  ? "Vos alertes IA, projets, MCP, actualités et l'activité de vos applications apparaîtront ici."
+                  : `Aucune notification ${NOTIFICATION_ORIGIN_LABELS[origine as NotificationOrigin]}.`}
               </p>
             </div>
           ) : (
-            <div className="flex flex-col divide-y divide-border/40">
-              {notifications.map((n) => (
-                <div
-                  className={cn(
-                    "group flex gap-3 px-3 py-3 hover:bg-muted/30 transition-colors relative",
-                    !n.isRead && "bg-primary/5"
-                  )}
-                  key={n.id}
-                >
-                  <div className="text-base leading-none mt-0.5 shrink-0">
-                    <NotificationIcon type={n.type} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="text-[13px] font-semibold leading-tight text-foreground line-clamp-1">
-                        {n.title}
-                      </p>
-                      {!n.isRead && (
-                        <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary animate-pulse" />
-                      )}
-                    </div>
-                    {n.body && (
-                      <p className="text-xs text-muted-foreground line-clamp-2 leading-snug mt-0.5">
-                        {n.body}
-                      </p>
-                    )}
-                    <div className="flex items-center gap-2 mt-1.5">
-                      <span className="text-[11px] text-muted-foreground">
-                        {formatRelative(n.createdAt)}
-                      </span>
-                      {n.link && (
-                        <Link
-                          className="text-[11px] font-medium text-primary hover:underline"
-                          href={n.link}
-                          onClick={() => {
-                            if (!n.isRead) {
-                              handleMarkOne(n.id, true);
+            <div className="flex flex-col">
+              {groupes.map((groupe) => (
+                <section key={groupe.origin}>
+                  <h3 className="sticky top-0 z-10 bg-background/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
+                    {NOTIFICATION_ORIGIN_LABELS[groupe.origin]}
+                  </h3>
+                  <div className="flex flex-col divide-y divide-border/40">
+                    {groupe.notifications.map((n) => (
+                      <div
+                        className={cn(
+                          "group flex gap-3 px-3 py-3 hover:bg-muted/30 transition-colors relative",
+                          !n.isRead && "bg-primary/5"
+                        )}
+                        key={n.id}
+                      >
+                        <div className="text-base leading-none mt-0.5 shrink-0">
+                          <NotificationIcon type={n.type} />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="text-[13px] font-semibold leading-tight text-foreground line-clamp-1">
+                              {n.title}
+                            </p>
+                            {!n.isRead && (
+                              <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary animate-pulse" />
+                            )}
+                          </div>
+                          {n.body && (
+                            <p className="text-xs text-muted-foreground line-clamp-2 leading-snug mt-0.5">
+                              {n.body}
+                            </p>
+                          )}
+                          <div className="flex items-center gap-2 mt-1.5">
+                            <span className="text-[11px] text-muted-foreground">
+                              {formatRelative(n.createdAt)}
+                            </span>
+                            {n.link && (
+                              <Link
+                                className="text-[11px] font-medium text-primary hover:underline"
+                                href={notificationHref(n)}
+                                onClick={() => {
+                                  if (!n.isRead) {
+                                    handleMarkOne(n.id, true);
+                                  }
+                                  setOpen(false);
+                                }}
+                              >
+                                Voir
+                              </Link>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-1 shrink-0">
+                          <button
+                            className={cn(
+                              "rounded-md p-1 transition-colors",
+                              n.isRead
+                                ? "text-muted-foreground/50 hover:bg-muted hover:text-muted-foreground"
+                                : "text-primary hover:bg-primary/10 hover:text-primary font-medium"
+                            )}
+                            onClick={() => handleMarkOne(n.id, !n.isRead)}
+                            title={
+                              n.isRead
+                                ? "Marquer comme non lu"
+                                : "Marquer comme lu"
                             }
-                            setOpen(false);
-                          }}
-                        >
-                          Voir
-                        </Link>
-                      )}
-                    </div>
+                            type="button"
+                          >
+                            <CheckCheckIcon
+                              className={cn(
+                                "size-3.5",
+                                !n.isRead && "text-primary"
+                              )}
+                            />
+                          </button>
+                          <button
+                            className="rounded-md p-1 hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors opacity-70 group-hover:opacity-100"
+                            onClick={() => handleDelete(n.id)}
+                            title="Supprimer"
+                            type="button"
+                          >
+                            <TrashIcon className="size-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex flex-col gap-1 shrink-0">
-                    <button
-                      className={cn(
-                        "rounded-md p-1 transition-colors",
-                        n.isRead
-                          ? "text-muted-foreground/50 hover:bg-muted hover:text-muted-foreground"
-                          : "text-primary hover:bg-primary/10 hover:text-primary font-medium"
-                      )}
-                      onClick={() => handleMarkOne(n.id, !n.isRead)}
-                      title={
-                        n.isRead ? "Marquer comme non lu" : "Marquer comme lu"
-                      }
-                      type="button"
-                    >
-                      <CheckCheckIcon
-                        className={cn("size-3.5", !n.isRead && "text-primary")}
-                      />
-                    </button>
-                    <button
-                      className="rounded-md p-1 hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors opacity-70 group-hover:opacity-100"
-                      onClick={() => handleDelete(n.id)}
-                      title="Supprimer"
-                      type="button"
-                    >
-                      <TrashIcon className="size-3.5" />
-                    </button>
-                  </div>
-                </div>
+                </section>
               ))}
             </div>
           )}
         </div>
 
         {notifications.length > 0 && (
-          <div className="border-t border-border/40 bg-muted/20 p-2 flex justify-center">
+          <div className="border-t border-border/40 bg-muted/20 p-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               className="text-xs font-medium text-muted-foreground hover:text-foreground"
               href="/settings?tab=notifications"
               onClick={() => setOpen(false)}
             >
-              Voir tous les paramètres
+              Gérer les notifications
+            </Link>
+            <span aria-hidden className="hidden h-3 w-px bg-border sm:block" />
+            <Link
+              className="text-xs font-medium text-muted-foreground hover:text-foreground"
+              href={toVibePath("/notifications")}
+              onClick={() => setOpen(false)}
+            >
+              Voir l'activité Vibe
             </Link>
           </div>
         )}

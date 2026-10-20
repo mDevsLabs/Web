@@ -14,8 +14,6 @@ import { AppSwitcherMenu } from "@/components/common/app-switcher";
 import { ConversationList } from "@/components/wakies/ConversationList";
 import { Mascot } from "@/components/wakies/Mascot";
 import { SpaceNav } from "@/components/wakies/SpaceNav";
-import type { useMessagingNotifications } from "@/components/wakies/useMessagingNotifications";
-import { WakiesNotificationBell } from "@/components/wakies/WakiesNotificationBell";
 import type { Dialog } from "@/components/wakies/WorkspaceDialog";
 import {
   type WakiesSection,
@@ -28,12 +26,10 @@ export interface WorkspaceSidebarProps {
   basculerNav: () => void;
   chooseWakie: (w: Wakie) => void;
   configured: boolean;
-  messaging: ReturnType<typeof useMessagingNotifications>;
   mobile: boolean;
   navCollapsed: boolean;
   newConversation: () => Promise<void>;
   openPage: (space: string, page?: string) => void;
-  ouvrirNotification: (conversationId: string) => Promise<void>;
   ouvrirReglages: () => void;
   pageId?: string;
   refresh: () => Promise<void>;
@@ -65,8 +61,6 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
   setMobile,
   navCollapsed,
   basculerNav,
-  messaging,
-  ouvrirNotification,
   configured,
   newConversation,
   sidebarSearch,
@@ -140,12 +134,6 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
               <span className="rail-label">Wakies</span>
             </Button>
           </AppSwitcherMenu>
-          <WakiesNotificationBell
-            notifications={messaging.notifications}
-            onAutoriser={() => void messaging.autoriser()}
-            onSelect={ouvrirNotification}
-            permission={messaging.permission}
-          />
           <Button
             aria-label={navCollapsed ? "Déplier le menu" : "Réduire le menu"}
             className="rail-collapse"

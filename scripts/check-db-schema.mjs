@@ -29,6 +29,10 @@ const REQUIRED_TABLES = [
   "ProjectMember",
   "Skill",
   "ToolExecution",
+  // Migration 0063 : la table unifiée des notifications. Sans elle, la
+  // cloche mAI ne peut ni lire ni écrire — et le tick de réplication n'a
+  // nulle part où copier les événements Vibe et Wakies.
+  "Notification",
   "user_notification_prefs",
   "user_preferences",
   "UsageEvent",
@@ -70,6 +74,10 @@ const REQUIRED_TABLES = [
   "UserFormResponse",
   // Migration 0060 : mAI Search
   "MaiSearchQuery",
+  // Migration 0064 : réglages du jeu Blackline. Sans cette table, la lecture
+  // des réglages échoue et /blackline retombe silencieusement sur les
+  // réglages locaux de l'appareil.
+  "BlacklineSettings",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -94,6 +102,14 @@ const REQUIRED_COLUMNS = [
     "expiresAt",
   ].map((column) => ({ column, table: "WakiesChatTurn" })),
   { column: "agentApprovalRequired", table: "user_notification_prefs" },
+  // Migration 0063 : notifications unifiées. Sans `origin`, la réplication
+  // des notifications Vibe et Wakies n'a pas où écrire — et la cloche mAI
+  // ne sait pas de quelle application vient un événement.
+  { column: "origin", table: "Notification" },
+  { column: "sourceId", table: "Notification" },
+  { column: "sourceMeta", table: "Notification" },
+  // Migration 0065 : le réglage qui décide si une alerte Wakies est produite.
+  { column: "replyAlertsEnabled", table: "WakiesSettings" },
   { column: "executionOwner", table: "AgentRun" },
   { column: "executionLeaseUntil", table: "AgentRun" },
   { column: "isEnabled", table: "UserMemory" },
@@ -130,6 +146,14 @@ const REQUIRED_COLUMNS = [
   { column: "theme", table: "user_preferences" },
   // Migration 0057 : effort de réflexion global dans user_preferences.
   { column: "reasoningLevel", table: "user_preferences" },
+  // Migration 0062 : préférences de recherche mAI Search. Elles sont lues à
+  // chaque chargement de la page des paramètres ET par la route de
+  // recherche : une colonne absente ferait tomber la lecture des préférences
+  // en 42703, donc toute la page Paramètres — comme en 0034/0038.
+  { column: "searchLanguage", table: "user_preferences" },
+  { column: "searchResultCount", table: "user_preferences" },
+  { column: "searchSafetyLevel", table: "user_preferences" },
+  { column: "searchSources", table: "user_preferences" },
   // Migration 0059 : typage des modèles (chat, audio, image) et fournisseur.
   { column: "type", table: "openrouter_models" },
   { column: "fournisseur", table: "openrouter_models" },

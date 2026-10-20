@@ -1,14 +1,16 @@
 {
   "name": "@mdevs/web",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": true,
   "scripts": {
     "admin": "bun run scripts/admin.ts",
-    "build": "node scripts/build-vibe-css.mjs && node scripts/build-wakies-css.mjs && node scripts/build-site-css.mjs && next build",
+    "build": "node scripts/build-vibe-css.mjs && node scripts/build-wakies-css.mjs && node scripts/build-site-css.mjs && node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs && next build",
     "build:all": "pnpm run build && pnpm --dir apps/coder run build && pnpm --dir apps/desktop run build",
+    "build:blackline": "node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs",
     "build:coder": "pnpm --dir apps/coder run build",
     "build:coder:main": "pnpm --dir apps/coder run build:main",
     "build:coder:renderer": "pnpm --dir apps/coder run build:renderer",
+    "build:limited": "node scripts/run-with-memory-limit.mjs 3072 node node_modules/next/dist/bin/next build",
     "build:site-css": "node scripts/build-site-css.mjs",
     "check": "ultracite check",
     "db:check": "drizzle-kit check",

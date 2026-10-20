@@ -14,7 +14,14 @@
 // `cli` n'est pas une application web : c'est une entrée du « Menu favori »
 // qui ouvre le terminal local de l'application de bureau. Elle vit donc dans
 // le catalogue (clé persistée) sans entrer dans APP_ORDER (menu du logo).
-export const APP_KEYS = ["mai", "site", "vibe", "code", "cli"] as const;
+export const APP_KEYS = [
+  "mai",
+  "site",
+  "vibe",
+  "code",
+  "blackline",
+  "cli",
+] as const;
 export type AppKey = (typeof APP_KEYS)[number];
 
 export type AppCatalogEntry = {
@@ -38,6 +45,14 @@ export type AppCatalogEntry = {
 };
 
 export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
+  blackline: {
+    description: "Détendez-vous en attendant votre agent !",
+    key: "blackline",
+    label: "Blackline",
+    // Jeu 3D embarqué : la page hôte monte le bundle statique du jeu.
+    path: "/blackline",
+    pathPrefix: "/blackline",
+  },
   cli: {
     description: "mAI dans un terminal local (application de bureau)",
     key: "cli",
@@ -86,6 +101,7 @@ export const APP_ORDER: AppCatalogEntry[] = [
   APP_CATALOG.site,
   APP_CATALOG.vibe,
   APP_CATALOG.code,
+  APP_CATALOG.blackline,
 ];
 
 // Fail-safe maison : un tier illisible vaut « free » — une préférence d'app

@@ -301,6 +301,36 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  // Migration 0063 : notifications unifiées (mAI + Vibe + Wakies).
+  // `origin` identifie l'application productrice, `sourceId` l'événement dans
+  // sa source, `sourceMeta` la charge utile propre à cette source. L'index
+  // unique PARTIEL rend la réplication idempotente : il porte `sourceId IS
+  // NOT NULL`, parce que les notifications natives de mAI n'en ont pas.
+  try {
+    await connection`ALTER TABLE "Notification" ADD COLUMN IF NOT EXISTS "origin" varchar(20) DEFAULT 'mai' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "Notification" ADD COLUMN IF NOT EXISTS "sourceId" text`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "Notification" ADD COLUMN IF NOT EXISTS "sourceMeta" jsonb`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "Notification_origin_sourceId_key" ON "Notification" USING btree ("origin","sourceId") WHERE "sourceId" IS NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "Notification_userId_origin_createdAt_idx" ON "Notification" USING btree ("userId","origin","createdAt")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
   try {
     await connection`
       CREATE TABLE IF NOT EXISTS "user_notification_prefs" (
@@ -419,7 +449,7 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
   try {
-    await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined'))`;
+    await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined','vibe_like','vibe_repost','vibe_reply','vibe_mention','vibe_quote','vibe_follow','vibe_dm','vibe_ai_digest','vibe_system','wakies_reply'))`;
   } catch (error) {
     noteIgnoredStep(error);
   }
@@ -831,6 +861,36 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  // Migration 0062 : préférences de recherche mAI Search. Elles sont lues à
+  // chaque chargement de la page des paramètres ET par la route de
+  // recherche : sans elles, la lecture des préférences échoue en 42703 et
+  // toute la page tombe.
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "searchLanguage" varchar(10) DEFAULT 'fr' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "searchResultCount" integer DEFAULT 10 NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "searchSafetyLevel" varchar(20) DEFAULT 'medium' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "searchSources" jsonb DEFAULT '["web","news","images","videos","wikipedia"]'::jsonb NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Migration 0065 : le réglage qui décide si une alerte Wakies est produite.
+  try {
+    await connection`ALTER TABLE IF EXISTS "WakiesSettings" ADD COLUMN IF NOT EXISTS "replyAlertsEnabled" boolean DEFAULT true NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
   try {
     await connection`ALTER TABLE IF EXISTS "openrouter_models" DROP CONSTRAINT IF EXISTS "openrouter_models_provider_check"`;
   } catch (error) {
@@ -849,6 +909,44 @@ const runMigrate = async () => {
         "updatedAt" timestamp DEFAULT now() NOT NULL
       );
     `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Migration 0064 : réglages du jeu Blackline, par compte. Répété ici pour
+  // les environnements au journal incomplet : sans cette table, la lecture
+  // des réglages échoue en 42P01 et /blackline retombe sur les réglages
+  // locaux — silencieusement, et sans que l'utilisateur sache pourquoi.
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "BlacklineSettings" (
+        "userId" text PRIMARY KEY NOT NULL,
+        "settings" jsonb DEFAULT '{}'::jsonb NOT NULL,
+        "updatedAt" timestamptz DEFAULT now() NOT NULL
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM pg_constraint
+          WHERE conname = 'BlacklineSettings_settings_object_check'
+        ) THEN
+          ALTER TABLE "BlacklineSettings"
+            ADD CONSTRAINT "BlacklineSettings_settings_object_check"
+            CHECK (jsonb_typeof("settings") = 'object');
+        END IF;
+      END $$;
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "BlacklineSettings_userId_idx" ON "BlacklineSettings" ("userId")`;
   } catch (error) {
     noteIgnoredStep(error);
   }

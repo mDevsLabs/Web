@@ -1,5 +1,49 @@
 # Notes de version
 
+## 0.9.2
+
+### Nouveautés
+
+* **Recherche mAI** : un moteur de recherche complet, avec recherche web, actualités, images et vidéos, un résumé par l’IA affiché en continu, les sources citées cliquables, une discussion de suivi sur un résultat précis, un vote de qualité et un historique des recherches conservé.
+* **Application de bureau** : une fenêtre « À propos de mAI » présente la version, le canal, la plateforme et les versions d’Electron, de Node et de Chromium. Les mises à jour se téléchargent depuis l’application, avec progression, et Coder se lance avec la session mAI déjà connectée.
+* **Mises à jour automatiques de Coder** : un panneau complet recherche, télécharge et redémarre l’application. Les préversions sont détectées par commit, et le panneau est neutralisé quand Coder est fourni avec mAI Desktop.
+* **Recherche dans le sélecteur de modèle** : un filtre insensible aux accents et à la casse permet de retrouver un modèle dans Coder, avec sélection directe quand un seul correspond.
+* **Catalogue de modèles** : le laboratoire concepteur est distingué du fournisseur d’accès, un nouveau fournisseur d’images rejoint le catalogue, les modèles sont typés (chat, audio, image) et l’API permet de filtrer par type.
+* **Résolution des conflits de synchronisation** : lorsqu’une mise à jour automatique écrase une surcharge d’administration, un résolveur interactif est proposé en ligne de commande. Sans résolveur, la base l’emporte.
+* **Réflexion en direct** : le raisonnement des modèles s’affiche au fil de la réponse dans le Chat, au lieu d’apparaître seulement une fois la réponse terminée.
+* **Onglet Applications** : les réglages de Vibe et de Wakies sont regroupés dans les paramètres de mAI, avec un sommaire par section.
+* **Modification et copie de message** : dans une conversation Wakies, un message peut être modifié — ses pièces jointes d’origine sont conservées — ou copié.
+* **Raisonnement dans Vibe** : la réflexion des modèles est conservée et présentée dans un panneau repliable.
+* **Outils portables** : calculatrice, date et heure et lecture d’une page sont disponibles dans Vibe, comme dans le Chat et l’Agent.
+* **Compte des tâches planifiées** : les tâches Wakies enregistrent enfin leur consommation réelle de jetons.
+
+### Améliorations
+
+* **Réflexion par répondant** : dans un fil Wakies, chaque assistant expose sa propre réflexion. Le niveau d’effort proposé correspond à ce que le modèle sait réellement faire.
+* **Sélecteur de modèle unifié** : Wakies réutilise le sélecteur du Chat et de l’Agent, avec la même recherche et le même sous-menu de réflexion.
+* **Modèle par défaut** : quand ni la conversation ni le Wakie n’imposent de modèle, la préférence enregistrée de l’utilisateur s’applique, comme dans les autres espaces.
+* **Enregistrement du déploiement** : les applications natives identifient la build Web courante sans mise en cache, et la version de Coder embarquée est vérifiée avant tout lancement.
+* **Journalisation de l’usage** : la traduction et les commentaires IA de Vibe sont désormais comptés dans les quotas, au lieu d’être ignorés ou estimés.
+* **Modèles audio** : l’accès ne dépend plus du suffixe « gratuit » mais du forfait, et un jeu de repli évite un sélecteur vide.
+
+### Corrections
+
+* **Compte fantôme dans Coder** : une réponse vide de l’API de consommation ne fabrique plus un compte « Free » à zéro jeton. Le profil incomplet est signalé à l’utilisateur.
+* **Session expirée** : un jeton invalide efface la session locale et invite à se reconnecter, tandis qu’une panne réseau conserve l’identité déjà connue.
+* **Installation de Coder impossible** : le dépôt de releases pointe désormais vers le bon projet, et le paquet portable n’est plus proposé sur Windows.
+* **Terminal local** : un module natif manquant affiche un message explicite au lieu d’arrêter l’application, et la détection du CLI ne confond plus l’exécutable de mAI Desktop avec celui du CLI.
+* **Boucle de redirection** : la bascule entre la connexion et l’éditeur de Coder ne boucle plus.
+* **Palette de réactions des Wakies** : le serveur et l’interface proposent la même liste d’émojis. Quatre réactions acceptées par l’interface étaient refusées par le serveur.
+* **Auto-réaction** : un compte ne peut plus réagir à son propre message.
+* **Réflexion interrompue** : la collecte du raisonnement est plafonnée sans jamais tronquer son affichage, et les réponses cumulatives ne sont plus dupliquées.
+* **Modèles en double** : la liste des modèles ne contient plus de doublons, ni dans l’application Web ni dans Coder, et les surcharges d’administration survivent à la synchronisation.
+* **Double adresse d’API** : dans Coder, le fournisseur, le compte et les modèles visent le même hôte.
+* **Recherche mAI** : les images distantes qui bloquent l’affichage passent par un proxy sûr, et les hôtes internes sont refusés.
+* **Compte des jetons** : le relevé accepte un total de jetons explicite, et les limites de jetons peuvent valoir zéro.
+* **Connexion Google et GitHub** : l’erreur « le coffre de secrets n’est pas configuré » est remplacée par un encart explicite qui nomme la variable d’environnement manquante, et le bouton « Connecter » est désactivé tant que l’instance n’est pas prête.
+* **Enregistrement des paramètres de Vibe** : les réglages de Vibe, du cercle et du thème s’enregistrent enfin depuis les paramètres de mAI. Les appels Vibe passent par un relais authentifié par la session, au lieu d’être refusés par le serveur faute de jeton.
+* **Page Coder** : la section « Pourquoi mAI Coder est une application desktop native ? », le badge « agent-first » et le bloc sur le respect des données ont été retirés de la page.
+
 ## 0.9.1
 
 ### Nouveautés

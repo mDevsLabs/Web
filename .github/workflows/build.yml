@@ -59,6 +59,7 @@ jobs:
       mobile: true
       desktop: true
       coder: true
+      blackline: true
     steps:
       - name: 📦 Checkout du code
         if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
@@ -96,6 +97,16 @@ jobs:
               - "apps/coder/**"
               - "packages/ui/**"
               - "packages/icons/**"
+              - ".github/workflows/build.yml"
+              - "package.json"
+            blackline:
+              - "apps/blackline/**"
+              - "components/blackline/**"
+              - "lib/blackline/**"
+              - "app/(chat)/blackline/**"
+              - "app/(chat)/api/blackline/**"
+              - "scripts/build-blackline.mjs"
+              - "scripts/build-blackline-css.mjs"
               - ".github/workflows/build.yml"
               - "package.json"
 
@@ -140,6 +151,12 @@ jobs:
         run: npm install --global "vercel@$VERCEL_CLI_VERSION"
       - name: 📦 Installer les dépendances
         run: pnpm install --frozen-lockfile
+      # Blackline est un jeu Vite AUTONOME : il n'est pas membre du workspace
+      # pnpm (pnpm-workspace.yaml liste `packages: []`), il a son propre
+      # package-lock.json et ses propres node_modules. `pnpm build` lance
+      # `scripts/build-blackline.mjs`, qui exige ces dépendances.
+      - name: 📦 Installer les dépendances de Blackline
+        run: npm ci --prefix apps/blackline
       - name: ☁️ Récupérer l'environnement Vercel
         run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
       - name: 🖨️ Afficher l'empreinte de la base migrée

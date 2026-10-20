@@ -1,6 +1,8 @@
 import { tool } from "ai";
 import { z } from "zod";
 import { MAI_API_URL } from "@/lib/constants";
+import { normalizeMaiSearchLanguage } from "@/lib/search/sources";
+import { searchWikipediaWithSummaries } from "@/lib/search/wikipedia";
 
 type SearchResult = {
   snippet: string;
@@ -187,6 +189,29 @@ export const webSearch = tool({
       }
     };
 
+    /**
+     * Wikipédia, en dernier recours.
+     *
+     * L'encyclopédie n'est pas un moteur de recherche : elle ne trouve que
+     * des articles. Mais c'est une source FIABLE, là où DDG et les
+     * instances Searx sont des miroirs qui se dégradent. Elle vient donc
+     * après eux, et son contenu est annoncé comme tel — un agent ne doit
+     * pas présenter un article d'encyclopédie comme une actualité.
+     */
+    const tryWikipedia = async (): Promise<SearchResult[]> => {
+      const articles = await searchWikipediaWithSummaries(query, {
+        lang: normalizeMaiSearchLanguage(language),
+        limit: count,
+        withSummaries: Math.min(3, count),
+      });
+      return articles.map((article) => ({
+        snippet: article.summary || article.extract,
+        source: "wikipedia.org",
+        title: article.title,
+        url: article.url,
+      }));
+    };
+
     const primary = await tryPrimary();
     if (primary) {
       return {
@@ -213,6 +238,11 @@ export const webSearch = tool({
           source: instance,
         };
       }
+    }
+
+    const wiki = await tryWikipedia();
+    if (wiki.length > 0) {
+      return { count: wiki.length, query, results: wiki, source: "wikipedia" };
     }
 
     return {

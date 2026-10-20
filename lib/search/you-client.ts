@@ -1,13 +1,37 @@
 import "server-only";
 
+import {
+  type MaiSearchLanguage,
+  type MaiSearchSafetyLevel,
+  type MaiSearchSourceKey,
+  normalizeMaiSearchLanguage,
+  normalizeMaiSearchSafetyLevel,
+  normalizeMaiSearchSources,
+} from "./sources";
+import {
+  fetchWikipediaImages,
+  searchWikipediaWithSummaries,
+} from "./wikipedia";
+
 export interface SearchWebHit {
   favicon_url?: string;
+  /**
+   * Origine du résultat.
+   *
+   * `wikipedia` distingue un article d'encyclopédie d'une page web
+   * ordinaire : l'interface l'affiche avec un badge, et la synthèse cite
+   * la source correcte.
+   */
+  origin?: SearchResultOrigin;
   page_age?: string;
   snippet: string;
   thumbnail_url?: string;
   title: string;
   url: string;
 }
+
+/** Origines possibles d'un résultat de recherche. */
+export type SearchResultOrigin = "wikipedia" | "you.com";
 
 export interface SearchImageHit {
   image_url: string;
@@ -39,11 +63,24 @@ export interface SearchResponse {
   cached?: boolean;
   images: SearchImageHit[];
   news: SearchNewsHit[];
-  provider: "you.com" | "fallback";
+  /**
+   * Moteurs qui ont répondu.
+   *
+   * `mixed` quand plusieurs sources ont produit des résultats : c'est le
+   * cas normal depuis que Wikipédia est une source à part entière. La
+   * valeur reste une chaîne pour ne pas casser les consommateurs
+   * existants, qui l'affichaient telle quelle.
+   */
+  provider: "fallback" | "mixed" | "wikipedia" | "you.com";
   query: string;
   results: SearchWebHit[];
   success: boolean;
   videos: SearchVideoHit[];
+  /**
+   * `true` quand la requête ressemble à une recherche factuelle et que les
+   * articles d'encyclopédie sont remontés en tête de liste.
+   */
+  wikiFirst?: boolean;
 }
 
 // ─────────────────────────────────────────────
@@ -77,6 +114,115 @@ function setInCache(key: string, response: SearchResponse) {
     expiresAt: Date.now() + CACHE_TTL_MS,
     response,
   });
+}
+
+// ─────────────────────────────────────────────
+// Filtre de sécurité
+// ─────────────────────────────────────────────
+/**
+ * Région et identifiant de flux du Google News RSS, par langue.
+ *
+ * Le flux se règle sur un couple région / langue : `hl=fr&gl=FR` et
+ * `hl=en&gl=US` ne rendent pas les mêmes titres. Une recherche en anglais
+ * sur un flux français perdait la moitié de ses résultats.
+ */
+const GOOGLE_NEWS_REGION: Record<MaiSearchLanguage, string> = {
+  de: "DE",
+  en: "US",
+  es: "ES",
+  fr: "FR",
+  it: "IT",
+};
+
+const GOOGLE_NEWS_CEID: Record<MaiSearchLanguage, string> = {
+  de: "DE:de",
+  en: "US:en",
+  es: "ES:es",
+  fr: "FR:fr",
+  it: "IT:it",
+};
+
+/**
+ * Termes qui signalent un contenu sensible.
+ *
+ * Le filtre est LÉXICAL et non contextuel : c'est le seul moyen fiable
+ * quand le moteur de recherche ne fournit aucun signalement structuré.
+ * Une liste courte et explicite vaut mieux qu'une heuristique floue — le
+ * mode « strict » doit retirer ce qui est manifestement sensible, pas
+ *ombrer les résultats d'une recherche technique.
+ */
+const TERMES_SENSIBLES = [
+  "porn",
+  "porno",
+  "xxx",
+  "sex cam",
+  "nude",
+  "nudes",
+  "onlyfans",
+  "escort",
+  "hentai",
+  "nsfw",
+  "suicide",
+  "self-harm",
+  "self harm",
+  "kill yourself",
+  "how to make a bomb",
+  "fabricate bomb",
+  "child abuse",
+  "csam",
+];
+
+/**
+ * Retire les résultats dont le titre ou l'extrait contient un terme
+ * sensible.
+ *
+ * `low` (aucun) ne retire rien. `medium` retire les occurrences multiples —
+ * un terme isolé dans un extrait peut être une mentioneze innocente
+ * (« le film X Rated » dans un article de cinéma). `strict` retire toute
+ * occurrence.
+ */
+export function filterBySafety(
+  hits: SearchWebHit[],
+  level: MaiSearchSafetyLevel
+): SearchWebHit[] {
+  const niveau = normalizeMaiSearchSafetyLevel(level);
+  if (niveau === "low") {
+    return hits;
+  }
+  const seuil = niveau === "strict" ? 1 : 2;
+  return hits.filter((hit) => {
+    const texte = `${hit.title} ${hit.snippet}`.toLowerCase();
+    let occurrences = 0;
+    for (const terme of TERMES_SENSIBLES) {
+      if (texte.includes(terme)) {
+        occurrences += 1;
+      }
+    }
+    return occurrences < seuil;
+  });
+}
+
+/**
+ * Une requête « factuelle » ressemble à une question sur un sujet
+ * documenté : Wikipédia doit alors passer en tête des résultats.
+ *
+ * Heuristique volontairement simple : la présence d'un mot interrogatif
+ * ou d'un nom propre majuscule signale une recherche encyclopédique.
+ */
+export function looksFactual(query: string): boolean {
+  const texte = query.trim();
+  if (!texte) {
+    return false;
+  }
+  if (
+    /\b(qui|quoi|quel|quelle|quels|quelles|comment|quand|où|ou|pourquoi|combien|est-ce|definition|définition|origine|histoire)\b/i.test(
+      texte
+    )
+  ) {
+    return true;
+  }
+  // Un nom propre en tête de requête (« Ada Lovelace », « Tour Eiffel »).
+  return /^[A-ZÀ-Ý][\w'’-]+(\s+[A-ZÀ-Ý][\w'’-]+)+/.test(texte);
 }
 
 /**
@@ -270,14 +416,21 @@ async function fetchYouImages(
 }
 
 /**
- * Fallback multi-sources (Google News RSS, Wikipedia, DuckDuckGo)
+ * Fallback multi-sources (Wikipédia, Google News RSS)
+ *
+ * La langue est celle de l'appelant — celle de la préférence du compte.
+ * La détection automatique par accents (l'ancien comportement) n'était
+ * qu'un pis-aller : un utilisateur qui a choisi l'anglais veut de l'anglais,
+ * même sur une requête accentuée.
  */
-async function fallbackSearch(query: string): Promise<SearchWebHit[]> {
+async function fallbackSearch(
+  query: string,
+  lang: MaiSearchLanguage = "fr"
+): Promise<SearchWebHit[]> {
   const results: SearchWebHit[] = [];
 
-  // 1. Wikipedia
+  // 1. Wikipédia
   try {
-    const lang = /[éèàùçâêîôû]/i.test(query) ? "fr" : "en";
     const wikiUrl = `https://${lang}.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=6&namespace=0&format=json`;
     const res = await fetch(wikiUrl, {
       headers: { "User-Agent": "mAI-Search-Fallback/1.0" },
@@ -292,6 +445,7 @@ async function fallbackSearch(query: string): Promise<SearchWebHit[]> {
         if (urls[i]) {
           results.push({
             favicon_url: "https://wikipedia.org/static/favicon/wikipedia.ico",
+            origin: "wikipedia",
             snippet: descriptions[i] || `Article Wikipedia sur ${titles[i]}`,
             title: titles[i],
             url: urls[i],
@@ -306,7 +460,10 @@ async function fallbackSearch(query: string): Promise<SearchWebHit[]> {
   // 2. Google News RSS
   if (results.length < 5) {
     try {
-      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`;
+      // Le flux suit la langue demandée : une recherche en anglais sur des
+      // sources françaises ne renvoyait que des titres français, tronqués
+      // par le décalage de région.
+      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=${lang}&gl=${GOOGLE_NEWS_REGION[lang]}&ceid=${GOOGLE_NEWS_CEID[lang]}`;
       const res = await fetch(rssUrl, {
         headers: {
           Accept: "application/rss+xml, text/xml, */*",
@@ -370,10 +527,11 @@ export function buildFaviconUrl(urlStr: string): string {
 
 async function fetchGoogleNews(
   query: string,
-  limit = 15
+  limit = 15,
+  lang: MaiSearchLanguage = "fr"
 ): Promise<SearchNewsHit[]> {
   try {
-    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`;
+    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=${lang}&gl=${GOOGLE_NEWS_REGION[lang]}&ceid=${GOOGLE_NEWS_CEID[lang]}`;
     const res = await fetch(rssUrl, {
       headers: {
         Accept: "application/rss+xml, text/xml, */*",
@@ -530,29 +688,74 @@ async function fetchYouTubeVideos(
 
 async function fetchWikiImages(
   query: string,
-  limit = 12
+  limit = 12,
+  lang: MaiSearchLanguage = "fr"
 ): Promise<SearchImageHit[]> {
-  try {
-    const lang = /[éèàùçâêîôû]/i.test(query) ? "fr" : "en";
-    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=${limit}&prop=pageimages&pithumbsize=600&format=json`;
-    const res = await fetch(url, {
-      headers: { "User-Agent": "mAI-Search-Images/1.0" },
-      signal: AbortSignal.timeout(3500),
-    });
-    if (!res.ok) return [];
-    const data = await res.json();
-    const pages = Object.values(data?.query?.pages || {}) as any[];
-    return pages
-      .filter((p) => p.thumbnail?.source)
-      .map((p) => ({
-        image_url: p.thumbnail.source,
-        page_url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(p.title)}`,
-        thumbnail: p.thumbnail.source,
-        title: p.title,
-      }));
-  } catch {
-    return [];
-  }
+  const images = await fetchWikipediaImages(query, { lang, limit });
+  return images.map((image) => ({
+    image_url: image.image_url,
+    page_url: image.page_url,
+    thumbnail: image.thumbnail,
+    title: image.title,
+  }));
+}
+
+/**
+ * Articles d'encyclopédie, convertis dans la forme des résultats de recherche.
+ *
+ * Le résumé de l'article est l'extrait affiché : l'extrait de recherche de
+ * MediaWiki est trop court pour être informatif, et le résumé du premier
+ * paragraphe est exactement ce qu'un lecteur attend d'un résultat.
+ */
+async function fetchWikipediaWeb(
+  query: string,
+  count: number,
+  lang: MaiSearchLanguage
+): Promise<SearchWebHit[]> {
+  const articles = await searchWikipediaWithSummaries(query, {
+    lang,
+    limit: count,
+    withSummaries: Math.min(3, count),
+  });
+  return articles.map((article) => ({
+    favicon_url: "https://wikipedia.org/static/favicon/wikipedia.ico",
+    origin: "wikipedia" as const,
+    snippet: article.summary || article.extract,
+    thumbnail_url: article.thumbnail,
+    title: article.title,
+    url: article.url,
+  }));
+}
+
+/**
+ * Déduplique les résultats par URL canonique.
+ *
+ * Un article d'encyclopédie peut être déjà remonté par You.com : le
+ * conserver une seule fois, en gardant l'ORIGINE de la première
+ * occurrence. L'inverse (Wikipédia d'abord) donnerait le badge à un
+ * résultat qui n'est pas un article d'encyclopédie.
+ */
+function dedupeByUrl(hits: SearchWebHit[]): SearchWebHit[] {
+  const vues = new Set<string>();
+  return hits.filter((hit) => {
+    if (!hit.url) {
+      return false;
+    }
+    let cle = hit.url;
+    try {
+      const url = new URL(hit.url);
+      // Wikipédia encode les espaces en `_` : on normalise pour que
+      // « Ada_Lovelace » et « Ada%20Lovelace » ne soient pas deux entrées.
+      cle = `${url.hostname}${url.pathname.replace(/_/g, " ").toLowerCase()}`;
+    } catch {
+      cle = hit.url;
+    }
+    if (vues.has(cle)) {
+      return false;
+    }
+    vues.add(cle);
+    return true;
+  });
 }
 
 /**
@@ -560,7 +763,10 @@ async function fetchWikiImages(
  */
 export async function executeMaiSearch(params: {
   count?: number;
+  lang?: MaiSearchLanguage;
   query: string;
+  safetyLevel?: MaiSearchSafetyLevel;
+  sources?: MaiSearchSourceKey[];
   type?: "web" | "images" | "news" | "videos" | "all";
 }): Promise<SearchResponse> {
   const trimmed = params.query.trim();
@@ -576,26 +782,47 @@ export async function executeMaiSearch(params: {
     };
   }
 
-  const cacheKey = `${params.type || "all"}:${trimmed.toLowerCase()}`;
+  const lang = normalizeMaiSearchLanguage(params.lang);
+  const safetyLevel = normalizeMaiSearchSafetyLevel(params.safetyLevel);
+  // Les sources demandées par l'appelant, ou le type historique. `type`
+  // reste lu pour les appelants anciens (l'API publique, le chat).
+  const sources = params.sources
+    ? normalizeMaiSearchSources(params.sources)
+    : normalizeMaiSearchSources(
+        params.type === "images"
+          ? ["images"]
+          : params.type === "news"
+            ? ["news"]
+            : params.type === "videos"
+              ? ["videos"]
+              : params.type === "web"
+                ? ["web"]
+                : undefined
+      );
+
+  const wantWeb = sources.includes("web");
+  const wantImages = sources.includes("images");
+  const wantNews = sources.includes("news");
+  const wantWikipedia = sources.includes("wikipedia");
+
+  const cacheKey = `${sources.join(",")}:${lang}:${safetyLevel}:${trimmed.toLowerCase()}`;
   const cached = getFromCache(cacheKey);
   if (cached) return cached;
 
   const count = params.count || 20;
-  const wantImages =
-    params.type === "images" || params.type === "all" || !params.type;
-  const wantWeb =
-    params.type === "web" || params.type === "all" || !params.type;
-  const wantNews =
-    params.type === "news" || params.type === "all" || !params.type;
 
   // Appels parallèles pour réduire la latence au minimum
-  const [webResult, imagesResult, newsResult] = await Promise.allSettled([
-    wantWeb
-      ? fetchYouWeb(trimmed, count)
-      : Promise.resolve({ hits: [], images: [] }),
-    wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
-    wantNews ? fetchGoogleNews(trimmed, 15) : Promise.resolve([]),
-  ]);
+  const [webResult, imagesResult, newsResult, wikiResult] =
+    await Promise.allSettled([
+      wantWeb
+        ? fetchYouWeb(trimmed, count)
+        : Promise.resolve({ hits: [], images: [] }),
+      wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
+      wantNews ? fetchGoogleNews(trimmed, 15, lang) : Promise.resolve([]),
+      wantWikipedia
+        ? fetchWikipediaWeb(trimmed, count, lang)
+        : Promise.resolve([] as SearchWebHit[]),
+    ]);
 
   const webData =
     webResult.status === "fulfilled"
@@ -604,13 +831,14 @@ export async function executeMaiSearch(params: {
   const dedicatedImages =
     imagesResult.status === "fulfilled" ? imagesResult.value : [];
   const newsHits = newsResult.status === "fulfilled" ? newsResult.value : [];
+  const wikiHits = wikiResult.status === "fulfilled" ? wikiResult.value : [];
 
   let results = webData.hits;
   let allImages = [...dedicatedImages, ...webData.images];
 
   // Si aucune image reçue, tenter le repli Wikipédia
   if (allImages.length === 0 && wantImages) {
-    const wikiImages = await fetchWikiImages(trimmed);
+    const wikiImages = await fetchWikiImages(trimmed, 12, lang);
     allImages.push(...wikiImages);
   }
 
@@ -622,19 +850,47 @@ export async function executeMaiSearch(params: {
     return true;
   });
 
-  let provider: "you.com" | "fallback" = "you.com";
+  const providers = new Set<SearchResponse["provider"]>();
+  if (results.length > 0) {
+    providers.add("you.com");
+  }
+  if (wikiHits.length > 0) {
+    providers.add("wikipedia");
+  }
 
   // Si aucun résultat Web (ou pas de clé), repli automatique
   if (results.length === 0 && wantWeb) {
-    results = await fallbackSearch(trimmed);
-    provider = "fallback";
+    results = await fallbackSearch(trimmed, lang);
+    if (results.length > 0) {
+      providers.add("fallback");
+    }
+  }
+
+  // Wikipédia est une source à part entière : ses articles viennent
+  // s'ajouter aux résultats web, dédupliqués par URL.
+  if (wikiHits.length > 0) {
+    results = dedupeByUrl([...results, ...wikiHits]);
+  }
+
+  // Filtre de sécurité : appliqué APRÈS l'assemblage, donc il retire aussi
+  // bien un résultat web sensible qu'un article d'encyclopédie.
+  results = filterBySafety(results, safetyLevel);
+
+  // Une requête factuelle sert mieux avec l'encyclopédie en tête : l'article
+  // de référence avant les pages qui en parlent.
+  const wikiFirst = looksFactual(trimmed) && wikiHits.length > 0;
+  if (wikiFirst) {
+    results = [
+      ...results.filter((hit) => hit.origin === "wikipedia"),
+      ...results.filter((hit) => hit.origin !== "wikipedia"),
+    ];
   }
 
   // Extraire les vidéos à partir des résultats web
   let videos = extractVideos(results);
 
   // Si aucune vidéo trouvée dans les liens web, rechercher sur YouTube
-  if (videos.length === 0) {
+  if (videos.length === 0 && sources.includes("videos")) {
     const ytVideos = await fetchYouTubeVideos(trimmed);
     videos = ytVideos;
   }
@@ -644,6 +900,13 @@ export async function executeMaiSearch(params: {
     ...r,
     favicon_url: r.favicon_url || buildFaviconUrl(r.url),
   }));
+
+  const provider: SearchResponse["provider"] =
+    providers.size > 1
+      ? "mixed"
+      : providers.size === 1
+        ? ([...providers][0] as SearchResponse["provider"])
+        : "you.com";
 
   const response: SearchResponse = {
     images: allImages,
@@ -657,6 +920,7 @@ export async function executeMaiSearch(params: {
       newsHits.length > 0 ||
       videos.length > 0,
     videos,
+    wikiFirst,
   };
 
   if (response.success) {

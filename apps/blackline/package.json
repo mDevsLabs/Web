@@ -1,0 +1,30 @@
+{
+  "name": "blackline",
+  "version": "0.9.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "export": "node scripts/export-project.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-transform-types --test tests/*.test.ts tests/*.test.mjs",
+    "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mjs",
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "prepare:desktop": "node scripts/native/prepare-desktop.mjs",
+    "prepare:mobile": "node scripts/native/prepare-mobile.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0",
+    "@neondatabase/serverless": "1.1.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.180.0",
+    "vite": "6.3.5",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=24.0.0 <25"
+  }
+}

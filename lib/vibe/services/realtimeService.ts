@@ -36,7 +36,14 @@ class RealtimeClient {
   private currentToken: string | null = null;
   private manuallyStopped = false;
 
-  /** Ouvre (ou réutilise) la connexion SSE pour ce token JWT. Idempotent. */
+  /**
+   * Ouvre (ou réutilise) la connexion SSE. Idempotent.
+   *
+   * Le jeton sert désormais de CLE DE SESSION (détecter un changement de
+   * compte, réouvrir le flux) et non plus de credential : il n'est plus
+   * transmis, ni en en-tête ni en query string. C'est le relais BFF qui
+   * authentifie, avec le cookie de session de l'hôte.
+   */
   start(token: string) {
     if (
       !token ||
@@ -92,9 +99,20 @@ class RealtimeClient {
   private connect() {
     if (this.es || !this.currentToken) return;
     try {
-      // EventSource ne peut pas définir d'en-têtes : JWT en query (?token=)
-      const url = `${API_BASE}/v1/realtime/stream?token=${encodeURIComponent(this.currentToken)}`;
-      const es = new EventSource(url);
+      // Le flux passe par le relais BFF de l'hôte, qui authentifie avec le
+      // cookie de session (httpOnly) et relaie le `Authorization`.
+      //
+      // Le jeton ne part donc PLUS en query string : `EventSource` ne peut pas
+      // porter d'en-tête, et c'est précisément la raison pour laquelle le
+      // jeton y figurait — il était alors la seule authentification possible.
+      // Le relais lève cette contrainte, et un jeton dans une URL finit dans
+      // les journaux du serveur.
+      const url = `${API_BASE}/v1/realtime/stream`;
+      // `withCredentials` est explicite : l'authentification passe par le
+      // cookie de session, et le flux doit le porter. L'URL est de toute
+      // façon de même origine, donc le cookie partirait de toute façon —
+      // mieux vaut le dire que le laisser au hasard.
+      const es = new EventSource(url, { withCredentials: true });
       this.es = es;
 
       for (const type of EVENT_TYPES) {

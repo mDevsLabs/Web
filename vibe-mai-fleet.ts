@@ -12,12 +12,23 @@ import {
   getTierMaiTokenLimit,
   getWeekData,
 } from "./config.ts";
+import { executeCreativeTool } from "./vibe-mai-creative.ts";
 import { executeWebSearch } from "./web.ts";
 
 /**
  * Outils "sensibles" : ils modifient le compte ou le contenu public de
  * l'utilisateur. Ils exigent une approbation explicite sauf si le réglage
  * `mai_auto_approve_tools` a été activé dans les paramètres.
+ *
+ * ⚠️ Cette liste est le **seul** gardien de l'approbation : le drapeau
+ * `sensitive` du catalogue ne sert qu'à l'interface (badge). Un outil marqué
+ * sensible dans `MAI_TOOLS_CATALOG` mais absent d'ici s'exécuterait sans
+ * demande d'accord.
+ *
+ * Les outils d'écriture (`adapt_post`, `generate_variants`, `generate_caption`)
+ * n'y figurent pas : ils produisent du texte que l'utilisateur relit et
+ * publie lui-même. La publication reste un acte distinct et sensible
+ * (`create_post`).
  */
 export const SENSITIVE_TOOLS = [
   "create_post",
@@ -1783,8 +1794,25 @@ export class MAIAgentFleet {
           break;
         }
 
-        default:
-          throw new Error(`Outil inconnu : ${toolName}`);
+        // Les outils créatifs et d'analyse vivent dans un module séparé
+        // (vibe-mai-creative.ts) : Val Town impose une limite de taille de
+        // fichier, et la flotte approchait de la sienne. Ils renvoient
+        // `null` quand ils ne savent pas traiter l'outil.
+        default: {
+          const creative = await executeCreativeTool(
+            toolName,
+            args,
+            uid,
+            sql,
+            (system, user, model) =>
+              MAIAgentFleet.callOpenRouter(uid, system, user, model)
+          );
+          if (creative === null) {
+            throw new Error(`Outil inconnu : ${toolName}`);
+          }
+          resultData = creative;
+          break;
+        }
       }
 
       const duration = Date.now() - startTime;

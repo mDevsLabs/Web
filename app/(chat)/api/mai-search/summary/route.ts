@@ -131,10 +131,17 @@ Rédige un résumé complet, fluide et bien structuré de cette source en franç
       // Synthèse générale des résultats de recherche
       const formattedResults = searchResults
         .slice(0, 8)
-        .map(
-          (r: any, idx: number) =>
-            `[Source ${idx + 1}] ${r.title}\nURL: ${r.url}\nExtrait: ${r.snippet}`
-        )
+        .map((r: any, idx: number) => {
+          // L'origine est annoncée au modèle : un article d'encyclopédie est
+          // une source de référence, pas une page qui en parle. Sans cette
+          // distinction, la synthèse dit « d'après fr.wikipedia.org » comme
+          // elle dirait « d'après un blog ».
+          const nature =
+            r.origin === "wikipedia"
+              ? "Article d'encyclopédie (Wikipédia)"
+              : "Page web";
+          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}`;
+        })
         .join("\n\n");
 
       systemPrompt = `Tu es le moteur d'intelligence mAI Search.
@@ -142,7 +149,8 @@ Ton rôle est de fournir un résumé clair, objectif, sourcé et actualisé bas�
 Langue : Français.
 ${lengthInstruction}
 Veille à aller jusqu'au bout de ton analyse et à formuler des phrases complètes et bien terminées.
-Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit pas corroboré.`;
+Chaque source est précédée de sa nature (page web ou article d'encyclopédie) : cite-la en conséquence, et signale explicitement quand une affirmation vient de Wikipédia.
+Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit corroboré.`;
 
       userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse complète de ces informations en français.`;
     }

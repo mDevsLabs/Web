@@ -1,0 +1,42 @@
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
+.touch-device body{overscroll-behavior:none}
+.touch-device #app,.touch-device #game-canvas{height:100dvh}
+.touch-device .menu-app,.touch-device .results-app,.touch-device .pause-layer{overscroll-behavior:contain;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+.touch-device .menu-app{padding-top:var(--safe-top)}
+.touch-device .topbar{margin-left:calc(18px + var(--safe-left));margin-right:calc(18px + var(--safe-right));height:66px}
+.touch-device .sidebar{position:relative;top:auto;left:auto;bottom:auto;width:auto;flex-direction:row;gap:4px;margin:8px calc(18px + var(--safe-right)) 0 calc(18px + var(--safe-left))}
+.touch-device .nav-item{width:auto;flex:1;height:48px;justify-content:center;gap:6px;padding:0 6px}
+.touch-device .nav-item i,.touch-device .sidebar-bottom{display:none}
+.touch-device .nav-item.active:before{left:8px;right:8px;top:auto;bottom:0;width:auto;height:1px}
+.touch-device .menu-main{margin:0 calc(18px + var(--safe-right)) calc(88px + var(--safe-bottom)) calc(18px + var(--safe-left));padding-top:0}
+.touch-device .hero{min-height:235px;padding:25px 0}
+.touch-device .hero h1{font-size:clamp(54px,13vw,95px);letter-spacing:-2px}
+.touch-device .hero .eyebrow{font-size:8px}
+.touch-device .hero-subtitle{font-size:13px}
+.touch-device .mobile-note{display:block;margin-top:18px;font-size:12px;line-height:1.7;color:#c4d3b6}
+.touch-device .footer{left:calc(18px + var(--safe-left));right:calc(18px + var(--safe-right));height:calc(58px + var(--safe-bottom));padding-bottom:var(--safe-bottom)}
+.touch-device .footer-actions{gap:4px!important}
+.touch-device .icon-button{height:44px;width:44px}
+.touch-device .map-chip{min-height:44px;font-size:10px}
+.touch-device .underbar button{min-height:44px;min-width:64px}
+.touch-device .deploy-control select,.touch-device .setting-row select,.touch-device .setting-row input[type=text]{font-size:16px;min-height:44px}
+.touch-device .setting-row{min-width:0;gap:12px;flex-wrap:wrap}
+.touch-device .setting-row>span:first-child{min-width:0;flex:1}
+.touch-device .setting-row select{max-width:100%;min-width:0}
+.touch-device .setting-row input[type=range]{height:44px;max-width:100%}
+.touch-device .setting-row input[type=color]{width:44px;height:44px}
+.touch-device .slider-control{width:145px;flex-shrink:0}
+.touch-device .slider-control input{width:100px}
+.touch-device .setting-row small{font-size:10px;line-height:1.5}
+.touch-device .setting-row b{font-size:12px}
+.touch-device .controls-list>div{gap:10px;align-items:center}
+.touch-device .controls-list kbd{white-space:normal;text-align:right;max-width:55%;font-size:8px;line-height:1.5}
+.touch-device .pause-layer{z-index:8;padding:var(--safe-top) calc(16px + var(--safe-right)) var(--safe-bottom) calc(16px + var(--safe-left))}
+.touch-device .pause-card{width:360px;max-width:100%;padding:24px 0}
+.touch-device .pause-help{font-size:10px}
+.touch-device .pause-help>span{font-size:9px;line-height:1.5}
+.touch-device .pause-settings{width:min(1100px,100%);padding:24px 0}
+.touch-device .results-app{overflow:auto;padding:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left)}
+.touch-device .results{max-width:100%;padding:35px 20px}
+.touch-device .notice{bottom:calc(65px + var(--safe-bottom))}
+

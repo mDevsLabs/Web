@@ -314,20 +314,13 @@ function WakiesWorkspaceContent({
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
   const [taskDetail, setTaskDetail] = useState<Detail>();
+  // Le hook ne sert plus qu'à l'ALERTE NAVIGATEUR : la cloche du rail a
+  // disparu (les notifications Wakies sont dans la cloche mAI, qui lit la
+  // table unifiée). L'alerte système, elle, reste : elle dépend de la
+  // fenêtre ouverte, pas d'une page.
   const messaging = useMessagingNotifications(
     view === "chat" ? selectedThread : undefined
   );
-
-  const ouvrirNotification = async (conversationId: string) => {
-    if (!(await setView("chat"))) return;
-    const cible = workspace?.conversations.find(
-      (conversation) => conversation.id === conversationId
-    );
-    if (!cible) return;
-    setSelectedWakie(cible.wakieId);
-    setSelectedThread(cible.id);
-    messaging.retirer(cible.id);
-  };
 
   const { data: loaded, mutate: refreshData } = useSWR(
     "wakies-workspace",
@@ -377,12 +370,14 @@ function WakiesWorkspaceContent({
     await messaging.refresh();
   }, [refreshData, messaging.refresh]);
 
+  // Le fil a marqué sa lecture de son côté (`POST /conversations/:id/read`).
+  // Ce callback ne sert plus qu'à rafraîchir l'état local : la cloche du
+  // rail a disparu, donc il n'y a plus de liste d'alertes à retirer.
   const marquerLu = useCallback(
-    (conversationId: string) => {
-      messaging.retirer(conversationId);
+    (_conversationId: string) => {
       void refreshData();
     },
-    [messaging.retirer, refreshData]
+    [refreshData]
   );
 
   useEffect(() => {
@@ -633,12 +628,10 @@ function WakiesWorkspaceContent({
         basculerNav={basculerNav}
         chooseWakie={chooseWakie}
         configured={configured}
-        messaging={messaging}
         mobile={mobile}
         navCollapsed={navCollapsed}
         newConversation={newConversation}
         openPage={openPage}
-        ouvrirNotification={ouvrirNotification}
         ouvrirReglages={ouvrirReglages}
         pageId={pageId}
         refresh={refresh}

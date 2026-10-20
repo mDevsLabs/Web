@@ -76,7 +76,7 @@ const OAUTH_FAILURE_MESSAGES: Record<string, string> = {
   tier_unavailable:
     "Impossible de vérifier votre forfait. Le compte externe n'a pas été installé ; vous pourrez réessayer.",
   vault_unconfigured:
-    "Le coffre de secrets n'est pas configuré sur cette instance : les jetons ne peuvent être ni scellés ni stockés.",
+    "Le coffre de secrets n'est pas configuré sur cette instance : les jetons ne peuvent être ni scellés ni stockés. La variable MCP_ENCRYPTION_KEY doit être posée côté serveur, puis l'application redémarrée.",
 };
 
 function permissionRows(manifest: PluginManifest): PermissionRow[] {
@@ -236,6 +236,14 @@ export default function PluginDetailClient({
 
   const handleInstall = () => {
     if (connector && !connection?.connected && installConnectHref) {
+      // Sans coffre, la connexion ne peut pas aboutir : on ne renvoie pas
+      // l'utilisateur vers l'écran de consentement pour un échec certain.
+      if (!connection?.vaultConfigured) {
+        toast.error(
+          "Le coffre de secrets n'est pas configuré sur cette instance : la connexion externe est impossible pour le moment."
+        );
+        return;
+      }
       setIsBusy(true);
       window.location.assign(installConnectHref);
       return;
@@ -544,6 +552,31 @@ export default function PluginDetailClient({
                 </p>
               ) : null}
 
+              {/*
+                Le coffre absent se voit ICI, avant le clic, et non dans un
+                toast d'erreur : l'utilisateur n'a aucun moyen de corriger une
+                variable d'environnement, et « Connecter » qui échoue sans
+                raison lisible est pire que « Connecter » qui est désactivé avec
+                la cause.
+              */}
+              {connection && !connection.vaultConfigured ? (
+                <div className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm">
+                  <LockIcon className="mt-0.5 size-4 shrink-0 text-warning" />
+                  <div className="min-w-0 space-y-1">
+                    <p className="font-medium">
+                      Coffre de secrets non configuré sur cette instance
+                    </p>
+                    <p className="text-muted-foreground leading-6">
+                      Les jetons {connector.label} ne peuvent être ni scellés ni
+                      stockés. L'administrateur doit poser la variable
+                      d'environnement <code>MCP_ENCRYPTION_KEY</code> sur le
+                      serveur, puis redémarrer l'application. Aucune connexion
+                      n'est possible d'ici là.
+                    </p>
+                  </div>
+                </div>
+              ) : null}
+
               {connection?.connected && !connection.canWrite ? (
                 <p className="text-sm leading-6 text-warning">
                   Les accès en écriture n'ont pas été accordés : la lecture
@@ -582,12 +615,25 @@ export default function PluginDetailClient({
                     </Button>
                   </>
                 ) : connection?.configured ? (
-                  <Button asChild size="sm" type="button">
-                    <a href={connectHref ?? undefined}>
-                      <LogInIcon className="size-4" />
+                  /*
+                    Un bouton RÉELLEMENT désactivé, pas un lien maquillé : le
+                    coffre manquant n'est pas une action que l'utilisateur peut
+                    tenter. Un `<a disabled>` serait du HTML invalide et
+                    laisserait le clic passer.
+                  */
+                  connection.vaultConfigured ? (
+                    <Button asChild size="sm" type="button">
+                      <a href={connectHref ?? undefined}>
+                        <LogInIcon className="size-4" />
+                        Connecter {connector.label}
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button disabled size="sm" type="button">
+                      <LockIcon className="size-4" />
                       Connecter {connector.label}
-                    </a>
-                  </Button>
+                    </Button>
+                  )
                 ) : null}
               </div>
 

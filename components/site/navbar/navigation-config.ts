@@ -79,6 +79,7 @@ export const navLinks: NavItem[] = [
           { href: "/account/models/mai", name: "Modèles mAI" },
         ],
       },
+      { href: "/playground", name: "Terrain de jeu" },
       { href: "/account/keys", name: "Clés API" },
       { href: "/account/requests", name: "Requêtes" },
       { href: "/account/usage", name: "Usage" },

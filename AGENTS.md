@@ -205,6 +205,29 @@ Puisque l'upload accepte 1 Go pour les payants, le passage par `upload-file` ne
 garantit plus la borne de la story : `POST /v1/stories` relit donc la taille réelle
 de l'objet (`file_size_bytes` envoyé par le navigateur étant falsifiable).
 
+### 5.3 Le coffre de secrets est une variable d'environnement, pas une option
+
+`MCP_ENCRYPTION_KEY` chiffre **trois** choses : les jetons des intégrations
+externes (Google, GitHub), l'« état » OAuth scellé — qui porte l'identité du
+compte qui se connecte — et les secrets des serveurs MCP. Elle est lue par
+`lib/mcp/encryption.ts` et **aucun repli n'existe** : une clé dérivée de
+`DATABASE_URL` serait devinable par quiconque connaît l'URL de la base.
+
+| Symptôme | Cause |
+|---|---|
+| « Le coffre de secrets n'est pas configuré sur cette instance » | `MCP_ENCRYPTION_KEY` absente de l'environnement |
+| « Service Unavailable. API Key missing. » | requête sans `Authorization` vers une route privée du backend |
+
+Le premier est un **problème de déploiement**, pas de code : la variable doit
+être posée dans le **même environnement Vercel** que l'application Next — les
+seules `*_CLIENT_ID` ne suffisent pas. `GET /api/integration` expose
+`vaultConfigured` par connecteur, et la fiche du plugin affiche un encart
+explicite au lieu d'un échec opaque au clic.
+
+Conséquence d'une rotation : les jetons déjà chiffrés deviennent **illisibles**.
+Les lignes `IntegrationConnection` survivent (l'interface affiche encore
+« Connecté »), mais le porteur est muet — l'utilisateur doit reconnecter.
+
 ## 6. Base de données
 
 - Schéma : `lib/db/schema.ts` (un seul fichier, lu par `drizzle-kit`)
@@ -278,6 +301,48 @@ chargement, sur sa base SQLite. Ne pas confondre les deux politiques.
 - `pnpm check` avant de dire « fini ». `pnpm typecheck`, `pnpm test:unit`
   également.
 
+### 7.1 Notifications : une table, trois applications
+
+La table `Notification` (Postgres hôte) est l'**unique source de vérité** de
+l'état lu/non lu. Les notifications de mAI, de Vibe et de Wakies y vivent ensemble, distinguées
+par `origin` (`mai` | `vibe` | `wakies`).
+
+| Règle | Conséquence |
+|---|---|
+| `origin` déduit du `type` | `lib/notifications/types.ts` fait autorité ; la base, le schéma Drizzle et la liste TypeScript doivent être **alignés** |
+| La réplication est **idempotente** | Index unique partiel `(origin, sourceId)` ; un rejeu de tick ne duplique rien |
+| Le tick est le seul réplicateur | `app/api/cron/notifications`, appelé par `cron.ts` — **ne pas créer un second ordonnanceur** |
+| Le tick ne lit que les sources | Vibe et Wakies sont lus en lecture seule ; l'écriture va dans la table de l'hôte |
+| Le « lu » se **propage** à la source | Marquer lu dans la cloche mAI écrit aussi dans Vibe / Wakies, sinon la page d'origine afficherait encore le point non lu |
+| Le gate `enabled` ne s'applique qu'à `origin = "mai"` | Une notification Vibe a déjà été décidée par sa source ; la rejuger la ferait disparaître |
+| Le pont d'identité Vibe est l'**email** | L'hôte identifie par une chaîne, Vibe par un entier : aucun identifiant commun |
+
+Les préférences de notification sont **un seul écran** (onglet Notifications des
+paramètres), groupé par application. Chaque groupe reste le seul endroit où sa
+décision est prise : mAI → `user_notification_prefs`, Vibe → `user_settings`
+(backend), Wakies → `WakiesSettings`. Les trois enregistrements sont
+indépendants : un échec Vibe ne bloque pas mAI.
+
+Le haptique et les animations Vibe **restent** dans les paramètres Vibe : ce sont
+des réglages d'**appareil**, pas de compte.
+
+### 7.2 mAI Search : les préférences font autorité
+
+Les réglages de recherche (langue, nombre de résultats, sources activées,
+filtre de sécurité) vivent sur `user_preferences` et sont **appliqués par le
+serveur** : `POST /api/mai-search` lit les préférences du compte et impose
+sources, langue, volume et filtre. Le client propose, le serveur tranche — un
+appel direct ne peut pas élargir le périmètre.
+
+Le vocabulaire des sources est dans `lib/search/sources.ts` (client-safe) :
+**ne pas le confondre** avec `lib/search/types.ts`, qui porte l'index de
+recherche interne (16 clés : `chat`, `message`, `skill`…).
+
+Wikipédia est une **source à part entière** (`lib/search/wikipedia.ts`), pas
+seulement un repli : ses articles portent `origin: "wikipedia"` et sont
+distingués par un badge. Le repli automatique en cas d'échec de You.com est
+**conservé** en plus.
+
 ## 8. Commandes
 
 ```bash
@@ -295,6 +360,8 @@ pnpm db:studio      # drizzle-kit studio
 node scripts/build-vibe-css.mjs      # régénère components/vibe/vibe.css
 node scripts/build-vibe-routes.mjs   # régénère les 15 pages app/(chat)/vibe/**
 node scripts/build-wakies-css.mjs    # régénère les 2 feuilles de Wakies
+node scripts/build-blackline.mjs     # compile le jeu vers public/blackline/
+node scripts/build-blackline-css.mjs # régénère components/blackline/blackline.css
 ```
 
 > ⚠️ `pnpm fix` formate **tout** le dépôt, y compris `*.sql` et `*.md`. En cas
@@ -392,6 +459,31 @@ Cinq règles à ne pas contourner :
   authentifié sur `/site` via `AuthProvider` (`initialToken`, `initialUser`).
 - **Deux runtimes** : ne jamais importer `@/email` (runtime Deno) dans les
   modules du site, utiliser `@/lib/site/email`.
+
+## 8.4 Intégration Blackline (`/blackline`)
+
+Blackline (`apps/blackline`) est un FPS 3D Three.js **monté** par l'hôte sous
+`/blackline` — ce n'est ni un portage React, ni un iframe, ni une application
+de bureau. Guide complet : `docs/6-blackline/INTEGRATION.md` ; règles
+dédiées : `docs/6-blackline/AGENTS.md`.
+
+Cinq règles à ne pas contourner :
+
+- **`components/blackline/blackline.css` est généré**
+  (`scripts/build-blackline-css.mjs`). Ne jamais modifier ce fichier
+  directement.
+- **Tout Blackline vit sous `.blackline-root`**, élément posé par
+  `app/(chat)/blackline/layout.tsx`. Le jeu est écrit pour posséder le
+  document : sa feuille déclarait `:root`, `html` et `body`, et ses
+  composants étaient sur des sélecteurs nus.
+- **Le jeu ne touche jamais `<html>`** : ses classes et ses variables CSS
+  passent par `apps/blackline/src/root.ts`, qui pointe sur la racine du jeu.
+- **L'âge n'est jamais persisté** : la confirmation PEGI 16 est demandée à
+  chaque lancement et vit dans l'état du composant. Ni base, ni
+  `localStorage`, ni cookie.
+- **La progression reste locale** : seuls les *réglages* sont partagés par
+  compte (`BlacklineSettings`, migration 0064). Blackline a volontairement
+  retiré la synchronisation en ligne.
 
 ## 9. Points d'attention historiques
 

@@ -13,12 +13,22 @@
 
 export type SummarySourceType = "web" | "news" | "image" | "video" | "target";
 
+/**
+ * Origine d'une source : un article d'encyclopédie n'est pas une page web.
+ *
+ * Le champ est informatif : il permet à l'interface d'afficher « Wikipédia »
+ * à côté d'une source, et au prompt de dire « article d'encyclopédie » plutôt
+ * que « page web ». Il ne change rien à la collecte.
+ */
+export type SummarySourceOrigin = "wikipedia" | "web";
+
 export type SummarySource = {
-  id: string;
-  title: string;
-  url: string;
   domain: string;
+  id: string;
+  origin?: SummarySourceOrigin;
+  title: string;
   type: SummarySourceType;
+  url: string;
 };
 
 export type SummaryStreamEvent =
@@ -28,6 +38,7 @@ export type SummaryStreamEvent =
   | { type: "done" };
 
 type SourceInput = {
+  origin?: unknown;
   title?: unknown;
   url?: unknown;
   source?: unknown;
@@ -56,9 +67,14 @@ export function toSummarySource(
   const domain = normalizeDomain(url, input.source);
   const title =
     (typeof input.title === "string" && input.title.trim()) || domain || url;
+  // Une origine inconnue vaut « web » : c'est le cas par défaut historique,
+  // et inventer une origine serait pire que de ne pas en donner.
+  const origin: SummarySourceOrigin =
+    input.origin === "wikipedia" ? "wikipedia" : "web";
   return {
     domain,
     id: url,
+    origin,
     title: title.slice(0, 240),
     type,
     url,

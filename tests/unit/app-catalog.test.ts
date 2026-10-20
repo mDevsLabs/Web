@@ -9,12 +9,13 @@ import {
 } from "@/lib/apps/catalog";
 
 describe("catalogue des applications", () => {
-  it("expose les quatre applications dans l'ordre canonique", () => {
+  it("expose les applications dans l'ordre canonique", () => {
     expect(APP_ORDER.map((entry) => entry.key)).toEqual([
       "mai",
       "site",
       "vibe",
       "code",
+      "blackline",
     ]);
   });
 
@@ -23,6 +24,7 @@ describe("catalogue des applications", () => {
     expect(APP_CATALOG.site.path).toBe("/site");
     expect(APP_CATALOG.vibe.path).toBe("/vibe");
     expect(APP_CATALOG.code.path).toBe("/coder");
+    expect(APP_CATALOG.blackline.path).toBe("/blackline");
   });
 
   it("porte les descriptions affichées dans le menu du logo", () => {
@@ -36,12 +38,15 @@ describe("catalogue des applications", () => {
       "Votre plateforme de divertissement"
     );
     expect(APP_CATALOG.code.description).toBe("L'outil de codage pour IA");
+    expect(APP_CATALOG.blackline.description).toBe(
+      "Détendez-vous en attendant votre agent !"
+    );
   });
 });
 
 describe("normalizeAppKey", () => {
-  it("accepte les quatre clés canoniques", () => {
-    for (const key of ["mai", "site", "vibe", "code"] as const) {
+  it("accepte les clés canoniques", () => {
+    for (const key of ["mai", "site", "vibe", "code", "blackline"] as const) {
       expect(normalizeAppKey(key)).toBe(key);
     }
   });
@@ -73,6 +78,7 @@ describe("favoriteAppToPath", () => {
     expect(favoriteAppToPath("site")).toBe("/site");
     expect(favoriteAppToPath("vibe")).toBe("/vibe");
     expect(favoriteAppToPath("code")).toBe("/coder");
+    expect(favoriteAppToPath("blackline")).toBe("/blackline");
   });
 
   it("est fail-safe sur une valeur inconnue", () => {
@@ -87,6 +93,7 @@ describe("appKeyFromPath", () => {
     expect(appKeyFromPath("/vibe")).toBe("vibe");
     expect(appKeyFromPath("/vibe/u/pseudo")).toBe("vibe");
     expect(appKeyFromPath("/coder")).toBe("code");
+    expect(appKeyFromPath("/blackline")).toBe("blackline");
   });
 
   it("attribue tout le reste à mAI", () => {

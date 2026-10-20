@@ -4,6 +4,7 @@ import {
   CheckIcon,
   ChevronDownIcon,
   Code2Icon,
+  CrosshairIcon,
   GlobeIcon,
   LockIcon,
   MessageCircleIcon,
@@ -46,6 +47,7 @@ export const APP_SWITCHER_ICONS: Record<
   AppKey,
   React.ComponentType<{ className?: string }>
 > = {
+  blackline: CrosshairIcon,
   cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,

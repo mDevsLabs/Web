@@ -18,6 +18,13 @@ import {
   customInstructionsLimitPayload,
 } from "@/lib/plans/custom-instructions";
 import {
+  MAI_SEARCH_LANGUAGES,
+  MAI_SEARCH_RESULT_COUNT_MAX,
+  MAI_SEARCH_RESULT_COUNT_MIN,
+  MAI_SEARCH_SAFETY_LEVELS,
+  MAI_SEARCH_SOURCE_KEYS,
+} from "@/lib/search/sources";
+import {
   normalizeThemePreference,
   THEME_PREFERENCES,
 } from "@/lib/theme/preference";
@@ -58,6 +65,22 @@ const buildSchema = (tier?: string | null) =>
     enabled: z.boolean().optional(),
     ghostMemoryEnabled: z.boolean().optional(),
     reasoningLevel: z.enum(REASONING_LEVELS).optional(),
+    // Préférences de recherche mAI Search. Les listes viennent de
+    // `lib/search/sources.ts` — la même source que l'interface : impossible
+    // qu'une source valide soit refusée par l'API, ni qu'une source
+    // fantôme soit acceptée puis rejetée en aval.
+    searchLanguage: z.enum(MAI_SEARCH_LANGUAGES).optional(),
+    searchResultCount: z
+      .number()
+      .int()
+      .min(MAI_SEARCH_RESULT_COUNT_MIN)
+      .max(MAI_SEARCH_RESULT_COUNT_MAX)
+      .optional(),
+    searchSafetyLevel: z.enum(MAI_SEARCH_SAFETY_LEVELS).optional(),
+    // Une liste vide serait acceptée ici mais normalisée en « toutes les
+    // sources » : on la refuse donc, pour que l'interface comprenne
+    // l'erreur au lieu de croire avoir enregistré un choix.
+    searchSources: z.array(z.enum(MAI_SEARCH_SOURCE_KEYS)).min(1).optional(),
     showAgentChatIcons: z.boolean().optional(),
     temperature: z.number().min(0).max(2).optional(),
     // Thème partagé par la suite (mAI, Site, Vibe, Wakies). Une valeur
@@ -97,6 +120,14 @@ export async function GET() {
       defaultTranslationLanguage: "EN",
       enabled: false,
       ghostMemoryEnabled: false,
+      reasoningLevel: "medium",
+      // Préférences de recherche mAI Search : les défauts du serveur, pour
+      // que l'interface affiche une section cohérente même quand la table
+      // des préférences est illisible.
+      searchLanguage: "fr",
+      searchResultCount: 10,
+      searchSafetyLevel: "medium",
+      searchSources: [...MAI_SEARCH_SOURCE_KEYS],
       showAgentChatIcons: true,
       temperature: 0.7,
       // Valeur par défaut sûre : aucune préférence partagée connue.

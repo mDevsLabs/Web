@@ -154,14 +154,73 @@ L'URL visible reste `/vibe/@pseudo`, donc les liens partagés sont ceux de Vibe.
 des paramètres de route (`/u/:username`, `/profile/:username`, `/@pseudo`,
 `/post/:id`, `/books/:id`, `/books/join/:code`).
 
-## 7. Réseau et CSP
+## 7. Réseau : le relais BFF `/api/vibe/**`
 
-Vibe appelle l'API mAI **directement depuis le navigateur** (`lib/vibe/services/api.ts`,
-`fetch` avec jeton Bearer, flux SSE), là où le reste de mAI Web passe par des
-routes BFF. `next.config.ts` déclare donc l'origine de l'API
-(`NEXT_PUBLIC_MAI_API_URL`, défaut `https://mai.val.run`) dans le `connect-src`
-de la CSP — sans quoi le fil, les messages et le temps réel de `/vibe`
-répondraient par des erreurs de console.
+Vibe passe désormais par un **relais BFF** de l'hôte
+(`app/(chat)/api/vibe/[...path]/route.ts`), comme le reste de mAI Web.
+
+### 7.1 Pourquoi ce relais existe
+
+Vibe appelait l'API mAI **directement depuis le navigateur**, en posant
+`Authorization: Bearer <vibe_jwt_token>` — un jeton que le client détenait dans
+`localStorage`, posé par `VibeSessionBridge`, qui n'est monté **que** sous
+`/vibe` (`app/(chat)/vibe/layout.tsx`).
+
+Conséquence : l'onglet « Applications » des paramètres de l'hôte
+(`/settings?tab=applications`, `components/settings/applications-tab.tsx`)
+utilise le même client Vibe mais vit **hors** de `/vibe`. Aucun jeton à
+présenter, requête partie sans authentification, et le backend répondait
+« Service Unavailable. API Key missing. » (401, `api-middleware.ts:301`).
+Toute écriture Vibe faite hors de `/vibe` était touchée du même défaut.
+
+### 7.2 Ce que fait le relais
+
+- **Il lit le cookie httpOnly `mai_session_token`** et pose
+  `Authorization: Bearer <jeton>` vers l'amont. Le client ne détient plus de
+  secret : une seule identité pour toute l'application, et les écritures
+  fonctionnent dans `/vibe` comme dans `/settings`.
+- **Il ferme la liste des chemins relayés** (`lib/vibe/server/relay-policy.ts`) :
+  une liste blanche de préfixes `/v1/…`, reconstruite segment par segment.
+  Un segment `..`, `%` ou `\` est refusé — une traversée ne peut pas remonter
+  hors de `/v1`.
+- **Il exclut l'authentification Vibe** (`/login`, `/register`,
+  `/verify-*`, `/resend-code`) : elle est pilotée par les Server Actions de
+  l'hôte, qui posent le cookie de session. Un relais lui ouvrirait une seconde
+  porte.
+- **Il normalise les erreurs amont** (`normalizeUpstreamError`) : le message
+  brut du backend devient une enveloppe française unifiée.
+- **Il relaie le SSE** (`/v1/realtime/stream`) en flux continu, sans délai
+  d'attente — le couper figerait la messagerie temps réel. Le jeton ne part
+  plus en query string : `EventSource` ne porte pas d'en-tête, et c'était
+  précisément pourquoi le jeton y figurait.
+- **Il relaie les `FormData` tels quels**, sans fixer `Content-Type` : le
+  runtime recalcule la frontière multipart (même contrainte que
+  `upstreamForm`, `lib/api/upstream.ts`).
+
+### 7.3 Ce qui reste en accès direct
+
+Seules l'authentification Vibe et la révocation de session (route inexistante
+côté backend, conservée par prudence) partent en accès direct vers
+`NEXT_PUBLIC_MAI_API_URL`. C'est pourquoi cette origine reste déclarée dans
+le `connect-src` de la CSP (`next.config.ts`).
+
+### 7.4 Ce que ça change pour le client
+
+`lib/vibe/services/api/base.ts` :
+
+- `API_BASE` vaut désormais `apiUrl("/api/vibe")` — une URL **relative**, donc
+  préfixée du `basePath` de démo ;
+- `resolveUrl()` route chaque endpoint : `/v1/…` par le relais, les endpoints
+  d'authentification en direct ;
+- le client ne pose plus d'`Authorization` sur les appels relayés : le cookie
+  de session fait foi. Le poser écraserait l'identité du relais par celle d'un
+  jeton Vibe, qui n'est pas forcément le même compte ;
+- le repli d'alias (`toVibeAliasEndpoint`) a disparu : le relais EST le
+  chemin normal, et le backend expose déjà les deux alias (`/v1/…` et
+  `/api/vibe/…`).
+
+`apps/vibe/src/services/api.ts` (source Vite de référence) reste **inchangée** :
+elle n'est pas compilée par Next et conserve l'accès direct.
 
 ### 7bis. Pré-hydratation : les lectures de premier écran viennent de Postgres
 

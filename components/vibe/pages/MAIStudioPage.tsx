@@ -43,6 +43,7 @@ import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   buildMAIConversationJSON,
@@ -276,6 +277,29 @@ export const MAIStudioPage: React.FC = () => {
       }
     });
     loadModels();
+  }, []);
+
+  /**
+   * Rafraîchissement automatique de la liste de repli.
+   *
+   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes ;
+   * cette liste-ci n'est que le repli affiché avant que le catalogue du
+   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
+   * listes ne proposent pas des modèles différents.
+   */
+  useEffect(() => {
+    const timer = setInterval(() => {
+      void ApiService.getModels()
+        .then((res) => {
+          if (res?.models && res.models.length > 0) {
+            setAvailableModels(res.models as typeof DEFAULT_MODELS);
+          }
+        })
+        .catch(() => {});
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   useEffect(() => {

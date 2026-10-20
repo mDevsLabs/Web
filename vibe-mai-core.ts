@@ -274,6 +274,50 @@ export function formatToolReply(
       tags || "• Aucun hashtag utilisé sur la période."
     }${sugg ? `\n\n**Suggestions tendance :** ${sugg}` : ""}`;
   }
+  if (toolName === "analyze_sentiment") {
+    const a = result.analysis || {};
+    const terms = (a.key_terms || []).map((t: string) => `\`${t}\``).join(", ");
+    const score = typeof a.score === "number" ? a.score.toFixed(2) : "—";
+    return `🧭 **Sentiment des commentaires** (${result.commentCount} commentaires) :\n• Polarité : **${a.polarity || "—"}** (score ${score})\n• Termes clés : ${terms || "—"}\n\n${a.summary || ""}`;
+  }
+  if (toolName === "summarize_thread") {
+    const a = result.analysis || {};
+    const points = (a.key_points || []).map((p: string) => `• ${p}`).join("\n");
+    const clashes = (a.disagreements || [])
+      .map((p: string) => `• ${p}`)
+      .join("\n");
+    return `🧵 **Résumé du fil** (${result.commentCount} commentaires) :\n\n${
+      a.summary || ""
+    }${points ? `\n\n**Points clés :**\n${points}` : ""}${
+      clashes ? `\n\n**Désaccords :**\n${clashes}` : ""
+    }`;
+  }
+  if (toolName === "adapt_post") {
+    const limit = result.withinLimit
+      ? `${result.characterCount} caractères`
+      : `⚠️ ${result.characterCount} caractères (max ${result.maxLength})`;
+    return `📱 **Version ${result.networkName}** (${limit}) :\n\n${result.adapted}`;
+  }
+  if (toolName === "generate_variants") {
+    const list = (result.variants || [])
+      .map(
+        (v: any, i: number) =>
+          `**${i + 1}.** ${v.hook}${v.angle ? `\n   _Angle : ${v.angle}_` : ""}`
+      )
+      .join("\n\n");
+    return `💡 **3 accroches alternatives** (style ${result.tone}) :\n\n${list}`;
+  }
+  if (toolName === "generate_caption") {
+    const tags = (result.hashtags || []).join(" ");
+    return `🖼️ **Légende proposée** :\n\n${result.caption}${
+      result.callToAction ? `\n\n${result.callToAction}` : ""
+    }${tags ? `\n\n${tags}` : ""}`;
+  }
+  if (toolName === "compare_models") {
+    const a = result.modelA || {};
+    const b = result.modelB || {};
+    return `⚖️ **Comparaison sur le même prompt** :\n\n**${a.model}** — ${a.latencyMs} ms · ${a.responseLength} caractères\n${a.response || "(vide)"}\n\n---\n\n**${b.model}** — ${b.latencyMs} ms · ${b.responseLength} caractères\n${b.response || "(vide)"}`;
+  }
   return "✅ Action effectuée.";
 }
 
@@ -850,6 +894,41 @@ export function detectTool(
       toolToRun: "best_time_to_post",
     };
   }
+  // `/comparer` est placé AVANT `/compare` : le préfixe `/compare` est plus
+  // court et le capturerait sinon (comparaison de modèles vs comparaison de
+  // périodes).
+  if (
+    lower.startsWith("/comparer") ||
+    lower.startsWith("@comparer") ||
+    lower.startsWith("/compare_modeles") ||
+    lower.startsWith("/compare_models")
+  ) {
+    const raw = cleanMsg
+      .replace(/^[/@](comparer|compare_modeles|compare_models)\s*:?\s*/i, "")
+      .trim();
+    // Deux modèles séparés par `|`, puis le prompt.
+    //
+    // Le séparateur est volontairement le seul `|` : un identifiant de
+    // modèle contient lui-même `/` et `:` (ex. `poolside/laguna-xs-2.1:free`),
+    // et les confondre avec le séparateur rendrait l'analyse impossible.
+    const parts = raw.split("|");
+    if (parts.length >= 2) {
+      const modelA = parts[0].trim();
+      const modelB = parts[1].trim();
+      const prompt = parts.slice(2).join("|").trim() || raw;
+      if (modelA && modelB) {
+        return {
+          toolArgs: {
+            model_a: modelA,
+            model_b: modelB,
+            prompt,
+          },
+          toolToRun: "compare_models",
+        };
+      }
+    }
+    return null;
+  }
   if (
     lower.startsWith("/compare") ||
     lower.startsWith("@compare") ||
@@ -1134,6 +1213,77 @@ export function detectTool(
     );
     if (m) return { toolArgs: { post_id: m[0] }, toolToRun: "get_post_stats" };
     return null;
+  }
+
+  // ── Outils créatifs & analytiques (vibe-mai-creative.ts) ──────────────
+  // Placés en fin de fonction : leurs préfixes (`/sentiment`, `/resume`,
+  // `/adapter`, `/variantes`, `/legende`) ne sont capturés par aucun bloc
+  // précédent, à l'exception de `/comparer` traité plus haut.
+
+  // `/sentiment` : UUID du post → analyse de sentiment des commentaires.
+  if (lower.startsWith("/sentiment") || lower.startsWith("@sentiment")) {
+    const m = cleanMsg.match(
+      /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
+    );
+    if (m) {
+      return { toolArgs: { post_id: m[0] }, toolToRun: "analyze_sentiment" };
+    }
+    return null;
+  }
+
+  // `/resume` : UUID du post → synthèse du fil de commentaires.
+  if (
+    lower.startsWith("/resume") ||
+    lower.startsWith("@resume") ||
+    lower.startsWith("/resumer") ||
+    lower.startsWith("@resumer")
+  ) {
+    const m = cleanMsg.match(
+      /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
+    );
+    if (m) {
+      return { toolArgs: { post_id: m[0] }, toolToRun: "summarize_thread" };
+    }
+    return null;
+  }
+
+  // `/adapter x <texte>` : réécrit le post pour un réseau.
+  if (lower.startsWith("/adapter") || lower.startsWith("@adapter")) {
+    const raw = cleanMsg.replace(/^[/@]adapter\s*:?\s*/i, "").trim();
+    const words = raw.split(/\s+/);
+    const known = ["x", "twitter", "instagram", "insta", "linkedin"];
+    const network = known.includes(words[0]?.toLowerCase())
+      ? words.shift()
+      : "x";
+    const text = words.join(" ").trim();
+    if (!text) return null;
+    return {
+      toolArgs: { network: network.toLowerCase(), text },
+      toolToRun: "adapt_post",
+    };
+  }
+
+  // `/variantes <texte>` : 3 accroches alternatives.
+  if (lower.startsWith("/variantes") || lower.startsWith("@variantes")) {
+    const raw = cleanMsg.replace(/^[/@]variantes\s*:?\s*/i, "").trim();
+    const words = raw.split(/\s+/);
+    const tones = ["viral", "pro", "humour", "concis", "poétique"];
+    const tone = tones.includes(words[0]?.toLowerCase())
+      ? words.shift()?.toLowerCase() || "viral"
+      : "viral";
+    const text = words.join(" ").trim();
+    if (!text) return null;
+    return { toolArgs: { text, tone }, toolToRun: "generate_variants" };
+  }
+
+  // `/legende <visuel>` : légende + hashtags.
+  if (lower.startsWith("/legende") || lower.startsWith("@legende")) {
+    const raw = cleanMsg.replace(/^[/@]legende\s*:?\s*/i, "").trim();
+    if (!raw) return null;
+    return {
+      toolArgs: { text: raw },
+      toolToRun: "generate_caption",
+    };
   }
   return null;
 }

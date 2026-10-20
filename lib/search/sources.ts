@@ -1,0 +1,152 @@
+// Les sources de recherche de mAI Search — le vocabulaire que partagent
+// le moteur, la route API et l'interface des paramètres.
+//
+// ⚠️ NE PAS CONFONDRE avec `lib/search/types.ts`, qui porte le même nom de
+// constante pour l'index de recherche INTERNE (16 clés : `chat`, `message`,
+// `skill`…). Ce sont deux vocabulaires disjoints : celui-ci décrit ce que
+// mAI Search va chercher SUR LE WEB, l'autre ce que la recherche du compte
+// va chercher DANS le compte.
+//
+// Client-safe : aucun import serveur ici. Le module est lu par des
+// composants « use client » (paramètres) et par des routes.
+
+/**
+ * Sources activables par l'utilisateur.
+ *
+ * `wikipedia` est une source de plein droit depuis qu'elle a été ajoutée :
+ * les articles trouvés sont des résultats à part entière, distingués par
+ * leur origine, pas un repli silencieux quand le moteur principal échoue.
+ */
+export const MAI_SEARCH_SOURCE_KEYS = [
+  "images",
+  "news",
+  "videos",
+  "web",
+  "wikipedia",
+] as const;
+
+export type MaiSearchSourceKey = (typeof MAI_SEARCH_SOURCE_KEYS)[number];
+
+export function isMaiSearchSourceKey(
+  value: unknown
+): value is MaiSearchSourceKey {
+  return (
+    typeof value === "string" &&
+    (MAI_SEARCH_SOURCE_KEYS as readonly string[]).includes(value)
+  );
+}
+
+/**
+ * Normalisation fail-safe d'une liste de sources.
+ *
+ * Une liste VIDE ne veut pas dire « ne rien chercher » : elle signifie
+ * « la valeur est illisible ». Le repli est donc TOUTES les sources — sinon
+ * une préférence corrompue ferait que mAI Search ne plus rien remonter, et
+ * l'utilisateur n'aurait aucun moyen de s'en apercevoir.
+ */
+export function normalizeMaiSearchSources(
+  value: unknown
+): MaiSearchSourceKey[] {
+  if (!Array.isArray(value)) {
+    return [...MAI_SEARCH_SOURCE_KEYS];
+  }
+  const valides = value.filter(isMaiSearchSourceKey);
+  const uniques = Array.from(new Set(valides)) as MaiSearchSourceKey[];
+  return uniques.length > 0 ? uniques : [...MAI_SEARCH_SOURCE_KEYS];
+}
+
+/** Libellés affichés dans les paramètres. */
+export const MAI_SEARCH_SOURCE_LABELS: Record<MaiSearchSourceKey, string> = {
+  images: "Images",
+  news: "Actualités",
+  videos: "Vidéos",
+  web: "Web",
+  wikipedia: "Wikipédia",
+};
+
+/**
+ * Langues de recherche acceptées.
+ *
+ * `fr` par défaut : l'interface est monolingue français, et les replis
+ * existants (`you-client.ts`) choisissent déjà `fr`/`en` par détection.
+ */
+export const MAI_SEARCH_LANGUAGES = ["fr", "en", "de", "es", "it"] as const;
+
+export type MaiSearchLanguage = (typeof MAI_SEARCH_LANGUAGES)[number];
+
+export const MAI_SEARCH_LANGUAGE_LABELS: Record<MaiSearchLanguage, string> = {
+  de: "Allemand",
+  en: "Anglais",
+  es: "Espagnol",
+  fr: "Français",
+  it: "Italien",
+};
+
+export function isMaiSearchLanguage(
+  value: unknown
+): value is MaiSearchLanguage {
+  return (
+    typeof value === "string" &&
+    (MAI_SEARCH_LANGUAGES as readonly string[]).includes(value)
+  );
+}
+
+/** Une langue illisible vaut « français » — jamais « undefined ». */
+export function normalizeMaiSearchLanguage(value: unknown): MaiSearchLanguage {
+  return isMaiSearchLanguage(value) ? value : "fr";
+}
+
+/**
+ * Niveaux de filtrage de sécurité.
+ *
+ * Les mêmes trois niveaux que le filtre de contenu de Vibe
+ * (`content_filter_level` : low / medium / strict) : c'est le vocabulaire
+ * que l'utilisateur connaît déjà, et il n'y a pas de raison d'en inventer
+ * un second.
+ */
+export const MAI_SEARCH_SAFETY_LEVELS = ["low", "medium", "strict"] as const;
+
+export type MaiSearchSafetyLevel = (typeof MAI_SEARCH_SAFETY_LEVELS)[number];
+
+export const MAI_SEARCH_SAFETY_LABELS: Record<MaiSearchSafetyLevel, string> = {
+  low: "Aucun",
+  medium: "Modéré",
+  strict: "Strict",
+};
+
+export function isMaiSearchSafetyLevel(
+  value: unknown
+): value is MaiSearchSafetyLevel {
+  return (
+    typeof value === "string" &&
+    (MAI_SEARCH_SAFETY_LEVELS as readonly string[]).includes(value)
+  );
+}
+
+/** Un niveau illisible vaut « modéré » : le filet de sécurité par défaut. */
+export function normalizeMaiSearchSafetyLevel(
+  value: unknown
+): MaiSearchSafetyLevel {
+  return isMaiSearchSafetyLevel(value) ? value : "medium";
+}
+
+/** Bornes du nombre de résultats renvoyés par une recherche. */
+export const MAI_SEARCH_RESULT_COUNT_MIN = 5;
+export const MAI_SEARCH_RESULT_COUNT_MAX = 25;
+export const MAI_SEARCH_RESULT_COUNT_DEFAULT = 10;
+
+/** Un nombre illisible ou hors bornes retombe sur la valeur par défaut. */
+export function normalizeMaiSearchResultCount(value: unknown): number {
+  const nombre = typeof value === "number" ? value : Number.NaN;
+  if (!Number.isFinite(nombre)) {
+    return MAI_SEARCH_RESULT_COUNT_DEFAULT;
+  }
+  const arrondi = Math.round(nombre);
+  if (arrondi < MAI_SEARCH_RESULT_COUNT_MIN) {
+    return MAI_SEARCH_RESULT_COUNT_MIN;
+  }
+  if (arrondi > MAI_SEARCH_RESULT_COUNT_MAX) {
+    return MAI_SEARCH_RESULT_COUNT_MAX;
+  }
+  return arrondi;
+}

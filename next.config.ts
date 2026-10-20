@@ -8,6 +8,38 @@ const isProd = process.env.NODE_ENV === "production";
 // Identifiant commun au bundle client et au serveur, même sans numéro de release.
 const webBuildId = process.env.VERCEL_DEPLOYMENT_ID || randomUUID();
 
+/**
+ * NOMBRE DE TRAVAILLEURS DE COMPILATION — PLAFOND DE MÉMOIRE.
+ *
+ * Next.js lance un processus de compilation par tâche : un serveur de
+ * 6 Go peut passer en build à plus de 4 Go de Resident Set, et le build
+ * s'interrompt alors que rien ne l'explique dans la sortie.
+ *
+ * `MAI_BUILD_WORKERS` borne ce nombre. Sans lui, Next.js prend
+ * `cpus - 1` : sur une machine de bureau à 8 cœurs, c'est sept processus
+ * de compilation en parallèle pour un graphe qui n'en demande pas tant.
+ *
+ * La valeur est volontairement lue AU DÉMARRAGE du build (et non
+ * recalculée) : `next.config.ts` est évalué une fois, avant toute
+ * compilation, et c'est là que la valeur doit être lue.
+ */
+const buildWorkers = (() => {
+  const brut = process.env.MAI_BUILD_WORKERS?.trim();
+  if (!brut) {
+    return;
+  }
+  const nombre = Number.parseInt(brut, 10);
+  // Une valeur illisible ne doit pas désordonner le build : on retombe
+  // alors sur le comportement par défaut de Next.js.
+  if (!Number.isFinite(nombre) || nombre < 1) {
+    console.warn(
+      `[next] MAI_BUILD_WORKERS="${brut}" est illisible : le build utilise le nombre de travailleurs par défaut.`
+    );
+    return;
+  }
+  return nombre;
+})();
+
 // CSP pragmatique : pas de nonce (incompatible avec cacheComponents/PPR, qui
 // sert du HTML statique partagé). Les hôtes externes reflètent les usages
 // réels du code (Pyodide jsdelivr, sandbox srcDoc tailwind/unpkg, kroki.io,
@@ -37,11 +69,11 @@ function buildContentSecurityPolicy(): string {
       "'self'",
       "https://cdn.jsdelivr.net",
       "https://kroki.io",
-      // Vibe appelle l'API mAI directement depuis le navigateur (lib/vibe/services/api.ts
-      // : `fetch` avec jeton Bearer, flux SSE inclus). Sans cette origine, la
-      // timeline, les messages et le temps réel de /vibe seraient bloqués par
-      // la politique — le reste de l'application passe par des routes BFF, ce
-      // qui explique l'absence de cette origine avant Vibe.
+      // Le relais BFF de Vibe (`app/(chat)/api/vibe/**`) porte désormais le
+      // trafic Vibe : le fil, les messages et le temps réel de `/vibe` passent
+      // par `'self'`, déjà présent ci-dessus. L'origine de l'API mAI reste
+      // déclarée pour les appels qui lui échappent encore — l'authentification
+      // Vibe et la révocation de session (cf. docs/2-vibe/INTEGRATION.md § 7).
       apiOrigin,
       ...(isDev ? ["ws:", "wss:", "http://localhost:*"] : []),
     ],
@@ -174,6 +206,11 @@ const nextConfig: NextConfig = {
   experimental: {
     appNewScrollHandler: true,
     cachedNavigations: true,
+    // Plafond de mémoire : le nombre de processus de compilation est BORNE
+    // par `MAI_BUILD_WORKERS` quand la variable est posée. Sans elle, Next.js
+    // prend `cpus - 1` — sept compilations en parallèle sur un portable de
+    // 6 Go, où le build se fait tuer avant d'arriver au bout.
+    ...(buildWorkers ? { cpus: buildWorkers } : {}),
     inlineCss: true,
     // Barils d'exports massivement importés : sans cette liste, chaque fichier
     // qui écrit `import { X } from "pkg"` tire la barre entière dans le graphe
@@ -235,6 +272,28 @@ const nextConfig: NextConfig = {
           ...securityHeaders,
         ],
         source: "/(.*)",
+      },
+      // Artefacts du jeu Blackline. Le chunk d'entrée porte un nom FIXE
+      // (`blackline.js`) : il est donc mis en cache indéfiniment. Les autres
+      // chunks gardent le hachage de leur contenu : un nom changeant avec un
+      // cache immuable est un cache trompeur.
+      {
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+        source: "/blackline/assets/:path*",
+      },
+      {
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800",
+          },
+        ],
+        source: "/blackline/fonts/:path*",
       },
     ];
   },

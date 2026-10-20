@@ -72,6 +72,60 @@ async function queryPersistedTier(userId: string): Promise<TierRow | null> {
   return rows[0] ?? null;
 }
 
+/**
+ * Résout l'identifiant CANONIQUE d'un compte à partir de son email.
+ *
+ * Pourquoi c'est nécessaire : la table `users` de l'hôte identifie un compte
+ * par `id::text` (un uuid), tandis que Vibe l'identifie par un email. Le
+ * tick de réplication des notifications part de Vibe, donc de l'email — et
+ * il doit écrire dans la table de l'hôte avec le BONNE `userId`, celle que
+ * la session produit (`user.id || user.email`).
+ *
+ * Sans cette résolution, une notification répliquée irait dans une ligne
+ * `userId = email` alors que la session lit `userId = id` : la cloche
+ * mAI ne l'afficherait jamais.
+ *
+ * L'ordre de priorité est celui de `TIER_LOOKUP_SQL` : l'identifiant d'abord,
+ * puis l'email, puis le pseudo. Ici on ne connaît QUE l'email, donc la
+ * recherche porte sur `email` et sur `id::text` au cas où la table ait
+ * été peuplée avec l'email comme identifiant (ce que fait le backend pour
+ * les jetons legacy).
+ */
+export async function resolveUserIdByEmail(
+  email: string | null | undefined
+): Promise<string | null> {
+  const valeur = email?.trim();
+  if (!valeur) {
+    return null;
+  }
+  try {
+    const { dbReady, getRawClient } = await import("./queries");
+    await dbReady();
+    const client = getRawClient();
+    if (!client) {
+      return null;
+    }
+    const rows = (await client.unsafe(
+      `SELECT id::text AS id
+       FROM users
+       WHERE (email IS NOT NULL AND LOWER(email) = LOWER($1::text))
+          OR id::text = $1::text
+       ORDER BY
+         (id::text = $1::text) DESC,
+         (email IS NOT NULL AND LOWER(email) = LOWER($1::text)) DESC
+       LIMIT 1`,
+      [valeur]
+    )) as Array<{ id: string | null }>;
+    return rows[0]?.id ?? null;
+  } catch (error) {
+    console.error(
+      "[resolve-user-id] résolution par email impossible :",
+      error instanceof Error ? error.message : error
+    );
+    return null;
+  }
+}
+
 export async function getPersistedTier(params: {
   userId: string | null | undefined;
 }): Promise<PersistedTierResult> {

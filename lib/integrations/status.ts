@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { IntegrationConnection } from "@/lib/db/schema";
+import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 import { readCredentials } from "./oauth";
 import {
   getIntegrationProvider,
@@ -32,6 +33,16 @@ export type IntegrationStatus = {
   pluginId: string;
   provider: IntegrationProviderId;
   scopes: string[];
+  /**
+   * Le coffre de secrets est-il configuré sur cette instance ?
+   *
+   * Sans `MCP_ENCRYPTION_KEY`, aucun jeton ne peut être scellé ni stocké : la
+   * connexion est refusée en amont (`vault_unconfigured`). L'exposer évite un
+   * échec opaque au moment où l'utilisateur clique sur « Connecter » — l'écran
+   * peut dire que l'instance n'est pas prête, au lieu de renvoyer un toast
+   * d'erreur que personne ne sait corriger.
+   */
+  vaultConfigured: boolean;
 };
 
 function project(
@@ -51,6 +62,7 @@ function project(
     pluginId: descriptor.pluginId,
     provider: descriptor.id,
     scopes: (row?.scopes ?? "").split(/[\s,]+/).filter(Boolean),
+    vaultConfigured: isEncryptionConfigured(),
   };
 }
 

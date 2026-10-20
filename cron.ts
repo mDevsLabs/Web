@@ -32,24 +32,32 @@ import { fileURLToPath } from "node:url";
  *   • /api/cron/planning — messages planifiés    POST  maxDuration 300 s
  *   • /api/cron/wakies   — tâches planifiées     POST  maxDuration 300 s
  *   • /api/cron/vibe     — publication Vibe & DM  GET   maxDuration  60 s
+ *   • /api/cron/notifications — réplication des    POST  maxDuration 120 s
+ *     notifications Vibe & Wakies
+ *
+ * Le cinquième tick est arrivé APRÈS les quatre autres : il réplique dans
+ * la table `Notification` de l'hôte les événements produits par Vibe et
+ * Wakies, pour que la cloche mAI soit l'unique point d'entrée. Il est
+ * idempotent — un rejeu ne duplique rien — donc son retard de cinq minutes
+ * est le seul coût.
  *
  * PAR CONCURRENCE, ET NON DANS L'ORDRE DU WORKFLOW
  *
  * Val Town plafonne une exécution de val à 10 minutes (1 minute en gratuit) et
  * l'intervalle minimal d'un cron à 1 minute (15 minutes en gratuit) : une
  * cadence de 5 minutes suppose le plan Pro, et le plafond de 10 minutes est la
- * vraie contrainte de conception ici. Enchaîner les quatre appels —
- * 285 s + 290 s + 290 s + 60 s = 15 minutes — le dépasserait : le val serait tué
- * et les derniers ticks ne tourneraient JAMAIS, silencieusement, sur toutes les
- * runs. Les quatre appels partent donc en parallèle, ce qui borne la run au tick
- * le plus long (≈ 5 min) au lieu de la somme.
+ * vraie contrainte de conception ici. Enchaîner les cinq appels — le plus
+ * long, 290 s, borne déjà la run — le dépasserait. Les cinq appels partent
+ * donc en parallèle, ce qui borne la run au tick le plus long (≈ 5 min) au
+ * lieu de la somme.
  *
  * Le parallélisme ne perd rien du contrat du workflow, qui le disait déjà dans
  * son en-tête : les quatre routes reserving leurs lignes de façon atomique
  * (bail transactionnel côté Agent et Wakies, `FOR UPDATE SKIP LOCKED` côté
  * Vibe), deux ticks concurrents se neutralisent sur l'occurrence au lieu de
  * lancer une seconde exécution. L'ordre n'était donc pas un contrat, il n'était
- * qu'un enchaînement de commandes shell.
+ * qu'un enchaînement de commandes shell. Le cinquième tick, de réplication des
+ * notifications, est idempotent par construction : un rejeu ne duplique rien.
  *
  * CE QUE LE WORKFLOW GARDAIT, ET QUE CE VAL GARDE
  *
@@ -101,6 +109,7 @@ const TICKS: CronTick[] = [
   { budgetMs: 290_000, method: "POST", path: "/api/cron/planning" },
   { budgetMs: 290_000, method: "POST", path: "/api/cron/wakies" },
   { budgetMs: 60_000, method: "GET", path: "/api/cron/vibe" },
+  { budgetMs: 120_000, method: "POST", path: "/api/cron/notifications" },
 ];
 
 export interface TickResult {

@@ -18,6 +18,11 @@ import {
 } from "drizzle-orm";
 import { ChatbotError } from "@/lib/errors";
 import {
+  type NOTIFICATION_TYPES,
+  type NotificationOrigin,
+  originForNotificationType,
+} from "@/lib/notifications/types";
+import {
   agent,
   agentTemplate,
   type Chat,
@@ -68,7 +73,14 @@ export async function getUserNotificationPrefs(userId: string) {
     return prefs;
   }
   // default prefs if not exists
+  //
+  // Les préférences Agent sont incluses : l'écran groupé les affiche, et une
+  // absence vaudrait « faux » — donc une case cochée qui ne l'est pas.
   return {
+    agentApprovalRequired: true,
+    agentRunFailed: true,
+    agentRunFinished: true,
+    agentUserInputRequired: true,
     aiResponse: true,
     createdAt: new Date(),
     enabled: false,
@@ -96,6 +108,14 @@ export async function upsertUserNotificationPrefs(
     planningTaskCompleted: boolean;
     quotaWarning: boolean;
     regenerateMode: "truncate" | "fork";
+    // Préférences Agent (migration 0017) : elles existent en base et sont
+    // exposées par l'API, mais le type d'écriture ne les mentionnait pas —
+    // l'upsert les acceptait par accident (spread), sans les insérer
+    // correctement sur une ligne neuve.
+    agentApprovalRequired: boolean;
+    agentRunFailed: boolean;
+    agentRunFinished: boolean;
+    agentUserInputRequired: boolean;
   }>
 ) {
   const db = await dbReady();
@@ -109,6 +129,10 @@ export async function upsertUserNotificationPrefs(
     const [created] = await db
       .insert(userNotificationPrefs)
       .values({
+        agentApprovalRequired: data.agentApprovalRequired ?? true,
+        agentRunFailed: data.agentRunFailed ?? true,
+        agentRunFinished: data.agentRunFinished ?? true,
+        agentUserInputRequired: data.agentUserInputRequired ?? true,
         aiResponse: data.aiResponse ?? true,
         enabled: data.enabled ?? false,
         mcpAccessRequest: data.mcpAccessRequest ?? true,
@@ -146,18 +170,42 @@ export async function createNotification(data: {
     | "agent_approval_required"
     | "agent_run_failed"
     | "agent_run_finished"
-    | "agent_user_input_required";
+    | "agent_user_input_required"
+    // Notifications Vibe et Wakies (migration 0063) : répliquées depuis leur
+    // source, elles portent l'origine qui les a produites.
+    | "vibe_like"
+    | "vibe_repost"
+    | "vibe_reply"
+    | "vibe_mention"
+    | "vibe_quote"
+    | "vibe_follow"
+    | "vibe_dm"
+    | "vibe_ai_digest"
+    | "vibe_system"
+    | "wakies_reply";
   title: string;
   body?: string | null;
   dedupeKey?: string | null;
   link?: string | null;
+  /** Origine de l'événement. Déduite du type quand elle est omise. */
+  origin?: NotificationOrigin;
+  /** Identifiant de l'événement dans sa source. */
+  sourceId?: string | null;
+  /** Charge utile propre à la source. */
+  sourceMeta?: Record<string, unknown> | null;
 }) {
   const db = await dbReady();
   const { notification } = await import("../schema");
+  const origin = data.origin ?? originForNotificationType(data.type);
   // check prefs gating
   try {
     const prefs = await getUserNotificationPrefs(data.userId);
-    if (!prefs.enabled) {
+    // Le gate `enabled` ne s'applique PAS aux notifications RÉPLIQUÉES.
+    // Une notification Vibe ou Wakies a déjà été décidée par sa source :
+    // la rejuger par le réglage global de mAI la ferait disparaître alors
+    // que l'utilisateur l'a demandée dans l'application d'origine. Seules
+    // les notifications natives de mAI obéissent à `prefs.enabled`.
+    if (!prefs.enabled && origin === "mai") {
       return null;
     }
     // Le gate DOIT couvrir les 12 types. Un type absent de cette table
@@ -183,7 +231,11 @@ export async function createNotification(data: {
       project_member_joined: prefs.projectCreated,
       quota_warning: (prefs as any).quotaWarning ?? true,
     };
-    if (gate[data.type] === false) {
+    // Les types répliqués (Vibe, Wakies) ne sont pas dans la table : leur
+    // décision a été prise à la source. `undefined` ne doit donc pas être
+    // lu comme « à vérifier ».
+    const decision = gate[data.type];
+    if (decision === false) {
       return null;
     }
   } catch (prefsErr) {
@@ -197,6 +249,9 @@ export async function createNotification(data: {
       body: data.body ?? null,
       dedupeKey: data.dedupeKey ?? null,
       link: data.link ?? null,
+      origin,
+      sourceId: data.sourceId ?? null,
+      sourceMeta: (data.sourceMeta as any) ?? null,
       title: data.title,
       type: data.type,
       userId: data.userId,
@@ -207,22 +262,76 @@ export async function createNotification(data: {
   return created;
 }
 
+/**
+ * Réplique une notification venue d'une autre application.
+ *
+ * L'upsert est idempotent : la contrainte unique `(origin, sourceId)` fait
+ * qu'un rejeu de tick ne duplique rien. C'est ce qui rend le tick de
+ * réplication sans risque.
+ */
+export async function replicateNotification(data: {
+  body?: string | null;
+  createdAt?: Date;
+  dedupeKey?: string | null;
+  link?: string | null;
+  origin: NotificationOrigin;
+  sourceId: string;
+  sourceMeta?: Record<string, unknown> | null;
+  title: string;
+  type: (typeof NOTIFICATION_TYPES)[number];
+  userId: string;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("../schema");
+  const [created] = await db
+    .insert(notification)
+    .values({
+      body: data.body ?? null,
+      createdAt: data.createdAt ?? new Date(),
+      dedupeKey: data.dedupeKey ?? null,
+      link: data.link ?? null,
+      origin: data.origin,
+      sourceId: data.sourceId,
+      sourceMeta: (data.sourceMeta as any) ?? null,
+      title: data.title,
+      type: data.type,
+      userId: data.userId,
+    })
+    .onConflictDoNothing({
+      target: [notification.origin, notification.sourceId],
+      // L'index unique est PARTIEL (`sourceId is not null`) : la clause
+      // `ON CONFLICT` doit porter la même condition, sinon PostgreSQL
+      // refuse de l'appliquer à un index partiel.
+      // `where` est le prédicat d'index (le `targetWhere` n'existe que pour
+      // `onConflictDoUpdate`).
+      where: sql`${notification.sourceId} is not null`,
+    })
+    .returning();
+  return created ?? null;
+}
+
 export async function getNotificationsByUserId({
   userId,
   limit = 20,
   offset = 0,
   unreadOnly = false,
+  origins,
 }: {
   userId: string;
   limit?: number;
   offset?: number;
   unreadOnly?: boolean;
+  /** Restreint la lecture à certaines origines. Absent = toutes. */
+  origins?: NotificationOrigin[];
 }) {
   const db = await dbReady();
   const { notification } = await import("../schema");
   const conditions = [eq(notification.userId, userId)];
   if (unreadOnly) {
     conditions.push(eq(notification.isRead, false));
+  }
+  if (origins && origins.length > 0) {
+    conditions.push(inArray(notification.origin, origins));
   }
   const rows = await db
     .select()
@@ -234,15 +343,23 @@ export async function getNotificationsByUserId({
   return rows;
 }
 
-export async function getUnreadNotificationCount(userId: string) {
+export async function getUnreadNotificationCount(
+  userId: string,
+  origins?: NotificationOrigin[]
+) {
   const db = await dbReady();
   const { notification } = await import("../schema");
+  const conditions = [
+    eq(notification.userId, userId),
+    eq(notification.isRead, false),
+  ];
+  if (origins && origins.length > 0) {
+    conditions.push(inArray(notification.origin, origins));
+  }
   const [row] = await db
     .select({ count: count() })
     .from(notification)
-    .where(
-      and(eq(notification.userId, userId), eq(notification.isRead, false))
-    );
+    .where(and(...conditions));
   return Number(row?.count ?? 0);
 }
 
@@ -291,6 +408,72 @@ export async function deleteNotification({
     .where(and(eq(notification.id, id), eq(notification.userId, userId)))
     .returning();
   return deleted ?? null;
+}
+
+/**
+ * Notification unifiée correspondant à un événement de source.
+ *
+ * Sert à la propagation du « lu » : retrouver l'événement répliqué pour
+ * connaître son `sourceId` et son `sourceMeta` avant de prévenir la source.
+ */
+export async function getNotificationBySource({
+  origin,
+  sourceId,
+  userId,
+}: {
+  origin: NotificationOrigin;
+  sourceId: string;
+  userId: string;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("../schema");
+  const [row] = await db
+    .select()
+    .from(notification)
+    .where(
+      and(
+        eq(notification.userId, userId),
+        eq(notification.origin, origin),
+        eq(notification.sourceId, sourceId)
+      )
+    )
+    .limit(1);
+  return row ?? null;
+}
+
+/**
+ * Dernier `seq` Wakies déjà répliqué pour un compte.
+ *
+ * C'est la borne du tick : sans elle, chaque tick relirait tout
+ * l'historique des alertes. Le `seq` est un entier, donc la borne se lit
+ * comme un nombre — jamais comme une date, qui n'est pas monotone.
+ */
+export async function getMaxReplicatedWakiesSeq(
+  userId: string
+): Promise<number> {
+  const db = await dbReady();
+  const { notification } = await import("../schema");
+  // `sourceId` est un TEXTE, donc `max()` comparerait lexicographiquement :
+  // "9" serait greater que "10", et la borne du tick serait fausse.
+  //
+  // Le cast ne s'applique qu'aux chaînes ENTIÈRES : un `sourceId` qui ne
+  // l'est pas (une notification native de mAI, par exemple) est simplement
+  // ignoré, sans faire échouer la requête entière.
+  const [row] = await db
+    .select({
+      maxSeq: sql<string | null>`max(
+        case when ${notification.sourceId} ~ '^[0-9]+$'
+          then ${notification.sourceId}::bigint
+          else null
+        end
+      )`,
+    })
+    .from(notification)
+    .where(
+      and(eq(notification.userId, userId), eq(notification.origin, "wakies"))
+    );
+  const valeur = Number(row?.maxSeq ?? 0);
+  return Number.isFinite(valeur) ? valeur : 0;
 }
 
 export async function deleteAllNotifications(userId: string) {

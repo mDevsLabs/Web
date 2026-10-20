@@ -19,7 +19,7 @@ vi.mock("node:fs", () => ({
 vi.mock("electron", () => ({
   app: {
     getPath: () => "C:/Users/test",
-    getVersion: () => "0.9.1",
+    getVersion: () => "0.9.2",
     isPackaged: false,
   },
 }));
@@ -32,6 +32,27 @@ const { launchCoder } = await vi.importActual<{
     sessionToken?: string;
   }) => Promise<{ success: boolean; error?: string }>;
 }>("../../apps/desktop/src/coder-launcher");
+
+/**
+ * Un jeton de session RÉELLEMENT exploitable.
+ *
+ * Le lanceur refuse un jeton qui n'est pas un JWT porteur d'une identité
+ * (`isUsableSessionToken`) : sans cela, Coder afficherait le dernier compte
+ * local — un compte qui ne correspond pas à la session de mAI Desktop. Un
+ * jeton de forme `a.b.c` ne suffirait donc pas au test.
+ */
+function jetonSession(): string {
+  const encoder = (valeur: unknown) =>
+    Buffer.from(JSON.stringify(valeur), "utf8")
+      .toString("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/[=]+$/, "");
+  return `${encoder({ alg: "HS256", typ: "JWT" })}.${encoder({
+    email: "test@mai.fr",
+    exp: Math.floor(Date.now() / 1000) + 3600,
+  })}.signature`;
+}
 
 function spawnOk() {
   const child = Object.assign(new EventEmitter(), { unref: vi.fn() });
@@ -57,16 +78,29 @@ describe("Coder embarqué dans mAI Desktop", () => {
     expect(mocks.spawn).not.toHaveBeenCalled();
   });
 
+  it("refuse un paquet sans marqueur de version", async () => {
+    mocks.exists = true;
+    const result = await launchCoder({ sessionToken: jetonSession() });
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("marqueur de version absent");
+    expect(mocks.spawn).not.toHaveBeenCalled();
+  });
+
   it("lance Coder avec son espace comme argument, sans shell", async () => {
     mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.9.2" });
     const child = spawnOk();
     const result = await launchCoder({
+      sessionToken: jetonSession(),
       workspacePath: "C:/Un projet/espace & test",
     });
     expect(result.success).toBe(true);
     expect(mocks.spawn).toHaveBeenCalledWith(
       expect.any(String),
-      ["--workspace=C:/Un projet/espace & test"],
+      [
+        "--workspace=C:/Un projet/espace & test",
+        expect.stringMatching(/^--mai-session-token-file=/),
+      ],
       expect.objectContaining({
         detached: true,
         env: expect.objectContaining({
@@ -82,8 +116,9 @@ describe("Coder embarqué dans mAI Desktop", () => {
 
   it("transmet le jeton par fichier éphémère, jamais dans les arguments", async () => {
     mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.9.2" });
     spawnOk();
-    const token = "header.payload.signature";
+    const token = jetonSession();
     expect(await launchCoder({ sessionToken: token })).toEqual({
       success: true,
     });
@@ -100,17 +135,34 @@ describe("Coder embarqué dans mAI Desktop", () => {
     );
   });
 
-  it("ne transmet aucun jeton quand le handoff est absent", async () => {
+  it("refuse de lancer Coder sans jeton de session exploitable", async () => {
+    // Sans jeton, Coder afficherait le dernier compte local — un compte qui
+    // ne correspond pas à la session de mAI Desktop. Le lancement est donc
+    // refusé, et aucun jeton n'est transmis.
     mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.9.2" });
     spawnOk();
-    await launchCoder();
-    expect(mocks.spawn.mock.calls[0][2].env.MAI_SESSION_TOKEN).toBeUndefined();
+    const result = await launchCoder();
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("Connectez-vous");
+    expect(mocks.spawn).not.toHaveBeenCalled();
+  });
+
+  it("refuse un jeton qui n'est pas un JWT porteur d'une identité", async () => {
+    mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.9.2" });
+    spawnOk();
+    const result = await launchCoder({
+      sessionToken: "header.payload.signature",
+    });
+    expect(result.success).toBe(false);
+    expect(mocks.spawn).not.toHaveBeenCalled();
   });
 
   it("refuse un Coder embarqué dont la version diverge de mAI Desktop", async () => {
     mocks.exists = true;
     mocks.marker = JSON.stringify({ version: "0.0.1" });
-    const result = await launchCoder();
+    const result = await launchCoder({ sessionToken: jetonSession() });
     expect(result.success).toBe(false);
     expect(result.error).toContain("ne correspond pas à mAI Desktop");
     expect(mocks.spawn).not.toHaveBeenCalled();
@@ -118,12 +170,13 @@ describe("Coder embarqué dans mAI Desktop", () => {
 
   it("remonte les erreurs du système au bouton de lancement", async () => {
     mocks.exists = true;
+    mocks.marker = JSON.stringify({ version: "0.9.2" });
     const child = new EventEmitter();
     mocks.spawn.mockImplementation(() => {
       queueMicrotask(() => child.emit("error", new Error("EACCES")));
       return child;
     });
-    expect(await launchCoder()).toEqual({
+    expect(await launchCoder({ sessionToken: jetonSession() })).toEqual({
       error: "Impossible de lancer Coder : EACCES",
       success: false,
     });

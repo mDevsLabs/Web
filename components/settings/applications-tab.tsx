@@ -21,15 +21,19 @@
 
 import {
   BellIcon,
+  BookIcon,
   BotIcon,
   BrainIcon,
   CheckIcon,
   CpuIcon,
+  CrosshairIcon,
   GlobeIcon,
+  ImageIcon,
   LayersIcon,
   Loader2Icon,
   LockIcon,
   MessageSquareIcon,
+  NewspaperIcon,
   PauseIcon,
   PlayIcon,
   SearchIcon,
@@ -38,6 +42,7 @@ import {
   TrashIcon,
   UserIcon,
   UsersIcon,
+  VideoIcon,
   Volume2Icon,
   ZapIcon,
 } from "@mdevs/icons";
@@ -45,6 +50,7 @@ import type React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { api as wakiesApi } from "@/components/wakies/api";
 import {
@@ -53,6 +59,18 @@ import {
   useCapabilities,
 } from "@/components/wakies/CapacityPicker";
 import { ModelPicker as WakiesModelPicker } from "@/components/wakies/ModelPicker";
+import {
+  MAI_SEARCH_LANGUAGE_LABELS,
+  MAI_SEARCH_LANGUAGES,
+  MAI_SEARCH_RESULT_COUNT_DEFAULT,
+  MAI_SEARCH_SAFETY_LABELS,
+  MAI_SEARCH_SAFETY_LEVELS,
+  MAI_SEARCH_SOURCE_KEYS,
+  MAI_SEARCH_SOURCE_LABELS,
+  type MaiSearchLanguage,
+  type MaiSearchSafetyLevel,
+  type MaiSearchSourceKey,
+} from "@/lib/search/sources";
 import { cn, fetcher } from "@/lib/utils";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
@@ -148,8 +166,13 @@ export function ApplicationsTab() {
   const [circleActionLoading, setCircleActionLoading] = useState(false);
 
   // Notifications Vibe
-  const [emailNotifs, setEmailNotifs] = useState(true);
-  const [pushNotifs, setPushNotifs] = useState(true);
+  //
+  // Les préférences de NOTIFICATION Vibe (e-mail, push, j'aime, partages,
+  // réponses, messages) vivent dans l'onglet « Notifications » des
+  // paramètres mAI : c'est le seul écran qui regroupe les trois
+  // applications. Elles ne sont donc PAS modifiées ici — seulement
+  // relues au moment d'enregistrer Vibe, pour ne pas les écraser avec
+  // `true` par défaut.
   const [hapticsEnabled, setHapticsEnabled] = useState(() =>
     haptics.isEnabled()
   );
@@ -157,6 +180,18 @@ export function ApplicationsTab() {
   // --- ÉTATS UNIFIÉS MODÈLE & VOIX ---
   const [unifiedModel, setUnifiedModel] = useState<string>("mai-2-mini");
   const [unifiedVoice, setUnifiedVoice] = useState<string>("");
+
+  // --- ÉTATS RECHERCHE mAI SEARCH ---
+  const [searchLanguage, setSearchLanguage] = useState<MaiSearchLanguage>("fr");
+  const [searchResultCount, setSearchResultCount] = useState<number>(
+    MAI_SEARCH_RESULT_COUNT_DEFAULT
+  );
+  const [searchSafetyLevel, setSearchSafetyLevel] =
+    useState<MaiSearchSafetyLevel>("medium");
+  const [searchSources, setSearchSources] = useState<MaiSearchSourceKey[]>([
+    ...MAI_SEARCH_SOURCE_KEYS,
+  ]);
+  const [searchSaving, setSearchSaving] = useState(false);
 
   // --- ÉTATS WAKIES ---
   const [wakiesLoading, setWakiesLoading] = useState(true);
@@ -174,6 +209,27 @@ export function ApplicationsTab() {
     }
     if (userPrefData?.defaultAudioVoice) {
       setUnifiedVoice(userPrefData.defaultAudioVoice);
+    }
+  }, [userPrefData]);
+
+  // Préférences de recherche mAI Search : elles viennent de la même route
+  // `/api/user/preferences` que le modèle et la voix — une seule source
+  // pour l'onglet, une seule écriture.
+  useEffect(() => {
+    if (!userPrefData) {
+      return;
+    }
+    if (userPrefData.searchLanguage) {
+      setSearchLanguage(userPrefData.searchLanguage);
+    }
+    if (typeof userPrefData.searchResultCount === "number") {
+      setSearchResultCount(userPrefData.searchResultCount);
+    }
+    if (userPrefData.searchSafetyLevel) {
+      setSearchSafetyLevel(userPrefData.searchSafetyLevel);
+    }
+    if (Array.isArray(userPrefData.searchSources)) {
+      setSearchSources(userPrefData.searchSources);
     }
   }, [userPrefData]);
 
@@ -213,8 +269,6 @@ export function ApplicationsTab() {
         setAllowMentions(s.allow_mentions || "everyone");
         setContentFilter(s.content_filter_level || "medium");
         setBlurSensitive(s.blur_sensitive_content ?? true);
-        setEmailNotifs(s.email_notifications ?? true);
-        setPushNotifs(s.push_notifications ?? true);
         setMaiAutoApproveTools(Boolean(s.mai_auto_approve_tools));
         setPostsAIGeneratedByDefault(Boolean(s.posts_ai_generated_by_default));
         setMaiContextPosts(Boolean(s.mai_context_posts));
@@ -314,6 +368,12 @@ export function ApplicationsTab() {
       await mutateUserPref();
 
       // 2. Mise à jour des réglages Vibe
+      //
+      // Les préférences de NOTIFICATION ne sont PAS envoyées ici : elles
+      // appartiennent à l'onglet « Notifications ». Le backend Vibe applique
+      // un `CASE WHEN … IS NOT NULL` sur ces colonnes, donc les omettre
+      // conserve les valeurs existantes — les envoyer à `true` les
+      // écraserait à chaque enregistrement depuis cet écran.
       await ApiService.updateSettings({
         allow_dms: allowDms,
         allow_dms_from: allowDms,
@@ -324,7 +384,6 @@ export function ApplicationsTab() {
         default_vibe_audience: defaultVibeAudience,
         dm_auto_translate: dmAutoTranslate,
         dm_translate_lang: dmTranslateLang,
-        email_notifications: emailNotifs,
         feed_default_mode: feedDefaultMode,
         hide_reposts: hideReposts,
         hide_verified_badge: hideVerifiedBadge,
@@ -335,7 +394,6 @@ export function ApplicationsTab() {
         mai_default_model: unifiedModel,
         mai_tts_voice: unifiedVoice,
         posts_ai_generated_by_default: postsAIGeneratedByDefault,
-        push_notifications: pushNotifs,
       });
 
       toast.success(
@@ -348,6 +406,46 @@ export function ApplicationsTab() {
     } finally {
       setVibeSaving(false);
     }
+  };
+
+  // --- ACTIONS RECHERCHE ---
+  const handleSaveSearchSettings = async () => {
+    setSearchSaving(true);
+    try {
+      const res = await fetch("/api/user/preferences", {
+        body: JSON.stringify({
+          searchLanguage,
+          searchResultCount,
+          searchSafetyLevel,
+          searchSources,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur lors de l'enregistrement des préférences.");
+      }
+      await mutateUserPref();
+      toast.success("Paramètres de recherche enregistrés ✨");
+    } catch (err: any) {
+      toast.error(
+        err?.message || "Impossible d'enregistrer les paramètres de recherche."
+      );
+    } finally {
+      setSearchSaving(false);
+    }
+  };
+
+  const toggleSearchSource = (source: MaiSearchSourceKey) => {
+    setSearchSources((actuelles) => {
+      const restantes = actuelles.filter((item) => item !== source);
+      // On ne descend jamais sous une source : une recherche sans aucune
+      // source ne remonterait rien, ce qui ressemble à une panne.
+      if (restantes.length === 0) {
+        return actuelles;
+      }
+      return actuelles.includes(source) ? restantes : [...actuelles, source];
+    });
   };
 
   const handleAddToCircle = async (username: string) => {
@@ -481,7 +579,7 @@ export function ApplicationsTab() {
           Applications intégrées
         </div>
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-          Paramètres de Vibe & Wakies
+          Paramètres de Vibe, Wakies & Blackline
         </h2>
         <p className="text-xs sm:text-sm text-muted-foreground">
           Centralisez la configuration de vos applications satellites mAI. Les
@@ -500,10 +598,24 @@ export function ApplicationsTab() {
           </a>
           <a
             className="chip flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            href="#search"
+          >
+            <SearchIcon className="size-3.5 text-primary" />
+            Recherche
+          </a>
+          <a
+            className="chip flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
             href="#wakies"
           >
             <BotIcon className="size-3.5 text-primary" />
             Wakies
+          </a>
+          <a
+            className="chip flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            href="#blackline"
+          >
+            <CrosshairIcon className="size-3.5 text-primary" />
+            Blackline
           </a>
         </div>
       </div>
@@ -972,6 +1084,180 @@ export function ApplicationsTab() {
       </section>
 
       {/* ========================================================================= */}
+      {/* SECTION RECHERCHE mAI SEARCH */}
+      {/* ========================================================================= */}
+      <section
+        className="flex flex-col gap-6 scroll-mt-24 pt-4 border-t border-border/50"
+        id="search"
+      >
+        <div className="flex items-center justify-between border-b border-border/50 pb-3">
+          <div className="flex items-center gap-2.5">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <SearchIcon className="size-4" />
+            </span>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-foreground">
+                Recherche &amp; mAI Search
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Langue, volume de résultats, sources interrogées et filtre de
+                sécurité
+              </p>
+            </div>
+          </div>
+          <button
+            className="rounded-xl bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm hover:opacity-90 disabled:opacity-50 cursor-pointer transition-all flex items-center gap-1.5"
+            disabled={searchSaving}
+            onClick={handleSaveSearchSettings}
+            type="button"
+          >
+            {searchSaving ? (
+              <Loader2Icon className="size-3.5 animate-spin" />
+            ) : (
+              <CheckIcon className="size-3.5" />
+            )}
+            Enregistrer
+          </button>
+        </div>
+
+        <div className="surface-card flex flex-col gap-4 p-5 scroll-mt-24">
+          <p className="text-xs text-muted-foreground">
+            Ces réglages s'appliquent à toutes vos recherches mAI Search, depuis
+            la page de recherche comme depuis les outils d'IA. Le serveur les
+            applique : une recherche ne peut pas les contourner.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Langue de recherche */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider"
+                htmlFor="search-language"
+              >
+                Langue
+              </label>
+              <select
+                className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
+                id="search-language"
+                onChange={(e) =>
+                  setSearchLanguage(e.target.value as MaiSearchLanguage)
+                }
+                value={searchLanguage}
+              >
+                {MAI_SEARCH_LANGUAGES.map((langue) => (
+                  <option key={langue} value={langue}>
+                    {MAI_SEARCH_LANGUAGE_LABELS[langue]}
+                  </option>
+                ))}
+              </select>
+              <span className="text-[10px] text-muted-foreground">
+                Langue de l'encyclopédie et des recherches.
+              </span>
+            </div>
+
+            {/* Nombre de résultats */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider"
+                htmlFor="search-count"
+              >
+                Résultats par recherche
+              </label>
+              <select
+                className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
+                id="search-count"
+                onChange={(e) =>
+                  setSearchResultCount(Number.parseInt(e.target.value, 10))
+                }
+                value={searchResultCount}
+              >
+                {[5, 10, 15, 20, 25].map((nombre) => (
+                  <option key={nombre} value={nombre}>
+                    {nombre}
+                  </option>
+                ))}
+              </select>
+              <span className="text-[10px] text-muted-foreground">
+                Volume maximal renvoyé par le moteur.
+              </span>
+            </div>
+
+            {/* Filtre de sécurité */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider"
+                htmlFor="search-safety"
+              >
+                Filtre de sécurité
+              </label>
+              <select
+                className="field-input text-xs w-full py-1.5 px-2.5 rounded-lg border border-border/70 bg-card text-foreground"
+                id="search-safety"
+                onChange={(e) =>
+                  setSearchSafetyLevel(e.target.value as MaiSearchSafetyLevel)
+                }
+                value={searchSafetyLevel}
+              >
+                {MAI_SEARCH_SAFETY_LEVELS.map((niveau) => (
+                  <option key={niveau} value={niveau}>
+                    {MAI_SEARCH_SAFETY_LABELS[niveau]}
+                  </option>
+                ))}
+              </select>
+              <span className="text-[10px] text-muted-foreground">
+                Retire les résultats manifestement sensibles.
+              </span>
+            </div>
+          </div>
+
+          {/* Sources activées */}
+          <div className="flex flex-col gap-2 pt-3 border-t border-border/40">
+            <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+              Sources interrogées
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {MAI_SEARCH_SOURCE_KEYS.map((source) => {
+                const active = searchSources.includes(source);
+                return (
+                  <button
+                    aria-pressed={active}
+                    className={cn(
+                      "chip flex items-center gap-1.5 text-xs cursor-pointer",
+                      active
+                        ? "bg-foreground text-background font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                    data-active={active ? "true" : undefined}
+                    key={source}
+                    onClick={() => toggleSearchSource(source)}
+                    type="button"
+                  >
+                    {source === "wikipedia" ? (
+                      <BookIcon className="size-3.5" />
+                    ) : source === "images" ? (
+                      <ImageIcon className="size-3.5" />
+                    ) : source === "news" ? (
+                      <NewspaperIcon className="size-3.5" />
+                    ) : source === "videos" ? (
+                      <VideoIcon className="size-3.5" />
+                    ) : (
+                      <GlobeIcon className="size-3.5" />
+                    )}
+                    <span>{MAI_SEARCH_SOURCE_LABELS[source]}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-[10px] text-muted-foreground">
+              Wikipédia est une source à part entière : ses articles sont
+              distingués des résultats web par un badge, et ses résumés
+              alimentent la synthèse mAI.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* SECTION WAKIES */}
       {/* ========================================================================= */}
       <section
@@ -1249,6 +1535,45 @@ export function ApplicationsTab() {
             </div>
           </div>
         )}
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION BLACKLINE */}
+      {/* ========================================================================= */}
+      {/*
+        Les réglages du jeu BLACKLINE sont PARTAGÉS par le compte (table
+        `BlacklineSettings`, migration 0064). Ils vivaient dans le
+        `localStorage` de l'appareil : changer d'appareil, c'était tout
+        recommencer.
+
+        La PROGRESSION du jeu (XP, armes, collection) reste locale : Blackline
+        a volontairement retiré la synchronisation en ligne, et ses
+        récompenses ne constituent pas une économie serveur.
+      */}
+      <section
+        className="flex flex-col gap-6 scroll-mt-24 border-t border-border/50 pt-4"
+        id="blackline"
+      >
+        <div className="flex items-center justify-between border-b border-border/50 pb-3">
+          <div className="flex items-center gap-2.5">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <CrosshairIcon className="size-4" />
+            </span>
+            <div>
+              <h3 className="text-base font-bold text-foreground sm:text-lg">
+                Blackline
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                FPS tactique 3D en solo contre des bots
+              </p>
+            </div>
+          </div>
+          <span className="chip text-[11px] font-semibold uppercase">
+            PEGI 16
+          </span>
+        </div>
+
+        <BlacklineSettingsSection />
       </section>
     </div>
   );

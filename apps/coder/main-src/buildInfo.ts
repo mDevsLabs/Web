@@ -1,6 +1,6 @@
 // Commit Git injecté par esbuild au moment du build (`GITHUB_SHA` en CI).
 //
-// Les préversions de ce dépôt conservent le même numéro de version (0.9.1) et
+// Les préversions de ce dépôt conservent le même numéro de version (0.9.2) et
 // n'avancent que par le tag de release. electron-updater, qui compare des
 // versions sémantiques, ne peut donc pas voir une build plus récente. Le SHA
 // permet de comparer la build installée au commit publié dans la dernière
