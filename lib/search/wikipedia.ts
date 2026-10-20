@@ -51,6 +51,15 @@ import { type MaiSearchLanguage, normalizeMaiSearchLanguage } from "./sources";
 export interface WikipediaHit {
   /** Extrait en texte brut (le premier paragraphe de l'article). */
   extract: string;
+  /**
+   * La page est-elle une page de DÉSAMBIGUÏSATION ?
+   *
+   * Une page de désambiguïsation liste des homonymes : c'est un index, pas un
+   * article. La remonter en tête d'une recherche factuelle — « Ada Lovelace »
+   * — donnerait une liste de liens comme réponse. Le moteur la repère donc
+   * ici et la repousse en fin de liste.
+   */
+  isDisambiguation?: boolean;
   /** Vignette de l'article, si l'article en a une. */
   thumbnail?: string;
   /** Titre de l'article, dans sa forme canonique (redirections résolues). */
@@ -97,6 +106,60 @@ const WIKIPEDIA_MAX_BYTES = 1_000_000;
 const JSON_ACCEPT = "application/json";
 
 // ─────────────────────────────────────────────
+// Cache mémoire
+// ─────────────────────────────────────────────
+
+/**
+ * Durée de vie d'une entrée du cache.
+ *
+ * L'encyclopédie bouge lentement : une entrée de cinq minutes ne sert
+ * jamais une information périmée, et elle absorbe les rafales de requêtes
+ * identiques (recherche + résumé d'un article, puis relecture de l'onglet).
+ */
+const WIKIPEDIA_CACHE_TTL_MS = 5 * 60 * 1000;
+
+/** Nombre maximal d'entrées conservées. */
+const WIKIPEDIA_CACHE_MAX = 200;
+
+type CacheEntry<T> = { expiresAt: number; value: T };
+
+const ARTICLE_CACHE = new Map<string, CacheEntry<WikipediaArticle | null>>();
+const SEARCH_CACHE = new Map<string, CacheEntry<WikipediaHit[]>>();
+
+function readCache<T>(store: Map<string, CacheEntry<T>>, key: string): T | undefined {
+  const entry = store.get(key);
+  if (!entry) return undefined;
+  if (Date.now() > entry.expiresAt) {
+    store.delete(key);
+    return undefined;
+  }
+  return entry.value;
+}
+
+function writeCache<T>(
+  store: Map<string, CacheEntry<T>>,
+  key: string,
+  value: T
+): void {
+  if (store.size >= WIKIPEDIA_CACHE_MAX) {
+    const oldest = store.keys().next().value;
+    if (oldest) store.delete(oldest);
+  }
+  store.set(key, { expiresAt: Date.now() + WIKIPEDIA_CACHE_TTL_MS, value });
+}
+
+/**
+ * Vide le cache de l'encyclopédie.
+ *
+ * Exposé pour les tests : un cache entre deux cas d'essai rendrait le
+ * résultat dépendant de l'ordre d'exécution.
+ */
+export function clearWikipediaCache(): void {
+  ARTICLE_CACHE.clear();
+  SEARCH_CACHE.clear();
+}
+
+// ─────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────
 
@@ -124,6 +187,49 @@ export function normalizeWikiTitle(raw: string): string {
     .replace(/^\[\[|\]\]$/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+/**
+ * Ce titre est-il celui d'une page de désambiguïsation ?
+ *
+ * MediaWiki signale ces pages par leur contenu (« Cette page porte sur
+ * plusieurs personnes appelées… »), pas par un marqueur dans le titre : le
+ * titre peut s'appeler n'importe quoi. On combine donc deux indices :
+ *
+ * 1. le contenu renvoyé par l'API — seule source fiable ;
+ * 2. le titre lui-même, en dernier recours (pages de catégorie comme
+ *    « Homonymie »), quand l'extrait est vide.
+ *
+ * L'API `list=search` ne renvoyant pas de contenu d'article, c'est la
+ * variante `prop=extracts` qui tranche : `fetchWikipediaArticle` marque donc
+ * l'article, et `searchWikipedia` se rabat sur le titre.
+ */
+export function isDisambiguationTitle(title: string): boolean {
+  const normalized = normalizeWikiTitle(title).toLowerCase();
+  return (
+    normalized.startsWith("homonymie") ||
+    normalized.startsWith("désambiguïsation") ||
+    normalized.startsWith("désambiguisation")
+  );
+}
+
+/**
+ * L'extrait d'un article est-il celui d'une page de désambiguïsation ?
+ *
+ * MediaWiki ouvre ses pages de désambiguïsation par une formule
+ * reconnaissable. La liste est courte et explicite : mieux vaut une
+ * heuristique lisible qu'un motif exhaustif fragile.
+ */
+export function looksLikeDisambiguation(extract: string): boolean {
+  const texte = extract.toLowerCase();
+  return (
+    texte.includes("porte sur plusieurs") ||
+    texte.includes("désambiguïsation") ||
+    texte.includes("désambiguisation") ||
+    texte.includes("homonymie") ||
+    texte.includes("peut désigner") ||
+    texte.includes("désigne plusieurs")
+  );
 }
 
 /**
@@ -234,6 +340,12 @@ export async function searchWikipedia(
   );
   const offset = Math.max(options.offset ?? 0, 0);
 
+  const cacheKey = `${lang}:${limit}:${offset}:${recherche.toLowerCase()}`;
+  const cached = readCache(SEARCH_CACHE, cacheKey);
+  if (cached) {
+    return cached;
+  }
+
   const data = await callMediaWiki(
     {
       action: "query",
@@ -261,12 +373,14 @@ export async function searchWikipedia(
     }
     hits.push({
       extract: stripHtml(String(page?.snippet ?? "")),
+      isDisambiguation: isDisambiguationTitle(title),
       thumbnail: undefined,
       title,
       updatedAt: page?.timestamp ? String(page.timestamp) : undefined,
       url: wikipediaArticleUrl(title, lang),
     });
   }
+  writeCache(SEARCH_CACHE, cacheKey, hits);
   return hits;
 }
 
@@ -287,6 +401,12 @@ export async function fetchWikipediaArticle(
     return null;
   }
 
+  const cacheKey = `${lang}:${titre}`;
+  const cached = readCache(ARTICLE_CACHE, cacheKey);
+  if (cached !== undefined) {
+    return cached;
+  }
+
   const data = await callMediaWiki(
     {
       action: "query",
@@ -305,6 +425,9 @@ export async function fetchWikipediaArticle(
   const pages = data?.query?.pages;
   const page = Array.isArray(pages) ? pages[0] : null;
   if (!page || page.missing) {
+    // Un article absent est mis en cache comme « absent » : le renvoyer
+    // `null` à chaque appel ferait repasser l'API pour rien.
+    writeCache(ARTICLE_CACHE, cacheKey, null);
     return null;
   }
 
@@ -312,10 +435,15 @@ export async function fetchWikipediaArticle(
   const thumbnail = page?.thumbnail?.source
     ? String(page.thumbnail.source)
     : undefined;
+  const extract = String(page.extract ?? "").trim();
 
-  return {
-    extract: String(page.extract ?? "").trim(),
-    summary: String(page.extract ?? "").trim(),
+  const article: WikipediaArticle = {
+    extract,
+    // Le contenu de l'article est la source fiable : une page de
+    // désambiguïsation s'annonce dans son propre texte.
+    isDisambiguation:
+      looksLikeDisambiguation(extract) || isDisambiguationTitle(resolvedTitle),
+    summary: extract,
     thumbnail,
     title: resolvedTitle,
     updatedAt: page?.touched ? String(page.touched) : undefined,
@@ -323,6 +451,8 @@ export async function fetchWikipediaArticle(
       ? String(page.fullurl)
       : wikipediaArticleUrl(resolvedTitle, lang),
   };
+  writeCache(ARTICLE_CACHE, cacheKey, article);
+  return article;
 }
 
 /**
@@ -433,15 +563,42 @@ export async function fetchWikipediaImages(
  * MediaWiki insère des balises `<span class="searchmatch">` autour des
  * termes recherchés : sans nettoyage, le texte affiché à l'utilisateur
  * afficherait du balisage brut.
+ *
+ * Les entités décodées sont celles que l'API produit réellement. La liste
+ * NAMÉES d'abord (`&amp;` avant `&lt;` : décoder `&lt;` en premier
+ * produirait `&amp;lt;` sur une double substitution), puis les entités
+ * numériques, qui n'ont pas de liste possible.
  */
 export function stripHtml(html: string): string {
   return html
     .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
     .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
+    .replace(/&apos;/g, "'")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&#39;/g, "'")
+    .replace(/&rsquo;/g, "’")
+    .replace(/&lsquo;/g, "‘")
+    .replace(/&ldquo;/g, "“")
+    .replace(/&rdquo;/g, "”")
+    .replace(/&hellip;/g, "…")
+    .replace(/&mdash;/g, "—")
+    .replace(/&ndash;/g, "–")
+    .replace(/&eacute;/g, "é")
+    .replace(/&egrave;/g, "è")
+    .replace(/&agrave;/g, "à")
+    .replace(/&ccedil;/g, "ç")
+    .replace(/&ugrave;/g, "ù")
+    .replace(/&#(\d+);/g, (_match, code: string) => {
+      const point = Number.parseInt(code, 10);
+      return Number.isFinite(point) ? String.fromCodePoint(point) : "";
+    })
+    .replace(/&#x([0-9a-fA-F]+);/g, (_match, code: string) => {
+      const point = Number.parseInt(code, 16);
+      return Number.isFinite(point) ? String.fromCodePoint(point) : "";
+    })
+    .replace(/&amp;/g, "&")
     .replace(/\s+/g, " ")
     .trim();
 }

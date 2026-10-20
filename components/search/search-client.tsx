@@ -2,6 +2,7 @@
 
 import {
   ArrowRightIcon,
+  BookIcon,
   BotIcon,
   CheckIcon,
   CopyIcon,
@@ -29,6 +30,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { useRecentSearches } from "@/hooks/use-recent-searches";
+import { isSearchableQuery, looksLikeUrl } from "@/lib/search/query";
 import {
   readSummaryStream,
   type SummarySource,
@@ -83,6 +86,15 @@ function SummarySources({ sources }: { sources: SummarySource[] }) {
               <span className="line-clamp-1 font-medium">{source.title}</span>
               <span className="text-[10px] text-muted-foreground">
                 {source.domain}
+                {/*
+                  L'origine est rappelée ici : la synthèse annonce
+                  « d'après Wikipédia » quand l'affirmation vient de
+                  l'encyclopédie. C'est la même information que le badge des
+                  résultats, mais là où l'utilisateur la lit.
+                */}
+                {source.origin === "wikipedia" ? (
+                  <span className="text-info"> · Wikipédia</span>
+                ) : null}
               </span>
             </a>
           </li>
@@ -227,6 +239,24 @@ export function SearchClient() {
   // Moteurs qui ont répondu : sert à dire d'où viennent les résultats
   // quand la source principale a échoué.
   const [provider, setProvider] = useState<string | null>(null);
+  /**
+   * Durée de la dernière recherche, en millisecondes.
+   *
+   * Elle n'est affichée que si elle est nettement trop longue : une
+   * recherche à 400 ms n'intéresse personne, une recherche à huit secondes
+   * explique pourquoi l'écran paraissait figé. C'est un DIAGNOSTIC, pas un
+   * compteur permanent.
+   */
+  const [durationMs, setDurationMs] = useState<number | null>(null);
+  /**
+   * Message d'erreur de la recherche courante.
+   *
+   * L'échec existait avant sous forme d'exception avalée : le `toast` partait,
+   * l'écran restait vide, et rien n'indiquait à l'utilisateur que la panne
+   * n'était pas « aucun résultat ». Un état dédié permet d'afficher la
+   * panne ET de proposer de réessayer.
+   */
+  const [searchError, setSearchError] = useState<string | null>(null);
 
   // Modèle d'IA choisi pour le tiroir de discussion (via ModelSelector)
   const [selectedModelId, setSelectedModelId] = useState<string>("mai-2-mini");
@@ -266,11 +296,44 @@ export function SearchClient() {
 
   // Filtre par domaine optionnel
   const [domainFilter, setDomainFilter] = useState<string | null>(null);
+  /**
+   * Filtre par ORIGINE : tous les résultats, ou les seuls articles
+   * d'encyclopédie.
+   *
+   * L'encyclopédie est une source à part entière, mais ses articles étaient
+   * noyés parmi les pages web : rien ne disait à l'utilisateur que « Ada
+   * Lovelace » avait été trouvé dans Wikipédia. Ce filtre rend la source
+   * visible — et permet de ne lire QUE la référence.
+   */
+  const [sourceFilter, setSourceFilter] = useState<"all" | "wikipedia">("all");
+  /**
+   * Le moteur a-t-il remonté l'encyclopédie en tête de liste ?
+   *
+   * Le serveur le calcule (`wikiFirst`) : l'interface ne le redétermine pas,
+   * elle se contente de l'expliquer. Sans cette information, l'utilisateur
+   * voyait les articles d'encyclopédie en tête sans comprendre pourquoi.
+   */
+  const [wikiFirst, setWikiFirst] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const drawerMessagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const drawerAbortControllerRef = useRef<AbortController | null>(null);
+  /** Annule la recherche en vol (et elle seule). */
+  const searchAbortRef = useRef<AbortController | null>(null);
+
+  /**
+   * Historique des recherches récentes.
+   *
+   * Il est lu depuis le serveur, qui filtre par compte : l'interface ne
+   * reçoit jamais la requête d'un autre compte.
+   */
+  const {
+    clear: clearRecent,
+    forget: forgetRecent,
+    recent,
+    refresh: refreshRecent,
+  } = useRecentSearches();
 
   // Focus initial sur la barre de recherche
   useEffect(() => {
@@ -583,11 +646,36 @@ export function SearchClient() {
     router.push(`/?prompt=${encodeURIComponent(prefilled)}`);
   };
 
-  // Exécution de la recherche principale
-  const handleSearch = useCallback(
+  /**
+   * Exécution de la recherche principale.
+   *
+   * Trois choses ont été corrigées ici :
+   *
+   * 1. La requête est ANNULABLE. Une recherche lancée puis abandonnée
+   *    (nouvelle frappe, onglet fermé) continuait de courir et pouvait
+   *    réécrire les résultats par-dessus ceux de la recherche suivante.
+   *    Le `AbortController` estAnnulé, et la réponse d'une recherche
+   *    abandonnée est ignorée.
+   *
+   * 2. L'ERREUR EST AFFICHÉE, pas seulement signalée par un `toast`. Une
+   *    panne laissait un écran vide, indiscernable d'une recherche sans
+   *    résultat. L'écran dit maintenant ce qui s'est passé et propose de
+   *    réessayer.
+   *
+   * 3. L'URL porte la requête. Une recherche est partageable, et le bouton
+   *    « Partager » existait déjà mais reconstruisait l'URL à la main —
+   *    il pouvait donc partager autre chose que ce qui est affiché.
+   */
+  const runSearch = useCallback(
     async (overrideQuery?: string) => {
       const q = (overrideQuery ?? query).trim();
       if (!q) return;
+
+      // Une recherche précédente encore en vol est abandonnée : ses
+      // résultats ne doivent pas écraser ceux de la nouvelle.
+      searchAbortRef.current?.abort();
+      const controller = new AbortController();
+      searchAbortRef.current = controller;
 
       setSubmittedQuery(q);
       setIsLoading(true);
@@ -599,6 +687,17 @@ export function SearchClient() {
       setSummaryModel(null);
       setVote(null);
       setDomainFilter(null);
+      setSourceFilter("all");
+      setWikiFirst(false);
+      setSearchError(null);
+      setDurationMs(null);
+
+      // L'URL est mise à jour AVANT la requête : le partage et le
+      // rechargement fonctionnent même si la recherche échoue, et l'URL
+      // reflète la recherche en cours, pas la précédente.
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", q);
+      window.history.replaceState(null, "", url.toString());
 
       try {
         // Aucune source ni langue n'est envoyée : le serveur applique les
@@ -609,13 +708,22 @@ export function SearchClient() {
           body: JSON.stringify({ count: 25, query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
+          signal: controller.signal,
         });
 
         if (!res.ok) {
-          throw new Error("Erreur lors de la recherche");
+          throw new Error(
+            res.status === 429
+              ? "Trop de recherches consécutives. Patientez quelques secondes."
+              : "Le moteur de recherche n'a pas répondu."
+          );
         }
 
         const data = await res.json();
+        // Une réponse arrivée après l'abandon ne doit rien écrire.
+        if (controller.signal.aborted) {
+          return;
+        }
         const searchResults: SearchWebHit[] = data.results || [];
         const searchImages: SearchImageHit[] = data.images || [];
         const searchNews: SearchNewsHit[] = data.news || [];
@@ -627,23 +735,93 @@ export function SearchClient() {
         setVideos(searchVideos);
         setSearchId(data.searchId || null);
         setProvider(data.provider || null);
+        // Le serveur décide de l'ordre : l'interface l'explique, elle ne le
+        // recalcule pas.
+        setWikiFirst(data.wikiFirst === true);
+        setDurationMs(
+          typeof data.durationMs === "number" ? data.durationMs : null
+        );
+
+        // L'historique est rechargé APRÈS la recherche : la ligne vient
+        // d'être écrite, et l'afficher immédiatement montrerait une entrée
+        // que le serveur n'a pas encore confirmée.
+        void refreshRecent();
 
         // Lancer immédiatement la synthèse IA en parallèle
         void fetchSummary(q, data.searchId || null, searchResults, "normal");
       } catch (err: any) {
-        toast.error(err.message || "Impossible d'effectuer la recherche.");
+        if (err?.name === "AbortError") {
+          return;
+        }
+        const message = err?.message || "Impossible d'effectuer la recherche.";
+        setSearchError(message);
+        toast.error(message);
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     },
-    [query, fetchSummary]
+    [fetchSummary, query, refreshRecent]
+  );
+
+  /**
+   * REPRISE D'UNE RECHERCHE DEPUIS L'URL.
+   *
+   * `/search?q=…` doit afficher la recherche, pas une page d'accueil. La
+   * requête est lue UNE SEULE FOIS au montage : ensuite, chaque recherche
+   * écrit l'URL elle-même, et la relire à chaque rendu créerait une boucle
+   * (l'URL change → l'effet rejoue → la recherche repart).
+   *
+   * Le drapeau `initialQueryRef` est donc la preuve que l'amorçage a eu
+   * lieu : sans lui, un changement de `searchParams` à la volée
+   * reserait la recherche, ce qui n'est pas le comportement attendu d'un
+   * simple lien.
+   *
+   * La fonction de recherche est lue dans une RÉF : elle change à chaque
+   * frappe, et l'amorçage ne doit se produire qu'une fois. Déclarer la
+   * dépendance ferait rejouer l'effet à chaque frappe — donc relancer la
+   * recherche en boucle. La ref est donc mise à jour à chaque rendu, et
+   * l'effet n'en dépend pas.
+   */
+  const initialQueryRef = useRef<string | null>(null);
+  const searchRef = useRef(runSearch);
+  searchRef.current = runSearch;
+  useEffect(() => {
+    if (initialQueryRef.current !== null) {
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    const depuisUrl = params.get("q")?.trim() ?? "";
+    if (!depuisUrl) {
+      return;
+    }
+    initialQueryRef.current = depuisUrl;
+    setQuery(depuisUrl);
+    void searchRef.current(depuisUrl);
+  }, []);
+
+  /**
+   * Annulation au DÉMONTAGE.
+   *
+   * Sans cela, quitter la page pendant une recherche la laisse courir
+   * jusqu'au bout et tenter d'écrire dans un composant disparu. Le même
+   * sort est réservé à la synthèse.
+   */
+  useEffect(
+    () => () => {
+      searchAbortRef.current?.abort();
+      abortControllerRef.current?.abort();
+      drawerAbortControllerRef.current?.abort();
+    },
+    []
   );
 
   // Soumission via Entrée
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      void handleSearch();
+      void runSearch();
     }
   };
 
@@ -738,15 +916,30 @@ export function SearchClient() {
 
   // Filtrage par domaine
   const filteredResults = useMemo(() => {
-    if (!domainFilter) return results;
-    return results.filter((r) => {
+    let list = results;
+    if (sourceFilter === "wikipedia") {
+      list = list.filter((r) => r.origin === "wikipedia");
+    }
+    if (!domainFilter) return list;
+    return list.filter((r) => {
       try {
         return new URL(r.url).hostname.includes(domainFilter);
       } catch {
         return true;
       }
     });
-  }, [results, domainFilter]);
+  }, [domainFilter, results, sourceFilter]);
+
+  /**
+   * Nombre d'articles d'encyclopédie dans les résultats.
+   *
+   * Le filtre par origine n'est proposé que s'il mènerait quelque part : un
+   * onglet « Wikipédia (0) » est un appel à échouer.
+   */
+  const wikipediaCount = useMemo(
+    () => results.filter((r) => r.origin === "wikipedia").length,
+    [results]
+  );
 
   const hasSearched = Boolean(submittedQuery);
 
@@ -802,8 +995,8 @@ export function SearchClient() {
                 ) : null}
                 <button
                   className="mr-1.5 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 cursor-pointer disabled:opacity-40"
-                  disabled={!query.trim() || isLoading}
-                  onClick={() => void handleSearch()}
+                  disabled={!isSearchableQuery(query) || isLoading}
+                  onClick={() => void runSearch()}
                   type="button"
                 >
                   {isLoading ? "Recherche..." : "Rechercher"}
@@ -876,6 +1069,37 @@ export function SearchClient() {
                 <span>Vidéos ({videos.length})</span>
               </button>
 
+              {/*
+                Filtre par origine : l'encyclopédie est une source à part
+                entière, ses articles doivent donc être atteignables SANS
+                les relire un par un dans la liste. Le filtre n'est proposé
+                que s'il mènerait quelque part.
+              */}
+              {wikipediaCount > 0 ? (
+                <button
+                  aria-pressed={sourceFilter === "wikipedia"}
+                  className={cn(
+                    "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
+                    sourceFilter === "wikipedia" &&
+                      "bg-foreground text-background font-medium"
+                  )}
+                  onClick={() =>
+                    setSourceFilter((current) =>
+                      current === "wikipedia" ? "all" : "wikipedia"
+                    )
+                  }
+                  title={
+                    sourceFilter === "wikipedia"
+                      ? "Afficher tous les résultats"
+                      : "N'afficher que les articles de Wikipédia"
+                  }
+                  type="button"
+                >
+                  <BookIcon className="size-3.5" />
+                  <span>Wikipédia ({wikipediaCount})</span>{" "}
+                </button>
+              ) : null}
+
               {provider && provider !== "you.com" ? (
                 <span className="chip text-[10px] text-muted-foreground shrink-0">
                   {provider === "wikipedia"
@@ -912,6 +1136,30 @@ export function SearchClient() {
                 <div className="h-28 w-full animate-pulse rounded-2xl bg-muted/30" />
                 <div className="h-20 w-3/4 animate-pulse rounded-xl bg-muted/30" />
                 <div className="h-20 w-5/6 animate-pulse rounded-xl bg-muted/30" />
+              </div>
+            ) : null}
+
+            {/* ─── Panne de la recherche ─── */}
+            {searchError && !isLoading ? (
+              <div
+                className="surface-card flex flex-col items-center gap-3 border-destructive/30 bg-destructive/5 p-8 text-center"
+                role="alert"
+              >
+                <p className="text-sm font-medium text-foreground">
+                  {searchError}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  La recherche n'a rien renvoyé. Ce n'est pas un résultat vide :
+                  le moteur n'a pas répondu.
+                </p>
+                <button
+                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                  onClick={() => void runSearch()}
+                  type="button"
+                >
+                  <RotateCcwIcon className="size-3.5" />
+                  <span>Réessayer</span>
+                </button>
               </div>
             ) : null}
 
@@ -1069,12 +1317,40 @@ export function SearchClient() {
 
                 {/* ─── Liste des résultats Web ─── */}
                 <div className="flex flex-col gap-4">
+                  {/*
+                    Le moteur a remonté l'encyclopédie en tête : on l'explique.
+                    Sans cette ligne, l'utilisateur voyait les articles de
+                    Wikipédia avant les pages web sans comprendre que c'était
+                    un CHOIX — la requête était factuelle.
+                  */}
+                  {wikiFirst && sourceFilter === "all" ? (
+                    <p className="flex items-center gap-1.5 px-1 text-[11px] text-muted-foreground">
+                      <BookIcon className="size-3.5 shrink-0" />
+                      <span>
+                        Les articles de Wikipédia sont en tête : la requête
+                        ressemble à une recherche factuelle.
+                      </span>
+                    </p>
+                  ) : null}
+
                   <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
                     <span>
                       {filteredResults.length} résultat
                       {filteredResults.length > 1 ? "s" : ""} trouvé
                       {filteredResults.length > 1 ? "s" : ""}
                     </span>
+                    {/*
+                      La durée n'est affichée qu'au-delà de deux secondes :
+                      en dessous, elle n'apprend rien et n'occupe que de la
+                      place. Au-dessus, elle explique une attente — et c'est
+                      le seul endroit où l'utilisateur comprend que le
+                      moteur a été lent plutôt que muet.
+                    */}
+                    {durationMs !== null && durationMs > 2000 ? (
+                      <span title="Durée de la recherche">
+                        {(durationMs / 1000).toFixed(1)} s
+                      </span>
+                    ) : null}
                   </div>
 
                   {filteredResults.length === 0 ? (
@@ -1116,11 +1392,35 @@ export function SearchClient() {
                               >
                                 {hostname}
                               </button>
-                              <span className="chip text-[10px] py-0.5 px-2 bg-muted/60 text-muted-foreground shrink-0">
-                                {item.origin === "wikipedia"
-                                  ? "Wikipédia"
-                                  : "Web"}
-                              </span>
+                              {/*
+                                L'origine distingue l'article d'encyclopédie
+                                de la page qui en parle. L'accent
+                                d'information (`--info`) porte cette
+                                distinction : c'est une information sur la
+                                nature de la source, pas une validation.
+                              */}
+                              {item.origin === "wikipedia" ? (
+                                <span className="chip text-[10px] py-0.5 px-2 bg-info/10 text-info font-medium shrink-0">
+                                  Wikipédia
+                                </span>
+                              ) : (
+                                <span className="chip text-[10px] py-0.5 px-2 bg-muted/60 text-muted-foreground shrink-0">
+                                  Web
+                                </span>
+                              )}
+                              {/*
+                                Une page de désambiguïsation est un index
+                                d'homonymes, pas un article : le signaler
+                                évite de croire à un contenu de référence.
+                              */}
+                              {item.isDisambiguation ? (
+                                <span
+                                  className="chip text-[10px] py-0.5 px-2 bg-warning/10 text-warning font-medium shrink-0"
+                                  title="Cette page liste plusieurs sujets possibles. Choisissez le bon article dans Wikipédia."
+                                >
+                                  Désambiguïsation
+                                </span>
+                              ) : null}
                             </div>
 
                             <div className="flex items-center gap-1.5 shrink-0">
@@ -1517,14 +1817,93 @@ export function SearchClient() {
               ) : null}
               <button
                 className="mr-2 inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-40"
-                disabled={!query.trim() || isLoading}
-                onClick={() => void handleSearch()}
+                disabled={!isSearchableQuery(query) || isLoading}
+                onClick={() => void runSearch()}
                 type="button"
               >
                 Rechercher
               </button>
             </div>
           </motion.div>
+
+          {/* ─── Raccourci d'adresse ─── */}
+          {looksLikeUrl(query) ? (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-3xl mt-4"
+              initial={{ opacity: 0, y: 6 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="surface-muted flex flex-wrap items-center justify-between gap-3 p-3 text-xs">
+                <span className="text-muted-foreground">
+                  Cette saisie est une adresse. L'ouvrir directement évite une
+                  recherche qui ne renverrait que des pages « à propos » de
+                  cette adresse.
+                </span>
+                <a
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-3 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all"
+                  href={
+                    query.trim().startsWith("http")
+                      ? query.trim()
+                      : `https://${query.trim()}`
+                  }
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span>Ouvrir l'adresse</span>
+                  <ExternalLinkIcon className="size-3" />
+                </a>
+              </div>
+            </motion.div>
+          ) : null}
+
+          {/* ─── Recherches récentes ─── */}
+          {recent.length > 0 ? (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-3xl mt-8"
+              initial={{ opacity: 0, y: 8 }}
+              transition={{ delay: 0.18, duration: 0.25 }}
+            >
+              <div className="mb-3 flex items-center justify-between px-1">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Recherches récentes
+                </span>
+                <button
+                  className="text-[11px] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  onClick={() => void clearRecent()}
+                  type="button"
+                >
+                  Tout effacer
+                </button>
+              </div>
+              <ul className="flex flex-col gap-1">
+                {recent.map((entree) => (
+                  <li className="group flex items-center gap-2" key={entree.id}>
+                    <button
+                      className="flex flex-1 items-center gap-2 rounded-xl border border-border/50 bg-card/50 px-3 py-2 text-left text-sm text-foreground/85 transition-colors hover:border-foreground/25 hover:bg-muted/40 cursor-pointer"
+                      onClick={() => {
+                        setQuery(entree.query);
+                        void runSearch(entree.query);
+                      }}
+                      type="button"
+                    >
+                      <SearchIcon className="size-3.5 shrink-0 text-muted-foreground" />
+                      <span className="truncate">{entree.query}</span>
+                    </button>
+                    <button
+                      aria-label={`Retirer « ${entree.query} » de l'historique`}
+                      className="p-1.5 rounded-lg text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 hover:text-foreground hover:bg-muted/60 focus-visible:opacity-100 cursor-pointer"
+                      onClick={() => void forgetRecent(entree.id)}
+                      type="button"
+                    >
+                      <XIcon className="size-3.5" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ) : null}
         </div>
       )}
 

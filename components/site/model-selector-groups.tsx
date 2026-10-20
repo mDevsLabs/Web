@@ -28,7 +28,12 @@ import {
   ModelSelectorTrigger,
 } from "@/components/site/model-selector";
 import { ModelSelectorLogo } from "@/lib/ai/model-selector/logo";
-import { resolveProviderKey } from "@/lib/ai/model-selector/provider";
+import {
+  MAI_PROVIDER_KEY,
+  resolveProviderKey,
+} from "@/lib/ai/model-selector/provider";
+import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
+import { isMai2Model } from "@/lib/ai/model-selector/order";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +41,14 @@ import { cn } from "@/lib/utils";
 export type ModelOptionGroup = {
   heading: string;
   models: SharedModel[];
+  /**
+   * Le fournisseur de ce groupe est-il celui que la maison recommande ?
+   *
+   * Optionnel : par défaut, le groupe est déduit de ses propres modèles. Une
+   * source qui regroupe autrement (par cible d'hébergement, par exemple)
+   * peut le poser explicitement.
+   */
+  recommended?: boolean;
 };
 
 export type SiteModelSelectorProps = {
@@ -88,6 +101,11 @@ export function SiteModelSelector({
       groups
         .map((group) => ({
           heading: group.heading,
+          // La recommandation se déduit du groupe quand la source ne la pose
+          // pas : un groupe de modèles mAI est un groupe recommandé.
+          recommended:
+            group.recommended ??
+            group.models.some((model) => resolveProviderKey(model) === MAI_PROVIDER_KEY),
           models: query
             ? group.models.filter((model) =>
                 normalize(
@@ -174,7 +192,17 @@ export function SiteModelSelector({
             </p>
           ) : (
             filteredGroups.map((group) => (
-              <ModelSelectorGroup heading={group.heading} key={group.heading}>
+              <ModelSelectorGroup
+                heading={
+                  <span className="flex items-center gap-1.5">
+                    <span>{group.heading}</span>
+                    {group.recommended ? (
+                      <RecommendedBadge variant="site" />
+                    ) : null}
+                  </span>
+                }
+                key={group.heading}
+              >
                 {group.models.map((model) => (
                   <ModelSelectorItem
                     className={cn(
@@ -191,7 +219,12 @@ export function SiteModelSelector({
                     <div className="flex w-full min-w-0 items-center">
                       <ModelSelectorLogo provider={resolveProviderKey(model)} />
                       <div className="flex min-w-0 flex-col pr-2">
-                        <ModelSelectorName>{model.name}</ModelSelectorName>
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <ModelSelectorName>{model.name}</ModelSelectorName>
+                          {isMai2Model(model) ? (
+                            <RecommendedBadge variant="site" />
+                          ) : null}
+                        </div>
                         {model.description ? (
                           <span className="line-clamp-1 text-[11px] text-slate-500">
                             {model.description}

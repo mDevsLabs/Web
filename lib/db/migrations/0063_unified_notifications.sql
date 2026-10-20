@@ -49,9 +49,16 @@ CREATE UNIQUE INDEX IF NOT EXISTS "Notification_origin_sourceId_key"
 -- Les notifications Vibe et Wakies deviennent des types de la table unique.
 DO $$ BEGIN
   IF EXISTS (
-    SELECT 1 FROM pg_constraint
-    WHERE conname = 'Notification_type_check'
-      AND table_name = 'Notification'
+    -- `pg_constraint` n'a PAS de colonne `table_name` : c'est
+    -- `information_schema.table_constraints` qui la porte. Interroger
+    -- `pg_constraint` avec `table_name` échoue en 42703 et fait TOUTE LA
+    -- transaction de migration échouer. Le nom de la table vient donc de
+    -- `pg_class`, joint par `conrelid`.
+    SELECT 1
+    FROM pg_constraint c
+    JOIN pg_class t ON t.oid = c.conrelid
+    WHERE c.conname = 'Notification_type_check'
+      AND t.relname = 'Notification'
   ) THEN
     ALTER TABLE "Notification" DROP CONSTRAINT "Notification_type_check";
   END IF;

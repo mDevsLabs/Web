@@ -16,6 +16,13 @@ import {
 export interface SearchWebHit {
   favicon_url?: string;
   /**
+   * Le résultat est-il une page de DÉSAMBIGUÏSATION ?
+   *
+   * Une page de désambiguïsation est un index d'homonymes, pas un article :
+   * elle est repoussée en fin de liste, et l'interface peut le signaler.
+   */
+  isDisambiguation?: boolean;
+  /**
    * Origine du résultat.
    *
    * `wikipedia` distingue un article d'encyclopédie d'une page web
@@ -32,6 +39,16 @@ export interface SearchWebHit {
 
 /** Origines possibles d'un résultat de recherche. */
 export type SearchResultOrigin = "wikipedia" | "you.com";
+
+/**
+ * Favicon de l'encyclopédie.
+ *
+ * Constante partagée : le même chemin était écrit en dur à deux endroits
+ * (repli historique et source à part entière), et une divergence afficherait
+ * deux pastilles différentes pour la même source.
+ */
+export const WIKIPEDIA_FAVICON_URL =
+  "https://wikipedia.org/static/favicon/wikipedia.ico";
 
 export interface SearchImageHit {
   image_url: string;
@@ -248,15 +265,41 @@ export function getYouApiKeys(): string[] {
   return keys;
 }
 
-// Pointeur pour rotation round-robin des clés
-let currentKeyIndex = 0;
-
-function getNextKey(keys: string[]): string {
-  if (keys.length === 0) return "";
-  const key = keys[currentKeyIndex % keys.length];
-  currentKeyIndex = (currentKeyIndex + 1) % keys.length;
-  return key;
+/**
+ * Renvoie la première tentative qui aboutit, les autres étant abandonnées.
+ *
+ * C'est le cœur de la rapidité de mAI Search. Les tentatives étaient
+ * SÉQUENTIELLES : trois clés et trois points d'entrée, c'est neuf requêtes
+ * les unes après les autres, chacune bornée à quatre secondes. Une clé
+ * expirée suffisait donc à faire attendre l'utilisateur plus de trente
+ * secondes pour un résultat qui était disponible sur la clé suivante.
+ *
+ * Ici, les tentatives d'un même tour partent EN PARALLÈLE et la première
+ * réponse exploitable gagne. Le délai maximal d'un tour passe de « clés ×
+ * points d'entrée × 4 s » à « 4 s », et les tours restants ne sont tentés que
+ * si le tour courant échoue — donc jamais dans le cas courant.
+ */
+async function raceFirst<T>(
+  tentatives: Array<() => Promise<T | null>>
+): Promise<T | null> {
+  if (tentatives.length === 0) {
+    return null;
+  }
+  // `Promise.any` rejette dès que TOUTES les tentatives ont échoué : on veut
+  // exactement ce comportement, et on récupère la première qui RÉUSSIT.
+  try {
+    return await Promise.any(tentatives.map((tentative) => tentative()));
+  } catch {
+    return null;
+  }
 }
+
+/** Points d'entrée du moteur, par ordre de préférence. */
+const YOU_SEARCH_ENDPOINTS = [
+  "https://ydc-index.io/v1/search",
+  "https://api.ydc-index.io/v1/search",
+  "https://api.ydc-index.io/search",
+];
 
 /**
  * Recherche Web via You.com (ydc-index.io)
@@ -268,101 +311,106 @@ async function fetchYouWeb(
   const keys = getYouApiKeys();
   if (keys.length === 0) return { hits: [], images: [] };
 
-  const endpoints = [
-    "https://ydc-index.io/v1/search",
-    "https://api.ydc-index.io/v1/search",
-    "https://api.ydc-index.io/search",
-  ];
+  /**
+   * Un tour = un point d'entrée, essayé avec TOUTES les clés en parallèle.
+   *
+   * Les clés sont réparties sur les tours, et non clonées : une seule clé
+   * qui échoue ne fait pas échouer le tour. Le tour suivant n'est tenté
+   * que si le premier a entièrement échoué.
+   */
+  for (const endpoint of YOU_SEARCH_ENDPOINTS) {
+    const resultat = await raceFirst(
+      keys.map((key) => async () => {
+        try {
+          const res = await fetch(endpoint, {
+            body: JSON.stringify({ count, query }),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "User-Agent": "mAI-Search/1.0",
+              "X-API-Key": key,
+            },
+            method: "POST",
+            signal: AbortSignal.timeout(4000),
+          });
 
-  // Tentative sur les clés disponibles avec rotation
-  for (const _attempt of keys) {
-    const key = getNextKey(keys);
-    for (const endpoint of endpoints) {
-      try {
-        const res = await fetch(endpoint, {
-          body: JSON.stringify({ count, query }),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "User-Agent": "mAI-Search/1.0",
-            "X-API-Key": key,
-          },
-          method: "POST",
-          signal: AbortSignal.timeout(4000),
-        });
-
-        if (res.ok) {
+          if (!res.ok) {
+            return null;
+          }
           const data: any = await res.json().catch(() => null);
-          if (data) {
-            const hits: SearchWebHit[] = [];
-            const images: SearchImageHit[] = [];
+          if (!data) {
+            return null;
+          }
+          const hits: SearchWebHit[] = [];
+          const images: SearchImageHit[] = [];
 
-            let rawHits: any[] = [];
-            if (data.results && typeof data.results === "object") {
-              if (Array.isArray(data.results)) {
-                rawHits = data.results;
-              } else {
-                if (Array.isArray(data.results.web))
-                  rawHits.push(...data.results.web);
-                if (Array.isArray(data.results.news))
-                  rawHits.push(...data.results.news);
-              }
-            } else if (Array.isArray(data.hits)) {
-              rawHits = data.hits;
-            } else if (Array.isArray(data.web?.results)) {
-              rawHits = data.web.results;
+          let rawHits: any[] = [];
+          if (data.results && typeof data.results === "object") {
+            if (Array.isArray(data.results)) {
+              rawHits = data.results;
+            } else {
+              if (Array.isArray(data.results.web))
+                rawHits.push(...data.results.web);
+              if (Array.isArray(data.results.news))
+                rawHits.push(...data.results.news);
+            }
+          } else if (Array.isArray(data.hits)) {
+            rawHits = data.hits;
+          } else if (Array.isArray(data.web?.results)) {
+            rawHits = data.web.results;
+          }
+
+          for (const hit of rawHits) {
+            let snippet = "";
+            if (hit.contents?.markdown) {
+              snippet = hit.contents.markdown.slice(0, 300);
+            } else if (Array.isArray(hit.snippets) && hit.snippets.length > 0) {
+              snippet = hit.snippets.join(" ... ");
+            } else {
+              snippet = hit.description || hit.snippet || hit.text || "";
             }
 
-            for (const hit of rawHits) {
-              let snippet = "";
-              if (hit.contents?.markdown) {
-                snippet = hit.contents.markdown.slice(0, 300);
-              } else if (
-                Array.isArray(hit.snippets) &&
-                hit.snippets.length > 0
-              ) {
-                snippet = hit.snippets.join(" ... ");
-              } else {
-                snippet = hit.description || hit.snippet || hit.text || "";
-              }
+            const title = hit.title || hit.name || "";
+            const url = hit.url || hit.link || "";
 
-              const title = hit.title || hit.name || "";
-              const url = hit.url || hit.link || "";
-
-              if (title && url) {
-                hits.push({
-                  favicon_url:
-                    hit.favicon_url ||
-                    (url
-                      ? `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`
-                      : undefined),
-                  page_age: hit.page_age,
-                  snippet: snippet.trim(),
-                  thumbnail_url: hit.thumbnail_url || hit.image_url,
-                  title,
-                  url,
-                });
-              }
-
-              // Extraire les images/thumbnails s'il y en a
-              if (hit.thumbnail_url || hit.image_url) {
-                images.push({
-                  image_url: hit.image_url || hit.thumbnail_url,
-                  page_url: url,
-                  thumbnail: hit.thumbnail_url || hit.image_url,
-                  title: title || query,
-                });
-              }
+            if (title && url) {
+              hits.push({
+                favicon_url:
+                  hit.favicon_url ||
+                  (url
+                    ? `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`
+                    : undefined),
+                page_age: hit.page_age,
+                snippet: snippet.trim(),
+                thumbnail_url: hit.thumbnail_url || hit.image_url,
+                title,
+                url,
+              });
             }
 
-            if (hits.length > 0) {
-              return { hits, images };
+            // Extraire les images/thumbnails s'il y en a
+            if (hit.thumbnail_url || hit.image_url) {
+              images.push({
+                image_url: hit.image_url || hit.thumbnail_url,
+                page_url: url,
+                thumbnail: hit.thumbnail_url || hit.image_url,
+                title: title || query,
+              });
             }
           }
+
+          // Un résultat VIDE n'est pas une réussite : on préfère une autre
+          // tentative qui rendrait des liens.
+          return hits.length > 0 ? { hits, images } : null;
+        } catch {
+          // Erreur ou timeout : un autre tour (ou une autre clé) prendra le
+          // relais.
+          return null;
         }
-      } catch {
-        // En cas d'erreur ou timeout, tester le endpoint ou clé suivante
-      }
+      })
+    );
+    if (resultat) {
+      return resultat;
     }
   }
 
@@ -379,49 +427,60 @@ async function fetchYouImages(
   const keys = getYouApiKeys();
   if (keys.length === 0) return [];
 
-  for (const _attempt of keys) {
-    const key = getNextKey(keys);
-    try {
-      const url = `https://api.you.com/v1/images?q=${encodeURIComponent(query)}&count=${count}`;
-      const res = await fetch(url, {
-        headers: {
-          Accept: "application/json",
-          "X-API-Key": key,
-        },
-        method: "GET",
-        signal: AbortSignal.timeout(4000),
-      });
+  // Les clés sont essayées EN PARALLÈLE : une clé expirée ne doit pas
+  // retarder une clé valide de quatre secondes. Voir `raceFirst`.
+  const resultat = await raceFirst(
+    keys.map((key) => async () => {
+      try {
+        const url = `https://api.you.com/v1/images?q=${encodeURIComponent(query)}&count=${count}`;
+        const res = await fetch(url, {
+          headers: {
+            Accept: "application/json",
+            "X-API-Key": key,
+          },
+          method: "GET",
+          signal: AbortSignal.timeout(4000),
+        });
 
-      if (res.ok) {
+        if (!res.ok) {
+          return null;
+        }
         const data: any = await res.json().catch(() => null);
         const results = data?.images?.results || data?.results || [];
-        if (Array.isArray(results) && results.length > 0) {
-          return results
-            .map((item: any) => ({
-              image_url: item.image_url || item.thumbnail || "",
-              page_url: item.page_url || "",
-              thumbnail:
-                item.thumbnail || item.large_thumbnail || item.image_url || "",
-              title: item.title || query,
-            }))
-            .filter((img: SearchImageHit) => img.image_url);
+        if (!Array.isArray(results) || results.length === 0) {
+          return null;
         }
+        return results
+          .map((item: any) => ({
+            image_url: item.image_url || item.thumbnail || "",
+            page_url: item.page_url || "",
+            thumbnail:
+              item.thumbnail || item.large_thumbnail || item.image_url || "",
+            title: item.title || query,
+          }))
+          .filter((img: SearchImageHit) => img.image_url);
+      } catch {
+        return null;
       }
-    } catch {
-      // Clé suivante
-    }
-  }
+    })
+  );
 
-  return [];
+  return resultat ?? [];
 }
 
 /**
- * Fallback multi-sources (Wikipédia, Google News RSS)
+ * Repli multi-sources (Wikipédia, Google News RSS)
  *
  * La langue est celle de l'appelant — celle de la préférence du compte.
  * La détection automatique par accents (l'ancien comportement) n'était
  * qu'un pis-aller : un utilisateur qui a choisi l'anglais veut de l'anglais,
  * même sur une requête accentuée.
+ *
+ * Wikipédia passe par `lib/search/wikipedia.ts`, comme le chemin principal :
+ * le repli interrogeait l'API `opensearch` à côté, avec son propre
+ * User-Agent, son propre délai et son propre nettoyage de balisage. Deux
+ * chemins pour la même source, c'est deux comportements : le repli perdait
+ * les résumés, donc l'interface n'affichait qu'un titre.
  */
 async function fallbackSearch(
   query: string,
@@ -429,33 +488,9 @@ async function fallbackSearch(
 ): Promise<SearchWebHit[]> {
   const results: SearchWebHit[] = [];
 
-  // 1. Wikipédia
-  try {
-    const wikiUrl = `https://${lang}.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=6&namespace=0&format=json`;
-    const res = await fetch(wikiUrl, {
-      headers: { "User-Agent": "mAI-Search-Fallback/1.0" },
-      signal: AbortSignal.timeout(3000),
-    });
-    if (res.ok) {
-      const data = await res.json();
-      const titles = data[1] || [];
-      const descriptions = data[2] || [];
-      const urls = data[3] || [];
-      for (let i = 0; i < titles.length; i++) {
-        if (urls[i]) {
-          results.push({
-            favicon_url: "https://wikipedia.org/static/favicon/wikipedia.ico",
-            origin: "wikipedia",
-            snippet: descriptions[i] || `Article Wikipedia sur ${titles[i]}`,
-            title: titles[i],
-            url: urls[i],
-          });
-        }
-      }
-    }
-  } catch {
-    // Continue
-  }
+  // 1. Wikipédia — même module, mêmes résumés, même cache.
+  const wikiHits = await fetchWikipediaWeb(query, 6, lang);
+  results.push(...wikiHits);
 
   // 2. Google News RSS
   if (results.length < 5) {
@@ -706,6 +741,10 @@ async function fetchWikiImages(
  * Le résumé de l'article est l'extrait affiché : l'extrait de recherche de
  * MediaWiki est trop court pour être informatif, et le résumé du premier
  * paragraphe est exactement ce qu'un lecteur attend d'un résultat.
+ *
+ * Les pages de DÉSAMBIGUÏSATION sont repoussées en fin de liste : ce sont
+ * des index d'homonymes, pas des articles. Une recherche factuelle les
+ * placerait en tête, et la synthèse en tirerait une liste de liens.
  */
 async function fetchWikipediaWeb(
   query: string,
@@ -717,14 +756,19 @@ async function fetchWikipediaWeb(
     limit: count,
     withSummaries: Math.min(3, count),
   });
-  return articles.map((article) => ({
-    favicon_url: "https://wikipedia.org/static/favicon/wikipedia.ico",
+  const hits = articles.map((article) => ({
+    favicon_url: WIKIPEDIA_FAVICON_URL,
+    isDisambiguation: article.isDisambiguation === true,
     origin: "wikipedia" as const,
     snippet: article.summary || article.extract,
     thumbnail_url: article.thumbnail,
     title: article.title,
     url: article.url,
   }));
+  return [
+    ...hits.filter((hit) => !hit.isDisambiguation),
+    ...hits.filter((hit) => hit.isDisambiguation),
+  ];
 }
 
 /**
@@ -811,18 +855,48 @@ export async function executeMaiSearch(params: {
 
   const count = params.count || 20;
 
-  // Appels parallèles pour réduire la latence au minimum
-  const [webResult, imagesResult, newsResult, wikiResult] =
-    await Promise.allSettled([
-      wantWeb
-        ? fetchYouWeb(trimmed, count)
-        : Promise.resolve({ hits: [], images: [] }),
-      wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
-      wantNews ? fetchGoogleNews(trimmed, 15, lang) : Promise.resolve([]),
-      wantWikipedia
-        ? fetchWikipediaWeb(trimmed, count, lang)
-        : Promise.resolve([] as SearchWebHit[]),
-    ]);
+  /**
+   * Les replis partent EN MÊME TEMPS que les sources principales.
+   *
+   * Avant, les repli n'étaient pas des replis mais des ÉTAPES : les images
+   * attendaient l'échec du moteur, le web attendait l'échec de You.com, les
+   * vidéos attendaient l'échec du web. Sur une source lente ou absente, la
+   * recherche prenait la somme des délais au lieu du maximum.
+   *
+   * Les replis sont donc lancés en parallèle et ne sont retenus QUE s'ils
+   * apportent quelque chose que les sources principales n'ont pas donné. Le
+   * coût est nul quand les sources principales répondent, et le gain est la
+   * somme des délais quand elles échouent.
+   */
+  const [
+    webResult,
+    imagesResult,
+    newsResult,
+    wikiResult,
+    fallbackResult,
+    wikiImagesResult,
+    youtubeResult,
+  ] = await Promise.allSettled([
+    wantWeb
+      ? fetchYouWeb(trimmed, count)
+      : Promise.resolve({ hits: [], images: [] }),
+    wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
+    wantNews ? fetchGoogleNews(trimmed, 15, lang) : Promise.resolve([]),
+    wantWikipedia
+      ? fetchWikipediaWeb(trimmed, count, lang)
+      : Promise.resolve([] as SearchWebHit[]),
+    // Repli web : Wikipédia en recherche ouverte, puis le flux d'actualité.
+    wantWeb
+      ? fallbackSearch(trimmed, lang)
+      : Promise.resolve([] as SearchWebHit[]),
+    // Repli images : les vignettes de l'encyclopédie.
+    wantImages ? fetchWikiImages(trimmed, 12, lang) : Promise.resolve([]),
+    // Repli vidéos : la recherche YouTube, quand les liens web n'en
+    // contiennent aucun.
+    sources.includes("videos")
+      ? fetchYouTubeVideos(trimmed)
+      : Promise.resolve([] as SearchVideoHit[]),
+  ]);
 
   const webData =
     webResult.status === "fulfilled"
@@ -832,13 +906,18 @@ export async function executeMaiSearch(params: {
     imagesResult.status === "fulfilled" ? imagesResult.value : [];
   const newsHits = newsResult.status === "fulfilled" ? newsResult.value : [];
   const wikiHits = wikiResult.status === "fulfilled" ? wikiResult.value : [];
+  const fallbackHits =
+    fallbackResult.status === "fulfilled" ? fallbackResult.value : [];
+  const wikiImages =
+    wikiImagesResult.status === "fulfilled" ? wikiImagesResult.value : [];
+  const youtubeVideos =
+    youtubeResult.status === "fulfilled" ? youtubeResult.value : [];
 
   let results = webData.hits;
   let allImages = [...dedicatedImages, ...webData.images];
 
-  // Si aucune image reçue, tenter le repli Wikipédia
+  // Si aucune image reçue, retenir le repli Wikipédia.
   if (allImages.length === 0 && wantImages) {
-    const wikiImages = await fetchWikiImages(trimmed, 12, lang);
     allImages.push(...wikiImages);
   }
 
@@ -858,11 +937,20 @@ export async function executeMaiSearch(params: {
     providers.add("wikipedia");
   }
 
-  // Si aucun résultat Web (ou pas de clé), repli automatique
-  if (results.length === 0 && wantWeb) {
-    results = await fallbackSearch(trimmed, lang);
-    if (results.length > 0) {
+  // Si aucun résultat Web (ou pas de clé), retenir le repli.
+  if (results.length === 0 && wantWeb && fallbackHits.length > 0) {
+    results = fallbackHits;
+    // Le repli puise désormais le MÊME module Wikipédia que la source à
+    // part entière : ses résultats portent donc l'origine « wikipedia ». On
+    // ne déclare « fallback » que s'il a bringué quelque chose d'AUTRE que
+    // l'encyclopédie (le flux d'actualité) — sinon l'interface afficherait
+    // « Mode dégradé » pour des articles d'encyclopédie parfaitement
+    // normaux.
+    const horsWiki = fallbackHits.some((hit) => hit.origin !== "wikipedia");
+    if (horsWiki) {
       providers.add("fallback");
+    } else {
+      providers.add("wikipedia");
     }
   }
 
@@ -886,13 +974,24 @@ export async function executeMaiSearch(params: {
     ];
   }
 
-  // Extraire les vidéos à partir des résultats web
+  // Les pages de DÉSAMBIGUÏSATION sont des index d'homonymes, pas des
+  // articles : elles passent en fin de liste, quel que soit leur rang.
+  // Une recherche factuelle les placerait sinon en tête, et la synthèse en
+  // tirerait une liste de liens.
+  if (results.some((hit) => hit.isDisambiguation)) {
+    results = [
+      ...results.filter((hit) => !hit.isDisambiguation),
+      ...results.filter((hit) => hit.isDisambiguation),
+    ];
+  }
+
+  // Extraire les vidéos à partir des résultats web.
   let videos = extractVideos(results);
 
-  // Si aucune vidéo trouvée dans les liens web, rechercher sur YouTube
+  // Si aucune vidéo trouvée dans les liens web, retenir la recherche
+  // YouTube — déjà lancée en parallèle, donc sans délai supplémentaire.
   if (videos.length === 0 && sources.includes("videos")) {
-    const ytVideos = await fetchYouTubeVideos(trimmed);
-    videos = ytVideos;
+    videos = youtubeVideos;
   }
 
   // S'assurer que chaque hit a un favicon garanti
@@ -900,6 +999,19 @@ export async function executeMaiSearch(params: {
     ...r,
     favicon_url: r.favicon_url || buildFaviconUrl(r.url),
   }));
+
+  /**
+   * Le nombre de résultats est borne PAR SOURCE, pas au total.
+   *
+   * `count` est la quantité de liens d'une source que l'interface affiche :
+   * c'est la lecture en diagonale qui compte, pas la longueur de la liste.
+   * Borner le total aurait vidé l'onglet « Actualités » dès qu'un onglet Web
+   * était plein, alors que l'utilisateur n'en demandait pas moins.
+   */
+  const webResults = results.slice(0, count);
+  const newsLimited = newsHits.slice(0, count);
+  const imagesLimited = allImages.slice(0, count);
+  const videosLimited = videos.slice(0, count);
 
   const provider: SearchResponse["provider"] =
     providers.size > 1
@@ -909,17 +1021,17 @@ export async function executeMaiSearch(params: {
         : "you.com";
 
   const response: SearchResponse = {
-    images: allImages,
-    news: newsHits,
+    images: imagesLimited,
+    news: newsLimited,
     provider,
     query: trimmed,
-    results,
+    results: webResults,
     success:
-      results.length > 0 ||
-      allImages.length > 0 ||
-      newsHits.length > 0 ||
-      videos.length > 0,
-    videos,
+      webResults.length > 0 ||
+      imagesLimited.length > 0 ||
+      newsLimited.length > 0 ||
+      videosLimited.length > 0,
+    videos: videosLimited,
     wikiFirst,
   };
 

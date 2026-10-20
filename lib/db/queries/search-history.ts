@@ -116,3 +116,49 @@ export async function getRecentSearchQueries(
     return [];
   }
 }
+
+/**
+ * Supprime une recherche de l'historique du compte.
+ *
+ * `userId` n'est pas décoratif : `id` vient du client, et sans ce filtre une
+ * session pourrait effacer la recherche d'un autre compte. La ligne d'un
+ * autre compte ne matche pas, et la suppression est un no-op — exactement
+ * comme pour la mise à jour du résumé.
+ */
+export async function deleteSearchQuery(
+  id: string,
+  userId: string
+): Promise<boolean> {
+  try {
+    const db = getDb();
+    const deleted = await db
+      .delete(maiSearchQuery)
+      .where(and(eq(maiSearchQuery.id, id), eq(maiSearchQuery.userId, userId)))
+      .returning({ id: maiSearchQuery.id });
+    return deleted.length > 0;
+  } catch (error) {
+    console.error("[SearchHistory] Échec de suppression:", error);
+    return false;
+  }
+}
+
+/**
+ * Vide tout l'historique de recherche du compte.
+ *
+ * Une seule requête, sans plafond : c'est le geste « tout effacer », et
+ * l'interface le propose explicitement. La ligne du compte est protégée
+ * par le même filtre `userId` que la suppression unitaire.
+ */
+export async function clearSearchQueries(userId: string): Promise<number> {
+  try {
+    const db = getDb();
+    const deleted = await db
+      .delete(maiSearchQuery)
+      .where(eq(maiSearchQuery.userId, userId))
+      .returning({ id: maiSearchQuery.id });
+    return deleted.length;
+  } catch (error) {
+    console.error("[SearchHistory] Échec du vidage:", error);
+    return 0;
+  }
+}

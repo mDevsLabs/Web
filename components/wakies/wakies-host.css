@@ -1256,6 +1256,48 @@
   font-size: 13px;
   color: #777e90;
 }
+
+/*
+ * Groupes de résultats de recherche.
+ *
+ * La recherche est rendue par SURFACE (« Conversation (3) », « Page (2) »)
+ * plutôt qu'en une liste mêlée : une section titrée se lit en diagonale,
+ * une liste plate oblige à lire chaque ligne pour savoir ce qu'elle est.
+ */
+.wakies-root .muse-app .wakies-search-group + .wakies-search-group {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+.wakies-root .muse-app .wakies-search-group-label {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  font-size: 10px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8b91a3 !important;
+}
+.wakies-root .muse-app .wakies-search-group-kind {
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 6px;
+  font-size: 10px;
+  color: #777e90;
+  background: #f0f1f6;
+  border-radius: 4px;
+}
+.wakies-root .muse-app .wakies-search-group-title {
+  font-weight: 500;
+}
+.wakies-root .muse-app .wakies-search-group-subtitle {
+  display: block;
+  overflow: hidden;
+  font-size: 11px;
+  color: #777e90;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .wakies-root .muse-app .workspace > .muse-navigation {
   display: none;
 }
@@ -2910,6 +2952,16 @@ html.dark .wakies-root .muse-app .rail-unread {
 
 html.dark .wakies-root .muse-app .wakies-search-results button:hover,
 html.dark .wakies-root .muse-app .wakies-search-results button:focus-visible {
+  background-color: #2b2b34;
+}
+
+/* Groupes de résultats de recherche : le trait de séparation et la pastille
+   de surface suivent le thème sombre. */
+html.dark .wakies-root .muse-app .wakies-search-group + .wakies-search-group {
+  border-top-color: var(--line);
+}
+html.dark .wakies-root .muse-app .wakies-search-group-kind {
+  color: #a1a6b5;
   background-color: #2b2b34;
 }
 

@@ -41,21 +41,45 @@ describe("mAI Search — Moteur You.com et Fallback", () => {
     process.env.YOU_API_KEY_2 = "";
     process.env.YOU_API_KEY_3 = "";
 
-    // Mock fetch pour simuler le fallback Wikipedia
+    // Le repli passe par `lib/search/wikipedia.ts` : l'API MediaWiki, et
+    // non l'ancienne API `opensearch`. Le mock doit donc répondre dans le
+    // format `list=search` (un objet), et non dans celui d'`opensearch`
+    // (un tableau).
     const fetchMock = vi
       .spyOn(globalThis, "fetch")
       .mockImplementation(async (url) => {
         const urlStr = String(url);
-        if (urlStr.includes("wikipedia.org")) {
+        if (urlStr.includes("action=query") && urlStr.includes("list=search")) {
           return new Response(
-            JSON.stringify([
-              "intelligence artificielle",
-              ["Intelligence artificielle"],
-              [
-                "L'intelligence artificielle est un ensemble de théories et de techniques...",
-              ],
-              ["https://fr.wikipedia.org/wiki/Intelligence_artificielle"],
-            ]),
+            JSON.stringify({
+              query: {
+                search: [
+                  {
+                    snippet:
+                      "L'intelligence artificielle est un ensemble de théories et de techniques...",
+                    title: "Intelligence artificielle",
+                  },
+                ],
+              },
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 200 }
+          );
+        }
+        if (urlStr.includes("prop=extracts")) {
+          return new Response(
+            JSON.stringify({
+              query: {
+                pages: [
+                  {
+                    extract:
+                      "L'intelligence artificielle est un ensemble de théories et de techniques d'informatique.",
+                    fullurl:
+                      "https://fr.wikipedia.org/wiki/Intelligence_artificielle",
+                    title: "Intelligence artificielle",
+                  },
+                ],
+              },
+            }),
             { headers: { "Content-Type": "application/json" }, status: 200 }
           );
         }
@@ -70,7 +94,11 @@ describe("mAI Search — Moteur You.com et Fallback", () => {
     expect(results.results.length).toBeGreaterThan(0);
     expect(results.results[0].title).toBe("Intelligence artificielle");
     expect(results.results[0].url).toContain("wikipedia.org");
-    expect(results.provider).toBe("fallback");
+    // Le repli puise dans le MÊME module que la source « Wikipédia » :
+    // ses résultats portent donc cette origine, et l'interface n'affiche
+    // pas « Mode dégradé » pour des articles d'encyclopédie normaux.
+    expect(results.provider).toBe("wikipedia");
+    expect(results.results[0].origin).toBe("wikipedia");
 
     fetchMock.mockRestore();
   });
@@ -102,6 +130,58 @@ describe("mAI Search — Moteur You.com et Fallback", () => {
     expect(results.results[0].title).toBe("Next.js 16 Documentation");
     expect(results.results[0].url).toBe("https://nextjs.org/docs");
     expect(results.provider).toBe("you.com");
+
+    fetchMock.mockRestore();
+  });
+});
+
+describe("mAI Search — les clés sont essayées en parallèle", () => {
+  it("n'attend pas qu'une clé expirée bloque les autres", async () => {
+    // La première clé ne répond jamais : elle expire après son délai. La
+    // deuxième répond immédiatement. Si les clés étaient essayées l'une
+    // après l'autre, la recherche attendrait le délai de la première.
+    process.env.YOU_API_KEY_1 = "cle_morte";
+    process.env.YOU_API_KEY_2 = "cle_bonne";
+    process.env.YOU_API_KEY_3 = "";
+
+    let appelsEnParallele = 0;
+    let maximumSimultane = 0;
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockImplementation(async (_url, init) => {
+        const cle = (init?.headers as Record<string, string>)?.["X-API-Key"];
+        if (cle === "cle_morte") {
+          // Cette clé « pend » : elle ne résout jamais avant le délai.
+          await new Promise((resolve) => setTimeout(resolve, 50));
+          return new Response("Not Found", { status: 404 });
+        }
+        appelsEnParallele += 1;
+        maximumSimultane = Math.max(maximumSimultane, appelsEnParallele);
+        return new Response(
+          JSON.stringify({
+            hits: [
+              {
+                description: "Un résultat.",
+                title: "Résultat",
+                url: "https://exemple.fr/resultat",
+              },
+            ],
+          }),
+          { headers: { "Content-Type": "application/json" }, status: 200 }
+        );
+      });
+
+    const results = await executeMaiSearch({
+      count: 5,
+      query: "Test parallèle",
+      sources: ["web"],
+    });
+
+    // Le résultat de la clé bonne a été rendu.
+    expect(results.results.length).toBeGreaterThan(0);
+    // Et les deux clés ont été interrogées EN MÊME TEMPS : la clé morte
+    // n'a pas bloqué la bonne.
+    expect(maximumSimultane).toBeGreaterThan(1);
 
     fetchMock.mockRestore();
   });

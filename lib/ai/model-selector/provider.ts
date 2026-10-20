@@ -12,6 +12,37 @@
 
 import type { SharedModel } from "./types";
 
+/**
+ * Clé canonique du fournisseur mAI.
+ *
+ * Le même fournisseur s'écrit de trois façons selon la source : le backend
+ * expose `owned_by: "mDevsLabs"`, la liste embarquée porte
+ * `provider: "mdevslabs"`, et les catalogues sans préfixe tombent sur « mAI »
+ * par défaut. Toutes ces écritures désignent le MÊME fournisseur : sans
+ * normalisation, l'interface affichait deux groupes (« mAI » et « mAI
+ * Exclusif ») pour un catalogue unique, et le même modèle changeait de
+ * groupe selon l'origine de la donnée.
+ */
+export const MAI_PROVIDER_KEY = "mai";
+
+/** Alias historiques du fournisseur mAI, tous normalisés vers `mai`. */
+const MAI_PROVIDER_ALIASES = new Set([
+  MAI_PROVIDER_KEY,
+  "maidevs",
+  "mdevs",
+  "mdevslabs",
+]);
+
+/**
+ * Label porté par le fournisseur mAI.
+ *
+ * Le fournisseur mAI n'est pas « un groupe parmi d'autres » : c'est celui
+ * que la maison recommande. Le label est porté par le GROUPE, pas par
+ * chaque modèle — la recommandation porte sur la source, pas sur une
+ * entrée de catalogue.
+ */
+export const MAI_PROVIDER_RECOMMENDED_LABEL = "Recommandé";
+
 export const PROVIDER_NAMES: Record<string, string> = {
   "01-ai": "01.AI (Yi)",
   ai21: "AI21 Labs",
@@ -51,7 +82,6 @@ export const PROVIDER_NAMES: Record<string, string> = {
   "liquid-ai": "Liquid AI (LFM)",
   luma: "Luma AI",
   mai: "mAI",
-  mdevslabs: "mAI Exclusif",
   meituan: "Meituan",
   "meta-llama": "Meta Llama",
   midjourney: "Midjourney",
@@ -88,17 +118,29 @@ export const PROVIDER_NAMES: Record<string, string> = {
 };
 
 export function resolveProviderKey(model: SharedModel): string {
+  // Un identifiant SANS préfixe (`mai-2`, `mai-2-mini`) est par construction
+  // un modèle mAI : `id.split("/")[0]` renverrait sinon l'identifiant
+  // entier, qui deviendrait un groupe à lui seul.
+  const prefixe = model.id.includes("/") ? model.id.split("/")[0] : "";
   const raw = (
     model.provider ||
     model.owned_by ||
-    model.id.split("/")[0] ||
-    "mai"
+    prefixe ||
+    MAI_PROVIDER_KEY
   )
     .toLowerCase()
     .trim();
 
   // Retirer le préfixe ~ éventuel (~openai, ~anthropic, etc.)
   const p = raw.replace(/^~+/, "");
+
+  // Le fournisseur mAI se dit « mAI », « mDevsLabs » ou « mdevslabs » selon
+  // la source : c'est le même fournisseur, donc la même clé et le même
+  // groupe. Sans cette normalisation, mAI-2 (alias cloud) et mAI-2-Mini
+  // (modèle embarqué) atterrissaient dans deux groupes distincts.
+  if (MAI_PROVIDER_ALIASES.has(p)) {
+    return MAI_PROVIDER_KEY;
+  }
 
   if (p === "granite" || p === "ibm" || p.includes("granite")) return "ibm";
   if (
@@ -166,7 +208,7 @@ export function resolveProviderKey(model: SharedModel): string {
   if (p === "recraft" || p === "recraft-ai") return "recraft-ai";
   if (p === "google-vertex" || p === "google") return "google";
 
-  return p || "mai";
+  return p || MAI_PROVIDER_KEY;
 }
 
 /** Libellé lisible d'un fournisseur, avec repli sur l'identifiant brut. */
@@ -178,4 +220,14 @@ export function providerLabel(model: SharedModel): string {
     model.provider ||
     "mAI"
   );
+}
+
+/**
+ * Le fournisseur mAI est-il celui que la maison recommande ?
+ *
+ * Sert à porter le label « Recommandé » sur le GROUPE mAI, une seule fois,
+ * plutôt que sur chaque modèle : un label répété dix fois n'informe plus.
+ */
+export function isMaiProvider(model: SharedModel): boolean {
+  return resolveProviderKey(model) === MAI_PROVIDER_KEY;
 }

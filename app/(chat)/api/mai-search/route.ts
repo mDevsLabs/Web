@@ -29,38 +29,54 @@ const bodySchema = z.object({
 /**
  * Les sources réellement interrogées.
  *
- * Trois cas, dans cet ordre :
+ * La préférence du compte est un PLAFOND, pas une liste figée : le client
+ * propose un sous-ensemble, le serveur l'intersecte avec le plafond.
  *
- * 1. Le compte a une préférence enregistrée ⇒ c'est elle qui fait foi. Le
- *    client ne peut pas élargir le périmètre de sa recherche, et il ne peut
- *    pas non plus le rétrécir : sinon « désactiver les images » contourné
- *    par un appel direct remettrait des images à l'écran.
- * 2. Aucune préférence (visiteur non connecté) ⇒ les sources demandées par
- *    le client, ou toutes.
- * 3. Le paramètre historique `type` reste honoré quand le client le
- *    fournit : c'est lui qui porte le comportement « images seules ».
+ * Pourquoi une intersection, et non « la préférence gagne » :
+ *
+ * - le client ne peut pas Élargir : demander « images » alors que le compte
+ *   les a désactivées ne remet pas d'images à l'écran ;
+ * - le client peut RÉTRÉCIR : c'est ce qui rend les onglets « Actualités »
+ *   ou « Images » possibles. Sans cela, désactiver les images dans les
+ *   paramètres rendrait l'onglet « Images » vide — et surtout, un compte
+ *   qui les a activées ne pourrait pas demander les images SEULES, alors
+ *   que c'est précisément ce que fait l'onglet.
+ *
+ * `type` reste honoré pour les appelants historiques : c'est lui qui porte
+ * le comportement « images seules ».
  */
-function resolveSources(params: {
+export function resolveSources(params: {
   preferences: { searchSources?: string[] } | null;
   requested?: string[];
   type?: "all" | "images" | "web";
 }): MaiSearchSourceKey[] {
-  if (params.preferences?.searchSources?.length) {
-    // La Normalisation est faite ici, pas seulement à la lecture : c'est
-    // elle qui garantit qu'une source fantôme ne finit jamais dans la
-    // requête envoyée au moteur.
-    return normalizeMaiSearchSources(params.preferences.searchSources);
-  }
+  // Le plafond : ce que le compte a autorisé. La normalisation est faite ici,
+  // pas seulement à la lecture : c'est elle qui garantit qu'une source
+  // fantôme ne finit jamais dans la requête envoyée au moteur.
+  const plafond = params.preferences?.searchSources?.length
+    ? normalizeMaiSearchSources(params.preferences.searchSources)
+    : [...MAI_SEARCH_SOURCE_KEYS];
+
+  // La demande : ce que l'appelant veut, borné par le plafond.
+  let demande: MaiSearchSourceKey[] | null = null;
   if (params.requested?.length) {
-    return normalizeMaiSearchSources(params.requested);
+    demande = normalizeMaiSearchSources(params.requested);
+  } else if (params.type === "images") {
+    demande = ["images"];
+  } else if (params.type === "web") {
+    demande = ["web"];
   }
-  if (params.type === "images") {
-    return ["images"];
+
+  if (!demande) {
+    return plafond;
   }
-  if (params.type === "web") {
-    return ["web"];
-  }
-  return [...MAI_SEARCH_SOURCE_KEYS];
+
+  // Intersection. Si la demande ne laisse rien dans le plafond — l'onglet
+  // « Images » alors que les images sont désactivées — on rend le PLAFOND
+  // plutôt que rien : une recherche qui ne rend aucun lien est un échec
+  // silencieux, alors que rendre les sources autorisées reste utile.
+  const autorisees = plafond.filter((source) => demande.includes(source));
+  return autorisees.length > 0 ? autorisees : plafond;
 }
 
 export async function POST(request: Request) {
@@ -103,6 +119,7 @@ export async function POST(request: Request) {
       preferences?.searchSafetyLevel ?? safetyLevel ?? "medium";
     const preferredCount = preferences?.searchResultCount ?? 10;
 
+    const debut = Date.now();
     const searchResponse = await executeMaiSearch({
       // Le nombre demandé ne peut pas dépasser la préférence du compte :
       // c'est elle qui borne l'usage du moteur.
@@ -115,6 +132,7 @@ export async function POST(request: Request) {
       // diverger.
       sources: effectiveSources,
     });
+    const dureeMs = Date.now() - debut;
 
     let searchId: string | null = null;
 
@@ -128,6 +146,15 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       cached: searchResponse.cached,
+      /**
+       * Durée de la recherche, en millisecondes.
+       *
+       * Ce n'est pas un ornement : c'est le seul moyen, pour l'interface,
+       * de distinguer « le moteur a été lent » de « le moteur n'a rien
+       * trouvé ». La première invite à réessayer, la seconde invite à
+       * reformuler — deux gestes opposés.
+       */
+      durationMs: dureeMs,
       images: searchResponse.images,
       news: searchResponse.news || [],
       provider: searchResponse.provider,

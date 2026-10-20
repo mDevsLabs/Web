@@ -5,6 +5,7 @@ import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
 
 import { sanitizeConnectionString } from "@/lib/db/connection-string";
+import { pinWorkingSchema } from "@/lib/db/working-schema";
 
 config({
   path: ".env.local",
@@ -77,6 +78,11 @@ const runMigrate = async () => {
 
   const connection = postgres(dbUrl, { max: 1 });
   const db = drizzle(connection);
+
+  // Le schéma d'abord : sans lui, un `search_path` vide transforme chaque
+  // CREATE en 3F000 et chaque ALTER en 42P01, y compris sur des tables
+  // existantes. La migration échoue alors sur une base saine.
+  await pinWorkingSchema(connection, "avant les réparations");
 
   console.log("Running migrations...");
 
@@ -833,6 +839,49 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // La table `user_preferences` porte les préférences de compte (modèle par
+  // défaut, thème, langue de recherche). Elle est créée par la migration
+  // 0026, mais une base dont le journal est incomplet — ou dont la table a
+  // été supprimée — ne l'a jamais eue. Les colonnes ajoutées plus bas sont
+  // alors inutiles (`IF EXISTS` les ignore) et la migration 0062, qui n'est
+  // pas qualifiée, échoue en 42P01 et arrête le job. La créer ici rend la
+  // phase de réparation cohérente avec les colonnes qu'elle ajoute ensuite.
+  // Définition alignée sur `lib/db/schema.ts` (userPreferences).
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "user_preferences" (
+        "customInstructions" text DEFAULT '' NOT NULL,
+        "customInstructionsEnabled" boolean DEFAULT false NOT NULL,
+        "defaultAgentId" uuid,
+        "defaultApp" varchar(20) DEFAULT 'mai' NOT NULL,
+        "defaultAudioModel" text DEFAULT 'deepgram/flux-tts:free' NOT NULL,
+        "defaultAudioSpeed" double precision DEFAULT 1.0 NOT NULL,
+        "defaultAudioVoice" varchar(100) DEFAULT 'flux-alexis-en' NOT NULL,
+        "defaultChatModel" text,
+        "defaultChatVisibility" varchar(20) DEFAULT 'private' NOT NULL,
+        "defaultCreationMode" varchar(20) DEFAULT 'image' NOT NULL,
+        "defaultDictationLanguage" varchar(20) DEFAULT 'auto' NOT NULL,
+        "defaultImageModel" text DEFAULT 'black-forest-labs/flux-schnell' NOT NULL,
+        "defaultImageSize" varchar(50) DEFAULT '1024x1024' NOT NULL,
+        "defaultTemperature" double precision DEFAULT 0.7 NOT NULL,
+        "defaultTopP" double precision DEFAULT 0.9 NOT NULL,
+        "defaultTranslationLanguage" varchar(10) DEFAULT 'EN' NOT NULL,
+        "ghostMemoryEnabled" boolean DEFAULT false NOT NULL,
+        "reasoningLevel" varchar(10) DEFAULT 'medium' NOT NULL,
+        "searchLanguage" varchar(10) DEFAULT 'fr' NOT NULL,
+        "searchResultCount" integer DEFAULT 10 NOT NULL,
+        "searchSafetyLevel" varchar(20) DEFAULT 'medium' NOT NULL,
+        "searchSources" jsonb DEFAULT '["web","news","images","videos","wikipedia"]'::jsonb NOT NULL,
+        "showAgentChatIcons" boolean DEFAULT true NOT NULL,
+        "theme" varchar(10) DEFAULT 'system' NOT NULL,
+        "updatedAt" timestamp DEFAULT now() NOT NULL,
+        "userId" text PRIMARY KEY NOT NULL
+      )
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   // Migration 0057 : Effort de réflexion global et surcharge Agent nullable.
   try {
     await connection`ALTER TABLE IF EXISTS "user_preferences" ADD COLUMN IF NOT EXISTS "reasoningLevel" varchar(10) DEFAULT 'medium' NOT NULL`;
@@ -951,13 +1000,30 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Un relais (pooler) peut rendre la session entre deux requêtes : on
+  // répingle le schéma juste avant la phase Drizzle, qui ouvre sa propre
+  // transaction. Le journal montre alors le `search_path` réellement reçu à
+  // ce moment-là — la trace decisive si le relais le réinitialise.
+  await pinWorkingSchema(connection, "avant les migrations Drizzle");
+
   const start = Date.now();
-  await migrate(db, { migrationsFolder: "./lib/db/migrations" });
+  let echecMigrations: unknown = null;
+  try {
+    await migrate(db, { migrationsFolder: "./lib/db/migrations" });
+  } catch (error) {
+    // L'échec des migrations est retenu, pas avalé : il est relancé après le
+    // bilan des réparations, qui en est souvent la cause.
+    echecMigrations = error;
+  }
   const end = Date.now();
 
+  // Le bilan des étapes de réparation est affiché QUOI QUE IL PENSE du
+  // résultat des migrations : c'est souvent l'étape de réparation (un 3F000
+  // sur un `search_path` vide) qui explique l'échec de la migration, et non
+  // l'inverse. L'afficher après coup le cachait.
   if (unexpectedStepErrors.length > 0) {
     console.error(
-      `\n✖ ${unexpectedStepErrors.length} étape(s) de réparation en échec inattendu · les migrations Drizzle se sont terminées, mais l'état du schéma n'est PAS celui attendu :`
+      `\n✖ ${unexpectedStepErrors.length} étape(s) de réparation en échec inattendu · les migrations Drizzle ${echecMigrations ? "ont échoué" : "se sont terminées"}, mais l'état du schéma n'est PAS celui attendu :`
     );
     for (const entry of unexpectedStepErrors) {
       console.error(`  - ${entry}`);
@@ -966,11 +1032,24 @@ const runMigrate = async () => {
       console.error(
         "MIGRATIONS_STRICT=false : échec toléré explicitement par l'exploitant."
       );
-    } else {
-      throw new Error(
-        "Migration incomplète : des étapes de réparation ont échoué (voir la liste ci-dessus)."
-      );
     }
+  }
+
+  // L'échec des migrations passe AVANT le bilan des réparations : c'est lui
+  // qui a fait tomber le job, et le bilan des étapes de réparation — affiché
+  // juste au-dessus — en donne la cause. Masquer l'un par l'autre faisait
+  // perdre la moitié du diagnostic.
+  if (echecMigrations) {
+    throw echecMigrations;
+  }
+
+  if (
+    unexpectedStepErrors.length > 0 &&
+    process.env.MIGRATIONS_STRICT !== "false"
+  ) {
+    throw new Error(
+      "Migration incomplète : des étapes de réparation ont échoué (voir la liste ci-dessus)."
+    );
   }
 
   console.log("Migrations completed in", end - start, "ms");

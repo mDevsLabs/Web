@@ -35,7 +35,6 @@ import { WorkspaceTopbar } from "@/components/wakies/WorkspaceTopbar";
 import { APP_PRICING_URL } from "@/lib/constants";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { memoriserNavReduite } from "@/lib/wakies/client/nav-collapsed";
-import type { Page } from "@/lib/wakies/pages";
 import type { CapacitesPieces } from "@/lib/wakies/shared/model-attachments";
 import type {
   Conversation,
@@ -116,78 +115,95 @@ function WakiesWorkspaceContent({
   const [spaceId, setSpaceId] = useState("");
   const [pageId, setPageId] = useState<string>();
   const [sidebarSearch, setSidebarSearch] = useState("");
-  const [searchPages, setSearchPages] = useState<
-    { page: Page; space: WorkspaceState["spaces"][number] }[]
-  >([]);
+  /**
+   * Le message visé par la recherche : le fil s'ouvre dessus, et il est
+   * mis en évidence.
+   */
   const [cibleMessageId, setCibleMessageId] = useState<string | null>(null);
-  const [searchMessages, setSearchMessages] = useState<
+  /**
+   * Les résultats de la recherche du rail.
+   *
+   * Une seule liste, alimentée par le serveur : les surfaces ne sont plus
+   * reconstruites côté navigateur, donc elles ne peuvent plus diverger de ce
+   * que la base contient.
+   */
+  const [searchResults, setSearchResults] = useState<
     Array<{
-      conversationId: string;
-      extrait: string;
+      conversationId?: string;
+      href: string;
       id: string;
-      role: string;
+      kind:
+        | "conversation"
+        | "memory"
+        | "message"
+        | "page"
+        | "space"
+        | "task"
+        | "wakie";
+      messageId?: string;
+      pageId?: string;
+      spaceId?: string;
+      subtitle?: string;
+      title: string;
+      wakieId?: string;
     }>
   >([]);
-  const spaceKey = workspace?.spaces.map((space) => space.id).join(",") ?? "";
 
-  useEffect(() => {
-    const query = sidebarSearch.trim().toLocaleLowerCase("fr");
-    if (!query || !workspace?.spaces.length) {
-      setSearchPages([]);
-      return;
-    }
-    setSearchPages([]);
-    let active = true;
-    const timer = setTimeout(() => {
-      void Promise.all(
-        workspace.spaces.map(async (space) => ({
-          pages: await api<Page[]>(`/spaces/${space.id}/pages`),
-          space,
-        }))
-      )
-        .then((groups) => {
-          if (active)
-            setSearchPages(
-              groups.flatMap(({ pages, space }) =>
-                pages
-                  .filter((page) =>
-                    page.title.toLocaleLowerCase("fr").includes(query)
-                  )
-                  .map((page) => ({ page, space }))
-              )
-            );
-        })
-        .catch(() => {
-          if (active) setSearchPages([]);
-        });
-    }, 180);
-    return () => {
-      active = false;
-      clearTimeout(timer);
-    };
-  }, [sidebarSearch, spaceKey, workspace?.spaces]);
-
+  /**
+   * LA RECHERCHE DU RAIL — une seule requête, une seule source de vérité.
+   *
+   * Avant, la recherche était une RECONSTITUTION côté navigateur :
+   *
+   * - les conversations, les Espaces et les Wakies étaient filtrés en
+   *   JavaScript sur les tableaux déjà chargés par le rail ;
+   * - les PAGES exigeaient un appel réseau PAR ESPACE, à chaque frappe. Un
+   *   compte avec huit Espaces déclenchait huit requêtes pour un mot tapé,
+   *   et le résultat était filtré par le navigateur, donc FAUX : une page
+   *   trouvée dépendait de la charge utile déjà en mémoire.
+   *
+   * Ici, le serveur interroge la base et renvoie des résultats DÉJÀ
+   * FILTRÉS, avec un compteur par type. Le rail n'a plus qu'à les afficher,
+   * et le coût ne dépend plus du nombre d'Espaces du compte.
+   *
+   * Le délai (220 ms) est celui d'une frappe : la recherche part quand
+   * l'utilisateur s'arrête, pas à chaque caractère.
+   */
   useEffect(() => {
     const requete = sidebarSearch.trim();
     if (requete.length < 2) {
-      setSearchMessages([]);
+      setSearchResults([]);
       return;
     }
     let active = true;
     const timer = setTimeout(() => {
       void api<{
-        messages: Array<{
-          conversationId: string;
-          extrait: string;
+        counts: Record<string, number>;
+        hits: Array<{
+          conversationId?: string;
+          href: string;
           id: string;
-          role: string;
+          kind:
+            | "conversation"
+            | "memory"
+            | "message"
+            | "page"
+            | "space"
+            | "task"
+            | "wakie";
+          messageId?: string;
+          pageId?: string;
+          spaceId?: string;
+          subtitle?: string;
+          title: string;
+          wakieId?: string;
         }>;
+        total: number;
       }>(`/search?q=${encodeURIComponent(requete)}`)
         .then((donnees) => {
-          if (active) setSearchMessages(donnees.messages);
+          if (active) setSearchResults(donnees.hits ?? []);
         })
         .catch(() => {
-          if (active) setSearchMessages([]);
+          if (active) setSearchResults([]);
         });
     }, 220);
     return () => {
@@ -635,8 +651,7 @@ function WakiesWorkspaceContent({
         ouvrirReglages={ouvrirReglages}
         pageId={pageId}
         refresh={refresh}
-        searchMessages={searchMessages}
-        searchPages={searchPages}
+        searchResults={searchResults}
         selectedThread={selectedThread}
         selectedWakie={selectedWakie}
         setCibleMessageId={setCibleMessageId}

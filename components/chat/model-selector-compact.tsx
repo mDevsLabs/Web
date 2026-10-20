@@ -45,9 +45,16 @@ import {
 // Ces types vivent dans lib/ai/model-selector/types.ts : le sélecteur du Site
 // officiel consomme exactement la même forme.
 import {
+  MAI_PROVIDER_KEY,
+  MAI_PROVIDER_RECOMMENDED_LABEL,
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
+import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
+import {
+  groupModelsByProvider,
+  isMai2Model,
+} from "@/lib/ai/model-selector/order";
 import {
   displayedReasoningLevel,
   supportedReasoningLevels,
@@ -65,6 +72,8 @@ import {
 import { cn } from "@/lib/utils";
 
 export {
+  MAI_PROVIDER_KEY,
+  MAI_PROVIDER_RECOMMENDED_LABEL,
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
@@ -174,6 +183,7 @@ function ModelDetailsPanel({
                 Gratuit
               </span>
             ) : null}
+            {isMai2Model(model) ? <RecommendedBadge /> : null}
           </div>
           <span className="text-[11px] text-muted-foreground mt-0.5">
             Fournisseur : {providerLabel}
@@ -327,7 +337,10 @@ function SharedModelSelectorOption({
       <div className="flex items-center w-full min-w-0">
         <ModelSelectorLogo provider={logoProvider} />
         <div className="flex flex-col min-w-0 pr-2">
-          <ModelSelectorName>{model.name}</ModelSelectorName>
+          <div className="flex items-center gap-1.5 min-w-0">
+            <ModelSelectorName>{model.name}</ModelSelectorName>
+            {isMai2Model(model) ? <RecommendedBadge /> : null}
+          </div>
           {model.description ? (
             <span className="text-[11px] text-muted-foreground line-clamp-1">
               {model.description}
@@ -545,14 +558,13 @@ function PureModelSelectorCompact({
     });
   }, [models, search]);
 
-  const grouped: Record<string, SharedModel[]> = {};
-  for (const m of filteredModels) {
-    const p = resolveProviderKey(m);
-    if (!grouped[p]) {
-      grouped[p] = [];
-    }
-    grouped[p].push(m);
-  }
+  // Le catalogue remonte dans l'ordre de gestion de la source. L'ordre
+  // d'AFFICHAGE est decided ailleurs (lib/ai/model-selector/order.ts) : la
+  // famille mAI-2 ouvre la liste, le groupe mAI suit.
+  const grouped = useMemo(
+    () => groupModelsByProvider(filteredModels),
+    [filteredModels]
+  );
 
   const activeModel = useMemo(
     () =>
@@ -645,13 +657,20 @@ function PureModelSelectorCompact({
                   Aucun modèle trouvé pour « {search} »
                 </div>
               ) : (
-                Object.entries(grouped).map(([groupKey, groupModels]) => (
+                grouped.map(({ models: groupModels, providerKey }) => (
                   <ModelSelectorGroup
                     heading={
-                      PROVIDER_NAMES[groupKey.toLowerCase()] ||
-                      groupKey.toUpperCase()
+                      <span className="flex items-center gap-1.5">
+                        <span>
+                          {PROVIDER_NAMES[providerKey.toLowerCase()] ||
+                            providerKey.toUpperCase()}
+                        </span>
+                        {providerKey === MAI_PROVIDER_KEY ? (
+                          <RecommendedBadge />
+                        ) : null}
+                      </span>
                     }
-                    key={groupKey}
+                    key={providerKey}
                   >
                     {groupModels.map((model) => (
                       <SharedModelSelectorOption

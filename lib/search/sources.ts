@@ -65,6 +65,26 @@ export const MAI_SEARCH_SOURCE_LABELS: Record<MaiSearchSourceKey, string> = {
 };
 
 /**
+ * Description d'une source, affichée sous les réglages.
+ *
+ * Wikipédia n'a pas besoin d'être présentée comme les autres : c'est une
+ * encyclopédie, pas un moteur de recherche, et l'utilisateur doit comprendre
+ * ce qu'il obtient — des ARTICLES DE RÉFÉRENCE, pas des pages qui en
+ * parlent.
+ */
+export const MAI_SEARCH_SOURCE_DESCRIPTIONS: Record<
+  MaiSearchSourceKey,
+  string
+> = {
+  images: "Illustrations et photographies trouvées sur le Web.",
+  news: "Actualités récentes, issues du flux Google News.",
+  videos: "Vidéos publiées sur les principales plateformes.",
+  web: "Pages web indexées par le moteur de recherche principal.",
+  wikipedia:
+    "Articles de l'encyclopédie : une source de référence, signalée par un badge et utilisée par la synthèse.",
+};
+
+/**
  * Langues de recherche acceptées.
  *
  * `fr` par défaut : l'interface est monolingue français, et les replis

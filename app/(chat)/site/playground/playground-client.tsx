@@ -49,6 +49,7 @@ import {
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
+import { groupModelsByProvider } from "@/lib/ai/model-selector/order";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { cn } from "@/lib/utils";
@@ -103,22 +104,16 @@ export function PlaygroundClient() {
   );
 
   // Regroupement par fournisseur, comme le fait le sélecteur de l'hôte.
-  const modelGroups = useMemo(() => {
-    const byProvider = new Map<string, SharedModel[]>();
-    for (const model of models) {
-      const key = resolveProviderKey(model);
-      const bucket = byProvider.get(key);
-      if (bucket) {
-        bucket.push(model);
-      } else {
-        byProvider.set(key, [model]);
-      }
-    }
-    return Array.from(byProvider.entries()).map(([key, groupModels]) => ({
-      heading: PROVIDER_NAMES[key.toLowerCase()] ?? key.toUpperCase(),
-      models: groupModels,
-    }));
-  }, [models]);
+  // L'ordre d'affichage est partagé (lib/ai/model-selector/order.ts) : la
+  // famille mAI-2 ouvre la liste, le groupe mAI suit.
+  const modelGroups = useMemo(
+    () =>
+      groupModelsByProvider(models).map(({ models: groupModels, providerKey }) => ({
+        heading: PROVIDER_NAMES[providerKey.toLowerCase()] ?? providerKey.toUpperCase(),
+        models: groupModels,
+      })),
+    [models]
+  );
 
   // Le modèle sélectionné doit exister dans le catalogue courant : un
   // modèle retiré entre deux rafraîchissements ne doit pas rester actif.

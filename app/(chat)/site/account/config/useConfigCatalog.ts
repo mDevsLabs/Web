@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/site/auth-provider";
 import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
+import { isMai2ModelId } from "@/lib/ai/model-selector/order";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { maiModelsList } from "@/lib/site/mai-models";
@@ -205,6 +206,10 @@ export function useConfigCatalog() {
    * (exécutés par Ollama) et le catalogue Cloud `/v1/models`. Les groupes
    * sont vides plutôt qu'absents quand la cible n'est pas active : le
    * sélecteur n'affiche alors que ce qui est réellement disponible.
+   *
+   * Dans le groupe Cloud, la famille mAI-2 passe en tête : c'est
+   * l'ordre d'affichage partagé (lib/ai/model-selector/order.ts), pas un
+   * ordre propre au Site.
    */
   const modelGroups = useMemo(
     () => [
@@ -216,8 +221,14 @@ export function useConfigCatalog() {
       },
       {
         heading: "Modèles API v1 / Cloud",
-        models: allModels
+        models: [...allModels]
           .filter((model) => model.type === "cloud")
+          .sort((a, b) => {
+            const rangA = isMai2ModelId(a.id) ? 0 : 1;
+            const rangB = isMai2ModelId(b.id) ? 0 : 1;
+            if (rangA !== rangB) return rangA - rangB;
+            return 0;
+          })
           .map((model) => ({ id: model.id, name: model.name })),
       },
     ],

@@ -334,6 +334,11 @@ serveur** : `POST /api/mai-search` lit les préférences du compte et impose
 sources, langue, volume et filtre. Le client propose, le serveur tranche — un
 appel direct ne peut pas élargir le périmètre.
 
+La préférence des sources est un **plafond**, pas une liste figée : le client
+peut **rétrécir** le périmètre (c'est ce qui rend les onglets « Actualités » et
+« Images » possibles) mais jamais l'élargir. L'intersection est faite par
+`resolveSources` (`app/(chat)/api/mai-search/route.ts`), qui est **testée**.
+
 Le vocabulaire des sources est dans `lib/search/sources.ts` (client-safe) :
 **ne pas le confondre** avec `lib/search/types.ts`, qui porte l'index de
 recherche interne (16 clés : `chat`, `message`, `skill`…).
@@ -342,6 +347,30 @@ Wikipédia est une **source à part entière** (`lib/search/wikipedia.ts`), pas
 seulement un repli : ses articles portent `origin: "wikipedia"` et sont
 distingués par un badge. Le repli automatique en cas d'échec de You.com est
 **conservé** en plus.
+
+Trois règles de rapidité, à ne pas réintroduire :
+
+- **Les clés du moteur sont essayées EN PARALLÈLE** (`raceFirst`,
+  `lib/search/you-client.ts`). Elles l'étaient en séquence : trois clés ×
+  trois points d'entrée, c'était jusqu'à 36 s d'attente pour un résultat
+  disponible sur la clé suivante.
+- **Les replis partent EN MÊME TEMPS** que les sources principales. Les
+  replis n'étaient pas des replis mais des *étapes* : chaque source lente
+  s'additionnait au délai total.
+- **Le nombre de résultats est borné PAR SOURCE**, pas au total : borner le
+  total vidait l'onglet « Actualités » dès que l'onglet « Web » était plein.
+
+L'analyse d'une saisie (longueur minimale, jetons, détection d'adresse) est
+dans `lib/search/query.ts` — pur, client-safe, **testé**. Le serveur et
+l'interface l'utilisent tous les deux : deux implémentations divergeraient.
+
+Le modèle de la synthèse est **validé** contre le catalogue et le forfait du
+compte (`app/(chat)/api/mai-search/summary/route.ts`), comme le fait le mode
+Agent. Un `modelId` arbitraire venu du client ne doit jamais être exécuté.
+
+L'historique des recherches est **écrit** à chaque recherche
+(`MaiSearchQuery`) et se lit par `GET /api/mai-search/recent`. Il est filtré
+par compte côté serveur : la ligne d'un autre compte ne matche jamais.
 
 ## 8. Commandes
 
@@ -523,3 +552,36 @@ Les règles locales sont aussi dans `components/wakies/AGENTS.md`, `lib/wakies/A
 - Le catalogue MCP GitHub et son modèle de skill dédié sont retirés. Le plugin `github-public` (lecture de dépôts publics avec une clé globale) est retiré à son tour et remplacé par le connecteur OAuth `github`, qui lit les dépôts du compte connecté et peut y écrire avec approbation. Les serveurs MCP déjà enregistrés et les usages Git de Coder restent disponibles.
 - `node scripts/audit-backend.mjs` régénère l’inventaire des 52 modules backend et des routes Next ; ces dernières ne sont pas toutes des proxys.
 - Le nettoyage des services autonomes OpenMuse est tracé dans `docs/CLEANUP_INVENTORY.json`. Les images, la licence, les sources CSS et les références mobiles localement adaptées restent protégées ; le contrôle de provenance distingue les sources conservées des retraits.
+
+### 10.1 La recherche Wakies est côté serveur
+
+La recherche du rail est **une requête**, pas une reconstruction côté navigateur.
+
+- `GET /api/wakies/search?q=` renvoie la recherche **unifiée** : conversations,
+  messages, pages, Espaces, Wakies, mémoires et tâches. Elle est implémentée
+  dans `lib/wakies/queries/search.ts` et lue en **parallèle** : le délai est
+  celui de la source la plus lente, pas leur somme.
+- `GET /api/wakies/search?q=&messages=1` renvoie l’**historique seul**, au
+  format historique `{ conversations, messages }`. Ce contrat a ses appelants :
+  il est conservé, mais son filtre des messages passe désormais **en base**.
+- `?q=&messages=1` **sans le paramètre** ne renvoie PAS l’historique : les
+  deux contrats sont distincts et ne doivent pas se recouvrir.
+
+Trois erreurs à ne pas réintroduire :
+
+- **Le filtre des messages se fait en SQL**, sur `parts::text`. Il se faisait
+  en JavaScript, sur un aperçu tronqué : « I love » ne trouvait pas
+  « I love this », et l’historique au-delà des cent derniers messages d’un
+  fil était invisible alors qu’il existait.
+- **La borne porte sur les RÉSULTATS**, pas sur les lignes candidates. C’est
+  la différence entre une recherche qui balaie un historique et une recherche
+  qui le parcourt.
+- **Le rail n’a plus de requête par Espace.** Le rail affichait les pages en
+  appelant `/spaces/<id>/pages` pour chaque Espace, à chaque frappe : huit
+  Espaces, huit requêtes pour un mot tapé. Le coût ne dépend plus du nombre
+  d’Espaces du compte.
+
+Les fils de groupe sont exclus de la recherche : ils sont retirés du produit,
+et les chercher afficherait des conversations fantômes, absentes du rail.
+
+

@@ -21,19 +21,15 @@
 
 import {
   BellIcon,
-  BookIcon,
   BotIcon,
   BrainIcon,
   CheckIcon,
   CpuIcon,
   CrosshairIcon,
-  GlobeIcon,
-  ImageIcon,
   LayersIcon,
   Loader2Icon,
   LockIcon,
   MessageSquareIcon,
-  NewspaperIcon,
   PauseIcon,
   PlayIcon,
   SearchIcon,
@@ -42,7 +38,6 @@ import {
   TrashIcon,
   UserIcon,
   UsersIcon,
-  VideoIcon,
   Volume2Icon,
   ZapIcon,
 } from "@mdevs/icons";
@@ -52,6 +47,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { SourceIcon } from "@/components/search/source-icon";
 import { api as wakiesApi } from "@/components/wakies/api";
 import {
   CapacityPicker,
@@ -65,6 +61,7 @@ import {
   MAI_SEARCH_RESULT_COUNT_DEFAULT,
   MAI_SEARCH_SAFETY_LABELS,
   MAI_SEARCH_SAFETY_LEVELS,
+  MAI_SEARCH_SOURCE_DESCRIPTIONS,
   MAI_SEARCH_SOURCE_KEYS,
   MAI_SEARCH_SOURCE_LABELS,
   type MaiSearchLanguage,
@@ -1230,28 +1227,26 @@ export function ApplicationsTab() {
                     data-active={active ? "true" : undefined}
                     key={source}
                     onClick={() => toggleSearchSource(source)}
+                    title={MAI_SEARCH_SOURCE_DESCRIPTIONS[source]}
                     type="button"
                   >
-                    {source === "wikipedia" ? (
-                      <BookIcon className="size-3.5" />
-                    ) : source === "images" ? (
-                      <ImageIcon className="size-3.5" />
-                    ) : source === "news" ? (
-                      <NewspaperIcon className="size-3.5" />
-                    ) : source === "videos" ? (
-                      <VideoIcon className="size-3.5" />
-                    ) : (
-                      <GlobeIcon className="size-3.5" />
-                    )}
+                    <SourceIcon className="size-3.5" source={source} />
                     <span>{MAI_SEARCH_SOURCE_LABELS[source]}</span>
                   </button>
                 );
               })}
             </div>
+            {/*
+              La description de la source sélectionnée est affichée sous la
+              liste : une pastille seule ne dit pas ce qu'on va obtenir.
+              Wikipédia en particulier n'est pas « une source de plus » —
+              c'est une encyclopédie, et l'utilisateur doit le savoir avant
+              de la laisser répondre.
+            */}
             <p className="text-[10px] text-muted-foreground">
-              Wikipédia est une source à part entière : ses articles sont
-              distingués des résultats web par un badge, et ses résumés
-              alimentent la synthèse mAI.
+              {MAI_SEARCH_SOURCE_DESCRIPTIONS[
+                searchSources.includes("wikipedia") ? "wikipedia" : "web"
+              ]}
             </p>
           </div>
         </div>
