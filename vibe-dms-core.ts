@@ -1,7 +1,7 @@
 import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — DMs : SOCLE PARTAGÉ (vibe-dms-core.ts)
+ * VIBE SOCIAL PLATFORM — DMs: SOCLE PARTAGÉ (vibe-dms-core.ts)
  * Tables DM (ensureDMTables), compte officiel mAI, helpers SSE et requêtes
  * communes aux routes DMs. Scindé de vibe-dms.ts (limite de taille Val Town).
  * ============================================================================
@@ -21,9 +21,9 @@ import { stripHtmlTags } from "./vibe-posts-core.ts";
 export const DM_MESSAGE_CHARS_FREE = 3000;
 export const DM_MESSAGE_CHARS_PAID = 10_000;
 export const dmPlainLength = (content: unknown): number =>
-  stripHtmlTags(String(content ?? "")).length;
+  stripHtmlTags(String(content?? "")).length;
 
-/** Limite du compte : 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
+/** Limite du compte: 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
 export const getDmMessageCharLimit = async (
   sql: any,
   userId: number
@@ -31,8 +31,8 @@ export const getDmMessageCharLimit = async (
   try {
     const rows = await sql`SELECT tier FROM users WHERE id = ${userId} LIMIT 1`;
     return isPaidTier(rows[0]?.tier)
-      ? DM_MESSAGE_CHARS_PAID
-      : DM_MESSAGE_CHARS_FREE;
+? DM_MESSAGE_CHARS_PAID
+: DM_MESSAGE_CHARS_FREE;
   } catch {
     return DM_MESSAGE_CHARS_FREE;
   }
@@ -40,10 +40,10 @@ export const getDmMessageCharLimit = async (
 
 /**
  * Crée les tables de modération DM si besoin (idempotent, exécuté une fois).
- * — blocked_users : relations de blocage
- * — dm_reports    : signalements
- * — dm_conv_meta  : métadonnées locales par utilisateur (renommage conversation)
- * — dm_reactions  : réactions emoji + colonne reply_to_id (réponses)
+ * — blocked_users: relations de blocage
+ * — dm_reports: signalements
+ * — dm_conv_meta: métadonnées locales par utilisateur (renommage conversation)
+ * — dm_reactions: réactions emoji + colonne reply_to_id (réponses)
  */
 let dmTablesReady = false;
 export async function ensureDMTables() {
@@ -106,7 +106,7 @@ export async function ensureDMTables() {
     await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS edited_at TIMESTAMPTZ`.catch(
       () => {}
     );
-    // Messages de groupe (migration 019) : conversations multi-participants
+    // Messages de groupe (migration 019): conversations multi-participants
     await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS is_group BOOLEAN DEFAULT FALSE`.catch(
       () => {}
     );
@@ -168,7 +168,7 @@ export async function ensureDMTables() {
     await sql`CREATE INDEX IF NOT EXISTS idx_dm_scheduled ON direct_messages(status, send_at) WHERE status = 'scheduled'`.catch(
       () => {}
     );
-    // Traduction mémorisée, transfert (attribution) et masquage local (« pour moi »)
+    // Traduction mémorisée, transfert (attribution) et masquage local (« pour moi»)
     await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS translations JSONB DEFAULT '{}'`.catch(
       () => {}
     );
@@ -196,8 +196,8 @@ export async function ensureDMTables() {
         PRIMARY KEY (conversation_id, message_id)
       )
     `.catch(() => {});
-    // Conversations de Livre (chantier « Livres dans Messages ») : rattachement
-    // d'une conversation de groupe à un Livre. Pas de FK : vibe_books peut ne
+    // Conversations de Livre (chantier « Livres dans Messages»): rattachement
+    // d'une conversation de groupe à un Livre. Pas de FK: vibe_books peut ne
     // pas encore exister au démarrage.
     await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(
       () => {}
@@ -219,7 +219,7 @@ export async function ensureDMTables() {
 }
 
 /**
- * Compte officiel mAI (pseudo-utilisateur) : répond automatiquement aux DMs.
+ * Compte officiel mAI (pseudo-utilisateur): répond automatiquement aux DMs.
  * Seed idempotent — même pattern que la migration 005 du compte @bot.
  */
 let maiAccountReady = false;
@@ -244,11 +244,11 @@ export async function ensureMAIAccount() {
     `;
     await sql`
       INSERT INTO profiles (user_id, display_name, bio, avatar_url, is_verified)
-      SELECT id, 'mAI', 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé : je réponds à toutes vos questions. ✨', 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe', TRUE
+      SELECT id, 'mAI', 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé: je réponds à toutes vos questions. ', 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe', TRUE
       FROM users WHERE username = 'mai'
       ON CONFLICT (user_id) DO UPDATE SET
         display_name = 'mAI',
-        bio = 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé : je réponds à toutes vos questions. ✨',
+        bio = 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé: je réponds à toutes vos questions. ',
         avatar_url = 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe',
         is_verified = TRUE
     `;
@@ -268,14 +268,14 @@ export async function getMAIUserId(sql: any): Promise<number | null> {
   try {
     const rows =
       await sql`SELECT id FROM users WHERE LOWER(username) = 'mai' LIMIT 1`;
-    return rows.length > 0 ? Number(rows[0].id) : null;
+    return rows.length > 0? Number(rows[0].id): null;
   } catch {
     return null;
   }
 }
 
 /**
- * Réponse automatique du compte mAI à un DM : génère une réponse avec
+ * Réponse automatique du compte mAI à un DM: génère une réponse avec
  * OpenRouter en tenant compte de l'historique de la conversation, puis
  * débite l'usage hebdomadaire de l'expéditeur.
  */
@@ -297,12 +297,12 @@ export async function generateMAIDMReply(
       LIMIT 40
     `.catch(() => []);
     const transcript = historyRows
-      .reverse()
-      .map(
+.reverse()
+.map(
         (m: any) =>
-          `${m.sender_id === maiUserId ? "mAI" : `@${m.sender_username}`}: ${m.content}`
+          `${m.sender_id === maiUserId? "mAI": `@${m.sender_username}`}: ${m.content}`
       )
-      .join("\n");
+.join("\n");
 
     // Quota hebdomadaire mAI de l'expéditeur
     const { weekStartStr } = getWeekData();
@@ -321,26 +321,26 @@ export async function generateMAIDMReply(
     let reply: string;
     if (currentUsage >= tokenLimit) {
       reply =
-        "⚠️ Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
+        " Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
     } else {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${senderId}::text LIMIT 1
       `.catch(() => []);
       const openRouterApiKey =
         (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
-        (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
-        (keyRows.length > 0 ? keyRows[0].api_key : "");
+        (typeof process!== "undefined" && process.env?.OPENROUTER_API_KEY) ||
+        (keyRows.length > 0? keyRows[0].api_key: "");
 
       const systemPrompt =
-        "Tu es mAI, l'intelligence artificielle officielle du réseau social Vibe. Tu réponds aux messages privés des utilisateurs comme un vrai interlocuteur : bienveillant, concis et utile. " +
-        "Tu réponds en français avec quelques émojis. Tu connais tout l'historique de la conversation : poursuis naturellement l'échange sans redemander des informations déjà données. " +
+        "Tu es mAI, l'intelligence artificielle officielle du réseau social Vibe. Tu réponds aux messages privés des utilisateurs comme un vrai interlocuteur: bienveillant, concis et utile. " +
+        "Tu réponds en français avec quelques émojis. Tu connais tout l'historique de la conversation: poursuis naturellement l'échange sans redemander des informations déjà données. " +
         "Ne fais AUCUNE évaluation de sécurité, n'écris JAMAIS 'User Safety: safe' ni aucun méta-commentaire.";
 
       const userPrompt =
         (transcript.trim()
-          ? `Historique de la conversation :\n${transcript}\n\n`
-          : "Nouvelle conversation.\n\n") +
-        `L'utilisateur vient d'envoyer : « ${senderMessage} »\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
+? `Historique de la conversation:\n${transcript}\n\n`
+: "Nouvelle conversation.\n\n") +
+        `L'utilisateur vient d'envoyer: « ${senderMessage}»\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
 
       reply = "";
       if (openRouterApiKey) {
@@ -376,9 +376,9 @@ export async function generateMAIDMReply(
               const text = aiData.choices?.[0]?.message?.content;
               if (text && typeof text === "string" && text.trim()) {
                 reply = text
-                  .replace(/User Safety:\s*safe\.?/gi, "")
-                  .replace(/^User Safety:[^\n]*\n*/gi, "")
-                  .trim();
+.replace(/User Safety:\s*safe\.?/gi, "")
+.replace(/^User Safety:[^\n]*\n*/gi, "")
+.trim();
                 break;
               }
             }
@@ -392,7 +392,7 @@ export async function generateMAIDMReply(
       }
       if (!reply) {
         reply =
-          "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ✨";
+          "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ";
       }
 
       // Débit de l'usage hebdomadaire de l'expéditeur (chaque message compte)
@@ -426,7 +426,7 @@ export async function generateMAIDMReply(
       VALUES (${senderId}, ${maiUserId}, 'dm', 'vous a envoyé un message')
     `.catch(() => {});
 
-    // Temps réel : pousse la réponse mAI à l'expéditeur (flux SSE)
+    // Temps réel: pousse la réponse mAI à l'expéditeur (flux SSE)
     try {
       await pushRealtimeEvent(
         senderId,
@@ -449,7 +449,7 @@ export async function generateMAIDMReply(
 
 /**
  * Publication paresseuse des DMs programmés arrivés à échéance (miroir
- * publishDuePosts) : appelée en tête de handleDMMessages, throttle 30 s.
+ * publishDuePosts): appelée en tête de handleDMMessages, throttle 30 s.
  */
 let lastDMpublishCheck = 0;
 export async function publishScheduledDMs(): Promise<void> {
@@ -488,21 +488,21 @@ export async function resolveConversationId(
   partnerId: number
 ): Promise<string | null> {
   try {
-    const p1 = userId < partnerId ? userId : partnerId;
-    const p2 = userId < partnerId ? partnerId : userId;
+    const p1 = userId < partnerId? userId: partnerId;
+    const p2 = userId < partnerId? partnerId: userId;
     const rows = await sql`
       SELECT id FROM dm_conversations
       WHERE participant_one_id = ${p1} AND participant_two_id = ${p2}
       LIMIT 1
     `;
-    return rows[0] ? String(rows[0].id) : null;
+    return rows[0]? String(rows[0].id): null;
   } catch {
     return null;
   }
 }
 
 /**
- * Résout une conversation depuis un partnerId brut : "123" (1-à-1) ou
+ * Résout une conversation depuis un partnerId brut: "123" (1-à-1) ou
  * "group:<uuid>" (groupe). Vérifie l'appartenance de l'utilisateur et
  * retourne les membres pour la diffusion SSE.
  */
@@ -519,7 +519,7 @@ export async function resolveConversationTarget(
     if (raw.startsWith("group:")) {
       const groupId = raw.slice(6);
       if (
-        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
           groupId
         )
       ) {
@@ -604,9 +604,9 @@ export async function fetchDMAttachedPost(
       avatar_url: r.avatar_url || null,
       display_name: r.display_name || null,
       excerpt: stripHtmlTags(String(r.content || ""))
-        .replace(/\s+/g, " ")
-        .trim()
-        .slice(0, 140),
+.replace(/\s+/g, " ")
+.trim()
+.slice(0, 140),
       id: String(r.id),
       username: String(r.username),
     };
@@ -624,8 +624,8 @@ export async function attachDMAttachedPosts(
   const ids = Array.from(
     new Set(
       messages
-        .filter((m) => m?.attached_post_id)
-        .map((m) => String(m.attached_post_id))
+.filter((m) => m?.attached_post_id)
+.map((m) => String(m.attached_post_id))
     )
   );
   if (ids.length === 0) return;
@@ -644,9 +644,9 @@ export async function attachDMAttachedPosts(
           avatar_url: r.avatar_url || null,
           display_name: r.display_name || null,
           excerpt: stripHtmlTags(String(r.content || ""))
-            .replace(/\s+/g, " ")
-            .trim()
-            .slice(0, 140),
+.replace(/\s+/g, " ")
+.trim()
+.slice(0, 140),
           id: String(r.id),
           username: String(r.username),
         },
@@ -661,7 +661,7 @@ export async function attachDMAttachedPosts(
 }
 
 /**
- * Normalise l'attribution d'un message transféré : seul l'id du message
+ * Normalise l'attribution d'un message transféré: seul l'id du message
  * d'origine est accepté, l'auteur est re-dérivé depuis la base (anti-usurpation).
  */
 export async function deriveForwardedFrom(
@@ -673,10 +673,10 @@ export async function deriveForwardedFrom(
   display_name: string | null;
 } | null> {
   try {
-    if (!raw || typeof raw !== "object" || !raw.message_id) return null;
+    if (!raw || typeof raw!== "object" ||!raw.message_id) return null;
     const id = String(raw.message_id);
     if (
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         id
       )
     ) {

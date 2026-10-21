@@ -2,7 +2,7 @@
  * Outil mAI — Légende et hashtags pour un visuel (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "generate_caption".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface GenerateCaptionArgs {
   context?: string;

@@ -23,6 +23,7 @@ import useSWR, { useSWRConfig } from "swr";
 import {
   ModelSelector,
   ModelSelectorContent,
+  ModelSelectorDescription,
   ModelSelectorGroup,
   ModelSelectorInput,
   ModelSelectorItem,
@@ -38,6 +39,10 @@ import {
   MODEL_CATALOG_SWR_KEYS,
   modelCatalogKey,
 } from "@/lib/ai/model-catalog";
+import {
+  groupModelsByProvider,
+  isMai2Model,
+} from "@/lib/ai/model-selector/order";
 // Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
 // (audio, provider optionnel) et ImageModel (images, qui expose owned_by) sont
 // tous compatibles. Le provider est résolu à l'affichage par resolveProviderKey.
@@ -50,15 +55,11 @@ import {
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
-import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
-import {
-  groupModelsByProvider,
-  isMai2Model,
-} from "@/lib/ai/model-selector/order";
 import {
   displayedReasoningLevel,
   supportedReasoningLevels,
 } from "@/lib/ai/model-selector/reasoning";
+import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
 import type {
   ModelSelectorSource,
   SharedModel,
@@ -171,6 +172,7 @@ function ModelDetailsPanel({
       <div className="flex items-start gap-2.5">
         <ModelSelectorLogo
           className="size-5 shrink-0 mt-0.5"
+          pixelSize={20}
           provider={logoProvider}
         />
         <div className="flex flex-col min-w-0">
@@ -192,9 +194,9 @@ function ModelDetailsPanel({
       </div>
 
       {model.description ? (
-        <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-3">
+        <ModelSelectorDescription className="text-[11px] leading-relaxed text-muted-foreground">
           {model.description}
-        </p>
+        </ModelSelectorDescription>
       ) : null}
 
       <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
@@ -335,16 +337,19 @@ function SharedModelSelectorOption({
       value={`${model.name} ${model.id} ${model.description ?? ""}`}
     >
       <div className="flex items-center w-full min-w-0">
-        <ModelSelectorLogo provider={logoProvider} />
+        <ModelSelectorLogo className="mr-2" provider={logoProvider} />
         <div className="flex flex-col min-w-0 pr-2">
           <div className="flex items-center gap-1.5 min-w-0">
             <ModelSelectorName>{model.name}</ModelSelectorName>
             {isMai2Model(model) ? <RecommendedBadge /> : null}
           </div>
           {model.description ? (
-            <span className="text-[11px] text-muted-foreground line-clamp-1">
+            <ModelSelectorDescription
+              className="text-[11px] text-muted-foreground"
+              compact
+            >
               {model.description}
-            </span>
+            </ModelSelectorDescription>
           ) : null}
         </div>
         <div className="ml-auto flex items-center shrink-0">

@@ -1,57 +1,47 @@
-# Applications BLACKLINE 1.2.0
+# Applications BLACKLINE natives — retirées
 
-## Architecture
+## Why
 
-- **Desktop : Electron 44.8.0**, electron-builder 26.15.3. Le protocole local sécurisé `blackline://app` sert les fichiers copiés depuis `dist/`. Aucun site distant, iframe ou serveur local nécessaire. Node est désactivé dans le rendu, isolation de contexte et sandbox activés, CSP, navigation externe bloquée. L’export JSON utilise la boîte de téléchargement du système.
-- **Mobile : Capacitor 8.5.3**, Android et iOS. Le dossier `web` contient les assets de la compilation et un pont embarqué. Paysage configuré dans les manifestes, avec le plugin Screen Orientation ; mise en pause à l’arrière-plan et prise en charge du retour Android. Export JSON par Filesystem/Share vers la feuille système. Les données du jeu restent locales.
-- Les deux applications utilisent le moteur TypeScript/WebGL du jeu ; le contenu s’exécute dans le moteur de rendu intégré à l’application. Il ne s’agit pas d’une vue du Site en ligne dans une iframe, ni d’une réécriture du moteur en code natif.
+Le jeu est aujourd'hui **monté par l'hôte mAI** : `scripts/build-blackline.mjs`
+compile `src/` en Vite et dépose le résultat dans `public/blackline/`, que la page
+`/blackline` charge par un script à chemin fixe
+(`/blackline/assets/blackline.js`).
 
-## GitHub Actions
+Le conditionnement Electron et Capacitor décrit ci-dessous appartenait à une
+distribution **autonome** du jeu. Il a été retiré du dépôt : rien ne le
+construisait.
 
-`.github/workflows/build.yml` :
+- Le seul workflow qui le construisait (`apps/blackline/.github/workflows/build.yml`)
+  était **imbriqué** : GitHub Actions n'exécute que les workflows situés à la
+  racine du dépôt. Il ne jouait donc aucun rôle.
+- La CI de l'hôte (`.github/workflows/build.yml`) ne possède aucun job Blackline
+  natif : elle construit le jeu par `pnpm build`, au même titre que Vibe, Wakies
+  et Site.
+- Aucun script de l'hôte, aucun composant et aucune page de l'hôte ne référence
+  `apps/blackline/apps/`.
 
-| Job | Résultat prévu |
+Les répertoires retirés sont consignés dans
+[`docs/CLEANUP_INVENTORY.json`](../../../docs/CLEANUP_INVENTORY.json) : leur
+absence est vérifiée par `node scripts/check-cleanup.mjs`.
+
+## Ce qui remplace
+
+| Besoin | Chemin |
 | --- | --- |
-| web | `blackline-web`, après TypeScript/tests/budgets |
-| desktop / Windows | Installateur NSIS `.exe`, x64 |
-| desktop / macOS | DMG et ZIP, arm64 et x64 |
-| desktop / Linux | AppImage x64 |
-| android | APK **debug**, signé par la clé de développement générée par Gradle |
-| ios | ZIP `.app` pour **simulateur iOS**, sans signature d’appareil |
+| Jouer dans un navigateur | `/blackline` de l'hôte mAI |
+| Jouer hors ligne | Export web du jeu (`npm run build` dans `apps/blackline`, puis `public/blackline/`) |
+| Contrat d'intégration | `src/mount.ts` et `src/entry.ts` — inchangés |
 
-Les jobs natifs utilisent le même artefact web vérifié. Pas de secrets requis pour ces paquets de développement. Les installateurs desktop ne sont pas signés/notariés ; il faudra configurer la signature pour une diffusion finale. L’artefact iOS simulateur ne s’installe pas sur un iPhone : un build pour appareil avec identité et profil Apple est nécessaire. Android release/Play Store nécessite aussi sa configuration de signature.
+## Ce qui reste en place
 
-Les builds natifs ne se lancent pas sur les PR. Ils se lancent sur push ou via Actions → BLACKLINE → Run workflow. Aucune exécution GitHub Actions n’a été effectuée depuis cette session ; aucune réussite native complète ni binaire final n’est revendiqué.
-
-## Local
-
-À la racine : `npm ci`, `npm run build`.
-
-Desktop :
-
-```bash
-cd apps/desktop
-npm ci
-npm run prepare:web
-npm start
-npm run package
-```
-
-Mobile :
-
-```bash
-cd apps/mobile
-npm ci
-npm run prepare:web
-npx cap add android
-npx cap sync android
-npm run configure:android
-```
-
-Puis `bash android/gradlew -p android assembleDebug --no-daemon`, ou ouvrir le projet dans Android Studio. Pour iOS sur macOS : `npx cap add ios`, `npx cap sync ios`, `npm run configure:ios`, puis ouvrir `ios/App/App.xcodeproj` dans Xcode. Les dossiers de plateformes générés sont ignorés ; ne relancer `cap add` que si le dossier manque. Relancer `configure:*` après `cap sync`.
-
-Le script copie les icônes BLACKLINE, fixe le paysage et la version 1.2.0. iOS inclut le manifeste de confidentialité de l’usage des dates de fichiers pour l’export. Les plateformes, les dépendances et le pont natif sont testés à la préparation ; la compilation finale nécessite les outils propres à chaque plateforme (Android SDK 36/JDK 21, Xcode 26+).
-
-Sur certains grands écrans Android, le système peut ignorer le verrouillage d’orientation ; le garde paysage du jeu suspend alors la partie. Les performances dépendent de WebGL 2, du GPU et de la mémoire.
+- `src/**` : la source du jeu, compilée par Vite.
+- `lib/game/**` : le modèle de données (carrière, catalogue, progression), importé
+  par `src/**`.
+- `api/**`, `lib/db/**`, `lib/server/**` : les services retirés (comptes,
+  synchronisation en ligne). Ils répondent **410 Gone** et restent couverts par
+  la suite de tests du jeu (`npm test` dans `apps/blackline`). `docs/DEPLOYMENT.md`
+  explique pourquoi ils sont conservés.
+- `tests/**` : la suite de tests du jeu, exécutée par
+  `npm test` dans `apps/blackline`.
 
 Références : https://capacitorjs.com/docs/updating/8-0 ; https://capacitorjs.com/docs/apis/share ; https://capacitorjs.com/docs/apis/filesystem ; https://www.electronjs.org/docs/latest/tutorial/security ; https://www.electron.build/v26/docs/cli/

@@ -56,14 +56,14 @@ function IdeaCard({ idea }: { idea: Idea }) {
       >
         <Text style={{ fontSize: 27, width: 34, paddingTop: 3 }}>
           {/document|permission|form/i.test(idea.title)
-            ? "📋"
-            : /money|spend|saving/i.test(idea.title)
-              ? "💸"
-              : /goal|plan|training/i.test(idea.title)
-                ? "👟"
-                : /dinner|table/i.test(idea.title)
-                  ? "🍽️"
-                  : "💡"}
+? ""
+: /money|spend|saving/i.test(idea.title)
+? ""
+: /goal|plan|training/i.test(idea.title)
+? ""
+: /dinner|table/i.test(idea.title)
+? ""
+: ""}
         </Text>
         <View style={{ flex: 1, gap: 5 }}>
           <Text style={[s.heading, { fontSize: 16, lineHeight: 23 }]}>{idea.title}</Text>
@@ -92,7 +92,7 @@ function IdeaCard({ idea }: { idea: Idea }) {
               Start this
             </Button>
             <Button disabled={busy} onPress={() => setEditing(!editing)}>
-              {editing ? "Keep edits" : "Edit"}
+              {editing? "Keep edits": "Edit"}
             </Button>
             <Button disabled={busy} onPress={() => void act("dismiss")}>
               Dismiss
@@ -144,8 +144,8 @@ export function IdeasScreen() {
         />
       )}
       {(data?.ideas || [])
-        .filter((idea) => idea.status === "accepted")
-        .map((idea) => (
+.filter((idea) => idea.status === "accepted")
+.map((idea) => (
           <Card key={idea.id} style={{ gap: 7 }}>
             <Text style={s.heading}>{idea.title}</Text>
             <Chip tint={colors.green}>Started</Chip>

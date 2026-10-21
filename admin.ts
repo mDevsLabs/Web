@@ -16,7 +16,7 @@ loadLocalEnv();
 const dbUrl = process.env.DATABASE_URL;
 if (!dbUrl) {
   console.error(
-    "❌ Erreur : DATABASE_URL est introuvable dans votre environnement ou vos fichiers .env."
+    " Erreur: DATABASE_URL est introuvable dans votre environnement ou vos fichiers.env."
   );
   process.exit(1);
 }
@@ -105,11 +105,11 @@ function buildQuotaEmailHtml(
 // ─────────────────────────────────────────────
 export async function resetApiUsage(notifyUsers = true) {
   console.log(
-    `\n${c.cyan}⏳ Réinitialisation des usages des clés d'API (mprojects_api_keys)...${c.reset}`
+    `\n${c.cyan} Réinitialisation des usages des clés d'API (mprojects_api_keys)...${c.reset}`
   );
   await sql`UPDATE mprojects_api_keys SET request_count = 0`;
   console.log(
-    `${c.brightGreen}✔ Succès : Tous les compteurs de requêtes d'API ont été remis à 0 !${c.reset}`
+    `${c.brightGreen}✔ Succès: Tous les compteurs de requêtes d'API ont été remis à 0!${c.reset}`
   );
 
   if (!notifyUsers) {
@@ -123,13 +123,13 @@ export async function resetApiUsage(notifyUsers = true) {
     }[];
   if (users.length === 0) {
     console.log(
-      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+      ` ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
     );
     return;
   }
 
   console.log(
-    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+    ` ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
   );
   let success = 0;
   for (const user of users) {
@@ -152,13 +152,13 @@ export async function resetApiUsage(notifyUsers = true) {
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
       console.error(
-        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+        ` ${c.red}✖ Erreur d'envoi pour ${user.email}: ${err?.message || err}${c.reset}`
       );
     }
   }
 
   console.log(
-    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+    ` ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès!${c.reset}`
   );
 }
 
@@ -167,11 +167,11 @@ export async function resetApiUsage(notifyUsers = true) {
 // ─────────────────────────────────────────────
 export async function resetMaiUsage(notifyUsers = true) {
   console.log(
-    `\n${c.cyan}⏳ Réinitialisation des tokens hebdomadaires mAI (weekly_usage)...${c.reset}`
+    `\n${c.cyan} Réinitialisation des tokens hebdomadaires mAI (weekly_usage)...${c.reset}`
   );
   await sql`UPDATE weekly_usage SET tokens_used = 0`;
   console.log(
-    `${c.brightGreen}✔ Succès : Tous les compteurs de tokens mAI ont été remis à 0 !${c.reset}`
+    `${c.brightGreen}✔ Succès: Tous les compteurs de tokens mAI ont été remis à 0!${c.reset}`
   );
 
   if (!notifyUsers) {
@@ -185,13 +185,13 @@ export async function resetMaiUsage(notifyUsers = true) {
     }[];
   if (users.length === 0) {
     console.log(
-      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+      ` ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
     );
     return;
   }
 
   console.log(
-    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+    ` ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
   );
   let success = 0;
   for (const user of users) {
@@ -214,13 +214,13 @@ export async function resetMaiUsage(notifyUsers = true) {
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
       console.error(
-        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+        ` ${c.red}✖ Erreur d'envoi pour ${user.email}: ${err?.message || err}${c.reset}`
       );
     }
   }
 
   console.log(
-    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+    ` ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès!${c.reset}`
   );
 }
 
@@ -229,11 +229,11 @@ export async function resetMaiUsage(notifyUsers = true) {
 // ─────────────────────────────────────────────
 export async function resetImageUsage() {
   console.log(
-    `\n${c.cyan}⏳ Réinitialisation des quotas journaliers de génération d'images...${c.reset}`
+    `\n${c.cyan} Réinitialisation des quotas journaliers de génération d'images...${c.reset}`
   );
   await sql`UPDATE mprojects_daily_image_usage SET images_generated = 0, updated_at = NOW() WHERE usage_date = CURRENT_DATE`;
   console.log(
-    `${c.brightGreen}✔ Succès : Les quotas journaliers d'images ont été réinitialisés pour aujourd'hui !${c.reset}`
+    `${c.brightGreen}✔ Succès: Les quotas journaliers d'images ont été réinitialisés pour aujourd'hui!${c.reset}`
   );
 }
 
@@ -242,11 +242,11 @@ export async function resetImageUsage() {
 // ─────────────────────────────────────────────
 export async function resetAudioUsage(notifyUsers = true) {
   console.log(
-    `\n${c.cyan}⏳ Réinitialisation des quotas audio (weekly_speech_usage)...${c.reset}`
+    `\n${c.cyan} Réinitialisation des quotas audio (weekly_speech_usage)...${c.reset}`
   );
   await sql`UPDATE weekly_speech_usage SET tokens_used = 0, requests_count = 0`;
   console.log(
-    `${c.brightGreen}✔ Succès : Tous les compteurs de quotas audio ont été remis à 0 !${c.reset}`
+    `${c.brightGreen}✔ Succès: Tous les compteurs de quotas audio ont été remis à 0!${c.reset}`
   );
 
   if (!notifyUsers) {
@@ -260,13 +260,13 @@ export async function resetAudioUsage(notifyUsers = true) {
     }[];
   if (users.length === 0) {
     console.log(
-      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+      ` ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
     );
     return;
   }
 
   console.log(
-    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+    ` ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
   );
   let success = 0;
   for (const user of users) {
@@ -289,13 +289,13 @@ export async function resetAudioUsage(notifyUsers = true) {
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
       console.error(
-        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+        ` ${c.red}✖ Erreur d'envoi pour ${user.email}: ${err?.message || err}${c.reset}`
       );
     }
   }
 
   console.log(
-    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+    ` ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès!${c.reset}`
   );
 }
 
@@ -304,7 +304,7 @@ export async function resetAudioUsage(notifyUsers = true) {
 // ─────────────────────────────────────────────
 export async function resetAllUsage(notifyUsers = true) {
   console.log(
-    `\n${c.bgPurple}${c.bold}${c.brightWhite} ⚡ RÉINITIALISATION GLOBALE DE TOUS LES QUOTAS (API + mAI + IMAGES + AUDIO) ⚡ ${c.reset}`
+    `\n${c.bgPurple}${c.bold}${c.brightWhite} RÉINITIALISATION GLOBALE DE TOUS LES QUOTAS (API + mAI + IMAGES + AUDIO) ${c.reset}`
   );
   await resetApiUsage(false);
   await resetMaiUsage(false);
@@ -319,7 +319,7 @@ export async function resetAllUsage(notifyUsers = true) {
       }[];
     if (users.length > 0) {
       console.log(
-        `\n  ${c.brightYellow}➔ Envoi d'une notification globale unifiée à ${users.length} utilisateur(s)...${c.reset}`
+        `\n ${c.brightYellow}➔ Envoi d'une notification globale unifiée à ${users.length} utilisateur(s)...${c.reset}`
       );
       let success = 0;
       for (const user of users) {
@@ -342,18 +342,18 @@ export async function resetAllUsage(notifyUsers = true) {
           await new Promise((r) => setTimeout(r, 100));
         } catch (err: any) {
           console.error(
-            `  ${c.red}✖ Erreur pour ${user.email} : ${err?.message || err}${c.reset}`
+            ` ${c.red}✖ Erreur pour ${user.email}: ${err?.message || err}${c.reset}`
           );
         }
       }
       console.log(
-        `  ${c.brightGreen}✔ ${success} e-mail(s) de réinitialisation globale envoyé(s) !${c.reset}`
+        ` ${c.brightGreen}✔ ${success} e-mail(s) de réinitialisation globale envoyé(s)!${c.reset}`
       );
     }
   }
 
   console.log(
-    `\n${c.brightGreen}${c.bold}🎉 Tous les quotas ont été remis à zéro avec succès !${c.reset}\n`
+    `\n${c.brightGreen}${c.bold} Tous les quotas ont été remis à zéro avec succès!${c.reset}\n`
   );
 }
 
@@ -387,17 +387,17 @@ export async function initSubscriptionTables() {
 
 export function generateRandomCode(tier: string): string {
   const randomChars = crypto
-    .randomBytes(4)
-    .toString("hex")
-    .toUpperCase()
-    .slice(0, 6);
+.randomBytes(4)
+.toString("hex")
+.toUpperCase()
+.slice(0, 6);
   return `MAI-${tier.toUpperCase()}-${randomChars}`;
 }
 
 function renderCodesTable(codes: any[]) {
   if (codes.length === 0) {
     console.log(
-      `\n${c.brightYellow}⚠️  Aucun code d'abonnement trouvé en base de données.${c.reset}\n`
+      `\n${c.brightYellow} Aucun code d'abonnement trouvé en base de données.${c.reset}\n`
     );
     return;
   }
@@ -415,10 +415,10 @@ function renderCodesTable(codes: any[]) {
     const code = String(item.code).padEnd(24);
     const tier = String(item.tier).padEnd(6);
     const uses = `${item.uses_count}/${item.max_uses}`.padEnd(14);
-    const status = (item.is_active ? "🟢 Actif" : "🔴 Inactif").padEnd(10);
+    const status = (item.is_active? " Actif": " Inactif").padEnd(10);
     const exp = item.expires_at
-      ? new Date(item.expires_at).toLocaleDateString("fr-FR")
-      : "Illimitée";
+? new Date(item.expires_at).toLocaleDateString("fr-FR")
+: "Illimitée";
     const expiration = exp.padEnd(20);
 
     console.log(
@@ -430,15 +430,15 @@ function renderCodesTable(codes: any[]) {
 
 async function handleCreateCode(rl: readline.Interface) {
   console.log(
-    `\n${c.bold}--- ➕ CRÉATION D'UN NOUVEAU CODE D'ABONNEMENT ---${c.reset}`
+    `\n${c.bold}--- CRÉATION D'UN NOUVEAU CODE D'ABONNEMENT ---${c.reset}`
   );
 
-  console.log("\nChoisissez le forfait à débloquer :");
-  console.log("  1. Plus");
-  console.log("  2. Pro");
-  console.log("  3. Max");
+  console.log("\nChoisissez le forfait à débloquer:");
+  console.log(" 1. Plus");
+  console.log(" 2. Pro");
+  console.log(" 3. Max");
   const tierChoice = (
-    await rl.question("👉 Votre choix [1-3] (défaut: 2 - Pro) : ")
+    await rl.question(" Votre choix [1-3] (défaut: 2 - Pro): ")
   ).trim();
 
   let tier: "Plus" | "Pro" | "Max" = "Pro";
@@ -448,25 +448,25 @@ async function handleCreateCode(rl: readline.Interface) {
     tier = "Max";
   }
 
-  console.log("\nMode de génération du code :");
+  console.log("\nMode de génération du code:");
   console.log(
-    `  1. Génération intelligente automatique (ex: MAI-${tier.toUpperCase()}-XXXXXX)`
+    ` 1. Génération intelligente automatique (ex: MAI-${tier.toUpperCase()}-XXXXXX)`
   );
-  console.log("  2. Saisie manuelle d'un code personnalisé");
+  console.log(" 2. Saisie manuelle d'un code personnalisé");
   const modeChoice = (
-    await rl.question("👉 Votre choix [1-2] (défaut: 1) : ")
+    await rl.question(" Votre choix [1-2] (défaut: 1): ")
   ).trim();
 
   let finalCode = "";
   if (modeChoice === "2") {
     while (!finalCode) {
-      const custom = (await rl.question("👉 Entrez votre code personnalisé : "))
-        .trim()
-        .toUpperCase();
+      const custom = (await rl.question(" Entrez votre code personnalisé: "))
+.trim()
+.toUpperCase();
       if (custom.length >= 3) {
         finalCode = custom;
       } else {
-        console.log("❌ Le code doit comporter au moins 3 caractères.");
+        console.log(" Le code doit comporter au moins 3 caractères.");
       }
     }
   } else {
@@ -474,18 +474,18 @@ async function handleCreateCode(rl: readline.Interface) {
   }
 
   const usesInput = (
-    await rl.question("👉 Nombre maximal d'utilisations (défaut: 1) : ")
+    await rl.question(" Nombre maximal d'utilisations (défaut: 1): ")
   ).trim();
   const maxUses =
-    Number.parseInt(usesInput, 10) > 0 ? Number.parseInt(usesInput, 10) : 1;
+    Number.parseInt(usesInput, 10) > 0? Number.parseInt(usesInput, 10): 1;
 
   const daysInput = (
     await rl.question(
-      "👉 Durée de validité en jours (laisser vide pour illimité) : "
+      " Durée de validité en jours (laisser vide pour illimité): "
     )
   ).trim();
   const expiresInDays =
-    Number.parseInt(daysInput, 10) > 0 ? Number.parseInt(daysInput, 10) : null;
+    Number.parseInt(daysInput, 10) > 0? Number.parseInt(daysInput, 10): null;
 
   let expiresAt: Date | null = null;
   if (expiresInDays) {
@@ -502,36 +502,36 @@ async function handleCreateCode(rl: readline.Interface) {
 
     const item = result[0];
     console.log(
-      `\n${c.brightGreen}${c.bold}🎉 CODE CRÉÉ ET ENREGISTRÉ AVEC SUCCÈS !${c.reset}`
+      `\n${c.brightGreen}${c.bold} CODE CRÉÉ ET ENREGISTRÉ AVEC SUCCÈS!${c.reset}`
     );
     console.log(
-      `🔑 Code         : ${c.brightGreen}${c.bold}${item.code}${c.reset}`
+      ` Code: ${c.brightGreen}${c.bold}${item.code}${c.reset}`
     );
-    console.log(`⭐ Forfait      : ${item.tier}`);
-    console.log(`👥 Utilisations : 0 / ${item.max_uses}`);
+    console.log(` Forfait: ${item.tier}`);
+    console.log(` Utilisations: 0 / ${item.max_uses}`);
     console.log(
-      `📅 Expiration   : ${
+      ` Expiration: ${
         item.expires_at
-          ? new Date(item.expires_at).toLocaleString("fr-FR")
-          : "Illimitée"
+? new Date(item.expires_at).toLocaleString("fr-FR")
+: "Illimitée"
       }\n`
     );
   } catch (err: any) {
-    console.error("❌ Erreur lors de la création :", err.message || err);
+    console.error(" Erreur lors de la création:", err.message || err);
   }
 }
 
 async function handleListCodes() {
-  console.log(`\n${c.bold}--- 📋 LISTE DES CODES D'ABONNEMENT ---${c.reset}`);
+  console.log(`\n${c.bold}--- LISTE DES CODES D'ABONNEMENT ---${c.reset}`);
   const codes =
     await sql`SELECT * FROM subscription_codes ORDER BY created_at DESC;`;
   renderCodesTable(codes);
 }
 
 async function handleToggleCode(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 🔄 ACTIVER / DÉSACTIVER UN CODE ---${c.reset}`);
+  console.log(`\n${c.bold}--- ACTIVER / DÉSACTIVER UN CODE ---${c.reset}`);
   const search = (
-    await rl.question("👉 Entrez le Code ou l'ID du code à basculer : ")
+    await rl.question(" Entrez le Code ou l'ID du code à basculer: ")
   ).trim();
   if (!search) {
     return;
@@ -544,12 +544,12 @@ async function handleToggleCode(rl: readline.Interface) {
   `;
 
   if (found.length === 0) {
-    console.log("❌ Aucun code correspondant trouvé.");
+    console.log(" Aucun code correspondant trouvé.");
     return;
   }
 
   const current = found[0];
-  const newStatus = !current.is_active;
+  const newStatus =!current.is_active;
 
   await sql`
     UPDATE subscription_codes
@@ -558,16 +558,16 @@ async function handleToggleCode(rl: readline.Interface) {
   `;
 
   console.log(
-    `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais : ${
-      newStatus ? "🟢 ACTIF" : "🔴 INACTIF"
+    `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais: ${
+      newStatus? " ACTIF": " INACTIF"
     }\n`
   );
 }
 
 async function handleEditCode(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- ✏️ MODIFIER UN CODE D'ABONNEMENT ---${c.reset}`);
+  console.log(`\n${c.bold}--- MODIFIER UN CODE D'ABONNEMENT ---${c.reset}`);
   const search = (
-    await rl.question("👉 Entrez le Code ou l'ID à modifier : ")
+    await rl.question(" Entrez le Code ou l'ID à modifier: ")
   ).trim();
   if (!search) {
     return;
@@ -580,22 +580,22 @@ async function handleEditCode(rl: readline.Interface) {
   `;
 
   if (found.length === 0) {
-    console.log("❌ Aucun code trouvé.");
+    console.log(" Aucun code trouvé.");
     return;
   }
 
   const current = found[0];
   console.log(
-    `\nCode actuel : ${c.brightGreen}${current.code}${c.reset} (Tier: ${current.tier}, Max: ${current.max_uses}, Actif: ${current.is_active})`
+    `\nCode actuel: ${c.brightGreen}${current.code}${c.reset} (Tier: ${current.tier}, Max: ${current.max_uses}, Actif: ${current.is_active})`
   );
 
   console.log(
     "\nModifier le forfait (laisser vide pour conserver '" +
       current.tier +
-      "') :"
+      "'):"
   );
-  console.log("  1. Plus | 2. Pro | 3. Max");
-  const tierInput = (await rl.question("👉 Choix [1-3] : ")).trim();
+  console.log(" 1. Plus | 2. Pro | 3. Max");
+  const tierInput = (await rl.question(" Choix [1-3]: ")).trim();
   let newTier = current.tier;
   if (tierInput === "1") {
     newTier = "Plus";
@@ -609,21 +609,21 @@ async function handleEditCode(rl: readline.Interface) {
 
   const usesInput = (
     await rl.question(
-      `👉 Nouveau quota maximal (actuel: ${current.max_uses}) : `
+      ` Nouveau quota maximal (actuel: ${current.max_uses}): `
     )
   ).trim();
   const newMaxUses =
     Number.parseInt(usesInput, 10) > 0
-      ? Number.parseInt(usesInput, 10)
-      : current.max_uses;
+? Number.parseInt(usesInput, 10)
+: current.max_uses;
 
   const statusInput = (
     await rl.question(
-      `👉 Rendre actif ? (o/n, actuel: ${current.is_active ? "Oui" : "Non"}) : `
+      ` Rendre actif? (o/n, actuel: ${current.is_active? "Oui": "Non"}): `
     )
   )
-    .trim()
-    .toLowerCase();
+.trim()
+.toLowerCase();
   let newActive = current.is_active;
   if (statusInput === "o" || statusInput === "oui" || statusInput === "y") {
     newActive = true;
@@ -640,16 +640,16 @@ async function handleEditCode(rl: readline.Interface) {
   `;
 
   console.log(
-    `\n${c.brightGreen}✔ Code ${c.bold}${current.code}${c.reset} mis à jour avec succès !\n`
+    `\n${c.brightGreen}✔ Code ${c.bold}${current.code}${c.reset} mis à jour avec succès!\n`
   );
 }
 
 async function handleDeleteCode(rl: readline.Interface) {
   console.log(
-    `\n${c.bold}--- 🗑️ SUPPRESSION D'UN CODE D'ABONNEMENT ---${c.reset}`
+    `\n${c.bold}--- SUPPRESSION D'UN CODE D'ABONNEMENT ---${c.reset}`
   );
   const search = (
-    await rl.question("👉 Entrez le Code ou l'ID du code à supprimer : ")
+    await rl.question(" Entrez le Code ou l'ID du code à supprimer: ")
   ).trim();
   if (!search) {
     return;
@@ -662,26 +662,26 @@ async function handleDeleteCode(rl: readline.Interface) {
   `;
 
   if (found.length === 0) {
-    console.log("❌ Aucun code trouvé.");
+    console.log(" Aucun code trouvé.");
     return;
   }
 
   const current = found[0];
   const confirm = (
     await rl.question(
-      `⚠️ Êtes-vous sûr de vouloir supprimer définitivement le code "${current.code}" ? (o/N) : `
+      ` Êtes-vous sûr de vouloir supprimer définitivement le code "${current.code}"? (o/N): `
     )
   )
-    .trim()
-    .toLowerCase();
+.trim()
+.toLowerCase();
 
   if (confirm === "o" || confirm === "oui" || confirm === "y") {
     await sql`DELETE FROM subscription_codes WHERE id = ${current.id};`;
     console.log(
-      `\n${c.brightGreen}🗑️ Le code ${current.code} a été supprimé définitivement.${c.reset}\n`
+      `\n${c.brightGreen} Le code ${current.code} a été supprimé définitivement.${c.reset}\n`
     );
   } else {
-    console.log("\n❌ Suppression annulée.\n");
+    console.log("\n Suppression annulée.\n");
   }
 }
 
@@ -690,21 +690,21 @@ export async function runSubscriptionCodeManager() {
   const rl = readline.createInterface({ input, output });
 
   console.log("\n=======================================================");
-  console.log("🎟️  GESTIONNAIRE INTERACTIF DES CODES D'ABONNEMENT mAI");
+  console.log(" GESTIONNAIRE INTERACTIF DES CODES D'ABONNEMENT mAI");
   console.log("=======================================================");
 
   let running = true;
   while (running) {
     console.log("\n--- MENU DES CODES ---");
-    console.log("  1. ➕ Créer un nouveau code d'abonnement");
-    console.log("  2. 📋 Lister tous les codes (actifs / inactifs)");
-    console.log("  3. 🔄 Activer / Désactiver un code");
-    console.log("  4. ✏️  Modifier un code existant");
-    console.log("  5. 🗑️  Supprimer un code");
-    console.log("  0. ↩️  Retour / Quitter");
+    console.log(" 1. Créer un nouveau code d'abonnement");
+    console.log(" 2. Lister tous les codes (actifs / inactifs)");
+    console.log(" 3. Activer / Désactiver un code");
+    console.log(" 4. Modifier un code existant");
+    console.log(" 5. Supprimer un code");
+    console.log(" 0. Retour / Quitter");
 
     const choice = (
-      await rl.question("\n👉 Entrez votre choix [0-5] : ")
+      await rl.question("\n Entrez votre choix [0-5]: ")
     ).trim();
 
     switch (choice) {
@@ -729,7 +729,7 @@ export async function runSubscriptionCodeManager() {
         running = false;
         break;
       default:
-        console.log("⚠️ Option invalide.");
+        console.log(" Option invalide.");
     }
   }
 
@@ -744,7 +744,7 @@ export async function initCustomersTable() {
     await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_blocked BOOLEAN DEFAULT FALSE;`;
   } catch (err: any) {
     console.error(
-      "ℹ Note lors de la vérification de la colonne is_blocked dans users :",
+      "ℹ Note lors de la vérification de la colonne is_blocked dans users:",
       err.message || err
     );
   }
@@ -753,7 +753,7 @@ export async function initCustomersTable() {
 function renderCustomersTable(customers: any[]) {
   if (customers.length === 0) {
     console.log(
-      `\n${c.brightYellow}⚠️  Aucun compte client trouvé en base de données.${c.reset}\n`
+      `\n${c.brightYellow} Aucun compte client trouvé en base de données.${c.reset}\n`
     );
     return;
   }
@@ -771,7 +771,7 @@ function renderCustomersTable(customers: any[]) {
     const username = String(user.username || "").padEnd(20);
     const email = String(user.email || "").padEnd(25);
     const tier = String(user.tier || "Free").padEnd(6);
-    const status = (user.is_blocked ? "🔴 Bloqué" : "🟢 Actif").padEnd(10);
+    const status = (user.is_blocked? " Bloqué": " Actif").padEnd(10);
 
     console.log(`║ ${id} ║ ${username} ║ ${email} ║ ${tier} ║ ${status} ║`);
   }
@@ -779,7 +779,7 @@ function renderCustomersTable(customers: any[]) {
 }
 
 async function handleListCustomers() {
-  console.log(`\n${c.bold}--- 📋 LISTE DES COMPTES CLIENTS ---${c.reset}`);
+  console.log(`\n${c.bold}--- LISTE DES COMPTES CLIENTS ---${c.reset}`);
   try {
     const customers = await sql`
       SELECT id, username, email, tier, is_blocked
@@ -789,7 +789,7 @@ async function handleListCustomers() {
     renderCustomersTable(customers);
   } catch (err: any) {
     console.error(
-      "❌ Erreur lors de la récupération des clients :",
+      " Erreur lors de la récupération des clients:",
       err.message || err
     );
   }
@@ -797,11 +797,11 @@ async function handleListCustomers() {
 
 async function handleToggleBlockCustomer(rl: readline.Interface) {
   console.log(
-    `\n${c.bold}--- 🚫 BLOQUER / DÉBLOQUER UN COMPTE CLIENT ---${c.reset}`
+    `\n${c.bold}--- BLOQUER / DÉBLOQUER UN COMPTE CLIENT ---${c.reset}`
   );
   const search = (
     await rl.question(
-      "👉 Entrez l'E-mail, le Username ou l'ID du client à bloquer/débloquer : "
+      " Entrez l'E-mail, le Username ou l'ID du client à bloquer/débloquer: "
     )
   ).trim();
   if (!search) {
@@ -816,12 +816,12 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
     `;
 
     if (found.length === 0) {
-      console.log("❌ Aucun compte client correspondant trouvé.");
+      console.log(" Aucun compte client correspondant trouvé.");
       return;
     }
 
     const current = found[0];
-    const newStatus = !current.is_blocked;
+    const newStatus =!current.is_blocked;
 
     await sql`
       UPDATE users
@@ -835,26 +835,26 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
         WHERE user_id = ${current.id}::text;
       `;
       console.log(
-        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🚫 BLOQUÉ${c.reset} et toutes ses sessions actives ont été révoquées.\n`
+        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold} BLOQUÉ${c.reset} et toutes ses sessions actives ont été révoquées.\n`
       );
     } else {
       console.log(
-        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🟢 DÉBLOQUÉ${c.reset}.\n`
+        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold} DÉBLOQUÉ${c.reset}.\n`
       );
     }
   } catch (err: any) {
     console.error(
-      "❌ Erreur lors de la modification du statut :",
+      " Erreur lors de la modification du statut:",
       err.message || err
     );
   }
 }
 
 async function handleDeleteCustomer(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 🗑️ SUPPRESSION D'UN COMPTE CLIENT ---${c.reset}`);
+  console.log(`\n${c.bold}--- SUPPRESSION D'UN COMPTE CLIENT ---${c.reset}`);
   const search = (
     await rl.question(
-      "👉 Entrez l'E-mail, le Username ou l'ID du client à supprimer : "
+      " Entrez l'E-mail, le Username ou l'ID du client à supprimer: "
     )
   ).trim();
   if (!search) {
@@ -869,18 +869,18 @@ async function handleDeleteCustomer(rl: readline.Interface) {
     `;
 
     if (found.length === 0) {
-      console.log("❌ Aucun compte client correspondant trouvé.");
+      console.log(" Aucun compte client correspondant trouvé.");
       return;
     }
 
     const current = found[0];
     const confirm = (
       await rl.question(
-        `⚠️ Êtes-vous sûr de vouloir supprimer définitivement le client "${current.username}" (${current.email}) ?\nToutes ses clés API, appareils et données associés seront impactés. (o/N) : `
+        ` Êtes-vous sûr de vouloir supprimer définitivement le client "${current.username}" (${current.email})?\nToutes ses clés API, appareils et données associés seront impactés. (o/N): `
       )
     )
-      .trim()
-      .toLowerCase();
+.trim()
+.toLowerCase();
 
     if (confirm === "o" || confirm === "oui" || confirm === "y") {
       await sql`DELETE FROM connected_devices WHERE user_id = ${current.id}::text;`;
@@ -889,13 +889,13 @@ async function handleDeleteCustomer(rl: readline.Interface) {
       await sql`DELETE FROM users WHERE id = ${current.id};`;
 
       console.log(
-        `\n${c.brightGreen}🗑️ Le compte de ${current.username} (${current.email}) a été supprimé définitivement.${c.reset}\n`
+        `\n${c.brightGreen} Le compte de ${current.username} (${current.email}) a été supprimé définitivement.${c.reset}\n`
       );
     } else {
-      console.log("\n❌ Suppression annulée.\n");
+      console.log("\n Suppression annulée.\n");
     }
   } catch (err: any) {
-    console.error("❌ Erreur lors de la suppression :", err.message || err);
+    console.error(" Erreur lors de la suppression:", err.message || err);
   }
 }
 
@@ -904,19 +904,19 @@ export async function runCustomerAccountManager() {
   const rl = readline.createInterface({ input, output });
 
   console.log("\n=======================================================");
-  console.log("👥  GESTIONNAIRE INTERACTIF DES COMPTES CLIENTS mAI");
+  console.log(" GESTIONNAIRE INTERACTIF DES COMPTES CLIENTS mAI");
   console.log("=======================================================");
 
   let running = true;
   while (running) {
     console.log("\n--- MENU DES COMPTES CLIENTS ---");
-    console.log("  1. 📋 Lister tous les comptes clients");
-    console.log("  2. 🚫 Bloquer / Débloquer un compte");
-    console.log("  3. 🗑️  Supprimer un compte client");
-    console.log("  0. ↩️  Retour / Quitter");
+    console.log(" 1. Lister tous les comptes clients");
+    console.log(" 2. Bloquer / Débloquer un compte");
+    console.log(" 3. Supprimer un compte client");
+    console.log(" 0. Retour / Quitter");
 
     const choice = (
-      await rl.question("\n👉 Entrez votre choix [0-3] : ")
+      await rl.question("\n Entrez votre choix [0-3]: ")
     ).trim();
 
     switch (choice) {
@@ -935,7 +935,7 @@ export async function runCustomerAccountManager() {
         running = false;
         break;
       default:
-        console.log("⚠️ Option invalide.");
+        console.log(" Option invalide.");
     }
   }
 
@@ -994,13 +994,13 @@ export async function sendNewsNotificationToEligibleUsers(
   `) as unknown as { userId: string }[];
   if (eligible.length === 0) {
     console.log(
-      `  ${c.yellow}⚠ Aucun utilisateur éligible (enabled=true & news=true).${c.reset}`
+      ` ${c.yellow}⚠ Aucun utilisateur éligible (enabled=true & news=true).${c.reset}`
     );
     // Fallback: si aucun prefs, essayer users avec notify_limits? Non, on informe
     return { eligible: 0, sent: 0 };
   }
   console.log(
-    `  ${c.cyan}➔ Envoi à ${eligible.length} utilisateur(s) éligible(s)...${c.reset}`
+    ` ${c.cyan}➔ Envoi à ${eligible.length} utilisateur(s) éligible(s)...${c.reset}`
   );
   let sent = 0;
   for (let i = 0; i < eligible.length; i += 500) {
@@ -1016,49 +1016,49 @@ export async function sendNewsNotificationToEligibleUsers(
         sent++;
       } catch (err: any) {
         console.error(
-          `  ${c.red}✖ Erreur pour ${u.userId}: ${err.message}${c.reset}`
+          ` ${c.red}✖ Erreur pour ${u.userId}: ${err.message}${c.reset}`
         );
       }
     }
   }
   console.log(
-    `  ${c.brightGreen}✔ ${sent} notification(s) "Actualités" créée(s) en BDD !${c.reset}`
+    ` ${c.brightGreen}✔ ${sent} notification(s) "Actualités" créée(s) en BDD!${c.reset}`
   );
   return { eligible: eligible.length, sent };
 }
 
 async function handleSendNewsInteractive(rl: readline.Interface) {
   console.log(
-    `\n${c.bold}--- 📢 ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`
+    `\n${c.bold}--- ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`
   );
   console.log(
     `${c.dim}Cette notification sera enregistrée en BDD pour chaque utilisateur ayant activé Notifications > Actualités d'mAI (activé par défaut à l'acceptation).${c.reset}`
   );
   const title = (
     await rl.question(
-      "👉 Titre de la notification (ex: Nouveautés mAI - Juin 2026) : "
+      " Titre de la notification (ex: Nouveautés mAI - Juin 2026): "
     )
   ).trim();
   if (!title) {
-    console.log("❌ Titre requis.");
+    console.log(" Titre requis.");
     return;
   }
-  const body = (await rl.question("👉 Corps (facultatif, max 500c) : ")).trim();
+  const body = (await rl.question(" Corps (facultatif, max 500c): ")).trim();
   const link = (
     await rl.question(
-      "👉 Lien (facultatif, ex: /settings ou https://mai-devs.vercel.app) : "
+      " Lien (facultatif, ex: /settings ou https://mai-devs.vercel.app): "
     )
   ).trim();
   const confirm = (
-    await rl.question(`\n⚠️ Confirmer l'envoi "${title}" ? (o/N) : `)
+    await rl.question(`\n Confirmer l'envoi "${title}"? (o/N): `)
   )
-    .trim()
-    .toLowerCase();
+.trim()
+.toLowerCase();
   if (
-    confirm !== "o" &&
-    confirm !== "oui" &&
-    confirm !== "y" &&
-    confirm !== "yes"
+    confirm!== "o" &&
+    confirm!== "oui" &&
+    confirm!== "y" &&
+    confirm!== "yes"
   ) {
     console.log("Annulé.");
     return;
@@ -1067,9 +1067,9 @@ async function handleSendNewsInteractive(rl: readline.Interface) {
 }
 
 async function handleListRecentNotifications(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 📋 NOTIFICATIONS RÉCENTES ---${c.reset}`);
+  console.log(`\n${c.bold}--- NOTIFICATIONS RÉCENTES ---${c.reset}`);
   const limitIn = (
-    await rl.question("👉 Nombre à afficher (défaut 10) : ")
+    await rl.question(" Nombre à afficher (défaut 10): ")
   ).trim();
   const limit = Math.min(Math.max(Number.parseInt(limitIn, 10) || 10, 1), 50);
   try {
@@ -1090,7 +1090,7 @@ async function handleListRecentNotifications(rl: readline.Interface) {
       const t = String(r.type).padEnd(18);
       const ttl = String(r.title).slice(0, 30).padEnd(30);
       const uid = String(r.userId).slice(0, 20).padEnd(20);
-      const lu = (r.isRead ? "oui" : "non").padEnd(4);
+      const lu = (r.isRead? "oui": "non").padEnd(4);
       const d = new Date(r.createdAt).toLocaleString("fr-FR").padEnd(20);
       console.log(`| ${t} | ${ttl} | ${uid} | ${lu} | ${d} |`);
     }
@@ -1104,16 +1104,16 @@ export async function runNotificationManager() {
   await ensureNotificationTables();
   const rl = readline.createInterface({ input, output });
   console.log("\n=======================================================");
-  console.log("🔔  GESTIONNAIRE NOTIFICATIONS & ACTUALITÉS mAI");
+  console.log(" GESTIONNAIRE NOTIFICATIONS & ACTUALITÉS mAI");
   console.log("=======================================================");
   let running = true;
   while (running) {
     console.log("\n--- MENU NOTIFICATIONS ---");
-    console.log("  1. 📢 Envoyer une notification Actualités (broadcast)");
-    console.log("  2. 📋 Lister les notifications récentes");
-    console.log("  3. 🗑️ Purger les notifications lues (>30j)");
-    console.log("  0. ↩️ Retour / Quitter");
-    const choice = (await rl.question("\n👉 Votre choix [0-3] : ")).trim();
+    console.log(" 1. Envoyer une notification Actualités (broadcast)");
+    console.log(" 2. Lister les notifications récentes");
+    console.log(" 3. Purger les notifications lues (>30j)");
+    console.log(" 0. Retour / Quitter");
+    const choice = (await rl.question("\n Votre choix [0-3]: ")).trim();
     switch (choice) {
       case "1":
         await handleSendNewsInteractive(rl);
@@ -1124,11 +1124,11 @@ export async function runNotificationManager() {
       case "3": {
         const confirm = (
           await rl.question(
-            "⚠️ Supprimer les notifications lues de plus de 30 jours ? (o/N) : "
+            " Supprimer les notifications lues de plus de 30 jours? (o/N): "
           )
         )
-          .trim()
-          .toLowerCase();
+.trim()
+.toLowerCase();
         if (confirm === "o" || confirm === "oui" || confirm === "y") {
           const res =
             await sql`DELETE FROM "Notification" WHERE "isRead" = true AND "createdAt" < NOW() - INTERVAL '30 days' RETURNING "id"`;
@@ -1146,7 +1146,7 @@ export async function runNotificationManager() {
         running = false;
         break;
       default:
-        console.log("⚠️ Option invalide.");
+        console.log(" Option invalide.");
     }
   }
   rl.close();
@@ -1157,43 +1157,43 @@ export async function runNotificationManager() {
 // ─────────────────────────────────────────────
 async function runModelScheduleNow(rl?: readline.Interface) {
   console.log(
-    "\n⏱️ Exécution manuelle du cron de synchronisation des modèles (OpenRouter & CometAPI)..."
+    "\n Exécution manuelle du cron de synchronisation des modèles (OpenRouter & CometAPI)..."
   );
   if (!rl) {
     console.log(
-      "   Mode automatique : les conflits conserveront la version de la base de données."
+      " Mode automatique: les conflits conserveront la version de la base de données."
     );
   }
   const result = await updateModels(
     sql,
-    rl ? { resolveConflict: createConflictResolver(rl) } : {}
+    rl? { resolveConflict: createConflictResolver(rl) }: {}
   );
   if (result.skipped) {
     console.log(
-      "ℹ️ Une synchronisation plus récente a été conservée ; aucun changement appliqué."
+      " Une synchronisation plus récente a été conservée; aucun changement appliqué."
     );
   } else {
     console.log(
-      `✅ Catalogue sauvegardé rafraîchi : ${result.upserted} modèle(s) synchronisé(s), ${result.retired} archivé(s).`
+      ` Catalogue sauvegardé rafraîchi: ${result.upserted} modèle(s) synchronisé(s), ${result.retired} archivé(s).`
     );
     if ("chatCount" in result) {
       console.log(
-        `   📊 Répartition : ${result.chatCount} Chat, ${result.audioCount} Audio, ${result.imageCount} Image.`
+        ` Répartition: ${result.chatCount} Chat, ${result.audioCount} Audio, ${result.imageCount} Image.`
       );
       console.log(
-        `   🔌 Fournisseurs : ${result.openrouterCount} OpenRouter, ${result.cometCount} CometAPI.`
+        ` Fournisseurs: ${result.openrouterCount} OpenRouter, ${result.cometCount} CometAPI.`
       );
     }
     if ("conflicts" in result && result.conflicts) {
       const summary = [
-        `base de données : ${result.conflictsKeptInDatabase}`,
-        `amont : ${result.conflictsTakenFromUpstream}`,
+        `base de données: ${result.conflictsKeptInDatabase}`,
+        `amont: ${result.conflictsTakenFromUpstream}`,
       ];
       if ("conflictsDeleted" in result && result.conflictsDeleted) {
-        summary.push(`supprimé(s) : ${result.conflictsDeleted}`);
+        summary.push(`supprimé(s): ${result.conflictsDeleted}`);
       }
       console.log(
-        `   ⚖️  Conflits : ${result.conflicts} (${summary.join(", ")}).`
+        ` Conflits: ${result.conflicts} (${summary.join(", ")}).`
       );
     }
   }
@@ -1276,13 +1276,13 @@ export async function runAdminCli() {
 
   console.log("");
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ╔══════════════════════════════════════════════════════════════════════╗ ${c.reset}`
   );
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ║             🛠️  mAI — CONSOLE D'ADMINISTRATION & MAINTENANCE         ║  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ║ mAI — CONSOLE D'ADMINISTRATION & MAINTENANCE ║ ${c.reset}`
   );
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ╚══════════════════════════════════════════════════════════════════════╝ ${c.reset}`
   );
   console.log("");
 
@@ -1290,48 +1290,48 @@ export async function runAdminCli() {
   let running = true;
 
   while (running) {
-    console.log(`\n${c.bold}ACTIONS DISPONIBLES :${c.reset}`);
+    console.log(`\n${c.bold}ACTIONS DISPONIBLES:${c.reset}`);
     console.log(
-      `  ${c.brightCyan}[1]${c.reset} 🔄 Réinitialiser les quotas d'usage API (mprojects_api_keys)`
+      ` ${c.brightCyan}[1]${c.reset} Réinitialiser les quotas d'usage API (mprojects_api_keys)`
     );
     console.log(
-      `  ${c.brightCyan}[2]${c.reset} 🔄 Réinitialiser les quotas d'usage mAI (weekly_usage)`
+      ` ${c.brightCyan}[2]${c.reset} Réinitialiser les quotas d'usage mAI (weekly_usage)`
     );
     console.log(
-      `  ${c.brightCyan}[3]${c.reset} 🔄 Réinitialiser les quotas journaliers d'Images`
+      ` ${c.brightCyan}[3]${c.reset} Réinitialiser les quotas journaliers d'Images`
     );
     console.log(
-      `  ${c.brightCyan}[4]${c.reset} 🔄 Réinitialiser les quotas de synthèse vocale Audio (weekly_speech_usage)`
+      ` ${c.brightCyan}[4]${c.reset} Réinitialiser les quotas de synthèse vocale Audio (weekly_speech_usage)`
     );
     console.log(
-      `  ${c.brightGreen}[5]${c.reset} ⚡ ${c.bold}Réinitialiser TOUS les quotas en 1 clic (API + mAI + Images + Audio)${c.reset}`
+      ` ${c.brightGreen}[5]${c.reset} ${c.bold}Réinitialiser TOUS les quotas en 1 clic (API + mAI + Images + Audio)${c.reset}`
     );
     console.log(
-      `  ${c.brightMagenta}[6]${c.reset} 🎟️  Gérer les codes d'abonnement (Créer, Lister, Activer, Modifier)`
+      ` ${c.brightMagenta}[6]${c.reset} Gérer les codes d'abonnement (Créer, Lister, Activer, Modifier)`
     );
     console.log(
-      `  ${c.brightYellow}[7]${c.reset} 📧 Lancer le Studio de Newsletter (Éditeur HTML & CLI)`
+      ` ${c.brightYellow}[7]${c.reset} Lancer le Studio de Newsletter (Éditeur HTML & CLI)`
     );
     console.log(
-      `  ${c.brightWhite}[8]${c.reset} 👥 Gérer les comptes clients (Lister, Bloquer, Supprimer)`
+      ` ${c.brightWhite}[8]${c.reset} Gérer les comptes clients (Lister, Bloquer, Supprimer)`
     );
     console.log(
-      `  ${c.brightCyan}[9]${c.reset} 🔔 Gérer les Notifications & Actualités (Broadcast)`
+      ` ${c.brightCyan}[9]${c.reset} Gérer les Notifications & Actualités (Broadcast)`
     );
     console.log(
-      `  ${c.brightCyan}[10]${c.reset} 🤖 Gérer les modèles (Chat, Audio, Image — OpenRouter & CometAPI)`
+      ` ${c.brightCyan}[10]${c.reset} Gérer les modèles (Chat, Audio, Image — OpenRouter & CometAPI)`
     );
     console.log(
-      `  ${c.brightCyan}[11]${c.reset} ⏱️ Exécuter le cron et synchroniser les modèles (Chat, Audio, Image)`
+      ` ${c.brightCyan}[11]${c.reset} Exécuter le cron et synchroniser les modèles (Chat, Audio, Image)`
     );
     console.log(
-      `  ${c.brightCyan}[12]${c.reset} 📝 Gérer les formulaires & sondages (création intelligente, stats, activation)`
+      ` ${c.brightCyan}[12]${c.reset} Gérer les formulaires & sondages (création intelligente, stats, activation)`
     );
-    console.log(`  ${c.white}[0]${c.reset} 🚪 Quitter`);
+    console.log(` ${c.white}[0]${c.reset} Quitter`);
     console.log("");
 
     const choice = (
-      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-12] : ${c.reset}`)
+      await rl.question(` ${c.brightYellow}➔ Votre choix [0-12]: ${c.reset}`)
     ).trim();
 
     switch (choice) {
@@ -1371,7 +1371,7 @@ export async function runAdminCli() {
           await runModelManager(sql, rl);
         } catch (error) {
           console.error(
-            "❌ Catalogue indisponible. Appliquez la migration et lancez --update-models.",
+            " Catalogue indisponible. Appliquez la migration et lancez --update-models.",
             error
           );
         }
@@ -1381,8 +1381,8 @@ export async function runAdminCli() {
           await runModelScheduleNow(rl);
         } catch (error) {
           console.error(
-            "❌ Échec du cron de synchronisation des modèles :",
-            error instanceof Error ? error.message : error
+            " Échec du cron de synchronisation des modèles:",
+            error instanceof Error? error.message: error
           );
         }
         break;
@@ -1391,8 +1391,8 @@ export async function runAdminCli() {
           await runFormManager(sql, rl);
         } catch (error) {
           console.error(
-            "❌ Erreur gestionnaire de formulaires :",
-            error instanceof Error ? error.message : error
+            " Erreur gestionnaire de formulaires:",
+            error instanceof Error? error.message: error
           );
         }
         break;
@@ -1401,11 +1401,11 @@ export async function runAdminCli() {
       case "quit":
         running = false;
         console.log(
-          `\n${c.dim}👋 Fermeture de la console d'administration.${c.reset}\n`
+          `\n${c.dim} Fermeture de la console d'administration.${c.reset}\n`
         );
         break;
       default:
-        console.log("⚠️ Choix invalide.");
+        console.log(" Choix invalide.");
     }
   }
 
@@ -1418,7 +1418,7 @@ if (
   process.argv[1]?.endsWith("admin.ts")
 ) {
   runAdminCli().catch((err) => {
-    console.error("❌ Erreur fatale :", err?.message || err);
+    console.error(" Erreur fatale:", err?.message || err);
     process.exit(1);
   });
 }

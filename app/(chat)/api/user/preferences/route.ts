@@ -17,9 +17,9 @@ import {
   buildCustomInstructionsSchema,
   customInstructionsLimitPayload,
 } from "@/lib/plans/custom-instructions";
+import { getTierSearchResultsMax } from "@/lib/plans/tier-limits";
 import {
   MAI_SEARCH_LANGUAGES,
-  MAI_SEARCH_RESULT_COUNT_MAX,
   MAI_SEARCH_RESULT_COUNT_MIN,
   MAI_SEARCH_SAFETY_LEVELS,
   MAI_SEARCH_SOURCE_KEYS,
@@ -70,11 +70,15 @@ const buildSchema = (tier?: string | null) =>
     // qu'une source valide soit refusée par l'API, ni qu'une source
     // fantôme soit acceptée puis rejetée en aval.
     searchLanguage: z.enum(MAI_SEARCH_LANGUAGES).optional(),
+    // Le volume de résultats est plafonné par le FORFAIT du compte, pas par
+    // une constante : la borne haute du schéma est donc calculée à chaque
+    // requête. Un compte gratuit ne peut pas enregistrer 200, et l'interface
+    // ne peut donc pas lui proposer plus que ce qu'il peut obtenir.
     searchResultCount: z
       .number()
       .int()
       .min(MAI_SEARCH_RESULT_COUNT_MIN)
-      .max(MAI_SEARCH_RESULT_COUNT_MAX)
+      .max(getTierSearchResultsMax(tier))
       .optional(),
     searchSafetyLevel: z.enum(MAI_SEARCH_SAFETY_LEVELS).optional(),
     // Une liste vide serait acceptée ici mais normalisée en « toutes les

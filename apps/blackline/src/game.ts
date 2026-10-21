@@ -18,7 +18,7 @@ import { thirdPerson } from './game/camera.ts';
 import * as combat from './game/combat.ts';
 import type { GameHooks,GameState } from './game/contracts.ts';
 import * as controls from './game/controls.ts';
-import { invalidateFrame } from './game/frame-control.ts';
+import { invalidateFrame, suspendFrame } from './game/frame-control.ts';
 import { FramePacer } from './game/frame-pacer.ts';
 import * as match from './game/match.ts';
 import * as player from './game/player.ts';
@@ -142,4 +142,40 @@ export class Game {
   scoped(){return this.aimDown&&!this.activeLadder&&!this.climbExit&&this.aimAmount>.96&&this.player.reloadTime<=0&&Math.abs(this.camera.fov-this.aimFov())<3;}
   snapshot(...args:Parameters<typeof snapshot.snapshot>):ReturnType<typeof snapshot.snapshot>{return snapshot.snapshot.apply(this,args);}
   frame=(now:number)=>renderFrame.call(this,now);
+  /**
+   * Libère le moteur.
+   *
+   * SANS CETTE MÉTHODE, le jeu CONTINUE DE TOURNER APRÈS LA SORTIE DE LA
+   * PAGE : la boucle `requestAnimationFrame` se relance elle-même, le
+   * `WebGLRenderer` garde son tampon GPU, et le navigateur refuse d'ouvrir
+   * un nouveau contexte WebGL tant que l'ancien n'a pas été lâché. Sur un
+   * poste où l'on enchaîne les pages, c'est une perte de mémoire et un
+   * plancher de fluidité.
+   *
+   * L'ordre compte : la boucle d'abord (plus rien ne doit être rendu), puis
+   * les écouteurs, puis les ressources GPU, et le contexte WebGL en tout
+   * dernier — tant qu'il vit, les `dispose` de textures ont un effet.
+   */
+  dispose(){if(this.disposed)return;this.disposed=true;
+    // 1. La boucle de rendu s'arrête.
+    suspendFrame.call(this);
+    // 2. Les écouteurs (clavier, souris, plein écran, orientation).
+    for(const off of this.callbacks){try{off();}catch{/* un écouteur déjà retiré ne doit pas empêcher les autres */}}
+    this.callbacks=[];
+    // 3. Les entrées tactiles et le son.
+    // `TouchInput` n'a pas de `dispose` : ses écouteurs sont posés par
+    // `listen()`, et donc déjà retirés par le registre `callbacks` ci-dessus.
+    // Il ne reste qu'à vider son état.
+    this.touch?.reset?.();
+    this.audio?.dispose?.();
+    // 4. Les ressources graphiques.
+    this.effects?.dispose?.();
+    this.world?.dispose?.();
+    this.composer?.dispose?.();
+    this.bloom?.dispose?.();
+    this.renderer?.dispose?.();
+    // 5. Le contexte WebGL : c'est lui qui retient le tampon GPU.
+    this.renderer?.forceContextLoss?.();
+    this.actors=[];this.brains=[];this.visuals.clear();this.gunCache.clear();
+  }
 }

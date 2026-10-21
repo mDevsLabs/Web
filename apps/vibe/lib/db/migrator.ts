@@ -5,7 +5,7 @@
  * ============================================================================
  */
 
-import { getDb } from "../../config.ts";
+import { getDb } from "../../../../config.ts";
 
 const MIGRATIONS_DIRECTORY = new URL("./migrations/", import.meta.url);
 const NUMBERED_MIGRATION = /^(\d+)_.*\.sql$/;
@@ -34,10 +34,10 @@ async function listMigrationFiles(): Promise<MigrationFile[]> {
 
     const order = Number(match[1]);
     if (!Number.isSafeInteger(order)) {
-      throw new Error(`Numéro de migration invalide : ${entry.name}`);
+      throw new Error(`Numéro de migration invalide: ${entry.name}`);
     }
     if (prefixes.has(order)) {
-      throw new Error(`Numéro de migration dupliqué : ${match[1]}`);
+      throw new Error(`Numéro de migration dupliqué: ${match[1]}`);
     }
 
     prefixes.add(order);
@@ -86,10 +86,10 @@ WHERE username = 'bot';
 `;
   }
 
-  // Défense supplémentaire : aucun hash bcrypt littéral ne doit être envoyé.
+  // Défense supplémentaire: aucun hash bcrypt littéral ne doit être envoyé.
   if (/\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}/.test(executableSource)) {
     throw new Error(
-      `Migration refusée : hash bcrypt littéral détecté dans ${name}`,
+      `Migration refusée: hash bcrypt littéral détecté dans ${name}`,
     );
   }
 
@@ -98,7 +98,7 @@ WHERE username = 'bot';
 
 function dollarQuoteAt(source: string, index: number): string | null {
   const match = source.slice(index).match(/^\$(?:[A-Za-z_][A-Za-z0-9_]*)?\$/);
-  return match?.[0] ?? null;
+  return match?.[0]?? null;
 }
 
 /**
@@ -223,7 +223,7 @@ function splitSqlStatements(source: string): string[] {
     state === "single" || state === "double" || state === "dollar" ||
     state === "blockComment"
   ) {
-    throw new Error("Migration SQL incomplète : guillemet ou bloc non fermé");
+    throw new Error("Migration SQL incomplète: guillemet ou bloc non fermé");
   }
 
   const finalStatement = source.slice(statementStart).trim();
@@ -232,7 +232,7 @@ function splitSqlStatements(source: string): string[] {
 }
 
 export async function runVibeMigrations() {
-  console.log("⚡ [Vibe Migrator] Initialisation des migrations...");
+  console.log(" [Vibe Migrator] Initialisation des migrations...");
 
   try {
     const sql = getDb();
@@ -259,7 +259,7 @@ export async function runVibeMigrations() {
       const checksum = await sha256(executableSource);
       const statements = splitSqlStatements(executableSource);
       if (statements.length === 0) {
-        throw new Error(`Migration SQL vide : ${migration.name}`);
+        throw new Error(`Migration SQL vide: ${migration.name}`);
       }
 
       const trackedRows = (await sql`
@@ -271,7 +271,7 @@ export async function runVibeMigrations() {
       const tracked = trackedRows[0];
 
       if (tracked) {
-        if (tracked.checksum && tracked.checksum !== checksum) {
+        if (tracked.checksum && tracked.checksum!== checksum) {
           throw new Error(
             `Migration déjà appliquée mais modifiée (${migration.name}). Créez une nouvelle migration numérotée.`,
           );
@@ -287,11 +287,11 @@ export async function runVibeMigrations() {
         continue;
       }
 
-      console.log(`📦 [Vibe Migrator] Exécution de ${migration.name}`);
+      console.log(` [Vibe Migrator] Exécution de ${migration.name}`);
       await sql.transaction((txn) => [
         // Sérialise deux runners concurrents sur les migrations DDL.
         txn`SELECT pg_advisory_xact_lock(20250925, 1)`,
-        ...statements.map((statement) => txn.query(statement)),
+...statements.map((statement) => txn.query(statement)),
         txn`
           INSERT INTO _vibe_migrations (name, checksum)
           VALUES (${migration.name}, ${checksum})
@@ -302,12 +302,13 @@ export async function runVibeMigrations() {
     }
 
     console.log(
-      `✅ [Vibe Migrator] ${applied} migration(s) appliquée(s), ${skipped} déjà à jour.`,
+      ` [Vibe Migrator] ${applied} migration(s) appliquée(s), ${skipped} déjà à jour.`,
     );
     return { success: true, applied, skipped };
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("❌ [Vibe Migrator] Erreur lors des migrations :", error);
+    const message = error instanceof Error? error.message: String(error);
+    console.error(" [Vibe Migrator] Erreur lors des migrations:", error);
     return { success: false, error: message };
   }
 }
+

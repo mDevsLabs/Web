@@ -18,7 +18,7 @@ export class NotificationService {
    * État actuel de la permission de notification sur l'appareil
    */
   static getPermissionState(): "unsupported" | NotificationPermission {
-    if (typeof window === "undefined" || !("Notification" in window))
+    if (typeof window === "undefined" ||!("Notification" in window))
       return "unsupported";
     return Notification.permission;
   }
@@ -27,7 +27,7 @@ export class NotificationService {
    * Demande poliment la permission d'envoyer des notifications sur l'appareil / navigateur
    */
   static async requestPermission(): Promise<NotificationPermission> {
-    if (typeof window === "undefined" || !("Notification" in window)) {
+    if (typeof window === "undefined" ||!("Notification" in window)) {
       return "denied";
     }
 
@@ -38,8 +38,8 @@ export class NotificationService {
           // Préparer le service worker pour les notifications même app en arrière-plan
           try {
             const reg = await navigator.serviceWorker.ready;
-            await (reg as any).showNotification?.("Vibe 🔔", {
-              body: "Les notifications sont maintenant activées !",
+            await (reg as any).showNotification?.("Vibe ", {
+              body: "Les notifications sont maintenant activées!",
               icon: "/logo.png",
             });
           } catch {}
@@ -61,8 +61,8 @@ export class NotificationService {
     title: string,
     options?: NotificationOptions
   ) {
-    if (typeof window === "undefined" || !("Notification" in window)) return;
-    if (Notification.permission !== "granted") return;
+    if (typeof window === "undefined" ||!("Notification" in window)) return;
+    if (Notification.permission!== "granted") return;
 
     try {
       if ("serviceWorker" in navigator) {
@@ -71,7 +71,7 @@ export class NotificationService {
           await reg.showNotification(title, {
             badge: "/favicon.png",
             icon: "/logo.png",
-            ...options,
+...options,
           });
           return;
         }
@@ -83,7 +83,7 @@ export class NotificationService {
       new Notification(title, {
         badge: "/favicon.png",
         icon: "/logo.png",
-        ...options,
+...options,
       });
     } catch (err) {
       console.warn("[NotificationService] Device notification failed:", err);
@@ -118,12 +118,12 @@ export class NotificationService {
    * lors de la publication d'un post
    */
   static notifyPostPublished(contentPreview?: string) {
-    const title = "Vibe — Publication publiée ! 🚀";
+    const title = "Vibe — Publication publiée! ";
     const body =
       contentPreview && contentPreview.length > 0
-        ? contentPreview.slice(0, 120) +
-          (contentPreview.length > 120 ? "..." : "")
-        : "Votre publication est maintenant en ligne sur Vibe.";
+? contentPreview.slice(0, 120) +
+          (contentPreview.length > 120? "...": "")
+: "Votre publication est maintenant en ligne sur Vibe.";
 
     // 1. Notification système de l'appareil / navigateur
     NotificationService.sendDeviceNotification(title, {
@@ -133,7 +133,7 @@ export class NotificationService {
 
     // 2. Notification / Toast in-app
     NotificationService.showInAppToast(
-      "Publication en ligne ! 🚀",
+      "Publication en ligne! ",
       body,
       "success"
     );
@@ -144,7 +144,7 @@ export class NotificationService {
    */
   static notifyPostDeleted() {
     NotificationService.showInAppToast(
-      "Publication supprimée 🗑️",
+      "Publication supprimée ",
       "Le post a été retiré avec succès.",
       "info"
     );

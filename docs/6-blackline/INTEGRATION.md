@@ -49,6 +49,12 @@ et appelle le contrat que le jeu publie sur `window` :
 window.blackline.mount({ container, root, settings });
 ```
 
+et, en quittant la page :
+
+```ts
+window.blackline.unmount();
+```
+
 **Pourquoi un objet et pas un export nommé** — c'est le point le plus subtil
 de l'intégration. Rollup renomme les exports d'un chunk d'entrée
 (`mountBlackline` devient `r`), et l'arbreur peut même les **élaguer** : le
@@ -60,6 +66,18 @@ Les **propriétés d'un objet** ne sont jamais renommées, et une affectation su
 `window` ne peut pas être élaguée : rien ne la rend inutile au regard de
 l'arbreur. C'est donc un objet, publié sur `window`, qui constitue le
 contrat.
+
+### Le démontage : `unmount`
+
+`unmount` est le pendant obligatoire de `mount`. Sans lui, l'hôte ne peut que
+retirer la balise `<script>` : le moteur continue de tourner dans le vide, la
+boucle `requestAnimationFrame` se relance elle-même, et le contexte WebGL
+n'est jamais relâché. Le navigateur limite le nombre de contextes WebGL
+vivants par page — un jeu relancé plusieurs fois finit par échouer.
+
+`Game.dispose()` fait le travail, dans cet ordre : arrêt de la boucle, retrait
+des écouteurs, libération des entrées tactiles, du son, du monde, des effets
+et du post-traitement, puis `forceContextLoss()` sur le contexte.
 
 `tests/unit/blackline-integration-contract.test.ts` vérifie que les deux
 moitiés restent d'accord — c'est le seul endroit où elles peuvent l'être, les

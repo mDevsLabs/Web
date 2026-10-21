@@ -2,7 +2,7 @@
  * Outil mAI — Analyse de sentiment des commentaires (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "analyze_sentiment".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface AnalyzeSentimentArgs {
   post_id: string;

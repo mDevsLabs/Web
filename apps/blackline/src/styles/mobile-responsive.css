@@ -2,9 +2,6 @@
   .touch-device .mission-card{display:none}
   .touch-device .hero{min-height:230px}
   .touch-device .map-selector{flex-wrap:wrap}
-  .touch-device .settings-group{padding:16px}
-  .touch-device .setting-row select{width:100%;max-width:100%}
-  .touch-device .setting-row input[type=text]{max-width:100%;width:150px}
   .touch-device .footer>div:first-child{max-width:calc(100% - 100px);flex-wrap:wrap;font-size:6px;gap:5px}
   .touch-device .controls-list>div{font-size:10px;line-height:1.5}
 }
@@ -57,8 +54,6 @@
   .touch-device .map-options{margin-top:5px}
   .touch-device .deploy-control{padding:12px;min-width:100px}
   .touch-device .deploy-button{min-width:170px;flex:1;min-height:76px}
-  .touch-device .settings-layout{grid-template-columns:1fr 1fr}
-  .touch-device .setting-row{min-height:80px}
   .touch-device .pause-card{padding:18px 0}
   .touch-device .pause-card h2{font-size:54px;margin:8px 0 10px}
   .touch-device .pause-card>p{margin-bottom:16px}

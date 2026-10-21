@@ -1,6 +1,12 @@
 import "server-only";
 
 import {
+  buildFaviconUrl,
+  buildFaviconUrlForDomain,
+  WIKIPEDIA_FAVICON_URL,
+} from "./favicon";
+import {
+  MAI_SEARCH_RESULT_COUNT_MAX,
   type MaiSearchLanguage,
   type MaiSearchSafetyLevel,
   type MaiSearchSourceKey,
@@ -12,6 +18,11 @@ import {
   fetchWikipediaImages,
   searchWikipediaWithSummaries,
 } from "./wikipedia";
+
+// Le service d'icônes est défini dans `lib/search/favicon.ts` : il est
+// également consommé par l'interface (client), qui doit produire exactement la
+// même URL que le moteur.
+export { buildFaviconUrl, WIKIPEDIA_FAVICON_URL };
 
 export interface SearchWebHit {
   favicon_url?: string;
@@ -41,14 +52,12 @@ export interface SearchWebHit {
 export type SearchResultOrigin = "wikipedia" | "you.com";
 
 /**
- * Favicon de l'encyclopédie.
+ * Service d'icônes : voir `lib/search/favicon.ts`.
  *
- * Constante partagée : le même chemin était écrit en dur à deux endroits
- * (repli historique et source à part entière), et une divergence afficherait
- * deux pastilles différentes pour la même source.
+ * Le calcul de l'URL vit dans un module client-safe, et non ici : le moteur
+ * (serveur) et l'interface (client) doivent produire exactement la même URL,
+ * et une seule des deux doit être autorisée par la CSP `img-src`.
  */
-export const WIKIPEDIA_FAVICON_URL =
-  "https://wikipedia.org/static/favicon/wikipedia.ico";
 
 export interface SearchImageHit {
   image_url: string;
@@ -92,6 +101,14 @@ export interface SearchResponse {
   query: string;
   results: SearchWebHit[];
   success: boolean;
+  /**
+   * `true` quand au moins une source a rendu moins de liens que demandé.
+   *
+   * Le moteur tronque, et certaines sources sont muettes : l'interface doit
+   * alors dire ce qu'elle a obtenu, plutôt que de laisser croire à une
+   * recherche exhaustive.
+   */
+  truncated?: boolean;
   videos: SearchVideoHit[];
   /**
    * `true` quand la requête ressemble à une recherche factuelle et que les
@@ -302,7 +319,132 @@ const YOU_SEARCH_ENDPOINTS = [
 ];
 
 /**
+ * Nombre de liens demandés au moteur par UNE requête.
+ *
+ * Le moteur n'est pas garanti de rendre ce qu'on lui demande : au-delà d'un
+ * certain volume, il tronque. La valeur retenue est celle qui fonctionne
+ * aujourd'hui de façon fiable — c'est le rythme d'un tour de complément.
+ */
+const YOU_MAX_PER_REQUEST = 25;
+
+/**
+ * Nombre de tours de COMPLÉMENT possibles.
+ *
+ * Le premier tour demande la cible entière. Si le moteur rend moins que
+ * demandé, on relance en répartissant le manque sur les autres clés, en
+ * parallèle. La borne existe pour qu'un compte Max ne déclenche pas une
+ * avalanche de requêtes : le moteur, lui, a ses propres limites.
+ */
+const YOU_MAX_FILL_ROUNDS = 4;
+
+/**
+ * Une requête au moteur, avec UNE clé et UN point d'entrée.
+ */
+async function fetchYouWebOnce(
+  query: string,
+  count: number,
+  key: string,
+  endpoint: string
+): Promise<{ hits: SearchWebHit[]; images: SearchImageHit[] } | null> {
+  try {
+    const res = await fetch(endpoint, {
+      body: JSON.stringify({ count, query }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "mAI-Search/1.0",
+        "X-API-Key": key,
+      },
+      method: "POST",
+      signal: AbortSignal.timeout(4000),
+    });
+
+    if (!res.ok) {
+      return null;
+    }
+    const data: any = await res.json().catch(() => null);
+    if (!data) {
+      return null;
+    }
+    const hits: SearchWebHit[] = [];
+    const images: SearchImageHit[] = [];
+
+    let rawHits: any[] = [];
+    if (data.results && typeof data.results === "object") {
+      if (Array.isArray(data.results)) {
+        rawHits = data.results;
+      } else {
+        if (Array.isArray(data.results.web)) rawHits.push(...data.results.web);
+        if (Array.isArray(data.results.news))
+          rawHits.push(...data.results.news);
+      }
+    } else if (Array.isArray(data.hits)) {
+      rawHits = data.hits;
+    } else if (Array.isArray(data.web?.results)) {
+      rawHits = data.web.results;
+    }
+
+    for (const hit of rawHits) {
+      let snippet = "";
+      if (hit.contents?.markdown) {
+        snippet = hit.contents.markdown.slice(0, 300);
+      } else if (Array.isArray(hit.snippets) && hit.snippets.length > 0) {
+        snippet = hit.snippets.join(" ... ");
+      } else {
+        snippet = hit.description || hit.snippet || hit.text || "";
+      }
+
+      const title = hit.title || hit.name || "";
+      const url = hit.url || hit.link || "";
+
+      if (title && url) {
+        hits.push({
+          favicon_url:
+            hit.favicon_url || (url ? buildFaviconUrl(url) : undefined),
+          page_age: hit.page_age,
+          snippet: snippet.trim(),
+          thumbnail_url: hit.thumbnail_url || hit.image_url,
+          title,
+          url,
+        });
+      }
+
+      // Extraire les images/thumbnails s'il y en a
+      if (hit.thumbnail_url || hit.image_url) {
+        images.push({
+          image_url: hit.image_url || hit.thumbnail_url,
+          page_url: url,
+          thumbnail: hit.thumbnail_url || hit.image_url,
+          title: title || query,
+        });
+      }
+    }
+
+    // Un résultat VIDE n'est pas une réussite : on préfère une autre
+    // tentative qui rendrait des liens.
+    return hits.length > 0 ? { hits, images } : null;
+  } catch {
+    // Erreur ou timeout : un autre tour (ou une autre clé) prendra le
+    // relais.
+    return null;
+  }
+}
+
+/**
  * Recherche Web via You.com (ydc-index.io)
+ *
+ * Le volume demandé peut aller jusqu'à 200 liens par source. Le moteur ne
+ * rend pas toujours tout ce qu'on lui demande : la stratégie est donc
+ * « un tour large, puis des tours de complément ».
+ *
+ * - Premier tour : la cible ENTIÈRE est demandée, les clés essayées en
+ *   parallèle (comportement historique — la première qui répond gagne).
+ * - Tours de complément : seulement si le premier tour est revenu court. Le
+ *   manque est réparti sur les autres clés, et les requêtes partent EN
+ *   PARALLÈLE : le délai reste celui de la plus lente, pas leur somme.
+ *
+ * Le résultat est tronqué quand même : la réponse porte alors
+ * `truncated`, et l'interface dit ce qu'elle a obtenu.
  */
 async function fetchYouWeb(
   query: string,
@@ -311,6 +453,8 @@ async function fetchYouWeb(
   const keys = getYouApiKeys();
   if (keys.length === 0) return { hits: [], images: [] };
 
+  const cible = Math.max(1, Math.min(count, MAI_SEARCH_RESULT_COUNT_MAX));
+
   /**
    * Un tour = un point d'entrée, essayé avec TOUTES les clés en parallèle.
    *
@@ -318,103 +462,60 @@ async function fetchYouWeb(
    * qui échoue ne fait pas échouer le tour. Le tour suivant n'est tenté
    * que si le premier a entièrement échoué.
    */
+  const hits: SearchWebHit[] = [];
+  const images: SearchImageHit[] = [];
+
   for (const endpoint of YOU_SEARCH_ENDPOINTS) {
     const resultat = await raceFirst(
-      keys.map((key) => async () => {
-        try {
-          const res = await fetch(endpoint, {
-            body: JSON.stringify({ count, query }),
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "User-Agent": "mAI-Search/1.0",
-              "X-API-Key": key,
-            },
-            method: "POST",
-            signal: AbortSignal.timeout(4000),
-          });
-
-          if (!res.ok) {
-            return null;
-          }
-          const data: any = await res.json().catch(() => null);
-          if (!data) {
-            return null;
-          }
-          const hits: SearchWebHit[] = [];
-          const images: SearchImageHit[] = [];
-
-          let rawHits: any[] = [];
-          if (data.results && typeof data.results === "object") {
-            if (Array.isArray(data.results)) {
-              rawHits = data.results;
-            } else {
-              if (Array.isArray(data.results.web))
-                rawHits.push(...data.results.web);
-              if (Array.isArray(data.results.news))
-                rawHits.push(...data.results.news);
-            }
-          } else if (Array.isArray(data.hits)) {
-            rawHits = data.hits;
-          } else if (Array.isArray(data.web?.results)) {
-            rawHits = data.web.results;
-          }
-
-          for (const hit of rawHits) {
-            let snippet = "";
-            if (hit.contents?.markdown) {
-              snippet = hit.contents.markdown.slice(0, 300);
-            } else if (Array.isArray(hit.snippets) && hit.snippets.length > 0) {
-              snippet = hit.snippets.join(" ... ");
-            } else {
-              snippet = hit.description || hit.snippet || hit.text || "";
-            }
-
-            const title = hit.title || hit.name || "";
-            const url = hit.url || hit.link || "";
-
-            if (title && url) {
-              hits.push({
-                favicon_url:
-                  hit.favicon_url ||
-                  (url
-                    ? `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`
-                    : undefined),
-                page_age: hit.page_age,
-                snippet: snippet.trim(),
-                thumbnail_url: hit.thumbnail_url || hit.image_url,
-                title,
-                url,
-              });
-            }
-
-            // Extraire les images/thumbnails s'il y en a
-            if (hit.thumbnail_url || hit.image_url) {
-              images.push({
-                image_url: hit.image_url || hit.thumbnail_url,
-                page_url: url,
-                thumbnail: hit.thumbnail_url || hit.image_url,
-                title: title || query,
-              });
-            }
-          }
-
-          // Un résultat VIDE n'est pas une réussite : on préfère une autre
-          // tentative qui rendrait des liens.
-          return hits.length > 0 ? { hits, images } : null;
-        } catch {
-          // Erreur ou timeout : un autre tour (ou une autre clé) prendra le
-          // relais.
-          return null;
-        }
-      })
+      keys.map(
+        (key) => async () => fetchYouWebOnce(query, cible, key, endpoint)
+      )
     );
     if (resultat) {
-      return resultat;
+      hits.push(...resultat.hits);
+      images.push(...resultat.images);
+      break;
     }
   }
 
-  return { hits: [], images: [] };
+  // Le moteur a rendu moins que demandé : on complète, en répartissant le
+  // manque sur les clés disponibles.
+  for (let tour = 1; tour <= YOU_MAX_FILL_ROUNDS; tour++) {
+    const manque = cible - hits.length;
+    if (manque <= 0) {
+      break;
+    }
+    // Rotation des clés : chaque tour commence par une clé différente, pour
+    // ne pas marteler la même.
+    const decalage = tour % keys.length;
+    const clesDuTour = [
+      ...keys.slice(decalage),
+      ...keys.slice(0, decalage),
+    ].slice(0, keys.length);
+    const parRequete = Math.max(
+      1,
+      Math.min(YOU_MAX_PER_REQUEST, Math.ceil(manque / clesDuTour.length))
+    );
+
+    const complement = await Promise.allSettled(
+      clesDuTour.map((cle) =>
+        fetchYouWebOnce(query, parRequete, cle, YOU_SEARCH_ENDPOINTS[0])
+      )
+    );
+    for (const resultat of complement) {
+      if (resultat.status === "fulfilled" && resultat.value) {
+        hits.push(...resultat.value.hits);
+        images.push(...resultat.value.images);
+      }
+    }
+  }
+
+  // Les tours de complément redemandent au moteur une partie de ce qu'il a
+  // déjà rendu : sans déduplication, le même lien reviendrait autant de fois
+  // qu'il y a eu de tours, et la liste compterait des doublons.
+  const uniques = dedupeByUrl(hits);
+
+  return { hits: uniques.slice(0, cible), images };
 }
 
 /**
@@ -535,7 +636,7 @@ async function fallbackSearch(
 
           if (title && link) {
             results.push({
-              favicon_url: `https://www.google.com/s2/favicons?domain=${new URL(link).hostname}&sz=32`,
+              favicon_url: buildFaviconUrl(link),
               snippet,
               title,
               url: link,
@@ -549,15 +650,6 @@ async function fallbackSearch(
   }
 
   return results;
-}
-
-export function buildFaviconUrl(urlStr: string): string {
-  try {
-    const domain = new URL(urlStr).hostname;
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-  } catch {
-    return "";
-  }
 }
 
 async function fetchGoogleNews(
@@ -706,8 +798,7 @@ async function fetchYouTubeVideos(
         );
         videos.push({
           duration: undefined,
-          favicon_url:
-            "https://www.google.com/s2/favicons?domain=youtube.com&sz=32",
+          favicon_url: buildFaviconUrlForDomain("youtube.com"),
           page_url: `https://www.youtube.com/watch?v=${id}`,
           platform: "YouTube",
           thumbnail: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
@@ -847,13 +938,27 @@ export async function executeMaiSearch(params: {
   const wantWeb = sources.includes("web");
   const wantImages = sources.includes("images");
   const wantNews = sources.includes("news");
+  const wantVideos = sources.includes("videos");
   const wantWikipedia = sources.includes("wikipedia");
 
-  const cacheKey = `${sources.join(",")}:${lang}:${safetyLevel}:${trimmed.toLowerCase()}`;
+  const count = Math.max(
+    1,
+    Math.min(params.count || 20, MAI_SEARCH_RESULT_COUNT_MAX)
+  );
+
+  /**
+   * La clé de cache porte le VOLUME, en seaux.
+   *
+   * Sans elle, la première recherche venue fixerait la longueur du cache pour
+   * toutes les autres : un compte gratuit demandant 50 résultats aurait
+   * laissé dans le cache un tableau de 50, qu'un compte Max aurait reçu en
+   * attendant 200. Le seau évite l'explosion du cache (une entrée par tranche
+   * de 25, pas par valeur exacte) tout en gardant les volumes séparés.
+   */
+  const countBucket = Math.ceil(count / 25) * 25;
+  const cacheKey = `${sources.join(",")}:${lang}:${safetyLevel}:${countBucket}:${trimmed.toLowerCase()}`;
   const cached = getFromCache(cacheKey);
   if (cached) return cached;
-
-  const count = params.count || 20;
 
   /**
    * Les replis partent EN MÊME TEMPS que les sources principales.
@@ -880,8 +985,16 @@ export async function executeMaiSearch(params: {
     wantWeb
       ? fetchYouWeb(trimmed, count)
       : Promise.resolve({ hits: [], images: [] }),
-    wantImages ? fetchYouImages(trimmed, 20) : Promise.resolve([]),
-    wantNews ? fetchGoogleNews(trimmed, 15, lang) : Promise.resolve([]),
+    // Les sources suivent le volume demandé, et chacune à son propre rythme :
+    // le flux d'actualité rend au mieux une quincaine de titres, YouTube une
+    // dizaine de vidéos. Le plafond du compte s'applique donc PAR SOURCE —
+    // une source muette n'en prive pas les autres.
+    wantImages
+      ? fetchYouImages(trimmed, Math.min(count, 60))
+      : Promise.resolve([]),
+    wantNews
+      ? fetchGoogleNews(trimmed, Math.min(count, 30), lang)
+      : Promise.resolve([]),
     wantWikipedia
       ? fetchWikipediaWeb(trimmed, count, lang)
       : Promise.resolve([] as SearchWebHit[]),
@@ -890,10 +1003,12 @@ export async function executeMaiSearch(params: {
       ? fallbackSearch(trimmed, lang)
       : Promise.resolve([] as SearchWebHit[]),
     // Repli images : les vignettes de l'encyclopédie.
-    wantImages ? fetchWikiImages(trimmed, 12, lang) : Promise.resolve([]),
+    wantImages
+      ? fetchWikiImages(trimmed, Math.min(count, 12), lang)
+      : Promise.resolve([]),
     // Repli vidéos : la recherche YouTube, quand les liens web n'en
     // contiennent aucun.
-    sources.includes("videos")
+    wantVideos
       ? fetchYouTubeVideos(trimmed)
       : Promise.resolve([] as SearchVideoHit[]),
   ]);
@@ -990,7 +1105,7 @@ export async function executeMaiSearch(params: {
 
   // Si aucune vidéo trouvée dans les liens web, retenir la recherche
   // YouTube — déjà lancée en parallèle, donc sans délai supplémentaire.
-  if (videos.length === 0 && sources.includes("videos")) {
+  if (videos.length === 0 && wantVideos) {
     videos = youtubeVideos;
   }
 
@@ -1013,6 +1128,20 @@ export async function executeMaiSearch(params: {
   const imagesLimited = allImages.slice(0, count);
   const videosLimited = videos.slice(0, count);
 
+  /**
+   * La demande n'a-t-elle pas été satisfaite ?
+   *
+   * Vrai quand une source a rendu moins de liens que demandé — le moteur
+   * tronque, ou la source est simplement muette. L'interface le dit alors :
+   * une recherche qui rend 40 liens sur 200 demandés ne doit pas se faire
+   * passer pour exhaustive.
+   */
+  const truncated =
+    (wantWeb && webResults.length < count) ||
+    (wantNews && newsLimited.length < count) ||
+    (wantImages && imagesLimited.length < count) ||
+    (wantVideos && videosLimited.length < count);
+
   const provider: SearchResponse["provider"] =
     providers.size > 1
       ? "mixed"
@@ -1031,6 +1160,7 @@ export async function executeMaiSearch(params: {
       imagesLimited.length > 0 ||
       newsLimited.length > 0 ||
       videosLimited.length > 0,
+    truncated,
     videos: videosLimited,
     wikiFirst,
   };

@@ -19,6 +19,10 @@
 // L'hôte appelle donc `window.blackline.mount(...)`. C'est le SEUL point de
 // contact entre les deux mondes.
 //
+// `window.blackline.unmount(...)` en est le pendant : sans lui, l'hôte ne
+// peut que retirer la balise `<script>`, et le moteur continue de tourner
+// dans le vide — boucle de rendu active, contexte WebGL jamais relâché.
+//
 // `mountBlackline` reste exporté pour l'application autonome et pour les
 // tests : c'est le même code, appelable directement.
 
@@ -30,9 +34,9 @@
 // point d'entrée CSS.
 import './theme.css';
 
-import { bindNativeEvents, mountBlackline } from './entry.ts';
+import { bindNativeEvents, mountBlackline, unmountBlackline } from './entry.ts';
 
-export { mountBlackline };
+export { mountBlackline, unmountBlackline };
 export type { MountOptions } from './entry.ts';
 
 /**
@@ -42,11 +46,14 @@ export type { MountOptions } from './entry.ts';
  * forme fiable pour un point d'entrée consommé par une application
  * EXTÉRIEURE, dont le code ne peut pas être coordonné avec le build.
  */
-export const blackline = { mount: mountBlackline };
+export const blackline = { mount: mountBlackline, unmount: unmountBlackline };
 
 declare global {
   interface Window {
-    blackline?: { mount: typeof mountBlackline };
+    blackline?: {
+      mount: typeof mountBlackline;
+      unmount: typeof unmountBlackline;
+    };
   }
 }
 

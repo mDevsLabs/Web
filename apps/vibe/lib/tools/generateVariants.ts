@@ -2,7 +2,7 @@
  * Outil mAI — Variantes d'accroche pour un post (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "generate_variants".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface GenerateVariantsArgs {
   text: string;

@@ -19,23 +19,13 @@
 .touch-device .icon-button{height:44px;width:44px}
 .touch-device .map-chip{min-height:44px;font-size:10px}
 .touch-device .underbar button{min-height:44px;min-width:64px}
-.touch-device .deploy-control select,.touch-device .setting-row select,.touch-device .setting-row input[type=text]{font-size:16px;min-height:44px}
-.touch-device .setting-row{min-width:0;gap:12px;flex-wrap:wrap}
-.touch-device .setting-row>span:first-child{min-width:0;flex:1}
-.touch-device .setting-row select{max-width:100%;min-width:0}
-.touch-device .setting-row input[type=range]{height:44px;max-width:100%}
-.touch-device .setting-row input[type=color]{width:44px;height:44px}
-.touch-device .slider-control{width:145px;flex-shrink:0}
-.touch-device .slider-control input{width:100px}
-.touch-device .setting-row small{font-size:10px;line-height:1.5}
-.touch-device .setting-row b{font-size:12px}
+.touch-device .deploy-control select{font-size:16px;min-height:44px}
 .touch-device .controls-list>div{gap:10px;align-items:center}
 .touch-device .controls-list kbd{white-space:normal;text-align:right;max-width:55%;font-size:8px;line-height:1.5}
 .touch-device .pause-layer{z-index:8;padding:var(--safe-top) calc(16px + var(--safe-right)) var(--safe-bottom) calc(16px + var(--safe-left))}
 .touch-device .pause-card{width:360px;max-width:100%;padding:24px 0}
 .touch-device .pause-help{font-size:10px}
 .touch-device .pause-help>span{font-size:9px;line-height:1.5}
-.touch-device .pause-settings{width:min(1100px,100%);padding:24px 0}
 .touch-device .results-app{overflow:auto;padding:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left)}
 .touch-device .results{max-width:100%;padding:35px 20px}
 .touch-device .notice{bottom:calc(65px + var(--safe-bottom))}

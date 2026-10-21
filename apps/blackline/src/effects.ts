@@ -70,4 +70,13 @@ export class Effects {
   placeTracer(...args:Parameters<typeof effect_update.placeTracer>):ReturnType<typeof effect_update.placeTracer>{return effect_update.placeTracer.apply(this,args);}
   integrate(...args:Parameters<typeof effect_update.integrate>):ReturnType<typeof effect_update.integrate>{return effect_update.integrate.apply(this,args);}
   clear(){for(const p of [...this.particles,...this.smoke,...this.shells])p.life=0;for(const t of this.tracers){t.mesh.visible=false;t.age=1;}for(const m of this.marks){m.life=0;m.mesh.visible=false;}for(const m of this.muzzles){m.life=0;m.root.visible=false;}for(const w of this.waves){w.age=1;w.mesh.visible=false;}this.flash.intensity=0;this.update(0);}
+  /**
+   * Libère les géométries et les matériaux du pool.
+   *
+   * Les particules, traçantes et impacts partagent des géométries : les
+   * libérer une par une serait à la fois lent et faux. On parcourt donc la
+   * racine une seule fois, et on laisse les doublons au `dispose` idempotent
+   * de Three.js.
+   */
+  dispose(){this.root.traverse((object)=>{const mesh=object as T.Mesh;mesh.geometry?.dispose?.();const material=mesh.material as T.Material|T.Material[]|undefined;if(Array.isArray(material))for(const entry of material)entry.dispose();else material?.dispose?.();});this.root.removeFromParent();this.particles=[];this.smoke=[];this.shells=[];this.tracers=[];this.marks=[];this.muzzles=[];this.waves=[];}
 }

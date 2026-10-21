@@ -7,7 +7,7 @@
   <!-- Quill Rich Text Editor CSS -->
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
   <style>
-    :root {
+:root {
       --bg-dark: #080c14;
       --bg-card: #0f172a;
       --border-color: #1e293b;
@@ -46,7 +46,7 @@
     header img {
       height: 32px;
     }
-    .badge {
+.badge {
       background: rgba(168, 85, 247, 0.15);
       color: #c084fc;
       border: 1px solid rgba(168, 85, 247, 0.35);
@@ -57,12 +57,12 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
-    .main-container {
+.main-container {
       display: flex;
       flex: 1;
       overflow: hidden;
     }
-    .editor-pane {
+.editor-pane {
       width: 50%;
       padding: 24px;
       display: flex;
@@ -72,14 +72,14 @@
       border-right: 1px solid var(--border-color);
       background-color: #0b111e;
     }
-    .preview-pane {
+.preview-pane {
       width: 50%;
       background-color: var(--bg-dark);
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
-    .preview-header {
+.preview-header {
       padding: 12px 24px;
       background-color: #0b111e;
       border-bottom: 1px solid var(--border-color);
@@ -88,7 +88,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    .preview-frame-container {
+.preview-frame-container {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
@@ -105,7 +105,7 @@
       background: #0f172a;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     }
-    .form-group {
+.form-group {
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -129,9 +129,9 @@
     input:focus, select:focus, textarea:focus {
       border-color: var(--primary);
     }
-    .ql-container {
+.ql-container {
       background-color: var(--bg-dark);
-      border: 1px solid var(--border-color) !important;
+      border: 1px solid var(--border-color)!important;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
       font-family: inherit;
@@ -139,29 +139,29 @@
       color: var(--text-main);
       height: 250px;
     }
-    .ql-toolbar {
+.ql-toolbar {
       background-color: #0f172a;
-      border: 1px solid var(--border-color) !important;
+      border: 1px solid var(--border-color)!important;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
     }
-    .ql-snow .ql-stroke {
-      stroke: var(--text-muted) !important;
+.ql-snow.ql-stroke {
+      stroke: var(--text-muted)!important;
     }
-    .ql-snow .ql-fill {
-      fill: var(--text-muted) !important;
+.ql-snow.ql-fill {
+      fill: var(--text-muted)!important;
     }
-    .ql-snow .ql-picker {
-      color: var(--text-muted) !important;
+.ql-snow.ql-picker {
+      color: var(--text-muted)!important;
     }
-    .row {
+.row {
       display: flex;
       gap: 16px;
     }
-    .row .form-group {
+.row.form-group {
       flex: 1;
     }
-    .actions {
+.actions {
       margin-top: 10px;
       padding: 16px;
       background-color: #0f172a;
@@ -171,11 +171,11 @@
       flex-direction: column;
       gap: 12px;
     }
-    .btn-row {
+.btn-row {
       display: flex;
       gap: 12px;
     }
-    .btn {
+.btn {
       padding: 12px 20px;
       border-radius: 8px;
       font-weight: 700;
@@ -189,29 +189,29 @@
       gap: 8px;
       flex: 1;
     }
-    .btn-primary {
+.btn-primary {
       background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
       color: white;
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
-    .btn-primary:hover {
+.btn-primary:hover {
       opacity: 0.95;
       transform: translateY(-1px);
     }
-    .btn-secondary {
+.btn-secondary {
       background-color: #1e293b;
       color: var(--text-main);
       border: 1px solid var(--border-color);
     }
-    .btn-secondary:hover {
+.btn-secondary:hover {
       background-color: #334155;
     }
-    .btn-danger {
+.btn-danger {
       background-color: #ef4444;
       color: white;
       max-width: 120px;
     }
-    .btn-danger:hover {
+.btn-danger:hover {
       background-color: #dc2626;
     }
     /* Notification styles */
@@ -257,16 +257,16 @@
       <div class="form-group">
         <label for="template">Modèle de départ</label>
         <select id="template">
-          <option value="feature">🚀 Nouveauté Produit / Mise à jour Majeure</option>
-          <option value="announcement">📣 Annonce Officielle & Communauté</option>
-          <option value="system">⚡ Info Système & Maintenance Programmée</option>
-          <option value="custom" selected>✏️ Newsletter Libre / HTML Sur-Mesure</option>
+          <option value="feature"> Nouveauté Produit / Mise à jour Majeure</option>
+          <option value="announcement"> Annonce Officielle & Communauté</option>
+          <option value="system"> Info Système & Maintenance Programmée</option>
+          <option value="custom" selected> Newsletter Libre / HTML Sur-Mesure</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="subject">Objet du mail</label>
-        <input type="text" id="subject" placeholder="Ex: Découvrez les nouveautés mAI !">
+        <input type="text" id="subject" placeholder="Ex: Découvrez les nouveautés mAI!">
       </div>
 
       <div class="row">
@@ -328,8 +328,8 @@
           <input type="email" id="testEmail" placeholder="Email pour l'envoi de test (ex: mon-mail@gmail.com)">
         </div>
         <div class="btn-row">
-          <button class="btn btn-secondary" id="btn-test">📧 Envoyer le test</button>
-          <button class="btn btn-primary" id="btn-publish">🚀 Envoi général aux abonnés</button>
+          <button class="btn btn-secondary" id="btn-test"> Envoyer le test</button>
+          <button class="btn btn-primary" id="btn-publish"> Envoi général aux abonnés</button>
         </div>
         <div style="text-align: center; margin-top: 8px;">
           <button class="btn btn-danger" id="btn-quit" style="margin: 0 auto;">↩ Quitter</button>
@@ -340,7 +340,7 @@
     <!-- Right Live Preview -->
     <div class="preview-pane">
       <div class="preview-header">
-        <span>Aperçu en temps réel (Cible : {{username}})</span>
+        <span>Aperçu en temps réel (Cible: {{username}})</span>
         <span style="font-size: 11px; color: var(--text-muted);">S'adapte automatiquement sur mobile</span>
       </div>
       <div class="preview-frame-container">
@@ -349,7 +349,7 @@
     </div>
   </div>
 
-  <div id="toast">Message envoyé avec succès !</div>
+  <div id="toast">Message envoyé avec succès!</div>
 
   <!-- Quill Library JS -->
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
@@ -360,8 +360,8 @@
         badge: "NOUVEAUTÉ PRODUIT",
         badgeColor: "#c084fc",
         badgeBg: "rgba(168, 85, 247, 0.15)",
-        subject: "🚀 Découvrez les nouvelles fonctionnalités de la plateforme mAI !",
-        content: "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI : nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.<br><br>Testez les dès aujourd'hui !",
+        subject: " Découvrez les nouvelles fonctionnalités de la plateforme mAI!",
+        content: "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI: nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.<br><br>Testez les dès aujourd'hui!",
         ctaText: "Découvrir mAI v1.5",
         ctaUrl: "https://mai.val.run"
       },
@@ -369,7 +369,7 @@
         badge: "ANNONCE OFFICIELLE",
         badgeColor: "#60a5fa",
         badgeBg: "rgba(59, 130, 246, 0.15)",
-        subject: "📣 Des nouvelles importantes concernant mAI et nos services",
+        subject: " Des nouvelles importantes concernant mAI et nos services",
         content: "Toute l'équipe mDevsLabs tenait à partager avec vous une mise à jour stratégique sur l'évolution de nos infrastructures souveraines et de nos offres.<br><br>Nous augmentons nos capacités de calcul afin de vous garantir les meilleurs temps de réponse possibles sur tous nos modèles.",
         ctaText: "Voir l'annonce",
         ctaUrl: "https://mai.val.run"
@@ -378,7 +378,7 @@
         badge: "INFOS SYSTÈME",
         badgeColor: "#fbbf24",
         badgeBg: "rgba(245, 158, 11, 0.15)",
-        subject: "⚡ Maintenance et optimisation des infrastructures mAI",
+        subject: " Maintenance et optimisation des infrastructures mAI",
         content: "Une mise à niveau de nos passerelles de routage est programmée afin de réduire la latence d'inférence et d'accroître la résilience de notre réseau. L'ensemble de vos accès reste pleinement opérationnel durant l'opération.",
         ctaText: "",
         ctaUrl: ""
@@ -436,13 +436,13 @@
       const ctaUrl = ctaUrlInput.value || "";
       const textContent = quill.root.innerHTML;
 
-      const ctaSection = ctaText && ctaUrl ? `
+      const ctaSection = ctaText && ctaUrl? `
         <div style="text-align:center; margin:36px 0 20px 0;">
           <a href="${ctaUrl}" target="_blank" style="display:inline-block; background:linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color:#ffffff; font-weight:800; font-size:15px; text-decoration:none; padding:16px 36px; border-radius:14px; box-shadow:0 10px 25px -5px rgba(124, 58, 237, 0.45); letter-spacing:0.3px;">
             ${ctaText} →
           </a>
         </div>
-      ` : "";
+      `: "";
 
       return `
         <!DOCTYPE html>
@@ -454,7 +454,7 @@
         </head>
         <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9; -webkit-font-smoothing:antialiased;">
           <div style="max-width:600px; margin:20px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-            
+
             <!-- Top Bar Badge -->
             <div style="background:#090e1a; padding:14px 24px; text-align:center; border-bottom:1px solid #1e293b;">
               <span style="display:inline-block; background:${badgeBg}; color:${badgeColor}; border:1px solid ${badgeColor}44; font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 14px; border-radius:100px;">
@@ -473,7 +473,7 @@
             <!-- Body Content -->
             <div style="padding:36px 32px; line-height:1.75; font-size:15px; color:#cbd5e1;">
               <p style="margin-top:0; margin-bottom:18px; font-size:16px; font-weight:600; color:#ffffff;">
-                Bonjour {{username}}, 👋
+                Bonjour {{username}},
               </p>
               <div style="color:#cbd5e1; font-size:15px;">
                 ${textContent}
@@ -536,7 +536,7 @@
         });
         const result = await response.json();
         if (result.success) {
-          showToast(result.message || "Action effectuée avec succès !");
+          showToast(result.message || "Action effectuée avec succès!");
         } else {
           showToast(result.error || "Une erreur est survenue.", true);
         }
@@ -547,7 +547,7 @@
 
     document.getElementById('btn-test').addEventListener('click', () => {
       const email = testEmailInput.value.trim();
-      if (!email || !email.includes('@')) {
+      if (!email ||!email.includes('@')) {
         showToast("Veuillez saisir un email de test valide.", true);
         return;
       }
@@ -559,7 +559,7 @@
     });
 
     document.getElementById('btn-publish').addEventListener('click', () => {
-      if (!confirm("⚠️ Êtes-vous sûr de vouloir envoyer cette newsletter à TOUS les abonnés ? Cette opération est irréversible.")) {
+      if (!confirm(" Êtes-vous sûr de vouloir envoyer cette newsletter à TOUS les abonnés? Cette opération est irréversible.")) {
         return;
       }
       sendRequest('/send-all', {
@@ -569,7 +569,7 @@
     });
 
     document.getElementById('btn-quit').addEventListener('click', () => {
-      if (confirm("Voulez-vous fermer le studio de newsletter ?")) {
+      if (confirm("Voulez-vous fermer le studio de newsletter?")) {
         fetch('/quit', { method: 'POST' }).then(() => {
           window.close();
           document.body.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100vh; font-size:24px; color:var(--text-muted)">Le studio de newsletter a été fermé. Vous pouvez fermer cet onglet.</div>';

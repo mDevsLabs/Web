@@ -314,6 +314,15 @@ export function SearchClient() {
    * voyait les articles d'encyclopédie en tête sans comprendre pourquoi.
    */
   const [wikiFirst, setWikiFirst] = useState(false);
+  /**
+   * Volume demandé (par source) et volume effectivement obtenu.
+   *
+   * Le serveur les envoie : l'interface ne les devine pas. Quand le moteur
+   * tronque, l'utilisateur doit le voir — une recherche qui rend 40 liens
+   * sur 200 demandés ne doit pas se faire passer pour exhaustive.
+   */
+  const [requestedCount, setRequestedCount] = useState<number | null>(null);
+  const [truncated, setTruncated] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const drawerMessagesEndRef = useRef<HTMLDivElement>(null);
@@ -691,6 +700,8 @@ export function SearchClient() {
       setWikiFirst(false);
       setSearchError(null);
       setDurationMs(null);
+      setRequestedCount(null);
+      setTruncated(false);
 
       // L'URL est mise à jour AVANT la requête : le partage et le
       // rechargement fonctionnent même si la recherche échoue, et l'URL
@@ -700,12 +711,14 @@ export function SearchClient() {
       window.history.replaceState(null, "", url.toString());
 
       try {
-        // Aucune source ni langue n'est envoyée : le serveur applique les
-        // préférences du compte (langue, sources activées, volume, filtre).
-        // Le client propose, le serveur tranche — envoyer `type: "all"`
-        // contournerait le réglage « sources activées ».
+        // Aucune source, ni langue, ni volume n'est envoyé : le serveur
+        // applique les préférences du compte (langue, sources activées,
+        // volume, filtre) et son plafond de forfait. Le client propose, le
+        // serveur tranche — envoyer `type: "all"` contournerait le réglage
+        // « sources activées », et envoyer `count` contournerait le
+        // plafond du forfait.
         const res = await fetch("/api/mai-search", {
-          body: JSON.stringify({ count: 25, query: q }),
+          body: JSON.stringify({ query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
           signal: controller.signal,
@@ -735,6 +748,12 @@ export function SearchClient() {
         setVideos(searchVideos);
         setSearchId(data.searchId || null);
         setProvider(data.provider || null);
+        // Volume demandé et volume obtenu : quand ils diffèrent, le moteur a
+        // tronqué, et l'interface doit le dire.
+        setRequestedCount(
+          typeof data.requestedCount === "number" ? data.requestedCount : null
+        );
+        setTruncated(data.truncated === true);
         // Le serveur décide de l'ordre : l'interface l'explique, elle ne le
         // recalcule pas.
         setWikiFirst(data.wikiFirst === true);
@@ -1015,14 +1034,15 @@ export function SearchClient() {
               </button>
             </div>
 
-            {/* Onglets et Tags de filtrage */}
+            {/* Onglets et Tags de filtrage. L'état actif se porte sur
+                `data-active` (voir l'utilitaire `chip` de globals.css), jamais
+                sur une classe conditionnelle : les onglets et la pastille
+                « Wikipédia + Web » partagent alors exactement le même
+                gabarit, à la lettre près. */}
             <div className="max-w-6xl mx-auto flex items-center gap-1.5 pt-3 overflow-x-auto w-full no-scrollbar">
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "web" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "web" ? "true" : undefined}
                 onClick={() => setActiveTab("web")}
                 type="button"
               >
@@ -1031,11 +1051,8 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "news" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "news" ? "true" : undefined}
                 onClick={() => setActiveTab("news")}
                 type="button"
               >
@@ -1044,11 +1061,8 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "images" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "images" ? "true" : undefined}
                 onClick={() => setActiveTab("images")}
                 type="button"
               >
@@ -1057,11 +1071,8 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "videos" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "videos" ? "true" : undefined}
                 onClick={() => setActiveTab("videos")}
                 type="button"
               >
@@ -1078,11 +1089,10 @@ export function SearchClient() {
               {wikipediaCount > 0 ? (
                 <button
                   aria-pressed={sourceFilter === "wikipedia"}
-                  className={cn(
-                    "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                    sourceFilter === "wikipedia" &&
-                      "bg-foreground text-background font-medium"
-                  )}
+                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                  data-active={
+                    sourceFilter === "wikipedia" ? "true" : undefined
+                  }
                   onClick={() =>
                     setSourceFilter((current) =>
                       current === "wikipedia" ? "all" : "wikipedia"
@@ -1100,13 +1110,37 @@ export function SearchClient() {
                 </button>
               ) : null}
 
+              {/*
+                Source interrogée. C'est une INFORMATION, pas un filtre : elle
+                dit QUELLE source a répondu, et ne filtre rien. Elle porte donc
+                le même gabarit que les onglets voisins — même taille, même
+                icône — mais reste une <span> neutre (`data-static`), sans
+                curseur cliquable ni état actif.
+              */}
               {provider && provider !== "you.com" ? (
-                <span className="chip text-[10px] text-muted-foreground shrink-0">
-                  {provider === "wikipedia"
-                    ? "Wikipédia"
-                    : provider === "mixed"
-                      ? "Wikipédia + Web"
-                      : "Mode dégradé"}
+                <span
+                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 shrink-0"
+                  data-static="true"
+                  title={
+                    provider === "wikipedia"
+                      ? "Les résultats proviennent de l'encyclopédie"
+                      : provider === "mixed"
+                        ? "Les résultats proviennent de l'encyclopédie et du Web"
+                        : "Le moteur principal a échoué : résultats de repli"
+                  }
+                >
+                  {provider === "wikipedia" ? (
+                    <BookIcon className="size-3.5" />
+                  ) : (
+                    <GlobeIcon className="size-3.5" />
+                  )}
+                  <span>
+                    {provider === "wikipedia"
+                      ? "Wikipédia"
+                      : provider === "mixed"
+                        ? "Wikipédia + Web"
+                        : "Mode dégradé"}
+                  </span>
                 </span>
               ) : null}
 
@@ -1333,11 +1367,23 @@ export function SearchClient() {
                     </p>
                   ) : null}
 
-                  <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+                  <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground px-1">
                     <span>
                       {filteredResults.length} résultat
                       {filteredResults.length > 1 ? "s" : ""} trouvé
                       {filteredResults.length > 1 ? "s" : ""}
+                      {/*
+                        Le moteur a rendu moins de liens que demandé : le
+                        dire vaut mieux que laisser croire à une recherche
+                        exhaustive. Le volume demandé vient du serveur (il
+                        applique la préférence ET le plafond du forfait).
+                      */}
+                      {truncated && requestedCount ? (
+                        <span className="text-warning">
+                          {" "}
+                          · sur {requestedCount} demandés
+                        </span>
+                      ) : null}
                     </span>
                     {/*
                       La durée n'est affichée qu'au-delà de deux secondes :

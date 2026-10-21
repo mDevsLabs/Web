@@ -2,9 +2,9 @@ import { cookies } from "next/headers";
 import Script from "next/script";
 import { Suspense } from "react";
 import { AppSidebar } from "@/components/chat/app-sidebar";
+import { ChatHost } from "@/components/chat/chat-host";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
 import { NotificationPermissionGate } from "@/components/chat/notification-permission-gate";
-import { ChatShell } from "@/components/chat/shell";
 import {
   RouteSkeleton,
   SidebarSkeleton,
@@ -16,6 +16,7 @@ import { AgentModeProvider } from "@/hooks/use-agent-mode";
 import { SharedDraftProvider } from "@/hooks/use-shared-draft";
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_SESSION_COOKIE } from "@/lib/constants";
+import { EconomyProvider } from "@/lib/resources/economy";
 
 // Coque affichée pendant la résolution de session du layout.
 function WorkspaceSkeleton() {
@@ -38,16 +39,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
         strategy="lazyOnload"
       />
-      <DataStreamProvider>
-        {/*
-          Le squelette porte la silhouette complète — barre latérale et
-          contenu — pour que la navigation n'ait pas l'air de charger deux
-          fois : d'abord la coque, puis la page.
-        */}
-        <Suspense fallback={<WorkspaceSkeleton />}>
-          <SidebarShell>{children}</SidebarShell>
-        </Suspense>
-      </DataStreamProvider>
+      {/*
+        L'économie des ressources enveloppe TOUTE l'application du groupe :
+        elle décide des animations, du son et des rafraîchissements, et son
+        signal doit atteindre tous — le chat, le Site, Vibe.      */}
+      <EconomyProvider>
+        <DataStreamProvider>
+          {/*
+            Le squelette porte la silhouette complète — barre latérale et
+            contenu — pour que la navigation n'ait pas l'air de charger deux
+            fois : d'abord la coque, puis la page.
+          */}
+          <Suspense fallback={<WorkspaceSkeleton />}>
+            <SidebarShell>{children}</SidebarShell>
+          </Suspense>
+        </DataStreamProvider>
+      </EconomyProvider>
     </>
   );
 }
@@ -95,7 +102,13 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
           <AgentModeProvider initialMode={initialAgentMode}>
             <AppSidebar hasDeadSession={hasDeadSession} user={user} />
             <SidebarInset className="flex flex-col has-[.site-root]:bg-white has-[.site-root]:[transform:none]">
-              <ChatShell />
+              {/*
+                Le noyau de chat n'est chargé que sur les routes de
+                conversation. Les autres applications du groupe — Site, Vibe,
+                Blackline, les réglages — n'en téléchargent pas le rendu
+                Markdown, l'éditeur ni le compositeur.
+              */}
+              <ChatHost />
               <div className="flex flex-1 flex-col">
                 <div className="flex-1">{children}</div>
               </div>

@@ -10,7 +10,7 @@
  * qui reste le moteur unique : le catalogue décrit et filtre, il ne duplique pas.
  * ============================================================================
  */
-import { getDb } from "../../config.ts";
+import { getDb } from "../../../../config.ts";
 import { execute as generateImage } from "./generateImage.ts";
 import { execute as searchWeb } from "./searchWeb.ts";
 import { execute as factCheck } from "./factCheck.ts";

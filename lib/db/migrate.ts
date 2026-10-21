@@ -934,6 +934,30 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  // Migration 0067 : la borne de volume passe de 5..25 à 1..200.
+  //
+  // La contrainte est remplacée, pas simplement ajoutée : sans le DROP, la
+  // borne ancienne survivrait et refuserait 100 résultats sur un compte Max.
+  // Le plafond PAR FORFAIT (Free 50, Plus 100, Pro 150, Max 200) reste une
+  // décision serveur — une contrainte de colonne ne connaît pas le compte
+  // concerné.
+  try {
+    await connection`ALTER TABLE IF EXISTS "user_preferences" DROP CONSTRAINT IF EXISTS "user_preferences_searchResultCount_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`DO $$ BEGIN
+      IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'user_preferences_searchResultCount_check'
+      ) THEN
+        ALTER TABLE "user_preferences" ADD CONSTRAINT "user_preferences_searchResultCount_check"
+          CHECK ("searchResultCount" BETWEEN 1 AND 200);
+      END IF;
+    END $$`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
   // Migration 0065 : le réglage qui décide si une alerte Wakies est produite.
   try {
     await connection`ALTER TABLE IF EXISTS "WakiesSettings" ADD COLUMN IF NOT EXISTS "replyAlertsEnabled" boolean DEFAULT true NOT NULL`;

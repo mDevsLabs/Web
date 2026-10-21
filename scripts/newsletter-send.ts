@@ -59,12 +59,12 @@ const TEMPLATES: Record<string, EmailTemplate> = {
     badgeBg: "rgba(168, 85, 247, 0.15)",
     badgeColor: "#c084fc",
     defaultContent:
-      "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI : nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.",
+      "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI: nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.",
     defaultSubject:
-      "🚀 Découvrez les nouvelles fonctionnalités de la plateforme mAI !",
+      " Découvrez les nouvelles fonctionnalités de la plateforme mAI!",
     hasCta: true,
     id: "feature",
-    name: "🚀 Nouveauté Produit / Mise à jour Majeure",
+    name: " Nouveauté Produit / Mise à jour Majeure",
   },
   "2": {
     badge: "ANNONCE OFFICIELLE",
@@ -73,10 +73,10 @@ const TEMPLATES: Record<string, EmailTemplate> = {
     defaultContent:
       "Bonjour {{username}},\n\nToute l'équipe mDevsLabs tenait à partager avec vous une mise à jour stratégique sur l'évolution de nos infrastructures souveraines et de nos offres.",
     defaultSubject:
-      "📣 Des nouvelles importantes concernant mAI et nos services",
+      " Des nouvelles importantes concernant mAI et nos services",
     hasCta: false,
     id: "announcement",
-    name: "📣 Annonce Officielle & Communauté",
+    name: " Annonce Officielle & Communauté",
   },
   "3": {
     badge: "INFOS SYSTÈME",
@@ -84,10 +84,10 @@ const TEMPLATES: Record<string, EmailTemplate> = {
     badgeColor: "#fbbf24",
     defaultContent:
       "Une mise à niveau de nos passerelles de routage est programmée afin de réduire la latence d'inférence et d'accroître la résilience de notre réseau. L'ensemble de vos accès reste opérationnel.",
-    defaultSubject: "⚡ Maintenance et optimisation des infrastructures mAI",
+    defaultSubject: " Maintenance et optimisation des infrastructures mAI",
     hasCta: false,
     id: "system",
-    name: "⚡ Info Système & Maintenance Programmée",
+    name: " Info Système & Maintenance Programmée",
   },
   "4": {
     badge: "NEWSLETTER",
@@ -98,7 +98,7 @@ const TEMPLATES: Record<string, EmailTemplate> = {
     defaultSubject: "L'actualité technologique de l'écosystème mAI",
     hasCta: false,
     id: "custom",
-    name: "✏️ Newsletter Libre / HTML Sur-Mesure",
+    name: " Newsletter Libre / HTML Sur-Mesure",
   },
 };
 
@@ -112,13 +112,13 @@ function clearConsole() {
 function printHeader() {
   console.log("");
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ╔══════════════════════════════════════════════════════════════════════╗ ${c.reset}`
   );
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ║                📧  mAI — STUDIO NEWSLETTER INTERACTIF                ║  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ║ mAI — STUDIO NEWSLETTER INTERACTIF ║ ${c.reset}`
   );
   console.log(
-    `${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`
+    `${c.bgPurple}${c.bold}${c.brightWhite} ╚══════════════════════════════════════════════════════════════════════╝ ${c.reset}`
   );
   console.log("");
 }
@@ -137,15 +137,15 @@ function printStep(step: number, title: string) {
 }
 
 function printSuccess(msg: string) {
-  console.log(`  ${c.brightGreen}✔${c.reset} ${msg}`);
+  console.log(` ${c.brightGreen}✔${c.reset} ${msg}`);
 }
 
 function printError(msg: string) {
-  console.log(`  ${c.brightRed}✖${c.reset} ${c.bold}${msg}${c.reset}`);
+  console.log(` ${c.brightRed}✖${c.reset} ${c.bold}${msg}${c.reset}`);
 }
 
 function printInfo(msg: string) {
-  console.log(`  ${c.brightYellow}ℹ${c.reset} ${c.dim}${msg}${c.reset}`);
+  console.log(` ${c.brightYellow}ℹ${c.reset} ${c.dim}${msg}${c.reset}`);
 }
 
 function printDivider() {
@@ -162,7 +162,7 @@ function printProgressBar(current: number, total: number, label: string) {
 
   const bar = `${c.brightMagenta}${"█".repeat(filled)}${c.dim}${"░".repeat(empty)}${c.reset}`;
   output.write(
-    `\r  ${bar} ${c.bold}${percentage}%${c.reset} (${current}/${total}) | ${c.dim}${label}${c.reset}   `
+    `\r ${bar} ${c.bold}${percentage}%${c.reset} (${current}/${total}) | ${c.dim}${label}${c.reset} `
   );
   if (current === total) {
     console.log("");
@@ -269,7 +269,7 @@ export async function runVisualEditorServer() {
         res.end(fs.readFileSync(htmlPath, "utf-8"));
       } else {
         res.end(
-          "<h3>Erreur : newsletter_editor.html introuvable dans le dossier scripts.</h3>"
+          "<h3>Erreur: newsletter_editor.html introuvable dans le dossier scripts.</h3>"
         );
       }
     } else if (req.method === "POST" && req.url === "/send-test") {
@@ -288,7 +288,7 @@ export async function runVisualEditorServer() {
             res.writeHead(200, { "Content-Type": "application/json" });
             res.end(
               JSON.stringify({
-                message: `Mail de test envoyé à ${email} !`,
+                message: `Mail de test envoyé à ${email}!`,
                 success: true,
               })
             );
@@ -314,12 +314,12 @@ export async function runVisualEditorServer() {
         try {
           const { subject, html } = JSON.parse(body);
           console.log(
-            `\n[STUDIO] Début de la newsletter globale pour le sujet : "${subject}"`
+            `\n[STUDIO] Début de la newsletter globale pour le sujet: "${subject}"`
           );
 
           const targetUsers = (await sql`
-            SELECT email, username 
-            FROM users 
+            SELECT email, username
+            FROM users
             WHERE newsletter = TRUE
           `) as unknown as { email: string; username: string }[];
 
@@ -342,8 +342,8 @@ export async function runVisualEditorServer() {
 
           for (const u of targetUsers) {
             const personalizedHtml = html
-              .replace(/{{username}}/g, u.username)
-              .replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
+.replace(/{{username}}/g, u.username)
+.replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
             const success = await sendEmail({
               html: personalizedHtml,
               subject,
@@ -358,12 +358,12 @@ export async function runVisualEditorServer() {
           }
 
           console.log(
-            `[STUDIO] Newsletter envoyée. Succès : ${successCount}, Échecs : ${errorCount}`
+            `[STUDIO] Newsletter envoyée. Succès: ${successCount}, Échecs: ${errorCount}`
           );
           res.writeHead(200, { "Content-Type": "application/json" });
           res.end(
             JSON.stringify({
-              message: `Newsletter envoyée avec succès à ${successCount} abonnés ! (${errorCount} échec(s))`,
+              message: `Newsletter envoyée avec succès à ${successCount} abonnés! (${errorCount} échec(s))`,
               success: true,
             })
           );
@@ -427,20 +427,20 @@ function buildNewsletterHtml(
   }
 
   const formattedContent = textContent
-    .replace(/{{username}}/g, username)
-    .replace(/\n\n/g, "</p><p style='margin-bottom:18px;'>")
-    .replace(/\n/g, "<br>");
+.replace(/{{username}}/g, username)
+.replace(/\n\n/g, "</p><p style='margin-bottom:18px;'>")
+.replace(/\n/g, "<br>");
 
   const ctaSection =
     ctaText && ctaUrl
-      ? `
+? `
     <div style="text-align:center; margin:36px 0 20px 0;">
       <a href="${ctaUrl}" target="_blank" style="display:inline-block; background:linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color:#ffffff; font-weight:800; font-size:15px; text-decoration:none; padding:16px 36px; border-radius:14px; box-shadow:0 10px 25px -5px rgba(124, 58, 237, 0.45); letter-spacing:0.3px;">
         ${ctaText} →
       </a>
     </div>
   `
-      : "";
+: "";
 
   return `
     <!DOCTYPE html>
@@ -452,7 +452,7 @@ function buildNewsletterHtml(
     </head>
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9; -webkit-font-smoothing:antialiased;">
       <div style="max-width:600px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-        
+
         <!-- Top Bar Badge -->
         <div style="background:#090e1a; padding:14px 24px; text-align:center; border-bottom:1px solid #1e293b;">
           <span style="display:inline-block; background:${templateInfo.badgeBg}; color:${templateInfo.badgeColor}; border:1px solid ${templateInfo.badgeColor}44; font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 14px; border-radius:100px;">
@@ -471,7 +471,7 @@ function buildNewsletterHtml(
         <!-- Body Content -->
         <div style="padding:36px 32px; line-height:1.75; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0; margin-bottom:18px; font-size:16px; font-weight:600; color:#ffffff;">
-            Bonjour ${username}, 👋
+            Bonjour ${username},
           </p>
           <div style="color:#cbd5e1; font-size:15px;">
             <p style="margin-bottom:18px;">${formattedContent}</p>
@@ -511,9 +511,9 @@ function openPreviewInBrowser(htmlContent: string) {
 
   exec(command, (err) => {
     if (err) {
-      printError(`Impossible d'ouvrir le navigateur : ${err.message}`);
+      printError(`Impossible d'ouvrir le navigateur: ${err.message}`);
     } else {
-      printSuccess(`Aperçu ouvert dans le navigateur ! (${tempPath})`);
+      printSuccess(`Aperçu ouvert dans le navigateur! (${tempPath})`);
     }
   });
 }
@@ -530,17 +530,17 @@ export async function runNewsletterStudio() {
   try {
     printStep(1, "Menu de démarrage du Studio");
     console.log(
-      `  ${c.cyan}[1]${c.reset} ${c.bold}Lancer l'Éditeur Visuel (Navigateur Web)${c.reset} ${c.brightGreen}[Recommandé]${c.reset}`
+      ` ${c.cyan}[1]${c.reset} ${c.bold}Lancer l'Éditeur Visuel (Navigateur Web)${c.reset} ${c.brightGreen}[Recommandé]${c.reset}`
     );
     console.log(
-      `  ${c.cyan}[2]${c.reset} ${c.bold}Continuer dans le Terminal (CLI)${c.reset}`
+      ` ${c.cyan}[2]${c.reset} ${c.bold}Continuer dans le Terminal (CLI)${c.reset}`
     );
     console.log("");
 
     const studioChoice =
       (
         await rl.question(
-          `  ${c.brightYellow}➔ Choix [1-2] (défaut: 1) : ${c.reset}`
+          ` ${c.brightYellow}➔ Choix [1-2] (défaut: 1): ${c.reset}`
         )
       ).trim() || "1";
 
@@ -553,20 +553,20 @@ export async function runNewsletterStudio() {
     // ──────── ÉTAPE 1: Choix de la cible ────────
     printStep(1, "Sélection des destinataires");
     console.log(
-      `  ${c.cyan}1.${c.reset} ${c.bold}Tous les abonnés Newsletter${c.reset} ${c.dim}(newsletter = TRUE dans la DB)${c.reset}`
+      ` ${c.cyan}1.${c.reset} ${c.bold}Tous les abonnés Newsletter${c.reset} ${c.dim}(newsletter = TRUE dans la DB)${c.reset}`
     );
     console.log(
-      `  ${c.cyan}2.${c.reset} ${c.bold}Email de test uniquement${c.reset} ${c.dim}(Pour tester la réception)${c.reset}`
+      ` ${c.cyan}2.${c.reset} ${c.bold}Email de test uniquement${c.reset} ${c.dim}(Pour tester la réception)${c.reset}`
     );
     console.log(
-      `  ${c.cyan}3.${c.reset} ${c.bold}Utilisateurs par Forfait${c.reset} ${c.dim}(Free, Plus, Pro, Max)${c.reset}`
+      ` ${c.cyan}3.${c.reset} ${c.bold}Utilisateurs par Forfait${c.reset} ${c.dim}(Free, Plus, Pro, Max)${c.reset}`
     );
     console.log("");
 
     const targetChoice =
       (
         await rl.question(
-          `  ${c.brightYellow}➔ Choix [1-3] (défaut: 1) : ${c.reset}`
+          ` ${c.brightYellow}➔ Choix [1-3] (défaut: 1): ${c.reset}`
         )
       ).trim() || "1";
 
@@ -575,7 +575,7 @@ export async function runNewsletterStudio() {
     if (targetChoice === "2") {
       const testEmail = (
         await rl.question(
-          `  ${c.brightYellow}➔ Saisissez l'adresse e-mail de test : ${c.reset}`
+          ` ${c.brightYellow}➔ Saisissez l'adresse e-mail de test: ${c.reset}`
         )
       ).trim();
       if (!testEmail?.includes("@")) {
@@ -586,20 +586,20 @@ export async function runNewsletterStudio() {
     } else if (targetChoice === "3") {
       const tier = (
         await rl.question(
-          `  ${c.brightYellow}➔ Saisissez le forfait visé (Free/Plus/Pro/Max) : ${c.reset}`
+          ` ${c.brightYellow}➔ Saisissez le forfait visé (Free/Plus/Pro/Max): ${c.reset}`
         )
       ).trim();
       printInfo(`Recherche des utilisateurs avec le forfait ${tier}...`);
       targetUsers = (await sql`
-        SELECT u.email, u.username 
-        FROM users u 
+        SELECT u.email, u.username
+        FROM users u
         WHERE LOWER(u.tier) = LOWER(${tier}) AND u.newsletter = TRUE
       `) as unknown as { email: string; username: string }[];
     } else {
       printInfo("Récupération de tous les abonnés...");
       targetUsers = (await sql`
-        SELECT email, username 
-        FROM users 
+        SELECT email, username
+        FROM users
         WHERE newsletter = TRUE
       `) as unknown as { email: string; username: string }[];
     }
@@ -609,26 +609,26 @@ export async function runNewsletterStudio() {
       return;
     }
 
-    printSuccess(`${targetUsers.length} destinataire(s) sélectionné(s) !`);
+    printSuccess(`${targetUsers.length} destinataire(s) sélectionné(s)!`);
     console.log("");
     printDivider();
 
     // ──────── ÉTAPE 2: Choix du Template ────────
     printStep(2, "Choix du modèle de mail (Template)");
     Object.entries(TEMPLATES).forEach(([key, t]) => {
-      console.log(`  ${c.cyan}${key}.${c.reset} ${c.bold}${t.name}${c.reset}`);
+      console.log(` ${c.cyan}${key}.${c.reset} ${c.bold}${t.name}${c.reset}`);
     });
     console.log("");
 
     const templateChoice =
       (
         await rl.question(
-          `  ${c.brightYellow}➔ Sélectionner un modèle [1-4] (défaut: 1) : ${c.reset}`
+          ` ${c.brightYellow}➔ Sélectionner un modèle [1-4] (défaut: 1): ${c.reset}`
         )
       ).trim() || "1";
     const selectedTemplate = TEMPLATES[templateChoice] || TEMPLATES["1"];
 
-    printSuccess(`Modèle sélectionné : ${selectedTemplate.name}`);
+    printSuccess(`Modèle sélectionné: ${selectedTemplate.name}`);
     console.log("");
     printDivider();
 
@@ -636,10 +636,10 @@ export async function runNewsletterStudio() {
     printStep(3, "Personnalisation du contenu");
 
     console.log(
-      `  ${c.dim}Objet par défaut : "${selectedTemplate.defaultSubject}"${c.reset}`
+      ` ${c.dim}Objet par défaut: "${selectedTemplate.defaultSubject}"${c.reset}`
     );
     const inputSubject = await rl.question(
-      `  ${c.brightYellow}➔ Objet du mail (Entrée pour garder par défaut) : ${c.reset}`
+      ` ${c.brightYellow}➔ Objet du mail (Entrée pour garder par défaut): ${c.reset}`
     );
     const subject = inputSubject.trim() || selectedTemplate.defaultSubject;
 
@@ -658,7 +658,7 @@ export async function runNewsletterStudio() {
       let lineNum = 1;
       while (true) {
         const line = await rl.question(
-          `  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
+          ` ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
         );
         if (line.trim() === "FIN") {
           break;
@@ -674,22 +674,22 @@ export async function runNewsletterStudio() {
       }
     } else {
       console.log(
-        `  ${c.dim}Texte par défaut :${c.reset}\n  ${c.italic}"${selectedTemplate.defaultContent.replace(/\n/g, "\n  ")}"${c.reset}\n`
+        ` ${c.dim}Texte par défaut:${c.reset}\n ${c.italic}"${selectedTemplate.defaultContent.replace(/\n/g, "\n ")}"${c.reset}\n`
       );
       const changeText = await rl.question(
-        `  ${c.brightYellow}➔ Saisir un texte personnalisé ? (o/N) : ${c.reset}`
+        ` ${c.brightYellow}➔ Saisir un texte personnalisé? (o/N): ${c.reset}`
       );
 
       if (
         changeText.toLowerCase() === "o" ||
         changeText.toLowerCase() === "y"
       ) {
-        printInfo("Tapez 'FIN' sur une ligne seule pour valider :");
+        printInfo("Tapez 'FIN' sur une ligne seule pour valider:");
         const lines: string[] = [];
         let lineNum = 1;
         while (true) {
           const line = await rl.question(
-            `  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
+            ` ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
           );
           if (line.trim() === "FIN") {
             break;
@@ -704,26 +704,26 @@ export async function runNewsletterStudio() {
       if (selectedTemplate.hasCta) {
         console.log("");
         const wantCta = await rl.question(
-          `  ${c.brightYellow}➔ Ajouter un bouton d'action (CTA) ? (O/n) : ${c.reset}`
+          ` ${c.brightYellow}➔ Ajouter un bouton d'action (CTA)? (O/n): ${c.reset}`
         );
-        if (wantCta.toLowerCase() !== "n") {
+        if (wantCta.toLowerCase()!== "n") {
           ctaText =
             (
               await rl.question(
-                `  ${c.cyan}→${c.reset} Texte du bouton (ex: Découvrir mAI 1.5) : `
+                ` ${c.cyan}→${c.reset} Texte du bouton (ex: Découvrir mAI 1.5): `
               )
             ).trim() || "Découvrir mAI";
           ctaUrl =
             (
               await rl.question(
-                `  ${c.cyan}→${c.reset} Lien URL du bouton (ex: https://mai.val.run) : `
+                ` ${c.cyan}→${c.reset} Lien URL du bouton (ex: https://mai.val.run): `
               )
             ).trim() || "https://mai.val.run";
         }
       }
     }
 
-    printSuccess("Contenu prêt !");
+    printSuccess("Contenu prêt!");
     console.log("");
     printDivider();
 
@@ -736,36 +736,36 @@ export async function runNewsletterStudio() {
       printStep(4, "Récapitulatif & Actions");
 
       console.log(
-        `  ${c.bold}📌 Objet :${c.reset} ${c.brightCyan}${subject}${c.reset}`
+        ` ${c.bold} Objet:${c.reset} ${c.brightCyan}${subject}${c.reset}`
       );
       console.log(
-        `  ${c.bold}👥 Destinataires :${c.reset} ${c.brightGreen}${targetUsers.length} personne(s)${c.reset}`
+        ` ${c.bold} Destinataires:${c.reset} ${c.brightGreen}${targetUsers.length} personne(s)${c.reset}`
       );
-      console.log(`  ${c.bold}🎨 Modèle :${c.reset} ${selectedTemplate.name}`);
+      console.log(` ${c.bold} Modèle:${c.reset} ${selectedTemplate.name}`);
       if (ctaText && ctaUrl) {
         console.log(
-          `  ${c.bold}🔗 Bouton CTA :${c.reset} "${ctaText}" → ${ctaUrl}`
+          ` ${c.bold} Bouton CTA:${c.reset} "${ctaText}" → ${ctaUrl}`
         );
       }
       console.log("");
       printDivider();
       console.log("");
 
-      console.log(`  ${c.bold}${c.brightWhite}MENU D'ACTION :${c.reset}`);
+      console.log(` ${c.bold}${c.brightWhite}MENU D'ACTION:${c.reset}`);
       console.log(
-        `  ${c.brightGreen}[1] 🚀 Lancer l'envoi global de la newsletter${c.reset}`
+        ` ${c.brightGreen}[1] Lancer l'envoi global de la newsletter${c.reset}`
       );
       console.log(
-        `  ${c.brightCyan}[2] 📧 S'envoyer un mail de test rapide${c.reset}`
+        ` ${c.brightCyan}[2] S'envoyer un mail de test rapide${c.reset}`
       );
       console.log(
-        `  ${c.brightYellow}[3] 🌐 Ouvrir un aperçu HTML dans le navigateur${c.reset}`
+        ` ${c.brightYellow}[3] Ouvrir un aperçu HTML dans le navigateur${c.reset}`
       );
-      console.log(`  ${c.white}[4] ❌ Annuler et quitter${c.reset}`);
+      console.log(` ${c.white}[4] Annuler et quitter${c.reset}`);
       console.log("");
 
       const action = (
-        await rl.question(`  ${c.brightYellow}➔ Votre choix [1-4] : ${c.reset}`)
+        await rl.question(` ${c.brightYellow}➔ Votre choix [1-4]: ${c.reset}`)
       ).trim();
 
       if (action === "3") {
@@ -781,13 +781,13 @@ export async function runNewsletterStudio() {
         );
         openPreviewInBrowser(html);
         await rl.question(
-          `\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
+          `\n ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
         );
       } else if (action === "2") {
         const testTarget =
           (
             await rl.question(
-              `\n  ${c.brightYellow}➔ Saisissez l'adresse e-mail pour le test (défaut: ${defaultEmail}) : ${c.reset}`
+              `\n ${c.brightYellow}➔ Saisissez l'adresse e-mail pour le test (défaut: ${defaultEmail}): ${c.reset}`
             )
           ).trim() || defaultEmail;
         printInfo(`Envoi du mail de test à ${testTarget}...`);
@@ -807,17 +807,17 @@ export async function runNewsletterStudio() {
           to: testTarget,
         });
         if (success) {
-          printSuccess(`E-mail de test envoyé avec succès à ${testTarget} !`);
+          printSuccess(`E-mail de test envoyé avec succès à ${testTarget}!`);
         } else {
           printError(`Échec de l'envoi de test à ${testTarget}.`);
         }
         await rl.question(
-          `\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
+          `\n ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
         );
       } else if (action === "1") {
         const confirm = (
           await rl.question(
-            `\n  ${c.bold}${c.brightRed}⚠️  Êtes-vous SÛR de vouloir envoyer à ${targetUsers.length} destinataire(s) ? (O/n) : ${c.reset}`
+            `\n ${c.bold}${c.brightRed} Êtes-vous SÛR de vouloir envoyer à ${targetUsers.length} destinataire(s)? (O/n): ${c.reset}`
           )
         ).trim();
         if (
@@ -873,16 +873,16 @@ export async function runNewsletterStudio() {
     console.log("");
     printDivider();
     console.log(
-      `  ${c.bold}${c.brightWhite}📊 RÉSULTAT DU DÉPLOIEMENT${c.reset}`
+      ` ${c.bold}${c.brightWhite} RÉSULTAT DU DÉPLOIEMENT${c.reset}`
     );
     printDivider();
     console.log(
-      `  ${c.brightGreen}✔ ${successCount} mail(s) envoyé(s) avec succès${c.reset}`
+      ` ${c.brightGreen}✔ ${successCount} mail(s) envoyé(s) avec succès${c.reset}`
     );
     if (errorCount > 0) {
-      console.log(`  ${c.brightRed}✖ ${errorCount} échec(s)${c.reset}`);
+      console.log(` ${c.brightRed}✖ ${errorCount} échec(s)${c.reset}`);
     }
-    console.log(`  ${c.dim}⏱ Temps total : ${duration}s${c.reset}`);
+    console.log(` ${c.dim}⏱ Temps total: ${duration}s${c.reset}`);
     printDivider();
     console.log("");
   } finally {
@@ -896,7 +896,7 @@ if (
   process.argv[1]?.endsWith("newsletter-send.ts")
 ) {
   runNewsletterStudio().catch((err) => {
-    printError(`Erreur fatale : ${err.message || err}`);
+    printError(`Erreur fatale: ${err.message || err}`);
     process.exit(1);
   });
 }

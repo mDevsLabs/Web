@@ -16,17 +16,17 @@ import { executeCreativeTool } from "./vibe-mai-creative.ts";
 import { executeWebSearch } from "./web.ts";
 
 /**
- * Outils "sensibles" : ils modifient le compte ou le contenu public de
+ * Outils "sensibles": ils modifient le compte ou le contenu public de
  * l'utilisateur. Ils exigent une approbation explicite sauf si le réglage
  * `mai_auto_approve_tools` a été activé dans les paramètres.
  *
- * ⚠️ Cette liste est le **seul** gardien de l'approbation : le drapeau
+ * Cette liste est le **seul** gardien de l'approbation: le drapeau
  * `sensitive` du catalogue ne sert qu'à l'interface (badge). Un outil marqué
  * sensible dans `MAI_TOOLS_CATALOG` mais absent d'ici s'exécuterait sans
  * demande d'accord.
  *
  * Les outils d'écriture (`adapt_post`, `generate_variants`, `generate_caption`)
- * n'y figurent pas : ils produisent du texte que l'utilisateur relit et
+ * n'y figurent pas: ils produisent du texte que l'utilisateur relit et
  * publie lui-même. La publication reste un acte distinct et sensible
  * (`create_post`).
  */
@@ -44,12 +44,12 @@ export const SENSITIVE_TOOLS = [
 /** Clamp de période partagé par les outils d'analyse (défaut 30 jours). */
 function parsePeriodDays(period: unknown): number {
   return period === "7d"
-    ? 7
-    : period === "90d"
-      ? 90
-      : period === "12m"
-        ? 365
-        : 30;
+? 7
+: period === "90d"
+? 90
+: period === "12m"
+? 365
+: 30;
 }
 
 const WEEKDAY_NAMES = [
@@ -98,10 +98,10 @@ export class MAIAgentFleet {
   }): Promise<string> {
     const { text, tone = "executive" } = opts;
     const tonePrefixes: Record<string, string> = {
-      executive: "⚡ ",
+      executive: " ",
       minimal: "✦ ",
-      poetic: "✨ ",
-      viral: "🔥 ",
+      poetic: " ",
+      viral: " ",
     };
 
     const prefix = tonePrefixes[tone] || "";
@@ -116,9 +116,9 @@ export class MAIAgentFleet {
     }
     const count = comments.length;
     const authors = [...new Set(comments.map((c) => c.author))]
-      .slice(0, 3)
-      .join(", ");
-    return `Synthèse (${count} réponses) : Échanges autour des points partagés par @${authors}.`;
+.slice(0, 3)
+.join(", ");
+    return `Synthèse (${count} réponses): Échanges autour des points partagés par @${authors}.`;
   }
 
   /**
@@ -128,7 +128,7 @@ export class MAIAgentFleet {
     if ((globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY")) {
       return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
     }
-    if (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) {
+    if (typeof process!== "undefined" && process.env?.OPENROUTER_API_KEY) {
       return process.env.OPENROUTER_API_KEY;
     }
     try {
@@ -251,7 +251,7 @@ export class MAIAgentFleet {
           const safety = MAIAgentFleet.assessContentSafety(content);
           if (!safety.isSafe) {
             throw new Error(
-              `Publication refusée par mAI : ${safety.flagReason}`
+              `Publication refusée par mAI: ${safety.flagReason}`
             );
           }
 
@@ -267,14 +267,14 @@ export class MAIAgentFleet {
             const ext = cleanUrl.split(".").pop()?.toLowerCase();
             const mediaType =
               ext === "png"
-                ? "image/png"
-                : ext === "webp"
-                  ? "image/webp"
-                  : ext === "gif"
-                    ? "image/gif"
-                    : ext === "mp4"
-                      ? "video/mp4"
-                      : "image/jpeg";
+? "image/png"
+: ext === "webp"
+? "image/webp"
+: ext === "gif"
+? "image/gif"
+: ext === "mp4"
+? "video/mp4"
+: "image/jpeg";
             await sql`
               INSERT INTO media_assets (owner_id, post_id, url, media_type, file_size_bytes, alt_text)
               VALUES (${uid}, ${newPost.id}::uuid, ${media_url}, ${mediaType}, 0, '')
@@ -283,7 +283,7 @@ export class MAIAgentFleet {
 
           await sql`UPDATE profiles SET posts_count = posts_count + 1 WHERE user_id = ${uid}`;
           resultData = {
-            message: "Post publié avec succès sur Vibe !",
+            message: "Post publié avec succès sur Vibe!",
             post: newPost,
           };
           break;
@@ -362,7 +362,7 @@ export class MAIAgentFleet {
           resultData = {
             aspect_ratio,
             imageUrl: chosen,
-            message: "Image générée avec succès via mAI !",
+            message: "Image générée avec succès via mAI!",
             prompt,
             quotaRemaining: Math.max(0, maxImages - (currentCount + 1)),
           };
@@ -415,9 +415,9 @@ export class MAIAgentFleet {
             throw new Error(search.error || "Aucun résultat de recherche web.");
           }
           const snippet = search.results
-            .slice(0, 3)
-            .map((r) => `• **${r.title}** — ${r.snippet}\n  ${r.url}`)
-            .join("\n");
+.slice(0, 3)
+.map((r) => `• **${r.title}** — ${r.snippet}\n ${r.url}`)
+.join("\n");
           resultData = {
             provider: search.provider,
             query,
@@ -433,12 +433,12 @@ export class MAIAgentFleet {
             String(statement || ""),
             5
           ).catch(() => null);
-          const sources = search?.success ? search.results.slice(0, 3) : [];
+          const sources = search?.success? search.results.slice(0, 3): [];
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français : verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
-            `Affirmation : « ${statement} »\n\nSources trouvées :\n${
-              sources.map((s) => `- ${s.title} : ${s.snippet}`).join("\n") ||
+            "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français: verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
+            `Affirmation: « ${statement}»\n\nSources trouvées:\n${
+              sources.map((s) => `- ${s.title}: ${s.snippet}`).join("\n") ||
               "(aucune)"
             }`
           );
@@ -446,16 +446,16 @@ export class MAIAgentFleet {
             analysis:
               llm ||
               (sources.length > 0
-                ? "Des sources web ont été trouvées, croisez-les pour vous forger un avis."
-                : "Aucune source fiable trouvée sur le web pour cette affirmation."),
-            confidence: sources.length > 0 ? "Moyen" : "Faible",
+? "Des sources web ont été trouvées, croisez-les pour vous forger un avis."
+: "Aucune source fiable trouvée sur le web pour cette affirmation."),
+            confidence: sources.length > 0? "Moyen": "Faible",
             sources,
             statement,
             verdict: llm
-              ? "Analyse mAI"
-              : sources.length > 0
-                ? "À vérifier"
-                : "Sources insuffisantes",
+? "Analyse mAI"
+: sources.length > 0
+? "À vérifier"
+: "Sources insuffisantes",
           };
           break;
         }
@@ -471,7 +471,7 @@ export class MAIAgentFleet {
           };
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            `Reformule le texte suivant en français dans un style « ${style} », percutant et adapté à un réseau social. Réponds UNIQUEMENT par le texte reformulé, sans commentaire.`,
+            `Reformule le texte suivant en français dans un style « ${style}», percutant et adapté à un réseau social. Réponds UNIQUEMENT par le texte reformulé, sans commentaire.`,
             String(text || "")
           );
           const rewritten =
@@ -488,12 +488,12 @@ export class MAIAgentFleet {
           const { topic, style = "viral" } = args;
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic} », dans un style « ${style} ». Format : une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
+            `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic}», dans un style « ${style}». Format: une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
             String(topic || "sujets d'actualité")
           );
           if (!llm) {
             throw new Error(
-              "Génération indisponible : aucune clé IA configurée sur le serveur."
+              "Génération indisponible: aucune clé IA configurée sur le serveur."
             );
           }
           resultData = { style, suggestions: llm, topic };
@@ -509,7 +509,7 @@ export class MAIAgentFleet {
           );
           if (!llm) {
             throw new Error(
-              "Traduction indisponible : aucune clé IA configurée sur le serveur."
+              "Traduction indisponible: aucune clé IA configurée sur le serveur."
             );
           }
           resultData = { targetLanguage: target_language, translated: llm };
@@ -530,12 +530,12 @@ export class MAIAgentFleet {
             }
           }
           const trendingTopics = Object.entries(tags)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 8)
-            .map(([name, postsCount]) => ({
+.sort((a, b) => b[1] - a[1])
+.slice(0, 8)
+.map(([name, postsCount]) => ({
               name: `#${name}`,
               postsCount,
-              sentiment: postsCount >= 5 ? "Très actif 🔥" : "Actif 📈",
+              sentiment: postsCount >= 5? "Très actif ": "Actif ",
             }));
           resultData = { trendingTopics };
           break;
@@ -543,13 +543,13 @@ export class MAIAgentFleet {
 
         case "update_profile": {
           const { display_name, bio } = args;
-          if (!display_name && !bio) {
+          if (!display_name &&!bio) {
             throw new Error(
               "Fournissez au moins un champ (display_name ou bio)."
             );
           }
           if (
-            display_name !== undefined &&
+            display_name!== undefined &&
             (String(display_name).length < 2 ||
               String(display_name).length > 40)
           ) {
@@ -557,13 +557,13 @@ export class MAIAgentFleet {
               "Le nom affiché doit contenir entre 2 et 40 caractères."
             );
           }
-          if (bio !== undefined && String(bio).length > 200) {
+          if (bio!== undefined && String(bio).length > 200) {
             throw new Error("La bio ne doit pas dépasser 200 caractères.");
           }
           const updated = await sql`
             UPDATE profiles SET
-              display_name = COALESCE(${display_name ?? null}, display_name),
-              bio = COALESCE(${bio ?? null}, bio),
+              display_name = COALESCE(${display_name?? null}, display_name),
+              bio = COALESCE(${bio?? null}, bio),
               updated_at = NOW()
             WHERE user_id = ${uid}
             RETURNING display_name, bio
@@ -579,9 +579,9 @@ export class MAIAgentFleet {
         case "follow_user": {
           const { username, follow = true } = args;
           const cleanUsername = String(username || "")
-            .replace(/^@/, "")
-            .trim()
-            .toLowerCase();
+.replace(/^@/, "")
+.trim()
+.toLowerCase();
           if (!cleanUsername) throw new Error("username est requis.");
           const target =
             await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
@@ -611,7 +611,7 @@ export class MAIAgentFleet {
             ]);
             resultData = {
               followed: true,
-              message: `Vous suivez désormais @${cleanUsername} !`,
+              message: `Vous suivez désormais @${cleanUsername}!`,
               username: cleanUsername,
             };
           } else {
@@ -647,8 +647,8 @@ export class MAIAgentFleet {
         case "like_post": {
           const { post_id, like = true } = args;
           if (
-            !post_id ||
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!post_id ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               String(post_id)
             )
           ) {
@@ -690,7 +690,7 @@ export class MAIAgentFleet {
             await sql`UPDATE posts SET likes_count = COALESCE(likes_count,0) + 1 WHERE id = ${String(
               post_id
             )}::uuid`;
-            if (authorId !== uid) {
+            if (authorId!== uid) {
               try {
                 await sql`
                   INSERT INTO notifications (recipient_id, actor_id, type, post_id, message)
@@ -707,7 +707,7 @@ export class MAIAgentFleet {
             resultData = {
               liked: true,
               likes_count: Number(c[0]?.likes_count || 0),
-              message: "Publication likée avec succès !",
+              message: "Publication likée avec succès!",
               post_id,
             };
           } else {
@@ -740,9 +740,9 @@ export class MAIAgentFleet {
         case "send_message": {
           const { username, content } = args;
           const cleanUsername = String(username || "")
-            .replace(/^@/, "")
-            .trim()
-            .toLowerCase();
+.replace(/^@/, "")
+.trim()
+.toLowerCase();
           const text = String(content || "").trim();
           if (!cleanUsername) {
             throw new Error("username destinataire est requis.");
@@ -753,7 +753,7 @@ export class MAIAgentFleet {
           }
           const safety = MAIAgentFleet.assessContentSafety(text);
           if (!safety.isSafe) {
-            throw new Error(`Message refusé par mAI : ${safety.flagReason}`);
+            throw new Error(`Message refusé par mAI: ${safety.flagReason}`);
           }
           const target =
             await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
@@ -766,8 +766,8 @@ export class MAIAgentFleet {
               "Vous ne pouvez pas vous envoyer un message à vous-même."
             );
           }
-          const p1 = uid < recId ? uid : recId;
-          const p2 = uid < recId ? recId : uid;
+          const p1 = uid < recId? uid: recId;
+          const p2 = uid < recId? recId: uid;
           const convRows = await sql`
             INSERT INTO dm_conversations (participant_one_id, participant_two_id, last_message_preview, last_message_at)
             VALUES (${p1}, ${p2}, ${text.slice(0, 120)}, NOW())
@@ -789,7 +789,7 @@ export class MAIAgentFleet {
           } catch {}
           resultData = {
             conversation_id: conversationId,
-            message: `Message envoyé à @${cleanUsername} !`,
+            message: `Message envoyé à @${cleanUsername}!`,
             message_id: String(msg[0]?.id || ""),
             preview: text.slice(0, 80),
             sent: true,
@@ -822,14 +822,14 @@ export class MAIAgentFleet {
           ];
           const patch: Record<string, any> = {};
           for (const k of ALLOWED) {
-            if (args[k] !== undefined) patch[k] = args[k];
+            if (args[k]!== undefined) patch[k] = args[k];
           }
           if (Object.keys(patch).length === 0) {
             throw new Error("Aucun paramètre autorisé fourni.");
           }
           if (
             patch.feed_default_mode &&
-            !["for_you", "following", "trending"].includes(
+!["for_you", "following", "trending"].includes(
               String(patch.feed_default_mode)
             )
           ) {
@@ -839,13 +839,13 @@ export class MAIAgentFleet {
           }
           if (
             patch.theme_preference &&
-            !["light", "dark", "auto"].includes(String(patch.theme_preference))
+!["light", "dark", "auto"].includes(String(patch.theme_preference))
           ) {
             throw new Error("theme_preference invalide (light | dark | auto).");
           }
           if (
             patch.blocked_keywords &&
-            !Array.isArray(patch.blocked_keywords)
+!Array.isArray(patch.blocked_keywords)
           ) {
             throw new Error("blocked_keywords doit être un tableau de mots.");
           }
@@ -859,15 +859,15 @@ export class MAIAgentFleet {
             () => {}
           );
           const cols = Object.keys(patch);
-          // Upsert générique : INSERT puis UPDATE ciblé colonne par colonne
+          // Upsert générique: INSERT puis UPDATE ciblé colonne par colonne
           await sql`
             INSERT INTO user_settings (user_id) VALUES (${uid})
             ON CONFLICT (user_id) DO NOTHING
           `.catch(() => {});
           for (const col of cols) {
             const val = patch[col];
-            const jsonVal = Array.isArray(val) ? val : null;
-            if (jsonVal !== null) {
+            const jsonVal = Array.isArray(val)? val: null;
+            if (jsonVal!== null) {
               await sql`UPDATE user_settings SET blocked_keywords = ${jsonVal} WHERE user_id = ${uid}`;
             } else if (typeof val === "boolean") {
               if (col === "hide_reposts") {
@@ -926,8 +926,8 @@ export class MAIAgentFleet {
         case "bookmark_post": {
           const { post_id, bookmark = true } = args;
           if (
-            !post_id ||
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!post_id ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               String(post_id)
             )
           ) {
@@ -947,7 +947,7 @@ export class MAIAgentFleet {
             )}::uuid`;
             resultData = {
               bookmarked: true,
-              message: "Post ajouté à vos favoris !",
+              message: "Post ajouté à vos favoris!",
               post_id,
             };
           } else {
@@ -969,8 +969,8 @@ export class MAIAgentFleet {
         case "repost_post": {
           const { post_id, repost = true } = args;
           if (
-            !post_id ||
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!post_id ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               String(post_id)
             )
           ) {
@@ -1005,7 +1005,7 @@ export class MAIAgentFleet {
               post_id
             )}::uuid`;
             resultData = {
-              message: "Publication repostée avec succès !",
+              message: "Publication repostée avec succès!",
               post_id,
               reposted: true,
             };
@@ -1029,8 +1029,8 @@ export class MAIAgentFleet {
           const { post_id, content } = args;
           const text = String(content || "").trim();
           if (
-            !post_id ||
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!post_id ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               String(post_id)
             )
           ) {
@@ -1045,7 +1045,7 @@ export class MAIAgentFleet {
           const safety = MAIAgentFleet.assessContentSafety(text);
           if (!safety.isSafe) {
             throw new Error(
-              `Commentaire refusé par mAI : ${safety.flagReason}`
+              `Commentaire refusé par mAI: ${safety.flagReason}`
             );
           }
           const prow =
@@ -1062,7 +1062,7 @@ export class MAIAgentFleet {
             post_id
           )}::uuid`;
           const authorId = Number(prow[0].author_id);
-          if (authorId !== uid) {
+          if (authorId!== uid) {
             try {
               await sql`
                 INSERT INTO notifications (recipient_id, actor_id, type, post_id, comment_id, message)
@@ -1075,7 +1075,7 @@ export class MAIAgentFleet {
           resultData = {
             comment_id: String(inserted[0].id),
             commented: true,
-            message: "Commentaire publié avec succès !",
+            message: "Commentaire publié avec succès!",
             post_id,
           };
           break;
@@ -1084,8 +1084,8 @@ export class MAIAgentFleet {
         case "get_post_stats": {
           const { post_id } = args;
           if (
-            !post_id ||
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!post_id ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               String(post_id)
             )
           ) {
@@ -1109,8 +1109,8 @@ export class MAIAgentFleet {
           const engagement = likes + reposts * 2.5 + replies * 2 + views * 0.1;
           const rate =
             views > 0
-              ? Math.round(((likes + reposts + replies) / views) * 1000) / 10
-              : 0;
+? Math.round(((likes + reposts + replies) / views) * 1000) / 10
+: 0;
           resultData = {
             author: p.username,
             bookmarks: Number(p.bookmarks_count || 0),
@@ -1177,8 +1177,8 @@ export class MAIAgentFleet {
             sources: (sourcesRows as any[]).map((r) => ({
               percent:
                 totalViews > 0
-                  ? Math.round((Number(r.views || 0) / totalViews) * 100)
-                  : 0,
+? Math.round((Number(r.views || 0) / totalViews) * 100)
+: 0,
               source: String(r.source),
               views: Number(r.views || 0),
             })),
@@ -1216,7 +1216,7 @@ export class MAIAgentFleet {
           ]);
           const analyzedPosts = Number(totalRows[0]?.n || 0);
           const bestSlots = (slotRows as any[])
-            .map((r) => ({
+.map((r) => ({
               avg_engagement:
                 Math.round(Number(r.avg_engagement || 0) * 10) / 10,
               avg_views: Math.round(Number(r.avg_views || 0)),
@@ -1224,8 +1224,8 @@ export class MAIAgentFleet {
               posts_count: Number(r.posts_count || 0),
               weekday: WEEKDAY_NAMES[Number(r.dow)] || String(r.dow),
             }))
-            .sort((a, b) => b.avg_engagement - a.avg_engagement)
-            .slice(0, 3);
+.sort((a, b) => b.avg_engagement - a.avg_engagement)
+.slice(0, 3);
           resultData = {
             analyzed_posts: analyzedPosts,
             audience_peak_hours: (hourRows as any[]).map((r) => ({
@@ -1235,20 +1235,20 @@ export class MAIAgentFleet {
             best_slots: bestSlots,
             confidence:
               analyzedPosts >= 10
-                ? "high"
-                : analyzedPosts >= 4
-                  ? "medium"
-                  : "low",
+? "high"
+: analyzedPosts >= 4
+? "medium"
+: "low",
             message:
               bestSlots.length > 0
-                ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${
+? `Meilleur créneau: ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${
                     bestSlots[0].avg_views
                   } vues moyennes).`
-                : "Pas encore assez de données de publication.",
+: "Pas encore assez de données de publication.",
             note:
               analyzedPosts === 0
-                ? "Aucune publication sur la période — publiez quelques posts pour obtenir des recommandations."
-                : undefined,
+? "Aucune publication sur la période — publiez quelques posts pour obtenir des recommandations."
+: undefined,
             period_days: days,
           };
           break;
@@ -1283,10 +1283,10 @@ export class MAIAgentFleet {
             delta: current - previous,
             percent:
               previous > 0
-                ? Math.round(((current - previous) / previous) * 1000) / 10
-                : current > 0
-                  ? 100
-                  : 0,
+? Math.round(((current - previous) / previous) * 1000) / 10
+: current > 0
+? 100
+: 0,
             previous,
           });
           const c = curRows[0] || {};
@@ -1373,7 +1373,7 @@ export class MAIAgentFleet {
           }
 
           const hashtagCount = (content.match(/#[\p{L}\p{N}_]{2,30}/gu) || [])
-            .length;
+.length;
           if (hashtagCount >= 1 && hashtagCount <= 3) {
             score += 8;
             breakdown.push({
@@ -1423,13 +1423,13 @@ export class MAIAgentFleet {
               if (fmtEng > avgEngagement * 1.15) {
                 score += 10;
                 breakdown.push({
-                  factor: `Format « ${fmt} » au-dessus de votre moyenne`,
+                  factor: `Format « ${fmt}» au-dessus de votre moyenne`,
                   impact: 10,
                 });
               } else if (fmtEng < avgEngagement * 0.85) {
                 score -= 8;
                 breakdown.push({
-                  factor: `Format « ${fmt} » sous votre moyenne`,
+                  factor: `Format « ${fmt}» sous votre moyenne`,
                   impact: -8,
                   tip: "Testez un autre format plus performant.",
                 });
@@ -1445,7 +1445,7 @@ export class MAIAgentFleet {
               if (hm) plannedHour = Number(hm[1]);
             } else plannedHour = d.getHours();
           }
-          if (plannedHour !== null && sampleSize >= 3) {
+          if (plannedHour!== null && sampleSize >= 3) {
             const hourRow = (hourRows as any[]).find(
               (r) => Number(r.hour) === plannedHour
             );
@@ -1479,8 +1479,8 @@ export class MAIAgentFleet {
             estimated_reach: Math.round(avgViews * (0.6 + score / 100)),
             message:
               sampleSize < 3
-                ? "Pas assez d'historique (moins de 3 posts sur 90 jours) — estimation neutre."
-                : `Score ${score}/100 basé sur ${sampleSize} posts récents.`,
+? "Pas assez d'historique (moins de 3 posts sur 90 jours) — estimation neutre."
+: `Score ${score}/100 basé sur ${sampleSize} posts récents.`,
             score,
           };
           break;
@@ -1525,35 +1525,35 @@ export class MAIAgentFleet {
             }
           }
           const formats = Object.entries(byFormat)
-            .map(([format, s]) => ({
+.map(([format, s]) => ({
               avg_engagement:
                 Math.round((s.engagement / Math.max(1, s.posts)) * 10) / 10,
               avg_views: Math.round(s.views / Math.max(1, s.posts)),
               engagement_rate_percent:
                 s.views > 0
-                  ? Math.round((s.engagement / s.views) * 1000) / 10
-                  : 0,
+? Math.round((s.engagement / s.views) * 1000) / 10
+: 0,
               format,
               posts: s.posts,
             }))
-            .sort((a, b) => b.avg_engagement - a.avg_engagement);
+.sort((a, b) => b.avg_engagement - a.avg_engagement);
           const top_hashtags = Object.entries(byTag)
-            .map(([tag, s]) => ({
+.map(([tag, s]) => ({
               avg_likes: Math.round((s.likes / Math.max(1, s.posts)) * 10) / 10,
               avg_views: Math.round(s.views / Math.max(1, s.posts)),
               posts: s.posts,
               tag: `#${tag}`,
             }))
-            .sort((a, b) => b.avg_views - a.avg_views)
-            .slice(0, 10);
+.sort((a, b) => b.avg_views - a.avg_views)
+.slice(0, 10);
           resultData = {
             formats,
             message:
               formats.length > 0
-                ? `Format le plus engageant : ${formats[0].format} (${
+? `Format le plus engageant: ${formats[0].format} (${
                     formats[0].avg_engagement
                   } engagement moyen).`
-                : "Aucun post publié sur la période.",
+: "Aucun post publié sur la période.",
             period_days: days,
             posts_analyzed: (rows as any[]).length,
             top_hashtags,
@@ -1589,7 +1589,7 @@ export class MAIAgentFleet {
             if (
               prev &&
               String(prev.conversation_id) === String(m.conversation_id) &&
-              Number(prev.sender_id) !== Number(m.sender_id)
+              Number(prev.sender_id)!== Number(m.sender_id)
             ) {
               const delta =
                 new Date(m.created_at).getTime() -
@@ -1605,16 +1605,16 @@ export class MAIAgentFleet {
           for (const m of rowsArr) {
             const other =
               Number(m.sender_id) === uid
-                ? Number(m.recipient_id || 0)
-                : Number(m.sender_id);
-            if (other && other !== uid) {
+? Number(m.recipient_id || 0)
+: Number(m.sender_id);
+            if (other && other!== uid) {
               perOther[other] = (perOther[other] || 0) + 1;
             }
           }
           const topIds = Object.entries(perOther)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 5)
-            .map(([id]) => Number(id));
+.sort((a, b) => b[1] - a[1])
+.slice(0, 5)
+.map(([id]) => Number(id));
           let topCorrespondents: any[] = [];
           if (topIds.length > 0) {
             const users = await sql`
@@ -1637,15 +1637,15 @@ export class MAIAgentFleet {
             active_conversations: convIds.size,
             avg_reply_minutes:
               replyCount > 0
-                ? Math.round((replyDeltas / replyCount / 60_000) * 10) / 10
-                : null,
+? Math.round((replyDeltas / replyCount / 60_000) * 10) / 10
+: null,
             groups: Number(groupsRows[0]?.n || 0),
             message: `${rowsArr.length} messages sur ${days} jours (${sent} envoyés, ${received} reçus).`,
             messages_total: rowsArr.length,
             note:
               rowsArr.length >= 1000
-                ? "Analyse limitée aux 1000 derniers messages de la période."
-                : undefined,
+? "Analyse limitée aux 1000 derniers messages de la période."
+: undefined,
             period_days: days,
             received,
             replies_measured: replyCount,
@@ -1752,17 +1752,17 @@ export class MAIAgentFleet {
             }
           }
           const hashtags = Object.entries(tagStats)
-            .map(([tag, s]) => ({
+.map(([tag, s]) => ({
               avg_likes: Math.round((s.likes / Math.max(1, s.posts)) * 10) / 10,
               avg_views: Math.round(s.views / Math.max(1, s.posts)),
               engagement_rate_percent:
                 s.views > 0
-                  ? Math.round((s.engagement / s.views) * 1000) / 10
-                  : 0,
+? Math.round((s.engagement / s.views) * 1000) / 10
+: 0,
               posts: s.posts,
               tag: `#${tag}`,
             }))
-            .sort((a, b) => b.avg_views - a.avg_views);
+.sort((a, b) => b.avg_views - a.avg_views);
           const used = new Set(hashtags.map((h) => h.tag.slice(1)));
           const trendCounts: Record<string, number> = {};
           for (const r of trending as any[]) {
@@ -1774,10 +1774,10 @@ export class MAIAgentFleet {
             }
           }
           const suggestions = Object.entries(trendCounts)
-            .filter(([tag]) => !used.has(tag))
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 6)
-            .map(([tag, count]) => ({
+.filter(([tag]) =>!used.has(tag))
+.sort((a, b) => b[1] - a[1])
+.slice(0, 6)
+.map(([tag, count]) => ({
               platform_posts_7d: count,
               tag: `#${tag}`,
             }));
@@ -1786,8 +1786,8 @@ export class MAIAgentFleet {
             hashtags: hashtags.slice(0, 10),
             message:
               hashtags.length === 0
-                ? "Aucun hashtag utilisé sur la période."
-                : `Top hashtag : ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
+? "Aucun hashtag utilisé sur la période."
+: `Top hashtag: ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
             period_days: days,
             suggestions,
           };
@@ -1795,7 +1795,7 @@ export class MAIAgentFleet {
         }
 
         // Les outils créatifs et d'analyse vivent dans un module séparé
-        // (vibe-mai-creative.ts) : Val Town impose une limite de taille de
+        // (vibe-mai-creative.ts): Val Town impose une limite de taille de
         // fichier, et la flotte approchait de la sienne. Ils renvoient
         // `null` quand ils ne savent pas traiter l'outil.
         default: {
@@ -1808,7 +1808,7 @@ export class MAIAgentFleet {
               MAIAgentFleet.callOpenRouter(uid, system, user, model)
           );
           if (creative === null) {
-            throw new Error(`Outil inconnu : ${toolName}`);
+            throw new Error(`Outil inconnu: ${toolName}`);
           }
           resultData = creative;
           break;

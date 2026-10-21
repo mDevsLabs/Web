@@ -117,17 +117,17 @@ export const PROVIDER_NAMES: Record<string, string> = {
   zhipuai: "Zhipu AI (GLM)",
 };
 
-export function resolveProviderKey(model: SharedModel): string {
-  // Un identifiant SANS préfixe (`mai-2`, `mai-2-mini`) est par construction
-  // un modèle mAI : `id.split("/")[0]` renverrait sinon l'identifiant
-  // entier, qui deviendrait un groupe à lui seul.
-  const prefixe = model.id.includes("/") ? model.id.split("/")[0] : "";
-  const raw = (
-    model.provider ||
-    model.owned_by ||
-    prefixe ||
-    MAI_PROVIDER_KEY
-  )
+/**
+ * Normalise un fournisseur brut vers sa clé canonique.
+ *
+ * Fonction PURE et exportée : la résolution du logo, le libellé et le
+ * regroupement doivent désigner le même laboratoire. La table vivait
+ * auparavant dans deux fichiers (le logo en avait sa copie), ce qui avait
+ * déjà produit une divergence : `maidevs` était reconnu par l'un et pas
+ * l'autre.
+ */
+export function normalizeProviderKey(rawProvider: string): string {
+  const raw = String(rawProvider ?? "")
     .toLowerCase()
     .trim();
 
@@ -190,6 +190,7 @@ export function resolveProviderKey(model: SharedModel): string {
   if (
     p === "amazon" ||
     p === "amazon-bedrock" ||
+    p === "bedrock" ||
     p === "aws" ||
     p === "nova" ||
     p === "titan"
@@ -209,6 +210,16 @@ export function resolveProviderKey(model: SharedModel): string {
   if (p === "google-vertex" || p === "google") return "google";
 
   return p || MAI_PROVIDER_KEY;
+}
+
+export function resolveProviderKey(model: SharedModel): string {
+  // Un identifiant SANS préfixe (`mai-2`, `mai-2-mini`) est par construction
+  // un modèle mAI : `id.split("/")[0]` renverrait sinon l'identifiant
+  // entier, qui deviendrait un groupe à lui seul.
+  const prefixe = model.id.includes("/") ? model.id.split("/")[0] : "";
+  return normalizeProviderKey(
+    model.provider || model.owned_by || prefixe || MAI_PROVIDER_KEY
+  );
 }
 
 /** Libellé lisible d'un fournisseur, avec repli sur l'identifiant brut. */

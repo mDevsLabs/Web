@@ -2,7 +2,7 @@
  * Outil mAI — Résumé du fil de commentaires (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "summarize_thread".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface SummarizeThreadArgs {
   post_id: string;

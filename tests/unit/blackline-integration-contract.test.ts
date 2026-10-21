@@ -43,6 +43,34 @@ describe("contrat d'intégration du jeu Blackline", () => {
     expect(source).toContain("mount: mountBlackline");
   });
 
+  it("le jeu publie le contrat de DÉMONTAGE sur window", () => {
+    const source = readFileSync(JEU, "utf8");
+    // `unmount` est le pendant de `mount`. Sans lui, l'hôte ne peut que
+    // retirer la balise <script> : la boucle de rendu continue de tourner
+    // et le contexte WebGL n'est jamais relâché.
+    expect(source).toContain("unmount: unmountBlackline");
+  });
+
+  it("l'hôte démonte le jeu en quittant la page", () => {
+    const source = readFileSync(HOTE, "utf8");
+    // L'appel est dans la fonction de nettoyage de l'effet : c'est le seul
+    // moment où l'hôte sait que le jeu ne sera plus affiché.
+    expect(source).toContain("unmount");
+  });
+
+  it("le moteur se libère lui-même", () => {
+    const source = readFileSync(
+      join(RACINE, "apps/blackline/src/game.ts"),
+      "utf8"
+    );
+    // `dispose()` doit arrêter la boucle ET libérer le contexte : un
+    // `disposed` mis à true sans rien libérer laisserait le tampon GPU en
+    // mémoire.
+    expect(source).toContain("dispose()");
+    expect(source).toContain("forceContextLoss");
+    expect(source).toContain("suspendFrame");
+  });
+
   it("le build nomme le chunk d'entrée de façon fixe", () => {
     const source = readFileSync(VITE, "utf8");
     // Un nom changeant à chaque build obligerait l'hôte à lire un manifeste

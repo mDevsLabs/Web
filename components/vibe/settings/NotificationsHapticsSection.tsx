@@ -1,18 +1,18 @@
 /**
  * ============================================================================
  * VIBE — NOTIFICATIONS & RETOUR HAPTIQUE (components/vibe/settings/NotificationsHapticsSection.tsx)
- * Section Paramètres : retour haptique et animations.
+ * Section Paramètres: retour haptique et animations.
  *
  * LES NOTIFICATIONS ONT QUITTÉ CETTE PAGE
  *
  * Les préférences de notification Vibe (e-mail, push, j'aime, partages,
  * réponses, messages privés) sont désormais réglées dans l'onglet
- * « Notifications » des paramètres mAI, qui regroupe les trois
+ * « Notifications» des paramètres mAI, qui regroupe les trois
  * applications. Les laisser ici créerait DEUX endroits pour la même
  * décision, et le dernier enregistré gagnerait — donc laPreference
  * affichée ne serait pas celle qui compte.
  *
- * Ce qui RESTE ici est ce qui relève de l'APPAREIL et non du compte :
+ * Ce qui RESTE ici est ce qui relève de l'APPAREIL et non du compte:
  * le retour haptique et les animations. Un réglage d'appareil ne se
  * synchronise pas entre deux machines.
  * ============================================================================
@@ -41,8 +41,8 @@ export const DevicePermissionHint: React.FC = () => {
     <div className="p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-3">
       <p className="text-[11px] text-zinc-400">
         {state === "denied"
-          ? "Les notifications sont bloquées pour ce site. Modifiez les réglages de votre navigateur pour les réactiver."
-          : "Les notifications ne sont pas encore autorisées sur cet appareil."}
+? "Les notifications sont bloquées pour ce site. Modifiez les réglages de votre navigateur pour les réactiver."
+: "Les notifications ne sont pas encore autorisées sur cet appareil."}
       </p>
       {state === "default" && (
         <button
@@ -90,8 +90,8 @@ export const NotificationsHapticsSection: React.FC<
           <span className="text-white font-semibold">
             Paramètres mAI → Notifications
           </span>
-          , avec celles de mAI et de Wakies. Le retour haptique et les
-          animations restent ici : ce sont des réglages de cet appareil.
+, avec celles de mAI et de Wakies. Le retour haptique et les
+          animations restent ici: ce sont des réglages de cet appareil.
         </p>
 
         <DevicePermissionHint />
@@ -108,7 +108,7 @@ export const NotificationsHapticsSection: React.FC<
               </div>
               <p className="text-zinc-500 text-[11px] mt-0.5">
                 Burst de likes, particules, spring navigation, transitions.
-                Coupé auto si « Réduire les animations » OS.
+                Coupé auto si « Réduire les animations» OS.
               </p>
             </div>
             <input
@@ -131,8 +131,8 @@ export const NotificationsHapticsSection: React.FC<
               </div>
               <p className="text-zinc-500 text-[11px] mt-0.5">
                 {hapticsSupported
-                  ? "Sensations tactiles lors des likes (battement de cœur), publications, signets et navigation"
-                  : "Retour haptique non disponible sur cet appareil."}
+? "Sensations tactiles lors des likes (battement de cœur), publications, signets et navigation"
+: "Retour haptique non disponible sur cet appareil."}
               </p>
             </div>
             <input
@@ -156,21 +156,21 @@ export const NotificationsHapticsSection: React.FC<
                 onClick={() => haptics.like()}
                 type="button"
               >
-                ❤️ Tester le Like (Heartbeat)
+                 Tester le Like (Heartbeat)
               </button>
               <button
                 className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sky-500 vibe-dark:text-sky-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                 onClick={() => haptics.selection()}
                 type="button"
               >
-                📳 Tester la Sélection
+                 Tester la Sélection
               </button>
               <button
                 className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-emerald-600 vibe-dark:text-emerald-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                 onClick={() => haptics.success()}
                 type="button"
               >
-                🚀 Tester le Succès
+                 Tester le Succès
               </button>
             </div>
           )}

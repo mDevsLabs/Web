@@ -15,10 +15,7 @@ const nextConfig: NextConfig = {
       "@mdevs/icons",
       "lucide-react",
       "recharts",
-      "react-icons",
       "motion",
-      "clsx",
-      "tailwind-merge",
       "react-use",
       "cmdk"
     ],

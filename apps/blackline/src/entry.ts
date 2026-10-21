@@ -26,10 +26,45 @@
 import { isTouchDevice } from './input.ts';
 import { installLandscapeGuard } from './landscape.ts';
 import { loadingProgress, nextPaint } from './preload.ts';
-import { setRoot, toggleRootClass } from './root.ts';
+import { clearRoot, setRoot, toggleRootClass } from './root.ts';
 import { loadProfile, loadSettings, flushProfileSave } from './storage.ts';
 import { preloadMenuPages } from './ui/page-loader.ts';
 import { UI } from './ui.ts';
+
+/**
+ * Instance montée courante, et sa fonction de libération.
+ *
+ * Le moteur n'est chargé qu'au montage, et il ne peut pas être « déchargé »
+ * par le JavaScript : ce qui peut l'être, en revanche, c'est la mémoire
+ * qu'il occupe — tampon GPU, textures, contexte WebGL. C'est le rôle de
+ * cette référence : elle permet à l'hôte de demander la libération quand il
+ * quitte la page.
+ *
+ * `dispose` est structurel et non typé : `Game` est importé dynamiquement,
+ * son type n'est donc pas disponible ici sans charger le moteur.
+ */
+let mounted: { dispose: () => void } | null = null;
+
+/**
+ * Démonte le jeu monté et libère la mémoire du moteur.
+ *
+ * Appelée par l'hôte mAI au démontage de la page, et par l'application
+ * autonome avant un remontage. Sans elle, la boucle de rendu continue de
+ * tourner dans le vide et le contexte WebGL n'est jamais relâché.
+ */
+export function unmountBlackline(): void {
+  const instance = mounted;
+  mounted = null;
+  if (!instance) {
+    return;
+  }
+  try {
+    instance.dispose();
+  } catch (error) {
+    console.error('BLACKLINE unmount failed', error);
+  }
+  clearRoot();
+}
 
 /**
  * Options de montage.
@@ -190,6 +225,13 @@ export async function mountBlackline(
     ui.setGame(game);
     game.applySettings(settings);
     updateOrientation();
+    // Le moteur est monté : il devient la instance libérable par l'hôte.
+    mounted = {
+      dispose: () => {
+        game.dispose();
+        ui.game = null;
+      },
+    };
     status(35, 'PRÉCHARGEMENT DE L’ARSENAL');
     try {
       await game.warmup((progress, label) => status(35 + progress * 60, label));

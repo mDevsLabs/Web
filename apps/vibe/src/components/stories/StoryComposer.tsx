@@ -13,7 +13,7 @@ import type { StorySticker } from "../../types/vibe";
  * COMPOSITEUR DE STORY (StoryComposer.tsx)
  *
  * Conçu dans une fenêtre contextuelle élégante (modale) ne recouvrant pas toute la page.
- * Prend en charge :
+ * Prend en charge:
  * - Médias (photos / vidéos ≤ 50 Mo) avec retouches (filtres photo CSS, cadrage, miroir)
  * - Nouveaux arrière-plans & palettes de couleurs (dégradés vibrants, teintes unies)
  * - Typographie et mise en page du texte avancées (polices, couleurs, styles de fond, alignement, position)
@@ -169,11 +169,11 @@ export const TEXT_COLORS = [
 export const STICKER_CATEGORIES = {
   emotions: {
     label: "Émotions",
-    stickers: ["❤️", "🔥", "😍", "😂", "🥳", "😎", "🤩", "🥺", "🤯", "💀", "😴", "👏"],
+    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
   },
   vibes: {
     label: "Vibes & Fêtes",
-    stickers: ["🎉", "✨", "💯", "🌈", "🚀", "⚡", "🌟", "🍕", "☕", "🎵", "🎈", "🍹"],
+    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
   },
   badges: {
     label: "Badges Vibe",
@@ -181,7 +181,7 @@ export const STICKER_CATEGORIES = {
   },
   infos: {
     label: "Infos & Heure",
-    stickers: ["📍 ICI", "⭐ 10/10", "HEURE_LOCALE", "DATE_JOUR"],
+    stickers: [" ICI", " 10/10", "HEURE_LOCALE", "DATE_JOUR"],
   },
 } as const;
 
@@ -281,8 +281,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         }
         const estImage = fichier.type.startsWith("image/");
         const estVideo = fichier.type.startsWith("video/");
-        if (!estImage && !estVideo) {
-          refus.push(`${fichier.name} : photo ou vidéo attendue.`);
+        if (!estImage &&!estVideo) {
+          refus.push(`${fichier.name}: photo ou vidéo attendue.`);
           continue;
         }
         if (fichier.size > STORY_MEDIA_MAX_BYTES) {
@@ -294,13 +294,13 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         retenus.push({
           fichier,
           objetUrl: URL.createObjectURL(fichier),
-          type: estVideo ? "video" : "image",
+          type: estVideo? "video": "image",
         });
       }
 
       if (retenus.length > 0) {
         haptics.light();
-        setChoix((actuels) => [...actuels, ...retenus]);
+        setChoix((actuels) => [...actuels,...retenus]);
       }
       setErreur([...new Set(refus)].join(" "));
     },
@@ -310,7 +310,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   const retirer = useCallback((objetUrl: string) => {
     URL.revokeObjectURL(objetUrl);
     setChoix((actuels) => {
-      const restants = actuels.filter((c) => c.objetUrl !== objetUrl);
+      const restants = actuels.filter((c) => c.objetUrl!== objetUrl);
       return restants;
     });
     setIndexMediaActif(0);
@@ -319,8 +319,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   const isBadge = useCallback((emoji: string) => {
     return (
       /[a-zA-Z0-9]/.test(emoji) ||
-      emoji.startsWith("📍") ||
-      emoji.startsWith("⭐")
+      emoji.startsWith("") ||
+      emoji.startsWith("")
     );
   }, []);
 
@@ -343,10 +343,10 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
       const decalage = liste.length * 0.08;
       return [
-        ...liste,
+...liste,
         {
           emoji: finalVal,
-          x: 0.5 + (liste.length % 2 === 0 ? -decalage : decalage),
+          x: 0.5 + (liste.length % 2 === 0? -decalage: decalage),
           y: 0.35 + decalage,
         },
       ];
@@ -355,7 +355,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   }, []);
 
   const retirerSticker = useCallback((index: number) => {
-    setStickers((liste) => liste.filter((_, i) => i !== index));
+    setStickers((liste) => liste.filter((_, i) => i!== index));
     haptics.light();
   }, []);
 
@@ -373,12 +373,12 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     (e: React.PointerEvent<HTMLDivElement>) => {
       const index = glissementRef.current;
       const rect = canevasRef.current?.getBoundingClientRect();
-      if (index === null || !rect) return;
+      if (index === null ||!rect) return;
       const x = Math.min(0.95, Math.max(0.05, (e.clientX - rect.left) / rect.width));
       const y = Math.min(0.95, Math.max(0.05, (e.clientY - rect.top) / rect.height));
       setStickers((liste) =>
         liste.map((sticker, i) =>
-          i === index ? { ...sticker, x, y } : sticker
+          i === index? {...sticker, x, y }: sticker
         )
       );
     },
@@ -391,9 +391,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
   const majOption = useCallback((index: number, valeur: string) => {
     setSondage((actuel) => ({
-      ...actuel,
+...actuel,
       options: actuel.options.map((option, i) =>
-        i === index ? valeur : option
+        i === index? valeur: option
       ),
     }));
   }, []);
@@ -401,18 +401,18 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   const ajouterOption = useCallback(() => {
     setSondage((actuel) =>
       actuel.options.length >= SONDAGE_MAX_OPTIONS
-        ? actuel
-        : { ...actuel, options: [...actuel.options, ""] }
+? actuel
+: {...actuel, options: [...actuel.options, ""] }
     );
   }, []);
 
   const retirerOption = useCallback((index: number) => {
     setSondage((actuel) =>
       actuel.options.length <= 2
-        ? actuel
-        : {
-            ...actuel,
-            options: actuel.options.filter((_, i) => i !== index),
+? actuel
+: {
+...actuel,
+            options: actuel.options.filter((_, i) => i!== index),
           }
     );
   }, []);
@@ -422,18 +422,18 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     [sondage.options]
   );
   const sondagePret =
-    !sondage.actif ||
-    (sondage.question.trim() !== "" && optionsSondage.length >= 2);
+!sondage.actif ||
+    (sondage.question.trim()!== "" && optionsSondage.length >= 2);
   const peutPublier =
-    !publication &&
+!publication &&
     (choix.length > 0 ||
-      legende.trim() !== "" ||
+      legende.trim()!== "" ||
       (sondage.actif && sondagePret));
 
   const publier = useCallback(async () => {
     if (!peutPublier) return;
-    if (sondage.actif && !sondagePret) {
-      setErreur("Sondage incomplet : une question et au moins deux options requises.");
+    if (sondage.actif &&!sondagePret) {
+      setErreur("Sondage incomplet: une question et au moins deux options requises.");
       return;
     }
     setPublication(true);
@@ -453,8 +453,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         items,
         poll:
           sondage.actif && sondagePret
-            ? { options: optionsSondage, question: sondage.question.trim() }
-            : null,
+? { options: optionsSondage, question: sondage.question.trim() }
+: null,
         stickers,
         visibility: visibilite,
       });
@@ -549,7 +549,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-zinc-950/90 backdrop-blur-sm shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="size-8 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-rose-500/20">
-              ✨
+
             </div>
             <div>
               <h2 className="text-sm font-bold text-white tracking-wide">
@@ -575,38 +575,38 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
         {/* Corps modale */}
         <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
-          {/* Colonne Gauche : Canevas interactif (5 col / 12) */}
+          {/* Colonne Gauche: Canevas interactif (5 col / 12) */}
           <div className="md:col-span-5 bg-zinc-900/60 p-4 sm:p-5 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-white/10 overflow-hidden relative">
             <div
               className={`relative aspect-[9/16] w-full max-w-[240px] sm:max-w-[270px] rounded-2xl overflow-hidden shadow-2xl border border-white/15 touch-none select-none transition-colors duration-300 ${
-                choix.length === 0 ? presetFondActif.className : "bg-black"
+                choix.length === 0? presetFondActif.className: "bg-black"
               }`}
               ref={canevasRef}
             >
-              {mediaSelectionne ? (
-                mediaSelectionne.type === "video" ? (
+              {mediaSelectionne? (
+                mediaSelectionne.type === "video"? (
                   <video
                     className={`h-full w-full pointer-events-none transition-all ${
-                      mediaContain ? "object-contain" : "object-cover"
-                    } ${mediaMirror ? "-scale-x-100" : ""}`}
+                      mediaContain? "object-contain": "object-cover"
+                    } ${mediaMirror? "-scale-x-100": ""}`}
                     muted
                     playsInline
                     src={mediaSelectionne.objetUrl}
                     style={{ filter: filtreActif.filter }}
                   />
-                ) : (
+                ): (
                   <img
                     alt="Aperçu"
                     className={`h-full w-full pointer-events-none transition-all ${
-                      mediaContain ? "object-contain" : "object-cover"
-                    } ${mediaMirror ? "-scale-x-100" : ""}`}
+                      mediaContain? "object-contain": "object-cover"
+                    } ${mediaMirror? "-scale-x-100": ""}`}
                     src={mediaSelectionne.objetUrl}
                     style={{ filter: filtreActif.filter }}
                   />
                 )
-              ) : null}
+              ): null}
 
-              {legende.trim() ? (
+              {legende.trim()? (
                 <div
                   className={`absolute inset-x-3.5 ${textConfig.posClass} pointer-events-none`}
                 >
@@ -621,11 +621,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     </p>
                   </div>
                 </div>
-              ) : choix.length === 0 ? (
+              ): choix.length === 0? (
                 <p className="absolute inset-x-6 top-1/2 -translate-y-1/2 text-center text-xs text-white/40 pointer-events-none">
                   Votre texte ou média apparaîtra ici
                 </p>
-              ) : null}
+              ): null}
 
               {stickers.map((sticker, index) => {
                 const estBadge = isBadge(sticker.emoji);
@@ -642,11 +642,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       top: `${sticker.y * 100}%`,
                     }}
                   >
-                    {estBadge ? (
+                    {estBadge? (
                       <span className="vibe-story-badge shadow-xl">
                         {sticker.emoji}
                       </span>
-                    ) : (
+                    ): (
                       <span className="text-3xl sm:text-4xl drop-shadow-lg leading-none block">
                         {sticker.emoji}
                       </span>
@@ -667,7 +667,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 );
               })}
 
-              {sondage.actif && sondage.question.trim() ? (
+              {sondage.actif && sondage.question.trim()? (
                 <div className="absolute inset-x-3 bottom-14 rounded-xl bg-zinc-950/85 p-2.5 backdrop-blur-md border border-white/10 pointer-events-none">
                   <p className="text-[11px] font-semibold text-white truncate">
                     {sondage.question}
@@ -683,70 +683,70 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     ))}
                   </div>
                 </div>
-              ) : null}
+              ): null}
             </div>
 
-            {choix.length > 0 ? (
+            {choix.length > 0? (
               <div className="mt-3 flex items-center gap-2">
                 <button
                   className={`px-2.5 py-1 rounded-full text-[11px] border transition ${
                     mediaContain
-                      ? "border-white bg-white text-black font-medium"
-                      : "border-white/20 text-white/70 hover:border-white/40"
+? "border-white bg-white text-black font-medium"
+: "border-white/20 text-white/70 hover:border-white/40"
                   }`}
-                  onClick={() => setMediaContain((v) => !v)}
+                  onClick={() => setMediaContain((v) =>!v)}
                   title="Ajuster ou couvrir"
                   type="button"
                 >
-                  {mediaContain ? "Ajusté" : "Remplir"}
+                  {mediaContain? "Ajusté": "Remplir"}
                 </button>
                 <button
                   className={`px-2.5 py-1 rounded-full text-[11px] border transition ${
                     mediaMirror
-                      ? "border-white bg-white text-black font-medium"
-                      : "border-white/20 text-white/70 hover:border-white/40"
+? "border-white bg-white text-black font-medium"
+: "border-white/20 text-white/70 hover:border-white/40"
                   }`}
-                  onClick={() => setMediaMirror((v) => !v)}
+                  onClick={() => setMediaMirror((v) =>!v)}
                   title="Effet miroir"
                   type="button"
                 >
                   Miroir
                 </button>
-                {activeFilterId !== "none" ? (
+                {activeFilterId!== "none"? (
                   <button
                     className="px-2.5 py-1 rounded-full text-[11px] border border-white/20 text-white/70 hover:border-white/40 transition"
                     onClick={() => setActiveFilterId("none")}
                     type="button"
                   >
-                    Filtre : {filtreActif.name} ✕
+                    Filtre: {filtreActif.name} ✕
                   </button>
-                ) : null}
+                ): null}
               </div>
-            ) : (
+            ): (
               <p className="mt-2 text-[11px] text-white/40 text-center">
                 Glissez les stickers sur l'aperçu pour les placer
               </p>
             )}
           </div>
 
-          {/* Colonne Droite : Outils */}
+          {/* Colonne Droite: Outils */}
           <div className="md:col-span-7 flex flex-col overflow-hidden bg-zinc-950">
             <div className="flex border-b border-white/10 overflow-x-auto no-scrollbar shrink-0 bg-zinc-900/30">
               {(
                 [
-                  ["media", "📸 Média"],
-                  ["colors", "🎨 Couleurs"],
-                  ["text", "✍️ Texte"],
-                  ["stickers", "✨ Stickers"],
-                  ["filters", "🪄 Filtres"],
-                  ["poll", "📊 Sondage"],
+                  ["media", " Média"],
+                  ["colors", " Couleurs"],
+                  ["text", " Texte"],
+                  ["stickers", " Stickers"],
+                  ["filters", " Filtres"],
+                  ["poll", " Sondage"],
                 ] as const
               ).map(([tabKey, label]) => (
                 <button
                   className={`px-3.5 py-2.5 text-xs font-semibold whitespace-nowrap transition border-b-2 ${
                     activeTab === tabKey
-                      ? "border-rose-500 text-white bg-white/5"
-                      : "border-transparent text-white/60 hover:text-white hover:bg-white/5"
+? "border-rose-500 text-white bg-white/5"
+: "border-transparent text-white/60 hover:text-white hover:bg-white/5"
                   }`}
                   key={tabKey}
                   onClick={() => {
@@ -761,7 +761,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
-              {activeTab === "media" ? (
+              {activeTab === "media"? (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -786,26 +786,26 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     type="file"
                   />
 
-                  {choix.length > 0 ? (
+                  {choix.length > 0? (
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {choix.map((c, i) => (
                         <div
                           className={`relative aspect-[9/16] overflow-hidden rounded-xl border-2 transition cursor-pointer ${
                             indexMediaActif === i
-                              ? "border-rose-500 ring-2 ring-rose-500/20"
-                              : "border-white/10 hover:border-white/30"
+? "border-rose-500 ring-2 ring-rose-500/20"
+: "border-white/10 hover:border-white/30"
                           }`}
                           key={c.objetUrl}
                           onClick={() => setIndexMediaActif(i)}
                         >
-                          {c.type === "video" ? (
+                          {c.type === "video"? (
                             <video
                               className="h-full w-full object-cover"
                               muted
                               playsInline
                               src={c.objetUrl}
                             />
-                          ) : (
+                          ): (
                             <img
                               alt=""
                               className="h-full w-full object-cover"
@@ -826,7 +826,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         </div>
                       ))}
 
-                      {choix.length < STORY_MAX_ITEMS ? (
+                      {choix.length < STORY_MAX_ITEMS? (
                         <button
                           className="flex aspect-[9/16] flex-col items-center justify-center rounded-xl border border-dashed border-white/20 text-white/60 hover:border-white/40 hover:text-white transition"
                           onClick={() => inputRef.current?.click()}
@@ -835,15 +835,15 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           <span className="text-xl">＋</span>
                           <span className="text-[10px] mt-1">Ajouter</span>
                         </button>
-                      ) : null}
+                      ): null}
                     </div>
-                  ) : (
+                  ): (
                     <button
                       className="flex h-36 w-full flex-col items-center justify-center gap-1.5 rounded-2xl border-2 border-dashed border-white/15 bg-white/5 hover:border-rose-500/50 hover:bg-white/10 transition text-white/70"
                       onClick={() => inputRef.current?.click()}
                       type="button"
                     >
-                      <span className="text-3xl leading-none">📸</span>
+                      <span className="text-3xl leading-none"></span>
                       <span className="text-xs font-semibold text-white">
                         Choisir une photo ou une vidéo
                       </span>
@@ -853,9 +853,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     </button>
                   )}
                 </div>
-              ) : null}
+              ): null}
 
-              {activeTab === "colors" ? (
+              {activeTab === "colors"? (
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-xs font-semibold text-white">
@@ -873,8 +873,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         <button
                           className={`relative h-14 rounded-xl p-2 flex flex-col justify-end text-left border transition overflow-hidden group ${
                             isSelected
-                              ? "border-rose-500 ring-2 ring-rose-500/30 scale-[1.02]"
-                              : "border-white/10 hover:border-white/30"
+? "border-rose-500 ring-2 ring-rose-500/30 scale-[1.02]"
+: "border-white/10 hover:border-white/30"
                           }`}
                           key={preset.id}
                           onClick={() => {
@@ -887,19 +887,19 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           <span className="text-[10px] font-bold text-white drop-shadow-md truncate">
                             {preset.name}
                           </span>
-                          {isSelected ? (
+                          {isSelected? (
                             <span className="absolute top-1 right-1 size-4 rounded-full bg-rose-500 text-white text-[9px] flex items-center justify-center font-bold">
                               ✓
                             </span>
-                          ) : null}
+                          ): null}
                         </button>
                       );
                     })}
                   </div>
                 </div>
-              ) : null}
+              ): null}
 
-              {activeTab === "text" ? (
+              {activeTab === "text"? (
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between">
@@ -929,8 +929,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         <button
                           className={`px-3 py-1.5 rounded-xl text-xs border transition ${
                             textFont === f.id
-                              ? "border-rose-500 bg-rose-500/20 text-white font-semibold"
-                              : "border-white/15 text-white/70 hover:border-white/30"
+? "border-rose-500 bg-rose-500/20 text-white font-semibold"
+: "border-white/15 text-white/70 hover:border-white/30"
                           } ${f.className}`}
                           key={f.id}
                           onClick={() => setTextFont(f.id)}
@@ -951,8 +951,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         <button
                           className={`px-2 py-1.5 rounded-xl text-xs border transition text-center ${
                             textStyle === st.id
-                              ? "border-rose-500 bg-rose-500/20 text-white font-medium"
-                              : "border-white/15 text-white/70 hover:border-white/30"
+? "border-rose-500 bg-rose-500/20 text-white font-medium"
+: "border-white/15 text-white/70 hover:border-white/30"
                           }`}
                           key={st.id}
                           onClick={() => setTextStyle(st.id)}
@@ -974,8 +974,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           aria-label={c.name}
                           className={`size-6 rounded-full border-2 transition ${
                             textColor === c.value
-                              ? "border-white scale-110 shadow-md"
-                              : "border-transparent hover:scale-105"
+? "border-white scale-110 shadow-md"
+: "border-transparent hover:scale-105"
                           }`}
                           key={c.value}
                           onClick={() => setTextColor(c.value)}
@@ -1002,8 +1002,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           <button
                             className={`flex-1 py-1 text-[11px] rounded-lg transition ${
                               textAlign === val
-                                ? "bg-white/20 text-white font-medium"
-                                : "text-white/60 hover:text-white"
+? "bg-white/20 text-white font-medium"
+: "text-white/60 hover:text-white"
                             }`}
                             key={val}
                             onClick={() => setTextAlign(val)}
@@ -1030,8 +1030,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           <button
                             className={`flex-1 py-1 text-[11px] rounded-lg transition ${
                               textPosition === val
-                                ? "bg-white/20 text-white font-medium"
-                                : "text-white/60 hover:text-white"
+? "bg-white/20 text-white font-medium"
+: "text-white/60 hover:text-white"
                             }`}
                             key={val}
                             onClick={() => setTextPosition(val)}
@@ -1044,9 +1044,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     </div>
                   </div>
                 </div>
-              ) : null}
+              ): null}
 
-              {activeTab === "stickers" ? (
+              {activeTab === "stickers"? (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -1067,8 +1067,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       <button
                         className={`flex-1 py-1 rounded-lg text-[11px] font-medium transition ${
                           stickerCategory === cat
-                            ? "bg-rose-500 text-white shadow"
-                            : "text-white/60 hover:text-white"
+? "bg-rose-500 text-white shadow"
+: "text-white/60 hover:text-white"
                         }`}
                         key={cat}
                         onClick={() => setStickerCategory(cat)}
@@ -1084,14 +1084,14 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       const estBadge = isBadge(st);
                       const label =
                         st === "HEURE_LOCALE"
-                          ? "⏰ Heure"
-                          : st === "DATE_JOUR"
-                            ? "📅 Date"
-                            : st;
+? " Heure"
+: st === "DATE_JOUR"
+? " Date"
+: st;
                       return (
                         <button
                           className={`rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm transition hover:bg-white/15 active:scale-110 disabled:opacity-30 ${
-                            estBadge ? "vibe-story-badge" : "text-2xl"
+                            estBadge? "vibe-story-badge": "text-2xl"
                           }`}
                           disabled={stickers.length >= STORY_MAX_STICKERS}
                           key={st}
@@ -1104,7 +1104,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     })}
                   </div>
 
-                  {stickers.length > 0 ? (
+                  {stickers.length > 0? (
                     <div className="pt-2 border-t border-white/10">
                       <p className="text-[11px] font-medium text-white/70 mb-2">
                         Stickers sur la story
@@ -1128,11 +1128,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         ))}
                       </div>
                     </div>
-                  ) : null}
+                  ): null}
                 </div>
-              ) : null}
+              ): null}
 
-              {activeTab === "filters" ? (
+              {activeTab === "filters"? (
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-xs font-semibold text-white">
@@ -1150,8 +1150,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                         <button
                           className={`p-2 rounded-xl border flex flex-col items-center gap-1.5 transition ${
                             isSelected
-                              ? "border-rose-500 bg-rose-500/15"
-                              : "border-white/10 bg-white/5 hover:border-white/30"
+? "border-rose-500 bg-rose-500/15"
+: "border-white/10 bg-white/5 hover:border-white/30"
                           }`}
                           key={f.id}
                           onClick={() => {
@@ -1164,11 +1164,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                             className="size-12 rounded-lg bg-zinc-800 flex items-center justify-center overflow-hidden border border-white/10"
                             style={{ filter: f.filter }}
                           >
-                            <span className="text-xl">🌇</span>
+                            <span className="text-xl"></span>
                           </div>
                           <span
                             className={`text-[11px] ${
-                              isSelected ? "text-white font-bold" : "text-white/70"
+                              isSelected? "text-white font-bold": "text-white/70"
                             }`}
                           >
                             {f.name}
@@ -1178,9 +1178,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     })}
                   </div>
                 </div>
-              ) : null}
+              ): null}
 
-              {activeTab === "poll" ? (
+              {activeTab === "poll"? (
                 <div className="space-y-4">
                   <label className="flex items-center justify-between text-xs font-medium text-white/90 p-3 rounded-xl border border-white/15 bg-white/5 cursor-pointer">
                     <div>
@@ -1194,7 +1194,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       className="size-4 accent-rose-500"
                       onChange={(e) =>
                         setSondage((actuel) => ({
-                          ...actuel,
+...actuel,
                           actif: e.target.checked,
                         }))
                       }
@@ -1202,7 +1202,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     />
                   </label>
 
-                  {sondage.actif ? (
+                  {sondage.actif? (
                     <div className="space-y-3 pt-1">
                       <div>
                         <label className="text-[11px] font-medium text-white/70">
@@ -1213,11 +1213,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           maxLength={120}
                           onChange={(e) =>
                             setSondage((actuel) => ({
-                              ...actuel,
+...actuel,
                               question: e.target.value,
                             }))
                           }
-                          placeholder="Ex : Vous préférez quoi ?"
+                          placeholder="Ex: Vous préférez quoi?"
                           value={sondage.question}
                         />
                       </div>
@@ -1235,7 +1235,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                               placeholder={`Option ${index + 1}`}
                               value={option}
                             />
-                            {sondage.options.length > 2 ? (
+                            {sondage.options.length > 2? (
                               <button
                                 aria-label="Supprimer cette option"
                                 className="size-8 rounded-full border border-white/15 text-white/50 hover:text-white hover:bg-white/10 flex items-center justify-center text-xs shrink-0"
@@ -1244,11 +1244,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                               >
                                 ✕
                               </button>
-                            ) : null}
+                            ): null}
                           </div>
                         ))}
 
-                        {sondage.options.length < SONDAGE_MAX_OPTIONS ? (
+                        {sondage.options.length < SONDAGE_MAX_OPTIONS? (
                           <button
                             className="mt-1 rounded-xl border border-dashed border-white/20 px-3 py-1.5 text-xs text-white/70 hover:border-white/40 hover:text-white transition w-full"
                             onClick={ajouterOption}
@@ -1256,18 +1256,18 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                           >
                             ＋ Ajouter une option
                           </button>
-                        ) : null}
+                        ): null}
                       </div>
                     </div>
-                  ) : null}
+                  ): null}
                 </div>
-              ) : null}
+              ): null}
             </div>
 
             <div className="p-4 sm:p-5 border-t border-white/10 bg-zinc-950 shrink-0 space-y-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[11px] text-white/50">Visibilité :</span>
+                  <span className="text-[11px] text-white/50">Visibilité:</span>
                   {(
                     [
                       ["followers", "Abonnés"],
@@ -1278,8 +1278,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     <button
                       className={`px-2.5 py-1 rounded-full text-[11px] border transition ${
                         visibilite === val
-                          ? "border-rose-500 bg-rose-500/20 text-white font-medium"
-                          : "border-white/15 text-white/60 hover:text-white"
+? "border-rose-500 bg-rose-500/20 text-white font-medium"
+: "border-white/15 text-white/60 hover:text-white"
                       }`}
                       key={val}
                       onClick={() => setVisibilite(val)}
@@ -1296,13 +1296,13 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                   onClick={publier}
                   type="button"
                 >
-                  {publication ? "Publication…" : "Publier la Story"}
+                  {publication? "Publication…": "Publier la Story"}
                 </button>
               </div>
 
-              {erreur ? (
+              {erreur? (
                 <p className="text-xs text-rose-400 font-medium">{erreur}</p>
-              ) : null}
+              ): null}
             </div>
           </div>
         </div>

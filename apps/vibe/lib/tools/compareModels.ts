@@ -3,7 +3,7 @@
  * (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "compare_models".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface CompareModelsArgs {
   model_a: string;

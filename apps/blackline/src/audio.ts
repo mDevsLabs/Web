@@ -13,4 +13,12 @@ export class GameAudio {
   kill(){this.tone(550,.14,'sine',.12);this.tone(880,.2,'sine',.08);}
   explosion(distance=0){this.burst(1,1300,.8/(1+distance*.06));this.tone(45,.75,'sine',.4/(1+distance*.06));}
   ui(){this.tone(920,.05,'sine',.045);}
+  /**
+   * Ferme le contexte audio.
+   *
+   * Un `AudioContext` ouvert garde un fil d'exécution et son buffer : sans
+   * fermeture, il survit au démontage du jeu. Le contexte est mis à null
+   * pour qu'un `init()` ultérieur le rouvre proprement.
+   */
+  dispose(){if(!this.context)return;const context=this.context;this.context=null;this.master=null;this.noise=null;try{void context.close();}catch{/* un contexte déjà fermé ne doit pas faire échouer le démontage */}}
 }

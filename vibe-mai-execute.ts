@@ -1,10 +1,10 @@
 import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — mAI : RÉGÉNÉRATION & EXÉCUTION D'OUTILS
+ * VIBE SOCIAL PLATFORM — mAI: RÉGÉNÉRATION & EXÉCUTION D'OUTILS
  * (vibe-mai-execute.ts)
  * Régénération de la dernière réponse, exécution d'un outil approuvé et refus
- * d'un outil sensible. Mêmes contrôles que le chat : catalogue, outils
+ * d'un outil sensible. Mêmes contrôles que le chat: catalogue, outils
  * activés, approbation, débit et quotas. Scindé de vibe-mai.ts (limite de
  * taille Val Town).
  * ============================================================================
@@ -57,8 +57,8 @@ export function registerVibeMAIExecuteRoutes(
       const body = await c.req.json().catch(() => ({}) as any);
       const reasoningEffort =
         typeof body?.reasoning_effort === "string"
-          ? body.reasoning_effort
-          : null;
+? body.reasoning_effort
+: null;
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(
@@ -75,12 +75,12 @@ export function registerVibeMAIExecuteRoutes(
       if (!conversationId)
         return c.json({ error: "Conversation indisponible." }, 503);
       const lastUserRows = conversationId
-        ? await sql`
+? await sql`
             SELECT id, content, created_at FROM mai_messages
             WHERE conversation_id = ${conversationId}::uuid AND sender_role = 'user' AND content IS NOT NULL
             ORDER BY created_at DESC LIMIT 1
           `
-        : [];
+: [];
       if (lastUserRows.length === 0) {
         return c.json({ error: "Aucun message à régénérer." }, 400);
       }
@@ -102,11 +102,11 @@ export function registerVibeMAIExecuteRoutes(
           ORDER BY created_at DESC LIMIT 20
         `;
         historyMessages = historyRows
-          .slice()
-          .reverse()
-          .map((m: any) => ({
+.slice()
+.reverse()
+.map((m: any) => ({
             content: String(m.content).slice(0, 4000),
-            role: m.sender_role === "assistant" ? "assistant" : "user",
+            role: m.sender_role === "assistant"? "assistant": "user",
           }));
       } catch {}
 
@@ -125,10 +125,10 @@ export function registerVibeMAIExecuteRoutes(
 
       const systemContent =
         "Tu es mAI, l'intelligence artificielle intégrée au réseau social Vibe. Tu es concis, créatif, pertinent et tu réponds en français avec des émojis." +
-        " Tu connais l'historique de la conversation en cours : apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
+        " Tu connais l'historique de la conversation en cours: apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
         (postContextBlock
-          ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires."
-          : "");
+? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
+: "");
 
       let reply = "";
       let capturedReasoning = "";
@@ -147,16 +147,16 @@ export function registerVibeMAIExecuteRoutes(
                 body: JSON.stringify({
                   messages: [
                     { content: systemContent, role: "system" },
-                    ...historyMessages,
+...historyMessages,
                     {
                       content: `${String(lastUser.content).trim()}${postContextBlock}`,
                       role: "user",
                     },
                   ],
                   model: candidate,
-                  ...(reasoningEffort
-                    ? { reasoning: { effort: reasoningEffort } }
-                    : {}),
+...(reasoningEffort
+? { reasoning: { effort: reasoningEffort } }
+: {}),
                 }),
                 headers: {
                   Authorization: `Bearer ${openRouterApiKey}`,
@@ -257,7 +257,7 @@ export function registerVibeMAIExecuteRoutes(
   // 1bis. EXÉCUTION D'OUTIL APPROUVÉ PAR L'UTILISATEUR
   // Appelé par le front uniquement après confirmation explicite (bouton
   // "Approuver") — ou pour un outil non sensible (lecture seule).
-  // Mêmes contrôles que le chat : catalogue, outils activés, approbation
+  // Mêmes contrôles que le chat: catalogue, outils activés, approbation
   // des outils sensibles, limite de débit et débit de quota.
   const handleExecuteTool = async (c: any) => {
     try {
@@ -279,7 +279,7 @@ export function registerVibeMAIExecuteRoutes(
       const catalogTool = MAI_TOOLS_CATALOG.find((t) => t.id === toolName);
       if (!catalogTool?.enabled) {
         return c.json(
-          { error: `Outil inconnu ou désactivé : ${toolName}` },
+          { error: `Outil inconnu ou désactivé: ${toolName}` },
           404
         );
       }
@@ -305,7 +305,7 @@ export function registerVibeMAIExecuteRoutes(
         conv.id || (await getOrCreateConversation(sql, userId));
 
       if (!(await isToolEnabledForUser(userId, toolName))) {
-        const reply = `🚫 L'outil « ${toolName} » est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
+        const reply = ` L'outil « ${toolName}» est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
         const record = makeToolCallRecord({
           args,
           model: effectiveModel,
@@ -332,16 +332,16 @@ export function registerVibeMAIExecuteRoutes(
         });
       }
 
-      if (SENSITIVE_TOOLS.includes(toolName) && approve !== true) {
+      if (SENSITIVE_TOOLS.includes(toolName) && approve!== true) {
         const autoApprove = await getUserAutoApprove(sql, userId);
         if (!autoApprove) {
-          // Le record « pending_approval » a déjà été persisté par le chat mAI :
+          // Le record « pending_approval» a déjà été persisté par le chat mAI:
           // aucune écriture supplémentaire ici (pas de doublon).
           return c.json({
             conversation_id: conversationId || null,
             modelUsed: effectiveModel,
             pendingTool: { args, name: toolName },
-            reply: `🔐 **Approbation requise** : mAI souhaite exécuter l'outil « ${toolName} » sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`,
+            reply: ` **Approbation requise**: mAI souhaite exécuter l'outil « ${toolName}» sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`,
             requiresApproval: true,
             toolExecuted: null,
           });
@@ -350,11 +350,11 @@ export function registerVibeMAIExecuteRoutes(
 
       const executor = TOOL_EXECUTORS[toolName];
       const result = executor
-        ? await executor(userId, args)
-        : await MAIAgentFleet.executeTool(toolName, args, userId);
+? await executor(userId, args)
+: await MAIAgentFleet.executeTool(toolName, args, userId);
       const reply = result.success
-        ? formatToolReply(toolName, result.result, "")
-        : `⚠️ L'action n'a pas pu être exécutée : ${result.error}`;
+? formatToolReply(toolName, result.result, "")
+: ` L'action n'a pas pu être exécutée: ${result.error}`;
 
       if (result.success) {
         const { weekStartStr } = getWeekData();
@@ -366,15 +366,15 @@ export function registerVibeMAIExecuteRoutes(
         `.catch(() => {});
       }
 
-      // Persistance : finalise le message « approbation en attente » existant,
+      // Persistance: finalise le message « approbation en attente» existant,
       // sinon insère un nouveau message assistant (jamais de doublon).
       const record = makeToolCallRecord({
         args,
-        error: result.success ? null : result.error || "Erreur d'exécution",
+        error: result.success? null: result.error || "Erreur d'exécution",
         model: effectiveModel,
         name: toolName,
         result,
-        status: result.success ? "executed" : "error",
+        status: result.success? "executed": "error",
       });
       let savedAssistantId: string | null = null;
       if (conversationId) {
@@ -383,11 +383,11 @@ export function registerVibeMAIExecuteRoutes(
           conversationId,
           toolName,
           {
-            error: result.success ? null : result.error || "Erreur d'exécution",
+            error: result.success? null: result.error || "Erreur d'exécution",
             model: effectiveModel,
             reply,
             result,
-            status: result.success ? "executed" : "error",
+            status: result.success? "executed": "error",
           }
         );
         if (finalized.id) {
@@ -400,7 +400,7 @@ export function registerVibeMAIExecuteRoutes(
             reply,
             { toolCalls: [record] }
           );
-          savedAssistantId = saved?.id ? String(saved.id) : null;
+          savedAssistantId = saved?.id? String(saved.id): null;
         }
       }
 
@@ -429,8 +429,8 @@ export function registerVibeMAIExecuteRoutes(
   );
 
   // 1ter. REFUS D'UN OUTIL SENSIBLE (persistance du flux d'approbation)
-  // Appelé par le front quand l'utilisateur refuse : le message assistant
-  // « approbation en attente » est finalisé avec le statut « rejected ».
+  // Appelé par le front quand l'utilisateur refuse: le message assistant
+  // « approbation en attente» est finalisé avec le statut « rejected».
   const handleMAIToolRefused = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
@@ -455,7 +455,7 @@ export function registerVibeMAIExecuteRoutes(
       const conversationId =
         conv.id || (await getOrCreateConversation(sql, userId));
 
-      const reply = `🚫 Très bien, je n'exécute pas l'outil « ${toolName} ». Dites-moi si je peux faire autre chose pour vous.`;
+      const reply = ` Très bien, je n'exécute pas l'outil « ${toolName}». Dites-moi si je peux faire autre chose pour vous.`;
       const record = makeToolCallRecord({
         args,
         name: toolName,
@@ -479,7 +479,7 @@ export function registerVibeMAIExecuteRoutes(
             reply,
             { toolCalls: [record] }
           );
-          savedId = saved?.id ? String(saved.id) : null;
+          savedId = saved?.id? String(saved.id): null;
         }
       }
 

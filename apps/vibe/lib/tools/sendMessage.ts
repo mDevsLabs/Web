@@ -2,7 +2,7 @@
  * Outil mAI — Envoyer un DM (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "send_message".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface SendMessageArgs {
   username: string;

@@ -11,6 +11,7 @@ import {
   canAccessWakies,
   getCustomInstructionsEffectiveMax,
   getTierCustomInstructionsMax,
+  getTierSearchResultsMax,
   getWakiesQuota,
   getWakiesQuotas,
 } from "@/lib/plans/tier-limits";
@@ -20,6 +21,28 @@ import {
 // Le risque principal n'est pas la valeur choisie mais l'oubli d'un site :
 // avant, la limite était répétée dans 7 schémas Zod et 2 éléments d'UI. Ces
 // tests verrouillent la table pour qu'une retouche future soit consciente.
+
+describe("volume de résultats de mAI Search par forfait", () => {
+  it("produit le plafond attendu pour chaque forfait", () => {
+    // La borne s'applique PAR SOURCE : l'onglet « Images » peut en afficher
+    // autant que l'onglet « Web » affiche de liens.
+    expect(getTierSearchResultsMax("free")).toBe(50);
+    expect(getTierSearchResultsMax("plus")).toBe(100);
+    expect(getTierSearchResultsMax("pro")).toBe(150);
+    expect(getTierSearchResultsMax("max")).toBe(200);
+  });
+
+  it("traite « gratuit » (alias backend) comme Free", () => {
+    expect(getTierSearchResultsMax("gratuit")).toBe(50);
+  });
+
+  it("retombe sur Free pour un forfait inconnu ou absent", () => {
+    // Fail-safe : un tier illisible ne doit jamais accorder le plafond Max.
+    expect(getTierSearchResultsMax(undefined)).toBe(50);
+    expect(getTierSearchResultsMax("enterprise")).toBe(50);
+    expect(getTierSearchResultsMax("MAX")).toBe(200);
+  });
+});
 
 describe("limites des instructions personnalisées par forfait", () => {
   it("produit le plafond produit attendu pour chaque forfait", () => {

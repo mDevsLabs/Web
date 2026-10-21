@@ -64,7 +64,7 @@ export function AskUserCard({
   const handleSingleSelect = (questionId: string, option: string) => {
     if (isCompleted) return;
     setAnswers((prev) => ({
-      ...prev,
+...prev,
       [questionId]: option,
     }));
   };
@@ -74,10 +74,10 @@ export function AskUserCard({
     setAnswers((prev) => {
       const current = (prev[questionId] as string[]) || [];
       const updated = current.includes(option)
-        ? current.filter((item) => item !== option)
-        : [...current, option];
+? current.filter((item) => item!== option)
+: [...current, option];
       return {
-        ...prev,
+...prev,
         [questionId]: updated,
       };
     });
@@ -86,18 +86,18 @@ export function AskUserCard({
   const handleValueChange = (questionId: string, value: any) => {
     if (isCompleted) return;
     setAnswers((prev) => ({
-      ...prev,
+...prev,
       [questionId]: value,
     }));
   };
 
   const handleCustomInputChange = (questionId: string, value: string) => {
     setCustomInputs((prev) => ({
-      ...prev,
+...prev,
       [questionId]: value,
     }));
     setAnswers((prev) => ({
-      ...prev,
+...prev,
       [questionId]: value,
     }));
   };
@@ -105,7 +105,7 @@ export function AskUserCard({
   const handleSubmit = () => {
     // Vérifier si les questions requises ont une réponse
     for (const q of questions) {
-      if (q.required !== false) {
+      if (q.required!== false) {
         const ans = answers[q.id];
         if (
           ans === undefined ||
@@ -113,7 +113,7 @@ export function AskUserCard({
           ans === "" ||
           (Array.isArray(ans) && ans.length === 0)
         ) {
-          toast.error(`Veuillez répondre à la question : "${q.question}"`);
+          toast.error(`Veuillez répondre à la question: "${q.question}"`);
           return;
         }
       }
@@ -131,7 +131,7 @@ export function AskUserCard({
         tool: "askUser",
         toolCallId,
       });
-      toast.success("Vos réponses ont été transmises à l'IA !");
+      toast.success("Vos réponses ont été transmises à l'IA!");
     } catch (err: any) {
       toast.error(err?.message || "Erreur lors de l'envoi des réponses");
       setIsSubmittedLocally(false);
@@ -171,7 +171,7 @@ export function AskUserCard({
                 <span className="font-medium text-xs text-foreground sm:text-sm">
                   {idx + 1}. {q.question}
                 </span>
-                {q.required !== false && !isCompleted && (
+                {q.required!== false &&!isCompleted && (
                   <span className="rounded bg-destructive/10 px-1.5 py-0.5 text-[10px] font-semibold text-destructive">
                     Requis
                   </span>
@@ -186,24 +186,24 @@ export function AskUserCard({
                   <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                     {options.map((opt) => {
                       const isSelected = isMultiple
-                        ? Array.isArray(currentAns) && currentAns.includes(opt)
-                        : currentAns === opt;
+? Array.isArray(currentAns) && currentAns.includes(opt)
+: currentAns === opt;
 
                       return (
                         <button
                           className={cn(
                             "flex items-center justify-between rounded-lg border px-3 py-2 text-left text-xs transition cursor-pointer",
                             isSelected
-                              ? "border-primary bg-primary/10 font-medium text-primary shadow-2xs"
-                              : "border-border/60 bg-card text-muted-foreground hover:bg-muted/60",
+? "border-primary bg-primary/10 font-medium text-primary shadow-2xs"
+: "border-border/60 bg-card text-muted-foreground hover:bg-muted/60",
                             isCompleted && "cursor-default opacity-90"
                           )}
                           disabled={isCompleted}
                           key={opt}
                           onClick={() =>
                             isMultiple
-                              ? handleMultipleSelect(q.id, opt)
-                              : handleSingleSelect(q.id, opt)
+? handleMultipleSelect(q.id, opt)
+: handleSingleSelect(q.id, opt)
                           }
                           type="button"
                         >
@@ -216,7 +216,7 @@ export function AskUserCard({
                     })}
                   </div>
 
-                  {q.allowCustomInput && !isCompleted && (
+                  {q.allowCustomInput &&!isCompleted && (
                     <div className="pt-1">
                       <Input
                         className="h-8 text-xs"
@@ -234,11 +234,11 @@ export function AskUserCard({
               {/* 2. Type Text */}
               {q.type === "text" && (
                 <div>
-                  {isCompleted ? (
+                  {isCompleted? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
                       {String(currentAns || "Aucune saisie")}
                     </div>
-                  ) : (
+                  ): (
                     <Input
                       className="h-8 text-xs"
                       onChange={(e) => handleValueChange(q.id, e.target.value)}
@@ -253,8 +253,8 @@ export function AskUserCard({
               {q.type === "boolean" && (
                 <div className="flex gap-2">
                   {[
-                    { label: "Oui 👍", val: true },
-                    { label: "Non 👎", val: false },
+                    { label: "Oui ", val: true },
+                    { label: "Non ", val: false },
                   ].map((item) => {
                     const isSelected = currentAns === item.val;
                     return (
@@ -262,8 +262,8 @@ export function AskUserCard({
                         className={cn(
                           "flex-1 rounded-lg border py-2 text-center text-xs font-medium transition cursor-pointer",
                           isSelected
-                            ? "border-primary bg-primary/15 text-primary shadow-2xs"
-                            : "border-border/60 bg-card text-muted-foreground hover:bg-muted/60",
+? "border-primary bg-primary/15 text-primary shadow-2xs"
+: "border-border/60 bg-card text-muted-foreground hover:bg-muted/60",
                           isCompleted && "cursor-default opacity-90"
                         )}
                         disabled={isCompleted}
@@ -282,27 +282,27 @@ export function AskUserCard({
               {q.type === "slider" && (
                 <div className="space-y-1.5 py-1">
                   <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>Min: {q.min ?? 0}</span>
+                    <span>Min: {q.min?? 0}</span>
                     <span className="font-bold text-primary">
-                      Valeur : {currentAns ?? q.min ?? 0}
+                      Valeur: {currentAns?? q.min?? 0}
                     </span>
-                    <span>Max: {q.max ?? 100}</span>
+                    <span>Max: {q.max?? 100}</span>
                   </div>
-                  {isCompleted ? (
+                  {isCompleted? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                      Sélectionné : {currentAns}
+                      Sélectionné: {currentAns}
                     </div>
-                  ) : (
+                  ): (
                     <input
                       className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer"
-                      max={q.max ?? 100}
-                      min={q.min ?? 0}
+                      max={q.max?? 100}
+                      min={q.min?? 0}
                       onChange={(e) =>
                         handleValueChange(q.id, Number(e.target.value))
                       }
-                      step={q.step ?? 1}
+                      step={q.step?? 1}
                       type="range"
-                      value={answers[q.id] ?? q.defaultValue ?? q.min ?? 0}
+                      value={answers[q.id]?? q.defaultValue?? q.min?? 0}
                     />
                   )}
                 </div>
@@ -311,11 +311,11 @@ export function AskUserCard({
               {/* 5. Type Date */}
               {q.type === "date" && (
                 <div>
-                  {isCompleted ? (
+                  {isCompleted? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                      Date choisie : {String(currentAns)}
+                      Date choisie: {String(currentAns)}
                     </div>
-                  ) : (
+                  ): (
                     <Input
                       className="h-8 text-xs"
                       onChange={(e) => handleValueChange(q.id, e.target.value)}
@@ -330,9 +330,9 @@ export function AskUserCard({
               {isCompleted &&
                 typeof currentAns === "string" &&
                 options.length > 0 &&
-                !options.includes(currentAns) && (
+!options.includes(currentAns) && (
                   <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                    Réponse personnalisée : {currentAns}
+                    Réponse personnalisée: {currentAns}
                   </div>
                 )}
             </div>
@@ -341,14 +341,14 @@ export function AskUserCard({
       </div>
 
       {/* Footer / Bouton de soumission */}
-      {isCompleted ? (
+      {isCompleted? (
         <div className="flex items-center justify-between border-t border-border/40 bg-muted/20 px-4 py-2.5 text-xs text-muted-foreground sm:px-5">
           <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
             <CheckCircle2Icon className="size-3.5" />
             <span>Réponses transmises à l'assistant</span>
           </div>
         </div>
-      ) : (
+      ): (
         <div className="border-t border-border/40 bg-muted/20 px-4 py-3 text-right sm:px-5">
           <Button className="gap-2 shadow-xs" onClick={handleSubmit} size="sm">
             <SendIcon className="size-3.5" />

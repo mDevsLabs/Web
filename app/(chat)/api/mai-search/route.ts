@@ -5,10 +5,12 @@ import { recordSearchQuery } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import {
   MAI_SEARCH_LANGUAGES,
+  MAI_SEARCH_RESULT_COUNT_MAX,
   MAI_SEARCH_SAFETY_LEVELS,
   MAI_SEARCH_SOURCE_KEYS,
   type MaiSearchSourceKey,
   normalizeMaiSearchSources,
+  resolveMaiSearchResultCount,
 } from "@/lib/search/sources";
 import { executeMaiSearch } from "@/lib/search/you-client";
 
@@ -17,8 +19,11 @@ export const maxDuration = 15;
 // Le client peut demander un sous-ensemble de sources, mais il ne peut pas
 // EN IMPOSER : c'est la préférence du compte qui fait autorité. Sans cette
 // distinction, « désactiver les images » serait contournable en un appel.
+//
+// `count` est borné par la borne ABSOLUE du produit (200) : le plafond du
+// compte, lui, est appliqué plus bas, une fois le forfait connu.
 const bodySchema = z.object({
-  count: z.number().int().min(1).max(25).optional(),
+  count: z.number().int().min(1).max(MAI_SEARCH_RESULT_COUNT_MAX).optional(),
   lang: z.enum(MAI_SEARCH_LANGUAGES).optional(),
   query: z.string().min(1).max(500),
   safetyLevel: z.enum(MAI_SEARCH_SAFETY_LEVELS).optional(),
@@ -119,11 +124,26 @@ export async function POST(request: Request) {
       preferences?.searchSafetyLevel ?? safetyLevel ?? "medium";
     const preferredCount = preferences?.searchResultCount ?? 10;
 
+    /**
+     * Nombre de résultats effectif, PAR SOURCE.
+     *
+     * Trois bornes se superposent, la plus stricte gagne : la demande du
+     * client, la préférence du compte, et le plafond DU FORFAIT. Un compte
+     * gratuit ne peut donc pas obtenir 200 résultats en appelant l'API
+     * directement : c'est le serveur qui tranche, jamais l'interface.
+     *
+     * Un visiteur non connecté est traité comme un compte gratuit : c'est le
+     * fail-safe du même principe.
+     */
+    const effectiveCount = resolveMaiSearchResultCount({
+      preferred: preferredCount,
+      requested: count,
+      tier: session?.user.tier,
+    });
+
     const debut = Date.now();
     const searchResponse = await executeMaiSearch({
-      // Le nombre demandé ne peut pas dépasser la préférence du compte :
-      // c'est elle qui borne l'usage du moteur.
-      count: Math.min(count ?? preferredCount, preferredCount),
+      count: effectiveCount,
       lang: effectiveLang,
       query: trimmedQuery,
       safetyLevel: effectiveSafety,
@@ -159,9 +179,19 @@ export async function POST(request: Request) {
       news: searchResponse.news || [],
       provider: searchResponse.provider,
       query: searchResponse.query,
+      /**
+       * Nombre de résultats demandés PAR SOURCE, et nombre réellement
+       * obtenu.
+       *
+       * Quand les deux diffèrent, le moteur n'a pas pu tout servir (délai,
+       * moteur saturé, source muette). L'interface le dit alors, plutôt que
+       * de laisser croire à une recherche exhaustive.
+       */
+      requestedCount: effectiveCount,
       results: searchResponse.results,
       searchId,
       success: searchResponse.success,
+      truncated: searchResponse.truncated ?? false,
       videos: searchResponse.videos || [],
       wikiFirst: searchResponse.wikiFirst ?? false,
     });

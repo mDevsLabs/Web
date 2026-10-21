@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — DMs : CONVERSATIONS & MESSAGES
+ * VIBE SOCIAL PLATFORM — DMs: CONVERSATIONS & MESSAGES
  * (vibe-dms-conversations.ts)
  * Recherche d'utilisateurs, liste des conversations (1-1 + groupes), lecture
  * et envoi des messages. Scindé de vibe-dms.ts (limite de taille Val Town).
@@ -125,19 +125,19 @@ export function registerDMDirectRoutes(
             SELECT COUNT(*)::int AS count FROM direct_messages m
             WHERE m.conversation_id = dm.id
               AND m.sender_id <> ${userId}
-              AND NOT COALESCE((m.read_by ? ${userId}::text), FALSE)
+              AND NOT COALESCE((m.read_by? ${userId}::text), FALSE)
           ) unread ON TRUE
           WHERE me.user_id = ${userId}
           ORDER BY dm.last_message_at DESC
         `,
       ]);
-      // Livres : métadonnées (titre, icône) pour distinguer la conversation de groupe
+      // Livres: métadonnées (titre, icône) pour distinguer la conversation de groupe
       const bookIds = Array.from(
         new Set(
           ((groups || []) as any[])
-            .map((g) => g.book_id)
-            .filter(Boolean)
-            .map(String)
+.map((g) => g.book_id)
+.filter(Boolean)
+.map(String)
         )
       );
       let bookMeta = new Map<string, any>();
@@ -147,20 +147,20 @@ export function registerDMDirectRoutes(
             await sql`SELECT id, title, icon FROM vibe_books WHERE id = ANY(${bookIds}::uuid[])`;
           bookMeta = new Map((rows as any[]).map((b) => [String(b.id), b]));
         } catch {
-          // vibe_books absent : conversations affichées comme des groupes classiques
+          // vibe_books absent: conversations affichées comme des groupes classiques
         }
       }
       // Normalisation des groupes au format DMConversation (partner_id = id de conversation)
       const groupConvs = ((groups || []) as any[]).map((g) => ({
         book_icon: g.book_id
-          ? bookMeta.get(String(g.book_id))?.icon || null
-          : null,
-        book_id: g.book_id ? String(g.book_id) : null,
+? bookMeta.get(String(g.book_id))?.icon || null
+: null,
+        book_id: g.book_id? String(g.book_id): null,
         book_title: g.book_id
-          ? bookMeta.get(String(g.book_id))?.title || g.group_name || null
-          : null,
+? bookMeta.get(String(g.book_id))?.title || g.group_name || null
+: null,
         id: String(g.conversation_id),
-        is_admin: Boolean(g.is_admin) && !g.book_id,
+        is_admin: Boolean(g.is_admin) &&!g.book_id,
         is_book: Boolean(g.book_id),
         is_group: true,
         last_message_at: g.last_message_at,
@@ -173,7 +173,7 @@ export function registerDMDirectRoutes(
         partner_username: g.group_name || "Groupe",
         unread_count: Number(g.unread_count || 0),
       }));
-      return c.json({ conversations: [...convs, ...groupConvs] });
+      return c.json({ conversations: [...convs,...groupConvs] });
     } catch {
       return c.json({ error: "Erreur conversations." }, 500);
     }
@@ -189,7 +189,7 @@ export function registerDMDirectRoutes(
     handleDMConversations
   );
 
-  // 3. DM MESSAGES (1-1 et groupes : les groupes utilisent conversationId "group:<uuid>")
+  // 3. DM MESSAGES (1-1 et groupes: les groupes utilisent conversationId "group:<uuid>")
   const handleDMMessages = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
@@ -198,8 +198,8 @@ export function registerDMDirectRoutes(
       const userId = Number(payload.sub || (payload as any).id);
       const rawKey = String(c.req.param("partnerId") || "");
       const isGroupKey = rawKey.startsWith("group:");
-      const partnerId = Number(isGroupKey ? rawKey.slice(6) : rawKey);
-      const groupId = isGroupKey ? rawKey.slice(6) : null;
+      const partnerId = Number(isGroupKey? rawKey.slice(6): rawKey);
+      const groupId = isGroupKey? rawKey.slice(6): null;
 
       const sql = getDb();
       await ensureDMTables().catch(() => {});
@@ -208,8 +208,8 @@ export function registerDMDirectRoutes(
       if (isGroupKey) {
         // ── Conversation de GROUPE ──
         if (
-          !groupId ||
-          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!groupId ||
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
             groupId
           )
         ) {
@@ -235,7 +235,7 @@ export function registerDMDirectRoutes(
           ORDER BY m.created_at ASC
           LIMIT 200
         `;
-        // Un nouveau membre récupère tout l'historique : aucune restriction de date.
+        // Un nouveau membre récupère tout l'historique: aucune restriction de date.
 
         try {
           const msgIds = messages.map((m: any) => m.id);
@@ -252,8 +252,8 @@ export function registerDMDirectRoutes(
               const key = String(r.message_id);
               if (!byMsg.has(key)) byMsg.set(key, []);
               byMsg
-                .get(key)!
-                .push({ emoji: r.emoji, user_id: Number(r.user_id) });
+.get(key)!
+.push({ emoji: r.emoji, user_id: Number(r.user_id) });
             }
             for (const m of messages) {
               const list = byMsg.get(String(m.id)) || [];
@@ -277,22 +277,22 @@ export function registerDMDirectRoutes(
           }
         } catch {}
 
-        // Publications jointes (conversations de Livre) : carte cliquable côté client
+        // Publications jointes (conversations de Livre): carte cliquable côté client
         await attachDMAttachedPosts(sql, messages);
 
-        // Marquer comme lu : ajoute mon id dans read_by des messages des autres
+        // Marquer comme lu: ajoute mon id dans read_by des messages des autres
         try {
           const unreadRows = messages.filter(
             (m: any) =>
-              Number(m.sender_id) !== userId &&
-              !((m.read_by || []) as string[])
-                .map(String)
-                .includes(String(userId))
+              Number(m.sender_id)!== userId &&
+!((m.read_by || []) as string[])
+.map(String)
+.includes(String(userId))
           );
           for (const m of unreadRows as any[]) {
             const readers = Array.isArray(m.read_by)
-              ? m.read_by.map(String)
-              : [];
+? m.read_by.map(String)
+: [];
             readers.push(String(userId));
             await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(
               readers
@@ -335,8 +335,8 @@ export function registerDMDirectRoutes(
             const key = String(r.message_id);
             if (!byMsg.has(key)) byMsg.set(key, []);
             byMsg
-              .get(key)!
-              .push({ emoji: r.emoji, user_id: Number(r.user_id) });
+.get(key)!
+.push({ emoji: r.emoji, user_id: Number(r.user_id) });
           }
           for (const m of messages) {
             const list = byMsg.get(String(m.id)) || [];
@@ -415,7 +415,7 @@ export function registerDMDirectRoutes(
         attached_post_id,
       } = await c.req.json();
 
-      // ── GROUPE : conversation_id "group:<uuid>" → diffusion à tous les membres ──
+      // ── GROUPE: conversation_id "group:<uuid>" → diffusion à tous les membres ──
       if (
         typeof conversation_id === "string" &&
         conversation_id.startsWith("group:")
@@ -450,20 +450,20 @@ export function registerDMDirectRoutes(
           return c.json({ error: "Conversation introuvable." }, 404);
         }
 
-        // Conversation de Livre ? (book_id non nul → publication jointe autorisée)
+        // Conversation de Livre? (book_id non nul → publication jointe autorisée)
         const convRows = await sql`
           SELECT book_id, group_name FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1
         `.catch(() => []);
         const bookId = convRows[0]?.book_id
-          ? String(convRows[0].book_id)
-          : null;
+? String(convRows[0].book_id)
+: null;
         const convName = String(convRows[0]?.group_name || "Groupe");
 
-        // Publication jointe (carte cliquable) : réservée aux conversations de Livre,
+        // Publication jointe (carte cliquable): réservée aux conversations de Livre,
         // et le post doit appartenir au Livre concerné.
         let validAttachedPostId: string | null = null;
         const rawAttached =
-          typeof attached_post_id === "string" ? attached_post_id : "";
+          typeof attached_post_id === "string"? attached_post_id: "";
         if (rawAttached) {
           if (!bookId) {
             return c.json(
@@ -475,7 +475,7 @@ export function registerDMDirectRoutes(
             );
           }
           if (
-            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
               rawAttached
             )
           ) {
@@ -521,10 +521,10 @@ export function registerDMDirectRoutes(
           }
         }
 
-        // Transfert : l'auteur d'origine est re-dérivé depuis la base (anti-usurpation)
+        // Transfert: l'auteur d'origine est re-dérivé depuis la base (anti-usurpation)
         const forwardedFrom = await deriveForwardedFrom(sql, forwarded_from);
 
-        // Extraction des mentions : @tous (urgent, tout le groupe) + @username urgents
+        // Extraction des mentions: @tous (urgent, tout le groupe) + @username urgents
         const plain = stripHtmlTags(String(content));
         const mentionMatches = Array.from(
           new Set(plain.match(/@([a-zA-Z0-9_]{1,30})/g) || [])
@@ -533,11 +533,11 @@ export function registerDMDirectRoutes(
           (m) => m.toLowerCase() === "tous"
         );
         const memberUsernames = memberIds.length
-          ? await sql`SELECT id, username FROM users WHERE id = ANY(${memberIds})`
-          : [];
+? await sql`SELECT id, username FROM users WHERE id = ANY(${memberIds})`
+: [];
         const urgentUsernames = isUrgentAll
-          ? []
-          : memberUsernames.filter((u: any) =>
+? []
+: memberUsernames.filter((u: any) =>
               mentionMatches.some(
                 (m) => m.toLowerCase() === String(u.username).toLowerCase()
               )
@@ -548,9 +548,9 @@ export function registerDMDirectRoutes(
           VALUES (${groupId}::uuid, ${userId}, ${content.trim()}, ${JSON.stringify(
             mentionMatches
           )}::jsonb, ${JSON.stringify(
-            isUrgentAll ? ["tous"] : urgentUsernames.map((u: any) => u.username)
+            isUrgentAll? ["tous"]: urgentUsernames.map((u: any) => u.username)
           )}::jsonb, ${validReplyTo}, ${
-            forwardedFrom ? JSON.stringify(forwardedFrom) : null
+            forwardedFrom? JSON.stringify(forwardedFrom): null
           }::jsonb, ${validAttachedPostId})
           RETURNING *
         `;
@@ -558,15 +558,15 @@ export function registerDMDirectRoutes(
           UPDATE dm_conversations SET last_message_preview = ${stripHtmlTags(
             String(content)
           )
-            .trim()
-            .slice(0, 120)}, last_message_at = NOW()
+.trim()
+.slice(0, 120)}, last_message_at = NOW()
           WHERE id = ${groupId}::uuid
         `;
         // Infos de la publication jointe (diffusées aux membres pour la carte cliquable)
         const attachedPost = validAttachedPostId
-          ? await fetchDMAttachedPost(sql, validAttachedPostId)
-          : null;
-        // Notification : urgente pour @tous / @user, normale sinon (hors expéditeur)
+? await fetchDMAttachedPost(sql, validAttachedPostId)
+: null;
+        // Notification: urgente pour @tous / @user, normale sinon (hors expéditeur)
         const senderInfo = await sql`
           SELECT u.username, p.display_name FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.id = ${userId} LIMIT 1
         `;
@@ -575,22 +575,22 @@ export function registerDMDirectRoutes(
           const mentioned =
             isUrgentAll ||
             urgentUsernames.some((u: any) => Number(u.id) === mid);
-          const notifType = mentioned ? "mention" : "dm";
+          const notifType = mentioned? "mention": "dm";
           const notifMsg = isUrgentAll
-            ? "🚨 vous a mentionné (urgent @tous) dans le groupe"
-            : mentioned
-              ? "🚨 vous a mentionné en urgence dans le groupe"
-              : bookId
-                ? `a envoyé un message dans le Livre « ${convName} »`
-                : "a envoyé un message dans le groupe";
+? " vous a mentionné (urgent @tous) dans le groupe"
+: mentioned
+? " vous a mentionné en urgence dans le groupe"
+: bookId
+? `a envoyé un message dans le Livre « ${convName}»`
+: "a envoyé un message dans le groupe";
           await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, message)
             VALUES (${mid}, ${userId}, ${notifType}, ${notifMsg})
           `.catch(() => {});
           try {
             await pushRealtimeEvent(mid, "dm_message", {
-              ...msg[0],
-              ...(replyPreview || {}),
+...msg[0],
+...(replyPreview || {}),
               attached_post: attachedPost,
               conversation_id: groupId,
               sender_display_name: senderInfo[0]?.display_name || null,
@@ -600,7 +600,7 @@ export function registerDMDirectRoutes(
         }
         return c.json(
           {
-            message: { ...msg[0], attached_post: attachedPost },
+            message: {...msg[0], attached_post: attachedPost },
             success: true,
           },
           201
@@ -609,7 +609,7 @@ export function registerDMDirectRoutes(
 
       const recId = Number(recipient_id);
 
-      if (!recId || !content?.trim()) {
+      if (!recId ||!content?.trim()) {
         return c.json({ error: "Destinataire et contenu requis." }, 400);
       }
       if (recId === userId) {
@@ -631,7 +631,7 @@ export function registerDMDirectRoutes(
         );
       }
 
-      // Envoi programmé : date future → status 'scheduled', pas de SSE immédiat
+      // Envoi programmé: date future → status 'scheduled', pas de SSE immédiat
       let scheduledAt: string | null = null;
       if (send_at) {
         const ts = Date.parse(String(send_at));
@@ -641,7 +641,7 @@ export function registerDMDirectRoutes(
         scheduledAt = new Date(ts).toISOString();
       }
 
-      // Blocage : impossible d'envoyer si l'un des deux a bloqué l'autre
+      // Blocage: impossible d'envoyer si l'un des deux a bloqué l'autre
       const blockCheck = await sql`
         SELECT 1 FROM blocked_users
         WHERE (user_id = ${userId} AND blocked_user_id = ${recId})
@@ -650,7 +650,7 @@ export function registerDMDirectRoutes(
       `;
       if (blockCheck.length > 0) {
         return c.json(
-          { error: "Impossible d'envoyer un message : utilisateur bloqué." },
+          { error: "Impossible d'envoyer un message: utilisateur bloqué." },
           403
         );
       }
@@ -674,7 +674,7 @@ export function registerDMDirectRoutes(
       if (recipientSettings.length > 0) {
         const s = recipientSettings[0];
         const dmPolicy = s.allow_dms || "everyone";
-        const dmsEnabled = s.dms_enabled !== false;
+        const dmsEnabled = s.dms_enabled!== false;
         if (!dmsEnabled || dmPolicy === "nobody") {
           return c.json(
             { error: "Cet utilisateur n'accepte pas les messages privés." },
@@ -697,8 +697,8 @@ export function registerDMDirectRoutes(
         }
       }
 
-      const p1 = userId < recId ? userId : recId;
-      const p2 = userId < recId ? recId : userId;
+      const p1 = userId < recId? userId: recId;
+      const p2 = userId < recId? recId: userId;
 
       const convRows = await sql`
         INSERT INTO dm_conversations (participant_one_id, participant_two_id, last_message_preview, last_message_at)
@@ -716,26 +716,26 @@ export function registerDMDirectRoutes(
         /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
           reply_to_id
         )
-          ? reply_to_id
-          : null;
+? reply_to_id
+: null;
       const forwardedFrom = await deriveForwardedFrom(sql, forwarded_from);
       const msg = scheduledAt
-        ? await sql`
+? await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, status, send_at, forwarded_from)
         VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, 'scheduled', ${scheduledAt}::timestamptz, ${
-          forwardedFrom ? JSON.stringify(forwardedFrom) : null
+          forwardedFrom? JSON.stringify(forwardedFrom): null
         }::jsonb)
         RETURNING *
       `
-        : await sql`
+: await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, forwarded_from)
         VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, ${
-          forwardedFrom ? JSON.stringify(forwardedFrom) : null
+          forwardedFrom? JSON.stringify(forwardedFrom): null
         }::jsonb)
         RETURNING *
       `;
 
-      // Message programmé : réponse immédiate, pas de notification ni SSE
+      // Message programmé: réponse immédiate, pas de notification ni SSE
       if (scheduledAt) {
         return c.json({ message: msg[0], scheduled: true, success: true }, 201);
       }
@@ -747,7 +747,7 @@ export function registerDMDirectRoutes(
         `;
       } catch {}
 
-      // Temps réel : pousse le message au destinataire (flux SSE)
+      // Temps réel: pousse le message au destinataire (flux SSE)
       try {
         const senderInfo = await sql`
           SELECT u.username, p.display_name, p.avatar_url
@@ -755,7 +755,7 @@ export function registerDMDirectRoutes(
           WHERE u.id = ${userId} LIMIT 1
         `;
         await pushRealtimeEvent(recId, "dm_message", {
-          ...msg[0],
+...msg[0],
           sender_avatar_url: senderInfo[0]?.avatar_url || null,
           sender_display_name: senderInfo[0]?.display_name || null,
           sender_username: senderInfo[0]?.username || null,

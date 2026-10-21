@@ -45,8 +45,8 @@ type FeishuMessage = {
 
 function parseFeishuText(raw: unknown): string {
   try {
-    const parsed = JSON.parse(String(raw ?? "")) as { text?: string };
-    return String(parsed.text ?? "").trim();
+    const parsed = JSON.parse(String(raw?? "")) as { text?: string };
+    return String(parsed.text?? "").trim();
   } catch {
     return "";
   }
@@ -56,24 +56,24 @@ function collectSenderIds(
   raw: { open_id?: string; user_id?: string; union_id?: string } | undefined
 ): string[] {
   const ids = [raw?.open_id, raw?.user_id, raw?.union_id]
-    .map((value) => String(value ?? "").trim())
-    .filter(Boolean);
+.map((value) => String(value?? "").trim())
+.filter(Boolean);
   return [...new Set(ids)];
 }
 
 function normalizeBotTodos(raw: BotTodoListItem[]): BotTodoListItem[] {
   return raw
-    .map((todo) => ({
-      activeForm: String(todo.activeForm ?? "").trim() || undefined,
-      content: String(todo.content ?? "").trim(),
+.map((todo) => ({
+      activeForm: String(todo.activeForm?? "").trim() || undefined,
+      content: String(todo.content?? "").trim(),
       status:
         todo.status === "completed" ||
         todo.status === "in_progress" ||
         todo.status === "pending"
-          ? todo.status
-          : "pending",
+? todo.status
+: "pending",
     }))
-    .filter((todo) => todo.content);
+.filter((todo) => todo.content);
 }
 
 function feishuFileTypeForPath(
@@ -102,7 +102,7 @@ export function buildFeishuReplyPayload(messageId: string, text: string) {
 export function extractFeishuMessageEvent(
   raw: unknown
 ): { sender?: FeishuSender; message?: FeishuMessage } | null {
-  if (!raw || typeof raw !== "object") {
+  if (!raw || typeof raw!== "object") {
     return null;
   }
   const root = raw as {
@@ -112,8 +112,8 @@ export function extractFeishuMessageEvent(
   };
   const payload =
     root.event && typeof root.event === "object"
-      ? (root.event as { sender?: FeishuSender; message?: FeishuMessage })
-      : root;
+? (root.event as { sender?: FeishuSender; message?: FeishuMessage })
+: root;
   return {
     message: payload.message,
     sender: payload.sender,
@@ -131,13 +131,13 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
 
   private isAllowedChat(chatId: string): boolean {
     const allowed = this.integration.allowedReplyChatIds?.length
-      ? this.integration.allowedReplyChatIds
-      : (this.integration.feishu?.allowedChatIds ?? []);
+? this.integration.allowedReplyChatIds
+: (this.integration.feishu?.allowedChatIds?? []);
     return allowed.length === 0 || allowed.includes(chatId);
   }
 
   private isAllowedUser(userIds: string[]): boolean {
-    const allowed = this.integration.allowedReplyUserIds ?? [];
+    const allowed = this.integration.allowedReplyUserIds?? [];
     return (
       allowed.length === 0 || userIds.some((userId) => allowed.includes(userId))
     );
@@ -162,9 +162,9 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
   }
 
   async start(onMessage: PlatformMessageHandler): Promise<void> {
-    const appId = this.integration.feishu?.appId?.trim() ?? "";
-    const appSecret = this.integration.feishu?.appSecret?.trim() ?? "";
-    if (!appId || !appSecret) {
+    const appId = this.integration.feishu?.appId?.trim()?? "";
+    const appSecret = this.integration.feishu?.appSecret?.trim()?? "";
+    if (!appId ||!appSecret) {
       return;
     }
     const proxyUrl = resolveIntegrationProxyUrl(this.integration);
@@ -174,10 +174,10 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
 
     const encryptKey = this.integration.feishu?.encryptKey?.trim() || undefined;
     const eventDispatcher = new lark.EventDispatcher({
-      ...(encryptKey ? { encryptKey } : {}),
+...(encryptKey? { encryptKey }: {}),
     });
 
-    const useStreamingCard = this.integration.feishu?.streamingCard !== false;
+    const useStreamingCard = this.integration.feishu?.streamingCard!== false;
     if (useStreamingCard) {
       this.cardKitClient = new FeishuCardKitClient({
         appId,
@@ -193,38 +193,38 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
         if (!message) {
           return;
         }
-        const messageType = String(message.message_type ?? "").trim();
+        const messageType = String(message.message_type?? "").trim();
         if (
-          messageType !== "text" &&
-          messageType !== "image" &&
-          messageType !== "file"
+          messageType!== "text" &&
+          messageType!== "image" &&
+          messageType!== "file"
         ) {
           return;
         }
-        const chatId = String(message.chat_id ?? "").trim();
+        const chatId = String(message.chat_id?? "").trim();
         const senderIds = collectSenderIds(event?.sender?.sender_id);
-        const senderId = senderIds[0] ?? "";
+        const senderId = senderIds[0]?? "";
         if (!this.isAllowedUser(senderIds)) {
           return;
         }
-        const chatType = String(message.chat_type ?? "")
-          .trim()
-          .toLowerCase();
-        const isGroupChat = chatType !== "" && chatType !== "p2p";
-        if (isGroupChat && !this.isAllowedChat(chatId)) {
+        const chatType = String(message.chat_type?? "")
+.trim()
+.toLowerCase();
+        const isGroupChat = chatType!== "" && chatType!== "p2p";
+        if (isGroupChat &&!this.isAllowedChat(chatId)) {
           return;
         }
         const text =
-          messageType === "text" ? parseFeishuText(message.content) : "";
+          messageType === "text"? parseFeishuText(message.content): "";
         const attachments =
           messageType === "text"
-            ? []
-            : await this.downloadInboundAttachments(message);
+? []
+: await this.downloadInboundAttachments(message);
         if (!text && attachments.length === 0) {
           return;
         }
 
-        const messageId = String(message.message_id ?? "");
+        const messageId = String(message.message_id?? "");
         if (!this.shouldProcessMessage(messageId)) {
           return;
         }
@@ -242,7 +242,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
               }
             },
             onAttachment: async (attachment) => {
-              if (session.isFailed || attachment.kind !== "image") {
+              if (session.isFailed || attachment.kind!== "image") {
                 return false;
               }
               return await session.attachImage(
@@ -266,7 +266,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
               if (session.isActive) {
                 await session.fail(error);
               } else {
-                await this.replyPlainText(messageId, `❌ ${error}`);
+                await this.replyPlainText(messageId, ` ${error}`);
               }
             },
             onStart: async () => {
@@ -301,13 +301,13 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
           },
           senderId: senderId || undefined,
           senderName:
-            String(event?.sender?.sender_type ?? "").trim() || undefined,
+            String(event?.sender?.sender_type?? "").trim() || undefined,
           streamReply,
           text,
         }).catch((error) => {
           console.warn(
             "[bots][feishu] async message handling failed",
-            error instanceof Error ? error.message : error
+            error instanceof Error? error.message: error
           );
         });
       },
@@ -325,12 +325,12 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
   private async downloadInboundAttachments(
     message: FeishuMessage
   ): Promise<BotInboundAttachment[]> {
-    if (!this.client || !message.message_id) {
+    if (!this.client ||!message.message_id) {
       return [];
     }
     const parsed = (() => {
       try {
-        return JSON.parse(String(message.content ?? "")) as {
+        return JSON.parse(String(message.content?? "")) as {
           image_key?: string;
           file_key?: string;
           file_name?: string;
@@ -343,24 +343,24 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
         };
       }
     })();
-    const messageType = String(message.message_type ?? "").trim();
+    const messageType = String(message.message_type?? "").trim();
     const key =
       messageType === "image"
-        ? parsed.image_key?.trim()
-        : parsed.file_key?.trim();
+? parsed.image_key?.trim()
+: parsed.file_key?.trim();
     if (!key) {
       return [];
     }
     try {
       const fileResponse = await this.client.im.messageResource.get({
-        params: { type: messageType === "image" ? "image" : "file" },
+        params: { type: messageType === "image"? "image": "file" },
         path: { file_key: key, message_id: message.message_id },
       } as unknown as Parameters<typeof this.client.im.messageResource.get>[0]);
       const tmpDir = path.join(app.getPath("temp"), "async-bot-feishu");
       fs.mkdirSync(tmpDir, { recursive: true });
       const suggestedName = parsed.file_name || `${messageType}-${key}`;
       const ext =
-        path.extname(suggestedName) || (messageType === "image" ? ".png" : "");
+        path.extname(suggestedName) || (messageType === "image"? ".png": "");
       const localName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}${ext}`;
       const target = path.join(tmpDir, localName);
       if (
@@ -376,7 +376,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
       }
       return [
         {
-          kind: messageType === "image" ? "image" : "file",
+          kind: messageType === "image"? "image": "file",
           localPath: target,
           name: suggestedName,
         },
@@ -384,7 +384,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
     } catch (error) {
       console.warn(
         "[bots][feishu] inbound attachment download failed",
-        error instanceof Error ? error.message : error
+        error instanceof Error? error.message: error
       );
       return [];
     }
@@ -403,7 +403,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
     if (!this.client) {
       throw new Error("飞书客户端尚未初始化。");
     }
-    const fullPath = String(filePath ?? "").trim();
+    const fullPath = String(filePath?? "").trim();
     if (!fullPath) {
       throw new Error("截图文件路径为空。");
     }
@@ -414,7 +414,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
         image_type: "message",
       },
     });
-    const imageKey = String(uploaded?.image_key ?? "").trim();
+    const imageKey = String(uploaded?.image_key?? "").trim();
     if (!imageKey) {
       throw new Error("飞书图片上传失败，未返回 image_key。");
     }
@@ -435,7 +435,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
 
   private async replyFile(messageId: string, filePath: string): Promise<void> {
     if (!this.client) return;
-    const fullPath = String(filePath ?? "").trim();
+    const fullPath = String(filePath?? "").trim();
     if (!fullPath) {
       throw new Error("文件路径为空。");
     }
@@ -447,7 +447,7 @@ export class FeishuBotAdapter implements BotPlatformAdapter {
         file_type: feishuFileTypeForPath(fullPath),
       },
     });
-    const fileKey = String(uploaded?.file_key ?? "").trim();
+    const fileKey = String(uploaded?.file_key?? "").trim();
     if (!fileKey) {
       throw new Error("飞书文件上传失败，未返回 file_key。");
     }

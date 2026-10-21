@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — mAI : SOCLE PARTAGÉ (vibe-mai-core.ts)
+ * VIBE SOCIAL PLATFORM — mAI: SOCLE PARTAGÉ (vibe-mai-core.ts)
  * Modèles OpenRouter, formatage des réponses d'outils, contexte de post
  * joint (vision), clé API, persistance des conversations/messages mAI,
  * détection des commandes / et @, et auto-approbation.
@@ -27,14 +27,14 @@ const MODEL_MAP: Record<string, string> = {
 
 export function _resolveOpenRouterModel(model: string): string {
   if (MODEL_MAP[model]) return MODEL_MAP[model];
-  return model.includes("/") ? model : "poolside/laguna-xs-2.1:free";
+  return model.includes("/")? model: "poolside/laguna-xs-2.1:free";
 }
 
 /** Période optionnelle en fin de commande ("/audience 90d", "/hashtags 7j", "... 12m"). */
 export function parsePeriodArg(raw: string): "7d" | "30d" | "90d" | "12m" {
   const m = String(raw)
-    .toLowerCase()
-    .match(/(?:^|\s)(7d|30d|90d|12m|7j|30j|90j|1an|an)\s*$/);
+.toLowerCase()
+.match(/(?:^|\s)(7d|30d|90d|12m|7j|30j|90j|1an|an)\s*$/);
   if (!m) return "30d";
   const v = m[1];
   if (v === "7d" || v === "7j") return "7d";
@@ -50,158 +50,158 @@ export function formatToolReply(
   _username: string
 ): string {
   if (toolName === "generate_vibe_image") {
-    return `🎨 Voici l'image générée avec mAI :\n\n![Image générée](${result.imageUrl})\n\n*Prompt : « ${result.prompt} »*`;
+    return ` Voici l'image générée avec mAI:\n\n![Image générée](${result.imageUrl})\n\n*Prompt: « ${result.prompt}»*`;
   }
   if (toolName === "search_web") {
-    return `🌐 **Recherche Web mAI** :\n\n${result.snippet}`;
+    return ` **Recherche Web mAI**:\n\n${result.snippet}`;
   }
   if (toolName === "fact_check") {
-    return `🛡️ **Vérification Factuelle mAI** :\n• Affirmation : « ${result.statement} »\n• Résultat : **${result.verdict}** (Indice de confiance : ${result.confidence})\n\n${result.analysis}`;
+    return ` **Vérification Factuelle mAI**:\n• Affirmation: « ${result.statement}»\n• Résultat: **${result.verdict}** (Indice de confiance: ${result.confidence})\n\n${result.analysis}`;
   }
   if (toolName === "rewrite_post") {
-    return `✨ **Texte reformulé (${result.style})** :\n\n${result.rewritten}`;
+    return ` **Texte reformulé (${result.style})**:\n\n${result.rewritten}`;
   }
   if (toolName === "translate") {
-    return `🌐 **Traduction (${result.targetLanguage})** :\n\n${result.translated}`;
+    return ` **Traduction (${result.targetLanguage})**:\n\n${result.translated}`;
   }
   if (toolName === "create_post") {
-    return `🚀 Votre publication a été publiée avec succès sur Vibe :\n\n« ${result.post.content} »`;
+    return ` Votre publication a été publiée avec succès sur Vibe:\n\n« ${result.post.content}»`;
   }
   if (toolName === "delete_post") {
-    return `🗑️ ${result.message}`;
+    return ` ${result.message}`;
   }
   if (toolName === "analyze_trends") {
     const trendsList = result.trendingTopics
-      .map(
+.map(
         (t: any) =>
           `• **${t.name}** (${t.postsCount} publications) — ${t.sentiment}`
       )
-      .join("\n");
+.join("\n");
     return trendsList
-      ? `🔥 **Tendances actuelles sur Vibe** :\n\n${trendsList}`
-      : "🔍 Pas encore de tendances détectées cette semaine. Publiez avec des hashtags pour lancer la vague !";
+? ` **Tendances actuelles sur Vibe**:\n\n${trendsList}`
+: " Pas encore de tendances détectées cette semaine. Publiez avec des hashtags pour lancer la vague!";
   }
   if (toolName === "suggest_post") {
-    return `💡 **Idées de publications Vibe** (thème : ${result.topic}) :\n\n${result.suggestions}\n\n*Utilisez /publish suivi du texte choisi pour publier.*`;
+    return ` **Idées de publications Vibe** (thème: ${result.topic}):\n\n${result.suggestions}\n\n*Utilisez /publish suivi du texte choisi pour publier.*`;
   }
   if (toolName === "get_account_stats") {
-    return `📈 **Statistiques du compte @${result.user.username}** :\n• Publications : **${result.totalPosts}**\n• Score de réputation : **${
+    return ` **Statistiques du compte @${result.user.username}**:\n• Publications: **${result.totalPosts}**\n• Score de réputation: **${
       result.profile?.reputation_score || 100
-    } pts**\n• Forfait : **${result.user.tier || "Free"}**`;
+    } pts**\n• Forfait: **${result.user.tier || "Free"}**`;
   }
   if (toolName === "check_quotas") {
     const q = result;
-    return `📊 **Vos quotas réels (${q.tier})** :\n• Tokens mAI : **${q.weeklyTokens.used.toLocaleString()}** / ${q.weeklyTokens.limit.toLocaleString()} (${q.weeklyTokens.percent}%)\n• Images quotidiennes : **${q.dailyImages.used}** / ${q.dailyImages.limit} (${q.dailyImages.percent}%)\n• Réinitialisation : ${new Date(
+    return ` **Vos quotas réels (${q.tier})**:\n• Tokens mAI: **${q.weeklyTokens.used.toLocaleString()}** / ${q.weeklyTokens.limit.toLocaleString()} (${q.weeklyTokens.percent}%)\n• Images quotidiennes: **${q.dailyImages.used}** / ${q.dailyImages.limit} (${q.dailyImages.percent}%)\n• Réinitialisation: ${new Date(
       q.resetAt
     ).toLocaleDateString("fr-FR")}`;
   }
   if (toolName === "update_profile") {
-    return `✅ ${result.message}\n\n• Nom affiché : **${result.profile.display_name}**\n• Bio : ${
+    return ` ${result.message}\n\n• Nom affiché: **${result.profile.display_name}**\n• Bio: ${
       result.profile.bio || "_(vide)_"
     }`;
   }
   if (toolName === "follow_user") {
-    return `👥 ${result.message}`;
+    return ` ${result.message}`;
   }
   if (toolName === "get_notifications") {
-    if (result.count === 0) return "🔔 Aucune notification récente.";
+    if (result.count === 0) return " Aucune notification récente.";
     const list = result.notifications
-      .slice(0, 10)
-      .map(
+.slice(0, 10)
+.map(
         (n: any) =>
-          `• **${n.type}** — ${n.message || (n.actor_username ? `@${n.actor_username}` : "")}`
+          `• **${n.type}** — ${n.message || (n.actor_username? `@${n.actor_username}`: "")}`
       )
-      .join("\n");
-    return `🔔 **Vos ${result.count} dernières notifications** :\n\n${list}`;
+.join("\n");
+    return ` **Vos ${result.count} dernières notifications**:\n\n${list}`;
   }
   if (toolName === "like_post") {
     return result.liked
-      ? `❤️ ${result.message}\n\n• Post : \`${result.post_id}\`\n• Total likes : **${result.likes_count}**`
-      : `🤍 ${result.message}`;
+? ` ${result.message}\n\n• Post: \`${result.post_id}\`\n• Total likes: **${result.likes_count}**`
+: ` ${result.message}`;
   }
   if (toolName === "send_message") {
-    return `💬 ${result.message}\n\n• Destinataire : **@${result.username}**\n• Aperçu : « ${result.preview} »`;
+    return ` ${result.message}\n\n• Destinataire: **@${result.username}**\n• Aperçu: « ${result.preview}»`;
   }
   if (toolName === "update_settings") {
     const keys = Object.keys(result.patched || {}).join(", ");
-    return `⚙️ ${result.message}\n\n• Modifiés : \`${keys}\``;
+    return ` ${result.message}\n\n• Modifiés: \`${keys}\``;
   }
   if (toolName === "bookmark_post") {
-    return result.bookmarked ? `🔖 ${result.message}` : `📑 ${result.message}`;
+    return result.bookmarked? ` ${result.message}`: ` ${result.message}`;
   }
   if (toolName === "repost_post") {
-    return result.reposted ? `🔁 ${result.message}` : `↩️ ${result.message}`;
+    return result.reposted? ` ${result.message}`: ` ${result.message}`;
   }
   if (toolName === "comment_post") {
-    return `💭 ${result.message}\n\n• Commentaire : \`${result.comment_id}\``;
+    return ` ${result.message}\n\n• Commentaire: \`${result.comment_id}\``;
   }
   if (toolName === "get_post_stats") {
-    return `📊 **Analyse du post @${result.author}** :\n• ❤️ ${result.likes} · 🔁 ${result.reposts} · 💬 ${result.replies} · 👁️ ${result.views} · 🔖 ${result.bookmarks}\n• Engagement : **${result.engagement}** (taux ${result.engagement_rate_percent}%)\n\n« ${result.content} »`;
+    return ` **Analyse du post @${result.author}**:\n• ${result.likes} · ${result.reposts} · ${result.replies} · ${result.views} · ${result.bookmarks}\n• Engagement: **${result.engagement}** (taux ${result.engagement_rate_percent}%)\n\n« ${result.content}»`;
   }
   if (toolName === "search_posts") {
     if (!result.resultsCount) {
-      return `🔎 Aucune publication trouvée pour « ${result.query} ».`;
+      return ` Aucune publication trouvée pour « ${result.query}».`;
     }
     const list = (result.posts || [])
-      .slice(0, 5)
-      .map(
+.slice(0, 5)
+.map(
         (p: any) =>
           `• @${p.username} — « ${String(p.content || "")
-            .replace(/\s+/g, " ")
-            .slice(0, 90)} »`
+.replace(/\s+/g, " ")
+.slice(0, 90)}»`
       )
-      .join("\n");
-    return `🔎 **${result.resultsCount} publication(s) pour « ${result.query} »** :\n\n${list}`;
+.join("\n");
+    return ` **${result.resultsCount} publication(s) pour « ${result.query}»**:\n\n${list}`;
   }
   if (toolName === "analyze_creator_stats") {
     const t = result.totals || {};
     const reco = (result.recommendations || [])
-      .map((r: string) => `• ${r}`)
-      .join("\n");
-    return `📈 **Analyse créateur (${result.period_days} j)** :\n• 👁️ Vues : **${
-      t.views ?? "—"
-    }** · ❤️ ${t.likes ?? "—"} · 🔁 ${t.reposts ?? "—"} · 💬 ${
-      t.replies ?? "—"
-    }\n• Taux d'engagement : **${result.engagement_rate_percent ?? "—"}%**${
-      reco ? `\n\n**Recommandations :**\n${reco}` : ""
+.map((r: string) => `• ${r}`)
+.join("\n");
+    return ` **Analyse créateur (${result.period_days} j)**:\n• Vues: **${
+      t.views?? "—"
+    }** · ${t.likes?? "—"} · ${t.reposts?? "—"} · ${
+      t.replies?? "—"
+    }\n• Taux d'engagement: **${result.engagement_rate_percent?? "—"}%**${
+      reco? `\n\n**Recommandations:**\n${reco}`: ""
     }`;
   }
   if (toolName === "analyze_audience") {
     const src = (result.sources || [])
-      .map((s: any) => `• ${s.source} : **${s.views}** vues (${s.percent}%)`)
-      .join("\n");
+.map((s: any) => `• ${s.source}: **${s.views}** vues (${s.percent}%)`)
+.join("\n");
     const hours = (result.peak_hours || [])
-      .slice(0, 3)
-      .map((h: any) => `${String(h.hour).padStart(2, "0")}h`)
-      .join(", ");
+.slice(0, 3)
+.map((h: any) => `${String(h.hour).padStart(2, "0")}h`)
+.join(", ");
     const fans = (result.top_engaged_followers || [])
-      .slice(0, 3)
-      .map((f: any) => `@${f.username} (${f.views})`)
-      .join(", ");
-    return `👥 **Audience (${result.period_days} j)** :\n• Vues : **${result.total_views}** · Visiteurs uniques : **${result.unique_viewers}**\n${src}${
-      hours ? `\n• Heures de pointe : ${hours}` : ""
-    }${fans ? `\n• Top followers engagés : ${fans}` : ""}`;
+.slice(0, 3)
+.map((f: any) => `@${f.username} (${f.views})`)
+.join(", ");
+    return ` **Audience (${result.period_days} j)**:\n• Vues: **${result.total_views}** · Visiteurs uniques: **${result.unique_viewers}**\n${src}${
+      hours? `\n• Heures de pointe: ${hours}`: ""
+    }${fans? `\n• Top followers engagés: ${fans}`: ""}`;
   }
   if (toolName === "best_time_to_post") {
     const slots = (result.best_slots || [])
-      .map(
+.map(
         (s: any) =>
           `• **${s.weekday} ${String(s.hour).padStart(
             2,
             "0"
           )}h** — ${s.avg_views} vues moy., ${s.avg_engagement} engagement`
       )
-      .join("\n");
-    return `🕐 **Meilleurs créneaux (${result.period_days} j, ${result.analyzed_posts} posts analysés)** :\n${
+.join("\n");
+    return ` **Meilleurs créneaux (${result.period_days} j, ${result.analyzed_posts} posts analysés)**:\n${
       slots || "• Pas assez de données."
-    }\n\n*Confiance : ${result.confidence}*`;
+    }\n\n*Confiance: ${result.confidence}*`;
   }
   if (toolName === "compare_periods") {
     const fmt = (label: string, m: any) =>
-      `• ${label} : **${m.current}** vs ${m.previous} (${m.delta >= 0 ? "+" : ""}${m.delta}, ${
-        m.percent >= 0 ? "+" : ""
+      `• ${label}: **${m.current}** vs ${m.previous} (${m.delta >= 0? "+": ""}${m.delta}, ${
+        m.percent >= 0? "+": ""
       }${m.percent}%)`;
-    return `📊 **Comparaison (${result.period_days} j vs les ${result.period_days} précédents)** :\n${fmt(
+    return ` **Comparaison (${result.period_days} j vs les ${result.period_days} précédents)**:\n${fmt(
       "Vues",
       result.views
     )}\n${fmt("Likes", result.likes)}\n${fmt("Reposts", result.reposts)}\n${fmt(
@@ -214,111 +214,111 @@ export function formatToolReply(
   }
   if (toolName === "predict_post_performance") {
     const tips = (result.breakdown || [])
-      .filter((b: any) => b.tip)
-      .map((b: any) => `• ${b.tip}`)
-      .join("\n");
-    return `🎯 **Prévision du brouillon : ${result.score}/100**${
-      result.cold_start ? " (historique insuffisant)" : ""
-    }\n• Portée estimée : **${result.estimated_reach}** vues\n• Engagement estimé : **${result.estimated_engagement}**${
-      tips ? `\n\n**Conseils :**\n${tips}` : ""
+.filter((b: any) => b.tip)
+.map((b: any) => `• ${b.tip}`)
+.join("\n");
+    return ` **Prévision du brouillon: ${result.score}/100**${
+      result.cold_start? " (historique insuffisant)": ""
+    }\n• Portée estimée: **${result.estimated_reach}** vues\n• Engagement estimé: **${result.estimated_engagement}**${
+      tips? `\n\n**Conseils:**\n${tips}`: ""
     }`;
   }
   if (toolName === "analyze_content_performance") {
     const formats = (result.formats || [])
-      .map(
+.map(
         (f: any) =>
-          `• **${f.format}** : ${f.posts} posts · ${f.avg_views} vues moy. · ${f.avg_engagement} engagement`
+          `• **${f.format}**: ${f.posts} posts · ${f.avg_views} vues moy. · ${f.avg_engagement} engagement`
       )
-      .join("\n");
+.join("\n");
     const tags = (result.top_hashtags || [])
-      .slice(0, 5)
-      .map((t: any) => `${t.tag} (${t.avg_views} vues)`)
-      .join(", ");
-    return `🧩 **Performance par format (${result.period_days} j)** :\n${
+.slice(0, 5)
+.map((t: any) => `${t.tag} (${t.avg_views} vues)`)
+.join(", ");
+    return ` **Performance par format (${result.period_days} j)**:\n${
       formats || "• Aucun post sur la période."
-    }${tags ? `\n\n**Top hashtags :** ${tags}` : ""}`;
+    }${tags? `\n\n**Top hashtags:** ${tags}`: ""}`;
   }
   if (toolName === "analyze_dm_activity") {
     const top = (result.top_correspondents || [])
-      .slice(0, 3)
-      .map((c: any) => `@${c.username} (${c.messages})`)
-      .join(", ");
-    return `💬 **Activité messages (${result.period_days} j)** :\n• Total : **${result.messages_total}** (${result.sent} envoyés, ${result.received} reçus)\n• Conversations actives : **${result.active_conversations}** · Groupes : ${result.groups}${
+.slice(0, 3)
+.map((c: any) => `@${c.username} (${c.messages})`)
+.join(", ");
+    return ` **Activité messages (${result.period_days} j)**:\n• Total: **${result.messages_total}** (${result.sent} envoyés, ${result.received} reçus)\n• Conversations actives: **${result.active_conversations}** · Groupes: ${result.groups}${
       result.avg_reply_minutes === null
-        ? ""
-        : `\n• Temps de réponse moyen : **${result.avg_reply_minutes} min**`
-    }${top ? `\n• Top correspondants : ${top}` : ""}`;
+? ""
+: `\n• Temps de réponse moyen: **${result.avg_reply_minutes} min**`
+    }${top? `\n• Top correspondants: ${top}`: ""}`;
   }
   if (toolName === "analyze_book_stats") {
     const books = (result.books || [])
-      .map(
+.map(
         (b: any) =>
-          `• **${b.title}** : ${b.items_count} Vibes · ${b.members_count} membres · ${b.contributors_count} contributeurs`
+          `• **${b.title}**: ${b.items_count} Vibes · ${b.members_count} membres · ${b.contributors_count} contributeurs`
       )
-      .join("\n");
-    return `📚 **Vos Livres (${result.books_count})** :\n${books || "• Aucun Livre."}`;
+.join("\n");
+    return ` **Vos Livres (${result.books_count})**:\n${books || "• Aucun Livre."}`;
   }
   if (toolName === "analyze_hashtags") {
     const tags = (result.hashtags || [])
-      .slice(0, 5)
-      .map(
+.slice(0, 5)
+.map(
         (t: any) =>
           `• **${t.tag}** — ${t.avg_views} vues moy., ${t.avg_likes} likes moy.`
       )
-      .join("\n");
+.join("\n");
     const sugg = (result.suggestions || [])
-      .slice(0, 4)
-      .map((t: any) => `${t.tag} (${t.platform_posts_7d})`)
-      .join(", ");
-    return `#️⃣ **Hashtags (${result.period_days} j)** :\n${
+.slice(0, 4)
+.map((t: any) => `${t.tag} (${t.platform_posts_7d})`)
+.join(", ");
+    return `⃣ **Hashtags (${result.period_days} j)**:\n${
       tags || "• Aucun hashtag utilisé sur la période."
-    }${sugg ? `\n\n**Suggestions tendance :** ${sugg}` : ""}`;
+    }${sugg? `\n\n**Suggestions tendance:** ${sugg}`: ""}`;
   }
   if (toolName === "analyze_sentiment") {
     const a = result.analysis || {};
     const terms = (a.key_terms || []).map((t: string) => `\`${t}\``).join(", ");
-    const score = typeof a.score === "number" ? a.score.toFixed(2) : "—";
-    return `🧭 **Sentiment des commentaires** (${result.commentCount} commentaires) :\n• Polarité : **${a.polarity || "—"}** (score ${score})\n• Termes clés : ${terms || "—"}\n\n${a.summary || ""}`;
+    const score = typeof a.score === "number"? a.score.toFixed(2): "—";
+    return ` **Sentiment des commentaires** (${result.commentCount} commentaires):\n• Polarité: **${a.polarity || "—"}** (score ${score})\n• Termes clés: ${terms || "—"}\n\n${a.summary || ""}`;
   }
   if (toolName === "summarize_thread") {
     const a = result.analysis || {};
     const points = (a.key_points || []).map((p: string) => `• ${p}`).join("\n");
     const clashes = (a.disagreements || [])
-      .map((p: string) => `• ${p}`)
-      .join("\n");
-    return `🧵 **Résumé du fil** (${result.commentCount} commentaires) :\n\n${
+.map((p: string) => `• ${p}`)
+.join("\n");
+    return ` **Résumé du fil** (${result.commentCount} commentaires):\n\n${
       a.summary || ""
-    }${points ? `\n\n**Points clés :**\n${points}` : ""}${
-      clashes ? `\n\n**Désaccords :**\n${clashes}` : ""
+    }${points? `\n\n**Points clés:**\n${points}`: ""}${
+      clashes? `\n\n**Désaccords:**\n${clashes}`: ""
     }`;
   }
   if (toolName === "adapt_post") {
     const limit = result.withinLimit
-      ? `${result.characterCount} caractères`
-      : `⚠️ ${result.characterCount} caractères (max ${result.maxLength})`;
-    return `📱 **Version ${result.networkName}** (${limit}) :\n\n${result.adapted}`;
+? `${result.characterCount} caractères`
+: ` ${result.characterCount} caractères (max ${result.maxLength})`;
+    return ` **Version ${result.networkName}** (${limit}):\n\n${result.adapted}`;
   }
   if (toolName === "generate_variants") {
     const list = (result.variants || [])
-      .map(
+.map(
         (v: any, i: number) =>
-          `**${i + 1}.** ${v.hook}${v.angle ? `\n   _Angle : ${v.angle}_` : ""}`
+          `**${i + 1}.** ${v.hook}${v.angle? `\n _Angle: ${v.angle}_`: ""}`
       )
-      .join("\n\n");
-    return `💡 **3 accroches alternatives** (style ${result.tone}) :\n\n${list}`;
+.join("\n\n");
+    return ` **3 accroches alternatives** (style ${result.tone}):\n\n${list}`;
   }
   if (toolName === "generate_caption") {
     const tags = (result.hashtags || []).join(" ");
-    return `🖼️ **Légende proposée** :\n\n${result.caption}${
-      result.callToAction ? `\n\n${result.callToAction}` : ""
-    }${tags ? `\n\n${tags}` : ""}`;
+    return ` **Légende proposée**:\n\n${result.caption}${
+      result.callToAction? `\n\n${result.callToAction}`: ""
+    }${tags? `\n\n${tags}`: ""}`;
   }
   if (toolName === "compare_models") {
     const a = result.modelA || {};
     const b = result.modelB || {};
-    return `⚖️ **Comparaison sur le même prompt** :\n\n**${a.model}** — ${a.latencyMs} ms · ${a.responseLength} caractères\n${a.response || "(vide)"}\n\n---\n\n**${b.model}** — ${b.latencyMs} ms · ${b.responseLength} caractères\n${b.response || "(vide)"}`;
+    return ` **Comparaison sur le même prompt**:\n\n**${a.model}** — ${a.latencyMs} ms · ${a.responseLength} caractères\n${a.response || "(vide)"}\n\n---\n\n**${b.model}** — ${b.latencyMs} ms · ${b.responseLength} caractères\n${b.response || "(vide)"}`;
   }
-  return "✅ Action effectuée.";
+  return " Action effectuée.";
 }
 
 // ── Contexte de post joint à une question mAI ────────────────────────────
@@ -353,7 +353,7 @@ export async function buildPostContext(
 ): Promise<{ text: string; imageParts: any[] } | null> {
   try {
     if (
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         postId
       )
     ) {
@@ -385,12 +385,12 @@ export async function buildPostContext(
       `;
       if (comments.length > 0) {
         const lines = comments
-          .map(
+.map(
             (cm: any) =>
-              `  • @${cm.username} : ${String(cm.content || "").slice(0, 200)}`
+              ` • @${cm.username}: ${String(cm.content || "").slice(0, 200)}`
           )
-          .join("\n");
-        commentsText = `\n\nPremiers commentaires :\n${lines}`;
+.join("\n");
+        commentsText = `\n\nPremiers commentaires:\n${lines}`;
       }
     } catch {}
 
@@ -401,11 +401,11 @@ export async function buildPostContext(
     } catch {}
 
     const text =
-      `📌 Post mentionné de @${post.username} (${post.display_name || post.username})` +
-      `${post.ai_generated ? " [marqué « créé avec l'IA » par son auteur]" : ""}\n` +
+      ` Post mentionné de @${post.username} (${post.display_name || post.username})` +
+      `${post.ai_generated? " [marqué « créé avec l'IA» par son auteur]": ""}\n` +
       `Publié le ${new Date(post.published_at).toLocaleString("fr-FR")}\n\n` +
-      `« ${post.content} »\n\n` +
-      `Statistiques : ${post.likes_count} J'aime · ${post.replies_count} réponses · ${post.reposts_count} republications · ${
+      `« ${post.content}»\n\n` +
+      `Statistiques: ${post.likes_count} J'aime · ${post.replies_count} réponses · ${post.reposts_count} republications · ${
         post.views_count || 0
       } vues` +
       commentsText;
@@ -417,7 +417,7 @@ export async function buildPostContext(
       const isImage =
         String(m.media_type || "").startsWith("image") ||
         /\.(png|jpe?g|webp|gif)(\?|$)/i.test(url);
-      if (!url || !isImage) continue;
+      if (!url ||!isImage) continue;
       try {
         const res = await fetch(url);
         if (!res.ok) continue;
@@ -442,7 +442,7 @@ export async function buildPostContext(
   }
 }
 
-/** Clé OpenRouter : variable d'environnement, sinon clé personnelle de l'utilisateur. */
+/** Clé OpenRouter: variable d'environnement, sinon clé personnelle de l'utilisateur. */
 export async function getOpenRouterKey(
   sql: any,
   userId: number
@@ -452,13 +452,13 @@ export async function getOpenRouterKey(
   `.catch(() => []);
   return (
     (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
-    (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
-    (keyRows.length > 0 ? keyRows[0].api_key : "")
+    (typeof process!== "undefined" && process.env?.OPENROUTER_API_KEY) ||
+    (keyRows.length > 0? keyRows[0].api_key: "")
   );
 }
 
 // ── Persistance des conversations mAI (tables migration 002, créées
-//    idempotemment au démarrage : le migrateur n'exécute pas les SQL) ──
+// idempotemment au démarrage: le migrateur n'exécute pas les SQL) ──
 let maiTablesReady = false;
 export async function ensureMAIConversations() {
   if (maiTablesReady) return;
@@ -489,14 +489,14 @@ export async function ensureMAIConversations() {
         created_at TIMESTAMPTZ DEFAULT NOW()
       )
     `;
-    // Multi-conversations + chips d'outils : colonnes défensives et index
+    // Multi-conversations + chips d'outils: colonnes défensives et index
     await sql`ALTER TABLE mai_messages ADD COLUMN IF NOT EXISTS tool_calls JSONB`.catch(
       () => {}
     );
     await sql`ALTER TABLE mai_messages ADD COLUMN IF NOT EXISTS tool_call_id VARCHAR(100)`.catch(
       () => {}
     );
-    // Réflexion affichable : colonne additive, jamais bloquante si la base est
+    // Réflexion affichable: colonne additive, jamais bloquante si la base est
     // antérieure à cette version.
     await sql`ALTER TABLE mai_messages ADD COLUMN IF NOT EXISTS reasoning TEXT`.catch(
       () => {}
@@ -516,7 +516,7 @@ export async function ensureMAIConversations() {
   }
 }
 
-/** Conversation active de l'utilisateur : la plus récente, créée au besoin. */
+/** Conversation active de l'utilisateur: la plus récente, créée au besoin. */
 export async function getOrCreateConversation(sql: any, userId: number) {
   const existing = await sql`
     SELECT id FROM mai_conversations WHERE user_id = ${userId} ORDER BY updated_at DESC LIMIT 1
@@ -528,21 +528,21 @@ export async function getOrCreateConversation(sql: any, userId: number) {
   return created[0]?.id as string | undefined;
 }
 
-/** Conversation demandée par le client : validée propriétaire, ou signalée invalide. */
+/** Conversation demandée par le client: validée propriétaire, ou signalée invalide. */
 export async function resolveOwnedConversation(
   sql: any,
   userId: number,
   raw: unknown
 ): Promise<{ id: string | null; invalid: boolean }> {
-  const rawId = typeof raw === "string" ? raw.trim() : "";
+  const rawId = typeof raw === "string"? raw.trim(): "";
   if (!rawId) return { id: null, invalid: false };
   if (!UUID_RE.test(rawId)) return { id: null, invalid: true };
   const rows = await sql`
     SELECT id FROM mai_conversations WHERE id = ${rawId}::uuid AND user_id = ${userId} LIMIT 1
   `.catch(() => []);
   return rows.length > 0
-    ? { id: String(rows[0].id), invalid: false }
-    : { id: null, invalid: true };
+? { id: String(rows[0].id), invalid: false }
+: { id: null, invalid: true };
 }
 
 /** Titre automatique depuis le premier message utilisateur (titre par défaut seulement). */
@@ -557,16 +557,16 @@ export async function maybeAutoTitleConversation(
     const current = String(rows[0]?.title || "").trim();
     if (
       current &&
-      current !== "Discussion mAI" &&
-      current !== "Nouvelle discussion mAI"
+      current!== "Discussion mAI" &&
+      current!== "Nouvelle discussion mAI"
     ) {
       return;
     }
     const plain = stripHtmlTags(String(firstMessage))
-      .replace(/\s+/g, " ")
-      .trim();
+.replace(/\s+/g, " ")
+.trim();
     if (!plain) return;
-    const title = plain.length > 60 ? `${plain.slice(0, 57)}…` : plain;
+    const title = plain.length > 60? `${plain.slice(0, 57)}…`: plain;
     await sql`UPDATE mai_conversations SET title = ${title} WHERE id = ${conversationId}::uuid`;
   } catch {}
 }
@@ -586,8 +586,8 @@ export async function saveMAIMessage(
   try {
     const toolCallsJson =
       extra?.toolCalls && extra.toolCalls.length > 0
-        ? JSON.stringify(extra.toolCalls)
-        : null;
+? JSON.stringify(extra.toolCalls)
+: null;
     const reasoning = extra?.reasoning?.trim() || null;
     const rows = await sql`
       INSERT INTO mai_messages (conversation_id, sender_role, content, tool_calls, tool_call_id, reasoning)
@@ -622,20 +622,20 @@ export function makeToolCallRecord(opts: {
   return {
     args: opts.args || {},
     at: new Date().toISOString(),
-    error: opts.error ?? null,
+    error: opts.error?? null,
     id:
       globalThis.crypto?.randomUUID?.() ||
       `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    model: opts.model ?? null,
+    model: opts.model?? null,
     name: opts.name,
-    result: opts.result ?? null,
+    result: opts.result?? null,
     status: opts.status,
   };
 }
 
 /**
  * Finalise le dernier message assistant portant un record `pending_approval`
- * pour cet outil (exécution ou refus) : met à jour contenu + tool_calls sans
+ * pour cet outil (exécution ou refus): met à jour contenu + tool_calls sans
  * insérer de doublon. Retourne l'id du message mis à jour, ou null.
  */
 export async function finalizePendingToolMessage(
@@ -657,18 +657,18 @@ export async function finalizePendingToolMessage(
       ORDER BY created_at DESC LIMIT 12
     `;
     for (const row of rows as any[]) {
-      const calls = Array.isArray(row.tool_calls) ? row.tool_calls : [];
+      const calls = Array.isArray(row.tool_calls)? row.tool_calls: [];
       const idx = calls.findIndex(
         (cc: any) =>
           cc && cc.name === toolName && cc.status === "pending_approval"
       );
       if (idx >= 0) {
         calls[idx] = {
-          ...calls[idx],
+...calls[idx],
           at: new Date().toISOString(),
-          error: patch.error ?? null,
-          model: patch.model ?? calls[idx].model ?? null,
-          result: patch.result ?? null,
+          error: patch.error?? null,
+          model: patch.model?? calls[idx].model?? null,
+          result: patch.result?? null,
           status: patch.status,
         };
         await sql`
@@ -703,11 +703,11 @@ export function detectTool(
     lower.startsWith("génère une image")
   ) {
     const prompt = cleanMsg
-      .replace(
+.replace(
         /^([/@](image|draw|generate_image)|(génère|crée)\s*(une image|l'image)?)\s*:?\s*/i,
         ""
       )
-      .trim();
+.trim();
     return {
       toolArgs: {
         prompt: prompt || "Création artistique numérique minimaliste",
@@ -723,8 +723,8 @@ export function detectTool(
     lower.startsWith("@web")
   ) {
     const q = cleanMsg
-      .replace(/^[/@](search|recherche|web)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](search|recherche|web)\s*:?\s*/i, "")
+.trim();
     return {
       toolArgs: { query: q || "Intelligence artificielle 2026" },
       toolToRun: "search_web",
@@ -737,8 +737,8 @@ export function detectTool(
     lower.startsWith("@verifier")
   ) {
     const s = cleanMsg
-      .replace(/^[/@](fact_check|verifier)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](fact_check|verifier)\s*:?\s*/i, "")
+.trim();
     return { toolArgs: { statement: s || cleanMsg }, toolToRun: "fact_check" };
   }
   if (
@@ -749,14 +749,14 @@ export function detectTool(
     lower.startsWith("@style")
   ) {
     const words = cleanMsg
-      .replace(/^[/@](rewrite|reformuler|style)\s*:?\s*/i, "")
-      .trim()
-      .split(/\s+/);
+.replace(/^[/@](rewrite|reformuler|style)\s*:?\s*/i, "")
+.trim()
+.split(/\s+/);
     const style = ["viral", "pro", "humour", "concis", "poétique"].includes(
       words[0]?.toLowerCase()
     )
-      ? words.shift()
-      : "viral";
+? words.shift()
+: "viral";
     return {
       toolArgs: { style, text: words.join(" ") || cleanMsg },
       toolToRun: "rewrite_post",
@@ -769,9 +769,9 @@ export function detectTool(
     lower.startsWith("@traduire")
   ) {
     const words = cleanMsg
-      .replace(/^[/@](translate|traduire)\s*:?\s*/i, "")
-      .trim()
-      .split(/\s+/);
+.replace(/^[/@](translate|traduire)\s*:?\s*/i, "")
+.trim()
+.split(/\s+/);
     const lang = words[0] || "anglais";
     words.shift();
     return {
@@ -788,8 +788,8 @@ export function detectTool(
     lower.startsWith("publie ")
   ) {
     const textMatch = cleanMsg
-      .replace(/^([/@](publish|publier|post)|(publie|poste))\s*:?\s*/i, "")
-      .trim();
+.replace(/^([/@](publish|publier|post)|(publie|poste))\s*:?\s*/i, "")
+.trim();
     return {
       toolArgs: { content: textMatch || cleanMsg },
       toolToRun: "create_post",
@@ -801,8 +801,8 @@ export function detectTool(
     lower.startsWith("/supprimer")
   ) {
     const raw = cleanMsg
-      .replace(/^[/@](delete_post|supprimer)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](delete_post|supprimer)\s*:?\s*/i, "")
+.trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
@@ -825,7 +825,7 @@ export function detectTool(
     lower.includes("change ma bio")
   ) {
     const raw = cleanMsg.replace(/^[/@]profile\s*:?\s*/i, "").trim();
-    // Format : /profile display_name: X bio: Y (approbation requise côté chat)
+    // Format: /profile display_name: X bio: Y (approbation requise côté chat)
     const dn = raw.match(/display_name\s*:\s*([^,;]+)/i);
     const bio = raw.match(/bio\s*:\s*([\s\S]+)/i);
     const args: Record<string, string> = {};
@@ -843,9 +843,9 @@ export function detectTool(
     lower.startsWith("@suivre")
   ) {
     const target = cleanMsg
-      .replace(/^[/@](follow|suivre)\s*:?\s*/i, "")
-      .trim()
-      .replace(/^@/, "");
+.replace(/^[/@](follow|suivre)\s*:?\s*/i, "")
+.trim()
+.replace(/^@/, "");
     if (target) {
       return { toolArgs: { username: target }, toolToRun: "follow_user" };
     }
@@ -859,7 +859,7 @@ export function detectTool(
     return { toolArgs: {}, toolToRun: "analyze_trends" };
   }
   // ── Outils d'analyse avancée ─────────────────────────────────────────────
-  // Blocs placés AVANT /dm et /analyze : leurs préfixes (/dmstats, /analyze_stats)
+  // Blocs placés AVANT /dm et /analyze: leurs préfixes (/dmstats, /analyze_stats)
   // commencent par /dm et /analyze et seraient capturés par les blocs plus bas.
   if (
     lower.startsWith("/analyze_stats") ||
@@ -894,7 +894,7 @@ export function detectTool(
       toolToRun: "best_time_to_post",
     };
   }
-  // `/comparer` est placé AVANT `/compare` : le préfixe `/compare` est plus
+  // `/comparer` est placé AVANT `/compare`: le préfixe `/compare` est plus
   // court et le capturerait sinon (comparaison de modèles vs comparaison de
   // périodes).
   if (
@@ -904,11 +904,11 @@ export function detectTool(
     lower.startsWith("/compare_models")
   ) {
     const raw = cleanMsg
-      .replace(/^[/@](comparer|compare_modeles|compare_models)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](comparer|compare_modeles|compare_models)\s*:?\s*/i, "")
+.trim();
     // Deux modèles séparés par `|`, puis le prompt.
     //
-    // Le séparateur est volontairement le seul `|` : un identifiant de
+    // Le séparateur est volontairement le seul `|`: un identifiant de
     // modèle contient lui-même `/` et `:` (ex. `poolside/laguna-xs-2.1:free`),
     // et les confondre avec le séparateur rendrait l'analyse impossible.
     const parts = raw.split("|");
@@ -1001,11 +1001,11 @@ export function detectTool(
     lower.startsWith("/idée")
   ) {
     const topic = cleanMsg
-      .replace(
+.replace(
         /^[/@](inspire|idee|idée)(-?moi)?\s*(sur|à propos de|about)?\s*:?\s*/i,
         ""
       )
-      .trim();
+.trim();
     return {
       toolArgs: { style: "viral", topic: topic || "sujets d'actualité" },
       toolToRun: "suggest_post",
@@ -1048,20 +1048,20 @@ export function detectTool(
   ) {
     const isUnlike = lower.startsWith("/unlike") || lower.startsWith("@unlike");
     const raw = cleanMsg
-      .replace(/^[/@](like|liker|unlike)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](like|liker|unlike)\s*:?\s*/i, "")
+.trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
     if (m) {
       return {
-        toolArgs: { like: !isUnlike, post_id: m[0] },
+        toolArgs: { like:!isUnlike, post_id: m[0] },
         toolToRun: "like_post",
       };
     }
     if (raw) {
       return {
-        toolArgs: { like: !isUnlike, post_id: raw.split(/\s+/)[0] },
+        toolArgs: { like:!isUnlike, post_id: raw.split(/\s+/)[0] },
         toolToRun: "like_post",
       };
     }
@@ -1075,8 +1075,8 @@ export function detectTool(
     lower.startsWith("/envoyer")
   ) {
     const raw = cleanMsg
-      .replace(/^[/@](dm|message|envoyer)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](dm|message|envoyer)\s*:?\s*/i, "")
+.trim();
     const um = raw.match(/^@?([a-z0-9_]{1,30})\s+([\s\S]+)/i);
     if (um) {
       return {
@@ -1095,12 +1095,12 @@ export function detectTool(
     lower.startsWith("/reglage")
   ) {
     const raw = cleanMsg
-      .replace(
+.replace(
         /^[/@](settings|parametres|paramètres|reglage|reglages)\s*:?\s*/i,
         ""
       )
-      .trim();
-    // Format simple : /settings theme dark /settings langue fr /settings fil trending
+.trim();
+    // Format simple: /settings theme dark /settings langue fr /settings fil trending
     const parts = raw.split(/\s+/);
     const key = (parts[0] || "").toLowerCase();
     const valRaw = parts.slice(1).join(" ").trim();
@@ -1149,8 +1149,8 @@ export function detectTool(
     lower.startsWith("/save")
   ) {
     const raw = cleanMsg
-      .replace(/^[/@](bookmark|favori|favoris|save)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](bookmark|favori|favoris|save)\s*:?\s*/i, "")
+.trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
@@ -1188,8 +1188,8 @@ export function detectTool(
     lower.startsWith("/reply")
   ) {
     const raw = cleanMsg
-      .replace(/^[/@](comment|commenter|commentaire|reply)\s*:?\s*/i, "")
-      .trim();
+.replace(/^[/@](comment|commenter|commentaire|reply)\s*:?\s*/i, "")
+.trim();
     const m = raw.match(
       /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s+([\s\S]+)/i
     );
@@ -1216,11 +1216,11 @@ export function detectTool(
   }
 
   // ── Outils créatifs & analytiques (vibe-mai-creative.ts) ──────────────
-  // Placés en fin de fonction : leurs préfixes (`/sentiment`, `/resume`,
+  // Placés en fin de fonction: leurs préfixes (`/sentiment`, `/resume`,
   // `/adapter`, `/variantes`, `/legende`) ne sont capturés par aucun bloc
   // précédent, à l'exception de `/comparer` traité plus haut.
 
-  // `/sentiment` : UUID du post → analyse de sentiment des commentaires.
+  // `/sentiment`: UUID du post → analyse de sentiment des commentaires.
   if (lower.startsWith("/sentiment") || lower.startsWith("@sentiment")) {
     const m = cleanMsg.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
@@ -1231,7 +1231,7 @@ export function detectTool(
     return null;
   }
 
-  // `/resume` : UUID du post → synthèse du fil de commentaires.
+  // `/resume`: UUID du post → synthèse du fil de commentaires.
   if (
     lower.startsWith("/resume") ||
     lower.startsWith("@resume") ||
@@ -1247,14 +1247,14 @@ export function detectTool(
     return null;
   }
 
-  // `/adapter x <texte>` : réécrit le post pour un réseau.
+  // `/adapter x <texte>`: réécrit le post pour un réseau.
   if (lower.startsWith("/adapter") || lower.startsWith("@adapter")) {
     const raw = cleanMsg.replace(/^[/@]adapter\s*:?\s*/i, "").trim();
     const words = raw.split(/\s+/);
     const known = ["x", "twitter", "instagram", "insta", "linkedin"];
     const network = known.includes(words[0]?.toLowerCase())
-      ? words.shift()
-      : "x";
+? words.shift()
+: "x";
     const text = words.join(" ").trim();
     if (!text) return null;
     return {
@@ -1263,20 +1263,20 @@ export function detectTool(
     };
   }
 
-  // `/variantes <texte>` : 3 accroches alternatives.
+  // `/variantes <texte>`: 3 accroches alternatives.
   if (lower.startsWith("/variantes") || lower.startsWith("@variantes")) {
     const raw = cleanMsg.replace(/^[/@]variantes\s*:?\s*/i, "").trim();
     const words = raw.split(/\s+/);
     const tones = ["viral", "pro", "humour", "concis", "poétique"];
     const tone = tones.includes(words[0]?.toLowerCase())
-      ? words.shift()?.toLowerCase() || "viral"
-      : "viral";
+? words.shift()?.toLowerCase() || "viral"
+: "viral";
     const text = words.join(" ").trim();
     if (!text) return null;
     return { toolArgs: { text, tone }, toolToRun: "generate_variants" };
   }
 
-  // `/legende <visuel>` : légende + hashtags.
+  // `/legende <visuel>`: légende + hashtags.
   if (lower.startsWith("/legende") || lower.startsWith("@legende")) {
     const raw = cleanMsg.replace(/^[/@]legende\s*:?\s*/i, "").trim();
     if (!raw) return null;

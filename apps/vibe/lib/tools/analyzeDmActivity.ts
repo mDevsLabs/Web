@@ -2,7 +2,7 @@
  * Outil mAI — Activité de messagerie (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "analyze_dm_activity".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface AnalyzeDmActivityArgs {
   period?: "7d" | "30d" | "90d" | "12m";

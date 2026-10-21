@@ -20,6 +20,7 @@ import { useCallback, useMemo, useState } from "react";
 import {
   ModelSelector,
   ModelSelectorContent,
+  ModelSelectorDescription,
   ModelSelectorGroup,
   ModelSelectorInput,
   ModelSelectorItem,
@@ -28,12 +29,12 @@ import {
   ModelSelectorTrigger,
 } from "@/components/site/model-selector";
 import { ModelSelectorLogo } from "@/lib/ai/model-selector/logo";
+import { isMai2Model } from "@/lib/ai/model-selector/order";
 import {
   MAI_PROVIDER_KEY,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
 import { RecommendedBadge } from "@/lib/ai/model-selector/recommended-badge";
-import { isMai2Model } from "@/lib/ai/model-selector/order";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { cn } from "@/lib/utils";
 
@@ -101,11 +102,6 @@ export function SiteModelSelector({
       groups
         .map((group) => ({
           heading: group.heading,
-          // La recommandation se déduit du groupe quand la source ne la pose
-          // pas : un groupe de modèles mAI est un groupe recommandé.
-          recommended:
-            group.recommended ??
-            group.models.some((model) => resolveProviderKey(model) === MAI_PROVIDER_KEY),
           models: query
             ? group.models.filter((model) =>
                 normalize(
@@ -113,6 +109,13 @@ export function SiteModelSelector({
                 ).includes(query)
               )
             : group.models,
+          // La recommandation se déduit du groupe quand la source ne la pose
+          // pas : un groupe de modèles mAI est un groupe recommandé.
+          recommended:
+            group.recommended ??
+            group.models.some(
+              (model) => resolveProviderKey(model) === MAI_PROVIDER_KEY
+            ),
         }))
         // Un groupe vide afficherait un titre orphelin : la cible inactive
         // (Ollama, Cloud) ne montre que ce qui est réellement disponible.
@@ -217,7 +220,10 @@ export function SiteModelSelector({
                     value={`${model.name} ${model.id} ${model.description ?? ""}`}
                   >
                     <div className="flex w-full min-w-0 items-center">
-                      <ModelSelectorLogo provider={resolveProviderKey(model)} />
+                      <ModelSelectorLogo
+                        className="mr-2"
+                        provider={resolveProviderKey(model)}
+                      />
                       <div className="flex min-w-0 flex-col pr-2">
                         <div className="flex items-center gap-1.5 min-w-0">
                           <ModelSelectorName>{model.name}</ModelSelectorName>
@@ -226,9 +232,12 @@ export function SiteModelSelector({
                           ) : null}
                         </div>
                         {model.description ? (
-                          <span className="line-clamp-1 text-[11px] text-slate-500">
+                          <ModelSelectorDescription
+                            className="text-[11px] text-slate-500"
+                            compact
+                          >
                             {model.description}
-                          </span>
+                          </ModelSelectorDescription>
                         ) : null}
                       </div>
                     </div>

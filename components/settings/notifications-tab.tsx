@@ -4,8 +4,6 @@ import {
   AlertCircleIcon,
   BellIcon,
   BotIcon,
-  CheckIcon,
-  Loader2Icon,
   RefreshCwIcon,
   ShieldCheckIcon,
   SparklesIcon,
@@ -15,9 +13,9 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { reopenNotificationPrompt } from "@/components/chat/notification-permission-gate";
 import { Button } from "@/components/ui/button";
+import { useAutosavePreference } from "@/hooks/use-autosave-preference";
 import {
   readVibeNotificationPreferences,
-  toVibeNotificationPayload,
   VIBE_NOTIFICATION_DEFAULTS,
   type VibeNotificationPreferences,
 } from "@/lib/notifications/vibe-preferences";
@@ -84,9 +82,23 @@ const MAI_DEFAULTS: MaiNotificationPreferences = {
   quotaWarning: true,
 };
 
+/**
+ * Colonne Vibe derrière chaque préférence de l'écran.
+ *
+ * Le backend Vibe n'écrit que les colonnes reçues (`CASE WHEN … IS NOT
+ * NULL`) : une bascule n'envoie donc que sa colonne, pas tout l'objet.
+ */
+const COLONNE_VIBE: Record<keyof VibeNotificationPreferences, string> = {
+  directMessages: "notify_on_dm",
+  email: "email_notifications",
+  likes: "notify_on_like",
+  push: "push_notifications",
+  replies: "notify_on_reply",
+  reposts: "notify_on_repost",
+};
+
 export function NotificationsTab() {
   const [notifEnabled, setNotifEnabled] = useState(false);
-  const [isSavingNotif, setIsSavingNotif] = useState(false);
   const [browserPerm, setBrowserPerm] = useState<string>("default");
 
   // ── Préférences mAI ─────────────────────────────────────────────────────
@@ -242,80 +254,70 @@ export function NotificationsTab() {
   }, []);
 
   /**
-   * Enregistre les trois applications, une par une.
+   * Écrit une préférence de notification, immédiatement.
    *
-   * Chaque appel est encapsulé : un échec ne doit pas annuler les autres.
-   * Le résultat est dit honestly — l'utilisateur sait ce qui a été
-   * enregistré et ce qui ne l'a pas été.
+   * Chaque application a sa cible et son propre en-tête : l'échec de l'une
+   * n'empêche pas les autres d'être enregistrées, et chacune s'annule
+   * séparément.
    */
-  const handleSaveNotifPrefs = useCallback(async () => {
-    setIsSavingNotif(true);
-    const echecs: string[] = [];
+  const enregistrerMai = useAutosavePreference({
+    endpoint: "/api/notifications/preferences",
+    revalidate: mutateNotifPrefs,
+  });
 
-    // 1. mAI — la table de l'hôte.
-    try {
-      const res = await fetch("/api/notifications/preferences", {
-        body: JSON.stringify({ enabled: notifEnabled, ...maiPrefs }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
+  const enregistrerVibe = useAutosavePreference({
+    write: async (corps) => {
+      await ApiService.updateSettings(corps as Record<string, boolean>);
+    },
+  });
+
+  const enregistrerWakies = useAutosavePreference({
+    endpoint: "/api/wakies/settings",
+    method: "PATCH",
+  });
+
+  /** Bascule une préférence mAI. */
+  const basculerMai = useCallback(
+    (cle: keyof typeof maiPrefs, valeur: boolean) => {
+      const precedente = maiPrefs[cle];
+      setMaiPrefs((actuelles) => ({ ...actuelles, [cle]: valeur }));
+      void enregistrerMai.save({ [cle]: valeur }, () => {
+        setMaiPrefs((actuelles) => ({ ...actuelles, [cle]: precedente }));
+        void enregistrerMai.save({ [cle]: precedente }, () => {});
       });
-      if (!res.ok) {
-        throw new Error("Erreur sauvegarde");
-      }
-      await mutateNotifPrefs();
-    } catch (e: any) {
-      echecs.push("mAI");
-      console.error("[notifications] échec de l'enregistrement mAI:", e);
-    }
+    },
+    [enregistrerMai, maiPrefs]
+  );
 
-    // 2. Vibe — la table du backend social.
-    try {
-      await ApiService.updateSettings(toVibeNotificationPayload(vibePrefs));
-    } catch (e: any) {
-      echecs.push("Vibe");
-      console.error("[notifications] échec de l'enregistrement Vibe:", e);
-    }
-
-    // 3. Wakies — la table de l'hôte.
-    try {
-      const res = await fetch("/api/wakies/settings", {
-        body: JSON.stringify({ replyAlertsEnabled: wakiesReplyAlerts }),
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
+  /** Bascule une préférence Vibe. */
+  const basculerVibe = useCallback(
+    (cle: keyof typeof vibePrefs, valeur: boolean) => {
+      const precedente = vibePrefs[cle];
+      setVibePrefs((actuelles) => ({ ...actuelles, [cle]: valeur }));
+      const colonne = COLONNE_VIBE[cle];
+      void enregistrerVibe.save({ [colonne]: valeur }, () => {
+        setVibePrefs((actuelles) => ({ ...actuelles, [cle]: precedente }));
+        void enregistrerVibe.save({ [colonne]: precedente }, () => {});
       });
-      if (!res.ok) {
-        throw new Error("Erreur sauvegarde");
-      }
-    } catch (e: any) {
-      echecs.push("Wakies");
-      console.error("[notifications] échec de l'enregistrement Wakies:", e);
-    }
+    },
+    [enregistrerVibe, vibePrefs]
+  );
 
-    if (echecs.length === 0) {
-      toast.success("Préférences de notifications enregistrées !");
-    } else {
-      toast.error(
-        `Enregistrement partiel : ${echecs.join(", ")} n'a pas été enregistré.`
-      );
-    }
-
-    if (
-      notifEnabled &&
-      typeof window !== "undefined" &&
-      "Notification" in window &&
-      Notification.permission === "default"
-    ) {
-      handleRequestNotificationPermission();
-    }
-    setIsSavingNotif(false);
-  }, [
-    maiPrefs,
-    mutateNotifPrefs,
-    notifEnabled,
-    handleRequestNotificationPermission,
-    vibePrefs,
-    wakiesReplyAlerts,
-  ]);
+  /** Bascule les alertes de réponses terminées de Wakies. */
+  const basculerWakies = useCallback(
+    (valeur: boolean) => {
+      const precedente = wakiesReplyAlerts;
+      setWakiesReplyAlerts(valeur);
+      void enregistrerWakies.save({ replyAlertsEnabled: valeur }, () => {
+        setWakiesReplyAlerts(precedente);
+        void enregistrerWakies.save(
+          { replyAlertsEnabled: precedente },
+          () => {}
+        );
+      });
+    },
+    [enregistrerWakies, wakiesReplyAlerts]
+  );
 
   return (
     <div className="py-6 flex flex-col gap-6 max-w-4xl">
@@ -430,8 +432,23 @@ export function NotificationsTab() {
             className="size-5 shrink-0 accent-primary"
             onChange={(e) => {
               const v = e.target.checked;
+              const precedente = notifEnabled;
               setNotifEnabled(v);
-              if (v) setMaiPrefs((actuelles) => ({ ...actuelles, news: true }));
+              if (v) {
+                setMaiPrefs((actuelles) => ({ ...actuelles, news: true }));
+              }
+              void enregistrerMai.save({ enabled: v }, () => {
+                setNotifEnabled(precedente);
+                void enregistrerMai.save({ enabled: precedente }, () => {});
+              });
+              if (
+                v &&
+                typeof window !== "undefined" &&
+                "Notification" in window &&
+                Notification.permission === "default"
+              ) {
+                handleRequestNotificationPermission();
+              }
             }}
             type="checkbox"
           />
@@ -525,12 +542,7 @@ export function NotificationsTab() {
                 checked={maiPrefs[item.key]}
                 className="size-4 shrink-0 accent-primary"
                 disabled={!notifEnabled}
-                onChange={(e) =>
-                  setMaiPrefs((actuelles) => ({
-                    ...actuelles,
-                    [item.key]: e.target.checked,
-                  }))
-                }
+                onChange={(e) => basculerMai(item.key, e.target.checked)}
                 type="checkbox"
               />
             </label>
@@ -587,12 +599,7 @@ export function NotificationsTab() {
               <input
                 checked={vibePrefs[item.key]}
                 className="size-4 shrink-0 accent-primary"
-                onChange={(e) =>
-                  setVibePrefs((actuelles) => ({
-                    ...actuelles,
-                    [item.key]: e.target.checked,
-                  }))
-                }
+                onChange={(e) => basculerVibe(item.key, e.target.checked)}
                 type="checkbox"
               />
             </label>
@@ -631,7 +638,7 @@ export function NotificationsTab() {
             <input
               checked={wakiesReplyAlerts}
               className="size-4 shrink-0 accent-primary"
-              onChange={(e) => setWakiesReplyAlerts(e.target.checked)}
+              onChange={(e) => basculerWakies(e.target.checked)}
               type="checkbox"
             />
           </label>
@@ -642,21 +649,9 @@ export function NotificationsTab() {
         </div>
 
         <div className="flex justify-end pt-2">
-          <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 cursor-pointer"
-            disabled={isSavingNotif}
-            onClick={handleSaveNotifPrefs}
-            type="button"
-          >
-            {isSavingNotif ? (
-              <Loader2Icon className="size-4 animate-spin" />
-            ) : (
-              <CheckIcon className="size-4" />
-            )}
-            {isSavingNotif
-              ? "Enregistrement..."
-              : "Enregistrer les notifications"}
-          </button>
+          <p className="text-[11px] text-muted-foreground">
+            Chaque réglage est enregistré dès que vous le modifiez.
+          </p>
         </div>
       </div>
 

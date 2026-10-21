@@ -47,6 +47,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { BlacklineAgeGate } from "@/components/blackline/age-gate";
 import { Button } from "@/components/ui/button";
+import { useEconomy } from "@/lib/resources/economy";
 
 /** Chunk d'entrée du jeu. Son nom est stable : voir scripts/build-blackline.mjs. */
 const CHUNK_ENTREE = "/blackline/assets/blackline.js";
@@ -67,6 +68,13 @@ declare global {
         root: HTMLElement;
         settings?: Record<string, unknown>;
       }) => Promise<unknown>;
+      /**
+       * Démonte le jeu et libère la mémoire du moteur.
+       *
+       * Optionnel par compatibilité : un artefact plus ancien ne publie pas
+       * ce point, et l'hôte ne doit pas casser sur un déploiement décalé.
+       */
+      unmount?: () => void;
     };
   }
 }
@@ -91,6 +99,14 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
   // changer la référence ne doit pas remonter le jeu.
   const reglagesRef = useRef(settings);
   reglagesRef.current = settings;
+
+  /**
+   * Le jeu est une activité LOURDE : pendant qu'il tourne, l'hôte passe en
+   * économie (animations coupées, rafraîchissements suspendus). Le signal
+   * est libéré par la fonction de nettoyage, quoi qu'il arrive.
+   */
+  const { registerHeavyTask } = useEconomy();
+  useEffect(() => registerHeavyTask("blackline"), [registerHeavyTask]);
 
   const monterJeu = useCallback(async () => {
     const conteneur = conteneurRef.current;
@@ -162,6 +178,12 @@ export function BlacklineHost({ settings }: BlacklineHostProps) {
 
     return () => {
       script.removeEventListener("load", demarrer);
+      // Le moteur est démonté AVANT le retrait de la balise : c'est lui qui
+      // tient la boucle de rendu et le contexte WebGL. Sans cette étape, le
+      // jeu continuait de tourner dans le vide après la sortie de la page —
+      // la boucle se relançait elle-même, et le navigateur refusait d'ouvrir
+      // un nouveau contexte WebGL tant que l'ancien n'était pas lâché.
+      window.blackline?.unmount?.();
       script.remove();
       scriptRef.current = null;
     };

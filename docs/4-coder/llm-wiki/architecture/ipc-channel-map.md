@@ -140,7 +140,7 @@
 | --- | --- |
 | `git:status` / `git:fullStatus` | 状态行与扩展信息 |
 | `git:diffPreviews` | 批量 diff 预览 |
-| `git:diffPreview` | 单文件 diff 预览（⚠️ 当前 preload 白名单中**无**此单数通道，renderer 无法调用） |
+| `git:diffPreview` | 单文件 diff 预览（ 当前 preload 白名单中**无**此单数通道，renderer 无法调用） |
 | `git:hasStaged` | 查询是否有已暂存变更 |
 | `git:remoteInfo` | 远程仓库信息 |
 | `git:listBranches` / `git:checkoutBranch` / `git:createBranch` | 分支 |

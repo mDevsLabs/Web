@@ -76,7 +76,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
   }
 
   private get token(): string {
-    return this.integration.telegram?.botToken?.trim() ?? "";
+    return this.integration.telegram?.botToken?.trim()?? "";
   }
 
   private async getElectronSession(): Promise<Session> {
@@ -110,9 +110,9 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     const response = await ses.fetch(
       `https://api.telegram.org/bot${this.token}/${method}`,
       {
-        body: body ? JSON.stringify(body) : undefined,
-        headers: body ? { "content-type": "application/json" } : undefined,
-        method: body ? "POST" : "GET",
+        body: body? JSON.stringify(body): undefined,
+        headers: body? { "content-type": "application/json" }: undefined,
+        method: body? "POST": "GET",
         signal: this.abortController?.signal,
       }
     );
@@ -152,7 +152,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
       const file = await this.api<{ file_path?: string }>("getFile", {
         file_id: fileId,
       });
-      const relPath = String(file.file_path ?? "").trim();
+      const relPath = String(file.file_path?? "").trim();
       if (!relPath) {
         return null;
       }
@@ -178,7 +178,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     } catch (error) {
       console.warn(
         "[bots][telegram] download failed",
-        error instanceof Error ? error.message : error
+        error instanceof Error? error.message: error
       );
       return null;
     }
@@ -190,7 +190,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     const attachments: BotInboundAttachment[] = [];
     if (message.photo && message.photo.length > 0) {
       const largest = [...message.photo].sort(
-        (a, b) => (b.file_size ?? 0) - (a.file_size ?? 0)
+        (a, b) => (b.file_size?? 0) - (a.file_size?? 0)
       )[0];
       const local = await this.downloadFile(largest.file_id, "photo.jpg");
       if (local) {
@@ -204,9 +204,9 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
         doc.file_name || "document"
       );
       if (local) {
-        const isImage = /^image\//.test(String(doc.mime_type ?? ""));
+        const isImage = /^image\//.test(String(doc.mime_type?? ""));
         attachments.push({
-          kind: isImage ? "image" : "file",
+          kind: isImage? "image": "file",
           localPath: local,
           name: doc.file_name,
         });
@@ -221,18 +221,18 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     message: TelegramMessage,
     filePath: string
   ): Promise<void> {
-    const fullPath = String(filePath ?? "").trim();
+    const fullPath = String(filePath?? "").trim();
     if (!fullPath) {
       throw new Error("附件路径为空。");
     }
-    if (!fs.existsSync(fullPath) || !fs.statSync(fullPath).isFile()) {
+    if (!fs.existsSync(fullPath) ||!fs.statSync(fullPath).isFile()) {
       throw new Error("附件不存在，或不是文件。");
     }
 
     const form = new FormData();
     form.append("chat_id", String(message.chat.id));
     form.append("reply_to_message_id", String(message.message_id));
-    if (message.message_thread_id != null) {
+    if (message.message_thread_id!= null) {
       form.append("message_thread_id", String(message.message_thread_id));
     }
     form.append(fileField, fs.createReadStream(fullPath), {
@@ -266,17 +266,17 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     if (content.entities.length > 0) {
       payload.entities = content.entities;
     }
-    if (message.message_thread_id != null) {
+    if (message.message_thread_id!= null) {
       payload.message_thread_id = message.message_thread_id;
     }
-    if (options?.replyToOriginal !== false) {
+    if (options?.replyToOriginal!== false) {
       payload.reply_to_message_id = message.message_id;
     }
     const result = await this.api<{ message_id?: number }>(
       "sendMessage",
       payload
     );
-    return Number(result?.message_id ?? 0) || 0;
+    return Number(result?.message_id?? 0) || 0;
   }
 
   private async editTextMessage(
@@ -308,19 +308,19 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
         return "";
       }
       const items = Array.from(runningTools.entries())
-        .slice(-3)
-        .map(([name, detail]) => `- ${name}${detail ? `: ${detail}` : ""}`);
-      return ["进行中工具:", ...items].join("\n");
+.slice(-3)
+.map(([name, detail]) => `- ${name}${detail? `: ${detail}`: ""}`);
+      return ["进行中工具:",...items].join("\n");
     };
 
     const buildStreamText = (fullText?: string): TelegramRichText => {
-      const base = String(fullText ?? latestText).trim();
+      const base = String(fullText?? latestText).trim();
       const toolSummary = summarizeRunningTools();
       const combined = base
-        ? toolSummary
-          ? `${base}\n\n${toolSummary}`
-          : base
-        : toolSummary || "处理中，请稍候...";
+? toolSummary
+? `${base}\n\n${toolSummary}`
+: base
+: toolSummary || "处理中，请稍候...";
       const rich = renderTelegramRichText(combined);
       const chunks = splitTelegramRichText(rich, TELEGRAM_STREAM_MAX_CHARS);
       if (chunks.length > 0 && chunks[0]) {
@@ -413,7 +413,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
       },
       onError: async (error) => {
         clearFlushTimer();
-        const rendered = renderTelegramRichText(`❌ ${error}`);
+        const rendered = renderTelegramRichText(` ${error}`);
         if (!streamMessageId) {
           await this.sendTextReply(message, rendered).catch(() => {});
           return;
@@ -435,7 +435,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
       },
       onToolStatus: (name, state, detail) => {
         if (state === "running") {
-          runningTools.set(name, String(detail ?? "").trim());
+          runningTools.set(name, String(detail?? "").trim());
         } else {
           runningTools.delete(name);
         }
@@ -454,7 +454,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
     const controller = new AbortController();
     this.abortController = controller;
     const me = await this.api<{ username?: string }>("getMe");
-    this.botUsername = String(me.username ?? "").trim();
+    this.botUsername = String(me.username?? "").trim();
 
     void (async () => {
       while (!controller.signal.aborted) {
@@ -488,7 +488,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
               updates.description || "Telegram API getUpdates failed"
             );
           }
-          for (const update of updates.result ?? []) {
+          for (const update of updates.result?? []) {
             this.offset = Math.max(this.offset, update.update_id + 1);
             const message = update.message;
             if (!message || message.from?.is_bot) {
@@ -499,28 +499,28 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
             }
             const chatId = String(message.chat.id);
             const senderId =
-              message.from?.id == null ? "" : String(message.from.id);
+              message.from?.id == null? "": String(message.from.id);
             if (!this.isAllowedUser(senderId)) {
               continue;
             }
             if (
-              message.chat.type !== "private" &&
-              !this.isAllowedChat(chatId)
+              message.chat.type!== "private" &&
+!this.isAllowedChat(chatId)
             ) {
               continue;
             }
-            const textSource = message.text ?? message.caption ?? "";
+            const textSource = message.text?? message.caption?? "";
             const cleaned = this.cleanIncomingText(message, textSource);
             const attachments = await this.collectAttachments(message);
             if (!cleaned && attachments.length === 0) {
               continue;
             }
             const threadReplyParams = message.message_thread_id
-              ? { message_thread_id: message.message_thread_id }
-              : {};
+? { message_thread_id: message.message_thread_id }
+: {};
             const threadKey = message.message_thread_id
-              ? `${chatId}:${message.message_thread_id}`
-              : chatId;
+? `${chatId}:${message.message_thread_id}`
+: chatId;
             const streamReply = this.createStreamReply(message);
             await onMessage({
               attachments,
@@ -554,7 +554,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
                 await this.api("sendChatAction", {
                   action: "typing",
                   chat_id: message.chat.id,
-                  ...threadReplyParams,
+...threadReplyParams,
                 }).catch(() => {});
               },
               streamReply,
@@ -567,7 +567,7 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
           }
           console.warn(
             "[bots][telegram]",
-            error instanceof Error ? error.message : error
+            error instanceof Error? error.message: error
           );
           await new Promise((resolve) => setTimeout(resolve, 3000));
         }
@@ -577,18 +577,18 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
 
   private isAllowedChat(chatId: string): boolean {
     const allowed = this.integration.allowedReplyChatIds?.length
-      ? this.integration.allowedReplyChatIds
-      : (this.integration.telegram?.allowedChatIds ?? []);
+? this.integration.allowedReplyChatIds
+: (this.integration.telegram?.allowedChatIds?? []);
     return allowed.length === 0 || allowed.includes(chatId);
   }
 
   private isAllowedUser(userId: string): boolean {
-    const allowed = this.integration.allowedReplyUserIds ?? [];
+    const allowed = this.integration.allowedReplyUserIds?? [];
     return allowed.length === 0 || allowed.includes(userId);
   }
 
   private cleanIncomingText(message: TelegramMessage, raw: string): string {
-    const trimmed = String(raw ?? "").trim();
+    const trimmed = String(raw?? "").trim();
     if (!trimmed) {
       return "";
     }
@@ -607,8 +607,8 @@ export class TelegramBotAdapter implements BotPlatformAdapter {
       return "";
     }
     return trimmed
-      .replace(new RegExp(`@${this.botUsername}\\b`, "ig"), "")
-      .trim();
+.replace(new RegExp(`@${this.botUsername}\\b`, "ig"), "")
+.trim();
   }
 
   async stop(): Promise<void> {

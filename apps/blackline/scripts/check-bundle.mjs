@@ -34,6 +34,10 @@ if(!entry.includes("import './theme.css'"))throw new Error('CSS cascade must use
 const entryChunk=readFileSync(join(assets,'blackline.js'),'utf8');
 if(!/window\.blackline/.test(entryChunk))throw new Error('The entry chunk does not publish window.blackline');
 if(!/mount:/.test(entryChunk))throw new Error('The entry chunk does not expose a mount() contract');
+// `unmount` est le pendant de `mount` : sans lui, l'hôte ne peut que
+// retirer la balise <script>, et le moteur continue de tourner — boucle de
+// rendu active, contexte WebGL jamais relâché.
+if(!/unmount:/.test(entryChunk))throw new Error('The entry chunk does not expose an unmount() contract');
 
 const html=readFileSync(join(process.cwd(),'dist/index.html'),'utf8');
 const preloads=[...html.matchAll(/rel="modulepreload"[^>]+href="([^"]+)"/g)].map(m=>m[1]);

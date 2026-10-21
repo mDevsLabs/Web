@@ -25,9 +25,9 @@ ollama run mDevsLabs/mAI-1
 hf download mDevsLabs/mAI-1-GGUF
 ~~~
 
-## 📊 Benchmarks de Performance
+## Benchmarks de Performance
 
-Voici les scores obtenus par **mAI-1** face aux modèles de référence du marché :
+Voici les scores obtenus par **mAI-1** face aux modèles de référence du marché:
 
 :::flex
 ![mAI-1 Benchmark 1](/mai-1/mai-1-benchmark-1.png)

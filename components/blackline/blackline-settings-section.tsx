@@ -14,12 +14,12 @@
  * et lui renvoie ce que l'utilisateur a choisi. Le serveur normalise, borne et
  * décide — c'est le contrat de l'hôte (« le serveur fait foi »).
  *
- * ELLE NE REMPLACE PAS LES RÉGLAGES DU JEU
+ * ELLE REMPLACE LES RÉGLAGES DU JEU
  *
- * Les touches PC et les réglages tactiles (zone morte du joystick, taille des
- * commandes) restent dans le jeu : ils dépendent de l'appareil sur lequel on
- * joue, pas du compte. Les réglages listés ici sont ceux qui ONT DU SENS
- * sur tous les appareils.
+ * L'écran de réglages du jeu a été retiré : tout ce qu'il exposait vit
+ * ici, y compris les touches PC et les réglages tactiles. Un réglage
+ * accessible à deux endroits est un réglage qui diverge — celui du jeu
+ * écrasait celui du compte à chaque lancement.
  *
  * LA PROGRESSION N'EST PAS ICI
  *
@@ -28,56 +28,114 @@
  */
 
 import {
-  CheckIcon,
-  CpuIcon,
   CrosshairIcon,
+  GamepadIcon,
+  KeyboardIcon,
   Loader2Icon,
   MonitorIcon,
   ShieldAlertIcon,
+  SmartphoneIcon,
   Volume2Icon,
 } from "@mdevs/icons";
-import { useCallback, useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
-import { Button } from "@/components/ui/button";
-import { fetcher } from "@/lib/utils";
+import { useAutosaveSection } from "@/hooks/use-autosave-section";
+import { isValidKeyCode } from "@/lib/blackline/settings";
+import { cn, fetcher } from "@/lib/utils";
 
 /** Réglages partagés par le compte, tels que le serveur les renvoie. */
 type BlacklineSettings = Record<string, unknown>;
 
-type BlacklineState = {
-  loading: boolean;
-  saving: boolean;
-  settings: BlacklineSettings;
-};
-
-/** Les valeurs par défaut du jeu, pour l'affichage d'un réglage absent. */
+/**
+ * Valeurs par défaut du jeu (`apps/blackline/src/types.ts`).
+ *
+ * Elles servent d'affichage pour un réglage absent : le jeu les applique de
+ * toute façon, l'interface doit montrer ce qui sera réellement utilisé.
+ */
 const DEFAUTS = {
   adsSensitivity: 1,
   adsZoom: 1,
+  autoClimb: true,
+  autoReload: true,
+  autoSprint: true,
+  batterySaver: false,
   cameraDistance: 3.5,
   cameraMode: "first" as const,
+  cameraShake: true,
   cameraShoulder: "right" as const,
+  callsign: "",
+  crosshair: "#d0e693",
   fov: 84,
   grenadePower: 1,
   hitFeedback: "both" as const,
+  hitmarkerEnabled: true,
+  hitmarkerSound: true,
   invertY: false,
+  joystickDeadzone: 0.09,
+  leftHanded: false,
+  mobileAimAssist: true,
+  mobileAutoFire: true,
   motionLevel: "full" as const,
   quality: "ultra" as const,
+  reduceMotion: false,
   renderResolution: "auto" as const,
+  reticleScale: 1,
   reticleStyle: "dot" as const,
   screenEffects: true,
   sensitivity: 1,
   showFPS: true,
+  toggleAim: false,
+  touchOpacity: 0.8,
+  touchScale: 1,
+  touchSensitivity: 1,
   volume: 0.6,
 } as const;
 
+/** Actions du jeu qui ont une touche, et leur libellé. */
+const ACTIONS_TOUCHES: Array<{ cle: string; libelle: string }> = [
+  { cle: "forward", libelle: "Avancer" },
+  { cle: "back", libelle: "Reculer" },
+  { cle: "left", libelle: "Gauche" },
+  { cle: "right", libelle: "Droite" },
+  { cle: "sprint", libelle: "Sprint" },
+  { cle: "jump", libelle: "Saut" },
+  { cle: "crouch", libelle: "Accroupir / glisser" },
+  { cle: "reload", libelle: "Recharger" },
+  { cle: "grenade", libelle: "Grenade" },
+  { cle: "melee", libelle: "Mêlée" },
+  { cle: "interact", libelle: "Échelle" },
+  { cle: "score", libelle: "Scores" },
+  { cle: "pause", libelle: "Pause" },
+  { cle: "fullscreen", libelle: "Plein écran" },
+  { cle: "view", libelle: "Changer de caméra" },
+  { cle: "heal", libelle: "Paquet de soins" },
+  { cle: "weapon1", libelle: "Emplacement 1" },
+  { cle: "weapon2", libelle: "Emplacement 2" },
+  { cle: "weapon3", libelle: "Emplacement 3" },
+  { cle: "weapon4", libelle: "Emplacement 4" },
+  { cle: "weapon5", libelle: "Emplacement 5" },
+];
+
+/** Libellé lisible d'un code de touche. */
+function libelleTouche(code: string): string {
+  return code
+    .replace(/^Key|^Digit/, "")
+    .replace("Space", "Espace")
+    .replace("ShiftLeft", "Maj gauche")
+    .replace("ShiftRight", "Maj droite")
+    .replace("ControlLeft", "Ctrl gauche")
+    .replace("ControlRight", "Ctrl droite")
+    .replace("ArrowUp", "Haut")
+    .replace("ArrowDown", "Bas")
+    .replace("ArrowLeft", "Gauche")
+    .replace("ArrowRight", "Droite")
+    .toUpperCase();
+}
+
 export function BlacklineSettingsSection() {
-  const [etat, setEtat] = useState<BlacklineState>({
-    loading: true,
-    saving: false,
-    settings: {},
-  });
+  const [reglages, setReglages] = useState<BlacklineSettings>({});
+  const [chargement, setChargement] = useState(true);
+  const [actionEnAttente, setActionEnAttente] = useState<string | null>(null);
 
   const { data, error, mutate } = useSWR<{ settings: BlacklineSettings }>(
     "/api/blackline/settings",
@@ -89,61 +147,92 @@ export function BlacklineSettingsSection() {
     if (!data) {
       return;
     }
-    setEtat((precedent) => ({
-      ...precedent,
-      loading: false,
-      settings: data.settings ?? {},
-    }));
+    setReglages(data.settings ?? {});
+    setChargement(false);
   }, [data]);
 
   useEffect(() => {
     if (error) {
-      setEtat((precedent) => ({ ...precedent, loading: false }));
+      setChargement(false);
     }
   }, [error]);
 
-  /** Applique une modification localement, sans écrire tout de suite. */
-  const maj = useCallback((cle: string, valeur: unknown) => {
-    setEtat((precedent) => ({
-      ...precedent,
-      settings: { ...precedent.settings, [cle]: valeur },
-    }));
-  }, []);
-
-  const enregistrer = useCallback(async () => {
-    setEtat((precedent) => ({ ...precedent, saving: true }));
-    try {
+  /**
+   * Enregistrement immédiat.
+   *
+   * L'objet complet est renvoyé : le serveur le normalise, et il est borné
+   * (32 Ko). Les modifications rapprochées sont regroupées : un curseur
+   * déplacé produit une seule écriture.
+   */
+  useAutosaveSection({
+    apply: setReglages,
+    enabled: !chargement,
+    errorMessage: "Impossible d'enregistrer les paramètres Blackline.",
+    successMessage: "Paramètres Blackline enregistrés",
+    values: reglages,
+    write: async (valeurs) => {
       const reponse = await fetch("/api/blackline/settings", {
-        body: JSON.stringify({ settings: etat.settings }),
+        body: JSON.stringify({ settings: valeurs }),
         headers: { "Content-Type": "application/json" },
         method: "PUT",
       });
       if (!reponse.ok) {
         throw new Error("Le serveur a refusé l'enregistrement.");
       }
-      const payload = (await reponse.json()) as { settings: BlacklineSettings };
-      setEtat((precedent) => ({
-        ...precedent,
-        saving: false,
-        settings: payload.settings ?? {},
-      }));
       await mutate();
-      toast.success("Paramètres Blackline enregistrés ✨");
-    } catch (err) {
-      setEtat((precedent) => ({ ...precedent, saving: false }));
-      toast.error(
-        err instanceof Error
-          ? err.message
-          : "Impossible d'enregistrer les paramètres Blackline."
-      );
+    },
+  });
+
+  /** Change un réglage. */
+  const maj = useCallback((cle: string, valeur: unknown) => {
+    setReglages((precedent) => ({ ...precedent, [cle]: valeur }));
+  }, []);
+
+  const s = reglages;
+  const lire = useCallback(
+    <T,>(cle: string, defaut: T): T => (s[cle] as T | undefined) ?? defaut,
+    [s]
+  );
+
+  /** Les touches actuellement attribuées dans le jeu. */
+  const touches = useMemo(() => {
+    const table = s.bindings as Record<string, string[]> | undefined;
+    return table && typeof table === "object" ? table : {};
+  }, [s.bindings]);
+
+  /**
+   * Enregistre une touche.
+   *
+   * L'écoute est CAPTURANTE : la touche pressée ne doit pas déclencher un
+   * raccourci de l'hôte pendant qu'on la saisit.
+   */
+  useEffect(() => {
+    if (!actionEnAttente) {
+      return;
     }
-  }, [etat.settings, mutate]);
+    const surTouche = (evenement: KeyboardEvent) => {
+      evenement.preventDefault();
+      evenement.stopPropagation();
+      if (!isValidKeyCode(evenement.code)) {
+        return;
+      }
+      const action = actionEnAttente;
+      setActionEnAttente(null);
+      setReglages((precedent) => ({
+        ...precedent,
+        bindings: {
+          ...((precedent.bindings as Record<string, string[]>) ?? {}),
+          [action]: [evenement.code],
+        },
+      }));
+    };
+    window.addEventListener("keydown", surTouche, { capture: true });
+    return () => {
+      window.removeEventListener("keydown", surTouche, { capture: true });
+    };
+  }, [actionEnAttente]);
 
-  const s = etat.settings;
-  const lire = <T,>(cle: string, defaut: T): T =>
-    (s[cle] as T | undefined) ?? defaut;
-
-  if (etat.loading) {
+  if (chargement) {
     return (
       <div className="surface-card flex items-center justify-center p-8 text-xs text-muted-foreground">
         <Loader2Icon className="mr-2 size-4 animate-spin text-primary" />
@@ -180,237 +269,549 @@ export function BlacklineSettingsSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex flex-col gap-1.5">
-            <label
-              className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
-              htmlFor="blackline-quality"
-            >
-              <CpuIcon className="size-3 text-primary" /> Détails graphiques
-            </label>
-            <select
-              className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
-              id="blackline-quality"
-              onChange={(event) => maj("quality", event.target.value)}
-              value={lire("quality", DEFAUTS.quality)}
-            >
-              <option value="performance">Performance</option>
-              <option value="balanced">Équilibré</option>
-              <option value="ultra">Ultra</option>
-            </select>
-          </div>
+          <Selecteur
+            id="blackline-quality"
+            label="Détails graphiques"
+            onChange={(valeur) => maj("quality", valeur)}
+            options={[
+              { label: "Performance", valeur: "performance" },
+              { label: "Équilibré", valeur: "balanced" },
+              { label: "Ultra", valeur: "ultra" },
+            ]}
+            valeur={lire("quality", DEFAUTS.quality)}
+          />
 
-          <div className="flex flex-col gap-1.5">
-            <label
-              className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
-              htmlFor="blackline-resolution"
-            >
-              Résolution de rendu 3D
-            </label>
-            <select
-              className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
-              id="blackline-resolution"
-              onChange={(event) => maj("renderResolution", event.target.value)}
-              value={lire("renderResolution", DEFAUTS.renderResolution)}
-            >
-              <option value="auto">Auto · budget de l&apos;appareil</option>
-              <option value="native">Écran · pixels natifs</option>
-              <option value="1080p">Full HD · 1920 × 1080</option>
-              <option value="1440p">QHD · 2560 × 1440</option>
-              <option value="4k">4K UHD · 3840 × 2160</option>
-              <option value="8k">8K UHD · 7680 × 4320</option>
-            </select>
-            <span className="text-[10px] text-muted-foreground">
-              8K exige beaucoup de mémoire vidéo : la cadence réelle dépend du
-              GPU.
-            </span>
-          </div>
+          <Selecteur
+            id="blackline-resolution"
+            label="Résolution de rendu 3D"
+            note="8K exige beaucoup de mémoire vidéo : la cadence réelle dépend du GPU."
+            onChange={(valeur) => maj("renderResolution", valeur)}
+            options={[
+              { label: "Auto · budget de l'appareil", valeur: "auto" },
+              { label: "Écran · pixels natifs", valeur: "native" },
+              { label: "Full HD · 1920 × 1080", valeur: "1080p" },
+              { label: "QHD · 2560 × 1440", valeur: "1440p" },
+              { label: "4K UHD · 3840 × 2160", valeur: "4k" },
+              { label: "8K UHD · 7680 × 4320", valeur: "8k" },
+            ]}
+            valeur={lire("renderResolution", DEFAUTS.renderResolution)}
+          />
         </div>
 
-        <label className="flex items-center justify-between rounded-xl border border-border/50 bg-muted/20 p-3">
-          <div className="pr-3">
-            <span className="text-xs font-semibold text-foreground">
-              Compteur de performances
-            </span>
-            <p className="text-[11px] text-muted-foreground">
-              Cadence et résolution réellement obtenues en partie
-            </p>
-          </div>
-          <input
-            checked={lire("showFPS", DEFAUTS.showFPS)}
-            className="size-4 shrink-0 cursor-pointer accent-primary"
-            onChange={(event) => maj("showFPS", event.target.checked)}
-            type="checkbox"
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Bascule
+            description="Ajuste la résolution pour tenir la cadence visée."
+            libelle="Résolution adaptative"
+            onChange={(valeur) => maj("adaptive", valeur)}
+            valeur={lire("adaptive", false)}
           />
-        </label>
+          <Bascule
+            description="Réduit l'effet des mouvements de caméra."
+            libelle="Secousses de caméra"
+            onChange={(valeur) => maj("cameraShake", valeur)}
+            valeur={lire("cameraShake", DEFAUTS.cameraShake)}
+          />
+          <Bascule
+            description="Éteint le compteur de cadence."
+            libelle="Compteur de performances"
+            onChange={(valeur) => maj("showFPS", valeur)}
+            valeur={lire("showFPS", DEFAUTS.showFPS)}
+          />
+          <Bascule
+            description="Allège le rendu sur les appareils modestes."
+            libelle="Économie d'énergie"
+            onChange={(valeur) => maj("batterySaver", valeur)}
+            valeur={lire("batterySaver", DEFAUTS.batterySaver)}
+          />
+        </div>
+
+        <Selecteur
+          id="blackline-motion"
+          label="Mouvements de caméra"
+          onChange={(valeur) => maj("motionLevel", valeur)}
+          options={[
+            { label: "Complet", valeur: "full" },
+            { label: "Réduit", valeur: "reduced" },
+            { label: "Aucun", valeur: "off" },
+          ]}
+          valeur={lire("motionLevel", DEFAUTS.motionLevel)}
+        />
       </div>
 
-      {/* 2. Caméra, visée & jeu */}
+      {/* 2. Son & profil */}
+      <div className="surface-card flex flex-col gap-4 p-5">
+        <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+          <Volume2Icon className="size-4 text-primary" />
+          <span>Son & Profil</span>
+        </div>
+
+        <Curseur
+          label="Volume général"
+          max={1}
+          min={0}
+          onChange={(valeur) => maj("volume", valeur)}
+          pas={0.01}
+          valeur={lire("volume", DEFAUTS.volume)}
+        />
+
+        <div className="flex flex-col gap-1.5">
+          <label
+            className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
+            htmlFor="blackline-callsign"
+          >
+            Indicatif
+          </label>
+          <input
+            className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
+            id="blackline-callsign"
+            maxLength={18}
+            onChange={(evenement) => maj("callsign", evenement.target.value)}
+            placeholder="MATHIAS"
+            type="text"
+            value={lire("callsign", DEFAUTS.callsign)}
+          />
+          <span className="text-[10px] text-muted-foreground">
+            Le nom affiché au-dessus de votre personnage.
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Bascule
+            description="Marque les touches qui touchent."
+            libelle="Indicateur de touche"
+            onChange={(valeur) => maj("hitmarkerEnabled", valeur)}
+            valeur={lire("hitmarkerEnabled", DEFAUTS.hitmarkerEnabled)}
+          />
+          <Bascule
+            description="Accompagne l'indicateur d'un son."
+            libelle="Son de touche"
+            onChange={(valeur) => maj("hitmarkerSound", valeur)}
+            valeur={lire("hitmarkerSound", DEFAUTS.hitmarkerSound)}
+          />
+        </div>
+      </div>
+
+      {/* 3. Caméra & visée */}
       <div
         className="surface-card flex flex-col gap-4 p-5"
         id="blackline-gameplay"
       >
         <div className="flex items-center gap-2 text-xs font-bold text-foreground">
           <CrosshairIcon className="size-4 text-primary" />
-          <span>Caméra, Visée & Jeu</span>
+          <span>Caméra & Visée</span>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Selecteur
+            id="blackline-camera-mode"
+            label="Vue"
+            onChange={(valeur) => maj("cameraMode", valeur)}
+            options={[
+              { label: "Première personne", valeur: "first" },
+              { label: "Troisième personne", valeur: "third" },
+            ]}
+            valeur={lire("cameraMode", DEFAUTS.cameraMode)}
+          />
+
+          <Selecteur
+            id="blackline-camera-shoulder"
+            label="Épaule"
+            onChange={(valeur) => maj("cameraShoulder", valeur)}
+            options={[
+              { label: "Droite", valeur: "right" },
+              { label: "Gauche", valeur: "left" },
+            ]}
+            valeur={lire("cameraShoulder", DEFAUTS.cameraShoulder)}
+          />
+        </div>
+
+        <Curseur
+          label="Distance de caméra"
+          max={5}
+          min={2}
+          onChange={(valeur) => maj("cameraDistance", valeur)}
+          pas={0.1}
+          valeur={lire("cameraDistance", DEFAUTS.cameraDistance)}
+        />
+
+        <Curseur
+          label="Sensibilité"
+          max={3}
+          min={0.2}
+          onChange={(valeur) => maj("sensitivity", valeur)}
+          pas={0.05}
+          valeur={lire("sensitivity", DEFAUTS.sensitivity)}
+        />
+
+        <Curseur
+          label="Sensibilité en visée"
+          max={1.5}
+          min={0.3}
+          onChange={(valeur) => maj("adsSensitivity", valeur)}
+          pas={0.05}
+          valeur={lire("adsSensitivity", DEFAUTS.adsSensitivity)}
+        />
+
+        <Curseur
+          label="Zoom en visée"
+          max={1.2}
+          min={0.8}
+          onChange={(valeur) => maj("adsZoom", valeur)}
+          pas={0.05}
+          valeur={lire("adsZoom", DEFAUTS.adsZoom)}
+        />
+
+        <Curseur
+          label="Champ de vision"
+          max={110}
+          min={65}
+          onChange={(valeur) => maj("fov", valeur)}
+          pas={1}
+          suffixe="°"
+          valeur={lire("fov", DEFAUTS.fov)}
+        />
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Selecteur
+            id="blackline-reticle-style"
+            label="Réticule"
+            onChange={(valeur) => maj("reticleStyle", valeur)}
+            options={[
+              { label: "Point", valeur: "dot" },
+              { label: "Croix", valeur: "cross" },
+              { label: "Cercle", valeur: "circle" },
+            ]}
+            valeur={lire("reticleStyle", DEFAUTS.reticleStyle)}
+          />
+
           <div className="flex flex-col gap-1.5">
             <label
               className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
-              htmlFor="blackline-camera-mode"
+              htmlFor="blackline-crosshair"
             >
-              Vue
+              Couleur du réticule
             </label>
-            <select
-              className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
-              id="blackline-camera-mode"
-              onChange={(event) => maj("cameraMode", event.target.value)}
-              value={lire("cameraMode", DEFAUTS.cameraMode)}
-            >
-              <option value="first">Première personne</option>
-              <option value="third">Troisième personne</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <label
-              className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
-              htmlFor="blackline-hit-feedback"
-            >
-              Confirmation de touche
-            </label>
-            <select
-              className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
-              id="blackline-hit-feedback"
-              onChange={(event) => maj("hitFeedback", event.target.value)}
-              value={lire("hitFeedback", DEFAUTS.hitFeedback)}
-            >
-              <option value="both">Image & son</option>
-              <option value="visual">Image</option>
-              <option value="audio">Son</option>
-              <option value="none">Désactivée</option>
-            </select>
+            <input
+              className="h-9 w-full cursor-pointer rounded-lg border border-border/70 bg-card px-2 py-1"
+              id="blackline-crosshair"
+              onChange={(evenement) => maj("crosshair", evenement.target.value)}
+              type="color"
+              value={lire("crosshair", DEFAUTS.crosshair)}
+            />
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Sensibilité
-            </span>
-            <span className="font-mono text-[10px] text-muted-foreground">
-              {Math.round(lire("sensitivity", DEFAUTS.sensitivity) * 100)}%
-            </span>
-          </div>
-          <input
-            className="w-full"
-            max={3}
-            min={0.2}
-            onChange={(event) => maj("sensitivity", Number(event.target.value))}
-            step={0.05}
-            type="range"
-            value={lire("sensitivity", DEFAUTS.sensitivity)}
+        <Curseur
+          label="Taille du réticule"
+          max={1.6}
+          min={0.65}
+          onChange={(valeur) => maj("reticleScale", valeur)}
+          pas={0.05}
+          valeur={lire("reticleScale", DEFAUTS.reticleScale)}
+        />
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Bascule
+            description="Réticule de visée maintenu sans cliquer."
+            libelle="Visée basculée"
+            onChange={(valeur) => maj("toggleAim", valeur)}
+            valeur={lire("toggleAim", DEFAUTS.toggleAim)}
+          />
+          <Bascule
+            description="S'applique à la souris et au tactile."
+            libelle="Inverser l'axe vertical"
+            onChange={(valeur) => maj("invertY", valeur)}
+            valeur={lire("invertY", DEFAUTS.invertY)}
           />
         </div>
+      </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Champ de vision
-            </span>
-            <span className="font-mono text-[10px] text-muted-foreground">
-              {lire("fov", DEFAUTS.fov)}°
-            </span>
-          </div>
-          <input
-            className="w-full"
-            max={110}
-            min={65}
-            onChange={(event) => maj("fov", Number(event.target.value))}
-            step={1}
-            type="range"
-            value={lire("fov", DEFAUTS.fov)}
-          />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              <Volume2Icon className="size-3 text-primary" /> Volume général
-            </span>
-            <span className="font-mono text-[10px] text-muted-foreground">
-              {Math.round(lire("volume", DEFAUTS.volume) * 100)}%
-            </span>
-          </div>
-          <input
-            className="w-full"
-            max={1}
-            min={0}
-            onChange={(event) => maj("volume", Number(event.target.value))}
-            step={0.01}
-            type="range"
-            value={lire("volume", DEFAUTS.volume)}
-          />
+      {/* 4. Jeu & assistance */}
+      <div className="surface-card flex flex-col gap-4 p-5">
+        <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+          <GamepadIcon className="size-4 text-primary" />
+          <span>Jeu & Assistance</span>
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <label className="flex items-center justify-between rounded-xl border border-border/50 bg-muted/20 p-3">
-            <div className="pr-3">
-              <span className="text-xs font-semibold text-foreground">
-                Inverser l&apos;axe vertical
-              </span>
-              <p className="text-[11px] text-muted-foreground">
-                S&apos;applique à la souris et au tactile
-              </p>
-            </div>
-            <input
-              checked={lire("invertY", DEFAUTS.invertY)}
-              className="size-4 shrink-0 cursor-pointer accent-primary"
-              onChange={(event) => maj("invertY", event.target.checked)}
-              type="checkbox"
-            />
-          </label>
+          <Bascule
+            description="Escalade automatiquement les obstacles."
+            libelle="Escalade automatique"
+            onChange={(valeur) => maj("autoClimb", valeur)}
+            valeur={lire("autoClimb", DEFAUTS.autoClimb)}
+          />
+          <Bascule
+            description="Recharge l'arme sans commande."
+            libelle="Rechargement automatique"
+            onChange={(valeur) => maj("autoReload", valeur)}
+            valeur={lire("autoReload", DEFAUTS.autoReload)}
+          />
+          <Bascule
+            description="Vignette et direction des tirs reçus."
+            libelle="Indicateurs de dégâts"
+            onChange={(valeur) => maj("screenEffects", valeur)}
+            valeur={lire("screenEffects", DEFAUTS.screenEffects)}
+          />
+          <Bascule
+            description="Réduit les animations de l'interface."
+            libelle="Mouvements réduits"
+            onChange={(valeur) => maj("reduceMotion", valeur)}
+            valeur={lire("reduceMotion", DEFAUTS.reduceMotion)}
+          />
+        </div>
 
-          <label className="flex items-center justify-between rounded-xl border border-border/50 bg-muted/20 p-3">
-            <div className="pr-3">
-              <span className="text-xs font-semibold text-foreground">
-                Indicateurs de dégâts
-              </span>
-              <p className="text-[11px] text-muted-foreground">
-                Vignette et direction des tirs reçus
-              </p>
-            </div>
-            <input
-              checked={lire("screenEffects", DEFAUTS.screenEffects)}
-              className="size-4 shrink-0 cursor-pointer accent-primary"
-              onChange={(event) => maj("screenEffects", event.target.checked)}
-              type="checkbox"
-            />
-          </label>
+        <Selecteur
+          id="blackline-hit-feedback"
+          label="Confirmation de touche"
+          onChange={(valeur) => maj("hitFeedback", valeur)}
+          options={[
+            { label: "Image & son", valeur: "both" },
+            { label: "Image", valeur: "visual" },
+            { label: "Son", valeur: "audio" },
+            { label: "Désactivée", valeur: "none" },
+          ]}
+          valeur={lire("hitFeedback", DEFAUTS.hitFeedback)}
+        />
+
+        <Curseur
+          label="Puissance des grenades"
+          max={1.2}
+          min={0.65}
+          onChange={(valeur) => maj("grenadePower", valeur)}
+          pas={0.05}
+          valeur={lire("grenadePower", DEFAUTS.grenadePower)}
+        />
+      </div>
+
+      {/* 5. Touches PC */}
+      <div className="surface-card flex flex-col gap-4 p-5">
+        <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+          <KeyboardIcon className="size-4 text-primary" />
+          <span>Touches PC</span>
+        </div>
+        <p className="text-[11px] leading-relaxed text-muted-foreground">
+          Cliquez sur une touche, puis pressez la touche de votre clavier.
+          Les modifications sont enregistrées au fur et à mesure.
+        </p>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {ACTIONS_TOUCHES.map((action) => {
+            const codes = touches[action.cle] ?? [];
+            const enAttente = actionEnAttente === action.cle;
+            return (
+              <button
+                className={cn(
+                  "flex items-center justify-between gap-3 rounded-xl border px-3 py-2 text-left text-xs transition-colors",
+                  enAttente
+                    ? "border-info/50 bg-info/10 text-foreground"
+                    : "border-border/50 bg-muted/20 text-muted-foreground hover:bg-muted/40"
+                )}
+                key={action.cle}
+                onClick={() => setActionEnAttente(action.cle)}
+                type="button"
+              >
+                <span>{action.libelle}</span>
+                <span className="font-mono text-[11px]">
+                  {enAttente
+                    ? "Appuyez…"
+                    : codes.length > 0
+                      ? codes.map(libelleTouche).join(" / ")
+                      : "—"}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Enregistrement */}
-      <div className="flex flex-col items-start gap-2">
-        <Button
-          className="flex items-center gap-1.5"
-          disabled={etat.saving}
-          onClick={() => void enregistrer()}
-        >
-          {etat.saving ? (
-            <Loader2Icon className="size-3.5 animate-spin" />
-          ) : (
-            <CheckIcon className="size-3.5" />
-          )}
-          Enregistrer Blackline
-        </Button>
-        <p className="text-[11px] text-muted-foreground">
-          Ces réglages sont appliqués au prochain lancement du jeu. Les touches
-          du clavier et les commandes tactiles restent configurables depuis
-          Blackline lui-même.
-        </p>
+      {/* 6. Commandes tactiles */}
+      <div className="surface-card flex flex-col gap-4 p-5">
+        <div className="flex items-center gap-2 text-xs font-bold text-foreground">
+          <SmartphoneIcon className="size-4 text-primary" />
+          <span>Commandes tactiles</span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Bascule
+            description="Tire sans maintenir l'écran."
+            libelle="Tir automatique"
+            onChange={(valeur) => maj("mobileAutoFire", valeur)}
+            valeur={lire("mobileAutoFire", DEFAUTS.mobileAutoFire)}
+          />
+          <Bascule
+            description="Corrige légèrement la visée."
+            libelle="Assistance de visée"
+            onChange={(valeur) => maj("mobileAimAssist", valeur)}
+            valeur={lire("mobileAimAssist", DEFAUTS.mobileAimAssist)}
+          />
+          <Bascule
+            description="Course automatique quand le joystick est poussé."
+            libelle="Sprint automatique"
+            onChange={(valeur) => maj("autoSprint", valeur)}
+            valeur={lire("autoSprint", DEFAUTS.autoSprint)}
+          />
+          <Bascule
+            description="Interface à gauche, commandes à droite."
+            libelle="Main gauche"
+            onChange={(valeur) => maj("leftHanded", valeur)}
+            valeur={lire("leftHanded", DEFAUTS.leftHanded)}
+          />
+        </div>
+
+        <Curseur
+          label="Sensibilité tactile"
+          max={3}
+          min={0.2}
+          onChange={(valeur) => maj("touchSensitivity", valeur)}
+          pas={0.05}
+          valeur={lire("touchSensitivity", DEFAUTS.touchSensitivity)}
+        />
+
+        <Curseur
+          label="Taille des commandes"
+          max={1.25}
+          min={0.85}
+          onChange={(valeur) => maj("touchScale", valeur)}
+          pas={0.05}
+          valeur={lire("touchScale", DEFAUTS.touchScale)}
+        />
+
+        <Curseur
+          label="Opacité des commandes"
+          max={1}
+          min={0.45}
+          onChange={(valeur) => maj("touchOpacity", valeur)}
+          pas={0.05}
+          valeur={lire("touchOpacity", DEFAUTS.touchOpacity)}
+        />
+
+        <Curseur
+          label="Zone morte du joystick"
+          max={0.25}
+          min={0.04}
+          onChange={(valeur) => maj("joystickDeadzone", valeur)}
+          pas={0.01}
+          suffixe=" %"
+          valeur={lire("joystickDeadzone", DEFAUTS.joystickDeadzone)}
+        />
       </div>
+
+      <p className="text-[11px] text-muted-foreground">
+        Chaque réglage est enregistré dès que vous le modifiez. Ils sont
+        appliqués au prochain lancement du jeu.
+      </p>
     </div>
+  );
+}
+
+/** Un menu déroulant de réglage. */
+function Selecteur({
+  id,
+  label,
+  note,
+  onChange,
+  options,
+  valeur,
+}: {
+  id: string;
+  label: string;
+  note?: string;
+  onChange: (valeur: string) => void;
+  options: Array<{ label: string; valeur: string }>;
+  valeur: string;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label
+        className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
+        htmlFor={id}
+      >
+        {label}
+      </label>
+      <select
+        className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
+        id={id}
+        onChange={(evenement) => onChange(evenement.target.value)}
+        value={valeur}
+      >
+        {options.map((option) => (
+          <option key={option.valeur} value={option.valeur}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      {note ? (
+        <span className="text-[10px] text-muted-foreground">{note}</span>
+      ) : null}
+    </div>
+  );
+}
+
+/** Un curseur de réglage. */
+function Curseur({
+  label,
+  max,
+  min,
+  onChange,
+  pas,
+  suffixe = " %",
+  valeur,
+}: {
+  label: string;
+  max: number;
+  min: number;
+  onChange: (valeur: number) => void;
+  pas: number;
+  suffixe?: string;
+  valeur: number;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-between">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          {label}
+        </span>
+        <span className="font-mono text-[10px] text-muted-foreground">
+          {Number.isInteger(valeur) ? valeur : valeur.toFixed(2)}
+          {suffixe}
+        </span>
+      </div>
+      <input
+        className="w-full"
+        max={max}
+        min={min}
+        onChange={(evenement) => onChange(Number(evenement.target.value))}
+        step={pas}
+        type="range"
+        value={valeur}
+      />
+    </div>
+  );
+}
+
+/** Une case à cocher de réglage, avec son explication. */
+function Bascule({
+  description,
+  libelle,
+  onChange,
+  valeur,
+}: {
+  description: string;
+  libelle: string;
+  onChange: (valeur: boolean) => void;
+  valeur: boolean;
+}) {
+  return (
+    <label className="flex items-center justify-between rounded-xl border border-border/50 bg-muted/20 p-3">
+      <div className="pr-3">
+        <span className="text-xs font-semibold text-foreground">{libelle}</span>
+        <p className="text-[11px] text-muted-foreground">{description}</p>
+      </div>
+      <input
+        checked={valeur}
+        className="size-4 shrink-0 cursor-pointer accent-primary"
+        onChange={(evenement) => onChange(evenement.target.checked)}
+        type="checkbox"
+      />
+    </label>
   );
 }

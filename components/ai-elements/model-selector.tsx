@@ -16,6 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import type { Popover as PopoverPrimitive } from "radix-ui";
+import { ModelDescription } from "@/lib/ai/model-selector/description";
 import { cn } from "@/lib/utils";
 
 export type ModelSelectorProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
@@ -144,4 +145,34 @@ export const ModelSelectorName = ({
   ...props
 }: ModelSelectorNameProps) => (
   <span className={cn("flex-1 truncate text-left", className)} {...props} />
+);
+
+export type ModelSelectorDescriptionProps = Omit<
+  ComponentProps<"div">,
+  "children"
+> & {
+  /** Texte Markdown de la description. */
+  children: string;
+  /** Rendu sur une seule ligne, dans la liste du sélecteur. */
+  compact?: boolean;
+};
+
+/**
+ * Description d'un modèle, en Markdown.
+ *
+ * Les descriptions du catalogue sont écrites en Markdown : sans moteur, le
+ * texte affichait sa syntaxe brute — `[Poolside](<https://poolside.ai/>)`.
+ * Le rendu est mutualisé avec le Site officiel (cf. `lib/ai/model-selector/`
+ * ) : un seul moteur Markdown dans l'application.
+ */
+export const ModelSelectorDescription = ({
+  className,
+  compact = false,
+  ...props
+}: ModelSelectorDescriptionProps) => (
+  <ModelDescription
+    className={cn("[&_a]:text-info", className)}
+    compact={compact}
+    {...props}
+  />
 );

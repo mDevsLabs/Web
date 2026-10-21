@@ -103,7 +103,10 @@ function buildContentSecurityPolicy(): string {
       "https://*.public.blob.vercel-storage.com",
       "https://avatar.vercel.sh",
       "https://models.dev",
-      "https://www.google.com",
+      // Icônes des sites dans les résultats de recherche (mAI Search et
+      // résultats web du chat). Le service S2 de Google est déprécié : il
+      // renvoie des 404 et fait échouer l'affichage de l'icône.
+      "https://favicon.im",
       "https://picsum.photos",
       "https://api.dicebear.com",
       // Hébergeur historique des visuels du Site (apps/site/docs/news) :
@@ -295,6 +298,20 @@ const nextConfig: NextConfig = {
         ],
         source: "/blackline/fonts/:path*",
       },
+      // Icônes de laboratoires des modèles. Leur nom ne change pas quand le
+      // dessin change : un cache immuable serait trompeur. En revanche, ces
+      // fichiers sont servis par notre propre CDN et ne changent que lors
+      // d'une mise à jour du catalogue — une semaine de cache évite de
+      // revalider 35 icônes à chaque ouverture du sélecteur.
+      {
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
+        ],
+        source: "/models/:path*.svg",
+      },
     ];
   },
   images: {
@@ -344,8 +361,14 @@ const nextConfig: NextConfig = {
         hostname: "picsum.photos",
         protocol: "https",
       },
+      // Icônes des sites dans les résultats de recherche. Aligné sur
+      // l'`img-src` de la CSP ci-dessus : les deux listes doivent accepter les
+      // mêmes sources, sinon l'icône est refusée par le navigateur.
+      //
+      // `www.google.com` n'est plus dans cette liste : il n'y servait qu'aux
+      // favicons, via le service S2 — déprécié et remplacé par `favicon.im`.
       {
-        hostname: "www.google.com",
+        hostname: "favicon.im",
         protocol: "https",
       },
     ],
@@ -356,12 +379,18 @@ const nextConfig: NextConfig = {
     },
     incomingRequests: false,
   },
+  // Les pages du Site lisent leur contenu sur le système de fichiers à
+  // l'exécution : les actualités (lib/site/news.ts), la documentation
+  // (lib/site/docs.ts) et les journaux de version (lib/site/changelog.ts).
+  // Sans ces entrées, un build tracé (standalone) les oublierait et les
+  // pages seraient vides. Les clés sont triées : Biome l'exige.
   outputFileTracingIncludes: {
     "/changelog": ["./CHANGELOG.md"],
-    // Les actualités du Site sont lues depuis le système de fichiers à
-    // l'exécution (lib/site/news.ts) : sans ces entrées, un build tracé
-    // (standalone) les oublierait et les pages seraient vides.
     "/site": ["./apps/site/docs/news/**"],
+    "/site/changelog": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
+    "/site/changelog/mai": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
+    "/site/changelog/msearch": ["./apps/site/docs/*/changelog/CHANGELOG.md"],
+    "/site/docs": ["./apps/site/docs/documentation/**"],
     "/site/news": ["./apps/site/docs/news/**"],
     "/site/news/[slug]": ["./apps/site/docs/news/**"],
   },

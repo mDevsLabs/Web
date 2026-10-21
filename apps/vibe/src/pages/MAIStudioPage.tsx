@@ -29,16 +29,16 @@ import type { MaiToolCall, MAIConversationSummary } from '../types/vibe';
 const formatConversationPreview = (preview?: string, messageCount?: number): { __html: string } | string => {
   if (!preview) {
     const count = messageCount || 0;
-    return `${count} message${count > 1 ? 's' : ''}`;
+    return `${count} message${count > 1? 's': ''}`;
   }
   const cleaned = preview
-    .replace(/```[\s\S]*?```/g, ' [code] ')
-    .replace(/^#+\s+/gm, '')
-    .replace(/^>\s+/gm, '')
-    .replace(/^[-*+]\s+/gm, '')
-    .replace(/^\d+\.\s+/gm, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+.replace(/```[\s\S]*?```/g, ' [code] ')
+.replace(/^#+\s+/gm, '')
+.replace(/^>\s+/gm, '')
+.replace(/^[-*+]\s+/gm, '')
+.replace(/^\d+\.\s+/gm, '')
+.replace(/\s+/g, ' ')
+.trim();
 
   const inlineHtml = renderInlineRichMarkdown(cleaned);
   return { __html: sanitizeRichHtml(inlineHtml) };
@@ -64,8 +64,8 @@ const formatConvDate = (iso?: string): string => {
     const d = new Date(iso);
     const sameDay = d.toDateString() === new Date().toDateString();
     return sameDay
-      ? d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-      : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+? d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+: d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
   } catch {
     return '';
   }
@@ -95,7 +95,7 @@ export const MAIStudioPage: React.FC = () => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [shareMessageText, setShareMessageText] = useState<string | null>(null);
-  // Approbation des outils sensibles : l'IA doit demander l'accord de
+  // Approbation des outils sensibles: l'IA doit demander l'accord de
   // l'utilisateur, sauf si l'auto-approbation a été activée en paramètre.
   const [pendingTool, setPendingTool] = useState<{ name: string; args: any } | null>(null);
   const [autoApprove, setAutoApprove] = useState<boolean>(false);
@@ -123,7 +123,7 @@ export const MAIStudioPage: React.FC = () => {
       try {
         const res = await ApiService.getModels();
         if (res.models && res.models.length > 0) {
-          const list = res.models.filter((m: any) => m && m.id !== 'openrouter/free' && !m.id.startsWith('openrouter/'));
+          const list = res.models.filter((m: any) => m && m.id!== 'openrouter/free' &&!m.id.startsWith('openrouter/'));
           const lagunaIdx = list.findIndex((m: any) => m.id === 'poolside/laguna-xs-2.1:free');
           if (lagunaIdx > 0) {
             const [laguna] = list.splice(lagunaIdx, 1);
@@ -146,13 +146,13 @@ export const MAIStudioPage: React.FC = () => {
       }
     } catch {}
     ApiService.getSettings()
-      .then((res: any) => {
+.then((res: any) => {
         const saved = res?.settings?.mai_default_model;
-        if (saved && saved !== 'openrouter/free' && !saved.startsWith('openrouter/')) {
+        if (saved && saved!== 'openrouter/free' &&!saved.startsWith('openrouter/')) {
           setSelectedModel(String(saved));
         }
       })
-      .catch(() => {});
+.catch(() => {});
     loadModels();
   }, []);
 
@@ -160,7 +160,7 @@ export const MAIStudioPage: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Multi-conversations : liste + chargement de l'historique persisté
+  // Multi-conversations: liste + chargement de l'historique persisté
   const loadConversations = async (): Promise<MAIConversationSummary[]> => {
     try {
       const res = await ApiService.getMAIConversations();
@@ -180,9 +180,9 @@ export const MAIStudioPage: React.FC = () => {
         (res.messages || []).map((m) => ({
           id: m.id,
           serverId: m.id,
-          sender: m.role === 'assistant' ? ('mai' as const) : ('user' as const),
+          sender: m.role === 'assistant'? ('mai' as const): ('user' as const),
           content: m.content,
-          toolCalls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
+          toolCalls: Array.isArray(m.tool_calls)? m.tool_calls: [],
           time: new Date(m.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
         }))
       );
@@ -226,7 +226,7 @@ export const MAIStudioPage: React.FC = () => {
       } else {
         const list = await loadConversations();
         await loadHistory(list[0]?.id);
-        // Aucune conversation existante : l'historique vient d'en créer une
+        // Aucune conversation existante: l'historique vient d'en créer une
         if (list.length === 0) await loadConversations();
       }
       setConversationsLoading(false);
@@ -237,7 +237,7 @@ export const MAIStudioPage: React.FC = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const newParam = params.get('new');
-    if (newParam && newParam !== lastHandledNewRef.current) {
+    if (newParam && newParam!== lastHandledNewRef.current) {
       lastHandledNewRef.current = newParam;
       handleNewConversation();
     }
@@ -273,7 +273,7 @@ export const MAIStudioPage: React.FC = () => {
     if (current && current.title === clean) return;
     try {
       await ApiService.renameMAIConversation(conversationId, clean);
-      setConversations((list) => list.map((c) => (c.id === conversationId ? { ...c, title: clean } : c)));
+      setConversations((list) => list.map((c) => (c.id === conversationId? {...c, title: clean }: c)));
     } catch (err: any) {
       NotificationService.showInAppToast('Renommage', err?.message || 'Impossible de renommer la discussion.', 'error');
     }
@@ -283,7 +283,7 @@ export const MAIStudioPage: React.FC = () => {
   const handleDeleteConversation = async (conversationId: string) => {
     setConvItemMenuId(null);
     const ok = await confirm({
-      title: 'Supprimer cette discussion ?',
+      title: 'Supprimer cette discussion?',
       message: 'Tous ses messages seront définitivement supprimés.',
       confirmLabel: 'Supprimer',
       tone: 'danger',
@@ -338,7 +338,7 @@ export const MAIStudioPage: React.FC = () => {
         role: m.role,
         content: m.content,
         created_at: m.created_at,
-        tool_calls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
+        tool_calls: Array.isArray(m.tool_calls)? m.tool_calls: [],
       })),
     };
   };
@@ -390,12 +390,12 @@ export const MAIStudioPage: React.FC = () => {
   // Charger le réglage d'auto-approbation des outils mAI
   useEffect(() => {
     ApiService.getSettings()
-      .then((res) => setAutoApprove(Boolean(res?.settings?.mai_auto_approve_tools)))
-      .catch(() => {});
+.then((res) => setAutoApprove(Boolean(res?.settings?.mai_auto_approve_tools)))
+.catch(() => {});
   }, []);
 
   const toggleAutoApprove = async () => {
-    const next = !autoApprove;
+    const next =!autoApprove;
     setAutoApprove(next);
     try {
       await ApiService.updateSettings({ mai_auto_approve_tools: next });
@@ -427,10 +427,10 @@ export const MAIStudioPage: React.FC = () => {
   };
 
   const handleSelectTool = (tool: MAITool) => {
-    const tag = autocompleteTrigger === '/' ? tool.slashCommand : tool.mentionTag;
+    const tag = autocompleteTrigger === '/'? tool.slashCommand: tool.mentionTag;
     const words = promptInput.split(/\s+/);
     words.pop();
-    const newPrefix = words.length > 0 ? `${words.join(' ')} ` : '';
+    const newPrefix = words.length > 0? `${words.join(' ')} `: '';
     const updated = `${newPrefix}${tag} `;
 
     setPromptInput(updated);
@@ -459,25 +459,25 @@ export const MAIStudioPage: React.FC = () => {
       const res = await ApiService.chatMAI(query, undefined, selectedModel, undefined, activeConversationId || undefined);
       // Outils utilisés (persistés côté serveur) — repli local pour les anciens formats
       const toolCalls: MaiToolCall[] = res.toolCalls?.length
-        ? res.toolCalls
-        : res.toolExecuted
-        ? [{
+? res.toolCalls
+: res.toolExecuted
+? [{
             id: `local-${Date.now()}`,
             name: res.toolExecuted.name,
             args: {},
-            status: res.toolExecuted.result?.success === false ? 'error' : 'executed',
+            status: res.toolExecuted.result?.success === false? 'error': 'executed',
             result: res.toolExecuted.result,
             at: new Date().toISOString(),
           }]
-        : res.requiresApproval && res.pendingTool
-        ? [{
+: res.requiresApproval && res.pendingTool
+? [{
             id: `local-${Date.now()}`,
             name: res.pendingTool.name,
             args: res.pendingTool.args,
             status: 'pending_approval',
             at: new Date().toISOString(),
           }]
-        : [];
+: [];
       const maiMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         serverId: res.assistant_message_id || undefined,
@@ -493,7 +493,7 @@ export const MAIStudioPage: React.FC = () => {
       if (res.requiresApproval && res.pendingTool) {
         setPendingTool(res.pendingTool);
       }
-      if (res.conversation_id && res.conversation_id !== activeConversationId) {
+      if (res.conversation_id && res.conversation_id!== activeConversationId) {
         setActiveConversationId(res.conversation_id);
       }
       // Titre automatique (premier message) + ordre de la liste
@@ -503,7 +503,7 @@ export const MAIStudioPage: React.FC = () => {
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'mai',
-        content: `⚠️ Erreur : ${err.message || 'Impossible de joindre mAI.'}`,
+        content: ` Erreur: ${err.message || 'Impossible de joindre mAI.'}`,
         time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, errorMsg]);
@@ -520,7 +520,7 @@ export const MAIStudioPage: React.FC = () => {
 
     const pushMaiMsg = (content: string, toolExecuted?: any, toolCalls?: MaiToolCall[]) => {
       setMessages((prev) => [
-        ...prev,
+...prev,
         {
           id: (Date.now() + 2).toString(),
           sender: 'mai',
@@ -539,7 +539,7 @@ export const MAIStudioPage: React.FC = () => {
         const res = await ApiService.refuseMAITool(tool.name, tool.args, activeConversationId || undefined);
         pushMaiMsg(res.reply, undefined, res.toolCalls);
       } catch {
-        pushMaiMsg(`🚫 Très bien, je n'exécute pas l'outil « ${tool.name} ». Dites-moi si je peux faire autre chose pour vous.`);
+        pushMaiMsg(` Très bien, je n'exécute pas l'outil « ${tool.name}». Dites-moi si je peux faire autre chose pour vous.`);
       }
       setIsApproving(false);
       return;
@@ -550,7 +550,7 @@ export const MAIStudioPage: React.FC = () => {
       pushMaiMsg(res.reply, res.toolExecuted, res.toolCalls);
       refreshQuotas();
     } catch (err: any) {
-      pushMaiMsg(`⚠️ Erreur lors de l'exécution de « ${tool.name} » : ${err.message || 'réessayez plus tard.'}`);
+      pushMaiMsg(` Erreur lors de l'exécution de « ${tool.name}»: ${err.message || 'réessayez plus tard.'}`);
     } finally {
       setIsApproving(false);
     }
@@ -585,7 +585,7 @@ export const MAIStudioPage: React.FC = () => {
         for (let i = next.length - 1; i >= 0; i--) {
           if (next[i].sender === 'mai') {
             next[i] = {
-              ...next[i],
+...next[i],
               content: res.reply,
               toolExecuted: null,
               toolCalls: [],
@@ -626,22 +626,22 @@ export const MAIStudioPage: React.FC = () => {
         </button>
       </div>
       <div className="flex-1 overflow-y-auto p-1.5 space-y-0.5 min-h-0">
-        {conversationsLoading && conversations.length === 0 ? (
+        {conversationsLoading && conversations.length === 0? (
           <div className="p-4 text-center text-[11px] text-zinc-500 flex items-center justify-center gap-2">
             <Loader2 className="w-3.5 h-3.5 animate-spin" /> Chargement…
           </div>
-        ) : conversations.length === 0 ? (
+        ): conversations.length === 0? (
           <p className="p-4 text-center text-[11px] text-zinc-500">Aucune discussion pour l'instant.</p>
-        ) : (
+        ): (
           conversations.map((c) => {
             const isActive = c.id === activeConversationId;
             const isRenaming = renamingId === c.id;
             return (
               <div
                 key={c.id}
-                className={`group/item relative rounded-xl transition-colors ${isActive ? 'bg-zinc-900' : 'hover:bg-zinc-900/60'}`}
+                className={`group/item relative rounded-xl transition-colors ${isActive? 'bg-zinc-900': 'hover:bg-zinc-900/60'}`}
               >
-                {isRenaming ? (
+                {isRenaming? (
                   <input
                     autoFocus
                     value={renameDraft}
@@ -660,7 +660,7 @@ export const MAIStudioPage: React.FC = () => {
                     maxLength={120}
                     className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-white focus:outline-none"
                   />
-                ) : (
+                ): (
                   <button type="button" onClick={() => handleSelectConversation(c.id)} className="w-full text-left px-3 py-2 pr-9">
                     <span className="flex items-center gap-1.5">
                       <span className="block text-[11px] font-bold text-white truncate flex-1">
@@ -690,8 +690,8 @@ export const MAIStudioPage: React.FC = () => {
                   <div className="absolute right-1 top-1.5">
                     <button
                       type="button"
-                      onClick={() => setConvItemMenuId(convItemMenuId === c.id ? null : c.id)}
-                      className={`p-1 rounded-full text-zinc-500 hover:text-white hover:bg-zinc-800 transition-opacity ${convItemMenuId === c.id ? 'opacity-100' : 'opacity-0 group-hover/item:opacity-100'}`}
+                      onClick={() => setConvItemMenuId(convItemMenuId === c.id? null: c.id)}
+                      className={`p-1 rounded-full text-zinc-500 hover:text-white hover:bg-zinc-800 transition-opacity ${convItemMenuId === c.id? 'opacity-100': 'opacity-0 group-hover/item:opacity-100'}`}
                       title="Actions de la discussion"
                     >
                       <MoreVertical className="w-3.5 h-3.5" />
@@ -774,7 +774,7 @@ export const MAIStudioPage: React.FC = () => {
         className="flex-1 h-screen border-r border-zinc-800 bg-black flex select-none"
         style={{ height: 'calc(100dvh - var(--vibe-kb-offset, 0px))' }}
       >
-        {/* Sidebar desktop : multi-conversations mAI */}
+        {/* Sidebar desktop: multi-conversations mAI */}
         <aside className="hidden md:flex w-64 lg:w-72 shrink-0 flex-col border-r border-zinc-800">
           {conversationList}
         </aside>
@@ -821,12 +821,12 @@ export const MAIStudioPage: React.FC = () => {
 
           <button
             onClick={toggleAutoApprove}
-            title={autoApprove ? 'Auto-approbation des outils mAI activée' : 'Approbation manuelle des outils mAI'}
+            title={autoApprove? 'Auto-approbation des outils mAI activée': 'Approbation manuelle des outils mAI'}
             className={`p-2 rounded-full transition-colors ${
-              autoApprove ? 'text-amber-400 bg-amber-400/10' : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+              autoApprove? 'text-amber-400 bg-amber-400/10': 'text-zinc-400 hover:text-white hover:bg-zinc-900'
             }`}
           >
-            {autoApprove ? <ShieldAlert className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
+            {autoApprove? <ShieldAlert className="w-4 h-4" />: <ShieldCheck className="w-4 h-4" />}
           </button>
 
           <button
@@ -845,11 +845,11 @@ export const MAIStudioPage: React.FC = () => {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-zinc-300">
               <Zap className="w-3.5 h-3.5 text-white" />
-              <span>Tokens : {quotas.weeklyTokens.used.toLocaleString()} / {quotas.weeklyTokens.limit.toLocaleString()}</span>
+              <span>Tokens: {quotas.weeklyTokens.used.toLocaleString()} / {quotas.weeklyTokens.limit.toLocaleString()}</span>
             </span>
             <span className="flex items-center gap-1 text-zinc-300">
               <ImageIcon className="w-3.5 h-3.5 text-white" />
-              <span>Images : {quotas.dailyImages.used} / {quotas.dailyImages.limit}</span>
+              <span>Images: {quotas.dailyImages.used} / {quotas.dailyImages.limit}</span>
             </span>
           </div>
           <span className="text-zinc-500">Forfait {quotas.tier}</span>
@@ -865,7 +865,7 @@ export const MAIStudioPage: React.FC = () => {
             </div>
             <div className="min-w-0">
               <h2 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
-                Bienvenue, <span className="text-white font-black">@{user?.username || 'utilisateur'}</span> !
+                Bienvenue, <span className="text-white font-black">@{user?.username || 'utilisateur'}</span>!
               </h2>
               <p className="text-xs text-zinc-400 truncate">
                 Assistant mAI — Posez vos questions ou utilisez les commandes @ et /.
@@ -880,7 +880,7 @@ export const MAIStudioPage: React.FC = () => {
         {messages.length === 0 && (
           <div className="h-full flex flex-col items-center justify-center text-center p-8 text-zinc-500 space-y-2">
             <Sparkles className="w-8 h-8 text-zinc-600 animate-pulse" />
-            <p className="text-sm font-medium text-zinc-400">Comment puis-je vous aider aujourd'hui ?</p>
+            <p className="text-sm font-medium text-zinc-400">Comment puis-je vous aider aujourd'hui?</p>
             <p className="text-xs text-zinc-600 max-w-sm">
               Posez une question, ou tapez <span className="font-mono text-zinc-400">/image</span> pour créer un visuel, <span className="font-mono text-zinc-400">/search</span> pour chercher sur le web.
             </p>
@@ -895,12 +895,12 @@ export const MAIStudioPage: React.FC = () => {
             null;
 
           return (
-            <div key={m.id} className={`flex flex-col ${isMe ? 'items-end' : 'items-start'} group`}>
+            <div key={m.id} className={`flex flex-col ${isMe? 'items-end': 'items-start'} group`}>
               <div
                 className={`max-w-[85%] rounded-3xl p-4 text-xs sm:text-sm leading-relaxed relative ${
                   isMe
-                    ? 'bg-white text-black font-medium rounded-tr-sm shadow-lg'
-                    : 'bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-tl-sm'
+? 'bg-white text-black font-medium rounded-tr-sm shadow-lg'
+: 'bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-tl-sm'
                 }`}
               >
                 {!isMe && (
@@ -924,7 +924,7 @@ export const MAIStudioPage: React.FC = () => {
                 {m.requiresApproval && pendingTool && (
                   <div className="mt-3 p-3 rounded-2xl bg-zinc-900 border border-amber-500/40 space-y-2">
                     <p className="text-[11px] font-mono text-amber-300 uppercase tracking-wide">
-                      🔐 Outil sensible : {pendingTool.name}
+                       Outil sensible: {pendingTool.name}
                     </p>
                     <pre className="text-[10px] text-zinc-400 whitespace-pre-wrap break-all max-h-24 overflow-y-auto">
                       {JSON.stringify(pendingTool.args, null, 2)}
@@ -935,7 +935,7 @@ export const MAIStudioPage: React.FC = () => {
                         disabled={isApproving}
                         className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-white text-black text-xs font-bold hover:bg-zinc-200 transition-colors disabled:opacity-50"
                       >
-                        {isApproving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+                        {isApproving? <Loader2 className="w-3.5 h-3.5 animate-spin" />: <Check className="w-3.5 h-3.5" />}
                         Approuver
                       </button>
                       <button
@@ -962,7 +962,7 @@ export const MAIStudioPage: React.FC = () => {
                 )}
 
                 {/* Interactive Message Actions (Copy / Edit / Share) */}
-                <div className={`flex items-center gap-2 pt-2.5 mt-2 border-t text-[11px] font-mono ${isMe ? 'border-zinc-200 text-zinc-600 justify-end' : 'border-zinc-900 text-zinc-400 justify-between'}`}>
+                <div className={`flex items-center gap-2 pt-2.5 mt-2 border-t text-[11px] font-mono ${isMe? 'border-zinc-200 text-zinc-600 justify-end': 'border-zinc-900 text-zinc-400 justify-between'}`}>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
@@ -970,8 +970,8 @@ export const MAIStudioPage: React.FC = () => {
                       className="flex items-center gap-1 hover:text-white transition-colors p-1 rounded-md"
                       title="Copier le texte"
                     >
-                      {isCopied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{isCopied ? 'Copié !' : 'Copier'}</span>
+                      {isCopied? <Check className="w-3.5 h-3.5 text-green-400" />: <Copy className="w-3.5 h-3.5" />}
+                      <span>{isCopied? 'Copié!': 'Copier'}</span>
                     </button>
 
                     <button
@@ -999,7 +999,7 @@ export const MAIStudioPage: React.FC = () => {
 
                   {!isMe && (
                     <div className="flex items-center gap-2">
-                      {idx === messages.length - 1 && !m.toolExecuted && !(m.toolCalls && m.toolCalls.length > 0) && (
+                      {idx === messages.length - 1 &&!m.toolExecuted &&!(m.toolCalls && m.toolCalls.length > 0) && (
                         <button
                           type="button"
                           onClick={handleRegenerate}
@@ -1007,7 +1007,7 @@ export const MAIStudioPage: React.FC = () => {
                           className="flex items-center gap-1 text-zinc-400 hover:text-white transition-colors p-1 disabled:opacity-40"
                           title="Regénérer la réponse"
                         >
-                          {isRegenerating ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+                          {isRegenerating? <Loader2 className="w-3.5 h-3.5 animate-spin" />: <RefreshCw className="w-3.5 h-3.5" />}
                           <span>Regénérer</span>
                         </button>
                       )}
@@ -1082,7 +1082,7 @@ export const MAIStudioPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Tiroir mobile : liste des conversations mAI */}
+      {/* Tiroir mobile: liste des conversations mAI */}
       {sidebarOpen && (
         <div className="md:hidden fixed inset-0 z-[70]">
           <div
@@ -1096,9 +1096,9 @@ export const MAIStudioPage: React.FC = () => {
       )}
 
       {/* Partage d'un message mAI par message Vibe */}
-      {shareMessageText !== null && (
+      {shareMessageText!== null && (
         <ShareToDMModal
-          isOpen={shareMessageText !== null}
+          isOpen={shareMessageText!== null}
           onClose={() => setShareMessageText(null)}
           initialMessage={shareMessageText}
         />

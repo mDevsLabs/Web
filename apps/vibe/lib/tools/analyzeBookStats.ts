@@ -2,7 +2,7 @@
  * Outil mAI — Statistiques des livres collaboratifs (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "analyze_book_stats".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface AnalyzeBookStatsArgs {
   period?: "7d" | "30d" | "90d" | "12m";

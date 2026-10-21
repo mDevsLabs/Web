@@ -8,6 +8,7 @@ import {
   normalizeMaiSearchResultCount,
   normalizeMaiSearchSafetyLevel,
   normalizeMaiSearchSources,
+  resolveMaiSearchResultCount,
 } from "@/lib/search/sources";
 
 describe("vocabulaire des sources de recherche", () => {
@@ -83,7 +84,10 @@ describe("normalisation du nombre de résultats", () => {
   });
 
   it("borne un nombre hors limites", () => {
-    expect(normalizeMaiSearchResultCount(1)).toBe(MAI_SEARCH_RESULT_COUNT_MIN);
+    // La borne basse est à 1 : une recherche d'une seule source est un usage
+    // légitime, la refuser ressemblerait à une panne.
+    expect(MAI_SEARCH_RESULT_COUNT_MIN).toBe(1);
+    expect(normalizeMaiSearchResultCount(0)).toBe(MAI_SEARCH_RESULT_COUNT_MIN);
     expect(normalizeMaiSearchResultCount(1000)).toBe(
       MAI_SEARCH_RESULT_COUNT_MAX
     );
@@ -96,5 +100,69 @@ describe("normalisation du nombre de résultats", () => {
     expect(normalizeMaiSearchResultCount("beaucoup")).toBe(
       MAI_SEARCH_RESULT_COUNT_DEFAULT
     );
+  });
+});
+
+describe("résolution du nombre de résultats", () => {
+  it("plafonne par forfait", () => {
+    // Free 50, Plus 100, Pro 150, Max 200.
+    expect(resolveMaiSearchResultCount({ preferred: 200, tier: "free" })).toBe(
+      50
+    );
+    expect(resolveMaiSearchResultCount({ preferred: 200, tier: "plus" })).toBe(
+      100
+    );
+    expect(resolveMaiSearchResultCount({ preferred: 200, tier: "pro" })).toBe(
+      150
+    );
+    expect(resolveMaiSearchResultCount({ preferred: 200, tier: "max" })).toBe(
+      200
+    );
+  });
+
+  it("traite un forfait illisible comme un forfait gratuit", () => {
+    // Fail-safe : une limite qui s'élargit sur une valeur illisible
+    // accorderait un privilège à un compte qu'on ne connaît pas.
+    expect(
+      resolveMaiSearchResultCount({ preferred: 200, tier: "inexistant" })
+    ).toBe(50);
+    expect(resolveMaiSearchResultCount({ preferred: 200, tier: null })).toBe(
+      50
+    );
+    expect(resolveMaiSearchResultCount({ preferred: 200 })).toBe(50);
+  });
+
+  it("ne laisse jamais dépasser la préférence du compte", () => {
+    // Le client peut RÉTRÉCIR, jamais élargir : demander 200 quand la
+    // préférence est à 10 donne 10.
+    expect(
+      resolveMaiSearchResultCount({
+        preferred: 10,
+        requested: 200,
+        tier: "max",
+      })
+    ).toBe(10);
+  });
+
+  it("ne fait jamais descendre sous un résultat", () => {
+    expect(
+      resolveMaiSearchResultCount({ preferred: 1, requested: 1, tier: "max" })
+    ).toBe(1);
+  });
+
+  it("applique la préférence quand le client ne demande rien", () => {
+    expect(resolveMaiSearchResultCount({ preferred: 75, tier: "max" })).toBe(
+      75
+    );
+  });
+
+  it("reste dans la borne absolue du produit", () => {
+    expect(
+      resolveMaiSearchResultCount({
+        preferred: 5000,
+        requested: 5000,
+        tier: "max",
+      })
+    ).toBe(MAI_SEARCH_RESULT_COUNT_MAX);
   });
 });

@@ -4,16 +4,10 @@ import {
   ArchiveIcon,
   ArrowRightIcon,
   CalendarClockIcon,
-  CheckIcon,
   ChevronDownIcon,
-  Code2Icon,
-  CrosshairIcon,
   FolderKanbanIcon,
-  GlobeIcon,
-  ImageIcon,
   LibraryIcon,
   LockIcon,
-  MessageCircleIcon,
   MoreHorizontalIcon,
   PanelLeftIcon,
   PenSquareIcon,
@@ -21,13 +15,7 @@ import {
   PuzzleIcon,
   SearchIcon,
   SettingsIcon,
-  SlidersHorizontalIcon,
-  SparkleIcon,
   SparklesIcon,
-  TerminalIcon,
-  TrashIcon,
-  UsersIcon,
-  Volume2Icon,
 } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,6 +32,7 @@ import {
   SidebarHistory,
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
+import { AppMenuItems } from "@/components/common/app-menu-items";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,8 +67,7 @@ import { useActiveChat } from "@/hooks/use-active-chat";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
-import type { AppKey } from "@/lib/apps/catalog";
-import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
+import { appKeyFromPath } from "@/lib/apps/catalog";
 import type { MaiUser } from "@/lib/auth/session";
 import { pagePath } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
@@ -94,29 +82,6 @@ import {
   AlertDialogTitle,
 } from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-
-function VibeSidebarIcon({ className }: { className?: string }) {
-  return (
-    <Image
-      alt="Vibe"
-      className={cn("size-4 rounded-sm object-contain dark:invert", className)}
-      height={16}
-      src="/vibe/logo.png"
-      unoptimized
-      width={16}
-    />
-  );
-}
-
-// Icônes du sélecteur d'applications du logo.
-const APP_ICONS: Record<AppKey, React.ComponentType<{ className?: string }>> = {
-  blackline: CrosshairIcon,
-  cli: TerminalIcon,
-  code: Code2Icon,
-  mai: MessageCircleIcon,
-  site: GlobeIcon,
-  vibe: VibeSidebarIcon,
-};
 
 function SidebarProjects() {
   const { projects: allProjects, isLoading } = useProjects();
@@ -453,6 +418,20 @@ export function AppSidebar({
 
   const isUserLoggedIn = Boolean(user && !hasDeadSession);
 
+  /**
+   * État d'authentification tel que le menu doit le lire.
+   *
+   * `undefined` = inconnu : une session morte est en cours de reprise, et
+   * afficher un cadenas sur toutes les applications serait une accusation
+   * fausse. Un visiteur anonyme, lui, ne peut pas basculer vers les autres
+   * applications : le cadenas le dit.
+   */
+  const sidebarAuthState: boolean | undefined = isUserLoggedIn
+    ? true
+    : hasDeadSession
+      ? undefined
+      : false;
+
   const handleAppSelect = useCallback(
     (path: string) => {
       handleNavClick();
@@ -606,82 +585,17 @@ export function AppSidebar({
                     className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
                     side="bottom"
                   >
-                    {APP_ORDER.map((entry) => {
-                      const isCurrent = currentApp === entry.key;
-                      const AppGlyph = APP_ICONS[entry.key];
-                      const isCodeDisabled = entry.key === "code" && !isDesktop;
-                      return (
-                        <DropdownMenuItem
-                          asChild
-                          className={cn(
-                            "cursor-pointer",
-                            isCodeDisabled && "opacity-55"
-                          )}
-                          key={entry.key}
-                          onSelect={() => handleAppSelect(entry.path)}
-                        >
-                          <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
-                            <AppGlyph
-                              className={cn(
-                                "mt-0.5 size-4 shrink-0",
-                                isCurrent
-                                  ? "text-primary"
-                                  : "text-muted-foreground"
-                              )}
-                            />
-                            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                              <div className="flex items-center gap-1.5">
-                                <span
-                                  className={cn(
-                                    "text-[13px] font-semibold",
-                                    isCurrent
-                                      ? "text-foreground"
-                                      : "text-sidebar-foreground/90"
-                                  )}
-                                >
-                                  {entry.label}
-                                </span>
-                                {isCodeDisabled && (
-                                  <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                                    Bureau
-                                  </span>
-                                )}
-                              </div>
-                              <span className="text-[11px] leading-snug text-muted-foreground">
-                                {entry.description}
-                              </span>
-                            </div>
-                            {isCurrent && (
-                              <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                            )}
-                          </div>
-                        </DropdownMenuItem>
-                      );
-                    })}
-                    <DropdownMenuItem
-                      className={cn(
-                        "cursor-pointer",
-                        !isDesktop && "opacity-55"
-                      )}
-                      onSelect={() => {
+                    <AppMenuItems
+                      currentApp={currentApp}
+                      isAuthenticated={sidebarAuthState}
+                      isDesktop={isDesktop}
+                      onOpenCli={() => {
                         void handleOpenCli();
                       }}
-                    >
-                      <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
-                      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-[13px]">CLI</span>
-                          {!isDesktop && (
-                            <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                              Bureau
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          mAI dans un terminal local
-                        </span>
-                      </div>
-                    </DropdownMenuItem>
+                      onSelectApp={(_key, path) => {
+                        handleAppSelect(path);
+                      }}
+                    />
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <Tooltip>
@@ -721,79 +635,17 @@ export function AppSidebar({
                   align="start"
                   className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
                 >
-                  {APP_ORDER.map((entry) => {
-                    const isCurrent = currentApp === entry.key;
-                    const AppGlyph = APP_ICONS[entry.key];
-                    const isCodeDisabled = entry.key === "code" && !isDesktop;
-                    return (
-                      <DropdownMenuItem
-                        asChild
-                        className={cn(
-                          "cursor-pointer",
-                          isCodeDisabled && "opacity-55"
-                        )}
-                        key={entry.key}
-                        onSelect={() => handleAppSelect(entry.path)}
-                      >
-                        <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
-                          <AppGlyph
-                            className={cn(
-                              "mt-0.5 size-4 shrink-0",
-                              isCurrent
-                                ? "text-primary"
-                                : "text-muted-foreground"
-                            )}
-                          />
-                          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                            <div className="flex items-center gap-1.5">
-                              <span
-                                className={cn(
-                                  "text-[13px] font-semibold",
-                                  isCurrent
-                                    ? "text-foreground"
-                                    : "text-sidebar-foreground/90"
-                                )}
-                              >
-                                {entry.label}
-                              </span>
-                              {isCodeDisabled && (
-                                <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                                  Bureau
-                                </span>
-                              )}
-                            </div>
-                            <span className="text-[11px] leading-snug text-muted-foreground">
-                              {entry.description}
-                            </span>
-                          </div>
-                          {isCurrent && (
-                            <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                          )}
-                        </div>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                  <DropdownMenuItem
-                    className={cn("cursor-pointer", !isDesktop && "opacity-55")}
-                    onSelect={() => {
+                  <AppMenuItems
+                    currentApp={currentApp}
+                    isAuthenticated={sidebarAuthState}
+                    isDesktop={isDesktop}
+                    onOpenCli={() => {
                       void handleOpenCli();
                     }}
-                  >
-                    <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
-                    <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-[13px]">CLI</span>
-                        {!isDesktop && (
-                          <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                            Bureau
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-xs text-muted-foreground">
-                        mAI dans un terminal local
-                      </span>
-                    </div>
-                  </DropdownMenuItem>
+                    onSelectApp={(_key, path) => {
+                      handleAppSelect(path);
+                    }}
+                  />
                 </DropdownMenuContent>
               </DropdownMenu>
               {/* La recherche est une PAGE, pas une modale : l'icône tient à
@@ -877,24 +729,7 @@ export function AppSidebar({
                   />
                 </SidebarMenuItem>
 
-                {/* 3. Blackline : le jeu 3D. Ouvert à tous les forfaits — il ne
-                    consomme aucun token IA. L'accès est conditionné à une
-                    confirmation d'âge (PEGI 16), demandée par le jeu lui-même
-                    à chaque lancement. */}
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Blackline"
-                  >
-                    <Link href="/blackline" onClick={handleNavClick}>
-                      <CrosshairIcon className="size-4" />
-                      <span>Blackline</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-
-                {/* 4. Bibliothèque : le stockage central des fichiers et
+                {/* 3. Bibliothèque : le stockage central des fichiers et
                     contenus générés (ex « Stockage »). */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
@@ -913,7 +748,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 5. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
+                {/* 4. Search : mAI Search (moteur de recherche You.com & résumé IA) */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -953,7 +788,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 2. Bots : ouverts à tous les forfaits, bornés par quota
+                {/* 5. Bots : ouverts à tous les forfaits, bornés par quota
                     (8 en Free, `getTierAgentLimit`). L'entrée n'est donc plus
                     verrouillée : ce qui limite un Free est un nombre de bots,
                     pas un cadenas. La clé de montée en niveau « agents » reste
@@ -971,7 +806,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 3. Applications : Plugins, MCP & Skills sur une page unifiée */}
+                {/* 6. Applications : Plugins, MCP & Skills sur une page unifiée */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -994,7 +829,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 4. Plus : Paramètres, Messages archivés et Planification */}
+                {/* 7. Plus : Paramètres, Messages archivés et Planification */}
                 <SidebarNavCollapsible
                   dropdownItems={
                     <>

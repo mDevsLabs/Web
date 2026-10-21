@@ -60,10 +60,10 @@ function resolveAppIconPath(): string | undefined {
   ];
   const names =
     process.platform === "win32"
-      ? ["icon.ico", "icon.png"]
-      : process.platform === "darwin"
-        ? ["icon.icns", "icon.png"]
-        : ["icon.png", "icon.ico"];
+? ["icon.ico", "icon.png"]
+: process.platform === "darwin"
+? ["icon.icns", "icon.png"]
+: ["icon.png", "icon.ico"];
   for (const root of iconSearchRoots) {
     for (const name of names) {
       const full = path.join(root, name);
@@ -75,7 +75,7 @@ function resolveAppIconPath(): string | undefined {
 }
 
 // Handoff de session depuis mAI Desktop. Le jeton n'apparaît jamais dans les
-// arguments : argv porte un chemin de fichier éphémère, lu puis supprimé.
+// arguments: argv porte un chemin de fichier éphémère, lu puis supprimé.
 function readSessionHandoffFile(file: string): string | undefined {
   try {
     const value = readFileSync(file, "utf8").trim();
@@ -84,7 +84,7 @@ function readSessionHandoffFile(file: string): string | undefined {
     } catch {
       /* déjà supprimé */
     }
-    return isUsableMaiSessionToken(value) ? value : undefined;
+    return isUsableMaiSessionToken(value)? value: undefined;
   } catch {
     return undefined;
   }
@@ -93,18 +93,18 @@ function readSessionHandoffFile(file: string): string | undefined {
 function sessionTokenFromArgs(argv: string[]): string | undefined {
   const prefix = "--mai-session-token-file=";
   const arg = argv.find((item) => item.startsWith(prefix));
-  return arg ? readSessionHandoffFile(arg.slice(prefix.length)) : undefined;
+  return arg? readSessionHandoffFile(arg.slice(prefix.length)): undefined;
 }
 
 // Le handoff peut arriver avant la fin de l'initialisation du stockage quand
-// une seconde instance est lancée très tôt : attendre le settingsStore évite de
+// une seconde instance est lancée très tôt: attendre le settingsStore évite de
 // perdre le jeton dans une écriture prématurée.
 let resolveMaiSettingsReady: (() => void) | null = null;
 const maiSettingsReady = new Promise<void>((resolve) => {
   resolveMaiSettingsReady = resolve;
 });
 
-// Applique un jeton de session mAI : remplace immédiatement le compte local
+// Applique un jeton de session mAI: remplace immédiatement le compte local
 // puis synchronise profil et modèles, sans bloquer l'ouverture de l'éditeur.
 async function applyMaiHandoffToken(token: string): Promise<void> {
   const value = token.trim();
@@ -138,20 +138,20 @@ initWindowsConsoleUtf8();
 // Single-instance: second launch focuses existing window instead of opening
 // a second SQLite writer (prevents SQLITE_BUSY/corruption of session.db).
 const gotLock = app.requestSingleInstanceLock(
-  handoffToken ? { maiSessionToken: handoffToken } : {}
+  handoffToken? { maiSessionToken: handoffToken }: {}
 );
 if (gotLock) {
   app.on("second-instance", (_event, argv, _cwd, additionalData) => {
     const wins = BrowserWindow.getAllWindows();
     const first = wins[0];
-    if (first && !first.isDestroyed()) {
+    if (first &&!first.isDestroyed()) {
       if (first.isMinimized()) first.restore();
       first.show();
       first.focus();
     }
     const incoming =
       (additionalData as { maiSessionToken?: string } | undefined)
-        ?.maiSessionToken || sessionTokenFromArgs(argv);
+?.maiSessionToken || sessionTokenFromArgs(argv);
     if (incoming && isUsableMaiSessionToken(incoming)) {
       void applyMaiHandoffToken(incoming);
     }
@@ -174,7 +174,7 @@ app.on("web-contents-created", (_event, contents) => {
         return { action: "deny" };
       }
       const host = contents.hostWebContents;
-      if (host && !host.isDestroyed()) {
+      if (host &&!host.isDestroyed()) {
         host.send("mai-coder:browserNewWindow", { disposition, url });
       }
       return { action: "deny" };
@@ -192,7 +192,7 @@ app.on("web-contents-created", (_event, contents) => {
         parsed.protocol === "http:" &&
         (parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost") &&
         parsed.port === "5173";
-      if (!isFileApp && !isDevServer) {
+      if (!isFileApp &&!isDevServer) {
         e.preventDefault();
       }
     } catch {
@@ -224,8 +224,8 @@ app.on("before-quit", (e) => {
     disposeBrowserCaptureProxy(),
     disposePlaywrightBridge(),
     BrowserSystemProxy.hasSavedState()
-      ? BrowserSystemProxy.disable()
-      : Promise.resolve(),
+? BrowserSystemProxy.disable()
+: Promise.resolve(),
   ]).finally(() => {
     app.quit();
   });
@@ -271,8 +271,8 @@ app.whenReady().then(async () => {
     } = require("electron-devtools-installer");
 
     installExtension(REACT_DEVELOPER_TOOLS, { loadExtension: true })
-      .then(() => console.log("✅ React DevTools 已安装"))
-      .catch((err: unknown) => console.log("安装失败:", err));
+.then(() => console.log(" React DevTools 已安装"))
+.catch((err: unknown) => console.log("安装失败:", err));
   }
 
   const t0 = Date.now();
@@ -296,7 +296,7 @@ app.whenReady().then(async () => {
   resolveMaiSettingsReady?.();
   resolveMaiSettingsReady = null;
   lap("settingsStore init");
-  // Handoff depuis mAI Desktop : jeton lu depuis l'environnement ou le fichier
+  // Handoff depuis mAI Desktop: jeton lu depuis l'environnement ou le fichier
   // transmis par argv, déjà retiré de l'environnement au démarrage.
   if (handoffToken) {
     await applyMaiHandoffToken(handoffToken);
@@ -326,7 +326,7 @@ app.whenReady().then(async () => {
   const restored = workspaceArg?.slice("--workspace=".length) || getRestorableWorkspace();
   lap("restorableWorkspace resolved");
 
-  const restoredUsable = restored && existsSync(restored) ? restored : null;
+  const restoredUsable = restored && existsSync(restored)? restored: null;
   initThreadStore(userData, restoredUsable);
   lap("threadStore init");
 
@@ -349,19 +349,19 @@ app.whenReady().then(async () => {
   });
 
   const settings = getSettings();
-  const ui = (settings.ui ?? {}) as Partial<Record<string, unknown>>;
+  const ui = (settings.ui?? {}) as Partial<Record<string, unknown>>;
   const colorMode =
     ui.colorMode === "light" ||
     ui.colorMode === "dark" ||
     ui.colorMode === "system"
-      ? ui.colorMode
-      : "system";
+? ui.colorMode
+: "system";
   const scheme =
     colorMode === "system"
-      ? nativeTheme.shouldUseDarkColors
-        ? "dark"
-        : "light"
-      : colorMode;
+? nativeTheme.shouldUseDarkColors
+? "dark"
+: "light"
+: colorMode;
   const appearance = normalizeAppearanceSettings(ui, scheme);
   const chromeOverride = nativeWindowChromeFromAppearance(appearance, scheme);
 
@@ -381,7 +381,7 @@ app.whenReady().then(async () => {
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      const schemeNow = nativeTheme.shouldUseDarkColors ? "dark" : "light";
+      const schemeNow = nativeTheme.shouldUseDarkColors? "dark": "light";
       const appearanceNow = normalizeAppearanceSettings(ui, schemeNow);
       const chromeNow = nativeWindowChromeFromAppearance(
         appearanceNow,
@@ -396,7 +396,7 @@ app.whenReady().then(async () => {
 });
 
 app.on("window-all-closed", () => {
-  if ((forceQuitFromTray || appIsQuitting) && process.platform !== "darwin") {
+  if ((forceQuitFromTray || appIsQuitting) && process.platform!== "darwin") {
     app.quit();
   }
 });

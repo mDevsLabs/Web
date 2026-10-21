@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE — PARAMÈTRES IA mAI (components/vibe/settings/MaiSettingsSection.tsx)
- * Section Paramètres : Modèles, voix TTS, contexte, catalogue d'outils mAI et approbation.
+ * Section Paramètres: Modèles, voix TTS, contexte, catalogue d'outils mAI et approbation.
  * ============================================================================
  */
 
@@ -98,7 +98,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                 Posts marqués IA par défaut
               </span>
               <p className="text-zinc-500 text-[11px]">
-                Badge « Créé avec l'IA » activé automatiquement
+                Badge « Créé avec l'IA» activé automatiquement
               </p>
             </div>
             <input
@@ -140,7 +140,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
               />
             </div>
             <p className="text-[11px] text-amber-600 vibe-dark:text-amber-400/90">
-              ⚠️ Confidentiel : seuls des extraits tronqués sont transmis à mAI,
+               Confidentiel: seuls des extraits tronqués sont transmis à mAI,
               jamais cités verbatim.
             </p>
           </div>
@@ -162,7 +162,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
               <Cpu className="w-3 h-3 text-zinc-400" />
               Modèle mAI par défaut
             </label>
-            {models.length > 0 ? (
+            {models.length > 0? (
               <select
                 className="w-full p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-zinc-500 text-xs"
                 onChange={(e) => setMaiDefaultModel(e.target.value)}
@@ -171,11 +171,11 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                 {models.map((m) => (
                   <option key={m.id} value={m.id}>
                     {m.name}
-                    {m.provider ? ` — ${m.provider}` : ""}
+                    {m.provider? ` — ${m.provider}`: ""}
                   </option>
                 ))}
               </select>
-            ) : (
+            ): (
               <div className="flex items-center gap-2 text-zinc-500 py-1">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 <span>Chargement des modèles…</span>
@@ -192,7 +192,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
               <Volume2 className="w-3 h-3 text-zinc-400" />
               Voix de lecture mAI
             </label>
-            {voices.length > 0 ? (
+            {voices.length > 0? (
               <select
                 className="w-full p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-zinc-500 text-xs"
                 onChange={(e) => setMaiTtsVoice(e.target.value)}
@@ -204,7 +204,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                   </option>
                 ))}
               </select>
-            ) : (
+            ): (
               <div className="flex items-center gap-2 text-zinc-500 py-1">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 <span>Chargement des voix…</span>
@@ -225,22 +225,22 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
               onClick={() =>
                 setMaiEnabledTools((prev) =>
                   prev.length === maiCatalog.length
-                    ? []
-                    : maiCatalog.map((t) => t.id)
+? []
+: maiCatalog.map((t) => t.id)
                 )
               }
               type="button"
             >
               {maiEnabledTools.length === maiCatalog.length
-                ? "Tout désélectionner"
-                : "Tout sélectionner"}
+? "Tout désélectionner"
+: "Tout sélectionner"}
             </button>
           </div>
           <p className="text-zinc-500 text-[11px]">
             Choisissez les outils que mAI peut utiliser en votre nom. Les outils
             sensibles restent soumis à l'approbation ci-dessus.
           </p>
-          {maiToolsLoaded ? (
+          {maiToolsLoaded? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {maiCatalog.map((tool) => {
                 const checked = maiEnabledTools.includes(tool.id);
@@ -248,8 +248,8 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                   <label
                     className={`flex items-start gap-2.5 p-2.5 rounded-xl border cursor-pointer transition-colors ${
                       checked
-                        ? "bg-zinc-900 border-zinc-600"
-                        : "bg-zinc-900/40 border-zinc-800 hover:border-zinc-700"
+? "bg-zinc-900 border-zinc-600"
+: "bg-zinc-900/40 border-zinc-800 hover:border-zinc-700"
                     }`}
                     key={tool.id}
                   >
@@ -259,8 +259,8 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                       onChange={() =>
                         setMaiEnabledTools((prev) =>
                           prev.includes(tool.id)
-                            ? prev.filter((id) => id !== tool.id)
-                            : [...prev, tool.id]
+? prev.filter((id) => id!== tool.id)
+: [...prev, tool.id]
                         )
                       }
                       type="checkbox"
@@ -287,7 +287,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                 );
               })}
             </div>
-          ) : (
+          ): (
             <div className="flex items-center gap-2 text-zinc-500 py-2">
               <Loader2 className="w-3.5 h-3.5 animate-spin" />
               <span>Chargement du catalogue…</span>

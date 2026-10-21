@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   APP_CATALOG,
   APP_KEYS,
+  APP_MENU_ORDER,
   APP_ORDER,
   appKeyFromPath,
   favoriteAppToPath,
@@ -22,12 +23,49 @@ describe("Blackline dans le catalogue des applications", () => {
     expect(isAppKey("blackline")).toBe(true);
   });
 
-  it("apparaît dans l'ordre d'affichage, avant le CLI", () => {
+  it("apparaît dans l'ordre d'affichage, APRÈS le CLI", () => {
     const cles = APP_ORDER.map((entree) => entree.key);
     expect(cles).toEqual(["mai", "site", "vibe", "code", "blackline"]);
     // Le CLI n'est PAS dans APP_ORDER : c'est une entrée du « Menu favori »
     // qui ouvre le terminal local, pas une application web.
     expect(cles).not.toContain("cli");
+  });
+
+  it("est affichée après le CLI dans le menu des applications", () => {
+    // Le menu n'est PAS `APP_ORDER` : il glisse le CLI entre Coder et
+    // Blackline. Blackline est un jeu, pas un outil de travail — il a donc
+    // quitté la liste de navigation de la barre latérale, où il faisait
+    // doublon avec le menu.
+    const ordreMenu = APP_MENU_ORDER.map((entree) =>
+      entree.kind === "cli" ? "cli" : entree.entry.key
+    );
+    expect(ordreMenu).toEqual([
+      "mai",
+      "site",
+      "vibe",
+      "code",
+      "cli",
+      "blackline",
+    ]);
+
+    const positionCli = ordreMenu.indexOf("cli");
+    const positionBlackline = ordreMenu.indexOf("blackline");
+    expect(positionCli).toBeGreaterThan(-1);
+    expect(positionBlackline).toBeGreaterThan(positionCli);
+  });
+
+  it("expose toutes les applications du catalogue dans le menu", () => {
+    const appsDuMenu = APP_MENU_ORDER.filter(
+      (entree) => entree.kind === "app"
+    ).map((entree) => entree.entry.key);
+    // Aucune application ne doit disparaître du menu : le CLI est le seul
+    // intrus, et il n'a pas de route.
+    for (const key of APP_KEYS) {
+      if (key === "cli") {
+        continue;
+      }
+      expect(appsDuMenu).toContain(key);
+    }
   });
 
   it("pointe vers sa route et son préfixe", () => {

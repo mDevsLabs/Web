@@ -82,6 +82,20 @@ const BOOLEENS = {
 /** Longueur maximale du texte libre (indicatif, couleur du réticule). */
 const TEXTE_MAX = 32;
 
+/**
+ * Codes de touche acceptés.
+ *
+ * Ce sont les codes que le jeu sait écouter (`apps/blackline/src/keybindings.ts`) :
+ * un code que le jeu refuserait ne doit jamais être écrit en base.
+ */
+export const CODE_TOUCHE_VALIDE =
+  /^(Key[A-Z]|Digit[0-9]|Space|Tab|Shift(Left|Right)|Control(Left|Right)|Alt(Left|Right)|Arrow(Up|Down|Left|Right)|Backquote|Minus|Equal|Bracket(Left|Right)|Semicolon|Quote|Comma|Period|Slash|F([1-9]|1[0-2]))$/;
+
+/** Un code de touche est-il écoutable par le jeu ? */
+export function isValidKeyCode(code: unknown): code is string {
+  return typeof code === "string" && CODE_TOUCHE_VALIDE.test(code);
+}
+
 /** Taille maximale de l'objet de réglages sérialisé, en octets. */
 export const BLACKLINE_SETTINGS_MAX_BYTES = 32_000;
 
@@ -165,7 +179,7 @@ export function normalizeBlacklineSettings(
       const retenus = codes
         .filter(
           (code): code is string =>
-            typeof code === "string" && code.length <= CODE_TOUCHE_MAX
+            isValidKeyCode(code) && code.length <= CODE_TOUCHE_MAX
         )
         .slice(0, TOUCHES_MAX);
       if (retenus.length > 0) {

@@ -29,11 +29,13 @@ export type RecommendedBadgeProps = {
   variant?: "host" | "site";
 };
 
-const VARIANT_CLASSES: Record<NonNullable<RecommendedBadgeProps["variant"]>, string> =
-  {
-    host: "border-info/25 bg-info/10 text-info",
-    site: "border-purple-200/70 bg-purple-50 text-purple-700",
-  };
+const VARIANT_CLASSES: Record<
+  NonNullable<RecommendedBadgeProps["variant"]>,
+  string
+> = {
+  host: "border-info/25 bg-info/10 text-info",
+  site: "border-purple-200/70 bg-purple-50 text-purple-700",
+};
 
 export function RecommendedBadge({
   className,

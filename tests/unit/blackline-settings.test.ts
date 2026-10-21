@@ -80,13 +80,16 @@ describe("normalisation des réglages Blackline", () => {
       bindings: {
         forward: ["KeyW", "ArrowUp"],
         melee: "KeyV",
-        reload: ["KeyR", "KeyR2", "KeyR3", "KeyR4"],
+        reload: ["KeyR", "KeyF", "KeyV", "KeyG"],
+        sprint: ["KeyR2"],
       },
     });
     const bindings = resultat.bindings as Record<string, string[]>;
     expect(bindings.forward).toEqual(["KeyW", "ArrowUp"]);
     // Une action dont la valeur n'est pas un tableau est ignorée.
     expect("melee" in bindings).toBe(false);
+    // Une touche que le jeu ne sait pas écouter est ignorée.
+    expect("sprint" in bindings).toBe(false);
     // Le nombre de touches par action est borné.
     expect(bindings.reload).toHaveLength(3);
   });

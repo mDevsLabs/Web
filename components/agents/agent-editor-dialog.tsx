@@ -151,7 +151,7 @@ export function AgentEditorDialog({
         {/* `pr-12` réserve l'espace du bouton de fermeture */}
         <DialogHeader className="pr-12">
           <DialogTitle>
-            {editingAgent ? "Modifier le bot" : "Créer un bot"}
+            {editingAgent? "Modifier le bot": "Créer un bot"}
           </DialogTitle>
           <DialogDescription>
             Instructions ≤5000c, icône, paramètres du modèle, skills, MCP et
@@ -215,8 +215,8 @@ export function AgentEditorDialog({
                       className={cn(
                         "flex w-full flex-col items-center gap-1 p-2 rounded-xl border text-xs",
                         formIcon === o.id
-                          ? "border-primary bg-primary/10"
-                          : "border-border/50 hover:bg-muted"
+? "border-primary bg-primary/10"
+: "border-border/50 hover:bg-muted"
                       )}
                       key={o.id}
                       onClick={() => setFormIcon(o.id)}
@@ -241,8 +241,8 @@ export function AgentEditorDialog({
                     className={cn(
                       "text-[11px] font-normal",
                       formInstructions.length > 4800
-                        ? "text-warning"
-                        : "text-muted-foreground"
+? "text-warning"
+: "text-muted-foreground"
                     )}
                   >
                     {formInstructions.length}/5000
@@ -256,13 +256,13 @@ export function AgentEditorDialog({
                   className="min-h-[140px] font-mono text-xs leading-relaxed"
                   maxLength={INSTRUCTIONS_MAX_LENGTH}
                   onChange={(e) => setFormInstructions(e.target.value)}
-                  placeholder="Tu es un expert en…&#10;&#10;Rôle : …&#10;Ton : …&#10;Contraintes : …&#10;Interdits : …&#10;Format de sortie : …&#10;&#10;Ce que tu ne fais jamais : …"
+                  placeholder="Tu es un expert en…&#10;&#10;Rôle: …&#10;Ton: …&#10;Contraintes: …&#10;Interdits: …&#10;Format de sortie: …&#10;&#10;Ce que tu ne fais jamais: …"
                   required
                   value={formInstructions}
                 />
                 <p className="text-[11px] leading-relaxed text-muted-foreground">
                   Une consigne par ligne, la plus contraignante en premier. Ce
-                  que le bot doit faire ET ce qu'il ne doit jamais faire : les
+                  que le bot doit faire ET ce qu'il ne doit jamais faire: les
                   deux méritent la même place.
                 </p>
               </div>
@@ -278,8 +278,8 @@ export function AgentEditorDialog({
                     className={cn(
                       "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
                       formMemoryMode === "global"
-                        ? "border-foreground/30 bg-foreground/5"
-                        : "border-border/40 hover:bg-muted/30"
+? "border-foreground/30 bg-foreground/5"
+: "border-border/40 hover:bg-muted/30"
                     )}
                   >
                     <input
@@ -300,8 +300,8 @@ export function AgentEditorDialog({
                     className={cn(
                       "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
                       formMemoryMode === "custom"
-                        ? "border-foreground/30 bg-foreground/5"
-                        : "border-border/40 hover:bg-muted/30"
+? "border-foreground/30 bg-foreground/5"
+: "border-border/40 hover:bg-muted/30"
                     )}
                   >
                     <input
@@ -320,9 +320,9 @@ export function AgentEditorDialog({
                   </label>
                 </div>
                 {formMemoryMode === "custom" &&
-                  (editingAgent ? (
+                  (editingAgent? (
                     <MemoryCard agentId={editingAgent.id} />
-                  ) : (
+                  ): (
                     <p className="text-[11px] text-muted-foreground">
                       Enregistrez d'abord l'agent pour gérer sa mémoire dédiée.
                     </p>
@@ -361,8 +361,8 @@ export function AgentEditorDialog({
                     onChange={setFormTemperature}
                     reasoningModel={Boolean(
                       formModelId
-                        ? modelsData?.capabilities?.[formModelId]?.reasoning
-                        : false
+? modelsData?.capabilities?.[formModelId]?.reasoning
+: false
                     )}
                     value={formTemperature}
                   />
@@ -452,7 +452,7 @@ export function AgentEditorDialog({
                   className="min-h-[70px] text-xs"
                   maxLength={2000}
                   onChange={(e) => setFormWelcomeMessage(e.target.value)}
-                  placeholder="Bonjour ! Je suis ton assistant dédié. Comment puis-je t'aider ?"
+                  placeholder="Bonjour! Je suis ton assistant dédié. Comment puis-je t'aider?"
                   value={formWelcomeMessage}
                 />
               </div>
@@ -482,19 +482,19 @@ export function AgentEditorDialog({
                 <Label className="text-xs font-semibold">
                   Skills associées (max 10)
                 </Label>
-                {skills.length === 0 ? (
+                {skills.length === 0? (
                   <span className="text-xs text-muted-foreground">
                     Aucune skill — crée-en dans /skills
                   </span>
-                ) : (
+                ): (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-32 overflow-y-auto border border-border/40 rounded-xl p-2 bg-muted/10">
                     {skills.map((s) => (
                       <label
                         className={cn(
                           "flex items-center gap-2 p-2 rounded-lg border cursor-pointer text-xs",
                           formSkillIds.includes(s.id)
-                            ? "border-primary/40 bg-primary/5"
-                            : "border-border/30 hover:bg-muted/30"
+? "border-primary/40 bg-primary/5"
+: "border-border/30 hover:bg-muted/30"
                         )}
                         key={s.id}
                       >
@@ -503,9 +503,9 @@ export function AgentEditorDialog({
                           className="size-4 rounded border-border accent-primary"
                           onChange={(e) =>
                             e.target.checked
-                              ? setFormSkillIds((prev) => [...prev, s.id])
-                              : setFormSkillIds((prev) =>
-                                  prev.filter((id) => id !== s.id)
+? setFormSkillIds((prev) => [...prev, s.id])
+: setFormSkillIds((prev) =>
+                                  prev.filter((id) => id!== s.id)
                                 )
                           }
                           type="checkbox"
@@ -521,19 +521,19 @@ export function AgentEditorDialog({
                 <Label className="text-xs font-semibold">
                   Serveurs MCP (max 10)
                 </Label>
-                {mcpServers.length === 0 ? (
+                {mcpServers.length === 0? (
                   <span className="text-xs text-muted-foreground">
                     Aucun serveur MCP — configure dans /mcp
                   </span>
-                ) : (
+                ): (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-32 overflow-y-auto border border-border/40 rounded-xl p-2 bg-muted/10">
                     {mcpServers.map((m) => (
                       <label
                         className={cn(
                           "flex items-center gap-2 p-2 rounded-lg border cursor-pointer text-xs",
                           formMcpIds.includes(m.id)
-                            ? "border-border/60 bg-muted/30"
-                            : "border-border/30 hover:bg-muted/30"
+? "border-border/60 bg-muted/30"
+: "border-border/30 hover:bg-muted/30"
                         )}
                         key={m.id}
                       >
@@ -542,9 +542,9 @@ export function AgentEditorDialog({
                           className="size-4 rounded border-border accent-primary"
                           onChange={(e) =>
                             e.target.checked
-                              ? setFormMcpIds((prev) => [...prev, m.id])
-                              : setFormMcpIds((prev) =>
-                                  prev.filter((id) => id !== m.id)
+? setFormMcpIds((prev) => [...prev, m.id])
+: setFormMcpIds((prev) =>
+                                  prev.filter((id) => id!== m.id)
                                 )
                           }
                           type="checkbox"
@@ -594,10 +594,10 @@ export function AgentEditorDialog({
                           className="rounded-full p-0.5 hover:bg-muted-foreground/20"
                           onClick={() => {
                             setFormCloudUrls((prev) =>
-                              prev.filter((_, idx) => idx !== i)
+                              prev.filter((_, idx) => idx!== i)
                             );
                             setCloudFileNames((prev) => {
-                              const copy = { ...prev };
+                              const copy = {...prev };
                               delete copy[url];
                               return copy;
                             });
@@ -616,17 +616,17 @@ export function AgentEditorDialog({
                 onOpenChange={setIsCloudPickerOpen}
                 onSelectAttachments={(attachments) => {
                   const toAdd = attachments.filter(
-                    (a) => !formCloudUrls.includes(a.url)
+                    (a) =>!formCloudUrls.includes(a.url)
                   );
                   const remaining = 10 - formCloudUrls.length;
                   const slice = toAdd.slice(0, remaining);
                   if (slice.length > 0) {
                     setFormCloudUrls((prev) => [
-                      ...prev,
-                      ...slice.map((a) => a.url),
+...prev,
+...slice.map((a) => a.url),
                     ]);
                     setCloudFileNames((prev) => {
-                      const copy = { ...prev };
+                      const copy = {...prev };
                       for (const a of slice) {
                         copy[a.url] = a.name;
                       }
@@ -680,38 +680,38 @@ export function AgentEditorDialog({
                     <span className="font-mono text-[10px] bg-muted px-1.5 py-0.5 rounded truncate max-w-[180px]">
                       {formModelId}
                     </span>
-                    {formSkillIds.length ? (
+                    {formSkillIds.length? (
                       <span className="bg-muted px-1.5 py-0.5 rounded">
                         Skills {formSkillIds.length}
                       </span>
-                    ) : null}
-                    {formMcpIds.length ? (
+                    ): null}
+                    {formMcpIds.length? (
                       <span className="bg-info/10 text-info px-1.5 py-0.5 rounded">
                         MCP {formMcpIds.length}
                       </span>
-                    ) : null}
-                    {formCloudUrls.length ? (
+                    ): null}
+                    {formCloudUrls.length? (
                       <span className="bg-warning/10 text-warning px-1.5 py-0.5 rounded">
                         Fichiers {formCloudUrls.length}
                       </span>
-                    ) : null}
+                    ): null}
                   </div>
                   <div className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground">
                     <ThermometerIcon className="size-3 text-info" /> temp{" "}
                     {formTemperature.toFixed(1)} · topP {formTopP.toFixed(2)}
-                    {formMaxTokens ? ` · max ${formMaxTokens}` : ""}
+                    {formMaxTokens? ` · max ${formMaxTokens}`: ""}
                   </div>
                   {formWelcomeMessage && (
                     <p className="text-[11px] italic text-muted-foreground line-clamp-2">
-                      💬 {formWelcomeMessage}
+                       {formWelcomeMessage}
                     </p>
                   )}
                   {formStarterPrompts.filter(Boolean).length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {formStarterPrompts
-                        .filter(Boolean)
-                        .slice(0, 3)
-                        .map((p, i) => (
+.filter(Boolean)
+.slice(0, 3)
+.map((p, i) => (
                           <span
                             className="text-[10px] bg-success/10 text-success border border-success/20 px-1.5 py-0.5 rounded-full truncate max-w-full"
                             key={i}
@@ -741,10 +741,10 @@ export function AgentEditorDialog({
             </Button>
             <Button disabled={isSaving} type="submit">
               {isSaving
-                ? "Enregistrement..."
-                : editingAgent
-                  ? "Mettre à jour"
-                  : "Créer le bot"}
+? "Enregistrement..."
+: editingAgent
+? "Mettre à jour"
+: "Créer le bot"}
             </Button>
           </DialogFooter>
         </form>

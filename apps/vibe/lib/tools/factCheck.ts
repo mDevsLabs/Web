@@ -2,7 +2,7 @@
  * Outil mAI — Vérification des faits (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "fact_check".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface FactCheckArgs {
   statement: string;

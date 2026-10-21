@@ -2,7 +2,7 @@
  * Outil mAI — Reformulation de style (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "rewrite_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface RewritePostArgs {
   text: string;

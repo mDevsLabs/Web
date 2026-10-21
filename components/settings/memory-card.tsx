@@ -67,7 +67,7 @@ export type MemoryEntry = {
 
 type MemoryCardProps = {
   agentId?: string;
-  /** Onglet Mémoire : liste toutes les portées avec un filtre. */
+  /** Onglet Mémoire: liste toutes les portées avec un filtre. */
   allScopes?: boolean;
   projectId?: string;
 };
@@ -94,7 +94,7 @@ function formatMemoryDate(value: string): string {
 }
 
 function isGlobalScope(entry: MemoryEntry): boolean {
-  return !entry.agentId && !entry.projectId;
+  return!entry.agentId &&!entry.projectId;
 }
 
 function matchesScopeFilter(entry: MemoryEntry, filter: ScopeFilter): boolean {
@@ -106,47 +106,47 @@ function matchesScopeFilter(entry: MemoryEntry, filter: ScopeFilter): boolean {
 
 function scopeLabel(entry: MemoryEntry): string {
   if (entry.agentId) {
-    return entry.agentName ? `Bot · ${entry.agentName}` : "Bot";
+    return entry.agentName? `Bot · ${entry.agentName}`: "Bot";
   }
   if (entry.projectId) {
-    return entry.projectName ? `Projet · ${entry.projectName}` : "Projet";
+    return entry.projectName? `Projet · ${entry.projectName}`: "Projet";
   }
   return "Globale";
 }
 
 function normalizeStr(text: string): string {
   return text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.toLowerCase()
+.trim();
 }
 
 export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const { raw: tierRaw } = useTier();
   const fallbackLimit = memoryLimitForTier(tierRaw);
   const scopeQuery = agentId
-    ? `?agentId=${agentId}`
-    : projectId
-      ? `?projectId=${projectId}`
-      : "";
+? `?agentId=${agentId}`
+: projectId
+? `?projectId=${projectId}`
+: "";
   const { data, error, mutate, isLoading, isValidating } = useSWR(
-    allScopes ? "/api/memory?scope=all" : `/api/memory${scopeQuery}`,
+    allScopes? "/api/memory?scope=all": `/api/memory${scopeQuery}`,
     readJson<{ memories: MemoryEntry[]; limit?: number }>,
     { dedupingInterval: 10_000 }
   );
 
   const memories: MemoryEntry[] = Array.isArray(data?.memories)
-    ? data.memories
-    : [];
+? data.memories
+: [];
   const limit: number =
     typeof data?.limit === "number" && data.limit > 0
-      ? data.limit
-      : fallbackLimit;
+? data.limit
+: fallbackLimit;
 
   const scopeCount = allScopes
-    ? memories.filter(isGlobalScope).length
-    : memories.length;
+? memories.filter(isGlobalScope).length
+: memories.length;
   const isAtLimit = limit > 0 && scopeCount >= limit;
 
   // Filtres & Recherche
@@ -190,11 +190,11 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const filteredMemories = useMemo(() => {
     return memories.filter((m) => {
       // Filtre scope
-      if (allScopes && !matchesScopeFilter(m, scopeFilter)) {
+      if (allScopes &&!matchesScopeFilter(m, scopeFilter)) {
         return false;
       }
-      // Filtre « Important » (booléen isImportant, pas une catégorie)
-      if (importantOnly && !m.isImportant) {
+      // Filtre « Important» (booléen isImportant, pas une catégorie)
+      if (importantOnly &&!m.isImportant) {
         return false;
       }
       // Filtre recherche textuelle
@@ -205,12 +205,12 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           normalizeStr(t).includes(q)
         );
         const agentMatch = m.agentName
-          ? normalizeStr(m.agentName).includes(q)
-          : false;
+? normalizeStr(m.agentName).includes(q)
+: false;
         const projMatch = m.projectName
-          ? normalizeStr(m.projectName).includes(q)
-          : false;
-        if (!contentMatch && !tagsMatch && !agentMatch && !projMatch) {
+? normalizeStr(m.projectName).includes(q)
+: false;
+        if (!contentMatch &&!tagsMatch &&!agentMatch &&!projMatch) {
           return false;
         }
       }
@@ -226,17 +226,17 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     setIsSaving(true);
     try {
       const tags = newTagsInput
-        .split(",")
-        .map((t) => t.replace(/^[#\s]+/, "").trim())
-        .filter(Boolean);
+.split(",")
+.map((t) => t.replace(/^[#\s]+/, "").trim())
+.filter(Boolean);
 
       const res = await fetch("/api/memory", {
         body: JSON.stringify({
           content,
           isImportant: newIsImportant,
           tags,
-          ...(agentId ? { agentId } : {}),
-          ...(projectId ? { projectId } : {}),
+...(agentId? { agentId }: {}),
+...(projectId? { projectId }: {}),
         }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -249,7 +249,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       setNewContent("");
       setNewTagsInput("");
       setNewIsImportant(false);
-      toast.success("Mémoire enregistrée avec succès ! ✨");
+      toast.success("Mémoire enregistrée avec succès! ");
       await mutate();
     } catch {
       toast.error("Erreur d'enregistrement");
@@ -261,13 +261,13 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   // Mettre à jour une mémoire
   const handleUpdate = async () => {
     const content = editContent.trim();
-    if (!editingId || !content) return;
+    if (!editingId ||!content) return;
     setIsUpdating(true);
     try {
       const tags = editTagsInput
-        .split(",")
-        .map((t) => t.replace(/^[#\s]+/, "").trim())
-        .filter(Boolean);
+.split(",")
+.map((t) => t.replace(/^[#\s]+/, "").trim())
+.filter(Boolean);
 
       const res = await fetch("/api/memory", {
         body: JSON.stringify({
@@ -296,14 +296,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
   // Basculer l'état Important (Étoile)
   const handleToggleImportant = async (m: MemoryEntry) => {
-    const nextVal = !m.isImportant;
+    const nextVal =!m.isImportant;
     // Mise à jour optimiste
     mutate((curr: any) => {
       if (!curr?.memories) return curr;
       return {
-        ...curr,
+...curr,
         memories: curr.memories.map((item: MemoryEntry) =>
-          item.id === m.id ? { ...item, isImportant: nextVal } : item
+          item.id === m.id? {...item, isImportant: nextVal }: item
         ),
       };
     }, false);
@@ -321,8 +321,8 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       }
       toast.success(
         nextVal
-          ? "Marqué comme important ⭐ (injecté en priorité)"
-          : "Retiré des mémoires importantes"
+? "Marqué comme important (injecté en priorité)"
+: "Retiré des mémoires importantes"
       );
       await mutate();
     } catch {
@@ -333,14 +333,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
   // Basculer l'état Activé / Désactivé (Interrupteur)
   const handleToggleEnabled = async (m: MemoryEntry) => {
-    const nextVal = !(m.isEnabled ?? true);
+    const nextVal =!(m.isEnabled?? true);
     // Mise à jour optimiste
     mutate((curr: any) => {
       if (!curr?.memories) return curr;
       return {
-        ...curr,
+...curr,
         memories: curr.memories.map((item: MemoryEntry) =>
-          item.id === m.id ? { ...item, isEnabled: nextVal } : item
+          item.id === m.id? {...item, isEnabled: nextVal }: item
         ),
       };
     }, false);
@@ -357,7 +357,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         return;
       }
       toast.success(
-        nextVal ? "Mémoire activée ⚡" : "Mémoire suspendue (non injectée) ⏸️"
+        nextVal? "Mémoire activée ": "Mémoire suspendue (non injectée) "
       );
       await mutate();
     } catch {
@@ -392,9 +392,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     try {
       const res = await fetch("/api/memory/summary", {
         body: JSON.stringify({
-          ...(agentId ? { agentId } : {}),
-          ...(projectId ? { projectId } : {}),
-          scope: allScopes ? scopeFilter : undefined,
+...(agentId? { agentId }: {}),
+...(projectId? { projectId }: {}),
+          scope: allScopes? scopeFilter: undefined,
         }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -410,7 +410,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       setSummaryText(data.summary || "");
       setSummaryCount(data.count || 0);
       setSummaryModalOpen(true);
-      toast.success("Résumé de mémoire généré avec succès ! 🧠");
+      toast.success("Résumé de mémoire généré avec succès! ");
     } catch {
       toast.error("Erreur de communication avec le serveur");
     } finally {
@@ -430,9 +430,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       memories: memories.map((m) => ({
         content: m.content,
         createdAt: m.createdAt,
-        isEnabled: m.isEnabled ?? true,
-        isImportant: m.isImportant ?? false,
-        scope: m.agentId ? "agent" : m.projectId ? "project" : "global",
+        isEnabled: m.isEnabled?? true,
+        isImportant: m.isImportant?? false,
+        scope: m.agentId? "agent": m.projectId? "project": "global",
         tags: m.tags || [],
       })),
       version: "1.0",
@@ -449,7 +449,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success("Mémoire exportée en format JSON ! 📤");
+    toast.success("Mémoire exportée en format JSON! ");
   };
 
   // Sélection de fichier JSON pour Import
@@ -470,10 +470,10 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         const text = event.target?.result as string;
         const parsed = JSON.parse(text);
         const rawList = Array.isArray(parsed)
-          ? parsed
-          : Array.isArray(parsed?.memories)
-            ? parsed.memories
-            : null;
+? parsed
+: Array.isArray(parsed?.memories)
+? parsed.memories
+: null;
 
         if (!rawList || rawList.length === 0) {
           toast.error("Fichier JSON invalide ou sans aucune mémoire.");
@@ -481,18 +481,18 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         }
 
         const validItems: MemoryEntry[] = rawList
-          .map((item: any, idx: number) => ({
+.map((item: any, idx: number) => ({
             agentId: item.agentId || null,
             content:
-              typeof item === "string" ? item : String(item.content || ""),
+              typeof item === "string"? item: String(item.content || ""),
             createdAt: item.createdAt || new Date().toISOString(),
             id: `temp-${idx}`,
-            isEnabled: item.isEnabled !== false,
+            isEnabled: item.isEnabled!== false,
             isImportant: Boolean(item.isImportant),
             projectId: item.projectId || null,
-            tags: Array.isArray(item.tags) ? item.tags : [],
+            tags: Array.isArray(item.tags)? item.tags: [],
           }))
-          .filter((item: MemoryEntry) => item.content.trim().length > 0);
+.filter((item: MemoryEntry) => item.content.trim().length > 0);
 
         if (validItems.length === 0) {
           toast.error("Aucune mémoire valide trouvée dans ce JSON.");
@@ -525,7 +525,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         return;
       }
       toast.success(
-        `Import réussi ! 🎉 ${data.count} mémoires ajoutées${data.skipped ? ` (${data.skipped} doublons ignorés)` : ""}.`
+        `Import réussi! ${data.count} mémoires ajoutées${data.skipped? ` (${data.skipped} doublons ignorés)`: ""}.`
       );
       setImportModalOpen(false);
       setPendingImportData(null);
@@ -538,13 +538,13 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   };
 
   const title = allScopes
-    ? "Mémoire"
-    : `Mémoire ${agentId ? "du bot" : projectId ? "du projet" : "personnalisée"}`;
+? "Mémoire"
+: `Mémoire ${agentId? "du bot": projectId? "du projet": "personnalisée"}`;
   const scopeLabelHeader = agentId
-    ? "mémoires de ce bot"
-    : projectId
-      ? "mémoires de ce projet"
-      : "informations que mAI retient sur vous";
+? "mémoires de ce bot"
+: projectId
+? "mémoires de ce projet"
+: "informations que mAI retient sur vous";
 
   const remainingSlots = Math.max(0, limit - scopeCount);
 
@@ -553,8 +553,8 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       className="surface-card flex flex-col gap-4"
       data-app-update-blocked={
         isSaving || isUpdating || deletingId || isImporting || isSummarizing
-          ? "true"
-          : undefined
+? "true"
+: undefined
       }
     >
       {/* En-tête */}
@@ -571,7 +571,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           </p>
         </div>
 
-        {/* Actions header : Import/Export, Résumé, Quota */}
+        {/* Actions header: Import/Export, Résumé, Quota */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {/* Export JSON */}
           <Button
@@ -615,9 +615,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             size="sm"
             type="button"
           >
-            {isSummarizing ? (
+            {isSummarizing? (
               <Loader2Icon className="size-3.5 animate-spin" />
-            ) : (
+            ): (
               <SparklesIcon className="size-3.5" />
             )}
             <span>Résumer</span>
@@ -625,7 +625,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
           {/* Badge quota */}
           <span className="text-[11px] bg-muted/60 px-2.5 py-1 rounded-lg text-muted-foreground font-semibold">
-            {data ? `${scopeCount}/${limit}` : "Quota indisponible"}
+            {data? `${scopeCount}/${limit}`: "Quota indisponible"}
           </span>
         </div>
       </div>
@@ -643,7 +643,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               placeholder="Rechercher dans la mémoire (texte, #tag, catégorie)..."
               value={searchQuery}
             />
-            {searchQuery ? (
+            {searchQuery? (
               <button
                 aria-label="Effacer la recherche de mémoire"
                 className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
@@ -652,18 +652,18 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               >
                 <XIcon className="size-3.5" />
               </button>
-            ) : null}
+            ): null}
           </div>
         </div>
 
-        {/* Filtres : portée (si allScopes) + bascule « Important ».
-            Les catégories ont été retirées — « Important » est un booléen
+        {/* Filtres: portée (si allScopes) + bascule « Important».
+            Les catégories ont été retirées — « Important» est un booléen
             (isImportant), pas une catégorie, et reste donc filtrable. */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          {allScopes ? (
+          {allScopes? (
             <>
               <span className="text-[11px] text-muted-foreground font-medium mr-1">
-                Portée :
+                Portée:
               </span>
               {SCOPE_FILTERS.map((filter) => {
                 const count = memories.filter((m) =>
@@ -687,12 +687,12 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                 ·
               </span>
             </>
-          ) : null}
+          ): null}
           <button
             aria-pressed={importantOnly}
             className="chip"
             data-active={importantOnly}
-            onClick={() => setImportantOnly((v) => !v)}
+            onClick={() => setImportantOnly((v) =>!v)}
             type="button"
           >
             <StarIcon className="size-3 fill-current" />
@@ -714,7 +714,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               handleAdd();
             }
           }}
-          placeholder="Ex : Je m'appelle Mathias, je préfère les réponses concises en français et du code TypeScript..."
+          placeholder="Ex: Je m'appelle Mathias, je préfère les réponses concises en français et du code TypeScript..."
           rows={2}
           value={newContent}
         />
@@ -740,8 +740,8 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className={cn(
                 "inline-flex items-center gap-1 h-7 px-2 rounded-lg text-[11px] font-medium transition cursor-pointer border",
                 newIsImportant
-                  ? "bg-warning/15 text-warning border-warning/30"
-                  : "bg-background text-muted-foreground border-border/60 hover:text-foreground"
+? "bg-warning/15 text-warning border-warning/30"
+: "bg-background text-muted-foreground border-border/60 hover:text-foreground"
               )}
               onClick={() => setNewIsImportant(!newIsImportant)}
               type="button"
@@ -761,7 +761,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-medium transition-all hover:opacity-90 active:scale-95 shadow-xs cursor-pointer disabled:opacity-50"
               disabled={
                 isSaving ||
-                !newContent.trim() ||
+!newContent.trim() ||
                 isAtLimit ||
                 isLoading ||
                 (!data && Boolean(error))
@@ -769,14 +769,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               onClick={handleAdd}
               type="button"
             >
-              {isAtLimit ? (
+              {isAtLimit? (
                 "Limite atteinte"
-              ) : isSaving ? (
+              ): isSaving? (
                 <>
                   <Loader2Icon className="size-3.5 animate-spin" />
                   <span>Enregistrement…</span>
                 </>
-              ) : (
+              ): (
                 <>
                   <CheckIcon className="size-3.5" />
                   <span>Enregistrer</span>
@@ -807,38 +807,38 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           </Button>
         </div>
       )}
-      {isLoading && !error ? (
+      {isLoading &&!error? (
         <div className="flex items-center justify-center py-6 text-muted-foreground">
           <Loader2Icon className="size-5 animate-spin" />
         </div>
-      ) : !data && error ? null : filteredMemories.length === 0 ? (
+      ):!data && error? null: filteredMemories.length === 0? (
         <div className="text-center py-6 text-xs text-muted-foreground space-y-1">
           <p>
             {memories.length === 0
-              ? "Aucune mémoire enregistrée. Ajoutez des faits ou utilisez @Memory dans le chat."
-              : "Aucune mémoire ne correspond aux filtres ou à la recherche."}
+? "Aucune mémoire enregistrée. Ajoutez des faits ou utilisez @Memory dans le chat."
+: "Aucune mémoire ne correspond aux filtres ou à la recherche."}
           </p>
         </div>
-      ) : (
+      ): (
         <div className="flex flex-col gap-2.5">
           {filteredMemories.map((m) => {
             const isEditing = editingId === m.id;
-            const isEnabled = m.isEnabled !== false;
+            const isEnabled = m.isEnabled!== false;
             const isImportant = Boolean(m.isImportant);
 
             return (
               <div
                 className={cn(
                   "rounded-xl border transition-all p-3",
-                  !isEnabled && "opacity-60 bg-muted/10 border-border/30",
+!isEnabled && "opacity-60 bg-muted/10 border-border/30",
                   isEnabled &&
                     (isImportant
-                      ? "bg-warning/5 border-warning/30 shadow-xs"
-                      : "bg-muted/20 border-border/40 hover:border-border/70")
+? "bg-warning/5 border-warning/30 shadow-xs"
+: "bg-muted/20 border-border/40 hover:border-border/70")
                 )}
                 key={m.id}
               >
-                {isEditing ? (
+                {isEditing? (
                   /* Mode Édition */
                   <div className="flex flex-col gap-2.5">
                     <textarea
@@ -881,14 +881,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         </Button>
                         <Button
                           className="h-7 px-3 text-xs gap-1 bg-primary text-primary-foreground"
-                          disabled={isUpdating || !editContent.trim()}
+                          disabled={isUpdating ||!editContent.trim()}
                           onClick={handleUpdate}
                           size="sm"
                           type="button"
                         >
-                          {isUpdating ? (
+                          {isUpdating? (
                             <Loader2Icon className="size-3 animate-spin" />
-                          ) : (
+                          ): (
                             <CheckIcon className="size-3" />
                           )}
                           Enregistrer
@@ -896,7 +896,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       </div>
                     </div>
                   </div>
-                ) : (
+                ): (
                   /* Mode Visualisation */
                   <div className="flex items-start gap-2.5">
                     {/* Bouton Étoile (Important) */}
@@ -904,14 +904,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       className={cn(
                         "mt-0.5 p-1 rounded-md transition-colors cursor-pointer shrink-0",
                         isImportant
-                          ? "text-warning fill-warning hover:text-warning/80"
-                          : "text-muted-foreground/40 hover:text-warning"
+? "text-warning fill-warning hover:text-warning/80"
+: "text-muted-foreground/40 hover:text-warning"
                       )}
                       onClick={() => handleToggleImportant(m)}
                       title={
                         isImportant
-                          ? "Mémoire Importante (injectée en priorité)"
-                          : "Marquer comme importante"
+? "Mémoire Importante (injectée en priorité)"
+: "Marquer comme importante"
                       }
                       type="button"
                     >
@@ -925,17 +925,17 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       <p
                         className={cn(
                           "text-xs leading-relaxed text-foreground break-words",
-                          !isEnabled && "line-through text-muted-foreground"
+!isEnabled && "line-through text-muted-foreground"
                         )}
                       >
                         {m.content}
                       </p>
 
-                      {/* Badges : Tags, Scope, Date */}
+                      {/* Badges: Tags, Scope, Date */}
                       <div className="flex items-center gap-1.5 flex-wrap mt-1.5 text-[10.5px]">
                         {/* Badges Tags */}
                         {m.tags && m.tags.length > 0
-                          ? m.tags.map((t) => (
+? m.tags.map((t) => (
                               <span
                                 className="bg-info/10 text-info px-1.5 py-0.5 rounded font-mono text-[10px]"
                                 key={t}
@@ -943,21 +943,21 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                                 #{t}
                               </span>
                             ))
-                          : null}
+: null}
 
                         {/* Scope */}
-                        {allScopes ? (
+                        {allScopes? (
                           <span className="text-muted-foreground">
-                            {m.agentId ? (
+                            {m.agentId? (
                               <BotGlyph className="size-3 inline -mt-0.5 mr-0.5" />
-                            ) : m.projectId ? (
+                            ): m.projectId? (
                               <FolderKanbanIcon className="size-3 inline -mt-0.5 mr-0.5" />
-                            ) : (
+                            ): (
                               <GlobeIcon className="size-3 inline -mt-0.5 mr-0.5" />
                             )}
                             {scopeLabel(m)} ·{" "}
                           </span>
-                        ) : null}
+                        ): null}
 
                         {/* Date */}
                         <span className="text-muted-foreground/70">
@@ -965,7 +965,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         </span>
 
                         {/* Badge statut Suspendue */}
-                        {isEnabled ? null : (
+                        {isEnabled? null: (
                           <span className="bg-warning/10 text-warning font-semibold px-1.5 py-0.5 rounded">
                             Suspendue
                           </span>
@@ -973,21 +973,21 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       </div>
                     </div>
 
-                    {/* Actions sur la carte : Interrupteur On/Off, Modifier, Supprimer */}
+                    {/* Actions sur la carte: Interrupteur On/Off, Modifier, Supprimer */}
                     <div className="flex items-center gap-1 shrink-0">
                       {/* Interrupteur On/Off */}
                       <button
                         className={cn(
                           "p-1.5 rounded-lg transition-colors cursor-pointer",
                           isEnabled
-                            ? "text-success hover:bg-success/10"
-                            : "text-muted-foreground hover:bg-muted"
+? "text-success hover:bg-success/10"
+: "text-muted-foreground hover:bg-muted"
                         )}
                         onClick={() => handleToggleEnabled(m)}
                         title={
                           isEnabled
-                            ? "Désactiver temporairement cette mémoire"
-                            : "Réactiver cette mémoire"
+? "Désactiver temporairement cette mémoire"
+: "Réactiver cette mémoire"
                         }
                         type="button"
                       >
@@ -1016,9 +1016,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         title="Supprimer"
                         type="button"
                       >
-                        {deletingId === m.id ? (
+                        {deletingId === m.id? (
                           <Loader2Icon className="size-3.5 animate-spin" />
-                        ) : (
+                        ): (
                           <Trash2Icon className="size-3.5" />
                         )}
                       </button>
@@ -1040,13 +1040,13 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer cette mémoire ?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer cette mémoire?</AlertDialogTitle>
             <AlertDialogDescription>
               {pendingDelete
-                ? `« ${pendingDelete.content.slice(0, 160)}${
-                    pendingDelete.content.length > 160 ? "…" : ""
-                  } » ne sera plus injectée dans les réponses de l'IA.`
-                : ""}
+? `« ${pendingDelete.content.slice(0, 160)}${
+                    pendingDelete.content.length > 160? "…": ""
+                  }» ne sera plus injectée dans les réponses de l'IA.`
+: ""}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -1089,7 +1089,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className="gap-1.5"
               onClick={() => {
                 navigator.clipboard.writeText(summaryText);
-                toast.success("Synthèse copiée dans le presse-papiers !");
+                toast.success("Synthèse copiée dans le presse-papiers!");
               }}
               size="sm"
               type="button"
@@ -1124,7 +1124,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             </DialogDescription>
           </DialogHeader>
 
-          {pendingImportData ? (
+          {pendingImportData? (
             <div className="space-y-3">
               <div className="flex items-center justify-between rounded-xl bg-muted/30 p-3 border border-border/50 text-xs">
                 <div>
@@ -1132,22 +1132,22 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     {pendingImportData.length} élément(s) détecté(s)
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    Quota actuel : {scopeCount}/{limit} ({remainingSlots}{" "}
+                    Quota actuel: {scopeCount}/{limit} ({remainingSlots}{" "}
                     place(s) restante(s))
                   </p>
                 </div>
-                {pendingImportData.length > remainingSlots ? (
+                {pendingImportData.length > remainingSlots? (
                   <span className="text-[11px] bg-destructive/10 text-destructive font-semibold px-2 py-1 rounded-md">
                     Dépassement de quota
                   </span>
-                ) : (
+                ): (
                   <span className="text-[11px] bg-success/10 text-success font-semibold px-2 py-1 rounded-md">
                     Compatible
                   </span>
                 )}
               </div>
 
-              {pendingImportData.length > remainingSlots ? (
+              {pendingImportData.length > remainingSlots? (
                 <div className="flex items-start gap-2 rounded-xl bg-destructive/10 p-3 text-xs text-destructive">
                   <AlertCircleIcon className="size-4 shrink-0 mt-0.5" />
                   <p>
@@ -1156,7 +1156,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     Pro ou Max) ou réduire le fichier JSON.
                   </p>
                 </div>
-              ) : null}
+              ): null}
 
               {/* Aperçu des premiers éléments */}
               <div className="max-h-48 overflow-y-auto space-y-1.5 rounded-xl border border-border/40 p-2.5 bg-background">
@@ -1169,19 +1169,19 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       {i + 1}.
                     </span>
                     <span className="flex-1 line-clamp-2">{item.content}</span>
-                    {item.isImportant ? (
+                    {item.isImportant? (
                       <StarIcon className="size-3 fill-warning text-warning shrink-0 mt-0.5" />
-                    ) : null}
+                    ): null}
                   </div>
                 ))}
-                {pendingImportData.length > 5 ? (
+                {pendingImportData.length > 5? (
                   <p className="text-center text-[10.5px] text-muted-foreground pt-1">
-                    ... et {pendingImportData.length - 5} autre(s) mémoire(s).
+... et {pendingImportData.length - 5} autre(s) mémoire(s).
                   </p>
-                ) : null}
+                ): null}
               </div>
             </div>
-          ) : null}
+          ): null}
 
           <DialogFooter className="gap-2 sm:gap-0">
             <Button
@@ -1198,16 +1198,16 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className="bg-primary text-primary-foreground gap-1.5"
               disabled={
                 isImporting ||
-                !pendingImportData ||
+!pendingImportData ||
                 pendingImportData.length === 0 ||
                 pendingImportData.length > remainingSlots
               }
               onClick={handleConfirmImport}
               type="button"
             >
-              {isImporting ? (
+              {isImporting? (
                 <Loader2Icon className="size-3.5 animate-spin" />
-              ) : (
+              ): (
                 <UploadIcon className="size-3.5" />
               )}
               <span>Confirmer l'import</span>

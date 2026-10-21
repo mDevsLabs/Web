@@ -2,7 +2,7 @@
  * Outil mAI — Modifier le profil (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "update_profile".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface UpdateProfileArgs {
   display_name?: string;

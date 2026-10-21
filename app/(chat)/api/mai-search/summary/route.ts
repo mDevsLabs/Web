@@ -165,6 +165,14 @@ ${lengthInstruction}
 Rédige un résumé complet, fluide et bien structuré de cette source en français.`;
     } else {
       // Synthèse générale des résultats de recherche
+      //
+      // Le VOLUME affiché et le volume RÉDIGÉ sont deux choses distinctes.
+      // La liste peut afficher jusqu'à 200 liens par source, mais la
+      // synthèse travaille sur un sous-ensemble : au-delà d'une dizaine de
+      // sources, le prompt coûte plus qu'il n'apporte, et le modèle mélange
+      // les résultats. Ce plafond est donc ici, et il est indépendant du
+      // volume affiché — un compte Max n'obtient pas une synthèse plus longue,
+      // il obtient une liste plus longue.
       const formattedResults = searchResults
         .slice(0, 8)
         .map((r: any, idx: number) => {

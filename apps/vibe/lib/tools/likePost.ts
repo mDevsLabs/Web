@@ -2,7 +2,7 @@
  * Outil mAI — Like / unlike un post (délègue à MAIAgentFleet).
  * Catalogue : lib/tools/index.json → id "like_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface LikePostArgs {
   post_id: string;

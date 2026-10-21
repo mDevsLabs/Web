@@ -32,6 +32,7 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { ModelDescription } from "@/lib/ai/model-selector/description";
 import { cn } from "@/lib/utils";
 
 export type ModelSelectorProps = React.ComponentProps<
@@ -184,4 +185,33 @@ export const ModelSelectorName = ({
   ...props
 }: ModelSelectorNameProps) => (
   <span className={cn("flex-1 truncate text-left", className)} {...props} />
+);
+
+export type ModelSelectorDescriptionProps = Omit<
+  ComponentProps<"div">,
+  "children"
+> & {
+  /** Texte Markdown de la description. */
+  children: string;
+  /** Rendu sur une seule ligne, dans la liste du sélecteur. */
+  compact?: boolean;
+};
+
+/**
+ * Description d'un modèle, en Markdown.
+ *
+ * Même moteur que l'hôte (`lib/ai/model-selector/description.tsx`), habillé
+ * de la palette du Site : le Site n'a pas de token `--primary`, la couleur
+ * du lien est donc explicite.
+ */
+export const ModelSelectorDescription = ({
+  className,
+  compact = false,
+  ...props
+}: ModelSelectorDescriptionProps) => (
+  <ModelDescription
+    className={cn("[&_a]:text-purple-600", className)}
+    compact={compact}
+    {...props}
+  />
 );
