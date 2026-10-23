@@ -97,7 +97,9 @@ function Ligne({
           {libelle}
         </span>
         {statut ? (
-          <span className={cn("text-[11px] leading-snug", TON_STATUT[statut.ton])}>
+          <span
+            className={cn("text-[11px] leading-snug", TON_STATUT[statut.ton])}
+          >
             {statut.texte}
           </span>
         ) : null}

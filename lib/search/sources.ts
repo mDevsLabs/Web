@@ -54,7 +54,7 @@ export function normalizeMaiSearchSources(
   }
   const valides = value.filter(isMaiSearchSourceKey);
   const uniques = Array.from(new Set(valides)) as MaiSearchSourceKey[];
-  return uniques.length > 0? uniques: [...MAI_SEARCH_SOURCE_KEYS];
+  return uniques.length > 0 ? uniques : [...MAI_SEARCH_SOURCE_KEYS];
 }
 
 /** Libellés affichés dans les paramètres. */
@@ -115,7 +115,7 @@ export function isMaiSearchLanguage(
 
 /** Une langue illisible vaut « français» — jamais « undefined». */
 export function normalizeMaiSearchLanguage(value: unknown): MaiSearchLanguage {
-  return isMaiSearchLanguage(value)? value: "fr";
+  return isMaiSearchLanguage(value) ? value : "fr";
 }
 
 /**
@@ -149,7 +149,7 @@ export function isMaiSearchSafetyLevel(
 export function normalizeMaiSearchSafetyLevel(
   value: unknown
 ): MaiSearchSafetyLevel {
-  return isMaiSearchSafetyLevel(value)? value: "medium";
+  return isMaiSearchSafetyLevel(value) ? value : "medium";
 }
 
 /**
@@ -171,7 +171,7 @@ export const MAI_SEARCH_RESULT_COUNT_DEFAULT = 10;
 
 /** Un nombre illisible ou hors bornes retombe sur la valeur par défaut. */
 export function normalizeMaiSearchResultCount(value: unknown): number {
-  const nombre = typeof value === "number"? value: Number.NaN;
+  const nombre = typeof value === "number" ? value : Number.NaN;
   if (!Number.isFinite(nombre)) {
     return MAI_SEARCH_RESULT_COUNT_DEFAULT;
   }
@@ -209,15 +209,15 @@ export function resolveMaiSearchResultCount(params: {
 }): number {
   const plafondForfait = getTierSearchResultsMax(params.tier);
   const prefere = normalizeMaiSearchResultCount(
-    params.preferred?? MAI_SEARCH_RESULT_COUNT_DEFAULT
+    params.preferred ?? MAI_SEARCH_RESULT_COUNT_DEFAULT
   );
   // Sans demande explicite, c'est la PRÉFÉRENCE qui fait le volume: un
   // appelant qui ne dit rien obtient ce que le compte a réglé, pas la
   // valeur par défaut.
   const demande =
     params.requested === undefined || params.requested === null
-? prefere
-: normalizeMaiSearchResultCount(params.requested);
+      ? prefere
+      : normalizeMaiSearchResultCount(params.requested);
   return Math.max(
     MAI_SEARCH_RESULT_COUNT_MIN,
     Math.min(demande, prefere, plafondForfait, MAI_SEARCH_RESULT_COUNT_MAX)

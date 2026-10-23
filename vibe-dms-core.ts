@@ -21,7 +21,7 @@ import { stripHtmlTags } from "./vibe-posts-core.ts";
 export const DM_MESSAGE_CHARS_FREE = 3000;
 export const DM_MESSAGE_CHARS_PAID = 10_000;
 export const dmPlainLength = (content: unknown): number =>
-  stripHtmlTags(String(content?? "")).length;
+  stripHtmlTags(String(content ?? "")).length;
 
 /** Limite du compte: 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
 export const getDmMessageCharLimit = async (
@@ -31,8 +31,8 @@ export const getDmMessageCharLimit = async (
   try {
     const rows = await sql`SELECT tier FROM users WHERE id = ${userId} LIMIT 1`;
     return isPaidTier(rows[0]?.tier)
-? DM_MESSAGE_CHARS_PAID
-: DM_MESSAGE_CHARS_FREE;
+      ? DM_MESSAGE_CHARS_PAID
+      : DM_MESSAGE_CHARS_FREE;
   } catch {
     return DM_MESSAGE_CHARS_FREE;
   }
@@ -268,7 +268,7 @@ export async function getMAIUserId(sql: any): Promise<number | null> {
   try {
     const rows =
       await sql`SELECT id FROM users WHERE LOWER(username) = 'mai' LIMIT 1`;
-    return rows.length > 0? Number(rows[0].id): null;
+    return rows.length > 0 ? Number(rows[0].id) : null;
   } catch {
     return null;
   }
@@ -297,12 +297,12 @@ export async function generateMAIDMReply(
       LIMIT 40
     `.catch(() => []);
     const transcript = historyRows
-.reverse()
-.map(
+      .reverse()
+      .map(
         (m: any) =>
-          `${m.sender_id === maiUserId? "mAI": `@${m.sender_username}`}: ${m.content}`
+          `${m.sender_id === maiUserId ? "mAI" : `@${m.sender_username}`}: ${m.content}`
       )
-.join("\n");
+      .join("\n");
 
     // Quota hebdomadaire mAI de l'expéditeur
     const { weekStartStr } = getWeekData();
@@ -328,8 +328,8 @@ export async function generateMAIDMReply(
       `.catch(() => []);
       const openRouterApiKey =
         (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
-        (typeof process!== "undefined" && process.env?.OPENROUTER_API_KEY) ||
-        (keyRows.length > 0? keyRows[0].api_key: "");
+        (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
+        (keyRows.length > 0 ? keyRows[0].api_key : "");
 
       const systemPrompt =
         "Tu es mAI, l'intelligence artificielle officielle du réseau social Vibe. Tu réponds aux messages privés des utilisateurs comme un vrai interlocuteur: bienveillant, concis et utile. " +
@@ -338,8 +338,8 @@ export async function generateMAIDMReply(
 
       const userPrompt =
         (transcript.trim()
-? `Historique de la conversation:\n${transcript}\n\n`
-: "Nouvelle conversation.\n\n") +
+          ? `Historique de la conversation:\n${transcript}\n\n`
+          : "Nouvelle conversation.\n\n") +
         `L'utilisateur vient d'envoyer: « ${senderMessage}»\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
 
       reply = "";
@@ -376,9 +376,9 @@ export async function generateMAIDMReply(
               const text = aiData.choices?.[0]?.message?.content;
               if (text && typeof text === "string" && text.trim()) {
                 reply = text
-.replace(/User Safety:\s*safe\.?/gi, "")
-.replace(/^User Safety:[^\n]*\n*/gi, "")
-.trim();
+                  .replace(/User Safety:\s*safe\.?/gi, "")
+                  .replace(/^User Safety:[^\n]*\n*/gi, "")
+                  .trim();
                 break;
               }
             }
@@ -488,14 +488,14 @@ export async function resolveConversationId(
   partnerId: number
 ): Promise<string | null> {
   try {
-    const p1 = userId < partnerId? userId: partnerId;
-    const p2 = userId < partnerId? partnerId: userId;
+    const p1 = userId < partnerId ? userId : partnerId;
+    const p2 = userId < partnerId ? partnerId : userId;
     const rows = await sql`
       SELECT id FROM dm_conversations
       WHERE participant_one_id = ${p1} AND participant_two_id = ${p2}
       LIMIT 1
     `;
-    return rows[0]? String(rows[0].id): null;
+    return rows[0] ? String(rows[0].id) : null;
   } catch {
     return null;
   }
@@ -519,7 +519,7 @@ export async function resolveConversationTarget(
     if (raw.startsWith("group:")) {
       const groupId = raw.slice(6);
       if (
-!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
           groupId
         )
       ) {
@@ -604,9 +604,9 @@ export async function fetchDMAttachedPost(
       avatar_url: r.avatar_url || null,
       display_name: r.display_name || null,
       excerpt: stripHtmlTags(String(r.content || ""))
-.replace(/\s+/g, " ")
-.trim()
-.slice(0, 140),
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 140),
       id: String(r.id),
       username: String(r.username),
     };
@@ -624,8 +624,8 @@ export async function attachDMAttachedPosts(
   const ids = Array.from(
     new Set(
       messages
-.filter((m) => m?.attached_post_id)
-.map((m) => String(m.attached_post_id))
+        .filter((m) => m?.attached_post_id)
+        .map((m) => String(m.attached_post_id))
     )
   );
   if (ids.length === 0) return;
@@ -644,9 +644,9 @@ export async function attachDMAttachedPosts(
           avatar_url: r.avatar_url || null,
           display_name: r.display_name || null,
           excerpt: stripHtmlTags(String(r.content || ""))
-.replace(/\s+/g, " ")
-.trim()
-.slice(0, 140),
+            .replace(/\s+/g, " ")
+            .trim()
+            .slice(0, 140),
           id: String(r.id),
           username: String(r.username),
         },
@@ -673,10 +673,10 @@ export async function deriveForwardedFrom(
   display_name: string | null;
 } | null> {
   try {
-    if (!raw || typeof raw!== "object" ||!raw.message_id) return null;
+    if (!raw || typeof raw !== "object" || !raw.message_id) return null;
     const id = String(raw.message_id);
     if (
-!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         id
       )
     ) {

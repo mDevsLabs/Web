@@ -191,7 +191,7 @@ export function ApplicationsTab() {
   const [searchSafetyLevel, setSearchSafetyLevel] =
     useState<MaiSearchSafetyLevel>("medium");
   const [searchSources, setSearchSources] = useState<MaiSearchSourceKey[]>([
-...MAI_SEARCH_SOURCE_KEYS,
+    ...MAI_SEARCH_SOURCE_KEYS,
   ]);
   const [searchSaving, setSearchSaving] = useState(false);
 
@@ -270,22 +270,22 @@ export function ApplicationsTab() {
   useEffect(() => {
     let active = true;
     ApiService.getSettings()
-.then((res) => {
-        if (!active ||!res?.settings) return;
+      .then((res) => {
+        if (!active || !res?.settings) return;
         const s = res.settings;
         setFeedDefaultMode(s.feed_default_mode || "for_you");
         setHideReposts(Boolean(s.hide_reposts));
         setBlockedKeywords(
           Array.isArray(s.blocked_keywords)
-? s.blocked_keywords.join(", ")
-: s.blocked_keywords || ""
+            ? s.blocked_keywords.join(", ")
+            : s.blocked_keywords || ""
         );
         setAllowDms(s.allow_dms_from || s.allow_dms || "everyone");
         setDmAutoTranslate(Boolean(s.dm_auto_translate));
         setDmTranslateLang(s.dm_translate_lang || "FR");
         setAllowMentions(s.allow_mentions || "everyone");
         setContentFilter(s.content_filter_level || "medium");
-        setBlurSensitive(s.blur_sensitive_content?? true);
+        setBlurSensitive(s.blur_sensitive_content ?? true);
         setMaiAutoApproveTools(Boolean(s.mai_auto_approve_tools));
         setPostsAIGeneratedByDefault(Boolean(s.posts_ai_generated_by_default));
         setMaiContextPosts(Boolean(s.mai_context_posts));
@@ -295,24 +295,24 @@ export function ApplicationsTab() {
         setDefaultVibeAudience(s.default_vibe_audience || "public");
 
         // Si Vibe avait un modèle ou voix défini et qu'aucun n'est encore configuré côté mAI
-        if (s.mai_default_model &&!userPrefData?.defaultChatModel) {
+        if (s.mai_default_model && !userPrefData?.defaultChatModel) {
           setUnifiedModel(s.mai_default_model);
         }
-        if (s.mai_tts_voice &&!userPrefData?.defaultAudioVoice) {
+        if (s.mai_tts_voice && !userPrefData?.defaultAudioVoice) {
           setUnifiedVoice(s.mai_tts_voice);
         }
       })
-.catch(() => {})
-.finally(() => {
+      .catch(() => {})
+      .finally(() => {
         if (active) setVibeLoading(false);
       });
 
     // Chargement du cercle privé
     ApiService.getCircle()
-.then((res) => {
+      .then((res) => {
         if (active && res?.members) setCircleMembers(res.members);
       })
-.catch(() => {});
+      .catch(() => {});
 
     return () => {
       active = false;
@@ -323,16 +323,16 @@ export function ApplicationsTab() {
   useEffect(() => {
     let active = true;
     wakiesApi<WakiesData>("/settings")
-.then((data) => {
-        if (!active ||!data) return;
+      .then((data) => {
+        if (!active || !data) return;
         setWakiesData(data);
         setWakiesAccount(data.settings);
         if (data.wakies?.length > 0) {
           setActiveWakieId(data.wakies[0].id);
         }
       })
-.catch(() => {})
-.finally(() => {
+      .catch(() => {})
+      .finally(() => {
         if (active) setWakiesLoading(false);
       });
 
@@ -451,9 +451,9 @@ export function ApplicationsTab() {
   const ecrireVibe = useCallback(
     async (etat: typeof instantaneVibe) => {
       const motsCles = etat.blockedKeywords
-.split(",")
-.map((k) => k.trim())
-.filter(Boolean);
+        .split(",")
+        .map((k) => k.trim())
+        .filter(Boolean);
 
       await fetch("/api/user/preferences", {
         body: JSON.stringify({
@@ -492,7 +492,7 @@ export function ApplicationsTab() {
 
   useAutosaveSection({
     apply: appliquerVibe,
-    enabled:!vibeLoading,
+    enabled: !vibeLoading,
     errorMessage: "Impossible d'enregistrer les paramètres Vibe.",
     successMessage: "Paramètres Vibe enregistrés",
     values: instantaneVibe,
@@ -557,13 +557,13 @@ export function ApplicationsTab() {
 
   const toggleSearchSource = (source: MaiSearchSourceKey) => {
     setSearchSources((actuelles) => {
-      const restantes = actuelles.filter((item) => item!== source);
+      const restantes = actuelles.filter((item) => item !== source);
       // On ne descend jamais sous une source: une recherche sans aucune
       // source ne remonterait rien, ce qui ressemble à une panne.
       if (restantes.length === 0) {
         return actuelles;
       }
-      return actuelles.includes(source)? restantes: [...actuelles, source];
+      return actuelles.includes(source) ? restantes : [...actuelles, source];
     });
   };
 
@@ -587,7 +587,7 @@ export function ApplicationsTab() {
   const handleRemoveFromCircle = async (username: string) => {
     try {
       await ApiService.removeFromCircle(username);
-      setCircleMembers((prev) => prev.filter((m) => m.username!== username));
+      setCircleMembers((prev) => prev.filter((m) => m.username !== username));
       toast.info(`@${username} retiré de votre Cercle Privé.`);
     } catch (err: any) {
       toast.error(err?.message || "Erreur lors du retrait du cercle.");
@@ -605,7 +605,7 @@ export function ApplicationsTab() {
         "PATCH",
         patch
       );
-      setWakiesAccount((prev) => (prev? {...prev,...updated }: updated));
+      setWakiesAccount((prev) => (prev ? { ...prev, ...updated } : updated));
       toast.success("Paramètres Wakies mis à jour ");
     } catch (err: any) {
       toast.error(err?.message || "Impossible de mettre à jour Wakies.");
@@ -628,19 +628,19 @@ export function ApplicationsTab() {
     setWakiesSaving(true);
     try {
       await wakiesApi(`/wakies/${activeWakie.id}`, "PUT", {
-        avatar: activeWakie.avatar?? null,
+        avatar: activeWakie.avatar ?? null,
         instructions: activeWakie.instructions,
-        mcpServerIds: patch.mcpServerIds?? activeWakie.mcpServerIds?? [],
+        mcpServerIds: patch.mcpServerIds ?? activeWakie.mcpServerIds ?? [],
         memoryAllowed: activeWakie.memoryAllowed,
         model:
-          patch.model === undefined? (activeWakie.model?? null): patch.model,
+          patch.model === undefined ? (activeWakie.model ?? null) : patch.model,
         name: activeWakie.name,
-        pluginIds: patch.pluginIds?? activeWakie.pluginIds?? [],
+        pluginIds: patch.pluginIds ?? activeWakie.pluginIds ?? [],
         researchAllowed: activeWakie.researchAllowed,
-        skillIds: patch.skillIds?? activeWakie.skillIds?? [],
+        skillIds: patch.skillIds ?? activeWakie.skillIds ?? [],
         spaceId: activeWakie.spaceId,
         spaceIds: activeWakie.spaceIds,
-        toolIds: patch.toolIds?? activeWakie.toolIds?? [],
+        toolIds: patch.toolIds ?? activeWakie.toolIds ?? [],
       });
       const refreshed = await wakiesApi<WakiesData>("/settings");
       setWakiesData(refreshed);
@@ -653,9 +653,9 @@ export function ApplicationsTab() {
   };
 
   const handleApplyWakieToAll = async () => {
-    if (!activeWakie ||!wakiesData?.wakies) return;
+    if (!activeWakie || !wakiesData?.wakies) return;
     if (
-!window.confirm(
+      !window.confirm(
         `Appliquer la configuration de « ${activeWakie.name}» à tous vos Wakies?`
       )
     )
@@ -665,18 +665,18 @@ export function ApplicationsTab() {
     try {
       for (const w of wakiesData.wakies) {
         await wakiesApi(`/wakies/${w.id}`, "PUT", {
-          avatar: w.avatar?? null,
+          avatar: w.avatar ?? null,
           instructions: w.instructions,
-          mcpServerIds: activeWakie.mcpServerIds?? [],
+          mcpServerIds: activeWakie.mcpServerIds ?? [],
           memoryAllowed: w.memoryAllowed,
-          model: activeWakie.model?? null,
+          model: activeWakie.model ?? null,
           name: w.name,
-          pluginIds: activeWakie.pluginIds?? [],
+          pluginIds: activeWakie.pluginIds ?? [],
           researchAllowed: w.researchAllowed,
-          skillIds: activeWakie.skillIds?? [],
+          skillIds: activeWakie.skillIds ?? [],
           spaceId: w.spaceId,
           spaceIds: w.spaceIds,
-          toolIds: activeWakie.toolIds?? [],
+          toolIds: activeWakie.toolIds ?? [],
         });
       }
       const refreshed = await wakiesApi<WakiesData>("/settings");
@@ -762,12 +762,12 @@ export function ApplicationsTab() {
           </p>
         </div>
 
-        {vibeLoading? (
+        {vibeLoading ? (
           <div className="surface-card flex items-center justify-center p-8 text-xs text-muted-foreground">
             <Loader2Icon className="size-4 animate-spin mr-2 text-primary" />
             Chargement des réglages Vibe…
           </div>
-        ): (
+        ) : (
           <div className="flex flex-col gap-6">
             {/* 1. IA & Voix (Unifiées avec mAI) */}
             <div
@@ -780,8 +780,8 @@ export function ApplicationsTab() {
               </div>
               <p className="text-xs text-muted-foreground">
                 Ce modèle et cette voix sont partagés avec vos préférences
-                globales mAI: modifier ces valeurs ici met à jour le chat mAI
-                et le Studio Vibe.
+                globales mAI: modifier ces valeurs ici met à jour le chat mAI et
+                le Studio Vibe.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1073,7 +1073,7 @@ export function ApplicationsTab() {
                 </div>
                 <span className="chip text-[11px]">
                   {circleMembers.length} membre
-                  {circleMembers.length > 1? "s": ""}
+                  {circleMembers.length > 1 ? "s" : ""}
                 </span>
               </div>
               <p className="text-xs text-muted-foreground">
@@ -1141,11 +1141,11 @@ export function ApplicationsTab() {
                               </span>
                             </div>
                           </div>
-                          {alreadyIn? (
+                          {alreadyIn ? (
                             <span className="text-[11px] text-muted-foreground font-medium">
                               Déjà membre
                             </span>
-                          ): (
+                          ) : (
                             <button
                               className="rounded-lg bg-primary/10 text-primary px-2.5 py-1 text-[11px] font-semibold hover:bg-primary/20 transition-colors cursor-pointer"
                               disabled={circleActionLoading}
@@ -1163,11 +1163,11 @@ export function ApplicationsTab() {
 
                 {/* Liste des membres */}
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {circleMembers.length === 0? (
+                  {circleMembers.length === 0 ? (
                     <span className="text-xs text-muted-foreground italic">
                       Aucun membre dans le cercle privé.
                     </span>
-                  ): (
+                  ) : (
                     circleMembers.map((m) => (
                       <span
                         className="inline-flex items-center gap-1.5 rounded-full bg-muted/60 border border-border/60 px-2.5 py-1 text-xs text-foreground"
@@ -1298,8 +1298,8 @@ export function ApplicationsTab() {
               />
               <div className="flex flex-wrap items-center gap-1.5">
                 {[10, 25, 50, 100, 200]
-.filter((nombre) => nombre <= searchResultsMax)
-.map((nombre) => (
+                  .filter((nombre) => nombre <= searchResultsMax)
+                  .map((nombre) => (
                     <button
                       className={cn(
                         "chip text-[11px] px-2 py-0.5",
@@ -1307,7 +1307,7 @@ export function ApplicationsTab() {
                           "bg-foreground text-background font-medium"
                       )}
                       data-active={
-                        searchResultCount === nombre? "true": undefined
+                        searchResultCount === nombre ? "true" : undefined
                       }
                       key={nombre}
                       onClick={() => setSearchResultCount(nombre)}
@@ -1365,10 +1365,10 @@ export function ApplicationsTab() {
                     className={cn(
                       "chip flex items-center gap-1.5 text-xs cursor-pointer",
                       active
-? "bg-foreground text-background font-medium"
-: "text-muted-foreground hover:text-foreground"
+                        ? "bg-foreground text-background font-medium"
+                        : "text-muted-foreground hover:text-foreground"
                     )}
-                    data-active={active? "true": undefined}
+                    data-active={active ? "true" : undefined}
                     key={source}
                     onClick={() => toggleSearchSource(source)}
                     title={MAI_SEARCH_SOURCE_DESCRIPTIONS[source]}
@@ -1390,7 +1390,7 @@ export function ApplicationsTab() {
             <p className="text-[10px] text-muted-foreground">
               {
                 MAI_SEARCH_SOURCE_DESCRIPTIONS[
-                  searchSources.includes("wikipedia")? "wikipedia": "web"
+                  searchSources.includes("wikipedia") ? "wikipedia" : "web"
                 ]
               }
             </p>
@@ -1426,17 +1426,17 @@ export function ApplicationsTab() {
           )}
         </div>
 
-        {wakiesLoading? (
+        {wakiesLoading ? (
           <div className="surface-card flex items-center justify-center p-8 text-xs text-muted-foreground">
             <Loader2Icon className="size-4 animate-spin mr-2 text-primary" />
             Chargement des réglages Wakies…
           </div>
-        ):!wakiesData ||!wakiesAccount? (
+        ) : !wakiesData || !wakiesAccount ? (
           <div className="surface-card p-6 text-xs text-muted-foreground">
             L'atelier Wakies n'est pas encore initialisé ou inaccessible pour ce
             compte.
           </div>
-        ): (
+        ) : (
           <div className="flex flex-col gap-6">
             {/* 1. Général & Confidentialité */}
             <div
@@ -1457,14 +1457,14 @@ export function ApplicationsTab() {
                   disabled={wakiesSaving}
                   maxLength={40}
                   onBlur={() => {
-                    if (wakiesAccount.name!== wakiesData.settings.name) {
+                    if (wakiesAccount.name !== wakiesData.settings.name) {
                       void handleSaveWakiesAccount({
                         name: wakiesAccount.name,
                       });
                     }
                   }}
                   onChange={(e) =>
-                    setWakiesAccount({...wakiesAccount, name: e.target.value })
+                    setWakiesAccount({ ...wakiesAccount, name: e.target.value })
                   }
                   type="text"
                   value={wakiesAccount.name}
@@ -1487,7 +1487,7 @@ export function ApplicationsTab() {
                     disabled={wakiesSaving}
                     onChange={(e) => {
                       const paused = e.target.checked;
-                      setWakiesAccount({...wakiesAccount, paused });
+                      setWakiesAccount({ ...wakiesAccount, paused });
                       void handleSaveWakiesAccount({ paused });
                     }}
                     type="checkbox"
@@ -1509,7 +1509,7 @@ export function ApplicationsTab() {
                     disabled={wakiesSaving}
                     onChange={(e) => {
                       const researchAllowed = e.target.checked;
-                      setWakiesAccount({...wakiesAccount, researchAllowed });
+                      setWakiesAccount({ ...wakiesAccount, researchAllowed });
                       void handleSaveWakiesAccount({ researchAllowed });
                     }}
                     type="checkbox"
@@ -1532,7 +1532,7 @@ export function ApplicationsTab() {
                     disabled={wakiesSaving}
                     onChange={(e) => {
                       const memoryAllowed = e.target.checked;
-                      setWakiesAccount({...wakiesAccount, memoryAllowed });
+                      setWakiesAccount({ ...wakiesAccount, memoryAllowed });
                       void handleSaveWakiesAccount({ memoryAllowed });
                     }}
                     type="checkbox"
@@ -1569,7 +1569,7 @@ export function ApplicationsTab() {
                         {label}
                       </span>
                       <span className="text-sm font-bold text-foreground">
-                        {quotaVal === null? "Illimité": (quotaVal?? 0)}
+                        {quotaVal === null ? "Illimité" : (quotaVal ?? 0)}
                       </span>
                     </div>
                   );
@@ -1599,12 +1599,12 @@ export function ApplicationsTab() {
                 )}
               </div>
 
-              {wakiesData.wakies.length === 0? (
+              {wakiesData.wakies.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
                   Aucun Wakie configuré. Créez votre premier assistant depuis
                   l'atelier Wakies.
                 </p>
-              ): (
+              ) : (
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
@@ -1619,7 +1619,7 @@ export function ApplicationsTab() {
                       {wakiesData.wakies.map((w) => (
                         <option key={w.id} value={w.id}>
                           {w.name}{" "}
-                          {w.model? `(${w.model})`: "(Modèle par défaut)"}
+                          {w.model ? `(${w.model})` : "(Modèle par défaut)"}
                         </option>
                       ))}
                     </select>
@@ -1636,7 +1636,7 @@ export function ApplicationsTab() {
                           onChoisir={(modele) =>
                             void handleSaveWakieCapabilities({ model: modele })
                           }
-                          valeur={activeWakie.model?? ""}
+                          valeur={activeWakie.model ?? ""}
                         />
                       </div>
 
@@ -1649,7 +1649,7 @@ export function ApplicationsTab() {
                             void handleSaveWakieCapabilities({ toolIds })
                           }
                           outils={WAKIE_TOOL_CATALOG}
-                          valeur={activeWakie.toolIds?? []}
+                          valeur={activeWakie.toolIds ?? []}
                         />
                       </div>
 
@@ -1663,9 +1663,9 @@ export function ApplicationsTab() {
                             void handleSaveWakieCapabilities(suiv)
                           }
                           valeur={{
-                            mcpServerIds: activeWakie.mcpServerIds?? [],
-                            pluginIds: activeWakie.pluginIds?? [],
-                            skillIds: activeWakie.skillIds?? [],
+                            mcpServerIds: activeWakie.mcpServerIds ?? [],
+                            pluginIds: activeWakie.pluginIds ?? [],
+                            skillIds: activeWakie.skillIds ?? [],
                           }}
                         />
                       </div>

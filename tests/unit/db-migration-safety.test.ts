@@ -49,8 +49,8 @@ describe("Repair weekly_usage — aucune suppression sans sauvegarde vérifiée"
       const code = codeOnly(file);
       const insertIndex = code.indexOf("INSERT INTO weekly_usage_drift_backup");
       const checkIndex = code.indexOf("sauvegardees < a_deplacer");
-      const deleteIndex = code.indexOf(
-        "DELETE FROM weekly_usage WHERE user_id !~"
+      const deleteIndex = code.search(
+        /DELETE FROM weekly_usage WHERE user_id\s*!~/
       );
       const alterIndex = code.indexOf(
         'ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer'

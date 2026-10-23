@@ -86,7 +86,7 @@ BEGIN
         a_deplacer, sauvegardees;
     END IF;
 
-    DELETE FROM weekly_usage WHERE user_id!~ '^[0-9]+$';
+    DELETE FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
     ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer USING "user_id"::integer;
   END IF;
 END $$;`;
@@ -122,17 +122,15 @@ const check = await sql`
 `;
 console.log(
   check
-.map((c) => `${c.table_name}.${c.column_name} = ${c.data_type}`)
-.join("\n")
+    .map((c) => `${c.table_name}.${c.column_name} = ${c.data_type}`)
+    .join("\n")
 );
 
 console.log("5/5 Requêtes de contrôle…");
 const skillQuery = await sql`
   SELECT count(*)::int AS n FROM "Skill" WHERE "userId" = ${"1"}::text
 `;
-console.log(
-  `✓ Skill filtrable par userId texte: ${skillQuery[0].n} ligne(s).`
-);
+console.log(`✓ Skill filtrable par userId texte: ${skillQuery[0].n} ligne(s).`);
 
 const usageQuery = await sql`
   SELECT count(*)::int AS n FROM weekly_usage WHERE user_id = ${1} AND week_start >= '2026-01-01'

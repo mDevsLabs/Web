@@ -182,8 +182,8 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   // cette fonction en dépendance (elle ne doit pas changer d'identité).
   const refreshDrawerConversations = useCallback(() => {
     ApiService.getMAIConversations()
-.then((res) => setConversations(res.conversations || []))
-.catch(() => {});
+      .then((res) => setConversations(res.conversations || []))
+      .catch(() => {});
   }, []);
 
   /** Charge une conversation du sélecteur (messages + outils persistés). */
@@ -197,14 +197,14 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
           id: m.id,
           reasoning: m.reasoning || "",
           sender: (m.role === "assistant"
-? "assistant"
-: "user") as MessageItem["sender"],
+            ? "assistant"
+            : "user") as MessageItem["sender"],
           serverId: m.id,
           timestamp: new Date(m.created_at).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           }),
-          toolCalls: Array.isArray(m.tool_calls)? m.tool_calls: [],
+          toolCalls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
         }))
       );
       setPendingTool(null);
@@ -245,7 +245,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         for (let i = next.length - 1; i >= 0; i--) {
           if (next[i].sender === "assistant") {
             next[i] = {
-...next[i],
+              ...next[i],
               content: res.reply,
               reasoning: res.reasoning || "",
               toolCalls: [],
@@ -277,7 +277,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         if (res?.models && res.models.length > 0) {
           const list = res.models.filter(
             (m: any) =>
-              m && m.id!== "openrouter/free" &&!m.id.startsWith("openrouter/")
+              m && m.id !== "openrouter/free" && !m.id.startsWith("openrouter/")
           );
           const lagunaIdx = list.findIndex(
             (m) => m.id === "poolside/laguna-xs-2.1:free"
@@ -297,23 +297,23 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     // avaient choisi un modèle dans Vibe avant l'unification.
     Promise.allSettled([
       fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH?? ""}/api/user/preferences`
-      ).then((response) => (response.ok? response.json(): null)),
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`
+      ).then((response) => (response.ok ? response.json() : null)),
       ApiService.getSettings(),
     ]).then(([preference, settings]) => {
       const host =
         preference.status === "fulfilled"
-? (preference.value?.defaultChatModel as string | null | undefined)
-: null;
+          ? (preference.value?.defaultChatModel as string | null | undefined)
+          : null;
       const saved =
-        host??
+        host ??
         (settings.status === "fulfilled"
-? (settings.value as any)?.settings?.mai_default_model
-: null);
+          ? (settings.value as any)?.settings?.mai_default_model
+          : null);
       if (
         saved &&
-        saved!== "openrouter/free" &&
-!String(saved).startsWith("openrouter/")
+        saved !== "openrouter/free" &&
+        !String(saved).startsWith("openrouter/")
       ) {
         setSelectedModel(String(saved));
       }
@@ -335,12 +335,12 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     if (!isOpen) return;
     const timer = setInterval(() => {
       void ApiService.getModels()
-.then((res) => {
+        .then((res) => {
           if (res?.models && res.models.length > 0) {
             setAvailableModels(res.models as typeof DEFAULT_MODELS);
           }
         })
-.catch(() => {});
+        .catch(() => {});
     }, MODEL_CATALOG_REFRESH_INTERVAL);
     return () => {
       clearInterval(timer);
@@ -351,7 +351,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   const handleSelectModel = (modelId: string) => {
     setSelectedModel(modelId);
     void fetch(
-      `${process.env.NEXT_PUBLIC_BASE_PATH?? ""}/api/user/preferences`,
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
       {
         body: JSON.stringify({ defaultChatModel: modelId }),
         headers: { "Content-Type": "application/json" },
@@ -367,7 +367,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   useEffect(() => {
     if (!isOpen || historyLoadedRef.current) return;
     ApiService.getMAIHistory()
-.then((res) => {
+      .then((res) => {
         historyLoadedRef.current = true;
         setActiveConversationId(res.conversation_id || null);
         if (res.messages && res.messages.length > 0) {
@@ -376,37 +376,37 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
               content: m.content,
               id: m.id,
               sender: (m.role === "assistant"
-? "assistant"
-: "user") as MessageItem["sender"],
+                ? "assistant"
+                : "user") as MessageItem["sender"],
               serverId: m.id,
               timestamp: new Date(m.created_at).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
               }),
-              toolCalls: Array.isArray(m.tool_calls)? m.tool_calls: [],
+              toolCalls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
             }))
           );
         }
       })
-.catch(() => {});
+      .catch(() => {});
     refreshDrawerConversations();
   }, [isOpen, refreshDrawerConversations]);
 
   // Post pré-attaché depuis l'extérieur (bouton « Mentionner dans mAI»)
   useEffect(() => {
-    if (!isOpen ||!attachedPostId) return;
+    if (!isOpen || !attachedPostId) return;
     if (attachedPost?.id === attachedPostId) return;
     let cancelled = false;
     ApiService.getPost(attachedPostId)
-.then((data) => {
-        if (cancelled ||!data?.post) return;
+      .then((data) => {
+        if (cancelled || !data?.post) return;
         setAttachedPost({
           excerpt: makeExcerpt(data.post.content, 90),
           id: data.post.id,
           username: data.post.username || "utilisateur",
         });
       })
-.catch(() => {});
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -456,7 +456,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     resetTranscript,
   } = useSpeechRecognition({
     onResult: (text) => {
-      setInputValue((prev) => (prev? `${prev} ${text}`: text));
+      setInputValue((prev) => (prev ? `${prev} ${text}` : text));
     },
   });
 
@@ -490,10 +490,10 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
 
   const handleSelectTool = (tool: MAITool) => {
     const tag =
-      autocompleteTrigger === "/"? tool.slashCommand: tool.mentionTag;
+      autocompleteTrigger === "/" ? tool.slashCommand : tool.mentionTag;
     const words = inputValue.split(/\s+/);
     words.pop();
-    const newPrefix = words.length > 0? `${words.join(" ")} `: "";
+    const newPrefix = words.length > 0 ? `${words.join(" ")} ` : "";
     const updated = `${newPrefix}${tag} `;
 
     setInputValue(updated);
@@ -514,12 +514,12 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     const currentAttachment = attachedPost;
     const userMsg: MessageItem = {
       attachment: currentAttachment
-? {
+        ? {
             excerpt: currentAttachment.excerpt,
             id: currentAttachment.id,
             username: currentAttachment.username,
           }
-: undefined,
+        : undefined,
       content: textToSend,
       id: generateMessageId(),
       sender: "user",
@@ -537,14 +537,14 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         textToSend,
         undefined,
         selectedModel,
-        currentAttachment? { post_id: currentAttachment.id }: undefined,
+        currentAttachment ? { post_id: currentAttachment.id } : undefined,
         activeConversationId || undefined
       );
       // Outils utilisés (persistés côté serveur) — repli local pour les anciens formats
       const toolCalls: MaiToolCall[] = response.toolCalls?.length
-? response.toolCalls
-: response.toolExecuted
-? [
+        ? response.toolCalls
+        : response.toolExecuted
+          ? [
               {
                 args: {},
                 at: new Date().toISOString(),
@@ -553,12 +553,12 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                 result: response.toolExecuted.result,
                 status:
                   response.toolExecuted.result?.success === false
-? "error"
-: "executed",
+                    ? "error"
+                    : "executed",
               },
             ]
-: response.requiresApproval && response.pendingTool
-? [
+          : response.requiresApproval && response.pendingTool
+            ? [
                 {
                   args: response.pendingTool.args,
                   at: new Date().toISOString(),
@@ -567,7 +567,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                   status: "pending_approval",
                 },
               ]
-: [];
+            : [];
       const assistantMsg: MessageItem = {
         content: response.reply,
         id: generateMessageId(),
@@ -581,7 +581,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       setMessages((prev) => [...prev, assistantMsg]);
       if (
         response.conversation_id &&
-        response.conversation_id!== activeConversationId
+        response.conversation_id !== activeConversationId
       ) {
         setActiveConversationId(response.conversation_id);
       }
@@ -622,7 +622,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       toolCalls?: MaiToolCall[]
     ) => {
       setMessages((prev) => [
-...prev,
+        ...prev,
         {
           content,
           id: generateMessageId(),
@@ -685,10 +685,10 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         className="w-full max-w-md h-full bg-zinc-950 border-l border-zinc-800 flex flex-col shadow-2xl animate-slideLeft"
-        drag={animationsEnabled? "x": false}
+        drag={animationsEnabled ? "x" : false}
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.18}
-        initial={animationsEnabled? { opacity: 0, x: 60 }: false}
+        initial={animationsEnabled ? { opacity: 0, x: 60 } : false}
         onClick={(e) => e.stopPropagation()}
         onDragEnd={(_, info) => {
           if (info.offset.x > 90 || info.velocity.x > 600) onClose();
@@ -707,15 +707,15 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
               </div>
               <div className="text-[10px] text-zinc-500 font-mono truncate max-w-[140px]">
                 {conversations.find((c) => c.id === activeConversationId)
-?.title || "Multi-modèles"}
+                  ?.title || "Multi-modèles"}
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 relative">
             <button
-              className={`p-1.5 rounded-full transition-colors ${convMenuOpen? "text-white bg-zinc-900": "text-zinc-400 hover:text-white hover:bg-zinc-900"}`}
-              onClick={() => setConvMenuOpen((v) =>!v)}
+              className={`p-1.5 rounded-full transition-colors ${convMenuOpen ? "text-white bg-zinc-900" : "text-zinc-400 hover:text-white hover:bg-zinc-900"}`}
+              onClick={() => setConvMenuOpen((v) => !v)}
               title="Changer de discussion mAI"
             >
               <ChevronDown className="w-4 h-4" />
@@ -738,17 +738,17 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                   {conversations.length > 0 && (
                     <div className="border-t border-zinc-800 my-1" />
                   )}
-                  {conversations.length === 0? (
+                  {conversations.length === 0 ? (
                     <p className="px-2.5 py-2 text-[10px] text-zinc-500">
                       Aucune conversation enregistrée.
                     </p>
-                  ): (
+                  ) : (
                     conversations.slice(0, 20).map((c) => (
                       <button
                         className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-[11px] text-left transition-colors ${
                           c.id === activeConversationId
-? "bg-zinc-800 text-white font-bold"
-: "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                            ? "bg-zinc-800 text-white font-bold"
+                            : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
                         }`}
                         key={c.id}
                         onClick={() => handleSelectDrawerConversation(c.id)}
@@ -835,14 +835,14 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
           )}
           {messages.map((msg, msgIdx) => (
             <div
-              className={`flex flex-col ${msg.sender === "user"? "items-end": "items-start"}`}
+              className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}
               key={msg.id}
             >
               <div
                 className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed ${
                   msg.sender === "user"
-? "bg-white text-black font-medium"
-: "bg-zinc-900 border border-zinc-800 text-zinc-200"
+                    ? "bg-white text-black font-medium"
+                    : "bg-zinc-900 border border-zinc-800 text-zinc-200"
                 }`}
               >
                 <MaiReasoning
@@ -873,9 +873,9 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                   className="mt-2.5"
                   toolCalls={
                     msg.toolCalls?.length
-? msg.toolCalls
-: msg.toolResult?.result?.result
-? [
+                      ? msg.toolCalls
+                      : msg.toolResult?.result?.result
+                        ? [
                             {
                               args: {},
                               id: `legacy-${msg.id}`,
@@ -883,17 +883,17 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                               result: msg.toolResult.result,
                               status:
                                 msg.toolResult.result?.success === false
-? "error"
-: "executed",
+                                  ? "error"
+                                  : "executed",
                             },
                           ]
-: []
+                        : []
                   }
                 />
 
                 {/* Interactive Actions (Copy / Share / Edit / Regenerate) */}
                 <div
-                  className={`flex items-center gap-2 pt-2 mt-2 border-t text-[10px] font-mono ${msg.sender === "user"? "border-zinc-200 text-zinc-600 justify-end": "border-zinc-800 text-zinc-400 justify-start"}`}
+                  className={`flex items-center gap-2 pt-2 mt-2 border-t text-[10px] font-mono ${msg.sender === "user" ? "border-zinc-200 text-zinc-600 justify-end" : "border-zinc-800 text-zinc-400 justify-start"}`}
                 >
                   <button
                     className="hover:underline flex items-center gap-1"
@@ -923,8 +923,8 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                   )}
                   {msg.sender === "assistant" &&
                     msgIdx === messages.length - 1 &&
-!msg.toolResult &&
-!(msg.toolCalls && msg.toolCalls.length > 0) && (
+                    !msg.toolResult &&
+                    !(msg.toolCalls && msg.toolCalls.length > 0) && (
                       <button
                         className="hover:underline flex items-center gap-1 disabled:opacity-40"
                         disabled={isRegenerating || isLoading}
@@ -932,9 +932,9 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                         title="Regénérer la réponse"
                         type="button"
                       >
-                        {isRegenerating? (
+                        {isRegenerating ? (
                           <Loader2 className="w-3 h-3 animate-spin" />
-                        ): (
+                        ) : (
                           <RefreshCw className="w-3 h-3" />
                         )}
                         <span>Regénérer</span>
@@ -961,7 +961,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         {pendingTool && (
           <div className="mx-3 mb-2 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-2">
             <p className="font-bold text-amber-500 flex items-center gap-1.5">
-               Approbation requise: {pendingTool.name}
+              Approbation requise: {pendingTool.name}
             </p>
             <pre className="text-[10px] text-zinc-500 overflow-x-auto max-h-20">
               {JSON.stringify(pendingTool.args, null, 2)}
@@ -973,7 +973,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
                 onClick={() => handleApproveTool(true)}
                 type="button"
               >
-                {isApproving? "Exécution…": "Approuver"}
+                {isApproving ? "Exécution…" : "Approuver"}
               </button>
               <button
                 className="flex-1 py-1.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-bold disabled:opacity-40"
@@ -1002,23 +1002,23 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
 
         {/* Input Bar */}
         <div className="p-3 border-t border-zinc-800 bg-black/90 relative">
-          {autocompleteTrigger &&!showPostPicker && (
+          {autocompleteTrigger && !showPostPicker && (
             <ToolAutocomplete
               onClose={() => setAutocompleteTrigger(null)}
               onSelect={handleSelectTool}
               query={autocompleteQuery}
               specialAction={
                 attachedPost
-? undefined
-: {
+                  ? undefined
+                  : {
                       description:
                         "Joindre une publication Vibe (contenu, médias, stats, commentaires) et poser une question dessus",
-                      label: autocompleteTrigger === "/"? "/post": "@post",
+                      label: autocompleteTrigger === "/" ? "/post" : "@post",
                       onSelect: () => {
                         const words = inputValue.split(/\s+/);
                         words.pop();
                         setInputValue(
-                          words.length > 0? `${words.join(" ")} `: ""
+                          words.length > 0 ? `${words.join(" ")} ` : ""
                         );
                         setAutocompleteTrigger(null);
                         setAutocompleteQuery("");
@@ -1134,18 +1134,18 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
               <button
                 className={`p-2.5 rounded-full transition-colors ${
                   isListening
-? "bg-red-500 text-white animate-pulse"
-: "bg-zinc-900 text-zinc-400 hover:text-white"
+                    ? "bg-red-500 text-white animate-pulse"
+                    : "bg-zinc-900 text-zinc-400 hover:text-white"
                 }`}
-                onClick={isListening? stopListening: startListening}
+                onClick={isListening ? stopListening : startListening}
                 title={
-                  isListening? "Arrêter l’enregistrement": "Dicter le message"
+                  isListening ? "Arrêter l’enregistrement" : "Dicter le message"
                 }
                 type="button"
               >
-                {isListening? (
+                {isListening ? (
                   <MicOff className="w-4 h-4" />
-                ): (
+                ) : (
                   <Mic className="w-4 h-4" />
                 )}
               </button>
@@ -1162,7 +1162,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
 
             <button
               className="p-2.5 rounded-full bg-white text-black hover:bg-zinc-200 disabled:opacity-40 transition-all shrink-0"
-              disabled={isLoading ||!inputValue.trim()}
+              disabled={isLoading || !inputValue.trim()}
               type="submit"
             >
               <Send className="w-4 h-4" />
@@ -1172,10 +1172,10 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       </motion.div>
 
       {/* Partage d'un message mAI par message Vibe */}
-      {shareMessageText!== null && (
+      {shareMessageText !== null && (
         <ShareToDMModal
           initialMessage={shareMessageText}
-          isOpen={shareMessageText!== null}
+          isOpen={shareMessageText !== null}
           onClose={() => setShareMessageText(null)}
         />
       )}

@@ -159,30 +159,30 @@ export const SettingsPage: React.FC<{
       try {
         const d = hydration?.data as { settings?: Record<string, any> } | null;
         const seedOk =
-!!d?.settings &&
+          !!d?.settings &&
           (hydration!.as === null
-?!user
-:!user || String(hydration!.as) === String(user.id?? ""));
-        const res = seedOk? d!: await ApiService.getSettings();
+            ? !user
+            : !user || String(hydration!.as) === String(user.id ?? ""));
+        const res = seedOk ? d! : await ApiService.getSettings();
         if (res.settings) {
           const s = res.settings;
           setFeedDefaultMode(s.feed_default_mode || "for_you");
-          setHideReposts(s.hide_reposts?? false);
+          setHideReposts(s.hide_reposts ?? false);
           setBlockedKeywords(
             Array.isArray(s.blocked_keywords)
-? s.blocked_keywords.join(", ")
-: s.blocked_keywords || ""
+              ? s.blocked_keywords.join(", ")
+              : s.blocked_keywords || ""
           );
           setAllowDms(s.allow_dms_from || s.allow_dms || "everyone");
           setDmAutoTranslate(Boolean(s.dm_auto_translate));
           setDmTranslateLang(s.dm_translate_lang || "EN-US");
-          setDmsEnabled(s.dms_enabled!== false);
+          setDmsEnabled(s.dms_enabled !== false);
           setAllowMentions(s.allow_mentions || "everyone");
           setContentFilter(s.content_filter_level || "medium");
-          setBlurSensitive(s.blur_sensitive_content?? true);
-          setMaiAutoApproveTools(s.mai_auto_approve_tools?? false);
+          setBlurSensitive(s.blur_sensitive_content ?? true);
+          setMaiAutoApproveTools(s.mai_auto_approve_tools ?? false);
           setPostsAIGeneratedByDefault(
-            s.posts_ai_generated_by_default?? false
+            s.posts_ai_generated_by_default ?? false
           );
           if (s.mai_default_model) {
             setMaiDefaultModel(String(s.mai_default_model));
@@ -223,15 +223,15 @@ export const SettingsPage: React.FC<{
           ) {
             setDefaultVibeAudience(s.default_vibe_audience as any);
           }
-          if (s.mai_context_posts!== undefined)
+          if (s.mai_context_posts !== undefined)
             setMaiContextPosts(Boolean(s.mai_context_posts));
-          if (s.mai_context_dms!== undefined)
+          if (s.mai_context_dms !== undefined)
             setMaiContextDms(Boolean(s.mai_context_dms));
-          if (s.mai_context_books!== undefined)
+          if (s.mai_context_books !== undefined)
             setMaiContextBooks(Boolean(s.mai_context_books));
-          if (s.hide_verified_badge!== undefined)
+          if (s.hide_verified_badge !== undefined)
             setHideVerifiedBadge(Boolean(s.hide_verified_badge));
-          if (s.collab_auto_accept!== undefined)
+          if (s.collab_auto_accept !== undefined)
             setCollabAutoAccept(Boolean(s.collab_auto_accept));
           if (
             Array.isArray(s.mai_enabled_tools) &&
@@ -257,7 +257,7 @@ export const SettingsPage: React.FC<{
   // Charge le catalogue d'outils mAI
   useEffect(() => {
     ApiService.getMAITools()
-.then((res) => {
+      .then((res) => {
         const tools = (res?.tools || []).map((t) => ({
           category: t.category,
           description: t.description,
@@ -276,7 +276,7 @@ export const SettingsPage: React.FC<{
         });
         setMaiToolsLoaded(true);
       })
-.catch(() => setMaiToolsLoaded(true));
+      .catch(() => setMaiToolsLoaded(true));
   }, []);
 
   // Comptes bloqués & masqués
@@ -305,18 +305,18 @@ export const SettingsPage: React.FC<{
       ApiService.getBlockedUsers().catch(() => ({ blocked: [] })),
       ApiService.getMutedUsers().catch(() => ({ muted: [] })),
     ])
-.then(([blockedRes, mutedRes]) => {
+      .then(([blockedRes, mutedRes]) => {
         setBlockedAccounts(blockedRes?.blocked || []);
         setMutedAccounts(mutedRes?.muted || []);
       })
-.finally(() => setIsLoadingAccounts(false));
+      .finally(() => setIsLoadingAccounts(false));
 
     ApiService.getModels()
-.then((res) => setModels(res.models || []))
-.catch(() => {});
+      .then((res) => setModels(res.models || []))
+      .catch(() => {});
     ApiService.getSpeechVoices()
-.then((res) => setVoices(res.voices || []))
-.catch(() => {});
+      .then((res) => setVoices(res.voices || []))
+      .catch(() => {});
   }, []);
 
   // Membres du Cercle Privé
@@ -327,14 +327,14 @@ export const SettingsPage: React.FC<{
       settings?: Record<string, any>;
     } | null;
     const seedViewerOk =
-      hydration?.as === null || String(hydration?.as) === String(user.id?? "");
+      hydration?.as === null || String(hydration?.as) === String(user.id ?? "");
     if (seedData?.circle?.members && seedViewerOk) {
       setCircleMembers(seedData.circle.members);
       return;
     }
     ApiService.getCircle()
-.then((res) => setCircleMembers(res.members || []))
-.catch(() => {});
+      .then((res) => setCircleMembers(res.members || []))
+      .catch(() => {});
   }, [hydration?.as, hydration?.data, user]);
 
   // Recherche en direct Cercle Privé
@@ -351,7 +351,7 @@ export const SettingsPage: React.FC<{
         try {
           const res = await ApiService.searchUsers(q);
           const filtered = (res?.users || []).filter(
-            (u) => u.username?.toLowerCase()!== user?.username?.toLowerCase()
+            (u) => u.username?.toLowerCase() !== user?.username?.toLowerCase()
           );
           setCircleSearchResults(filtered);
         } catch {
@@ -360,7 +360,7 @@ export const SettingsPage: React.FC<{
           setIsSearchingCircleUsers(false);
         }
       },
-      q? 250: 0
+      q ? 250 : 0
     );
     return () => clearTimeout(timer);
   }, [circleSearchQuery, user?.username]);
@@ -393,7 +393,7 @@ export const SettingsPage: React.FC<{
   const handleRemoveFromCircle = async (username: string) => {
     try {
       await ApiService.removeFromCircle(username);
-      setCircleMembers((prev) => prev.filter((m) => m.username!== username));
+      setCircleMembers((prev) => prev.filter((m) => m.username !== username));
       NotificationService.showInAppToast(
         "Cercle Privé",
         `@${username} a été retiré de votre cercle.`,
@@ -412,7 +412,7 @@ export const SettingsPage: React.FC<{
     try {
       await ApiService.unblockUser(userId);
       setBlockedAccounts((prev) =>
-        prev.filter((b) => b.blocked_user_id!== userId)
+        prev.filter((b) => b.blocked_user_id !== userId)
       );
       NotificationService.showInAppToast(
         "Compte débloqué",
@@ -433,7 +433,7 @@ export const SettingsPage: React.FC<{
     try {
       await ApiService.muteUser(username, false);
       setMutedAccounts((prev) =>
-        prev.filter((m) => m.muted_username!== username)
+        prev.filter((m) => m.muted_username !== username)
       );
       NotificationService.showInAppToast(
         "Compte réactivé",
@@ -454,9 +454,9 @@ export const SettingsPage: React.FC<{
     setIsSaving(true);
     try {
       const keywordsArray = blockedKeywords
-.split(",")
-.map((k) => k.trim())
-.filter(Boolean);
+        .split(",")
+        .map((k) => k.trim())
+        .filter(Boolean);
 
       await ApiService.updateSettings({
         accent_color: accentColor,
@@ -658,7 +658,7 @@ export const SettingsPage: React.FC<{
               disabled={isSaving}
               type="submit"
             >
-              {isSaving? "Enregistrement...": "Enregistrer les paramètres"}
+              {isSaving ? "Enregistrement..." : "Enregistrer les paramètres"}
             </button>
           </div>
         </form>

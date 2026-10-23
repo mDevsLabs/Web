@@ -27,14 +27,14 @@ const MODEL_MAP: Record<string, string> = {
 
 export function _resolveOpenRouterModel(model: string): string {
   if (MODEL_MAP[model]) return MODEL_MAP[model];
-  return model.includes("/")? model: "poolside/laguna-xs-2.1:free";
+  return model.includes("/") ? model : "poolside/laguna-xs-2.1:free";
 }
 
 /** Période optionnelle en fin de commande ("/audience 90d", "/hashtags 7j", "... 12m"). */
 export function parsePeriodArg(raw: string): "7d" | "30d" | "90d" | "12m" {
   const m = String(raw)
-.toLowerCase()
-.match(/(?:^|\s)(7d|30d|90d|12m|7j|30j|90j|1an|an)\s*$/);
+    .toLowerCase()
+    .match(/(?:^|\s)(7d|30d|90d|12m|7j|30j|90j|1an|an)\s*$/);
   if (!m) return "30d";
   const v = m[1];
   if (v === "7d" || v === "7j") return "7d";
@@ -72,14 +72,14 @@ export function formatToolReply(
   }
   if (toolName === "analyze_trends") {
     const trendsList = result.trendingTopics
-.map(
+      .map(
         (t: any) =>
           `• **${t.name}** (${t.postsCount} publications) — ${t.sentiment}`
       )
-.join("\n");
+      .join("\n");
     return trendsList
-? ` **Tendances actuelles sur Vibe**:\n\n${trendsList}`
-: " Pas encore de tendances détectées cette semaine. Publiez avec des hashtags pour lancer la vague!";
+      ? ` **Tendances actuelles sur Vibe**:\n\n${trendsList}`
+      : " Pas encore de tendances détectées cette semaine. Publiez avec des hashtags pour lancer la vague!";
   }
   if (toolName === "suggest_post") {
     return ` **Idées de publications Vibe** (thème: ${result.topic}):\n\n${result.suggestions}\n\n*Utilisez /publish suivi du texte choisi pour publier.*`;
@@ -106,18 +106,18 @@ export function formatToolReply(
   if (toolName === "get_notifications") {
     if (result.count === 0) return " Aucune notification récente.";
     const list = result.notifications
-.slice(0, 10)
-.map(
+      .slice(0, 10)
+      .map(
         (n: any) =>
-          `• **${n.type}** — ${n.message || (n.actor_username? `@${n.actor_username}`: "")}`
+          `• **${n.type}** — ${n.message || (n.actor_username ? `@${n.actor_username}` : "")}`
       )
-.join("\n");
+      .join("\n");
     return ` **Vos ${result.count} dernières notifications**:\n\n${list}`;
   }
   if (toolName === "like_post") {
     return result.liked
-? ` ${result.message}\n\n• Post: \`${result.post_id}\`\n• Total likes: **${result.likes_count}**`
-: ` ${result.message}`;
+      ? ` ${result.message}\n\n• Post: \`${result.post_id}\`\n• Total likes: **${result.likes_count}**`
+      : ` ${result.message}`;
   }
   if (toolName === "send_message") {
     return ` ${result.message}\n\n• Destinataire: **@${result.username}**\n• Aperçu: « ${result.preview}»`;
@@ -127,10 +127,10 @@ export function formatToolReply(
     return ` ${result.message}\n\n• Modifiés: \`${keys}\``;
   }
   if (toolName === "bookmark_post") {
-    return result.bookmarked? ` ${result.message}`: ` ${result.message}`;
+    return result.bookmarked ? ` ${result.message}` : ` ${result.message}`;
   }
   if (toolName === "repost_post") {
-    return result.reposted? ` ${result.message}`: ` ${result.message}`;
+    return result.reposted ? ` ${result.message}` : ` ${result.message}`;
   }
   if (toolName === "comment_post") {
     return ` ${result.message}\n\n• Commentaire: \`${result.comment_id}\``;
@@ -143,63 +143,63 @@ export function formatToolReply(
       return ` Aucune publication trouvée pour « ${result.query}».`;
     }
     const list = (result.posts || [])
-.slice(0, 5)
-.map(
+      .slice(0, 5)
+      .map(
         (p: any) =>
           `• @${p.username} — « ${String(p.content || "")
-.replace(/\s+/g, " ")
-.slice(0, 90)}»`
+            .replace(/\s+/g, " ")
+            .slice(0, 90)}»`
       )
-.join("\n");
+      .join("\n");
     return ` **${result.resultsCount} publication(s) pour « ${result.query}»**:\n\n${list}`;
   }
   if (toolName === "analyze_creator_stats") {
     const t = result.totals || {};
     const reco = (result.recommendations || [])
-.map((r: string) => `• ${r}`)
-.join("\n");
+      .map((r: string) => `• ${r}`)
+      .join("\n");
     return ` **Analyse créateur (${result.period_days} j)**:\n• Vues: **${
-      t.views?? "—"
-    }** · ${t.likes?? "—"} · ${t.reposts?? "—"} · ${
-      t.replies?? "—"
-    }\n• Taux d'engagement: **${result.engagement_rate_percent?? "—"}%**${
-      reco? `\n\n**Recommandations:**\n${reco}`: ""
+      t.views ?? "—"
+    }** · ${t.likes ?? "—"} · ${t.reposts ?? "—"} · ${
+      t.replies ?? "—"
+    }\n• Taux d'engagement: **${result.engagement_rate_percent ?? "—"}%**${
+      reco ? `\n\n**Recommandations:**\n${reco}` : ""
     }`;
   }
   if (toolName === "analyze_audience") {
     const src = (result.sources || [])
-.map((s: any) => `• ${s.source}: **${s.views}** vues (${s.percent}%)`)
-.join("\n");
+      .map((s: any) => `• ${s.source}: **${s.views}** vues (${s.percent}%)`)
+      .join("\n");
     const hours = (result.peak_hours || [])
-.slice(0, 3)
-.map((h: any) => `${String(h.hour).padStart(2, "0")}h`)
-.join(", ");
+      .slice(0, 3)
+      .map((h: any) => `${String(h.hour).padStart(2, "0")}h`)
+      .join(", ");
     const fans = (result.top_engaged_followers || [])
-.slice(0, 3)
-.map((f: any) => `@${f.username} (${f.views})`)
-.join(", ");
+      .slice(0, 3)
+      .map((f: any) => `@${f.username} (${f.views})`)
+      .join(", ");
     return ` **Audience (${result.period_days} j)**:\n• Vues: **${result.total_views}** · Visiteurs uniques: **${result.unique_viewers}**\n${src}${
-      hours? `\n• Heures de pointe: ${hours}`: ""
-    }${fans? `\n• Top followers engagés: ${fans}`: ""}`;
+      hours ? `\n• Heures de pointe: ${hours}` : ""
+    }${fans ? `\n• Top followers engagés: ${fans}` : ""}`;
   }
   if (toolName === "best_time_to_post") {
     const slots = (result.best_slots || [])
-.map(
+      .map(
         (s: any) =>
           `• **${s.weekday} ${String(s.hour).padStart(
             2,
             "0"
           )}h** — ${s.avg_views} vues moy., ${s.avg_engagement} engagement`
       )
-.join("\n");
+      .join("\n");
     return ` **Meilleurs créneaux (${result.period_days} j, ${result.analyzed_posts} posts analysés)**:\n${
       slots || "• Pas assez de données."
     }\n\n*Confiance: ${result.confidence}*`;
   }
   if (toolName === "compare_periods") {
     const fmt = (label: string, m: any) =>
-      `• ${label}: **${m.current}** vs ${m.previous} (${m.delta >= 0? "+": ""}${m.delta}, ${
-        m.percent >= 0? "+": ""
+      `• ${label}: **${m.current}** vs ${m.previous} (${m.delta >= 0 ? "+" : ""}${m.delta}, ${
+        m.percent >= 0 ? "+" : ""
       }${m.percent}%)`;
     return ` **Comparaison (${result.period_days} j vs les ${result.period_days} précédents)**:\n${fmt(
       "Vues",
@@ -214,104 +214,104 @@ export function formatToolReply(
   }
   if (toolName === "predict_post_performance") {
     const tips = (result.breakdown || [])
-.filter((b: any) => b.tip)
-.map((b: any) => `• ${b.tip}`)
-.join("\n");
+      .filter((b: any) => b.tip)
+      .map((b: any) => `• ${b.tip}`)
+      .join("\n");
     return ` **Prévision du brouillon: ${result.score}/100**${
-      result.cold_start? " (historique insuffisant)": ""
+      result.cold_start ? " (historique insuffisant)" : ""
     }\n• Portée estimée: **${result.estimated_reach}** vues\n• Engagement estimé: **${result.estimated_engagement}**${
-      tips? `\n\n**Conseils:**\n${tips}`: ""
+      tips ? `\n\n**Conseils:**\n${tips}` : ""
     }`;
   }
   if (toolName === "analyze_content_performance") {
     const formats = (result.formats || [])
-.map(
+      .map(
         (f: any) =>
           `• **${f.format}**: ${f.posts} posts · ${f.avg_views} vues moy. · ${f.avg_engagement} engagement`
       )
-.join("\n");
+      .join("\n");
     const tags = (result.top_hashtags || [])
-.slice(0, 5)
-.map((t: any) => `${t.tag} (${t.avg_views} vues)`)
-.join(", ");
+      .slice(0, 5)
+      .map((t: any) => `${t.tag} (${t.avg_views} vues)`)
+      .join(", ");
     return ` **Performance par format (${result.period_days} j)**:\n${
       formats || "• Aucun post sur la période."
-    }${tags? `\n\n**Top hashtags:** ${tags}`: ""}`;
+    }${tags ? `\n\n**Top hashtags:** ${tags}` : ""}`;
   }
   if (toolName === "analyze_dm_activity") {
     const top = (result.top_correspondents || [])
-.slice(0, 3)
-.map((c: any) => `@${c.username} (${c.messages})`)
-.join(", ");
+      .slice(0, 3)
+      .map((c: any) => `@${c.username} (${c.messages})`)
+      .join(", ");
     return ` **Activité messages (${result.period_days} j)**:\n• Total: **${result.messages_total}** (${result.sent} envoyés, ${result.received} reçus)\n• Conversations actives: **${result.active_conversations}** · Groupes: ${result.groups}${
       result.avg_reply_minutes === null
-? ""
-: `\n• Temps de réponse moyen: **${result.avg_reply_minutes} min**`
-    }${top? `\n• Top correspondants: ${top}`: ""}`;
+        ? ""
+        : `\n• Temps de réponse moyen: **${result.avg_reply_minutes} min**`
+    }${top ? `\n• Top correspondants: ${top}` : ""}`;
   }
   if (toolName === "analyze_book_stats") {
     const books = (result.books || [])
-.map(
+      .map(
         (b: any) =>
           `• **${b.title}**: ${b.items_count} Vibes · ${b.members_count} membres · ${b.contributors_count} contributeurs`
       )
-.join("\n");
+      .join("\n");
     return ` **Vos Livres (${result.books_count})**:\n${books || "• Aucun Livre."}`;
   }
   if (toolName === "analyze_hashtags") {
     const tags = (result.hashtags || [])
-.slice(0, 5)
-.map(
+      .slice(0, 5)
+      .map(
         (t: any) =>
           `• **${t.tag}** — ${t.avg_views} vues moy., ${t.avg_likes} likes moy.`
       )
-.join("\n");
+      .join("\n");
     const sugg = (result.suggestions || [])
-.slice(0, 4)
-.map((t: any) => `${t.tag} (${t.platform_posts_7d})`)
-.join(", ");
+      .slice(0, 4)
+      .map((t: any) => `${t.tag} (${t.platform_posts_7d})`)
+      .join(", ");
     return `⃣ **Hashtags (${result.period_days} j)**:\n${
       tags || "• Aucun hashtag utilisé sur la période."
-    }${sugg? `\n\n**Suggestions tendance:** ${sugg}`: ""}`;
+    }${sugg ? `\n\n**Suggestions tendance:** ${sugg}` : ""}`;
   }
   if (toolName === "analyze_sentiment") {
     const a = result.analysis || {};
     const terms = (a.key_terms || []).map((t: string) => `\`${t}\``).join(", ");
-    const score = typeof a.score === "number"? a.score.toFixed(2): "—";
+    const score = typeof a.score === "number" ? a.score.toFixed(2) : "—";
     return ` **Sentiment des commentaires** (${result.commentCount} commentaires):\n• Polarité: **${a.polarity || "—"}** (score ${score})\n• Termes clés: ${terms || "—"}\n\n${a.summary || ""}`;
   }
   if (toolName === "summarize_thread") {
     const a = result.analysis || {};
     const points = (a.key_points || []).map((p: string) => `• ${p}`).join("\n");
     const clashes = (a.disagreements || [])
-.map((p: string) => `• ${p}`)
-.join("\n");
+      .map((p: string) => `• ${p}`)
+      .join("\n");
     return ` **Résumé du fil** (${result.commentCount} commentaires):\n\n${
       a.summary || ""
-    }${points? `\n\n**Points clés:**\n${points}`: ""}${
-      clashes? `\n\n**Désaccords:**\n${clashes}`: ""
+    }${points ? `\n\n**Points clés:**\n${points}` : ""}${
+      clashes ? `\n\n**Désaccords:**\n${clashes}` : ""
     }`;
   }
   if (toolName === "adapt_post") {
     const limit = result.withinLimit
-? `${result.characterCount} caractères`
-: ` ${result.characterCount} caractères (max ${result.maxLength})`;
+      ? `${result.characterCount} caractères`
+      : ` ${result.characterCount} caractères (max ${result.maxLength})`;
     return ` **Version ${result.networkName}** (${limit}):\n\n${result.adapted}`;
   }
   if (toolName === "generate_variants") {
     const list = (result.variants || [])
-.map(
+      .map(
         (v: any, i: number) =>
-          `**${i + 1}.** ${v.hook}${v.angle? `\n _Angle: ${v.angle}_`: ""}`
+          `**${i + 1}.** ${v.hook}${v.angle ? `\n _Angle: ${v.angle}_` : ""}`
       )
-.join("\n\n");
+      .join("\n\n");
     return ` **3 accroches alternatives** (style ${result.tone}):\n\n${list}`;
   }
   if (toolName === "generate_caption") {
     const tags = (result.hashtags || []).join(" ");
     return ` **Légende proposée**:\n\n${result.caption}${
-      result.callToAction? `\n\n${result.callToAction}`: ""
-    }${tags? `\n\n${tags}`: ""}`;
+      result.callToAction ? `\n\n${result.callToAction}` : ""
+    }${tags ? `\n\n${tags}` : ""}`;
   }
   if (toolName === "compare_models") {
     const a = result.modelA || {};
@@ -353,7 +353,7 @@ export async function buildPostContext(
 ): Promise<{ text: string; imageParts: any[] } | null> {
   try {
     if (
-!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         postId
       )
     ) {
@@ -385,11 +385,11 @@ export async function buildPostContext(
       `;
       if (comments.length > 0) {
         const lines = comments
-.map(
+          .map(
             (cm: any) =>
               ` • @${cm.username}: ${String(cm.content || "").slice(0, 200)}`
           )
-.join("\n");
+          .join("\n");
         commentsText = `\n\nPremiers commentaires:\n${lines}`;
       }
     } catch {}
@@ -402,7 +402,7 @@ export async function buildPostContext(
 
     const text =
       ` Post mentionné de @${post.username} (${post.display_name || post.username})` +
-      `${post.ai_generated? " [marqué « créé avec l'IA» par son auteur]": ""}\n` +
+      `${post.ai_generated ? " [marqué « créé avec l'IA» par son auteur]" : ""}\n` +
       `Publié le ${new Date(post.published_at).toLocaleString("fr-FR")}\n\n` +
       `« ${post.content}»\n\n` +
       `Statistiques: ${post.likes_count} J'aime · ${post.replies_count} réponses · ${post.reposts_count} republications · ${
@@ -417,7 +417,7 @@ export async function buildPostContext(
       const isImage =
         String(m.media_type || "").startsWith("image") ||
         /\.(png|jpe?g|webp|gif)(\?|$)/i.test(url);
-      if (!url ||!isImage) continue;
+      if (!url || !isImage) continue;
       try {
         const res = await fetch(url);
         if (!res.ok) continue;
@@ -452,8 +452,8 @@ export async function getOpenRouterKey(
   `.catch(() => []);
   return (
     (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
-    (typeof process!== "undefined" && process.env?.OPENROUTER_API_KEY) ||
-    (keyRows.length > 0? keyRows[0].api_key: "")
+    (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
+    (keyRows.length > 0 ? keyRows[0].api_key : "")
   );
 }
 
@@ -534,15 +534,15 @@ export async function resolveOwnedConversation(
   userId: number,
   raw: unknown
 ): Promise<{ id: string | null; invalid: boolean }> {
-  const rawId = typeof raw === "string"? raw.trim(): "";
+  const rawId = typeof raw === "string" ? raw.trim() : "";
   if (!rawId) return { id: null, invalid: false };
   if (!UUID_RE.test(rawId)) return { id: null, invalid: true };
   const rows = await sql`
     SELECT id FROM mai_conversations WHERE id = ${rawId}::uuid AND user_id = ${userId} LIMIT 1
   `.catch(() => []);
   return rows.length > 0
-? { id: String(rows[0].id), invalid: false }
-: { id: null, invalid: true };
+    ? { id: String(rows[0].id), invalid: false }
+    : { id: null, invalid: true };
 }
 
 /** Titre automatique depuis le premier message utilisateur (titre par défaut seulement). */
@@ -557,16 +557,16 @@ export async function maybeAutoTitleConversation(
     const current = String(rows[0]?.title || "").trim();
     if (
       current &&
-      current!== "Discussion mAI" &&
-      current!== "Nouvelle discussion mAI"
+      current !== "Discussion mAI" &&
+      current !== "Nouvelle discussion mAI"
     ) {
       return;
     }
     const plain = stripHtmlTags(String(firstMessage))
-.replace(/\s+/g, " ")
-.trim();
+      .replace(/\s+/g, " ")
+      .trim();
     if (!plain) return;
-    const title = plain.length > 60? `${plain.slice(0, 57)}…`: plain;
+    const title = plain.length > 60 ? `${plain.slice(0, 57)}…` : plain;
     await sql`UPDATE mai_conversations SET title = ${title} WHERE id = ${conversationId}::uuid`;
   } catch {}
 }
@@ -586,8 +586,8 @@ export async function saveMAIMessage(
   try {
     const toolCallsJson =
       extra?.toolCalls && extra.toolCalls.length > 0
-? JSON.stringify(extra.toolCalls)
-: null;
+        ? JSON.stringify(extra.toolCalls)
+        : null;
     const reasoning = extra?.reasoning?.trim() || null;
     const rows = await sql`
       INSERT INTO mai_messages (conversation_id, sender_role, content, tool_calls, tool_call_id, reasoning)
@@ -622,13 +622,13 @@ export function makeToolCallRecord(opts: {
   return {
     args: opts.args || {},
     at: new Date().toISOString(),
-    error: opts.error?? null,
+    error: opts.error ?? null,
     id:
       globalThis.crypto?.randomUUID?.() ||
       `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    model: opts.model?? null,
+    model: opts.model ?? null,
     name: opts.name,
-    result: opts.result?? null,
+    result: opts.result ?? null,
     status: opts.status,
   };
 }
@@ -657,18 +657,18 @@ export async function finalizePendingToolMessage(
       ORDER BY created_at DESC LIMIT 12
     `;
     for (const row of rows as any[]) {
-      const calls = Array.isArray(row.tool_calls)? row.tool_calls: [];
+      const calls = Array.isArray(row.tool_calls) ? row.tool_calls : [];
       const idx = calls.findIndex(
         (cc: any) =>
           cc && cc.name === toolName && cc.status === "pending_approval"
       );
       if (idx >= 0) {
         calls[idx] = {
-...calls[idx],
+          ...calls[idx],
           at: new Date().toISOString(),
-          error: patch.error?? null,
-          model: patch.model?? calls[idx].model?? null,
-          result: patch.result?? null,
+          error: patch.error ?? null,
+          model: patch.model ?? calls[idx].model ?? null,
+          result: patch.result ?? null,
           status: patch.status,
         };
         await sql`
@@ -703,11 +703,11 @@ export function detectTool(
     lower.startsWith("génère une image")
   ) {
     const prompt = cleanMsg
-.replace(
+      .replace(
         /^([/@](image|draw|generate_image)|(génère|crée)\s*(une image|l'image)?)\s*:?\s*/i,
         ""
       )
-.trim();
+      .trim();
     return {
       toolArgs: {
         prompt: prompt || "Création artistique numérique minimaliste",
@@ -723,8 +723,8 @@ export function detectTool(
     lower.startsWith("@web")
   ) {
     const q = cleanMsg
-.replace(/^[/@](search|recherche|web)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](search|recherche|web)\s*:?\s*/i, "")
+      .trim();
     return {
       toolArgs: { query: q || "Intelligence artificielle 2026" },
       toolToRun: "search_web",
@@ -737,8 +737,8 @@ export function detectTool(
     lower.startsWith("@verifier")
   ) {
     const s = cleanMsg
-.replace(/^[/@](fact_check|verifier)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](fact_check|verifier)\s*:?\s*/i, "")
+      .trim();
     return { toolArgs: { statement: s || cleanMsg }, toolToRun: "fact_check" };
   }
   if (
@@ -749,14 +749,14 @@ export function detectTool(
     lower.startsWith("@style")
   ) {
     const words = cleanMsg
-.replace(/^[/@](rewrite|reformuler|style)\s*:?\s*/i, "")
-.trim()
-.split(/\s+/);
+      .replace(/^[/@](rewrite|reformuler|style)\s*:?\s*/i, "")
+      .trim()
+      .split(/\s+/);
     const style = ["viral", "pro", "humour", "concis", "poétique"].includes(
       words[0]?.toLowerCase()
     )
-? words.shift()
-: "viral";
+      ? words.shift()
+      : "viral";
     return {
       toolArgs: { style, text: words.join(" ") || cleanMsg },
       toolToRun: "rewrite_post",
@@ -769,9 +769,9 @@ export function detectTool(
     lower.startsWith("@traduire")
   ) {
     const words = cleanMsg
-.replace(/^[/@](translate|traduire)\s*:?\s*/i, "")
-.trim()
-.split(/\s+/);
+      .replace(/^[/@](translate|traduire)\s*:?\s*/i, "")
+      .trim()
+      .split(/\s+/);
     const lang = words[0] || "anglais";
     words.shift();
     return {
@@ -788,8 +788,8 @@ export function detectTool(
     lower.startsWith("publie ")
   ) {
     const textMatch = cleanMsg
-.replace(/^([/@](publish|publier|post)|(publie|poste))\s*:?\s*/i, "")
-.trim();
+      .replace(/^([/@](publish|publier|post)|(publie|poste))\s*:?\s*/i, "")
+      .trim();
     return {
       toolArgs: { content: textMatch || cleanMsg },
       toolToRun: "create_post",
@@ -801,8 +801,8 @@ export function detectTool(
     lower.startsWith("/supprimer")
   ) {
     const raw = cleanMsg
-.replace(/^[/@](delete_post|supprimer)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](delete_post|supprimer)\s*:?\s*/i, "")
+      .trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
@@ -843,9 +843,9 @@ export function detectTool(
     lower.startsWith("@suivre")
   ) {
     const target = cleanMsg
-.replace(/^[/@](follow|suivre)\s*:?\s*/i, "")
-.trim()
-.replace(/^@/, "");
+      .replace(/^[/@](follow|suivre)\s*:?\s*/i, "")
+      .trim()
+      .replace(/^@/, "");
     if (target) {
       return { toolArgs: { username: target }, toolToRun: "follow_user" };
     }
@@ -904,8 +904,8 @@ export function detectTool(
     lower.startsWith("/compare_models")
   ) {
     const raw = cleanMsg
-.replace(/^[/@](comparer|compare_modeles|compare_models)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](comparer|compare_modeles|compare_models)\s*:?\s*/i, "")
+      .trim();
     // Deux modèles séparés par `|`, puis le prompt.
     //
     // Le séparateur est volontairement le seul `|`: un identifiant de
@@ -1001,11 +1001,11 @@ export function detectTool(
     lower.startsWith("/idée")
   ) {
     const topic = cleanMsg
-.replace(
+      .replace(
         /^[/@](inspire|idee|idée)(-?moi)?\s*(sur|à propos de|about)?\s*:?\s*/i,
         ""
       )
-.trim();
+      .trim();
     return {
       toolArgs: { style: "viral", topic: topic || "sujets d'actualité" },
       toolToRun: "suggest_post",
@@ -1048,20 +1048,20 @@ export function detectTool(
   ) {
     const isUnlike = lower.startsWith("/unlike") || lower.startsWith("@unlike");
     const raw = cleanMsg
-.replace(/^[/@](like|liker|unlike)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](like|liker|unlike)\s*:?\s*/i, "")
+      .trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
     if (m) {
       return {
-        toolArgs: { like:!isUnlike, post_id: m[0] },
+        toolArgs: { like: !isUnlike, post_id: m[0] },
         toolToRun: "like_post",
       };
     }
     if (raw) {
       return {
-        toolArgs: { like:!isUnlike, post_id: raw.split(/\s+/)[0] },
+        toolArgs: { like: !isUnlike, post_id: raw.split(/\s+/)[0] },
         toolToRun: "like_post",
       };
     }
@@ -1075,8 +1075,8 @@ export function detectTool(
     lower.startsWith("/envoyer")
   ) {
     const raw = cleanMsg
-.replace(/^[/@](dm|message|envoyer)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](dm|message|envoyer)\s*:?\s*/i, "")
+      .trim();
     const um = raw.match(/^@?([a-z0-9_]{1,30})\s+([\s\S]+)/i);
     if (um) {
       return {
@@ -1095,11 +1095,11 @@ export function detectTool(
     lower.startsWith("/reglage")
   ) {
     const raw = cleanMsg
-.replace(
+      .replace(
         /^[/@](settings|parametres|paramètres|reglage|reglages)\s*:?\s*/i,
         ""
       )
-.trim();
+      .trim();
     // Format simple: /settings theme dark /settings langue fr /settings fil trending
     const parts = raw.split(/\s+/);
     const key = (parts[0] || "").toLowerCase();
@@ -1149,8 +1149,8 @@ export function detectTool(
     lower.startsWith("/save")
   ) {
     const raw = cleanMsg
-.replace(/^[/@](bookmark|favori|favoris|save)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](bookmark|favori|favoris|save)\s*:?\s*/i, "")
+      .trim();
     const m = raw.match(
       /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
     );
@@ -1188,8 +1188,8 @@ export function detectTool(
     lower.startsWith("/reply")
   ) {
     const raw = cleanMsg
-.replace(/^[/@](comment|commenter|commentaire|reply)\s*:?\s*/i, "")
-.trim();
+      .replace(/^[/@](comment|commenter|commentaire|reply)\s*:?\s*/i, "")
+      .trim();
     const m = raw.match(
       /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s+([\s\S]+)/i
     );
@@ -1253,8 +1253,8 @@ export function detectTool(
     const words = raw.split(/\s+/);
     const known = ["x", "twitter", "instagram", "insta", "linkedin"];
     const network = known.includes(words[0]?.toLowerCase())
-? words.shift()
-: "x";
+      ? words.shift()
+      : "x";
     const text = words.join(" ").trim();
     if (!text) return null;
     return {
@@ -1269,8 +1269,8 @@ export function detectTool(
     const words = raw.split(/\s+/);
     const tones = ["viral", "pro", "humour", "concis", "poétique"];
     const tone = tones.includes(words[0]?.toLowerCase())
-? words.shift()?.toLowerCase() || "viral"
-: "viral";
+      ? words.shift()?.toLowerCase() || "viral"
+      : "viral";
     const text = words.join(" ").trim();
     if (!text) return null;
     return { toolArgs: { text, tone }, toolToRun: "generate_variants" };

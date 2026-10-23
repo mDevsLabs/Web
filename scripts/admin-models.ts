@@ -35,7 +35,7 @@ export function validateModelPatch(patch: ModelPatch): void {
     throw new Error("Aucune modification sélectionnée.");
   for (const [key, value] of Object.entries(patch)) {
     if (key === "isActive") {
-      if (typeof value!== "boolean")
+      if (typeof value !== "boolean")
         throw new Error("isActive doit être TRUE ou FALSE.");
       continue;
     }
@@ -44,22 +44,22 @@ export function validateModelPatch(patch: ModelPatch): void {
     if (value === null) continue; // Rétablir la valeur d'origine.
 
     if (key === "type") {
-      if (value!== "chat" && value!== "audio" && value!== "image") {
+      if (value !== "chat" && value !== "audio" && value !== "image") {
         throw new Error("type doit être 'chat', 'audio' ou 'image'.");
       }
     } else if (key === "fournisseur") {
-      if (value!== "openrouter" && value!== "cometapi") {
+      if (value !== "openrouter" && value !== "cometapi") {
         throw new Error("fournisseur doit être 'openrouter' ou 'cometapi'.");
       }
     } else if (key === "provider") {
-      if (typeof value!== "string" ||!value.trim()) {
+      if (typeof value !== "string" || !value.trim()) {
         throw new Error(
           "provider (laboratoire) doit être une chaîne non vide."
         );
       }
     } else if (key === "context_length" || key === "max_output_tokens") {
       if (
-!Number.isSafeInteger(value) ||
+        !Number.isSafeInteger(value) ||
         Number(value) < 0 ||
         Number(value) > 2_147_483_647
       ) {
@@ -68,32 +68,32 @@ export function validateModelPatch(patch: ModelPatch): void {
         );
       }
     } else if (key === "name" || key === "description") {
-      if (typeof value!== "string" || (key === "name" &&!value.trim())) {
+      if (typeof value !== "string" || (key === "name" && !value.trim())) {
         throw new Error(`Le champ ${key} doit être du texte.`);
       }
     } else if (key === "supported_parameters") {
       if (
-!Array.isArray(value) ||
-        value.some((v) => typeof v!== "string" ||!v.trim())
+        !Array.isArray(value) ||
+        value.some((v) => typeof v !== "string" || !v.trim())
       ) {
         throw new Error(
           "Les paramètres doivent être une liste de noms non vides."
         );
       }
-    } else if (!value || typeof value!== "object" || Array.isArray(value)) {
+    } else if (!value || typeof value !== "object" || Array.isArray(value)) {
       throw new Error(`Le champ ${key} doit être un objet JSON.`);
     } else if (key === "architecture") {
       const a = value as Record<string, unknown>;
       for (const modality of ["input_modalities", "output_modalities"]) {
         if (
-          a[modality]!== undefined &&
+          a[modality] !== undefined &&
           (!Array.isArray(a[modality]) ||
-            (a[modality] as unknown[]).some((v) => typeof v!== "string"))
+            (a[modality] as unknown[]).some((v) => typeof v !== "string"))
         ) {
           throw new Error(`${modality} doit être une liste de chaînes.`);
         }
       }
-      if (a.modality!== undefined && typeof a.modality!== "string") {
+      if (a.modality !== undefined && typeof a.modality !== "string") {
         throw new Error("modality doit être une chaîne.");
       }
     }
@@ -109,9 +109,9 @@ export function selectModels(
   const numbers = new Map(models.map((m) => [String(m.model_number), m]));
   const ids = new Map(models.map((m) => [m.id, m]));
   for (const item of input
-.split(",")
-.map((s) => s.trim())
-.filter(Boolean)) {
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)) {
     const range = item.match(/^#(\d+)-#?(\d+)$/);
     if (range) {
       const start = Number(range[1]);
@@ -124,7 +124,7 @@ export function selectModels(
       }
       continue;
     }
-    const m = item.startsWith("#")? numbers.get(item.slice(1)): ids.get(item);
+    const m = item.startsWith("#") ? numbers.get(item.slice(1)) : ids.get(item);
     if (!m) throw new Error(`Modèle introuvable dans les résultats: ${item}`);
     selected.set(m.id, m);
   }
@@ -202,17 +202,17 @@ export async function applyModelPatch(
 ) {
   validateModelPatch(patch);
   if (!ids.length) throw new Error("Sélection vide.");
-  const { isActive,...metadata } = patch;
+  const { isActive, ...metadata } = patch;
   const reset = Object.entries(metadata)
-.filter(([, v]) => v === null)
-.map(([k]) => k);
+    .filter(([, v]) => v === null)
+    .map(([k]) => k);
   const updates = Object.fromEntries(
-    Object.entries(metadata).filter(([, v]) => v!== null)
+    Object.entries(metadata).filter(([, v]) => v !== null)
   );
   const rows = await sqlUpdatePatch(
     sql,
     [...new Set(ids)],
-    isActive?? null,
+    isActive ?? null,
     reset,
     updates
   );
@@ -250,22 +250,18 @@ function displayModels(models: StoredModel[], offset = 0) {
     models.slice(offset, offset + 25).map((m) => {
       const e = effectiveModel(m);
       const typeIcon =
-        e.type === "audio"
-? " audio"
-: e.type === "image"
-? " image"
-: " chat";
+        e.type === "audio" ? " audio" : e.type === "image" ? " image" : " chat";
 
       return {
         Actif: m.isActive,
-        Contexte: e.maxContext? e.maxContext.toLocaleString("fr-FR"): "-",
+        Contexte: e.maxContext ? e.maxContext.toLocaleString("fr-FR") : "-",
         Disponible: m.is_available,
         Fournisseur: e.fournisseur,
         ID: m.id,
         Labo: e.provider || e.owned_by,
         Nom: e.name,
         "N°": `#${m.model_number}`,
-        Sortie: e.maxOutput? e.maxOutput.toLocaleString("fr-FR"): "-",
+        Sortie: e.maxOutput ? e.maxOutput.toLocaleString("fr-FR") : "-",
         Type: typeIcon,
       };
     })
@@ -290,9 +286,9 @@ const CONFLICT_LABELS: Record<string, string> = {
 
 function formatConflictValue(value: unknown): string {
   const text =
-    typeof value === "string"? value: JSON.stringify(value, null, 2);
-  const normalized = text?? "(vide)";
-  return normalized.length > 800? `${normalized.slice(0, 797)}…`: normalized;
+    typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  const normalized = text ?? "(vide)";
+  return normalized.length > 800 ? `${normalized.slice(0, 797)}…` : normalized;
 }
 
 /**
@@ -302,7 +298,7 @@ function formatConflictValue(value: unknown): string {
  */
 export function createConflictResolver(rl: Interface): ModelConflictResolver {
   return async (conflict: ModelConflict) => {
-    const label = CONFLICT_LABELS[conflict.field]?? conflict.field;
+    const label = CONFLICT_LABELS[conflict.field] ?? conflict.field;
     const database = formatConflictValue(conflict.databaseValue);
     const upstream = formatConflictValue(conflict.upstreamValue);
     console.log("\n=======================================================");
@@ -311,7 +307,7 @@ export function createConflictResolver(rl: Interface): ModelConflictResolver {
     );
     console.log("=======================================================");
     console.log(
-      ` Base de données${conflict.origin === "override"? " (surcharge admin)": ""}: ${database}`
+      ` Base de données${conflict.origin === "override" ? " (surcharge admin)" : ""}: ${database}`
     );
     console.log(` Amont (OpenRouter / CometAPI): ${upstream}`);
     console.log(" Différence:");
@@ -322,15 +318,15 @@ export function createConflictResolver(rl: Interface): ModelConflictResolver {
         " Conserver [b] la base de données / [a] l'amont / [s] supprimer ce modèle (Entrée = base de données): "
       )
     )
-.trim()
-.toLowerCase();
+      .trim()
+      .toLowerCase();
     if (["s", "supprimer", "d", "delete"].includes(answer)) {
       console.log(` Modèle ${conflict.id} marqué pour suppression.`);
       return "delete";
     }
     return ["a", "amont", "u", "upstream"].includes(answer)
-? "upstream"
-: "database";
+      ? "upstream"
+      : "database";
   };
 }
 
@@ -342,21 +338,19 @@ async function askSingleModelInteractivePatch(
   const patch: ModelPatch = {};
 
   console.log("\n=======================================================");
-  console.log(
-    ` MODIFICATION DU MODÈLE: #${model.model_number} — ${eff.name}`
-  );
+  console.log(` MODIFICATION DU MODÈLE: #${model.model_number} — ${eff.name}`);
   console.log("=======================================================");
   console.log(` Identifiant (ID): ${model.id}`);
   console.log(` Laboratoire: ${eff.provider || eff.owned_by}`);
   console.log(` Fournisseur: ${eff.fournisseur}`);
   console.log(
-    ` Type de modèle: ${eff.type === "audio"? " AUDIO": eff.type === "image"? " IMAGE (CometAPI)": " CHAT"}`
+    ` Type de modèle: ${eff.type === "audio" ? " AUDIO" : eff.type === "image" ? " IMAGE (CometAPI)" : " CHAT"}`
   );
   console.log(
-    ` Statut actuel: ${model.isActive? " ACTIF": " INACTIF"} (Dispo: ${model.is_available? "Oui": "Non"})`
+    ` Statut actuel: ${model.isActive ? " ACTIF" : " INACTIF"} (Dispo: ${model.is_available ? "Oui" : "Non"})`
   );
   console.log(
-    ` Nom effectif: ${eff.name} ${model.overrides.name? "(surchargé)": "(original)"}`
+    ` Nom effectif: ${eff.name} ${model.overrides.name ? "(surchargé)" : "(original)"}`
   );
   console.log(
     ` Contexte max: ${eff.maxContext?.toLocaleString("fr-FR") || "N/A"} tokens`
@@ -367,24 +361,22 @@ async function askSingleModelInteractivePatch(
   if (eff.description) {
     const descShort =
       eff.description.length > 90
-? `${eff.description.slice(0, 87)}…`
-: eff.description;
+        ? `${eff.description.slice(0, 87)}…`
+        : eff.description;
     console.log(` Description: ${descShort}`);
   }
   const ovKeys = Object.keys(model.overrides || {});
   console.log(
-    ` Surcharges: ${ovKeys.length? ovKeys.join(", "): "aucune (valeurs d'origine)"}`
+    ` Surcharges: ${ovKeys.length ? ovKeys.join(", ") : "aucune (valeurs d'origine)"}`
   );
   console.log("-------------------------------------------------------");
   console.log(" Que souhaitez-vous modifier?");
   console.log(" 1. Nom d'affichage");
   console.log(" 2. Description");
   console.log(
-    ` 3. Basculer Statut (${model.isActive? "Actif ➔ INACTIF": "Inactif ➔ ACTIF"})`
+    ` 3. Basculer Statut (${model.isActive ? "Actif ➔ INACTIF" : "Inactif ➔ ACTIF"})`
   );
-  console.log(
-    ` 4. Type de modèle (actuel: ${eff.type} ➔ chat, audio, image)`
-  );
+  console.log(` 4. Type de modèle (actuel: ${eff.type} ➔ chat, audio, image)`);
   console.log(` 5. Laboratoire concepteur (provider: ${eff.provider})`);
   console.log(` 6. Service fournisseur (fournisseur: ${eff.fournisseur})`);
   console.log(" 7. Taille de contexte (context_length)");
@@ -401,7 +393,7 @@ async function askSingleModelInteractivePatch(
   if (action === "0") return null;
 
   if (action === "3") {
-    patch.isActive =!model.isActive;
+    patch.isActive = !model.isActive;
     return patch;
   }
 
@@ -422,7 +414,7 @@ async function askSingleModelInteractivePatch(
     const val = (
       await rl.question(` Laboratoire concepteur [${cur}]: `)
     ).trim();
-    if (val && val!== cur) patch.provider = val;
+    if (val && val !== cur) patch.provider = val;
     return patch;
   }
 
@@ -442,8 +434,8 @@ async function askSingleModelInteractivePatch(
         " Réinitialiser toutes les surcharges et rétablir les valeurs d'origine? (o/N): "
       )
     )
-.trim()
-.toLowerCase();
+      .trim()
+      .toLowerCase();
     if (confirm === "o" || confirm === "oui" || confirm === "y") {
       patch.name = null;
       patch.description = null;
@@ -461,46 +453,44 @@ async function askSingleModelInteractivePatch(
   }
 
   if (action === "1") {
-    const cur = String(model.overrides.name?? eff.name?? "");
+    const cur = String(model.overrides.name ?? eff.name ?? "");
     const val = (
       await rl.question(` Nom d'affichage [${cur}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.name = null;
-    else if (val && val!== cur) patch.name = val;
+    else if (val && val !== cur) patch.name = val;
   }
 
   if (action === "2") {
-    const cur = String(model.overrides.description?? eff.description?? "");
-    const preview = cur.length > 50? `${cur.slice(0, 47)}…`: cur;
+    const cur = String(model.overrides.description ?? eff.description ?? "");
+    const preview = cur.length > 50 ? `${cur.slice(0, 47)}…` : cur;
     const val = (
       await rl.question(` Description [${preview}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.description = null;
-    else if (val && val!== cur) patch.description = val;
+    else if (val && val !== cur) patch.description = val;
   }
 
   if (action === "7") {
-    const cur = Number(model.overrides.context_length?? eff.maxContext?? 0);
+    const cur = Number(model.overrides.context_length ?? eff.maxContext ?? 0);
     const val = (
       await rl.question(
         ` Contexte max en tokens [${cur}] ('auto' pour reset): `
       )
     ).trim();
     if (val.toLowerCase() === "auto") patch.context_length = null;
-    else if (val &&!Number.isNaN(Number(val)) && Number(val)!== cur) {
+    else if (val && !Number.isNaN(Number(val)) && Number(val) !== cur) {
       patch.context_length = Number(val);
     }
   }
 
   if (action === "8") {
-    const cur = Number(model.overrides.max_output_tokens?? eff.maxOutput?? 0);
+    const cur = Number(model.overrides.max_output_tokens ?? eff.maxOutput ?? 0);
     const val = (
-      await rl.question(
-        ` Sortie max en tokens [${cur}] ('auto' pour reset): `
-      )
+      await rl.question(` Sortie max en tokens [${cur}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.max_output_tokens = null;
-    else if (val &&!Number.isNaN(Number(val)) && Number(val)!== cur) {
+    else if (val && !Number.isNaN(Number(val)) && Number(val) !== cur) {
       patch.max_output_tokens = Number(val);
     }
   }
@@ -513,14 +503,14 @@ async function askSingleModelInteractivePatch(
     if (val.toLowerCase() === "auto") patch.supported_parameters = null;
     else if (val) {
       patch.supported_parameters = val
-.split(",")
-.map((s) => s.trim())
-.filter(Boolean);
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
     }
   }
 
   if (action === "10") {
-    const curPricing = model.overrides.pricing?? model.pricing?? {};
+    const curPricing = model.overrides.pricing ?? model.pricing ?? {};
     console.log("Tarification actuelle:", JSON.stringify(curPricing));
     console.log("Entrez les tarifs au format JSON ou 'auto' pour reset.");
     const val = (
@@ -555,9 +545,7 @@ async function askBatchModelPatch(
   console.log(" 1. Activer tous les modèles sélectionnés");
   console.log(" 2. Désactiver tous les modèles sélectionnés");
   console.log(" 3. Définir le Type pour tous (chat, audio, image)");
-  console.log(
-    " 4. Définir le Fournisseur pour tous (openrouter, cometapi)"
-  );
+  console.log(" 4. Définir le Fournisseur pour tous (openrouter, cometapi)");
   console.log(" 5. Rétablir les valeurs d'origine pour tous");
   console.log(" 0. Annuler");
 
@@ -610,14 +598,14 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
   while (true) {
     const typeLabel =
       typeFilter === "all"
-? "TOUS"
-: typeFilter === "audio"
-? " AUDIO"
-: typeFilter === "image"
-? " IMAGE"
-: " CHAT";
+        ? "TOUS"
+        : typeFilter === "audio"
+          ? " AUDIO"
+          : typeFilter === "image"
+            ? " IMAGE"
+            : " CHAT";
     const fLabel =
-      fournisseurFilter === "all"? "TOUS": fournisseurFilter.toUpperCase();
+      fournisseurFilter === "all" ? "TOUS" : fournisseurFilter.toUpperCase();
 
     console.log(
       `\n CATALOGUE DE MODÈLES — Type: [${typeLabel}] | Fournisseur: [${fLabel}] | Recherche: "${query || "tous"}"`
@@ -686,12 +674,12 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           console.log(
             JSON.stringify(
               {
-...effectiveModel(m),
+                ...effectiveModel(m),
                 is_available: m.is_available,
                 isActive: m.isActive,
                 model_number: m.model_number,
                 overrides: m.overrides,
-                pricing: m.overrides.pricing?? m.pricing,
+                pricing: m.overrides.pricing ?? m.pricing,
                 upstream: m.upstream,
               },
               null,
@@ -713,7 +701,7 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           patch = await askBatchModelPatch(selected, rl);
         }
 
-        if (!patch ||!Object.keys(patch).length) {
+        if (!patch || !Object.keys(patch).length) {
           console.log(" Aucune modification à enregistrer.");
           continue;
         }
@@ -737,10 +725,10 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
             ` Confirmer l'application à ${selected.length} modèle(s)? (O/n): `
           )
         )
-.trim()
-.toLowerCase();
+          .trim()
+          .toLowerCase();
 
-        if (confirm!== "n" && confirm!== "non") {
+        if (confirm !== "n" && confirm !== "non") {
           const result = await applyModelPatch(
             sql,
             selected.map((m) => m.id),
@@ -768,7 +756,7 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         console.log(" Choix invalide.");
       }
     } catch (error) {
-      console.error("", error instanceof Error? error.message: error);
+      console.error("", error instanceof Error ? error.message : error);
     }
   }
 }

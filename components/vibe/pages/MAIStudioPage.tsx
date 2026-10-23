@@ -69,16 +69,16 @@ const formatConversationPreview = (
 ): { __html: string } | string => {
   if (!preview) {
     const count = messageCount || 0;
-    return `${count} message${count > 1? "s": ""}`;
+    return `${count} message${count > 1 ? "s" : ""}`;
   }
   const cleaned = preview
-.replace(/```[\s\S]*?```/g, " [code] ")
-.replace(/^#+\s+/gm, "")
-.replace(/^>\s+/gm, "")
-.replace(/^[-*+]\s+/gm, "")
-.replace(/^\d+\.\s+/gm, "")
-.replace(/\s+/g, " ")
-.trim();
+    .replace(/```[\s\S]*?```/g, " [code] ")
+    .replace(/^#+\s+/gm, "")
+    .replace(/^>\s+/gm, "")
+    .replace(/^[-*+]\s+/gm, "")
+    .replace(/^\d+\.\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
 
   const inlineHtml = renderInlineRichMarkdown(cleaned);
   return { __html: sanitizeRichHtml(inlineHtml) };
@@ -106,8 +106,8 @@ const formatConvDate = (iso?: string): string => {
     const d = new Date(iso);
     const sameDay = d.toDateString() === new Date().toDateString();
     return sameDay
-? d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
-: d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+      ? d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
+      : d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
   } catch {
     return "";
   }
@@ -225,7 +225,7 @@ export const MAIStudioPage: React.FC = () => {
         if (res.models && res.models.length > 0) {
           const list = res.models.filter(
             (m: any) =>
-              m && m.id!== "openrouter/free" &&!m.id.startsWith("openrouter/")
+              m && m.id !== "openrouter/free" && !m.id.startsWith("openrouter/")
           );
           const lagunaIdx = list.findIndex(
             (m: any) => m.id === "poolside/laguna-xs-2.1:free"
@@ -255,23 +255,23 @@ export const MAIStudioPage: React.FC = () => {
     // Préférence partagée de l'hôte d'abord, ancien réglage Vibe ensuite.
     Promise.allSettled([
       fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH?? ""}/api/user/preferences`
-      ).then((response) => (response.ok? response.json(): null)),
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`
+      ).then((response) => (response.ok ? response.json() : null)),
       ApiService.getSettings(),
     ]).then(([preference, settings]) => {
       const host =
         preference.status === "fulfilled"
-? (preference.value?.defaultChatModel as string | null | undefined)
-: null;
+          ? (preference.value?.defaultChatModel as string | null | undefined)
+          : null;
       const saved =
-        host??
+        host ??
         (settings.status === "fulfilled"
-? (settings.value as any)?.settings?.mai_default_model
-: null);
+          ? (settings.value as any)?.settings?.mai_default_model
+          : null);
       if (
         saved &&
-        saved!== "openrouter/free" &&
-!String(saved).startsWith("openrouter/")
+        saved !== "openrouter/free" &&
+        !String(saved).startsWith("openrouter/")
       ) {
         setSelectedModel(String(saved));
       }
@@ -290,12 +290,12 @@ export const MAIStudioPage: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       void ApiService.getModels()
-.then((res) => {
+        .then((res) => {
           if (res?.models && res.models.length > 0) {
             setAvailableModels(res.models as typeof DEFAULT_MODELS);
           }
         })
-.catch(() => {});
+        .catch(() => {});
     }, MODEL_CATALOG_REFRESH_INTERVAL);
     return () => {
       clearInterval(timer);
@@ -329,13 +329,13 @@ export const MAIStudioPage: React.FC = () => {
           content: m.content,
           id: m.id,
           reasoning: m.reasoning || "",
-          sender: m.role === "assistant"? ("mai" as const): ("user" as const),
+          sender: m.role === "assistant" ? ("mai" as const) : ("user" as const),
           serverId: m.id,
           time: new Date(m.created_at).toLocaleTimeString("fr-FR", {
             hour: "2-digit",
             minute: "2-digit",
           }),
-          toolCalls: Array.isArray(m.tool_calls)? m.tool_calls: [],
+          toolCalls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
         }))
       );
       setPendingTool(null);
@@ -389,7 +389,7 @@ export const MAIStudioPage: React.FC = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const newParam = params.get("new");
-    if (newParam && newParam!== lastHandledNewRef.current) {
+    if (newParam && newParam !== lastHandledNewRef.current) {
       lastHandledNewRef.current = newParam;
       handleNewConversation();
     }
@@ -429,7 +429,7 @@ export const MAIStudioPage: React.FC = () => {
     try {
       await ApiService.renameMAIConversation(conversationId, clean);
       setConversations((list) =>
-        list.map((c) => (c.id === conversationId? {...c, title: clean }: c))
+        list.map((c) => (c.id === conversationId ? { ...c, title: clean } : c))
       );
     } catch (err: any) {
       NotificationService.showInAppToast(
@@ -515,7 +515,7 @@ export const MAIStudioPage: React.FC = () => {
         content: m.content,
         created_at: m.created_at,
         role: m.role,
-        tool_calls: Array.isArray(m.tool_calls)? m.tool_calls: [],
+        tool_calls: Array.isArray(m.tool_calls) ? m.tool_calls : [],
       })),
     };
   };
@@ -607,14 +607,14 @@ export const MAIStudioPage: React.FC = () => {
   // Charger le réglage d'auto-approbation des outils mAI
   useEffect(() => {
     ApiService.getSettings()
-.then((res) =>
+      .then((res) =>
         setAutoApprove(Boolean(res?.settings?.mai_auto_approve_tools))
       )
-.catch(() => {});
+      .catch(() => {});
   }, []);
 
   const toggleAutoApprove = async () => {
-    const next =!autoApprove;
+    const next = !autoApprove;
     setAutoApprove(next);
     try {
       await ApiService.updateSettings({ mai_auto_approve_tools: next });
@@ -626,7 +626,7 @@ export const MAIStudioPage: React.FC = () => {
   const handleSelectModel = (modelId: string) => {
     setSelectedModel(modelId);
     void fetch(
-      `${process.env.NEXT_PUBLIC_BASE_PATH?? ""}/api/user/preferences`,
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
       {
         body: JSON.stringify({ defaultChatModel: modelId }),
         headers: { "Content-Type": "application/json" },
@@ -655,10 +655,10 @@ export const MAIStudioPage: React.FC = () => {
 
   const handleSelectTool = (tool: MAITool) => {
     const tag =
-      autocompleteTrigger === "/"? tool.slashCommand: tool.mentionTag;
+      autocompleteTrigger === "/" ? tool.slashCommand : tool.mentionTag;
     const words = promptInput.split(/\s+/);
     words.pop();
-    const newPrefix = words.length > 0? `${words.join(" ")} `: "";
+    const newPrefix = words.length > 0 ? `${words.join(" ")} ` : "";
     const updated = `${newPrefix}${tag} `;
 
     setPromptInput(updated);
@@ -696,9 +696,9 @@ export const MAIStudioPage: React.FC = () => {
       );
       // Outils utilisés (persistés côté serveur) — repli local pour les anciens formats
       const toolCalls: MaiToolCall[] = res.toolCalls?.length
-? res.toolCalls
-: res.toolExecuted
-? [
+        ? res.toolCalls
+        : res.toolExecuted
+          ? [
               {
                 args: {},
                 at: new Date().toISOString(),
@@ -707,12 +707,12 @@ export const MAIStudioPage: React.FC = () => {
                 result: res.toolExecuted.result,
                 status:
                   res.toolExecuted.result?.success === false
-? "error"
-: "executed",
+                    ? "error"
+                    : "executed",
               },
             ]
-: res.requiresApproval && res.pendingTool
-? [
+          : res.requiresApproval && res.pendingTool
+            ? [
                 {
                   args: res.pendingTool.args,
                   at: new Date().toISOString(),
@@ -721,7 +721,7 @@ export const MAIStudioPage: React.FC = () => {
                   status: "pending_approval",
                 },
               ]
-: [];
+            : [];
       const maiMsg: ChatMessage = {
         content: res.reply,
         id: (Date.now() + 1).toString(),
@@ -741,7 +741,7 @@ export const MAIStudioPage: React.FC = () => {
       if (res.requiresApproval && res.pendingTool) {
         setPendingTool(res.pendingTool);
       }
-      if (res.conversation_id && res.conversation_id!== activeConversationId) {
+      if (res.conversation_id && res.conversation_id !== activeConversationId) {
         setActiveConversationId(res.conversation_id);
       }
       // Titre automatique (premier message) + ordre de la liste
@@ -775,7 +775,7 @@ export const MAIStudioPage: React.FC = () => {
       toolCalls?: MaiToolCall[]
     ) => {
       setMessages((prev) => [
-...prev,
+        ...prev,
         {
           content,
           id: (Date.now() + 2).toString(),
@@ -860,7 +860,7 @@ export const MAIStudioPage: React.FC = () => {
         for (let i = next.length - 1; i >= 0; i--) {
           if (next[i].sender === "mai") {
             next[i] = {
-...next[i],
+              ...next[i],
               content: res.reply,
               modelUsed: res.modelUsed || next[i].modelUsed,
               reasoning: res.reasoning || "",
@@ -902,24 +902,24 @@ export const MAIStudioPage: React.FC = () => {
         </button>
       </div>
       <div className="flex-1 overflow-y-auto p-1.5 space-y-0.5 min-h-0">
-        {conversationsLoading && conversations.length === 0? (
+        {conversationsLoading && conversations.length === 0 ? (
           <div className="p-4 text-center text-[11px] text-zinc-500 flex items-center justify-center gap-2">
             <Loader2 className="w-3.5 h-3.5 animate-spin" /> Chargement…
           </div>
-        ): conversations.length === 0? (
+        ) : conversations.length === 0 ? (
           <p className="p-4 text-center text-[11px] text-zinc-500">
             Aucune discussion pour l'instant.
           </p>
-        ): (
+        ) : (
           conversations.map((c) => {
             const isActive = c.id === activeConversationId;
             const isRenaming = renamingId === c.id;
             return (
               <div
-                className={`group/item relative rounded-xl transition-colors ${isActive? "bg-zinc-900": "hover:bg-zinc-900/60"}`}
+                className={`group/item relative rounded-xl transition-colors ${isActive ? "bg-zinc-900" : "hover:bg-zinc-900/60"}`}
                 key={c.id}
               >
-                {isRenaming? (
+                {isRenaming ? (
                   <input
                     autoFocus
                     className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-white focus:outline-none"
@@ -938,7 +938,7 @@ export const MAIStudioPage: React.FC = () => {
                     }}
                     value={renameDraft}
                   />
-                ): (
+                ) : (
                   <button
                     className="w-full text-left px-3 py-2 pr-9"
                     onClick={() => handleSelectConversation(c.id)}
@@ -977,9 +977,9 @@ export const MAIStudioPage: React.FC = () => {
                 {!isRenaming && (
                   <div className="absolute right-1 top-1.5">
                     <button
-                      className={`p-1 rounded-full text-zinc-500 hover:text-white hover:bg-zinc-800 transition-opacity ${convItemMenuId === c.id? "opacity-100": "opacity-0 group-hover/item:opacity-100"}`}
+                      className={`p-1 rounded-full text-zinc-500 hover:text-white hover:bg-zinc-800 transition-opacity ${convItemMenuId === c.id ? "opacity-100" : "opacity-0 group-hover/item:opacity-100"}`}
                       onClick={() =>
-                        setConvItemMenuId(convItemMenuId === c.id? null: c.id)
+                        setConvItemMenuId(convItemMenuId === c.id ? null : c.id)
                       }
                       title="Actions de la discussion"
                       type="button"
@@ -1098,7 +1098,7 @@ export const MAIStudioPage: React.FC = () => {
                 </h1>
                 <p className="text-xs text-zinc-400 truncate max-w-[40vw]">
                   {conversations.find((c) => c.id === activeConversationId)
-?.title || "Assistant IA unifié & modèles intelligents"}
+                    ?.title || "Assistant IA unifié & modèles intelligents"}
                 </p>
               </div>
             </div>
@@ -1122,19 +1122,19 @@ export const MAIStudioPage: React.FC = () => {
               <button
                 className={`p-2 rounded-full transition-colors ${
                   autoApprove
-? "text-amber-400 bg-amber-400/10"
-: "text-zinc-400 hover:text-white hover:bg-zinc-900"
+                    ? "text-amber-400 bg-amber-400/10"
+                    : "text-zinc-400 hover:text-white hover:bg-zinc-900"
                 }`}
                 onClick={toggleAutoApprove}
                 title={
                   autoApprove
-? "Auto-approbation des outils mAI activée"
-: "Approbation manuelle des outils mAI"
+                    ? "Auto-approbation des outils mAI activée"
+                    : "Approbation manuelle des outils mAI"
                 }
               >
-                {autoApprove? (
+                {autoApprove ? (
                   <ShieldAlert className="w-4 h-4" />
-                ): (
+                ) : (
                   <ShieldCheck className="w-4 h-4" />
                 )}
               </button>
@@ -1185,7 +1185,7 @@ export const MAIStudioPage: React.FC = () => {
                     <span className="text-white font-black">
                       @{user?.username || "utilisateur"}
                     </span>{" "}
-!
+                    !
                   </h2>
                   <p className="text-xs text-zinc-400 truncate">
                     Assistant mAI — Posez vos questions ou utilisez les
@@ -1218,20 +1218,20 @@ export const MAIStudioPage: React.FC = () => {
               const isCopied = copiedId === m.id;
               const imageUrl =
                 m.toolCalls?.find((tc) => tc.result?.result?.imageUrl)?.result
-?.result?.imageUrl ||
+                  ?.result?.imageUrl ||
                 m.toolExecuted?.result?.result?.imageUrl ||
                 null;
 
               return (
                 <div
-                  className={`flex flex-col ${isMe? "items-end": "items-start"} group`}
+                  className={`flex flex-col ${isMe ? "items-end" : "items-start"} group`}
                   key={m.id}
                 >
                   <div
                     className={`max-w-[85%] rounded-3xl p-4 text-xs sm:text-sm leading-relaxed relative ${
                       isMe
-? "bg-white text-black font-medium rounded-tr-sm shadow-lg"
-: "bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-tl-sm"
+                        ? "bg-white text-black font-medium rounded-tr-sm shadow-lg"
+                        : "bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-tl-sm"
                     }`}
                   >
                     {!isMe && (
@@ -1263,7 +1263,7 @@ export const MAIStudioPage: React.FC = () => {
                     {m.requiresApproval && pendingTool && (
                       <div className="mt-3 p-3 rounded-2xl bg-zinc-900 border border-amber-500/40 space-y-2">
                         <p className="text-[11px] font-mono text-amber-300 uppercase tracking-wide">
-                           Outil sensible: {pendingTool.name}
+                          Outil sensible: {pendingTool.name}
                         </p>
                         <pre className="text-[10px] text-zinc-400 whitespace-pre-wrap break-all max-h-24 overflow-y-auto">
                           {JSON.stringify(pendingTool.args, null, 2)}
@@ -1274,9 +1274,9 @@ export const MAIStudioPage: React.FC = () => {
                             disabled={isApproving}
                             onClick={() => handleApproveTool(true)}
                           >
-                            {isApproving? (
+                            {isApproving ? (
                               <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                            ): (
+                            ) : (
                               <Check className="w-3.5 h-3.5" />
                             )}
                             Approuver
@@ -1306,7 +1306,7 @@ export const MAIStudioPage: React.FC = () => {
 
                     {/* Interactive Message Actions (Copy / Edit / Share) */}
                     <div
-                      className={`flex items-center gap-2 pt-2.5 mt-2 border-t text-[11px] font-mono ${isMe? "border-zinc-200 text-zinc-600 justify-end": "border-zinc-900 text-zinc-400 justify-between"}`}
+                      className={`flex items-center gap-2 pt-2.5 mt-2 border-t text-[11px] font-mono ${isMe ? "border-zinc-200 text-zinc-600 justify-end" : "border-zinc-900 text-zinc-400 justify-between"}`}
                     >
                       <div className="flex items-center gap-2">
                         <button
@@ -1315,12 +1315,12 @@ export const MAIStudioPage: React.FC = () => {
                           title="Copier le texte"
                           type="button"
                         >
-                          {isCopied? (
+                          {isCopied ? (
                             <Check className="w-3.5 h-3.5 text-green-400" />
-                          ): (
+                          ) : (
                             <Copy className="w-3.5 h-3.5" />
                           )}
-                          <span>{isCopied? "Copié!": "Copier"}</span>
+                          <span>{isCopied ? "Copié!" : "Copier"}</span>
                         </button>
 
                         <button
@@ -1349,8 +1349,8 @@ export const MAIStudioPage: React.FC = () => {
                       {!isMe && (
                         <div className="flex items-center gap-2">
                           {idx === messages.length - 1 &&
-!m.toolExecuted &&
-!(m.toolCalls && m.toolCalls.length > 0) && (
+                            !m.toolExecuted &&
+                            !(m.toolCalls && m.toolCalls.length > 0) && (
                               <button
                                 className="flex items-center gap-1 text-zinc-400 hover:text-white transition-colors p-1 disabled:opacity-40"
                                 disabled={
@@ -1362,9 +1362,9 @@ export const MAIStudioPage: React.FC = () => {
                                 title="Regénérer la réponse"
                                 type="button"
                               >
-                                {isRegenerating? (
+                                {isRegenerating ? (
                                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                ): (
+                                ) : (
                                   <RefreshCw className="w-3.5 h-3.5" />
                                 )}
                                 <span>Regénérer</span>
@@ -1462,10 +1462,10 @@ export const MAIStudioPage: React.FC = () => {
       )}
 
       {/* Partage d'un message mAI par message Vibe */}
-      {shareMessageText!== null && (
+      {shareMessageText !== null && (
         <ShareToDMModal
           initialMessage={shareMessageText}
-          isOpen={shareMessageText!== null}
+          isOpen={shareMessageText !== null}
           onClose={() => setShareMessageText(null)}
         />
       )}

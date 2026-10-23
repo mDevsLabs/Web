@@ -126,7 +126,10 @@ type CacheEntry<T> = { expiresAt: number; value: T };
 const ARTICLE_CACHE = new Map<string, CacheEntry<WikipediaArticle | null>>();
 const SEARCH_CACHE = new Map<string, CacheEntry<WikipediaHit[]>>();
 
-function readCache<T>(store: Map<string, CacheEntry<T>>, key: string): T | undefined {
+function readCache<T>(
+  store: Map<string, CacheEntry<T>>,
+  key: string
+): T | undefined {
   const entry = store.get(key);
   if (!entry) return undefined;
   if (Date.now() > entry.expiresAt) {

@@ -72,8 +72,7 @@ const TEMPLATES: Record<string, EmailTemplate> = {
     badgeColor: "#60a5fa",
     defaultContent:
       "Bonjour {{username}},\n\nToute l'équipe mDevsLabs tenait à partager avec vous une mise à jour stratégique sur l'évolution de nos infrastructures souveraines et de nos offres.",
-    defaultSubject:
-      " Des nouvelles importantes concernant mAI et nos services",
+    defaultSubject: " Des nouvelles importantes concernant mAI et nos services",
     hasCta: false,
     id: "announcement",
     name: " Annonce Officielle & Communauté",
@@ -342,8 +341,8 @@ export async function runVisualEditorServer() {
 
           for (const u of targetUsers) {
             const personalizedHtml = html
-.replace(/{{username}}/g, u.username)
-.replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
+              .replace(/{{username}}/g, u.username)
+              .replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
             const success = await sendEmail({
               html: personalizedHtml,
               subject,
@@ -427,20 +426,20 @@ function buildNewsletterHtml(
   }
 
   const formattedContent = textContent
-.replace(/{{username}}/g, username)
-.replace(/\n\n/g, "</p><p style='margin-bottom:18px;'>")
-.replace(/\n/g, "<br>");
+    .replace(/{{username}}/g, username)
+    .replace(/\n\n/g, "</p><p style='margin-bottom:18px;'>")
+    .replace(/\n/g, "<br>");
 
   const ctaSection =
     ctaText && ctaUrl
-? `
+      ? `
     <div style="text-align:center; margin:36px 0 20px 0;">
       <a href="${ctaUrl}" target="_blank" style="display:inline-block; background:linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color:#ffffff; font-weight:800; font-size:15px; text-decoration:none; padding:16px 36px; border-radius:14px; box-shadow:0 10px 25px -5px rgba(124, 58, 237, 0.45); letter-spacing:0.3px;">
         ${ctaText} →
       </a>
     </div>
   `
-: "";
+      : "";
 
   return `
     <!DOCTYPE html>
@@ -706,7 +705,7 @@ export async function runNewsletterStudio() {
         const wantCta = await rl.question(
           ` ${c.brightYellow}➔ Ajouter un bouton d'action (CTA)? (O/n): ${c.reset}`
         );
-        if (wantCta.toLowerCase()!== "n") {
+        if (wantCta.toLowerCase() !== "n") {
           ctaText =
             (
               await rl.question(
@@ -872,9 +871,7 @@ export async function runNewsletterStudio() {
     console.log("");
     console.log("");
     printDivider();
-    console.log(
-      ` ${c.bold}${c.brightWhite} RÉSULTAT DU DÉPLOIEMENT${c.reset}`
-    );
+    console.log(` ${c.bold}${c.brightWhite} RÉSULTAT DU DÉPLOIEMENT${c.reset}`);
     printDivider();
     console.log(
       ` ${c.brightGreen}✔ ${successCount} mail(s) envoyé(s) avec succès${c.reset}`

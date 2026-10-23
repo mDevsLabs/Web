@@ -48,7 +48,10 @@ export type {
   ServeurMcp,
 } from "@/components/wakies/use-capabilities";
 
-export { CAPACITIES_VIDES, useCapabilities } from "@/components/wakies/use-capabilities";
+export {
+  CAPACITIES_VIDES,
+  useCapabilities,
+} from "@/components/wakies/use-capabilities";
 
 import type { Capabilities } from "@/components/wakies/use-capabilities";
 

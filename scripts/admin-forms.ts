@@ -78,8 +78,7 @@ const TEMPLATES: Record<
           "Exprimez-vous librement sur ce qui pourrait être amélioré.",
         id: "remarques_libres",
         required: false,
-        title:
-          "Avez-vous des suggestions, idées ou remarques supplémentaires?",
+        title: "Avez-vous des suggestions, idées ou remarques supplémentaires?",
         type: "text",
       },
     ],
@@ -183,14 +182,14 @@ export async function listAdminForms(sql: SqlClient) {
   );
   console.table(
     forms.map((f, i) => ({
-      Actif: f.isActive? " Oui": " Non",
+      Actif: f.isActive ? " Oui" : " Non",
       Début: new Date(f.startDate).toLocaleDateString("fr-FR"),
       Fin: f.endDate
-? new Date(f.endDate).toLocaleDateString("fr-FR")
-: "Illimité",
+        ? new Date(f.endDate).toLocaleDateString("fr-FR")
+        : "Illimité",
       ID: `${f.id.slice(0, 8)}…`,
       Index: i + 1,
-      Nom: f.name.length > 35? `${f.name.slice(0, 32)}…`: f.name,
+      Nom: f.name.length > 35 ? `${f.name.slice(0, 32)}…` : f.name,
       Questions: f.questionCount,
       Réponses: f.responseCount,
     }))
@@ -204,9 +203,7 @@ export async function listAdminForms(sql: SqlClient) {
  */
 export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
   console.log(`\n${c.bold} CRÉATION INTELLIGENTE D'UN FORMULAIRE${c.reset}`);
-  console.log(
-    " 1. Utiliser un modèle intelligent pré-configuré (Recommandé)"
-  );
+  console.log(" 1. Utiliser un modèle intelligent pré-configuré (Recommandé)");
   console.log(" 2. Composer un formulaire personnalisé pas-à-pas");
   console.log(" 0. Annuler");
 
@@ -220,13 +217,9 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
 
   if (mode === "1") {
     console.log(`\n${c.bold}MODÈLES PRÉ-CONFIGURÉS DISPONIBLES:${c.reset}`);
-    console.log(
-      " 1. Enquête de satisfaction globale & retours (4 questions)"
-    );
+    console.log(" 1. Enquête de satisfaction globale & retours (4 questions)");
     console.log(" 2. Évaluation du Mode Agent Bêta & Outils (3 questions)");
-    console.log(
-      ` 3. Signalement d'ergonomie et traque de bugs (3 questions)`
-    );
+    console.log(` 3. Signalement d'ergonomie et traque de bugs (3 questions)`);
 
     const tmplChoice =
       (await rl.question(" Choisissez un modèle [1-3]: ")).trim() || "1";
@@ -255,9 +248,7 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
       if (!formName) console.log(`${c.red}Le nom est obligatoire.${c.reset}`);
     }
 
-    formDescription = (
-      await rl.question(" Description (optionnel): ")
-    ).trim();
+    formDescription = (await rl.question(" Description (optionnel): ")).trim();
 
     console.log(
       `\n${c.bold}AJOUT DES QUESTIONS (Tapez fin pour terminer):${c.reset}`
@@ -268,9 +259,7 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     while (adding) {
       console.log(`\n--- Question #${qIndex} ---`);
       const qTitle = (
-        await rl.question(
-          ` Intitulé de la question (ou 'fin' pour terminer): `
-        )
+        await rl.question(` Intitulé de la question (ou 'fin' pour terminer): `)
       ).trim();
 
       if (!qTitle || qTitle.toLowerCase() === "fin") {
@@ -298,18 +287,18 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
           " Options séparées par des virgules (ex: Oui, Non, Peut-être): "
         );
         options = optsRaw
-.split(",")
-.map((s) => s.trim())
-.filter(Boolean);
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
         if (!options.length) {
           options = ["Option 1", "Option 2"];
         }
       }
 
       const isReq = (await rl.question(" Question obligatoire? (O/n): "))
-.trim()
-.toLowerCase();
-      const required = isReq!== "n" && isReq!== "non";
+        .trim()
+        .toLowerCase();
+      const required = isReq !== "n" && isReq !== "non";
 
       questions.push({
         id: `q_${Date.now()}_${qIndex}`,
@@ -333,8 +322,8 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
   let endDate: string | null = null;
 
   if (
-    daysRaw.toLowerCase()!== "illimité" &&
-    daysRaw.toLowerCase()!== "illimite"
+    daysRaw.toLowerCase() !== "illimité" &&
+    daysRaw.toLowerCase() !== "illimite"
   ) {
     const days = Number.parseInt(daysRaw, 10) || 60;
     endDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
@@ -348,10 +337,10 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     await rl.question(" Choix séparés par des virgules [1,2,3,4]: ")
   ).trim();
   const rewardTypes = (rewardInput || "1,2,3,4")
-.split(",")
-.map((value) => Number.parseInt(value.trim(), 10) - 1)
-.map((index) => REWARD_TYPES[index])
-.filter((value): value is RewardType => Boolean(value));
+    .split(",")
+    .map((value) => Number.parseInt(value.trim(), 10) - 1)
+    .map((index) => REWARD_TYPES[index])
+    .filter((value): value is RewardType => Boolean(value));
   const uniqueRewardTypes = [...new Set(rewardTypes)];
   if (uniqueRewardTypes.length === 0) {
     console.log(`${c.red}Choisissez au moins une récompense valide.${c.reset}`);
@@ -361,9 +350,9 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
   const activeInput = (
     await rl.question(" Activer le formulaire dès sa création? (O/n): ")
   )
-.trim()
-.toLowerCase();
-  const isActive = activeInput!== "n" && activeInput!== "non";
+    .trim()
+    .toLowerCase();
+  const isActive = activeInput !== "n" && activeInput !== "non";
 
   // Aperçu avant confirmation
   console.log(`\n${c.bold}RÉCAPITULATIF DU FORMULAIRE:${c.reset}`);
@@ -372,7 +361,7 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
   console.log(
     ` Récompenses: ${uniqueRewardTypes.map((type) => REWARD_LABELS[type].title).join(", ")}`
   );
-  console.log(` Statut: ${isActive? "Actif": "Inactif"}`);
+  console.log(` Statut: ${isActive ? "Actif" : "Inactif"}`);
   console.log(
     ` Questions: ${c.brightGreen}${questions.length} question(s)${c.reset}`
   );
@@ -380,7 +369,7 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     ` Date début: ${new Date(startDate).toLocaleDateString("fr-FR")}`
   );
   console.log(
-    ` Date fin: ${endDate? new Date(endDate).toLocaleDateString("fr-FR"): "Illimité"}`
+    ` Date fin: ${endDate ? new Date(endDate).toLocaleDateString("fr-FR") : "Illimité"}`
   );
 
   const confirm = (
@@ -388,8 +377,8 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
       "\n Enregistrer ce formulaire en base de données? (O/n): "
     )
   )
-.trim()
-.toLowerCase();
+    .trim()
+    .toLowerCase();
 
   if (confirm === "n" || confirm === "non") {
     console.log(" Création annulée.");
@@ -423,8 +412,8 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
   );
   console.log(
     isActive
-? ` Disponible pour les utilisateurs dans ${c.underline}/settings?tab=forms${c.reset}`
-: ` Le formulaire apparaîtra dans ${c.underline}/settings?tab=forms${c.reset} après son activation.`
+      ? ` Disponible pour les utilisateurs dans ${c.underline}/settings?tab=forms${c.reset}`
+      : ` Le formulaire apparaîtra dans ${c.underline}/settings?tab=forms${c.reset} après son activation.`
   );
   const baseUrl = (
     process.env.MAI_WEB_URL ||
@@ -437,13 +426,11 @@ export async function createFormIntelligently(sql: SqlClient, rl: Interface) {
     console.log(" Ce lien fonctionnera une fois le formulaire activé.");
   }
   const makeQr = (
-    await rl.question(
-      " Afficher le QR Code du lien dans le terminal? (O/n): "
-    )
+    await rl.question(" Afficher le QR Code du lien dans le terminal? (O/n): ")
   )
-.trim()
-.toLowerCase();
-  if (makeQr!== "n" && makeQr!== "non") {
+    .trim()
+    .toLowerCase();
+  if (makeQr !== "n" && makeQr !== "non") {
     console.log(
       await QRCode.toString(formUrl, { small: true, type: "terminal" })
     );
@@ -485,7 +472,7 @@ async function toggleFormActive(sql: SqlClient, rl: Interface) {
   if (updated.length > 0) {
     const f = updated[0];
     console.log(
-      `${c.brightGreen}✔ Statut mis à jour:${c.reset} « ${f.name}» est maintenant ${f.isActive? " ACTIF": " INACTIF"}.`
+      `${c.brightGreen}✔ Statut mis à jour:${c.reset} « ${f.name}» est maintenant ${f.isActive ? " ACTIF" : " INACTIF"}.`
     );
   }
 }
@@ -519,10 +506,10 @@ async function deleteForm(sql: SqlClient, rl: Interface) {
       ` Confirmer la suppression définitive de « ${target.name}» et de ses ${target.responseCount} réponse(s)? (o/N): `
     )
   )
-.trim()
-.toLowerCase();
+    .trim()
+    .toLowerCase();
 
-  if (confirm!== "o" && confirm!== "oui" && confirm!== "y") {
+  if (confirm !== "o" && confirm !== "oui" && confirm !== "y") {
     console.log("Suppression annulée.");
     return;
   }

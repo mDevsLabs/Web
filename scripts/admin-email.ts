@@ -24,7 +24,7 @@ export async function runNewsletterStudio() {
   } catch (error) {
     console.error(
       " Studio newsletter:",
-      error instanceof Error? error.message: error
+      error instanceof Error ? error.message : error
     );
   }
 }

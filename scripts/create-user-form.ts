@@ -81,11 +81,11 @@ async function listForms() {
 
   console.table(
     rows.map((r) => ({
-      Actif: r.isActive? "Oui": "Non",
+      Actif: r.isActive ? "Oui" : "Non",
       Début: new Date(r.startDate).toLocaleDateString("fr-FR"),
       Fin: r.endDate
-? new Date(r.endDate).toLocaleDateString("fr-FR")
-: "Illimité",
+        ? new Date(r.endDate).toLocaleDateString("fr-FR")
+        : "Illimité",
       ID: r.id,
       Nom: r.name,
       Questions: r.questionCount,
@@ -127,7 +127,7 @@ async function main() {
 
   if (arg === "--list") {
     await listForms();
-  } else if (arg === "--sample" ||!arg) {
+  } else if (arg === "--sample" || !arg) {
     await insertSampleForm();
     await listForms();
   } else {

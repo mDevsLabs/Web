@@ -68,8 +68,8 @@ export function graphProximityScore(
 ): number {
   const clampedAffinity = Math.max(0, Math.min(1, affinity || 0));
   return isFollowedAuthor
-? 0.7 + 0.3 * clampedAffinity
-: 0.2 + 0.5 * clampedAffinity;
+    ? 0.7 + 0.3 * clampedAffinity
+    : 0.2 + 0.5 * clampedAffinity;
 }
 
 /** Affinement utilisateur: ×0.65 (pas intéressé).. ×1.35 (intéressé). */
@@ -90,8 +90,8 @@ export function dayPartBoost(
   now: number = Date.now()
 ): number {
   const h = (t: Date) => t.getHours();
-  const part = (hh: number) => (hh < 6? 0: hh < 12? 1: hh < 18? 2: 3);
-  return part(h(publishedAt)) === part(h(new Date(now)))? 0.1: 0;
+  const part = (hh: number) => (hh < 6 ? 0 : hh < 12 ? 1 : hh < 18 ? 2 : 3);
+  return part(h(publishedAt)) === part(h(new Date(now))) ? 0.1 : 0;
 }
 
 /** Multiplicateurs de qualité: comptes vérifiés ×1.15, médias ×1.10. */
@@ -179,7 +179,7 @@ export class HybridRecommender {
 
   static scorePost(candidate: PostCandidate): RecommendationSignal {
     const tuner = candidate.tuner || HybridRecommender.DEFAULT_TUNER;
-    const dwellW = (tuner as any).dwell?? 0.13;
+    const dwellW = (tuner as any).dwell ?? 0.13;
     const ageHours = ageInHours(candidate.publishedAt);
 
     // Récence: demi-vie de 18 h (50 % de fraîcheur restante après 18 h).
@@ -205,7 +205,7 @@ export class HybridRecommender {
       ),
       ageHours
     );
-    const semanticScore = candidate.semanticSimilarity?? 0.6;
+    const semanticScore = candidate.semanticSimilarity ?? 0.6;
     const proximity = graphProximityScore(
       candidate.isFollowedAuthor,
       candidate.affinity
@@ -213,7 +213,7 @@ export class HybridRecommender {
     const safety = safetyFactor(candidate.toxicityScore);
     const boost = qualityBoost(candidate.isVerifiedAuthor, candidate.hasMedia);
     const interest = interestFactor(candidate.interestSignal);
-    const dwell = dwellScore(candidate.userDwellMs?? candidate.avgDwellMs);
+    const dwell = dwellScore(candidate.userDwellMs ?? candidate.avgDwellMs);
     const timeBoost = dayPartBoost(candidate.publishedAt);
 
     const rawScore =
@@ -266,10 +266,10 @@ export class HybridRecommender {
       matchedInterests:
         candidate.matchedInterestTags &&
         candidate.matchedInterestTags.length > 0
-? candidate.matchedInterestTags
-: candidate.candidateTopic
-? [candidate.candidateTopic]
-: ["Général"],
+          ? candidate.matchedInterestTags
+          : candidate.candidateTopic
+            ? [candidate.candidateTopic]
+            : ["Général"],
       totalScore,
     };
   }

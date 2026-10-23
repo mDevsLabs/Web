@@ -45,11 +45,11 @@ import {
   modelCatalogKey,
   SITE_MODEL_CATALOG_ENDPOINTS,
 } from "@/lib/ai/model-catalog";
+import { groupModelsByProvider } from "@/lib/ai/model-selector/order";
 import {
   PROVIDER_NAMES,
   resolveProviderKey,
 } from "@/lib/ai/model-selector/provider";
-import { groupModelsByProvider } from "@/lib/ai/model-selector/order";
 import type { SharedModel } from "@/lib/ai/model-selector/types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { cn } from "@/lib/utils";
@@ -108,10 +108,14 @@ export function PlaygroundClient() {
   // famille mAI-2 ouvre la liste, le groupe mAI suit.
   const modelGroups = useMemo(
     () =>
-      groupModelsByProvider(models).map(({ models: groupModels, providerKey }) => ({
-        heading: PROVIDER_NAMES[providerKey.toLowerCase()] ?? providerKey.toUpperCase(),
-        models: groupModels,
-      })),
+      groupModelsByProvider(models).map(
+        ({ models: groupModels, providerKey }) => ({
+          heading:
+            PROVIDER_NAMES[providerKey.toLowerCase()] ??
+            providerKey.toUpperCase(),
+          models: groupModels,
+        })
+      ),
     [models]
   );
 

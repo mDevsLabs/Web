@@ -137,8 +137,8 @@ beforeEach(() => {
   mocks.quota.mockReturnValue(false);
   mocks.conversation.mockImplementation(async (user: string) =>
     user === "alice"
-? { id: conversationId, model: "test-model", wakieId: "wakie" }
-: null
+      ? { id: conversationId, model: "test-model", wakieId: "wakie" }
+      : null
   );
   mocks.wakie.mockResolvedValue({
     instructions: "Aider",
@@ -284,21 +284,21 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
               }
               controller.enqueue({
                 finishReason: {
-                  raw: first? "tool_calls": "stop",
-                  unified: first? "tool-calls": "stop",
+                  raw: first ? "tool_calls" : "stop",
+                  unified: first ? "tool-calls" : "stop",
                 },
                 type: "finish",
                 usage: {
                   inputTokens: {
                     cacheRead: undefined,
                     cacheWrite: undefined,
-                    noCache: first? 10: 11,
-                    total: first? 10: 11,
+                    noCache: first ? 10 : 11,
+                    total: first ? 10 : 11,
                   },
                   outputTokens: {
                     reasoning: undefined,
-                    text: first? 5: 6,
-                    total: first? 5: 6,
+                    text: first ? 5 : 6,
+                    total: first ? 5 : 6,
                   },
                 },
               });
@@ -371,8 +371,8 @@ describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur
                 });
               controller.enqueue({
                 finishReason: {
-                  raw: first? "tool_calls": "stop",
-                  unified: first? "tool-calls": "stop",
+                  raw: first ? "tool_calls" : "stop",
+                  unified: first ? "tool-calls" : "stop",
                 },
                 type: "finish",
                 usage: {

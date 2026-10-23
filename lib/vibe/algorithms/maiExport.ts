@@ -26,12 +26,12 @@ export interface MAIExportConversation {
 export function maiExportSlug(title?: string): string {
   return (
     (title || "conversation-mai")
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g, "")
-.toLowerCase()
-.replace(/[^a-z0-9]+/g, "-")
-.replace(/^-+|-+$/g, "")
-.slice(0, 60) || "conversation-mai"
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 60) || "conversation-mai"
   );
 }
 
@@ -58,8 +58,7 @@ export function buildMAIConversationMarkdown(
   const lines: string[] = [];
   lines.push(`# ${conv.title || "Discussion mAI"}`);
   lines.push("");
-  if (conv.created_at)
-    lines.push(`- Créée le: ${formatDate(conv.created_at)}`);
+  if (conv.created_at) lines.push(`- Créée le: ${formatDate(conv.created_at)}`);
   if (conv.updated_at)
     lines.push(`- Dernière activité: ${formatDate(conv.updated_at)}`);
   lines.push(`- Messages: ${messages.length}`);
@@ -68,9 +67,9 @@ export function buildMAIConversationMarkdown(
   lines.push("");
 
   for (const m of messages) {
-    const who = m.role === "assistant"? "mAI": "Moi";
+    const who = m.role === "assistant" ? "mAI" : "Moi";
     const when = formatDate(m.created_at);
-    lines.push(`## ${who}${when? ` — ${when}`: ""}`);
+    lines.push(`## ${who}${when ? ` — ${when}` : ""}`);
     lines.push("");
     lines.push(m.content || "");
     lines.push("");
@@ -100,7 +99,7 @@ export function buildMAIConversationJSON(
 ): string {
   return JSON.stringify(
     {
-      conversation: {...conv },
+      conversation: { ...conv },
       exported_at: new Date().toISOString(),
       format: "vibe.mai.conversation",
       messages,

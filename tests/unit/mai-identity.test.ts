@@ -97,8 +97,11 @@ describe("mAI identity prompt", () => {
     ]);
 
     expect(
-      injectMaiIdentityPrompt<Record<string, any>>({}, "mai-2-mini", "anthropic")
-        .system
+      injectMaiIdentityPrompt<Record<string, any>>(
+        {},
+        "mai-2-mini",
+        "anthropic"
+      ).system
     ).toBe(MAI_2_MINI);
   });
 

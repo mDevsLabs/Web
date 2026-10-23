@@ -387,10 +387,10 @@ export async function initSubscriptionTables() {
 
 export function generateRandomCode(tier: string): string {
   const randomChars = crypto
-.randomBytes(4)
-.toString("hex")
-.toUpperCase()
-.slice(0, 6);
+    .randomBytes(4)
+    .toString("hex")
+    .toUpperCase()
+    .slice(0, 6);
   return `MAI-${tier.toUpperCase()}-${randomChars}`;
 }
 
@@ -415,10 +415,10 @@ function renderCodesTable(codes: any[]) {
     const code = String(item.code).padEnd(24);
     const tier = String(item.tier).padEnd(6);
     const uses = `${item.uses_count}/${item.max_uses}`.padEnd(14);
-    const status = (item.is_active? " Actif": " Inactif").padEnd(10);
+    const status = (item.is_active ? " Actif" : " Inactif").padEnd(10);
     const exp = item.expires_at
-? new Date(item.expires_at).toLocaleDateString("fr-FR")
-: "Illimitée";
+      ? new Date(item.expires_at).toLocaleDateString("fr-FR")
+      : "Illimitée";
     const expiration = exp.padEnd(20);
 
     console.log(
@@ -461,8 +461,8 @@ async function handleCreateCode(rl: readline.Interface) {
   if (modeChoice === "2") {
     while (!finalCode) {
       const custom = (await rl.question(" Entrez votre code personnalisé: "))
-.trim()
-.toUpperCase();
+        .trim()
+        .toUpperCase();
       if (custom.length >= 3) {
         finalCode = custom;
       } else {
@@ -477,7 +477,7 @@ async function handleCreateCode(rl: readline.Interface) {
     await rl.question(" Nombre maximal d'utilisations (défaut: 1): ")
   ).trim();
   const maxUses =
-    Number.parseInt(usesInput, 10) > 0? Number.parseInt(usesInput, 10): 1;
+    Number.parseInt(usesInput, 10) > 0 ? Number.parseInt(usesInput, 10) : 1;
 
   const daysInput = (
     await rl.question(
@@ -485,7 +485,7 @@ async function handleCreateCode(rl: readline.Interface) {
     )
   ).trim();
   const expiresInDays =
-    Number.parseInt(daysInput, 10) > 0? Number.parseInt(daysInput, 10): null;
+    Number.parseInt(daysInput, 10) > 0 ? Number.parseInt(daysInput, 10) : null;
 
   let expiresAt: Date | null = null;
   if (expiresInDays) {
@@ -504,16 +504,14 @@ async function handleCreateCode(rl: readline.Interface) {
     console.log(
       `\n${c.brightGreen}${c.bold} CODE CRÉÉ ET ENREGISTRÉ AVEC SUCCÈS!${c.reset}`
     );
-    console.log(
-      ` Code: ${c.brightGreen}${c.bold}${item.code}${c.reset}`
-    );
+    console.log(` Code: ${c.brightGreen}${c.bold}${item.code}${c.reset}`);
     console.log(` Forfait: ${item.tier}`);
     console.log(` Utilisations: 0 / ${item.max_uses}`);
     console.log(
       ` Expiration: ${
         item.expires_at
-? new Date(item.expires_at).toLocaleString("fr-FR")
-: "Illimitée"
+          ? new Date(item.expires_at).toLocaleString("fr-FR")
+          : "Illimitée"
       }\n`
     );
   } catch (err: any) {
@@ -549,7 +547,7 @@ async function handleToggleCode(rl: readline.Interface) {
   }
 
   const current = found[0];
-  const newStatus =!current.is_active;
+  const newStatus = !current.is_active;
 
   await sql`
     UPDATE subscription_codes
@@ -559,7 +557,7 @@ async function handleToggleCode(rl: readline.Interface) {
 
   console.log(
     `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais: ${
-      newStatus? " ACTIF": " INACTIF"
+      newStatus ? " ACTIF" : " INACTIF"
     }\n`
   );
 }
@@ -608,22 +606,20 @@ async function handleEditCode(rl: readline.Interface) {
   }
 
   const usesInput = (
-    await rl.question(
-      ` Nouveau quota maximal (actuel: ${current.max_uses}): `
-    )
+    await rl.question(` Nouveau quota maximal (actuel: ${current.max_uses}): `)
   ).trim();
   const newMaxUses =
     Number.parseInt(usesInput, 10) > 0
-? Number.parseInt(usesInput, 10)
-: current.max_uses;
+      ? Number.parseInt(usesInput, 10)
+      : current.max_uses;
 
   const statusInput = (
     await rl.question(
-      ` Rendre actif? (o/n, actuel: ${current.is_active? "Oui": "Non"}): `
+      ` Rendre actif? (o/n, actuel: ${current.is_active ? "Oui" : "Non"}): `
     )
   )
-.trim()
-.toLowerCase();
+    .trim()
+    .toLowerCase();
   let newActive = current.is_active;
   if (statusInput === "o" || statusInput === "oui" || statusInput === "y") {
     newActive = true;
@@ -672,8 +668,8 @@ async function handleDeleteCode(rl: readline.Interface) {
       ` Êtes-vous sûr de vouloir supprimer définitivement le code "${current.code}"? (o/N): `
     )
   )
-.trim()
-.toLowerCase();
+    .trim()
+    .toLowerCase();
 
   if (confirm === "o" || confirm === "oui" || confirm === "y") {
     await sql`DELETE FROM subscription_codes WHERE id = ${current.id};`;
@@ -703,9 +699,7 @@ export async function runSubscriptionCodeManager() {
     console.log(" 5. Supprimer un code");
     console.log(" 0. Retour / Quitter");
 
-    const choice = (
-      await rl.question("\n Entrez votre choix [0-5]: ")
-    ).trim();
+    const choice = (await rl.question("\n Entrez votre choix [0-5]: ")).trim();
 
     switch (choice) {
       case "1":
@@ -771,7 +765,7 @@ function renderCustomersTable(customers: any[]) {
     const username = String(user.username || "").padEnd(20);
     const email = String(user.email || "").padEnd(25);
     const tier = String(user.tier || "Free").padEnd(6);
-    const status = (user.is_blocked? " Bloqué": " Actif").padEnd(10);
+    const status = (user.is_blocked ? " Bloqué" : " Actif").padEnd(10);
 
     console.log(`║ ${id} ║ ${username} ║ ${email} ║ ${tier} ║ ${status} ║`);
   }
@@ -821,7 +815,7 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
     }
 
     const current = found[0];
-    const newStatus =!current.is_blocked;
+    const newStatus = !current.is_blocked;
 
     await sql`
       UPDATE users
@@ -879,8 +873,8 @@ async function handleDeleteCustomer(rl: readline.Interface) {
         ` Êtes-vous sûr de vouloir supprimer définitivement le client "${current.username}" (${current.email})?\nToutes ses clés API, appareils et données associés seront impactés. (o/N): `
       )
     )
-.trim()
-.toLowerCase();
+      .trim()
+      .toLowerCase();
 
     if (confirm === "o" || confirm === "oui" || confirm === "y") {
       await sql`DELETE FROM connected_devices WHERE user_id = ${current.id}::text;`;
@@ -915,9 +909,7 @@ export async function runCustomerAccountManager() {
     console.log(" 3. Supprimer un compte client");
     console.log(" 0. Retour / Quitter");
 
-    const choice = (
-      await rl.question("\n Entrez votre choix [0-3]: ")
-    ).trim();
+    const choice = (await rl.question("\n Entrez votre choix [0-3]: ")).trim();
 
     switch (choice) {
       case "1":
@@ -1028,9 +1020,7 @@ export async function sendNewsNotificationToEligibleUsers(
 }
 
 async function handleSendNewsInteractive(rl: readline.Interface) {
-  console.log(
-    `\n${c.bold}--- ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`
-  );
+  console.log(`\n${c.bold}--- ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`);
   console.log(
     `${c.dim}Cette notification sera enregistrée en BDD pour chaque utilisateur ayant activé Notifications > Actualités d'mAI (activé par défaut à l'acceptation).${c.reset}`
   );
@@ -1052,13 +1042,13 @@ async function handleSendNewsInteractive(rl: readline.Interface) {
   const confirm = (
     await rl.question(`\n Confirmer l'envoi "${title}"? (o/N): `)
   )
-.trim()
-.toLowerCase();
+    .trim()
+    .toLowerCase();
   if (
-    confirm!== "o" &&
-    confirm!== "oui" &&
-    confirm!== "y" &&
-    confirm!== "yes"
+    confirm !== "o" &&
+    confirm !== "oui" &&
+    confirm !== "y" &&
+    confirm !== "yes"
   ) {
     console.log("Annulé.");
     return;
@@ -1090,7 +1080,7 @@ async function handleListRecentNotifications(rl: readline.Interface) {
       const t = String(r.type).padEnd(18);
       const ttl = String(r.title).slice(0, 30).padEnd(30);
       const uid = String(r.userId).slice(0, 20).padEnd(20);
-      const lu = (r.isRead? "oui": "non").padEnd(4);
+      const lu = (r.isRead ? "oui" : "non").padEnd(4);
       const d = new Date(r.createdAt).toLocaleString("fr-FR").padEnd(20);
       console.log(`| ${t} | ${ttl} | ${uid} | ${lu} | ${d} |`);
     }
@@ -1127,8 +1117,8 @@ export async function runNotificationManager() {
             " Supprimer les notifications lues de plus de 30 jours? (o/N): "
           )
         )
-.trim()
-.toLowerCase();
+          .trim()
+          .toLowerCase();
         if (confirm === "o" || confirm === "oui" || confirm === "y") {
           const res =
             await sql`DELETE FROM "Notification" WHERE "isRead" = true AND "createdAt" < NOW() - INTERVAL '30 days' RETURNING "id"`;
@@ -1166,7 +1156,7 @@ async function runModelScheduleNow(rl?: readline.Interface) {
   }
   const result = await updateModels(
     sql,
-    rl? { resolveConflict: createConflictResolver(rl) }: {}
+    rl ? { resolveConflict: createConflictResolver(rl) } : {}
   );
   if (result.skipped) {
     console.log(
@@ -1192,9 +1182,7 @@ async function runModelScheduleNow(rl?: readline.Interface) {
       if ("conflictsDeleted" in result && result.conflictsDeleted) {
         summary.push(`supprimé(s): ${result.conflictsDeleted}`);
       }
-      console.log(
-        ` Conflits: ${result.conflicts} (${summary.join(", ")}).`
-      );
+      console.log(` Conflits: ${result.conflicts} (${summary.join(", ")}).`);
     }
   }
   return result;
@@ -1382,7 +1370,7 @@ export async function runAdminCli() {
         } catch (error) {
           console.error(
             " Échec du cron de synchronisation des modèles:",
-            error instanceof Error? error.message: error
+            error instanceof Error ? error.message : error
           );
         }
         break;
@@ -1392,7 +1380,7 @@ export async function runAdminCli() {
         } catch (error) {
           console.error(
             " Erreur gestionnaire de formulaires:",
-            error instanceof Error? error.message: error
+            error instanceof Error ? error.message : error
           );
         }
         break;

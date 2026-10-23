@@ -44,8 +44,8 @@ function aplatir(auteur?: StoryAuthor): Item[] {
   if (!auteur) return [];
   return auteur.stories.flatMap<Item>((story) =>
     story.media.length > 0
-? story.media.map((media) => ({ media, story }))
-: [{ media: null, story }]
+      ? story.media.map((media) => ({ media, story }))
+      : [{ media: null, story }]
   );
 }
 
@@ -133,8 +133,8 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
 
   // Changement d'item: on repart de zéro, et la story est comptée comme vue.
   const identiteCourante = courant
-? `${courant.story.id}:${courant.media?.id?? "texte"}`
-: "";
+    ? `${courant.story.id}:${courant.media?.id ?? "texte"}`
+    : "";
   useEffect(() => {
     setProgress(0);
     setMaReaction(null);
@@ -157,7 +157,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     Boolean(courant) &&
     (!courant?.media || courant.media.mediaType === "image");
   useEffect(() => {
-    if (!estPhoto || paused ||!courant) return;
+    if (!estPhoto || paused || !courant) return;
     const step = (TICK_MS / IMAGE_DURATION_MS) * 100;
     const timer = setInterval(() => {
       setProgress((p) => Math.min(100, p + step));
@@ -203,10 +203,10 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
       try {
         const res = await ApiService.voteStory(story.id, index);
         setVotes((actuel) => ({
-...actuel,
+          ...actuel,
           [story.id]: {
-            counts: Array.isArray(res.counts)? res.counts: [],
-            myVote: Number.isInteger(res.myVote)? res.myVote: index,
+            counts: Array.isArray(res.counts) ? res.counts : [],
+            myVote: Number.isInteger(res.myVote) ? res.myVote : index,
             total: Number(res.total || 0),
           },
         }));
@@ -220,7 +220,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
 
   const repondre = useCallback(async () => {
     const texte = brouillon.trim();
-    if (!texte ||!auteur || envoi === "envoi") return;
+    if (!texte || !auteur || envoi === "envoi") return;
     setEnvoi("envoi");
     try {
       await ApiService.sendMessage(auteur.authorId, texte);
@@ -232,7 +232,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   }, [auteur, brouillon, envoi]);
 
   const afficherVues = useCallback(async () => {
-    if (!courant ||!auteur?.isMine) return;
+    if (!courant || !auteur?.isMine) return;
     try {
       const res = await ApiService.getStoryViews(courant.story.id);
       setVues(res.viewers || []);
@@ -258,14 +258,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   const estVideo = courant.media?.mediaType === "video";
   const sondage = courant.story.poll;
   const etatSondage = sondage
-? (votes[courant.story.id]?? {
+    ? (votes[courant.story.id] ?? {
         counts: sondage.counts,
         myVote: sondage.myVote,
         total: sondage.total,
       })
-: null;
+    : null;
   const sondageVerrouille =
-    Boolean(auteur?.isMine) || (etatSondage?.myVote?? null)!== null;
+    Boolean(auteur?.isMine) || (etatSondage?.myVote ?? null) !== null;
   const montrerResultats = sondageVerrouille;
 
   return createPortal(
@@ -284,7 +284,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         const dx = e.clientX - depart.x;
         const dy = e.clientY - depart.y;
         if (Math.abs(dy) > SWIPE_THRESHOLD_PX && Math.abs(dy) > Math.abs(dx)) {
-          passerAuteur(dy < 0? 1: -1);
+          passerAuteur(dy < 0 ? 1 : -1);
           return;
         }
         if (Math.abs(dx) > SWIPE_THRESHOLD_PX) {
@@ -303,17 +303,17 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         {items.map((item, index) => (
           <div
             className="h-0.5 flex-1 overflow-hidden rounded-full bg-zinc-500/30"
-            key={item.media?.id?? item.story.id}
+            key={item.media?.id ?? item.story.id}
           >
             <div
               className="h-full bg-zinc-500 transition-[width] duration-75 ease-linear vibe-dark:bg-white"
               style={{
                 width:
                   index < itemIndex
-? "100%"
-: index === itemIndex
-? `${progress}%`
-: "0%",
+                    ? "100%"
+                    : index === itemIndex
+                      ? `${progress}%`
+                      : "0%",
               }}
             />
           </div>
@@ -335,11 +335,11 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           <p className="truncate text-[11px] text-white/60">
             @{auteur?.username} ·{" "}
             {new Date(courant.story.expiresAt).getTime() > Date.now()
-? "il expire à minuit"
-: "archivée"}
+              ? "il expire à minuit"
+              : "archivée"}
           </p>
         </div>
-        {auteur?.isMine? (
+        {auteur?.isMine ? (
           <button
             className="rounded-full px-2 py-1 text-[11px] text-white/80 hover:bg-white/10"
             onClick={afficherVues}
@@ -347,7 +347,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           >
             Vues
           </button>
-        ): null}
+        ) : null}
         <button
           aria-label="Fermer"
           className="rounded-full p-2 text-white/80 hover:bg-white/10"
@@ -360,7 +360,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
 
       {/* Média, canevas de texte, stickers, légende et sondage. */}
       <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-zinc-100 vibe-dark:bg-black">
-        {estVideo? (
+        {estVideo ? (
           <video
             autoPlay
             className="h-full w-full object-contain"
@@ -371,14 +371,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
             ref={videoRef}
             src={courant.media?.url}
           />
-        ): courant.media? (
+        ) : courant.media ? (
           <img
             alt={courant.media.altText || "Story"}
             className="h-full w-full object-contain"
             key={identiteCourante}
             src={courant.media.url}
           />
-        ): (
+        ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-800 px-8">
             <p className="max-h-full overflow-hidden text-balance text-center text-2xl font-semibold leading-snug text-white">
               {courant.story.caption}
@@ -395,7 +395,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           return (
             <span
               className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${
-                estBadge? "vibe-story-badge shadow-xl": "text-4xl drop-shadow"
+                estBadge ? "vibe-story-badge shadow-xl" : "text-4xl drop-shadow"
               }`}
               key={`${sticker.emoji}-${index}`}
               style={{
@@ -411,14 +411,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         {/* Légende et sondage empilés en bas, pour ne pas se recouvrir. Une
             story de texte porte déjà sa légende au centre du canevas. */}
         {(courant.media && courant.story.caption) ||
-        (sondage && etatSondage)? (
+        (sondage && etatSondage) ? (
           <div className="absolute inset-x-4 bottom-4 space-y-2">
-            {courant.media && courant.story.caption? (
+            {courant.media && courant.story.caption ? (
               <p className="rounded-xl bg-zinc-950/70 px-3 py-2 text-center text-sm text-white backdrop-blur-sm">
                 {courant.story.caption}
               </p>
-            ): null}
-            {sondage && etatSondage? (
+            ) : null}
+            {sondage && etatSondage ? (
               <div className="rounded-2xl bg-zinc-950/85 p-3 backdrop-blur-sm">
                 <p className="text-xs font-semibold text-white">
                   {sondage.question}
@@ -429,14 +429,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
                     const compteur = Number(etatSondage.counts[index] || 0);
                     const part =
                       etatSondage.total > 0
-? Math.round((compteur / etatSondage.total) * 100)
-: 0;
+                        ? Math.round((compteur / etatSondage.total) * 100)
+                        : 0;
                     return (
                       <button
                         className={`relative block w-full overflow-hidden rounded-xl border px-3 py-1.5 text-left text-xs transition ${
                           choisi
-? "border-white/60 text-white"
-: "border-white/20 text-white/80 hover:border-white/40"
+                            ? "border-white/60 text-white"
+                            : "border-white/20 text-white/80 hover:border-white/40"
                         }`}
                         key={`${option}-${index}`}
                         onClick={(e) => {
@@ -447,20 +447,20 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
                         onPointerUp={(e) => e.stopPropagation()}
                         type="button"
                       >
-                        {montrerResultats? (
+                        {montrerResultats ? (
                           <span
                             className="absolute inset-y-0 left-0 bg-zinc-500/30"
                             style={{ width: `${part}%` }}
                           />
-                        ): null}
+                        ) : null}
                         <span className="relative flex items-center justify-between gap-2">
                           <span className="truncate">{option}</span>
-                          {montrerResultats? (
+                          {montrerResultats ? (
                             <span className="shrink-0 text-white/60">
                               {part}%
                             </span>
-                          ): null}
-                          {choisi? <span className="shrink-0">✓</span>: null}
+                          ) : null}
+                          {choisi ? <span className="shrink-0">✓</span> : null}
                         </span>
                       </button>
                     );
@@ -468,30 +468,30 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
                 </div>
                 <p className="mt-2 text-[10px] text-white/50">
                   {etatSondage.total} vote
-                  {etatSondage.total > 1? "s": ""}
+                  {etatSondage.total > 1 ? "s" : ""}
                   {auteur?.isMine
-? " · sondage de votre story"
-: etatSondage.myVote === null
-? " · touchez une option"
-: ""}
+                    ? " · sondage de votre story"
+                    : etatSondage.myVote === null
+                      ? " · touchez une option"
+                      : ""}
                 </p>
               </div>
-            ): null}
+            ) : null}
           </div>
-        ): null}
+        ) : null}
       </div>
 
       {/* Liste des vues, auteur seul. */}
-      {vues? (
+      {vues ? (
         <div className="max-h-40 shrink-0 overflow-y-auto border-t border-white/10 bg-zinc-950 px-4 py-3">
           <p className="mb-2 text-[11px] uppercase tracking-wide text-white/50">
-            {compteurVues} vue{compteurVues > 1? "s": ""}
+            {compteurVues} vue{compteurVues > 1 ? "s" : ""}
           </p>
-          {vues.length === 0? (
+          {vues.length === 0 ? (
             <p className="text-xs text-white/50">
               Personne ne l'a encore regardée.
             </p>
-          ): (
+          ) : (
             <ul className="space-y-1">
               {vues.map((v) => (
                 <li
@@ -510,7 +510,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
             </ul>
           )}
         </div>
-      ): null}
+      ) : null}
 
       {/* Actions. */}
       <div className="shrink-0 space-y-2 border-t border-white/10 bg-zinc-950 px-3 py-3">
@@ -520,8 +520,8 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
               aria-label={`Réagir ${emoji}`}
               className={`rounded-full px-3 py-1.5 text-base transition ${
                 maReaction === emoji
-? "bg-white/20 scale-110"
-: "hover:bg-white/10"
+                  ? "bg-white/20 scale-110"
+                  : "hover:bg-white/10"
               }`}
               key={emoji}
               onClick={() => reagir(emoji)}
@@ -530,7 +530,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
               {emoji}
             </button>
           ))}
-          {auteur?.isMine? (
+          {auteur?.isMine ? (
             <button
               className="ml-auto rounded-full px-3 py-1.5 text-[11px] text-red-600 hover:bg-white/10 vibe-dark:text-red-300"
               onClick={supprimer}
@@ -538,10 +538,10 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
             >
               Supprimer
             </button>
-          ): null}
+          ) : null}
         </div>
 
-        {auteur?.isMine? null: (
+        {auteur?.isMine ? null : (
           <div className="flex items-center gap-2">
             <input
               className="flex-1 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
@@ -561,15 +561,15 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
               onPointerDown={(e) => e.stopPropagation()}
               type="button"
             >
-              {envoi === "envoi"? "…": "Envoyer"}
+              {envoi === "envoi" ? "…" : "Envoyer"}
             </button>
           </div>
         )}
-        {envoi === "erreur"? (
+        {envoi === "erreur" ? (
           <p className="text-[11px] text-red-600 vibe-dark:text-red-300">
             Réponse non envoyée. Vérifiez votre connexion et réessayez.
           </p>
-        ): null}
+        ) : null}
       </div>
     </div>,
     document.querySelector(".vibe-root") || document.body

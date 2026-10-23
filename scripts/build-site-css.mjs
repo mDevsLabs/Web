@@ -71,7 +71,7 @@ function decouperSelecteurs(liste) {
     if (chaine) {
       courant += c;
       if (c === "\\") {
-        courant += liste[i + 1]?? "";
+        courant += liste[i + 1] ?? "";
         i++;
       } else if (c === chaine) {
         chaine = null;
@@ -150,7 +150,7 @@ function ancrer(selecteur) {
   const [tete, reste] = decouperTete(s);
   const ancree = ancrerTete(tete);
 
-  return!reste || reste === "body"? ancree: `${ancree} ${reste}`;
+  return !reste || reste === "body" ? ancree : `${ancree} ${reste}`;
 }
 
 const pluginSite = () => {

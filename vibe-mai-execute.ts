@@ -57,8 +57,8 @@ export function registerVibeMAIExecuteRoutes(
       const body = await c.req.json().catch(() => ({}) as any);
       const reasoningEffort =
         typeof body?.reasoning_effort === "string"
-? body.reasoning_effort
-: null;
+          ? body.reasoning_effort
+          : null;
       const sql = getDb();
       await ensureMAIConversations();
       const conv = await resolveOwnedConversation(
@@ -75,12 +75,12 @@ export function registerVibeMAIExecuteRoutes(
       if (!conversationId)
         return c.json({ error: "Conversation indisponible." }, 503);
       const lastUserRows = conversationId
-? await sql`
+        ? await sql`
             SELECT id, content, created_at FROM mai_messages
             WHERE conversation_id = ${conversationId}::uuid AND sender_role = 'user' AND content IS NOT NULL
             ORDER BY created_at DESC LIMIT 1
           `
-: [];
+        : [];
       if (lastUserRows.length === 0) {
         return c.json({ error: "Aucun message à régénérer." }, 400);
       }
@@ -102,11 +102,11 @@ export function registerVibeMAIExecuteRoutes(
           ORDER BY created_at DESC LIMIT 20
         `;
         historyMessages = historyRows
-.slice()
-.reverse()
-.map((m: any) => ({
+          .slice()
+          .reverse()
+          .map((m: any) => ({
             content: String(m.content).slice(0, 4000),
-            role: m.sender_role === "assistant"? "assistant": "user",
+            role: m.sender_role === "assistant" ? "assistant" : "user",
           }));
       } catch {}
 
@@ -127,8 +127,8 @@ export function registerVibeMAIExecuteRoutes(
         "Tu es mAI, l'intelligence artificielle intégrée au réseau social Vibe. Tu es concis, créatif, pertinent et tu réponds en français avec des émojis." +
         " Tu connais l'historique de la conversation en cours: apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
         (postContextBlock
-? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
-: "");
+          ? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
+          : "");
 
       let reply = "";
       let capturedReasoning = "";
@@ -147,16 +147,16 @@ export function registerVibeMAIExecuteRoutes(
                 body: JSON.stringify({
                   messages: [
                     { content: systemContent, role: "system" },
-...historyMessages,
+                    ...historyMessages,
                     {
                       content: `${String(lastUser.content).trim()}${postContextBlock}`,
                       role: "user",
                     },
                   ],
                   model: candidate,
-...(reasoningEffort
-? { reasoning: { effort: reasoningEffort } }
-: {}),
+                  ...(reasoningEffort
+                    ? { reasoning: { effort: reasoningEffort } }
+                    : {}),
                 }),
                 headers: {
                   Authorization: `Bearer ${openRouterApiKey}`,
@@ -332,7 +332,7 @@ export function registerVibeMAIExecuteRoutes(
         });
       }
 
-      if (SENSITIVE_TOOLS.includes(toolName) && approve!== true) {
+      if (SENSITIVE_TOOLS.includes(toolName) && approve !== true) {
         const autoApprove = await getUserAutoApprove(sql, userId);
         if (!autoApprove) {
           // Le record « pending_approval» a déjà été persisté par le chat mAI:
@@ -350,11 +350,11 @@ export function registerVibeMAIExecuteRoutes(
 
       const executor = TOOL_EXECUTORS[toolName];
       const result = executor
-? await executor(userId, args)
-: await MAIAgentFleet.executeTool(toolName, args, userId);
+        ? await executor(userId, args)
+        : await MAIAgentFleet.executeTool(toolName, args, userId);
       const reply = result.success
-? formatToolReply(toolName, result.result, "")
-: ` L'action n'a pas pu être exécutée: ${result.error}`;
+        ? formatToolReply(toolName, result.result, "")
+        : ` L'action n'a pas pu être exécutée: ${result.error}`;
 
       if (result.success) {
         const { weekStartStr } = getWeekData();
@@ -370,11 +370,11 @@ export function registerVibeMAIExecuteRoutes(
       // sinon insère un nouveau message assistant (jamais de doublon).
       const record = makeToolCallRecord({
         args,
-        error: result.success? null: result.error || "Erreur d'exécution",
+        error: result.success ? null : result.error || "Erreur d'exécution",
         model: effectiveModel,
         name: toolName,
         result,
-        status: result.success? "executed": "error",
+        status: result.success ? "executed" : "error",
       });
       let savedAssistantId: string | null = null;
       if (conversationId) {
@@ -383,11 +383,11 @@ export function registerVibeMAIExecuteRoutes(
           conversationId,
           toolName,
           {
-            error: result.success? null: result.error || "Erreur d'exécution",
+            error: result.success ? null : result.error || "Erreur d'exécution",
             model: effectiveModel,
             reply,
             result,
-            status: result.success? "executed": "error",
+            status: result.success ? "executed" : "error",
           }
         );
         if (finalized.id) {
@@ -400,7 +400,7 @@ export function registerVibeMAIExecuteRoutes(
             reply,
             { toolCalls: [record] }
           );
-          savedAssistantId = saved?.id? String(saved.id): null;
+          savedAssistantId = saved?.id ? String(saved.id) : null;
         }
       }
 
@@ -479,7 +479,7 @@ export function registerVibeMAIExecuteRoutes(
             reply,
             { toolCalls: [record] }
           );
-          savedId = saved?.id? String(saved.id): null;
+          savedId = saved?.id ? String(saved.id) : null;
         }
       }
 

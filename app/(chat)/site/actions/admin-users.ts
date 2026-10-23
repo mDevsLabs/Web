@@ -43,11 +43,11 @@ export interface UpdateUserAdminResult {
 
 function escapeHtml(str: any): string {
   return String(str || "")
-.replace(/&/g, "&amp;")
-.replace(/</g, "&lt;")
-.replace(/>/g, "&gt;")
-.replace(/"/g, "&quot;")
-.replace(/'/g, "&#39;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function buildAccountUpdateEmailHtml(params: {
@@ -59,11 +59,11 @@ function buildAccountUpdateEmailHtml(params: {
   const { username, changes, newTier, tempPassword } = params;
 
   const changesListHtml = changes
-.map((item) => {
+    .map((item) => {
       const icon = item.icon || "";
       const oldStr = item.oldValue
-? `<span style="color:#94a3b8; text-decoration:line-through; margin-right:6px;">${escapeHtml(item.oldValue)}</span>➔ `
-: "";
+        ? `<span style="color:#94a3b8; text-decoration:line-through; margin-right:6px;">${escapeHtml(item.oldValue)}</span>➔ `
+        : "";
       return `
         <li style="margin-bottom:12px; font-size:14px; line-height:1.6; color:#e2e8f0; list-style:none; padding-left:0;">
           <span style="display:inline-block; margin-right:8px; font-size:16px;">${icon}</span>
@@ -72,7 +72,7 @@ function buildAccountUpdateEmailHtml(params: {
         </li>
       `;
     })
-.join("");
+    .join("");
 
   const tierLimitsMap: Record<string, string> = {
     Free: "500 req/mois API • 10M tokens mAI • 10 GB Cloud Storage",
@@ -82,7 +82,7 @@ function buildAccountUpdateEmailHtml(params: {
   };
 
   const tierBadgeHtml = newTier
-? `
+    ? `
       <div style="background:linear-gradient(180deg, #131d31 0%, #0c1322 100%); border:1px solid #334155; border-radius:16px; padding:20px; text-align:center; margin:22px 0;">
         <span style="display:inline-block; background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.35); font-weight:800; font-size:14px; padding:6px 20px; border-radius:100px; text-transform:uppercase; letter-spacing:0.5px;">
           Forfait Actuel: ${escapeHtml(newTier)}
@@ -92,17 +92,17 @@ function buildAccountUpdateEmailHtml(params: {
         </p>
       </div>
     `
-: "";
+    : "";
 
   const passwordBoxHtml = tempPassword
-? `
+    ? `
       <div style="background:rgba(234,179,8,0.1); border:1px solid rgba(234,179,8,0.3); border-radius:12px; padding:16px; margin:18px 0; color:#fef08a; font-size:14px;">
          <strong>Nouveau mot de passe temporaire:</strong>
         <code style="background:#0f172a; padding:4px 10px; border-radius:6px; color:#fbbf24; font-family:monospace; font-size:15px; user-select:all;">${escapeHtml(tempPassword)}</code>
         <br><span style="font-size:12px; color:#cbd5e1; margin-top:8px; display:inline-block;">Nous vous recommandons de le modifier dès votre prochaine connexion dans vos paramètres de compte.</span>
       </div>
     `
-: "";
+    : "";
 
   return `
     <!DOCTYPE html>
@@ -188,7 +188,7 @@ function buildAccountSecurityAlertEmailHtml(params: {
 
 async function hashPassword(plainText: string): Promise<string> {
   if (
-    typeof (globalThis as any).Bun!== "undefined" &&
+    typeof (globalThis as any).Bun !== "undefined" &&
     (globalThis as any).Bun.password?.hash
   ) {
     return await (globalThis as any).Bun.password.hash(plainText, {
@@ -206,8 +206,8 @@ async function hashPassword(plainText: string): Promise<string> {
   } catch {
     const salt = crypto.randomBytes(16).toString("hex");
     const hash = crypto
-.pbkdf2Sync(plainText, salt, 1000, 64, "sha512")
-.toString("hex");
+      .pbkdf2Sync(plainText, salt, 1000, 64, "sha512")
+      .toString("hex");
     return `$pbkdf2$${salt}$${hash}`;
   }
 }
@@ -272,7 +272,7 @@ export async function updateUserByAdmin(
         success: false,
       };
     }
-    if (normalized!== (user.tier || "Free")) {
+    if (normalized !== (user.tier || "Free")) {
       targetTier = normalized;
       changes.push({
         icon: "",
@@ -286,10 +286,10 @@ export async function updateUserByAdmin(
   let targetUsername: string | null = null;
   if (params.username) {
     const cleanU = String(params.username)
-.toLowerCase()
-.trim()
-.replace(/^@/, "")
-.replace(/[^a-z0-9_]/g, "");
+      .toLowerCase()
+      .trim()
+      .replace(/^@/, "")
+      .replace(/[^a-z0-9_]/g, "");
     if (cleanU.length < 2) {
       return {
         changes: [],
@@ -297,7 +297,7 @@ export async function updateUserByAdmin(
         success: false,
       };
     }
-    if (cleanU!== user.username) {
+    if (cleanU !== user.username) {
       const existing =
         await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanU} AND id!= ${user.id} LIMIT 1;`;
       if (existing.length > 0) {
@@ -327,7 +327,7 @@ export async function updateUserByAdmin(
         success: false,
       };
     }
-    if (cleanE!== user.email.toLowerCase()) {
+    if (cleanE !== user.email.toLowerCase()) {
       const existing =
         await sql`SELECT id FROM users WHERE LOWER(email) = ${cleanE} AND id!= ${user.id} LIMIT 1;`;
       if (existing.length > 0) {
@@ -348,9 +348,9 @@ export async function updateUserByAdmin(
   }
 
   let targetPhone: string | null | undefined;
-  if (params.phone!== undefined) {
-    const cleanP = params.phone? String(params.phone).trim(): null;
-    if (cleanP!== (user.phone || null)) {
+  if (params.phone !== undefined) {
+    const cleanP = params.phone ? String(params.phone).trim() : null;
+    if (cleanP !== (user.phone || null)) {
       targetPhone = cleanP;
       changes.push({
         icon: "",
@@ -423,7 +423,7 @@ export async function updateUserByAdmin(
     await sql`UPDATE users SET email = ${targetEmail} WHERE id = ${user.id};`;
   }
 
-  if (targetPhone!== undefined) {
+  if (targetPhone !== undefined) {
     await sql`UPDATE users SET phone = ${targetPhone} WHERE id = ${user.id};`;
   }
 
@@ -442,13 +442,13 @@ export async function updateUserByAdmin(
 
   // Envoi email confirmation
   let emailSent = false;
-  if (params.notify!== false) {
+  if (params.notify !== false) {
     const notifyRecipient = targetEmail || user.email;
     const emailHtml = buildAccountUpdateEmailHtml({
       changes,
       newTier:
         targetTier ||
-        (changes.some((c) => c.label.includes("Plan"))? targetTier: null),
+        (changes.some((c) => c.label.includes("Plan")) ? targetTier : null),
       tempPassword: params.password || null,
       username: targetUsername || user.username,
     });
@@ -457,8 +457,8 @@ export async function updateUserByAdmin(
       emailSent = await sendHtmlEmail(
         notifyRecipient,
         targetTier
-? `Votre compte mAI a été mis à niveau (${targetTier})`
-: "Mise à jour des informations de votre compte mAI",
+          ? `Votre compte mAI a été mis à niveau (${targetTier})`
+          : "Mise à jour des informations de votre compte mAI",
         emailHtml
       );
     } catch (err: any) {
@@ -468,7 +468,7 @@ export async function updateUserByAdmin(
       );
     }
 
-    if (targetEmail && targetEmail!== user.email && user.email) {
+    if (targetEmail && targetEmail !== user.email && user.email) {
       try {
         await sendHtmlEmail(
           user.email,

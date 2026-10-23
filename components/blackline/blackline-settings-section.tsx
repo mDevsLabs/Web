@@ -59,11 +59,11 @@ const DEFAUTS = {
   autoReload: true,
   autoSprint: true,
   batterySaver: false,
+  callsign: "",
   cameraDistance: 3.5,
   cameraMode: "first" as const,
   cameraShake: true,
   cameraShoulder: "right" as const,
-  callsign: "",
   crosshair: "#d0e693",
   fov: 84,
   grenadePower: 1,
@@ -590,8 +590,8 @@ export function BlacklineSettingsSection() {
           <span>Touches PC</span>
         </div>
         <p className="text-[11px] leading-relaxed text-muted-foreground">
-          Cliquez sur une touche, puis pressez la touche de votre clavier.
-          Les modifications sont enregistrées au fur et à mesure.
+          Cliquez sur une touche, puis pressez la touche de votre clavier. Les
+          modifications sont enregistrées au fur et à mesure.
         </p>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {ACTIONS_TOUCHES.map((action) => {

@@ -21,15 +21,15 @@ function toMarkdown(chat: any, messages: any[]) {
       } catch {
         const parts = (m.parts as any[]) || [];
         return parts
-.filter((p) => p.type === "text")
-.map((p) => p.text)
-.join("\n");
+          .filter((p) => p.type === "text")
+          .map((p) => p.text)
+          .join("\n");
       }
     })();
     if (!text.trim()) {
       continue;
     }
-    md += `## ${m.role === "user"? "Vous": "mAI"} — ${new Date(m.createdAt).toLocaleString("fr-FR")}\n\n${text}\n\n---\n\n`;
+    md += `## ${m.role === "user" ? "Vous" : "mAI"} — ${new Date(m.createdAt).toLocaleString("fr-FR")}\n\n${text}\n\n---\n\n`;
     // Attachments
     const parts = (m.parts as any[]) || [];
     const files = parts.filter((p) => p.type === "file");
@@ -57,11 +57,11 @@ function toTxt(chat: any, messages: any[]) {
 
 function escapeHtml(str: string): string {
   return (str || "")
-.replace(/&/g, "&amp;")
-.replace(/</g, "&lt;")
-.replace(/>/g, "&gt;")
-.replace(/"/g, "&quot;")
-.replace(/'/g, "&#039;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function formatContent(text: string): string {
@@ -75,9 +75,9 @@ function formatContent(text: string): string {
   out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   out = out.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   out = out
-.split("\n\n")
-.map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`)
-.join("");
+    .split("\n\n")
+    .map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`)
+    .join("");
   return out;
 }
 
@@ -93,7 +93,7 @@ function toPrintableHtml(
   });
 
   const messagesHtml = messages
-.map((m) => {
+    .map((m) => {
       const isUser = m.role === "user";
       const text = (() => {
         try {
@@ -101,9 +101,9 @@ function toPrintableHtml(
         } catch {
           const parts = (m.parts as any[]) || [];
           return parts
-.filter((p) => p.type === "text")
-.map((p) => p.text)
-.join("\n");
+            .filter((p) => p.type === "text")
+            .map((p) => p.text)
+            .join("\n");
         }
       })();
       if (!text.trim()) return "";
@@ -113,10 +113,10 @@ function toPrintableHtml(
       });
       const formatted = formatContent(text);
       return `
-        <article class="message ${isUser? "message-user": "message-assistant"}">
+        <article class="message ${isUser ? "message-user" : "message-assistant"}">
           <div class="message-header">
-            <span class="author-badge ${isUser? "badge-user": "badge-assistant"}">
-              ${isUser? " Vous": " mAI"}
+            <span class="author-badge ${isUser ? "badge-user" : "badge-assistant"}">
+              ${isUser ? " Vous" : " mAI"}
             </span>
             <time class="message-time">${time}</time>
           </div>
@@ -126,7 +126,7 @@ function toPrintableHtml(
         </article>
       `;
     })
-.join("");
+    .join("");
 
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -300,7 +300,7 @@ function toPrintableHtml(
     Généré par mAI Web • Document confidentiel
   </footer>
 
-  ${autoPrint? "<script>window.addEventListener('load', () => window.print());</script>": ""}
+  ${autoPrint ? "<script>window.addEventListener('load', () => window.print());</script>" : ""}
 </body>
 </html>`;
 }
@@ -332,8 +332,8 @@ export async function GET(
     });
   }
   if (
-    chat.visibility!== "public" &&
-!chatOwnerMatches({
+    chat.visibility !== "public" &&
+    !chatOwnerMatches({
       chatUserId: chat.userId,
       email: maiUser.email,
       userId: maiUser.id,

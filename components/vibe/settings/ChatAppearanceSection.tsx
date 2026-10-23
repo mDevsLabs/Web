@@ -72,8 +72,8 @@ export const ChatAppearanceSection: React.FC = () => {
                     <button
                       className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col gap-2 ${
                         isSelected
-? "border-white bg-zinc-900 ring-1 ring-white/30 shadow-md"
-: "border-zinc-800 bg-zinc-900/40 hover:border-zinc-700"
+                          ? "border-white bg-zinc-900 ring-1 ring-white/30 shadow-md"
+                          : "border-zinc-800 bg-zinc-900/40 hover:border-zinc-700"
                       }`}
                       key={themeKey}
                       onClick={() => setMessageBubbleTheme(themeKey)}
@@ -86,7 +86,7 @@ export const ChatAppearanceSection: React.FC = () => {
                         >
                           {isSelected && (
                             <Check
-                              className={`w-3.5 h-3.5 ${isLightText? "text-white": "text-black"} stroke-[3]`}
+                              className={`w-3.5 h-3.5 ${isLightText ? "text-white" : "text-black"} stroke-[3]`}
                             />
                           )}
                         </div>
@@ -125,8 +125,8 @@ export const ChatAppearanceSection: React.FC = () => {
                   <button
                     className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col gap-2 ${
                       isSelected
-? "border-white bg-zinc-900 ring-1 ring-white/30 shadow-md"
-: "border-zinc-800 bg-zinc-900/40 hover:border-zinc-700"
+                        ? "border-white bg-zinc-900 ring-1 ring-white/30 shadow-md"
+                        : "border-zinc-800 bg-zinc-900/40 hover:border-zinc-700"
                     }`}
                     key={bgKey}
                     onClick={() => setChatBackgroundTheme(bgKey)}
@@ -134,7 +134,7 @@ export const ChatAppearanceSection: React.FC = () => {
                   >
                     <div
                       className={`w-full h-8 rounded-xl border border-white/10 flex items-center justify-center relative overflow-hidden ${b.previewBg}`}
-                      style={b.style? { background: b.style }: undefined}
+                      style={b.style ? { background: b.style } : undefined}
                     >
                       {isSelected && (
                         <div className="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center shadow">
@@ -169,8 +169,8 @@ export const ChatAppearanceSection: React.FC = () => {
                     <button
                       className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-2 ${
                         isSelected
-? "border-white bg-zinc-900 ring-1 ring-white/30 text-white"
-: "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
+                          ? "border-white bg-zinc-900 ring-1 ring-white/30 text-white"
+                          : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
                       }`}
                       key={shapeKey}
                       onClick={() => setMessageBubbleShape(shapeKey)}
@@ -212,11 +212,11 @@ export const ChatAppearanceSection: React.FC = () => {
             }`}
             style={
               CHAT_BACKGROUND_THEMES[chatBackgroundTheme]?.style
-? {
+                ? {
                     background:
                       CHAT_BACKGROUND_THEMES[chatBackgroundTheme].style,
                   }
-: undefined
+                : undefined
             }
           >
             {/* Message reçu */}
@@ -242,8 +242,8 @@ export const ChatAppearanceSection: React.FC = () => {
                 className={`p-3 text-xs shadow-md transition-all ${
                   MESSAGE_BUBBLE_THEMES[messageBubbleTheme]?.textColor ===
                   "dark"
-? "vibe-msg-text-dark"
-: "vibe-msg-text-light"
+                    ? "vibe-msg-text-dark"
+                    : "vibe-msg-text-light"
                 } ${MESSAGE_BUBBLE_SHAPES[messageBubbleShape]?.meRadius || "rounded-2xl"}`}
                 style={{
                   background:

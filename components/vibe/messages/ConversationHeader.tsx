@@ -127,7 +127,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
             <ArrowLeft className="w-5 h-5" />
           </button>
 
-          {isBookConv? (
+          {isBookConv ? (
             <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-zinc-100 vibe-dark:bg-zinc-900 border border-zinc-200 vibe-dark:border-zinc-800">
               {(() => {
                 const HeaderBookIcon = getBookIcon(
@@ -138,23 +138,23 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                 );
               })()}
             </span>
-          ): (
+          ) : (
             <ProfileAvatar
               alt="Avatar"
               className="border border-zinc-200 vibe-dark:border-zinc-800 shrink-0"
-              fallbackName={isGroupConv? "#": activePartner.username}
+              fallbackName={isGroupConv ? "#" : activePartner.username}
               size="sm"
               src={activePartner.avatar_url}
             />
           )}
           <div>
             <h3 className="text-xs font-bold text-black vibe-dark:text-white flex items-center gap-1.5">
-              {isBookConv? (
+              {isBookConv ? (
                 <BookOpen className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              ): isGroupConv? (
+              ) : isGroupConv ? (
                 <Users className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              ): null}
-              {isBookConv && bookId? (
+              ) : null}
+              {isBookConv && bookId ? (
                 <button
                   className="hover:underline underline-offset-2"
                   onClick={() => navigate(`/books/${bookId}`)}
@@ -163,7 +163,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                 >
                   {activePartner.display_name || activePartner.username}
                 </button>
-              ): (
+              ) : (
                 <span>
                   {activeConv?.custom_name ||
                     activePartner.display_name ||
@@ -182,11 +182,11 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                   tier={activePartner.tier}
                 />
               )}
-              {isGroupConv &&!isBookConv && (
+              {isGroupConv && !isBookConv && (
                 <span className="text-[10px] text-zinc-500 font-normal">
                   {((activeConv?.members || []) as any[]).length > 0
-? `· ${((activeConv?.members || []) as any[]).length} membre${((activeConv?.members || []) as any[]).length > 1? "s": ""}`
-: "· groupe"}
+                    ? `· ${((activeConv?.members || []) as any[]).length} membre${((activeConv?.members || []) as any[]).length > 1 ? "s" : ""}`
+                    : "· groupe"}
                 </span>
               )}
               {isBookConv && (
@@ -202,22 +202,22 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
             </h3>
             <span className="text-[11px] text-zinc-500 font-mono">
               {isBookConv
-? "Conversation du Livre · « /» pour joindre une publication"
-: isGroupConv
-? `${((activeConv?.members || []) as any[])
-.map((mm: any) => `@${mm.username}`)
-.slice(0, 3)
-.join(
+                ? "Conversation du Livre · « /» pour joindre une publication"
+                : isGroupConv
+                  ? `${((activeConv?.members || []) as any[])
+                      .map((mm: any) => `@${mm.username}`)
+                      .slice(0, 3)
+                      .join(
                         " "
-                      )}${((activeConv?.members || []) as any[]).length > 3? "…": ""}`
-: `@${activePartner.username}`}
+                      )}${((activeConv?.members || []) as any[]).length > 3 ? "…" : ""}`
+                  : `@${activePartner.username}`}
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-1">
           {/* Recherche dans la conversation */}
-          {convSearchOpen? (
+          {convSearchOpen ? (
             <div className="flex items-center gap-1 rounded-full bg-zinc-100 vibe-dark:bg-zinc-900 px-2 py-1">
               <Search className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
               <input
@@ -238,7 +238,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                 <X className="w-3.5 h-3.5" />
               </button>
             </div>
-          ): (
+          ) : (
             <button
               className="vibe-chat-icon-btn p-2 transition-colors"
               onClick={onOpenSearch}
@@ -284,7 +284,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                       <BookOpen className="w-3.5 h-3.5" /> Ouvrir le Livre
                     </button>
                   )}
-                  {isGroupConv &&!isBookConv && groupIsAdmin && (
+                  {isGroupConv && !isBookConv && groupIsAdmin && (
                     <button
                       className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
                       onClick={onOpenAddMembers}
@@ -293,7 +293,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                       <UserPlus className="w-3.5 h-3.5" /> Ajouter des membres
                     </button>
                   )}
-                  {isGroupConv &&!isBookConv && (
+                  {isGroupConv && !isBookConv && (
                     <button
                       className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
                       onClick={onOpenGroupInfo}
@@ -302,7 +302,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                       <Info className="w-3.5 h-3.5" /> Infos du groupe
                     </button>
                   )}
-                  {isGroupConv &&!isBookConv && (
+                  {isGroupConv && !isBookConv && (
                     <>
                       <div className="px-3 pt-1 pb-0.5 text-[9px] uppercase font-bold tracking-wider text-zinc-400">
                         Membres
@@ -326,7 +326,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                               admin
                             </span>
                           )}
-                          {groupIsAdmin && mm.role!== "admin" && (
+                          {groupIsAdmin && mm.role !== "admin" && (
                             <span className="flex items-center gap-1.5 shrink-0">
                               <button
                                 className="text-amber-500 hover:text-amber-400"
@@ -381,8 +381,8 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                     >
                       <Ban className="w-3.5 h-3.5" />{" "}
                       {activePartnerBlocked
-? "Débloquer cet utilisateur"
-: "Bloquer cet utilisateur"}
+                        ? "Débloquer cet utilisateur"
+                        : "Bloquer cet utilisateur"}
                     </button>
                   )}
                   {!isGroupConv && (
@@ -436,7 +436,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       )}
 
       {/* Indicateur de frappe du partenaire (temps réel) */}
-      {partnerTyping &&!activePartnerBlocked && (
+      {partnerTyping && !activePartnerBlocked && (
         <div
           aria-live="polite"
           className="px-4 pt-1.5 pb-0.5 flex items-center gap-2 animate-fadeIn"
@@ -474,7 +474,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
             <Pin className="w-3.5 h-3.5" />
             <span> Messages épinglés ({pinnedMessages.length})</span>
             <span className="ml-auto text-zinc-400">
-              {pinsCollapsed? "▸": "▾"}
+              {pinsCollapsed ? "▸" : "▾"}
             </span>
           </button>
           {!pinsCollapsed && (

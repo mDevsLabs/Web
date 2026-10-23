@@ -61,7 +61,7 @@ import {
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
-  const waitingText = waitingStatus?.message?? "En attente...";
+  const waitingText = waitingStatus?.message ?? "En attente...";
 
   return (
     <div className="flex min-h-[calc(13px*1.65)] min-w-0 items-center text-[13px] leading-[1.65]">
@@ -118,11 +118,11 @@ function AgentAudioToolResult({
             Synthèse vocale Agent
           </span>
         </div>
-        {typeof output.voice === "string"? (
+        {typeof output.voice === "string" ? (
           <span className="rounded-full border border-border/30 bg-muted/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
             Voix: {output.voice.replace("flux-", "").replace("-en", "")}
           </span>
-        ): null}
+        ) : null}
       </div>
 
       <audio
@@ -133,11 +133,11 @@ function AgentAudioToolResult({
         Votre navigateur ne supporte pas l'élément audio.
       </audio>
 
-      {output.text? (
+      {output.text ? (
         <div className="rounded-xl border border-border/20 bg-muted/30 p-2.5 text-[12px] italic leading-relaxed text-muted-foreground/90">
           «{output.text}»
         </div>
-      ): null}
+      ) : null}
     </div>
   );
 }
@@ -165,18 +165,18 @@ function ToolApprovalActions({
     };
   } | null>(null);
   useEffect(() => {
-    if (!isAgent ||!chatId ||!toolCallId) return;
+    if (!isAgent || !chatId || !toolCallId) return;
     let cancelled = false;
     fetch(
       `/api/agent/runs?view=approvalPreview&chatId=${encodeURIComponent(chatId)}&toolCallId=${encodeURIComponent(toolCallId)}`
     )
-.then((response) =>
-        response.ok? response.json(): Promise.reject(new Error("preview"))
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(new Error("preview"))
       )
-.then((value) => {
+      .then((value) => {
         if (!cancelled) setPreview(value);
       })
-.catch(() => {
+      .catch(() => {
         if (!cancelled) setPreview({ enabled: true });
       });
     return () => {
@@ -200,23 +200,23 @@ function ToolApprovalActions({
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-2 border-t px-4 py-3">
-      {preview?.enabled && preview.preview? (
+      {preview?.enabled && preview.preview ? (
         <div className="w-full rounded-md bg-muted p-2 text-xs">
           <p className="font-medium">{preview.preview.tool}</p>
           <p>Cible: {preview.preview.target}</p>
           <p>Effet prévu: {preview.preview.effect}</p>
-          {preview.preview.details?.length? (
+          {preview.preview.details?.length ? (
             <p className="mt-1 break-words text-muted-foreground">
               Paramètres: {preview.preview.details.join(" · ")}
             </p>
-          ): null}
+          ) : null}
         </div>
-      ): null}
-      {preview?.enabled &&!preview.preview? (
+      ) : null}
+      {preview?.enabled && !preview.preview ? (
         <p className="w-full text-xs text-destructive">
           Aperçu indisponible: l'accord est suspendu.
         </p>
-      ): null}
+      ) : null}
       <button
         className="rounded-md px-3 py-1.5 text-muted-foreground text-sm transition-colors hover:bg-muted hover:text-foreground"
         onClick={handleDeny}
@@ -227,7 +227,7 @@ function ToolApprovalActions({
       <button
         className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-sm transition-colors hover:bg-primary/90"
         disabled={
-          isAgent && (!preview || (preview.enabled &&!preview.preview))
+          isAgent && (!preview || (preview.enabled && !preview.preview))
         }
         onClick={handleAllow}
         type="button"
@@ -370,18 +370,18 @@ function HighlightedText({
   return (
     <>
       {parts.map((part, i) =>
-        part.toLowerCase() === q.toLowerCase()? (
+        part.toLowerCase() === q.toLowerCase() ? (
           <mark
             className={
               isCurrent
-? "bg-yellow-400 text-black rounded px-0.5"
-: "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
+                ? "bg-yellow-400 text-black rounded px-0.5"
+                : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
             }
             key={i}
           >
             {part}
           </mark>
-        ): (
+        ) : (
           <span key={i}>{part}</span>
         )
       )}
@@ -424,7 +424,7 @@ const PurePreviewMessage = ({
   // SEULE lecture non gardée de ce fichier: une ligne malformée suffisait à
   // faire tomber le segment de route entier — donc la conversation, le
   // compositeur et l'historique avec. Toute lecture passe par cette liste.
-  const messageParts = message.parts?? [];
+  const messageParts = message.parts ?? [];
 
   const attachmentsFromMessage = messageParts.filter(
     (part) => part.type === "file"
@@ -443,7 +443,7 @@ const PurePreviewMessage = ({
         part.text?.trim().length > 0) ||
       (typeof part.type === "string" && part.type.startsWith("tool-"))
   );
-  const isThinking = isAssistant && isLoading &&!hasAnyContent;
+  const isThinking = isAssistant && isLoading && !hasAnyContent;
 
   const attachments = attachmentsFromMessage.length > 0 && (
     <div
@@ -454,7 +454,7 @@ const PurePreviewMessage = ({
         <PreviewAttachment
           attachment={{
             contentType: attachment.mediaType,
-            name: attachment.filename?? "file",
+            name: attachment.filename ?? "file",
             url: attachment.url,
           }}
           key={attachment.url}
@@ -467,15 +467,15 @@ const PurePreviewMessage = ({
     (acc, part) => {
       if (part.type === "reasoning" && part.text?.trim().length > 0) {
         return {
-          isStreaming: "state" in part? part.state === "streaming": false,
+          isStreaming: "state" in part ? part.state === "streaming" : false,
           rendered: false,
-          text: acc.text? `${acc.text}\n\n${part.text}`: part.text,
+          text: acc.text ? `${acc.text}\n\n${part.text}` : part.text,
         };
       }
       return acc;
     },
     { isStreaming: false, rendered: false, text: "" }
-  )?? { isStreaming: false, rendered: false, text: "" };
+  ) ?? { isStreaming: false, rendered: false, text: "" };
 
   // Fin prématurée: le stream s'est arrêté juste après l'appel d'un outil,
   // sans résultat ni continuation (ex. le modèle annonce une recherche puis plus rien).
@@ -488,7 +488,7 @@ const PurePreviewMessage = ({
       return false;
     }
     const lastType = last.type as string;
-    if (!lastType.startsWith("tool-") && lastType!== "dynamic-tool") {
+    if (!lastType.startsWith("tool-") && lastType !== "dynamic-tool") {
       return false;
     }
     const state = (last as { state?: string }).state;
@@ -514,8 +514,8 @@ const PurePreviewMessage = ({
         );
         const isReasoningStreaming = Boolean(
           isLoading &&
-!hasStartedGeneratingAnswer &&
-            (mergedReasoning.isStreaming ||!hasAnyContent)
+            !hasStartedGeneratingAnswer &&
+            (mergedReasoning.isStreaming || !hasAnyContent)
         );
 
         return (
@@ -530,7 +530,7 @@ const PurePreviewMessage = ({
     }
 
     if (type === "text") {
-      const hasSearch =!!searchQuery?.trim();
+      const hasSearch = !!searchQuery?.trim();
       return (
         <MessageContent
           className={cn("text-[14px] sm:text-[13px] leading-[1.65]", {
@@ -540,7 +540,7 @@ const PurePreviewMessage = ({
           data-testid="message-content"
           key={key}
         >
-          {hasSearch? (
+          {hasSearch ? (
             <div
               className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}
             >
@@ -550,7 +550,7 @@ const PurePreviewMessage = ({
                 text={part.text}
               />
             </div>
-          ): (
+          ) : (
             <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
           )}
         </MessageContent>
@@ -711,7 +711,7 @@ const PurePreviewMessage = ({
       return (
         <div className="relative" key={toolCallId}>
           <DocumentPreview
-            args={{...part.output, isUpdate: true }}
+            args={{ ...part.output, isUpdate: true }}
             isReadonly={isReadonly}
             result={part.output}
           />
@@ -742,7 +742,7 @@ const PurePreviewMessage = ({
         return (
           <div className="relative" key={toolCallId}>
             <DocumentPreview
-              args={{...part.output, isUpdate: true }}
+              args={{ ...part.output, isUpdate: true }}
               isReadonly={isReadonly}
               result={part.output}
             />
@@ -762,7 +762,7 @@ const PurePreviewMessage = ({
             {state === "input-available" && <ToolInput input={part.input} />}
             {state === "output-available" &&
               part.output &&
-!("error" in part.output) && (
+              !("error" in part.output) && (
                 <ToolOutput
                   errorText={undefined}
                   output={
@@ -795,11 +795,11 @@ const PurePreviewMessage = ({
               <ToolOutput
                 errorText={undefined}
                 output={
-                  "error" in part.output? (
+                  "error" in part.output ? (
                     <div className="rounded border p-2 text-red-500">
                       Erreur: {String(part.output.error)}
                     </div>
-                  ): (
+                  ) : (
                     <DocumentToolResult
                       isReadonly={isReadonly}
                       result={part.output}
@@ -821,14 +821,14 @@ const PurePreviewMessage = ({
       if (
         toolPart.state === "output-available" &&
         output &&
-!output.error &&
+        !output.error &&
         output.image_url
       ) {
         return (
           <AgentImageToolResult
-            key={toolCallId?? key}
+            key={toolCallId ?? key}
             output={output}
-            toolCallId={toolCallId?? key}
+            toolCallId={toolCallId ?? key}
           />
         );
       }
@@ -836,7 +836,7 @@ const PurePreviewMessage = ({
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
-            key={toolCallId?? key}
+            key={toolCallId ?? key}
           >
             Erreur génération image: {String(output.error)}
           </div>
@@ -851,12 +851,12 @@ const PurePreviewMessage = ({
       if (
         toolPart.state === "output-available" &&
         output &&
-!output.error &&
+        !output.error &&
         output.audio_url
       ) {
         return (
           <AgentAudioToolResult
-            key={toolPart.toolCallId?? key}
+            key={toolPart.toolCallId ?? key}
             output={output}
           />
         );
@@ -865,7 +865,7 @@ const PurePreviewMessage = ({
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
-            key={toolPart.toolCallId?? key}
+            key={toolPart.toolCallId ?? key}
           >
             Erreur synthèse vocale: {String(output.error)}
           </div>
@@ -946,8 +946,8 @@ const PurePreviewMessage = ({
                   <span className="text-[11px] font-medium bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full border border-border/30">
                     Voix:{" "}
                     {(part.output as any).voice
-.replace("flux-", "")
-.replace("-en", "")}
+                      .replace("flux-", "")
+                      .replace("-en", "")}
                   </span>
                 )}
               </div>
@@ -990,7 +990,7 @@ const PurePreviewMessage = ({
       if (
         state === "output-available" &&
         part.output &&
-!("error" in part.output) &&
+        !("error" in part.output) &&
         (part.output as any).code
       ) {
         return (
@@ -1039,7 +1039,7 @@ const PurePreviewMessage = ({
       if (state === "output-available" && output) {
         if (
           typeof output === "object" &&
-          output!== null &&
+          output !== null &&
           "error" in output
         ) {
           return (
@@ -1098,23 +1098,23 @@ const PurePreviewMessage = ({
               </span>
               <span className="font-semibold text-[13px] text-foreground">
                 {action === "add"
-? " Mémorisation utilisateur"
-: action === "delete"
-? " Oubli de mémoire"
-: " Consultation de la mémoire"}
+                  ? " Mémorisation utilisateur"
+                  : action === "delete"
+                    ? " Oubli de mémoire"
+                    : " Consultation de la mémoire"}
               </span>
             </div>
             <span
               className={cn(
                 "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
                 isError
-? "bg-red-500/15 text-red-600 dark:text-red-400"
-: isAvailable
-? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-: "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
+                  ? "bg-red-500/15 text-red-600 dark:text-red-400"
+                  : isAvailable
+                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                    : "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
               )}
             >
-              {isError? "Erreur": isAvailable? "Enregistré": "En cours..."}
+              {isError ? "Erreur" : isAvailable ? "Enregistré" : "En cours..."}
             </span>
           </div>
           <div className="p-3 text-[12.5px] space-y-1.5">
@@ -1124,22 +1124,22 @@ const PurePreviewMessage = ({
                 {input?.content ||
                   output?.memory?.content ||
                   "Enregistrement d'une information..."}{" "}
-»
+                »
               </p>
             )}
             {action === "delete" && (
               <p className="text-muted-foreground">
                 {isAvailable
-? "L'information a été retirée de votre mémoire avec succès."
-: "Suppression de l'entrée en mémoire..."}
+                  ? "L'information a été retirée de votre mémoire avec succès."
+                  : "Suppression de l'entrée en mémoire..."}
               </p>
             )}
             {(action === "list" || action === "search") && (
               <div className="space-y-1.5">
                 <span className="text-xs text-muted-foreground font-medium">
                   {output?.count === undefined
-? "Recherche dans la mémoire..."
-: `${output.count} information(s) trouvée(s):`}
+                    ? "Recherche dans la mémoire..."
+                    : `${output.count} information(s) trouvée(s):`}
                 </span>
                 {output?.memories && output.memories.length > 0 && (
                   <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
@@ -1178,13 +1178,13 @@ const PurePreviewMessage = ({
         error?: unknown;
       } | null;
       const rawName = (toolPart.toolName || type)
-.replace(/^tool-/, "")
-.replace(/^mcp_/, "");
+        .replace(/^tool-/, "")
+        .replace(/^mcp_/, "");
       const nameParts = rawName.split("_");
       const serverName =
-        nameParts.length > 1? nameParts[0].toUpperCase(): "MCP";
+        nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
       const methodName =
-        nameParts.length > 1? nameParts.slice(1).join("_"): rawName;
+        nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
       const isAvailable = state === "output-available";
       const isError = state === "output-error" || (output && "error" in output);
 
@@ -1211,13 +1211,13 @@ const PurePreviewMessage = ({
               className={cn(
                 "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
                 isError
-? "bg-red-500/15 text-red-600"
-: isAvailable
-? "bg-emerald-500/15 text-emerald-600"
-: "bg-purple-500/20 text-purple-600 animate-pulse"
+                  ? "bg-red-500/15 text-red-600"
+                  : isAvailable
+                    ? "bg-emerald-500/15 text-emerald-600"
+                    : "bg-purple-500/20 text-purple-600 animate-pulse"
               )}
             >
-              {isError? "Erreur": isAvailable? "Terminé": "Exécution..."}
+              {isError ? "Erreur" : isAvailable ? "Terminé" : "Exécution..."}
             </span>
           </div>
           <div className="p-3 text-xs space-y-2">
@@ -1238,8 +1238,8 @@ const PurePreviewMessage = ({
                 </span>
                 <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-40 text-[11.5px] font-mono border border-border/30">
                   {typeof output === "string"
-? output
-: JSON.stringify(output, null, 2)}
+                    ? output
+                    : JSON.stringify(output, null, 2)}
                 </div>
               </div>
             )}
@@ -1260,7 +1260,7 @@ const PurePreviewMessage = ({
       return (
         <AskUserCard
           args={toolPart.input || toolPart.args}
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
@@ -1278,8 +1278,8 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <AgentUserInputCard
-          input={toolPart.input?? toolPart.args}
-          key={toolPart.toolCallId?? key}
+          input={toolPart.input ?? toolPart.args}
+          key={toolPart.toolCallId ?? key}
           onSubmit={submitUserInputAnswer}
           output={toolPart.output}
           toolCallId={toolPart.toolCallId}
@@ -1293,7 +1293,7 @@ const PurePreviewMessage = ({
         <AccountProfileCard
           args={toolPart.input || toolPart.args}
           isReadonly={isReadonly}
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
@@ -1307,7 +1307,7 @@ const PurePreviewMessage = ({
         <ProfilePictureCard
           args={toolPart.input || toolPart.args}
           isReadonly={isReadonly}
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
@@ -1319,7 +1319,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <AccountUsageCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1331,7 +1331,7 @@ const PurePreviewMessage = ({
       return (
         <QuizCard
           args={toolPart.input || toolPart.args}
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
         />
       );
@@ -1341,7 +1341,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <DiagramCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1352,7 +1352,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <PodcastCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1363,7 +1363,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <WebCaptureCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1374,7 +1374,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <DocumentParserCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1385,7 +1385,7 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <CalendarReminderCard
-          key={toolPart.toolCallId?? key}
+          key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
         />
@@ -1401,15 +1401,15 @@ const PurePreviewMessage = ({
         <Tool
           className="w-[min(100%,450px)]"
           defaultOpen
-          key={toolCallId?? key}
+          key={toolCallId ?? key}
         >
-          {type === "dynamic-tool"? (
+          {type === "dynamic-tool" ? (
             <ToolHeader
               state={state}
-              toolName={toolPart.toolName?? "Outil MCP"}
+              toolName={toolPart.toolName ?? "Outil MCP"}
               type={type}
             />
-          ): (
+          ) : (
             <ToolHeader state={state} type={type as any} />
           )}
           <ToolContent>
@@ -1445,24 +1445,24 @@ const PurePreviewMessage = ({
     return null;
   });
 
-  const actions =!isReadonly && (
+  const actions = !isReadonly && (
     <MessageActions
       chatId={chatId}
       isLoading={isLoading}
       key={`action-${message.id}`}
       message={message}
-      onEdit={onEdit? () => onEdit(message): undefined}
+      onEdit={onEdit ? () => onEdit(message) : undefined}
       vote={vote}
     />
   );
 
-  const content = isThinking? (
+  const content = isThinking ? (
     <WaitingText />
-  ): (
+  ) : (
     <>
       {attachments}
       {parts}
-      {interruptedAfterToolCall &&!isReadonly && (
+      {interruptedAfterToolCall && !isReadonly && (
         <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-700 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-400">
           <span className="min-w-0 flex-1">
             La réponse s'est interrompue avant le résultat de l'outil.
@@ -1485,15 +1485,15 @@ const PurePreviewMessage = ({
       className={cn(
         "group/message w-full",
         isAssistant
-? "message-fade-in"
-: "animate-[fade-up_0.25s_cubic-bezier(0.22,1,0.36,1)]"
+          ? "message-fade-in"
+          : "animate-[fade-up_0.25s_cubic-bezier(0.22,1,0.36,1)]"
       )}
       data-role={message.role}
       data-testid={`message-${message.role}`}
     >
       <div
         className={cn(
-          isUser? "flex flex-col items-end gap-2": "flex items-start gap-3"
+          isUser ? "flex flex-col items-end gap-2" : "flex items-start gap-3"
         )}
       >
         {isAssistant && (
@@ -1503,9 +1503,9 @@ const PurePreviewMessage = ({
             </div>
           </div>
         )}
-        {isAssistant? (
+        {isAssistant ? (
           <div className="flex min-w-0 flex-1 flex-col gap-2">{content}</div>
-        ): (
+        ) : (
           content
         )}
       </div>

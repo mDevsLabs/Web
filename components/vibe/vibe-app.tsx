@@ -22,8 +22,8 @@
  *
  * 2. La gestion du scroll change de nature. Le `ScrollManager` de la version
  *    Vite indexait les positions par `location.key` de react-router et
- *    interceptait `window.scrollTo`. Ici, `appNewScrollHandler` (next.config.ts)
- *    gère le scroll de l'App Router, y compris la restauration pour les
+ *    interceptait `window.scrollTo`. Ici, l'App Router Next.js
+ *    gère le scroll, y compris la restauration pour les
  *    navigations navigateur. Réimplémenter ce mécanisme en parallèle produirait
  *    deux écritures sur `scrollY` et des sauts de position au retour arrière.
  *

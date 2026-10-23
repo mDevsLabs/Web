@@ -207,7 +207,6 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_MAI_WEB_BUILD_ID: webBuildId,
   },
   experimental: {
-    appNewScrollHandler: true,
     cachedNavigations: true,
     // Plafond de mémoire : le nombre de processus de compilation est BORNE
     // par `MAI_BUILD_WORKERS` quand la variable est posée. Sans elle, Next.js

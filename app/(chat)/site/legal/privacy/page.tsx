@@ -80,8 +80,8 @@ export default function PrivacyPage() {
               <Lock className="inline w-4 h-4 align-middle" />
             </div>
             <p className="text-xs text-purple-700 leading-relaxed font-light">
-              Politique ZDR priorisée: vos prompts et requêtes d&apos;IA ne
-              sont jamais enregistrés ni réutilisés pour l&apos;entraînement.
+              Politique ZDR priorisée: vos prompts et requêtes d&apos;IA ne sont
+              jamais enregistrés ni réutilisés pour l&apos;entraînement.
             </p>
           </div>
           <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-900">
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
                   Les fichiers téléversés, images générées et artefacts
                   volumineux de mAI Cloud Storage sont hébergés sur des serveurs
                   haute performance situés aux <strong>États-Unis (USA)</strong>
-, avec chiffrement au repos AES-256 et clauses contractuelles
+                  , avec chiffrement au repos AES-256 et clauses contractuelles
                   types (SCC) garantissant un haut niveau de protection.
                 </p>
               </div>
@@ -179,8 +179,8 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc list-inside space-y-2 ml-2 text-sm font-light">
               <li>
-                <strong>Données d'Identité &amp; Profil</strong>: Adresse
-                e-mail valide, nom d'utilisateur unique, numéro de téléphone
+                <strong>Données d'Identité &amp; Profil</strong>: Adresse e-mail
+                valide, nom d'utilisateur unique, numéro de téléphone
                 (optionnel), mot de passe sécurisé (haché de manière
                 irréversible) et formule d'abonnement (Free, Plus, Pro, Max).
               </li>
@@ -206,15 +206,15 @@ export default function PrivacyPage() {
                   </code>
                   )
                 </strong>{" "}
-: À chaque appel sur nos points de terminaison (
+                : À chaque appel sur nos points de terminaison (
                 <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">
                   /v1/chat/completions
                 </code>
-,{" "}
+                ,{" "}
                 <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">
                   /v1/models
                 </code>
-,{" "}
+                ,{" "}
                 <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">
                   /v1/messages
                 </code>
@@ -270,14 +270,14 @@ export default function PrivacyPage() {
                   ne sont JAMAIS stockés de manière persistante, ni réutilisés
                   pour entraîner, réentraîner ou affiner des modèles d&apos;IA
                 </strong>
-.
+                .
               </p>
             </div>
             <p className="leading-relaxed font-light text-sm">
               <strong>
                 Traitement Éphémère en Mémoire Volatile (Stateless In-Memory)
               </strong>{" "}
-: Lorsque vous soumettez une requête à l&apos;API, les données
+              : Lorsque vous soumettez une requête à l&apos;API, les données
               sont traitées uniquement en mémoire vive volatile (RAM) par le
               moteur d&apos;inférence afin de générer la réponse demandée. Dès
               la transmission des tokens ou de l&apos;image à votre application,
@@ -352,7 +352,7 @@ export default function PrivacyPage() {
                 <strong className="text-slate-800">
                   mai_token &amp; mai_user
                 </strong>{" "}
-: Cookies de session sécurisés avec attributs{" "}
+                : Cookies de session sécurisés avec attributs{" "}
                 <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">
                   SameSite=Lax
                 </code>{" "}
