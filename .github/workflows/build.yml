@@ -339,7 +339,7 @@ jobs:
       - name: Capacitor – add & sync android
         working-directory: apps/mobile
         run: |
-          if [! -d "android" ]; then
+          if [ ! -d "android" ]; then
             npx --package=@capacitor/cli cap add android
           fi
           npx --package=@capacitor/cli cap sync android
@@ -349,8 +349,8 @@ jobs:
       - name: Build Android – Debug APK (debug keystore, non production)
         working-directory: apps/mobile/android
         run: |
-          chmod +x./gradlew
-./gradlew assembleDebug --no-daemon --stacktrace
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
       - name: Upload APK – Debug
         uses: actions/upload-artifact@v4
         with:
@@ -386,7 +386,7 @@ jobs:
       - name: Capacitor – add & sync ios
         working-directory: apps/mobile
         run: |
-          if [! -d "ios" ]; then
+          if [ ! -d "ios" ]; then
             npx --package=@capacitor/cli cap add ios
           fi
           npx --package=@capacitor/cli cap sync ios
@@ -472,14 +472,14 @@ jobs:
       - name: Ajouter les plateformes Capacitor
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
-          if [! -d "android" ]; then
+          if [ ! -d "android" ]; then
             npx --package=@capacitor/cli cap add android
           fi
           npx --package=@capacitor/cli cap sync android
       - name: Rendre gradlew exécutable
         run: chmod +x android/gradlew
       - name: Compiler l'APK Android de développement
-        run: cd android &&./gradlew assembleDebug --no-daemon --stacktrace
+        run: cd android && ./gradlew assembleDebug --no-daemon --stacktrace
       - name: Uploader l'artefact APK
         uses: actions/upload-artifact@v4
         with:
@@ -515,7 +515,7 @@ jobs:
       - name: Ajouter la plateforme Capacitor iOS
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
-          if [! -d "ios" ]; then
+          if [ ! -d "ios" ]; then
             npx --package=@capacitor/cli cap add ios
           fi
           npx --package=@capacitor/cli cap sync ios
@@ -766,8 +766,8 @@ jobs:
     if: |
       always() &&
       (github.event_name!= 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
-!contains(needs.*.result, 'failure') &&
-!contains(needs.*.result, 'cancelled')
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled')
     permissions:
       contents: write
       actions: read
@@ -796,8 +796,8 @@ jobs:
             const isPr = context.eventName === 'pull_request';
             const headSha = isPr? context.payload.pull_request.head.sha: context.sha;
             const branch = isPr
-? (context.payload.pull_request.head.ref || '')
-: context.ref.replace(/^refs\/heads\//, '').replace(/^refs\/tags\//, '');
+              ? (context.payload.pull_request.head.ref || '')
+              : context.ref.replace(/^refs\/heads\//, '').replace(/^refs\/tags\//, '');
             const channel = releaseChannel(context.eventName, branch);
 
             const marker = '<!-- mai-build:' + context.runId + ':' + context.runAttempt + ' -->';
@@ -811,7 +811,7 @@ jobs:
               } else {
                 for (let attempt = 0; attempt < 20; attempt++) {
                   const refs = await github.paginate(github.rest.git.listMatchingRefs, {
-...context.repo, ref: 'tags/' + channel + '.' + version
+                    ...context.repo, ref: 'tags/' + channel + '.' + version
                   });
                   tag = nextReleaseTag(version, channel, refs.map(item => item.ref.slice('refs/tags/'.length)));
                   try {
@@ -820,7 +820,7 @@ jobs:
                   } catch (error) {
                     if (![409, 422].includes(error.status)) throw error;
                     const { data: refsNow } = await github.rest.git.listMatchingRefs({
-...context.repo, ref: 'tags/' + tag
+                      ...context.repo, ref: 'tags/' + tag
                     });
                     if (!refsNow.some(item => item.ref === 'refs/tags/' + tag)) throw error;
                     if (channel === 'stable') throw new Error('La version stable existe déjà: augmentez package.json.');
@@ -832,7 +832,7 @@ jobs:
             if (!tag) throw new Error('Impossible de réserver un numéro de release après 20 tentatives.');
 
             const { data: notes } = await github.rest.repos.generateReleaseNotes({
-...context.repo, tag_name: tag, target_commitish: headSha
+              ...context.repo, tag_name: tag, target_commitish: headSha
             });
 
             const title = releaseTitle(tag);
@@ -871,7 +871,7 @@ jobs:
             ].join('\n');
 
             const options = {
-...context.repo,
+              ...context.repo,
               tag_name: tag,
               name: title,
               body,
@@ -881,8 +881,8 @@ jobs:
             };
 
             const { data: release } = previous
-? await github.rest.repos.updateRelease({...options, release_id: previous.id })
-: await github.rest.repos.createRelease(options);
+              ? await github.rest.repos.updateRelease({...options, release_id: previous.id })
+              : await github.rest.repos.createRelease(options);
 
             core.setOutput('id', release.id);
             core.setOutput('tag', tag);
@@ -901,7 +901,7 @@ jobs:
             const path = require('node:path');
             const releaseId = Number(process.env.RELEASE_ID);
             const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
-...context.repo, release_id: releaseId, per_page: 100
+              ...context.repo, release_id: releaseId, per_page: 100
             });
             const collected = [];
             async function collect(dir) {
@@ -955,7 +955,7 @@ jobs:
               }
               console.log(`Upload de l'artefact: ${uploadName}`);
               await github.rest.repos.uploadReleaseAsset({
-...context.repo, release_id: releaseId, name: uploadName,
+                ...context.repo, release_id: releaseId, name: uploadName,
                 data,
                 headers: { 'content-type': 'application/octet-stream' }
               });
