@@ -1,6 +1,8 @@
 import { streamText } from "ai";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
@@ -71,6 +73,40 @@ export async function POST(request: Request) {
       }
     }
 
+    /**
+     * LE MODÈLE DEMANDÉ EST VALIDÉ, PAS DÉSIGNÉ.
+     *
+     * Le corps de la requête portait un `modelId` que le serveur utilisait
+     * tel quel. Un appel direct pouvait donc demander N'IMPORTE QUEL
+     * identifiant de modèle — y compris un modèle que le compte n'a pas
+     * droit d'utiliser, ou un identifiant qui n'existe pas.
+     *
+     * La règle est celle du mode Agent (`app/(chat)/api/agent/route.ts`) :
+     * le modèle demandé n'est retenu que s'il EXISTE dans le catalogue du
+     * compte et s'il est autorisé pour son forfait. Sinon, on retombe sur
+     * le modèle par défaut du compte, puis sur le modèle produit.
+     */
+    if (requestedModelId) {
+      const catalogue = await fetchUserModels().catch(() => []);
+      const existe = catalogue.some((model) => model.id === requestedModelId);
+      const autorise = isModelAllowedForTier(
+        requestedModelId,
+        session?.user.tier ?? "free"
+      );
+      if (!existe || !autorise) {
+        const prefs = session
+          ? await getUserPreferences(session.userId).catch(() => null)
+          : null;
+        const prefere = prefs?.defaultChatModel;
+        const repli =
+          prefere &&
+          isModelAllowedForTier(prefere, session?.user.tier ?? "free")
+            ? prefere
+            : DEFAULT_CHAT_MODEL;
+        modelId = repli;
+      }
+    }
+
     const sessionToken = await getMaiSessionToken();
     const model = getLanguageModel(modelId, {
       sessionToken,
@@ -129,12 +165,33 @@ ${lengthInstruction}
 Rédige un résumé complet, fluide et bien structuré de cette source en français.`;
     } else {
       // Synthèse générale des résultats de recherche
+      //
+      // Le VOLUME affiché et le volume RÉDIGÉ sont deux choses distinctes.
+      // La liste peut afficher jusqu'à 200 liens par source, mais la
+      // synthèse travaille sur un sous-ensemble : au-delà d'une dizaine de
+      // sources, le prompt coûte plus qu'il n'apporte, et le modèle mélange
+      // les résultats. Ce plafond est donc ici, et il est indépendant du
+      // volume affiché — un compte Max n'obtient pas une synthèse plus longue,
+      // il obtient une liste plus longue.
       const formattedResults = searchResults
         .slice(0, 8)
-        .map(
-          (r: any, idx: number) =>
-            `[Source ${idx + 1}] ${r.title}\nURL: ${r.url}\nExtrait: ${r.snippet}`
-        )
+        .map((r: any, idx: number) => {
+          // L'origine est annoncée au modèle : un article d'encyclopédie est
+          // une source de référence, pas une page qui en parle. Sans cette
+          // distinction, la synthèse dit « d'après fr.wikipedia.org » comme
+          // elle dirait « d'après un blog ».
+          const nature =
+            r.origin === "wikipedia"
+              ? "Article d'encyclopédie (Wikipédia)"
+              : "Page web";
+          // Une page de désambiguïsation liste des homonymes : la laisser
+          // dans les sources ferait choisir à la synthèse un sujet au hasard
+          // parmi plusieurs.
+          const avertissement = r.isDisambiguation
+            ? "\nAttention : c'est une page de désambiguïsation (liste de sujets possibles) — n'en tire aucune affirmation précise."
+            : "";
+          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}${avertissement}`;
+        })
         .join("\n\n");
 
       systemPrompt = `Tu es le moteur d'intelligence mAI Search.
@@ -142,7 +199,8 @@ Ton rôle est de fournir un résumé clair, objectif, sourcé et actualisé bas�
 Langue : Français.
 ${lengthInstruction}
 Veille à aller jusqu'au bout de ton analyse et à formuler des phrases complètes et bien terminées.
-Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit pas corroboré.`;
+Chaque source est précédée de sa nature (page web ou article d'encyclopédie) : cite-la en conséquence, et signale explicitement quand une affirmation vient de Wikipédia.
+Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit corroboré.`;
 
       userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse complète de ces informations en français.`;
     }

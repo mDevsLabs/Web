@@ -5,6 +5,7 @@ import {
   BellIcon as Bell,
   BookmarkIcon as Bookmark,
   BookOpenIcon as BookOpen,
+  CalculatorIcon as Calculator,
   ClockIcon as Clock,
   FileTextIcon as FileText,
   GlobeIcon as Globe,
@@ -60,6 +61,9 @@ const iconMap: Record<string, React.ElementType> = {
   Bell,
   Bookmark,
   BookOpen,
+  // `Calculator` manquait : l'outil portable du même nom tombait sur le
+  // repli `Sparkles` et s'affichait avec l'icône d'une baguette magique.
+  Calculator,
   Clock,
   FileText,
   Globe,
@@ -180,6 +184,14 @@ export const ToolAutocomplete: React.FC<ToolAutocompleteProps> = ({
                   <span className="text-[11px] text-zinc-600 vibe-dark:text-zinc-400 truncate font-semibold">
                     {tool.name}
                   </span>
+                  {/* Un outil sensible agit sur le compte ou sur le contenu
+                      public : il exigera une approbation. L'utilisateur doit
+                      le savoir avant de l'écrire, pas après. */}
+                  {tool.sensitive ? (
+                    <span className="shrink-0 rounded-full bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-bold text-amber-600 vibe-dark:text-amber-400">
+                      approbation
+                    </span>
+                  ) : null}
                 </div>
                 <p className="text-[11px] text-zinc-500 truncate mt-0.5">
                   {tool.description}

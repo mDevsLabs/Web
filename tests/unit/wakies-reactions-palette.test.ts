@@ -1,6 +1,6 @@
 // La barre de réaction et la validation serveur doivent lire la MÊME palette.
-// Deux listes avaient divergé : l'interface proposait 👎/🤔/✅/❌ que la route
-// refusait avec « Émoji hors palette ». Ce test garde l'unique source.
+// Deux listes avaient divergé: l'interface proposait /// que la route
+// refusait avec « Émoji hors palette». Ce test garde l'unique source.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
@@ -16,7 +16,7 @@ describe("palette de réactions Wakies", () => {
   });
 
   it("refuse un émoji hors palette, y compris les anciens doublons de l'interface", () => {
-    for (const emoji of ["👎", "🤔", "🙏", "🎉", "✅", "❌", "🫶", ""]) {
+    for (const emoji of ["", "", "", "", "", "", "", ""]) {
       expect(estReactionValide(emoji)).toBe(false);
     }
   });

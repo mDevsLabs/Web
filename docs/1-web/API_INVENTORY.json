@@ -29,7 +29,7 @@
         "./openrouter-models.ts",
         "npm:hono@4"
       ],
-      "lines": 837,
+      "lines": 832,
       "registrations": []
     },
     {
@@ -94,14 +94,14 @@
         "./config.ts",
         "npm:hono@4"
       ],
-      "lines": 1884,
+      "lines": 1888,
       "registrations": []
     },
     {
       "file": "mai-identity.ts",
       "handlers": [],
       "imports": [],
-      "lines": 143,
+      "lines": 181,
       "registrations": []
     },
     {
@@ -119,7 +119,7 @@
       "file": "maiModels.ts",
       "handlers": [],
       "imports": [],
-      "lines": 339,
+      "lines": 274,
       "registrations": []
     },
     {
@@ -177,12 +177,13 @@
       "handlers": [],
       "imports": [
         "./config.ts",
+        "./images.ts",
         "./mai-identity.ts",
         "./maiModels.ts",
         "./openrouter-models.ts",
         "npm:hono@4"
       ],
-      "lines": 846,
+      "lines": 951,
       "registrations": []
     },
     {
@@ -199,7 +200,14 @@
       "file": "openrouter-models.ts",
       "handlers": [],
       "imports": [],
-      "lines": 253,
+      "lines": 661,
+      "registrations": []
+    },
+    {
+      "file": "portable-tools.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 103,
       "registrations": []
     },
     {
@@ -259,7 +267,7 @@
         "node:url",
         "npm:@neondatabase/serverless"
       ],
-      "lines": 165,
+      "lines": 705,
       "registrations": []
     },
     {
@@ -443,10 +451,11 @@
         "./vibe-common.ts",
         "./vibe-mai-core.ts",
         "./vibe-mai-fleet.ts",
+        "./vibe-mai-reasoning.ts",
         "./vibe-tools.ts",
         "npm:hono@4"
       ],
-      "lines": 549,
+      "lines": 602,
       "registrations": []
     },
     {
@@ -459,7 +468,7 @@
         "./vibe-posts-core.ts",
         "npm:hono@4"
       ],
-      "lines": 316,
+      "lines": 317,
       "registrations": []
     },
     {
@@ -469,7 +478,14 @@
         "./config.ts",
         "./vibe-posts-core.ts"
       ],
-      "lines": 1143,
+      "lines": 1308,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-creative.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 330,
       "registrations": []
     },
     {
@@ -481,10 +497,11 @@
         "./vibe-common.ts",
         "./vibe-mai-core.ts",
         "./vibe-mai-fleet.ts",
+        "./vibe-mai-reasoning.ts",
         "./vibe-tools.ts",
         "npm:hono@4"
       ],
-      "lines": 471,
+      "lines": 508,
       "registrations": []
     },
     {
@@ -493,9 +510,17 @@
       "imports": [
         "./config.ts",
         "./openrouter-fetch.ts",
+        "./vibe-mai-creative.ts",
         "./web.ts"
       ],
-      "lines": 1812,
+      "lines": 1840,
+      "registrations": []
+    },
+    {
+      "file": "vibe-mai-reasoning.ts",
+      "handlers": [],
+      "imports": [],
+      "lines": 66,
       "registrations": []
     },
     {
@@ -625,9 +650,10 @@
       "handlers": [],
       "imports": [
         "./config.ts",
+        "./portable-tools.ts",
         "./vibe-mai-fleet.ts"
       ],
-      "lines": 709,
+      "lines": 851,
       "registrations": []
     },
     {
@@ -1115,11 +1141,27 @@
       "path": "/api/auth/guest"
     },
     {
+      "file": "app/(chat)/api/blackline/settings/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/require-user",
+        "@/lib/blackline/queries",
+        "@/lib/blackline/settings",
+        "zod"
+      ],
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "path": "/api/blackline/settings"
+    },
+    {
       "file": "app/(chat)/api/chat/route.ts",
       "imports": [
         "./schema",
         "@/lib/agent/channel",
         "@/lib/ai/providers",
+        "@/lib/ai/reasoning-details",
         "@/lib/api/error-response",
         "@/lib/auth/require-user",
         "@/lib/auth/session",
@@ -1256,6 +1298,19 @@
       "path": "/api/cron/agent"
     },
     {
+      "file": "app/api/cron/notifications/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/notifications/replication",
+        "@/lib/security/timing",
+        "@/lib/wakies/queries"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/cron/notifications"
+    },
+    {
       "file": "app/api/cron/planning/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -1290,6 +1345,7 @@
         "@/lib/ai/providers",
         "@/lib/api/error-response",
         "@/lib/auth/plan",
+        "@/lib/db/queries",
         "@/lib/db/users",
         "@/lib/security/timing",
         "@/lib/wakies/queries",
@@ -1561,6 +1617,64 @@
       "path": "/api/library"
     },
     {
+      "file": "app/(chat)/api/mai-search/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries/search-history",
+        "@/lib/db/queries/users",
+        "@/lib/search/sources",
+        "@/lib/search/you-client",
+        "next/server",
+        "zod"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mai-search"
+    },
+    {
+      "file": "app/(chat)/api/mai-search/image-proxy/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/mai-search/image-proxy"
+    },
+    {
+      "file": "app/(chat)/api/mai-search/summary/route.ts",
+      "imports": [
+        "@/lib/ai/models",
+        "@/lib/ai/providers",
+        "@/lib/ai/tools/web-search",
+        "@/lib/auth/require-user",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/db/queries/chats",
+        "@/lib/db/queries/search-history",
+        "@/lib/db/queries/users",
+        "@/lib/search/summary-stream",
+        "ai"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mai-search/summary"
+    },
+    {
+      "file": "app/(chat)/api/mai-search/vote/route.ts",
+      "imports": [
+        "@/lib/auth/require-user",
+        "@/lib/db/queries/search-history",
+        "next/server"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "path": "/api/mai-search/vote"
+    },
+    {
       "file": "app/(chat)/api/mcp/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -1779,8 +1893,11 @@
     {
       "file": "app/(chat)/api/models/route.ts",
       "imports": [
+        "./images/route",
+        "./speech/route",
         "@/lib/ai/models.server",
-        "@/lib/ai/registry"
+        "@/lib/ai/registry",
+        "next/server"
       ],
       "methods": [
         "GET"
@@ -1796,6 +1913,16 @@
         "GET"
       ],
       "path": "/api/models/audio"
+    },
+    {
+      "file": "app/(chat)/api/models/image/route.ts",
+      "imports": [
+        "../images/route"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/api/models/image"
     },
     {
       "file": "app/(chat)/api/models/images/route.ts",
@@ -1851,6 +1978,8 @@
         "@/lib/auth/require-user",
         "@/lib/db/queries",
         "@/lib/errors",
+        "@/lib/vibe/services/api",
+        "@/lib/wakies/queries",
         "next/server"
       ],
       "methods": [
@@ -2653,6 +2782,7 @@
     {
       "file": "app/(chat)/api/user/preferences/route.ts",
       "imports": [
+        "@/lib/ai/registry/reasoning",
         "@/lib/api/error-response",
         "@/lib/apps/catalog",
         "@/lib/auth/require-user",
@@ -2661,6 +2791,7 @@
         "@/lib/errors",
         "@/lib/i18n/languages",
         "@/lib/plans/custom-instructions",
+        "@/lib/search/sources",
         "@/lib/theme/preference",
         "next/server",
         "zod"
@@ -2671,6 +2802,24 @@
         "POST"
       ],
       "path": "/api/user/preferences"
+    },
+    {
+      "file": "app/(chat)/api/vibe/[...path]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/auth/session",
+        "@/lib/constants",
+        "@/lib/vibe/server/relay-policy",
+        "next/server"
+      ],
+      "methods": [
+        "DELETE",
+        "GET",
+        "PATCH",
+        "POST",
+        "PUT"
+      ],
+      "path": "/api/vibe/[...path]"
     },
     {
       "file": "app/(chat)/api/vote/route.ts",
@@ -2704,7 +2853,11 @@
         "@/lib/agent/usage",
         "@/lib/ai/models.server",
         "@/lib/ai/providers",
+        "@/lib/ai/reasoning-details",
+        "@/lib/ai/reasoning-stream",
         "@/lib/ai/registry",
+        "@/lib/ai/registry/capabilities",
+        "@/lib/ai/registry/reasoning",
         "@/lib/ai/registry/tiers",
         "@/lib/ai/tools/ids",
         "@/lib/api/error-response",
@@ -2953,6 +3106,19 @@
       "path": "/api/wakies/mentions"
     },
     {
+      "file": "app/(chat)/api/wakies/messages/[id]/route.ts",
+      "imports": [
+        "@/lib/api/error-response",
+        "@/lib/wakies/http",
+        "@/lib/wakies/queries",
+        "zod"
+      ],
+      "methods": [
+        "PATCH"
+      ],
+      "path": "/api/wakies/messages/[id]"
+    },
+    {
       "file": "app/(chat)/api/wakies/messages/[id]/forward/route.ts",
       "imports": [
         "@/lib/api/error-response",
@@ -2984,6 +3150,7 @@
         "@/lib/api/error-response",
         "@/lib/wakies/http",
         "@/lib/wakies/queries",
+        "@/lib/wakies/shared/reactions",
         "zod"
       ],
       "methods": [
@@ -3325,6 +3492,16 @@
       "path": "/api/wakies/workspace"
     },
     {
+      "file": "app/ping/route.ts",
+      "imports": [
+        "next/server"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "path": "/ping"
+    },
+    {
       "file": "app/(chat)/site/account/keys/[id]/route.ts",
       "imports": [
         "@/lib/site/api-key-manager",
@@ -3425,35 +3602,35 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 826,
+      "line": 821,
       "method": "POST",
       "path": "/api/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 182,
+      "line": 177,
       "method": "GET",
       "path": "/api/speech/voices"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 828,
+      "line": 823,
       "method": "POST",
       "path": "/api/v1/audio/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 827,
+      "line": 822,
       "method": "POST",
       "path": "/api/v1/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 183,
+      "line": 178,
       "method": "GET",
       "path": "/api/v1/speech/voices"
     },
@@ -3502,7 +3679,7 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 829,
+      "line": 824,
       "method": "POST",
       "path": "/api/vibe/audio/speech"
     },
@@ -3894,63 +4071,63 @@
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 543,
+      "line": 596,
       "method": "POST",
       "path": "/api/vibe/mai/chat"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 157,
+      "line": 158,
       "method": "GET",
       "path": "/api/vibe/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 168,
+      "line": 169,
       "method": "POST",
       "path": "/api/vibe/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 254,
+      "line": 255,
       "method": "DELETE",
       "path": "/api/vibe/mai/conversations/:conversationId"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 306,
+      "line": 307,
       "method": "POST",
       "path": "/api/vibe/mai/conversations/:conversationId/duplicate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 218,
+      "line": 219,
       "method": "POST",
       "path": "/api/vibe/mai/conversations/:conversationId/rename"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 384,
+      "line": 421,
       "method": "POST",
       "path": "/api/vibe/mai/execute-tool"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 81,
+      "line": 82,
       "method": "GET",
       "path": "/api/vibe/mai/history"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 107,
+      "line": 108,
       "method": "POST",
       "path": "/api/vibe/mai/history/new"
     },
@@ -3964,14 +4141,14 @@
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 214,
+      "line": 251,
       "method": "POST",
       "path": "/api/vibe/mai/regenerate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 461,
+      "line": 498,
       "method": "POST",
       "path": "/api/vibe/mai/tool-refused"
     },
@@ -4391,14 +4568,14 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 824,
+      "line": 819,
       "method": "POST",
       "path": "/api/vibe/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 180,
+      "line": 175,
       "method": "GET",
       "path": "/api/vibe/speech/voices"
     },
@@ -4559,70 +4736,70 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 823,
+      "line": 818,
       "method": "POST",
       "path": "/audio/generations"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 449,
+      "line": 444,
       "method": "DELETE",
       "path": "/audio/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 376,
+      "line": 371,
       "method": "GET",
       "path": "/audio/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 383,
+      "line": 378,
       "method": "PATCH",
       "path": "/audio/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 448,
+      "line": 443,
       "method": "DELETE",
       "path": "/audio/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 382,
+      "line": 377,
       "method": "PATCH",
       "path": "/audio/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 121,
+      "line": 116,
       "method": "GET",
       "path": "/audio/models"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 822,
+      "line": 817,
       "method": "POST",
       "path": "/audio/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 270,
+      "line": 265,
       "method": "GET",
       "path": "/audio/usage"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 179,
+      "line": 174,
       "method": "GET",
       "path": "/audio/voices"
     },
@@ -4636,7 +4813,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 525,
+      "line": 630,
       "method": "POST",
       "path": "/chat/completions"
     },
@@ -4776,91 +4953,91 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1872,
+      "line": 1876,
       "method": "POST",
       "path": "/images"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1874,
+      "line": 1878,
       "method": "POST",
       "path": "/images/edits"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1870,
+      "line": 1874,
       "method": "POST",
       "path": "/images/generations"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1383,
+      "line": 1387,
       "method": "DELETE",
-      "path": "/images/history"
-    },
-    {
-      "dynamic": false,
-      "file": "images.ts",
-      "line": 1375,
-      "method": "GET",
       "path": "/images/history"
     },
     {
       "dynamic": false,
       "file": "images.ts",
       "line": 1379,
+      "method": "GET",
+      "path": "/images/history"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1383,
       "method": "PATCH",
       "path": "/images/history"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1382,
+      "line": 1386,
       "method": "DELETE",
       "path": "/images/history/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1378,
+      "line": 1382,
       "method": "PATCH",
       "path": "/images/history/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1075,
+      "line": 1077,
       "method": "GET",
       "path": "/images/models"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1864,
+      "line": 1868,
       "method": "GET",
       "path": "/images/tasks/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1836,
+      "line": 1840,
       "method": "POST",
       "path": "/images/upscale"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1209,
+      "line": 1213,
       "method": "GET",
       "path": "/images/usage"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1876,
+      "line": 1880,
       "method": "POST",
       "path": "/images/variations"
     },
@@ -4874,14 +5051,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 268,
+      "line": 295,
       "method": "POST",
       "path": "/log-usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 270,
+      "line": 297,
       "method": "POST",
       "path": "/log-usage/"
     },
@@ -4902,7 +5079,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 348,
+      "line": 453,
       "method": "GET",
       "path": "/mai/models"
     },
@@ -4923,79 +5100,93 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 686,
+      "line": 791,
       "method": "POST",
       "path": "/messages"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1793,
+      "line": 1797,
       "method": "POST",
       "path": "/mj/submit/action"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1797,
+      "line": 1801,
       "method": "POST",
       "path": "/mj/submit/blend"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1799,
+      "line": 1803,
       "method": "POST",
       "path": "/mj/submit/change"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1795,
+      "line": 1799,
       "method": "POST",
       "path": "/mj/submit/describe"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1789,
+      "line": 1793,
       "method": "POST",
       "path": "/mj/submit/imagine"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1801,
+      "line": 1805,
       "method": "POST",
       "path": "/mj/submit/modal"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1803,
+      "line": 1807,
       "method": "POST",
       "path": "/mj/submit/shorten"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1805,
+      "line": 1809,
       "method": "POST",
       "path": "/mj/submit/swap-face"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1791,
+      "line": 1795,
       "method": "GET",
       "path": "/mj/task/:id/fetch"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 306,
+      "line": 412,
       "method": "GET",
       "path": "/models"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1075,
+      "method": "GET",
+      "path": "/models/image"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1115,
+      "method": "GET",
+      "path": "/models/image/:id"
     },
     {
       "dynamic": false,
@@ -5007,21 +5198,21 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1111,
+      "line": 1113,
       "method": "GET",
       "path": "/models/images/:id"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 347,
+      "line": 452,
       "method": "GET",
       "path": "/models/mai"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 117,
+      "line": 112,
       "method": "GET",
       "path": "/models/speech"
     },
@@ -5203,63 +5394,63 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 817,
+      "line": 812,
       "method": "POST",
       "path": "/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 819,
+      "line": 814,
       "method": "POST",
       "path": "/speech/generations"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 377,
+      "line": 372,
       "method": "GET",
       "path": "/speech/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 385,
+      "line": 380,
       "method": "PATCH",
       "path": "/speech/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 384,
+      "line": 379,
       "method": "PATCH",
       "path": "/speech/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 119,
+      "line": 114,
       "method": "GET",
       "path": "/speech/models"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 271,
+      "line": 266,
       "method": "GET",
       "path": "/speech/usage"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 177,
+      "line": 172,
       "method": "GET",
       "path": "/speech/voices"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 360,
+      "line": 465,
       "method": "GET",
       "path": "/status"
     },
@@ -5273,7 +5464,7 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1866,
+      "line": 1870,
       "method": "GET",
       "path": "/tasks/:id"
     },
@@ -5329,14 +5520,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 202,
+      "line": 229,
       "method": "GET",
       "path": "/usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 204,
+      "line": 231,
       "method": "GET",
       "path": "/usage/"
     },
@@ -5350,7 +5541,7 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 272,
+      "line": 267,
       "method": "GET",
       "path": "/usage/speech"
     },
@@ -5406,70 +5597,70 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 821,
+      "line": 816,
       "method": "POST",
       "path": "/v1/audio/generations"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 445,
+      "line": 440,
       "method": "DELETE",
+      "path": "/v1/audio/history"
+    },
+    {
+      "dynamic": false,
+      "file": "audio.ts",
+      "line": 369,
+      "method": "GET",
       "path": "/v1/audio/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
       "line": 374,
-      "method": "GET",
-      "path": "/v1/audio/history"
-    },
-    {
-      "dynamic": false,
-      "file": "audio.ts",
-      "line": 379,
       "method": "PATCH",
       "path": "/v1/audio/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 444,
+      "line": 439,
       "method": "DELETE",
       "path": "/v1/audio/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 378,
+      "line": 373,
       "method": "PATCH",
       "path": "/v1/audio/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 120,
+      "line": 115,
       "method": "GET",
       "path": "/v1/audio/models"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 820,
+      "line": 815,
       "method": "POST",
       "path": "/v1/audio/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 268,
+      "line": 263,
       "method": "GET",
       "path": "/v1/audio/usage"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 178,
+      "line": 173,
       "method": "GET",
       "path": "/v1/audio/voices"
     },
@@ -5574,7 +5765,7 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 524,
+      "line": 629,
       "method": "POST",
       "path": "/v1/chat/completions"
     },
@@ -5931,105 +6122,105 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1871,
+      "line": 1875,
       "method": "POST",
       "path": "/v1/images"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1873,
+      "line": 1877,
       "method": "POST",
       "path": "/v1/images/edits"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1869,
+      "line": 1873,
       "method": "POST",
       "path": "/v1/images/generations"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1381,
+      "line": 1385,
       "method": "DELETE",
       "path": "/v1/images/history"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1374,
+      "line": 1378,
       "method": "GET",
       "path": "/v1/images/history"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1377,
+      "line": 1381,
       "method": "PATCH",
       "path": "/v1/images/history"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1380,
+      "line": 1384,
       "method": "DELETE",
       "path": "/v1/images/history/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1376,
+      "line": 1380,
       "method": "PATCH",
       "path": "/v1/images/history/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1074,
+      "line": 1076,
       "method": "GET",
       "path": "/v1/images/models"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1863,
+      "line": 1867,
       "method": "GET",
       "path": "/v1/images/tasks/:id"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1835,
+      "line": 1839,
       "method": "POST",
       "path": "/v1/images/upscale"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1208,
+      "line": 1212,
       "method": "GET",
       "path": "/v1/images/usage"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1875,
+      "line": 1879,
       "method": "POST",
       "path": "/v1/images/variations"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 269,
+      "line": 296,
       "method": "POST",
       "path": "/v1/log-usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 271,
+      "line": 298,
       "method": "POST",
       "path": "/v1/log-usage/"
     },
@@ -6050,70 +6241,70 @@
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 543,
+      "line": 596,
       "method": "POST",
       "path": "/v1/mai/chat"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 157,
+      "line": 158,
       "method": "GET",
       "path": "/v1/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 168,
+      "line": 169,
       "method": "POST",
       "path": "/v1/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 254,
+      "line": 255,
       "method": "DELETE",
       "path": "/v1/mai/conversations/:conversationId"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 306,
+      "line": 307,
       "method": "POST",
       "path": "/v1/mai/conversations/:conversationId/duplicate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 218,
+      "line": 219,
       "method": "POST",
       "path": "/v1/mai/conversations/:conversationId/rename"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 384,
+      "line": 421,
       "method": "POST",
       "path": "/v1/mai/execute-tool"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 81,
+      "line": 82,
       "method": "GET",
       "path": "/v1/mai/history"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 107,
+      "line": 108,
       "method": "POST",
       "path": "/v1/mai/history/new"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 346,
+      "line": 451,
       "method": "GET",
       "path": "/v1/mai/models"
     },
@@ -6127,14 +6318,14 @@
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 214,
+      "line": 251,
       "method": "POST",
       "path": "/v1/mai/regenerate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 461,
+      "line": 498,
       "method": "POST",
       "path": "/v1/mai/tool-refused"
     },
@@ -6162,114 +6353,128 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 685,
+      "line": 790,
       "method": "POST",
       "path": "/v1/messages"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1794,
+      "line": 1798,
       "method": "POST",
       "path": "/v1/mj/submit/action"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1798,
+      "line": 1802,
       "method": "POST",
       "path": "/v1/mj/submit/blend"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1800,
+      "line": 1804,
       "method": "POST",
       "path": "/v1/mj/submit/change"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1796,
+      "line": 1800,
       "method": "POST",
       "path": "/v1/mj/submit/describe"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1790,
+      "line": 1794,
       "method": "POST",
       "path": "/v1/mj/submit/imagine"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1802,
+      "line": 1806,
       "method": "POST",
       "path": "/v1/mj/submit/modal"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1804,
+      "line": 1808,
       "method": "POST",
       "path": "/v1/mj/submit/shorten"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1806,
+      "line": 1810,
       "method": "POST",
       "path": "/v1/mj/submit/swap-face"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1792,
+      "line": 1796,
       "method": "GET",
       "path": "/v1/mj/task/:id/fetch"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 305,
+      "line": 411,
       "method": "GET",
       "path": "/v1/models"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 843,
+      "line": 948,
       "method": "POST",
       "path": "/v1/models/*:generateContent"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1880,
+      "line": 1884,
       "method": "POST",
       "path": "/v1/models/*:generateImages"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1882,
+      "line": 1886,
       "method": "POST",
       "path": "/v1/models/*:predict"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 844,
+      "line": 949,
       "method": "POST",
       "path": "/v1/models/*:streamGenerateContent"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 833,
+      "line": 828,
       "method": "POST",
       "path": "/v1/models/*:synthesizeSpeech"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1074,
+      "method": "GET",
+      "path": "/v1/models/image"
+    },
+    {
+      "dynamic": false,
+      "file": "images.ts",
+      "line": 1114,
+      "method": "GET",
+      "path": "/v1/models/image/:id"
     },
     {
       "dynamic": false,
@@ -6281,21 +6486,21 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1110,
+      "line": 1112,
       "method": "GET",
       "path": "/v1/models/images/:id"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 345,
+      "line": 450,
       "method": "GET",
       "path": "/v1/models/mai"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 116,
+      "line": 111,
       "method": "GET",
       "path": "/v1/models/speech"
     },
@@ -6722,84 +6927,84 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 816,
+      "line": 811,
       "method": "POST",
       "path": "/v1/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 835,
+      "line": 830,
       "method": "POST",
       "path": "/v1/speech:synthesize"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 818,
+      "line": 813,
       "method": "POST",
       "path": "/v1/speech/generations"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 447,
+      "line": 442,
       "method": "DELETE",
       "path": "/v1/speech/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 375,
+      "line": 370,
       "method": "GET",
       "path": "/v1/speech/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 381,
+      "line": 376,
       "method": "PATCH",
       "path": "/v1/speech/history"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 446,
+      "line": 441,
       "method": "DELETE",
       "path": "/v1/speech/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 380,
+      "line": 375,
       "method": "PATCH",
       "path": "/v1/speech/history/:id"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 118,
+      "line": 113,
       "method": "GET",
       "path": "/v1/speech/models"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 269,
+      "line": 264,
       "method": "GET",
       "path": "/v1/speech/usage"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 176,
+      "line": 171,
       "method": "GET",
       "path": "/v1/speech/voices"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 359,
+      "line": 464,
       "method": "GET",
       "path": "/v1/status"
     },
@@ -6897,7 +7102,7 @@
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1865,
+      "line": 1869,
       "method": "GET",
       "path": "/v1/tasks/:id"
     },
@@ -6946,14 +7151,14 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 203,
+      "line": 230,
       "method": "GET",
       "path": "/v1/usage"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 205,
+      "line": 232,
       "method": "GET",
       "path": "/v1/usage/"
     },
@@ -7037,42 +7242,42 @@
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 307,
+      "line": 413,
       "method": "GET",
       "path": "/v1beta/models"
     },
     {
       "dynamic": false,
       "file": "models.ts",
-      "line": 842,
+      "line": 947,
       "method": "POST",
       "path": "/v1beta/models/*"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1879,
+      "line": 1883,
       "method": "POST",
       "path": "/v1beta/models/*:generateImages"
     },
     {
       "dynamic": false,
       "file": "images.ts",
-      "line": 1881,
+      "line": 1885,
       "method": "POST",
       "path": "/v1beta/models/*:predict"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 832,
+      "line": 827,
       "method": "POST",
       "path": "/v1beta/models/*:synthesizeSpeech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 834,
+      "line": 829,
       "method": "POST",
       "path": "/v1beta/speech:synthesize"
     },
@@ -7506,63 +7711,63 @@
     {
       "dynamic": false,
       "file": "vibe-mai-chat.ts",
-      "line": 543,
+      "line": 596,
       "method": "POST",
       "path": "/vibe/mai/chat"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 157,
+      "line": 158,
       "method": "GET",
       "path": "/vibe/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 168,
+      "line": 169,
       "method": "POST",
       "path": "/vibe/mai/conversations"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 254,
+      "line": 255,
       "method": "DELETE",
       "path": "/vibe/mai/conversations/:conversationId"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 306,
+      "line": 307,
       "method": "POST",
       "path": "/vibe/mai/conversations/:conversationId/duplicate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 218,
+      "line": 219,
       "method": "POST",
       "path": "/vibe/mai/conversations/:conversationId/rename"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 384,
+      "line": 421,
       "method": "POST",
       "path": "/vibe/mai/execute-tool"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 81,
+      "line": 82,
       "method": "GET",
       "path": "/vibe/mai/history"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-conversations.ts",
-      "line": 107,
+      "line": 108,
       "method": "POST",
       "path": "/vibe/mai/history/new"
     },
@@ -7576,14 +7781,14 @@
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 214,
+      "line": 251,
       "method": "POST",
       "path": "/vibe/mai/regenerate"
     },
     {
       "dynamic": false,
       "file": "vibe-mai-execute.ts",
-      "line": 461,
+      "line": 498,
       "method": "POST",
       "path": "/vibe/mai/tool-refused"
     },
@@ -7905,14 +8110,14 @@
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 825,
+      "line": 820,
       "method": "POST",
       "path": "/vibe/speech"
     },
     {
       "dynamic": false,
       "file": "audio.ts",
-      "line": 181,
+      "line": 176,
       "method": "GET",
       "path": "/vibe/speech/voices"
     },

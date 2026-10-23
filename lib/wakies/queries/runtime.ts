@@ -303,6 +303,18 @@ export async function finishChatTurn(
       )
       .returning();
     if (!termine || status !== "completed") return;
+    // Le réglage du COMPTE décide si une alerte est produite. C'est le seul
+    // endroit où la décision se prend : l'événement est écrit ici, dans la
+    // transaction de fin de tour (migration 0065).
+    const [reglages] = await tx
+      .select({ replyAlertsEnabled: wakiesSettings.replyAlertsEnabled })
+      .from(wakiesSettings)
+      .where(eq(wakiesSettings.userId, userId))
+      .limit(1);
+    // Une ligne de réglages absente vaut « alertes activées » : le compte
+    // n'a pas encore ouvert les réglages, et couper les alertes d'un compte
+    // qui ne les a jamais vues serait une surprise.
+    if (reglages && !reglages.replyAlertsEnabled) return;
     // Les événements d'un même compte sont alloués dans l'ordre des commits :
     // une relève ne peut pas dépasser un événement encore non validé.
     await tx.execute(

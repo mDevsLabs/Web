@@ -33,6 +33,14 @@ function params(...model: string[]) {
   return { params: Promise.resolve({ model }) };
 }
 
+// Le chargement de `next/server` — imported par la route — coûte plusieurs
+// secondes. Il était auparavant payé par le PREMIER test qui importait la
+// route, donc chronométré : le test passait ou échouait selon la machine et
+// la version de Next. On le déclenche ici, à la collecte du fichier, où le
+// délai de test ne s'applique pas : plus aucun test n'est chronométré sur un
+// chargement de module.
+await import("@/app/(chat)/api/site/v1beta/models/[...model]/route");
+
 describe("v1beta — frontière d'authentification", () => {
   it.each([
     "/api/site/v1beta/models/gemini-2.0-flash:generateContent",

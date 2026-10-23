@@ -2,7 +2,7 @@
  * Outil mAI — Traduction (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "translate".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface TranslateArgs {
   text: string;

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS "Project" (
   "color" varchar(7) DEFAULT '#6366f1',
   "createdAt" timestamp DEFAULT now() NOT NULL,
   "description" text DEFAULT '',
-  "icon" text DEFAULT '📁',
+  "icon" text DEFAULT '',
   "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   "isArchived" boolean DEFAULT false NOT NULL,
   "name" text NOT NULL,

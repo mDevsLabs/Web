@@ -163,7 +163,11 @@ export function AgentTab() {
                 label: "Agent",
               },
             ]}
-            onChange={(id) => update({ defaultMode: id as AgentMode })}
+            onChange={(id) =>
+              update({ defaultMode: id as AgentMode }, () =>
+                update({ defaultMode: settings.defaultMode })
+              )
+            }
             value={settings.defaultMode}
           />
         </Section>
@@ -187,7 +191,11 @@ export function AgentTab() {
             name: entry.name,
             provider: entry.provider,
           }))}
-          onModelChange={(modelId) => update({ defaultModel: modelId || null })}
+          onModelChange={(modelId) =>
+            update({ defaultModel: modelId || null }, () =>
+              update({ defaultModel: settings.defaultModel ?? null })
+            )
+          }
           placeholder="Automatique"
           selectedModelId={settings.defaultModel ?? ""}
         />
@@ -214,7 +222,12 @@ export function AgentTab() {
                   label: REASONING_LEVEL_LABELS[level],
                 }))}
                 onChange={(id) =>
-                  update({ reasoningLevel: id as ReasoningLevel })
+                  update({ reasoningLevel: id as ReasoningLevel }, () =>
+                    update({
+                      reasoningLevel:
+                        settings.reasoningLevel ?? ("medium" as ReasoningLevel),
+                    })
+                  )
                 }
                 value={settings.reasoningLevel ?? "medium"}
               />
@@ -267,15 +280,23 @@ export function AgentTab() {
                 key={category}
                 onClick={() => {
                   const current = new Set(settings.enabledCategories ?? []);
+                  const previous = [...current];
                   if (current.has(category)) {
                     current.delete(category);
                   } else {
                     current.add(category);
                   }
                   const next = [...current];
-                  update({
-                    enabledCategories: next.length > 0 ? next : null,
-                  });
+                  update(
+                    {
+                      enabledCategories: next.length > 0 ? next : null,
+                    },
+                    () =>
+                      update({
+                        enabledCategories:
+                          previous.length > 0 ? previous : null,
+                      })
+                  );
                 }}
                 type="button"
               >
@@ -318,11 +339,21 @@ export function AgentTab() {
                     label: TOOL_PERMISSION_LABELS[permission],
                   }))}
                   onChange={(value) =>
-                    update({
-                      toolPolicies: {
-                        [tool.id]: value as ToolPermission,
+                    update(
+                      {
+                        toolPolicies: {
+                          [tool.id]: value as ToolPermission,
+                        },
                       },
-                    })
+                      () =>
+                        update({
+                          toolPolicies: {
+                            [tool.id]:
+                              settings.toolPolicies[tool.id] ??
+                              tool.defaultPermission,
+                          },
+                        })
+                    )
                   }
                   value={
                     (tool.impact === "external_mutation" ||
@@ -350,7 +381,11 @@ export function AgentTab() {
             id: project.id,
             label: project.name,
           }))}
-          onChange={(id) => update({ defaultProjectId: id || null })}
+          onChange={(id) =>
+            update({ defaultProjectId: id || null }, () =>
+              update({ defaultProjectId: settings.defaultProjectId ?? null })
+            )
+          }
           placeholder="Aucun projet"
           value={settings.defaultProjectId ?? ""}
         />

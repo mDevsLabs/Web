@@ -2,7 +2,7 @@
  * Outil mAI — Analyse des hashtags personnels (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "analyze_hashtags".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface AnalyzeHashtagsArgs {
   period?: "7d" | "30d" | "90d" | "12m";

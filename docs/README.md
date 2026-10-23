@@ -9,6 +9,7 @@ Les guides sont classés selon la partie du dépôt qu’ils décrivent. Pour le
 | 3-wakies | Source Wakies et intégration sous /wakies | [Wakies](3-wakies/README.md) |
 | 4-coder | Application Electron de développement | [mAI Coder](4-coder/README.md) |
 | 5-site | Site autonome et intégration sous /site | [Site officiel](5-site/README.md) |
+| 6-blackline | Jeu 3D Vite monté sous /blackline | [Blackline](6-blackline/README.md) |
 
 Les guides de domaine contiennent leurs propres règles AGENTS.md, les plans d’intégration et les références d’architecture. Le dossier 4-coder/llm-wiki/ est un index maintenu des modules de mAI Coder. Les images et démonstrations sont conservées à proximité de leur guide.
 

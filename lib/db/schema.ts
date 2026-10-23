@@ -40,6 +40,7 @@ import type {
 } from "@/lib/agent/types";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
+import type { MaiSearchSourceKey } from "@/lib/search/sources";
 
 export const project = pgTable(
   "Project",
@@ -793,6 +794,14 @@ export const notification = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isRead: boolean("isRead").notNull().default(false),
     link: text("link"),
+    // Origine de l'événement : l'application qui l'a produit. `mai` par
+    // défaut — une notification créée sans origine explicite est une
+    // notification mAI, comme avant l'unification.
+    origin: varchar("origin", { length: 20 }).notNull().default("mai"),
+    // Identifiant de l'événement DANS SA SOURCE (uuid Vibe, seq Wakies).
+    sourceId: text("sourceId"),
+    // Charge utile propre à la source (acteur, url, conversation, vignette…).
+    sourceMeta: jsonb("sourceMeta"),
     title: text("title").notNull(),
     type: varchar("type", {
       enum: [
@@ -808,6 +817,16 @@ export const notification = pgTable(
         "agent_run_failed",
         "agent_approval_required",
         "agent_user_input_required",
+        "vibe_like",
+        "vibe_repost",
+        "vibe_reply",
+        "vibe_mention",
+        "vibe_quote",
+        "vibe_follow",
+        "vibe_dm",
+        "vibe_ai_digest",
+        "vibe_system",
+        "wakies_reply",
       ],
     }).notNull(),
     userId: text("userId").notNull(),
@@ -818,7 +837,20 @@ export const notification = pgTable(
       table.userId,
       table.dedupeKey
     ),
+    // Un seul événement par (origine, identifiant source) : c'est ce qui
+    // rend la réplication idempotente. L'index est PARTIEL : les
+    // notifications natives de mAI n'ont pas de `sourceId`, et un index
+    // unique complet les refuserait (deux `NULL` sont distincts en SQL
+    // pour un index, mais pas pour une contrainte `UNIQUE`).
+    originSourceUnique: uniqueIndex("Notification_origin_sourceId_key")
+      .on(table.origin, table.sourceId)
+      .where(sql`${table.sourceId} is not null`),
     userIdIdx: index("Notification_userId_idx").on(table.userId),
+    userOriginCreatedIdx: index("Notification_userId_origin_createdAt_idx").on(
+      table.userId,
+      table.origin,
+      table.createdAt
+    ),
     userReadIdx: index("Notification_userId_isRead_idx").on(
       table.userId,
       table.isRead
@@ -923,6 +955,34 @@ export const userPreferences = pgTable("user_preferences", {
   reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
     .notNull()
     .default("medium"),
+  // Préférences de recherche mAI Search (migration 0062).
+  // Langue de l'encyclopédie et des recherches (fr | en | de | es | it) :
+  // normalisée par `normalizeMaiSearchLanguage`, une valeur illisible vaut
+  // « fr ».
+  searchLanguage: varchar("searchLanguage", { length: 10 })
+    .notNull()
+    .default("fr"),
+  // Nombre de résultats renvoyés par une recherche (5 à 25). La borne
+  // supérieure existe aussi comme contrainte en base : un client qui
+  // triche ne doit pas pouvoir siphonner le quota du moteur.
+  searchResultCount: integer("searchResultCount").notNull().default(10),
+  // Filtre de sécurité des résultats (low | medium | strict) : même
+  // vocabulaire que le filtre de contenu de Vibe.
+  searchSafetyLevel: varchar("searchSafetyLevel", { length: 20 })
+    .notNull()
+    .default("medium"),
+  // Sources activées dans mAI Search (web, news, images, videos,
+  // wikipedia). Une liste illisible ou vide vaut TOUTES les sources : ne
+  // rien chercher n'est jamais l'intention d'un réglage corrompu.
+  searchSources: jsonb("searchSources")
+    .notNull()
+    .default([
+      "web",
+      "news",
+      "images",
+      "videos",
+      "wikipedia",
+    ] as MaiSearchSourceKey[]),
   showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
   // Préférence de thème partagée par la suite (mAI, Site, Vibe, Wakies) :
   // system | light | dark. Lecture et normalisation fail-safe :
@@ -1789,6 +1849,10 @@ export const wakiesSettings = pgTable("WakiesSettings", {
   // Wakies ne crée plus de profil ni d'espace et ne déclenche pas l'assistant.
   onboardingCompleted: boolean("onboardingCompleted").notNull().default(true),
   paused: boolean("paused").notNull().default(false),
+  // Produire une alerte à la fin d'un tour terminé. C'est le LIEU de la
+  // décision : la table `Notification` porte l'événement, celle-ci porte le
+  // réglage (migration 0065).
+  replyAlertsEnabled: boolean("replyAlertsEnabled").notNull().default(true),
   researchAllowed: boolean("researchAllowed").notNull().default(true),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   userId: text("userId").notNull().primaryKey(),
@@ -2598,3 +2662,45 @@ export const maiSearchQuery = pgTable(
 );
 
 export type MaiSearchQuery = InferSelectModel<typeof maiSearchQuery>;
+
+// ─────────────────────────────────────────────
+// BLACKLINE (migration 0064) : réglages du jeu, par compte
+// ─────────────────────────────────────────────
+//
+// Blackline est un jeu solo Vite/Three.js monté sous /blackline. Ses
+// réglages (qualité, résolution de rendu, sensibilité, volume, touches…)
+// étaient jusqu'ici un `localStorage` par appareil : changer d'appareil, c'était
+// tout recommencer.
+//
+// LA TABLE EST DÉDIÉE, ET UNIQUE PAR COMPTE
+//
+// Une seule ligne par compte (`userId` en clé primaire), comme
+// `WakiesSettings` et `user_preferences`. Le jeu est mono-utilisateur : il
+// n'y a pas de « ressource d'un autre compte » à protéger au-delà de cette clé.
+//
+// LES RÉGLAGES SONT UN JSONB, PAS DES COLONNES
+//
+// Le jeu expose une trentaine de réglages de formes très différentes
+// (énumérations, nombres bornés, texte court, table de touches). Une colonne
+// par réglage serait une trentaine de colonnes à migrer à chaque ajout, et
+// chaque nouvelle version du jeu带来rait une migration. Le `jsonb` porte un
+// objet que le serveur BORNE et normalise — même modèle que
+// `PluginInstallation.settings`.
+//
+// LA PROGRESSION N'EST PAS ICI
+//
+// XP, armes, collection et carrière restent dans le `localStorage` de
+// l'appareil : le jeu a volontairement retiré la synchronisation en ligne
+// (version 1.2.0), et ses récompenses ne constituent pas une économie serveur.
+// Seul le JOURNAL des réglages est partagé.
+export const blacklineSettings = pgTable("BlacklineSettings", {
+  // Réglages du jeu, sérialisés. Le serveur valide et borne l'objet.
+  settings: jsonb("settings")
+    .$type<Record<string, unknown>>()
+    .notNull()
+    .default({}),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").notNull().primaryKey(),
+});
+
+export type BlacklineSettings = InferSelectModel<typeof blacklineSettings>;

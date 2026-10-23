@@ -119,6 +119,64 @@ export async function releverNotifications(userId: string, after?: number) {
 }
 
 /**
+ * Alertes Wakies NON REPLIQUEES, pour le tick de replication.
+ *
+ * `releverNotifications` est le point d'entree du FILET Wakies : il sert
+ * au client, qui veut les evenements depuis SON curseur. Le tick, lui, veut
+ * ce qui n'a pas encore ete copie dans la table `Notification` de l'hote.
+ *
+ * La difference est un `seq` maximal : tout ce qui est en dessous a deja
+ * ete replique. La borne est donc lue depuis la table de l'hote - c'est
+ * elle qui dit ce qui manque, pas la source.
+ */
+export async function listWakieNotifications(
+  userId: string,
+  afterSeq = 0
+): Promise<
+  Array<{
+    conversationId: string;
+    muted: boolean;
+    preview: string;
+    seq: number;
+    title: string;
+  }>
+> {
+  await dbReady();
+  const db = getDb();
+  const rows = await db
+    .select({
+      conversationId: wakiesMessage.conversationId,
+      muted: wakiesConversation.muted,
+      parts: wakiesMessage.parts,
+      seq: wakiesNotification.seq,
+      title: wakiesConversation.title,
+    })
+    .from(wakiesNotification)
+    .innerJoin(
+      wakiesMessage,
+      eq(wakiesMessage.id, wakiesNotification.messageId)
+    )
+    .innerJoin(
+      wakiesConversation,
+      eq(wakiesConversation.id, wakiesMessage.conversationId)
+    )
+    .where(
+      and(
+        eq(wakiesConversation.userId, userId),
+        eq(wakiesNotification.userId, userId),
+        eq(wakiesMessage.role, "assistant"),
+        gt(wakiesNotification.seq, afterSeq)
+      )
+    )
+    .orderBy(asc(wakiesNotification.seq))
+    .limit(100);
+  return rows.map(({ parts, ...row }) => ({
+    ...row,
+    preview: apercuMessage(parts),
+  }));
+}
+
+/**
  * Conversation telle que la LISTE la sert : la ligne, plus ce qu'une liste de
  * messagerie doit montrer — aperçu du dernier message, horodatage, compteur de
  * non-lus et participants.

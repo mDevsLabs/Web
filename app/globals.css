@@ -547,6 +547,46 @@ textarea:focus-visible {
     box-shadow: 0 2px 8px -2px
       color-mix(in oklab, var(--foreground) 30%, transparent);
   }
+
+  /*
+   * Une pastille STATIQUE est une information, pas un bouton : elle ne doit
+   * pas annoncer un clic. Sans cette variante, `chip` impose `cursor-pointer`
+   * et un survol — la pastille paraissait cliquable alors qu'elle ne l'était
+   * pas, et le décalage de format avec les onglets voisins sautait aux yeux.
+   */
+  &[data-static="true"] {
+    cursor: default;
+
+    &:hover {
+      color: var(--muted-foreground);
+      background-color: color-mix(in oklab, var(--foreground) 3%, transparent);
+      border-color: color-mix(in oklab, var(--border) 80%, transparent);
+    }
+  }
+}
+
+/**
+ * Mode économie — les transitions et animations CSS sont coupées.
+ *
+ * L'attribut est posé sur `<html>` par le fournisseur d'économie des
+ * ressources (`lib/resources/economy.tsx`) : il est actif quand l'onglet est
+ * caché, quand une activité lourde tourne, ou quand l'utilisateur a choisi
+ * ce mode. Les animations Framer Motion sont coupées par le même signal
+ * (`MotionConfig`), ce qui n'est pas ré-accélérable en CSS : leur durée est
+ * calculée en JavaScript.
+ *
+ * Les éléments arrivent à leur état FINAL : la coupe ne doit pas laisser
+ * une page à mi-transition, ni masquer un contenu.
+ */
+html[data-economy="true"] {
+  &,
+  &::before,
+  &::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /**

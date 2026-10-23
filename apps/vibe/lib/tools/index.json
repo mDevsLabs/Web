@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated_at": "2026-09-12",
+  "version": "1.2.0",
+  "updated_at": "2026-10-19",
   "description": "Catalogue officiel des outils mAI de Vibe. Sert GET /v1/mai/tools et le sélecteur de réglages. Chaque entrée référence son fichier d'implémentation dans lib/tools/.",
   "tools": [
     {
@@ -374,6 +374,78 @@
       "sensitive": false,
       "enabled": true,
       "file": "lib/tools/analyzeHashtags.ts"
+    },
+    {
+      "id": "analyze_sentiment",
+      "name": "Analyse de Sentiment",
+      "slash_command": "/sentiment",
+      "mention_tag": "@sentiment",
+      "description": "Analyse la polarité et les termes clés des commentaires d'une publication.",
+      "icon_name": "Activity",
+      "category": "analysis",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
+    },
+    {
+      "id": "summarize_thread",
+      "name": "Résumé du Fil",
+      "slash_command": "/resume",
+      "mention_tag": "@resume",
+      "description": "Synthétise les commentaires d'une publication : points clés, désaccords, ton général.",
+      "icon_name": "MessagesSquare",
+      "category": "analysis",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
+    },
+    {
+      "id": "adapt_post",
+      "name": "Adapter par Réseau",
+      "slash_command": "/adapter",
+      "mention_tag": "@adapter",
+      "description": "Réécrit un post pour X, Instagram ou LinkedIn, avec les contraintes de chaque réseau.",
+      "icon_name": "Repeat2",
+      "category": "creation",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
+    },
+    {
+      "id": "generate_variants",
+      "name": "Variantes de Post",
+      "slash_command": "/variantes",
+      "mention_tag": "@variantes",
+      "description": "Propose 3 accroches alternatives pour un même contenu, par des angles différents.",
+      "icon_name": "Sparkles",
+      "category": "creation",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
+    },
+    {
+      "id": "generate_caption",
+      "name": "Légende & Hashtags",
+      "slash_command": "/legende",
+      "mention_tag": "@legende",
+      "description": "Rédige une légende prête à publier et son jeu de hashtags à partir d'un visuel.",
+      "icon_name": "Target",
+      "category": "creation",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
+    },
+    {
+      "id": "compare_models",
+      "name": "Comparer Deux Modèles",
+      "slash_command": "/comparer",
+      "mention_tag": "@comparer",
+      "description": "Exécute le même prompt sur deux modèles et compare réponses, latences et longueurs.",
+      "icon_name": "LayoutGrid",
+      "category": "analysis",
+      "sensitive": false,
+      "enabled": true,
+      "file": "vibe-mai-creative.ts"
     }
   ]
 }

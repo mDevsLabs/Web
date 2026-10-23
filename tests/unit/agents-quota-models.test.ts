@@ -110,13 +110,16 @@ describe("Quota d'agents par forfait", () => {
 });
 
 describe("Modèle par défaut", () => {
-  it("est défini en un seul point et vaut gemini/gemini-3.8-flash", () => {
-    expect(DEFAULT_CHAT_MODEL).toBe("gemini/gemini-3.8-flash");
+  it("est défini en un seul point et vaut mAI-2-Mini", () => {
+    // Le modèle par défaut de l'application. Il a changé en bêta 7.2
+    // (mAI-2-Mini) : la migration 0066 réaligne les DEFAULTS des colonnes
+    // sur cette valeur, et la 0029 alignait déjà les données existantes.
+    expect(DEFAULT_CHAT_MODEL).toBe("mai-2-mini");
   });
 
-  it("n'est plus codé en dur ailleurs que dans la constante et la migration", () => {
+  it("n'est plus codé en dur ailleurs que dans la constante et les migrations", () => {
     // Le littéral ne doit subsister que dans lib/ai/models.ts (la constante)
-    // et dans la migration 0029 (alignement des données existantes).
+    // et dans les migrations (alignement des données existantes).
     for (const file of [
       "lib/db/queries.ts",
       "lib/db/schema.ts",
@@ -124,10 +127,13 @@ describe("Modèle par défaut", () => {
       "app/(chat)/api/planning/route.ts",
     ]) {
       expect(source(file)).not.toContain('"google/gemini-2.5-flash"');
+      expect(source(file)).not.toContain('"gemini/gemini-3.8-flash"');
     }
   });
 
   it("aligne les valeurs existantes et les DEFAULT des colonnes", () => {
+    // La migration 0029 a aligné les données sur le modèle alors en usage ;
+    // la 0066 a réaligné les DEFAULTS des colonnes sur le modèle courant.
     const migration = source(
       "lib/db/migrations/0029_agent_templates_icons_and_tool_modes.sql"
     );
@@ -136,6 +142,29 @@ describe("Modèle par défaut", () => {
     expect(
       migration.match(/SET DEFAULT 'gemini\/gemini-3\.8-flash'/g)
     ).toHaveLength(3);
+
+    const reparation = source(
+      "lib/db/migrations/0066_default_model_mai2_mini.sql"
+    );
+    // Les trois mêmes colonnes, avec le modèle courant.
+    expect(
+      reparation.match(
+        /ALTER COLUMN "defaultModelId" SET DEFAULT 'mai-2-mini'/g
+      )
+    ).toHaveLength(2);
+    expect(
+      reparation.match(/ALTER COLUMN "modelId" SET DEFAULT 'mai-2-mini'/g)
+    ).toHaveLength(1);
+  });
+
+  it("porte le même défaut dans le schéma Drizzle et dans la base", () => {
+    // Le schéma et la migration doivent dire la MÊME chose : c'est leur
+    // désaccord qui faisait porter à un agent créé sans modèle le modèle
+    // retiré du catalogue.
+    for (const table of [agent, agentTemplate]) {
+      const colonnes = getTableColumns(table);
+      expect(colonnes.defaultModelId.default).toBe(DEFAULT_CHAT_MODEL);
+    }
   });
 });
 

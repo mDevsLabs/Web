@@ -76,7 +76,7 @@ const MAX_RUNNING_OUTPUT_CHARS = 4200;
 const MAX_FINAL_OUTPUT_CHARS = 16_000;
 
 function trimText(value: unknown): string {
-  return String(value ?? "").trim();
+  return String(value?? "").trim();
 }
 
 function normalizePathKey(filePath: string): string {
@@ -144,15 +144,15 @@ function stateLabel(state: ToolStatusEntry["state"]): string {
 function stripMarkdownImageSyntax(text: string): string {
   return text.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/g,
-    (_match, alt) => `[图片${trimText(alt) ? `：${trimText(alt)}` : ""}]`
+    (_match, alt) => `[图片${trimText(alt)? `：${trimText(alt)}`: ""}]`
   );
 }
 
 function normalizeRenderedText(text: string): string {
   return stripMarkdownImageSyntax(
-    String(text ?? "")
-      .replace(/\r\n/g, "\n")
-      .trim()
+    String(text?? "")
+.replace(/\r\n/g, "\n")
+.trim()
   );
 }
 
@@ -201,7 +201,7 @@ export class FeishuCardKitClient {
     this.appId = opts.appId;
     this.appSecret = opts.appSecret;
     this.proxyUrl = opts.proxyUrl;
-    this.apiBase = opts.apiBase ?? "https://open.feishu.cn/open-apis";
+    this.apiBase = opts.apiBase?? "https://open.feishu.cn/open-apis";
   }
 
   async createCard(cardJson: CardKitSchema): Promise<string> {
@@ -210,7 +210,7 @@ export class FeishuCardKitClient {
       type: "card_json",
     });
     const cardId = res.data?.card_id;
-    if (typeof cardId !== "string") {
+    if (typeof cardId!== "string") {
       throw new Error(
         `CardKit createCard: missing card_id (code=${res.code}, msg=${res.msg})`
       );
@@ -282,7 +282,7 @@ export class FeishuCardKitClient {
       });
     }
     const messageId = res.data?.message_id;
-    if (typeof messageId !== "string") {
+    if (typeof messageId!== "string") {
       throw new Error(
         `CardKit sendCardMessage: missing message_id (code=${res.code}, msg=${res.msg})`
       );
@@ -316,11 +316,11 @@ export class FeishuCardKitClient {
       method: "POST",
       proxyUrl: this.proxyUrl,
     });
-    if (data.code !== 0 || !data.tenant_access_token) {
+    if (data.code!== 0 ||!data.tenant_access_token) {
       throw new Error(`CardKit token error: ${data.msg} (code=${data.code})`);
     }
     this.tokenValue = data.tenant_access_token;
-    this.tokenExpiresAt = Date.now() + (data.expire ?? 7200) * 1000;
+    this.tokenExpiresAt = Date.now() + (data.expire?? 7200) * 1000;
     return this.tokenValue;
   }
 
@@ -345,7 +345,7 @@ export class FeishuCardKitClient {
       this.tokenExpiresAt = 0;
       return this.api(method, urlPath, body, retry + 1);
     }
-    if (res.code !== 0) {
+    if (res.code!== 0) {
       throw new Error(
         `CardKit API ${method} ${urlPath}: ${res.msg} (code=${res.code})`
       );
@@ -394,7 +394,7 @@ export class FeishuStreamingSession {
   }
 
   get isActive(): boolean {
-    return this.cardId !== "" && !this.closed && !this.closing && !this.failed;
+    return this.cardId!== "" &&!this.closed &&!this.closing &&!this.failed;
   }
 
   async start(chatId: string, replyMessageId?: string): Promise<void> {
@@ -430,14 +430,14 @@ export class FeishuStreamingSession {
             serializeElement(element)
           );
         }
-        if (this.dirty && !this.closed && !this.closing) {
+        if (this.dirty &&!this.closed &&!this.closing) {
           this.scheduleFlush("status");
         }
       } catch (error) {
         this.failed = true;
         console.warn(
           "[feishu-cardkit] streaming session start failed:",
-          error instanceof Error ? error.message : error
+          error instanceof Error? error.message: error
         );
       }
     })();
@@ -467,7 +467,7 @@ export class FeishuStreamingSession {
     if (state === "running") {
       if (existing) {
         existing.state = "running";
-        existing.detail = cleanDetail ?? existing.detail;
+        existing.detail = cleanDetail?? existing.detail;
         existing.updatedAt = now;
       } else {
         const entry: ToolStatusEntry = {
@@ -481,7 +481,7 @@ export class FeishuStreamingSession {
       }
     } else if (existing) {
       existing.state = state;
-      existing.detail = cleanDetail ?? existing.detail;
+      existing.detail = cleanDetail?? existing.detail;
       existing.updatedAt = now;
       this.runningActivities.delete(name);
     } else {
@@ -500,22 +500,22 @@ export class FeishuStreamingSession {
       return;
     }
     this.todos = todos
-      .map((todo) => ({
+.map((todo) => ({
         activeForm: trimText(todo.activeForm) || undefined,
         content: trimText(todo.content),
         status:
           todo.status === "completed" ||
           todo.status === "in_progress" ||
           todo.status === "pending"
-            ? todo.status
-            : "pending",
+? todo.status
+: "pending",
       }))
-      .filter((todo) => todo.content);
+.filter((todo) => todo.content);
     this.scheduleFlush("status");
   }
 
   async attachImage(filePath: string, title?: string): Promise<boolean> {
-    if (this.closed || this.closing || this.failed || !this.uploadImage) {
+    if (this.closed || this.closing || this.failed ||!this.uploadImage) {
       return false;
     }
     const sourceKey = normalizePathKey(filePath);
@@ -534,7 +534,7 @@ export class FeishuStreamingSession {
       this.imageUploads.set(sourceKey, pending);
     }
     const uploaded = await pending.catch(() => null);
-    return uploaded != null;
+    return uploaded!= null;
   }
 
   async close(finalText?: string): Promise<void> {
@@ -556,15 +556,15 @@ export class FeishuStreamingSession {
     this.closing = true;
     this.phase = phase;
     if (phase === "done") {
-      if (payload !== undefined) {
+      if (payload!== undefined) {
         this.currentText = payload;
       }
     } else if (phase === "error") {
       this.finalErrorMessage = trimText(payload) || "执行失败。";
       if (!trimText(this.currentText)) {
-        this.currentText = `❌ ${this.finalErrorMessage}`;
+        this.currentText = ` ${this.finalErrorMessage}`;
       }
-    } else if (phase === "aborted" && !trimText(this.currentText)) {
+    } else if (phase === "aborted" &&!trimText(this.currentText)) {
       this.currentText = trimText(payload) || "已按指令暂停当前任务。";
     }
     if (this.startPromise) {
@@ -592,7 +592,7 @@ export class FeishuStreamingSession {
     } catch (error) {
       console.warn(
         "[feishu-cardkit] close error:",
-        error instanceof Error ? error.message : error
+        error instanceof Error? error.message: error
       );
     } finally {
       this.closed = true;
@@ -611,7 +611,7 @@ export class FeishuStreamingSession {
       }
       if (this.inlineImages.some((image) => image.sourceKey === sourceKey)) {
         return (
-          this.inlineImages.find((image) => image.sourceKey === sourceKey) ??
+          this.inlineImages.find((image) => image.sourceKey === sourceKey)??
           null
         );
       }
@@ -629,7 +629,7 @@ export class FeishuStreamingSession {
     } catch (error) {
       console.warn(
         "[feishu-cardkit] image upload failed:",
-        error instanceof Error ? error.message : error
+        error instanceof Error? error.message: error
       );
       return null;
     } finally {
@@ -642,7 +642,7 @@ export class FeishuStreamingSession {
     if (!this.cardId || this.closed || this.closing || this.failed) {
       return;
     }
-    const delay = kind === "status" ? STATUS_THROTTLE_MS : CONTENT_THROTTLE_MS;
+    const delay = kind === "status"? STATUS_THROTTLE_MS: CONTENT_THROTTLE_MS;
     const dueAt = Date.now() + delay;
     if (this.flushTimer && this.flushTimerDueAt <= dueAt) {
       return;
@@ -660,21 +660,21 @@ export class FeishuStreamingSession {
 
   private async enqueueFlush(): Promise<void> {
     this.queue = this.queue
-      .then(async () => {
-        if (!this.cardId || this.closed || this.failed || !this.dirty) {
+.then(async () => {
+        if (!this.cardId || this.closed || this.failed ||!this.dirty) {
           return;
         }
         this.dirty = false;
         await this.flushRenderedElements();
       })
-      .catch((error) => {
+.catch((error) => {
         console.warn(
           "[feishu-cardkit] update error:",
-          error instanceof Error ? error.message : error
+          error instanceof Error? error.message: error
         );
       })
-      .finally(() => {
-        if (this.dirty && !this.closed && !this.closing && !this.failed) {
+.finally(() => {
+        if (this.dirty &&!this.closed &&!this.closing &&!this.failed) {
           this.scheduleFlush("status");
         }
       });
@@ -713,8 +713,8 @@ export class FeishuStreamingSession {
       const image = this.inlineImages[index];
       elements.push(
         image
-          ? buildImageElement(elementId, image)
-          : buildMarkdownElement(elementId, "")
+? buildImageElement(elementId, image)
+: buildMarkdownElement(elementId, "")
       );
     }
     return elements;
@@ -737,8 +737,8 @@ export class FeishuStreamingSession {
       lines.push("**处理中**");
       lines.push(
         this.currentChannel === "worker"
-          ? "协作 Agent 正在参与当前回复。"
-          : "主 Agent 正在处理当前请求。"
+? "协作 Agent 正在参与当前回复。"
+: "主 Agent 正在处理当前请求。"
       );
       lines.push("发送 `/pause` 可随时停止当前任务。");
     }
@@ -753,9 +753,9 @@ export class FeishuStreamingSession {
     const lines = ["**进展**"];
     const current = this.getLatestRunningActivity();
     const recent = this.activityLog
-      .filter((entry) => entry !== current)
-      .slice(-MAX_RECENT_TOOL_STATUSES)
-      .reverse();
+.filter((entry) => entry!== current)
+.slice(-MAX_RECENT_TOOL_STATUSES)
+.reverse();
 
     if (current) {
       lines.push(`- [当前] ${this.describeToolEntry(current)}`);
@@ -779,14 +779,14 @@ export class FeishuStreamingSession {
     for (const todo of this.todos.slice(0, MAX_VISIBLE_TODOS)) {
       const label =
         todo.status === "in_progress" && trimText(todo.activeForm)
-          ? trimText(todo.activeForm)
-          : todo.content;
+? trimText(todo.activeForm)
+: todo.content;
       const prefix =
         todo.status === "completed"
-          ? "[已完成]"
-          : todo.status === "in_progress"
-            ? "[进行中]"
-            : "[待处理]";
+? "[已完成]"
+: todo.status === "in_progress"
+? "[进行中]"
+: "[待处理]";
       lines.push(`- ${prefix} ${label}`);
     }
     return lines.join("\n");
@@ -796,12 +796,12 @@ export class FeishuStreamingSession {
     const normalized = normalizeRenderedText(this.currentText);
     const title =
       this.phase === "done"
-        ? "**最终回复**"
-        : this.phase === "error"
-          ? "**错误输出**"
-          : this.phase === "aborted"
-            ? "**已暂停内容**"
-            : "**回复预览**";
+? "**最终回复**"
+: this.phase === "error"
+? "**错误输出**"
+: this.phase === "aborted"
+? "**已暂停内容**"
+: "**回复预览**";
     if (!normalized) {
       if (this.phase === "running") {
         return `${title}\n结果会随着处理推进逐步出现在这里。`;
@@ -816,8 +816,8 @@ export class FeishuStreamingSession {
     }
     const rendered =
       this.phase === "running"
-        ? truncateTail(normalized, MAX_RUNNING_OUTPUT_CHARS)
-        : truncateStart(normalized, MAX_FINAL_OUTPUT_CHARS);
+? truncateTail(normalized, MAX_RUNNING_OUTPUT_CHARS)
+: truncateStart(normalized, MAX_FINAL_OUTPUT_CHARS);
     return `${title}\n${rendered.text}`;
   }
 
@@ -833,13 +833,13 @@ export class FeishuStreamingSession {
     }
     const text = normalizeRenderedText(this.currentText);
     if (text) {
-      return text.length > 80 ? `${text.slice(0, 80)}...` : text;
+      return text.length > 80? `${text.slice(0, 80)}...`: text;
     }
     const current = this.describeCurrentActivity();
     if (current) {
-      return current.length > 80 ? `${current.slice(0, 80)}...` : current;
+      return current.length > 80? `${current.slice(0, 80)}...`: current;
     }
-    return this.phase === "done" ? "已完成" : "处理中";
+    return this.phase === "done"? "已完成": "处理中";
   }
 
   private getLatestRunningActivity(): ToolStatusEntry | null {
@@ -859,8 +859,8 @@ export class FeishuStreamingSession {
     }
     if (this.phase === "running" && trimText(this.currentText)) {
       return this.currentChannel === "worker"
-        ? "协作 Agent 正在整理结果"
-        : "正在整理回复";
+? "协作 Agent 正在整理结果"
+: "正在整理回复";
     }
     if (this.phase === "running") {
       return "正在读取上下文并思考下一步";
@@ -891,7 +891,7 @@ export class FeishuStreamingSession {
       return "本轮处理已暂停。";
     }
     return trimText(this.currentText)
-      ? "正在整理输出。"
-      : "正在读取上下文并分析请求。";
+? "正在整理输出。"
+: "正在读取上下文并分析请求。";
   }
 }

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/site/auth-provider";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
+import { isMai2ModelId } from "@/lib/ai/model-selector/order";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { maiModelsList } from "@/lib/site/mai-models";
@@ -81,73 +83,95 @@ export function useConfigCatalog() {
     };
   }, [authLoading, isAuthenticated, token]);
 
+  /**
+   * Charge le catalogue Cloud.
+   *
+   * Isolé dans une fonction pour que le bouton de rafraîchissement du
+   * sélecteur puisse le rappeler sans remonter le composant : c'est la
+   * même opération que le rechargement automatique, à la main.
+   */
+  const loadCloudModels = useCallback(async () => {
+    setModelsLoading(true);
+    setModelsError(null);
+    try {
+      const headers: Record<string, string> = {};
+      if (selectedKeyRef) {
+        if (!token) {
+          throw new Error(
+            "Session expirée. Reconnectez-vous pour utiliser une clé."
+          );
+        }
+        headers["x-mai-key-ref"] = selectedKeyRef;
+        headers.Authorization = `Bearer ${token}`;
+      }
+      const res = await fetch(SITE_API_ROUTES.models, {
+        cache: selectedKeyRef ? "no-store" : "default",
+        credentials: "include",
+        headers,
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(
+          data.error?.message || "Le catalogue de modèles est indisponible."
+        );
+      }
+      if (!Array.isArray(data.data)) {
+        throw new Error("Réponse de catalogue invalide.");
+      }
+
+      // Le groupe Cloud n'affiche que les modèles réellement reçus de
+      // `GET /api/v1/models` : aucune liste de secours locale n'est fusionnée.
+      const received = new Map<string, ConfigModelOption>();
+      for (const model of data.data as Record<string, unknown>[]) {
+        if (!model?.id) continue;
+        const id = String(model.id);
+        received.set(id, {
+          id,
+          name: `${String(model.name || id)} (${id})`,
+          type: "cloud",
+        });
+      }
+      const models = Array.from(received.values());
+      setCloudModels(models);
+      // Sélection par défaut : le premier modèle reçu, sinon aucun.
+      setSelectedModel((current) =>
+        current && models.some((model) => model.id === current)
+          ? current
+          : (models[0]?.id ?? "")
+      );
+    } catch (error) {
+      setCloudModels([]);
+      setModelsError(
+        error instanceof Error
+          ? error.message
+          : "Erreur de chargement des modèles."
+      );
+    } finally {
+      setModelsLoading(false);
+    }
+  }, [selectedKeyRef, token]);
+
   useEffect(() => {
     if (authLoading) return;
-    let cancelled = false;
-    async function loadModels() {
-      setModelsLoading(true);
-      setModelsError(null);
-      try {
-        const headers: Record<string, string> = {};
-        if (selectedKeyRef) {
-          if (!token)
-            throw new Error(
-              "Session expirée. Reconnectez-vous pour utiliser une clé."
-            );
-          headers["x-mai-key-ref"] = selectedKeyRef;
-          headers.Authorization = `Bearer ${token}`;
-        }
-        const res = await fetch(SITE_API_ROUTES.models, {
-          cache: selectedKeyRef ? "no-store" : "default",
-          credentials: "include",
-          headers,
-        });
-        const data = await res.json();
-        if (!res.ok)
-          throw new Error(
-            data.error?.message || "Le catalogue de modèles est indisponible."
-          );
-        if (!Array.isArray(data.data))
-          throw new Error("Réponse de catalogue invalide.");
+    void loadCloudModels();
+  }, [authLoading, isAuthenticated, loadCloudModels, modelsRetry]);
 
-        // Le groupe Cloud n'affiche que les modèles réellement reçus de
-        // `GET /api/v1/models` : aucune liste de secours locale n'est fusionnée.
-        const received = new Map<string, ConfigModelOption>();
-        for (const model of data.data as Record<string, unknown>[]) {
-          if (!model?.id) continue;
-          const id = String(model.id);
-          received.set(id, {
-            id,
-            name: `${String(model.name || id)} (${id})`,
-            type: "cloud",
-          });
-        }
-        if (cancelled) return;
-        const models = Array.from(received.values());
-        setCloudModels(models);
-        // Sélection par défaut : le premier modèle reçu, sinon aucun.
-        setSelectedModel((current) =>
-          current && models.some((model) => model.id === current)
-            ? current
-            : (models[0]?.id ?? "")
-        );
-      } catch (error) {
-        if (cancelled) return;
-        setCloudModels([]);
-        setModelsError(
-          error instanceof Error
-            ? error.message
-            : "Erreur de chargement des modèles."
-        );
-      } finally {
-        if (!cancelled) setModelsLoading(false);
-      }
-    }
-    void loadModels();
+  /**
+   * Rafraîchissement automatique du catalogue (toutes les 10 minutes).
+   *
+   * Même règle que le sélecteur de l'hôte : le catalogue `/v1/models` dépend
+   * du forfait et bouge. Une page de configuration laissée ouverte ne doit
+   * pas proposer un modèle retiré.
+   */
+  useEffect(() => {
+    if (authLoading || !isAuthenticated) return;
+    const timer = setInterval(() => {
+      void loadCloudModels();
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
     return () => {
-      cancelled = true;
+      clearInterval(timer);
     };
-  }, [authLoading, isAuthenticated, modelsRetry, selectedKeyRef, token]);
+  }, [authLoading, isAuthenticated, loadCloudModels]);
 
   useEffect(() => {
     const isLocalModel = Boolean(
@@ -175,6 +199,42 @@ export function useConfigCatalog() {
     [cloudModels]
   );
 
+  /**
+   * Groupes pour le sélecteur de modèles.
+   *
+   * Deux populations qui ne se mélangent pas : les modèles mAI locaux
+   * (exécutés par Ollama) et le catalogue Cloud `/v1/models`. Les groupes
+   * sont vides plutôt qu'absents quand la cible n'est pas active : le
+   * sélecteur n'affiche alors que ce qui est réellement disponible.
+   *
+   * Dans le groupe Cloud, la famille mAI-2 passe en tête : c'est
+   * l'ordre d'affichage partagé (lib/ai/model-selector/order.ts), pas un
+   * ordre propre au Site.
+   */
+  const modelGroups = useMemo(
+    () => [
+      {
+        heading: "Modèles mAI Locaux (Gratuits)",
+        models: allModels
+          .filter((model) => model.type === "mai")
+          .map((model) => ({ id: model.id, name: model.name })),
+      },
+      {
+        heading: "Modèles API v1 / Cloud",
+        models: [...allModels]
+          .filter((model) => model.type === "cloud")
+          .sort((a, b) => {
+            const rangA = isMai2ModelId(a.id) ? 0 : 1;
+            const rangB = isMai2ModelId(b.id) ? 0 : 1;
+            if (rangA !== rangB) return rangA - rangB;
+            return 0;
+          })
+          .map((model) => ({ id: model.id, name: model.name })),
+      },
+    ],
+    [allModels]
+  );
+
   return {
     allModels,
     cloudModels,
@@ -182,8 +242,10 @@ export function useConfigCatalog() {
     isAuthenticated,
     keysError,
     keysLoading,
+    modelGroups,
     modelsError,
     modelsLoading,
+    refreshModels: loadCloudModels,
     selectedKeyRef,
     selectedModel,
     setHostTarget,

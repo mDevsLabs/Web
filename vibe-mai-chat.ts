@@ -1,7 +1,7 @@
 import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — mAI : CHAT (vibe-mai-chat.ts)
+ * VIBE SOCIAL PLATFORM — mAI: CHAT (vibe-mai-chat.ts)
  * Réponse mAI en commentaire (/mai) et endpoint de conversation mAI avec
  * détection d'outils, contexte de post joint (vision), contexte personnel
  * opt-in et flux d'approbation. Scindé de vibe-mai.ts (limite de taille
@@ -31,7 +31,7 @@ import { extractMaiReasoning } from "./vibe-mai-reasoning.ts";
 import { isToolEnabledForUser, TOOL_EXECUTORS } from "./vibe-tools.ts";
 
 /**
- * Réponse mAI à la commande /mai en commentaire : génération à partir du
+ * Réponse mAI à la commande /mai en commentaire: génération à partir du
  * contenu de la publication uniquement (sans historique de conversation),
  * modèle léger laguna, quota hebdomadaire débité de 250 tokens.
  */
@@ -158,7 +158,7 @@ export function registerVibeMAIChatRoutes(
         await sql`SELECT username, tier FROM users WHERE id = ${userId} LIMIT 1`;
       const username = userRows[0]?.username || "Ami";
 
-      // ── Conversation persistée : contexte complet pour chaque message ──
+      // ── Conversation persistée: contexte complet pour chaque message ──
       await ensureMAIConversations();
       const requestedConv = await resolveOwnedConversation(
         sql,
@@ -219,7 +219,7 @@ export function registerVibeMAIChatRoutes(
         }
       }
 
-      // Post mentionné : contenu + stats + premiers commentaires + médias (fichiers)
+      // Post mentionné: contenu + stats + premiers commentaires + médias (fichiers)
       let postContextBlock = "";
       let postImageParts: any[] = [];
       if (context?.post_id) {
@@ -252,10 +252,10 @@ export function registerVibeMAIChatRoutes(
           if (recentPosts.length > 0) {
             const list = recentPosts
               .map(
-                (p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)} »`
+                (p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)}»`
               )
               .join("\n");
-            personalContextBlock += `\n\nContexte : voici les publications récentes de l'utilisateur :\n${list}`;
+            personalContextBlock += `\n\nContexte: voici les publications récentes de l'utilisateur:\n${list}`;
           }
         }
         if (flags.mai_context_dms) {
@@ -270,10 +270,10 @@ export function registerVibeMAIChatRoutes(
           `.catch(() => []);
           if (recentDMs.length > 0) {
             const excerpt = recentDMs
-              .map((m: any) => `— « ${trunc(m.content, 200)} »`)
+              .map((m: any) => `— « ${trunc(m.content, 200)}»`)
               .join("\n")
               .slice(0, 2000);
-            personalContextBlock += `\n\nContexte : extraits récents des messages privés de l'utilisateur (confidentiel, ne pas citer verbatim) :\n${excerpt}`;
+            personalContextBlock += `\n\nContexte: extraits récents des messages privés de l'utilisateur (confidentiel, ne pas citer verbatim):\n${excerpt}`;
           }
         }
         if (flags.mai_context_books) {
@@ -285,7 +285,7 @@ export function registerVibeMAIChatRoutes(
             const titles = books
               .map((b: any) => `— ${trunc(b.title, 80)}`)
               .join("\n");
-            personalContextBlock += `\n\nContexte : Vibe Books de l'utilisateur :\n${titles}`;
+            personalContextBlock += `\n\nContexte: Vibe Books de l'utilisateur:\n${titles}`;
             try {
               const bookIds = books.map((b: any) => b.id);
               const items = await sql`
@@ -296,10 +296,10 @@ export function registerVibeMAIChatRoutes(
               `.catch(() => []);
               if (items.length > 0) {
                 const itemList = items
-                  .map((it: any) => `— « ${trunc(it.content, 200)} »`)
+                  .map((it: any) => `— « ${trunc(it.content, 200)}»`)
                   .join("\n")
                   .slice(0, 2000);
-                personalContextBlock += `\nPublications épinglées dans ces livres :\n${itemList}`;
+                personalContextBlock += `\nPublications épinglées dans ces livres:\n${itemList}`;
               }
             } catch {}
           }
@@ -325,7 +325,7 @@ export function registerVibeMAIChatRoutes(
       // ── Filtre des outils activés par l'utilisateur (Paramètres → Outils mAI) ──
       // Un outil désactivé n'est ni détecté ni exécutable pour cet utilisateur.
       if (toolToRun && !(await isToolEnabledForUser(userId, toolToRun))) {
-        const reply = `🚫 L'outil « ${toolToRun} » est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
+        const reply = ` L'outil « ${toolToRun}» est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
         const record = makeToolCallRecord({
           args: toolArgs,
           model: effectiveModel,
@@ -359,7 +359,7 @@ export function registerVibeMAIChatRoutes(
       if (toolToRun && SENSITIVE_TOOLS.includes(toolToRun)) {
         const autoApprove = await getUserAutoApprove(sql, userId);
         if (!autoApprove) {
-          const reply = `🔐 **Approbation requise** : mAI souhaite exécuter l'outil « ${toolToRun} » sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`;
+          const reply = ` **Approbation requise**: mAI souhaite exécuter l'outil « ${toolToRun}» sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`;
           const record = makeToolCallRecord({
             args: toolArgs,
             model: effectiveModel,
@@ -408,7 +408,7 @@ export function registerVibeMAIChatRoutes(
         DO UPDATE SET tokens_used = weekly_usage.tokens_used + 250
       `.catch(() => {});
 
-      let reply = `Bonjour @${username} ! Je suis mAI. Comment puis-je vous aider ?`;
+      let reply = `Bonjour @${username}! Je suis mAI. Comment puis-je vous aider?`;
 
       if (!toolToRun) {
         const openRouterApiKey = await getOpenRouterKey(sql, userId);
@@ -452,12 +452,12 @@ export function registerVibeMAIChatRoutes(
           : userText;
         const systemContent =
           "Tu es mAI, l'intelligence artificielle intégrée au réseau social Vibe. Tu es concis, créatif, pertinent et tu réponds en français avec des émojis." +
-          " Tu connais l'historique de la conversation en cours : apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
+          " Tu connais l'historique de la conversation en cours: apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
           (hasImages
-            ? " Des images sont jointes à la publication mentionnée : analyse-les directement."
+            ? " Des images sont jointes à la publication mentionnée: analyse-les directement."
             : "") +
           (postContextBlock
-            ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires."
+            ? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
             : "");
 
         let capturedUsage: any = null;
@@ -514,7 +514,7 @@ export function registerVibeMAIChatRoutes(
       } else if (toolResult?.success) {
         reply = formatToolReply(toolToRun, toolResult.result, username);
       } else if (toolResult && !toolResult.success) {
-        reply = `⚠️ L'action n'a pas pu être exécutée : ${toolResult.error}`;
+        reply = ` L'action n'a pas pu être exécutée: ${toolResult.error}`;
       }
 
       // Persistance de la réponse mAI (avec les outils utilisés — chips du chat)

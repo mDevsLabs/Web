@@ -14,7 +14,14 @@
 // `cli` n'est pas une application web : c'est une entrée du « Menu favori »
 // qui ouvre le terminal local de l'application de bureau. Elle vit donc dans
 // le catalogue (clé persistée) sans entrer dans APP_ORDER (menu du logo).
-export const APP_KEYS = ["mai", "site", "vibe", "code", "cli"] as const;
+export const APP_KEYS = [
+  "mai",
+  "site",
+  "vibe",
+  "code",
+  "blackline",
+  "cli",
+] as const;
 export type AppKey = (typeof APP_KEYS)[number];
 
 export type AppCatalogEntry = {
@@ -38,6 +45,14 @@ export type AppCatalogEntry = {
 };
 
 export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
+  blackline: {
+    description: "Détendez-vous en attendant votre agent !",
+    key: "blackline",
+    label: "Blackline",
+    // Jeu 3D embarqué : la page hôte monte le bundle statique du jeu.
+    path: "/blackline",
+    pathPrefix: "/blackline",
+  },
   cli: {
     description: "mAI dans un terminal local (application de bureau)",
     key: "cli",
@@ -86,6 +101,39 @@ export const APP_ORDER: AppCatalogEntry[] = [
   APP_CATALOG.site,
   APP_CATALOG.vibe,
   APP_CATALOG.code,
+  APP_CATALOG.blackline,
+];
+
+/**
+ * Entrée du menu des applications.
+ *
+ * Le menu n'affiche pas que des applications web : le CLI s'y glisse entre
+ * Coder et Blackline. Modéliser ce cas ici, plutôt que dans chaque composant
+ * qui rend le menu, évite que les trois rendus (le sélecteur commun, le logo
+ * de la barre latérale et le nom « mAI ») divergent.
+ */
+export type AppMenuEntry =
+  | { entry: AppCatalogEntry; kind: "app" }
+  | { kind: "cli" };
+
+/**
+ * Ordre d'affichage du MENU des applications : mAI, Site, Vibe, Coder, CLI,
+ * Blackline.
+ *
+ * Le CLI est une entrée de menu, pas une application web : il ouvre le
+ * terminal local de l'application de bureau, et il n'a pas de route.
+ *
+ * Blackline passe APRÈS lui. Le jeu est une distraction — c'est exactement ce
+ * pour quoi il a été retiré de la liste de navigation de la barre latérale,
+ * où il était redondant avec le menu des applications.
+ */
+export const APP_MENU_ORDER: AppMenuEntry[] = [
+  { entry: APP_CATALOG.mai, kind: "app" },
+  { entry: APP_CATALOG.site, kind: "app" },
+  { entry: APP_CATALOG.vibe, kind: "app" },
+  { entry: APP_CATALOG.code, kind: "app" },
+  { kind: "cli" },
+  { entry: APP_CATALOG.blackline, kind: "app" },
 ];
 
 // Fail-safe maison : un tier illisible vaut « free » — une préférence d'app

@@ -2,7 +2,7 @@
  * Outil mAI — Recherche de posts par mot-clé (délègue à MAIAgentFleet).
  * Catalogue : lib/tools/index.json → id "search_posts".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface SearchPostsArgs {
   query: string;

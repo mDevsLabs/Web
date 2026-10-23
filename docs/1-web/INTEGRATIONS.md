@@ -249,11 +249,34 @@ l'autorisation : `repo`, `public_repo`, `read:user`.
 ### Variables
 
 ```
+MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET scellement de l'état
 GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET   un seul client pour les trois accès
 GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
-MCP_ENCRYPTION_KEY                       coffre des jetons ET scellement de l'état
 MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
 ```
+
+**`MCP_ENCRYPTION_KEY` est la variable la plus facile à oublier, et son absence
+ne se voit qu'au moment de cliquer sur « Connecter ».** Elle n'est pas
+négociable : sans elle, ni l'« état » OAuth (qui porte l'identité du compte
+qui se connecte) ni les jetons eux-mêmes ne peuvent être chiffrés, et la
+connexion est refusée avec la raison `vault_unconfigured`. Il n'existe **aucun
+repli** — une clé dérivée de `DATABASE_URL` serait devinable par quiconque
+connaît l'URL de la base.
+
+Deux conséquences à connaître avant un déploiement :
+
+- **Poser la variable dans le MÊME environnement Vercel que l'application
+  Next.** Les variables `*_CLIENT_ID` ne suffisent pas : le coffre est
+  distinct, et l'échec ne se produit qu'à la connexion, pas au démarrage.
+- **Changer la clé rend les jetons existants illisibles.** Les lignes
+  `IntegrationConnection` survivent (l'interface affiche encore « Connecté »),
+  mais le porteur est muet : l'utilisateur doit reconnecter. Prévoyez-le dans
+  la note de livraison.
+
+L'interface expose cet état : `GET /api/integration` renvoie
+`vaultConfigured` par connecteur, et la fiche du plugin affiche un encart
+« Coffre de secrets non configuré sur cette instance » avec le bouton
+« Connecter » désactivé — plutôt qu'un échec opaque au clic.
 
 Ces identifiants authentifient un **connecteur externe**. Ils ne sont pas, et ne
 doivent jamais devenir, une authentification mAI : la session du produit reste

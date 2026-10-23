@@ -14,36 +14,50 @@ import { AppSwitcherMenu } from "@/components/common/app-switcher";
 import { ConversationList } from "@/components/wakies/ConversationList";
 import { Mascot } from "@/components/wakies/Mascot";
 import { SpaceNav } from "@/components/wakies/SpaceNav";
-import type { useMessagingNotifications } from "@/components/wakies/useMessagingNotifications";
-import { WakiesNotificationBell } from "@/components/wakies/WakiesNotificationBell";
 import type { Dialog } from "@/components/wakies/WorkspaceDialog";
 import {
   type WakiesSection,
   WorkspaceNavigation,
 } from "@/components/wakies/WorkspaceNavigation";
-import type { Page } from "@/lib/wakies/pages";
 import type { State, Wakie, WorkspaceState } from "@/lib/wakies/shared/types";
 
 export interface WorkspaceSidebarProps {
   basculerNav: () => void;
   chooseWakie: (w: Wakie) => void;
   configured: boolean;
-  messaging: ReturnType<typeof useMessagingNotifications>;
   mobile: boolean;
   navCollapsed: boolean;
   newConversation: () => Promise<void>;
   openPage: (space: string, page?: string) => void;
-  ouvrirNotification: (conversationId: string) => Promise<void>;
   ouvrirReglages: () => void;
   pageId?: string;
   refresh: () => Promise<void>;
-  searchMessages: Array<{
-    conversationId: string;
-    extrait: string;
+  /**
+   * Les résultats de la recherche, déjà filtrés par le serveur.
+   *
+   * Une seule liste pour toutes les surfaces : le rail ne filtre plus rien
+   * lui-même, donc il ne peut plus afficher un résultat que la base
+   * ne contient pas.
+   */
+  searchResults: Array<{
+    conversationId?: string;
+    href: string;
     id: string;
-    role: string;
+    kind:
+      | "conversation"
+      | "memory"
+      | "message"
+      | "page"
+      | "space"
+      | "task"
+      | "wakie";
+    messageId?: string;
+    pageId?: string;
+    spaceId?: string;
+    subtitle?: string;
+    title: string;
+    wakieId?: string;
   }>;
-  searchPages: { page: Page; space: WorkspaceState["spaces"][number] }[];
   selectedThread?: string;
   selectedWakie: string;
   setCibleMessageId: (id: string | null) => void;
@@ -60,13 +74,46 @@ export interface WorkspaceSidebarProps {
   workspace: WorkspaceState;
 }
 
+/**
+ * Le LIBELLÉ de chaque type de résultat.
+ *
+ * Le rail ne connaît pas les tables : il connaît des SURFACES, et chaque
+ * surface a son nom. « Conversation », « Page », « Espace », « Wakie »,
+ * « Message », « Mémoire », « Tâche » — les mots que l'utilisateur utilise
+ * déjà dans l'application.
+ */
+const LIBELLE_SURFACE: Record<string, string> = {
+  conversation: "Conversation",
+  memory: "Mémoire",
+  message: "Message",
+  page: "Page",
+  space: "Espace",
+  task: "Tâche",
+  wakie: "Wakie",
+};
+
+/**
+ * L'ORDRE des surfaces dans les résultats.
+ *
+ * Ce n'est pas l'ordre alphabétique : on cherche d'abord ce qu'on cherche
+ * le plus souvent — une conversation, un message, une page — et les
+ * surfaces d'organisation (Espace, Wakie) viennent ensuite.
+ */
+const ORDRE_SURFACE = [
+  "conversation",
+  "message",
+  "page",
+  "wakie",
+  "space",
+  "task",
+  "memory",
+] as const;
+
 export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
   mobile,
   setMobile,
   navCollapsed,
   basculerNav,
-  messaging,
-  ouvrirNotification,
   configured,
   newConversation,
   sidebarSearch,
@@ -82,8 +129,7 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
   setCibleMessageId,
   chooseWakie,
   openPage,
-  searchPages,
-  searchMessages,
+  searchResults,
   setDialog,
   refresh,
   pageId,
@@ -93,6 +139,18 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
   const wakie =
     workspace.wakies.find((candidate) => candidate.id === selectedWakie) ??
     workspace.wakies[0];
+
+  /**
+   * Les résultats, GROUPÉS par surface et dans l'ordre d'usage.
+   *
+   * Le regroupement est fait ici, à l'affichage, et non par le serveur :
+   * le serveur rend des résultats, le rail décide comment les montrer. Une
+   * section « Message (3) » est plus lisible qu'une liste mêlée.
+   */
+  const resultatsParSurface = ORDRE_SURFACE.map((kind) => ({
+    hits: searchResults.filter((resultat) => resultat.kind === kind),
+    kind,
+  })).filter((groupe) => groupe.hits.length > 0);
 
   return (
     <>
@@ -140,12 +198,6 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
               <span className="rail-label">Wakies</span>
             </Button>
           </AppSwitcherMenu>
-          <WakiesNotificationBell
-            notifications={messaging.notifications}
-            onAutoriser={() => void messaging.autoriser()}
-            onSelect={ouvrirNotification}
-            permission={messaging.permission}
-          />
           <Button
             aria-label={navCollapsed ? "Déplier le menu" : "Réduire le menu"}
             className="rail-collapse"
@@ -184,112 +236,89 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
               aria-label="Résultats de recherche"
               className="wakies-search-results"
             >
-              {workspace.conversations
-                .filter((item) =>
-                  item.title
-                    .toLocaleLowerCase("fr")
-                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-                )
-                .map((item) => (
-                  <button
-                    key={`conversation-${item.id}`}
-                    onClick={async () => {
-                      if (!(await setView("chat"))) return;
-                      const owner = workspace.wakies.find(
-                        (candidate) => candidate.id === item.wakieId
-                      );
-                      if (owner) setSelectedWakie(owner.id);
-                      setSelectedThread(item.id);
-                    }}
-                    type="button"
-                  >
-                    Conversation · {item.title}
-                  </button>
-                ))}
-              {workspace.spaces
-                .filter((item) =>
-                  item.name
-                    .toLocaleLowerCase("fr")
-                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-                )
-                .map((item) => (
-                  <button
-                    key={`space-${item.id}`}
-                    onClick={() => openPage(item.id)}
-                    type="button"
-                  >
-                    Espace · {item.name}
-                  </button>
-                ))}
-              {workspace.wakies
-                .filter((item) =>
-                  item.name
-                    .toLocaleLowerCase("fr")
-                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-                )
-                .map((item) => (
-                  <button
-                    key={`wakie-${item.id}`}
-                    onClick={() => chooseWakie(item)}
-                    type="button"
-                  >
-                    Wakie · {item.name}
-                  </button>
-                ))}
-              {searchPages.map(({ page, space }) => (
-                <button
-                  key={`page-${page.id}`}
-                  onClick={() => openPage(space.id, page.id)}
-                  type="button"
-                >
-                  Page · {page.title} ({space.name})
-                </button>
+              {resultatsParSurface.map((groupe) => (
+                <div className="wakies-search-group" key={groupe.kind}>
+                  <p className="wakies-search-group-label">
+                    {LIBELLE_SURFACE[groupe.kind]} ({groupe.hits.length})
+                  </p>
+                  {groupe.hits.map((resultat) => (
+                    <button
+                      key={resultat.id}
+                      onClick={async () => {
+                        setMobile(false);
+                        setSidebarSearch("");
+                        if (resultat.kind === "message") {
+                          // Un message : on ouvre le fil qui le contient et
+                          // on le vise, pour qu'il soit mis en évidence.
+                          const cible = workspace.conversations.find(
+                            (item) => item.id === resultat.conversationId
+                          );
+                          if (!cible) return;
+                          const proprietaire = workspace.wakies.find(
+                            (candidat) => candidat.id === cible.wakieId
+                          );
+                          if (!(await setView("chat"))) return;
+                          if (proprietaire) setSelectedWakie(proprietaire.id);
+                          setSelectedThread(cible.id);
+                          setCibleMessageId(resultat.messageId ?? null);
+                          return;
+                        }
+                        if (resultat.kind === "conversation") {
+                          const cible = workspace.conversations.find(
+                            (item) => item.id === resultat.conversationId
+                          );
+                          if (!(await setView("chat"))) return;
+                          if (cible) {
+                            const owner = workspace.wakies.find(
+                              (candidate) => candidate.id === cible.wakieId
+                            );
+                            if (owner) setSelectedWakie(owner.id);
+                            setSelectedThread(cible.id);
+                          }
+                          return;
+                        }
+                        if (resultat.kind === "space") {
+                          if (resultat.spaceId) openPage(resultat.spaceId);
+                          return;
+                        }
+                        if (resultat.kind === "page") {
+                          if (resultat.spaceId)
+                            openPage(resultat.spaceId, resultat.pageId);
+                          return;
+                        }
+                        if (resultat.kind === "wakie") {
+                          const wakieTrouve = workspace.wakies.find(
+                            (item) => item.id === resultat.wakieId
+                          );
+                          if (wakieTrouve) chooseWakie(wakieTrouve);
+                          return;
+                        }
+                        // Mémoire et tâche : le rail n'a pas d'écran dédié
+                        // dans la barre latérale ; on ouvre la section.
+                        if (resultat.kind === "memory") {
+                          await setView("memories");
+                          return;
+                        }
+                        await setView("tasks");
+                      }}
+                      type="button"
+                    >
+                      <span className="wakies-search-group-kind">
+                        {LIBELLE_SURFACE[resultat.kind]}
+                      </span>
+                      <span className="wakies-search-group-title">
+                        {resultat.title}
+                      </span>
+                      {resultat.subtitle ? (
+                        <span className="wakies-search-group-subtitle">
+                          {resultat.subtitle.slice(0, 80)}
+                        </span>
+                      ) : null}
+                    </button>
+                  ))}
+                </div>
               ))}
-              {searchMessages.map((message) => {
-                const fil = workspace.conversations.find(
-                  (item) => item.id === message.conversationId
-                );
-                return (
-                  <button
-                    key={`message-${message.id}`}
-                    onClick={async () => {
-                      const cible = workspace.conversations.find(
-                        (item) => item.id === message.conversationId
-                      );
-                      if (!cible) return;
-                      const proprietaire = workspace.wakies.find(
-                        (candidat) => candidat.id === cible.wakieId
-                      );
-                      if (!(await setView("chat"))) return;
-                      if (proprietaire) setSelectedWakie(proprietaire.id);
-                      setSelectedThread(cible.id);
-                      setCibleMessageId(message.id);
-                      setMobile(false);
-                      setSidebarSearch("");
-                    }}
-                    type="button"
-                  >
-                    Message · {message.extrait.slice(0, 80)}
-                    {fil ? ` (${fil.title})` : ""}
-                  </button>
-                );
-              })}
-              {!workspace.conversations.some((item) =>
-                item.title
-                  .toLocaleLowerCase("fr")
-                  .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-              ) &&
-                !workspace.spaces.some((item) =>
-                  item.name
-                    .toLocaleLowerCase("fr")
-                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-                ) &&
-                !workspace.wakies.some((item) =>
-                  item.name
-                    .toLocaleLowerCase("fr")
-                    .includes(sidebarSearch.trim().toLocaleLowerCase("fr"))
-                ) &&
-                !searchPages.length && <p>Aucun résultat.</p>}
+              {resultatsParSurface.length === 0 && <p>Aucun résultat.</p>}
             </section>
           )}
         </div>

@@ -4,7 +4,7 @@
  * une synthèse analytique (période la plus forte, engagement, sources, reco).
  * Catalogue : lib/tools/index.json → id "analyze_creator_stats".
  */
-import { getDb, getWeekData } from "../../config.ts";
+import { getDb, getWeekData } from "../../../../config.ts";
 
 export interface AnalyzeCreatorStatsArgs {
   period?: "7d" | "30d" | "90d" | "12m";

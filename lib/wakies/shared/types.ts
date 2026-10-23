@@ -15,6 +15,14 @@ export interface Settings {
    */
   onboardingCompleted: boolean;
   paused: boolean;
+  /**
+   * Produire une alerte quand un tour de conversation se termine.
+   *
+   * Le réglage est de COMPTE, pas de conversation : la sourdine reste par
+   * fil (champ `muted` de la conversation). Décidé à l'écriture de
+   * l'événement, jamais à la lecture.
+   */
+  replyAlertsEnabled: boolean;
   researchAllowed: boolean;
 }
 export interface Task {

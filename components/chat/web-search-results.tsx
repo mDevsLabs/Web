@@ -8,6 +8,7 @@ import {
 } from "@mdevs/icons";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { buildFaviconUrlForDomain } from "@/lib/search/favicon";
 
 export interface WebSearchResultItem {
   snippet?: string;
@@ -31,8 +32,9 @@ function extractDomain(urlStr: string): string {
 }
 
 function getFaviconUrl(domain: string): string {
-  if (!domain) return "";
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=32`;
+  // Le service d'icônes est partagé avec le moteur de recherche : une seule
+  // URL, une seule entrée dans la CSP `img-src`.
+  return buildFaviconUrlForDomain(domain);
 }
 
 function HighlightedSnippet({

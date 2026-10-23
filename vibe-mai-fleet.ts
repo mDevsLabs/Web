@@ -12,12 +12,23 @@ import {
   getTierMaiTokenLimit,
   getWeekData,
 } from "./config.ts";
+import { executeCreativeTool } from "./vibe-mai-creative.ts";
 import { executeWebSearch } from "./web.ts";
 
 /**
- * Outils "sensibles" : ils modifient le compte ou le contenu public de
+ * Outils "sensibles": ils modifient le compte ou le contenu public de
  * l'utilisateur. Ils exigent une approbation explicite sauf si le réglage
  * `mai_auto_approve_tools` a été activé dans les paramètres.
+ *
+ * Cette liste est le **seul** gardien de l'approbation: le drapeau
+ * `sensitive` du catalogue ne sert qu'à l'interface (badge). Un outil marqué
+ * sensible dans `MAI_TOOLS_CATALOG` mais absent d'ici s'exécuterait sans
+ * demande d'accord.
+ *
+ * Les outils d'écriture (`adapt_post`, `generate_variants`, `generate_caption`)
+ * n'y figurent pas: ils produisent du texte que l'utilisateur relit et
+ * publie lui-même. La publication reste un acte distinct et sensible
+ * (`create_post`).
  */
 export const SENSITIVE_TOOLS = [
   "create_post",
@@ -87,10 +98,10 @@ export class MAIAgentFleet {
   }): Promise<string> {
     const { text, tone = "executive" } = opts;
     const tonePrefixes: Record<string, string> = {
-      executive: "⚡ ",
+      executive: " ",
       minimal: "✦ ",
-      poetic: "✨ ",
-      viral: "🔥 ",
+      poetic: " ",
+      viral: " ",
     };
 
     const prefix = tonePrefixes[tone] || "";
@@ -107,7 +118,7 @@ export class MAIAgentFleet {
     const authors = [...new Set(comments.map((c) => c.author))]
       .slice(0, 3)
       .join(", ");
-    return `Synthèse (${count} réponses) : Échanges autour des points partagés par @${authors}.`;
+    return `Synthèse (${count} réponses): Échanges autour des points partagés par @${authors}.`;
   }
 
   /**
@@ -240,7 +251,7 @@ export class MAIAgentFleet {
           const safety = MAIAgentFleet.assessContentSafety(content);
           if (!safety.isSafe) {
             throw new Error(
-              `Publication refusée par mAI : ${safety.flagReason}`
+              `Publication refusée par mAI: ${safety.flagReason}`
             );
           }
 
@@ -272,7 +283,7 @@ export class MAIAgentFleet {
 
           await sql`UPDATE profiles SET posts_count = posts_count + 1 WHERE user_id = ${uid}`;
           resultData = {
-            message: "Post publié avec succès sur Vibe !",
+            message: "Post publié avec succès sur Vibe!",
             post: newPost,
           };
           break;
@@ -351,7 +362,7 @@ export class MAIAgentFleet {
           resultData = {
             aspect_ratio,
             imageUrl: chosen,
-            message: "Image générée avec succès via mAI !",
+            message: "Image générée avec succès via mAI!",
             prompt,
             quotaRemaining: Math.max(0, maxImages - (currentCount + 1)),
           };
@@ -405,7 +416,7 @@ export class MAIAgentFleet {
           }
           const snippet = search.results
             .slice(0, 3)
-            .map((r) => `• **${r.title}** — ${r.snippet}\n  ${r.url}`)
+            .map((r) => `• **${r.title}** — ${r.snippet}\n ${r.url}`)
             .join("\n");
           resultData = {
             provider: search.provider,
@@ -425,9 +436,9 @@ export class MAIAgentFleet {
           const sources = search?.success ? search.results.slice(0, 3) : [];
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français : verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
-            `Affirmation : « ${statement} »\n\nSources trouvées :\n${
-              sources.map((s) => `- ${s.title} : ${s.snippet}`).join("\n") ||
+            "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français: verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
+            `Affirmation: « ${statement}»\n\nSources trouvées:\n${
+              sources.map((s) => `- ${s.title}: ${s.snippet}`).join("\n") ||
               "(aucune)"
             }`
           );
@@ -460,7 +471,7 @@ export class MAIAgentFleet {
           };
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            `Reformule le texte suivant en français dans un style « ${style} », percutant et adapté à un réseau social. Réponds UNIQUEMENT par le texte reformulé, sans commentaire.`,
+            `Reformule le texte suivant en français dans un style « ${style}», percutant et adapté à un réseau social. Réponds UNIQUEMENT par le texte reformulé, sans commentaire.`,
             String(text || "")
           );
           const rewritten =
@@ -477,12 +488,12 @@ export class MAIAgentFleet {
           const { topic, style = "viral" } = args;
           const llm = await MAIAgentFleet.callOpenRouter(
             uid,
-            `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic} », dans un style « ${style} ». Format : une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
+            `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic}», dans un style « ${style}». Format: une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
             String(topic || "sujets d'actualité")
           );
           if (!llm) {
             throw new Error(
-              "Génération indisponible : aucune clé IA configurée sur le serveur."
+              "Génération indisponible: aucune clé IA configurée sur le serveur."
             );
           }
           resultData = { style, suggestions: llm, topic };
@@ -498,7 +509,7 @@ export class MAIAgentFleet {
           );
           if (!llm) {
             throw new Error(
-              "Traduction indisponible : aucune clé IA configurée sur le serveur."
+              "Traduction indisponible: aucune clé IA configurée sur le serveur."
             );
           }
           resultData = { targetLanguage: target_language, translated: llm };
@@ -524,7 +535,7 @@ export class MAIAgentFleet {
             .map(([name, postsCount]) => ({
               name: `#${name}`,
               postsCount,
-              sentiment: postsCount >= 5 ? "Très actif 🔥" : "Actif 📈",
+              sentiment: postsCount >= 5 ? "Très actif " : "Actif ",
             }));
           resultData = { trendingTopics };
           break;
@@ -600,7 +611,7 @@ export class MAIAgentFleet {
             ]);
             resultData = {
               followed: true,
-              message: `Vous suivez désormais @${cleanUsername} !`,
+              message: `Vous suivez désormais @${cleanUsername}!`,
               username: cleanUsername,
             };
           } else {
@@ -696,7 +707,7 @@ export class MAIAgentFleet {
             resultData = {
               liked: true,
               likes_count: Number(c[0]?.likes_count || 0),
-              message: "Publication likée avec succès !",
+              message: "Publication likée avec succès!",
               post_id,
             };
           } else {
@@ -742,7 +753,7 @@ export class MAIAgentFleet {
           }
           const safety = MAIAgentFleet.assessContentSafety(text);
           if (!safety.isSafe) {
-            throw new Error(`Message refusé par mAI : ${safety.flagReason}`);
+            throw new Error(`Message refusé par mAI: ${safety.flagReason}`);
           }
           const target =
             await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
@@ -778,7 +789,7 @@ export class MAIAgentFleet {
           } catch {}
           resultData = {
             conversation_id: conversationId,
-            message: `Message envoyé à @${cleanUsername} !`,
+            message: `Message envoyé à @${cleanUsername}!`,
             message_id: String(msg[0]?.id || ""),
             preview: text.slice(0, 80),
             sent: true,
@@ -848,7 +859,7 @@ export class MAIAgentFleet {
             () => {}
           );
           const cols = Object.keys(patch);
-          // Upsert générique : INSERT puis UPDATE ciblé colonne par colonne
+          // Upsert générique: INSERT puis UPDATE ciblé colonne par colonne
           await sql`
             INSERT INTO user_settings (user_id) VALUES (${uid})
             ON CONFLICT (user_id) DO NOTHING
@@ -936,7 +947,7 @@ export class MAIAgentFleet {
             )}::uuid`;
             resultData = {
               bookmarked: true,
-              message: "Post ajouté à vos favoris !",
+              message: "Post ajouté à vos favoris!",
               post_id,
             };
           } else {
@@ -994,7 +1005,7 @@ export class MAIAgentFleet {
               post_id
             )}::uuid`;
             resultData = {
-              message: "Publication repostée avec succès !",
+              message: "Publication repostée avec succès!",
               post_id,
               reposted: true,
             };
@@ -1033,9 +1044,7 @@ export class MAIAgentFleet {
           }
           const safety = MAIAgentFleet.assessContentSafety(text);
           if (!safety.isSafe) {
-            throw new Error(
-              `Commentaire refusé par mAI : ${safety.flagReason}`
-            );
+            throw new Error(`Commentaire refusé par mAI: ${safety.flagReason}`);
           }
           const prow =
             await sql`SELECT id, author_id FROM posts WHERE id = ${String(
@@ -1064,7 +1073,7 @@ export class MAIAgentFleet {
           resultData = {
             comment_id: String(inserted[0].id),
             commented: true,
-            message: "Commentaire publié avec succès !",
+            message: "Commentaire publié avec succès!",
             post_id,
           };
           break;
@@ -1230,7 +1239,7 @@ export class MAIAgentFleet {
                   : "low",
             message:
               bestSlots.length > 0
-                ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${
+                ? `Meilleur créneau: ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${
                     bestSlots[0].avg_views
                   } vues moyennes).`
                 : "Pas encore assez de données de publication.",
@@ -1412,13 +1421,13 @@ export class MAIAgentFleet {
               if (fmtEng > avgEngagement * 1.15) {
                 score += 10;
                 breakdown.push({
-                  factor: `Format « ${fmt} » au-dessus de votre moyenne`,
+                  factor: `Format « ${fmt}» au-dessus de votre moyenne`,
                   impact: 10,
                 });
               } else if (fmtEng < avgEngagement * 0.85) {
                 score -= 8;
                 breakdown.push({
-                  factor: `Format « ${fmt} » sous votre moyenne`,
+                  factor: `Format « ${fmt}» sous votre moyenne`,
                   impact: -8,
                   tip: "Testez un autre format plus performant.",
                 });
@@ -1539,7 +1548,7 @@ export class MAIAgentFleet {
             formats,
             message:
               formats.length > 0
-                ? `Format le plus engageant : ${formats[0].format} (${
+                ? `Format le plus engageant: ${formats[0].format} (${
                     formats[0].avg_engagement
                   } engagement moyen).`
                 : "Aucun post publié sur la période.",
@@ -1776,15 +1785,32 @@ export class MAIAgentFleet {
             message:
               hashtags.length === 0
                 ? "Aucun hashtag utilisé sur la période."
-                : `Top hashtag : ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
+                : `Top hashtag: ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
             period_days: days,
             suggestions,
           };
           break;
         }
 
-        default:
-          throw new Error(`Outil inconnu : ${toolName}`);
+        // Les outils créatifs et d'analyse vivent dans un module séparé
+        // (vibe-mai-creative.ts): Val Town impose une limite de taille de
+        // fichier, et la flotte approchait de la sienne. Ils renvoient
+        // `null` quand ils ne savent pas traiter l'outil.
+        default: {
+          const creative = await executeCreativeTool(
+            toolName,
+            args,
+            uid,
+            sql,
+            (system, user, model) =>
+              MAIAgentFleet.callOpenRouter(uid, system, user, model)
+          );
+          if (creative === null) {
+            throw new Error(`Outil inconnu: ${toolName}`);
+          }
+          resultData = creative;
+          break;
+        }
       }
 
       const duration = Date.now() - startTime;

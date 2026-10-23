@@ -1,8 +1,8 @@
 # Stories Vibe — publications éphémères de 24 h
 
-Guide de maintenance des Stories : ce qui est stocké, où la limite s'applique, et
-quels contrats ne doivent pas être « unifiés » par erreur. Règles générales du
-portage : [AGENTS.md](./AGENTS.md) et [INTEGRATION.md](./INTEGRATION.md).
+Guide de maintenance des Stories: ce qui est stocké, où la limite s'applique, et
+quels contrats ne doivent pas être « unifiés» par erreur. Règles générales du
+portage: [AGENTS.md](./AGENTS.md) et [INTEGRATION.md](./INTEGRATION.md).
 
 ---
 
@@ -11,7 +11,7 @@ portage : [AGENTS.md](./AGENTS.md) et [INTEGRATION.md](./INTEGRATION.md).
 Une story est une **photo ou une vidéo de 50 Mo au plus**, visible 24 h dans un
 rail au-dessus du fil et autour de la photo de profil de son auteur, puis rangée
 dans une **archive** sur le profil. Elle se consulte en plein écran, média par
-média, avec légende, réactions (❤️ 🔥 😮) et réponse en message privé.
+média, avec légende, réactions ( ) et réponse en message privé.
 
 | Forfait | Stories par jour |
 |---|---|
@@ -20,7 +20,7 @@ média, avec légende, réactions (❤️ 🔥 😮) et réponse en message priv
 | Pro | 10 |
 | Max | illimité |
 
-Trois états, tous **dérivés** — aucune colonne « statut » :
+Trois états, tous **dérivés** — aucune colonne « statut»:
 
 | État | Prédicat |
 |---|---|
@@ -28,7 +28,7 @@ Trois états, tous **dérivés** — aucune colonne « statut » :
 | archivée | `deleted_at IS NULL AND (archived_at IS NOT NULL OR expires_at <= NOW())` |
 | supprimée | `deleted_at IS NOT NULL` |
 
-D'où : **aucun cron**. L'expiration est un filtre de lecture. La suppression reste
+D'où: **aucun cron**. L'expiration est un filtre de lecture. La suppression reste
 un soft-delete, donc réversible sans toucher au schéma.
 
 ---
@@ -55,7 +55,7 @@ mobile via `apps/vibe/lib/db/migrator.ts`. Une divergence ne se voit que sur
 l'environnement où un seul des deux a tourné — d'où
 `tests/unit/vibe-stories-schema.test.ts`, qui compare les deux.
 
-> ⚠️ Le migrateur Vibe **vérifie les sommes de contrôle** : une migration déjà
+> Le migrateur Vibe **vérifie les sommes de contrôle**: une migration déjà
 > appliquée ne doit plus être modifiée. Après déploiement de `026`, un changement
 > de structure passe par une migration `027`, jamais par une retouche de `026`.
 
@@ -72,13 +72,13 @@ C'est le point le plus facile à casser. **Ne pas les unifier.**
 
 Comme l'upload accepte désormais 1 Go pour les payants, **passer par
 `/upload-file` ne garantit plus la borne de la story**. `POST /v1/stories` doit donc
-recontrôler, et le fait de deux manières :
+recontrôler, et le fait de deux manières:
 
-1. **Taille** : un `HEAD` signé (`buildS3Client` + `findStorageNodeForRecord`) lit
+1. **Taille**: un `HEAD` signé (`buildS3Client` + `findStorageNodeForRecord`) lit
    le `Content-Length` de l'objet. Le `file_size_bytes` fourni par le navigateur est
    falsifiable et n'est jamais l'autorité. Un objet injoignable est **refusé**, pas
-   accepté « en confiance ».
-2. **Origine** : seules les origines du pool configuré (`getStorageNodes()`) sont
+   accepté « en confiance».
+2. **Origine**: seules les origines du pool configuré (`getStorageNodes()`) sont
    acceptées, et seulement dans le namespace `uploads/`. Sans cela, un compte
    publierait une URL externe que le navigateur d'un autre chargerait comme
    `<img>`/`<video>` dans son fil — contenu illégitime servi depuis un profil, et
@@ -92,25 +92,25 @@ recontrôler, et le fait de deux manières :
 
 Contrairement au quota d'images, qui compare sur `CURRENT_DATE` — une date **UTC**.
 
-Conséquence d'implémentation : la base ne doit pas poser la date. `usage_date` est
+Conséquence d'implémentation: la base ne doit pas poser la date. `usage_date` est
 calculé dans le module (`getStoryDayKey()`, via `Intl` en `Europe/Paris`, locale
 `fr-CA` pour obtenir l'ordre ISO) puis passé explicitement à l'upsert. Écrire
 `usage_date = CURRENT_DATE` ferait basculer le compteur à 1 h ou 2 h du matin pour
-un francophone. La **DST est absorbée par `Intl`** : surtout, ne pas la recalculer à
+un francophone. La **DST est absorbée par `Intl`**: surtout, ne pas la recalculer à
 la main par une soustraction d'écart UTC.
 
 Le 429 renvoie `resetsInMs` (temps restant avant minuit parisien) pour un compte à
-rebours d'affichage, et le message dit « Réinitialisation à minuit, heure de Paris. »
+rebours d'affichage, et le message dit « Réinitialisation à minuit, heure de Paris.»
 
 **Cette divergence avec le quota images est délibérée.** Un nettoyage qui
-« réaligne » les deux sur UTC a perdu.
+« réaligne» les deux sur UTC a perdu.
 
 ### Forme des erreurs
 
-Vibe a sa propre convention, différente de celle de l'API mAI : `error` est une
+Vibe a sa propre convention, différente de celle de l'API mAI: `error` est une
 **chaîne**, les champs machine (`code`, `limit`, `used`, `type`, `resetsInMs`) sont
-**à plat**. `ApiService.executeRequest` fabrique `new Error(errJson.error)` ;
-imbriquer un objet y produirait un « [object Object] » à l'écran.
+**à plat**. `ApiService.executeRequest` fabrique `new Error(errJson.error)`;
+imbriquer un objet y produirait un « [object Object]» à l'écran.
 
 ---
 
@@ -118,29 +118,29 @@ imbriquer un objet y produirait un « [object Object] » à l'écran.
 
 `ProfileAvatar` n'a **aucune prop d'anneau** et compte une vingtaine de lieux de
 rendu, avec un jumeau dans `apps/vibe/src` aux imports différents. Ajouter une prop
-aurait forcé à éditer les deux arbres. D'où deux coques externes :
+aurait forcé à éditer les deux arbres. D'où deux coques externes:
 
 - `StoryRing` — enveloppe le composant quand on construit du neuf (rail, listes).
 - `ProfileStoryRing` — se **superpose** à un avatar déjà en place (en-tête de
-  profil), parce que cet avatar porte un overlay « Changer » calé sur son
-  conteneur : l'envelopper aurait élargi la zone de survol de ce bouton.
+  profil), parce que cet avatar porte un overlay « Changer» calé sur son
+  conteneur: l'envelopper aurait élargi la zone de survol de ce bouton.
 
-États portés par des attributs `data-*`, jamais par des classes conditionnelles :
+États portés par des attributs `data-*`, jamais par des classes conditionnelles:
 `data-live="false"` = pas de story (avatar nu), `data-seen="false"` = dégradé,
 `data-seen="true"` = gris. Une seule story inédite suffit à maintenir l'anneau actif.
 
-Sites habillés : le fil (`feed/PostCard.tsx`, avatar de carte), l'en-tête de profil
+Sites habillés: le fil (`feed/PostCard.tsx`, avatar de carte), l'en-tête de profil
 (`pages/ProfilePage.tsx`) et la barre latérale (`layout/Sidebar.tsx`, avatar de
 soi, en variante `compact` car l'avatar y fait 32 px).
 
-**L'onglet « moi » de la barre d'onglets mobile n'a volontairement pas d'anneau.**
-C'est un `Link` vers le profil : y loger un bouton serait un élément interactif
+**L'onglet « moi» de la barre d'onglets mobile n'a volontairement pas d'anneau.**
+C'est un `Link` vers le profil: y loger un bouton serait un élément interactif
 imbriqué dans un lien (balisage invalide) et détournerait la navigation. Le parcours
 mobile reste celui de Snapchat et d'Instagram — onglet → profil → anneau du profil.
-Ne pas « compléter » ce site lors d'une revue.
+Ne pas « compléter» ce site lors d'une revue.
 
 Le dégradé conique vit dans `apps/vibe/src/index.css` (jamais en classes
-utilitaires) pour rester ajustable en un endroit. **Après tout changement de style :
+utilitaires) pour rester ajustable en un endroit. **Après tout changement de style:
 `node scripts/build-vibe-css.mjs`.** Le script sort en code 1 si un sélecteur
 échappe à `.vibe-root` — c'est la garde, pas un bug.
 
@@ -150,23 +150,23 @@ utilitaires) pour rester ajustable en un endroit. **Après tout changement de st
 
 `StoryViewer.tsx` reprend la grammaire de `feed/MediaLightbox.tsx` (barres
 segmentées, tap gauche/droite, swipe à 60 px, `Escape`, haptique) avec deux écarts
-volontaires :
+volontaires:
 
 - **Le portail se rend dans `.vibe-root`, pas dans `document.body`.** MediaLightbox
-  portale sur `body` et sort donc du conteneur : il perd les tokens de thème. Un
+  portale sur `body` et sort donc du conteneur: il perd les tokens de thème. Un
   lecteur de stories est un lecteur de thème, il doit rester dans `.vibe-root`.
-  À vérifier visuellement : un ancêtre avec `transform` ou `filter` crée un
+  À vérifier visuellement: un ancêtre avec `transform` ou `filter` crée un
   containing block qui peut casser le `fixed`.
-- **Vidéo muette et `playsInline`** : sans `muted`, l'autoplay est refusé par le
+- **Vidéo muette et `playsInline`**: sans `muted`, l'autoplay est refusé par le
   navigateur. Les vidéos de post sont interactives, une story ne l'est pas.
 
-Réponses : envoyées par le flux **DM existant** (`ApiService.sendMessage`), aucune
-route story n'est nécessaire. Vues : `POST /:id/view` est idempotente (clé composée
+Réponses: envoyées par le flux **DM existant** (`ApiService.sendMessage`), aucune
+route story n'est nécessaire. Vues: `POST /:id/view` est idempotente (clé composée
 `story_id, viewer_id`), donc revoir une story ne gonfle pas le compteur. Liste des
-vues : réservée à l'auteur, vérifiée **avant** la lecture (`403` sinon).
+vues: réservée à l'auteur, vérifiée **avant** la lecture (`403` sinon).
 
-**Hors périmètre v1** : les stickers et le dessin libre (canvas) — la tranche 2 de
-l'éditeur. Le temps réel des vues et réactions non plus : `EVENT_TYPES` du service
+**Hors périmètre v1**: les stickers et le dessin libre (canvas) — la tranche 2 de
+l'éditeur. Le temps réel des vues et réactions non plus: `EVENT_TYPES` du service
 temps réel n'a aucun type `story_*`, et le serveur détecte notifications et MP par
 lecture de tables. Les vues se rafraîchissent par invalidation du cache
 (`invalidateCache("/v1/stories")`).
@@ -178,7 +178,7 @@ lecture de tables. Les vues se rafraîchissent par invalidation du cache
 Les pages `/vibe/**` sont générées et acceptent **une seule** graine serveur par
 route (`scripts/build-vibe-routes.mjs`). Celle du fil est prise par
 `readers.feed`. Le rail appelle donc `GET /v1/stories/tray`, servi par le cache TTL
-d'ApiService (15 s). Ne pas ajouter une clé `stories` au registre d'hydratation :
+d'ApiService (15 s). Ne pas ajouter une clé `stories` au registre d'hydratation:
 sans page qui la consomme, ce serait du code mort, et la glisser dans le seed du
 feed en changerait la forme pour `useInfiniteFeed`.
 
@@ -198,13 +198,13 @@ feed en changerait la forme pour `useInfiniteFeed`.
 
 ## 9. Ce qui reste ouvert
 
-- **Mémoire de l'isolate** : `handleUploadFile` lit le fichier entier en mémoire
+- **Mémoire de l'isolate**: `handleUploadFile` lit le fichier entier en mémoire
   (`await file.arrayBuffer()`) avant le `PUT`, et `uploadWithFallback` peut rejouer
   le même corps sur 10 buckets. Un envoi de 1 Go est donc 1 Go de tampon, revu
   jusqu'à dix fois. Le refus de taille précède toujours la lecture du corps, et la
-  valeur vit dans une seule table : baisser le plafond payant à 256 Mo est un
+  valeur vit dans une seule table: baisser le plafond payant à 256 Mo est un
   changement de deux lignes, à faire si l'isolate ne suit pas.
-- **Comptabilité** : `/upload-file` n'inscrit rien dans `cloud_storage_usage`. Un
+- **Comptabilité**: `/upload-file` n'inscrit rien dans `cloud_storage_usage`. Un
   envoi de 1 Go par un compte payant n'est donc **pas** décompté de son quota de
   stockage. Soit le décompter, soit l'assumer par écrit — pas par omission.
 - Stickers et dessin libre (tranche 2).

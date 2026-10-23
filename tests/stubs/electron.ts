@@ -1,6 +1,6 @@
 export const app = {
   getPath: (_name?: string) => process.cwd(),
-  getVersion: () => "0.9.1",
+  getVersion: () => "0.9.2",
   isPackaged: false,
 };
 export class BrowserWindow {}

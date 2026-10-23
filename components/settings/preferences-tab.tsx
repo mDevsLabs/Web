@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  GaugeIcon,
   LanguagesIcon,
   SettingsIcon,
   SparklesIcon,
@@ -9,7 +10,6 @@ import {
 } from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { toast } from "sonner";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
@@ -27,6 +27,7 @@ import {
   VoiceOptionSelector,
 } from "@/components/settings/option-selectors";
 import { Label } from "@/components/ui/label";
+import { useAutosavePreference } from "@/hooks/use-autosave-preference";
 import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useSettings } from "@/hooks/use-settings";
@@ -64,6 +65,7 @@ import {
   getTierCustomInstructionsMax,
   getTierLimits,
 } from "@/lib/plans/tier-limits";
+import { useEconomy } from "@/lib/resources/economy";
 import { cn, fetcher } from "@/lib/utils";
 
 function getCookie(name: string): string | null {
@@ -92,6 +94,11 @@ export function PreferencesTab() {
   const { isDesktop } = useIsDesktopApp();
   const profile = settingsData?.user ?? null;
   const tierRaw = profile?.tier;
+  // Le mode économie est un réglage d'APPAREIL : il vit dans le
+  // `localStorage`, pas dans le compte. Un portable et un poste fixe n'ont
+  // pas les mêmes ressources.
+  const { isEconomyRequested: economyRequested, setEconomyRequested } =
+    useEconomy();
   // Le CLI n'apparaît que dans l'application de bureau : sur le web, choisir
   // ce favori mènerait à une impasse au prochain login.
   const favoriteAppOptions = useMemo<OptionSelectorItem[]>(
@@ -309,41 +316,10 @@ export function PreferencesTab() {
     }
   }, [customPrefData]);
 
-  const savePreference = useCallback(
-    async (
-      payload: Record<string, any>,
-      rollback: () => void | Promise<void>,
-      endpoint = "/api/user/preferences"
-    ) => {
-      try {
-        const res = await fetch(endpoint, {
-          body: JSON.stringify(payload),
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-        });
-        if (!res.ok) throw new Error("Erreur lors de l'enregistrement");
-        if (endpoint === "/api/user/preferences") {
-          mutateCustomPref();
-        } else {
-          mutateNotifPrefs();
-        }
-        toast.success("Paramètres enregistrés", {
-          action: {
-            label: "Annuler",
-            onClick: () => {
-              void rollback();
-            },
-          },
-          duration: 5000,
-          position: "top-right",
-        });
-      } catch (e: any) {
-        toast.error(e.message || "Erreur de sauvegarde des préférences.");
-      }
-    },
-    [mutateCustomPref, mutateNotifPrefs]
-  );
-
+  const { save: savePreference } = useAutosavePreference({
+    endpoint: "/api/user/preferences",
+    revalidate: mutateCustomPref,
+  });
   const handleModelChange = useCallback(
     (newModelId: string) => {
       const prev = defaultModelId;
@@ -547,20 +523,20 @@ export function PreferencesTab() {
     (mode: "truncate" | "fork") => {
       const prev = regenerateMode;
       setRegenerateMode(mode);
+      const versNotifications = {
+        endpoint: "/api/notifications/preferences",
+        revalidate: mutateNotifPrefs,
+      };
       savePreference(
         { regenerateMode: mode },
         () => {
           setRegenerateMode(prev);
-          savePreference(
-            { regenerateMode: prev },
-            () => {},
-            "/api/notifications/preferences"
-          );
+          savePreference({ regenerateMode: prev }, () => {}, versNotifications);
         },
-        "/api/notifications/preferences"
+        versNotifications
       );
     },
-    [regenerateMode, savePreference]
+    [regenerateMode, savePreference, mutateNotifPrefs]
   );
 
   return (
@@ -677,6 +653,43 @@ export function PreferencesTab() {
             value={favoriteApp}
           />
         </div>
+      </div>
+
+      {/* Mode économie */}
+      <div
+        className="surface-card flex flex-col gap-5 scroll-mt-6"
+        id="prefs-economy"
+      >
+        <div className="flex flex-wrap items-center gap-2.5">
+          <div className="shrink-0 p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
+            <GaugeIcon className="size-5" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-base font-semibold text-foreground">
+              Mode économie
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Coupe les animations et suspend les rafraîchissements quand une
+              application lourde tourne (Blackline) ou que l'onglet est en
+              arrière-plan.
+            </p>
+          </div>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              checked={economyRequested}
+              className="size-4 rounded border-border accent-primary"
+              onChange={(e) => setEconomyRequested(e.target.checked)}
+              type="checkbox"
+            />
+            <span className="text-xs font-medium">Activé</span>
+          </label>
+        </div>
+        <p className="text-[10px] text-muted-foreground">
+          Réglage d&apos;APPAREIL : il décrit la machine sur laquelle vous
+          travaillez, et ne suit pas le compte. L&apos;économie automatique
+          (onglet caché, application lourde) s&apos;applique quoi qu&apos;il
+          arrive.
+        </p>
       </div>
 
       {/* Instructions personnalisées */}

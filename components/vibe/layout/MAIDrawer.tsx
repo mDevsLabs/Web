@@ -33,6 +33,7 @@ import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { useAuth } from "@/lib/vibe/context/AuthContext";
 import type { MAITool } from "@/lib/vibe/data/maiTools";
@@ -49,7 +50,7 @@ import type {
 } from "@/lib/vibe/types/vibe";
 
 interface MAIDrawerProps {
-  /** Post pré-attaché (bouton « Mentionner dans mAI » depuis une publication). */
+  /** Post pré-attaché (bouton « Mentionner dans mAI» depuis une publication). */
   attachedPostId?: string | null;
   isOpen: boolean;
   onClearAttachedPost?: () => void;
@@ -163,12 +164,12 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   const [attachedPost, setAttachedPost] = useState<AttachedPostInfo | null>(
     null
   );
-  // Sélecteur de posts (« Mentionner un post »)
+  // Sélecteur de posts (« Mentionner un post»)
   const [showPostPicker, setShowPostPicker] = useState(false);
   const [postPickerQuery, setPostPickerQuery] = useState("");
   const [postPickerResults, setPostPickerResults] = useState<Post[]>([]);
   const [postPickerLoading, setPostPickerLoading] = useState(false);
-  // Multi-conversations : sélecteur compact (titre actif + menu des dernières)
+  // Multi-conversations: sélecteur compact (titre actif + menu des dernières)
   const [conversations, setConversations] = useState<MAIConversationSummary[]>(
     []
   );
@@ -177,7 +178,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
   >(null);
   const [convMenuOpen, setConvMenuOpen] = useState(false);
 
-  // Mémoïsé : l'effet qui charge l'historique à l'ouverture du panneau liste
+  // Mémoïsé: l'effet qui charge l'historique à l'ouverture du panneau liste
   // cette fonction en dépendance (elle ne doit pas changer d'identité).
   const refreshDrawerConversations = useCallback(() => {
     ApiService.getMAIConversations()
@@ -291,7 +292,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         }
       } catch {}
     };
-    // La préférence de l'hôte (`defaultChatModel`) prime : elle est commune à
+    // La préférence de l'hôte (`defaultChatModel`) prime: elle est commune à
     // Chat, Agent et Wakies. `mai_default_model` reste lu pour les comptes qui
     // avaient choisi un modèle dans Vibe avant l'unification.
     Promise.allSettled([
@@ -322,7 +323,31 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     }
   }, [isOpen]);
 
-  /** Changement de modèle : appliqué et enregistré dans la préférence partagée. */
+  /**
+   * Rafraîchissement automatique de la liste de repli.
+   *
+   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes;
+   * cette liste-ci n'est que le repli affiché avant que le catalogue du
+   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
+   * listes ne proposes pas des modèles différents.
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+    const timer = setInterval(() => {
+      void ApiService.getModels()
+        .then((res) => {
+          if (res?.models && res.models.length > 0) {
+            setAvailableModels(res.models as typeof DEFAULT_MODELS);
+          }
+        })
+        .catch(() => {});
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [isOpen]);
+
+  /** Changement de modèle: appliqué et enregistré dans la préférence partagée. */
   const handleSelectModel = (modelId: string) => {
     setSelectedModel(modelId);
     void fetch(
@@ -336,7 +361,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     ApiService.updateSettings({ mai_default_model: modelId }).catch(() => {});
   };
 
-  // Historique persisté : chargé à la première ouverture du panneau
+  // Historique persisté: chargé à la première ouverture du panneau
   // (le drapeau n'est posé qu'en cas de succès pour permettre un nouvel essai)
   const historyLoadedRef = useRef(false);
   useEffect(() => {
@@ -367,7 +392,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     refreshDrawerConversations();
   }, [isOpen, refreshDrawerConversations]);
 
-  // Post pré-attaché depuis l'extérieur (bouton « Mentionner dans mAI »)
+  // Post pré-attaché depuis l'extérieur (bouton « Mentionner dans mAI»)
   useEffect(() => {
     if (!isOpen || !attachedPostId) return;
     if (attachedPost?.id === attachedPostId) return;
@@ -435,7 +460,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
     },
   });
 
-  // Mémoïsé : dépendance d'un effet qui, lui, se déclenche à chaque message.
+  // Mémoïsé: dépendance d'un effet qui, lui, se déclenche à chaque message.
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -563,7 +588,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       refreshDrawerConversations();
       refreshQuotas();
 
-      // Outil sensible : le serveur demande une approbation explicite
+      // Outil sensible: le serveur demande une approbation explicite
       if (response.requiresApproval && response.pendingTool) {
         setPendingTool(response.pendingTool);
       }
@@ -573,7 +598,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       }
     } catch (err: any) {
       const errorMsg: MessageItem = {
-        content: `⚠️ Une erreur est survenue : ${err.message || "Impossible de joindre mAI"}`,
+        content: ` Une erreur est survenue: ${err.message || "Impossible de joindre mAI"}`,
         id: generateMessageId(),
         sender: "assistant",
         timestamp: formatCurrentTime(),
@@ -620,7 +645,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         pushAssistant(res.reply, undefined, res.toolCalls);
       } catch {
         pushAssistant(
-          `🚫 Très bien, je n'exécute pas l'outil « ${tool.name} ». Dites-moi si je peux faire autre chose pour vous.`
+          ` Très bien, je n'exécute pas l'outil « ${tool.name}». Dites-moi si je peux faire autre chose pour vous.`
         );
       }
       setIsApproving(false);
@@ -642,7 +667,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
       }
     } catch (err: any) {
       pushAssistant(
-        `⚠️ Erreur lors de l'exécution de « ${tool.name} » : ${err.message || "réessayez plus tard."}`
+        ` Erreur lors de l'exécution de « ${tool.name}»: ${err.message || "réessayez plus tard."}`
       );
     } finally {
       setIsApproving(false);
@@ -761,7 +786,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
           <div className="flex items-center gap-2 text-zinc-400">
             <Zap className="w-3.5 h-3.5 text-white" />
             <span>
-              Tokens hebdo :{" "}
+              Tokens hebdo:{" "}
               <strong className="text-white font-mono">
                 {quotas?.weeklyTokens.percent || 0}%
               </strong>
@@ -770,7 +795,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
           <div className="flex items-center gap-2 text-zinc-400">
             <ImageIcon className="w-3.5 h-3.5 text-white" />
             <span>
-              Images :{" "}
+              Images:{" "}
               <strong className="text-white font-mono">
                 {quotas?.dailyImages.used || 0}/{quotas?.dailyImages.limit || 5}
               </strong>
@@ -786,7 +811,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
             </div>
             <div className="min-w-0">
               <div className="text-xs font-bold text-white truncate">
-                Bienvenue, @{user?.username || "utilisateur"} !
+                Bienvenue, @{user?.username || "utilisateur"}!
               </div>
               <div className="text-[10px] text-zinc-400 truncate">
                 Posez vos questions ou utilisez les commandes @ ou /.
@@ -936,7 +961,7 @@ export const MAIDrawer: React.FC<MAIDrawerProps> = ({
         {pendingTool && (
           <div className="mx-3 mb-2 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-2">
             <p className="font-bold text-amber-500 flex items-center gap-1.5">
-              🔐 Approbation requise : {pendingTool.name}
+              Approbation requise: {pendingTool.name}
             </p>
             <pre className="text-[10px] text-zinc-500 overflow-x-auto max-h-20">
               {JSON.stringify(pendingTool.args, null, 2)}

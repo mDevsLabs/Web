@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — DMs : CONVERSATIONS & MESSAGES
+ * VIBE SOCIAL PLATFORM — DMs: CONVERSATIONS & MESSAGES
  * (vibe-dms-conversations.ts)
  * Recherche d'utilisateurs, liste des conversations (1-1 + groupes), lecture
  * et envoi des messages. Scindé de vibe-dms.ts (limite de taille Val Town).
@@ -125,13 +125,13 @@ export function registerDMDirectRoutes(
             SELECT COUNT(*)::int AS count FROM direct_messages m
             WHERE m.conversation_id = dm.id
               AND m.sender_id <> ${userId}
-              AND NOT COALESCE((m.read_by ? ${userId}::text), FALSE)
+              AND NOT COALESCE((m.read_by? ${userId}::text), FALSE)
           ) unread ON TRUE
           WHERE me.user_id = ${userId}
           ORDER BY dm.last_message_at DESC
         `,
       ]);
-      // Livres : métadonnées (titre, icône) pour distinguer la conversation de groupe
+      // Livres: métadonnées (titre, icône) pour distinguer la conversation de groupe
       const bookIds = Array.from(
         new Set(
           ((groups || []) as any[])
@@ -147,7 +147,7 @@ export function registerDMDirectRoutes(
             await sql`SELECT id, title, icon FROM vibe_books WHERE id = ANY(${bookIds}::uuid[])`;
           bookMeta = new Map((rows as any[]).map((b) => [String(b.id), b]));
         } catch {
-          // vibe_books absent : conversations affichées comme des groupes classiques
+          // vibe_books absent: conversations affichées comme des groupes classiques
         }
       }
       // Normalisation des groupes au format DMConversation (partner_id = id de conversation)
@@ -189,7 +189,7 @@ export function registerDMDirectRoutes(
     handleDMConversations
   );
 
-  // 3. DM MESSAGES (1-1 et groupes : les groupes utilisent conversationId "group:<uuid>")
+  // 3. DM MESSAGES (1-1 et groupes: les groupes utilisent conversationId "group:<uuid>")
   const handleDMMessages = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
@@ -235,7 +235,7 @@ export function registerDMDirectRoutes(
           ORDER BY m.created_at ASC
           LIMIT 200
         `;
-        // Un nouveau membre récupère tout l'historique : aucune restriction de date.
+        // Un nouveau membre récupère tout l'historique: aucune restriction de date.
 
         try {
           const msgIds = messages.map((m: any) => m.id);
@@ -277,10 +277,10 @@ export function registerDMDirectRoutes(
           }
         } catch {}
 
-        // Publications jointes (conversations de Livre) : carte cliquable côté client
+        // Publications jointes (conversations de Livre): carte cliquable côté client
         await attachDMAttachedPosts(sql, messages);
 
-        // Marquer comme lu : ajoute mon id dans read_by des messages des autres
+        // Marquer comme lu: ajoute mon id dans read_by des messages des autres
         try {
           const unreadRows = messages.filter(
             (m: any) =>
@@ -415,7 +415,7 @@ export function registerDMDirectRoutes(
         attached_post_id,
       } = await c.req.json();
 
-      // ── GROUPE : conversation_id "group:<uuid>" → diffusion à tous les membres ──
+      // ── GROUPE: conversation_id "group:<uuid>" → diffusion à tous les membres ──
       if (
         typeof conversation_id === "string" &&
         conversation_id.startsWith("group:")
@@ -450,7 +450,7 @@ export function registerDMDirectRoutes(
           return c.json({ error: "Conversation introuvable." }, 404);
         }
 
-        // Conversation de Livre ? (book_id non nul → publication jointe autorisée)
+        // Conversation de Livre? (book_id non nul → publication jointe autorisée)
         const convRows = await sql`
           SELECT book_id, group_name FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1
         `.catch(() => []);
@@ -459,7 +459,7 @@ export function registerDMDirectRoutes(
           : null;
         const convName = String(convRows[0]?.group_name || "Groupe");
 
-        // Publication jointe (carte cliquable) : réservée aux conversations de Livre,
+        // Publication jointe (carte cliquable): réservée aux conversations de Livre,
         // et le post doit appartenir au Livre concerné.
         let validAttachedPostId: string | null = null;
         const rawAttached =
@@ -521,10 +521,10 @@ export function registerDMDirectRoutes(
           }
         }
 
-        // Transfert : l'auteur d'origine est re-dérivé depuis la base (anti-usurpation)
+        // Transfert: l'auteur d'origine est re-dérivé depuis la base (anti-usurpation)
         const forwardedFrom = await deriveForwardedFrom(sql, forwarded_from);
 
-        // Extraction des mentions : @tous (urgent, tout le groupe) + @username urgents
+        // Extraction des mentions: @tous (urgent, tout le groupe) + @username urgents
         const plain = stripHtmlTags(String(content));
         const mentionMatches = Array.from(
           new Set(plain.match(/@([a-zA-Z0-9_]{1,30})/g) || [])
@@ -566,7 +566,7 @@ export function registerDMDirectRoutes(
         const attachedPost = validAttachedPostId
           ? await fetchDMAttachedPost(sql, validAttachedPostId)
           : null;
-        // Notification : urgente pour @tous / @user, normale sinon (hors expéditeur)
+        // Notification: urgente pour @tous / @user, normale sinon (hors expéditeur)
         const senderInfo = await sql`
           SELECT u.username, p.display_name FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.id = ${userId} LIMIT 1
         `;
@@ -577,11 +577,11 @@ export function registerDMDirectRoutes(
             urgentUsernames.some((u: any) => Number(u.id) === mid);
           const notifType = mentioned ? "mention" : "dm";
           const notifMsg = isUrgentAll
-            ? "🚨 vous a mentionné (urgent @tous) dans le groupe"
+            ? " vous a mentionné (urgent @tous) dans le groupe"
             : mentioned
-              ? "🚨 vous a mentionné en urgence dans le groupe"
+              ? " vous a mentionné en urgence dans le groupe"
               : bookId
-                ? `a envoyé un message dans le Livre « ${convName} »`
+                ? `a envoyé un message dans le Livre « ${convName}»`
                 : "a envoyé un message dans le groupe";
           await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, message)
@@ -631,7 +631,7 @@ export function registerDMDirectRoutes(
         );
       }
 
-      // Envoi programmé : date future → status 'scheduled', pas de SSE immédiat
+      // Envoi programmé: date future → status 'scheduled', pas de SSE immédiat
       let scheduledAt: string | null = null;
       if (send_at) {
         const ts = Date.parse(String(send_at));
@@ -641,7 +641,7 @@ export function registerDMDirectRoutes(
         scheduledAt = new Date(ts).toISOString();
       }
 
-      // Blocage : impossible d'envoyer si l'un des deux a bloqué l'autre
+      // Blocage: impossible d'envoyer si l'un des deux a bloqué l'autre
       const blockCheck = await sql`
         SELECT 1 FROM blocked_users
         WHERE (user_id = ${userId} AND blocked_user_id = ${recId})
@@ -650,7 +650,7 @@ export function registerDMDirectRoutes(
       `;
       if (blockCheck.length > 0) {
         return c.json(
-          { error: "Impossible d'envoyer un message : utilisateur bloqué." },
+          { error: "Impossible d'envoyer un message: utilisateur bloqué." },
           403
         );
       }
@@ -735,7 +735,7 @@ export function registerDMDirectRoutes(
         RETURNING *
       `;
 
-      // Message programmé : réponse immédiate, pas de notification ni SSE
+      // Message programmé: réponse immédiate, pas de notification ni SSE
       if (scheduledAt) {
         return c.json({ message: msg[0], scheduled: true, success: true }, 201);
       }
@@ -747,7 +747,7 @@ export function registerDMDirectRoutes(
         `;
       } catch {}
 
-      // Temps réel : pousse le message au destinataire (flux SSE)
+      // Temps réel: pousse le message au destinataire (flux SSE)
       try {
         const senderInfo = await sql`
           SELECT u.username, p.display_name, p.avatar_url

@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — BOOKS PAGE (src/pages/BooksPage.tsx)
- * « Livres » : collections de Vibe préférées (max 5 possédés par compte),
+ * « Livres»: collections de Vibe préférées (max 5 possédés par compte),
  * COLLABORATIVES. Liste (possédés + rejoints), vue d'un Livre (Vibe partagées
  * + membres + attribution), création, édition, suppression (créateur),
  * jointure par lien/code, partage, sortie (membres).
@@ -27,7 +27,7 @@ function RenderBookIcon({ icon, className }: { icon?: string; className?: string
   return React.createElement(IconComponent, { className });
 }
 
-const isOwnerOf = (b?: VibeBook | null) => b?.is_owner !== false;
+const isOwnerOf = (b?: VibeBook | null) => b?.is_owner!== false;
 
 export const BooksPage: React.FC = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export const BooksPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Menu « Plus » (créer / rejoindre)
+  // Menu « Plus» (créer / rejoindre)
   const [menuOpen, setMenuOpen] = useState(false);
   const [joinSubmenuOpen, setJoinSubmenuOpen] = useState(false);
 
@@ -84,16 +84,16 @@ export const BooksPage: React.FC = () => {
       setError(null);
     }
     ApiService.getBooks()
-      .then((res) => {
+.then((res) => {
         const list = res.books || [];
         setBooks(list);
         setMaxBooks(res.maxBooks || 5);
-        setOwnedCount(res.ownedCount ?? list.filter((b) => b.is_owner !== false).length);
+        setOwnedCount(res.ownedCount?? list.filter((b) => b.is_owner!== false).length);
       })
-      .catch((err: any) => {
+.catch((err: any) => {
         if (!silent) setError(err?.message || 'Impossible de charger vos Livres.');
       })
-      .finally(() => {
+.finally(() => {
         if (!silent) setIsLoading(false);
       });
   }, []);
@@ -101,15 +101,15 @@ export const BooksPage: React.FC = () => {
   const fetchBookDetail = useCallback((silent = false) => {
     if (!bookId) return;
     ApiService.getBookPosts(bookId)
-      .then((res) => {
+.then((res) => {
         setBook(res.book || null);
         setPosts(res.posts || []);
         setMembers(res.members || []);
       })
-      .catch((err: any) => {
+.catch((err: any) => {
         if (!silent) setError(err?.message || 'Livre introuvable.');
       })
-      .finally(() => {
+.finally(() => {
         if (!silent) setIsLoadingPosts(false);
       });
   }, [bookId]);
@@ -124,7 +124,7 @@ export const BooksPage: React.FC = () => {
     fetchBookDetail();
   }, [bookId, fetchBookDetail]);
 
-  // Synchronisation collaborative : refresh silencieux 30 s + au retour de focus
+  // Synchronisation collaborative: refresh silencieux 30 s + au retour de focus
   useEffect(() => {
     const refresh = () => {
       if (document.hidden) return;
@@ -184,10 +184,10 @@ export const BooksPage: React.FC = () => {
     try {
       if (editingBook) {
         const res = await ApiService.updateBook(editingBook.id, { title: formTitle.trim(), icon: formIcon, is_public: formIsPublic });
-        setBooks((list) => list.map((b) => (b.id === editingBook.id ? { ...b, ...res.book } : b)));
-        setBook((b) => (b && b.id === editingBook.id ? { ...b, ...res.book } : b));
+        setBooks((list) => list.map((b) => (b.id === editingBook.id? {...b,...res.book }: b)));
+        setBook((b) => (b && b.id === editingBook.id? {...b,...res.book }: b));
         haptics.success();
-        NotificationService.showInAppToast('Livre modifié', `« ${res.book.title} » a été mis à jour.`, 'success');
+        NotificationService.showInAppToast('Livre modifié', `« ${res.book.title}» a été mis à jour.`, 'success');
       } else {
         const res = await ApiService.createBook(formTitle.trim(), formIcon, formIsPublic);
         setBooks((list) => [...list, res.book]);
@@ -195,7 +195,7 @@ export const BooksPage: React.FC = () => {
         haptics.success();
         NotificationService.showInAppToast(
           'Livre créé',
-          `« ${res.book.title} » est prêt. Partagez son code pour collaborer !`,
+          `« ${res.book.title}» est prêt. Partagez son code pour collaborer!`,
           'success'
         );
       }
@@ -212,7 +212,7 @@ export const BooksPage: React.FC = () => {
     if (isJoining) return;
     const code = extractBookCode(joinValue);
     if (!isValidBookCode(code)) {
-      setJoinError(joinMode === 'link' ? "Ce lien d'invitation est invalide." : "Ce code d'invitation est invalide.");
+      setJoinError(joinMode === 'link'? "Ce lien d'invitation est invalide.": "Ce code d'invitation est invalide.");
       return;
     }
     setIsJoining(true);
@@ -222,10 +222,10 @@ export const BooksPage: React.FC = () => {
       if (!res.book?.id) throw new Error('Réponse inattendue du serveur.');
       haptics.success();
       NotificationService.showInAppToast(
-        res.already_member ? 'Déjà membre' : 'Livre rejoint',
+        res.already_member? 'Déjà membre': 'Livre rejoint',
         res.already_member
-          ? `Vous êtes déjà membre du Livre « ${res.book.title} ».`
-          : `Bienvenue dans le Livre « ${res.book.title} » !`,
+? `Vous êtes déjà membre du Livre « ${res.book.title}».`
+: `Bienvenue dans le Livre « ${res.book.title}»!`,
         'success'
       );
       closeJoin();
@@ -241,7 +241,7 @@ export const BooksPage: React.FC = () => {
   const handleDeleteBook = async (b: VibeBook) => {
     haptics.warning();
     const ok = await confirm({
-      title: `Supprimer « ${b.title} » ?`,
+      title: `Supprimer « ${b.title}»?`,
       message: "Les Vibe enregistrées ne seront pas supprimées, mais les membres perdront l'accès.",
       confirmLabel: 'Supprimer',
       tone: 'danger',
@@ -249,11 +249,11 @@ export const BooksPage: React.FC = () => {
     if (!ok) return;
     try {
       await ApiService.deleteBook(b.id);
-      setBooks((list) => list.filter((x) => x.id !== b.id));
+      setBooks((list) => list.filter((x) => x.id!== b.id));
       setOwnedCount((n) => Math.max(0, n - 1));
       haptics.medium();
-      NotificationService.showInAppToast('Livre supprimé', `« ${b.title} » a été supprimé.`, 'info');
-      // Depuis la vue d'un Livre : retour à la liste (pas de page fantôme)
+      NotificationService.showInAppToast('Livre supprimé', `« ${b.title}» a été supprimé.`, 'info');
+      // Depuis la vue d'un Livre: retour à la liste (pas de page fantôme)
       if (bookId) navigate('/books');
     } catch (err: any) {
       haptics.error();
@@ -265,7 +265,7 @@ export const BooksPage: React.FC = () => {
     if (isLeaving) return;
     haptics.warning();
     const ok = await confirm({
-      title: `Quitter « ${b.title} » ?`,
+      title: `Quitter « ${b.title}»?`,
       message: "Vous n'aurez plus accès à son contenu.",
       confirmLabel: 'Quitter',
     });
@@ -274,9 +274,9 @@ export const BooksPage: React.FC = () => {
     try {
       await ApiService.leaveBook(b.id);
       haptics.medium();
-      NotificationService.showInAppToast('Livre quitté', `Vous avez quitté « ${b.title} ».`, 'info');
+      NotificationService.showInAppToast('Livre quitté', `Vous avez quitté « ${b.title}».`, 'info');
       if (fromDetail) navigate('/books');
-      else setBooks((list) => list.filter((x) => x.id !== b.id));
+      else setBooks((list) => list.filter((x) => x.id!== b.id));
     } catch (err: any) {
       haptics.error();
       NotificationService.showInAppToast('Erreur', err?.message || 'Impossible de quitter le Livre.', 'error');
@@ -288,7 +288,7 @@ export const BooksPage: React.FC = () => {
   const handleRegenerateCode = async () => {
     if (!book || isRegenerating) return;
     const ok = await confirm({
-      title: "Régénérer le code d'invitation ?",
+      title: "Régénérer le code d'invitation?",
       message: "L'ancien lien de partage ne fonctionnera plus.",
       confirmLabel: 'Régénérer',
       tone: 'danger',
@@ -297,7 +297,7 @@ export const BooksPage: React.FC = () => {
     setIsRegenerating(true);
     try {
       const res = await ApiService.regenerateBookCode(book.id);
-      setBook((b) => (b ? { ...b, join_code: res.join_code } : b));
+      setBook((b) => (b? {...b, join_code: res.join_code }: b));
       haptics.success();
       NotificationService.showInAppToast('Nouveau code', "Le code a été régénéré. L'ancien lien est désormais invalide.", 'success');
     } catch (err: any) {
@@ -309,14 +309,14 @@ export const BooksPage: React.FC = () => {
   };
 
   const handleRemoveFromBook = async (postId: string) => {
-    if (!bookId || !book) return;
+    if (!bookId ||!book) return;
     haptics.medium();
     // Optimiste
     const prev = posts;
-    setPosts((list) => list.filter((p) => p.id !== postId));
+    setPosts((list) => list.filter((p) => p.id!== postId));
     try {
       await ApiService.toggleBookItem(bookId, postId);
-      NotificationService.showInAppToast('Retiré', `Cette Vibe a été retirée du Livre « ${book.title} ».`, 'info');
+      NotificationService.showInAppToast('Retiré', `Cette Vibe a été retirée du Livre « ${book.title}».`, 'info');
     } catch {
       setPosts(prev);
       haptics.error();
@@ -333,28 +333,28 @@ export const BooksPage: React.FC = () => {
     }
   };
 
-  // ── Envoi par message : groupes du compte + recherche (debounce) ──
+  // ── Envoi par message: groupes du compte + recherche (debounce) ──
   useEffect(() => {
     if (!shareOpen) return;
     setShareTab('invite');
     setSendQuery('');
     setSendResults([]);
     ApiService.getConversations()
-      .then((res) => {
+.then((res) => {
         const groups = (res.conversations || [])
-          .filter((cv) => cv.is_group && !cv.is_book)
-          .map((cv) => ({
+.filter((cv) => cv.is_group &&!cv.is_book)
+.map((cv) => ({
             id: String(cv.partner_id),
             name: cv.partner_display_name || cv.partner_username || 'Groupe',
             avatar_url: cv.partner_avatar_url,
           }));
         setSendGroups(groups);
       })
-      .catch(() => {});
+.catch(() => {});
   }, [shareOpen]);
 
   useEffect(() => {
-    if (!shareOpen || shareTab !== 'send') return;
+    if (!shareOpen || shareTab!== 'send') return;
     if (sendDebounceRef.current) clearTimeout(sendDebounceRef.current);
     const q = sendQuery.trim();
     if (!q) {
@@ -363,8 +363,8 @@ export const BooksPage: React.FC = () => {
     }
     sendDebounceRef.current = setTimeout(() => {
       ApiService.searchUsers(q)
-        .then((res) => setSendResults((res.users || []).slice(0, 8)))
-        .catch(() => setSendResults([]));
+.then((res) => setSendResults((res.users || []).slice(0, 8)))
+.catch(() => setSendResults([]));
     }, 300);
     return () => {
       if (sendDebounceRef.current) clearTimeout(sendDebounceRef.current);
@@ -376,7 +376,7 @@ export const BooksPage: React.FC = () => {
     if (!bookId || pinningId) return;
     setPinningId(post.id);
     try {
-      await ApiService.pinBookPost(bookId, post.id, !post.is_pinned);
+      await ApiService.pinBookPost(bookId, post.id,!post.is_pinned);
       haptics.success();
       fetchBookDetail(true);
     } catch (err: any) {
@@ -391,15 +391,15 @@ export const BooksPage: React.FC = () => {
   const handleKickBookMember = async (member: VibeBookMember) => {
     if (!book) return;
     const ok = await confirm({
-      title: 'Exclure ce membre ?',
-      message: `@${member.username} n'aura plus accès au Livre « ${book.title} ».`,
+      title: 'Exclure ce membre?',
+      message: `@${member.username} n'aura plus accès au Livre « ${book.title}».`,
       confirmLabel: 'Exclure',
       tone: 'danger',
     });
     if (!ok) return;
     try {
       await ApiService.kickBookMember(book.id, member.user_id);
-      setMembers((list) => list.filter((m) => String(m.user_id) !== String(member.user_id)));
+      setMembers((list) => list.filter((m) => String(m.user_id)!== String(member.user_id)));
       haptics.success();
       NotificationService.showInAppToast('Membre exclu', `@${member.username} n'a plus accès au Livre.`, 'success');
     } catch (err: any) {
@@ -412,8 +412,8 @@ export const BooksPage: React.FC = () => {
   const handleTransferOwnership = async (member: VibeBookMember) => {
     if (!book) return;
     const ok = await confirm({
-      title: 'Transférer la propriété ?',
-      message: `@${member.username} deviendra créateur du Livre « ${book.title} » et vous deviendrez simple membre.`,
+      title: 'Transférer la propriété?',
+      message: `@${member.username} deviendra créateur du Livre « ${book.title}» et vous deviendrez simple membre.`,
       confirmLabel: 'Transférer',
       tone: 'danger',
     });
@@ -438,7 +438,7 @@ export const BooksPage: React.FC = () => {
       return;
     }
     setIsSendingBook(true);
-    const message = `📚 Livre « ${book.title} »\n${buildBookJoinLink(book.join_code)}`;
+    const message = ` Livre « ${book.title}»\n${buildBookJoinLink(book.join_code)}`;
     try {
       if (target.kind === 'group') {
         await ApiService.sendMessage(undefined as unknown as number, message, undefined, undefined, String(target.id));
@@ -458,12 +458,12 @@ export const BooksPage: React.FC = () => {
 
   // ─────────────── Vue d'un Livre ───────────────
   if (bookId) {
-    const shareLink = book?.join_code ? buildBookJoinLink(book.join_code) : '';
+    const shareLink = book?.join_code? buildBookJoinLink(book.join_code): '';
     const owner = isOwnerOf(book);
-    // Lecteur d'un Livre public (non-membre) : lecture seule (pas d'invitation, de sortie ni d'épinglage)
-    const memberOf = book ? book.is_member !== false : true;
+    // Lecteur d'un Livre public (non-membre): lecture seule (pas d'invitation, de sortie ni d'épinglage)
+    const memberOf = book? book.is_member!== false: true;
     const pinnedPosts = posts.filter((p) => Boolean(p.is_pinned));
-    const regularPosts = posts.filter((p) => !p.is_pinned);
+    const regularPosts = posts.filter((p) =>!p.is_pinned);
     const renderBookPostRow = (p: VibeBookPost) => (
       <div key={p.id}>
         <div className="flex items-center gap-1.5 px-4 pt-2.5 text-[10px] text-zinc-600">
@@ -486,16 +486,16 @@ export const BooksPage: React.FC = () => {
               <button
                 onClick={() => handleTogglePinBookPost(p)}
                 disabled={pinningId === p.id}
-                className={`p-1 rounded-full transition-colors ${p.is_pinned ? 'text-amber-400 hover:text-amber-300' : 'text-zinc-600 hover:text-white'}`}
-                title={p.is_pinned ? 'Désépingler' : 'Épingler en haut du Livre (max 3)'}
+                className={`p-1 rounded-full transition-colors ${p.is_pinned? 'text-amber-400 hover:text-amber-300': 'text-zinc-600 hover:text-white'}`}
+                title={p.is_pinned? 'Désépingler': 'Épingler en haut du Livre (max 3)'}
               >
-                {pinningId === p.id ? <Loader2 className="w-3 h-3 animate-spin" /> : p.is_pinned ? <PinOff className="w-3 h-3" /> : <Pin className="w-3 h-3" />}
+                {pinningId === p.id? <Loader2 className="w-3 h-3 animate-spin" />: p.is_pinned? <PinOff className="w-3 h-3" />: <Pin className="w-3 h-3" />}
               </button>
             )}
             <button
               onClick={() =>
                 copyText(
-                  htmlToPlainText(String(p.content || '')) + (p.added_by_username ? `\n— @${p.added_by_username}` : ''),
+                  htmlToPlainText(String(p.content || '')) + (p.added_by_username? `\n— @${p.added_by_username}`: ''),
                   'Texte de la Vibe'
                 )
               }
@@ -508,18 +508,18 @@ export const BooksPage: React.FC = () => {
         </div>
         <PostCard
           post={p}
-          onPostDeleted={(id) => setPosts((list) => list.filter((x) => String(x.id) !== String(id)))}
-          onRemoveFromBook={memberOf ? (id) => handleRemoveFromBook(id) : undefined}
+          onPostDeleted={(id) => setPosts((list) => list.filter((x) => String(x.id)!== String(id)))}
+          onRemoveFromBook={memberOf? (id) => handleRemoveFromBook(id): undefined}
         />
       </div>
     );
 
-    // Discussion du Livre : ouvre la conversation du Livre dans Messages
+    // Discussion du Livre: ouvre la conversation du Livre dans Messages
     // (créée automatiquement à la création/adhésion, mécanismes de groupe).
     const openBookDiscussion = async () => {
       let convId = book?.conversation_id || null;
       if (!convId && bookId) {
-        // Le champ peut manquer (page chargée avant la création) : nouvelle tentative
+        // Le champ peut manquer (page chargée avant la création): nouvelle tentative
         try {
           const res = await ApiService.getBookPosts(bookId);
           if (res.book) setBook(res.book);
@@ -550,13 +550,13 @@ export const BooksPage: React.FC = () => {
             <div className="min-w-0 flex-1">
               <h1 className="text-lg font-bold text-white truncate">{book?.title || 'Livre'}</h1>
               <p className="text-xs text-zinc-500">
-                {posts.length} Vibe enregistrée{posts.length > 1 ? 's' : ''}
-                {members.length > 0 && ` · ${members.length} membre${members.length > 1 ? 's' : ''}`}
-                {!owner && (book?.is_public && !memberOf ? ' · Livre public' : ' · Livre partagé')}
+                {posts.length} Vibe enregistrée{posts.length > 1? 's': ''}
+                {members.length > 0 && ` · ${members.length} membre${members.length > 1? 's': ''}`}
+                {!owner && (book?.is_public &&!memberOf? ' · Livre public': ' · Livre partagé')}
               </p>
             </div>
             <div className="flex items-center gap-1">
-              {book?.is_public && !memberOf && (
+              {book?.is_public &&!memberOf && (
                 <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide text-sky-300 bg-sky-500/10 border border-sky-500/30 mr-1">
                   Livre public
                 </span>
@@ -592,7 +592,7 @@ export const BooksPage: React.FC = () => {
                   <MessageSquare className="w-4 h-4" />
                 </button>
               )}
-              {owner ? (
+              {owner? (
                 <>
                   <button
                     onClick={() => book && openEdit(book)}
@@ -609,17 +609,17 @@ export const BooksPage: React.FC = () => {
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </>
-              ) : memberOf ? (
+              ): memberOf? (
                 <button
                   onClick={() => book && handleLeaveBook(book, true)}
                   disabled={isLeaving}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-zinc-800 text-[11px] text-zinc-400 hover:text-red-400 hover:border-red-900/60 transition-colors disabled:opacity-40"
                   title="Quitter le Livre"
                 >
-                  {isLeaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <LogOut className="w-3.5 h-3.5" />}
+                  {isLeaving? <Loader2 className="w-3.5 h-3.5 animate-spin" />: <LogOut className="w-3.5 h-3.5" />}
                   Quitter
                 </button>
-              ) : null}
+              ): null}
             </div>
           </div>
 
@@ -658,21 +658,21 @@ export const BooksPage: React.FC = () => {
           </div>
         )}
 
-        {isLoadingPosts ? (
+        {isLoadingPosts? (
           <div className="flex items-center justify-center py-20 text-zinc-500">
             <Loader2 className="w-6 h-6 animate-spin" />
           </div>
-        ) : posts.length === 0 ? (
+        ): posts.length === 0? (
           <div className="flex flex-col items-center justify-center py-24 px-6 text-center space-y-3">
             <span className="p-4 rounded-full bg-zinc-900 text-zinc-500">
               <BookHeart className="w-8 h-8" />
             </span>
             <p className="text-sm text-zinc-400">Ce Livre est vide pour l'instant.</p>
             <p className="text-xs text-zinc-600 max-w-xs">
-              Enregistrez vos Vibe préférées avec le bouton « Livre » sous une publication — chaque membre peut enrichir le Livre.
+              Enregistrez vos Vibe préférées avec le bouton « Livre» sous une publication — chaque membre peut enrichir le Livre.
             </p>
           </div>
-        ) : (
+        ): (
           <div className="divide-y divide-zinc-800">
             {pinnedPosts.length > 0 && (
               <div className="px-4 pt-3 pb-0.5 flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-amber-400 font-bold">
@@ -711,17 +711,17 @@ export const BooksPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Onglets : inviter (lien/code) / envoyer par message */}
+              {/* Onglets: inviter (lien/code) / envoyer par message */}
               <div className="flex items-center gap-1 p-1 rounded-2xl bg-zinc-900 border border-zinc-800">
                 <button
                   onClick={() => setShareTab('invite')}
-                  className={`flex-1 py-1.5 rounded-xl text-[11px] font-bold transition-colors ${shareTab === 'invite' ? 'bg-white text-black' : 'text-zinc-400 hover:text-white'}`}
+                  className={`flex-1 py-1.5 rounded-xl text-[11px] font-bold transition-colors ${shareTab === 'invite'? 'bg-white text-black': 'text-zinc-400 hover:text-white'}`}
                 >
                   Inviter
                 </button>
                 <button
                   onClick={() => setShareTab('send')}
-                  className={`flex-1 py-1.5 rounded-xl text-[11px] font-bold transition-colors ${shareTab === 'send' ? 'bg-white text-black' : 'text-zinc-400 hover:text-white'}`}
+                  className={`flex-1 py-1.5 rounded-xl text-[11px] font-bold transition-colors ${shareTab === 'send'? 'bg-white text-black': 'text-zinc-400 hover:text-white'}`}
                 >
                   Envoyer en message
                 </button>
@@ -803,13 +803,13 @@ export const BooksPage: React.FC = () => {
                       <span
                         className={`ml-auto shrink-0 text-[9px] font-bold px-2 py-0.5 rounded-full ${
                           m.role === 'owner'
-                            ? 'bg-amber-500/15 text-amber-400'
-                            : 'bg-zinc-800 text-zinc-400'
+? 'bg-amber-500/15 text-amber-400'
+: 'bg-zinc-800 text-zinc-400'
                         }`}
                       >
-                        {m.role === 'owner' ? 'Créateur' : 'Membre'}
+                        {m.role === 'owner'? 'Créateur': 'Membre'}
                       </span>
-                      {owner && m.role !== 'owner' && (
+                      {owner && m.role!== 'owner' && (
                         <span className="flex items-center gap-1.5 shrink-0">
                           <button
                             onClick={() => handleTransferOwnership(m)}
@@ -881,7 +881,7 @@ export const BooksPage: React.FC = () => {
                   disabled={isRegenerating}
                   className="w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-zinc-800 text-[11px] text-zinc-400 hover:text-white disabled:opacity-40"
                 >
-                  {isRegenerating ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+                  {isRegenerating? <Loader2 className="w-3.5 h-3.5 animate-spin" />: <RefreshCw className="w-3.5 h-3.5" />}
                   Régénérer le code (invalide l'ancien lien)
                 </button>
               )}
@@ -913,12 +913,12 @@ export const BooksPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Bouton Plus : créer ou rejoindre un Livre */}
+        {/* Bouton Plus: créer ou rejoindre un Livre */}
         <div className="relative">
           <button
             onClick={() => {
               haptics.light();
-              setMenuOpen((v) => !v);
+              setMenuOpen((v) =>!v);
               setJoinSubmenuOpen(false);
             }}
             style={{ backgroundColor: 'var(--vibe-accent, #ffffff)' }}
@@ -927,7 +927,7 @@ export const BooksPage: React.FC = () => {
           >
             <Plus className="w-3.5 h-3.5" />
             Livre
-            <ChevronDown className={`w-3 h-3 transition-transform ${menuOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-3 h-3 transition-transform ${menuOpen? 'rotate-180': ''}`} />
           </button>
 
           {menuOpen && (
@@ -938,7 +938,7 @@ export const BooksPage: React.FC = () => {
                   onClick={openCreate}
                   disabled={ownedCount >= maxBooks}
                   className="w-full flex items-start gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left hover:bg-zinc-900/60 dark:hover:bg-white/5 disabled:opacity-40"
-                  title={ownedCount >= maxBooks ? `Limite de ${maxBooks} Livres possédés atteinte` : 'Créer un Livre'}
+                  title={ownedCount >= maxBooks? `Limite de ${maxBooks} Livres possédés atteinte`: 'Créer un Livre'}
                 >
                   <span className="p-2 rounded-xl bg-zinc-900 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shrink-0">
                     <Plus className="w-4 h-4" />
@@ -947,8 +947,8 @@ export const BooksPage: React.FC = () => {
                     <span className="block font-semibold text-zinc-900 dark:text-white">Créer un livre</span>
                     <span className="block text-[10px] text-zinc-500">
                       {ownedCount >= maxBooks
-                        ? `Limite de ${maxBooks} Livres possédés atteinte`
-                        : 'Un nouveau Livre prêt à être partagé'}
+? `Limite de ${maxBooks} Livres possédés atteinte`
+: 'Un nouveau Livre prêt à être partagé'}
                     </span>
                   </span>
                 </button>
@@ -956,7 +956,7 @@ export const BooksPage: React.FC = () => {
                 <div className="border-t border-zinc-200 dark:border-zinc-800 my-1" />
 
                 <button
-                  onClick={() => setJoinSubmenuOpen((v) => !v)}
+                  onClick={() => setJoinSubmenuOpen((v) =>!v)}
                   className="w-full flex items-start gap-3 px-3 py-2.5 rounded-2xl text-xs transition-colors text-left hover:bg-zinc-900/60 dark:hover:bg-white/5"
                 >
                   <span className="p-2 rounded-xl bg-zinc-900 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shrink-0">
@@ -967,7 +967,7 @@ export const BooksPage: React.FC = () => {
                     <span className="block text-[10px] text-zinc-500">Avec un lien d'invitation ou un code</span>
                   </span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 mt-2 text-zinc-500 transition-transform ${joinSubmenuOpen ? 'rotate-180' : ''}`}
+                    className={`w-3.5 h-3.5 mt-2 text-zinc-500 transition-transform ${joinSubmenuOpen? 'rotate-180': ''}`}
                   />
                 </button>
 
@@ -1012,18 +1012,18 @@ export const BooksPage: React.FC = () => {
         </div>
       )}
 
-      {isLoading ? (
+      {isLoading? (
         <div className="flex items-center justify-center py-20 text-zinc-500">
           <Loader2 className="w-6 h-6 animate-spin" />
         </div>
-      ) : books.length === 0 ? (
+      ): books.length === 0? (
         <div className="flex flex-col items-center justify-center py-24 px-6 text-center space-y-3">
           <span className="p-4 rounded-full bg-zinc-900 text-zinc-500">
             <Sparkles className="w-8 h-8" />
           </span>
           <p className="text-sm text-zinc-400">Créez ou rejoignez votre premier Livre</p>
           <p className="text-xs text-zinc-600 max-w-xs">
-            Un Livre regroupe vos « Vibe préférées » : créez le vôtre, invitez des amis avec un lien, et enrichissez-le ensemble.
+            Un Livre regroupe vos « Vibe préférées»: créez le vôtre, invitez des amis avec un lien, et enrichissez-le ensemble.
           </p>
           <div className="flex items-center gap-2 mt-2">
             <button
@@ -1042,7 +1042,7 @@ export const BooksPage: React.FC = () => {
             </button>
           </div>
         </div>
-      ) : (
+      ): (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4">
           {books.map((b) => {
             const owner = isOwnerOf(b);
@@ -1070,7 +1070,7 @@ export const BooksPage: React.FC = () => {
                     )}
                   </div>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {owner ? (
+                    {owner? (
                       <>
                         <button
                           onClick={(e) => {
@@ -1093,7 +1093,7 @@ export const BooksPage: React.FC = () => {
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       </>
-                    ) : (
+                    ): (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -1109,8 +1109,8 @@ export const BooksPage: React.FC = () => {
                 </div>
                 <h3 className="mt-3 text-sm font-bold text-white truncate">{b.title}</h3>
                 <p className="text-xs text-zinc-500 mt-0.5">
-                  {b.items_count || 0} Vibe enregistrée{(b.items_count || 0) > 1 ? 's' : ''}
-                  {owner ? ' · votre Livre' : ' · rejoint'}
+                  {b.items_count || 0} Vibe enregistrée{(b.items_count || 0) > 1? 's': ''}
+                  {owner? ' · votre Livre': ' · rejoint'}
                 </p>
               </div>
             );
@@ -1129,7 +1129,7 @@ export const BooksPage: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">{editingBook ? 'Renommer le Livre' : 'Nouveau Livre'}</h3>
+              <h3 className="text-sm font-bold text-white">{editingBook? 'Renommer le Livre': 'Nouveau Livre'}</h3>
               <button onClick={() => setShowCreate(false)} className="text-zinc-500 hover:text-white" title="Fermer">
                 <X className="w-4 h-4" />
               </button>
@@ -1166,8 +1166,8 @@ export const BooksPage: React.FC = () => {
                     title={opt.name}
                     className={`p-1.5 rounded-lg flex items-center justify-center transition-colors ${
                       formIcon === opt.name
-                        ? 'bg-sky-500/20 text-sky-300 border border-sky-500/50'
-                        : 'text-zinc-400 hover:text-white hover:bg-zinc-800 border border-transparent'
+? 'bg-sky-500/20 text-sky-300 border border-sky-500/50'
+: 'text-zinc-400 hover:text-white hover:bg-zinc-800 border border-transparent'
                     }`}
                   >
                     <opt.Component className="w-4 h-4" />
@@ -1196,8 +1196,8 @@ export const BooksPage: React.FC = () => {
                 style={{ backgroundColor: 'var(--vibe-accent, #ffffff)' }}
                 className="flex-1 py-2.5 rounded-xl bg-white text-black text-xs font-bold disabled:opacity-40 flex items-center justify-center gap-2"
               >
-                {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
-                {editingBook ? 'Enregistrer' : 'Créer le Livre'}
+                {isSaving? <Loader2 className="w-4 h-4 animate-spin" />: <Check className="w-4 h-4" />}
+                {editingBook? 'Enregistrer': 'Créer le Livre'}
               </button>
               <button
                 onClick={() => setShowCreate(false)}
@@ -1222,8 +1222,8 @@ export const BooksPage: React.FC = () => {
           >
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                {joinMode === 'link' ? <Link2 className="w-4 h-4" /> : <KeyRound className="w-4 h-4" />}
-                {joinMode === 'link' ? 'Rejoindre par lien' : 'Rejoindre par code'}
+                {joinMode === 'link'? <Link2 className="w-4 h-4" />: <KeyRound className="w-4 h-4" />}
+                {joinMode === 'link'? 'Rejoindre par lien': 'Rejoindre par code'}
               </h3>
               <button onClick={closeJoin} className="text-zinc-500 hover:text-white" title="Fermer">
                 <X className="w-4 h-4" />
@@ -1231,8 +1231,8 @@ export const BooksPage: React.FC = () => {
             </div>
             <p className="text-[11px] text-zinc-500">
               {joinMode === 'link'
-                ? "Collez le lien d'invitation reçu (ex. https://…/books/join/AB3DEFG7)."
-                : "Saisissez le code d'invitation à 8 caractères (sans I, L, O, 0 ni 1)."}
+? "Collez le lien d'invitation reçu (ex. https://…/books/join/AB3DEFG7)."
+: "Saisissez le code d'invitation à 8 caractères (sans I, L, O, 0 ni 1)."}
             </p>
             {joinError && (
               <div className="flex items-center gap-2 text-xs text-red-400 bg-red-950/30 border border-red-900/50 rounded-xl px-3 py-2">
@@ -1244,16 +1244,16 @@ export const BooksPage: React.FC = () => {
               type="text"
               value={joinValue}
               onChange={(e) =>
-                setJoinValue(joinMode === 'code' ? e.target.value.toUpperCase() : e.target.value)
+                setJoinValue(joinMode === 'code'? e.target.value.toUpperCase(): e.target.value)
               }
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleJoinSubmit();
               }}
               autoFocus
-              maxLength={joinMode === 'code' ? 12 : 300}
-              placeholder={joinMode === 'code' ? 'AB3DEFG7' : 'https://…/books/join/AB3DEFG7'}
+              maxLength={joinMode === 'code'? 12: 300}
+              placeholder={joinMode === 'code'? 'AB3DEFG7': 'https://…/books/join/AB3DEFG7'}
               className={`w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2.5 text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-500 ${
-                joinMode === 'code' ? 'font-mono tracking-[0.25em] text-center uppercase' : ''
+                joinMode === 'code'? 'font-mono tracking-[0.25em] text-center uppercase': ''
               }`}
             />
             <div className="flex items-center gap-2 pt-1">
@@ -1263,7 +1263,7 @@ export const BooksPage: React.FC = () => {
                 style={{ backgroundColor: 'var(--vibe-accent, #ffffff)' }}
                 className="flex-1 py-2.5 rounded-xl bg-white text-black text-xs font-bold disabled:opacity-40 flex items-center justify-center gap-2"
               >
-                {isJoining ? <Loader2 className="w-4 h-4 animate-spin" /> : <Users className="w-4 h-4" />}
+                {isJoining? <Loader2 className="w-4 h-4 animate-spin" />: <Users className="w-4 h-4" />}
                 Rejoindre le Livre
               </button>
               <button

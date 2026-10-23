@@ -1,8 +1,18 @@
 import { tool } from "ai";
 import { z } from "zod";
 import { MAI_API_URL } from "@/lib/constants";
+import { normalizeMaiSearchLanguage } from "@/lib/search/sources";
+import { searchWikipediaWithSummaries } from "@/lib/search/wikipedia";
 
 type SearchResult = {
+  /**
+   * Origine de la source.
+   *
+   * `wikipedia` distingue l'article d'encyclopédie d'une page web
+   * ordinaire : l'agent cite la source correcte, et l'interface sait
+   * qu'il a lu une encyclopédie.
+   */
+  origin?: "wikipedia" | "web";
   snippet: string;
   source: string;
   title: string;
@@ -187,6 +197,37 @@ export const webSearch = tool({
       }
     };
 
+    /**
+     * Wikipédia, en dernier recours.
+     *
+     * L'encyclopédie n'est pas un moteur de recherche : elle ne trouve que
+     * des articles. Mais c'est une source FIABLE, là où DDG et les
+     * instances Searx sont des miroirs qui se dégradent. Elle vient donc
+     * après eux, et son contenu est annoncé comme tel — un agent ne doit
+     * pas présenter un article d'encyclopédie comme une actualité.
+     *
+     * Les pages de DÉSAMBIGUÏSATION sont écartées : ce sont des index
+     * d'homonymes, pas des articles. Les renvoyer à l'agent le ferait
+     * répondre « Ada Lovelace peut désigner… » à la place de répondre sur
+     * Ada Lovelace.
+     */
+    const tryWikipedia = async (): Promise<SearchResult[]> => {
+      const articles = await searchWikipediaWithSummaries(query, {
+        lang: normalizeMaiSearchLanguage(language),
+        limit: count,
+        withSummaries: Math.min(3, count),
+      });
+      return articles
+        .filter((article) => !article.isDisambiguation)
+        .map((article) => ({
+          origin: "wikipedia" as const,
+          snippet: article.summary || article.extract,
+          source: "wikipedia.org",
+          title: article.title,
+          url: article.url,
+        }));
+    };
+
     const primary = await tryPrimary();
     if (primary) {
       return {
@@ -213,6 +254,11 @@ export const webSearch = tool({
           source: instance,
         };
       }
+    }
+
+    const wiki = await tryWikipedia();
+    if (wiki.length > 0) {
+      return { count: wiki.length, query, results: wiki, source: "wikipedia" };
     }
 
     return {

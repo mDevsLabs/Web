@@ -1,7 +1,12 @@
 /**
- * Liste statique de repli des outils mAI, régénérée depuis lib/tools/index.json
- * (23 outils). Source de vérité = GET /v1/mai/tools via useAvailableMAITools ;
- * cette liste sert d'offline/fallback et de référence typée.
+ * Liste statique de repli des outils mAI, miroir de `vibe-tools.ts`
+ * (catalogue v1.2.0). Source de vérité = GET /v1/mai/tools via
+ * useAvailableMAITools ; cette liste sert d'offline/fallback et de référence
+ * typée.
+ *
+ * Elle fait aussi office de table des libellés : `MaiToolChips` y lit le nom
+ * d'un outil à partir de son id — sans cette table, l'interface afficherait
+ * l'id brut.
  */
 export interface MAITool {
   category: "creation" | "search" | "analysis" | "account";
@@ -11,6 +16,8 @@ export interface MAITool {
   mentionTag: string;
   name: string;
   samplePrompt: string;
+  /** L'outil agit sur le compte ou le contenu public : approbation requise. */
+  sensitive?: boolean;
   slashCommand: string;
 }
 
@@ -354,6 +361,74 @@ export const FALLBACK_MAI_TOOLS: MAITool[] = [
     name: "Analyse des Hashtags",
     samplePrompt: "/hashtags 30d",
     slashCommand: "/hashtags",
+  },
+  {
+    category: "analysis",
+    description:
+      "Analyse la polarité et les termes clés des commentaires d'une publication.",
+    iconName: "Activity",
+    id: "analyze_sentiment",
+    mentionTag: "@sentiment",
+    name: "Analyse de Sentiment",
+    samplePrompt: "/sentiment <uuid-du-post>",
+    slashCommand: "/sentiment",
+  },
+  {
+    category: "analysis",
+    description:
+      "Synthétise les commentaires d'une publication : points clés, désaccords, ton général.",
+    iconName: "MessagesSquare",
+    id: "summarize_thread",
+    mentionTag: "@resume",
+    name: "Résumé du Fil",
+    samplePrompt: "/resume <uuid-du-post>",
+    slashCommand: "/resume",
+  },
+  {
+    category: "creation",
+    description:
+      "Réécrit un post pour X, Instagram ou LinkedIn, avec les contraintes de chaque réseau.",
+    iconName: "Repeat2",
+    id: "adapt_post",
+    mentionTag: "@adapter",
+    name: "Adapter par Réseau",
+    samplePrompt:
+      "/adapter instagram Nous venons de lancer la nouvelle version !",
+    slashCommand: "/adapter",
+  },
+  {
+    category: "creation",
+    description:
+      "Propose 3 accroches alternatives pour un même contenu, par des angles différents.",
+    iconName: "Sparkles",
+    id: "generate_variants",
+    mentionTag: "@variantes",
+    name: "Variantes de Post",
+    samplePrompt: "/variantes viral Le voyage commence aujourd'hui",
+    slashCommand: "/variantes",
+  },
+  {
+    category: "creation",
+    description:
+      "Rédige une légende prête à publier et son jeu de hashtags à partir d'un visuel.",
+    iconName: "Target",
+    id: "generate_caption",
+    mentionTag: "@legende",
+    name: "Légende & Hashtags",
+    samplePrompt: "/legende Un coucher de soleil sur les toits de Paris",
+    slashCommand: "/legende",
+  },
+  {
+    category: "analysis",
+    description:
+      "Exécute le même prompt sur deux modèles et compare réponses, latences et longueurs.",
+    iconName: "LayoutGrid",
+    id: "compare_models",
+    mentionTag: "@comparer",
+    name: "Comparer Deux Modèles",
+    samplePrompt:
+      "/comparer mai-2-mini | poolside/laguna-xs-2.1:free | Explique-moi le WebAssembly",
+    slashCommand: "/comparer",
   },
 ];
 

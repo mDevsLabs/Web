@@ -5,6 +5,7 @@ Revue locale du 11 octobre 2026. Les changements préexistants et ceux d’autre
 ## Contrôles de conservation
 
 - `node scripts/check-cleanup.mjs` : **141 retraits confirmés**, **2 859 images initiales intactes**, comparaison de chaque SHA-256 avec [CLEANUP_IMAGES.json](../CLEANUP_IMAGES.json).
+  - *Chantier suivant (20 octobre 2026)* : l’inventaire est passé à **182 retraits** et le registre des images à **2 856 entrées** — trois désignations provisoires pointant vers des artefacts de build ignorés par Git ont été remplacées par leurs sources suivies, d’empreintes identiques. Voir [CLEANUP.md](../CLEANUP.md).
 - `node scripts/check-wakies-source.mjs` : **91 sources conservées vérifiées**, **135 sources autonomes retirées**. Les deux adaptations mobiles locales sont contrôlées avec leurs empreintes propres.
 - Les migrations 0049 et 0050 disposent de leur SQL, de leurs entrées de journal et de leurs colonnes dans le contrôle du schéma. Elles n’ont pas été exécutées contre une base de production.
 

@@ -1,4 +1,4 @@
-// Rendus de régression : un tour terminé sans texte doit le dire, et une
+// Rendus de régression: un tour terminé sans texte doit le dire, et une
 // réaction posée par un Wakie sur un message de l'utilisateur doit être VISIBLE.
 
 import type { UIMessage } from "ai";
@@ -28,7 +28,7 @@ function rendu(
 }
 
 describe("transcript Wakies", () => {
-  it("ne prétend plus « Réflexion en cours… » une fois la part close", () => {
+  it("ne prétend plus « Réflexion en cours…» une fois la part close", () => {
     const html = rendu([
       {
         id: "a1",
@@ -81,11 +81,11 @@ describe("transcript Wakies", () => {
           role: "user",
         },
       ],
-      new Map([["u1", [reaction("👍", "u1")]]])
+      new Map([["u1", [reaction("", "u1")]]])
     );
-    expect(html).toContain("👍");
-    // Aucun sélecteur sur une bulle du compte : le serveur refuse de réagir à
+    expect(html).toContain("");
+    // Aucun sélecteur sur une bulle du compte: le serveur refuse de réagir à
     // son propre message.
-    expect(html).not.toContain("Réagir 👍");
+    expect(html).not.toContain("Réagir ");
   });
 });

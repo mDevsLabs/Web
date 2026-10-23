@@ -202,7 +202,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
             </h3>
             <span className="text-[11px] text-zinc-500 font-mono">
               {isBookConv
-                ? "Conversation du Livre · « / » pour joindre une publication"
+                ? "Conversation du Livre · « /» pour joindre une publication"
                 : isGroupConv
                   ? `${((activeConv?.members || []) as any[])
                       .map((mm: any) => `@${mm.username}`)
@@ -472,7 +472,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
             type="button"
           >
             <Pin className="w-3.5 h-3.5" />
-            <span>📌 Messages épinglés ({pinnedMessages.length})</span>
+            <span> Messages épinglés ({pinnedMessages.length})</span>
             <span className="ml-auto text-zinc-400">
               {pinsCollapsed ? "▸" : "▾"}
             </span>

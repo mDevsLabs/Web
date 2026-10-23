@@ -76,7 +76,7 @@ function buildTeamSettings(
       maxParallelExperts: 1,
       requirePlanApproval: false,
       useDefaults: false,
-      ...(overrides ?? {}),
+...(overrides?? {}),
     },
   };
 }
@@ -119,9 +119,9 @@ async function runSession(params: {
     resolvedModel: makeResolvedModel(),
     settings: buildTeamSettings(params.experts, params.teamOverrides) as never,
     threadId: "thread-test",
-    ...(params.agentSystemAppend
-      ? { agentSystemAppend: params.agentSystemAppend }
-      : {}),
+...(params.agentSystemAppend
+? { agentSystemAppend: params.agentSystemAppend }
+: {}),
     emit: (evt) => events.push(evt as never),
     onDone: (text, _usage, snapshot) => doneCalls.push({ snapshot, text }),
     onError: (message) => errorCalls.push(message),
@@ -154,11 +154,11 @@ async function submitTeamPlanDecision(
   );
   handlers.onToolResult(
     "team_plan_decide",
-    String(result.content ?? ""),
-    !result.isError,
+    String(result.content?? ""),
+!result.isError,
     toolCallId
   );
-  handlers.onDone(narrative ?? decision.replyToUser ?? "");
+  handlers.onDone(narrative?? decision.replyToUser?? "");
 }
 
 async function submitTeamEscalation(
@@ -188,8 +188,8 @@ async function submitTeamEscalation(
   );
   handlers.onToolResult(
     "team_escalate_to_lead",
-    String(result.content ?? ""),
-    !result.isError,
+    String(result.content?? ""),
+!result.isError,
     toolCallId
   );
 }
@@ -342,7 +342,7 @@ describe("runTeamSession discuss-kind plans", () => {
     ]);
 
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -361,7 +361,7 @@ describe("runTeamSession discuss-kind plans", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("方向 A / 方向 B / 方向 C …（纯文字）");
         }
@@ -384,7 +384,7 @@ describe("runTeamSession discuss-kind plans", () => {
       | { toolPoolOverride?: Array<{ name: string }> }
       | undefined;
     const toolNames =
-      specialistOptions?.toolPoolOverride?.map((tool) => tool.name) ?? [];
+      specialistOptions?.toolPoolOverride?.map((tool) => tool.name)?? [];
     expect(toolNames).toEqual(expect.arrayContaining(["Read", "Glob", "Grep"]));
     expect(toolNames).not.toContain("Write");
     expect(toolNames).not.toContain("Edit");
@@ -434,7 +434,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("auto-falls back to discuss planning for obvious brainstorming requests instead of blocking on clarification", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(handlers, {
             mode: "CLARIFY",
@@ -443,13 +443,13 @@ describe("runTeamSession clarification gates", () => {
           });
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, optionsArg, handlers) => {
           const specialistOptions = optionsArg as
             | { toolPoolOverride?: Array<{ name: string }> }
             | undefined;
           const toolNames =
-            specialistOptions?.toolPoolOverride?.map((tool) => tool.name) ?? [];
+            specialistOptions?.toolPoolOverride?.map((tool) => tool.name)?? [];
           expect(toolNames).toEqual(
             expect.arrayContaining(["Read", "Glob", "Grep"])
           );
@@ -522,7 +522,7 @@ describe("runTeamSession clarification gates", () => {
 
     let specialistPacketText = "";
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           const answer = await executeAskPlanQuestionTool({
             arguments: {
@@ -550,7 +550,7 @@ describe("runTeamSession clarification gates", () => {
           expect(answer.isError).toBe(false);
           handlers.onToolResult(
             "ask_plan_question",
-            String(answer.content ?? ""),
+            String(answer.content?? ""),
             true,
             "lead-q1"
           );
@@ -570,11 +570,11 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, messagesArg, _options, handlers) => {
           specialistPacketText = (messagesArg as Array<{ content?: unknown }>)
-            .map((message) => String(message.content ?? ""))
-            .join("\n");
+.map((message) => String(message.content?? ""))
+.join("\n");
           handlers.onDone("已完成前端质量审查。");
         }
       );
@@ -622,18 +622,18 @@ describe("runTeamSession clarification gates", () => {
 
     let secondTurnMessages = "";
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "请先明确你要优化的是哪个模块，以及你希望达成的结果。"
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, messagesArg, _options, handlers) => {
           secondTurnMessages = (messagesArg as Array<{ content?: unknown }>)
-            .map((message) => String(message.content ?? ""))
-            .join("\n");
+.map((message) => String(message.content?? ""))
+.join("\n");
           await submitTeamPlanDecision(
             handlers,
             {
@@ -652,7 +652,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("已完成聊天区 team 时间线审查。");
         }
@@ -700,7 +700,7 @@ describe("runTeamSession clarification gates", () => {
     });
 
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             JSON.stringify({
@@ -716,7 +716,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -736,7 +736,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("已完成 team 模式澄清链路审查。");
         }
@@ -764,7 +764,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("hard-stops when preflight review needs clarification even without plan approval", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -782,7 +782,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(`### Verdict: NEEDS_CLARIFICATION
 ### Concerns
@@ -844,7 +844,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("replans remaining work after a specialist escalates to the planner", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -862,13 +862,13 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, optionsArg, handlers) => {
           const specialistOptions = optionsArg as {
             teamToolRoleScope?: { teamTaskId: string };
           };
           await submitTeamEscalation(
-            specialistOptions.teamToolRoleScope?.teamTaskId ?? "",
+            specialistOptions.teamToolRoleScope?.teamTaskId?? "",
             handlers,
             {
               blockingEvidence: ["No symbol named foo service was found."],
@@ -880,7 +880,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -898,7 +898,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("已完成修订后的前端链路审查。");
         }
@@ -939,7 +939,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("unwraps structured specialist output before storing task results and delivery text", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -957,7 +957,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             JSON.stringify({
@@ -1010,7 +1010,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("does not leak imported project rules from agentSystemAppend into team delivery", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -1028,7 +1028,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "已经确认：泄漏内容来自系统提示拼接，而不是模型主动复读。"
@@ -1075,7 +1075,7 @@ describe("runTeamSession clarification gates", () => {
 
   it("omits the detailed review section when the team lead already produced a final synthesis", async () => {
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -1093,14 +1093,14 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "问题定位完成：主消息里把 review 和 lead 总结都展开了。"
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(`### Verdict: APPROVED
 ### Critical Issues
@@ -1111,7 +1111,7 @@ describe("runTeamSession clarification gates", () => {
 评审确认结果可交付，但 review 内容已经被 lead 总结吸收。`);
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "最终建议已经整理好了，重点结论和下一步都在这里，评审也确认可以交付。"
@@ -1131,7 +1131,7 @@ describe("runTeamSession clarification gates", () => {
 
     expect(errorCalls).toEqual([]);
     expect(doneCalls).toHaveLength(1);
-    expect(doneCalls[0]?.text).toContain("**Review:** ✅ Approved");
+    expect(doneCalls[0]?.text).toContain("**Review:** Approved");
     expect(doneCalls[0]?.text).not.toContain("## Review");
     expect(doneCalls[0]?.text).toContain("最终建议已经整理好了");
   });
@@ -1139,7 +1139,7 @@ describe("runTeamSession clarification gates", () => {
   it("continues with a lead replan after reviewer requests revision and keeps raw role output out of the main chat", async () => {
     let reviewReplanPrompt = "";
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -1157,14 +1157,14 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "第一轮前端原始输出：这里是一大段不该直接出现在主聊天区里的返工前结果。"
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(`### Verdict: NEEDS_REVISION
 ### Critical Issues
@@ -1175,11 +1175,11 @@ describe("runTeamSession clarification gates", () => {
 需要继续返工，补上 review 后自动重分派的链路。`);
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, messagesArg, _options, handlers) => {
           reviewReplanPrompt = (messagesArg as Array<{ content?: unknown }>)
-            .map((message) => String(message.content ?? ""))
-            .join("\n");
+.map((message) => String(message.content?? ""))
+.join("\n");
           await submitTeamPlanDecision(
             handlers,
             {
@@ -1199,14 +1199,14 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(
             "返工后的前端原始输出：修好了 reviewer 要求返工后流程停住的问题，也避免把角色完整结果透传到主聊天区。"
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone(`### Verdict: APPROVED
 ### Critical Issues
@@ -1252,7 +1252,7 @@ describe("runTeamSession clarification gates", () => {
     expect(doneCalls[0]?.text).not.toContain("返工后的前端原始输出");
     expect(
       (doneCalls[0]?.snapshot as { reviewVerdict?: string } | undefined)
-        ?.reviewVerdict
+?.reviewVerdict
     ).toBe("approved");
   });
 
@@ -1264,7 +1264,7 @@ describe("runTeamSession clarification gates", () => {
     let backendResultText = "";
 
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -1291,7 +1291,7 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, optionsArg, handlers) => {
           const specialistOptions = optionsArg as {
             teamToolRoleScope?: { teamTaskId: string };
@@ -1301,7 +1301,7 @@ describe("runTeamSession clarification gates", () => {
           };
           await frontendReady;
           const injected = await specialistOptions.beforeRoundMessages?.();
-          const peerMessage = injected?.[0]?.content ?? "";
+          const peerMessage = injected?.[0]?.content?? "";
           const requestIdMatch = /### Request ([^\n]+)/.exec(peerMessage);
           expect(peerMessage).toContain(
             "Question: Which renderer state owns this workflow?"
@@ -1322,14 +1322,14 @@ describe("runTeamSession clarification gates", () => {
           );
           handlers.onToolResult(
             "team_reply_to_peer",
-            String(reply.content ?? ""),
-            !reply.isError,
+            String(reply.content?? ""),
+!reply.isError,
             "peer-reply"
           );
           handlers.onDone("前端已响应 peer，并完成当前调研。");
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, optionsArg, handlers) => {
           const specialistOptions = optionsArg as {
             teamToolRoleScope?: { teamTaskId: string };
@@ -1347,11 +1347,11 @@ describe("runTeamSession clarification gates", () => {
           );
           releaseFrontendRound?.();
           const answer = await answerPromise;
-          backendResultText = String(answer.content ?? "");
+          backendResultText = String(answer.content?? "");
           handlers.onToolResult(
             "team_request_from_peer",
             backendResultText,
-            !answer.isError,
+!answer.isError,
             "peer-request"
           );
           handlers.onDone(`后端拿到 peer 回复：${backendResultText}`);
@@ -1396,7 +1396,7 @@ describe("runTeamSession clarification gates", () => {
     const errorCalls: string[] = [];
 
     runAgentLoopMock
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await submitTeamPlanDecision(
             handlers,
@@ -1419,18 +1419,18 @@ describe("runTeamSession clarification gates", () => {
           );
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("前端已先完成。");
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           await backendGate;
           handlers.onDone("后端稍后完成。");
         }
       )
-      .mockImplementationOnce(
+.mockImplementationOnce(
         async (_settings, _messages, _options, handlers) => {
           handlers.onDone("");
         }

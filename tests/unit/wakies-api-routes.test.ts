@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   actionTask: vi.fn(),
   chercherDansWakies: vi.fn(),
+  chercherDansWakiesMessages: vi.fn(),
   createConversation: vi.fn(),
   createPage: vi.fn(),
   definirEpingle: vi.fn(),
@@ -14,6 +15,9 @@ const mocks = vi.hoisted(() => ({
   messageDuCompte: vi.fn(),
   profilVibe: vi.fn(),
   scheduleTask: vi.fn(),
+  searchWakiesMemories: vi.fn(),
+  searchWakiesTasks: vi.fn(),
+  searchWakiesWorkspace: vi.fn(),
   spaceExists: vi.fn(),
   transfererMessage: vi.fn(),
   updateConversation: vi.fn(),
@@ -37,6 +41,7 @@ vi.mock("@/lib/vibe/server/profil", () => ({
 vi.mock("@/lib/wakies/queries", () => ({
   actionTask: mocks.actionTask,
   chercherDansWakies: mocks.chercherDansWakies,
+  chercherDansWakiesMessages: mocks.chercherDansWakiesMessages,
   createConversation: mocks.createConversation,
   createPage: mocks.createPage,
   definirEpingle: mocks.definirEpingle,
@@ -47,6 +52,9 @@ vi.mock("@/lib/wakies/queries", () => ({
   marquerConversationLue: mocks.marquerConversationLue,
   messageDuCompte: mocks.messageDuCompte,
   scheduleTask: mocks.scheduleTask,
+  searchWakiesMemories: mocks.searchWakiesMemories,
+  searchWakiesTasks: mocks.searchWakiesTasks,
+  searchWakiesWorkspace: mocks.searchWakiesWorkspace,
   spaceExists: mocks.spaceExists,
   transfererMessage: mocks.transfererMessage,
   updateConversation: mocks.updateConversation,
@@ -69,6 +77,19 @@ describe("routes d'API Wakies", { timeout: 30_000 }, () => {
       paused: false,
       researchAllowed: true,
       userId: "alice",
+    });
+    // La recherche unifiée est la surface par défaut de la route
+    // `/search` : sans valeur par défaut, la route rendrait des résultats
+    // indéfinis.
+    mocks.searchWakiesWorkspace.mockResolvedValue({
+      counts: { conversation: 0, message: 0, page: 0, space: 0, wakie: 0 },
+      hits: [],
+    });
+    mocks.searchWakiesMemories.mockResolvedValue([]);
+    mocks.searchWakiesTasks.mockResolvedValue([]);
+    mocks.chercherDansWakiesMessages.mockResolvedValue({
+      conversations: [],
+      messages: [],
     });
   });
 
@@ -415,19 +436,51 @@ describe("routes d'API Wakies", { timeout: 30_000 }, () => {
       const data = await res.json();
       expect(data.messages).toEqual([]);
       expect(mocks.chercherDansWakies).not.toHaveBeenCalled();
+      expect(mocks.searchWakiesWorkspace).not.toHaveBeenCalled();
     });
 
     it("cherche titres et messages au-delà du seuil", async () => {
       const { GET } = await import("@/app/(chat)/api/wakies/search/route");
-      mocks.chercherDansWakies.mockResolvedValue({
+      mocks.chercherDansWakiesMessages.mockResolvedValue({
         conversations: [],
         messages: [{ conversationId: "conv-1", extrait: "projet", id: "m1" }],
+      });
+      const res = await GET(
+        new Request("http://localhost/api/wakies/search?q=projet&messages=1")
+      );
+      expect(res.status).toBe(200);
+      expect(mocks.chercherDansWakiesMessages).toHaveBeenCalledWith(
+        "alice",
+        "projet"
+      );
+    });
+
+    it("sert la recherche unifiée de l'espace de travail", async () => {
+      const { GET } = await import("@/app/(chat)/api/wakies/search/route");
+      mocks.searchWakiesWorkspace.mockResolvedValue({
+        counts: { conversation: 1, message: 0, page: 0, space: 0, wakie: 0 },
+        hits: [
+          {
+            conversationId: "conv-1",
+            href: "/wakies/c/conv-1",
+            id: "conversation-conv-1",
+            kind: "conversation",
+            title: "Projet Ada",
+          },
+        ],
       });
       const res = await GET(
         new Request("http://localhost/api/wakies/search?q=projet")
       );
       expect(res.status).toBe(200);
-      expect(mocks.chercherDansWakies).toHaveBeenCalledWith("alice", "projet");
+      const data = await res.json();
+      expect(mocks.searchWakiesWorkspace).toHaveBeenCalledWith(
+        "alice",
+        "projet"
+      );
+      expect(data.hits).toHaveLength(1);
+      expect(data.hits[0].title).toBe("Projet Ada");
+      expect(data.counts.conversation).toBe(1);
     });
   });
 

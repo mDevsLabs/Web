@@ -35,7 +35,6 @@ import { WorkspaceTopbar } from "@/components/wakies/WorkspaceTopbar";
 import { APP_PRICING_URL } from "@/lib/constants";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { memoriserNavReduite } from "@/lib/wakies/client/nav-collapsed";
-import type { Page } from "@/lib/wakies/pages";
 import type { CapacitesPieces } from "@/lib/wakies/shared/model-attachments";
 import type {
   Conversation,
@@ -116,78 +115,95 @@ function WakiesWorkspaceContent({
   const [spaceId, setSpaceId] = useState("");
   const [pageId, setPageId] = useState<string>();
   const [sidebarSearch, setSidebarSearch] = useState("");
-  const [searchPages, setSearchPages] = useState<
-    { page: Page; space: WorkspaceState["spaces"][number] }[]
-  >([]);
+  /**
+   * Le message visé par la recherche : le fil s'ouvre dessus, et il est
+   * mis en évidence.
+   */
   const [cibleMessageId, setCibleMessageId] = useState<string | null>(null);
-  const [searchMessages, setSearchMessages] = useState<
+  /**
+   * Les résultats de la recherche du rail.
+   *
+   * Une seule liste, alimentée par le serveur : les surfaces ne sont plus
+   * reconstruites côté navigateur, donc elles ne peuvent plus diverger de ce
+   * que la base contient.
+   */
+  const [searchResults, setSearchResults] = useState<
     Array<{
-      conversationId: string;
-      extrait: string;
+      conversationId?: string;
+      href: string;
       id: string;
-      role: string;
+      kind:
+        | "conversation"
+        | "memory"
+        | "message"
+        | "page"
+        | "space"
+        | "task"
+        | "wakie";
+      messageId?: string;
+      pageId?: string;
+      spaceId?: string;
+      subtitle?: string;
+      title: string;
+      wakieId?: string;
     }>
   >([]);
-  const spaceKey = workspace?.spaces.map((space) => space.id).join(",") ?? "";
 
-  useEffect(() => {
-    const query = sidebarSearch.trim().toLocaleLowerCase("fr");
-    if (!query || !workspace?.spaces.length) {
-      setSearchPages([]);
-      return;
-    }
-    setSearchPages([]);
-    let active = true;
-    const timer = setTimeout(() => {
-      void Promise.all(
-        workspace.spaces.map(async (space) => ({
-          pages: await api<Page[]>(`/spaces/${space.id}/pages`),
-          space,
-        }))
-      )
-        .then((groups) => {
-          if (active)
-            setSearchPages(
-              groups.flatMap(({ pages, space }) =>
-                pages
-                  .filter((page) =>
-                    page.title.toLocaleLowerCase("fr").includes(query)
-                  )
-                  .map((page) => ({ page, space }))
-              )
-            );
-        })
-        .catch(() => {
-          if (active) setSearchPages([]);
-        });
-    }, 180);
-    return () => {
-      active = false;
-      clearTimeout(timer);
-    };
-  }, [sidebarSearch, spaceKey, workspace?.spaces]);
-
+  /**
+   * LA RECHERCHE DU RAIL — une seule requête, une seule source de vérité.
+   *
+   * Avant, la recherche était une RECONSTITUTION côté navigateur :
+   *
+   * - les conversations, les Espaces et les Wakies étaient filtrés en
+   *   JavaScript sur les tableaux déjà chargés par le rail ;
+   * - les PAGES exigeaient un appel réseau PAR ESPACE, à chaque frappe. Un
+   *   compte avec huit Espaces déclenchait huit requêtes pour un mot tapé,
+   *   et le résultat était filtré par le navigateur, donc FAUX : une page
+   *   trouvée dépendait de la charge utile déjà en mémoire.
+   *
+   * Ici, le serveur interroge la base et renvoie des résultats DÉJÀ
+   * FILTRÉS, avec un compteur par type. Le rail n'a plus qu'à les afficher,
+   * et le coût ne dépend plus du nombre d'Espaces du compte.
+   *
+   * Le délai (220 ms) est celui d'une frappe : la recherche part quand
+   * l'utilisateur s'arrête, pas à chaque caractère.
+   */
   useEffect(() => {
     const requete = sidebarSearch.trim();
     if (requete.length < 2) {
-      setSearchMessages([]);
+      setSearchResults([]);
       return;
     }
     let active = true;
     const timer = setTimeout(() => {
       void api<{
-        messages: Array<{
-          conversationId: string;
-          extrait: string;
+        counts: Record<string, number>;
+        hits: Array<{
+          conversationId?: string;
+          href: string;
           id: string;
-          role: string;
+          kind:
+            | "conversation"
+            | "memory"
+            | "message"
+            | "page"
+            | "space"
+            | "task"
+            | "wakie";
+          messageId?: string;
+          pageId?: string;
+          spaceId?: string;
+          subtitle?: string;
+          title: string;
+          wakieId?: string;
         }>;
+        total: number;
       }>(`/search?q=${encodeURIComponent(requete)}`)
         .then((donnees) => {
-          if (active) setSearchMessages(donnees.messages);
+          if (active) setSearchResults(donnees.hits ?? []);
         })
         .catch(() => {
-          if (active) setSearchMessages([]);
+          if (active) setSearchResults([]);
         });
     }, 220);
     return () => {
@@ -314,20 +330,13 @@ function WakiesWorkspaceContent({
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
   const [taskDetail, setTaskDetail] = useState<Detail>();
+  // Le hook ne sert plus qu'à l'ALERTE NAVIGATEUR : la cloche du rail a
+  // disparu (les notifications Wakies sont dans la cloche mAI, qui lit la
+  // table unifiée). L'alerte système, elle, reste : elle dépend de la
+  // fenêtre ouverte, pas d'une page.
   const messaging = useMessagingNotifications(
     view === "chat" ? selectedThread : undefined
   );
-
-  const ouvrirNotification = async (conversationId: string) => {
-    if (!(await setView("chat"))) return;
-    const cible = workspace?.conversations.find(
-      (conversation) => conversation.id === conversationId
-    );
-    if (!cible) return;
-    setSelectedWakie(cible.wakieId);
-    setSelectedThread(cible.id);
-    messaging.retirer(cible.id);
-  };
 
   const { data: loaded, mutate: refreshData } = useSWR(
     "wakies-workspace",
@@ -377,12 +386,14 @@ function WakiesWorkspaceContent({
     await messaging.refresh();
   }, [refreshData, messaging.refresh]);
 
+  // Le fil a marqué sa lecture de son côté (`POST /conversations/:id/read`).
+  // Ce callback ne sert plus qu'à rafraîchir l'état local : la cloche du
+  // rail a disparu, donc il n'y a plus de liste d'alertes à retirer.
   const marquerLu = useCallback(
-    (conversationId: string) => {
-      messaging.retirer(conversationId);
+    (_conversationId: string) => {
       void refreshData();
     },
-    [messaging.retirer, refreshData]
+    [refreshData]
   );
 
   useEffect(() => {
@@ -633,17 +644,14 @@ function WakiesWorkspaceContent({
         basculerNav={basculerNav}
         chooseWakie={chooseWakie}
         configured={configured}
-        messaging={messaging}
         mobile={mobile}
         navCollapsed={navCollapsed}
         newConversation={newConversation}
         openPage={openPage}
-        ouvrirNotification={ouvrirNotification}
         ouvrirReglages={ouvrirReglages}
         pageId={pageId}
         refresh={refresh}
-        searchMessages={searchMessages}
-        searchPages={searchPages}
+        searchResults={searchResults}
         selectedThread={selectedThread}
         selectedWakie={selectedWakie}
         setCibleMessageId={setCibleMessageId}

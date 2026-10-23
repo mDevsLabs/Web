@@ -2,7 +2,7 @@
  * Outil mAI — Reposter (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "repost_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface RepostPostArgs {
   post_id: string;

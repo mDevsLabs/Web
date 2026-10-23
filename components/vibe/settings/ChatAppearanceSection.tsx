@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE — APPARENCE DES DISCUSSIONS (src/components/settings/ChatAppearanceSection.tsx)
- * Section Paramètres : personnalisation des discussions privées (couleur et
+ * Section Paramètres: personnalisation des discussions privées (couleur et
  * dégradés des bulles envoyées, fond d'écran, forme des bulles) avec aperçu
  * en direct. Lit et écrit directement le thème via `useTheme`.
  * ============================================================================
@@ -46,7 +46,7 @@ export const ChatAppearanceSection: React.FC = () => {
       </div>
 
       <p className="text-xs text-zinc-400 leading-relaxed">
-        Personnalisez l'apparence de vos conversations privées : couleur et
+        Personnalisez l'apparence de vos conversations privées: couleur et
         dégradés des bulles envoyées, fond d'écran du chat et forme des bulles.
       </p>
 
@@ -228,7 +228,7 @@ export const ChatAppearanceSection: React.FC = () => {
                 className={`p-3 bg-zinc-900/90 border border-zinc-800 text-zinc-100 text-xs shadow-sm ${MESSAGE_BUBBLE_SHAPES[messageBubbleShape]?.partnerRadius || "rounded-2xl"}`}
               >
                 <p className="leading-relaxed">
-                  Salut ! Tu as vu le nouveau design des messages Vibe ? ✨
+                  Salut! Tu as vu le nouveau design des messages Vibe?
                 </p>
                 <span className="text-[9px] text-zinc-500 font-mono mt-1 block">
                   14:30
@@ -252,7 +252,7 @@ export const ChatAppearanceSection: React.FC = () => {
                 }}
               >
                 <p className="leading-relaxed font-medium">
-                  Oui, c'est super fluide et personnalisable ! 🚀
+                  Oui, c'est super fluide et personnalisable!
                 </p>
                 <div className="flex items-center justify-end gap-1 mt-1 opacity-75">
                   <span className="text-[9px] font-mono">14:31</span>

@@ -41,6 +41,10 @@
       // Feuille de style Site : sortie de scripts/build-site-css.mjs (source :
       // apps/site/app/globals.css). Générée, donc jamais écrite à la main.
       "!components/site/site.css",
+      // Feuille de style Blackline : sortie de scripts/build-blackline-css.mjs
+      // (source : le CSS produit par le build Vite du jeu). Générée, donc
+      // jamais écrite à la main — même règle que pour vibe.css.
+      "!components/blackline/blackline.css",
       // Sources Vibe d'origine (app Vite) : conservées uniquement comme
       // référence de génération (feuille de style, ordre des tables de
       // réglages) et de comparaison. Ni compilées par Next ni typées

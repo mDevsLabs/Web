@@ -2,7 +2,7 @@
  * Outil mAI — Prévision de performance d'un brouillon (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "predict_post_performance".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface PredictPostPerformanceArgs {
   content: string;

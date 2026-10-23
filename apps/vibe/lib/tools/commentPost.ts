@@ -2,7 +2,7 @@
  * Outil mAI — Commenter un post (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "comment_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface CommentPostArgs {
   post_id: string;

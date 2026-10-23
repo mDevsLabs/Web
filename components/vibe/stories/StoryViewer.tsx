@@ -15,28 +15,28 @@ import type {
  * LECTEUR DE STORIES (StoryViewer.tsx)
  *
  * Reprend la grammaire de `feed/MediaLightbox.tsx` (barres, swipe, clavier,
- * haptique) avec deux écarts assumés :
+ * haptique) avec deux écarts assumés:
  *
- *  1. Le portail se rend dans `.vibe-root`, et non dans `document.body`. MediaLightbox
- *     Sort du conteneur : il perd les tokens de thème de `vibe.css`. Un lecteur de
- *     stories est un lecteur de thème, il doit rester dans le conteneur.
- *  2. La vidéo est muette et `playsInline`. Sans `muted`, l'autoplay est refusé par
- *     le navigateur — les vidéos de post sont interactives, une story ne l'est pas.
+ * 1. Le portail se rend dans `.vibe-root`, et non dans `document.body`. MediaLightbox
+ * Sort du conteneur: il perd les tokens de thème de `vibe.css`. Un lecteur de
+ * stories est un lecteur de thème, il doit rester dans le conteneur.
+ * 2. La vidéo est muette et `playsInline`. Sans `muted`, l'autoplay est refusé par
+ * le navigateur — les vidéos de post sont interactives, une story ne l'est pas.
  *
- * Navigation : tap gauche/droite pour reculer/avancer d'un média, fin de l'auteur
+ * Navigation: tap gauche/droite pour reculer/avancer d'un média, fin de l'auteur
  * courant ⇒ auteur suivant, swipe vertical ⇒ changer d'auteur, `Escape` fermer.
  *
- * Une story SANS média est une story de texte : elle compte pour un item, rendu
+ * Une story SANS média est une story de texte: elle compte pour un item, rendu
  * sur un canevas à part. Stickers et sondage se superposent aux deux formes.
  */
 
-/** Durée d'affichage d'une photo ou d'un texte ; une vidéo avance à la fin. */
+/** Durée d'affichage d'une photo ou d'un texte; une vidéo avance à la fin. */
 const IMAGE_DURATION_MS = 6000;
 const TICK_MS = 50;
 /** Seuil de swipe, identique à MediaLightbox.tsx:95-104 pour une gesture cohérente. */
 const SWIPE_THRESHOLD_PX = 60;
 
-const REACTIONS = ["❤️", "🔥", "😮"] as const;
+const REACTIONS = ["", "", ""] as const;
 
 type Item = { media: StoryMedia | null; story: Story };
 
@@ -69,7 +69,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   const [envoi, setEnvoi] = useState<"erreur" | "envoye" | "envoi">("envoye");
   const [vues, setVues] = useState<StoryViewerType[] | null>(null);
   const [compteurVues, setCompteurVues] = useState(0);
-  /** Votes de la session, par story : ils priment sur l'instantané du rail. */
+  /** Votes de la session, par story: ils priment sur l'instantané du rail. */
   const [votes, setVotes] = useState<
     Record<string, { counts: number[]; myVote: number; total: number }>
   >({});
@@ -131,7 +131,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     setProgress(0);
   }, [authorIndex, itemIndex, authors, passerAuteur]);
 
-  // Changement d'item : on repart de zéro, et la story est comptée comme vue.
+  // Changement d'item: on repart de zéro, et la story est comptée comme vue.
   const identiteCourante = courant
     ? `${courant.story.id}:${courant.media?.id ?? "texte"}`
     : "";
@@ -169,7 +169,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     if (progress >= 100 && estPhoto) avancer();
   }, [progress, estPhoto, avancer]);
 
-  // Clavier : fermeture et navigation, comme le lightbox.
+  // Clavier: fermeture et navigation, comme le lightbox.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -188,7 +188,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
       try {
         await ApiService.reactStory(courant.story.id, emoji);
       } catch {
-        // Une réaction perdue reste affichée localement : rien ne doit bloquer la
+        // Une réaction perdue reste affichée localement: rien ne doit bloquer la
         // consultation d'une story pour un échec d'écriture.
       }
     },
@@ -211,7 +211,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           },
         }));
       } catch {
-        // Un vote perdu n'interrompt pas la lecture : le serveur reste seul
+        // Un vote perdu n'interrompt pas la lecture: le serveur reste seul
         // maître du dépouillement, le rail le reflétera au prochain chargement.
       }
     },
@@ -292,13 +292,13 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           else reculer();
           return;
         }
-        // Tap : moitié gauche = précédent, moitié droite = suivant.
+        // Tap: moitié gauche = précédent, moitié droite = suivant.
         const moitieDroite = e.clientX > window.innerWidth / 2;
         if (moitieDroite) avancer();
         else reculer();
       }}
     >
-      {/* Barres de progression : un segment par item de l'auteur. */}
+      {/* Barres de progression: un segment par item de l'auteur. */}
       <div className="flex gap-1 px-3 pt-3 shrink-0">
         {items.map((item, index) => (
           <div
@@ -320,7 +320,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         ))}
       </div>
 
-      {/* En-tête : auteur, état, fermeture. */}
+      {/* En-tête: auteur, état, fermeture. */}
       <div className="flex items-center gap-3 px-3 py-3 shrink-0">
         <StoryRing
           avatarUrl={auteur?.avatarUrl}
@@ -386,12 +386,12 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           </div>
         )}
 
-        {/* Stickers : positions relatives posées à la publication. */}
+        {/* Stickers: positions relatives posées à la publication. */}
         {courant.story.stickers.map((sticker, index) => {
           const estBadge =
             /[a-zA-Z0-9]/.test(sticker.emoji) ||
-            sticker.emoji.startsWith("📍") ||
-            sticker.emoji.startsWith("⭐");
+            sticker.emoji.startsWith("") ||
+            sticker.emoji.startsWith("");
           return (
             <span
               className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${

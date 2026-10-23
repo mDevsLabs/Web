@@ -15,6 +15,7 @@ import {
 } from "@mdevs/icons";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { SiteModelSelector } from "@/components/site/model-selector-groups";
 import Link from "@/components/site/router";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import {
@@ -28,14 +29,15 @@ type TabType = ConfigTab;
 
 export default function ConfigClient() {
   const {
-    allModels,
     cloudModels,
     hostTarget,
     isAuthenticated,
     keysError,
     keysLoading,
+    modelGroups,
     modelsError,
     modelsLoading,
+    refreshModels,
     selectedKeyRef,
     selectedModel,
     setHostTarget,
@@ -222,41 +224,22 @@ export default function ConfigClient() {
                 <Cpu className="w-4 h-4 text-purple-600" />
                 Modèle v1 / mAI
               </label>
-              <select
-                className="w-full bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm rounded-2xl px-4 py-3 appearance-none font-bold focus:outline-none focus:ring-2 focus:ring-purple-500/20 cursor-pointer shadow-2xs disabled:opacity-60"
+              <SiteModelSelector
                 disabled={
                   modelsLoading ||
                   (hostTarget === "cloud" && cloudModels.length === 0)
                 }
-                onChange={(e) => setSelectedModel(e.target.value)}
-                value={selectedModel}
-              >
-                {!selectedModel && (
-                  <option value="">
-                    {modelsLoading
-                      ? "Chargement du catalogue…"
-                      : "Aucun modèle disponible"}
-                  </option>
-                )}
-                <optgroup label="Modèles mAI Locaux (Gratuits)">
-                  {allModels
-                    .filter((m) => m.type === "mai")
-                    .map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.name}
-                      </option>
-                    ))}
-                </optgroup>
-                <optgroup label="Modèles API v1 / Cloud">
-                  {allModels
-                    .filter((m) => m.type === "cloud")
-                    .map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.name}
-                      </option>
-                    ))}
-                </optgroup>
-              </select>
+                groups={modelGroups}
+                isRefreshing={modelsLoading}
+                onRefresh={refreshModels}
+                onSelectModel={setSelectedModel}
+                placeholder={
+                  modelsLoading
+                    ? "Chargement du catalogue…"
+                    : "Aucun modèle disponible"
+                }
+                selectedModelId={selectedModel}
+              />
               {modelsLoading && (
                 <p className="text-[11px] font-semibold text-slate-500">
                   Chargement du catalogue…

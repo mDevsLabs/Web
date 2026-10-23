@@ -113,7 +113,7 @@ export function AskUserCard({
           ans === "" ||
           (Array.isArray(ans) && ans.length === 0)
         ) {
-          toast.error(`Veuillez répondre à la question : "${q.question}"`);
+          toast.error(`Veuillez répondre à la question: "${q.question}"`);
           return;
         }
       }
@@ -131,7 +131,7 @@ export function AskUserCard({
         tool: "askUser",
         toolCallId,
       });
-      toast.success("Vos réponses ont été transmises à l'IA !");
+      toast.success("Vos réponses ont été transmises à l'IA!");
     } catch (err: any) {
       toast.error(err?.message || "Erreur lors de l'envoi des réponses");
       setIsSubmittedLocally(false);
@@ -253,8 +253,8 @@ export function AskUserCard({
               {q.type === "boolean" && (
                 <div className="flex gap-2">
                   {[
-                    { label: "Oui 👍", val: true },
-                    { label: "Non 👎", val: false },
+                    { label: "Oui ", val: true },
+                    { label: "Non ", val: false },
                   ].map((item) => {
                     const isSelected = currentAns === item.val;
                     return (
@@ -284,13 +284,13 @@ export function AskUserCard({
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>Min: {q.min ?? 0}</span>
                     <span className="font-bold text-primary">
-                      Valeur : {currentAns ?? q.min ?? 0}
+                      Valeur: {currentAns ?? q.min ?? 0}
                     </span>
                     <span>Max: {q.max ?? 100}</span>
                   </div>
                   {isCompleted ? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                      Sélectionné : {currentAns}
+                      Sélectionné: {currentAns}
                     </div>
                   ) : (
                     <input
@@ -313,7 +313,7 @@ export function AskUserCard({
                 <div>
                   {isCompleted ? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                      Date choisie : {String(currentAns)}
+                      Date choisie: {String(currentAns)}
                     </div>
                   ) : (
                     <Input
@@ -332,7 +332,7 @@ export function AskUserCard({
                 options.length > 0 &&
                 !options.includes(currentAns) && (
                   <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                    Réponse personnalisée : {currentAns}
+                    Réponse personnalisée: {currentAns}
                   </div>
                 )}
             </div>

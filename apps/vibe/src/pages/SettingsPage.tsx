@@ -41,8 +41,8 @@ const DevicePermissionHint: React.FC = () => {
     <div className="p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-3">
       <p className="text-[11px] text-zinc-400">
         {state === 'denied'
-          ? 'Les notifications sont bloquées pour ce site. Modifiez les réglages de votre navigateur pour les réactiver.'
-          : "Les notifications ne sont pas encore autorisées sur cet appareil."}
+? 'Les notifications sont bloquées pour ce site. Modifiez les réglages de votre navigateur pour les réactiver.'
+: "Les notifications ne sont pas encore autorisées sur cet appareil."}
       </p>
       {state === 'default' && (
         <button
@@ -109,14 +109,14 @@ export const SettingsPage: React.FC = () => {
   // Co-signatures acceptées automatiquement quand je suis désigné co-auteur
   const [collabAutoAccept, setCollabAutoAccept] = useState(false);
   const [postsAIGeneratedByDefault, setPostsAIGeneratedByDefault] = useState(false);
-  // mAI : modèle par défaut (toutes les requêtes mAI) + voix de lecture
+  // mAI: modèle par défaut (toutes les requêtes mAI) + voix de lecture
   const [maiDefaultModel, setMaiDefaultModel] = useState('poolside/laguna-xs-2.1:free');
   const [maiTtsVoice, setMaiTtsVoice] = useState('flux-alexis-en');
   // Langue cible de traduction ('' = langue du navigateur, résolue à l'appel)
   const [uiLanguage, setUiLanguage] = useState('');
   const [models, setModels] = useState<Array<{ id: string; name: string; provider?: string }>>([]);
   const [voices, setVoices] = useState<Array<{ id: string; name: string }>>([]);
-  // Cercle Privé (membres autorisés à voir les posts « Cercle Privé »)
+  // Cercle Privé (membres autorisés à voir les posts « Cercle Privé»)
   const [circleMembers, setCircleMembers] = useState<Array<{ id: string | number; username: string; display_name?: string; avatar_url?: string }>>([]);
   // Audience par défaut des publications Vibe ('public', 'followers', 'circle')
   const [defaultVibeAudience, setDefaultVibeAudience] = useState<'public' | 'followers' | 'circle'>('public');
@@ -143,7 +143,7 @@ export const SettingsPage: React.FC = () => {
   const [isExporting, setIsExporting] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  // Éligibilité à la coche bleue : compte vérifié ou abonnement Plus/Pro/Max
+  // Éligibilité à la coche bleue: compte vérifié ou abonnement Plus/Pro/Max
   const canHideVerifiedBadge = Boolean(
     user?.is_verified || ['plus', 'pro', 'max'].includes((user?.tier || '').toLowerCase().trim())
   );
@@ -155,21 +155,21 @@ export const SettingsPage: React.FC = () => {
         if (res.settings) {
           const s = res.settings;
           setFeedDefaultMode(s.feed_default_mode || 'for_you');
-          setHideReposts(s.hide_reposts ?? false);
-          setBlockedKeywords(Array.isArray(s.blocked_keywords) ? s.blocked_keywords.join(', ') : (s.blocked_keywords || ''));
+          setHideReposts(s.hide_reposts?? false);
+          setBlockedKeywords(Array.isArray(s.blocked_keywords)? s.blocked_keywords.join(', '): (s.blocked_keywords || ''));
           setAllowDms(s.allow_dms || s.allow_dms_from || 'everyone');
-          setDmsEnabled(s.dms_enabled ?? true);
+          setDmsEnabled(s.dms_enabled?? true);
           setDmAutoTranslate(Boolean(s.dm_auto_translate));
           setDmTranslateLang(String(s.dm_translate_lang || browserToDeepLCode(navigator.language || 'fr-FR')));
           setAllowMentions(s.allow_mentions || 'everyone');
           setContentFilter(s.content_filter_level || 'medium');
-          setBlurSensitive(s.blur_sensitive_content ?? true);
-          setEmailNotifs(s.email_notifications ?? true);
-          setPushNotifs(s.push_notifications ?? true);
-          if (s.mai_auto_approve_tools !== undefined) {
+          setBlurSensitive(s.blur_sensitive_content?? true);
+          setEmailNotifs(s.email_notifications?? true);
+          setPushNotifs(s.push_notifications?? true);
+          if (s.mai_auto_approve_tools!== undefined) {
             setMaiAutoApproveTools(Boolean(s.mai_auto_approve_tools));
           }
-          if (s.posts_ai_generated_by_default !== undefined) {
+          if (s.posts_ai_generated_by_default!== undefined) {
             setPostsAIGeneratedByDefault(Boolean(s.posts_ai_generated_by_default));
           }
           if (s.mai_default_model) {
@@ -177,7 +177,7 @@ export const SettingsPage: React.FC = () => {
           }
           setMaiTtsVoice(s.mai_tts_voice || 'flux-alexis-en');
           setUiLanguage(String(s.ui_language || ''));
-          // Miroir local : PostCard/CommentSection lisent la langue sans re-appel API
+          // Miroir local: PostCard/CommentSection lisent la langue sans re-appel API
           ApiService.setUiLanguageMirror(String(s.ui_language || ''));
           if (s.accent_color && s.accent_color in ACCENT_COLORS) {
             setAccentColor(s.accent_color as any);
@@ -197,12 +197,12 @@ export const SettingsPage: React.FC = () => {
           if (s.default_vibe_audience && ['public', 'followers', 'circle'].includes(s.default_vibe_audience)) {
             setDefaultVibeAudience(s.default_vibe_audience as any);
           }
-          if (s.mai_context_posts !== undefined) setMaiContextPosts(Boolean(s.mai_context_posts));
-          if (s.mai_context_dms !== undefined) setMaiContextDms(Boolean(s.mai_context_dms));
-          if (s.mai_context_books !== undefined) setMaiContextBooks(Boolean(s.mai_context_books));
-          if (s.hide_verified_badge !== undefined) setHideVerifiedBadge(Boolean(s.hide_verified_badge));
-          if (s.collab_auto_accept !== undefined) setCollabAutoAccept(Boolean(s.collab_auto_accept));
-          // Outils mAI : liste activée (vide/null = tout activé → on coche tout)
+          if (s.mai_context_posts!== undefined) setMaiContextPosts(Boolean(s.mai_context_posts));
+          if (s.mai_context_dms!== undefined) setMaiContextDms(Boolean(s.mai_context_dms));
+          if (s.mai_context_books!== undefined) setMaiContextBooks(Boolean(s.mai_context_books));
+          if (s.hide_verified_badge!== undefined) setHideVerifiedBadge(Boolean(s.hide_verified_badge));
+          if (s.collab_auto_accept!== undefined) setCollabAutoAccept(Boolean(s.collab_auto_accept));
+          // Outils mAI: liste activée (vide/null = tout activé → on coche tout)
           if (Array.isArray(s.mai_enabled_tools) && s.mai_enabled_tools.length > 0) {
             setMaiEnabledTools(s.mai_enabled_tools.map(String));
           }
@@ -215,7 +215,7 @@ export const SettingsPage: React.FC = () => {
   // Charge le catalogue d'outils mAI depuis l'index (GET /v1/mai/tools)
   useEffect(() => {
     ApiService.getMAITools()
-      .then((res) => {
+.then((res) => {
         const tools = (res?.tools || []).map((t) => ({
           id: t.id,
           name: t.name,
@@ -236,7 +236,7 @@ export const SettingsPage: React.FC = () => {
         });
         setMaiToolsLoaded(true);
       })
-      .catch(() => setMaiToolsLoaded(true));
+.catch(() => setMaiToolsLoaded(true));
   }, []);
 
   const handleSaveSettings = async (e: React.FormEvent) => {
@@ -244,9 +244,9 @@ export const SettingsPage: React.FC = () => {
     setIsSaving(true);
     try {
       const keywordsArray = blockedKeywords
-        .split(',')
-        .map((k) => k.trim())
-        .filter(Boolean);
+.split(',')
+.map((k) => k.trim())
+.filter(Boolean);
 
       await ApiService.updateSettings({
         feed_default_mode: feedDefaultMode,
@@ -325,11 +325,11 @@ export const SettingsPage: React.FC = () => {
       ApiService.getBlockedUsers().catch(() => ({ blocked: [] })),
       ApiService.getMutedUsers().catch(() => ({ muted: [] })),
     ])
-      .then(([blockedRes, mutedRes]) => {
+.then(([blockedRes, mutedRes]) => {
         setBlockedAccounts(blockedRes?.blocked || []);
         setMutedAccounts(mutedRes?.muted || []);
       })
-      .finally(() => setIsLoadingAccounts(false));
+.finally(() => setIsLoadingAccounts(false));
 
     // Liste des modèles mAI (API /v1/models) et des voix de lecture (API speech)
     ApiService.getModels().then((res) => setModels(res.models || [])).catch(() => {});
@@ -351,7 +351,7 @@ export const SettingsPage: React.FC = () => {
       try {
         const res = await ApiService.searchUsers(q);
         const filtered = (res?.users || []).filter(
-          (u) => u.username?.toLowerCase() !== user?.username?.toLowerCase()
+          (u) => u.username?.toLowerCase()!== user?.username?.toLowerCase()
         );
         setCircleSearchResults(filtered);
       } catch {
@@ -359,7 +359,7 @@ export const SettingsPage: React.FC = () => {
       } finally {
         setIsSearchingCircleUsers(false);
       }
-    }, q ? 250 : 0);
+    }, q? 250: 0);
     return () => clearTimeout(timer);
   }, [circleSearchQuery, user?.username]);
 
@@ -373,7 +373,7 @@ export const SettingsPage: React.FC = () => {
       setCircleSearchQuery('');
       setCircleSearchResults([]);
       NotificationService.showInAppToast(
-        'Cercle Privé 🔒',
+        'Cercle Privé ',
         `@${username} a été ajouté à votre cercle privé avec succès.`,
         'success'
       );
@@ -387,7 +387,7 @@ export const SettingsPage: React.FC = () => {
   const handleRemoveFromCircle = async (username: string) => {
     try {
       await ApiService.removeFromCircle(username);
-      setCircleMembers((prev) => prev.filter((m) => m.username !== username));
+      setCircleMembers((prev) => prev.filter((m) => m.username!== username));
       NotificationService.showInAppToast('Cercle Privé', `@${username} a été retiré de votre cercle.`, 'info');
     } catch (err: any) {
       NotificationService.showInAppToast('Erreur', err?.message || 'Le retrait du cercle a échoué.', 'error');
@@ -397,7 +397,7 @@ export const SettingsPage: React.FC = () => {
   const handleUnblockAccount = async (userId: string, username?: string) => {
     try {
       await ApiService.unblockUser(userId);
-      setBlockedAccounts((prev) => prev.filter((b) => b.blocked_user_id !== userId));
+      setBlockedAccounts((prev) => prev.filter((b) => b.blocked_user_id!== userId));
       NotificationService.showInAppToast(
         'Compte débloqué',
         `@${username || 'ce compte'} peut de nouveau interagir avec vous.`,
@@ -412,7 +412,7 @@ export const SettingsPage: React.FC = () => {
     if (!username) return;
     try {
       await ApiService.muteUser(username, false);
-      setMutedAccounts((prev) => prev.filter((m) => m.muted_username !== username));
+      setMutedAccounts((prev) => prev.filter((m) => m.muted_username!== username));
       NotificationService.showInAppToast(
         'Compte réactivé',
         `Les publications de @${username} réapparaissent dans votre fil.`,
@@ -452,7 +452,7 @@ export const SettingsPage: React.FC = () => {
                     <Sun className="w-4 h-4 text-white" />
                     <span>Apparence & Thème</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded-full uppercase">Par défaut : Clair</span>
+                  <span className="text-[10px] font-mono text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded-full uppercase">Par défaut: Clair</span>
                 </div>
 
                 <p className="text-xs text-zinc-400 leading-relaxed">
@@ -495,19 +495,19 @@ export const SettingsPage: React.FC = () => {
                         onClick={() => setTheme(item.id as any)}
                         className={`relative p-3 rounded-2xl border text-left transition-all flex flex-col justify-between gap-3 min-h-[96px] ${
                           isSelected
-                            ? 'bg-zinc-900 border-white text-white shadow-lg ring-1 ring-white/30'
-                            : 'bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white'
+? 'bg-zinc-900 border-white text-white shadow-lg ring-1 ring-white/30'
+: 'bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white'
                         }`}
                       >
                         <div className="flex items-center justify-between w-full">
                           <div className="p-1.5 rounded-xl bg-zinc-800/80">
                             <IconComponent className={`w-4 h-4 ${item.iconColor}`} />
                           </div>
-                          {isSelected ? (
+                          {isSelected? (
                             <div className="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center shadow">
                               <Check className="w-2.5 h-2.5 stroke-[3]" />
                             </div>
-                          ) : (
+                          ): (
                             <div className="w-3.5 h-3.5 rounded-full border border-zinc-700" />
                           )}
                         </div>
@@ -534,13 +534,13 @@ export const SettingsPage: React.FC = () => {
                       <Moon className="w-3 h-3 text-zinc-400" /> Thème programmé
                     </p>
                     <p className="text-zinc-500 text-[11px]">
-                      Bascule automatique clair/sombre (ex. 22h–7h = sombre). Inactif en mode « Système ».
+                      Bascule automatique clair/sombre (ex. 22h–7h = sombre). Inactif en mode « Système».
                     </p>
                   </div>
                   <input
                     type="checkbox"
                     checked={scheduledTheme.enabled}
-                    onChange={(e) => setScheduledTheme({ ...scheduledTheme, enabled: e.target.checked })}
+                    onChange={(e) => setScheduledTheme({...scheduledTheme, enabled: e.target.checked })}
                     className="w-4 h-4 accent-white cursor-pointer ml-3 shrink-0"
                   />
                 </div>
@@ -551,7 +551,7 @@ export const SettingsPage: React.FC = () => {
                       <input
                         type="time"
                         value={scheduledTheme.darkStart}
-                        onChange={(e) => setScheduledTheme({ ...scheduledTheme, darkStart: e.target.value || '22:00' })}
+                        onChange={(e) => setScheduledTheme({...scheduledTheme, darkStart: e.target.value || '22:00' })}
                         className="w-full p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-zinc-500 text-xs"
                       />
                     </label>
@@ -560,7 +560,7 @@ export const SettingsPage: React.FC = () => {
                       <input
                         type="time"
                         value={scheduledTheme.darkEnd}
-                        onChange={(e) => setScheduledTheme({ ...scheduledTheme, darkEnd: e.target.value || '07:00' })}
+                        onChange={(e) => setScheduledTheme({...scheduledTheme, darkEnd: e.target.value || '07:00' })}
                         className="w-full p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-zinc-500 text-xs"
                       />
                     </label>
@@ -585,8 +585,8 @@ export const SettingsPage: React.FC = () => {
                       onClick={() => setFontSize(s.id as any)}
                       className={`py-2 px-3 rounded-xl border font-semibold transition-all flex flex-col items-center gap-0.5 ${
                         fontSize === s.id
-                          ? 'bg-white text-black border-white'
-                          : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
+? 'bg-white text-black border-white'
+: 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
                       }`}
                     >
                       <span className={s.sample}>Aa</span>
@@ -623,7 +623,7 @@ export const SettingsPage: React.FC = () => {
                           onClick={() => setAccentColor(key as any)}
                           title={c.label}
                           className={`relative w-8 h-8 rounded-full border-2 transition-all hover:scale-110 ${
-                            isSelected ? 'border-white shadow-lg ring-1 ring-white/50' : 'border-zinc-700'
+                            isSelected? 'border-white shadow-lg ring-1 ring-white/50': 'border-zinc-700'
                           }`}
                           style={{ backgroundColor: c.hex }}
                         >
@@ -644,11 +644,11 @@ export const SettingsPage: React.FC = () => {
                     <Languages className="w-3 h-3 text-zinc-400" /> Langue de traduction
                   </label>
                   <span className="text-[10px] font-mono text-zinc-500 uppercase">
-                    Auto : {browserToDeepLCode(typeof navigator !== 'undefined' ? navigator.language : '')}
+                    Auto: {browserToDeepLCode(typeof navigator!== 'undefined'? navigator.language: '')}
                   </span>
                 </div>
                 <p className="text-zinc-500 text-[11px]">
-                  Langue cible du bouton « Traduire » sur les publications et réponses.
+                  Langue cible du bouton « Traduire» sur les publications et réponses.
                 </p>
                 <select
                   value={uiLanguage}
@@ -693,8 +693,8 @@ export const SettingsPage: React.FC = () => {
                         onClick={() => setFeedDefaultMode(mode.id as any)}
                         className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
                           feedDefaultMode === mode.id
-                            ? 'bg-white text-black border-white'
-                            : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
+? 'bg-white text-black border-white'
+: 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
                         }`}
                       >
                         {mode.label}
@@ -747,11 +747,11 @@ export const SettingsPage: React.FC = () => {
                         onClick={() => setContentFilter(lvl)}
                         className={`py-2 px-3 rounded-xl border text-xs font-semibold capitalize transition-all ${
                           contentFilter === lvl
-                            ? 'bg-white text-black border-white'
-                            : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
+? 'bg-white text-black border-white'
+: 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'
                         }`}
                       >
-                        {lvl === 'low' ? 'Léger' : lvl === 'medium' ? 'Modéré' : 'Strict'}
+                        {lvl === 'low'? 'Léger': lvl === 'medium'? 'Modéré': 'Strict'}
                       </button>
                     ))}
                   </div>
@@ -856,7 +856,7 @@ export const SettingsPage: React.FC = () => {
                   </select>
                 </div>
 
-                {/* Co-auteurs : auto-acceptation des co-signatures (sans invitation) */}
+                {/* Co-auteurs: auto-acceptation des co-signatures (sans invitation) */}
                 <div className="flex items-center justify-between pt-2 border-t border-zinc-900">
                   <div>
                     <span className="font-semibold text-white">Co-auteurs sans invitation</span>
@@ -938,7 +938,7 @@ export const SettingsPage: React.FC = () => {
                         <span>Animations & effets visuels</span>
                       </div>
                       <p className="text-zinc-500 text-[11px] mt-0.5">
-                        Burst de likes, particules, spring navigation, transitions. Coupé auto si « Réduire les animations » OS.
+                        Burst de likes, particules, spring navigation, transitions. Coupé auto si « Réduire les animations» OS.
                       </p>
                     </div>
                     <input
@@ -961,8 +961,8 @@ export const SettingsPage: React.FC = () => {
                       </div>
                       <p className="text-zinc-500 text-[11px] mt-0.5">
                         {hapticsSupported
-                          ? 'Sensations tactiles lors des likes (battement de cœur), publications, signets et navigation'
-                          : 'Retour haptique non disponible sur cet appareil.'}
+? 'Sensations tactiles lors des likes (battement de cœur), publications, signets et navigation'
+: 'Retour haptique non disponible sur cet appareil.'}
                       </p>
                     </div>
                     <input
@@ -986,21 +986,21 @@ export const SettingsPage: React.FC = () => {
                         onClick={() => haptics.like()}
                         className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-rose-500 dark:text-rose-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                       >
-                        ❤️ Tester le Like (Heartbeat)
+                         Tester le Like (Heartbeat)
                       </button>
                       <button
                         type="button"
                         onClick={() => haptics.selection()}
                         className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sky-500 dark:text-sky-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                       >
-                        📳 Tester la Sélection
+                         Tester la Sélection
                       </button>
                       <button
                         type="button"
                         onClick={() => haptics.success()}
                         className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-emerald-600 dark:text-emerald-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                       >
-                        🚀 Tester le Succès
+                         Tester le Succès
                       </button>
                     </div>
                   )}
@@ -1019,12 +1019,12 @@ export const SettingsPage: React.FC = () => {
               <span className="text-[10px] font-mono text-zinc-500 uppercase">Modération personnelle</span>
             </div>
 
-            {isLoadingAccounts ? (
+            {isLoadingAccounts? (
               <div className="flex items-center gap-2 text-xs text-zinc-500 py-2">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 Chargement des listes…
               </div>
-            ) : (
+            ): (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 {/* Comptes bloqués */}
                 <div className="space-y-2">
@@ -1032,9 +1032,9 @@ export const SettingsPage: React.FC = () => {
                     <Ban className="w-3 h-3 text-zinc-400" />
                     Bloqués ({blockedAccounts.length}) — contact coupé
                   </p>
-                  {blockedAccounts.length === 0 ? (
+                  {blockedAccounts.length === 0? (
                     <p className="text-zinc-600 text-[11px]">Aucun compte bloqué.</p>
-                  ) : (
+                  ): (
                     <div className="divide-y divide-zinc-900 rounded-2xl border border-zinc-800 max-h-40 overflow-y-auto">
                       {blockedAccounts.map((b) => (
                         <div key={b.id} className="flex items-center gap-3 p-2.5">
@@ -1063,9 +1063,9 @@ export const SettingsPage: React.FC = () => {
                     <EyeOff className="w-3 h-3 text-zinc-400" />
                     Masqués ({mutedAccounts.length}) — silencieux
                   </p>
-                  {mutedAccounts.length === 0 ? (
+                  {mutedAccounts.length === 0? (
                     <p className="text-zinc-600 text-[11px]">Aucun compte masqué.</p>
-                  ) : (
+                  ): (
                     <div className="divide-y divide-zinc-900 rounded-2xl border border-zinc-800 max-h-40 overflow-y-auto">
                       {mutedAccounts.map((m) => (
                         <div key={m.id} className="flex items-center gap-3 p-2.5">
@@ -1106,7 +1106,7 @@ export const SettingsPage: React.FC = () => {
               <div className="flex items-center gap-2 shrink-0">
                 <span className="text-[11px] font-mono text-zinc-300 bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full flex items-center gap-1.5">
                   <Lock className="w-3 h-3 text-white" />
-                  <span>{circleMembers.length} {circleMembers.length > 1 ? 'personnes autorisées' : 'personne autorisée'}</span>
+                  <span>{circleMembers.length} {circleMembers.length > 1? 'personnes autorisées': 'personne autorisée'}</span>
                 </span>
               </div>
             </div>
@@ -1157,28 +1157,28 @@ export const SettingsPage: React.FC = () => {
                       onClick={() => setDefaultVibeAudience(opt.id as any)}
                       className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between gap-2.5 ${
                         isSelected
-                          ? 'bg-zinc-900 border-white ring-1 ring-white/50 text-white shadow-lg shadow-white/5'
-                          : 'bg-zinc-900/40 border-zinc-800/80 text-zinc-300 hover:bg-zinc-900 hover:border-zinc-700'
+? 'bg-zinc-900 border-white ring-1 ring-white/50 text-white shadow-lg shadow-white/5'
+: 'bg-zinc-900/40 border-zinc-800/80 text-zinc-300 hover:bg-zinc-900 hover:border-zinc-700'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <div className={`w-7 h-7 rounded-xl flex items-center justify-center ${
-                            isSelected ? 'bg-white text-black' : 'bg-zinc-800 text-zinc-300'
+                            isSelected? 'bg-white text-black': 'bg-zinc-800 text-zinc-300'
                           }`}>
                             <Icon className="w-3.5 h-3.5" />
                           </div>
                           <span className="font-bold text-xs text-white">{opt.label}</span>
                         </div>
-                        {isSelected ? (
+                        {isSelected? (
                           <span className="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center shrink-0">
                             <Check className="w-2.5 h-2.5 stroke-[3]" />
                           </span>
-                        ) : opt.badge ? (
+                        ): opt.badge? (
                           <span className="text-[9px] font-mono uppercase bg-zinc-800/80 text-zinc-400 px-1.5 py-0.5 rounded">
                             {opt.badge}
                           </span>
-                        ) : null}
+                        ): null}
                       </div>
                       <p className="text-[11px] text-zinc-400 leading-snug">
                         {opt.description}
@@ -1204,9 +1204,9 @@ export const SettingsPage: React.FC = () => {
               {/* Champ de recherche */}
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
-                  {isSearchingCircleUsers ? (
+                  {isSearchingCircleUsers? (
                     <Loader2 className="w-4 h-4 animate-spin text-zinc-400" />
-                  ) : (
+                  ): (
                     <Search className="w-4 h-4" />
                   )}
                 </div>
@@ -1235,20 +1235,20 @@ export const SettingsPage: React.FC = () => {
               {circleSearchQuery.trim().length > 0 && (
                 <div className="p-3 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2 animate-fadeIn max-h-60 overflow-y-auto">
                   <div className="text-[11px] font-mono uppercase text-zinc-400 px-1 flex items-center justify-between">
-                    <span>Résultats pour « {circleSearchQuery} »</span>
-                    <span>{circleSearchResults.length} trouvé{circleSearchResults.length > 1 ? 's' : ''}</span>
+                    <span>Résultats pour « {circleSearchQuery}»</span>
+                    <span>{circleSearchResults.length} trouvé{circleSearchResults.length > 1? 's': ''}</span>
                   </div>
 
-                  {isSearchingCircleUsers ? (
+                  {isSearchingCircleUsers? (
                     <div className="flex items-center justify-center gap-2 py-4 text-xs text-zinc-400">
                       <Loader2 className="w-4 h-4 animate-spin text-white" />
                       <span>Recherche en cours...</span>
                     </div>
-                  ) : circleSearchResults.length === 0 ? (
+                  ): circleSearchResults.length === 0? (
                     <div className="py-4 text-center text-xs text-zinc-500">
-                      Aucun utilisateur trouvé correspondant à « {circleSearchQuery} ».
+                      Aucun utilisateur trouvé correspondant à « {circleSearchQuery}».
                     </div>
-                  ) : (
+                  ): (
                     <div className="divide-y divide-zinc-800/60">
                       {circleSearchResults.map((u) => {
                         const isAlreadyMember = circleMembers.some(
@@ -1277,24 +1277,24 @@ export const SettingsPage: React.FC = () => {
                               </div>
                             </div>
 
-                            {isAlreadyMember ? (
+                            {isAlreadyMember? (
                               <span className="shrink-0 px-2.5 py-1 rounded-full bg-zinc-800/80 border border-zinc-700/60 text-[11px] text-zinc-300 font-medium flex items-center gap-1">
                                 <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                                 <span>Déjà dans le cercle</span>
                               </span>
-                            ) : (
+                            ): (
                               <button
                                 type="button"
                                 disabled={isAdding}
                                 onClick={() => handleAddToCircle(u.username)}
                                 className="shrink-0 px-3 py-1 rounded-full bg-white text-black font-bold text-xs hover:bg-zinc-200 transition-all flex items-center gap-1.5 active:scale-95 disabled:opacity-50"
                               >
-                                {isAdding ? (
+                                {isAdding? (
                                   <>
                                     <Loader2 className="w-3 h-3 animate-spin" />
                                     <span>Ajout...</span>
                                   </>
-                                ) : (
+                                ): (
                                   <>
                                     <UserPlus className="w-3 h-3" />
                                     <span>Ajouter au cercle</span>
@@ -1324,14 +1324,14 @@ export const SettingsPage: React.FC = () => {
                   )}
                 </div>
 
-                {circleMembers.length === 0 ? (
+                {circleMembers.length === 0? (
                   <div className="p-4 rounded-2xl bg-zinc-900/40 border border-dashed border-zinc-800 text-center space-y-1">
                     <p className="text-zinc-400 text-xs font-medium">Votre cercle privé est actuellement vide.</p>
                     <p className="text-zinc-600 text-[11px]">
                       Recherchez des utilisateurs par leur pseudo ci-dessus pour composer votre cercle de personnes autorisées.
                     </p>
                   </div>
-                ) : (
+                ): (
                   <div className="divide-y divide-zinc-900 rounded-2xl border border-zinc-800 max-h-60 overflow-y-auto bg-zinc-900/30">
                     {circleMembers.map((m) => (
                       <div
@@ -1397,7 +1397,7 @@ export const SettingsPage: React.FC = () => {
                   <div>
                     <span className="font-semibold text-white">Posts marqués IA par défaut</span>
                     <p className="text-zinc-500 text-[11px]">
-                      Badge « Créé avec l'IA » activé automatiquement
+                      Badge « Créé avec l'IA» activé automatiquement
                     </p>
                   </div>
                   <input
@@ -1437,7 +1437,7 @@ export const SettingsPage: React.FC = () => {
                     />
                   </div>
                   <p className="text-[11px] text-amber-600 dark:text-amber-400/90">
-                    ⚠️ Confidentiel : seuls des extraits tronqués sont transmis à mAI, jamais cités verbatim.
+                     Confidentiel: seuls des extraits tronqués sont transmis à mAI, jamais cités verbatim.
                   </p>
                 </div>
                 <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800">
@@ -1458,7 +1458,7 @@ export const SettingsPage: React.FC = () => {
                     <Cpu className="w-3 h-3 text-zinc-400" />
                     Modèle mAI par défaut
                   </label>
-                  {models.length > 0 ? (
+                  {models.length > 0? (
                     <select
                       value={maiDefaultModel}
                       onChange={(e) => setMaiDefaultModel(e.target.value)}
@@ -1466,11 +1466,11 @@ export const SettingsPage: React.FC = () => {
                     >
                       {models.map((m) => (
                         <option key={m.id} value={m.id}>
-                          {m.name}{m.provider ? ` — ${m.provider}` : ''}
+                          {m.name}{m.provider? ` — ${m.provider}`: ''}
                         </option>
                       ))}
                     </select>
-                  ) : (
+                  ): (
                     <div className="flex items-center gap-2 text-zinc-500 py-1">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
                       <span>Chargement des modèles…</span>
@@ -1485,7 +1485,7 @@ export const SettingsPage: React.FC = () => {
                     <Volume2 className="w-3 h-3 text-zinc-400" />
                     Voix de lecture mAI
                   </label>
-                  {voices.length > 0 ? (
+                  {voices.length > 0? (
                     <select
                       value={maiTtsVoice}
                       onChange={(e) => setMaiTtsVoice(e.target.value)}
@@ -1497,7 +1497,7 @@ export const SettingsPage: React.FC = () => {
                         </option>
                       ))}
                     </select>
-                  ) : (
+                  ): (
                     <div className="flex items-center gap-2 text-zinc-500 py-1">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
                       <span>Chargement des voix…</span>
@@ -1516,23 +1516,23 @@ export const SettingsPage: React.FC = () => {
                     type="button"
                     onClick={() =>
                       setMaiEnabledTools((prev) =>
-                        prev.length === maiCatalog.length ? [] : maiCatalog.map((t) => t.id)
+                        prev.length === maiCatalog.length? []: maiCatalog.map((t) => t.id)
                       )
                     }
                     className="text-[10px] font-bold text-zinc-400 hover:text-white underline underline-offset-2"
                   >
-                    {maiEnabledTools.length === maiCatalog.length ? 'Tout désélectionner' : 'Tout sélectionner'}
+                    {maiEnabledTools.length === maiCatalog.length? 'Tout désélectionner': 'Tout sélectionner'}
                   </button>
                 </div>
                 <p className="text-zinc-500 text-[11px]">
                   Choisissez les outils que mAI peut utiliser en votre nom. Les outils sensibles restent soumis à l'approbation ci-dessus.
                 </p>
-                {!maiToolsLoaded ? (
+                {!maiToolsLoaded? (
                   <div className="flex items-center gap-2 text-zinc-500 py-2">
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
                     <span>Chargement du catalogue…</span>
                   </div>
-                ) : (
+                ): (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {maiCatalog.map((tool) => {
                       const checked = maiEnabledTools.includes(tool.id);
@@ -1540,7 +1540,7 @@ export const SettingsPage: React.FC = () => {
                         <label
                           key={tool.id}
                           className={`flex items-start gap-2.5 p-2.5 rounded-xl border cursor-pointer transition-colors ${
-                            checked ? 'bg-zinc-900 border-zinc-600' : 'bg-zinc-900/40 border-zinc-800 hover:border-zinc-700'
+                            checked? 'bg-zinc-900 border-zinc-600': 'bg-zinc-900/40 border-zinc-800 hover:border-zinc-700'
                           }`}
                         >
                           <input
@@ -1548,7 +1548,7 @@ export const SettingsPage: React.FC = () => {
                             checked={checked}
                             onChange={() =>
                               setMaiEnabledTools((prev) =>
-                                prev.includes(tool.id) ? prev.filter((id) => id !== tool.id) : [...prev, tool.id]
+                                prev.includes(tool.id)? prev.filter((id) => id!== tool.id): [...prev, tool.id]
                               )
                             }
                             className="w-4 h-4 accent-white cursor-pointer mt-0.5 shrink-0"
@@ -1582,7 +1582,7 @@ export const SettingsPage: React.FC = () => {
               disabled={isSaving}
               className="py-3 px-8 rounded-full bg-white text-black font-bold text-xs hover:bg-zinc-200 transition-all shadow-lg active:scale-95 disabled:opacity-40"
             >
-              {isSaving ? 'Enregistrement...' : 'Enregistrer les paramètres'}
+              {isSaving? 'Enregistrement...': 'Enregistrer les paramètres'}
             </button>
           </div>
         </form>
@@ -1635,7 +1635,7 @@ export const SettingsPage: React.FC = () => {
             className="py-2.5 px-5 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-800 text-xs font-semibold transition-all flex items-center gap-2"
           >
             <Download className="w-4 h-4" />
-            <span>{isExporting ? 'Exportation...' : 'Télécharger mes données (JSON)'}</span>
+            <span>{isExporting? 'Exportation...': 'Télécharger mes données (JSON)'}</span>
           </button>
         </div>
 

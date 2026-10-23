@@ -25,6 +25,15 @@ export type TierLimits = {
    * getCustomInstructionsEffectiveMax().
    */
   customInstructions: number | null;
+  /**
+   * Nombre maximum de résultats PAR SOURCE dans mAI Search.
+   *
+   * La borne s'applique à chaque source séparément : l'onglet « Images »
+   * peut donc afficher autant d'images que l'onglet « Web » affiche de
+   * liens. C'est le seul endroit où ce plafond est écrit — l'interface et la
+   * route API le lisent, elles ne le recalculent pas.
+   */
+  searchResults: number;
 };
 
 /**
@@ -53,6 +62,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 5,
     label: "Free",
     memoryEntries: 50,
+    searchResults: 50,
     speechWeeklyTokens: 30_000_000,
     storageBytes: 10 * GiB,
   },
@@ -64,6 +74,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 35,
     label: "Max",
     memoryEntries: 150,
+    searchResults: 200,
     speechWeeklyTokens: 300_000_000,
     storageBytes: 60 * GiB,
   },
@@ -74,6 +85,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 10,
     label: "Plus",
     memoryEntries: 75,
+    searchResults: 100,
     speechWeeklyTokens: 75_000_000,
     storageBytes: 20 * GiB,
   },
@@ -84,6 +96,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 20,
     label: "Pro",
     memoryEntries: 100,
+    searchResults: 150,
     speechWeeklyTokens: 150_000_000,
     storageBytes: 40 * GiB,
   },
@@ -119,6 +132,16 @@ export function getTierStorageBytes(tier?: string | null): number {
 
 export function getTierMemoryEntries(tier?: string | null): number {
   return getTierLimits(tier).memoryEntries;
+}
+
+/**
+ * Nombre maximum de résultats PAR SOURCE dans mAI Search, pour un forfait.
+ *
+ * Un forfait illisible retombe sur « Free » : la limite se réduit, elle ne
+ * s'étend jamais. C'est le même fail-safe que pour tous les autres quotas.
+ */
+export function getTierSearchResultsMax(tier?: string | null): number {
+  return getTierLimits(tier).searchResults;
 }
 
 /**

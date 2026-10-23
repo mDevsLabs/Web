@@ -67,7 +67,7 @@ export type MemoryEntry = {
 
 type MemoryCardProps = {
   agentId?: string;
-  /** Onglet Mémoire : liste toutes les portées avec un filtre. */
+  /** Onglet Mémoire: liste toutes les portées avec un filtre. */
   allScopes?: boolean;
   projectId?: string;
 };
@@ -193,7 +193,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       if (allScopes && !matchesScopeFilter(m, scopeFilter)) {
         return false;
       }
-      // Filtre « Important » (booléen isImportant, pas une catégorie)
+      // Filtre « Important» (booléen isImportant, pas une catégorie)
       if (importantOnly && !m.isImportant) {
         return false;
       }
@@ -249,7 +249,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       setNewContent("");
       setNewTagsInput("");
       setNewIsImportant(false);
-      toast.success("Mémoire enregistrée avec succès ! ✨");
+      toast.success("Mémoire enregistrée avec succès! ");
       await mutate();
     } catch {
       toast.error("Erreur d'enregistrement");
@@ -321,7 +321,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       }
       toast.success(
         nextVal
-          ? "Marqué comme important ⭐ (injecté en priorité)"
+          ? "Marqué comme important (injecté en priorité)"
           : "Retiré des mémoires importantes"
       );
       await mutate();
@@ -357,7 +357,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         return;
       }
       toast.success(
-        nextVal ? "Mémoire activée ⚡" : "Mémoire suspendue (non injectée) ⏸️"
+        nextVal ? "Mémoire activée " : "Mémoire suspendue (non injectée) "
       );
       await mutate();
     } catch {
@@ -410,7 +410,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       setSummaryText(data.summary || "");
       setSummaryCount(data.count || 0);
       setSummaryModalOpen(true);
-      toast.success("Résumé de mémoire généré avec succès ! 🧠");
+      toast.success("Résumé de mémoire généré avec succès! ");
     } catch {
       toast.error("Erreur de communication avec le serveur");
     } finally {
@@ -449,7 +449,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success("Mémoire exportée en format JSON ! 📤");
+    toast.success("Mémoire exportée en format JSON! ");
   };
 
   // Sélection de fichier JSON pour Import
@@ -525,7 +525,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         return;
       }
       toast.success(
-        `Import réussi ! 🎉 ${data.count} mémoires ajoutées${data.skipped ? ` (${data.skipped} doublons ignorés)` : ""}.`
+        `Import réussi! ${data.count} mémoires ajoutées${data.skipped ? ` (${data.skipped} doublons ignorés)` : ""}.`
       );
       setImportModalOpen(false);
       setPendingImportData(null);
@@ -571,7 +571,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           </p>
         </div>
 
-        {/* Actions header : Import/Export, Résumé, Quota */}
+        {/* Actions header: Import/Export, Résumé, Quota */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {/* Export JSON */}
           <Button
@@ -656,14 +656,14 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           </div>
         </div>
 
-        {/* Filtres : portée (si allScopes) + bascule « Important ».
-            Les catégories ont été retirées — « Important » est un booléen
+        {/* Filtres: portée (si allScopes) + bascule « Important».
+            Les catégories ont été retirées — « Important» est un booléen
             (isImportant), pas une catégorie, et reste donc filtrable. */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {allScopes ? (
             <>
               <span className="text-[11px] text-muted-foreground font-medium mr-1">
-                Portée :
+                Portée:
               </span>
               {SCOPE_FILTERS.map((filter) => {
                 const count = memories.filter((m) =>
@@ -714,7 +714,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               handleAdd();
             }
           }}
-          placeholder="Ex : Je m'appelle Mathias, je préfère les réponses concises en français et du code TypeScript..."
+          placeholder="Ex: Je m'appelle Mathias, je préfère les réponses concises en français et du code TypeScript..."
           rows={2}
           value={newContent}
         />
@@ -931,7 +931,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         {m.content}
                       </p>
 
-                      {/* Badges : Tags, Scope, Date */}
+                      {/* Badges: Tags, Scope, Date */}
                       <div className="flex items-center gap-1.5 flex-wrap mt-1.5 text-[10.5px]">
                         {/* Badges Tags */}
                         {m.tags && m.tags.length > 0
@@ -973,7 +973,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       </div>
                     </div>
 
-                    {/* Actions sur la carte : Interrupteur On/Off, Modifier, Supprimer */}
+                    {/* Actions sur la carte: Interrupteur On/Off, Modifier, Supprimer */}
                     <div className="flex items-center gap-1 shrink-0">
                       {/* Interrupteur On/Off */}
                       <button
@@ -1040,12 +1040,12 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer cette mémoire ?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer cette mémoire?</AlertDialogTitle>
             <AlertDialogDescription>
               {pendingDelete
                 ? `« ${pendingDelete.content.slice(0, 160)}${
                     pendingDelete.content.length > 160 ? "…" : ""
-                  } » ne sera plus injectée dans les réponses de l'IA.`
+                  }» ne sera plus injectée dans les réponses de l'IA.`
                 : ""}
             </AlertDialogDescription>
           </AlertDialogHeader>
@@ -1089,7 +1089,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className="gap-1.5"
               onClick={() => {
                 navigator.clipboard.writeText(summaryText);
-                toast.success("Synthèse copiée dans le presse-papiers !");
+                toast.success("Synthèse copiée dans le presse-papiers!");
               }}
               size="sm"
               type="button"
@@ -1132,7 +1132,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     {pendingImportData.length} élément(s) détecté(s)
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    Quota actuel : {scopeCount}/{limit} ({remainingSlots}{" "}
+                    Quota actuel: {scopeCount}/{limit} ({remainingSlots}{" "}
                     place(s) restante(s))
                   </p>
                 </div>

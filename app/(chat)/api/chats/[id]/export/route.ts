@@ -116,7 +116,7 @@ function toPrintableHtml(
         <article class="message ${isUser ? "message-user" : "message-assistant"}">
           <div class="message-header">
             <span class="author-badge ${isUser ? "badge-user" : "badge-assistant"}">
-              ${isUser ? "👤 Vous" : "✨ mAI"}
+              ${isUser ? " Vous" : " mAI"}
             </span>
             <time class="message-time">${time}</time>
           </div>
@@ -135,7 +135,7 @@ function toPrintableHtml(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(chat.title)} — Export mAI</title>
   <style>
-    :root {
+:root {
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --bg: #ffffff;
       --text: #111827;
@@ -150,7 +150,7 @@ function toPrintableHtml(
       --primary: #2563eb;
     }
     @media (prefers-color-scheme: dark) {
-      :root {
+:root {
         --bg: #0b0f17;
         --text: #f3f4f6;
         --muted: #9ca3af;
@@ -181,12 +181,12 @@ function toPrintableHtml(
       gap: 1rem;
     }
     h1 { font-size: 1.65rem; font-weight: 700; color: var(--text); line-height: 1.3; }
-    .meta { font-size: 0.875rem; color: var(--muted); margin-top: 0.35rem; }
-    .actions-bar {
+.meta { font-size: 0.875rem; color: var(--muted); margin-top: 0.35rem; }
+.actions-bar {
       display: flex;
       gap: 0.5rem;
     }
-    .btn-print {
+.btn-print {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -201,18 +201,18 @@ function toPrintableHtml(
       text-decoration: none;
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
-    .btn-print:hover { opacity: 0.9; }
-    .chat-container { display: flex; flex-direction: column; gap: 1.25rem; }
-    .message {
+.btn-print:hover { opacity: 0.9; }
+.chat-container { display: flex; flex-direction: column; gap: 1.25rem; }
+.message {
       border-radius: 0.85rem;
       padding: 1.25rem;
       border: 1px solid var(--border);
       page-break-inside: avoid;
       break-inside: avoid;
     }
-    .message-user { background: var(--user-bg); border-color: var(--user-border); }
-    .message-assistant { background: var(--ai-bg); border-color: var(--ai-border); }
-    .message-header {
+.message-user { background: var(--user-bg); border-color: var(--user-border); }
+.message-assistant { background: var(--ai-bg); border-color: var(--ai-border); }
+.message-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -220,31 +220,31 @@ function toPrintableHtml(
       padding-bottom: 0.4rem;
       border-bottom: 1px solid rgba(150,150,150,0.15);
     }
-    .author-badge {
+.author-badge {
       font-weight: 700;
       font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
     }
-    .message-time { font-size: 0.75rem; color: var(--muted); }
-    .message-body { font-size: 0.95rem; }
-    .message-body p { margin-bottom: 0.75rem; }
-    .message-body p:last-child { margin-bottom: 0; }
-    .inline-code {
+.message-time { font-size: 0.75rem; color: var(--muted); }
+.message-body { font-size: 0.95rem; }
+.message-body p { margin-bottom: 0.75rem; }
+.message-body p:last-child { margin-bottom: 0; }
+.inline-code {
       background: rgba(120, 120, 120, 0.15);
       padding: 0.15rem 0.35rem;
       border-radius: 0.25rem;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.85em;
     }
-    .code-wrapper {
+.code-wrapper {
       margin: 0.75rem 0;
       background: var(--code-bg);
       border-radius: 0.5rem;
       overflow: hidden;
     }
-    .code-lang {
+.code-lang {
       background: rgba(255,255,255,0.08);
       color: #94a3b8;
       padding: 0.25rem 0.75rem;
@@ -272,12 +272,12 @@ function toPrintableHtml(
     @media print {
       body { padding: 0; max-width: 100%; color: #000; background: #fff; }
       header { border-bottom: 1px solid #ccc; }
-      .actions-bar { display: none !important; }
-      .message { border: 1px solid #ddd; background: transparent !important; }
-      .code-wrapper { background: #f8fafc !important; border: 1px solid #cbd5e1; }
-      pre, code { color: #0f172a !important; }
-      .code-lang { color: #475569 !important; background: #e2e8f0 !important; }
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+.actions-bar { display: none!important; }
+.message { border: 1px solid #ddd; background: transparent!important; }
+.code-wrapper { background: #f8fafc!important; border: 1px solid #cbd5e1; }
+      pre, code { color: #0f172a!important; }
+.code-lang { color: #475569!important; background: #e2e8f0!important; }
+      * { -webkit-print-color-adjust: exact!important; print-color-adjust: exact!important; }
     }
   </style>
 </head>
@@ -288,7 +288,7 @@ function toPrintableHtml(
       <div class="meta">Exporté le ${dateStr} • ${messages.length} messages</div>
     </div>
     <div class="actions-bar">
-      <button class="btn-print" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
+      <button class="btn-print" onclick="window.print()"> Imprimer / Enregistrer en PDF</button>
     </div>
   </header>
 

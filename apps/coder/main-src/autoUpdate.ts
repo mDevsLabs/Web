@@ -214,7 +214,7 @@ function commitFromReleaseBody(body: string | undefined): string {
 }
 
 /**
- * Les préversions gardent le même `version` (0.9.1) et n'avancent que par tag.
+ * Les préversions gardent le même `version` (0.9.2) et n'avancent que par tag.
  * electron-updater compare des versions sémantiques et conclut donc à tort
  * « à jour ». On compare le commit publié dans la dernière release au SHA
  * compilé dans cette build pour afficher malgré tout la mise à jour.

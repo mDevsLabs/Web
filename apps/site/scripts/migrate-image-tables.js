@@ -3,7 +3,7 @@ import { neon } from "@neondatabase/serverless";
 async function main() {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
-    console.error("DATABASE_URL non définie dans l'environnement !");
+    console.error("DATABASE_URL non définie dans l'environnement!");
     process.exit(1);
   }
 
@@ -23,7 +23,7 @@ async function main() {
   `;
 
   await sql`
-    CREATE INDEX IF NOT EXISTS idx_image_usage_user_date 
+    CREATE INDEX IF NOT EXISTS idx_image_usage_user_date
     ON mprojects_daily_image_usage (user_id, usage_date);
   `;
 
@@ -44,11 +44,11 @@ async function main() {
   `;
 
   await sql`
-    CREATE INDEX IF NOT EXISTS idx_image_gen_user_created 
+    CREATE INDEX IF NOT EXISTS idx_image_gen_user_created
     ON mprojects_image_generations (user_id, created_at DESC);
   `;
 
-  console.log("✅ Migration des tables d'images terminée avec succès !");
+  console.log(" Migration des tables d'images terminée avec succès!");
 }
 
 main().catch((err) => {

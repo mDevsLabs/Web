@@ -323,6 +323,11 @@ export const NotificationsPage: React.FC<{
       );
       ApiService.markNotificationRead(notif.id, true).catch(() => {});
     }
+    // Cette page reste la vue Vibe de la liste : elle lit la source Vibe, pas
+    // la table unifiée de l'hôte. Les deux restent COHÉRENTES parce que la
+    // cloche mAI propage le « lu » à la source (route PATCH
+    // /api/notifications/:id) — marquer lu ici, ou là, produit le même
+    // état des deux côtés.
     if (notif.type === "dm") {
       navigate("/messages");
     } else if (notif.post_id) {
@@ -419,6 +424,11 @@ export const NotificationsPage: React.FC<{
           </h1>
           <p className="text-xs text-zinc-500">
             Activités, mentions et mentions J'aime
+          </p>
+          <p className="text-[11px] text-zinc-600 mt-1">
+            Cette page montre l'activité Vibe. La cloche mAI regroupe aussi les
+            alertes de mAI et de Wakies : marquer lu ici ou là produit le même
+            état des deux côtés.
           </p>
         </div>
 

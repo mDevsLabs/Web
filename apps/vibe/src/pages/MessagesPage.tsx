@@ -51,7 +51,7 @@ const formatFileSize = (bytes: number): string => {
 export const MessagesPage: React.FC = () => {
   const { user } = useAuth();
 
-  // Limites par forfait : messages 3 000 (Free) / 10 000 (Plus+) caractères,
+  // Limites par forfait: messages 3 000 (Free) / 10 000 (Plus+) caractères,
   // médias 50 Mo (Free) / 1 Go (Plus+) au total par message.
   const messageCharLimit = getDmCharLimit(user?.tier);
   const mediaBytesLimit = getMediaBytesLimit(user?.tier);
@@ -92,7 +92,7 @@ export const MessagesPage: React.FC = () => {
   // Modale rapide de thème de discussion
   const [themeModalOpen, setThemeModalOpen] = useState(false);
 
-  // Interactions par message : réactions, réponse, transfert, copie
+  // Interactions par message: réactions, réponse, transfert, copie
   const [actionMenuFor, setActionMenuFor] = useState<string | null>(null);
   const [replyTo, setReplyTo] = useState<DirectMessage | null>(null);
   const [forwardingMessage, setForwardingMessage] = useState<DirectMessage | null>(null);
@@ -100,7 +100,7 @@ export const MessagesPage: React.FC = () => {
   const [customPresetOpen, setCustomPresetOpen] = useState(false);
   const [customPresetText, setCustomPresetText] = useState('');
 
-  // Modération : menu conversation, renommage, signalement, blocage, suppression
+  // Modération: menu conversation, renommage, signalement, blocage, suppression
   const [convMenuOpen, setConvMenuOpen] = useState(false);
   const [renameModalOpen, setRenameModalOpen] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
@@ -120,7 +120,7 @@ export const MessagesPage: React.FC = () => {
   const [translatePickerFor, setTranslatePickerFor] = useState<string | null>(null);
   // Traduction automatique des messages entrants (réglage Paramètres → Messages)
   const [autoTranslateLang, setAutoTranslateLang] = useState<string | null>(null);
-  // Permalien (?conv=<id>&msg=<id>) : scroll + surbrillance temporaire
+  // Permalien (?conv=<id>&msg=<id>): scroll + surbrillance temporaire
   const [pendingMsgId, setPendingMsgId] = useState<string | null>(null);
   const [highlightedMessageId, setHighlightedMessageId] = useState<string | null>(null);
   // Modale de gestion du groupe (photo, nom, membres, administration)
@@ -129,9 +129,9 @@ export const MessagesPage: React.FC = () => {
   const [groupSaving, setGroupSaving] = useState(false);
   const [groupAvatarUploading, setGroupAvatarUploading] = useState(false);
   const groupAvatarInputRef = useRef<HTMLInputElement>(null);
-  // Mentions @ : autocomplétion dans le composeur de groupe
+  // Mentions @: autocomplétion dans le composeur de groupe
   const [mentionQuery, setMentionQuery] = useState<string | null>(null);
-  // Livre : commande « / » → sélecteur des publications du Livre (carte jointe)
+  // Livre: commande « /» → sélecteur des publications du Livre (carte jointe)
   const [toolQuery, setToolQuery] = useState<string | null>(null);
   const [bookPickerOpen, setBookPickerOpen] = useState(false);
   const [bookPickerQuery, setBookPickerQuery] = useState('');
@@ -149,7 +149,7 @@ export const MessagesPage: React.FC = () => {
   const [convSearchQuery, setConvSearchQuery] = useState('');
   const [convSearchApiResults, setConvSearchApiResults] = useState<DirectMessage[]>([]);
   const [convSearchIndex, setConvSearchIndex] = useState(0);
-  // Séparateur « Non lus » + bouton flottant ↓
+  // Séparateur « Non lus» + bouton flottant ↓
   const [firstUnreadId, setFirstUnreadId] = useState<string | null>(null);
   const [showJumpToUnread, setShowJumpToUnread] = useState(false);
   const threadRef = useRef<HTMLDivElement>(null);
@@ -170,22 +170,22 @@ export const MessagesPage: React.FC = () => {
   const activeConv = conversations.find((c) => String(c.partner_id) === String(activePartnerId)) || null;
 
   const isGroupConv = Boolean(activeConv?.is_group) || String(activePartnerId || '').startsWith('group:');
-  const groupId = isGroupConv ? String(activePartnerId).replace(/^group:/, '') : null;
+  const groupId = isGroupConv? String(activePartnerId).replace(/^group:/, ''): null;
 
-  // Conversation de Livre : mêmes mécanismes que les groupes + publications
-  // du Livre joignables via la commande « / » (carte cliquable).
+  // Conversation de Livre: mêmes mécanismes que les groupes + publications
+  // du Livre joignables via la commande « /» (carte cliquable).
   const isBookConv = Boolean(isGroupConv && activeConv?.is_book);
-  const bookId = isBookConv ? (activeConv?.book_id || null) : null;
+  const bookId = isBookConv? (activeConv?.book_id || null): null;
   const navigate = useNavigate();
 
   // Le nom/photo affichés se resynchronisent quand la liste des conversations arrive
   // (deep-link, renommage de groupe, nouvel avatar…)
   useEffect(() => {
-    if (!activePartnerId || !activeConv) return;
+    if (!activePartnerId ||!activeConv) return;
     setActivePartner((prev) => {
       if (!prev) return prev;
       const next = {
-        ...prev,
+...prev,
         username: activeConv.partner_username || prev.username,
         display_name: activeConv.partner_display_name || prev.display_name,
         avatar_url: activeConv.partner_avatar_url || prev.avatar_url,
@@ -201,7 +201,7 @@ export const MessagesPage: React.FC = () => {
     });
   }, [activeConv, activePartnerId]);
 
-  // Mentions urgentes : @tous (tout le groupe) ou @username (membre précis)
+  // Mentions urgentes: @tous (tout le groupe) ou @username (membre précis)
   const hasUrgentMention = /@[a-zA-Z0-9_]{1,30}/.test(messagePlain) && (
     /@tous\b/i.test(messagePlain) ||
     (activeConv?.members || []).some((m) => new RegExp(`@${m.username}\\b`, 'i').test(messagePlain))
@@ -225,13 +225,13 @@ export const MessagesPage: React.FC = () => {
   const [isSearchingUsers, setIsSearchingUsers] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  // Dernière conversation demandée : ignore les réponses réseau obsolètes
+  // Dernière conversation demandée: ignore les réponses réseau obsolètes
   const lastFetchPartnerRef = useRef<string | number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const richInputRef = useRef<MessageRichInputHandle>(null);
   const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Indicateur de frappe du partenaire (« @x est en train d'écrire… »)
+  // Indicateur de frappe du partenaire (« @x est en train d'écrire…»)
   const [partnerTyping, setPartnerTyping] = useState(false);
   const typingHideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Heartbeat de notre propre frappe (throttlé côté client)
@@ -245,13 +245,13 @@ export const MessagesPage: React.FC = () => {
     resetTranscript,
   } = useSpeechRecognition({
     onResult: (text) => {
-      // Dictée : insertion au curseur (ou en fin) avec espace de séparation.
+      // Dictée: insertion au curseur (ou en fin) avec espace de séparation.
       const el = richInputRef.current;
       if (!el) {
-        setMessageInput((prev) => (prev ? `${prev} ${text}` : text));
+        setMessageInput((prev) => (prev? `${prev} ${text}`: text));
         return;
       }
-      const prefix = el.getText().trim() ? ' ' : '';
+      const prefix = el.getText().trim()? ' ': '';
       el.insertText(`${prefix}${text}`);
     },
   });
@@ -264,8 +264,8 @@ export const MessagesPage: React.FC = () => {
       // Si une conversation est actuellement affichée, son compteur de non lu passe à 0
       const list = (res.conversations || []).map((c) =>
         activePartnerId && String(c.partner_id) === String(activePartnerId)
-          ? { ...c, unread_count: 0 }
-          : c
+? {...c, unread_count: 0 }
+: c
       );
       setConversations(list);
     } catch {
@@ -281,8 +281,8 @@ export const MessagesPage: React.FC = () => {
       // Invalider le cache pour forcer la lecture réelle et fraîche
       ApiService.invalidateCache(`/v1/dms/messages/${partnerId}`);
       const res = await ApiService.getMessages(partnerId);
-      // Une autre conversation a été demandée entre-temps : réponse obsolète
-      if (String(lastFetchPartnerRef.current) !== String(partnerId)) return;
+      // Une autre conversation a été demandée entre-temps: réponse obsolète
+      if (String(lastFetchPartnerRef.current)!== String(partnerId)) return;
       const msgs = res.messages || [];
       setMessages(msgs);
       setPinnedMessages(res.pinned_messages || []);
@@ -299,28 +299,28 @@ export const MessagesPage: React.FC = () => {
         }
       }
       if (Object.keys(restored).length > 0) {
-        setTranslations((prev) => ({ ...restored, ...prev }));
+        setTranslations((prev) => ({...restored,...prev }));
       }
       // Premier message non lu (hors messages propres) → séparateur + bouton ↓
-      // Groupes : la lecture est suivie par read_by (is_read n'y est jamais posé)
+      // Groupes: la lecture est suivie par read_by (is_read n'y est jamais posé)
       const isGroupThread = String(partnerId).startsWith('group:');
       const firstUnread = msgs.find((m) => {
         if (!user || String(m.sender_id) === String(user.id)) return false;
         if (isGroupThread) {
           const readers = (((m as any).read_by || []) as any[]).map(String);
-          return !readers.includes(String(user.id));
+          return!readers.includes(String(user.id));
         }
-        return !m.is_read;
+        return!m.is_read;
       });
-      setFirstUnreadId(firstUnread ? String(firstUnread.id) : null);
+      setFirstUnreadId(firstUnread? String(firstUnread.id): null);
       setShowJumpToUnread(Boolean(firstUnread));
 
       // Supprimer immédiatement le point/badge de non lu sur la conversation ouverte
       setConversations((prev) =>
         prev.map((c) =>
           String(c.partner_id) === String(partnerId)
-            ? { ...c, unread_count: 0 }
-            : c
+? {...c, unread_count: 0 }
+: c
         )
       );
 
@@ -332,7 +332,7 @@ export const MessagesPage: React.FC = () => {
       setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 50);
-      // Le séparateur « Non lus » disparaît 3 s après le scroll en bas
+      // Le séparateur « Non lus» disparaît 3 s après le scroll en bas
       setTimeout(() => {
         setShowJumpToUnread(false);
       }, 3000);
@@ -343,7 +343,7 @@ export const MessagesPage: React.FC = () => {
 
   useEffect(() => {
     fetchConversations();
-    // Filet de sécurité : rafraîchissement léger toutes les 60 s.
+    // Filet de sécurité: rafraîchissement léger toutes les 60 s.
     // L'instantanéité est assurée par le flux SSE (RealtimeService).
     const timer = setInterval(() => {
       if (document.hidden) return;
@@ -353,16 +353,16 @@ export const MessagesPage: React.FC = () => {
     return () => clearInterval(timer);
   }, [activePartnerId, fetchConversations, fetchMessages]);
 
-  // ── Temps réel (SSE) : nouveaux messages + indicateur de frappe ──
+  // ── Temps réel (SSE): nouveaux messages + indicateur de frappe ──
   useEffect(() => {
     const unsubscribe = RealtimeService.on((type, payload) => {
       if (type === 'dm_message' && payload) {
         const fromActivePartner =
-          activePartnerId != null &&
+          activePartnerId!= null &&
           (String(payload.sender_id) === String(activePartnerId) ||
             (isGroupConv && payload.conversation_id && String(payload.conversation_id) === String(groupId)));
-        const mine = payload.sender_id != null && user && String(payload.sender_id) === String(user.id);
-        if (fromActivePartner && !mine) {
+        const mine = payload.sender_id!= null && user && String(payload.sender_id) === String(user.id);
+        if (fromActivePartner &&!mine) {
           // Dédupliqué contre l'optimiste/le rafraîchissement par id
           setMessages((prev) => {
             if (prev.some((m) => String(m.id) === String(payload.id))) return prev;
@@ -374,29 +374,29 @@ export const MessagesPage: React.FC = () => {
           ApiService.invalidateCache('/dms/conversations');
           fetchConversations();
           // Traduction automatique des messages entrants (si activée dans les Paramètres)
-          // Les clés serveur sont en minuscules : comparer sans tenir compte de la casse
+          // Les clés serveur sont en minuscules: comparer sans tenir compte de la casse
           const autoTranslateKey = (autoTranslateLang || '').toLowerCase();
           const hasStoredTranslation = autoTranslateKey
-            ? Object.keys((payload as any).translations || {}).some((k) => k.toLowerCase() === autoTranslateKey)
-            : false;
-          if (autoTranslateLang && !hasStoredTranslation) {
+? Object.keys((payload as any).translations || {}).some((k) => k.toLowerCase() === autoTranslateKey)
+: false;
+          if (autoTranslateLang &&!hasStoredTranslation) {
             const plain = htmlToPlainText(String(payload.content || ''));
             if (plain.trim()) {
               ApiService.translateText(plain, autoTranslateLang)
-                .then((tr) => {
+.then((tr) => {
                   if (tr?.translation) {
-                    setTranslations((prev) => ({ ...prev, [payload.id]: tr.translation }));
+                    setTranslations((prev) => ({...prev, [payload.id]: tr.translation }));
                     ApiService.saveMessageTranslation(String(payload.id), autoTranslateLang, tr.translation, (tr as any).detected_language).catch(() => {});
                   }
                 })
-                .catch(() => {});
+.catch(() => {});
             }
           }
           setTimeout(() => {
             messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
           }, 60);
         } else if (!mine) {
-          // Autre conversation : met à jour la liste (aperçu, tri, badge)
+          // Autre conversation: met à jour la liste (aperçu, tri, badge)
           ApiService.invalidateCache('/dms/');
           fetchConversations();
         }
@@ -404,20 +404,20 @@ export const MessagesPage: React.FC = () => {
         setMessages((prev) =>
           prev.map((m) =>
             String(m.id) === String(payload.id)
-              ? {
-                  ...m,
+? {
+...m,
                   content: payload.content,
                   is_edited: true,
                   edited_at: payload.edited_at || new Date().toISOString(),
                 }
-              : m
+: m
           )
         );
         fetchConversations();
       } else if (type === 'dm_message_deleted' && payload) {
-        // « Supprimé pour tout le monde » : retire le message (et son épingle)
-        setMessages((prev) => prev.filter((m) => String(m.id) !== String(payload.id)));
-        setPinnedMessages((prev) => prev.filter((p) => String(p.id) !== String(payload.id)));
+        // « Supprimé pour tout le monde»: retire le message (et son épingle)
+        setMessages((prev) => prev.filter((m) => String(m.id)!== String(payload.id)));
+        setPinnedMessages((prev) => prev.filter((p) => String(p.id)!== String(payload.id)));
       } else if (type === 'group_updated' && payload) {
         // Ajout/retrait de membre, renommage, transfert d'admin ou suppression du groupe
         ApiService.invalidateCache('/dms/');
@@ -430,14 +430,14 @@ export const MessagesPage: React.FC = () => {
             setMessages([]);
           } else {
             ApiService.getGroup(String(gid))
-              .then((res) => res?.group && setActiveGroupInfo(res.group))
-              .catch(() => {});
+.then((res) => res?.group && setActiveGroupInfo(res.group))
+.catch(() => {});
             if (activePartnerId) fetchMessages(activePartnerId);
           }
         }
       } else if (type === 'dm_typing' && payload) {
         const fromActivePartner =
-          activePartnerId != null && String(payload.user_id) === String(activePartnerId);
+          activePartnerId!= null && String(payload.user_id) === String(activePartnerId);
         if (!fromActivePartner) return;
         if (typingHideTimeoutRef.current) clearTimeout(typingHideTimeoutRef.current);
         if (payload.typing === false) {
@@ -457,41 +457,41 @@ export const MessagesPage: React.FC = () => {
 
   // Réinitialise l'indicateur de frappe quand on change de conversation
   useEffect(() => {
-    setPartnerTyping((prev) => (prev ? false : prev));
+    setPartnerTyping((prev) => (prev? false: prev));
   }, [activePartnerId]);
 
-  // Détails de groupe : rafraîchis à l'ouverture du menu, de la modale d'ajout
+  // Détails de groupe: rafraîchis à l'ouverture du menu, de la modale d'ajout
   // ou de la modale d'infos (le premier rendu peut précéder fetchConversations).
   useEffect(() => {
     setActiveGroupInfo(null);
   }, [activePartnerId]);
 
   useEffect(() => {
-    if ((!convMenuOpen && !addMembersOpen && !groupInfoOpen) || !isGroupConv || !groupId) return;
+    if ((!convMenuOpen &&!addMembersOpen &&!groupInfoOpen) ||!isGroupConv ||!groupId) return;
     let cancelled = false;
     ApiService.getGroup(groupId)
-      .then((res) => {
+.then((res) => {
         if (!cancelled && res?.group) setActiveGroupInfo(res.group);
       })
-      .catch(() => {});
+.catch(() => {});
     return () => {
       cancelled = true;
     };
   }, [convMenuOpen, addMembersOpen, groupInfoOpen, isGroupConv, groupId]);
 
-  // Réglage « traduction automatique » des messages entrants (Paramètres → Messages)
+  // Réglage « traduction automatique» des messages entrants (Paramètres → Messages)
   useEffect(() => {
     ApiService.getSettings()
-      .then((res) => {
+.then((res) => {
         const s: any = res?.settings || {};
         if (s.dm_auto_translate) {
           setAutoTranslateLang(s.dm_translate_lang || browserToDeepLCode(navigator.language || 'fr-FR'));
         }
       })
-      .catch(() => {});
+.catch(() => {});
   }, []);
 
-  // Brouillon DM : restaure à l'ouverture de la conversation
+  // Brouillon DM: restaure à l'ouverture de la conversation
   useEffect(() => {
     if (!activePartnerId) return;
     try {
@@ -506,11 +506,11 @@ export const MessagesPage: React.FC = () => {
     setConvSearchOpen(false);
     setConvSearchQuery('');
     setConvSearchApiResults([]);
-    // Les états « réponse » et « édition » ne doivent pas fuir entre conversations
+    // Les états « réponse» et « édition» ne doivent pas fuir entre conversations
     setReplyTo(null);
     setEditingMessage(null);
     setMentionQuery(null);
-    // Livre : pièce jointe + sélecteur de publications réinitialisés
+    // Livre: pièce jointe + sélecteur de publications réinitialisés
     setToolQuery(null);
     setAttachedPost(null);
     setBookPickerOpen(false);
@@ -518,7 +518,7 @@ export const MessagesPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePartnerId]);
 
-  // Brouillon DM : sauvegarde différée 500 ms après la frappe
+  // Brouillon DM: sauvegarde différée 500 ms après la frappe
   useEffect(() => {
     if (!activePartnerId || editingMessage) return;
     if (draftSaveTimer.current) clearTimeout(draftSaveTimer.current);
@@ -526,10 +526,10 @@ export const MessagesPage: React.FC = () => {
       try {
         if (messagePlain.trim()) {
           localStorage.setItem(dmDraftKey(activePartnerId), messageInput);
-          setDmDraftKeys((prev) => (prev.includes(dmDraftKey(activePartnerId)) ? prev : [...prev, dmDraftKey(activePartnerId)]));
+          setDmDraftKeys((prev) => (prev.includes(dmDraftKey(activePartnerId))? prev: [...prev, dmDraftKey(activePartnerId)]));
         } else {
           localStorage.removeItem(dmDraftKey(activePartnerId));
-          setDmDraftKeys((prev) => prev.filter((k) => k !== dmDraftKey(activePartnerId)));
+          setDmDraftKeys((prev) => prev.filter((k) => k!== dmDraftKey(activePartnerId)));
         }
       } catch {}
     }, 500);
@@ -538,31 +538,31 @@ export const MessagesPage: React.FC = () => {
     };
   }, [messageInput, messagePlain, activePartnerId, editingMessage]);
 
-  // SSE : épinglage/désépinglage temps réel des deux côtés
+  // SSE: épinglage/désépinglage temps réel des deux côtés
   useEffect(() => {
     const unsubscribe = RealtimeService.on((type, payload) => {
-      if (type !== 'dm_pin_updated' || !payload || !activePartnerId) return;
+      if (type!== 'dm_pin_updated' ||!payload ||!activePartnerId) return;
       ApiService.invalidateCache(`/v1/dms/messages/${activePartnerId}`);
       ApiService.getMessages(activePartnerId)
-        .then((res) => setPinnedMessages(res.pinned_messages || []))
-        .catch(() => {});
+.then((res) => setPinnedMessages(res.pinned_messages || []))
+.catch(() => {});
     });
     return unsubscribe;
   }, [activePartnerId]);
 
-  // Deep-link : /messages?partner=<id> (recherche globale) ou
+  // Deep-link: /messages?partner=<id> (recherche globale) ou
   // /messages?conv=<id>&msg=<id> (permalien copié depuis le menu message)
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
       const partner = params.get('conv') || params.get('partner');
       const msgId = params.get('msg');
-      if (partner && !activePartnerId) {
+      if (partner &&!activePartnerId) {
         const pid = partner;
         setActivePartnerId(pid);
         setActivePartner({
           id: pid,
-          username: String(pid).startsWith('group:') ? 'Groupe' : `user-${pid}`,
+          username: String(pid).startsWith('group:')? 'Groupe': `user-${pid}`,
         });
         if (msgId) setPendingMsgId(msgId);
         fetchMessages(pid);
@@ -571,7 +571,7 @@ export const MessagesPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Permalien : scroll + surbrillance une fois le message chargé
+  // Permalien: scroll + surbrillance une fois le message chargé
   useEffect(() => {
     if (!pendingMsgId || messages.length === 0) return;
     if (!messages.some((m) => String(m.id) === String(pendingMsgId))) return;
@@ -580,7 +580,7 @@ export const MessagesPage: React.FC = () => {
     setTimeout(() => {
       scrollToMessage(id);
       setHighlightedMessageId(id);
-      setTimeout(() => setHighlightedMessageId((cur) => (cur === id ? null : cur)), 2500);
+      setTimeout(() => setHighlightedMessageId((cur) => (cur === id? null: cur)), 2500);
     }, 120);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages, pendingMsgId]);
@@ -598,8 +598,8 @@ export const MessagesPage: React.FC = () => {
     setConversations((prev) =>
       prev.map((c) =>
         String(c.partner_id) === String(conv.partner_id)
-          ? { ...c, unread_count: 0 }
-          : c
+? {...c, unread_count: 0 }
+: c
       )
     );
     setConvMenuOpen(false);
@@ -654,7 +654,7 @@ export const MessagesPage: React.FC = () => {
   const handleRemoveMember = async (memberUserId: string) => {
     if (!groupId) return;
     const ok = await confirm({
-      title: 'Retirer ce membre ?',
+      title: 'Retirer ce membre?',
       message: "Cette personne n'aura plus accès à la conversation de groupe.",
       confirmLabel: 'Retirer',
       tone: 'danger',
@@ -676,11 +676,11 @@ export const MessagesPage: React.FC = () => {
   const { confirm, confirmInput, confirmDialog } = useConfirmDialog();
 
   // Admin fiable dès l'ouverture du menu (activeConv peut être null au 1er rendu)
-  const groupIsAdmin = activeGroupInfo?.is_admin ?? Boolean(activeConv?.is_admin);
-  const groupMembers = activeGroupInfo?.members ?? (activeConv?.members || []);
+  const groupIsAdmin = activeGroupInfo?.is_admin?? Boolean(activeConv?.is_admin);
+  const groupMembers = activeGroupInfo?.members?? (activeConv?.members || []);
   const existingGroupMemberIds = new Set(groupMembers.map((mm) => String(mm.user_id)));
 
-  // ── Mise en forme du message : gras, italique, souligné, barré, lien ──
+  // ── Mise en forme du message: gras, italique, souligné, barré, lien ──
   // (les commandes s'appliquent à la sélection du composeur riche)
   const handleToolbarCommand = (cmd: 'bold' | 'italic' | 'underline' | 'strikeThrough') => {
     richInputRef.current?.execCommand(cmd);
@@ -736,7 +736,7 @@ export const MessagesPage: React.FC = () => {
         await ApiService.unblockUser(activePartnerId);
       } else {
         const ok = await confirm({
-          title: `Bloquer @${activePartner?.username} ?`,
+          title: `Bloquer @${activePartner?.username}?`,
           message: 'Cette personne ne pourra plus vous envoyer de messages.',
           confirmLabel: 'Bloquer',
           tone: 'danger',
@@ -759,7 +759,7 @@ export const MessagesPage: React.FC = () => {
   const handleDeleteConversation = async () => {
     if (!activePartnerId || isModerating) return;
     const ok = await confirm({
-      title: 'Supprimer la conversation ?',
+      title: 'Supprimer la conversation?',
       message: 'Cette conversation et tous ses messages seront supprimés définitivement.',
       confirmLabel: 'Supprimer',
       tone: 'danger',
@@ -783,15 +783,15 @@ export const MessagesPage: React.FC = () => {
   const handleDeleteMessage = async (m: DirectMessage) => {
     setActionMenuFor(null);
     const ok = await confirm({
-      title: 'Supprimer ce message ?',
+      title: 'Supprimer ce message?',
       message: 'Le message sera supprimé pour tout le monde.',
       confirmLabel: 'Supprimer',
       tone: 'danger',
     });
     if (!ok) return;
     const snapshot = messages;
-    setMessages((prev) => prev.filter((x) => x.id !== m.id));
-    setPinnedMessages((prev) => prev.filter((p) => String(p.id) !== String(m.id)));
+    setMessages((prev) => prev.filter((x) => x.id!== m.id));
+    setPinnedMessages((prev) => prev.filter((p) => String(p.id)!== String(m.id)));
     try {
       await ApiService.deleteMessage(String(m.id));
     } catch (err: any) {
@@ -804,7 +804,7 @@ export const MessagesPage: React.FC = () => {
   const handleTranslateMessage = async (m: DirectMessage, targetLang?: string) => {
     setActionMenuFor(null);
     setTranslatePickerFor(null);
-    if (translations[m.id] && !targetLang) return;
+    if (translations[m.id] &&!targetLang) return;
     const target = (targetLang || translateLang || browserToDeepLCode(navigator.language || 'fr-FR')).toUpperCase();
     if (targetLang) {
       setTranslateLang(target);
@@ -817,7 +817,7 @@ export const MessagesPage: React.FC = () => {
       const plain = htmlToPlainText(m.content);
       const res = await ApiService.translateText(plain, target);
       if (res?.translation) {
-        setTranslations((prev) => ({ ...prev, [m.id]: res.translation }));
+        setTranslations((prev) => ({...prev, [m.id]: res.translation }));
         haptics.success();
         // Mémorisation serveur (survit au rechargement, partagée entre appareils)
         ApiService.saveMessageTranslation(String(m.id), target, res.translation, (res as any).detected_language).catch(() => {});
@@ -837,8 +837,8 @@ export const MessagesPage: React.FC = () => {
   const handleHideMessage = async (m: DirectMessage) => {
     setActionMenuFor(null);
     const snapshot = messages;
-    setMessages((prev) => prev.filter((x) => String(x.id) !== String(m.id)));
-    setPinnedMessages((prev) => prev.filter((p) => String(p.id) !== String(m.id)));
+    setMessages((prev) => prev.filter((x) => String(x.id)!== String(m.id)));
+    setPinnedMessages((prev) => prev.filter((p) => String(p.id)!== String(m.id)));
     try {
       await ApiService.hideMessage(String(m.id));
       haptics.success();
@@ -870,7 +870,7 @@ export const MessagesPage: React.FC = () => {
     try {
       if (isPinned) {
         await ApiService.unpinMessage(activePartnerId, String(m.id));
-        setPinnedMessages((prev) => prev.filter((p) => String(p.id) !== String(m.id)));
+        setPinnedMessages((prev) => prev.filter((p) => String(p.id)!== String(m.id)));
       } else {
         await ApiService.pinMessage(activePartnerId, String(m.id));
         if (activePartnerId) fetchMessages(activePartnerId);
@@ -895,10 +895,10 @@ export const MessagesPage: React.FC = () => {
     }
   };
 
-  /** Recherche dans la conversation : filtre local puis API si < 3 résultats. */
+  /** Recherche dans la conversation: filtre local puis API si < 3 résultats. */
   useEffect(() => {
     const q = convSearchQuery.trim();
-    if (!convSearchOpen || !activePartnerId || q.length < 3) {
+    if (!convSearchOpen ||!activePartnerId || q.length < 3) {
       setConvSearchApiResults([]);
       return;
     }
@@ -911,7 +911,7 @@ export const MessagesPage: React.FC = () => {
       try {
         const res = await ApiService.searchDMMessages(activePartnerId, q);
         const known = new Set(messages.map((m) => String(m.id)));
-        setConvSearchApiResults((res.messages || []).filter((m) => !known.has(String(m.id))));
+        setConvSearchApiResults((res.messages || []).filter((m) =>!known.has(String(m.id))));
       } catch {
         setConvSearchApiResults([]);
       }
@@ -987,18 +987,18 @@ export const MessagesPage: React.FC = () => {
     const newBytes = files.reduce((acc, f) => acc + f.size, 0);
 
     if (currentBytes + newBytes > mediaBytesLimit) {
-      setErrorMessage(`La taille totale des médias dépasse la limite de ${mediaLimitLabel} (sélection : ${((currentBytes + newBytes) / (1024 * 1024)).toFixed(1)} Mo).`);
+      setErrorMessage(`La taille totale des médias dépasse la limite de ${mediaLimitLabel} (sélection: ${((currentBytes + newBytes) / (1024 * 1024)).toFixed(1)} Mo).`);
       return;
     }
 
     for (const f of files) {
       if (
-        !f.type.startsWith('image/') &&
-        !f.type.startsWith('video/') &&
-        !f.type.startsWith('application/') &&
-        f.type !== 'text/plain'
+!f.type.startsWith('image/') &&
+!f.type.startsWith('video/') &&
+!f.type.startsWith('application/') &&
+        f.type!== 'text/plain'
       ) {
-        setErrorMessage(`Type de fichier non pris en charge : ${f.name}`);
+        setErrorMessage(`Type de fichier non pris en charge: ${f.name}`);
         return;
       }
     }
@@ -1011,10 +1011,10 @@ export const MessagesPage: React.FC = () => {
         const res = await ApiService.uploadFile(file);
         if (res.url) {
           const type: 'image' | 'video' | 'document' = file.type.startsWith('video/')
-            ? 'video'
-            : file.type.startsWith('image/')
-            ? 'image'
-            : 'document';
+? 'video'
+: file.type.startsWith('image/')
+? 'image'
+: 'document';
           setAttachedMediaList((prev) => [...prev, { url: res.url, type, size: file.size, fileName: file.name }]);
         }
       }
@@ -1026,7 +1026,7 @@ export const MessagesPage: React.FC = () => {
     }
   };
 
-  /** Heartbeat « en train d'écrire » : throttlé à 2,5 s pendant la saisie. */
+  /** Heartbeat « en train d'écrire»: throttlé à 2,5 s pendant la saisie. */
   const notifyTyping = () => {
     if (!activePartnerId || activePartnerBlocked) return;
     // L'indicateur de frappe n'existe qu'en 1-à-1 (partner_id numérique)
@@ -1038,22 +1038,22 @@ export const MessagesPage: React.FC = () => {
     }
   };
 
-  /** Callback du composeur riche : mémorise le HTML + le texte brut. */
+  /** Callback du composeur riche: mémorise le HTML + le texte brut. */
   const handleRichInputChange = (html: string, text: string) => {
     setMessageInput(html);
     setMessagePlain(text);
     // Autocomplétion @mention dans les groupes (dernier mot commençant par @)
     if (isGroupConv) {
       const mq = /@([a-zA-Z0-9_]{0,30})$/.exec(text);
-      setMentionQuery(mq ? mq[1] : null);
-    } else if (mentionQuery !== null) {
+      setMentionQuery(mq? mq[1]: null);
+    } else if (mentionQuery!== null) {
       setMentionQuery(null);
     }
-    // Commande « / » dans une conversation de Livre (joindre une publication)
+    // Commande « /» dans une conversation de Livre (joindre une publication)
     if (isBookConv) {
       const tq = /(?:^|\s)\/([a-zA-Z0-9_]{0,30})$/.exec(text);
-      setToolQuery(tq ? tq[1] : null);
-    } else if (toolQuery !== null) {
+      setToolQuery(tq? tq[1]: null);
+    } else if (toolQuery!== null) {
       setToolQuery(null);
     }
   };
@@ -1077,7 +1077,7 @@ export const MessagesPage: React.FC = () => {
       // Mise à jour optimiste
       setMessages((prev) =>
         prev.map((m) =>
-          m.id === msgId ? { ...m, content: newHtml, is_edited: true, edited_at: new Date().toISOString() } : m
+          m.id === msgId? {...m, content: newHtml, is_edited: true, edited_at: new Date().toISOString() }: m
         )
       );
       setEditingMessage(null);
@@ -1100,12 +1100,12 @@ export const MessagesPage: React.FC = () => {
     const safeHtml = sanitizeRichHtml(messageInput);
     const mediaUrls = attachedMediaList.map((m) => m.url).join(' ');
     const textToSend = mediaUrls
-      ? `${safeHtml.trim()}${safeHtml.trim() ? '<br>' : ''}${mediaUrls}`.trim()
-      : safeHtml.trim();
+? `${safeHtml.trim()}${safeHtml.trim()? '<br>': ''}${mediaUrls}`.trim()
+: safeHtml.trim();
 
-    if (!messagePlain.trim() || !activePartnerId || isSending || activePartnerBlocked) return;
+    if (!messagePlain.trim() ||!activePartnerId || isSending || activePartnerBlocked) return;
 
-    // Conversations de groupe : envoi via conversation_id "group:<uuid>"
+    // Conversations de groupe: envoi via conversation_id "group:<uuid>"
     if (isGroupConv && groupId) {
       setIsSending(true);
       setErrorMessage(null);
@@ -1113,7 +1113,7 @@ export const MessagesPage: React.FC = () => {
         await ApiService.sendMessage(
           undefined as unknown as number,
           textToSend,
-          replyTo && !String(replyTo.id).startsWith('temp') ? String(replyTo.id) : undefined,
+          replyTo &&!String(replyTo.id).startsWith('temp')? String(replyTo.id): undefined,
           undefined,
           `group:${groupId}`,
           undefined,
@@ -1147,7 +1147,7 @@ export const MessagesPage: React.FC = () => {
     const optimisticMsg: DirectMessage = {
       id: tempId,
       conversation_id: 'temp',
-      sender_id: user ? String(user.id) : 'me',
+      sender_id: user? String(user.id): 'me',
       sender_username: user?.username || 'me',
       recipient_id: String(activePartnerId),
       content: textToSend,
@@ -1155,13 +1155,13 @@ export const MessagesPage: React.FC = () => {
       created_at: new Date().toISOString(),
     };
 
-    // Envoi programmé : la date doit être future
+    // Envoi programmé: la date doit être future
     let sendAtIso: string | undefined;
     if (scheduledAt) {
       const ts = Date.parse(scheduledAt);
       if (Number.isNaN(ts) || ts <= Date.now()) {
         setErrorMessage("La date d'envoi programmé doit être dans le futur.");
-        setMessages((prev) => prev.filter((m) => m.id !== tempId));
+        setMessages((prev) => prev.filter((m) => m.id!== tempId));
         setIsSending(false);
         return;
       }
@@ -1175,12 +1175,12 @@ export const MessagesPage: React.FC = () => {
     setErrorMessage(null);
 
     try {
-      await ApiService.sendMessage(activePartnerId, textToSend, replyTo && !String(replyTo.id).startsWith('temp') ? String(replyTo.id) : undefined, sendAtIso);
+      await ApiService.sendMessage(activePartnerId, textToSend, replyTo &&!String(replyTo.id).startsWith('temp')? String(replyTo.id): undefined, sendAtIso);
       setReplyTo(null);
       // Brouillon consommé + programmation réinitialisée
       try {
         localStorage.removeItem(dmDraftKey(activePartnerId));
-        setDmDraftKeys((prev) => prev.filter((k) => k !== dmDraftKey(activePartnerId)));
+        setDmDraftKeys((prev) => prev.filter((k) => k!== dmDraftKey(activePartnerId)));
       } catch {}
       setScheduledAt('');
       setShowSchedule(false);
@@ -1194,7 +1194,7 @@ export const MessagesPage: React.FC = () => {
       haptics.error();
       playMotion('error');
       setErrorMessage(err.message || 'Impossible d’envoyer le message.');
-      setMessages((prev) => prev.filter((m) => m.id !== tempId));
+      setMessages((prev) => prev.filter((m) => m.id!== tempId));
     } finally {
       setIsSending(false);
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -1206,7 +1206,7 @@ export const MessagesPage: React.FC = () => {
     setActionMenuFor(null);
     // Mise à jour optimiste
     setMessages((prev) => prev.map((msg) => {
-      if (msg.id !== m.id) return msg;
+      if (msg.id!== m.id) return msg;
       const reactions: { emoji: string; count: number; mine: boolean }[] = [...((msg as any).reactions || [])];
       const g = reactions.find((r) => r.emoji === emoji);
       if (g) {
@@ -1224,7 +1224,7 @@ export const MessagesPage: React.FC = () => {
         reactions.push({ emoji, count: 1, mine: true });
         playMotion('like');
       }
-      return { ...msg, reactions: reactions.filter((r) => r.count > 0) } as any;
+      return {...msg, reactions: reactions.filter((r) => r.count > 0) } as any;
     }));
     try {
       await ApiService.reactToMessage(String(m.id), emoji);
@@ -1249,11 +1249,11 @@ export const MessagesPage: React.FC = () => {
     if (!forwardingMessage) return;
     try {
       await ApiService.sendMessage(
-        conv.is_group ? (undefined as unknown as number) : conv.partner_id,
+        conv.is_group? (undefined as unknown as number): conv.partner_id,
         forwardingMessage.content,
         undefined,
         undefined,
-        conv.is_group ? conv.partner_id : undefined,
+        conv.is_group? conv.partner_id: undefined,
         { message_id: String(forwardingMessage.id) }
       );
       setForwardingMessage(null);
@@ -1263,11 +1263,11 @@ export const MessagesPage: React.FC = () => {
     }
   };
 
-  // ── Gestion du groupe : photo, nom, administration, suppression ──
+  // ── Gestion du groupe: photo, nom, administration, suppression ──
   const handleGroupAvatarSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     e.target.value = '';
-    if (!file || !groupId) return;
+    if (!file ||!groupId) return;
     if (!file.type.startsWith('image/')) {
       setErrorMessage('Choisissez un fichier image pour la photo du groupe.');
       return;
@@ -1290,7 +1290,7 @@ export const MessagesPage: React.FC = () => {
   };
 
   const handleSaveGroupName = async () => {
-    if (!groupId || !groupNameDraft.trim() || groupSaving) return;
+    if (!groupId ||!groupNameDraft.trim() || groupSaving) return;
     setGroupSaving(true);
     try {
       await ApiService.updateGroup(groupId, { name: groupNameDraft.trim() });
@@ -1308,7 +1308,7 @@ export const MessagesPage: React.FC = () => {
     if (!groupId) return;
     const target = groupMembers.find((mm) => String(mm.user_id) === String(targetUserId));
     const ok = await confirm({
-      title: 'Nommer ce membre administrateur ?',
+      title: 'Nommer ce membre administrateur?',
       message: `@${target?.username || 'ce membre'} deviendra administrateur du groupe. Vous deviendrez simple membre.`,
       confirmLabel: 'Nommer admin',
     });
@@ -1327,7 +1327,7 @@ export const MessagesPage: React.FC = () => {
   const handleDeleteGroup = async () => {
     if (!groupId) return;
     const ok = await confirm({
-      title: 'Supprimer ce groupe ?',
+      title: 'Supprimer ce groupe?',
       message: 'Le groupe et tous ses messages seront définitivement supprimés. Cette action est irréversible.',
       confirmLabel: 'Supprimer',
       tone: 'danger',
@@ -1346,17 +1346,17 @@ export const MessagesPage: React.FC = () => {
     }
   };
 
-  // ── Mentions @ : autocomplétion (membres du groupe) ──
-  const mentionSuggestions = isGroupConv && mentionQuery !== null
-    ? (activeConv?.members || [])
-        .filter((mm) => String(mm.user_id) !== String(user?.id))
-        .filter((mm) => mentionQuery === '' || mm.username.toLowerCase().startsWith(mentionQuery.toLowerCase()))
-        .slice(0, 6)
-    : [];
+  // ── Mentions @: autocomplétion (membres du groupe) ──
+  const mentionSuggestions = isGroupConv && mentionQuery!== null
+? (activeConv?.members || [])
+.filter((mm) => String(mm.user_id)!== String(user?.id))
+.filter((mm) => mentionQuery === '' || mm.username.toLowerCase().startsWith(mentionQuery.toLowerCase()))
+.slice(0, 6)
+: [];
 
   const handleInsertMention = (username: string) => {
     try {
-      // Supprime la requête tapée (« @xxx ») puis insère la mention complète
+      // Supprime la requête tapée (« @xxx») puis insère la mention complète
       for (let i = 0; i < (mentionQuery?.length || 0) + 1; i++) {
         document.execCommand('delete', false);
       }
@@ -1365,10 +1365,10 @@ export const MessagesPage: React.FC = () => {
     setMentionQuery(null);
   };
 
-  // ── Livre : commande « / » → sélecteur des publications du Livre ──
+  // ── Livre: commande « /» → sélecteur des publications du Livre ──
   const openBookPostPicker = () => {
     try {
-      // Supprime la requête tapée (« /xxx ») comme pour les mentions
+      // Supprime la requête tapée (« /xxx») comme pour les mentions
       for (let i = 0; i < (toolQuery?.length || 0) + 1; i++) {
         document.execCommand('delete', false);
       }
@@ -1379,9 +1379,9 @@ export const MessagesPage: React.FC = () => {
     if (bookId) {
       setBookPickerLoading(true);
       ApiService.getBookPosts(bookId)
-        .then((res) => setBookPickerPosts(res.posts || []))
-        .catch(() => setBookPickerPosts([]))
-        .finally(() => setBookPickerLoading(false));
+.then((res) => setBookPickerPosts(res.posts || []))
+.catch(() => setBookPickerPosts([]))
+.finally(() => setBookPickerLoading(false));
     }
   };
 
@@ -1389,11 +1389,11 @@ export const MessagesPage: React.FC = () => {
   const filteredBookPickerPosts = (() => {
     const q = bookPickerQuery.trim().toLowerCase();
     const list = q
-      ? bookPickerPosts.filter((p) => {
+? bookPickerPosts.filter((p) => {
           const plain = htmlToPlainText(p.content || '').toLowerCase();
           return plain.includes(q) || String(p.username || '').toLowerCase().includes(q);
         })
-      : bookPickerPosts;
+: bookPickerPosts;
     return list.slice(0, 20);
   })();
 
@@ -1414,7 +1414,7 @@ export const MessagesPage: React.FC = () => {
       setErrorMessage("Veuillez d'abord écrire un texte dans la bulle de message pour que mAI puisse l'améliorer.");
       return;
     }
-    if (preset === 'custom' && !customPrompt?.trim()) {
+    if (preset === 'custom' &&!customPrompt?.trim()) {
       setCustomPresetOpen(true);
       setPlusMenuOpen(false);
       return;
@@ -1426,9 +1426,9 @@ export const MessagesPage: React.FC = () => {
       const res = await ApiService.generateDMReply(activePartnerId, messagePlain.trim(), preset, customPrompt?.trim() || undefined);
       if (res?.suggestion) {
         const clean = res.suggestion
-          .replace(/User Safety:\s*safe\.?/gi, '')
-          .replace(/^User Safety:[^\n]*\n*/gi, '')
-          .trim();
+.replace(/User Safety:\s*safe\.?/gi, '')
+.replace(/^User Safety:[^\n]*\n*/gi, '')
+.trim();
         if (clean) {
           setMessageInput(clean);
           richInputRef.current?.setHTML(clean);
@@ -1453,7 +1453,7 @@ export const MessagesPage: React.FC = () => {
   return (
     <div className="vibe-chat-page flex-1 flex min-h-screen border-r pb-16 md:pb-0 select-none">
       {/* Left Column: Conversations List */}
-      <div className={`vibe-chat-sidebar w-full md:w-80 lg:w-96 border-r flex flex-col ${activePartnerId ? 'hidden md:flex' : 'flex'}`}>
+      <div className={`vibe-chat-sidebar w-full md:w-80 lg:w-96 border-r flex flex-col ${activePartnerId? 'hidden md:flex': 'flex'}`}>
         {/* Header */}
         <div className="vibe-chat-sidebar-header p-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -1507,7 +1507,7 @@ export const MessagesPage: React.FC = () => {
           )}
 
           {/* Search Results Dropdown */}
-          {searchResults.length > 0 && !isSearchingUsers && (
+          {searchResults.length > 0 &&!isSearchingUsers && (
             <div className="vibe-chat-modal-content mt-2 divide-y divide-zinc-200 dark:divide-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
               {searchResults.map((u) => (
                 <button
@@ -1535,32 +1535,32 @@ export const MessagesPage: React.FC = () => {
           )}
 
           {/* Aucun résultat */}
-          {searchQuery.trim().length > 0 && searchResults.length === 0 && !isSearchingUsers && (
+          {searchQuery.trim().length > 0 && searchResults.length === 0 &&!isSearchingUsers && (
             <div className="vibe-chat-modal-content mt-2 p-4 rounded-2xl text-center text-xs text-zinc-500">
               <p className="font-semibold text-zinc-600 dark:text-zinc-400">Aucun résultat</p>
-              <p className="text-[11px] text-zinc-400 dark:text-zinc-600 mt-0.5">Aucun compte trouvé pour « {searchQuery} »</p>
+              <p className="text-[11px] text-zinc-400 dark:text-zinc-600 mt-0.5">Aucun compte trouvé pour « {searchQuery}»</p>
             </div>
           )}
         </div>
 
         {/* Conversations List */}
         <div className="flex-1 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-900">
-          {isLoading ? (
+          {isLoading? (
             <div className="p-8 text-center text-xs text-zinc-500 flex items-center justify-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin text-black dark:text-white" />
               <span>Chargement des conversations...</span>
             </div>
-          ) : conversations.length === 0 ? (
+          ): conversations.length === 0? (
             <div className="p-8 text-center text-zinc-500 space-y-2">
               <Mail className="w-8 h-8 mx-auto text-zinc-400 dark:text-zinc-700" />
               <p className="text-xs">Aucun message direct pour le moment.</p>
               <p className="text-[11px] text-zinc-400 dark:text-zinc-600">Recherchez un utilisateur ci-dessus pour engager la conversation.</p>
             </div>
-          ) : (
+          ): (
             conversations.map((conv) => {
               const isSelected = activePartnerId === conv.partner_id;
               const hasDraft = dmDraftKeys.includes(dmDraftKey(conv.partner_id));
-              const BookIcon = conv.is_book ? getBookIcon(conv.book_icon || 'BookHeart') : null;
+              const BookIcon = conv.is_book? getBookIcon(conv.book_icon || 'BookHeart'): null;
               return (
                 <div
                   key={conv.partner_id}
@@ -1571,18 +1571,18 @@ export const MessagesPage: React.FC = () => {
                     setConvMenuOpen(true);
                   }}
                   className={`vibe-chat-conv-item p-3.5 flex items-center gap-3 cursor-pointer transition-colors ${
-                    isSelected ? 'active' : ''
+                    isSelected? 'active': ''
                   }`}
                 >
-                  {conv.is_book && BookIcon ? (
+                  {conv.is_book && BookIcon? (
                     <span className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                       <BookIcon className="w-5 h-5 text-zinc-500 dark:text-zinc-400" />
                     </span>
-                  ) : (
+                  ): (
                     <ProfileAvatar
                       src={conv.partner_avatar_url}
                       alt={conv.partner_username}
-                      fallbackName={conv.is_group ? '#' : conv.partner_username}
+                      fallbackName={conv.is_group? '#': conv.partner_username}
                       size="md"
                       className="border border-zinc-200 dark:border-zinc-800 shrink-0"
                     />
@@ -1590,16 +1590,16 @@ export const MessagesPage: React.FC = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-black dark:text-white truncate flex items-center gap-1.5">
-                        {conv.is_book ? (
+                        {conv.is_book? (
                           <span className="px-1.5 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-zinc-500 shrink-0 flex items-center gap-1">
                             <BookOpen className="w-2.5 h-2.5" /> Livre
                           </span>
-                        ) : conv.is_group ? <Users className="w-3.5 h-3.5 shrink-0 text-zinc-400" /> : null}
+                        ): conv.is_group? <Users className="w-3.5 h-3.5 shrink-0 text-zinc-400" />: null}
                         <span className="truncate">
                           {conv.custom_name || conv.partner_display_name || conv.partner_username}
                           {!conv.is_group && conv.custom_name && <span className="ml-1 text-[10px] text-zinc-500 font-normal">@{conv.partner_username}</span>}
                         </span>
-                        {conv.is_group && !conv.is_book && Boolean(conv.members?.length) && (
+                        {conv.is_group &&!conv.is_book && Boolean(conv.members?.length) && (
                           <span className="text-[10px] text-zinc-500 font-normal shrink-0">({conv.members!.length + 1})</span>
                         )}
                       </h4>
@@ -1615,7 +1615,7 @@ export const MessagesPage: React.FC = () => {
                   {conv.is_blocked && (
                     <span title="Utilisateur bloqué"><Ban className="w-3.5 h-3.5 text-zinc-500 shrink-0" /></span>
                   )}
-                  {Boolean(conv.unread_count && conv.unread_count > 0 && String(conv.partner_id) !== String(activePartnerId)) && (
+                  {Boolean(conv.unread_count && conv.unread_count > 0 && String(conv.partner_id)!== String(activePartnerId)) && (
                     <span className="vibe-chat-badge-unread w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 animate-pulse">
                       {conv.unread_count}
                     </span>
@@ -1628,8 +1628,8 @@ export const MessagesPage: React.FC = () => {
       </div>
 
       {/* Right Column: Active Conversation Chat */}
-      <div className={`vibe-chat-main flex-1 flex flex-col ${!activePartnerId ? 'hidden md:flex' : 'flex'}`}>
-        {activePartner ? (
+      <div className={`vibe-chat-main flex-1 flex flex-col ${!activePartnerId? 'hidden md:flex': 'flex'}`}>
+        {activePartner? (
           <>
             {/* Chat Top Header */}
             <div className="vibe-chat-header px-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] pb-3.5 border-b flex items-center justify-between sticky top-0 z-10 backdrop-blur-md">
@@ -1641,26 +1641,26 @@ export const MessagesPage: React.FC = () => {
                   <ArrowLeft className="w-5 h-5" />
                 </button>
 
-                {isBookConv ? (
+                {isBookConv? (
                   <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                     {(() => {
                       const HeaderBookIcon = getBookIcon(activeConv?.book_icon || 'BookHeart');
                       return <HeaderBookIcon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />;
                     })()}
                   </span>
-                ) : (
+                ): (
                   <ProfileAvatar
                     src={activePartner.avatar_url}
                     alt="Avatar"
-                    fallbackName={isGroupConv ? '#' : activePartner.username}
+                    fallbackName={isGroupConv? '#': activePartner.username}
                     size="sm"
                     className="border border-zinc-200 dark:border-zinc-800 shrink-0"
                   />
                 )}
                 <div>
                   <h3 className="text-xs font-bold text-black dark:text-white flex items-center gap-1.5">
-                    {isBookConv ? <BookOpen className="w-3.5 h-3.5 text-zinc-400 shrink-0" /> : isGroupConv ? <Users className="w-3.5 h-3.5 text-zinc-400 shrink-0" /> : null}
-                    {isBookConv && bookId ? (
+                    {isBookConv? <BookOpen className="w-3.5 h-3.5 text-zinc-400 shrink-0" />: isGroupConv? <Users className="w-3.5 h-3.5 text-zinc-400 shrink-0" />: null}
+                    {isBookConv && bookId? (
                       <button
                         type="button"
                         onClick={() => navigate(`/books/${bookId}`)}
@@ -1669,16 +1669,16 @@ export const MessagesPage: React.FC = () => {
                       >
                         {activePartner.display_name || activePartner.username}
                       </button>
-                    ) : (
+                    ): (
                       <span>{activeConv?.custom_name || activePartner.display_name || activePartner.username}</span>
                     )}
                     {!isGroupConv && activeConv?.custom_name && <span className="text-[10px] text-zinc-500 font-normal">(@{activePartner.username})</span>}
                     {!isGroupConv && <VerifiedBadge isVerified={(activePartner as any).is_verified} tier={(activePartner as any).tier} size="xs" />}
-                    {isGroupConv && !isBookConv && (
+                    {isGroupConv &&!isBookConv && (
                       <span className="text-[10px] text-zinc-500 font-normal">
                         {((activeConv?.members || []) as any[]).length > 0
-                          ? `· ${((activeConv?.members || []) as any[]).length} membre${((activeConv?.members || []) as any[]).length > 1 ? 's' : ''}`
-                          : '· groupe'}
+? `· ${((activeConv?.members || []) as any[]).length} membre${((activeConv?.members || []) as any[]).length > 1? 's': ''}`
+: '· groupe'}
                       </span>
                     )}
                     {isBookConv && (
@@ -1694,17 +1694,17 @@ export const MessagesPage: React.FC = () => {
                   </h3>
                   <span className="text-[11px] text-zinc-500 font-mono">
                     {isBookConv
-                      ? 'Conversation du Livre · « / » pour joindre une publication'
-                      : isGroupConv
-                      ? `${((activeConv?.members || []) as any[]).map((mm: any) => '@' + mm.username).slice(0, 3).join(' ')}${((activeConv?.members || []) as any[]).length > 3 ? '…' : ''}`
-                      : `@${activePartner.username}`}
+? 'Conversation du Livre · « /» pour joindre une publication'
+: isGroupConv
+? `${((activeConv?.members || []) as any[]).map((mm: any) => '@' + mm.username).slice(0, 3).join(' ')}${((activeConv?.members || []) as any[]).length > 3? '…': ''}`
+: `@${activePartner.username}`}
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center gap-1">
                 {/* Recherche dans la conversation */}
-                {convSearchOpen ? (
+                {convSearchOpen? (
                   <div className="flex items-center gap-1 rounded-full bg-zinc-100 dark:bg-zinc-900 px-2 py-1">
                     <Search className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
                     <input
@@ -1743,7 +1743,7 @@ export const MessagesPage: React.FC = () => {
                       <X className="w-3.5 h-3.5" />
                     </button>
                   </div>
-                ) : (
+                ): (
                   <button
                     type="button"
                     onClick={() => setConvSearchOpen(true)}
@@ -1787,7 +1787,7 @@ export const MessagesPage: React.FC = () => {
                           <BookOpen className="w-3.5 h-3.5" /> Ouvrir le Livre
                         </button>
                       )}
-                      {isGroupConv && !isBookConv && groupIsAdmin && (
+                      {isGroupConv &&!isBookConv && groupIsAdmin && (
                         <button
                           onClick={() => setAddMembersOpen(true)}
                           className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left"
@@ -1795,7 +1795,7 @@ export const MessagesPage: React.FC = () => {
                           <UserPlus className="w-3.5 h-3.5" /> Ajouter des membres
                         </button>
                       )}
-                      {isGroupConv && !isBookConv && (
+                      {isGroupConv &&!isBookConv && (
                         <button
                           onClick={() => {
                             setGroupNameDraft(activeConv?.partner_display_name || activeConv?.partner_username || '');
@@ -1807,7 +1807,7 @@ export const MessagesPage: React.FC = () => {
                           <Info className="w-3.5 h-3.5" /> Infos du groupe
                         </button>
                       )}
-                      {isGroupConv && !isBookConv && (
+                      {isGroupConv &&!isBookConv && (
                         <>
                           <div className="px-3 pt-1 pb-0.5 text-[9px] uppercase font-bold tracking-wider text-zinc-400">
                             Membres
@@ -1820,7 +1820,7 @@ export const MessagesPage: React.FC = () => {
                               <ProfileAvatar src={mm.avatar_url} alt={mm.username} fallbackName={mm.username} size="xs" />
                               <span className="truncate flex-1">@{mm.username}</span>
                               {mm.role === 'admin' && <span className="text-[9px] font-bold text-zinc-400">admin</span>}
-                              {groupIsAdmin && mm.role !== 'admin' && String(mm.user_id) !== String(user?.id) && (
+                              {groupIsAdmin && mm.role!== 'admin' && String(mm.user_id)!== String(user?.id) && (
                                 <span className="flex items-center gap-1.5 shrink-0">
                                   <button
                                     onClick={() => handleTransferAdmin(mm.user_id)}
@@ -1861,7 +1861,7 @@ export const MessagesPage: React.FC = () => {
                           disabled={isModerating}
                           className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] vibe-chat-menu-item text-left disabled:opacity-40"
                         >
-                          <Ban className="w-3.5 h-3.5" /> {activePartnerBlocked ? 'Débloquer cet utilisateur' : 'Bloquer cet utilisateur'}
+                          <Ban className="w-3.5 h-3.5" /> {activePartnerBlocked? 'Débloquer cet utilisateur': 'Bloquer cet utilisateur'}
                         </button>
                       )}
                       {!isGroupConv && (
@@ -1911,7 +1911,7 @@ export const MessagesPage: React.FC = () => {
             )}
 
             {/* Indicateur de frappe du partenaire (temps réel) */}
-            {partnerTyping && !activePartnerBlocked && (
+            {partnerTyping &&!activePartnerBlocked && (
               <div className="px-4 pt-1.5 pb-0.5 flex items-center gap-2 animate-fadeIn" aria-live="polite">
                 <div className="vibe-chat-typing flex items-center gap-1.5 px-3 py-1.5 rounded-full">
                   <span className="flex gap-0.5">
@@ -1934,8 +1934,8 @@ export const MessagesPage: React.FC = () => {
                   className="w-full flex items-center gap-1.5 px-3 py-2 text-[11px] font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
                 >
                   <Pin className="w-3.5 h-3.5" />
-                  <span>📌 Messages épinglés ({pinnedMessages.length})</span>
-                  <span className="ml-auto text-zinc-400">{pinsCollapsed ? '▸' : '▾'}</span>
+                  <span> Messages épinglés ({pinnedMessages.length})</span>
+                  <span className="ml-auto text-zinc-400">{pinsCollapsed? '▸': '▾'}</span>
                 </button>
                 {!pinsCollapsed && (
                   <div className="px-3 pb-2 space-y-1">
@@ -1964,19 +1964,19 @@ export const MessagesPage: React.FC = () => {
               ref={threadRef}
               className="vibe-chat-thread relative flex-1 p-4 space-y-3 overflow-y-auto"
               style={{
-                background: chatBackgroundTheme === 'default' ? undefined : CHAT_BACKGROUND_THEMES[chatBackgroundTheme]?.style,
+                background: chatBackgroundTheme === 'default'? undefined: CHAT_BACKGROUND_THEMES[chatBackgroundTheme]?.style,
                 maxHeight: 'calc(100dvh - 140px - var(--vibe-kb-offset, 0px))',
               }}
             >
               {(() => {
-                const q = convSearchOpen ? convSearchQuery.trim() : '';
+                const q = convSearchOpen? convSearchQuery.trim(): '';
                 if (!q) return null;
                 const local = messages.filter((m) => m.content.includes(q));
-                const combined = [...local, ...convSearchApiResults];
+                const combined = [...local,...convSearchApiResults];
                 if (combined.length === 0) {
                   return (
                     <p className="text-center text-[11px] text-zinc-500 py-2">
-                      Aucun message contenant « {q} »
+                      Aucun message contenant « {q}»
                     </p>
                   );
                 }
@@ -2021,30 +2021,30 @@ export const MessagesPage: React.FC = () => {
                 const isMe = user && (String(m.sender_id) === String(user.id) || m.sender_username === user.username);
                 // Contenu riche (HTML de l'éditeur) ou texte brut historique
                 const richMsg = isRichHtml(m.content);
-                const plainSrc = richMsg ? htmlToPlainText(m.content) : m.content;
-                // Liens markdown [label](url) : rendus inline par RichContent, pas en média
+                const plainSrc = richMsg? htmlToPlainText(m.content): m.content;
+                // Liens markdown [label](url): rendus inline par RichContent, pas en média
                 const mdLinkRe = /\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
-                const hasMdLinks = !richMsg && mdLinkRe.test(m.content);
-                const contentForMedia = richMsg ? plainSrc : m.content.replace(mdLinkRe, ' ');
+                const hasMdLinks =!richMsg && mdLinkRe.test(m.content);
+                const contentForMedia = richMsg? plainSrc: m.content.replace(mdLinkRe, ' ');
                 // Extract possible media URLs inside message (hors liens markdown)
                 const urls = contentForMedia.match(/https?:\/\/[^\s]+/g) || [];
                 const nonUrlText = contentForMedia.replace(/https?:\/\/[^\s]+/g, '').trim();
                 // HTML sans les URLs média en texte (les <a href> restent intacts)
-                const richSource = richMsg && urls.length > 0 ? stripUrlsFromHtml(m.content) : m.content;
-                const isMediaOnly = urls.length > 0 && !nonUrlText && !hasMdLinks && !(m as any).reply_to_content;
-                const canEdit = isMe && !String(m.id).startsWith('temp') && (currentTimestamp - new Date(m.created_at).getTime()) <= 60 * 60 * 1000;
+                const richSource = richMsg && urls.length > 0? stripUrlsFromHtml(m.content): m.content;
+                const isMediaOnly = urls.length > 0 &&!nonUrlText &&!hasMdLinks &&!(m as any).reply_to_content;
+                const canEdit = isMe &&!String(m.id).startsWith('temp') && (currentTimestamp - new Date(m.created_at).getTime()) <= 60 * 60 * 1000;
 
                 const currentThemeConfig = MESSAGE_BUBBLE_THEMES[messageBubbleTheme] || MESSAGE_BUBBLE_THEMES.monochrome;
                 const currentShapeConfig = MESSAGE_BUBBLE_SHAPES[messageBubbleShape] || MESSAGE_BUBBLE_SHAPES.pill;
 
-                const isFirstUnread = firstUnreadId != null && String(m.id) === String(firstUnreadId);
-                const searchQ = convSearchOpen ? convSearchQuery.trim() : '';
-                const matchesSearch = searchQ ? plainSrc.includes(searchQ) : false;
-                // Groupe : affiche le pseudo de l'expéditeur + surligne les mentions urgentes
+                const isFirstUnread = firstUnreadId!= null && String(m.id) === String(firstUnreadId);
+                const searchQ = convSearchOpen? convSearchQuery.trim(): '';
+                const matchesSearch = searchQ? plainSrc.includes(searchQ): false;
+                // Groupe: affiche le pseudo de l'expéditeur + surligne les mentions urgentes
                 const isUrgent = isGroupConv && Array.isArray((m as any).urgent_mentions) && (m as any).urgent_mentions.length > 0;
                 return (
                   <React.Fragment key={m.id}>
-                    {/* Mention urgente (@tous / @user) : bandeau au-dessus du message */}
+                    {/* Mention urgente (@tous / @user): bandeau au-dessus du message */}
                     {isUrgent && (
                       <div className="flex justify-center my-0.5">
                         <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/15 text-red-500 text-[9px] font-bold uppercase tracking-wide">
@@ -2053,13 +2053,13 @@ export const MessagesPage: React.FC = () => {
                         </span>
                       </div>
                     )}
-                    {/* Groupe : nom de l'expéditeur au-dessus des bulles des autres */}
-                    {isGroupConv && !isMe && (
+                    {/* Groupe: nom de l'expéditeur au-dessus des bulles des autres */}
+                    {isGroupConv &&!isMe && (
                       <span className="text-[10px] font-bold text-zinc-500 px-1 mb-0.5">
                         @{m.sender_username || 'membre'}
                       </span>
                     )}
-                    {/* Séparateur « Non lus » (style WhatsApp) */}
+                    {/* Séparateur « Non lus» (style WhatsApp) */}
                     {isFirstUnread && (
                       <div className="flex items-center gap-2 py-1" aria-label="Messages non lus">
                         <div className="flex-1 h-px bg-red-500/70" />
@@ -2075,15 +2075,15 @@ export const MessagesPage: React.FC = () => {
                       if (el) messageRefs.current.set(String(m.id), el);
                       else messageRefs.current.delete(String(m.id));
                     }}
-                    className={`flex flex-col ${isMe ? 'items-end' : 'items-start'} relative my-1 group ${matchesSearch ? 'rounded-2xl ring-1 ring-yellow-400/60' : ''} ${highlightedMessageId === String(m.id) ? 'rounded-2xl ring-2 ring-sky-400/70 bg-sky-500/10 px-1' : ''} ${animationsEnabled ? 'animate-messageIn' : ''}`}
+                    className={`flex flex-col ${isMe? 'items-end': 'items-start'} relative my-1 group ${matchesSearch? 'rounded-2xl ring-1 ring-yellow-400/60': ''} ${highlightedMessageId === String(m.id)? 'rounded-2xl ring-2 ring-sky-400/70 bg-sky-500/10 px-1': ''} ${animationsEnabled? 'animate-messageIn': ''}`}
                   >
                     {/* Ligne de message avec le bouton d'actions parfaitement aligné */}
-                    <div className={`flex items-center gap-1.5 max-w-[85%] sm:max-w-[75%] ${isMe ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <div className={`flex items-center gap-1.5 max-w-[85%] sm:max-w-[75%] ${isMe? 'flex-row-reverse': 'flex-row'}`}>
                       {/* Bulle du message */}
-                      {isMediaOnly ? (
+                      {isMediaOnly? (
                         <div
                           className={`vibe-msg-media-bubble relative overflow-hidden shadow-sm ${
-                            isMe ? currentShapeConfig.meRadius : currentShapeConfig.partnerRadius
+                            isMe? currentShapeConfig.meRadius: currentShapeConfig.partnerRadius
                           }`}
                         >
                           {urls.map((url, i) => {
@@ -2120,28 +2120,28 @@ export const MessagesPage: React.FC = () => {
                             return <img key={i} src={url} alt="Pièce jointe" className="rounded-2xl max-h-64 w-full object-cover" />;
                           })}
                         </div>
-                      ) : (
+                      ): (
                         <div
                           style={
-                            isMe && currentThemeConfig.id !== 'monochrome'
-                              ? {
+                            isMe && currentThemeConfig.id!== 'monochrome'
+? {
                                   background: currentThemeConfig.gradient,
                                   border: currentThemeConfig.border,
                                 }
-                              : undefined
+: undefined
                           }
                           className={`p-3 text-xs leading-relaxed relative shadow-sm min-w-[70px] ${
                             isMe
-                              ? `${currentShapeConfig.meRadius} ${
+? `${currentShapeConfig.meRadius} ${
                                   currentThemeConfig.id === 'monochrome'
-                                    ? 'vibe-msg-bubble-me-mono'
-                                    : currentThemeConfig.textColor === 'light'
-                                    ? 'vibe-msg-text-light'
-                                    : currentThemeConfig.textColor === 'dark'
-                                    ? 'vibe-msg-text-dark'
-                                    : 'vibe-msg-text-adaptive'
+? 'vibe-msg-bubble-me-mono'
+: currentThemeConfig.textColor === 'light'
+? 'vibe-msg-text-light'
+: currentThemeConfig.textColor === 'dark'
+? 'vibe-msg-text-dark'
+: 'vibe-msg-text-adaptive'
                                 } font-medium`
-                              : `${currentShapeConfig.partnerRadius} vibe-msg-bubble-partner`
+: `${currentShapeConfig.partnerRadius} vibe-msg-bubble-partner`
                           }`}
                         >
                           {/* Attribution d'un message transféré */}
@@ -2157,10 +2157,10 @@ export const MessagesPage: React.FC = () => {
                             <div
                               className={`mb-2 p-2 rounded-xl text-left border-l-4 transition-colors ${
                                 isMe
-                                  ? currentThemeConfig.id !== 'monochrome'
-                                    ? 'vibe-msg-quote-gradient'
-                                    : 'vibe-msg-quote-me-mono'
-                                  : 'vibe-msg-quote-partner'
+? currentThemeConfig.id!== 'monochrome'
+? 'vibe-msg-quote-gradient'
+: 'vibe-msg-quote-me-mono'
+: 'vibe-msg-quote-partner'
                               }`}
                             >
                               <p className="text-[10px] font-bold flex items-center gap-1 opacity-90 truncate">
@@ -2202,11 +2202,11 @@ export const MessagesPage: React.FC = () => {
                             </button>
                           )}
 
-                          {nonUrlText && (matchesSearch && searchQ ? (
+                          {nonUrlText && (matchesSearch && searchQ? (
                             <p className="leading-relaxed break-words">{highlightMatches(nonUrlText, searchQ)}</p>
-                          ) : (
+                          ): (
                             <RichContent
-                              content={richMsg ? richSource : hasMdLinks ? m.content : nonUrlText}
+                              content={richMsg? richSource: hasMdLinks? m.content: nonUrlText}
                               className="leading-relaxed"
                             />
                           ))}
@@ -2251,14 +2251,14 @@ export const MessagesPage: React.FC = () => {
                         </div>
                       )}
 
-                      {/* Bouton d'options (⋮) : centré verticalement, apparaît au survol sans décaler la page */}
+                      {/* Bouton d'options (⋮): centré verticalement, apparaît au survol sans décaler la page */}
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             setTranslatePickerFor(null);
-                            setActionMenuFor(actionMenuFor === m.id ? null : m.id);
+                            setActionMenuFor(actionMenuFor === m.id? null: m.id);
                           }}
                           className="vibe-chat-icon-btn p-1.5 transition-colors"
                           title="Options du message"
@@ -2277,7 +2277,7 @@ export const MessagesPage: React.FC = () => {
                         />
                         <div
                           className={`absolute z-40 bottom-full ${
-                            isMe ? 'right-0' : 'left-0'
+                            isMe? 'right-0': 'left-0'
                           } mb-2 p-1.5 rounded-2xl vibe-menu shadow-2xl flex flex-col gap-0.5 animate-fadeIn min-w-[210px]`}
                         >
                           <div className="flex items-center justify-between px-1.5 py-1">
@@ -2363,7 +2363,7 @@ export const MessagesPage: React.FC = () => {
 
                           <button
                             type="button"
-                            onClick={() => setTranslatePickerFor(translatePickerFor === String(m.id) ? null : String(m.id))}
+                            onClick={() => setTranslatePickerFor(translatePickerFor === String(m.id)? null: String(m.id))}
                             className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
                           >
                             <Languages className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
@@ -2392,14 +2392,14 @@ export const MessagesPage: React.FC = () => {
                             onClick={() => handleTogglePin(m)}
                             className="w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] vibe-chat-menu-item transition-colors text-left"
                           >
-                            {pinnedMessages.some((p) => String(p.id) === String(m.id)) ? (
+                            {pinnedMessages.some((p) => String(p.id) === String(m.id))? (
                               <><PinOff className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Désépingler</>
-                            ) : (
+                            ): (
                               <><Pin className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Épingler</>
                             )}
                           </button>
 
-                          {isMe && !String(m.id).startsWith('temp') && (
+                          {isMe &&!String(m.id).startsWith('temp') && (
                             <button
                               type="button"
                               onClick={() => handleDeleteMessage(m)}
@@ -2427,12 +2427,12 @@ export const MessagesPage: React.FC = () => {
                       <div className="flex gap-1 mt-1">
                         {(m as any).reactions.map((r: { emoji: string; count: number; mine: boolean }) => (
                           <motion.button
-                            whileTap={animationsEnabled ? { scale: 0.8 } : undefined}
+                            whileTap={animationsEnabled? { scale: 0.8 }: undefined}
                             transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                             key={r.emoji}
                             onClick={() => handleToggleReaction(m, r.emoji)}
-                            className={`vibe-chat-reaction-chip px-1.5 py-0.5 rounded-full text-[10px] border transition-colors ${animationsEnabled ? 'animate-reactionPop' : ''} ${
-                              r.mine ? 'bg-sky-500/20 border-sky-500 text-sky-600 dark:text-sky-300' : ''
+                            className={`vibe-chat-reaction-chip px-1.5 py-0.5 rounded-full text-[10px] border transition-colors ${animationsEnabled? 'animate-reactionPop': ''} ${
+                              r.mine? 'bg-sky-500/20 border-sky-500 text-sky-600 dark:text-sky-300': ''
                             }`}
                           >
                             {r.emoji} {r.count}
@@ -2461,24 +2461,24 @@ export const MessagesPage: React.FC = () => {
                     {(m as any).status === 'scheduled' && (
                       <span className="mt-1 inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400">
                         <Clock className="w-2.5 h-2.5" />
-                        Envoi prévu{(m as any).send_at ? ` le ${formatTime((m as any).send_at)}` : ''}
+                        Envoi prévu{(m as any).send_at? ` le ${formatTime((m as any).send_at)}`: ''}
                       </span>
                     )}
 
                     <div className="flex items-center gap-1.5 mt-1 text-[10px] text-zinc-500 px-1 font-mono">
                       <span>{formatTime(m.created_at)}</span>
                       {m.is_edited && (
-                        <span className="text-[9px] text-zinc-400 italic" title={m.edited_at ? `Modifié à ${formatTime(m.edited_at)}` : 'Modifié'}>
+                        <span className="text-[9px] text-zinc-400 italic" title={m.edited_at? `Modifié à ${formatTime(m.edited_at)}`: 'Modifié'}>
                           (modifié)
                         </span>
                       )}
                       {isMe && (
-                        (m.is_read || (m as any).read_at) ? (
+                        (m.is_read || (m as any).read_at)? (
                           <span title="Vu" className="inline-flex items-center gap-0.5 text-sky-400 font-medium">
                             <Eye className="w-3 h-3" />
                             <span className="text-[9px]">Vu</span>
                           </span>
-                        ) : (
+                        ): (
                           <span title="Envoyé" className="inline-flex items-center gap-0.5 text-zinc-400">
                             <Check className="w-3 h-3" />
                             <span className="text-[9px]">Envoyé</span>
@@ -2492,7 +2492,7 @@ export const MessagesPage: React.FC = () => {
               })}
               <div ref={messagesEndRef} />
 
-              {/* Bouton flottant « ↓ N non lus » */}
+              {/* Bouton flottant « ↓ N non lus» */}
               {showJumpToUnread && firstUnreadId && (
                 <button
                   onClick={() => {
@@ -2511,9 +2511,9 @@ export const MessagesPage: React.FC = () => {
               <div className="vibe-chat-bottom-bar p-3 border-t flex items-center gap-2 overflow-x-auto">
                 {attachedMediaList.map((media, idx) => (
                   <div key={idx} className="relative group shrink-0">
-                    {media.type === 'video' ? (
+                    {media.type === 'video'? (
                       <video src={media.url} className="w-16 h-16 object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
-                    ) : media.type === 'document' ? (
+                    ): media.type === 'document'? (
                       <div className="w-40 h-16 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center gap-2 px-2 overflow-hidden">
                         <FileText className="w-5 h-5 shrink-0 text-zinc-500" />
                         <div className="min-w-0">
@@ -2521,11 +2521,11 @@ export const MessagesPage: React.FC = () => {
                           <p className="text-[9px] text-zinc-500 font-mono">{formatFileSize(media.size)}</p>
                         </div>
                       </div>
-                    ) : (
+                    ): (
                       <img src={media.url} alt="Aperçu" className="w-16 h-16 object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
                     )}
                     <button
-                      onClick={() => setAttachedMediaList((prev) => prev.filter((_, i) => i !== idx))}
+                      onClick={() => setAttachedMediaList((prev) => prev.filter((_, i) => i!== idx))}
                       className="vibe-chat-remove-media absolute -top-1 -right-1 p-1 rounded-full shadow"
                     >
                       <X className="w-3 h-3" />
@@ -2570,10 +2570,10 @@ export const MessagesPage: React.FC = () => {
               )}
 
               {/* Aperçu de réponse */}
-              {replyTo && !editingMessage && (
+              {replyTo &&!editingMessage && (
                 <div className="vibe-chat-banner flex items-center justify-between px-3 py-1.5 rounded-xl text-[11px]">
                   <span className="truncate">
-                    Réponse à <strong>@{replyTo.sender_username}</strong> : {htmlToPlainText(replyTo.content).slice(0, 60)}
+                    Réponse à <strong>@{replyTo.sender_username}</strong>: {htmlToPlainText(replyTo.content).slice(0, 60)}
                   </span>
                   <button type="button" onClick={() => setReplyTo(null)} className="vibe-chat-icon-btn text-zinc-500 shrink-0 ml-2">
                     <X className="w-3.5 h-3.5" />
@@ -2582,7 +2582,7 @@ export const MessagesPage: React.FC = () => {
               )}
 
               {/* Publication du Livre jointe (chip retirable, envoyée avec le message) */}
-              {attachedPost && !editingMessage && (
+              {attachedPost &&!editingMessage && (
                 <div className="vibe-chat-banner flex items-center justify-between px-3 py-1.5 rounded-xl text-[11px] animate-fadeIn">
                   <button
                     type="button"
@@ -2592,7 +2592,7 @@ export const MessagesPage: React.FC = () => {
                   >
                     <BookOpen className="w-3.5 h-3.5 shrink-0" />
                     <span className="truncate">
-                      Publication de <strong>@{attachedPost.username}</strong> : {attachedPost.excerpt.slice(0, 60)}
+                      Publication de <strong>@{attachedPost.username}</strong>: {attachedPost.excerpt.slice(0, 60)}
                     </span>
                   </button>
                   <button type="button" onClick={() => setAttachedPost(null)} className="vibe-chat-icon-btn text-zinc-500 shrink-0 ml-2">
@@ -2601,7 +2601,7 @@ export const MessagesPage: React.FC = () => {
                 </div>
               )}
 
-              {customPresetOpen && !isGeneratingSuggestion && (
+              {customPresetOpen &&!isGeneratingSuggestion && (
                 <div className="flex items-center gap-2 mb-2">
                   <div className="vibe-chat-banner flex-1 flex items-center gap-2 px-3 py-1.5">
                     <PenLine className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
@@ -2616,7 +2616,7 @@ export const MessagesPage: React.FC = () => {
                         }
                       }}
                       autoFocus
-                      placeholder="Votre consigne pour mAI (ex. : rends-le plus drôle)…"
+                      placeholder="Votre consigne pour mAI (ex.: rends-le plus drôle)…"
                       className="flex-1 bg-transparent text-xs text-black dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none"
                     />
                   </div>
@@ -2666,7 +2666,7 @@ export const MessagesPage: React.FC = () => {
                   )}
                 </div>
               )}
-              {scheduledAt && !showSchedule && (
+              {scheduledAt &&!showSchedule && (
                 <button
                   type="button"
                   onClick={() => setShowSchedule(true)}
@@ -2677,7 +2677,7 @@ export const MessagesPage: React.FC = () => {
                 </button>
               )}
 
-              {/* Barre de mise en forme AU-DESSUS de la bulle : gras, italique,
+              {/* Barre de mise en forme AU-DESSUS de la bulle: gras, italique,
                   souligné, barré, lien, @tous + compteur de caractères */}
               {(!editingMessage || messagePlain.length >= 2400) && (
                 <div className="flex items-center gap-0.5 px-1 flex-wrap">
@@ -2717,7 +2717,7 @@ export const MessagesPage: React.FC = () => {
                     </>
                   )}
                   {messagePlain.length >= messageCharLimit * 0.8 && (
-                    <span className={`ml-auto text-[10px] font-mono ${messagePlain.length > messageCharLimit ? 'text-red-500 font-bold' : 'text-zinc-500'}`}>
+                    <span className={`ml-auto text-[10px] font-mono ${messagePlain.length > messageCharLimit? 'text-red-500 font-bold': 'text-zinc-500'}`}>
                       {messagePlain.length}/{messageCharLimit.toLocaleString('fr-FR')}
                     </span>
                   )}
@@ -2725,7 +2725,7 @@ export const MessagesPage: React.FC = () => {
               )}
 
               {/* Autocomplétion @mention (groupes) */}
-              {isGroupConv && mentionQuery !== null && mentionSuggestions.length > 0 && (
+              {isGroupConv && mentionQuery!== null && mentionSuggestions.length > 0 && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setMentionQuery(null)} />
                   <div className="absolute bottom-full left-0 mb-2 z-50 w-64 rounded-2xl vibe-menu p-1.5 shadow-2xl animate-fadeIn max-h-48 overflow-y-auto">
@@ -2745,8 +2745,8 @@ export const MessagesPage: React.FC = () => {
                 </>
               )}
 
-              {/* Livre : commande « / » → action « Joindre une publication » */}
-              {isBookConv && toolQuery !== null && !bookPickerOpen && (
+              {/* Livre: commande « /» → action « Joindre une publication» */}
+              {isBookConv && toolQuery!== null &&!bookPickerOpen && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setToolQuery(null)} />
                   <ToolAutocomplete
@@ -2765,7 +2765,7 @@ export const MessagesPage: React.FC = () => {
                 </>
               )}
 
-              {/* Livre : sélecteur des publications du Livre */}
+              {/* Livre: sélecteur des publications du Livre */}
               {bookPickerOpen && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setBookPickerOpen(false)} />
@@ -2788,15 +2788,15 @@ export const MessagesPage: React.FC = () => {
                       autoFocus
                     />
                     <div className="max-h-56 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-900">
-                      {bookPickerLoading ? (
+                      {bookPickerLoading? (
                         <div className="p-4 text-center text-[11px] text-zinc-500 flex items-center justify-center gap-2">
                           <Loader2 className="w-3.5 h-3.5 animate-spin" /> Chargement…
                         </div>
-                      ) : filteredBookPickerPosts.length === 0 ? (
+                      ): filteredBookPickerPosts.length === 0? (
                         <div className="p-4 text-center text-[11px] text-zinc-500">
                           Aucune publication dans ce Livre pour le moment.
                         </div>
-                      ) : (
+                      ): (
                         filteredBookPickerPosts.map((p) => (
                           <button
                             type="button"
@@ -2847,9 +2847,9 @@ export const MessagesPage: React.FC = () => {
                 <div className="relative shrink-0">
                   <button
                     type="button"
-                    onClick={() => setPlusMenuOpen((prev) => !prev)}
+                    onClick={() => setPlusMenuOpen((prev) =>!prev)}
                     className={`vibe-chat-plus-btn w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                      plusMenuOpen ? 'rotate-45 shadow-md' : ''
+                      plusMenuOpen? 'rotate-45 shadow-md': ''
                     }`}
                     title="Ajouter des médias ou options mAI"
                   >
@@ -2895,7 +2895,7 @@ export const MessagesPage: React.FC = () => {
                               setPlusMenuOpen(false);
                               handleGenerateSuggestion(opt.key);
                             }}
-                            disabled={!messagePlain.trim() && opt.key !== 'custom'}
+                            disabled={!messagePlain.trim() && opt.key!== 'custom'}
                             className="vibe-chat-menu-item w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-colors text-left disabled:opacity-40 disabled:hover:bg-transparent"
                           >
                             <span className="text-zinc-500 dark:text-zinc-400">{opt.icon}</span>
@@ -2913,17 +2913,17 @@ export const MessagesPage: React.FC = () => {
                     ref={richInputRef}
                     placeholder={
                       isListening
-                        ? 'Parlez, dictée en cours...'
-                        : editingMessage
-                        ? 'Modifier votre message...'
-                        : 'Écrire un message...'
+? 'Parlez, dictée en cours...'
+: editingMessage
+? 'Modifier votre message...'
+: 'Écrire un message...'
                     }
                     maxChars={messageCharLimit}
                     disabled={activePartnerBlocked}
                     onChange={handleRichInputChange}
                     onUserInput={notifyTyping}
                     onEnterSend={() => {
-                      if (!activePartnerBlocked && !isSending) handleSendMessage();
+                      if (!activePartnerBlocked &&!isSending) handleSendMessage();
                     }}
                     className="flex-1 min-w-0 py-1 text-xs max-h-32 overflow-y-auto whitespace-pre-wrap break-words"
                   />
@@ -2932,48 +2932,48 @@ export const MessagesPage: React.FC = () => {
                   {isSupported && (
                     <button
                       type="button"
-                      onClick={isListening ? stopListening : startListening}
+                      onClick={isListening? stopListening: startListening}
                       className={`p-1.5 rounded-full transition-colors ml-1.5 shrink-0 ${
                         isListening
-                          ? 'bg-red-500 text-white animate-pulse'
-                          : 'vibe-chat-icon-btn'
+? 'bg-red-500 text-white animate-pulse'
+: 'vibe-chat-icon-btn'
                       }`}
-                      title={isListening ? 'Arrêter la dictée' : 'Dicter le message'}
+                      title={isListening? 'Arrêter la dictée': 'Dicter le message'}
                     >
-                      {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                      {isListening? <MicOff className="w-4 h-4" />: <Mic className="w-4 h-4" />}
                     </button>
                   )}
                 </div>
 
-                {/* Envoi programmé (horloge) : visible si texte ou média, hors groupes */}
-                {(messagePlain.trim() || attachedMediaList.length > 0) && !activePartnerBlocked && !editingMessage && !isGroupConv && (
+                {/* Envoi programmé (horloge): visible si texte ou média, hors groupes */}
+                {(messagePlain.trim() || attachedMediaList.length > 0) &&!activePartnerBlocked &&!editingMessage &&!isGroupConv && (
                   <button
                     type="button"
                     onClick={() => setShowSchedule(!showSchedule)}
                     className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shrink-0 ${
                       showSchedule || scheduledAt
-                        ? 'bg-zinc-900 text-white dark:bg-white dark:text-black'
-                        : 'vibe-chat-icon-btn'
+? 'bg-zinc-900 text-white dark:bg-white dark:text-black'
+: 'vibe-chat-icon-btn'
                     }`}
                     title="Programmer l'envoi"
                   >
                     <Clock className="w-4 h-4" />
                   </button>
                 )}
-                {/* Bouton d'envoi séparé : flèche allant vers le haut (ArrowUp) */}
+                {/* Bouton d'envoi séparé: flèche allant vers le haut (ArrowUp) */}
                 <motion.button
                   type="submit"
-                  whileTap={animationsEnabled ? { scale: 0.85 } : undefined}
+                  whileTap={animationsEnabled? { scale: 0.85 }: undefined}
                   transition={{ type: 'spring', stiffness: 500, damping: 22 }}
                   disabled={activePartnerBlocked || (!messagePlain.trim() && attachedMediaList.length === 0) || isSending || messagePlain.length > messageCharLimit}
-                  className={`vibe-chat-send-btn w-10 h-10 rounded-full flex items-center justify-center transition-all disabled:opacity-40 shrink-0 shadow cursor-pointer ${justSent ? 'just-sent animate-pop' : ''}`}
-                  title={editingMessage ? 'Enregistrer la modification' : 'Envoyer le message'}
+                  className={`vibe-chat-send-btn w-10 h-10 rounded-full flex items-center justify-center transition-all disabled:opacity-40 shrink-0 shadow cursor-pointer ${justSent? 'just-sent animate-pop': ''}`}
+                  title={editingMessage? 'Enregistrer la modification': 'Envoyer le message'}
                 >
-                  {isSending ? (
+                  {isSending? (
                     <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : justSent ? (
+                  ): justSent? (
                     <Check className="w-5 h-5 stroke-[2.5]" />
-                  ) : (
+                  ): (
                     <ArrowUp className="w-5 h-5 stroke-[2.5]" />
                   )}
                 </motion.button>
@@ -3041,14 +3041,14 @@ export const MessagesPage: React.FC = () => {
                         disabled={groupAvatarUploading}
                         className="text-[11px] font-semibold text-sky-600 dark:text-sky-400 hover:underline disabled:opacity-40 flex items-center gap-1"
                       >
-                        {groupAvatarUploading ? <Loader2 className="w-3 h-3 animate-spin" /> : <ImageIcon className="w-3 h-3" />}
-                        {groupAvatarUploading ? 'Envoi…' : 'Changer la photo'}
+                        {groupAvatarUploading? <Loader2 className="w-3 h-3 animate-spin" />: <ImageIcon className="w-3 h-3" />}
+                        {groupAvatarUploading? 'Envoi…': 'Changer la photo'}
                       </button>
                     )}
                   </div>
 
                   {/* Nom du groupe */}
-                  {groupIsAdmin ? (
+                  {groupIsAdmin? (
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
@@ -3061,14 +3061,14 @@ export const MessagesPage: React.FC = () => {
                       <button
                         type="button"
                         onClick={handleSaveGroupName}
-                        disabled={groupSaving || !groupNameDraft.trim()}
+                        disabled={groupSaving ||!groupNameDraft.trim()}
                         className="px-3 py-2 rounded-xl bg-zinc-900 text-white dark:bg-white dark:text-black text-[11px] font-bold disabled:opacity-40 flex items-center gap-1"
                       >
-                        {groupSaving ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
+                        {groupSaving? <Loader2 className="w-3 h-3 animate-spin" />: <Check className="w-3 h-3" />}
                         Enregistrer
                       </button>
                     </div>
-                  ) : (
+                  ): (
                     <p className="text-center text-sm font-bold">{activeConv?.partner_display_name || activeConv?.partner_username || 'Groupe'}</p>
                   )}
 
@@ -3086,7 +3086,7 @@ export const MessagesPage: React.FC = () => {
                             {mm.display_name && <p className="truncate text-[10px] text-zinc-500">{mm.display_name}</p>}
                           </div>
                           {mm.role === 'admin' && <span className="text-[9px] font-bold text-zinc-400 shrink-0">admin</span>}
-                          {groupIsAdmin && String(mm.user_id) !== String(user?.id) && (
+                          {groupIsAdmin && String(mm.user_id)!== String(user?.id) && (
                             <div className="flex items-center gap-1.5 shrink-0">
                               <button
                                 type="button"
@@ -3113,7 +3113,7 @@ export const MessagesPage: React.FC = () => {
 
                   {/* Actions quitter / supprimer */}
                   <div className="border-t border-zinc-200 dark:border-zinc-800 pt-3 space-y-1">
-                    {groupIsAdmin ? (
+                    {groupIsAdmin? (
                       <button
                         type="button"
                         onClick={handleDeleteGroup}
@@ -3121,7 +3121,7 @@ export const MessagesPage: React.FC = () => {
                       >
                         <Trash2 className="w-3.5 h-3.5" /> Supprimer le groupe
                       </button>
-                    ) : (
+                    ): (
                       <button
                         type="button"
                         onClick={() => {
@@ -3206,7 +3206,7 @@ export const MessagesPage: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* Section 1 : Couleur ou Dégradé des bulles envoyées */}
+                  {/* Section 1: Couleur ou Dégradé des bulles envoyées */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 flex items-center gap-1.5">
                       <span>Bulle des messages envoyés</span>
@@ -3220,7 +3220,7 @@ export const MessagesPage: React.FC = () => {
                             type="button"
                             onClick={() => setMessageBubbleTheme(themeOpt.id)}
                             className={`vibe-chat-modal-card p-2.5 text-left flex items-center gap-2.5 transition-all ${
-                              isSelected ? 'selected shadow-md' : ''
+                              isSelected? 'selected shadow-md': ''
                             }`}
                           >
                             <span
@@ -3236,7 +3236,7 @@ export const MessagesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Section 2 : Fond de la zone de messages */}
+                  {/* Section 2: Fond de la zone de messages */}
                   <div className="space-y-2 pt-2 border-t border-zinc-200 dark:border-zinc-900">
                     <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Fond de la discussion</label>
                     <div className="grid grid-cols-2 gap-2">
@@ -3248,7 +3248,7 @@ export const MessagesPage: React.FC = () => {
                             type="button"
                             onClick={() => setChatBackgroundTheme(bgOpt.id)}
                             className={`vibe-chat-modal-card p-2.5 text-left flex items-center gap-2.5 transition-all ${
-                              isSelected ? 'selected shadow-md' : ''
+                              isSelected? 'selected shadow-md': ''
                             }`}
                           >
                             <span
@@ -3264,7 +3264,7 @@ export const MessagesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Section 3 : Forme de la bulle */}
+                  {/* Section 3: Forme de la bulle */}
                   <div className="space-y-2 pt-2 border-t border-zinc-200 dark:border-zinc-900">
                     <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Forme de la bulle</label>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -3277,7 +3277,7 @@ export const MessagesPage: React.FC = () => {
                             type="button"
                             onClick={() => setMessageBubbleShape(shapeKey)}
                           className={`vibe-chat-modal-card py-2 px-2 text-center text-[11px] font-semibold transition-all ${
-                            isSelected ? 'selected font-bold shadow' : ''
+                            isSelected? 'selected font-bold shadow': ''
                           }`}
                           >
                             {s.label.split(' ')[0]}
@@ -3300,7 +3300,7 @@ export const MessagesPage: React.FC = () => {
               </div>
             )}
           </>
-        ) : (
+        ): (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-zinc-500 space-y-3">
             <Mail className="w-12 h-12 text-zinc-300 dark:text-zinc-800" />
             <h3 className="text-sm font-bold text-black dark:text-white">Sélectionnez une conversation</h3>
@@ -3311,7 +3311,7 @@ export const MessagesPage: React.FC = () => {
         )}
       </div>
 
-      {/* Modale : créer un groupe */}
+      {/* Modale: créer un groupe */}
       <CreateGroupModal
         open={groupModalOpen}
         name={groupName}
@@ -3320,8 +3320,8 @@ export const MessagesPage: React.FC = () => {
         onToggleUser={(u) =>
           setGroupSelected((prev) =>
             prev.some((s) => String(s.id) === String(u.id))
-              ? prev.filter((s) => String(s.id) !== String(u.id))
-              : [...prev, u]
+? prev.filter((s) => String(s.id)!== String(u.id))
+: [...prev, u]
           )
         }
         busy={isCreatingGroup}
@@ -3329,15 +3329,15 @@ export const MessagesPage: React.FC = () => {
         onCreate={handleCreateGroup}
       />
 
-      {/* Modale : ajouter des membres au groupe (admin) */}
+      {/* Modale: ajouter des membres au groupe (admin) */}
       <AddMembersModal
         open={addMembersOpen}
         selected={addMembersSelected}
         onToggleUser={(u) =>
           setAddMembersSelected((prev) =>
             prev.some((s) => String(s.id) === String(u.id))
-              ? prev.filter((s) => String(s.id) !== String(u.id))
-              : [...prev, u]
+? prev.filter((s) => String(s.id)!== String(u.id))
+: [...prev, u]
           )
         }
         existingMemberIds={existingGroupMemberIds}

@@ -285,11 +285,13 @@ export async function transfererMessage(
 /**
  * Recherche dans les conversations et les messages du compte.
  *
- * BORNÉ, ET DIT : les titres sont cherchés en `ILIKE`, les messages dans les
- * 100 derniers de chaque conversation (au plus 200 lignes scannées). Une
- * recherche exhaustive demanderait un index plein-texte et une migration de
- * contenu — hors périmètre V1, et l'alternative « tout scanner » coûterait un
- * parcours complet de l'historique à chaque frappe.
+ * BORNÉ, ET DIT : les titres sont cherchés en `ILIKE`, les messages par leur
+ * contenu, et la borne porte sur les RÉSULTATS.
+ *
+ * L'implémentation vit dans `queries/search.ts` : elle est partagée avec la
+ * recherche unifiée de l'espace de travail, et deux implémentations
+ * divergeraient — c'est exactement ce qui s'était produit, avec un filtre
+ * de messages qui ne trouvait pas « I love » dans « I love this ».
  */
 export async function chercherDansWakies(
   userId: string,
@@ -309,60 +311,6 @@ export async function chercherDansWakies(
     role: string;
   }>;
 }> {
-  const terme = q.trim().slice(0, 80);
-  if (terme.length < 2) return { conversations: [], messages: [] };
-  await dbReady();
-  const db = getDb();
-  const conversations = await db
-    .select({
-      id: wakiesConversation.id,
-      isGroup: wakiesConversation.isGroup,
-      title: wakiesConversation.title,
-      updatedAt: wakiesConversation.updatedAt,
-    })
-    .from(wakiesConversation)
-    .where(
-      and(
-        eq(wakiesConversation.userId, userId),
-        ilike(wakiesConversation.title, `%${terme}%`)
-      )
-    )
-    .orderBy(desc(wakiesConversation.updatedAt))
-    .limit(20);
-  const lignes = (await db.execute(sql`
-    SELECT "conversationId", "id", "role", "createdAt", "parts"
-    FROM (
-      SELECT
-        "conversationId", "id", "role", "createdAt", "parts",
-        row_number() OVER (
-          PARTITION BY "conversationId" ORDER BY "seq" DESC
-        ) AS rang
-      FROM "WakiesMessage"
-      WHERE "conversationId" IN (
-        SELECT "id" FROM "WakiesConversation" WHERE "userId" = ${userId}
-      )
-    ) AS recents
-    WHERE rang <= 100
-    ORDER BY "createdAt" DESC
-    LIMIT 200
-  `)) as unknown as Array<{
-    conversationId: string;
-    createdAt: Date;
-    id: string;
-    parts: unknown;
-    role: string;
-  }>;
-  const aiguille = terme.toLocaleLowerCase("fr");
-  const messages = lignes
-    .map((row) => ({ ...row, extrait: apercuMessage(row.parts, 160) }))
-    .filter((row) => row.extrait.toLocaleLowerCase("fr").includes(aiguille))
-    .slice(0, 20)
-    .map((row) => ({
-      conversationId: row.conversationId,
-      createdAt: row.createdAt,
-      extrait: row.extrait,
-      id: row.id,
-      role: row.role,
-    }));
-  return { conversations, messages };
+  const { chercherDansWakiesMessages } = await import("./search");
+  return chercherDansWakiesMessages(userId, q);
 }

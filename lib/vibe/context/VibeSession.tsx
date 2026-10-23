@@ -20,6 +20,15 @@
  * elle pose le jeton, bascule l'état de chargement et recharge la session. Rien
  * de plus n'est nécessaire — et surtout, aucun état privé n'est touché.
  *
+ * CE QUE LE PONT NE FAIT PLUS
+ *
+ * Le jeton ne sert plus à AUTHENTIFIER les appels API : ceux-ci passent par le
+ * relais BFF de l'hôte (`app/(chat)/api/vibe/**`), qui lit le cookie de session
+ * et pose lui-même l'`Authorization`. Le pont ne sert plus qu'àhydrater
+ * l'ÉTAT de l'interface Vibe — qui est affiché, qui est connecté, quel profil.
+ * Sans lui, Vibe afficherait son écran de connexion alors que la session mAI
+ * est valide.
+ *
  * LE PONT EST UN ALLER, PAS UN RETOUR
  *
  * Vibe ne peut pas écrire dans un cookie httpOnly : il n'y a pas d'accès. La

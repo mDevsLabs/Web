@@ -691,7 +691,7 @@ export function registerVibeFeedRoutes(
 
   // 2bis. TOP VIBE — meilleures publications des N derniers jours (Explorer)
   // Score d'engagement : likes×1 + reposts×2.5 + réponses×2 + vues×0.1
-  // (miroir SQL de rawEngagement — lib/recommendation/signals.ts).
+  // (miroir SQL de rawEngagement).
   const handleTopPosts = async (c: any) => {
     try {
       await ensurePostColumns().catch(() => {});

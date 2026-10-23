@@ -23,15 +23,15 @@ env:
   CSC_IDENTITY_AUTO_DISCOVERY: "false"
 jobs:
   version:
-    name: 🔖 Vérifier la version à publier
+    name: Vérifier la version à publier
     runs-on: ubuntu-latest
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: 🔍 Vérifier la nouvelle version stable
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+      - name: Vérifier la nouvelle version stable
+        if: github.event_name!= 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/github-script@v7
         with:
           script: |
@@ -39,7 +39,7 @@ jobs:
             const version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
             const tag = 'stable.' + version;
             try {
-              await github.rest.git.getRef({ ...context.repo, ref: 'tags/' + tag });
+              await github.rest.git.getRef({...context.repo, ref: 'tags/' + tag });
             } catch (error) {
               if (error.status === 404) return;
               throw error;
@@ -47,9 +47,9 @@ jobs:
             core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
   changes:
     needs: [version]
-    name: 🔀 Filtrer les chemins modifiés
+    name: Filtrer les chemins modifiés
     runs-on: ubuntu-latest
-    # Tous les builds d'applications tournent à CHAQUE commit : un changement
+    # Tous les builds d'applications tournent à CHAQUE commit: un changement
     # partagé (packages/ui, icônes, contrat d'API) casse une application même
     # quand son dossier n'a pas bougé, et le filtre par chemins laissait passer
     # ces régressions. Le filtre reste exécuté pour l'information, mais ne
@@ -59,16 +59,17 @@ jobs:
       mobile: true
       desktop: true
       coder: true
+      blackline: true
     steps:
-      - name: 📦 Checkout du code
-        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
+      - name: Checkout du code
+        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' &&!startsWith(github.ref,
           'refs/tags/')) }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: 🔍 Détecter les applications modifiées
+      - name: Détecter les applications modifiées
         id: filter
-        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
+        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' &&!startsWith(github.ref,
           'refs/tags/')) }}
         uses: dorny/paths-filter@v4
         with:
@@ -98,55 +99,71 @@ jobs:
               - "packages/icons/**"
               - ".github/workflows/build.yml"
               - "package.json"
+            blackline:
+              - "apps/blackline/**"
+              - "components/blackline/**"
+              - "lib/blackline/**"
+              - "app/(chat)/blackline/**"
+              - "app/(chat)/api/blackline/**"
+              - "scripts/build-blackline.mjs"
+              - "scripts/build-blackline-css.mjs"
+              - ".github/workflows/build.yml"
+              - "package.json"
 
   deploy-vercel:
     needs: [version]
-    name: 🚀 Déploiement Vercel
+    name: Déploiement Vercel
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/canary')) || (github.event_name == 'pull_request' &&
       github.event.pull_request.head.repo.full_name == github.repository) }}
     environment:
-      name: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview'
+      name: ${{ github.event_name!= 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview'
         }}
     runs-on: ubuntu-latest
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_CLI_VERSION: 59.23.2
-      DEPLOY_TARGET: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' ||
+      VERCEL_CLI_VERSION: 64.5.0
+      DEPLOY_TARGET: ${{ github.event_name!= 'pull_request' && github.ref == 'refs/heads/main' && 'production' ||
         'preview' }}
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: ⚡ Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: 🔐 Vérifier le secret Vercel
+      - name: Vérifier le secret Vercel
         run: |-
           if [ -z "$VERCEL_TOKEN" ]; then
             echo "::error::Le secret VERCEL_TOKEN est manquant dans les parametres GitHub."
             exit 1
           fi
-      - name: 📥 Installer la CLI Vercel
+      - name: Installer le CLI Vercel
         run: npm install --global "vercel@$VERCEL_CLI_VERSION"
-      - name: 📦 Installer les dépendances
+      - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
-      - name: ☁️ Récupérer l'environnement Vercel
+      # Blackline est un jeu Vite AUTONOME: il n'est pas membre du workspace
+      # pnpm (pnpm-workspace.yaml liste `packages: []`), il a son propre
+      # package-lock.json et ses propres node_modules. `pnpm build` lance
+      # `scripts/build-blackline.mjs`, qui exige ces dépendances.
+      - name: Installer les dépendances de Blackline
+        run: npm ci --prefix apps/blackline
+      - name: Récupérer l'environnement Vercel
         run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
-      - name: 🖨️ Afficher l'empreinte de la base migrée
+      - name: Afficher l'empreinte de la base migrée
         run: node scripts/print-db-target.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: 🗄️ Migrer la base de données
+      - name: Migrer la base de données
         run: |-
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             echo "::warning::Migration appliquee depuis une pull_request sur la base Preview partagee."
@@ -156,19 +173,19 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_URL: ${{ secrets.DATABASE_URL }}
           MIGRATIONS_STRICT: "true"
-      - name: 🛡️ Garde de schéma après migration
+      - name: Garde de schéma après migration
         id: guard
         run: node scripts/check-db-schema.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: 🏗️ Construire les artefacts Vercel
+      - name: Construire les artefacts Vercel
         run: |-
           if [ "$DEPLOY_TARGET" = "production" ]; then
             vercel build --prod --token="$VERCEL_TOKEN"
           else
             vercel build --token="$VERCEL_TOKEN"
           fi
-      - name: 🚀 Déployer sur Vercel
+      - name: Déployer sur Vercel
         run: |-
           if [ "$DEPLOY_TARGET" = "production" ]; then
             vercel deploy --prebuilt --archive=tgz --prod --token="$VERCEL_TOKEN"
@@ -176,7 +193,7 @@ jobs:
             vercel deploy --prebuilt --archive=tgz --token="$VERCEL_TOKEN"
           fi
   desktop:
-    name: 🖥️ Desktop ${{ matrix.os }} – ${{ matrix.arch }}
+    name: Desktop ${{ matrix.os }} – ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -192,72 +209,72 @@ jobs:
             arch: x64
             target: win
     steps:
-      - name: 📦 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: ⚡ Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: 🐧 Install Linux deps
+      - name: Install Linux deps
         if: matrix.target == 'linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libarchive-tools rpm fakeroot build-essential python3
-      - name: 🐍 Python pour les dépendances natives Windows
+      - name: Python pour les dépendances natives Windows
         if: matrix.target == 'win'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: ⚙️ Compilateur natif Windows
+      - name: Compilateur natif Windows
         if: matrix.target == 'win'
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
-      - name: 📥 Install desktop deps
+      - name: Install desktop deps
         working-directory: apps/desktop
         run: pnpm install --frozen-lockfile
-      - name: 📥 Installer les dépendances Coder
+      - name: Installer les dépendances Coder
         working-directory: apps/coder
         run: pnpm install --frozen-lockfile
-      - name: 📦 Préparer Coder pour le paquet bureau
+      - name: Préparer Coder pour le paquet bureau
         working-directory: apps/desktop
         run: pnpm run prepare:coder x64
-      - name: 📦 Préparer Coder ARM64 sur macOS
+      - name: Préparer Coder ARM64 sur macOS
         if: matrix.target == 'mac'
         working-directory: apps/desktop
         run: pnpm run prepare:coder arm64
-      - name: 🎨 Générer icônes (logo → ico/icns/png)
+      - name: Générer icônes (logo → ico/icns/png)
         working-directory: apps/desktop
         run: node scripts/generate-icons.mjs
-      - name: 🏗️ Build – TypeScript
+      - name: Build – TypeScript
         working-directory: apps/desktop
         run: pnpm run build
-      - name: 🏗️ Build – Linux
+      - name: Build – Linux
         if: matrix.target == 'linux'
         working-directory: apps/desktop
         run: pnpm exec electron-builder --linux --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 🏗️ Build – macOS (non signé)
+      - name: Build – macOS (non signé)
         if: matrix.target == 'mac'
         working-directory: apps/desktop
         run: pnpm exec electron-builder --mac --x64 --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
-      - name: 🏗️ Build – Windows (non signé)
+      - name: Build – Windows (non signé)
         if: matrix.target == 'win'
         working-directory: apps/desktop
         run: pnpm exec electron-builder --win --x64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
-      - name: 📤 Upload artefact – Linux
+      - name: Upload artefact – Linux
         if: matrix.target == 'linux'
         uses: actions/upload-artifact@v4
         with:
@@ -268,7 +285,7 @@ jobs:
             apps/desktop/dist-elec/*.rpm
             apps/desktop/dist-elec/*.snap
           if-no-files-found: error
-      - name: 📤 Upload artefact – macOS
+      - name: Upload artefact – macOS
         if: matrix.target == 'mac'
         uses: actions/upload-artifact@v4
         with:
@@ -277,7 +294,7 @@ jobs:
             apps/desktop/dist-elec/*.dmg
             apps/desktop/dist-elec/*.zip
           if-no-files-found: error
-      - name: 📤 Upload artefact – Windows
+      - name: Upload artefact – Windows
         if: matrix.target == 'win'
         uses: actions/upload-artifact@v4
         with:
@@ -291,50 +308,50 @@ jobs:
       - coder-check
     if: needs.changes.outputs.desktop == 'true'
   mobile-android:
-    name: 🤖 Mobile Android (APK de développement)
+    name: Mobile Android (APK de développement)
     runs-on: ubuntu-latest
     steps:
-      - name: 📦 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: ⚡ Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/mobile/pnpm-lock.yaml
-      - name: ☕ Setup Java 21
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-      - name: 🤖 Accepter licences Android SDK
+      - name: Accepter licences Android SDK
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
-      - name: 📥 Install mobile deps
+      - name: Install mobile deps
         working-directory: apps/mobile
         run: pnpm install --frozen-lockfile --ignore-workspace
-      - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
+      - name: Générer icônes mobiles (logo → resources/icon.png)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 🔧 Capacitor – add & sync android
+      - name: Capacitor – add & sync android
         working-directory: apps/mobile
         run: |
           if [ ! -d "android" ]; then
             npx --package=@capacitor/cli cap add android
           fi
           npx --package=@capacitor/cli cap sync android
-      - name: 🎨 Patch icônes natives Android (logo → mipmap)
+      - name: Patch icônes natives Android (logo → mipmap)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 🏗️ Build Android – Debug APK (debug keystore, non production)
+      - name: Build Android – Debug APK (debug keystore, non production)
         working-directory: apps/mobile/android
         run: |
           chmod +x ./gradlew
           ./gradlew assembleDebug --no-daemon --stacktrace
-      - name: 📤 Upload APK – Debug
+      - name: Upload APK – Debug
         uses: actions/upload-artifact@v4
         with:
           name: mai-mobile-android-debug
@@ -345,38 +362,38 @@ jobs:
       - changes
     if: needs.changes.outputs.mobile == 'true'
   mobile-ios:
-    name: 🍏 Mobile iOS (IPA non signé)
+    name: Mobile iOS (IPA non signé)
     runs-on: macos-latest
     steps:
-      - name: 📦 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: ⚡ Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/mobile/pnpm-lock.yaml
-      - name: 📥 Install mobile deps
+      - name: Install mobile deps
         working-directory: apps/mobile
         run: pnpm install --frozen-lockfile --ignore-workspace
-      - name: 🎨 Générer icônes mobiles
+      - name: Générer icônes mobiles
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 🔧 Capacitor – add & sync ios
+      - name: Capacitor – add & sync ios
         working-directory: apps/mobile
         run: |
           if [ ! -d "ios" ]; then
             npx --package=@capacitor/cli cap add ios
           fi
           npx --package=@capacitor/cli cap sync ios
-      - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
+      - name: Patch icônes natives iOS (logo → AppIcon)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
-      - name: 🏗️ Construire l’archive iOS non signée
+      - name: Construire l’archive iOS non signée
         working-directory: apps/mobile
         run: |
           if [ -d "ios/App/App.xcworkspace" ]; then
@@ -401,7 +418,7 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO
-      - name: 📦 Créer l’IPA à partir de l’archive réelle
+      - name: Créer l’IPA à partir de l’archive réelle
         working-directory: apps/mobile
         run: |
           rm -rf ios/App/build/Payload
@@ -409,7 +426,7 @@ jobs:
           cp -R ios/App/build/App.xcarchive/Products/Applications/*.app ios/App/build/Payload/
           cd ios/App/build
           zip -r mAI-unsigned.ipa Payload
-      - name: 📤 Upload IPA – unsigned
+      - name: Upload IPA – unsigned
         uses: actions/upload-artifact@v4
         with:
           name: mai-mobile-ios-unsigned
@@ -418,52 +435,52 @@ jobs:
           if-no-files-found: error
     needs:
       - changes
-    if: needs.changes.outputs.mobile == 'true' && (github.event_name != 'workflow_dispatch' || inputs.build_ios)
+    if: needs.changes.outputs.mobile == 'true' && (github.event_name!= 'workflow_dispatch' || inputs.build_ios)
   # La publication de la release est gérée par le job 'publish' en fin de workflow après toutes les validations de paquets et déploiements.
 
   # ─────────────────────────────────────────────────────────────────────────────
   # JOBS — Vibe mobile (application distincte chargeant le portage /vibe)
   # ─────────────────────────────────────────────────────────────────────────────
   build-android:
-    name: 🤖 Vibe Android (APK de développement)
+    name: Vibe Android (APK de développement)
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: apps/vibe
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: apps/vibe/package-lock.json
-      - name: ☕ Setup Java 21
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
-      - name: 🤖 Accepter les licences Android SDK
+      - name: Accepter les licences Android SDK
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses < <(yes)'
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         run: npm ci
-      - name: 🏗️ Compiler l'application web
+      - name: Compiler l'application web
         run: npm run build
         env:
           VITE_API_BASE: https://mai.val.run
-      - name: 🔧 Ajouter les plateformes Capacitor
+      - name: Ajouter les plateformes Capacitor
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/android@8
           if [ ! -d "android" ]; then
             npx --package=@capacitor/cli cap add android
           fi
           npx --package=@capacitor/cli cap sync android
-      - name: ⚙️ Rendre gradlew exécutable
+      - name: Rendre gradlew exécutable
         run: chmod +x android/gradlew
-      - name: 🏗️ Compiler l'APK Android de développement
+      - name: Compiler l'APK Android de développement
         run: cd android && ./gradlew assembleDebug --no-daemon --stacktrace
-      - name: 📤 Uploader l'artefact APK
+      - name: Uploader l'artefact APK
         uses: actions/upload-artifact@v4
         with:
           name: vibe-android-apk
@@ -473,7 +490,7 @@ jobs:
       - changes
     if: needs.changes.outputs.vibe == 'true'
   build-ios:
-    name: 🍏 Vibe iOS (IPA non signé)
+    name: Vibe iOS (IPA non signé)
     runs-on: macos-latest
     if: ${{ needs.changes.outputs.vibe == 'true' && ((github.event_name == 'workflow_dispatch' &&
       inputs.build_ios) || github.event_name == 'push' || github.event_name == 'pull_request') }}
@@ -481,28 +498,28 @@ jobs:
       run:
         working-directory: apps/vibe
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: apps/vibe/package-lock.json
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         run: npm ci
-      - name: 🏗️ Compiler l'application web
+      - name: Compiler l'application web
         run: npm run build
         env:
           VITE_API_BASE: https://mai.val.run
-      - name: 🔧 Ajouter la plateforme Capacitor iOS
+      - name: Ajouter la plateforme Capacitor iOS
         run: |
           npm install --no-save --package-lock=false @capacitor/cli@8 @capacitor/core@8 @capacitor/ios@8
           if [ ! -d "ios" ]; then
             npx --package=@capacitor/cli cap add ios
           fi
           npx --package=@capacitor/cli cap sync ios
-      - name: 🏗️ Compiler l'archive (non signé sans secrets Apple)
+      - name: Compiler l'archive (non signé sans secrets Apple)
         run: |
           if [ -d "ios/App/App.xcworkspace" ]; then
             TARGET="-workspace ios/App/App.xcworkspace"
@@ -526,13 +543,13 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO
-      - name: 📦 Exporter l'IPA non signé
+      - name: Exporter l'IPA non signé
         run: |
           rm -rf Payload vibe-ios-unsigned.ipa
           mkdir -p Payload
           cp -R ios/App/build/App.xcarchive/Products/Applications/*.app Payload/
           zip -r vibe-ios-unsigned.ipa Payload
-      - name: 📤 Uploader l'artefact IPA
+      - name: Uploader l'artefact IPA
         uses: actions/upload-artifact@v4
         with:
           name: vibe-ios-ipa
@@ -543,7 +560,7 @@ jobs:
 
   # Coder est validé avant ses installateurs autonomes et le paquet desktop.
   coder-check:
-    name: 💻 Coder – Types et build
+    name: Coder – Types et build
     runs-on: ubuntu-latest
     needs: [changes]
     if: needs.changes.outputs.coder == 'true' || needs.changes.outputs.desktop == 'true'
@@ -552,29 +569,29 @@ jobs:
       run:
         working-directory: apps/coder
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: ⚡ Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
-      - name: 🏗️ Compiler le Main (esbuild)
+      - name: Compiler le Main (esbuild)
         run: pnpm run build:main
-      - name: 🏗️ Compiler le Renderer (Vite)
+      - name: Compiler le Renderer (Vite)
         run: pnpm run build:renderer
 
   coder-windows:
-    name: 🪟 Coder Windows (NSIS / MSI)
+    name: Coder Windows (NSIS / MSI)
     runs-on: windows-2022
     needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
@@ -588,39 +605,39 @@ jobs:
       npm_config_python: "python"
       NODE_VERSION: 22
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
-      - name: 👥 Checkout du dépôt builtin team
+      - name: Checkout du dépôt builtin team
         uses: actions/checkout@v4
         continue-on-error: true
         with:
           repository: msitarzewski/agency-agents
           path: agency-agents
           fetch-depth: 1
-      - name: 🐍 Configuration de Python
+      - name: Configuration de Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: ⚡ Configuration de pnpm
+      - name: Configuration de pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
-      - name: ⚙️ Configuration de l'environnement MSVC
+      - name: Configuration de l'environnement MSVC
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         shell: pwsh
         run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: 🏗️ Compiler les installateurs Windows
+      - name: Compiler les installateurs Windows
         run: pnpm run release:win
-      - name: 📤 Uploader les artefacts de release Windows
+      - name: Uploader les artefacts de release Windows
         uses: actions/upload-artifact@v4
         with:
           name: release-coder-windows
@@ -632,7 +649,7 @@ jobs:
           if-no-files-found: error
 
   coder-macos:
-    name: 🍎 Coder macOS (DMG / ZIP non signé)
+    name: Coder macOS (DMG / ZIP non signé)
     runs-on: macos-latest
     needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
@@ -643,30 +660,30 @@ jobs:
       CSC_IDENTITY_AUTO_DISCOVERY: "false"
       ASYNC_BUILTIN_TEAM_SOURCE: ${{ github.workspace }}/agency-agents
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
-      - name: 👥 Checkout du dépôt builtin team
+      - name: Checkout du dépôt builtin team
         uses: actions/checkout@v4
         continue-on-error: true
         with:
           repository: msitarzewski/agency-agents
           path: agency-agents
           fetch-depth: 1
-      - name: ⚡ Configuration de pnpm
+      - name: Configuration de pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
-      - name: 🏗️ Compiler les paquets macOS (non signés)
+      - name: Compiler les paquets macOS (non signés)
         run: pnpm run release:mac:unsigned
-      - name: 📤 Uploader les artefacts de release macOS
+      - name: Uploader les artefacts de release macOS
         uses: actions/upload-artifact@v4
         with:
           name: release-coder-macos
@@ -678,7 +695,7 @@ jobs:
           if-no-files-found: error
 
   coder-linux:
-    name: 🐧 Coder Linux (AppImage / DEB)
+    name: Coder Linux (AppImage / DEB)
     runs-on: ubuntu-latest
     needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
@@ -688,34 +705,34 @@ jobs:
     env:
       ASYNC_BUILTIN_TEAM_SOURCE: ${{ github.workspace }}/agency-agents
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
-      - name: 👥 Checkout du dépôt builtin team
+      - name: Checkout du dépôt builtin team
         uses: actions/checkout@v4
         continue-on-error: true
         with:
           repository: msitarzewski/agency-agents
           path: agency-agents
           fetch-depth: 1
-      - name: 🛠️ Installer les outils système de build
+      - name: Installer les outils système de build
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libasound2-dev libarchive-tools fakeroot
-      - name: ⚡ Configuration de pnpm
+      - name: Configuration de pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: apps/coder/pnpm-lock.yaml
-      - name: 📥 Installer les dépendances
+      - name: Installer les dépendances
         run: pnpm install --frozen-lockfile
-      - name: 🏗️ Compiler les paquets Linux
+      - name: Compiler les paquets Linux
         run: pnpm run release:linux
-      - name: 📤 Uploader les artefacts de release Linux
+      - name: Uploader les artefacts de release Linux
         uses: actions/upload-artifact@v4
         with:
           name: release-coder-linux
@@ -732,7 +749,7 @@ jobs:
   # Exécuté après validation complète de tous les builds de paquets et déploiements
   # ─────────────────────────────────────────────────────────────────────────────
   publish:
-    name: 🚀 Publication de la release
+    name: Publication de la release
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs:
@@ -748,23 +765,23 @@ jobs:
       - coder-linux
     if: |
       always() &&
-      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
+      (github.event_name!= 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
       !contains(needs.*.result, 'failure') &&
       !contains(needs.*.result, 'cancelled')
     permissions:
       contents: write
       actions: read
     steps:
-      - name: 📦 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: 🟢 Configuration de Node.js
+      - name: Configuration de Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: 🏷️ Déterminer le tag et créer la release
+      - name: Déterminer le tag et créer la release
         id: release
         uses: actions/github-script@v7
         with:
@@ -777,14 +794,14 @@ jobs:
             const version = validateReleaseVersion(pkg.version);
 
             const isPr = context.eventName === 'pull_request';
-            const headSha = isPr ? context.payload.pull_request.head.sha : context.sha;
+            const headSha = isPr? context.payload.pull_request.head.sha: context.sha;
             const branch = isPr
               ? (context.payload.pull_request.head.ref || '')
               : context.ref.replace(/^refs\/heads\//, '').replace(/^refs\/tags\//, '');
             const channel = releaseChannel(context.eventName, branch);
 
             const marker = '<!-- mai-build:' + context.runId + ':' + context.runAttempt + ' -->';
-            const releases = await github.paginate(github.rest.repos.listReleases, { ...context.repo, per_page: 100 });
+            const releases = await github.paginate(github.rest.repos.listReleases, {...context.repo, per_page: 100 });
             const previous = releases.find(item => item.body?.includes(marker));
 
             let tag = previous?.tag_name;
@@ -798,7 +815,7 @@ jobs:
                   });
                   tag = nextReleaseTag(version, channel, refs.map(item => item.ref.slice('refs/tags/'.length)));
                   try {
-                    await github.rest.git.createRef({ ...context.repo, ref: 'refs/tags/' + tag, sha: headSha });
+                    await github.rest.git.createRef({...context.repo, ref: 'refs/tags/' + tag, sha: headSha });
                     break;
                   } catch (error) {
                     if (![409, 422].includes(error.status)) throw error;
@@ -806,7 +823,7 @@ jobs:
                       ...context.repo, ref: 'tags/' + tag
                     });
                     if (!refsNow.some(item => item.ref === 'refs/tags/' + tag)) throw error;
-                    if (channel === 'stable') throw new Error('La version stable existe déjà : augmentez package.json.');
+                    if (channel === 'stable') throw new Error('La version stable existe déjà: augmentez package.json.');
                     tag = undefined;
                   }
                 }
@@ -820,35 +837,35 @@ jobs:
 
             const title = releaseTitle(tag);
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const channelBadge = channel === 'stable' ? '🟢 Stable' : channel === 'beta' ? '🟡 Bêta' : '🔵 Pull Request';
+            const channelBadge = channel === 'stable'? ' Stable': channel === 'beta'? ' Bêta': ' Pull Request';
 
             const body = [
               marker,
-              `## 🚀 ${title}`,
+              `## ${title}`,
               '',
               `Publication officielle de la version **${version}** (${channelBadge}).`,
               '',
-              '### 📋 Notes de version & Nouveautés',
+              '### Notes de version & Nouveautés',
               notes.body || 'Aucune note de version spécifique fournie pour cette révision.',
               '',
               '---',
               '',
-              '### 📦 Applications et Paquets inclus',
-              'Les chemins modifiés déterminent les applications compilées. Les fichiers joints correspondent aux builds réussis de cette exécution :',
-              '- 🖥️ **mAI Desktop** : Windows (`.exe`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`, `.rpm`)',
-              '- 💻 **mAI Coder** : Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`)',
-              '- 📱 **mAI Mobile** : Android (`.apk` de développement), iOS (`.ipa` non signé)',
-              '- 🌐 **Vibe** : Android (`.apk` de développement), iOS (`.ipa` non signé)',
-              '- ☁️ **Web** : Déploiement Vercel sur les branches et événements prévus par le workflow',
+              '### Applications et Paquets inclus',
+              'Les chemins modifiés déterminent les applications compilées. Les fichiers joints correspondent aux builds réussis de cette exécution:',
+              '- **mAI Desktop**: Windows (`.exe`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`, `.rpm`)',
+              '- **mAI Coder**: Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`)',
+              '- **mAI Mobile**: Android (`.apk` de développement), iOS (`.ipa` non signé)',
+              '- **Vibe**: Android (`.apk` de développement), iOS (`.ipa` non signé)',
+              '- **Web**: Déploiement Vercel sur les branches et événements prévus par le workflow',
               '',
               '---',
               '',
-              '### 🔍 Traçabilité de la compilation',
-              `- **Canal** : \`${channel}\``,
-              `- **Version** : \`${version}\``,
-              `- **Tag Git** : \`${tag}\``,
-              `- **Commit** : \`${headSha}\``,
-              `- **Exécution GitHub Actions** : [Voir le build #${context.runNumber}](${runUrl})`,
+              '### Traçabilité de la compilation',
+              `- **Canal**: \`${channel}\``,
+              `- **Version**: \`${version}\``,
+              `- **Tag Git**: \`${tag}\``,
+              `- **Commit**: \`${headSha}\``,
+              `- **Exécution GitHub Actions**: [Voir le build #${context.runNumber}](${runUrl})`,
               '',
               'Les fichiers téléchargeables ci-dessous correspondent aux applications construites et validées durant ce workflow.'
             ].join('\n');
@@ -859,22 +876,22 @@ jobs:
               name: title,
               body,
               target_commitish: headSha,
-              prerelease: channel !== 'stable',
-              make_latest: channel === 'stable' ? 'true' : 'false'
+              prerelease: channel!== 'stable',
+              make_latest: channel === 'stable'? 'true': 'false'
             };
 
             const { data: release } = previous
-              ? await github.rest.repos.updateRelease({ ...options, release_id: previous.id })
+              ? await github.rest.repos.updateRelease({...options, release_id: previous.id })
               : await github.rest.repos.createRelease(options);
 
             core.setOutput('id', release.id);
             core.setOutput('tag', tag);
             core.setOutput('url', release.html_url);
-      - name: 📥 Télécharger tous les artefacts du build
+      - name: Télécharger tous les artefacts du build
         uses: actions/download-artifact@v4
         with:
           path: release-artifacts
-      - name: 📎 Joindre les fichiers construits à la release
+      - name: Joindre les fichiers construits à la release
         uses: actions/github-script@v7
         env:
           RELEASE_ID: ${{ steps.release.outputs.id }}
@@ -914,7 +931,7 @@ jobs:
               const isUpdateMetadata = /^latest.*\.yml$/i.test(item.base);
               const isUnique = baseCounts.get(item.base) === 1;
               const isCoderOrDesktop = item.base.startsWith('mAI-Coder-') || item.base.startsWith('mAI-') || item.base.startsWith('mai-');
-              const uploadName = (isUpdateMetadata || isUnique || isCoderOrDesktop) ? item.base : item.name;
+              const uploadName = (isUpdateMetadata || isUnique || isCoderOrDesktop)? item.base: item.name;
               uploadNameByFile.set(item.file, uploadName);
             }
             const uploadNameByBase = new Map(collected.map(c => [c.base, uploadNameByFile.get(c.file)]));
@@ -928,9 +945,9 @@ jobs:
                 // Remplacer toutes les références au nom de base (dans 'path:', 'url:', 'file:', etc.)
                 // par le nom réel sous lequel le binaire a été uploadé dans la release.
                 // Cela évite qu'electron-updater ne télécharge une page 404 HTML exécutée
-                // ensuite comme installateur (« Error launching installer »).
+                // ensuite comme installateur (« Error launching installer»).
                 for (const [baseName, targetName] of uploadNameByBase.entries()) {
-                  if (baseName !== targetName) {
+                  if (baseName!== targetName) {
                     text = text.replaceAll(baseName, targetName);
                   }
                 }

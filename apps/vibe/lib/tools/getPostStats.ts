@@ -2,7 +2,7 @@
  * Outil mAI — Analyse détaillée d'un post (délègue à MAIAgentFleet).
  * Catalogue : lib/tools/index.json → id "get_post_stats".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface GetPostStatsArgs {
   post_id: string;

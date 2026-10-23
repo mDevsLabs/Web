@@ -1,0 +1,7 @@
+// Three recoverable generations; checksum detects accidental/truncated writes (not an anti-cheat signature).
+export interface StorageLike {getItem(key:string):string|null;setItem(key:string,value:string):void;removeItem(key:string):void;}
+export function checksum(text:string){let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16);}
+function decode(raw:string|null):unknown{if(!raw)return null;const parsed=JSON.parse(raw);if(parsed?.schemaVersion===1){if(typeof parsed.payload!=='string'||checksum(parsed.payload)!==parsed.checksum)throw new Error('Save checksum');return JSON.parse(parsed.payload);}return parsed;}
+export function readVault(storage:StorageLike,key:string):unknown{for(const suffix of ['',':backup1',':backup2'])try{const value=decode(storage.getItem(key+suffix));if(value&&typeof value==='object'&&!Array.isArray(value))return value;}catch{}return null;}
+export function writeVault(storage:StorageLike,key:string,data:unknown){try{const payload=JSON.stringify(data),envelope=JSON.stringify({schemaVersion:1,savedAt:Date.now(),checksum:checksum(payload),payload});const current=storage.getItem(key);try{if(current&&decode(current)){const previous=storage.getItem(key+':backup1');if(previous)storage.setItem(key+':backup2',previous);storage.setItem(key+':backup1',current);}}catch{}storage.setItem(key,envelope);return true;}catch{return false;}}
+export function clearVault(storage:StorageLike,key:string){for(const suffix of ['',':backup1',':backup2'])storage.removeItem(key+suffix);}

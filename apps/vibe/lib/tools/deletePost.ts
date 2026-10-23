@@ -2,7 +2,7 @@
  * Outil mAI — Suppression de post (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "delete_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface DeletePostArgs {
   post_id: string;

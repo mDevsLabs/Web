@@ -48,7 +48,7 @@ vi.mock("electron", () => {
   const mockElectron = {
     app: {
       getPath: (_name?: string) => process.cwd(),
-      getVersion: () => "0.9.1",
+      getVersion: () => "0.9.2",
     },
     BrowserWindow,
     ipcMain: {

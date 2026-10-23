@@ -89,7 +89,7 @@ function AgentImageToolResult({
   };
   toolCallId: string;
 }) {
-  // Sortie de l'outil Agent generate_image : même carte que l'image du Chat
+  // Sortie de l'outil Agent generate_image: même carte que l'image du Chat
   // (aperçu, copie, téléchargement), l'identifiant de part étant identique.
   return <ImageToolResult output={output as any} toolCallId={toolCallId} />;
 }
@@ -105,7 +105,7 @@ function AgentAudioToolResult({
     voice?: string;
   };
 }) {
-  // Sortie de l'outil Agent generate_audio : même carte lecteur que la
+  // Sortie de l'outil Agent generate_audio: même carte lecteur que la
   // synthèse vocale du Chat (voix, transcription, lecture directe).
   return (
     <div className="flex w-[min(100%,480px)] flex-col gap-3 rounded-2xl border border-border/60 bg-card/90 p-4 shadow-sm backdrop-blur-xs">
@@ -120,7 +120,7 @@ function AgentAudioToolResult({
         </div>
         {typeof output.voice === "string" ? (
           <span className="rounded-full border border-border/30 bg-muted/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
-            Voix : {output.voice.replace("flux-", "").replace("-en", "")}
+            Voix: {output.voice.replace("flux-", "").replace("-en", "")}
           </span>
         ) : null}
       </div>
@@ -203,18 +203,18 @@ function ToolApprovalActions({
       {preview?.enabled && preview.preview ? (
         <div className="w-full rounded-md bg-muted p-2 text-xs">
           <p className="font-medium">{preview.preview.tool}</p>
-          <p>Cible : {preview.preview.target}</p>
-          <p>Effet prévu : {preview.preview.effect}</p>
+          <p>Cible: {preview.preview.target}</p>
+          <p>Effet prévu: {preview.preview.effect}</p>
           {preview.preview.details?.length ? (
             <p className="mt-1 break-words text-muted-foreground">
-              Paramètres : {preview.preview.details.join(" · ")}
+              Paramètres: {preview.preview.details.join(" · ")}
             </p>
           ) : null}
         </div>
       ) : null}
       {preview?.enabled && !preview.preview ? (
         <p className="w-full text-xs text-destructive">
-          Aperçu indisponible : l'accord est suspendu.
+          Aperçu indisponible: l'accord est suspendu.
         </p>
       ) : null}
       <button
@@ -279,7 +279,7 @@ function ImageToolResult({
             onClick={async () => {
               const ok = await copyImageToClipboard(imageSrc);
               if (ok) {
-                toast.success("Image copiée !");
+                toast.success("Image copiée!");
               } else {
                 toast.error("Échec de la copie.");
               }
@@ -405,7 +405,7 @@ const PurePreviewMessage = ({
   submitUserInputAnswer,
 }: {
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
-  // Réponse à une question Agent : le serveur valide, persiste puis relance le
+  // Réponse à une question Agent: le serveur valide, persiste puis relance le
   // MÊME run. Absent côté Chat, où la clarification reste locale au message.
   submitUserInputAnswer?: AgentUserInputSubmit;
   chatId: string;
@@ -421,7 +421,7 @@ const PurePreviewMessage = ({
   isCurrentMatch?: boolean;
 }) => {
   // `parts` est `notNull` en base et toujours un tableau côté SDK, mais c'était la
-  // SEULE lecture non gardée de ce fichier : une ligne malformée suffisait à
+  // SEULE lecture non gardée de ce fichier: une ligne malformée suffisait à
   // faire tomber le segment de route entier — donc la conversation, le
   // compositeur et l'historique avec. Toute lecture passe par cette liste.
   const messageParts = message.parts ?? [];
@@ -477,7 +477,7 @@ const PurePreviewMessage = ({
     { isStreaming: false, rendered: false, text: "" }
   ) ?? { isStreaming: false, rendered: false, text: "" };
 
-  // Fin prématurée : le stream s'est arrêté juste après l'appel d'un outil,
+  // Fin prématurée: le stream s'est arrêté juste après l'appel d'un outil,
   // sans résultat ni continuation (ex. le modèle annonce une recherche puis plus rien).
   const interruptedAfterToolCall = useMemo(() => {
     if (!isAssistant || isLoading) {
@@ -592,7 +592,7 @@ const PurePreviewMessage = ({
 
       if (state === "output-available") {
         // Le plugin peut renvoyer une erreur structurée (ville introuvable,
-        // service indisponible) : on l'affiche au lieu de dérouler une carte
+        // service indisponible): on l'affiche au lieu de dérouler une carte
         // météo sur des données incomplètes.
         if (isWeatherErrorOutput(part.output)) {
           return (
@@ -679,7 +679,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Erreur lors de la création du document : {String(part.output.error)}
+            Erreur lors de la création du document: {String(part.output.error)}
           </div>
         );
       }
@@ -702,7 +702,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Erreur lors de la mise à jour du document :{" "}
+            Erreur lors de la mise à jour du document:{" "}
             {String(part.output.error)}
           </div>
         );
@@ -732,7 +732,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Erreur lors de la modification du document :{" "}
+            Erreur lors de la modification du document:{" "}
             {String(part.output.error)}
           </div>
         );
@@ -797,7 +797,7 @@ const PurePreviewMessage = ({
                 output={
                   "error" in part.output ? (
                     <div className="rounded border p-2 text-red-500">
-                      Erreur : {String(part.output.error)}
+                      Erreur: {String(part.output.error)}
                     </div>
                   ) : (
                     <DocumentToolResult
@@ -838,7 +838,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
             key={toolCallId ?? key}
           >
-            Erreur génération image : {String(output.error)}
+            Erreur génération image: {String(output.error)}
           </div>
         );
       }
@@ -867,7 +867,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
             key={toolPart.toolCallId ?? key}
           >
-            Erreur synthèse vocale : {String(output.error)}
+            Erreur synthèse vocale: {String(output.error)}
           </div>
         );
       }
@@ -944,7 +944,7 @@ const PurePreviewMessage = ({
                 </div>
                 {(part.output as any).voice && (
                   <span className="text-[11px] font-medium bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full border border-border/30">
-                    Voix :{" "}
+                    Voix:{" "}
                     {(part.output as any).voice
                       .replace("flux-", "")
                       .replace("-en", "")}
@@ -1047,7 +1047,7 @@ const PurePreviewMessage = ({
               className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
               key={toolCallId}
             >
-              Recherche Web : {String((output as { error: unknown }).error)}
+              Recherche Web: {String((output as { error: unknown }).error)}
             </div>
           );
         }
@@ -1098,10 +1098,10 @@ const PurePreviewMessage = ({
               </span>
               <span className="font-semibold text-[13px] text-foreground">
                 {action === "add"
-                  ? "💾 Mémorisation utilisateur"
+                  ? " Mémorisation utilisateur"
                   : action === "delete"
-                    ? "🗑️ Oubli de mémoire"
-                    : "🧠 Consultation de la mémoire"}
+                    ? " Oubli de mémoire"
+                    : " Consultation de la mémoire"}
               </span>
             </div>
             <span
@@ -1139,7 +1139,7 @@ const PurePreviewMessage = ({
                 <span className="text-xs text-muted-foreground font-medium">
                   {output?.count === undefined
                     ? "Recherche dans la mémoire..."
-                    : `${output.count} information(s) trouvée(s) :`}
+                    : `${output.count} information(s) trouvée(s):`}
                 </span>
                 {output?.memories && output.memories.length > 0 && (
                   <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
@@ -1268,11 +1268,11 @@ const PurePreviewMessage = ({
       );
     }
 
-    // Clarification Agent : identifiant d'outil snake_case du registre Agent.
+    // Clarification Agent: identifiant d'outil snake_case du registre Agent.
     // La carte enregistre la réponse côté serveur (jamais localement) et
-    // s'appuie sur la sortie persistée de l'outil : la question reste posée
+    // s'appuie sur la sortie persistée de l'outil: la question reste posée
     // après un refresh, jusqu'à ce qu'une réponse soit enregistrée.
-    // Les identifiants d'outils Agent viennent du registre serveur : le type
+    // Les identifiants d'outils Agent viennent du registre serveur: le type
     // union du Chat ne peut pas les énumérer (même convention que "error").
     if ((type as string) === "tool-ask_user") {
       const toolPart = part as any;

@@ -1,10 +1,10 @@
 /**
  * Script de migration adapté à la VRAIE structure de la base Neon
- * Basé sur l'audit du 2026-09-02 :
- *   - usage_logs.user_id est UUID (pas INTEGER)
- *   - weekly_usage existe sans updated_at
- *   - user_settings manque 5 colonnes
- *   - users et profiles manquent is_verified
+ * Basé sur l'audit du 2026-09-02:
+ * - usage_logs.user_id est UUID (pas INTEGER)
+ * - weekly_usage existe sans updated_at
+ * - user_settings manque 5 colonnes
+ * - users et profiles manquent is_verified
  */
 import { neon } from '@neondatabase/serverless';
 import { existsSync, readFileSync } from 'node:fs';
@@ -37,12 +37,12 @@ function readOptionalEnvFile(path) {
 }
 
 const fileEnv = readOptionalEnvFile(join(__dirname, '..', '.env'));
-const env = { ...fileEnv, ...process.env };
+const env = {...fileEnv,...process.env };
 const databaseUrl = env.DATABASE_URL?.trim();
 
 if (!databaseUrl) {
   console.error(
-    '❌ DATABASE_URL est requis. Définissez-la dans l’environnement (par exemple DATABASE_URL=... npm run migrate:ci).'
+    ' DATABASE_URL est requis. Définissez-la dans l’environnement (par exemple DATABASE_URL=... npm run migrate:ci).'
   );
   process.exit(1);
 }
@@ -52,22 +52,22 @@ const sql = neon(databaseUrl);
 async function runAlter(name, query) {
   try {
     await sql.query(query);
-    console.log(`  ✅ ${name}`);
+    console.log(` ${name}`);
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error(`  ❌ ${name} — ERREUR: ${message}`);
-    throw new Error(`Migration en échec (${name}) : ${message}`, { cause: error });
+    const message = error instanceof Error? error.message: String(error);
+    console.error(` ${name} — ERREUR: ${message}`);
+    throw new Error(`Migration en échec (${name}): ${message}`, { cause: error });
   }
 }
 
 async function migrate() {
-  console.log('\n🚀 MIGRATION RÉELLE — Basée sur audit de la base Neon\n');
+  console.log('\n MIGRATION RÉELLE — Basée sur audit de la base Neon\n');
   console.log('═'.repeat(60));
 
   // ─────────────────────────────────────────────────────────────
   // 1. users — Ajouter is_verified
   // ─────────────────────────────────────────────────────────────
-  console.log('\n👤 TABLE users:');
+  console.log('\n TABLE users:');
   await runAlter(
     'users.is_verified',
     `ALTER TABLE users ADD COLUMN IF NOT EXISTS is_verified BOOLEAN DEFAULT FALSE`
@@ -76,7 +76,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 2. profiles — Ajouter is_verified
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📸 TABLE profiles:');
+  console.log('\n TABLE profiles:');
   await runAlter(
     'profiles.is_verified',
     `ALTER TABLE profiles ADD COLUMN IF NOT EXISTS is_verified BOOLEAN DEFAULT FALSE`
@@ -93,7 +93,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 3. user_settings — Ajouter les 5 colonnes manquantes
   // ─────────────────────────────────────────────────────────────
-  console.log('\n⚙️  TABLE user_settings:');
+  console.log('\n TABLE user_settings:');
   await runAlter(
     'user_settings.feed_default_mode',
     `ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS feed_default_mode VARCHAR(32) DEFAULT 'for_you'`
@@ -163,7 +163,7 @@ async function migrate() {
   // 4. usage_logs — Ajouter colonne endpoint (manquante selon schéma)
   // Note: user_id est UUID dans cette table (pas INTEGER) — NORMAL
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📊 TABLE usage_logs:');
+  console.log('\n TABLE usage_logs:');
   await runAlter(
     'usage_logs.endpoint',
     `ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS endpoint TEXT`
@@ -172,7 +172,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 5. weekly_usage — Ajouter updated_at
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📈 TABLE weekly_usage:');
+  console.log('\n TABLE weekly_usage:');
   await runAlter(
     'weekly_usage.updated_at',
     `ALTER TABLE weekly_usage ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()`
@@ -181,7 +181,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 6. posts — Ajouter parent_post_id et is_repost
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📝 TABLE posts:');
+  console.log('\n TABLE posts:');
   await runAlter(
     'posts.parent_post_id',
     `ALTER TABLE posts ADD COLUMN IF NOT EXISTS parent_post_id UUID REFERENCES posts(id) ON DELETE SET NULL`
@@ -218,7 +218,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 7. notifications — Assurer is_read
   // ─────────────────────────────────────────────────────────────
-  console.log('\n🔔 TABLE notifications:');
+  console.log('\n TABLE notifications:');
   await runAlter(
     'notifications.is_read',
     `ALTER TABLE notifications ADD COLUMN IF NOT EXISTS is_read BOOLEAN DEFAULT FALSE`
@@ -227,7 +227,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 8. direct_messages — Assurer read_at
   // ─────────────────────────────────────────────────────────────
-  console.log('\n💬 TABLE direct_messages:');
+  console.log('\n TABLE direct_messages:');
   await runAlter(
     'direct_messages.read_at',
     `ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS read_at TIMESTAMP WITH TIME ZONE`
@@ -236,7 +236,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 8b. comments — Colonnes réponses imbriquées + likes
   // ─────────────────────────────────────────────────────────────
-  console.log('\n💬 TABLE comments:');
+  console.log('\n TABLE comments:');
   await runAlter(
     'comments.path drop not null',
     `ALTER TABLE comments ALTER COLUMN path DROP NOT NULL`
@@ -275,7 +275,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 8d. Traductions DeepL (posts + commentaires, cf. translate.ts)
   // ─────────────────────────────────────────────────────────────
-  console.log('\n🌍 TABLES TRADUCTIONS:');
+  console.log('\n TABLES TRADUCTIONS:');
   await runAlter(
     'TABLE post_translations',
     `CREATE TABLE IF NOT EXISTS post_translations (
@@ -323,9 +323,9 @@ async function migrate() {
   );
 
   // ─────────────────────────────────────────────────────────────
-  // 9. Compte @bot — aucun mot de passe public ; seed uniquement opt-in
+  // 9. Compte @bot — aucun mot de passe public; seed uniquement opt-in
   // ─────────────────────────────────────────────────────────────
-  console.log('\n🤖 COMPTE @bot:');
+  console.log('\n COMPTE @bot:');
 
   // Neutralise tout ancien hash public déjà présent. Le bcrypt est calculé
   // dans PostgreSQL à partir de données aléatoires jamais conservées en clair.
@@ -335,11 +335,11 @@ async function migrate() {
     SET password_hash = crypt(encode(gen_random_bytes(32), 'hex'), gen_salt('bf', 12))
     WHERE username = 'bot'
   `;
-  console.log('  🔒 Connexion par mot de passe @bot neutralisée (bcrypt aléatoire)');
+  console.log(' Connexion par mot de passe @bot neutralisée (bcrypt aléatoire)');
 
   const botPasswordHash = env.BOT_PASSWORD_HASH?.trim();
   if (!botPasswordHash) {
-    console.log('  ⏭️  Aucun compte @bot créé : BOT_PASSWORD_HASH n’est pas défini');
+    console.log(' Aucun compte @bot créé: BOT_PASSWORD_HASH n’est pas défini');
   } else {
     if (!/^\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}$/.test(botPasswordHash)) {
       throw new Error('BOT_PASSWORD_HASH doit être un hash bcrypt valide.');
@@ -366,7 +366,7 @@ async function migrate() {
 
     await sql`
       INSERT INTO profiles (user_id, display_name, bio, avatar_url, is_verified)
-      VALUES (${botId}, 'Bot', 'Compte officiel de test Vibe 🤖', 'https://api.dicebear.com/7.x/bottts/svg?seed=vibe-bot', TRUE)
+      VALUES (${botId}, 'Bot', 'Compte officiel de test Vibe ', 'https://api.dicebear.com/7.x/bottts/svg?seed=vibe-bot', TRUE)
       ON CONFLICT (user_id) DO UPDATE SET
         display_name = EXCLUDED.display_name,
         bio = EXCLUDED.bio,
@@ -378,20 +378,20 @@ async function migrate() {
     if (Number(postCount[0].n) < 2) {
       await sql`
         INSERT INTO posts (author_id, content, format, visibility, toxicity_score, created_via)
-        VALUES (${botId}, 'Bienvenue sur Vibe ! 🚀 Je suis le bot de test officiel @bot. Vous pouvez liker, commenter ou m''envoyer un message en DM !', 'micro_text', 'public', 0.01, 'mai_agent')
+        VALUES (${botId}, 'Bienvenue sur Vibe! Je suis le bot de test officiel @bot. Vous pouvez liker, commenter ou m''envoyer un message en DM!', 'micro_text', 'public', 0.01, 'mai_agent')
       `;
       await sql`
         INSERT INTO posts (author_id, content, format, visibility, toxicity_score, created_via)
-        VALUES (${botId}, 'Test de publication avec #mAI sur Vibe ! Intelligence artificielle intégrée ✨🤖 #Vibe #Innovation', 'micro_text', 'public', 0.01, 'mai_agent')
+        VALUES (${botId}, 'Test de publication avec #mAI sur Vibe! Intelligence artificielle intégrée #Vibe #Innovation', 'micro_text', 'public', 0.01, 'mai_agent')
       `;
     }
-    console.log(`  ✅ Compte @bot sécurisé à partir de BOT_PASSWORD_HASH (id: ${botId})`);
+    console.log(` Compte @bot sécurisé à partir de BOT_PASSWORD_HASH (id: ${botId})`);
   }
 
   // ─────────────────────────────────────────────────────────────
   // 10. Index de performance
   // ─────────────────────────────────────────────────────────────
-  console.log('\n⚡ INDEX DE PERFORMANCE:');
+  console.log('\n INDEX DE PERFORMANCE:');
   await runAlter(
     'idx_posts_published_at',
     `CREATE INDEX IF NOT EXISTS idx_posts_published_at ON posts(published_at DESC)`
@@ -424,7 +424,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // MODÉRATION DM + PERSONNALISATION (ajout 2026-09-02)
   // ─────────────────────────────────────────────────────────────
-  console.log('\n🛡️  TABLES DM & PERSONNALISATION:');
+  console.log('\n TABLES DM & PERSONNALISATION:');
   await runAlter(
     'TABLE blocked_users',
     `CREATE TABLE IF NOT EXISTS blocked_users (
@@ -476,7 +476,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 15. Cercle Privé (user_circles, circle_members) & Audience par défaut
   // ─────────────────────────────────────────────────────────────
-  console.log('\n🔒 CERCLE PRIVÉ & AUDIENCE PAR DÉFAUT:');
+  console.log('\n CERCLE PRIVÉ & AUDIENCE PAR DÉFAUT:');
   await runAlter(
     'TABLE user_circles',
     `CREATE TABLE IF NOT EXISTS user_circles (
@@ -520,7 +520,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 16. STATS CRÉATEUR 017 (sources vues + visites profil)
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📊 STATS CRÉATEUR 017:');
+  console.log('\n STATS CRÉATEUR 017:');
   await runAlter(
     'TABLE post_views',
     `CREATE TABLE IF NOT EXISTS post_views (
@@ -554,7 +554,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 17. PROFIL ENRICHI + ÉPINGLAGE PROFIL + LIVRES PUBLICS (021/022)
   // ─────────────────────────────────────────────────────────────
-  console.log('\n✨ PROFIL, ÉPINGLAGE & LIVRES PUBLICS:');
+  console.log('\n PROFIL, ÉPINGLAGE & LIVRES PUBLICS:');
   await runAlter('profiles.website', `ALTER TABLE profiles ADD COLUMN IF NOT EXISTS website VARCHAR(255)`);
   await runAlter('profiles.location', `ALTER TABLE profiles ADD COLUMN IF NOT EXISTS location VARCHAR(100)`);
   await runAlter(
@@ -582,7 +582,7 @@ async function migrate() {
   // ─────────────────────────────────────────────────────────────
   // 18. CONVERSATIONS DES LIVRES DANS MESSAGES (025) + INDEX mAI
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📚 CONVERSATIONS DES LIVRES:');
+  console.log('\n CONVERSATIONS DES LIVRES:');
   await runAlter('dm_conversations.book_id', `ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`);
   await runAlter('idx_dm_conversations_book', `CREATE UNIQUE INDEX IF NOT EXISTS idx_dm_conversations_book ON dm_conversations(book_id) WHERE book_id IS NOT NULL`);
   await runAlter('direct_messages.attached_post_id', `ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS attached_post_id UUID`);
@@ -609,7 +609,7 @@ async function migrate() {
   // VÉRIFICATION FINALE
   // ─────────────────────────────────────────────────────────────
   console.log('\n═'.repeat(60));
-  console.log('📋 VÉRIFICATION FINALE:');
+  console.log(' VÉRIFICATION FINALE:');
   const checks = [
     ['users.is_verified', `SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='is_verified'`],
     ['profiles.is_verified', `SELECT 1 FROM information_schema.columns WHERE table_name='profiles' AND column_name='is_verified'`],
@@ -646,14 +646,14 @@ async function migrate() {
   for (const [name, query] of checks) {
     const result = await sql.query(query);
     const found = result.length > 0;
-    console.log(`  ${found ? '✅' : '❌'} ${name}`);
+    console.log(` ${found? '': ''} ${name}`);
     if (!found) missingChecks.push(name);
   }
   if (missingChecks.length > 0) {
-    throw new Error(`Vérification finale échouée : ${missingChecks.join(', ')}`);
+    throw new Error(`Vérification finale échouée: ${missingChecks.join(', ')}`);
   }
 
-  console.log('\n🎉 Migration terminée !\n');
+  console.log('\n Migration terminée!\n');
 }
 
-migrate().catch(e => { console.error('💥 Erreur fatale:', e.message); process.exit(1); });
+migrate().catch(e => { console.error(' Erreur fatale:', e.message); process.exit(1); });

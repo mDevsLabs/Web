@@ -1,0 +1,73 @@
+@media(max-width:700px){
+  .touch-device .mission-card{display:none}
+  .touch-device .hero{min-height:230px}
+  .touch-device .map-selector{flex-wrap:wrap}
+  .touch-device .footer>div:first-child{max-width:calc(100% - 100px);flex-wrap:wrap;font-size:6px;gap:5px}
+  .touch-device .controls-list>div{font-size:10px;line-height:1.5}
+}
+@media(orientation:portrait){
+  .touch-device .mini-panel{width:80px}
+  .touch-device .mini-panel canvas{height:60px}
+  .touch-device .mini-top{font-size:6px}
+  .touch-device .match-header{width:192px}
+  .touch-device .score-ribbon{gap:10px}
+  .touch-device .team-score b{font-size:29px}
+  .touch-device .match-clock{min-width:78px}
+  .touch-device .match-clock small{max-width:85px;line-height:1.4}
+  .touch-device .compass,.touch-device .kill-feed{display:none}
+  .touch-device .player-vitals{top:calc(104px + var(--safe-top));width:110px}
+  .touch-device .weapon-hud{top:calc(126px + var(--safe-top));width:132px}
+  .touch-device .hud-right-top{top:112px}
+  .touch-toolbar{top:64px}
+  .touch-joystick{left:12px;bottom:68px}
+  .touch-sprint{left:45px;bottom:196px}
+  .touch-fire{right:16px;bottom:126px}
+  .touch-aim{right:20px;bottom:218px}
+  .touch-reload{right:82px;bottom:218px}
+  .touch-melee{right:20px;bottom:280px}
+  .touch-grenade{right:16px;bottom:64px}
+  .touch-jump{right:78px;bottom:64px}
+  .touch-crouch{right:78px;bottom:4px}
+  .touch-weapons{left:12px;bottom:4px;transform:none}
+  .portrait-tip{display:block;position:absolute;top:196px;left:50%;transform:translateX(-50%);width:max-content;font:9px 'Courier New',monospace;color:#dae5c7aa;text-shadow:0 1px 5px #000}
+  .touch-device .scoreboard{top:calc(120px + var(--safe-top));bottom:calc(64px + var(--safe-bottom))}
+}
+@media(max-height:520px) and (orientation:landscape){
+  .touch-device .topbar{height:54px}
+  .touch-device .sidebar{margin-top:3px}
+  .touch-device .nav-item{height:44px}
+  .touch-device .hero{min-height:145px;padding:18px 0;gap:20px}
+  .touch-device .hero h1{font-size:62px}
+  .touch-device .hero .eyebrow{margin-bottom:12px}
+  .touch-device .hero-subtitle{font-size:11px;margin-top:10px}
+  .touch-device .hero-meta{margin-top:10px;font-size:7px}
+  .touch-device .mission-card{display:none}
+  .touch-device .mode-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .touch-device .mode-card{display:block;min-height:150px;padding:16px 12px}
+  .touch-device .mode-art{display:none}
+  .touch-device .mode-number{position:static;font-size:8px;margin-bottom:12px}
+  .touch-device .mode-heading h3{font-size:20px}
+  .touch-device .mode-card p{font-size:10px;min-height:36px}
+  .touch-device .mode-caption{font-size:7px;letter-spacing:.5px}
+  .touch-device .deployment-bar{display:flex;flex-wrap:wrap}
+  .touch-device .map-selector{min-width:190px;display:block;border-right:1px solid var(--line);border-bottom:0;padding:12px}
+  .touch-device .map-options{margin-top:5px}
+  .touch-device .deploy-control{padding:12px;min-width:100px}
+  .touch-device .deploy-button{min-width:170px;flex:1;min-height:76px}
+  .touch-device .pause-card{padding:18px 0}
+  .touch-device .pause-card h2{font-size:54px;margin:8px 0 10px}
+  .touch-device .pause-card>p{margin-bottom:16px}
+  .touch-device .pause-help{display:none}
+  .touch-device .pause-card>.primary-button,.touch-device .pause-card>.secondary-button{height:46px;margin-bottom:8px}
+  .touch-device .compass,.touch-device .kill-feed{display:none}
+  .touch-device .results h1{font-size:56px}
+  .touch-device .result-stats{margin:20px 0;padding:20px 0}
+}
+@media(max-height:360px) and (orientation:landscape){
+  .touch-device .mini-panel canvas{height:52px}
+  .touch-device .player-vitals{top:calc(88px + var(--safe-top));width:115px}
+  .touch-device .weapon-hud{left:calc(140px + var(--safe-left));right:auto;top:calc(82px + var(--safe-top));width:125px;text-align:left}
+  .touch-device .ammo-row{justify-content:flex-start}
+  .touch-sprint{left:134px;bottom:24px}
+}
+@media(prefers-reduced-motion:reduce){.touch-button,.touch-weapon{transition:none}}

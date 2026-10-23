@@ -2,7 +2,10 @@
 
 import useSWR from "swr";
 import {
+  NOTIFICATION_ORIGIN_LABELS,
+  NOTIFICATION_ORIGINS,
   NOTIFICATION_TYPES,
+  type NotificationOrigin,
   type NotificationType,
 } from "@/lib/notifications/types";
 import { fetcher } from "@/lib/utils";
@@ -10,7 +13,13 @@ import { fetcher } from "@/lib/utils";
 // La liste canonique des types vit dans lib/notifications/types.ts (elle est
 // contrainte par la base) : on la réexporte pour que les composants n'aient
 // qu'un point d'entrée.
-export { NOTIFICATION_TYPES, type NotificationType };
+export {
+  NOTIFICATION_ORIGIN_LABELS,
+  NOTIFICATION_ORIGINS,
+  NOTIFICATION_TYPES,
+  type NotificationOrigin,
+  type NotificationType,
+};
 
 export type NotificationItem = {
   id: string;
@@ -21,6 +30,19 @@ export type NotificationItem = {
   link: string | null;
   isRead: boolean;
   createdAt: string;
+  /**
+   * L'application qui a produit l'événement.
+   *
+   * `mai` par défaut : une notification sans origine est une notification
+   * mAI, comme avant l'unification. Vibe et Wakies sont RÉPLIQUÉES — leur
+   * source reste propriétaire de l'événement, la table de l'hôte de l'état
+   * lu.
+   */
+  origin: NotificationOrigin;
+  /** Identifiant de l'événement dans sa source. */
+  sourceId: string | null;
+  /** Charge utile propre à la source (acteur, url, conversation…). */
+  sourceMeta: Record<string, unknown> | null;
 };
 
 export type NotificationPrefs = {
@@ -57,6 +79,26 @@ export function useNotifications(limit = 20) {
       revalidateOnFocus: false,
     }
   );
+}
+
+/**
+ * Notifications d'une seule origine.
+ *
+ * La cloche mAI affiche les trois applications. Ce hook sert au FILTRE par
+ * application : il n'est pas une seconde requête mais la même, restreinte —
+ * sinon le compteur affiché ne correspondrait pas à la liste.
+ */
+export function useNotificationsByOrigin(
+  origin: NotificationOrigin | "all",
+  limit = 20
+) {
+  const query =
+    origin === "all" ? `?limit=${limit}` : `?limit=${limit}&origins=${origin}`;
+  return useSWR<NotificationsResponse>(`/api/notifications${query}`, fetcher, {
+    dedupingInterval: 60_000,
+    refreshInterval: 180_000,
+    revalidateOnFocus: false,
+  });
 }
 
 export function useNotificationPrefs() {

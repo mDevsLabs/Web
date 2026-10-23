@@ -16,11 +16,18 @@ tests/debug/
 
 # `.env.example` est versionné : c'est le contrat d'environnement du dépôt
 # (`.env*` est ignoré, ce fichier fait exception ligne 9).
-main.ts
-main-projects.ts
-aiModels.ts
-maiModels.ts
-.neon
+#
+# Ces fichiers sont des variantes LOCALES du backend Val Town, et ils
+# appartiennent à la RACINE du dépôt. Les motifs sont donc ANCRÉS (`/` initial) :
+# un motif nu s'applique à TOUTE la profondeur, et il a déjà avalé le point
+# d'entrée du jeu Blackline (`apps/blackline/src/main.ts`) — le fichier existait
+# en local, le build Vite le résolvait, et la CI échouait sur un checkout
+# propre. Un motif ancré ne peut plus rien avaler hors de la racine.
+/main.ts
+/main-projects.ts
+/aiModels.ts
+/maiModels.ts
+/.neon
 
 # AI Agent Docs
 docs/AI_AGENTS_API.md
@@ -43,3 +50,11 @@ sbom.json
 
 # Builds Electron Desktop
 apps/coder/release/
+
+# Jeu Blackline : artefacts de build servis par l'hôte sous /blackline.
+# Sortie de `scripts/build-blackline.mjs` — reconstruite par `pnpm build`.
+# (Comme pour vibe.css et wakies.css, la FEUILLE générée
+# `components/blackline/blackline.css` est VERSIONNÉE : elle est importée par
+# le build Next, qui ne compile pas le jeu.)
+public/blackline/
+apps/blackline/dist/

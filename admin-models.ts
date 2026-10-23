@@ -40,7 +40,7 @@ export function validateModelPatch(patch: ModelPatch): void {
       continue;
     }
     if (!fields.includes(key as Field))
-      throw new Error(`Champ non modifiable : ${key}`);
+      throw new Error(`Champ non modifiable: ${key}`);
     if (value === null) continue; // Rétablir la valeur d'origine.
 
     if (key === "type") {
@@ -125,7 +125,7 @@ export function selectModels(
       continue;
     }
     const m = item.startsWith("#") ? numbers.get(item.slice(1)) : ids.get(item);
-    if (!m) throw new Error(`Modèle introuvable dans les résultats : ${item}`);
+    if (!m) throw new Error(`Modèle introuvable dans les résultats: ${item}`);
     selected.set(m.id, m);
   }
   if (!selected.size) throw new Error("Aucun modèle sélectionné.");
@@ -220,7 +220,7 @@ export async function applyModelPatch(
   return rows;
 }
 
-// Toutes les modifications durables vivent dans `overrides` : les colonnes
+// Toutes les modifications durables vivent dans `overrides`: les colonnes
 // restent la copie de l'amont et le cron peut les rafraîchir sans effacer un
 // choix d'administration. `isActive` reste une colonne propre, le cron ne la
 // touche pas.
@@ -250,11 +250,7 @@ function displayModels(models: StoredModel[], offset = 0) {
     models.slice(offset, offset + 25).map((m) => {
       const e = effectiveModel(m);
       const typeIcon =
-        e.type === "audio"
-          ? "🎙️ audio"
-          : e.type === "image"
-            ? "🖼️ image"
-            : "💬 chat";
+        e.type === "audio" ? " audio" : e.type === "image" ? " image" : " chat";
 
       return {
         Actif: m.isActive,
@@ -296,9 +292,9 @@ function formatConflictValue(value: unknown): string {
 }
 
 /**
- * Résolveur utilisé par la CLI interactive : chaque conflit montre la valeur
- * conservée en base de données, la valeur amont et leur différence. Entrée ou « b »
- * conserve la base de données ; « a » prend la version amont ; « s » supprime le modèle.
+ * Résolveur utilisé par la CLI interactive: chaque conflit montre la valeur
+ * conservée en base de données, la valeur amont et leur différence. Entrée ou « b»
+ * conserve la base de données; « a» prend la version amont; « s» supprime le modèle.
  */
 export function createConflictResolver(rl: Interface): ModelConflictResolver {
   return async (conflict: ModelConflict) => {
@@ -307,25 +303,25 @@ export function createConflictResolver(rl: Interface): ModelConflictResolver {
     const upstream = formatConflictValue(conflict.upstreamValue);
     console.log("\n=======================================================");
     console.log(
-      `⚠️  CONFLIT #${conflict.modelNumber} — ${conflict.id} — ${label}`
+      ` CONFLIT #${conflict.modelNumber} — ${conflict.id} — ${label}`
     );
     console.log("=======================================================");
     console.log(
-      `   Base de données${conflict.origin === "override" ? " (surcharge admin)" : ""} : ${database}`
+      ` Base de données${conflict.origin === "override" ? " (surcharge admin)" : ""}: ${database}`
     );
-    console.log(`   Amont (OpenRouter / CometAPI) : ${upstream}`);
-    console.log("   Différence :");
-    for (const line of database.split("\n")) console.log(`     - ${line}`);
-    for (const line of upstream.split("\n")) console.log(`     + ${line}`);
+    console.log(` Amont (OpenRouter / CometAPI): ${upstream}`);
+    console.log(" Différence:");
+    for (const line of database.split("\n")) console.log(` - ${line}`);
+    for (const line of upstream.split("\n")) console.log(` + ${line}`);
     const answer = (
       await rl.question(
-        "👉 Conserver [b] la base de données / [a] l'amont / [s] supprimer ce modèle (Entrée = base de données) : "
+        " Conserver [b] la base de données / [a] l'amont / [s] supprimer ce modèle (Entrée = base de données): "
       )
     )
       .trim()
       .toLowerCase();
     if (["s", "supprimer", "d", "delete"].includes(answer)) {
-      console.log(`   🗑️ Modèle ${conflict.id} marqué pour suppression.`);
+      console.log(` Modèle ${conflict.id} marqué pour suppression.`);
       return "delete";
     }
     return ["a", "amont", "u", "upstream"].includes(answer)
@@ -342,61 +338,57 @@ async function askSingleModelInteractivePatch(
   const patch: ModelPatch = {};
 
   console.log("\n=======================================================");
-  console.log(
-    `🛠️  MODIFICATION DU MODÈLE : #${model.model_number} — ${eff.name}`
-  );
+  console.log(` MODIFICATION DU MODÈLE: #${model.model_number} — ${eff.name}`);
   console.log("=======================================================");
-  console.log(`  Identifiant (ID): ${model.id}`);
-  console.log(`  Laboratoire     : ${eff.provider || eff.owned_by}`);
-  console.log(`  Fournisseur     : ${eff.fournisseur}`);
+  console.log(` Identifiant (ID): ${model.id}`);
+  console.log(` Laboratoire: ${eff.provider || eff.owned_by}`);
+  console.log(` Fournisseur: ${eff.fournisseur}`);
   console.log(
-    `  Type de modèle  : ${eff.type === "audio" ? "🎙️ AUDIO" : eff.type === "image" ? "🖼️ IMAGE (CometAPI)" : "💬 CHAT"}`
+    ` Type de modèle: ${eff.type === "audio" ? " AUDIO" : eff.type === "image" ? " IMAGE (CometAPI)" : " CHAT"}`
   );
   console.log(
-    `  Statut actuel   : ${model.isActive ? "✅ ACTIF" : "❌ INACTIF"} (Dispo: ${model.is_available ? "Oui" : "Non"})`
+    ` Statut actuel: ${model.isActive ? " ACTIF" : " INACTIF"} (Dispo: ${model.is_available ? "Oui" : "Non"})`
   );
   console.log(
-    `  Nom effectif    : ${eff.name} ${model.overrides.name ? "(surchargé)" : "(original)"}`
+    ` Nom effectif: ${eff.name} ${model.overrides.name ? "(surchargé)" : "(original)"}`
   );
   console.log(
-    `  Contexte max    : ${eff.maxContext?.toLocaleString("fr-FR") || "N/A"} tokens`
+    ` Contexte max: ${eff.maxContext?.toLocaleString("fr-FR") || "N/A"} tokens`
   );
   console.log(
-    `  Sortie max      : ${eff.maxOutput?.toLocaleString("fr-FR") || "N/A"} tokens`
+    ` Sortie max: ${eff.maxOutput?.toLocaleString("fr-FR") || "N/A"} tokens`
   );
   if (eff.description) {
     const descShort =
       eff.description.length > 90
         ? `${eff.description.slice(0, 87)}…`
         : eff.description;
-    console.log(`  Description     : ${descShort}`);
+    console.log(` Description: ${descShort}`);
   }
   const ovKeys = Object.keys(model.overrides || {});
   console.log(
-    `  Surcharges      : ${ovKeys.length ? ovKeys.join(", ") : "aucune (valeurs d'origine)"}`
+    ` Surcharges: ${ovKeys.length ? ovKeys.join(", ") : "aucune (valeurs d'origine)"}`
   );
   console.log("-------------------------------------------------------");
-  console.log("👉 Que souhaitez-vous modifier ?");
-  console.log("  1. 🏷️  Nom d'affichage");
-  console.log("  2. 📝 Description");
+  console.log(" Que souhaitez-vous modifier?");
+  console.log(" 1. Nom d'affichage");
+  console.log(" 2. Description");
   console.log(
-    `  3. 🔘 Basculer Statut (${model.isActive ? "Actif ➔ INACTIF" : "Inactif ➔ ACTIF"})`
+    ` 3. Basculer Statut (${model.isActive ? "Actif ➔ INACTIF" : "Inactif ➔ ACTIF"})`
   );
+  console.log(` 4. Type de modèle (actuel: ${eff.type} ➔ chat, audio, image)`);
+  console.log(` 5. Laboratoire concepteur (provider: ${eff.provider})`);
+  console.log(` 6. Service fournisseur (fournisseur: ${eff.fournisseur})`);
+  console.log(" 7. Taille de contexte (context_length)");
+  console.log(" 8. Tokens de sortie max (max_output_tokens)");
+  console.log(" 9. Paramètres supportés (supported_parameters)");
+  console.log(" 10. Tarifs (pricing prompt / completion)");
   console.log(
-    `  4. 🎯 Type de modèle (actuel: ${eff.type} ➔ chat, audio, image)`
+    " 11. Rétablir TOUTES les valeurs d'origine (supprimer surcharges)"
   );
-  console.log(`  5. 🏢 Laboratoire concepteur (provider: ${eff.provider})`);
-  console.log(`  6. 🔌 Service fournisseur (fournisseur: ${eff.fournisseur})`);
-  console.log("  7. 🧠 Taille de contexte (context_length)");
-  console.log("  8. 📤 Tokens de sortie max (max_output_tokens)");
-  console.log("  9. ⚙️  Paramètres supportés (supported_parameters)");
-  console.log("  10. 💰 Tarifs (pricing prompt / completion)");
-  console.log(
-    "  11. 🔄 Rétablir TOUTES les valeurs d'origine (supprimer surcharges)"
-  );
-  console.log("  0. ↩️  Annuler la modification");
+  console.log(" 0. Annuler la modification");
 
-  const action = (await rl.question("\n👉 Votre choix [0-11] : ")).trim();
+  const action = (await rl.question("\n Votre choix [0-11]: ")).trim();
 
   if (action === "0") return null;
 
@@ -406,11 +398,11 @@ async function askSingleModelInteractivePatch(
   }
 
   if (action === "4") {
-    console.log("\nChoisissez le type de modèle :");
-    console.log("  1. 💬 chat  (modèle textuel, conversation, code)");
-    console.log("  2. 🎙️ audio (synthèse vocale, transcription)");
-    console.log("  3. 🖼️ image (génération d'images via CometAPI)");
-    const tChoice = (await rl.question("👉 Votre choix [1-3] : ")).trim();
+    console.log("\nChoisissez le type de modèle:");
+    console.log(" 1. chat (modèle textuel, conversation, code)");
+    console.log(" 2. audio (synthèse vocale, transcription)");
+    console.log(" 3. image (génération d'images via CometAPI)");
+    const tChoice = (await rl.question(" Votre choix [1-3]: ")).trim();
     if (tChoice === "1") patch.type = "chat";
     else if (tChoice === "2") patch.type = "audio";
     else if (tChoice === "3") patch.type = "image";
@@ -420,17 +412,17 @@ async function askSingleModelInteractivePatch(
   if (action === "5") {
     const cur = eff.provider || "inconnu";
     const val = (
-      await rl.question(`👉 Laboratoire concepteur [${cur}] : `)
+      await rl.question(` Laboratoire concepteur [${cur}]: `)
     ).trim();
     if (val && val !== cur) patch.provider = val;
     return patch;
   }
 
   if (action === "6") {
-    console.log("\nChoisissez le service fournisseur amont :");
-    console.log("  1. openrouter");
-    console.log("  2. cometapi");
-    const fChoice = (await rl.question("👉 Votre choix [1-2] : ")).trim();
+    console.log("\nChoisissez le service fournisseur amont:");
+    console.log(" 1. openrouter");
+    console.log(" 2. cometapi");
+    const fChoice = (await rl.question(" Votre choix [1-2]: ")).trim();
     if (fChoice === "1") patch.fournisseur = "openrouter";
     else if (fChoice === "2") patch.fournisseur = "cometapi";
     return patch;
@@ -439,7 +431,7 @@ async function askSingleModelInteractivePatch(
   if (action === "11") {
     const confirm = (
       await rl.question(
-        "⚠️ Réinitialiser toutes les surcharges et rétablir les valeurs d'origine ? (o/N) : "
+        " Réinitialiser toutes les surcharges et rétablir les valeurs d'origine? (o/N): "
       )
     )
       .trim()
@@ -463,7 +455,7 @@ async function askSingleModelInteractivePatch(
   if (action === "1") {
     const cur = String(model.overrides.name ?? eff.name ?? "");
     const val = (
-      await rl.question(`👉 Nom d'affichage [${cur}] ('auto' pour reset) : `)
+      await rl.question(` Nom d'affichage [${cur}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.name = null;
     else if (val && val !== cur) patch.name = val;
@@ -473,7 +465,7 @@ async function askSingleModelInteractivePatch(
     const cur = String(model.overrides.description ?? eff.description ?? "");
     const preview = cur.length > 50 ? `${cur.slice(0, 47)}…` : cur;
     const val = (
-      await rl.question(`👉 Description [${preview}] ('auto' pour reset) : `)
+      await rl.question(` Description [${preview}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.description = null;
     else if (val && val !== cur) patch.description = val;
@@ -483,7 +475,7 @@ async function askSingleModelInteractivePatch(
     const cur = Number(model.overrides.context_length ?? eff.maxContext ?? 0);
     const val = (
       await rl.question(
-        `👉 Contexte max en tokens [${cur}] ('auto' pour reset) : `
+        ` Contexte max en tokens [${cur}] ('auto' pour reset): `
       )
     ).trim();
     if (val.toLowerCase() === "auto") patch.context_length = null;
@@ -495,9 +487,7 @@ async function askSingleModelInteractivePatch(
   if (action === "8") {
     const cur = Number(model.overrides.max_output_tokens ?? eff.maxOutput ?? 0);
     const val = (
-      await rl.question(
-        `👉 Sortie max en tokens [${cur}] ('auto' pour reset) : `
-      )
+      await rl.question(` Sortie max en tokens [${cur}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.max_output_tokens = null;
     else if (val && !Number.isNaN(Number(val)) && Number(val) !== cur) {
@@ -508,7 +498,7 @@ async function askSingleModelInteractivePatch(
   if (action === "9") {
     const cur = (eff.supported_parameters || []).join(", ");
     const val = (
-      await rl.question(`👉 Paramètres [${cur}] ('auto' pour reset) : `)
+      await rl.question(` Paramètres [${cur}] ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.supported_parameters = null;
     else if (val) {
@@ -521,10 +511,10 @@ async function askSingleModelInteractivePatch(
 
   if (action === "10") {
     const curPricing = model.overrides.pricing ?? model.pricing ?? {};
-    console.log("Tarification actuelle :", JSON.stringify(curPricing));
+    console.log("Tarification actuelle:", JSON.stringify(curPricing));
     console.log("Entrez les tarifs au format JSON ou 'auto' pour reset.");
     const val = (
-      await rl.question(`👉 JSON pricing ('auto' pour reset) : `)
+      await rl.question(` JSON pricing ('auto' pour reset): `)
     ).trim();
     if (val.toLowerCase() === "auto") patch.pricing = null;
     else if (val) {
@@ -537,7 +527,7 @@ async function askSingleModelInteractivePatch(
   }
 
   if (!Object.keys(patch).length) {
-    console.log("ℹ️ Aucune modification apportée.");
+    console.log(" Aucune modification apportée.");
     return null;
   }
 
@@ -550,25 +540,23 @@ async function askBatchModelPatch(
   rl: Interface
 ): Promise<ModelPatch | null> {
   console.log("\n=======================================================");
-  console.log(`⚡ MODIFICATION PAR LOT DE ${selected.length} MODÈLE(S)`);
+  console.log(` MODIFICATION PAR LOT DE ${selected.length} MODÈLE(S)`);
   console.log("=======================================================");
-  console.log("  1. ✅ Activer tous les modèles sélectionnés");
-  console.log("  2. ❌ Désactiver tous les modèles sélectionnés");
-  console.log("  3. 🎯 Définir le Type pour tous (chat, audio, image)");
-  console.log(
-    "  4. 🔌 Définir le Fournisseur pour tous (openrouter, cometapi)"
-  );
-  console.log("  5. 🔄 Rétablir les valeurs d'origine pour tous");
-  console.log("  0. ↩️  Annuler");
+  console.log(" 1. Activer tous les modèles sélectionnés");
+  console.log(" 2. Désactiver tous les modèles sélectionnés");
+  console.log(" 3. Définir le Type pour tous (chat, audio, image)");
+  console.log(" 4. Définir le Fournisseur pour tous (openrouter, cometapi)");
+  console.log(" 5. Rétablir les valeurs d'origine pour tous");
+  console.log(" 0. Annuler");
 
-  const choice = (await rl.question("\n👉 Votre choix [0-5] : ")).trim();
+  const choice = (await rl.question("\n Votre choix [0-5]: ")).trim();
   if (choice === "0") return null;
 
   if (choice === "1") return { isActive: true };
   if (choice === "2") return { isActive: false };
   if (choice === "3") {
     console.log("1. chat | 2. audio | 3. image");
-    const t = (await rl.question("👉 Type [1-3] : ")).trim();
+    const t = (await rl.question(" Type [1-3]: ")).trim();
     if (t === "1") return { type: "chat" };
     if (t === "2") return { type: "audio" };
     if (t === "3") return { type: "image" };
@@ -576,7 +564,7 @@ async function askBatchModelPatch(
   }
   if (choice === "4") {
     console.log("1. openrouter | 2. cometapi");
-    const f = (await rl.question("👉 Fournisseur [1-2] : ")).trim();
+    const f = (await rl.question(" Fournisseur [1-2]: ")).trim();
     if (f === "1") return { fournisseur: "openrouter" };
     if (f === "2") return { fournisseur: "cometapi" };
     return null;
@@ -612,39 +600,39 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
       typeFilter === "all"
         ? "TOUS"
         : typeFilter === "audio"
-          ? "🎙️ AUDIO"
+          ? " AUDIO"
           : typeFilter === "image"
-            ? "🖼️ IMAGE"
-            : "💬 CHAT";
+            ? " IMAGE"
+            : " CHAT";
     const fLabel =
       fournisseurFilter === "all" ? "TOUS" : fournisseurFilter.toUpperCase();
 
     console.log(
-      `\n🤖 CATALOGUE DE MODÈLES — Type : [${typeLabel}] | Fournisseur : [${fLabel}] | Recherche : "${query || "tous"}"`
+      `\n CATALOGUE DE MODÈLES — Type: [${typeLabel}] | Fournisseur: [${fLabel}] | Recherche: "${query || "tous"}"`
     );
     displayModels(models, offset);
 
     console.log(
-      "1. 🔍 Rechercher par mot-clé     2. ➡️ Page suivante      3. ⬅️ Page précédente"
+      "1. Rechercher par mot-clé 2. Page suivante 3. Page précédente"
     );
     console.log(
-      "4. 🎯 Filtrer par Type (Chat/Audio/Image)   5. 🔌 Filtrer par Fournisseur"
+      "4. Filtrer par Type (Chat/Audio/Image) 5. Filtrer par Fournisseur"
     );
     console.log(
-      "6. 📋 Détails complets d'un modèle         7. ✏️  Modifier un ou plusieurs modèles"
+      "6. Détails complets d'un modèle 7. Modifier un ou plusieurs modèles"
     );
     console.log(
-      "8. 🔄 Lancer la synchronisation (OpenRouter & CometAPI)   0. ↩️  Retour"
+      "8. Lancer la synchronisation (OpenRouter & CometAPI) 0. Retour"
     );
 
-    const choice = (await rl.question("\n👉 Votre choix [0-8] : ")).trim();
+    const choice = (await rl.question("\n Votre choix [0-8]: ")).trim();
     try {
       if (choice === "0") return;
 
       if (choice === "1") {
         query = (
           await rl.question(
-            "👉 Recherche (nom, ID, labo, numéro - vide = tous) : "
+            " Recherche (nom, ID, labo, numéro - vide = tous): "
           )
         ).trim();
         offset = 0;
@@ -654,12 +642,12 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
       } else if (choice === "3") {
         offset = Math.max(0, offset - 25);
       } else if (choice === "4") {
-        console.log("\nChoisissez le filtre par type :");
-        console.log("  0. 🌐 Tous les types");
-        console.log("  1. 💬 Chat uniquement");
-        console.log("  2. 🎙️ Audio uniquement");
-        console.log("  3. 🖼️ Image uniquement (CometAPI)");
-        const tf = (await rl.question("👉 Votre choix [0-3] : ")).trim();
+        console.log("\nChoisissez le filtre par type:");
+        console.log(" 0. Tous les types");
+        console.log(" 1. Chat uniquement");
+        console.log(" 2. Audio uniquement");
+        console.log(" 3. Image uniquement (CometAPI)");
+        const tf = (await rl.question(" Votre choix [0-3]: ")).trim();
         if (tf === "0") typeFilter = "all";
         else if (tf === "1") typeFilter = "chat";
         else if (tf === "2") typeFilter = "audio";
@@ -667,11 +655,11 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         offset = 0;
         models = await searchModels(sql, query, typeFilter, fournisseurFilter);
       } else if (choice === "5") {
-        console.log("\nChoisissez le filtre par fournisseur :");
-        console.log("  0. 🌐 Tous les fournisseurs");
-        console.log("  1. ⚡ OpenRouter");
-        console.log("  2. ☄️  CometAPI");
-        const ff = (await rl.question("👉 Votre choix [0-2] : ")).trim();
+        console.log("\nChoisissez le filtre par fournisseur:");
+        console.log(" 0. Tous les fournisseurs");
+        console.log(" 1. OpenRouter");
+        console.log(" 2. CometAPI");
+        const ff = (await rl.question(" Votre choix [0-2]: ")).trim();
         if (ff === "0") fournisseurFilter = "all";
         else if (ff === "1") fournisseurFilter = "openrouter";
         else if (ff === "2") fournisseurFilter = "cometapi";
@@ -679,7 +667,7 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         models = await searchModels(sql, query, typeFilter, fournisseurFilter);
       } else if (choice === "6") {
         const selected = selectModels(
-          await rl.question("👉 ID ou #numéro : "),
+          await rl.question(" ID ou #numéro: "),
           models
         );
         for (const m of selected) {
@@ -700,9 +688,9 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           );
         }
       } else if (choice === "7") {
-        console.log("Exemples : #1 ; openai/gpt-4o ; #1,#4 ; #10-#20 ; tous.");
+        console.log("Exemples: #1; openai/gpt-4o; #1,#4; #10-#20; tous.");
         const selected = selectModels(
-          await rl.question("👉 Sélection : "),
+          await rl.question(" Sélection: "),
           models
         );
 
@@ -714,7 +702,7 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
         }
 
         if (!patch || !Object.keys(patch).length) {
-          console.log("ℹ️ Aucune modification à enregistrer.");
+          console.log(" Aucune modification à enregistrer.");
           continue;
         }
         console.table(
@@ -729,12 +717,12 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           })
         );
         console.log(
-          "Modifications à appliquer :",
+          "Modifications à appliquer:",
           JSON.stringify(patch, null, 2)
         );
         const confirm = (
           await rl.question(
-            `👉 Confirmer l'application à ${selected.length} modèle(s) ? (O/n) : `
+            ` Confirmer l'application à ${selected.length} modèle(s)? (O/n): `
           )
         )
           .trim()
@@ -747,7 +735,7 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
             patch
           );
           console.log(
-            `✅ ${result.length} modèle(s) mis à jour avec succès ! Prise en compte API sous 10 secondes.`
+            ` ${result.length} modèle(s) mis à jour avec succès! Prise en compte API sous 10 secondes.`
           );
           models = await searchModels(
             sql,
@@ -759,16 +747,16 @@ export async function runModelManager(sql: SqlClient, rl: Interface) {
           console.log("Modification annulée.");
         }
       } else if (choice === "8") {
-        console.log("⏳ Synchronisation en cours (OpenRouter & CometAPI)...");
+        console.log(" Synchronisation en cours (OpenRouter & CometAPI)...");
         await updateModels(sql, {
           resolveConflict: createConflictResolver(rl),
         });
         models = await searchModels(sql, query, typeFilter, fournisseurFilter);
       } else {
-        console.log("⚠️ Choix invalide.");
+        console.log(" Choix invalide.");
       }
     } catch (error) {
-      console.error("❌", error instanceof Error ? error.message : error);
+      console.error("", error instanceof Error ? error.message : error);
     }
   }
 }

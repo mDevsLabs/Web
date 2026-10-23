@@ -41,20 +41,20 @@ vi.mock("@/lib/wakies/queries", () => ({
   listMessages: mocks.list,
   listWakies: async () => [],
   messageExists: mocks.exists,
-  PALETTE_REACTIONS: ["👍", "❤️", "💡", "🔥", "😂", "😮"],
+  PALETTE_REACTIONS: ["", "", "", "", "", ""],
   pageForConversation: async () => null,
   poserReaction: vi.fn(async () => true),
   reserveChatTurn: mocks.reserve,
-  // Mention @ : aucun Wakie nommé.
+  // Mention @: aucun Wakie nommé.
   resoudreMentions: async () => [],
   touchConversation: vi.fn(async () => {}),
-  // Purge des skillIds morts (C3) : aucune écriture attendue.
+  // Purge des skillIds morts (C3): aucune écriture attendue.
   updateConversation: vi.fn(async () => {}),
   updateWakie: vi.fn(async () => {}),
 }));
 vi.mock("@/lib/db/queries", () => ({
   getUserMcpPrefs: async () => ({ globalKillSwitch: false }),
-  // Préférences de modèle : absentes dans ce banc, la route retombe sur le
+  // Préférences de modèle: absentes dans ce banc, la route retombe sur le
   // défaut produit — c'est exactement ce que vérifie le test.
   getUserModelPreferences: async () => null,
   recordTokenUsage: mocks.usage,
@@ -79,7 +79,7 @@ vi.mock("@/lib/wakies/capabilities", () => ({
   applyIntegrationMentions: async () => ({ issues: [], pluginIds: [] }),
   resolveSelection: mocks.selection,
 }));
-// Profil Vibe : ce test porte sur le moteur de streaming, pas sur la lecture du
+// Profil Vibe: ce test porte sur le moteur de streaming, pas sur la lecture du
 // profil — et un lecteur réel tenterait une connexion base depuis l'environnement
 // de test.
 vi.mock("@/lib/vibe/server/profil", () => ({
@@ -165,7 +165,7 @@ beforeEach(() => {
   );
 });
 describe("route Wakies avec le vrai moteur de streaming AI SDK et un fournisseur contrôlé", {
-  // Ce bloc fait tourner le VRAI moteur de streaming : ~10 s seul, mais la
+  // Ce bloc fait tourner le VRAI moteur de streaming: ~10 s seul, mais la
   // suite complète lance ~110 workers en parallèle et la machine sature — un
   // délai de 30 s faisait échouer le test sur la charge, pas sur le code.
   timeout: 120_000,

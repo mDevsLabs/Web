@@ -25,9 +25,9 @@ ollama run mDevsLabs/mAI-1.2-Light
 hf download mDevsLabs/mAI-1.2-Light-GGUF
 ~~~
 
-## 📊 Benchmarks de performance
+## Benchmarks de performance
 
-Aperçu des performances du modèle sur les tâches de référence :
+Aperçu des performances du modèle sur les tâches de référence:
 
 ![Benchmarks mAI-1.2-Light](https://upload.fs.fr/0hN2V7LWC6.png)
 

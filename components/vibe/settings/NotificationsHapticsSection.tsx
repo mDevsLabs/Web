@@ -1,11 +1,24 @@
 /**
  * ============================================================================
  * VIBE — NOTIFICATIONS & RETOUR HAPTIQUE (components/vibe/settings/NotificationsHapticsSection.tsx)
- * Section Paramètres : Notifications e-mail, push, permissions, animations et haptique.
+ * Section Paramètres: retour haptique et animations.
+ *
+ * LES NOTIFICATIONS ONT QUITTÉ CETTE PAGE
+ *
+ * Les préférences de notification Vibe (e-mail, push, j'aime, partages,
+ * réponses, messages privés) sont désormais réglées dans l'onglet
+ * « Notifications» des paramètres mAI, qui regroupe les trois
+ * applications. Les laisser ici créerait DEUX endroits pour la même
+ * décision, et le dernier enregistré gagnerait — donc laPreference
+ * affichée ne serait pas celle qui compte.
+ *
+ * Ce qui RESTE ici est ce qui relève de l'APPAREIL et non du compte:
+ * le retour haptique et les animations. Un réglage d'appareil ne se
+ * synchronise pas entre deux machines.
  * ============================================================================
  */
 
-import { BellIcon as Bell, SmartphoneIcon as Smartphone } from "@mdevs/icons";
+import { SmartphoneIcon as Smartphone } from "@mdevs/icons";
 import type React from "react";
 import { useState } from "react";
 import { InstallAppHint } from "@/components/vibe/common/InstallAppHint";
@@ -49,23 +62,15 @@ export const DevicePermissionHint: React.FC = () => {
 
 export interface NotificationsHapticsSectionProps {
   animationsEnabled: boolean;
-  emailNotifs: boolean;
   hapticsEnabled: boolean;
   hapticsSupported: boolean;
-  pushNotifs: boolean;
   setAnimationsEnabledState: (val: boolean) => void;
-  setEmailNotifs: (val: boolean) => void;
   setHapticsEnabled: (val: boolean) => void;
-  setPushNotifs: (val: boolean) => void;
 }
 
 export const NotificationsHapticsSection: React.FC<
   NotificationsHapticsSectionProps
 > = ({
-  emailNotifs,
-  setEmailNotifs,
-  pushNotifs,
-  setPushNotifs,
   animationsEnabled,
   setAnimationsEnabledState,
   hapticsEnabled,
@@ -75,44 +80,19 @@ export const NotificationsHapticsSection: React.FC<
   return (
     <div className="p-5 sm:p-6 rounded-3xl bg-zinc-950 border border-zinc-800 space-y-4">
       <div className="flex items-center gap-2 text-white font-bold text-sm">
-        <Bell className="w-4 h-4 text-white" />
-        <span>Notifications</span>
+        <Smartphone className="w-4 h-4 text-white" />
+        <span>Retour haptique & animations</span>
       </div>
 
       <div className="space-y-3 text-xs">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="font-semibold text-white">
-              Notifications par e-mail
-            </span>
-            <p className="text-zinc-500 text-[11px]">
-              Réception de résumés d'activités et messages importants
-            </p>
-          </div>
-          <input
-            checked={emailNotifs}
-            className="w-4 h-4 accent-white cursor-pointer"
-            onChange={(e) => setEmailNotifs(e.target.checked)}
-            type="checkbox"
-          />
-        </div>
-
-        <div className="flex items-center justify-between pt-2 border-t border-zinc-900">
-          <div>
-            <span className="font-semibold text-white">
-              Notifications push sur l'appareil
-            </span>
-            <p className="text-zinc-500 text-[11px]">
-              Alertes en direct pour les likes, partages et messages
-            </p>
-          </div>
-          <input
-            checked={pushNotifs}
-            className="w-4 h-4 accent-white cursor-pointer"
-            onChange={(e) => setPushNotifs(e.target.checked)}
-            type="checkbox"
-          />
-        </div>
+        <p className="text-zinc-500 text-[11px]">
+          Les notifications Vibe se règlent dans{" "}
+          <span className="text-white font-semibold">
+            Paramètres mAI → Notifications
+          </span>
+          , avec celles de mAI et de Wakies. Le retour haptique et les
+          animations restent ici: ce sont des réglages de cet appareil.
+        </p>
 
         <DevicePermissionHint />
 
@@ -128,7 +108,7 @@ export const NotificationsHapticsSection: React.FC<
               </div>
               <p className="text-zinc-500 text-[11px] mt-0.5">
                 Burst de likes, particules, spring navigation, transitions.
-                Coupé auto si « Réduire les animations » OS.
+                Coupé auto si « Réduire les animations» OS.
               </p>
             </div>
             <input
@@ -176,21 +156,21 @@ export const NotificationsHapticsSection: React.FC<
                 onClick={() => haptics.like()}
                 type="button"
               >
-                ❤️ Tester le Like (Heartbeat)
+                Tester le Like (Heartbeat)
               </button>
               <button
                 className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sky-500 vibe-dark:text-sky-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                 onClick={() => haptics.selection()}
                 type="button"
               >
-                📳 Tester la Sélection
+                Tester la Sélection
               </button>
               <button
                 className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-emerald-600 vibe-dark:text-emerald-400 text-xs font-medium transition-all active:scale-95 flex items-center gap-1.5"
                 onClick={() => haptics.success()}
                 type="button"
               >
-                🚀 Tester le Succès
+                Tester le Succès
               </button>
             </div>
           )}

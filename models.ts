@@ -403,6 +403,19 @@ export function registerModelRoutes(
           deduped.push(m);
         }
       }
+      // Les alias mAI-2 ouvrent la liste : c'est l'ordre d'AFFICHAGE, pas
+      // l'ordre de gestion. Le reste du catalogue garde l'ordre de la base.
+      // Le même ordre est appliqué côté interface (lib/ai/model-selector/order.ts).
+      //
+      // Le rang est EXPLICITE (mAI-2 avant mAI-2-Mini) : un alias présent
+      // directement en base arrive avant l'autre dans la liste, et on ne peut
+      // pas compter sur le seul tri stable pour les ordonner entre eux.
+      const rangMai2: Record<string, number> = { "mai-2": 0, "mai-2-mini": 1 };
+      deduped.sort((a, b) => {
+        const rangA = rangMai2[a.id] ?? 2;
+        const rangB = rangMai2[b.id] ?? 2;
+        return rangA - rangB;
+      });
       return c.json({ data: deduped, object: "list" });
     } catch (error) {
       return modelErrorResponse(c, error);

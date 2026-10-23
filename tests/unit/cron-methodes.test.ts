@@ -55,6 +55,7 @@ describe("Cron — le val appelle bien des routes qui l'écoutent", () => {
     expect(new Set(APPELS.map((appel) => appel.endpoint))).toEqual(
       new Set([
         "/api/cron/agent",
+        "/api/cron/notifications",
         "/api/cron/planning",
         "/api/cron/vibe",
         "/api/cron/wakies",

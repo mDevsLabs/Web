@@ -73,7 +73,7 @@ Retirés de l'index (copies locales conservées) : `.freebuff/project-id`, `dev-
 
 | Variable | Défaut | Rôle |
 |---|---|---|
-| `MCP_ENCRYPTION_KEY` | **obligatoire** | Clé dédiée de chiffrement des secrets MCP. Sans elle, l'enregistrement de secrets est refusé (503) — jamais de repli en clair. |
+| `MCP_ENCRYPTION_KEY` | **obligatoire** | Clé dédiée de chiffrement des secrets MCP, des jetons des intégrations externes et de l'« état » OAuth. Sans elle, l'enregistrement de secrets est refusé (503) et la connexion Google/GitHub est refusée (`vault_unconfigured`, bouton « Connecter » désactivé avec un encart explicite) — **jamais de repli en clair**. |
 | `MCP_ENCRYPTION_KEY_ID` | `v1` | Identifiant de la clé courante (rotation). |
 | `MCP_ENCRYPTION_PREVIOUS_KEYS` | — | JSON `{"<keyId>":"<clé>"}` pour déchiffrer après rotation. |
 | `MCP_ENCRYPTION_ALLOW_LEGACY_DERIVED_KEY` | `false` | Autorise la lecture des valeurs héritées le temps du ré-encodage. **À retirer ensuite.** |
@@ -82,6 +82,13 @@ Retirés de l'index (copies locales conservées) : `.freebuff/project-id`, `dev-
 | `MIGRATIONS_STRICT` | `true` | Un échec de réparation inattendu fait échouer la migration. |
 | `MAI_API_URL` / `MAI_API_ORIGIN` | — | Origines autorisées à recevoir le jeton de session. **À définir en production**, sinon aucun jeton n'est envoyé. |
 | `MAI_JWT_ISSUER` / `MAI_JWT_AUDIENCE` | — | Contrôles de claims renforcés. |
+
+> **Attention au déploiement.** `MCP_ENCRYPTION_KEY` est l'oubli le plus
+> fréquent : les variables `*_CLIENT_ID` / `*_CLIENT_SECRET` ne suffisent pas,
+> et le refus ne se produit qu'au moment de la connexion, pas au démarrage.
+> Elle doit être posée dans le **même environnement** que l'application Next.
+> Changer la clé rend les jetons déjà chiffrés illisibles : les connexions
+> existantes doivent être refaites.
 
 ## 8. Plan de déploiement
 
