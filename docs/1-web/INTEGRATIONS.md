@@ -6,9 +6,10 @@ Un **connecteur** relie le compte mAI d'un utilisateur à un service externe
 modifie **les données du compte de l'utilisateur**, avec son jeton, après son
 consentement.
 
-Deux connecteurs existent : **Google** (Drive + Agenda + Gmail, une seule
-connexion) et **GitHub**. Le registre est conçu pour s'étendre : ajouter Notion,
-Slack, Discord, Google Docs ou Sheets ne demande ni de toucher au moteur, ni de
+Cinq connecteurs existent : **Google** (Drive + Agenda + Gmail, une seule
+connexion), **GitHub**, **Discord**, **Notion** et **Vercel**. Le registre est
+conçu pour s'étendre : ajouter Slack, Google Docs ou Sheets ne demande ni de
+toucher au moteur, ni de
 retoucher les mentions `@`, ni de retoucher le rendu.
 
 ---
@@ -202,8 +203,10 @@ switch.
    portées, politique de rafraîchissement, hôtes, `mentionToken`, `monochrome`,
    `accessSummary`).
 2. `lib/integrations/repository.ts` : ajouter l'identifiant à l'énumération
-   `provider` de `lib/db/schema.ts`, **et** à la colonne `varchar` de la
-   migration additive correspondante.
+   `provider` de `lib/db/schema.ts`. La colonne est un `varchar` : aucun DDL
+   n'est nécessaire pour un nouveau fournisseur. Un connecteur à jeton
+   personnel n'a pas de client OAuth ; il déclare `authMode: "token"` et
+   l'échange de la route `/token` le valide avant de le chiffrer.
 3. `lib/plugins/<id>/{index.ts,index.json}` : les outils, avec `effect` sur
    chacun, puis `pnpm plugins:gen && pnpm plugins:check`.
 4. `public/plugins/<id>.svg` : le logo, et le test d'inventaire doit rester vert.
@@ -246,13 +249,62 @@ PEM par installation et une signature JWT sans rien apporter de plus pour
 pour agir sur une organisation sans accord humain. Portées demandées à
 l'autorisation : `repo`, `public_repo`, `read:user`.
 
+### Discord — OAuth utilisateur **et** bot d'instance
+
+Developer Portal → **OAuth2**, callback
+`https://<hôte>/api/integration/discord/callback`, portées `identify`, `email`
+et `guilds`. Un jeton UTILISATEUR ne lit pas les messages d'un serveur : c'est
+une limite de Discord, pas un réglage. La lecture des salons et des messages
+passe donc par un **bot d'instance** (`DISCORD_BOT_TOKEN`), invité dans les
+serveurs concernés avec « Voir les salons » et « Lire l'historique ». Le bot
+n'est pas un compte utilisateur : il signe les messages qu'il envoie, et
+l'absence de la variable est un avertissement, jamais un blocage du
+consentement.
+
+### Notion — intégration publique, pages partagées
+
+Créer une intégration publique sur `notion.so/profile/integrations` (ou le
+portail développeur), callback
+`https://<hôte>/api/integration/notion/callback`. Notion **n'a pas de portées
+OAuth** : l'utilisateur choisit, dans Notion, les pages et bases qu'il partage
+avec l'intégration. L'autorisation est donc un droit d'entrée, pas une
+permission globale — une page non partagée répond 404, et le message de l'outil
+le dit. Tous les appels portent `Notion-Version` (constante
+`NOTION_API_VERSION`), y compris l'échange et la révocation de jeton.
+
+### Vercel — jeton personnel, pas OAuth
+
+L'OAuth public de Vercel ne délivre aujourd'hui que l'identité du compte : les
+permissions d'accès aux projets et déploiements sont en bêta privée. Le plugin
+se connecte donc par **jeton personnel** (`https://vercel.com/account/tokens`),
+collé dans la fiche du plugin puis validé par `GET /v2/user` avant d'être
+chiffré. Aucune variable d'environnement n'est requise. Le plugin est en
+**lecture seule** : projets, déploiements, journaux. Un jeton personnel porte
+souvent les droits du compte entier, et un redéploiement déclenché par erreur
+ne se rattrape pas.
+
 ### Variables
 
 ```
 MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET scellement de l'état
 GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET   un seul client pour les trois accès
 GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET
+DISCORD_BOT_TOKEN                        capacité : salons et messages Discord
+NOTION_CLIENT_ID, NOTION_CLIENT_SECRET
 MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
+```
+
+Vercel ne figure pas dans cette liste : il se connecte par jeton personnel, et
+le jeton est stocké chiffré par le coffre, pas lu dans l'environnement.
+
+Les URI de rappel à enregistrer chez les fournisseurs, une par environnement :
+
+```
+https://<hôte>/api/integration/google/callback
+https://<hôte>/api/integration/github/callback
+https://<hôte>/api/integration/discord/callback
+https://<hôte>/api/integration/notion/callback
 ```
 
 **`MCP_ENCRYPTION_KEY` est la variable la plus facile à oublier, et son absence

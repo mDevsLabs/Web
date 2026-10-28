@@ -54,6 +54,13 @@ export type OAuthTokenSet = {
   /** GitHub n'en délivre pas : la connexion s'éteint par révocation, pas par expiration. */
   expiresAt: Date | null;
   idToken: string | null;
+  /**
+   * Identité lue directement dans la réponse du token, quand le fournisseur la
+   * fournit (Notion : `bot_id`, espace de travail, email du propriétaire).
+   * Évite un appel d'API supplémentaire et rend `owner.user.person.email`
+   * disponible avant tout stockage.
+   */
+  identity?: OAuthAccountIdentity;
   refreshToken: string | null;
   scopes: string;
 };
@@ -78,6 +85,11 @@ function readEnv(name: string): string | undefined {
 export function readCredentials(
   descriptor: IntegrationDescriptor
 ): OAuthCredentials | null {
+  // Un connecteur à jeton personnel n'a pas de client OAuth : son absence
+  // d'identifiants n'est pas un défaut de configuration.
+  if (descriptor.authMode !== "oauth") {
+    return null;
+  }
   const clientId = readEnv(`${descriptor.envPrefix}_CLIENT_ID`);
   const clientSecret = readEnv(`${descriptor.envPrefix}_CLIENT_SECRET`);
   return clientId && clientSecret ? { clientId, clientSecret } : null;
@@ -239,17 +251,24 @@ export function buildAuthorizeUrl(
   descriptor: IntegrationDescriptor,
   params: { clientId: string; redirectUri: string; state: string }
 ): string {
+  if (!descriptor.authorizeUrl) {
+    throw new Error(
+      `Le connecteur ${descriptor.label} ne démarre pas un consentement OAuth.`
+    );
+  }
   const url = new URL(descriptor.authorizeUrl);
   url.searchParams.set("client_id", params.clientId);
   url.searchParams.set("redirect_uri", params.redirectUri);
   url.searchParams.set("response_type", "code");
-  url.searchParams.set("scope", descriptor.scopes.join(" "));
+  // Notion n'utilise pas de portées : envoyer `scope=` vide serait un
+  // paramètre invalide, et le fournisseur peut le refuser.
+  const scope = descriptor.scopes.join(" ");
+  if (scope) {
+    url.searchParams.set("scope", scope);
+  }
   url.searchParams.set("state", params.state);
-  if (descriptor.envPrefix === "GOOGLE") {
-    // Sans `prompt=consent`, Google ne renvoie un `refresh_token` que lors du
-    // tout premier consentement : au suivant, la connexion meurt à l'heure.
-    url.searchParams.set("access_type", "offline");
-    url.searchParams.set("prompt", "consent");
+  for (const [key, value] of Object.entries(descriptor.authorizeParams ?? {})) {
+    url.searchParams.set(key, value);
   }
   return url.href;
 }
@@ -356,6 +375,49 @@ function asString(value: unknown): string | null {
   return typeof value === "string" && value ? value : null;
 }
 
+/** Lecture d'un chemin `a.b.c` dans un objet JSON, sans jamais lever. */
+function readPath(value: unknown, path: string | undefined): unknown {
+  if (!path) {
+    return value;
+  }
+  let current: unknown = value;
+  for (const key of path.split(".")) {
+    if (!current || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[key];
+  }
+  return current;
+}
+
+/**
+ * Identité directement présente dans la réponse du token (Notion). Le
+ * fournisseur ne rend ni `id_token` ni endpoint `/me` utile : `bot_id` et le
+ * nom de l'espace de travail sont les seuls repères stables.
+ */
+function identityFromTokenPayload(
+  descriptor: IntegrationDescriptor,
+  payload: Record<string, unknown>
+): OAuthAccountIdentity | undefined {
+  const config = descriptor.identityFromToken;
+  if (!config) {
+    return undefined;
+  }
+  const providerAccountId = asString(readPath(payload, config.idField));
+  if (!providerAccountId) {
+    return undefined;
+  }
+  const email = asString(readPath(payload, config.emailPath));
+  return {
+    accountEmail: email,
+    accountLabel:
+      asString(readPath(payload, config.labelField)) ??
+      email ??
+      providerAccountId,
+    providerAccountId,
+  };
+}
+
 function toTokenSet(
   descriptor: IntegrationDescriptor,
   payload: Record<string, unknown>
@@ -374,6 +436,7 @@ function toTokenSet(
       expiresAt: Number.isFinite(expiresIn)
         ? new Date(Date.now() + expiresIn * 1000)
         : null,
+      identity: identityFromTokenPayload(descriptor, payload),
       idToken: asString(payload.id_token),
       refreshToken: asString(payload.refresh_token),
       // GitHub ne rend `scope` que sur le swap ; le défaut reste la portée
@@ -386,20 +449,55 @@ function toTokenSet(
   };
 }
 
+/**
+ * Échange générique : le corps et l'authentification changent d'un
+ * fournisseur à l'autre. Notion exige Basic + JSON et un en-tête de version ;
+ * Discord et Google exigent un formulaire avec les identifiants dans le corps.
+ */
+function requestToken(
+  descriptor: IntegrationDescriptor,
+  params: {
+    credentials: OAuthCredentials;
+    fields: Record<string, string>;
+  }
+): Promise<OAuthResult<Record<string, unknown>>> {
+  if (!descriptor.tokenUrl) {
+    return Promise.resolve({ ok: false, reason: "not_configured" });
+  }
+  const body: Record<string, string> = { ...params.fields };
+  const headers: Record<string, string> = {
+    ...(descriptor.tokenHeaders ?? {}),
+  };
+  if (descriptor.tokenAuth === "basic") {
+    headers.Authorization = `Basic ${Buffer.from(
+      `${params.credentials.clientId}:${params.credentials.clientSecret}`
+    ).toString("base64")}`;
+  } else {
+    body.client_id = params.credentials.clientId;
+    body.client_secret = params.credentials.clientSecret;
+  }
+  if (descriptor.tokenEncoding === "json") {
+    return requestJson(descriptor.tokenUrl, {
+      body: JSON.stringify(body),
+      headers: { ...headers, "Content-Type": "application/json" },
+      method: "POST",
+    });
+  }
+  return postForm(descriptor.tokenUrl, new URLSearchParams(body), headers);
+}
+
 export async function exchangeCode(
   descriptor: IntegrationDescriptor,
   params: { code: string; credentials: OAuthCredentials; redirectUri: string }
 ): Promise<OAuthResult<OAuthTokenSet>> {
-  const result = await postForm(
-    descriptor.tokenUrl,
-    new URLSearchParams({
-      client_id: params.credentials.clientId,
-      client_secret: params.credentials.clientSecret,
+  const result = await requestToken(descriptor, {
+    credentials: params.credentials,
+    fields: {
       code: params.code,
       grant_type: "authorization_code",
       redirect_uri: params.redirectUri,
-    })
-  );
+    },
+  });
   return result.ok ? toTokenSet(descriptor, result.value) : result;
 }
 
@@ -407,15 +505,13 @@ export async function refreshTokens(
   descriptor: IntegrationDescriptor,
   params: { credentials: OAuthCredentials; refreshToken: string }
 ): Promise<OAuthResult<OAuthTokenSet>> {
-  const result = await postForm(
-    descriptor.tokenUrl,
-    new URLSearchParams({
-      client_id: params.credentials.clientId,
-      client_secret: params.credentials.clientSecret,
+  const result = await requestToken(descriptor, {
+    credentials: params.credentials,
+    fields: {
       grant_type: "refresh_token",
       refresh_token: params.refreshToken,
-    })
-  );
+    },
+  });
   if (!result.ok) {
     return result;
   }
@@ -437,9 +533,14 @@ export async function refreshTokens(
 export async function resolveAccount(
   descriptor: IntegrationDescriptor,
   tokenSet: OAuthTokenSet,
-  credentials: OAuthCredentials
+  _credentials: OAuthCredentials
 ): Promise<OAuthAccountIdentity | null> {
-  if (!descriptor.accountUrl) {
+  // Notion livre l'identité dans la réponse du token : rien à redemander.
+  if (tokenSet.identity) {
+    return tokenSet.identity;
+  }
+
+  if (!descriptor.account) {
     const claims = decodeIdTokenClaims(tokenSet.idToken);
     const sub = asString(claims?.sub);
     if (!sub) {
@@ -453,27 +554,41 @@ export async function resolveAccount(
     };
   }
 
-  const result = await requestJson(descriptor.accountUrl, {
+  const account = descriptor.account;
+  const result = await requestJson(account.url, {
     headers: {
-      Accept: "application/vnd.github+json",
+      Accept: "application/json",
       Authorization: `Bearer ${tokenSet.accessToken}`,
-      "X-GitHub-Api-Version": "2022-11-28",
+      ...account.headers,
     },
-    method: "GET",
+    method: account.method ?? "GET",
   });
   if (!result.ok) {
     return null;
   }
-  const id = result.value.id;
+  const payload = readPath(result.value, account.responsePath);
+  if (!payload || typeof payload !== "object") {
+    return null;
+  }
+  const record = payload as Record<string, unknown>;
+  const rawId = readPath(record, account.idField);
   const providerAccountId =
-    typeof id === "number" || typeof id === "string" ? String(id) : null;
+    typeof rawId === "number" || typeof rawId === "string"
+      ? String(rawId)
+      : null;
   if (!providerAccountId) {
     return null;
   }
-  const login = asString(result.value.login);
+  const email = account.emailField
+    ? asString(readPath(record, account.emailField))
+    : null;
+  const label =
+    account.labelFields
+      .map((field) => asString(readPath(record, field)))
+      .find((value): value is string => Boolean(value)) ?? email;
   return {
-    accountEmail: asString(result.value.email),
-    accountLabel: login ?? asString(result.value.name) ?? providerAccountId,
+    accountEmail: email,
+    accountLabel: label ?? providerAccountId,
     providerAccountId,
   };
 }
@@ -513,7 +628,7 @@ export async function revokeConnection(
   if (!descriptor.revoke) {
     return false;
   }
-  const { endpoint, mode } = descriptor.revoke;
+  const { endpoint, mode, headers: revokeHeaders } = descriptor.revoke;
 
   if (mode === "token_query") {
     // Google ne révoque l'ensemble du grant que si l'on passe le
@@ -522,12 +637,60 @@ export async function revokeConnection(
       (token): token is string => Boolean(token)
     );
     for (const token of candidates) {
-      const result = await postForm(endpoint, new URLSearchParams({ token }));
+      const result = await postForm(
+        endpoint,
+        new URLSearchParams({ token }),
+        revokeHeaders
+      );
       if (result.ok) {
         return true;
       }
     }
     return false;
+  }
+
+  if (mode === "token_form_credentials") {
+    // Discord : le jeton et les identifiants du client voyagent dans le
+    // formulaire, jamais en Basic.
+    if (!params.credentials.clientId) {
+      return false;
+    }
+    const result = await postForm(
+      endpoint,
+      new URLSearchParams({
+        client_id: params.credentials.clientId,
+        client_secret: params.credentials.clientSecret,
+        token: params.accessToken,
+        token_type_hint: "access_token",
+      }),
+      revokeHeaders
+    );
+    return result.ok;
+  }
+
+  if (mode === "token_json_basic") {
+    // Notion : Basic + JSON, avec l'en-tête `Notion-Version` sur la
+    // révocation comme sur tous ses autres endpoints.
+    try {
+      const basic = Buffer.from(
+        `${params.credentials.clientId}:${params.credentials.clientSecret}`
+      ).toString("base64");
+      const response = await fetch(endpoint, {
+        body: JSON.stringify({ token: params.accessToken }),
+        headers: {
+          Accept: "application/json",
+          Authorization: `Basic ${basic}`,
+          "Content-Type": "application/json",
+          ...revokeHeaders,
+        },
+        method: "POST",
+        redirect: "error",
+        signal: AbortSignal.timeout(TOKEN_TIMEOUT_MS),
+      });
+      return response.ok;
+    } catch {
+      return false;
+    }
   }
 
   try {
@@ -547,6 +710,7 @@ export async function revokeConnection(
           Accept: "application/vnd.github+json",
           Authorization: `Basic ${basic}`,
           "Content-Type": "application/json",
+          ...revokeHeaders,
         },
         method: "DELETE",
         redirect: "error",

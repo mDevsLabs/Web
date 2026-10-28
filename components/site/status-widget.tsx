@@ -79,7 +79,7 @@ export function StatusWidget() {
   if (etat === "chargement") {
     return (
       <span
-        className="fixed safe-bottom-4 left-4 z-50 flex items-center gap-2 max-w-[calc(100vw-2rem)] bg-white/90 backdrop-blur-md border border-slate-200/60 shadow-lg rounded-full px-3 py-1.5"
+        className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] z-50 flex items-center gap-2 max-w-[calc(100vw-2rem)] bg-white/90 backdrop-blur-md border border-slate-200/60 shadow-lg rounded-full px-3 py-1.5"
         role="status"
       >
         <span className="shrink-0 w-2 h-2 rounded-full bg-slate-300 animate-pulse" />
@@ -105,7 +105,7 @@ export function StatusWidget() {
 
   return (
     <Link
-      className="fixed safe-bottom-4 left-4 z-50 flex items-center gap-2 max-w-[calc(100vw-2rem)] bg-white/90 backdrop-blur-md border border-slate-200/60 shadow-lg rounded-full px-3 py-1.5 hover:scale-105 transition-transform duration-200"
+      className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] z-50 flex items-center gap-2 max-w-[calc(100vw-2rem)] bg-white/90 backdrop-blur-md border border-slate-200/60 shadow-lg rounded-full px-3 py-1.5 hover:scale-105 transition-transform duration-200"
       href="https://mai.instatus.com/"
       rel="noopener noreferrer"
       target="_blank"

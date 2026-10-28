@@ -61,8 +61,11 @@ const schema = z
       )
       .nullable()
       .optional(),
-    spaceId: z.string().min(1).optional(),
-    spaceIds: z.array(z.string().min(1)).min(1).max(100).optional(),
+    // Un Espace supprimé détache le Wakie : le client peut renvoyer null / [].
+    // La couche requête répare la destination ; ces bornes ne font que refuser
+    // les valeurs mal typées.
+    spaceId: z.string().min(1).nullable().optional(),
+    spaceIds: z.array(z.string().min(1)).max(100).optional(),
     toolIds: liste,
   })
   .strict();

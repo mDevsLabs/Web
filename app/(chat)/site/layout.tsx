@@ -95,7 +95,7 @@ export default async function SiteLayout({
                 </div>
               </div>
 
-              <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-12 md:pb-32 pt-24 sm:pt-28 z-10">
+              <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-12 pt-24 sm:pt-28 z-10">
                 {/* L’invitation vient après l’espace réservé à la navigation fixe. */}
                 <Suspense fallback={null}>
                   <LoginInviteBanner />

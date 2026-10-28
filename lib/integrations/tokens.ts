@@ -213,7 +213,7 @@ export async function accessTokenForProvider(params: {
  * plugin rend un conseil), une levée = service indisponible (échec transitoire).
  */
 const SECRET_KEY_PATTERN =
-  /^(google|github)\.(access_token|refresh_token|scopes)$/;
+  /^(discord|github|google|notion|vercel)\.(access_token|refresh_token|scopes)$/;
 
 export function createIntegrationSecretResolver(params: {
   userId: string;

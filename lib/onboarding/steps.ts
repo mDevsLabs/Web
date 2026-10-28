@@ -137,7 +137,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     icon: SettingsIcon,
     id: "settings",
     route: "/settings",
-    selector: '[data-onboarding="nav-settings"]',
+    selector: '[data-onboarding="settings-tabs"]',
     title: "Personnalisez vos paramètres",
   },
   {

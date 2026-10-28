@@ -39,7 +39,7 @@ export type AuthorizedCallParams<T> = {
   base: string;
   descriptor: IntegrationDescriptor;
   headers?: Record<string, string>;
-  method?: "GET" | "POST";
+  method?: "GET" | "PATCH" | "POST";
   /** Chemin sous la base, en littéral de code — jamais une URL du modèle. */
   path: string;
   /**

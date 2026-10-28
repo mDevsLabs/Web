@@ -1,0 +1,63 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Connectez votre espace Notion : l'IA cherche les pages partagées avec l'intégration, les lit, parcourt vos bases de données et — dans l'Agent, avec votre accord — crée une page ou y ajoute des blocs.",
+  "icon": { "src": "/plugins/notion.svg", "type": "image" },
+  "id": "notion",
+  "minTier": "plus",
+  "name": "Notion",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": [
+    "notion",
+    "notes",
+    "documentation",
+    "wiki",
+    "base de données",
+    "pages",
+    "oauth",
+    "productivité"
+  ],
+  "tools": [
+    {
+      "description": "Cherche des pages et bases Notion partagées avec l'intégration, par titre.",
+      "effect": "read",
+      "id": "notionSearch",
+      "label": "Chercher dans Notion",
+      "systemHint": "Ne demandez pas une URL Notion : le titre suffit, la recherche rend l'identifiant."
+    },
+    {
+      "description": "Lit une page Notion : titre, propriétés essentielles et début de son contenu.",
+      "effect": "read",
+      "id": "notionReadPage",
+      "label": "Lire une page Notion",
+      "systemHint": "Une page non partagée avec l'intégration répond 404 : proposez de la partager dans Notion."
+    },
+    {
+      "description": "Liste les entrées d'une base de données Notion, les plus récemment modifiées d'abord.",
+      "effect": "read",
+      "id": "notionQueryDatabase",
+      "label": "Parcourir une base Notion",
+      "systemHint": "Le résultat est une liste de pages : pour le détail d'une entrée, lisez-la ensuite."
+    },
+    {
+      "description": "Crée une page Notion sous une page parente, avec un titre et un premier paragraphe.",
+      "effect": "write",
+      "id": "notionCreatePage",
+      "label": "Créer une page Notion",
+      "systemHint": "Écriture chez le fournisseur : montrez le titre et le contenu proposés avant approbation."
+    },
+    {
+      "description": "Ajoute des paragraphes à la fin d'une page Notion existante.",
+      "effect": "write",
+      "id": "notionAppendBlocks",
+      "label": "Ajouter du contenu à une page",
+      "systemHint": "Annoncez le nombre de paragraphes ajoutés et la page visée dans le résumé soumis à approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

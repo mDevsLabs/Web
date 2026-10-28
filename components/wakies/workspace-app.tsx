@@ -745,7 +745,7 @@ function WakiesWorkspaceContent({
           />
         ) : view === "goals" ? (
           <GoalsScreen
-            defaultSpaceId={wakie.spaceId}
+            defaultSpaceId={wakie.spaceId ?? workspace.spaces[0]?.id ?? ""}
             onOpen={openPage}
             spaces={workspace.spaces}
           />

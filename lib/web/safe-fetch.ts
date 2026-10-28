@@ -184,20 +184,42 @@ type SingleResponse = {
   stream: IncomingMessage;
 };
 
-function pinnedLookup(addresses: string[]) {
+/**
+ * Lookup épinglé, exporté pour être testé sans réseau.
+ *
+ * Node appelle ce lookup avec `{ all: true }` (Happy Eyeballs /
+ * `autoSelectFamily`) et attend alors un TABLEAU de `{ address, family }`.
+ * Renvoyer une chaîne dans ce mode — ce que faisait la version précédente —
+ * fait échouer la connexion avec « Invalid IP address: undefined », avant
+ * même le premier octet. C'était le cas de TOUS les appels `safeFetch*` :
+ * proxy d'images, lecture d'URL, documents, imports Wakies, MCP distant.
+ */
+export function pinnedLookup(addresses: string[]) {
   // La résolution est déjà faite et validée : on épingle l'adresse pour que
   // la pile réseau ne relance JAMAIS une résolution concurrente.
   return (
     _hostname: string,
-    _options: unknown,
-    callback: (error: Error | null, address?: string, family?: number) => void
+    options: { all?: boolean } | undefined,
+    callback: (
+      error: Error | null,
+      address?: string | Array<{ address: string; family: number }>,
+      family?: number
+    ) => void
   ) => {
-    const address = addresses[0];
-    if (!address) {
+    const records = addresses.map((address) => ({
+      address,
+      family: address.includes(":") ? 6 : 4,
+    }));
+    const first = records[0];
+    if (!first) {
       callback(new Error("Aucune adresse validée pour cet hôte."));
       return;
     }
-    callback(null, address, address.includes(":") ? 6 : 4);
+    if (options?.all) {
+      callback(null, records);
+      return;
+    }
+    callback(null, first.address, first.family);
   };
 }
 

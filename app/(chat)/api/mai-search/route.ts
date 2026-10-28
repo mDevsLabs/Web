@@ -24,6 +24,7 @@ export const maxDuration = 15;
 // compte, lui, est appliqué plus bas, une fois le forfait connu.
 const bodySchema = z.object({
   count: z.number().int().min(1).max(MAI_SEARCH_RESULT_COUNT_MAX).optional(),
+  deep: z.boolean().optional(),
   lang: z.enum(MAI_SEARCH_LANGUAGES).optional(),
   query: z.string().min(1).max(500),
   safetyLevel: z.enum(MAI_SEARCH_SAFETY_LEVELS).optional(),
@@ -94,7 +95,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    const { count, lang, query, safetyLevel, sources, type } = parsed.data;
+    const { count, deep, lang, query, safetyLevel, sources, type } =
+      parsed.data;
     const trimmedQuery = query.trim();
     if (!trimmedQuery) {
       return NextResponse.json(
@@ -144,6 +146,7 @@ export async function POST(request: Request) {
     const debut = Date.now();
     const searchResponse = await executeMaiSearch({
       count: effectiveCount,
+      deep: deep === true,
       lang: effectiveLang,
       query: trimmedQuery,
       safetyLevel: effectiveSafety,
@@ -174,6 +177,7 @@ export async function POST(request: Request) {
        * trouvé ». La première invite à réessayer, la seconde invite à
        * reformuler — deux gestes opposés.
        */
+      deep: searchResponse.deep ?? false,
       durationMs: dureeMs,
       images: searchResponse.images,
       news: searchResponse.news || [],

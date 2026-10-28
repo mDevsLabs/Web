@@ -42,6 +42,7 @@ import {
 import type { PageSettings } from "@/lib/wakies/pages";
 import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
 import { apercuMessage } from "@/lib/wakies/shared/messages";
+import { resolveWakieDestination } from "@/lib/wakies/shared/wakie-destination";
 import {
   prochaineExecution,
   STATUT_TACHE,
@@ -49,7 +50,7 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
-import { spaceExists } from "./spaces";
+import { listSpaces, spaceExists } from "./spaces";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -289,8 +290,8 @@ export async function updateWakie(
     memoryAllowed: boolean;
     avatar?: string | null;
     model?: string | null;
-    spaceId?: string;
-    spaceIds?: string[];
+    spaceId?: string | null;
+    spaceIds?: string[] | null;
     learningContainerId?: string | null;
     skillDeliveryEnabled?: boolean;
     // Sélection d'outils. `undefined` = conserver la valeur actuelle,
@@ -308,14 +309,22 @@ export async function updateWakie(
   if (!actuel) {
     throw new Error("Wakie introuvable.");
   }
-  const spaceParDefaut = patch.spaceId ?? actuel.spaceId;
-  if (!spaceParDefaut) {
-    throw new Error("Un Wakie doit garder une destination de page.");
+  // Un Espace supprimé détache le Wakie (`spaceId = null`, `spaceIds = []`).
+  // Sans cette réparation, le moindre enregistrement d'outil échouait sur
+  // « Un Wakie doit garder une destination de page ». On rattache alors au
+  // premier Espace du compte, dans le même ordre que le rail.
+  const espaces = await listSpaces(userId);
+  const destination = resolveWakieDestination({
+    availableSpaceIds: espaces.map((espace) => espace.id),
+    currentSpaceId: actuel.spaceId,
+    currentSpaceIds: actuel.spaceIds,
+    patchSpaceId: patch.spaceId,
+    patchSpaceIds: patch.spaceIds,
+  });
+  if (!destination) {
+    throw new Error("Créez un Espace avant d'enregistrer ce Wakie.");
   }
-  const spaceIds = [...new Set(patch.spaceIds ?? actuel.spaceIds)].sort();
-  if (!spaceIds.includes(spaceParDefaut)) {
-    throw new Error("L'accès doit inclure la destination de page.");
-  }
+  const { spaceId: spaceParDefaut, spaceIds } = destination;
   for (const spaceId of spaceIds) {
     if (!(await spaceExists(userId, spaceId))) {
       throw new Error("Espace inconnu sur ce compte.");

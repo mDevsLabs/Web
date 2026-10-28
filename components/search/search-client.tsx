@@ -27,6 +27,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
@@ -229,6 +230,13 @@ export function SearchClient() {
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [activeTab, setActiveTab] = useState<SearchTab>("web");
 
+  /**
+   * Recherche approfondie : deux reformulations de la requête sont lancées
+   * côté serveur. C'est un choix explicite — il triple le nombre d'appels au
+   * moteur — et il se mémorise pour la recherche suivante.
+   */
+  const [deep, setDeep] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
   const [results, setResults] = useState<SearchWebHit[]>([]);
@@ -271,6 +279,18 @@ export function SearchClient() {
   const [vote, setVote] = useState<"good" | "bad" | null>(null);
   const [hasCopiedSummary, setHasCopiedSummary] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
+
+  /**
+   * Les visionneuses sont montées dans `document.body`.
+   *
+   * `position: fixed` ne se réfère pas à la fenêtre dès qu'un ancêtre porte un
+   * `transform`, un `filter` ou `contain` : c'est le cas du conteneur de page de
+   * l'application, et la visionneuse d'image s'affichait alors AU BAS DU
+   * CONTENU, à la fin de la zone de défilement, au lieu de recouvrir l'écran.
+   * Un portail sort de cet ancêtre une fois pour toutes.
+   */
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => setPortalReady(true), []);
 
   // Visionneuse Lightbox pour les images
   const [selectedImage, setSelectedImage] = useState<SearchImageHit | null>(
@@ -718,7 +738,7 @@ export function SearchClient() {
         // « sources activées », et envoyer `count` contournerait le
         // plafond du forfait.
         const res = await fetch("/api/mai-search", {
-          body: JSON.stringify({ query: q }),
+          body: JSON.stringify(deep ? { deep: true, query: q } : { query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
           signal: controller.signal,
@@ -781,7 +801,7 @@ export function SearchClient() {
         }
       }
     },
-    [fetchSummary, query, refreshRecent]
+    [deep, fetchSummary, query, refreshRecent]
   );
 
   /**
@@ -1086,6 +1106,27 @@ export function SearchClient() {
                 les relire un par un dans la liste. Le filtre n'est proposé
                 que s'il mènerait quelque part.
               */}
+              {/*
+                Mode d'effort, distinct d'une source : il ne restreint rien,
+                il demande au serveur de creuser davantage. Il porte donc
+                `aria-pressed` et un état actif, comme un filtre.
+              */}
+              <button
+                aria-pressed={deep}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={deep ? "true" : undefined}
+                onClick={() => setDeep((current) => !current)}
+                title={
+                  deep
+                    ? "Revenir à une recherche simple"
+                    : "Reformuler la requête deux fois pour trouver des pages de fond"
+                }
+                type="button"
+              >
+                <SparklesIcon className="size-3.5" />
+                <span>Recherche approfondie</span>
+              </button>
+
               {wikipediaCount > 0 ? (
                 <button
                   aria-pressed={sourceFilter === "wikipedia"}
@@ -1117,16 +1158,22 @@ export function SearchClient() {
                 icône — mais reste une <span> neutre (`data-static`), sans
                 curseur cliquable ni état actif.
               */}
-              {provider && provider !== "you.com" ? (
+              {/*
+                Pas de pastille « Wikipédia + Web » : elle décrivait la
+                composition interne du moteur, pas une source que
+                l'utilisateur peut choisir, et faisait doublon avec le filtre
+                « Wikipédia » voisin. Seules restent les deux issues qui
+                changent la lecture des résultats : l'encyclopédie seule, et
+                le mode dégradé.
+              */}
+              {provider === "wikipedia" || provider === "fallback" ? (
                 <span
                   className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 shrink-0"
                   data-static="true"
                   title={
                     provider === "wikipedia"
                       ? "Les résultats proviennent de l'encyclopédie"
-                      : provider === "mixed"
-                        ? "Les résultats proviennent de l'encyclopédie et du Web"
-                        : "Le moteur principal a échoué : résultats de repli"
+                      : "Le moteur principal a échoué : résultats de repli"
                   }
                 >
                   {provider === "wikipedia" ? (
@@ -1135,11 +1182,7 @@ export function SearchClient() {
                     <GlobeIcon className="size-3.5" />
                   )}
                   <span>
-                    {provider === "wikipedia"
-                      ? "Wikipédia"
-                      : provider === "mixed"
-                        ? "Wikipédia + Web"
-                        : "Mode dégradé"}
+                    {provider === "wikipedia" ? "Wikipédia" : "Mode dégradé"}
                   </span>
                 </span>
               ) : null}
@@ -1954,480 +1997,513 @@ export function SearchClient() {
       )}
 
       {/* ─── Modale Lightbox d'Image (Agrandissement + Résumé + Visite) ─── */}
-      <AnimatePresence>
-        {selectedImage ? (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
-              exit={{ opacity: 0, scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* En-tête Lightbox */}
-              <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
-                <div className="flex items-center gap-2 min-w-0 pr-4">
-                  <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
-                    Image
-                  </span>
-                  <span className="font-semibold text-sm text-foreground truncate">
-                    {selectedImage.title}
-                  </span>
-                </div>
-                <button
-                  aria-label="Fermer"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
-                  onClick={() => setSelectedImage(null)}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Image en grand */}
-              <div className="relative flex-1 bg-black/10 dark:bg-black/30 flex items-center justify-center p-4 min-h-[300px] max-h-[60vh] overflow-hidden">
-                <SearchSafeImage
-                  alt={selectedImage.title}
-                  className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
-                  fallback={
-                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                      <ImageIcon className="size-12" />
-                      <span className="text-xs">Image non disponible</span>
-                    </div>
-                  }
-                  src={selectedImage.image_url || selectedImage.thumbnail}
-                />
-              </div>
-
-              {/* Pied de Lightbox : Résumé + Actions */}
-              <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
-                  <GlobeIcon className="size-4 shrink-0" />
-                  <span className="truncate max-w-[280px]">
-                    {selectedImage.page_url
-                      ? new URL(selectedImage.page_url).hostname
-                      : "Source web"}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                  <button
-                    aria-label="Résumer avec mAI"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
-                    onClick={() => {
-                      const img = selectedImage;
-                      setSelectedImage(null);
-                      void handleRequestTargetSummary({
-                        snippet: img.title,
-                        source: img.page_url
-                          ? new URL(img.page_url).hostname
-                          : "Image",
-                        title: img.title,
-                        type: "image",
-                        url: img.page_url || img.image_url,
-                      });
-                    }}
-                    type="button"
+      {portalReady
+        ? createPortal(
+            <>
+              <AnimatePresence>
+                {selectedImage ? (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+                    onClick={() => setSelectedImage(null)}
                   >
-                    <SparklesIcon className="size-3.5" />
-                    <span>Résumer le sujet</span>
-                  </button>
-
-                  <button
-                    className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
-                    onClick={() =>
-                      handleCopyLink(
-                        selectedImage.page_url || selectedImage.image_url
-                      )
-                    }
-                    type="button"
-                  >
-                    <CopyIcon className="size-3.5" />
-                    <span>Copier le lien</span>
-                  </button>
-
-                  <a
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
-                    href={selectedImage.page_url || selectedImage.image_url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span>Visiter le site</span>
-                    <ExternalLinkIcon className="size-3.5" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
-
-      {/* ─── Modale Lightbox Vidéo avec Lecteur Interactif Intégré ─── */}
-      <AnimatePresence>
-        {selectedVideo ? (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
-            onClick={() => setSelectedVideo(null)}
-          >
-            <motion.div
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-4xl w-full max-h-[92vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
-              exit={{ opacity: 0, scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* En-tête Lightbox Vidéo */}
-              <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
-                <div className="flex items-center gap-2 min-w-0 pr-4">
-                  <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
-                    {selectedVideo.platform || "Vidéo"}
-                  </span>
-                  <span className="font-semibold text-sm text-foreground truncate">
-                    {selectedVideo.title}
-                  </span>
-                </div>
-                <button
-                  aria-label="Fermer"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
-                  onClick={() => setSelectedVideo(null)}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Lecteur vidéo interactif */}
-              <div className="relative flex-1 bg-black aspect-video w-full flex items-center justify-center overflow-hidden">
-                {(() => {
-                  const embed = getVideoEmbed(selectedVideo);
-
-                  if (embed.type === "iframe" && embed.embedUrl) {
-                    return (
-                      <iframe
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        className="w-full h-full border-0"
-                        src={embed.embedUrl}
-                        title={selectedVideo.title}
-                      />
-                    );
-                  }
-
-                  if (embed.type === "video" && embed.embedUrl) {
-                    return (
-                      <video
-                        autoPlay
-                        className="w-full h-full object-contain"
-                        controls
-                        src={embed.embedUrl}
-                      >
-                        Votre navigateur ne supporte pas la lecture de cette
-                        vidéo.
-                      </video>
-                    );
-                  }
-
-                  // Fallback si la plateforme ne supporte pas l'embed direct (ex: site restreint)
-                  return (
-                    <div className="flex flex-col items-center justify-center p-6 text-center gap-3">
-                      <VideoIcon className="size-12 text-muted-foreground/60" />
-                      <p className="text-sm text-foreground max-w-md">
-                        Cette vidéo ne permet pas l'intégration directe, mais
-                        vous pouvez la regarder directement sur le site source.
-                      </p>
-                      <a
-                        className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 transition-all shadow-sm cursor-pointer"
-                        href={selectedVideo.page_url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <span>
-                          Regarder sur{" "}
-                          {selectedVideo.platform || "le site source"}
-                        </span>
-                        <ExternalLinkIcon className="size-3.5" />
-                      </a>
-                    </div>
-                  );
-                })()}
-              </div>
-
-              {/* Pied de Lightbox Vidéo */}
-              <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
-                  <PlayIcon className="size-4 shrink-0 text-primary" />
-                  <span className="truncate max-w-[280px]">
-                    {selectedVideo.platform
-                      ? `Plateforme : ${selectedVideo.platform}`
-                      : selectedVideo.page_url}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                  {/* Bouton Résumer la vidéo avec mAI */}
-                  <button
-                    aria-label="Résumer cette vidéo avec mAI"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
-                    onClick={() => {
-                      const vid = selectedVideo;
-                      setSelectedVideo(null);
-                      void handleRequestTargetSummary({
-                        snippet: vid.title,
-                        source: vid.platform || "Vidéo",
-                        title: vid.title,
-                        type: "video",
-                        url: vid.page_url,
-                      });
-                    }}
-                    type="button"
-                  >
-                    <SparklesIcon className="size-3.5" />
-                    <span>Résumer la vidéo</span>
-                  </button>
-
-                  <button
-                    className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
-                    onClick={() => handleCopyLink(selectedVideo.page_url)}
-                    type="button"
-                  >
-                    <CopyIcon className="size-3.5" />
-                    <span>Copier le lien</span>
-                  </button>
-
-                  <a
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
-                    href={selectedVideo.page_url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span>Ouvrir la page</span>
-                    <ExternalLinkIcon className="size-3.5" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
-
-      {/* ─── Tiroir Latéral Rétractable de Discussion IA avec ModelSelector & Outil WebSearch ─── */}
-      <AnimatePresence>
-        {targetConversation.isOpen && targetConversation.target ? (
-          <div className="fixed inset-0 z-50 flex justify-end">
-            {/* Backdrop */}
-            <motion.div
-              animate={{ opacity: 1 }}
-              className="fixed inset-0 bg-background/60 backdrop-blur-sm"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              onClick={handleCloseTargetConversation}
-            />
-
-            {/* Volet Tiroir */}
-            <motion.aside
-              animate={{ x: 0 }}
-              className="relative z-10 w-full sm:w-[500px] h-full bg-card border-l border-border/80 shadow-2xl flex flex-col overflow-hidden"
-              exit={{ x: "100%" }}
-              initial={{ x: "100%" }}
-              transition={{ damping: 25, stiffness: 300, type: "spring" }}
-            >
-              {/* En-tête principal du tiroir */}
-              <div className="flex items-center justify-between p-3.5 border-b border-border/50 bg-muted/20">
-                <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                  <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0">
-                    <SparklesIcon className="size-4 animate-pulse" />
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-xs text-foreground">
-                        mAI Search Assistant
-                      </span>
-                      <span className="chip text-[10px] py-0 px-1.5 bg-primary/10 text-primary font-medium">
-                        {targetConversation.target.type.toUpperCase()}
-                      </span>
-                    </div>
-                    <span className="text-[11px] text-muted-foreground truncate">
-                      {targetConversation.target.title}
-                    </span>
-                  </div>
-                </div>
-
-                <button
-                  aria-label="Fermer le tiroir"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
-                  onClick={handleCloseTargetConversation}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Sous-en-tête : Sélecteur de modèle d'IA & Indicateur outil unique de recherche web */}
-              <div className="flex items-center justify-between px-3.5 py-2 bg-muted/10 border-b border-border/40 gap-2">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <span className="text-[11px] font-medium text-muted-foreground shrink-0 hidden sm:inline">
-                    Modèle :
-                  </span>
-                  <ModelSelectorCompact
-                    modal={true}
-                    onModelChange={(newModel) => setSelectedModelId(newModel)}
-                    selectedModelId={selectedModelId}
-                    side="bottom"
-                  />
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0 ring-1 ring-primary/20"
-                  title="Ce modèle dispose de l'outil Recherche web pour vérifier et compléter les informations en direct."
-                >
-                  <GlobeIcon className="size-3" />
-                  <span>Recherche web active</span>
-                </div>
-              </div>
-
-              {/* Corps déroulant : Carte source & Fil de discussion multi-tours */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-5 text-sm leading-relaxed text-foreground/90 space-y-4">
-                {/* Carte récapitulative de la source */}
-                <div className="surface-muted p-3 text-xs flex flex-col gap-1.5 rounded-xl border border-border/40">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-semibold text-foreground line-clamp-1">
-                      {targetConversation.target.title}
-                    </span>
-                    <a
-                      className="chip text-[10px] inline-flex items-center gap-1 py-0.5 px-2 cursor-pointer shrink-0"
-                      href={targetConversation.target.url}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      title="Consulter la ressource originale"
-                    >
-                      <span>Ouvrir</span>
-                      <ExternalLinkIcon className="size-2.5" />
-                    </a>
-                  </div>
-                  <span className="text-[11px] text-muted-foreground truncate font-mono">
-                    {targetConversation.target.url}
-                  </span>
-                </div>
-
-                {/* Messages de la conversation */}
-                {targetConversation.messages.map((msg, index) => {
-                  const isAssistant = msg.role === "assistant";
-                  return (
                     <motion.div
-                      animate={{ opacity: 1, y: 0 }}
-                      className={cn(
-                        "flex gap-2.5 w-full",
-                        isAssistant ? "items-start" : "items-end justify-end"
-                      )}
-                      initial={{ opacity: 0, y: 8 }}
-                      key={msg.id || index}
-                      transition={{ duration: 0.2 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      {isAssistant ? (
-                        <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0 mt-0.5">
-                          <BotIcon className="size-4" />
+                      {/* En-tête Lightbox */}
+                      <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
+                        <div className="flex items-center gap-2 min-w-0 pr-4">
+                          <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
+                            Image
+                          </span>
+                          <span className="font-semibold text-sm text-foreground truncate">
+                            {selectedImage.title}
+                          </span>
                         </div>
-                      ) : null}
-
-                      <div
-                        className={cn(
-                          "rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed max-w-[85%]",
-                          isAssistant
-                            ? "surface-card border border-border/60 bg-card/80 text-foreground shadow-xs w-full"
-                            : "bg-primary text-primary-foreground font-medium rounded-br-xs"
-                        )}
-                      >
-                        {isAssistant ? (
-                          msg.content ? (
-                            <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
-                              <Streamdown>{msg.content}</Streamdown>
-                              <SummarySources sources={msg.sources ?? []} />
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">
-                              <SparklesIcon className="size-3.5 text-primary" />
-                              <span>Génération et recherche en cours…</span>
-                            </div>
-                          )
-                        ) : (
-                          <p className="whitespace-pre-wrap">{msg.content}</p>
-                        )}
+                        <button
+                          aria-label="Fermer"
+                          className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
+                          onClick={() => setSelectedImage(null)}
+                          type="button"
+                        >
+                          <XIcon className="size-4" />
+                        </button>
                       </div>
 
-                      {isAssistant ? null : (
-                        <div className="size-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center shrink-0 mb-0.5">
-                          <UserIcon className="size-3.5" />
+                      {/* Image en grand */}
+                      <div className="relative flex-1 bg-black/10 dark:bg-black/30 flex items-center justify-center p-4 min-h-[300px] max-h-[60vh] overflow-hidden">
+                        <SearchSafeImage
+                          alt={selectedImage.title}
+                          className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
+                          fallback={
+                            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                              <ImageIcon className="size-12" />
+                              <span className="text-xs">
+                                Image non disponible
+                              </span>
+                            </div>
+                          }
+                          src={
+                            selectedImage.image_url || selectedImage.thumbnail
+                          }
+                        />
+                      </div>
+
+                      {/* Pied de Lightbox : Résumé + Actions */}
+                      <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
+                          <GlobeIcon className="size-4 shrink-0" />
+                          <span className="truncate max-w-[280px]">
+                            {selectedImage.page_url
+                              ? new URL(selectedImage.page_url).hostname
+                              : "Source web"}
+                          </span>
                         </div>
-                      )}
+
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                          <button
+                            aria-label="Résumer avec mAI"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
+                            onClick={() => {
+                              const img = selectedImage;
+                              setSelectedImage(null);
+                              void handleRequestTargetSummary({
+                                snippet: img.title,
+                                source: img.page_url
+                                  ? new URL(img.page_url).hostname
+                                  : "Image",
+                                title: img.title,
+                                type: "image",
+                                url: img.page_url || img.image_url,
+                              });
+                            }}
+                            type="button"
+                          >
+                            <SparklesIcon className="size-3.5" />
+                            <span>Résumer le sujet</span>
+                          </button>
+
+                          <button
+                            className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                            onClick={() =>
+                              handleCopyLink(
+                                selectedImage.page_url ||
+                                  selectedImage.image_url
+                              )
+                            }
+                            type="button"
+                          >
+                            <CopyIcon className="size-3.5" />
+                            <span>Copier le lien</span>
+                          </button>
+
+                          <a
+                            className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
+                            href={
+                              selectedImage.page_url || selectedImage.image_url
+                            }
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <span>Visiter le site</span>
+                            <ExternalLinkIcon className="size-3.5" />
+                          </a>
+                        </div>
+                      </div>
                     </motion.div>
-                  );
-                })}
+                  </div>
+                ) : null}
+              </AnimatePresence>
 
-                <div ref={drawerMessagesEndRef} />
-              </div>
+              {/* ─── Modale Lightbox Vidéo avec Lecteur Interactif Intégré ─── */}
+              <AnimatePresence>
+                {selectedVideo ? (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+                    onClick={() => setSelectedVideo(null)}
+                  >
+                    <motion.div
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="relative max-w-4xl w-full max-h-[92vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* En-tête Lightbox Vidéo */}
+                      <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
+                        <div className="flex items-center gap-2 min-w-0 pr-4">
+                          <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
+                            {selectedVideo.platform || "Vidéo"}
+                          </span>
+                          <span className="font-semibold text-sm text-foreground truncate">
+                            {selectedVideo.title}
+                          </span>
+                        </div>
+                        <button
+                          aria-label="Fermer"
+                          className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
+                          onClick={() => setSelectedVideo(null)}
+                          type="button"
+                        >
+                          <XIcon className="size-4" />
+                        </button>
+                      </div>
 
-              {/* Zone de saisie et formulaire de question de suivi */}
-              <form
-                className="p-3.5 border-t border-border/50 bg-card flex flex-col gap-2.5 shrink-0"
-                onSubmit={handleSendFollowupMessage}
-              >
-                <div className="relative flex items-center w-full rounded-xl border border-border/70 bg-muted/20 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 transition-all p-1">
-                  <input
-                    aria-label="Poser une question sur cette ressource"
-                    className="w-full bg-transparent px-3 py-1.5 text-xs sm:text-sm outline-none placeholder:text-muted-foreground/60"
-                    disabled={targetConversation.isLoading}
-                    onChange={(e) => setFollowupInput(e.target.value)}
-                    placeholder="Poser une question de suivi sur cette ressource..."
-                    type="text"
-                    value={followupInput}
+                      {/* Lecteur vidéo interactif */}
+                      <div className="relative flex-1 bg-black aspect-video w-full flex items-center justify-center overflow-hidden">
+                        {(() => {
+                          const embed = getVideoEmbed(selectedVideo);
+
+                          if (embed.type === "iframe" && embed.embedUrl) {
+                            return (
+                              <iframe
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                className="w-full h-full border-0"
+                                src={embed.embedUrl}
+                                title={selectedVideo.title}
+                              />
+                            );
+                          }
+
+                          if (embed.type === "video" && embed.embedUrl) {
+                            return (
+                              <video
+                                autoPlay
+                                className="w-full h-full object-contain"
+                                controls
+                                src={embed.embedUrl}
+                              >
+                                Votre navigateur ne supporte pas la lecture de
+                                cette vidéo.
+                              </video>
+                            );
+                          }
+
+                          // Fallback si la plateforme ne supporte pas l'embed direct (ex: site restreint)
+                          return (
+                            <div className="flex flex-col items-center justify-center p-6 text-center gap-3">
+                              <VideoIcon className="size-12 text-muted-foreground/60" />
+                              <p className="text-sm text-foreground max-w-md">
+                                Cette vidéo ne permet pas l'intégration directe,
+                                mais vous pouvez la regarder directement sur le
+                                site source.
+                              </p>
+                              <a
+                                className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 transition-all shadow-sm cursor-pointer"
+                                href={selectedVideo.page_url}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                              >
+                                <span>
+                                  Regarder sur{" "}
+                                  {selectedVideo.platform || "le site source"}
+                                </span>
+                                <ExternalLinkIcon className="size-3.5" />
+                              </a>
+                            </div>
+                          );
+                        })()}
+                      </div>
+
+                      {/* Pied de Lightbox Vidéo */}
+                      <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
+                          <PlayIcon className="size-4 shrink-0 text-primary" />
+                          <span className="truncate max-w-[280px]">
+                            {selectedVideo.platform
+                              ? `Plateforme : ${selectedVideo.platform}`
+                              : selectedVideo.page_url}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                          {/* Bouton Résumer la vidéo avec mAI */}
+                          <button
+                            aria-label="Résumer cette vidéo avec mAI"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
+                            onClick={() => {
+                              const vid = selectedVideo;
+                              setSelectedVideo(null);
+                              void handleRequestTargetSummary({
+                                snippet: vid.title,
+                                source: vid.platform || "Vidéo",
+                                title: vid.title,
+                                type: "video",
+                                url: vid.page_url,
+                              });
+                            }}
+                            type="button"
+                          >
+                            <SparklesIcon className="size-3.5" />
+                            <span>Résumer la vidéo</span>
+                          </button>
+
+                          <button
+                            className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                            onClick={() =>
+                              handleCopyLink(selectedVideo.page_url)
+                            }
+                            type="button"
+                          >
+                            <CopyIcon className="size-3.5" />
+                            <span>Copier le lien</span>
+                          </button>
+
+                          <a
+                            className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
+                            href={selectedVideo.page_url}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <span>Ouvrir la page</span>
+                            <ExternalLinkIcon className="size-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                ) : null}
+              </AnimatePresence>
+            </>,
+            document.body
+          )
+        : null}
+
+      {/* ─── Tiroir Latéral Rétractable de Discussion IA avec ModelSelector & Outil WebSearch ─── */}
+      {portalReady
+        ? createPortal(
+            <AnimatePresence>
+              {targetConversation.isOpen && targetConversation.target ? (
+                <div className="fixed inset-0 z-50 flex justify-end">
+                  {/* Backdrop */}
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    className="fixed inset-0 bg-background/60 backdrop-blur-sm"
+                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    onClick={handleCloseTargetConversation}
                   />
-                  <button
-                    aria-label="Envoyer"
-                    className="p-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 active:scale-95 disabled:opacity-40 transition-all cursor-pointer shrink-0"
-                    disabled={
-                      !followupInput.trim() || targetConversation.isLoading
-                    }
-                    title="Envoyer la question"
-                    type="submit"
-                  >
-                    <SendIcon className="size-3.5" />
-                  </button>
-                </div>
 
-                {/* Actions secondaires */}
-                <div className="flex items-center justify-between text-xs pt-0.5">
-                  <button
-                    className="chip text-[11px] inline-flex items-center gap-1.5 py-1 px-2.5 cursor-pointer"
-                    disabled={targetConversation.messages.length === 0}
-                    onClick={handleCopyDrawerContent}
-                    type="button"
+                  {/* Volet Tiroir */}
+                  <motion.aside
+                    animate={{ x: 0 }}
+                    className="relative z-10 w-full sm:w-[500px] h-full bg-card border-l border-border/80 shadow-2xl flex flex-col overflow-hidden"
+                    exit={{ x: "100%" }}
+                    initial={{ x: "100%" }}
+                    transition={{ damping: 25, stiffness: 300, type: "spring" }}
                   >
-                    {hasCopiedDrawer ? (
-                      <CheckIcon className="size-3 text-success" />
-                    ) : (
-                      <CopyIcon className="size-3" />
-                    )}
-                    <span>{hasCopiedDrawer ? "Copié" : "Copier"}</span>
-                  </button>
+                    {/* En-tête principal du tiroir */}
+                    <div className="flex items-center justify-between p-3.5 border-b border-border/50 bg-muted/20">
+                      <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                        <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0">
+                          <SparklesIcon className="size-4 animate-pulse" />
+                        </div>
+                        <div className="flex flex-col min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-semibold text-xs text-foreground">
+                              mAI Search Assistant
+                            </span>
+                            <span className="chip text-[10px] py-0 px-1.5 bg-primary/10 text-primary font-medium">
+                              {targetConversation.target.type.toUpperCase()}
+                            </span>
+                          </div>
+                          <span className="text-[11px] text-muted-foreground truncate">
+                            {targetConversation.target.title}
+                          </span>
+                        </div>
+                      </div>
 
-                  <button
-                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-primary hover:underline cursor-pointer"
-                    onClick={handleSendDrawerToChat}
-                    type="button"
-                  >
-                    <MessageCircleIcon className="size-3.5" />
-                    <span>Poursuivre dans le Chat mAI</span>
-                    <ArrowRightIcon className="size-3" />
-                  </button>
+                      <button
+                        aria-label="Fermer le tiroir"
+                        className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
+                        onClick={handleCloseTargetConversation}
+                        type="button"
+                      >
+                        <XIcon className="size-4" />
+                      </button>
+                    </div>
+
+                    {/* Sous-en-tête : Sélecteur de modèle d'IA & Indicateur outil unique de recherche web */}
+                    <div className="flex items-center justify-between px-3.5 py-2 bg-muted/10 border-b border-border/40 gap-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-[11px] font-medium text-muted-foreground shrink-0 hidden sm:inline">
+                          Modèle :
+                        </span>
+                        <ModelSelectorCompact
+                          modal={true}
+                          onModelChange={(newModel) =>
+                            setSelectedModelId(newModel)
+                          }
+                          selectedModelId={selectedModelId}
+                          side="bottom"
+                        />
+                      </div>
+
+                      <div
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0 ring-1 ring-primary/20"
+                        title="Ce modèle dispose de l'outil Recherche web pour vérifier et compléter les informations en direct."
+                      >
+                        <GlobeIcon className="size-3" />
+                        <span>Recherche web active</span>
+                      </div>
+                    </div>
+
+                    {/* Corps déroulant : Carte source & Fil de discussion multi-tours */}
+                    <div className="flex-1 overflow-y-auto p-4 sm:p-5 text-sm leading-relaxed text-foreground/90 space-y-4">
+                      {/* Carte récapitulative de la source */}
+                      <div className="surface-muted p-3 text-xs flex flex-col gap-1.5 rounded-xl border border-border/40">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold text-foreground line-clamp-1">
+                            {targetConversation.target.title}
+                          </span>
+                          <a
+                            className="chip text-[10px] inline-flex items-center gap-1 py-0.5 px-2 cursor-pointer shrink-0"
+                            href={targetConversation.target.url}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            title="Consulter la ressource originale"
+                          >
+                            <span>Ouvrir</span>
+                            <ExternalLinkIcon className="size-2.5" />
+                          </a>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground truncate font-mono">
+                          {targetConversation.target.url}
+                        </span>
+                      </div>
+
+                      {/* Messages de la conversation */}
+                      {targetConversation.messages.map((msg, index) => {
+                        const isAssistant = msg.role === "assistant";
+                        return (
+                          <motion.div
+                            animate={{ opacity: 1, y: 0 }}
+                            className={cn(
+                              "flex gap-2.5 w-full",
+                              isAssistant
+                                ? "items-start"
+                                : "items-end justify-end"
+                            )}
+                            initial={{ opacity: 0, y: 8 }}
+                            key={msg.id || index}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {isAssistant ? (
+                              <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0 mt-0.5">
+                                <BotIcon className="size-4" />
+                              </div>
+                            ) : null}
+
+                            <div
+                              className={cn(
+                                "rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed max-w-[85%]",
+                                isAssistant
+                                  ? "surface-card border border-border/60 bg-card/80 text-foreground shadow-xs w-full"
+                                  : "bg-primary text-primary-foreground font-medium rounded-br-xs"
+                              )}
+                            >
+                              {isAssistant ? (
+                                msg.content ? (
+                                  <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
+                                    <Streamdown>{msg.content}</Streamdown>
+                                    <SummarySources
+                                      sources={msg.sources ?? []}
+                                    />
+                                  </div>
+                                ) : (
+                                  <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">
+                                    <SparklesIcon className="size-3.5 text-primary" />
+                                    <span>
+                                      Génération et recherche en cours…
+                                    </span>
+                                  </div>
+                                )
+                              ) : (
+                                <p className="whitespace-pre-wrap">
+                                  {msg.content}
+                                </p>
+                              )}
+                            </div>
+
+                            {isAssistant ? null : (
+                              <div className="size-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center shrink-0 mb-0.5">
+                                <UserIcon className="size-3.5" />
+                              </div>
+                            )}
+                          </motion.div>
+                        );
+                      })}
+
+                      <div ref={drawerMessagesEndRef} />
+                    </div>
+
+                    {/* Zone de saisie et formulaire de question de suivi */}
+                    <form
+                      className="p-3.5 border-t border-border/50 bg-card flex flex-col gap-2.5 shrink-0"
+                      onSubmit={handleSendFollowupMessage}
+                    >
+                      <div className="relative flex items-center w-full rounded-xl border border-border/70 bg-muted/20 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 transition-all p-1">
+                        <input
+                          aria-label="Poser une question sur cette ressource"
+                          className="w-full bg-transparent px-3 py-1.5 text-xs sm:text-sm outline-none placeholder:text-muted-foreground/60"
+                          disabled={targetConversation.isLoading}
+                          onChange={(e) => setFollowupInput(e.target.value)}
+                          placeholder="Poser une question de suivi sur cette ressource..."
+                          type="text"
+                          value={followupInput}
+                        />
+                        <button
+                          aria-label="Envoyer"
+                          className="p-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 active:scale-95 disabled:opacity-40 transition-all cursor-pointer shrink-0"
+                          disabled={
+                            !followupInput.trim() ||
+                            targetConversation.isLoading
+                          }
+                          title="Envoyer la question"
+                          type="submit"
+                        >
+                          <SendIcon className="size-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Actions secondaires */}
+                      <div className="flex items-center justify-between text-xs pt-0.5">
+                        <button
+                          className="chip text-[11px] inline-flex items-center gap-1.5 py-1 px-2.5 cursor-pointer"
+                          disabled={targetConversation.messages.length === 0}
+                          onClick={handleCopyDrawerContent}
+                          type="button"
+                        >
+                          {hasCopiedDrawer ? (
+                            <CheckIcon className="size-3 text-success" />
+                          ) : (
+                            <CopyIcon className="size-3" />
+                          )}
+                          <span>{hasCopiedDrawer ? "Copié" : "Copier"}</span>
+                        </button>
+
+                        <button
+                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-primary hover:underline cursor-pointer"
+                          onClick={handleSendDrawerToChat}
+                          type="button"
+                        >
+                          <MessageCircleIcon className="size-3.5" />
+                          <span>Poursuivre dans le Chat mAI</span>
+                          <ArrowRightIcon className="size-3" />
+                        </button>
+                      </div>
+                    </form>
+                  </motion.aside>
                 </div>
-              </form>
-            </motion.aside>
-          </div>
-        ) : null}
-      </AnimatePresence>
+              ) : null}
+            </AnimatePresence>,
+            document.body
+          )
+        : null}
     </div>
   );
 }

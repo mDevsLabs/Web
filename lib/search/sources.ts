@@ -79,7 +79,7 @@ export const MAI_SEARCH_SOURCE_DESCRIPTIONS: Record<
   string
 > = {
   images: "Illustrations et photographies trouvées sur le Web.",
-  news: "Actualités récentes, issues du flux Google News.",
+  news: "Actualités récentes, croisées entre You.com, Google News et GDELT.",
   videos: "Vidéos publiées sur les principales plateformes.",
   web: "Pages web indexées par le moteur de recherche principal.",
   wikipedia:

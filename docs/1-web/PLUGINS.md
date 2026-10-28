@@ -3,9 +3,10 @@
 Ces plugins n'exigent pas de clé API. Ils effectuent uniquement des requêtes
 HTTPS GET vers les domaines fixes déclarés dans `lib/plugins/shared/public-api.ts`.
 
-> Les plugins qui **se connectent au compte d'un utilisateur** (Google, GitHub)
-> ne relèvent pas de ce fichier : leur flux OAuth, leurs portées et leurs
-> variables sont décrits dans [INTEGRATIONS.md](INTEGRATIONS.md).
+> Les plugins qui **se connectent au compte d'un utilisateur** (Google, GitHub,
+> Discord, Notion, Vercel) ne relèvent pas de ce fichier : leur flux OAuth ou
+> leur jeton personnel, leurs portées et leurs variables sont décrits dans
+> [INTEGRATIONS.md](INTEGRATIONS.md).
 
 | Plugin | Source | Configuration |
 | --- | --- | --- |

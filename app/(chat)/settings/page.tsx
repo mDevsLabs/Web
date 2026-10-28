@@ -205,7 +205,6 @@ function SettingsPageInner() {
           { id: "search", label: "Recherche — mAI Search" },
           { id: "wakies", label: "Wakies — Espaces de travail" },
           { id: "wakies-general", label: "↳ Atelier & Confidentialité" },
-          { id: "wakies-quotas", label: "↳ Stockage & Quotas" },
           { id: "wakies-config", label: "↳ Configuration des Wakies" },
           { id: "blackline", label: "Blackline — Jeu 3D" },
           { id: "blackline-graphics", label: "↳ Image & Énergie" },
@@ -249,10 +248,7 @@ function SettingsPageInner() {
   }, [activeTab]);
 
   return (
-    <div
-      className="flex flex-1 flex-col h-full overflow-y-auto bg-background"
-      data-scroll-root=""
-    >
+    <div className="flex flex-1 flex-col bg-background lg:h-dvh lg:min-h-0 lg:overflow-hidden">
       {/*
         `md:pb-0` est indispensable et doit rester explicite : le raccourci
         `md:p-10` est compilé APRÈS les utilitaires de base par Tailwind, donc un
@@ -260,7 +256,7 @@ function SettingsPageInner() {
         ci-dessous repartait avec 2,5 rem de haut en trop. On étale donc le
         raccourci en `md:px-*`/`md:pt-*` pour que le zéro du bas tienne.
       */}
-      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:px-10 md:pt-10 md:pb-0">
+      <div className="shrink-0 max-w-7xl mx-auto w-full p-4 sm:p-6 md:px-10 md:pt-10 md:pb-0">
         {/* En-tête de la page */}
         <div className="pb-4 border-b border-border/50">
           <div className="flex items-start gap-3">
@@ -283,8 +279,11 @@ function SettingsPageInner() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
-        <aside className="w-full shrink-0 lg:sticky lg:top-6 lg:w-56">
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 md:pt-6 flex flex-col lg:min-h-0 lg:flex-1 lg:flex-row gap-6 lg:gap-8 items-start lg:items-stretch">
+        <aside
+          className="w-full shrink-0 lg:w-56 lg:min-h-0 lg:overflow-y-auto"
+          data-onboarding="settings-tabs"
+        >
           <div
             aria-label="Sections des paramètres"
             className="surface-card flex flex-col gap-1 p-2"
@@ -318,7 +317,8 @@ function SettingsPageInner() {
 
         <div
           aria-labelledby={`settings-tab-${activeTab}`}
-          className="flex-1 min-w-0"
+          className="flex-1 min-w-0 lg:min-h-0 lg:overflow-y-auto"
+          data-scroll-root=""
           id={`settings-panel-${activeTab}`}
           role="tabpanel"
         >

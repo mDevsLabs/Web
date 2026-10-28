@@ -1,0 +1,63 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez votre compte Vercel par jeton personnel : l'IA liste vos projets, suit l'état de vos déploiements et lit leurs journaux de construction. Le plugin ne modifie rien chez Vercel, et le jeton se révoque depuis votre compte Vercel.",
+  "icon": { "src": "/plugins/vercel.svg", "type": "image" },
+  "id": "vercel",
+  "minTier": "plus",
+  "name": "Vercel",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": [
+    "vercel",
+    "déploiement",
+    "hébergement",
+    "frontend",
+    "journaux",
+    "logs",
+    "jeton",
+    "devops"
+  ],
+  "tools": [
+    {
+      "description": "Liste les projets Vercel du compte connecté, filtrables par nom.",
+      "effect": "read",
+      "id": "vercelListProjects",
+      "label": "Mes projets Vercel",
+      "systemHint": "Commencez ici quand l'utilisateur désigne un projet par son nom."
+    },
+    {
+      "description": "Détail d'un projet Vercel : framework, dépôt lié et dernière mise à jour.",
+      "effect": "read",
+      "id": "vercelGetProject",
+      "label": "Détail d'un projet",
+      "systemHint": "Le paramètre est le nom du projet tel que Vercel l'affiche, pas une URL."
+    },
+    {
+      "description": "Liste les déploiements Vercel récents, éventuellement d'un projet ou dans un état donné.",
+      "effect": "read",
+      "id": "vercelListDeployments",
+      "label": "Déploiements récents",
+      "systemHint": "L'état READY, ERROR ou BUILDING répond à la plupart des questions « est-ce en ligne ? »."
+    },
+    {
+      "description": "Détail d'un déploiement Vercel : état, URL, commit et durée de construction.",
+      "effect": "read",
+      "id": "vercelGetDeployment",
+      "label": "Détail d'un déploiement",
+      "systemHint": "Utilisez l'identifiant rendu par la liste, jamais une URL devinée."
+    },
+    {
+      "description": "Extrait les derniers journaux de construction d'un déploiement Vercel.",
+      "effect": "read",
+      "id": "vercelDeploymentLogs",
+      "label": "Journaux d'un déploiement",
+      "systemHint": "Cherchez la première erreur plutôt que de recopier le journal entier."
+    }
+  ],
+  "version": "1.0.0"
+}

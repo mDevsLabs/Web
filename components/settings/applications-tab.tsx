@@ -39,7 +39,6 @@ import {
   UserIcon,
   UsersIcon,
   Volume2Icon,
-  ZapIcon,
 } from "@mdevs/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -90,22 +89,10 @@ type WakiesAccountSettings = {
 };
 
 type WakiesData = {
-  quotas: Record<string, number | null>;
   settings: WakiesAccountSettings;
   setup?: SetupStatus;
-  storageBytes: number;
   tier: string;
   wakies: Wakie[];
-};
-
-const WAKIES_QUOTA_LABELS: Record<string, string> = {
-  conversations: "Conversations",
-  memories: "Mémoires",
-  pages: "Pages",
-  spaces: "Espaces",
-  tasks: "Tâches planifiées",
-  wakieProfileImages: "Images de fiche",
-  wakies: "Wakies",
 };
 
 export function ApplicationsTab() {
@@ -746,8 +733,6 @@ export function ApplicationsTab() {
         pluginIds: patch.pluginIds ?? activeWakie.pluginIds ?? [],
         researchAllowed: activeWakie.researchAllowed,
         skillIds: patch.skillIds ?? activeWakie.skillIds ?? [],
-        spaceId: activeWakie.spaceId,
-        spaceIds: activeWakie.spaceIds,
         toolIds: patch.toolIds ?? activeWakie.toolIds ?? [],
       });
       const refreshed = await wakiesApi<WakiesData>("/settings");
@@ -782,8 +767,6 @@ export function ApplicationsTab() {
           pluginIds: activeWakie.pluginIds ?? [],
           researchAllowed: w.researchAllowed,
           skillIds: activeWakie.skillIds ?? [],
-          spaceId: w.spaceId,
-          spaceIds: w.spaceIds,
           toolIds: activeWakie.toolIds ?? [],
         });
       }
@@ -1649,43 +1632,7 @@ export function ApplicationsTab() {
               </div>
             </div>
 
-            {/* 2. Stockage & Quotas */}
-            <div
-              className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
-              id="wakies-quotas"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-bold text-foreground">
-                  <ZapIcon className="size-4 text-primary" />
-                  <span>Stockage & Quotas de l'atelier</span>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  Stockage: {Math.round(wakiesData.storageBytes / 1024 / 1024)}{" "}
-                  Mo
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {Object.entries(WAKIES_QUOTA_LABELS).map(([cle, label]) => {
-                  const quotaVal = wakiesData.quotas[cle];
-                  return (
-                    <div
-                      className="p-3 rounded-xl border border-border/40 bg-muted/10 flex flex-col gap-1"
-                      key={cle}
-                    >
-                      <span className="text-[11px] text-muted-foreground">
-                        {label}
-                      </span>
-                      <span className="text-sm font-bold text-foreground">
-                        {quotaVal === null ? "Illimité" : (quotaVal ?? 0)}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 3. Configuration des Wakies */}
+            {/* 2. Configuration des Wakies */}
             <div
               className="surface-card flex flex-col gap-4 p-5 scroll-mt-24"
               id="wakies-config"

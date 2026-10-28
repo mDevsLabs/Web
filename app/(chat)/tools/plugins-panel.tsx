@@ -96,6 +96,19 @@ export default function PluginsPanel({
     const connector = getIntegrationByPluginId(plugin.id);
     const connection = connectedByPlugin.get(plugin.id);
     if (connector && !connection?.connected) {
+      // Un connecteur à jeton n'a pas d'écran de consentement : la route
+      // `connect` le refuserait, et l'utilisateur atterrirait sur une erreur
+      // au lieu du formulaire. On l'envoie sur la fiche, qui porte le champ.
+      if (connector.authMode === "token") {
+        router.push(`/tools/plugins/${plugin.id}`);
+        return;
+      }
+      if (connection && !connection.vaultConfigured) {
+        toast.error(
+          "Le coffre de secrets n'est pas configuré sur cette instance : la connexion externe est impossible pour le moment."
+        );
+        return;
+      }
       const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
       const returnTo = `${basePath}/tools/plugins/${plugin.id}`;
       const connectHref = `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(

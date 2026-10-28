@@ -79,13 +79,14 @@ afterEach(() => {
 });
 
 describe("Catalogue de plugins", () => {
-  it("expose les dix-sept plugins attendus, avec identifiants uniques", () => {
+  it("expose les vingt plugins attendus, avec identifiants uniques", () => {
     const ids = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.id).toSorted(
       (a, b) => a.localeCompare(b)
     );
     expect(ids).toEqual([
       "air-quality",
       "crossref",
+      "discord",
       "eurostat",
       "fr-holidays",
       "github",
@@ -93,11 +94,13 @@ describe("Catalogue de plugins", () => {
       "google",
       "json-toolbox",
       "mobilite-fr",
+      "notion",
       "open-food-facts",
       "open-library",
       "openalex",
       "quizzly",
       "tvmaze",
+      "vercel",
       "weather",
       "wikidata",
       "world-bank",

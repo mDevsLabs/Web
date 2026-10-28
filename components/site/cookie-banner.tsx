@@ -49,7 +49,7 @@ export default function CookieBanner() {
       {showBanner && (
         <motion.div
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="fixed safe-bottom-4 right-6 left-6 md:bottom-6 md:left-auto md:max-w-md z-[99999] p-5 rounded-3xl bg-white/95 backdrop-blur-2xl border border-black/10 text-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+          className="fixed bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] right-6 left-6 md:bottom-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] md:left-auto md:max-w-md z-[99999] p-5 rounded-3xl bg-white/95 backdrop-blur-2xl border border-black/10 text-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
           exit={{ opacity: 0, scale: 0.95, y: 50 }}
           initial={{ opacity: 0, scale: 0.95, y: 50 }}
           transition={{ duration: 0.3, ease: "easeOut" }}

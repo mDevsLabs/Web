@@ -1168,8 +1168,11 @@ export const integrationConnection = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isPrimary: boolean("isPrimary").notNull().default(true),
     lastRefreshedAt: timestamp("lastRefreshedAt"),
+    // Colonne `varchar` : ajouter un fournisseur ne demande AUCUNE migration.
+    // La liste sert au typage Drizzle ; un identifiant hors liste serait de
+    // toute façon rejeté par `getIntegrationProvider`.
     provider: varchar("provider", {
-      enum: ["github", "google"] as const,
+      enum: ["discord", "github", "google", "notion", "vercel"] as const,
     }).notNull(),
     providerAccountId: text("providerAccountId").notNull(),
     refreshToken: text("refreshToken"),

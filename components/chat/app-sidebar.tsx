@@ -14,7 +14,6 @@ import {
   PlusIcon,
   PuzzleIcon,
   SearchIcon,
-  SettingsIcon,
   SparklesIcon,
 } from "@mdevs/icons";
 import Image from "next/image";
@@ -376,11 +375,10 @@ export function AppSidebar({
       pathname?.startsWith("/skills") ||
       pathname?.startsWith("/mcp")
   );
-  // « Plus » regroupe Paramètres, Messages archivés et Planification.
+  // « Plus » regroupe Messages archivés et Planification. Paramètres vit dans
+  // le menu du compte, pour ne pas entretenir deux entrées vers la même page.
   const isPlusActive = Boolean(
-    pathname?.startsWith("/settings") ||
-      pathname?.startsWith("/archived") ||
-      pathname?.startsWith("/planning")
+    pathname?.startsWith("/archived") || pathname?.startsWith("/planning")
   );
   const isLibraryActive = pathname?.startsWith("/library");
 
@@ -829,23 +827,10 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 7. Plus : Paramètres, Messages archivés et Planification */}
+                {/* 7. Plus : Messages archivés et Planification */}
                 <SidebarNavCollapsible
                   dropdownItems={
                     <>
-                      <DropdownMenuItem
-                        asChild
-                        className="cursor-pointer text-xs py-1.5"
-                      >
-                        <Link
-                          className="flex items-center gap-2"
-                          href="/settings"
-                          onClick={handleNavClick}
-                        >
-                          <SettingsIcon className="size-4" />
-                          <span>Paramètres</span>
-                        </Link>
-                      </DropdownMenuItem>
                       <DropdownMenuItem
                         asChild
                         className="cursor-pointer text-xs py-1.5"
@@ -859,7 +844,6 @@ export function AppSidebar({
                           <span>Messages Archivés</span>
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuSeparator />
                       <DropdownMenuItem
                         asChild
                         className="cursor-pointer text-xs py-1.5"
@@ -880,24 +864,8 @@ export function AppSidebar({
                   isOpen={openMenu === "plus"}
                   label="Plus"
                   onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
-                  tooltip="Plus (Paramètres, archivés, Planification)"
+                  tooltip="Plus (archivés, Planification)"
                 >
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton
-                      asChild
-                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                      isActive={pathname?.startsWith("/settings")}
-                    >
-                      <Link
-                        data-onboarding="nav-settings"
-                        href="/settings"
-                        onClick={handleNavClick}
-                      >
-                        <SettingsIcon className="size-3.5" />
-                        <span>Paramètres</span>
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
                     <SidebarMenuSubButton
                       asChild

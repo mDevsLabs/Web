@@ -306,9 +306,8 @@ async function runTeamLeadFinalSynthesis(params: {
 }
 
 function buildTaskDeliveryLine(task: TeamTask): string {
-  const statusIcon = task.status === "completed"? "": "";
   const parts = [
-    `- ${statusIcon} ${task.expertName}: ${task.description}`,
+    `- ${task.expertName}: ${task.description}`,
     `status=${task.status}`,
   ];
   return parts.join(" | ");
@@ -353,7 +352,7 @@ function buildTeamDeliveryText(params: {
     "# Team Delivery",
     "",
     `**Lead:** ${teamLeadName}`,
-    `**Review:** ${review.verdict === "approved"? " Approved": " Revision Needed"}`,
+    `**Review:** ${review.verdict === "approved" ? "Approved" : "Revision Needed"}`,
     "",
     leadHeading,
     leadBody,

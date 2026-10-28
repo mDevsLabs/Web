@@ -145,8 +145,9 @@ export interface Wakie extends CapabilitySelection {
   name: string;
   researchAllowed: boolean;
   skillDeliveryEnabled?: boolean;
-  /** Default destination for saved pages, not ownership. */
-  spaceId: string;
+  /** Default destination for saved pages, not ownership. Null quand l'Espace
+   * de destination a été supprimé : le prochain enregistrement le répare. */
+  spaceId: string | null;
   spaceIds: string[];
 }
 

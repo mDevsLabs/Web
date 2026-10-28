@@ -87,6 +87,8 @@ export interface SearchVideoHit {
 
 export interface SearchResponse {
   cached?: boolean;
+  /** La recherche a-t-elle été menée en mode approfondi ? */
+  deep?: boolean;
   images: SearchImageHit[];
   news: SearchNewsHit[];
   /**
@@ -345,7 +347,11 @@ async function fetchYouWebOnce(
   count: number,
   key: string,
   endpoint: string
-): Promise<{ hits: SearchWebHit[]; images: SearchImageHit[] } | null> {
+): Promise<{
+  hits: SearchWebHit[];
+  images: SearchImageHit[];
+  news: SearchNewsHit[];
+} | null> {
   try {
     const res = await fetch(endpoint, {
       body: JSON.stringify({ count, query }),
@@ -368,6 +374,52 @@ async function fetchYouWebOnce(
     }
     const hits: SearchWebHit[] = [];
     const images: SearchImageHit[] = [];
+    /**
+     * Actualités rendues par le MÊME appel que le Web.
+     *
+     * Elles étaient déjà présentes dans `results.news`, mais fondues dans la
+     * liste web : un titre d'actualité s'affichait alors dans l'onglet
+     * « Tous » sans jamais alimenter l'onglet « Actualités ». Les garder à
+     * part permet de nourrir les deux, sans seconde requête ni délai
+     * supplémentaire.
+     */
+    const youNews: SearchNewsHit[] = [];
+
+    const rawNews = Array.isArray(data.results?.news)
+      ? (data.results.news as Record<string, unknown>[])
+      : Array.isArray(data.news?.results)
+        ? (data.news.results as Record<string, unknown>[])
+        : [];
+    for (const item of rawNews) {
+      const title = String(item.title ?? item.name ?? "").trim();
+      const url = String(item.url ?? item.link ?? "").trim();
+      if (!title || !url) {
+        continue;
+      }
+      const snippet = String(
+        item.description ?? item.snippet ?? item.text ?? ""
+      ).trim();
+      youNews.push({
+        favicon_url: buildFaviconUrl(url),
+        page_age:
+          typeof item.page_age === "string"
+            ? item.page_age
+            : typeof item.published_at === "string"
+              ? item.published_at
+              : undefined,
+        snippet: snippet.slice(0, 400),
+        source:
+          typeof item.source === "string"
+            ? item.source
+            : (() => {
+                try {
+                  return new URL(url).hostname;
+                } catch {}
+              })(),
+        title,
+        url,
+      });
+    }
 
     let rawHits: any[] = [];
     if (data.results && typeof data.results === "object") {
@@ -399,8 +451,12 @@ async function fetchYouWebOnce(
 
       if (title && url) {
         hits.push({
-          favicon_url:
-            hit.favicon_url || (url ? buildFaviconUrl(url) : undefined),
+          // L'icône est TOUJOURS reconstruite depuis l'URL du résultat, jamais
+          // reprise du moteur : You.com rend des URL du service S2 de Google,
+          // déprécié, qui répond 404 et n'est plus autorisé par la CSP. Les
+          // reprendre affichait des favicons cassés que le repli local ne
+          // pouvait pas rattraper, puisque l'URL semblait valide.
+          favicon_url: url ? buildFaviconUrl(url) : undefined,
           page_age: hit.page_age,
           snippet: snippet.trim(),
           thumbnail_url: hit.thumbnail_url || hit.image_url,
@@ -421,8 +477,11 @@ async function fetchYouWebOnce(
     }
 
     // Un résultat VIDE n'est pas une réussite : on préfère une autre
-    // tentative qui rendrait des liens.
-    return hits.length > 0 ? { hits, images } : null;
+    // tentative qui rendrait des liens. Une réponse qui ne porte QUE des
+    // actualités reste une réussite pour l'onglet éponyme.
+    return hits.length > 0 || youNews.length > 0
+      ? { hits, images, news: youNews }
+      : null;
   } catch {
     // Erreur ou timeout : un autre tour (ou une autre clé) prendra le
     // relais.
@@ -449,9 +508,13 @@ async function fetchYouWebOnce(
 async function fetchYouWeb(
   query: string,
   count = 10
-): Promise<{ hits: SearchWebHit[]; images: SearchImageHit[] }> {
+): Promise<{
+  hits: SearchWebHit[];
+  images: SearchImageHit[];
+  news: SearchNewsHit[];
+}> {
   const keys = getYouApiKeys();
-  if (keys.length === 0) return { hits: [], images: [] };
+  if (keys.length === 0) return { hits: [], images: [], news: [] };
 
   const cible = Math.max(1, Math.min(count, MAI_SEARCH_RESULT_COUNT_MAX));
 
@@ -464,6 +527,7 @@ async function fetchYouWeb(
    */
   const hits: SearchWebHit[] = [];
   const images: SearchImageHit[] = [];
+  const news: SearchNewsHit[] = [];
 
   for (const endpoint of YOU_SEARCH_ENDPOINTS) {
     const resultat = await raceFirst(
@@ -474,6 +538,7 @@ async function fetchYouWeb(
     if (resultat) {
       hits.push(...resultat.hits);
       images.push(...resultat.images);
+      news.push(...resultat.news);
       break;
     }
   }
@@ -506,6 +571,7 @@ async function fetchYouWeb(
       if (resultat.status === "fulfilled" && resultat.value) {
         hits.push(...resultat.value.hits);
         images.push(...resultat.value.images);
+        news.push(...resultat.value.news);
       }
     }
   }
@@ -515,7 +581,151 @@ async function fetchYouWeb(
   // qu'il y a eu de tours, et la liste compterait des doublons.
   const uniques = dedupeByUrl(hits);
 
-  return { hits: uniques.slice(0, cible), images };
+  return {
+    hits: uniques.slice(0, cible),
+    images,
+    news: dedupeNews(news).slice(0, cible),
+  };
+}
+
+/**
+ * Déduplique les actualités par URL, en gardant la première occurrence.
+ *
+ * Trois flux peuvent rendre le même article (You.com, Google News, GDELT) :
+ * sans cette passe, l'onglet « Actualités » afficherait trois fois le même
+ * titre et l'utilisateur croirait à une redondance du moteur.
+ */
+function dedupeNews(hits: SearchNewsHit[]): SearchNewsHit[] {
+  const seen = new Set<string>();
+  return hits.filter((hit) => {
+    const key = hit.url.trim();
+    if (!key || seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
+/**
+ * GDELT — actualités mondiales, sans clé.
+ *
+ * Le flux Google News est le chemin principal, mais il est muet pour certaines
+ * requêtes (marques, événements très récents, langues peu couvertes) et il est
+ * hébergé par un service qui peut limiter. GDELT indexe la presse mondiale et
+ * répond en JSON ouvert : c'est le second regard, pas le remplaçant.
+ *
+ * `timespan` est borné à une semaine : une « actualité » de trois mois n'en est
+ * plus une, et le tri par date n'a de sens que sur une fenêtre courte.
+ */
+const GDELT_LANGUAGE: Record<MaiSearchLanguage, string> = {
+  de: "german",
+  en: "english",
+  es: "spanish",
+  fr: "french",
+  it: "italian",
+};
+
+async function fetchGdeltNews(
+  query: string,
+  limit = 15,
+  lang: MaiSearchLanguage = "fr"
+): Promise<SearchNewsHit[]> {
+  try {
+    const url = new URL("https://api.gdeltproject.org/api/v2/doc/doc");
+    url.searchParams.set(
+      "query",
+      `${query} sourcelang:${GDELT_LANGUAGE[lang]}`
+    );
+    url.searchParams.set("mode", "artlist");
+    url.searchParams.set("format", "json");
+    url.searchParams.set("maxrecords", String(Math.min(limit, 75)));
+    url.searchParams.set("sort", "datedesc");
+    url.searchParams.set("timespan", "1week");
+    const res = await fetch(url, {
+      headers: { Accept: "application/json", "User-Agent": "mAI-Search/1.0" },
+      signal: AbortSignal.timeout(3500),
+    });
+    if (!res.ok) {
+      return [];
+    }
+    const data: unknown = await res.json().catch(() => null);
+    const record =
+      data && typeof data === "object" ? (data as { articles?: unknown }) : {};
+    const articles = Array.isArray(record.articles)
+      ? (record.articles as Record<string, unknown>[])
+      : [];
+    return articles
+      .map((article): SearchNewsHit | null => {
+        const title = String(article.title ?? "").trim();
+        const link = String(article.url ?? "").trim();
+        if (!title || !link) {
+          return null;
+        }
+        const domain = String(article.domain ?? "").trim();
+        return {
+          favicon_url: buildFaviconUrl(link),
+          page_age:
+            typeof article.seendate === "string" ? article.seendate : undefined,
+          snippet: domain ? `Article publié par ${domain}.` : title,
+          source: domain || undefined,
+          thumbnail_url:
+            typeof article.socialimage === "string"
+              ? article.socialimage
+              : undefined,
+          title,
+          url: link,
+        } satisfies SearchNewsHit;
+      })
+      .filter((hit): hit is SearchNewsHit => hit !== null)
+      .slice(0, limit);
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Variantes d'une recherche approfondie.
+ *
+ * Une seule formulation laisse hors champ ce que l'utilisateur n'a pas pensé
+ * à nommer. Deux reformulations suffisent : demander « explication » et
+ * « guide » ramène les pages de fond que la requête nue classe derrière des
+ * actualités. Au-delà, on paierait trois fois le même résultat.
+ */
+const DEEP_SUFFIXES: Record<MaiSearchLanguage, readonly string[]> = {
+  de: ["erklärt", "vollständiger Leitfaden"],
+  en: ["explained in depth", "complete guide"],
+  es: ["explicación detallada", "guía completa"],
+  fr: ["explication détaillée", "guide complet"],
+  it: ["spiegazione dettagliata", "guida completa"],
+};
+
+async function fetchDeepVariants(
+  query: string,
+  count: number,
+  lang: MaiSearchLanguage
+): Promise<{
+  hits: SearchWebHit[];
+  images: SearchImageHit[];
+  news: SearchNewsHit[];
+}> {
+  const parVariante = Math.max(5, Math.ceil(count / 2));
+  const resultats = await Promise.allSettled(
+    DEEP_SUFFIXES[lang].map((suffix) =>
+      fetchYouWeb(`${query} ${suffix}`, parVariante)
+    )
+  );
+  const hits: SearchWebHit[] = [];
+  const images: SearchImageHit[] = [];
+  const news: SearchNewsHit[] = [];
+  for (const resultat of resultats) {
+    if (resultat.status === "fulfilled") {
+      hits.push(...resultat.value.hits);
+      images.push(...resultat.value.images);
+      news.push(...resultat.value.news);
+    }
+  }
+  return { hits: dedupeByUrl(hits), images, news: dedupeNews(news) };
 }
 
 /**
@@ -898,6 +1108,15 @@ function dedupeByUrl(hits: SearchWebHit[]): SearchWebHit[] {
  */
 export async function executeMaiSearch(params: {
   count?: number;
+  /**
+   * Recherche approfondie : deux reformulations de la requête partent en
+   * parallèle, et leurs résultats rejoignent la liste commune.
+   *
+   * C'est un MODE, pas une source : il ne change pas ce que l'utilisateur a
+   * activé, seulement l'effort consacré à le trouver. Il coûte deux appels de
+   * plus au moteur, d'où le choix explicite.
+   */
+  deep?: boolean;
   lang?: MaiSearchLanguage;
   query: string;
   safetyLevel?: MaiSearchSafetyLevel;
@@ -956,7 +1175,8 @@ export async function executeMaiSearch(params: {
    * de 25, pas par valeur exacte) tout en gardant les volumes séparés.
    */
   const countBucket = Math.ceil(count / 25) * 25;
-  const cacheKey = `${sources.join(",")}:${lang}:${safetyLevel}:${countBucket}:${trimmed.toLowerCase()}`;
+  const deep = params.deep === true;
+  const cacheKey = `${sources.join(",")}:${lang}:${safetyLevel}:${deep ? "deep" : "std"}:${countBucket}:${trimmed.toLowerCase()}`;
   const cached = getFromCache(cacheKey);
   if (cached) return cached;
 
@@ -981,10 +1201,12 @@ export async function executeMaiSearch(params: {
     fallbackResult,
     wikiImagesResult,
     youtubeResult,
+    gdeltResult,
+    deepResult,
   ] = await Promise.allSettled([
     wantWeb
       ? fetchYouWeb(trimmed, count)
-      : Promise.resolve({ hits: [], images: [] }),
+      : Promise.resolve({ hits: [], images: [], news: [] }),
     // Les sources suivent le volume demandé, et chacune à son propre rythme :
     // le flux d'actualité rend au mieux une quincaine de titres, YouTube une
     // dizaine de vidéos. Le plafond du compte s'applique donc PAR SOURCE —
@@ -1011,15 +1233,35 @@ export async function executeMaiSearch(params: {
     wantVideos
       ? fetchYouTubeVideos(trimmed)
       : Promise.resolve([] as SearchVideoHit[]),
+    // Second regard sur l'actualité, en parallèle : il ne coûte pas de
+    // délai, seulement une requête.
+    wantNews
+      ? fetchGdeltNews(trimmed, Math.min(count, 30), lang)
+      : Promise.resolve([] as SearchNewsHit[]),
+    // Reformulations de la recherche approfondie (mode explicite).
+    deep && wantWeb
+      ? fetchDeepVariants(trimmed, count, lang)
+      : Promise.resolve({
+          hits: [] as SearchWebHit[],
+          images: [] as SearchImageHit[],
+          news: [] as SearchNewsHit[],
+        }),
   ]);
 
   const webData =
     webResult.status === "fulfilled"
       ? webResult.value
-      : { hits: [], images: [] };
+      : { hits: [], images: [], news: [] };
   const dedicatedImages =
     imagesResult.status === "fulfilled" ? imagesResult.value : [];
-  const newsHits = newsResult.status === "fulfilled" ? newsResult.value : [];
+  // Fusion des trois regards sur l'actualité : You.com (rendu avec le Web),
+  // Google News, puis GDELT. L'ordre est celui de la fraîcheur et de la
+  // qualité d'extrait ; la déduplication retire les recouvrements.
+  const newsHits = dedupeNews([
+    ...webData.news,
+    ...(newsResult.status === "fulfilled" ? newsResult.value : []),
+    ...(gdeltResult.status === "fulfilled" ? gdeltResult.value : []),
+  ]);
   const wikiHits = wikiResult.status === "fulfilled" ? wikiResult.value : [];
   const fallbackHits =
     fallbackResult.status === "fulfilled" ? fallbackResult.value : [];
@@ -1028,8 +1270,16 @@ export async function executeMaiSearch(params: {
   const youtubeVideos =
     youtubeResult.status === "fulfilled" ? youtubeResult.value : [];
 
+  const deepData =
+    deepResult.status === "fulfilled"
+      ? deepResult.value
+      : { hits: [], images: [], news: [] };
+
   let results = webData.hits;
-  let allImages = [...dedicatedImages, ...webData.images];
+  if (deep && deepData.hits.length > 0) {
+    results = dedupeByUrl([...results, ...deepData.hits]);
+  }
+  let allImages = [...dedicatedImages, ...webData.images, ...deepData.images];
 
   // Si aucune image reçue, retenir le repli Wikipédia.
   if (allImages.length === 0 && wantImages) {
@@ -1046,6 +1296,12 @@ export async function executeMaiSearch(params: {
 
   const providers = new Set<SearchResponse["provider"]>();
   if (results.length > 0) {
+    providers.add("you.com");
+  }
+  // Une actualité trouvée par un flux de presse est un résultat You.com du
+  // point de vue de l'utilisation : c'est `/v1/search` qui l'a rendue, ou une
+  // source de remplacement assumée, pas une panne du moteur.
+  if (newsHits.length > 0) {
     providers.add("you.com");
   }
   if (wikiHits.length > 0) {
@@ -1112,7 +1368,7 @@ export async function executeMaiSearch(params: {
   // S'assurer que chaque hit a un favicon garanti
   results = results.map((r) => ({
     ...r,
-    favicon_url: r.favicon_url || buildFaviconUrl(r.url),
+    favicon_url: buildFaviconUrl(r.url),
   }));
 
   /**
@@ -1150,6 +1406,7 @@ export async function executeMaiSearch(params: {
         : "you.com";
 
   const response: SearchResponse = {
+    deep,
     images: imagesLimited,
     news: newsLimited,
     provider,

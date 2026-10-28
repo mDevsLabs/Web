@@ -22,13 +22,14 @@ import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { IntegrationLogo } from "@/lib/integrations/logo";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
 import { getCategoryLabel } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginManifest } from "@/lib/plugins/types";
-import { cn } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
 
 function networkLabel(manifest: PluginManifest): string {
   if (manifest.permissions.network === "none") return "Aucun accès réseau";
@@ -156,6 +157,9 @@ export default function PluginDetailClient({
   const { mutate: mutatePlugins } = useSWRConfig();
   const [isBusy, setIsBusy] = useState(false);
   const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [isSavingToken, setIsSavingToken] = useState(false);
+  const [tokenDraft, setTokenDraft] = useState("");
+  const [isTokenFormOpen, setIsTokenFormOpen] = useState(false);
   const [confirmUninstall, setConfirmUninstall] = useState(false);
   const [state, setState] = useState({ enabled, installed, installedVersion });
   const risk = riskLabel(manifest);
@@ -169,23 +173,35 @@ export default function PluginDetailClient({
   );
   const {
     data: integrationData,
+    error: integrationError,
     isLoading: isIntegrationLoading,
     mutate: mutateIntegrations,
   } = useSWR<{
     integrations: IntegrationStatus[];
-  }>(connector ? "/api/integration" : null);
+  }>(connector ? "/api/integration" : null, fetcher);
   const connection = integrationData?.integrations?.find(
     (item) => item.pluginId === manifest.id
   );
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const connectHref = connector
-    ? `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
-        `${basePath}/tools/plugins/${manifest.id}`
-      )}`
-    : null;
+  // Un connecteur à jeton personnel n'a pas d'écran de consentement : le
+  // bouton « Connecter » ne doit pas renvoyer vers une route OAuth inexistante.
+  const connectHref =
+    connector?.authMode === "oauth"
+      ? `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
+          `${basePath}/tools/plugins/${manifest.id}`
+        )}`
+      : null;
   const installConnectHref = connectHref
     ? `${connectHref}&intent=install`
     : null;
+
+  // La navigation est un geste explicite : un bouton déclenche la même chose
+  // qu'un lien, sans dépendre d'un `href` qui n'existe pas en mode jeton.
+  const startConnection = useCallback(() => {
+    if (connectHref) {
+      window.location.assign(connectHref);
+    }
+  }, [connectHref]);
 
   const runAction = async (
     action: () => Promise<Response>,
@@ -235,7 +251,11 @@ export default function PluginDetailClient({
   }, [manifest.id]);
 
   const handleInstall = () => {
-    if (connector && !connection?.connected && installConnectHref) {
+    if (
+      connector?.authMode === "oauth" &&
+      !connection?.connected &&
+      installConnectHref
+    ) {
       // Sans coffre, la connexion ne peut pas aboutir : on ne renvoie pas
       // l'utilisateur vers l'écran de consentement pour un échec certain.
       if (!connection?.vaultConfigured) {
@@ -288,6 +308,54 @@ export default function PluginDetailClient({
     );
   };
 
+  /**
+   * Enregistrement d'un jeton personnel (Vercel). Le jeton part une seule fois
+   * vers la route, qui le valide puis le chiffre : il n'est jamais renvoyé au
+   * client, ni journalisé, ni conservé dans un état global.
+   */
+  const handleSaveToken = async () => {
+    if (!connector?.token) {
+      return;
+    }
+    const token = tokenDraft.trim();
+    if (
+      token.length < connector.token.minLength ||
+      token.length > connector.token.maxLength
+    ) {
+      toast.error(
+        `Le jeton doit contenir entre ${connector.token.minLength} et ${connector.token.maxLength} caractères.`
+      );
+      return;
+    }
+    setIsSavingToken(true);
+    try {      const response = await fetch(
+        `${basePath}/api/integration/${connector.id}/token`,
+        {
+        body: JSON.stringify({ token }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const payload = (await response.json().catch(() => null)) as {
+        accountLabel?: string;
+        message?: string;
+      } | null;
+      if (!response.ok) {
+        throw new Error(payload?.message ?? "Jeton refusé.");
+      }
+      setTokenDraft("");
+      await mutateIntegrations();
+      toast.success(
+        payload?.accountLabel
+          ? `${connector.label} connecté : ${payload.accountLabel}`
+          : `${connector.label} connecté.`
+      );
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Jeton refusé.");
+    } finally {
+      setIsSavingToken(false);
+    }
+  };
+
   const handleDisconnect = async () => {
     if (!connector) {
       return;
@@ -295,7 +363,7 @@ export default function PluginDetailClient({
     setIsDisconnecting(true);
     try {
       const response = await fetch(
-        `/api/integration/${connector.id}/disconnect`,
+        `${basePath}/api/integration/${connector.id}/disconnect`,
         { method: "POST" }
       );
       const payload = (await response.json().catch(() => null)) as {
@@ -513,6 +581,46 @@ export default function PluginDetailClient({
                 )}
               </div>
 
+              {/*
+                L'état de connexion est une requête réseau : sans ce garde,
+                la fiche affiche « Non connecté » et aucun bouton pendant le
+                chargement — exactement le symptôme qui faisait croire à une
+                configuration cassée. Un chargement se dit, il ne se tait pas.
+              */}
+              {isIntegrationLoading ? (
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Loader2Icon className="size-4 animate-spin" />
+                  Chargement de l'état de connexion…
+                </div>
+              ) : null}
+
+              {integrationError ? (
+                <div
+                  className="flex flex-col gap-2 rounded-2xl border border-destructive/25 bg-destructive/5 p-3 text-sm"
+                  role="alert"
+                >
+                  <p className="flex items-center gap-2 font-medium">
+                    <AlertTriangleIcon className="size-4 text-destructive" />
+                    Impossible de lire l'état des connexions.
+                  </p>
+                  <p className="text-muted-foreground leading-6">
+                    La fiche ne peut pas savoir si le compte est relié. Vérifiez
+                    la session, puis réessayez.
+                  </p>
+                  <div>
+                    <Button
+                      onClick={() => void mutateIntegrations()}
+                      size="sm"
+                      type="button"
+                      variant="outline"
+                    >
+                      <RefreshCwIcon className="size-4" />
+                      Réessayer
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
+
               {connection?.connected ? (
                 <div className="flex flex-col gap-2 rounded-2xl bg-muted/30 p-3 text-sm">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -532,7 +640,9 @@ export default function PluginDetailClient({
                   {connection.expiresAt ? (
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <span className="text-muted-foreground">
-                        Jeton renouvelable jusqu'au
+                        {connector.authMode === "token"
+                          ? "Vérifié le"
+                          : "Jeton renouvelable jusqu'au"}
                       </span>
                       <span className="font-medium">
                         {new Date(connection.expiresAt).toLocaleDateString(
@@ -545,12 +655,32 @@ export default function PluginDetailClient({
               ) : null}
 
               {connection && !connection.configured ? (
-                <p className="text-sm leading-6 text-muted-foreground">
-                  Ce connecteur n'est pas activé sur cette instance : les
-                  identifiants de l'application {connector.label} manquent côté
-                  serveur.
-                </p>
+                <div className="flex flex-col gap-1 text-sm leading-6 text-muted-foreground">
+                  <p>
+                    Ce connecteur n'est pas activé sur cette instance : les
+                    identifiants de l'application {connector.label} manquent
+                    côté serveur.
+                  </p>
+                  {connection.missingEnv.length > 0 ? (
+                    <p>
+                      Variables manquantes :{" "}
+                      <code className="font-mono text-xs text-foreground">
+                        {connection.missingEnv.join(", ")}
+                      </code>
+                    </p>
+                  ) : null}
+                </div>
               ) : null}
+
+              {connection?.warnings.map((warning) => (
+                <div
+                  className="flex items-start gap-3 rounded-2xl border border-warning/25 bg-warning/10 p-3 text-sm"
+                  key={warning}
+                >
+                  <AlertTriangleIcon className="mt-0.5 size-4 shrink-0 text-warning" />
+                  <p className="text-muted-foreground leading-6">{warning}</p>
+                </div>
+              ))}
 
               {/*
                 Le coffre absent se voit ICI, avant le clic, et non dans un
@@ -584,58 +714,185 @@ export default function PluginDetailClient({
                 </p>
               ) : null}
 
-              <div className="flex flex-wrap items-center gap-2">
-                {connection?.connected ? (
-                  <>
-                    <Button
-                      disabled={isDisconnecting}
-                      onClick={handleDisconnect}
-                      size="sm"
-                      type="button"
-                      variant="outline"
-                    >
-                      {isDisconnecting ? (
-                        <Loader2Icon className="size-4 animate-spin" />
-                      ) : (
-                        <UnlinkIcon className="size-4" />
-                      )}
-                      Déconnecter
-                    </Button>
-                    <Button asChild size="sm" type="button" variant="outline">
-                      <a href={connectHref ?? undefined}>
+              {connector.authMode === "oauth" ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  {connection?.connected ? (
+                    <>
+                      <Button
+                        disabled={isDisconnecting}
+                        onClick={handleDisconnect}
+                        size="sm"
+                        type="button"
+                        variant="outline"
+                      >
+                        {isDisconnecting ? (
+                          <Loader2Icon className="size-4 animate-spin" />
+                        ) : (
+                          <UnlinkIcon className="size-4" />
+                        )}
+                        Déconnecter
+                      </Button>
+                      <Button
+                        onClick={startConnection}
+                        size="sm"
+                        type="button"
+                        variant="outline"
+                      >
                         <ShieldCheckIcon className="size-4" />
                         Mettre à jour les accès
-                      </a>
-                    </Button>
-                    <Button asChild size="sm" type="button" variant="ghost">
-                      <a href={connectHref ?? undefined}>
+                      </Button>
+                      <Button
+                        onClick={() => void mutateIntegrations()}
+                        size="sm"
+                        type="button"
+                        variant="ghost"
+                      >
                         <RefreshCwIcon className="size-4" />
-                        Reconnecter
-                      </a>
-                    </Button>
-                  </>
-                ) : connection?.configured ? (
-                  /*
-                    Un bouton RÉELLEMENT désactivé, pas un lien maquillé : le
-                    coffre manquant n'est pas une action que l'utilisateur peut
-                    tenter. Un `<a disabled>` serait du HTML invalide et
-                    laisserait le clic passer.
-                  */
-                  connection.vaultConfigured ? (
-                    <Button asChild size="sm" type="button">
-                      <a href={connectHref ?? undefined}>
-                        <LogInIcon className="size-4" />
-                        Connecter {connector.label}
-                      </a>
-                    </Button>
-                  ) : (
+                        Réessayer
+                      </Button>
+                    </>
+                  ) : connection === undefined ? (
+                    /*
+                      Un état INCONNU n'est pas un état « non connecté ». Le
+                      dire explicitement évite de conclure à une panne de
+                      configuration pendant une simple requête en vol.
+                    */
                     <Button disabled size="sm" type="button">
-                      <LockIcon className="size-4" />
+                      <Loader2Icon className="size-4 animate-spin" />
+                      Chargement…
+                    </Button>
+                  ) : connection.configured && connection.vaultConfigured ? (
+                    <Button onClick={startConnection} size="sm" type="button">
+                      <LogInIcon className="size-4" />
                       Connecter {connector.label}
                     </Button>
+                  ) : (
+                    <>
+                      <Button disabled size="sm" type="button">
+                        <AlertTriangleIcon className="size-4" />
+                        Configuration incomplète
+                      </Button>
+                      <Button
+                        onClick={() => void mutateIntegrations()}
+                        size="sm"
+                        type="button"
+                        variant="ghost"
+                      >
+                        <RefreshCwIcon className="size-4" />
+                        Réessayer
+                      </Button>
+                    </>
+                  )}
+                </div>
+              ) : null}
+
+              {/*
+                Un jeton personnel ne s'obtient pas par une redirection : sans
+                ce formulaire, la fiche décrirait une connexion qu'aucun
+                bouton ne permet. Il n'est proposé QUE si le coffre existe :
+                stocker un jeton sans clé de chiffrement le laisserait en
+                clair en base.
+              */}
+              {connector.authMode === "token" ? (
+                connection?.connected ? (
+                  <Button
+                    disabled={isDisconnecting}
+                    onClick={handleDisconnect}
+                    size="sm"
+                    type="button"
+                    variant="outline"
+                  >
+                    {isDisconnecting ? (
+                      <Loader2Icon className="size-4 animate-spin" />
+                    ) : (
+                      <UnlinkIcon className="size-4" />
+                    )}
+                    Supprimer le jeton
+                  </Button>
+                ) : connection?.vaultConfigured ? (
+                  isTokenFormOpen ? (
+                    <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-muted/20 p-4">
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium">
+                          Coller un jeton personnel
+                        </p>
+                        <p className="text-sm leading-6 text-muted-foreground">
+                          Le jeton est validé chez {connector.label}, puis
+                          chiffré sur le serveur. Il n'est jamais renvoyé au
+                          navigateur ni écrit dans un journal.{" "}
+                          <a
+                            className="underline underline-offset-2"
+                            href={connector.token?.helpUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            Créer un jeton chez {connector.label}
+                          </a>
+                        </p>
+                      </div>
+                      {/* Un <form> plutôt qu'un bouton : Entrée doit enregistrer,
+                        et le gestionnaire de mots de passe ne doit pas
+                        s'inviter sur un champ de jeton. */}
+                      <form
+                        className="flex flex-col gap-2 sm:flex-row"
+                        onSubmit={(event) => {
+                          event.preventDefault();
+                          void handleSaveToken();
+                        }}
+                      >
+                        <Input
+                          autoComplete="off"
+                          className="font-mono text-xs"
+                          disabled={isSavingToken}
+                          maxLength={connector.token?.maxLength}
+                          onChange={(event) =>
+                            setTokenDraft(event.target.value)
+                          }
+                          placeholder={connector.token?.placeholder}
+                          spellCheck={false}
+                          type="password"
+                          value={tokenDraft}
+                        />
+                        <div className="flex gap-2">
+                          <Button
+                            disabled={isSavingToken || !tokenDraft.trim()}
+                            size="sm"
+                            type="submit"
+                          >
+                            {isSavingToken ? (
+                              <Loader2Icon className="size-4 animate-spin" />
+                            ) : (
+                              <KeyRoundIcon className="size-4" />
+                            )}
+                            Enregistrer
+                          </Button>
+                          <Button
+                            disabled={isSavingToken}
+                            onClick={() => {
+                              setTokenDraft("");
+                              setIsTokenFormOpen(false);
+                            }}
+                            size="sm"
+                            type="button"
+                            variant="ghost"
+                          >
+                            Annuler
+                          </Button>
+                        </div>
+                      </form>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={() => setIsTokenFormOpen(true)}
+                      size="sm"
+                      type="button"
+                    >
+                      <KeyRoundIcon className="size-4" />
+                      Enregistrer un jeton
+                    </Button>
                   )
-                ) : null}
-              </div>
+                ) : null
+              ) : null}
 
               {connection?.connected && connector.id === "github" ? (
                 <p className="text-xs leading-5 text-muted-foreground">

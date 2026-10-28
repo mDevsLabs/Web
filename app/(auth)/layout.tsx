@@ -1,4 +1,6 @@
+import { ArrowLeftIcon } from "@mdevs/icons";
 import Image from "next/image";
+import Link from "next/link";
 import { Preview } from "@/components/chat/preview";
 
 export default function AuthLayout({
@@ -9,6 +11,13 @@ export default function AuthLayout({
   return (
     <div className="flex h-dvh w-screen bg-sidebar">
       <div className="flex w-full flex-col bg-background p-8 xl:w-[540px] xl:shrink-0 xl:rounded-r-2xl xl:border-r xl:border-border/40 md:p-16">
+        <Link
+          className="inline-flex w-fit items-center gap-2 rounded-lg text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          href="/site"
+        >
+          <ArrowLeftIcon className="size-4" />
+          Revenir au site
+        </Link>
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
           <div className="flex flex-col gap-4">
             <div className="mb-2 flex items-center gap-3">

@@ -47,7 +47,7 @@ import type {
 import { outilsParDefaut, WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
 export type Dialog =
   | { type: "space" }
-  | { type: "wakie"; wakie?: Wakie; spaceId: string }
+  | { type: "wakie"; wakie?: Wakie; spaceId?: string | null }
   | { type: "memory"; memory?: Memory }
   | { type: "schedule"; conversationId: string };
 export function WorkspaceDialog({
@@ -83,11 +83,15 @@ export function WorkspaceDialog({
       ? (dialog.wakie?.memoryAllowed ?? true)
       : state.settings.memoryAllowed
   );
-  const [spaceIds, setSpaceIds] = useState(
-    dialog.type === "wakie" ? (dialog.wakie?.spaceIds ?? [dialog.spaceId]) : []
+  const [spaceIds, setSpaceIds] = useState<string[]>(
+    dialog.type === "wakie"
+      ? (dialog.wakie?.spaceIds ?? (dialog.spaceId ? [dialog.spaceId] : []))
+      : []
   );
-  const [defaultSpace, setDefaultSpace] = useState(
-    dialog.type === "wakie" ? (dialog.wakie?.spaceId ?? dialog.spaceId) : ""
+  const [defaultSpace, setDefaultSpace] = useState<string>(
+    dialog.type === "wakie"
+      ? (dialog.wakie?.spaceId ?? dialog.spaceId ?? "")
+      : ""
   );
   // Mascotte et modèle : deux réglages propres au Wakie. Le modèle est le
   // DÉFAUT de ses nouvelles conversations ; la conversation peut le changer

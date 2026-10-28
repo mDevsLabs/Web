@@ -87,7 +87,7 @@ export const EmptyChatView: React.FC<EmptyChatViewProps> = ({
         className="text-button"
         onClick={() =>
           setDialog({
-            spaceId: wakie.spaceId,
+            spaceId: wakie.spaceId ?? workspace.spaces[0]?.id ?? "",
             type: "wakie",
             wakie,
           })
@@ -112,7 +112,7 @@ export const EmptyChatView: React.FC<EmptyChatViewProps> = ({
             className="text-button"
             onClick={() =>
               setDialog({
-                spaceId: wakie.spaceId,
+                spaceId: wakie.spaceId ?? workspace.spaces[0]?.id ?? "",
                 type: "wakie",
                 wakie,
               })
