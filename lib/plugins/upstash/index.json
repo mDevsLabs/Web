@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez une base Upstash par URL REST et jeton : l'IA lit une clé. Dans l'Agent, avec votre accord, elle peut en écrire une, ce qui écrase la valeur précédente.",
+  "icon": { "src": "/plugins/upstash.svg", "type": "image" },
+  "id": "upstash",
+  "minTier": "plus",
+  "name": "Upstash",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["upstash", "redis", "clé", "cache", "jeton"],
+  "tools": [
+    {
+      "description": "Lit une clé Redis Upstash.",
+      "effect": "read",
+      "id": "upstashGet",
+      "label": "Lire une clé",
+      "systemHint": "Ne recopiez pas une valeur longue si un extrait suffit."
+    },
+    {
+      "description": "Écrit une clé Redis Upstash. Une clé déjà présente est écrasée.",
+      "effect": "write",
+      "id": "upstashSet",
+      "label": "Écrire une clé",
+      "systemHint": "Dites que la valeur précédente sera remplacée. Montrez la clé et la valeur avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

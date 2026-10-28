@@ -38,21 +38,24 @@ test.describe("Navigation Applications", () => {
     ).toBeVisible();
     const tablist = page.getByRole("tablist", { name: "Sections d'outils" });
     await expect(tablist).toBeVisible();
-    // Trois onglets, proportions compactes (text-xs, pas de pleine largeur).
-    await expect(tablist.getByRole("tab")).toHaveCount(3);
+    // Deux onglets, proportions compactes.
+    await expect(tablist.getByRole("tab")).toHaveCount(2);
     await expect(tablist.getByRole("tab", { name: "Plugins" })).toBeVisible();
-    await expect(tablist.getByRole("tab", { name: "MCP" })).toBeVisible();
     await expect(tablist.getByRole("tab", { name: "Skills" })).toBeVisible();
+    await expect(tablist.getByRole("tab", { name: "MCP" })).toHaveCount(0);
   });
 
-  test("le panneau MCP n'expose plus le bouton Avancé", async ({ page }) => {
+  test("l'adresse MCP ouvre l'onglet Plugins", async ({ page }) => {
     await page.goto("/tools?tab=mcp");
 
-    await expect(page.getByRole("button", { name: /Avancé/i })).toHaveCount(0);
-    // Les fonctions avancées réelles restent sur la page MCP dédiée.
+    await expect(page.getByRole("tab", { name: "MCP" })).toHaveCount(0);
     await expect(
       page.getByRole("heading", { name: "Applications" })
     ).toBeVisible();
+    await expect(page.getByRole("tab", { name: "Plugins" })).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
   });
 });
 

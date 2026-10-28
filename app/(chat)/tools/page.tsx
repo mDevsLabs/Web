@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
-import { isToolsTab, normalizeToolsTab } from "@/lib/tools/tabs";
+import { normalizeToolsTab } from "@/lib/tools/tabs";
 import ToolsClient from "./tools-client";
 
 export const metadata: Metadata = {
-  description:
-    "Gérez vos plugins, vos serveurs MCP et vos Skills au même endroit.",
-  title: "Applications — Plugins, MCP & Skills | mAI",
+  description: "Gérez vos plugins et vos Skills au même endroit.",
+  title: "Applications — Plugins et Skills | mAI",
 };
 
 export default async function ToolsPage({
@@ -18,9 +17,7 @@ export default async function ToolsPage({
   const [user, params] = await Promise.all([getMaiUser(), searchParams]);
   const isPaid = isPaidTier(user?.tier);
 
-  // Onglet par défaut : Plugins pour tous les forfaits (y compris Free).
-  const explicitTab = isToolsTab(params.tab);
-  const activeTab = explicitTab ? normalizeToolsTab(params.tab) : "plugins";
+  const activeTab = normalizeToolsTab(params.tab);
 
   return <ToolsClient initialTab={activeTab} isPaid={isPaid} />;
 }

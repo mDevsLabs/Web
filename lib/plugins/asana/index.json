@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Asana par jeton personnel : l'IA liste vos espaces et vos tâches. Dans l'Agent, avec votre accord, elle peut créer une tâche.",
+  "icon": { "src": "/plugins/asana.svg", "type": "image" },
+  "id": "asana",
+  "minTier": "plus",
+  "name": "Asana",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["asana", "tâches", "projet", "productivité", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les espaces de travail Asana du compte.",
+      "effect": "read",
+      "id": "asanaListWorkspaces",
+      "label": "Espaces Asana",
+      "systemHint": "L'identifiant d'espace est exigé pour lister ou créer une tâche."
+    },
+    {
+      "description": "Liste les tâches Asana assignées au compte dans un espace.",
+      "effect": "read",
+      "id": "asanaListTasks",
+      "label": "Mes tâches Asana",
+      "systemHint": "Commencez par lister les espaces si l'identifiant manque."
+    },
+    {
+      "description": "Crée une tâche Asana dans un espace de travail.",
+      "effect": "write",
+      "id": "asanaCreateTask",
+      "label": "Créer une tâche",
+      "systemHint": "Montrez l'espace, le titre et les notes avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

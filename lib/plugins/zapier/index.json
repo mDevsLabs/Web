@@ -1,0 +1,26 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Zapier par jeton d'accès : l'IA liste vos Zaps. Ce jeton expire au bout d'environ dix heures. Aucune activation de Zap n'est exposée.",
+  "icon": { "src": "/plugins/zapier.svg", "type": "image" },
+  "id": "zapier",
+  "minTier": "plus",
+  "name": "Zapier",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["zapier", "automatisation", "zaps", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les Zaps accessibles avec le jeton d'accès.",
+      "effect": "read",
+      "id": "zapierListZaps",
+      "label": "Mes Zaps",
+      "systemHint": "Si le jeton est refusé, il a probablement expiré : dites de le recoller."
+    }
+  ],
+  "version": "1.0.0"
+}

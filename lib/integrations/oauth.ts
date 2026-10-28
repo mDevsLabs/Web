@@ -2,7 +2,11 @@ import "server-only";
 
 import { randomBytes } from "node:crypto";
 import { decrypt, encrypt, isEncryptionConfigured } from "@/lib/mcp/encryption";
+import { unpackCredential } from "./credential-envelope";
+import { allowedHttpsUrl } from "./hosts";
 import type { IntegrationDescriptor } from "./providers";
+import { buildRequestAuth } from "./request-auth";
+import { fillCredentialUrl } from "./token-fields";
 
 /**
  * Flux OAuth générique : URL d'autorisation, scellement de l'« état », échange
@@ -555,27 +559,85 @@ export async function resolveAccount(
   }
 
   const account = descriptor.account;
-  const result = await requestJson(account.url, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${tokenSet.accessToken}`,
-      ...account.headers,
-    },
+  const stored = unpackCredential(tokenSet.accessToken);
+  let material = stored;
+  let auth = account.auth;
+  if (account.login) {
+    const username = material.fields[account.login.usernameField];
+    if (!username) {
+      return null;
+    }
+    const loginUrl = allowedHttpsUrl(descriptor, account.login.url);
+    if (!loginUrl) {
+      return null;
+    }
+    const login = await requestJson(loginUrl.toString(), {
+      body: JSON.stringify({ password: material.token, username }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+    if (!login.ok) {
+      return null;
+    }
+    const session =
+      asString(readPath(login.value, account.login.tokenPath)) ??
+      asString(readPath(login.value, "access_token"));
+    if (!session) {
+      return null;
+    }
+    material = { fields: material.fields, token: session };
+    auth = account.login.auth;
+  }
+  const filled = fillCredentialUrl(account.url, material);
+  if (!filled) {
+    return null;
+  }
+  const endpoint = allowedHttpsUrl(descriptor, filled);
+  if (!endpoint) {
+    return null;
+  }
+  const built = buildRequestAuth(auth, material.token, material.fields);
+  if (!built.ok) {
+    return null;
+  }
+  for (const [key, value] of Object.entries(built.query)) {
+    endpoint.searchParams.set(key, value);
+  }
+  const headers: Record<string, string> = {
+    Accept: "application/json",
+    ...built.headers,
+    ...account.headers,
+  };
+  if (built.authorization) {
+    headers.Authorization = built.authorization;
+  }
+  const result = await requestJson(endpoint.toString(), {
+    body: account.body,
+    headers,
     method: account.method ?? "GET",
   });
   if (!result.ok) {
     return null;
   }
   const payload = readPath(result.value, account.responsePath);
-  if (!payload || typeof payload !== "object") {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
     return null;
   }
   const record = payload as Record<string, unknown>;
+  if (account.expect) {
+    const got = readPath(record, account.expect.path);
+    if (String(got ?? "") !== account.expect.equals) {
+      return null;
+    }
+  }
   const rawId = readPath(record, account.idField);
   const providerAccountId =
     typeof rawId === "number" || typeof rawId === "string"
       ? String(rawId)
-      : null;
+      : (account.idFallback ?? null);
   if (!providerAccountId) {
     return null;
   }
@@ -585,7 +647,9 @@ export async function resolveAccount(
   const label =
     account.labelFields
       .map((field) => asString(readPath(record, field)))
-      .find((value): value is string => Boolean(value)) ?? email;
+      .find((value): value is string => Boolean(value)) ??
+    email ??
+    account.labelFallback;
   return {
     accountEmail: email,
     accountLabel: label ?? providerAccountId,

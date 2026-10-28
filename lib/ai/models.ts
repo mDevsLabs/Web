@@ -272,6 +272,8 @@ export function formatModelName(modelId: string): {
     "llama-3.1-8b-instruct": "Llama 3.1 8B Instruct",
     "llama-3.1-70b-instruct": "Llama 3.1 70B Instruct",
     "llama-3.3-70b-instruct": "Llama 3.3 70B Instruct",
+    "mai-2": "mAI-2",
+    "mai-2-mini": "mAI-2 Mini",
     "mistral-large": "Mistral Large",
     "mistral-small": "Mistral Small",
     "mixtral-8x7b-instruct": "Mixtral 8x7B",

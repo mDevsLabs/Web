@@ -184,11 +184,14 @@ const pluginSite = () => {
           return;
         }
 
-        // Convertir @utility <name> {... } en.site-root.<name> {... }
+        // `@utility` est une classe posée SUR un élément du Site, pas sur
+        // la racine. `.site-root.glass` ne matche que si les deux classes
+        // sont sur le même nœud : la barre de navigation, enfant de
+        // `.site-root`, restait alors sans fond ni flou.
         if (node.type === "atrule" && node.name === "utility") {
           const utilName = node.params.trim();
           const rule = postcss.rule({
-            selector: `${PORTEUR}.${utilName}`,
+            selector: `${PORTEUR} .${utilName}`,
           });
           node.each((child) => {
             rule.append(child.clone());

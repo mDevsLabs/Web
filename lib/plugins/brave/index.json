@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Brave Search par jeton d'abonnement : l'IA interroge le web et les actualités. L'API ne publie rien.",
+  "icon": { "src": "/plugins/brave.svg", "type": "image" },
+  "id": "brave",
+  "minTier": "plus",
+  "name": "Brave Search",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["brave", "recherche", "actualités", "web", "jeton"],
+  "tools": [
+    {
+      "description": "Recherche web Brave : titres, adresses et extraits.",
+      "effect": "read",
+      "id": "braveWebSearch",
+      "label": "Recherche web Brave",
+      "systemHint": "Citez les adresses rendues. N'inventez pas de lien."
+    },
+    {
+      "description": "Actualités Brave pour une requête.",
+      "effect": "read",
+      "id": "braveNewsSearch",
+      "label": "Actualités Brave",
+      "systemHint": "Résumez les titres et les sources plutôt que de recopier chaque extrait."
+    }
+  ],
+  "version": "1.0.0"
+}

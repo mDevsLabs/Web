@@ -4,7 +4,34 @@ import { requireUser } from "@/lib/auth/require-user";
 import {
   clearSearchQueries,
   deleteSearchQuery,
+  getRecentSearchQueries,
 } from "@/lib/db/queries/search-history";
+
+/**
+ * GET /api/mai-search/recent — historique du compte connecté.
+ *
+ * La table est `MaiSearchQuery` (migration 0060). Un visiteur sans session
+ * reçoit une liste vide : l'historique est un confort, pas une erreur.
+ */
+export async function GET() {
+  try {
+    const session = await requireUser();
+    if (!session) {
+      return NextResponse.json({ queries: [] });
+    }
+    const queries = await getRecentSearchQueries(session.userId, 12);
+    return NextResponse.json({
+      queries: queries.map((query) => ({
+        createdAt: query.createdAt.toISOString(),
+        id: query.id,
+        query: query.query,
+      })),
+    });
+  } catch (error) {
+    console.error("[mAI-Search-Recent] Lecture impossible:", error);
+    return NextResponse.json({ queries: [] });
+  }
+}
 
 /**
  * DELETE /api/mai-search/recent — purge l'historique de recherche.

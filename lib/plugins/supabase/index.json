@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Supabase par jeton d'accès personnel : l'IA liste vos organisations et vos projets via l'API de gestion. La création d'un projet n'est pas exposée.",
+  "icon": { "src": "/plugins/supabase.svg", "type": "image" },
+  "id": "supabase",
+  "minTier": "plus",
+  "name": "Supabase",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["supabase", "postgres", "projets", "gestion", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les organisations Supabase du compte.",
+      "effect": "read",
+      "id": "supabaseListOrganizations",
+      "label": "Organisations Supabase",
+      "systemHint": "Le slug identifie l'organisation, pas un projet."
+    },
+    {
+      "description": "Liste les projets Supabase du compte.",
+      "effect": "read",
+      "id": "supabaseListProjects",
+      "label": "Projets Supabase",
+      "systemHint": "La référence de vingt lettres sert à lire le détail d'un projet."
+    },
+    {
+      "description": "Détail d'un projet Supabase : nom, région et état.",
+      "effect": "read",
+      "id": "supabaseGetProject",
+      "label": "Détail d'un projet",
+      "systemHint": "Ne demandez pas le mot de passe de la base : il n'est pas lisible ici."
+    }
+  ],
+  "version": "1.0.0"
+}

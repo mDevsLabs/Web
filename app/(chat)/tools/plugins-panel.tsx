@@ -23,6 +23,7 @@ import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
+import { PersonalPlugins } from "./personal-plugins";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
 type IntegrationsResponse = { integrations: IntegrationStatus[] };
@@ -207,18 +208,21 @@ export default function PluginsPanel({
       {/* Rangée d'actions globale (recherche dans l'en-tête de la page). */}
       {actionsAnchor
         ? createPortal(
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Button
-                className="h-8 gap-1.5 text-xs font-medium"
-                onClick={() => router.push("/tools?tab=plugins")}
-                variant="outline"
+                className="h-11 gap-1.5 text-xs font-medium sm:h-8"
+                onClick={() => router.push("/tools/plugins/custom/new")}
+                type="button"
               >
-                Gérer le catalogue
+                <PlusIcon className="size-3.5" />
+                Nouveau plugin
               </Button>
             </div>,
             actionsAnchor
           )
         : null}
+
+      <PersonalPlugins searchQuery={searchQuery} />
 
       {isLoading ? (
         <div className="py-16 text-center text-sm text-muted-foreground">

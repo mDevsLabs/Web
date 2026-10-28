@@ -266,7 +266,7 @@ export function SkillEditorModal({
               </p>
               {mcpServers.length === 0 ? (
                 <p className="text-xs text-muted-foreground">
-                  Aucun serveur MCP — créez-en dans /mcp
+                  Aucun plugin MCP — créez-en dans Applications
                 </p>
               ) : (
                 <div className="space-y-2">

@@ -1,7 +1,8 @@
 import { streamText } from "ai";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL, formatModelName } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
@@ -12,7 +13,9 @@ import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import {
   collectSummarySources,
+  createThinkSplitter,
   encodeSummaryEvent,
+  stripThinkTags,
 } from "@/lib/search/summary-stream";
 
 export const maxDuration = 45;
@@ -108,7 +111,11 @@ export async function POST(request: Request) {
     }
 
     const sessionToken = await getMaiSessionToken();
+    // Le provider n'expose pas la réflexion au SDK : on la lit sur le flux
+    // brut, à part du texte de la réponse.
+    const reasoningSink = createReasoningDetailsSink();
     const model = getLanguageModel(modelId, {
+      reasoningSink,
       sessionToken,
       userId: session?.userId,
     });
@@ -279,8 +286,9 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         }
 
         // 3. Mise à jour de l'historique pour le résumé global
-        if (!target && searchId && text && session?.userId) {
-          await updateSearchQuerySummary(searchId, session.userId, text);
+        const answer = stripThinkTags(text);
+        if (!target && searchId && answer && session?.userId) {
+          await updateSearchQuerySummary(searchId, session.userId, answer);
         }
       },
       stopWhen: ({ steps }: any) => steps.length >= 4,
@@ -311,13 +319,43 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
           }
         };
         send({ sources: initialSources, type: "sources" });
+        const splitter = createThinkSplitter();
+        let sinkSawReasoning = false;
+        // Avant l'appel modèle : le collecteur peut émettre dès le premier
+        // chunk, avant que le flux texte ne soit lu.
+        reasoningSink.onDelta = (text) => {
+          if (!text) {
+            return;
+          }
+          sinkSawReasoning = true;
+          send({ delta: text, type: "reasoning-delta" });
+        };
         const result = streamText(streamOptions);
+        const emitPieces = (pieces: ReturnType<typeof splitter.push>) => {
+          for (const piece of pieces) {
+            if (!piece.delta) {
+              continue;
+            }
+            if (piece.kind === "reasoning") {
+              if (!sinkSawReasoning) {
+                send({ delta: piece.delta, type: "reasoning-delta" });
+              }
+              continue;
+            }
+            send({ delta: piece.delta, type: "text-delta" });
+          }
+        };
         try {
-          for await (const delta of result.textStream) {
-            if (delta) {
-              send({ delta, type: "text-delta" });
+          for await (const part of result.fullStream) {
+            if (part.type === "reasoning-delta" && part.text) {
+              if (!sinkSawReasoning) {
+                send({ delta: part.text, type: "reasoning-delta" });
+              }
+            } else if (part.type === "text-delta" && part.text) {
+              emitPieces(splitter.push(part.text));
             }
           }
+          emitPieces(splitter.flush());
           const steps = await Promise.resolve(result.steps).catch(() => []);
           const finalSources = collectSummarySources({
             initial: searchResults,
@@ -347,6 +385,7 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         Connection: "keep-alive",
         "Content-Type": "text/event-stream; charset=utf-8",
         "X-Model-Id": modelId,
+        "X-Model-Name": formatModelName(modelId).name,
       },
     });
   } catch (error: any) {

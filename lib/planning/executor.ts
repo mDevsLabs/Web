@@ -41,6 +41,7 @@ import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
 import { toolKindFor } from "@/lib/prompts/capabilities";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import {
@@ -372,6 +373,10 @@ export async function executeScheduledMessage(scheduledId: string) {
       },
       enabledPluginIds
     );
+    const customPlugins =
+      toolMode === "none"
+        ? { addendum: "", ids: [] as string[], tools: {} }
+        : await customPluginChatTools(userId);
     const effectiveMcpServerIds =
       agentSkillMcpServerIds.length > 0
         ? agentSkillMcpServerIds
@@ -411,6 +416,7 @@ export async function executeScheduledMessage(scheduledId: string) {
     const availableTools: Record<string, any> = {
       ...(wantsNativeTools ? nativeTools : {}),
       ...pluginTools,
+      ...customPlugins.tools,
       ...executableMcpTools,
     };
 
@@ -418,6 +424,7 @@ export async function executeScheduledMessage(scheduledId: string) {
       new Set([
         ...(wantsNativeTools ? Object.keys(nativeTools) : []),
         ...agentSkillToolIds,
+        ...customPlugins.ids,
         ...(wantsMcp ? Object.keys(executableMcpTools) : []),
       ])
     ).filter((toolId) => Boolean(availableTools[toolId]));

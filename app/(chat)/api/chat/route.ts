@@ -32,6 +32,7 @@ import {
 } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
@@ -278,6 +279,10 @@ export async function POST(request: Request) {
           enabledPluginIds
         );
 
+        const customPlugins = ctx.isGhostMode
+          ? { addendum: "", ids: [] as string[], tools: {} }
+          : await customPluginChatTools(ctx.userId);
+
         const tools = createChatTools(
           {
             // `chatId` n'est renseigné que si la conversation est déjà
@@ -298,12 +303,14 @@ export async function POST(request: Request) {
             userId: ctx.userId,
           },
           mcpCtx.mcpTools,
-          pluginTools
+          { ...pluginTools, ...customPlugins.tools }
         );
 
         return {
-          activeToolsList,
-          effectiveAddendum: finalEffectiveAddendum,
+          activeToolsList: [...activeToolsList, ...customPlugins.ids],
+          effectiveAddendum: [finalEffectiveAddendum, customPlugins.addendum]
+            .filter(Boolean)
+            .join("\n\n"),
           tools,
         };
       },

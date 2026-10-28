@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Neon par clé API : l'IA liste vos projets et leurs branches. Dans l'Agent, avec votre accord, elle peut créer une branche, ce qui peut consommer du calcul.",
+  "icon": { "src": "/plugins/neon.svg", "type": "image" },
+  "id": "neon",
+  "minTier": "plus",
+  "name": "Neon",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["neon", "postgres", "branches", "base de données", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les projets Neon du compte.",
+      "effect": "read",
+      "id": "neonListProjects",
+      "label": "Projets Neon",
+      "systemHint": "L'identifiant de projet sert à lister ou créer une branche."
+    },
+    {
+      "description": "Liste les branches d'un projet Neon.",
+      "effect": "read",
+      "id": "neonListBranches",
+      "label": "Branches Neon",
+      "systemHint": "Ne recopiez aucune chaîne de connexion : l'outil ne les rend pas."
+    },
+    {
+      "description": "Crée une branche Neon. Cela peut consommer du calcul sur le projet.",
+      "effect": "write",
+      "id": "neonCreateBranch",
+      "label": "Créer une branche",
+      "systemHint": "Dites que la branche peut démarrer du calcul. Montrez le projet et le nom avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

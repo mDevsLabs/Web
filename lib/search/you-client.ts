@@ -16,6 +16,7 @@ import {
 } from "./sources";
 import {
   fetchWikipediaImages,
+  isWikipediaArticleUrl,
   searchWikipediaWithSummaries,
 } from "./wikipedia";
 
@@ -974,6 +975,23 @@ function extractVideos(hits: SearchWebHit[]): SearchVideoHit[] {
   return videos;
 }
 
+function mergeVideos(
+  primary: SearchVideoHit[],
+  extra: SearchVideoHit[]
+): SearchVideoHit[] {
+  const seen = new Set<string>();
+  const merged: SearchVideoHit[] = [];
+  for (const video of [...primary, ...extra]) {
+    const key = video.page_url?.trim();
+    if (!key || seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    merged.push(video);
+  }
+  return merged;
+}
+
 async function fetchYouTubeVideos(
   query: string,
   limit = 9
@@ -1061,6 +1079,7 @@ async function fetchWikipediaWeb(
     favicon_url: WIKIPEDIA_FAVICON_URL,
     isDisambiguation: article.isDisambiguation === true,
     origin: "wikipedia" as const,
+    page_age: article.updatedAt,
     snippet: article.summary || article.extract,
     thumbnail_url: article.thumbnail,
     title: article.title,
@@ -1356,19 +1375,23 @@ export async function executeMaiSearch(params: {
     ];
   }
 
-  // Extraire les vidéos à partir des résultats web.
-  let videos = extractVideos(results);
+  // Les vidéos du web et la recherche YouTube se complètent. N'utiliser
+  // YouTube qu'en repli laissait l'onglet vide dès qu'un seul lien vidéo
+  // traînait dans les pages web — le clic ouvrait alors une liste inutile.
+  const videos = wantVideos
+    ? mergeVideos(extractVideos(results), youtubeVideos)
+    : extractVideos(results);
 
-  // Si aucune vidéo trouvée dans les liens web, retenir la recherche
-  // YouTube — déjà lancée en parallèle, donc sans délai supplémentaire.
-  if (videos.length === 0 && wantVideos) {
-    videos = youtubeVideos;
-  }
-
-  // S'assurer que chaque hit a un favicon garanti
+  // S'assurer que chaque hit a un favicon garanti, et qu'une page
+  // d'encyclopédie reste marquée même quand le moteur principal l'a
+  // renvoyée sans origine. Sinon l'onglet Wikipédia ne la voit pas.
   results = results.map((r) => ({
     ...r,
     favicon_url: buildFaviconUrl(r.url),
+    origin:
+      r.origin === "wikipedia" || isWikipediaArticleUrl(r.url)
+        ? "wikipedia"
+        : r.origin,
   }));
 
   /**

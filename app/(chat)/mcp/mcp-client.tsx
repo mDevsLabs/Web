@@ -825,7 +825,7 @@ export default function McpClient({
           {embedded ? null : (
             <div className="flex items-center gap-3">
               <PageBackButton
-                fallbackHref="/tools?tab=mcp"
+                fallbackHref="/tools?tab=plugins"
                 label="Retour aux serveurs MCP"
               />
               <div className="flex items-center gap-2.5">

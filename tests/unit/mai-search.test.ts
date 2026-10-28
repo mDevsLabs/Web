@@ -334,6 +334,9 @@ describe("mAI Search — Wikipédia comme source à part entière", () => {
       (r) => r.url === "https://fr.wikipedia.org/wiki/Sujet"
     );
     expect(occurrences).toHaveLength(1);
+    // L'article reste identifiable même s'il est arrivé d'abord par le
+    // moteur web : sinon l'onglet Wikipédia ne peut pas l'afficher.
+    expect(occurrences[0]?.origin).toBe("wikipedia");
 
     fetchMock.mockRestore();
   });

@@ -609,7 +609,7 @@ html[data-economy="true"] {
  * Repère monochrome d'une application externe (GitHub, Notion, Discord).
  *
  * La marque n'existe qu'en noir : posée telle quelle sur un fond sombre, elle
- * devient invisible, et le `dark:invert` des logos MCP détruirait un logo
+ * devient invisible, et le `dark:invert` d'un logo monochrome détruirait un logo
  * multicolore. Le motif est donc utilisé comme **masque** et la couleur vient
  * de `currentColor` : le glyphe suit le thème du conteneur — hôte achromatique
  * comme `.wakies-root`, qui n'a pas de variante sombre — sans seconde copie du

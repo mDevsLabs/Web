@@ -212,7 +212,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                     href={APP_SUPPORT_URL}
                   >
                     <LifeBuoyIcon className="size-3.5 text-muted-foreground" />
-          <span>Centre d'aide</span>
+                    <span>Centre d'aide</span>
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>

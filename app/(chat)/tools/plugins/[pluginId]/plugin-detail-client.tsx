@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { IntegrationLogo } from "@/lib/integrations/logo";
 import { getIntegrationByPluginId } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
+import { validateTokenFields } from "@/lib/integrations/token-fields";
 import { getCategoryLabel } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginManifest } from "@/lib/plugins/types";
@@ -159,6 +160,7 @@ export default function PluginDetailClient({
   const [isDisconnecting, setIsDisconnecting] = useState(false);
   const [isSavingToken, setIsSavingToken] = useState(false);
   const [tokenDraft, setTokenDraft] = useState("");
+  const [fieldDrafts, setFieldDrafts] = useState<Record<string, string>>({});
   const [isTokenFormOpen, setIsTokenFormOpen] = useState(false);
   const [confirmUninstall, setConfirmUninstall] = useState(false);
   const [state, setState] = useState({ enabled, installed, installedVersion });
@@ -327,14 +329,24 @@ export default function PluginDetailClient({
       );
       return;
     }
+    const fields = validateTokenFields(
+      connector.token.fields ?? [],
+      fieldDrafts
+    );
+    if (!fields.ok) {
+      toast.error(fields.error);
+      return;
+    }
     setIsSavingToken(true);
-    try {      const response = await fetch(
+    try {
+      const response = await fetch(
         `${basePath}/api/integration/${connector.id}/token`,
         {
-        body: JSON.stringify({ token }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
+          body: JSON.stringify({ fields: fields.fields, token }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        }
+      );
       const payload = (await response.json().catch(() => null)) as {
         accountLabel?: string;
         message?: string;
@@ -343,6 +355,7 @@ export default function PluginDetailClient({
         throw new Error(payload?.message ?? "Jeton refusé.");
       }
       setTokenDraft("");
+      setFieldDrafts({});
       await mutateIntegrations();
       toast.success(
         payload?.accountLabel
@@ -834,50 +847,76 @@ export default function PluginDetailClient({
                         et le gestionnaire de mots de passe ne doit pas
                         s'inviter sur un champ de jeton. */}
                       <form
-                        className="flex flex-col gap-2 sm:flex-row"
+                        className="flex flex-col gap-3"
                         onSubmit={(event) => {
                           event.preventDefault();
                           void handleSaveToken();
                         }}
                       >
-                        <Input
-                          autoComplete="off"
-                          className="font-mono text-xs"
-                          disabled={isSavingToken}
-                          maxLength={connector.token?.maxLength}
-                          onChange={(event) =>
-                            setTokenDraft(event.target.value)
-                          }
-                          placeholder={connector.token?.placeholder}
-                          spellCheck={false}
-                          type="password"
-                          value={tokenDraft}
-                        />
-                        <div className="flex gap-2">
-                          <Button
-                            disabled={isSavingToken || !tokenDraft.trim()}
-                            size="sm"
-                            type="submit"
+                        {connector.token?.fields?.map((field) => (
+                          <label
+                            className="flex flex-col gap-1 text-sm"
+                            key={field.id}
                           >
-                            {isSavingToken ? (
-                              <Loader2Icon className="size-4 animate-spin" />
-                            ) : (
-                              <KeyRoundIcon className="size-4" />
-                            )}
-                            Enregistrer
-                          </Button>
-                          <Button
+                            <span>{field.label}</span>
+                            <Input
+                              autoComplete="off"
+                              disabled={isSavingToken}
+                              maxLength={300}
+                              onChange={(event) =>
+                                setFieldDrafts((current) => ({
+                                  ...current,
+                                  [field.id]: event.target.value,
+                                }))
+                              }
+                              placeholder={field.placeholder}
+                              spellCheck={false}
+                              type={field.secret ? "password" : "text"}
+                              value={fieldDrafts[field.id] ?? ""}
+                            />
+                          </label>
+                        ))}
+                        <div className="flex flex-col gap-2 sm:flex-row">
+                          <Input
+                            autoComplete="off"
+                            className="font-mono text-xs"
                             disabled={isSavingToken}
-                            onClick={() => {
-                              setTokenDraft("");
-                              setIsTokenFormOpen(false);
-                            }}
-                            size="sm"
-                            type="button"
-                            variant="ghost"
-                          >
-                            Annuler
-                          </Button>
+                            maxLength={connector.token?.maxLength}
+                            onChange={(event) =>
+                              setTokenDraft(event.target.value)
+                            }
+                            placeholder={connector.token?.placeholder}
+                            spellCheck={false}
+                            type="password"
+                            value={tokenDraft}
+                          />
+                          <div className="flex gap-2">
+                            <Button
+                              disabled={isSavingToken || !tokenDraft.trim()}
+                              size="sm"
+                              type="submit"
+                            >
+                              {isSavingToken ? (
+                                <Loader2Icon className="size-4 animate-spin" />
+                              ) : (
+                                <KeyRoundIcon className="size-4" />
+                              )}
+                              Enregistrer
+                            </Button>
+                            <Button
+                              disabled={isSavingToken}
+                              onClick={() => {
+                                setTokenDraft("");
+                                setFieldDrafts({});
+                                setIsTokenFormOpen(false);
+                              }}
+                              size="sm"
+                              type="button"
+                              variant="ghost"
+                            >
+                              Annuler
+                            </Button>
+                          </div>
                         </div>
                       </form>
                     </div>

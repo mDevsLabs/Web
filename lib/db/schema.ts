@@ -1151,6 +1151,83 @@ export const pluginInstallation = pgTable(
 
 export type PluginInstallation = InferSelectModel<typeof pluginInstallation>;
 
+// Plugin créé par l'utilisateur (migration 0070).
+//
+// Le catalogue `lib/plugins` reste la liste des plugins mAI. Cette table porte
+// ce que le compte ajoute lui-même : un serveur MCP distant, ou une application
+// OAuth dont il fournit les URL et le client. Les secrets (jeton bearer, secret
+// client, jeton d'accès) ne sont pas ici : ils vivent chiffrés dans
+// `UserPluginSecret`, ou, pour un serveur MCP, dans `mcp_server_secret`.
+//
+// `mcpServerId` relie le plugin au serveur déjà exécuté par le moteur MCP. Les
+// Skills qui citent cet identifiant continuent de le trouver. La migration
+// recopie chaque `McpServer` existant dans une ligne de cette table.
+export const userPlugin = pgTable(
+  "UserPlugin",
+  {
+    apiBaseUrl: text("apiBaseUrl"),
+    authorizeUrl: text("authorizeUrl"),
+    authType: varchar("authType", { length: 20 }),
+    clientId: text("clientId"),
+    connectedAccount: text("connectedAccount"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").notNull().default(""),
+    hosts: json("hosts").notNull().default([]),
+    icon: text("icon").notNull().default("Puzzle"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isEnabled: boolean("isEnabled").notNull().default(true),
+    kind: varchar("kind", { enum: ["mcp", "oauth"], length: 16 }).notNull(),
+    mcpServerId: uuid("mcpServerId"),
+    name: text("name").notNull(),
+    rateLimitPerMin: integer("rateLimitPerMin").notNull().default(60),
+    requireApproval: varchar("requireApproval", { length: 20 })
+      .notNull()
+      .default("write_only"),
+    scopes: text("scopes").notNull().default(""),
+    timeoutMs: integer("timeoutMs").notNull().default(15_000),
+    tokenUrl: text("tokenUrl"),
+    transport: varchar("transport", { length: 16 }),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    url: text("url"),
+    userId: text("userId").notNull(),
+    version: varchar("version", { length: 20 }).notNull().default("1.0.0"),
+  },
+  (table) => ({
+    mcpServerUnique: uniqueIndex("UserPlugin_mcpServerId_key").on(
+      table.mcpServerId
+    ),
+    userIdIdx: index("UserPlugin_userId_idx").on(table.userId),
+  })
+);
+
+export type UserPlugin = InferSelectModel<typeof userPlugin>;
+
+export const userPluginSecret = pgTable(
+  "UserPluginSecret",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    encryptedValue: text("encryptedValue").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    key: text("key").notNull(),
+    kind: varchar("kind", { enum: ["env", "auth", "header"] }).notNull(),
+    pluginId: uuid("pluginId")
+      .notNull()
+      .references(() => userPlugin.id, { onDelete: "cascade" }),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    pluginIdIdx: index("UserPluginSecret_pluginId_idx").on(table.pluginId),
+    unique: uniqueIndex("UserPluginSecret_plugin_kind_key").on(
+      table.pluginId,
+      table.kind,
+      table.key
+    ),
+    userIdIdx: index("UserPluginSecret_userId_idx").on(table.userId),
+  })
+);
+
+export type UserPluginSecret = InferSelectModel<typeof userPluginSecret>;
+
 // Connexion d'un compte à une application externe (Google Drive, Agenda, Gmail,
 // GitHub). Les jetons sont chiffrés (AES-256-GCM, lib/mcp/encryption.ts) ; les
 // métadonnées servant à décider un rafraîchissement restent en clair, parce que
@@ -1172,7 +1249,34 @@ export const integrationConnection = pgTable(
     // La liste sert au typage Drizzle ; un identifiant hors liste serait de
     // toute façon rejeté par `getIntegrationProvider`.
     provider: varchar("provider", {
-      enum: ["discord", "github", "google", "notion", "vercel"] as const,
+      enum: [
+        "asana",
+        "brave",
+        "brevo",
+        "cloudflare",
+        "discord",
+        "dockerhub",
+        "exchange-rate",
+        "github",
+        "google",
+        "jira",
+        "linear",
+        "make",
+        "mapbox",
+        "neon",
+        "notion",
+        "npm",
+        "posthog",
+        "resend",
+        "sentry",
+        "sonarcloud",
+        "stripe",
+        "supabase",
+        "twilio",
+        "upstash",
+        "vercel",
+        "zapier",
+      ] as const,
     }).notNull(),
     providerAccountId: text("providerAccountId").notNull(),
     refreshToken: text("refreshToken"),

@@ -1,9 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
+import { packCredential } from "@/lib/integrations/credential-envelope";
 import { resolveAccount } from "@/lib/integrations/oauth";
 import { getIntegrationProvider } from "@/lib/integrations/providers";
 import { storeConnection } from "@/lib/integrations/repository";
+import {
+  hasControlCharacter,
+  validateTokenFields,
+} from "@/lib/integrations/token-fields";
 import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 
 /**
@@ -61,7 +66,7 @@ export async function POST(
     });
   }
 
-  let body: { token?: unknown };
+  let body: { fields?: unknown; token?: unknown };
   try {
     const raw = await request.text();
     if (raw.length > MAX_BODY_BYTES) {
@@ -69,7 +74,7 @@ export async function POST(
         message: "Jeton trop long.",
       });
     }
-    body = JSON.parse(raw || "{}") as { token?: unknown };
+    body = JSON.parse(raw || "{}") as { fields?: unknown; token?: unknown };
   } catch {
     return errorResponse("invalid_request", {
       message: "Corps de requête illisible.",
@@ -91,11 +96,28 @@ export async function POST(
     });
   }
 
+  if (hasControlCharacter(token) || token.startsWith("mai-cred.v1.")) {
+    return errorResponse("invalid_request", {
+      message: "Jeton refusé.",
+    });
+  }
+  const fields = validateTokenFields(
+    descriptor.token?.fields ?? [],
+    body.fields
+  );
+  if (!fields.ok) {
+    return errorResponse("invalid_request", { message: fields.error });
+  }
+  const stored =
+    descriptor.token?.fields && descriptor.token.fields.length > 0
+      ? packCredential(token, fields.fields)
+      : token;
+
   try {
     const identity = await resolveAccount(
       descriptor,
       {
-        accessToken: token,
+        accessToken: stored,
         expiresAt: null,
         idToken: null,
         refreshToken: null,
@@ -107,12 +129,14 @@ export async function POST(
       // Le fournisseur a répondu, mais sans identité exploitable : le jeton est
       // invalide ou n'a pas les droits minimaux. Ne rien stocker.
       return errorResponse("invalid_request", {
-        message: `Jeton refusé par ${descriptor.label}. Vérifiez qu'il est valide et actif.`,
+        message: descriptor.token?.fields?.length
+          ? `Jeton refusé par ${descriptor.label}. Vérifiez les champs et que le jeton est actif.`
+          : `Jeton refusé par ${descriptor.label}. Vérifiez qu'il est valide et actif.`,
       });
     }
 
     await storeConnection({
-      accessToken: token,
+      accessToken: stored,
       accountEmail: identity.accountEmail,
       accountLabel: identity.accountLabel,
       expiresAt: null,

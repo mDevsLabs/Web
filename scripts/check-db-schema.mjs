@@ -86,6 +86,9 @@ const REQUIRED_TABLES = [
   // Migration 0069 : sans cette table, l'ouverture d'une conversation
   // sécurisée échoue en 42P01 et le PIN ne peut être ni lu ni écrit.
   "ChatSecurity",
+  // Migration 0070 : plugins créés par le compte (serveur MCP ou OAuth).
+  "UserPlugin",
+  "UserPluginSecret",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -93,6 +96,10 @@ const REQUIRED_COLUMNS = [
   // Migration 0069 : le PIN et sa version sont relus à chaque ouverture ; les
   // colonnes reset* portent la réinitialisation par e-mail. Une base
   // partiellement migrée doit être signalée AVANT le déploiement.
+  { column: "userId", table: "UserPlugin" },
+  { column: "kind", table: "UserPlugin" },
+  { column: "mcpServerId", table: "UserPlugin" },
+  { column: "encryptedValue", table: "UserPluginSecret" },
   { column: "chatId", table: "ChatSecurity" },
   { column: "createdAt", table: "ChatSecurity" },
   { column: "pinHash", table: "ChatSecurity" },

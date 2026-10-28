@@ -523,7 +523,7 @@ export function AgentEditorDialog({
                 </Label>
                 {mcpServers.length === 0 ? (
                   <span className="text-xs text-muted-foreground">
-                    Aucun serveur MCP — configure dans /mcp
+                    Aucun plugin MCP — créez-en dans Applications
                   </span>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-32 overflow-y-auto border border-border/40 rounded-xl p-2 bg-muted/10">

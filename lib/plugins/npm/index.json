@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez npm par jeton d'accès : l'IA confirme le compte, lit une fiche de paquet et cherche dans le registre. La publication n'est pas exposée.",
+  "icon": { "src": "/plugins/npm.svg", "type": "image" },
+  "id": "npm",
+  "minTier": "plus",
+  "name": "npm",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["npm", "paquet", "registre", "javascript", "jeton"],
+  "tools": [
+    {
+      "description": "Nom du compte npm relié par le jeton.",
+      "effect": "read",
+      "id": "npmWhoami",
+      "label": "Compte npm",
+      "systemHint": "Sert à confirmer quel compte est relié."
+    },
+    {
+      "description": "Fiche publique d'un paquet npm : version, licence, description.",
+      "effect": "read",
+      "id": "npmGetPackage",
+      "label": "Fiche d'un paquet",
+      "systemHint": "Le nom peut être scopé, par exemple @scope/nom."
+    },
+    {
+      "description": "Cherche des paquets npm par mot-clé.",
+      "effect": "read",
+      "id": "npmSearch",
+      "label": "Chercher un paquet",
+      "systemHint": "Proposez le nom exact avant d'en lire la fiche."
+    }
+  ],
+  "version": "1.0.0"
+}

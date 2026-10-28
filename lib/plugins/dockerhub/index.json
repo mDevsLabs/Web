@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Docker Hub par identifiant et jeton personnel : l'IA liste vos dépôts et leurs étiquettes. Dans l'Agent, avec votre accord, elle peut créer un dépôt privé.",
+  "icon": { "src": "/plugins/dockerhub.svg", "type": "image" },
+  "id": "dockerhub",
+  "minTier": "plus",
+  "name": "Docker Hub",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["docker", "images", "dépôts", "conteneurs", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les dépôts Docker Hub du compte connecté.",
+      "effect": "read",
+      "id": "dockerListRepos",
+      "label": "Dépôts Docker Hub",
+      "systemHint": "Le nom rendu sert à lister les étiquettes."
+    },
+    {
+      "description": "Liste les étiquettes d'un dépôt Docker Hub du compte.",
+      "effect": "read",
+      "id": "dockerListTags",
+      "label": "Étiquettes d'une image",
+      "systemHint": "Le dépôt est celui du compte connecté, pas une image publique devinée."
+    },
+    {
+      "description": "Crée un dépôt Docker Hub privé sur le compte connecté.",
+      "effect": "write",
+      "id": "dockerCreateRepo",
+      "label": "Créer un dépôt privé",
+      "systemHint": "Le dépôt est privé. Montrez le nom avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

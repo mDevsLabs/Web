@@ -400,8 +400,8 @@ export default function SkillsPanel({
                 </div>
                 {details.mcpServerNames.length > 0 ? (
                   <p className="text-[11px] text-muted-foreground">
-                    Ce skill exploite des serveurs MCP : connectez-les d'abord
-                    dans l'onglet MCP (Google Drive, Slack, Sentry…).
+                    Ce skill exploite des plugins : connectez-les d'abord dans
+                    l'onglet Plugins.
                   </p>
                 ) : null}
               </section>

@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  isWikipediaArticleUrl,
   normalizeWikiTitle,
   stripHtml,
   wikipediaArticleUrl,
@@ -40,5 +41,12 @@ describe("Wikipédia — URL canonique", () => {
     expect(wikipediaArticleUrl("Ada Lovelace", "en")).toBe(
       "https://en.wikipedia.org/wiki/Ada_Lovelace"
     );
+  });
+
+  it("reconnaît une page d'encyclopédie à son hôte", () => {
+    expect(
+      isWikipediaArticleUrl("https://fr.wikipedia.org/wiki/Ada_Lovelace")
+    ).toBe(true);
+    expect(isWikipediaArticleUrl("https://blog.exemple.fr/ada")).toBe(false);
   });
 });

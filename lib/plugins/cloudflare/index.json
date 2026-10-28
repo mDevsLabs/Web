@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Cloudflare par jeton d'API : l'IA liste vos zones et leurs enregistrements DNS. Le plugin ne modifie ni le DNS ni le cache.",
+  "icon": { "src": "/plugins/cloudflare.svg", "type": "image" },
+  "id": "cloudflare",
+  "minTier": "plus",
+  "name": "Cloudflare",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["cloudflare", "dns", "zones", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les zones Cloudflare visibles avec le jeton.",
+      "effect": "read",
+      "id": "cloudflareListZones",
+      "label": "Zones Cloudflare",
+      "systemHint": "L'identifiant de zone sert à lire les enregistrements DNS."
+    },
+    {
+      "description": "Liste les enregistrements DNS d'une zone Cloudflare.",
+      "effect": "read",
+      "id": "cloudflareListDnsRecords",
+      "label": "DNS Cloudflare",
+      "systemHint": "Ne proposez aucune modification : ce plugin est en lecture seule."
+    }
+  ],
+  "version": "1.0.0"
+}

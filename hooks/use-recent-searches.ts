@@ -59,9 +59,11 @@ export function useRecentSearches() {
     }
   }, []);
 
-  // Rechargement à la reprise de l'onglet : la recherche a pu être faite
-  // ailleurs.
+  // Chargement au montage, puis à la reprise de l'onglet : la recherche a
+  // pu être faite ailleurs. `visibilitychange` ne se déclenche pas à
+  // l'ouverture, donc le premier appel est explicite.
   useEffect(() => {
+    void refresh();
     const onVisible = () => {
       if (document.visibilityState === "visible") {
         void refresh();

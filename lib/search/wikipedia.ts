@@ -182,6 +182,22 @@ export function wikipediaArticleUrl(
 }
 
 /**
+ * Une URL est-elle un article d'encyclopédie ?
+ *
+ * Le moteur principal renvoie parfois la page Wikipédia sans en marquer
+ * l'origine. Sans cette reconnaissance, le badge et l'onglet restent vides
+ * alors que l'article est bien dans la liste : le clic n'a rien à montrer.
+ */
+export function isWikipediaArticleUrl(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    return host === "wikipedia.org" || host.endsWith(".wikipedia.org");
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Le titre est la clé de recherche : on retire les artefacts de saisie qui
  * feraient échouer l'API (`[[...]]`, espaces multiples, préfixe de catégorie).
  */

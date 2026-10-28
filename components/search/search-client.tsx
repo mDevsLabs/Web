@@ -32,11 +32,20 @@ import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { useRecentSearches } from "@/hooks/use-recent-searches";
+import { formatModelName } from "@/lib/ai/models";
 import { isSearchableQuery, looksLikeUrl } from "@/lib/search/query";
 import {
+  orderResults,
+  type ResultPeriod,
+  type ResultSort,
+} from "@/lib/search/result-order";
+import {
+  mergeStreamText,
   readSummaryStream,
   type SummarySource,
 } from "@/lib/search/summary-stream";
+import trendingSuggestions from "@/lib/search/trending-suggestions.json";
+import { isWikipediaArticleUrl } from "@/lib/search/wikipedia";
 import type {
   SearchImageHit,
   SearchNewsHit,
@@ -45,7 +54,95 @@ import type {
 } from "@/lib/search/you-client";
 import { cn } from "@/lib/utils";
 
-type SearchTab = "web" | "news" | "images" | "videos";
+type SearchTab = "web" | "news" | "images" | "videos" | "wikipedia";
+
+const TRENDING = trendingSuggestions.suggestions;
+
+function isWikipediaHit(hit: { origin?: string; url: string }): boolean {
+  return hit.origin === "wikipedia" || isWikipediaArticleUrl(hit.url);
+}
+
+function modelLabelFromResponse(response: Response): string | null {
+  const named = response.headers.get("X-Model-Name")?.trim();
+  if (named) {
+    return named;
+  }
+  const id = response.headers.get("X-Model-Id")?.trim();
+  return id ? formatModelName(id).name : null;
+}
+
+function TrendSuggestions({
+  layout,
+  onPick,
+  query,
+}: {
+  layout: "row" | "wrap";
+  onPick: (suggestion: string) => void;
+  query: string;
+}) {
+  const needle = query.trim().toLowerCase();
+  const visible = needle
+    ? TRENDING.filter((item) => item.toLowerCase().includes(needle))
+    : TRENDING;
+  if (visible.length === 0) {
+    return null;
+  }
+  return (
+    <div className={layout === "wrap" ? "mt-4 w-full max-w-3xl" : "w-full"}>
+      <p className="mb-2 px-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        Tendances
+      </p>
+      <div
+        className={
+          layout === "wrap"
+            ? "flex max-h-40 flex-wrap gap-1.5 overflow-y-auto"
+            : "flex gap-1.5 overflow-x-auto pb-1 no-scrollbar"
+        }
+      >
+        {visible.map((item) => (
+          <button
+            className="chip shrink-0 cursor-pointer px-3 py-1.5 text-xs"
+            key={item}
+            onClick={() => onPick(item)}
+            type="button"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AnswerReasoning({
+  streaming,
+  text,
+}: {
+  streaming: boolean;
+  text: string;
+}) {
+  const [open, setOpen] = useState(streaming);
+  useEffect(() => {
+    setOpen(streaming);
+  }, [streaming]);
+  if (!text) {
+    return null;
+  }
+  return (
+    <details
+      className="rounded-xl border border-border/50 bg-muted/30 px-3 py-2"
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+      open={open}
+    >
+      <summary className="cursor-pointer text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        Réflexion
+      </summary>
+      <p className="mt-2 whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">
+        {text}
+      </p>
+    </details>
+  );
+}
 
 type SummaryTarget = {
   url: string;
@@ -59,6 +156,7 @@ type DrawerMessage = {
   id: string;
   role: "user" | "assistant";
   content: string;
+  reasoning?: string;
   sources?: SummarySource[];
 };
 
@@ -229,13 +327,8 @@ export function SearchClient() {
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [activeTab, setActiveTab] = useState<SearchTab>("web");
-
-  /**
-   * Recherche approfondie : deux reformulations de la requête sont lancées
-   * côté serveur. C'est un choix explicite — il triple le nombre d'appels au
-   * moteur — et il se mémorise pour la recherche suivante.
-   */
-  const [deep, setDeep] = useState(false);
+  const [sort, setSort] = useState<ResultSort>("relevance");
+  const [period, setPeriod] = useState<ResultPeriod>("all");
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
@@ -271,6 +364,7 @@ export function SearchClient() {
 
   // Synthèse globale
   const [summary, setSummary] = useState("");
+  const [summaryReasoning, setSummaryReasoning] = useState("");
   const [summarySources, setSummarySources] = useState<SummarySource[]>([]);
   const [summaryModel, setSummaryModel] = useState<string | null>(null);
   const [summaryLength, setSummaryLength] = useState<
@@ -325,7 +419,6 @@ export function SearchClient() {
    * Lovelace » avait été trouvé dans Wikipédia. Ce filtre rend la source
    * visible — et permet de ne lire QUE la référence.
    */
-  const [sourceFilter, setSourceFilter] = useState<"all" | "wikipedia">("all");
   /**
    * Le moteur a-t-il remonté l'encyclopédie en tête de liste ?
    *
@@ -398,6 +491,7 @@ export function SearchClient() {
 
       setIsSummaryLoading(true);
       setSummary("");
+      setSummaryReasoning("");
       setSummarySources([]);
       setVote(null);
 
@@ -419,16 +513,25 @@ export function SearchClient() {
           throw new Error("Impossible de générer le résumé.");
         }
 
-        const modelHeader = response.headers.get("X-Model-Id");
-        if (modelHeader) setSummaryModel(modelHeader);
+        const modelLabel = modelLabelFromResponse(response);
+        if (modelLabel) {
+          setSummaryModel(modelLabel);
+        }
 
         let textAccumulator = "";
+        let reasoningAccumulator = "";
         let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
           if (event.type === "sources") {
             setSummarySources(event.sources);
+          } else if (event.type === "reasoning-delta") {
+            reasoningAccumulator = mergeStreamText(
+              reasoningAccumulator,
+              event.delta
+            );
+            setSummaryReasoning(reasoningAccumulator);
           } else if (event.type === "text-delta") {
-            textAccumulator += event.delta;
+            textAccumulator = mergeStreamText(textAccumulator, event.delta);
             setSummary(textAccumulator);
           } else if (event.type === "error") {
             streamError = event.message;
@@ -493,9 +596,22 @@ export function SearchClient() {
         }
 
         let textAccumulator = "";
+        let reasoningAccumulator = "";
         await readSummaryStream(response, (event) => {
-          if (event.type === "text-delta") {
-            textAccumulator += event.delta;
+          if (event.type === "reasoning-delta") {
+            reasoningAccumulator = mergeStreamText(
+              reasoningAccumulator,
+              event.delta
+            );
+            setTargetConversation((prev) => {
+              const msgs = [...prev.messages];
+              if (msgs.length > 0 && msgs[0].role === "assistant") {
+                msgs[0] = { ...msgs[0], reasoning: reasoningAccumulator };
+              }
+              return { ...prev, messages: msgs };
+            });
+          } else if (event.type === "text-delta") {
+            textAccumulator = mergeStreamText(textAccumulator, event.delta);
             setTargetConversation((prev) => {
               const msgs = [...prev.messages];
               if (msgs.length > 0 && msgs[0].role === "assistant") {
@@ -594,9 +710,26 @@ export function SearchClient() {
       }
 
       let accumulated = "";
+      let reasoningAccumulator = "";
       await readSummaryStream(response, (event) => {
-        if (event.type === "text-delta") {
-          accumulated += event.delta;
+        if (event.type === "reasoning-delta") {
+          reasoningAccumulator = mergeStreamText(
+            reasoningAccumulator,
+            event.delta
+          );
+          setTargetConversation((prev) => {
+            const msgs = [...prev.messages];
+            const lastIdx = msgs.length - 1;
+            if (lastIdx >= 0 && msgs[lastIdx].role === "assistant") {
+              msgs[lastIdx] = {
+                ...msgs[lastIdx],
+                reasoning: reasoningAccumulator,
+              };
+            }
+            return { ...prev, messages: msgs };
+          });
+        } else if (event.type === "text-delta") {
+          accumulated = mergeStreamText(accumulated, event.delta);
           setTargetConversation((prev) => {
             const msgs = [...prev.messages];
             const lastIdx = msgs.length - 1;
@@ -713,10 +846,10 @@ export function SearchClient() {
       setNews([]);
       setVideos([]);
       setSummary("");
+      setSummaryReasoning("");
       setSummaryModel(null);
       setVote(null);
       setDomainFilter(null);
-      setSourceFilter("all");
       setWikiFirst(false);
       setSearchError(null);
       setDurationMs(null);
@@ -738,7 +871,7 @@ export function SearchClient() {
         // « sources activées », et envoyer `count` contournerait le
         // plafond du forfait.
         const res = await fetch("/api/mai-search", {
-          body: JSON.stringify(deep ? { deep: true, query: q } : { query: q }),
+          body: JSON.stringify({ query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
           signal: controller.signal,
@@ -801,7 +934,7 @@ export function SearchClient() {
         }
       }
     },
-    [deep, fetchSummary, query, refreshRecent]
+    [fetchSummary, query, refreshRecent]
   );
 
   /**
@@ -953,32 +1086,52 @@ export function SearchClient() {
     router.push(`/?prompt=${encodeURIComponent(prefilled)}`);
   };
 
-  // Filtrage par domaine
-  const filteredResults = useMemo(() => {
-    let list = results;
-    if (sourceFilter === "wikipedia") {
-      list = list.filter((r) => r.origin === "wikipedia");
-    }
-    if (!domainFilter) return list;
-    return list.filter((r) => {
-      try {
-        return new URL(r.url).hostname.includes(domainFilter);
-      } catch {
-        return true;
-      }
-    });
-  }, [domainFilter, results, sourceFilter]);
-
-  /**
-   * Nombre d'articles d'encyclopédie dans les résultats.
-   *
-   * Le filtre par origine n'est proposé que s'il mènerait quelque part : un
-   * onglet « Wikipédia (0) » est un appel à échouer.
-   */
   const wikipediaCount = useMemo(
-    () => results.filter((r) => r.origin === "wikipedia").length,
+    () => results.filter((result) => isWikipediaHit(result)).length,
     [results]
   );
+
+  // Tri, période et domaine s'appliquent sur la liste déjà reçue.
+  // L'onglet Wikipédia ne relance pas le moteur : il isole les articles.
+  const filteredResults = useMemo(() => {
+    const scoped =
+      activeTab === "wikipedia"
+        ? results.filter((result) => isWikipediaHit(result))
+        : results;
+    const byDomain = domainFilter
+      ? scoped.filter((result) => {
+          try {
+            return new URL(result.url).hostname.includes(domainFilter);
+          } catch {
+            return true;
+          }
+        })
+      : scoped;
+    return orderResults(byDomain, sort, period);
+  }, [activeTab, domainFilter, period, results, sort]);
+
+  const orderedNews = useMemo(
+    () => orderResults(news, sort, period),
+    [news, period, sort]
+  );
+
+  const orderedImages = useMemo(() => {
+    if (sort !== "title") {
+      return images;
+    }
+    return [...images].sort((a, b) =>
+      a.title.localeCompare(b.title, "fr", { sensitivity: "base" })
+    );
+  }, [images, sort]);
+
+  const orderedVideos = useMemo(() => {
+    if (sort !== "title") {
+      return videos;
+    }
+    return [...videos].sort((a, b) =>
+      a.title.localeCompare(b.title, "fr", { sensitivity: "base" })
+    );
+  }, [sort, videos]);
 
   const hasSearched = Boolean(submittedQuery);
 
@@ -1054,6 +1207,17 @@ export function SearchClient() {
               </button>
             </div>
 
+            <div className="max-w-6xl mx-auto w-full pt-3">
+              <TrendSuggestions
+                layout="row"
+                onPick={(suggestion) => {
+                  setQuery(suggestion);
+                  void runSearch(suggestion);
+                }}
+                query={query}
+              />
+            </div>
+
             {/* Onglets et Tags de filtrage. L'état actif se porte sur
                 `data-active` (voir l'utilitaire `chip` de globals.css), jamais
                 sur une classe conditionnelle : les onglets et la pastille
@@ -1100,56 +1264,15 @@ export function SearchClient() {
                 <span>Vidéos ({videos.length})</span>
               </button>
 
-              {/*
-                Filtre par origine : l'encyclopédie est une source à part
-                entière, ses articles doivent donc être atteignables SANS
-                les relire un par un dans la liste. Le filtre n'est proposé
-                que s'il mènerait quelque part.
-              */}
-              {/*
-                Mode d'effort, distinct d'une source : il ne restreint rien,
-                il demande au serveur de creuser davantage. Il porte donc
-                `aria-pressed` et un état actif, comme un filtre.
-              */}
               <button
-                aria-pressed={deep}
                 className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
-                data-active={deep ? "true" : undefined}
-                onClick={() => setDeep((current) => !current)}
-                title={
-                  deep
-                    ? "Revenir à une recherche simple"
-                    : "Reformuler la requête deux fois pour trouver des pages de fond"
-                }
+                data-active={activeTab === "wikipedia" ? "true" : undefined}
+                onClick={() => setActiveTab("wikipedia")}
                 type="button"
               >
-                <SparklesIcon className="size-3.5" />
-                <span>Recherche approfondie</span>
+                <BookIcon className="size-3.5" />
+                <span>Wikipédia ({wikipediaCount})</span>
               </button>
-
-              {wikipediaCount > 0 ? (
-                <button
-                  aria-pressed={sourceFilter === "wikipedia"}
-                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
-                  data-active={
-                    sourceFilter === "wikipedia" ? "true" : undefined
-                  }
-                  onClick={() =>
-                    setSourceFilter((current) =>
-                      current === "wikipedia" ? "all" : "wikipedia"
-                    )
-                  }
-                  title={
-                    sourceFilter === "wikipedia"
-                      ? "Afficher tous les résultats"
-                      : "N'afficher que les articles de Wikipédia"
-                  }
-                  type="button"
-                >
-                  <BookIcon className="size-3.5" />
-                  <span>Wikipédia ({wikipediaCount})</span>{" "}
-                </button>
-              ) : null}
 
               {/*
                 Source interrogée. C'est une INFORMATION, pas un filtre : elle
@@ -1202,6 +1325,39 @@ export function SearchClient() {
                 </div>
               ) : null}
             </div>
+
+            <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-2 pt-2">
+              <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <span>Trier</span>
+                <select
+                  className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                  onChange={(event) =>
+                    setSort(event.target.value as ResultSort)
+                  }
+                  value={sort}
+                >
+                  <option value="relevance">Pertinence</option>
+                  <option value="date">Plus récent</option>
+                  <option value="title">Titre</option>
+                </select>
+              </label>
+              <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <span>Période</span>
+                <select
+                  className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                  onChange={(event) =>
+                    setPeriod(event.target.value as ResultPeriod)
+                  }
+                  value={period}
+                >
+                  <option value="all">Toutes les dates</option>
+                  <option value="day">24 heures</option>
+                  <option value="week">7 jours</option>
+                  <option value="month">30 jours</option>
+                  <option value="year">1 an</option>
+                </select>
+              </label>
+            </div>
           </header>
 
           {/* Corps des résultats */}
@@ -1241,156 +1397,168 @@ export function SearchClient() {
             ) : null}
 
             {/* ─── Onglet Tous (Web + Synthèse mAI) ─── */}
-            {activeTab === "web" && !isLoading ? (
+            {(activeTab === "web" || activeTab === "wikipedia") &&
+            !isLoading ? (
               <div className="flex flex-col gap-6">
                 {/* ─── Carte Résumé IA Global ─── */}
-                <motion.section
-                  animate={{ opacity: 1, y: 0 }}
-                  className="surface-card relative overflow-hidden border border-primary/25 bg-gradient-to-b from-primary/[0.04] to-card/60 p-5 sm:p-6 shadow-sm flex flex-col gap-4"
-                  initial={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="size-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20">
-                        <SparklesIcon className="size-3.5 animate-pulse" />
+                {activeTab === "web" ? (
+                  <motion.section
+                    animate={{ opacity: 1, y: 0 }}
+                    className="surface-card relative overflow-hidden border border-primary/25 bg-gradient-to-b from-primary/[0.04] to-card/60 p-5 sm:p-6 shadow-sm flex flex-col gap-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="size-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20">
+                          <SparklesIcon className="size-3.5 animate-pulse" />
+                        </div>
+                        <span className="text-sm font-semibold text-foreground">
+                          Synthèse mAI
+                        </span>
+                        {summaryModel ? (
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
+                            {summaryModel}
+                          </span>
+                        ) : null}
+                        {isSummaryLoading ? (
+                          <span className="text-[11px] text-muted-foreground animate-pulse">
+                            Génération en cours…
+                          </span>
+                        ) : null}
                       </div>
-                      <span className="text-sm font-semibold text-foreground">
-                        Synthèse mAI
-                      </span>
-                      {summaryModel ? (
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-mono font-medium">
-                          {summaryModel}
-                        </span>
-                      ) : null}
-                      {isSummaryLoading ? (
-                        <span className="text-[11px] text-muted-foreground animate-pulse">
-                          Génération en cours…
-                        </span>
-                      ) : null}
+
+                      <div className="flex items-center gap-1 text-xs">
+                        <button
+                          className={cn(
+                            "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
+                            summaryLength === "short"
+                              ? "bg-primary text-primary-foreground"
+                              : "text-muted-foreground hover:bg-muted/50"
+                          )}
+                          onClick={() => handleRefineSummary("short")}
+                          title="Résumé très concis"
+                          type="button"
+                        >
+                          Plus court
+                        </button>
+                        <button
+                          className={cn(
+                            "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
+                            summaryLength === "long"
+                              ? "bg-primary text-primary-foreground"
+                              : "text-muted-foreground hover:bg-muted/50"
+                          )}
+                          onClick={() => handleRefineSummary("long")}
+                          title="Synthèse détaillée"
+                          type="button"
+                        >
+                          Plus long
+                        </button>
+                        <button
+                          className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer"
+                          onClick={() => handleRefineSummary("normal")}
+                          title="Réessayer"
+                          type="button"
+                        >
+                          <RotateCcwIcon className="size-3.5" />
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-1 text-xs">
-                      <button
-                        className={cn(
-                          "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
-                          summaryLength === "short"
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted/50"
-                        )}
-                        onClick={() => handleRefineSummary("short")}
-                        title="Résumé très concis"
-                        type="button"
-                      >
-                        Plus court
-                      </button>
-                      <button
-                        className={cn(
-                          "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
-                          summaryLength === "long"
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted/50"
-                        )}
-                        onClick={() => handleRefineSummary("long")}
-                        title="Synthèse détaillée"
-                        type="button"
-                      >
-                        Plus long
-                      </button>
-                      <button
-                        className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer"
-                        onClick={() => handleRefineSummary("normal")}
-                        title="Réessayer"
-                        type="button"
-                      >
-                        <RotateCcwIcon className="size-3.5" />
-                      </button>
+                    {/* Contenu du résumé markdown */}
+                    <div className="text-sm leading-relaxed text-foreground/90 flex flex-col gap-3">
+                      <AnswerReasoning
+                        streaming={isSummaryLoading}
+                        text={summaryReasoning}
+                      />
+                      {summary ? (
+                        <div className="prose dark:prose-invert max-w-none text-sm">
+                          {summaryReasoning ? (
+                            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                              Réponse
+                            </p>
+                          ) : null}
+                          <Streamdown>{summary}</Streamdown>
+                          <SummarySources sources={summarySources} />
+                        </div>
+                      ) : isSummaryLoading ? (
+                        <div className="space-y-2 py-2">
+                          <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
+                          <div className="h-4 w-5/6 animate-pulse rounded bg-muted/50" />
+                          <div className="h-4 w-2/3 animate-pulse rounded bg-muted/50" />
+                        </div>
+                      ) : (
+                        <p className="text-xs text-muted-foreground italic">
+                          En attente des données de recherche…
+                        </p>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Contenu du résumé markdown */}
-                  <div className="text-sm leading-relaxed text-foreground/90">
-                    {summary ? (
-                      <div className="prose dark:prose-invert max-w-none text-sm">
-                        <Streamdown>{summary}</Streamdown>
-                        <SummarySources sources={summarySources} />
-                      </div>
-                    ) : isSummaryLoading ? (
-                      <div className="space-y-2 py-2">
-                        <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
-                        <div className="h-4 w-5/6 animate-pulse rounded bg-muted/50" />
-                        <div className="h-4 w-2/3 animate-pulse rounded bg-muted/50" />
-                      </div>
-                    ) : (
-                      <p className="text-xs text-muted-foreground italic">
-                        En attente des données de recherche…
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Actions sous le résumé */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/30 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] text-muted-foreground">
-                        Ce résumé vous a-t-il aidé ?
-                      </span>
-                      <button
-                        aria-label="Bien"
-                        className={cn(
-                          "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
-                          vote === "good"
-                            ? "bg-success/15 border-success/30 text-success"
-                            : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-                        )}
-                        onClick={() => void handleVote("good")}
-                        type="button"
-                      >
-                        <ThumbsUpIcon className="size-3" />
-                        <span>Bien</span>
-                      </button>
-                      <button
-                        aria-label="Pas bien"
-                        className={cn(
-                          "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
-                          vote === "bad"
-                            ? "bg-destructive/15 border-destructive/30 text-destructive"
-                            : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-                        )}
-                        onClick={() => void handleVote("bad")}
-                        type="button"
-                      >
-                        <ThumbsDownIcon className="size-3" />
-                        <span>Pas bien</span>
-                      </button>
-
-                      <button
-                        aria-label="Copier le résumé"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-border/60 text-[11px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors ml-1 cursor-pointer"
-                        onClick={handleCopySummary}
-                        type="button"
-                      >
-                        {hasCopiedSummary ? (
-                          <CheckIcon className="size-3 text-success" />
-                        ) : (
-                          <CopyIcon className="size-3" />
-                        )}
-                        <span>
-                          {hasCopiedSummary ? "Copié" : "Copier la synthèse"}
+                    {/* Actions sous le résumé */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/30 text-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] text-muted-foreground">
+                          Ce résumé vous a-t-il aidé ?
                         </span>
+                        <button
+                          aria-label="Bien"
+                          className={cn(
+                            "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
+                            vote === "good"
+                              ? "bg-success/15 border-success/30 text-success"
+                              : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                          )}
+                          onClick={() => void handleVote("good")}
+                          type="button"
+                        >
+                          <ThumbsUpIcon className="size-3" />
+                          <span>Bien</span>
+                        </button>
+                        <button
+                          aria-label="Pas bien"
+                          className={cn(
+                            "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
+                            vote === "bad"
+                              ? "bg-destructive/15 border-destructive/30 text-destructive"
+                              : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                          )}
+                          onClick={() => void handleVote("bad")}
+                          type="button"
+                        >
+                          <ThumbsDownIcon className="size-3" />
+                          <span>Pas bien</span>
+                        </button>
+
+                        <button
+                          aria-label="Copier le résumé"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-border/60 text-[11px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors ml-1 cursor-pointer"
+                          onClick={handleCopySummary}
+                          type="button"
+                        >
+                          {hasCopiedSummary ? (
+                            <CheckIcon className="size-3 text-success" />
+                          ) : (
+                            <CopyIcon className="size-3" />
+                          )}
+                          <span>
+                            {hasCopiedSummary ? "Copié" : "Copier la synthèse"}
+                          </span>
+                        </button>
+                      </div>
+
+                      <button
+                        className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer ml-auto"
+                        onClick={handleSendToChat}
+                        type="button"
+                      >
+                        <MessageCircleIcon className="size-3.5" />
+                        <span>Continuer dans le Chat mAI</span>
+                        <ArrowRightIcon className="size-3" />
                       </button>
                     </div>
-
-                    <button
-                      className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer ml-auto"
-                      onClick={handleSendToChat}
-                      type="button"
-                    >
-                      <MessageCircleIcon className="size-3.5" />
-                      <span>Continuer dans le Chat mAI</span>
-                      <ArrowRightIcon className="size-3" />
-                    </button>
-                  </div>
-                </motion.section>
+                  </motion.section>
+                ) : null}
 
                 {/* ─── Liste des résultats Web ─── */}
                 <div className="flex flex-col gap-4">
@@ -1400,7 +1568,7 @@ export function SearchClient() {
                     Wikipédia avant les pages web sans comprendre que c'était
                     un CHOIX — la requête était factuelle.
                   */}
-                  {wikiFirst && sourceFilter === "all" ? (
+                  {wikiFirst && activeTab === "web" ? (
                     <p className="flex items-center gap-1.5 px-1 text-[11px] text-muted-foreground">
                       <BookIcon className="size-3.5 shrink-0" />
                       <span>
@@ -1444,7 +1612,9 @@ export function SearchClient() {
 
                   {filteredResults.length === 0 ? (
                     <div className="surface-card p-8 text-center text-sm text-muted-foreground">
-                      Aucun résultat web trouvé pour « {submittedQuery} ».
+                      {activeTab === "wikipedia"
+                        ? `Aucun article Wikipédia pour « ${submittedQuery} ».`
+                        : `Aucun résultat web trouvé pour « ${submittedQuery} ».`}
                     </div>
                   ) : (
                     filteredResults.map((item, index) => {
@@ -1488,12 +1658,19 @@ export function SearchClient() {
                                 distinction : c'est une information sur la
                                 nature de la source, pas une validation.
                               */}
-                              {item.origin === "wikipedia" ? (
-                                <span className="chip text-[10px] py-0.5 px-2 bg-info/10 text-info font-medium shrink-0">
+                              {isWikipediaHit(item) ? (
+                                <button
+                                  className="chip shrink-0 cursor-pointer bg-info/10 px-2 py-0.5 text-[10px] font-medium text-info"
+                                  onClick={() => setActiveTab("wikipedia")}
+                                  type="button"
+                                >
                                   Wikipédia
-                                </span>
+                                </button>
                               ) : (
-                                <span className="chip text-[10px] py-0.5 px-2 bg-muted/60 text-muted-foreground shrink-0">
+                                <span
+                                  className="chip shrink-0 bg-muted/60 px-2 py-0.5 text-[10px] text-muted-foreground"
+                                  data-static="true"
+                                >
                                   Web
                                 </span>
                               )}
@@ -1504,7 +1681,8 @@ export function SearchClient() {
                               */}
                               {item.isDisambiguation ? (
                                 <span
-                                  className="chip text-[10px] py-0.5 px-2 bg-warning/10 text-warning font-medium shrink-0"
+                                  className="chip shrink-0 bg-warning/10 px-2 py-0.5 text-[10px] font-medium text-warning"
+                                  data-static="true"
                                   title="Cette page liste plusieurs sujets possibles. Choisissez le bon article dans Wikipédia."
                                 >
                                   Désambiguïsation
@@ -1575,17 +1753,18 @@ export function SearchClient() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
                   <span>
-                    {news.length} article{news.length > 1 ? "s" : ""}{" "}
-                    d'actualité trouvé{news.length > 1 ? "s" : ""}
+                    {orderedNews.length} article
+                    {orderedNews.length > 1 ? "s" : ""} d'actualité trouvé
+                    {orderedNews.length > 1 ? "s" : ""}
                   </span>
                 </div>
 
-                {news.length === 0 ? (
+                {orderedNews.length === 0 ? (
                   <div className="surface-card p-8 text-center text-sm text-muted-foreground">
                     Aucune actualité trouvée pour « {submittedQuery} ».
                   </div>
                 ) : (
-                  news.map((item, index) => {
+                  orderedNews.map((item, index) => {
                     let domain = item.source || "";
                     if (!domain) {
                       try {
@@ -1616,7 +1795,10 @@ export function SearchClient() {
                             <span className="font-semibold text-[11px] text-foreground/80 truncate">
                               {domain}
                             </span>
-                            <span className="chip text-[10px] py-0.5 px-2 bg-info/10 text-info font-medium shrink-0">
+                            <span
+                              className="chip shrink-0 bg-info/10 px-2 py-0.5 text-[10px] font-medium text-info"
+                              data-static="true"
+                            >
                               Actualité
                             </span>
                           </div>
@@ -1691,7 +1873,7 @@ export function SearchClient() {
                     Aucune image trouvée pour « {submittedQuery} ».
                   </p>
                 ) : (
-                  images.map((img, i) => {
+                  orderedImages.map((img, i) => {
                     let domain = "";
                     try {
                       domain = new URL(img.page_url || img.image_url).hostname;
@@ -1774,74 +1956,77 @@ export function SearchClient() {
                     Aucune vidéo trouvée pour « {submittedQuery} ».
                   </p>
                 ) : (
-                  videos.map((vid, i) => (
+                  orderedVideos.map((vid, i) => (
                     <div
-                      className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card/60 hover:border-foreground/30 transition-all hover:shadow-md cursor-pointer"
+                      className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card/60 hover:border-foreground/30 transition-all hover:shadow-md"
                       key={`${vid.page_url}-${i}`}
-                      onClick={() => setSelectedVideo(vid)}
                     >
-                      <div className="relative aspect-video w-full overflow-hidden bg-muted/40 flex items-center justify-center">
-                        <SearchSafeImage
-                          alt={vid.title}
-                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          fallback={
-                            <div className="flex size-full items-center justify-center bg-muted/40">
-                              <VideoIcon className="size-8 text-muted-foreground/60" />
-                            </div>
-                          }
-                          src={vid.thumbnail}
-                        />
+                      <button
+                        className="w-full cursor-pointer text-left"
+                        onClick={() => setSelectedVideo(vid)}
+                        type="button"
+                      >
+                        <div className="relative aspect-video w-full overflow-hidden bg-muted/40 flex items-center justify-center">
+                          <SearchSafeImage
+                            alt={vid.title}
+                            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            fallback={
+                              <div className="flex size-full items-center justify-center bg-muted/40">
+                                <VideoIcon className="size-8 text-muted-foreground/60" />
+                              </div>
+                            }
+                            src={vid.thumbnail}
+                          />
 
-                        {/* Bouton lecture central */}
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                          <div className="size-11 rounded-full bg-background/90 text-foreground flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                            <PlayIcon className="size-5 text-primary ml-0.5 fill-primary" />
+                          {/* Bouton lecture central */}
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div className="size-11 rounded-full bg-background/90 text-foreground flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                              <PlayIcon className="size-5 text-primary ml-0.5 fill-primary" />
+                            </div>
                           </div>
+
+                          {/* Tags Plateforme & Vidéo */}
+                          <span className="absolute top-2 left-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
+                            Vidéo
+                          </span>
+
+                          {vid.platform ? (
+                            <span className="absolute bottom-2 right-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
+                              {vid.platform}
+                            </span>
+                          ) : null}
                         </div>
 
-                        {/* Tags Plateforme & Vidéo */}
-                        <span className="absolute top-2 left-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
-                          Vidéo
-                        </span>
-
-                        {vid.platform ? (
-                          <span className="absolute bottom-2 right-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
-                            {vid.platform}
+                        <div className="p-3 flex flex-col gap-2">
+                          <span className="text-xs font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                            {vid.title}
                           </span>
-                        ) : null}
-                      </div>
 
-                      <div className="p-3 flex flex-col gap-2">
-                        <span className="text-xs font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                          {vid.title}
-                        </span>
-
-                        <div className="flex items-center justify-between pt-1 border-t border-border/30 text-[11px] text-muted-foreground">
-                          <span className="inline-flex items-center gap-1 text-primary font-medium">
+                          <span className="inline-flex items-center gap-1 border-t border-border/30 pt-1 text-[11px] font-medium text-primary">
                             <PlayIcon className="size-3 fill-primary" />
                             <span>Lire la vidéo</span>
                           </span>
-
-                          <button
-                            aria-label="Résumer la vidéo"
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              void handleRequestTargetSummary({
-                                snippet: vid.title,
-                                source: vid.platform || "Vidéo",
-                                title: vid.title,
-                                type: "video",
-                                url: vid.page_url,
-                              });
-                            }}
-                            title="Résumer la vidéo avec mAI"
-                            type="button"
-                          >
-                            <SparklesIcon className="size-3" />
-                            <span>Résumer</span>
-                          </button>
                         </div>
+                      </button>
+                      <div className="flex justify-end px-3 pb-3">
+                        <button
+                          aria-label="Résumer la vidéo"
+                          className="inline-flex cursor-pointer items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary transition-colors hover:bg-primary/20"
+                          onClick={() => {
+                            void handleRequestTargetSummary({
+                              snippet: vid.title,
+                              source: vid.platform || "Vidéo",
+                              title: vid.title,
+                              type: "video",
+                              url: vid.page_url,
+                            });
+                          }}
+                          title="Résumer la vidéo avec mAI"
+                          type="button"
+                        >
+                          <SparklesIcon className="size-3" />
+                          <span>Résumer</span>
+                        </button>
                       </div>
                     </div>
                   ))
@@ -1914,6 +2099,15 @@ export function SearchClient() {
               </button>
             </div>
           </motion.div>
+
+          <TrendSuggestions
+            layout="wrap"
+            onPick={(suggestion) => {
+              setQuery(suggestion);
+              void runSearch(suggestion);
+            }}
+            query={query}
+          />
 
           {/* ─── Raccourci d'adresse ─── */}
           {looksLikeUrl(query) ? (
@@ -2407,12 +2601,29 @@ export function SearchClient() {
                               )}
                             >
                               {isAssistant ? (
-                                msg.content ? (
-                                  <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
-                                    <Streamdown>{msg.content}</Streamdown>
-                                    <SummarySources
-                                      sources={msg.sources ?? []}
+                                msg.content || msg.reasoning ? (
+                                  <div className="flex flex-col gap-2">
+                                    <AnswerReasoning
+                                      streaming={
+                                        targetConversation.isLoading &&
+                                        index ===
+                                          targetConversation.messages.length - 1
+                                      }
+                                      text={msg.reasoning ?? ""}
                                     />
+                                    {msg.content ? (
+                                      <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
+                                        {msg.reasoning ? (
+                                          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                            Réponse
+                                          </p>
+                                        ) : null}
+                                        <Streamdown>{msg.content}</Streamdown>
+                                        <SummarySources
+                                          sources={msg.sources ?? []}
+                                        />
+                                      </div>
+                                    ) : null}
                                   </div>
                                 ) : (
                                   <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">

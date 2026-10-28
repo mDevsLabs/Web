@@ -6,9 +6,11 @@ Un **connecteur** relie le compte mAI d'un utilisateur à un service externe
 modifie **les données du compte de l'utilisateur**, avec son jeton, après son
 consentement.
 
-Cinq connecteurs existent : **Google** (Drive + Agenda + Gmail, une seule
-connexion), **GitHub**, **Discord**, **Notion** et **Vercel**. Le registre est
-conçu pour s'étendre : ajouter Slack, Google Docs ou Sheets ne demande ni de
+Quatre connecteurs passent par OAuth : **Google** (Drive + Agenda + Gmail, une
+seule connexion), **GitHub**, **Discord** et **Notion**. Les autres collent un
+**jeton personnel** (Vercel, et les services du même mode dans
+`lib/integrations/token-catalog.ts`). Le registre est
+conçu pour s'étendre : ajouter un fournisseur ne demande ni de
 toucher au moteur, ni de
 retoucher les mentions `@`, ni de retoucher le rendu.
 
@@ -189,7 +191,7 @@ switch.
   Le nom affiché vient du manifeste du plugin : `Google · Rechercher dans mes
   fichiers`, plus lisible que `searchDriveFiles`.
 - Rendu : les marques multicolores sont des `<img>` **nus** ; le `dark:invert`
-  utilisé pour `public/mcp/` est proscrit ici, il détruirait les couleurs. Les
+  des logos monochromes servis en image est proscrit ici, il détruirait les couleurs. Les
   marques monochromes (GitHub, et demain Notion, Discord) passent par un
   **masque CSS + `currentColor`** (`.integration-logo`, `app/globals.css`), donc
   elles suivent le thème sans variante `dark:` — et restent utilisables telles
@@ -283,6 +285,22 @@ chiffré. Aucune variable d'environnement n'est requise. Le plugin est en
 souvent les droits du compte entier, et un redéploiement déclenché par erreur
 ne se rattrape pas.
 
+Les connecteurs Brave Search, Mapbox, ExchangeRate-API, SonarCloud, npm,
+Docker Hub, Brevo, Twilio, Asana, Jira, Upstash, Neon, Supabase, Zapier et
+Make suivent le même coffre. Cinq d'entre eux demandent un renseignement en
+plus du secret, validé avant chiffrement : Docker Hub (identifiant), Twilio
+(Account SID), Jira (e-mail et site `*.atlassian.net`), Upstash (URL REST) et
+Make (zone `eu1`, `eu2`, `us1` ou `us2`). Les écritures — e-mail, SMS, ticket,
+clé Redis, branche, dépôt privé, commentaire, exécution d'un scénario — ne
+sont proposées que dans l'Agent, après approbation. Brave, Mapbox,
+ExchangeRate-API, npm, Supabase (API de gestion) et Zapier restent en lecture :
+leur surface d'écriture publie, facture, ou n'existe pas sous forme de jeton
+stable. Zapier n'a pas de jeton permanent : le jeton d'accès collé expire au
+bout d'environ dix heures.
+
+Aucune de ces clés ne se lit dans l'environnement. Le logo de chacun est
+`public/plugins/<id>.svg`.
+
 ### Variables
 
 ```
@@ -295,8 +313,8 @@ NOTION_CLIENT_ID, NOTION_CLIENT_SECRET
 MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
 ```
 
-Vercel ne figure pas dans cette liste : il se connecte par jeton personnel, et
-le jeton est stocké chiffré par le coffre, pas lu dans l'environnement.
+Vercel et les connecteurs à jeton du catalogue ne figurent pas dans cette
+liste : le jeton est stocké chiffré par le coffre, pas lu dans l'environnement.
 
 Les URI de rappel à enregistrer chez les fournisseurs, une par environnement :
 

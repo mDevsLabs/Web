@@ -6,6 +6,7 @@ import { getPluginByToolId } from "@/lib/plugins/catalog";
 import { cn } from "@/lib/utils";
 import {
   getIntegrationByPluginId,
+  getIntegrationProvider,
   type IntegrationDescriptor,
 } from "./providers";
 
@@ -30,6 +31,10 @@ import {
 export const INTEGRATION_LOGO_BASE = "/plugins";
 
 export function integrationLogoSrc(providerId: string): string {
+  const logoPath = getIntegrationProvider(providerId)?.logoPath;
+  if (logoPath?.startsWith("/")) {
+    return logoPath;
+  }
   return `${INTEGRATION_LOGO_BASE}/${providerId}.svg`;
 }
 
