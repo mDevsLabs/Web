@@ -1,4 +1,11 @@
 import type { Hono } from "npm:hono@4";
+import { clientIp, rateLimitShared } from "./config.ts";
+import {
+  clampWebSearchCount,
+  normalizeWebSearchQuery,
+  WEB_SEARCH_MAX_PROVIDER_ATTEMPTS,
+  webSearchBudget,
+} from "./web-search-limits.ts";
 
 export interface YouSearchHit {
   description?: string;
@@ -69,6 +76,8 @@ async function fallbackWebSearch(
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
       },
+      // Une source lente ne doit pas retenir la requête ni les suivantes.
+      signal: AbortSignal.timeout(5000),
     });
 
     if (res.ok) {
@@ -124,6 +133,7 @@ async function fallbackWebSearch(
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
+      signal: AbortSignal.timeout(5000),
     });
 
     if (res.ok) {
@@ -171,6 +181,7 @@ async function fallbackWebSearch(
         "User-Agent":
           "mAI-WebSearch-Agent/1.0 (https://m-ai.fr; contact@m-ai.fr)",
       },
+      signal: AbortSignal.timeout(5000),
     });
     if (res.ok) {
       const data = await res.json();
@@ -197,30 +208,65 @@ async function fallbackWebSearch(
 
 /**
  * Exécute une recherche Web via l'API You.com avec triple fallback automatique et fallback multi-sources.
+ *
+ * La concurrence est bornée par isolate : un pic d'appels anonymes ne peut pas
+ * ouvrir un nombre illimité de requêtes fournisseur simultanées.
  */
-export async function executeWebSearch(
-  query: string,
-  count = 5
-): Promise<{
+type WebSearchResult = {
   success: boolean;
   query: string;
   results: Array<{ title: string; url: string; snippet: string }>;
   provider: string;
   error?: string;
-}> {
-  const trimmedQuery = (query || "").trim();
+};
+
+const MAX_CONCURRENT_WEB_SEARCHES = 6;
+let inFlightWebSearches = 0;
+
+export async function executeWebSearch(
+  query: string,
+  count = 5
+): Promise<WebSearchResult> {
+  const trimmedQuery = normalizeWebSearchQuery(query);
   if (!trimmedQuery) {
     return {
-      error: "La requête de recherche est vide.",
+      error:
+        typeof query === "string" && query.trim().length > 500
+          ? "La requête de recherche dépasse 500 caractères."
+          : "La requête de recherche est vide.",
       provider: "you.com",
-      query: "",
+      query: typeof query === "string" ? query.slice(0, 500) : "",
       results: [],
       success: false,
     };
   }
 
+  if (inFlightWebSearches >= MAX_CONCURRENT_WEB_SEARCHES) {
+    return {
+      error:
+        "Trop de recherches simultanées. Réessayez dans quelques instants.",
+      provider: "you.com",
+      query: trimmedQuery,
+      results: [],
+      success: false,
+    };
+  }
+
+  inFlightWebSearches += 1;
+  try {
+    return await runWebSearch(trimmedQuery, clampWebSearchCount(count));
+  } finally {
+    inFlightWebSearches -= 1;
+  }
+}
+
+async function runWebSearch(
+  trimmedQuery: string,
+  count: number
+): Promise<WebSearchResult> {
   const keys = getYouApiKeys();
   let lastError: any = null;
+  let providerAttempts = 0;
 
   // 1. Tentative avec les clés You.com (POST https://ydc-index.io/v1/search conforme à l'API You.com)
   if (keys.length > 0) {
@@ -232,6 +278,12 @@ export async function executeWebSearch(
 
     for (const key of keys) {
       for (const endpointUrl of endpoints) {
+        // Un appel ne peut pas multiplier indéfiniment les tentatives
+        // fournisseur (clés × points d'entrée) : quatre au maximum.
+        if (providerAttempts >= WEB_SEARCH_MAX_PROVIDER_ATTEMPTS) {
+          break;
+        }
+        providerAttempts += 1;
         try {
           const res = await fetch(endpointUrl, {
             body: JSON.stringify({
@@ -245,6 +297,7 @@ export async function executeWebSearch(
               "X-API-Key": key,
             },
             method: "POST",
+            signal: AbortSignal.timeout(6000),
           });
 
           if (res.ok) {
@@ -391,15 +444,66 @@ export function isWebSearchEnabled(body: any, reqHeaders?: Headers): boolean {
  * Enregistrement des routes de recherche Web dans Hono.
  */
 export function registerWebRoutes(app: Hono) {
+  // La route est publique (catalogue `requiresAuth: false`), mais une requête
+  // anonyme ne doit jamais engager sans borne les clés You.com de la
+  // plateforme : budget partagé par IP ou par compte, taille de requête et
+  // nombre de résultats bornés. Le CORS ne protège rien ici (appel direct
+  // possible), la décision est prise dans le handler.
+  async function enforceSearchBudget(c: any): Promise<{
+    allowed: boolean;
+    retryAfterSec: number;
+  }> {
+    const userId = (c as any).get?.("userId") as string | null;
+    const budget = webSearchBudget({ ip: clientIp(c), userId });
+    const allowed = await rateLimitShared(
+      budget.key,
+      budget.limit,
+      budget.windowMs
+    );
+    return {
+      allowed,
+      retryAfterSec: Math.ceil(budget.windowMs / 1000),
+    };
+  }
+
+  function bodyTooLarge(c: any): boolean {
+    const length = Number(c.req.header("content-length") || 0);
+    return Number.isFinite(length) && length > 16_384;
+  }
+
+  function rateLimitResponse(c: any, retryAfterSec: number) {
+    c.header("Retry-After", String(retryAfterSec));
+    return c.json(
+      {
+        error: `Trop de recherches. Réessayez dans ${retryAfterSec} secondes.`,
+      },
+      429
+    );
+  }
+
   // POST /v1/web/search
   app.post("/v1/web/search", async (c) => {
     try {
-      const body = await c.req.json().catch(() => ({}));
-      const query = body.query || body.q;
-      const count = typeof body.count === "number" ? body.count : 5;
+      if (bodyTooLarge(c)) {
+        return c.json({ error: "Corps de requête trop volumineux." }, 413);
+      }
+      const budget = await enforceSearchBudget(c);
+      if (!budget.allowed) {
+        return rateLimitResponse(c, budget.retryAfterSec);
+      }
 
-      if (!query || typeof query !== "string") {
-        return c.json({ error: "Le paramètre 'query' est obligatoire." }, 400);
+      const body = await c.req.json().catch(() => ({}));
+      const query = normalizeWebSearchQuery(body.query || body.q);
+      const count = clampWebSearchCount(body.count);
+
+      if (!query) {
+        return c.json(
+          {
+            error:
+              "Le paramètre 'query' est obligatoire et limité à 500 caractères.",
+          },
+          400
+        );
       }
 
       const searchResult = await executeWebSearch(query, count);
@@ -418,18 +522,27 @@ export function registerWebRoutes(app: Hono) {
   // GET /v1/web/search
   app.get("/v1/web/search", async (c) => {
     try {
-      const query = c.req.query("q") || c.req.query("query");
-      const countParam = c.req.query("count");
-      const count = countParam ? Number.parseInt(countParam, 10) : 5;
-
-      if (!query) {
-        return c.json({ error: "Paramètre 'q' ou 'query' manquant." }, 400);
+      const budget = await enforceSearchBudget(c);
+      if (!budget.allowed) {
+        return rateLimitResponse(c, budget.retryAfterSec);
       }
 
-      const searchResult = await executeWebSearch(
-        query,
-        Number.isNaN(count) ? 5 : count
+      const query = normalizeWebSearchQuery(
+        c.req.query("q") || c.req.query("query")
       );
+      const count = clampWebSearchCount(c.req.query("count"));
+
+      if (!query) {
+        return c.json(
+          {
+            error:
+              "Paramètre 'q' ou 'query' manquant, ou supérieur à 500 caractères.",
+          },
+          400
+        );
+      }
+
+      const searchResult = await executeWebSearch(query, count);
       return c.json(searchResult, 200);
     } catch (err: any) {
       return c.json(

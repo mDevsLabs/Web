@@ -53,6 +53,14 @@ describe("Résolution des heures locales ambiguës ou inexistantes (DST)", () =>
     expect(
       resolveLocalInstant("Europe/Paris", 2026, 7, 15, 9, 0).at.toISOString()
     ).toBe("2026-07-15T07:00:00.000Z");
+    // Heure ordinaire : UN seul instant compatible, pas deux.
+    expect(
+      resolveLocalInstant("Europe/Paris", 2026, 1, 15, 9, 0).resolution
+    ).toEqual({
+      adjustedHour: null,
+      ambiguity: null,
+      candidateCount: 1,
+    });
   });
 
   it("projette une heure murale ordinaire sur l'instant UTC exact — New York", () => {
@@ -89,13 +97,22 @@ describe("Résolution des heures locales ambiguës ou inexistantes (DST)", () =>
     expect(r.at.toISOString()).toBe("2026-03-29T01:30:00.000Z"); // = 03:30+02:00
   });
 
-  it("détecte l'heure répétée du retour à l'heure d'hiver", () => {
+  it("détecte l'heure répétée du retour à l'heure d'hiver et choisit la seconde", () => {
     // Fin de l'heure d'été Paris : 26 oct. 2026, 03:00 → 02:00 (UTC+2→+1).
-    // 02:30 existe DEUX fois : le moteur signale l'ambiguïté.
+    // 02:30 existe DEUX fois : le moteur signale l'ambiguïté et choisit
+    // l'instant le plus tardif (UTC+1).
     const r = resolveLocalInstant("Europe/Paris", 2026, 10, 25, 2, 30);
-    expect([r.resolution.ambiguity, r.resolution.candidateCount]).toContain(
-      "duplicate"
-    );
+    expect(r.resolution.ambiguity).toBe("duplicate");
+    expect(r.resolution.candidateCount).toBe(2);
+    expect(r.at.toISOString()).toBe("2026-10-25T01:30:00.000Z");
+  });
+
+  it("ne marque PAS toute la journée du retour à l'heure d'hiver comme ambiguë", () => {
+    // 09:30 le 25 octobre n'existe qu'une fois (UTC+1, après la transition).
+    const r = resolveLocalInstant("Europe/Paris", 2026, 10, 25, 9, 30);
+    expect(r.resolution.ambiguity).toBeNull();
+    expect(r.resolution.candidateCount).toBe(1);
+    expect(r.at.toISOString()).toBe("2026-10-25T08:30:00.000Z");
   });
 
   it("reste déterministe sur le pompage inter-fuseaux", () => {
@@ -163,6 +180,16 @@ describe("Récurrence quotidienne calendaire (pas de +24 h brut)", () => {
       new Date("2026-06-15T12:30:00.000Z") // 14:30 Europe/Paris
     );
     expect(next?.toISOString()).toBe("2026-06-16T12:30:00.000Z");
+  });
+
+  it("le chemin daily corrige aussi une heure de gap (02:30 → 03:30)", () => {
+    const schedule = mkSchedule({ hour: 2, minute: 30, recurrence: "daily" });
+    const next = computeNextOccurrence(
+      schedule,
+      new Date("2026-03-28T01:30:00.000Z") // 28 mars 02:30 Paris (UTC+1)
+    );
+    // Le 29 mars 02:30 n'existe pas : 03:30 locales = 01:30Z (UTC+2).
+    expect(next?.toISOString()).toBe("2026-03-29T01:30:00.000Z");
   });
 });
 

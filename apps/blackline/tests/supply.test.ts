@@ -16,7 +16,7 @@ import { TouchInput } from '../src/input.ts';
 import { createWeapon } from '../src/world.ts';
 import { shopMarkup } from '../src/ui/pages/shop.ts';
 import { guideMarkup } from '../src/ui/pages/guide.ts';
-import { experienceSettings } from '../src/ui/experience-settings.ts';
+import { normalizeSettings } from '../src/settings-normalize.ts';
 import { bounded,loadingProgress } from '../src/preload.ts';
 import { Effects } from '../src/effects.ts';
 import { UI } from '../src/ui.ts';
@@ -32,7 +32,7 @@ test('les achats inconnus, doublons et équipements non possédés sont filtrés
  const profile=normalizeProfile({xp:0,weapon:'lmg',collection:{purchases:['bad','shot-ion','shot-ion','weapon-lmg'],shot:'violet',kill:'pulse'}});assert.deepEqual(profile.collection?.purchases,['shot-ion']);assert.equal(wallet(profile),100);assert.equal(profile.collection?.shot,'standard');assert.equal(profile.weapon,'ar');assert.equal(equipItem(profile,'weapon-lmg'),false);
 });
 test('la boutique expose tous ses articles et le guide respecte les touches personnalisées',()=>{
- const profile=normalizeProfile({});assert.equal((shopMarkup(profile).match(/data-buy=/g)??[]).length,SHOP_ITEMS.length);assert.equal((shopMarkup(profile,'weapons').match(/data-buy=/g)??[]).length,4);assert.equal((guideMarkup(profile,DEFAULT_SETTINGS,true).match(/data-guide-step=/g)??[]).length,8);assert.ok(guideMarkup(profile,DEFAULT_SETTINGS,true).includes('paysage'));assert.ok(experienceSettings(DEFAULT_SETTINGS,true).includes('id="mobileAutoFire"'));assert.ok(experienceSettings(DEFAULT_SETTINGS,false).includes('id="toggleAim"'));
+ const profile=normalizeProfile({});assert.equal((shopMarkup(profile).match(/data-buy=/g)??[]).length,SHOP_ITEMS.length);assert.equal((shopMarkup(profile,'weapons').match(/data-buy=/g)??[]).length,4);assert.equal((guideMarkup(profile,DEFAULT_SETTINGS,true).match(/data-guide-step=/g)??[]).length,8);assert.ok(guideMarkup(profile,DEFAULT_SETTINGS,true).includes('paysage'));const mobileSettings=normalizeSettings(DEFAULT_SETTINGS,true);assert.equal(mobileSettings.mobileAutoFire,true);assert.equal(mobileSettings.toggleAim,false);assert.equal(normalizeSettings({...DEFAULT_SETTINGS,toggleAim:true},false).toggleAim,true);
 });
 test('un ennemi sous le réticule déclenche le tir mobile, mais un mur, un allié ou le réglage désactivé le bloquent',()=>{
  const fixture=combatFixture(),{game,player,map}=fixture,enemy=createActor(1,'E',1,WEAPONS[0]);enemy.z=-8;enemy.protectedTime=0;game.actors.push(enemy);player.fireTime=0;game.updatePlayer(1/60);assert.equal(fixture.fired,1);

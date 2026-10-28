@@ -60,46 +60,54 @@ export type SafeFetchOptions = {
   method?: "GET" | "POST";
   body?: string | Uint8Array;
   /**
-   * Origines autorisées à recevoir l'en-tête `Authorization`. Toute autre
-   * destination (y compris après une redirection) le voit retiré : un jeton de
-   * session ne peut pas être exfiltré par un `Location:` contrôlé par un tiers.
+   * Origines autorisées à recevoir les en-têtes sensibles (`Authorization` et
+   * ceux listés dans `sensitiveHeaders`). Toute autre destination (y compris
+   * après une redirection) les voit retirés : un jeton ou une clé API ne peut
+   * pas être exfiltré par un `Location:` contrôlé par un tiers.
    */
   tokenOriginAllowlist?: readonly string[];
+  /**
+   * Noms d'en-têtes porteurs de secrets (comparaison insensible à la casse),
+   * par exemple `X-API-Key` d'un serveur MCP ou un en-tête `custom_headers`.
+   * Ils ne quittent jamais l'origine autorisée.
+   */
+  sensitiveHeaders?: readonly string[];
 };
 
 /**
- * En-têtes réellement envoyés à un saut donné. `Authorization` est retiré dès
- * que l'origine n'est pas dans la liste blanche — le contrôle est refait à
- * CHAQUE saut, car une redirection peut changer d'origine.
+ * En-têtes réellement envoyés à un saut donné. `Authorization` et les en-têtes
+ * déclarés sensibles sont retirés dès que l'origine n'est pas dans la liste
+ * blanche — le contrôle est refait à CHAQUE saut, car une redirection peut
+ * changer d'origine.
  */
 export function headersForHop(
   headers: Record<string, string>,
   url: string,
-  allowlist: readonly string[] | undefined
+  allowlist: readonly string[] | undefined,
+  sensitiveHeaders: readonly string[] = []
 ): Record<string, string> {
-  const hasAuth = Object.keys(headers).some(
-    (name) => name.toLowerCase() === "authorization"
+  const sensitive = new Set(sensitiveHeaders.map((name) => name.toLowerCase()));
+  sensitive.add("authorization");
+  const carriesSecret = Object.keys(headers).some((name) =>
+    sensitive.has(name.toLowerCase())
   );
-  if (!hasAuth) {
+  if (!carriesSecret) {
     return headers;
   }
-  if (allowlist === undefined) {
-    // Aucun jeton fourni par un appelant qui ne déclare pas de liste blanche :
-    // l'en-tête est retiré. Par défaut on ne fait pas confiance.
-    return withoutAuthorization(headers);
-  }
-  if (isTokenOriginAllowed(url, allowlist)) {
+  if (allowlist !== undefined && isTokenOriginAllowed(url, allowlist)) {
     return headers;
   }
-  return withoutAuthorization(headers);
+  // Aucune liste blanche déclarée ou origine étrangère : aucun secret.
+  return withoutSensitiveHeaders(headers, sensitive);
 }
 
-function withoutAuthorization(
-  headers: Record<string, string>
+function withoutSensitiveHeaders(
+  headers: Record<string, string>,
+  sensitive: ReadonlySet<string>
 ): Record<string, string> {
   const out: Record<string, string> = {};
   for (const [name, value] of Object.entries(headers)) {
-    if (name.toLowerCase() !== "authorization") {
+    if (!sensitive.has(name.toLowerCase())) {
       out[name] = value;
     }
   }
@@ -286,7 +294,8 @@ async function fetchCapped(
         headers: headersForHop(
           headers,
           url.toString(),
-          options.tokenOriginAllowlist
+          options.tokenOriginAllowlist,
+          options.sensitiveHeaders
         ),
         method: options.method,
         signal: options.signal,

@@ -483,6 +483,24 @@ export async function deleteAllNotifications(userId: string) {
   return { success: true };
 }
 
+/**
+ * Supprime TOUTES les notifications lues du compte, sans borne silencieuse.
+ *
+ * L'ancienne route chargeait les 50 plus récentes puis filtrait `isRead` en
+ * mémoire : avec 50 non-lues récentes et 10 lues plus anciennes, elle
+ * répondait `deleted: 0` et ne les atteignait jamais. Le filtre est ici en SQL
+ * et `RETURNING` fournit le compte réel des lignes supprimées.
+ */
+export async function deleteReadNotifications(userId: string) {
+  const db = await dbReady();
+  const { notification } = await import("../schema");
+  const deleted = await db
+    .delete(notification)
+    .where(and(eq(notification.userId, userId), eq(notification.isRead, true)))
+    .returning({ id: notification.id });
+  return { deleted: deleted.length };
+}
+
 export async function broadcastNewsNotification(data: {
   title: string;
   body?: string | null;

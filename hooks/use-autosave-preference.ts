@@ -58,7 +58,7 @@ export function useAutosavePreference<P = Record<string, unknown>>(
       payload: P,
       rollback: () => void | Promise<void>,
       override: AutosaveOverride<P> = {}
-    ) => {
+    ): Promise<boolean> => {
       const options = { ...defaults, ...override };
       try {
         if (options.write) {
@@ -90,6 +90,7 @@ export function useAutosavePreference<P = Record<string, unknown>>(
           duration: options.duration ?? 5000,
           position: "top-right",
         });
+        return true;
       } catch (erreur) {
         toast.error(
           erreur instanceof Error
@@ -97,6 +98,7 @@ export function useAutosavePreference<P = Record<string, unknown>>(
             : (options.errorMessage ??
                 "Erreur lors de l'enregistrement des paramètres.")
         );
+        return false;
       }
     },
     [defaults]

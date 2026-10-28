@@ -35,6 +35,7 @@ import { HomeModeSwitcher } from "./home-mode-switcher";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
+import { SecureChatGate } from "./secure-chat-gate";
 
 export function ChatShell() {
   const pathname = usePathname();
@@ -65,11 +66,15 @@ export function ChatShell() {
     input,
     setInput,
     visibilityType,
+    isLocked,
+    isOwner,
     isReadonly,
+    isSecure,
     isLoading,
     votes,
     currentModelId,
     setCurrentModelId,
+    refreshChat,
     showCreditCardAlert,
     setShowCreditCardAlert,
   } = useActiveChat();
@@ -155,6 +160,18 @@ export function ChatShell() {
     return null;
   }
 
+  // La gate passe AVANT la branche Agent : une conversation sécurisée ne doit
+  // jamais monter AgentShell (ni son compositeur) sans PIN.
+  if (isLocked) {
+    return (
+      <SecureChatGate
+        chatId={chatId}
+        isOwner={isOwner}
+        onUnlocked={refreshChat}
+      />
+    );
+  }
+
   // Tier « connu » : au moins un canal (flags ou settings) a répondu. Tant que
   // rien n'est chargé — ou que tout a échoué — on ne verrouille PAS côté
   // client : la garde serveur (plan_required) fait foi à l'envoi.
@@ -227,6 +244,7 @@ export function ChatShell() {
           <ChatHeader
             chatId={chatId}
             isReadonly={isReadonly}
+            isSecure={isSecure}
             selectedVisibilityType={visibilityType}
           />
 

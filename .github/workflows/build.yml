@@ -157,6 +157,11 @@ jobs:
       # `scripts/build-blackline.mjs`, qui exige ces dépendances.
       - name: Installer les dépendances de Blackline
         run: npm ci --prefix apps/blackline
+      # Les tests Blackline importaient des modules supprimés (settings.ts,
+      # experience-settings.ts) : ils échouaient à la résolution. Ils sont
+      # désormais alignés sur les interfaces actuelles et exécutés ici.
+      - name: Tester Blackline
+        run: npm --prefix apps/blackline test
       - name: Récupérer l'environnement Vercel
         run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
       - name: Afficher l'empreinte de la base migrée

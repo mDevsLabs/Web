@@ -1,6 +1,7 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import { getStreamContext } from "@/lib/chat/stream-context";
 import { getChatById, getStreamIdsByChatId } from "@/lib/db/queries";
 
@@ -30,6 +31,11 @@ export async function GET(
     })
   ) {
     return errorResponse("access_denied");
+  }
+  if (!(await isChatUnlockedForUser({ chatId, userId: maiUser.id }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   let streamIds: string[];

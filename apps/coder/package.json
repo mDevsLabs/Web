@@ -198,5 +198,10 @@
     "ssh2-sftp-client": "^11.0.0",
     "vscode-jsonrpc": "^8.2.1",
     "ws": "^8.18.2"
+  },
+  "pnpm": {
+    "ignoredOptionalDependencies": [
+      "cpu-features"
+    ]
   }
 }

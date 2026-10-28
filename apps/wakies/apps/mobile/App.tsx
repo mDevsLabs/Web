@@ -4,7 +4,6 @@ import {
   Bell,
   Check,
   Lightbulb,
-  type React.ComponentType<any>,
   Menu,
   MessageCircle,
   PanelsTopLeft,
@@ -12,7 +11,7 @@ import {
   SquareCheck,
   X,
 } from "lucide-react-native";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { type ComponentType, useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   AppState,
@@ -42,7 +41,7 @@ import { ThreadsProvider, ThreadsSheet, useMuseThread } from "./src/threads";
 import { Button, Card, colors, ErrorNotice, Field, IconButton, Mascot, s } from "./src/ui";
 import { type Detail, useWorkspace, WorkspaceContext } from "./src/workspace";
 
-const nav: { id: Section; label: string; icon: React.ComponentType<any> }[] = [
+const nav: { id: Section; label: string; icon: ComponentType<any> }[] = [
   { id: "chat", label: "Chat", icon: MessageCircle },
   { id: "activity", label: "Activity", icon: PanelsTopLeft },
   { id: "ideas", label: "Ideas", icon: Lightbulb },

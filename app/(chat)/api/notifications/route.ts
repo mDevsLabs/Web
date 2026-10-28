@@ -164,18 +164,11 @@ export async function DELETE(request: Request) {
   }
 
   if (clearRead) {
-    const { getNotificationsByUserId, deleteNotification } = await import(
-      "@/lib/db/queries"
-    );
-    const notifs = await getNotificationsByUserId({
-      limit: 50,
-      userId,
-    });
-    const toDelete = notifs.filter((n) => n.isRead);
-    for (const n of toDelete) {
-      await deleteNotification({ id: n.id, userId });
-    }
-    return NextResponse.json({ deleted: toDelete.length });
+    // Filtre `isRead` EN BASE, sans borne de lot : les lues anciennes ne sont
+    // plus invisibles derrière les 50 notifications récentes.
+    const { deleteReadNotifications } = await import("@/lib/db/queries");
+    const result = await deleteReadNotifications(userId);
+    return NextResponse.json(result);
   }
 
   // Also check if body has action: 'deleteAll'

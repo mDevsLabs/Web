@@ -836,6 +836,7 @@ function WakiesWorkspaceContent({
             </div>
             {pane && (
               <ResultPane
+                computersAvailable={workspace.setup.computers === true}
                 defaultWakieId={wakie.id}
                 key={wakie.id}
                 latest={capture}
@@ -953,6 +954,7 @@ function WakiesWorkspaceContent({
         {pane && view !== "chat" && (
           <div className="computer-overlay">
             <ResultPane
+              computersAvailable={workspace.setup.computers === true}
               defaultWakieId={
                 view === "space"
                   ? (workspace.wakies.find((candidate) =>

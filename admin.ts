@@ -824,6 +824,29 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
     `;
 
     if (newStatus) {
+      // Révoque les jetons de session connus AVANT de supprimer les appareils :
+      // sans entrée en liste noire, un JWT encore valide survivrait au blocage.
+      // Au déblocage, ces jetons restent révoqués — l'utilisateur se reconnecte,
+      // aucun ancien secret n'est réactivé silencieusement.
+      try {
+        const sessions = await sql`
+          SELECT token FROM connected_devices WHERE user_id = ${current.id}::text
+        `;
+        for (const session of sessions) {
+          if (session.token) {
+            await sql`
+              INSERT INTO token_blacklist (token, revoked_at)
+              VALUES (${session.token}::text, NOW())
+              ON CONFLICT (token) DO NOTHING
+            `;
+          }
+        }
+      } catch (err: any) {
+        console.warn(
+          " Avertissement: révocation des jetons de session incomplète:",
+          err.message || err
+        );
+      }
       await sql`
         DELETE FROM connected_devices
         WHERE user_id = ${current.id}::text;

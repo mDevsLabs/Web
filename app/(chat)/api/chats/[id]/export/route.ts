@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { getTextFromMessage } from "@/lib/utils";
 
@@ -341,6 +342,11 @@ export async function GET(
     })
   ) {
     return errorResponse("access_denied");
+  }
+  if (!(await isChatUnlockedForUser({ chatId: id, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Cette conversation est protégée par un code PIN.",
+    });
   }
 
   const messages = await getMessagesByChatId({ id });

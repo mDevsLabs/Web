@@ -98,17 +98,27 @@ async function refreshTokenFor(
       refreshToken,
     });
     if (!result.ok) {
-      if (result.reason === "exchange_failed") {
-        // Le fournisseur refuse définitivement le grant (`invalid_grant` après
-        // révocation côté Google/GitHub) : reconnecter est la seule sortie.
+      if (result.reason === "grant_revoked") {
+        // Refus TERMINAL établi par le fournisseur (`invalid_grant`) : la
+        // reconnexion est la seule sortie. Un 503, un 429, une erreur réseau
+        // ou une erreur de configuration ne doivent JAMAIS arriver ici.
         await markConnectionRevoked({
           connectionId: row.id,
           userId: row.userId,
         });
         return { accessToken: null, revoked: false, scopes: row.scopes };
       }
-      // `network` : panne transitoire. On LÈVE pour que l'Agent la classe
-      // rejouable, au lieu de mentir avec un « non connecté ».
+      if (result.reason === "not_configured") {
+        return { accessToken: null, revoked: false, scopes: row.scopes };
+      }
+      if (result.reason === "configuration") {
+        throw new Error(
+          `Le connecteur ${descriptor.id} est mal configuré : le rafraîchissement du jeton a été refusé. Les jetons existants sont conservés.`
+        );
+      }
+      // `temporary`, `network` et `exchange_failed` : panne ou réponse
+      // inexploitable. On LÈVE pour que l'Agent la classe rejouable, sans
+      // supprimer la connexion ni imposer une reconnexion.
       throw new Error(
         `Le service ${descriptor.id} est momentanément indisponible : rafraîchissement du jeton impossible.`
       );

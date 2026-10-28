@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { ChatbotError } from "@/lib/errors";
 import { submitFormResponse } from "@/lib/forms/queries";
 import { REWARD_TYPES } from "@/lib/forms/types";
 
@@ -56,6 +57,11 @@ export async function POST(
       success: true,
     });
   } catch (error) {
+    // Les refus métier (formulaire expiré, réponses invalides, doublon) sont
+    // des erreurs 4xx explicites, pas des erreurs internes masquées.
+    if (error instanceof ChatbotError) {
+      return error.toResponse();
+    }
     console.error("[api/forms/submit] Erreur soumission :", error);
     const message =
       error instanceof Error ? error.message : "Erreur lors de la soumission.";

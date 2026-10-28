@@ -17,6 +17,7 @@ import {
   humanType,
 } from "./humanizedActions.js";
 import { acquirePageForHost, getPlaywrightStatus } from "./playwrightBridge.js";
+import { isPathInsideRoot, resolveWorkspacePath } from "../workspace.js";
 
 export type PlaywrightToolCall = {
   id: string;
@@ -435,12 +436,40 @@ export async function executePlaywrightTool(
         const fullPage =
           readBoolArg(call.arguments, "full_page", "fullPage") ?? false;
         const userPath = readStringArg(call.arguments, "file_path", "filePath");
-        const out = userPath
-          ? {
-              full: path.resolve(ctx.workspaceRoot ?? process.cwd(), userPath),
-              rel: null as string | null,
+        // Le chemin fourni par le modèle est confiné : chemin absolu, traversal
+        // et lien symbolique sont résolus puis rejetés s'ils sortent du
+        // workspace. Sans workspace, le seul répertoire autorisé est le dossier
+        // de captures temporaire — jamais `process.cwd()`.
+        let out: { full: string; rel: string | null };
+        if (userPath) {
+          try {
+            if (ctx.workspaceRoot) {
+              const full = resolveWorkspacePath(userPath, ctx.workspaceRoot);
+              const rel = path.relative(ctx.workspaceRoot, full);
+              out = { full, rel: rel && !rel.startsWith("..") ? rel : null };
+            } else {
+              const base = path.join(os.tmpdir(), "async-pw-captures");
+              fs.mkdirSync(base, { recursive: true });
+              const full = resolveWorkspacePath(userPath, base);
+              if (!isPathInsideRoot(full, base)) {
+                return errorResult(
+                  call,
+                  "file_path doit rester dans le répertoire de captures temporaire."
+                );
+              }
+              out = { full, rel: null };
             }
-          : buildScreenshotPath(ctx.workspaceRoot);
+          } catch (err) {
+            return errorResult(
+              call,
+              err instanceof Error
+                ? err.message
+                : "file_path invalide ou hors du workspace."
+            );
+          }
+        } else {
+          out = buildScreenshotPath(ctx.workspaceRoot);
+        }
         fs.mkdirSync(path.dirname(out.full), { recursive: true });
         const buf = await page.screenshot({ fullPage, type: "png" });
         fs.writeFileSync(out.full, buf);

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { getAgentFlags } from "@/lib/agent/flags";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   getAgentRunById,
   setAgentRunFeedback,
@@ -58,6 +59,11 @@ export async function DELETE(
   const run = await getAgentRunById({ id, userId });
   if (!run) {
     return errorResponse("not_found", { message: "Run introuvable." });
+  }
+  if (!(await isChatUnlockedForUser({ chatId: run.chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   if (["completed", "failed", "cancelled", "timed_out"].includes(run.status)) {

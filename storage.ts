@@ -1,12 +1,12 @@
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey,
   extractToken,
   getDb,
   getTierMediaUploadLimitBytes,
   getTierStorageLimitBytes,
   verifyToken,
 } from "./config.ts";
+import { decidePublicUpload } from "./upload-policy.ts";
 
 export interface StorageNode {
   accessKeyId: string;
@@ -288,6 +288,7 @@ export async function uploadWithFallback(
   options: {
     contentType: string;
     acl?: string;
+    contentDisposition?: "attachment" | "inline";
   }
 ): Promise<{
   success: boolean;
@@ -302,12 +303,16 @@ export async function uploadWithFallback(
     try {
       const s3Client = await buildS3Client(node);
       const uploadUrl = `${node.endpoint}/${node.bucket}/${filePath}`;
+      const headers: Record<string, string> = {
+        "Content-Type": options.contentType || "application/octet-stream",
+        "x-amz-acl": options.acl || "public-read",
+      };
+      if (options.contentDisposition) {
+        headers["Content-Disposition"] = options.contentDisposition;
+      }
       const res = await s3Client.fetch(uploadUrl, {
         body,
-        headers: {
-          "Content-Type": options.contentType || "application/octet-stream",
-          "x-amz-acl": options.acl || "public-read",
-        },
+        headers,
         method: "PUT",
       });
 
@@ -453,13 +458,15 @@ export function registerStorageRoutes(app: Hono) {
       if (file.size > MAX_AVATAR_SIZE) {
         return c.json({ error: "Image trop volumineuse (max 10 MB)." }, 413);
       }
-      const ALLOWED_IMAGE_TYPES = [
-        "image/jpeg",
-        "image/png",
-        "image/webp",
-        "image/gif",
-      ];
-      if (file.type && !ALLOWED_IMAGE_TYPES.includes(file.type)) {
+      const arrayBuffer = await file.arrayBuffer();
+      // Le type déclaré ne suffit pas : signature binaire vérifiée. Un avatar
+      // ne peut être qu'une image raster, jamais un SVG ou du HTML déguisé.
+      const decision = decidePublicUpload({
+        bytes: new Uint8Array(arrayBuffer),
+        declaredType: file.type,
+        mode: "image",
+      });
+      if (!decision.ok) {
         return c.json(
           {
             error:
@@ -476,7 +483,6 @@ export function registerStorageRoutes(app: Hono) {
           .pop()
           ?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
       const filename = `avatars/${userId}-${Date.now()}.${ext}`;
-      const arrayBuffer = await file.arrayBuffer();
 
       const uploadResult = await uploadWithFallback(
         primaryNode,
@@ -484,7 +490,8 @@ export function registerStorageRoutes(app: Hono) {
         arrayBuffer,
         {
           acl: "public-read",
-          contentType: file.type || "image/jpeg",
+          contentDisposition: decision.disposition,
+          contentType: decision.contentType,
         }
       );
 
@@ -543,12 +550,33 @@ export function registerStorageRoutes(app: Hono) {
         return c.json({ error: "Token invalide." }, 401);
       }
 
-      // Le plafond dépend du forfait, et il est résolu avant toute autre décision
-      // sur le fichier : le JWT porte un `tier`, et les clés API `mai-<tier>-…` le
-      // portent dans leur préfixe quand le jeton n'en dit rien. Un forfait
-      // illisible retombe sur Free via `normalizeTier` : la limite se réduit, elle
-      // ne s'étend jamais.
-      const tier = payload?.tier || extractTierFromApiKey(token);
+      // Le plafond dépend du forfait ACTUEL du compte, relu en base : un JWT
+      // émis avant une rétrogradation ne conserve pas l'ancien privilège, et
+      // le préfixe d'une clé API n'accorde jamais de forfait. Une base
+      // illisible retombe sur un refus temporaire, jamais sur le forfait du
+      // jeton.
+      const userId = payload?.sub ? String(payload.sub) : "";
+      let tier = "Free";
+      try {
+        const uploadSql = getDb();
+        const userRows = await uploadSql`
+          SELECT tier, is_blocked FROM users
+          WHERE id::text = ${userId}::text
+             OR username = ${userId}::text
+             OR email = ${userId}::text
+          LIMIT 1
+        `;
+        if (userRows.length === 0) {
+          return c.json({ error: "Compte introuvable." }, 401);
+        }
+        if (userRows[0].is_blocked === true) {
+          return c.json({ blocked: true, error: "Compte bloqué." }, 403);
+        }
+        tier = userRows[0].tier || "Free";
+      } catch (error) {
+        console.error("[upload] Forfait du compte indisponible:", error);
+        return c.json({ error: "Service temporairement indisponible." }, 503);
+      }
       const maxFileBytes = getTierMediaUploadLimitBytes(tier);
 
       const body = await c.req.parseBody();
@@ -575,31 +603,24 @@ export function registerStorageRoutes(app: Hono) {
       if (file.size === 0) {
         return c.json({ error: "Fichier vide." }, 400);
       }
-      const isAllowed =
-        file.type.startsWith("image/") ||
-        file.type.startsWith("video/") ||
-        file.type.startsWith("audio/") ||
-        file.type.startsWith("text/") ||
-        file.type === "application/pdf" ||
-        file.type === "application/json" ||
-        file.type === "application/msword" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-        file.type === "application/vnd.ms-excel" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-        file.type === "application/vnd.ms-powerpoint" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-      if (file.type && !isAllowed) {
-        return c.json({ error: "Type de fichier non autorisé." }, 400);
+      // Type décidé par signature pour les images, allowlist stricte sinon :
+      // text/html, SVG actif, scripts et formats inconnus sont refusés. Un
+      // MIME absent n'est accepté que si le contenu est une image raster
+      // reconnue. Les documents sont servis en pièce jointe.
+      const arrayBuffer = await file.arrayBuffer();
+      const decision = decidePublicUpload({
+        bytes: new Uint8Array(arrayBuffer),
+        declaredType: file.type,
+        mode: "any",
+      });
+      if (!decision.ok) {
+        return c.json({ error: decision.error }, 400);
       }
 
       const cleanFilename = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
       const filename = `uploads/${Date.now()}-${cleanFilename}`;
 
       const primaryNode = selectStorageNode(cleanFilename);
-      const arrayBuffer = await file.arrayBuffer();
 
       const uploadResult = await uploadWithFallback(
         primaryNode,
@@ -607,7 +628,8 @@ export function registerStorageRoutes(app: Hono) {
         arrayBuffer,
         {
           acl: "public-read",
-          contentType: file.type || "application/octet-stream",
+          contentDisposition: decision.disposition,
+          contentType: decision.contentType,
         }
       );
 
@@ -629,7 +651,7 @@ export function registerStorageRoutes(app: Hono) {
       const publicUrl = uploadResult.publicUrl;
 
       return c.json({
-        contentType: file.type || "application/octet-stream",
+        contentType: decision.contentType,
         pathname: filename,
         url: publicUrl,
       });
@@ -698,8 +720,8 @@ export function registerStorageRoutes(app: Hono) {
         `.catch(() => []),
       ]);
 
-      const keyTier = extractTierFromApiKey(token);
-      const rawTier2 = keyTier || userRes[0]?.tier || userPlan || "Free";
+      // Forfait actuel du compte uniquement (pas de privilège de préfixe).
+      const rawTier2 = userRes[0]?.tier || userPlan || "Free";
       const tier = String(rawTier2).trim();
       const bytesUsed = Number(usageRes[0]?.bytes_used || 0);
       const filesCount = Number(usageRes[0]?.files_count || 0);
@@ -815,27 +837,8 @@ export function registerStorageRoutes(app: Hono) {
       if (fileSize > MAX_FILE_SIZE) {
         return c.json({ error: "Fichier trop volumineux (max 10 MB)." }, 413);
       }
-      const ALLOWED_CLOUD_TYPES = [
-        "image/jpeg",
-        "image/png",
-        "image/webp",
-        "image/gif",
-        "application/pdf",
-        "text/plain",
-        "text/markdown",
-        "text/csv",
-        "application/json",
-      ];
-      const isCloudAllowed =
-        !file.type ||
-        ALLOWED_CLOUD_TYPES.includes(file.type) ||
-        file.type.startsWith("image/") ||
-        file.type.startsWith("text/") ||
-        file.type === "application/pdf" ||
-        file.type === "application/json";
-      if (file.type && !isCloudAllowed) {
-        return c.json({ error: "Type de fichier non autorisé." }, 400);
-      }
+      // Le type est décidé après lecture (signature des images) et avant
+      // l'upload : voir `decidePublicUpload` plus bas.
 
       // Vérifier le quota AVANT d'uploader
       const [userRes, usageRes] = await Promise.all([
@@ -877,6 +880,15 @@ export function registerStorageRoutes(app: Hono) {
       const primaryNode = selectStorageNode(`${userId}-${uniqueId}`);
       const arrayBuffer = await file.arrayBuffer();
 
+      const decision = decidePublicUpload({
+        bytes: new Uint8Array(arrayBuffer),
+        declaredType: file.type,
+        mode: "any",
+      });
+      if (!decision.ok) {
+        return c.json({ error: decision.error }, 400);
+      }
+
       // Upload avec bascule automatique (fallback) sur les autres buckets du pool Z1 Storage
       const uploadResult = await uploadWithFallback(
         primaryNode,
@@ -884,7 +896,8 @@ export function registerStorageRoutes(app: Hono) {
         arrayBuffer,
         {
           acl: "public-read",
-          contentType: file.type || "application/octet-stream",
+          contentDisposition: decision.disposition,
+          contentType: decision.contentType,
         }
       );
 
@@ -905,7 +918,7 @@ export function registerStorageRoutes(app: Hono) {
       const activeNode = uploadResult.activeNode;
       const storedKey = `node-${activeNode.id}:${activeNode.bucket}:${fileKey}`;
       const publicUrl = uploadResult.publicUrl;
-      const mimeType = file.type || "application/octet-stream";
+      const mimeType = decision.contentType;
 
       // Insérer dans cloud_files
       const inserted = await sql`
@@ -979,38 +992,66 @@ export function registerStorageRoutes(app: Hono) {
 
       const { r2_key, url, size_bytes } = fileRes[0];
 
-      // Identifier le nœud et supprimer de Z1 Storage
+      // Suppression distante AVANT toute écriture locale. Un objet déjà absent
+      // (404/204) est un succès idempotent ; une erreur S3/403/503/réseau
+      // laisse la ligne `cloud_files` en place : elle sert d'état durable de
+      // reprise, et aucune place de quota n'est libérée à tort.
       const { node, rawKey } = findStorageNodeForRecord(r2_key, url);
-      const s3Client = await buildS3Client(node);
-      const deleteUrl = `${node.endpoint}/${node.bucket}/${rawKey}`;
-
-      try {
-        const delRes = await s3Client.fetch(deleteUrl, { method: "DELETE" });
-        if (!delRes.ok && !r2_key?.startsWith("node-")) {
-          // Si suppression échoue sur nœud par défaut pour un ancien fichier, tenter sur les autres nœuds du pool
-          for (const fallbackNode of getFallbackNodes(node).slice(1)) {
-            try {
-              const fbClient = await buildS3Client(fallbackNode);
-              const fbUrl = `${fallbackNode.endpoint}/${fallbackNode.bucket}/${rawKey}`;
-              await fbClient.fetch(fbUrl, { method: "DELETE" });
-            } catch {}
-          }
+      const candidates = [node];
+      if (!r2_key?.startsWith("node-")) {
+        for (const fallbackNode of getFallbackNodes(node).slice(1)) {
+          candidates.push(fallbackNode);
         }
-      } catch (s3Err) {
-        console.error("Z1 Delete Error (continuing anyway):", s3Err);
       }
 
-      // Supprimer de la base de données
-      await sql`DELETE FROM cloud_files WHERE id = ${fileId}::uuid AND user_id = ${userId}::text`;
+      let remoteDeleted = false;
+      let lastFailure = "inconnue";
+      for (const candidate of candidates) {
+        try {
+          const s3Client = await buildS3Client(candidate);
+          const deleteUrl = `${candidate.endpoint}/${candidate.bucket}/${rawKey}`;
+          const delRes = await s3Client.fetch(deleteUrl, { method: "DELETE" });
+          if (delRes.ok || delRes.status === 404) {
+            remoteDeleted = true;
+            break;
+          }
+          lastFailure = `HTTP ${delRes.status}`;
+        } catch (s3Err: any) {
+          lastFailure = s3Err?.message || "erreur réseau";
+        }
+      }
 
-      // Décrémenter cloud_storage_usage
+      if (!remoteDeleted) {
+        console.error(
+          `[storage] Suppression distante impossible pour ${fileId}: ${lastFailure}`
+        );
+        return c.json(
+          {
+            error:
+              "La suppression du fichier distant a échoué. Le fichier est conservé et peut être supprimé à nouveau.",
+            retryable: true,
+            success: false,
+          },
+          502
+        );
+      }
+
+      // Suppression de la référence et décrément du quota dans LA MÊME
+      // instruction : le DELETE ne rend une ligne qu'une fois, donc deux
+      // requêtes concurrentes ne peuvent pas décrémenter deux fois.
       await sql`
+        WITH removed AS (
+          DELETE FROM cloud_files
+          WHERE id = ${fileId}::uuid AND user_id = ${userId}::text
+          RETURNING size_bytes
+        )
         UPDATE cloud_storage_usage
         SET
-          bytes_used  = GREATEST(0, bytes_used - ${size_bytes}),
+          bytes_used  = GREATEST(0, bytes_used - COALESCE((SELECT size_bytes FROM removed), ${size_bytes}, 0)),
           files_count = GREATEST(0, files_count - 1),
           updated_at  = NOW()
         WHERE user_id = ${userId}::text
+          AND EXISTS (SELECT 1 FROM removed)
       `;
 
       return c.json({ id: fileId, success: true });

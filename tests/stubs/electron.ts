@@ -16,4 +16,5 @@ export type IpcMainEvent = any;
 export type IpcMainInvokeEvent = any;
 export type IpcRendererEvent = any;
 export type Event = any;
+export type WebContents = any;
 export default { app, BrowserWindow, ipcMain, shell };

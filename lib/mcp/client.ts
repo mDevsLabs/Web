@@ -430,12 +430,20 @@ async function sendHttpJsonRpc<T = unknown>(
 ): Promise<T> {
   const target = validateRemoteUrl(url);
   const origin = target.origin;
+  // Tout en-tête autre que la négociation de contenu peut porter un secret
+  // (X-API-Key, en-têtes custom_headers). Il ne doit jamais suivre une
+  // redirection vers une autre origine.
+  const sensitiveHeaders = Object.keys(headers).filter(
+    (name) =>
+      name.toLowerCase() !== "accept" && name.toLowerCase() !== "content-type"
+  );
   const response = await safeFetchText(url, {
     body: JSON.stringify(request),
     headers,
     maxBytes: 1_000_000,
     maxRedirects: 3,
     method: "POST",
+    sensitiveHeaders,
     timeoutMs: clampTimeout(timeoutMs, MCP_DEFAULT_TIMEOUT_MS),
     tokenOriginAllowlist: [origin],
   });

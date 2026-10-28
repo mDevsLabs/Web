@@ -275,10 +275,12 @@ const nextConfig: NextConfig = {
         ],
         source: "/(.*)",
       },
-      // Artefacts du jeu Blackline. Le chunk d'entrée porte un nom FIXE
-      // (`blackline.js`) : il est donc mis en cache indéfiniment. Les autres
-      // chunks gardent le hachage de leur contenu : un nom changeant avec un
-      // cache immuable est un cache trompeur.
+      // Artefacts du jeu Blackline. Les chunks À NOM HACHÉ peuvent être mis en
+      // cache indéfiniment. L'entrée `blackline.js` porte un nom FIXE : son
+      // contenu change à chaque build et référence des chunks hachés. La mettre
+      // en cache un an servait l'ancien plan de chargement après un déploiement
+      // et pouvait demander des chunks supprimés. Règle spécifique APRÈS la
+      // règle générique : elle écrase le Cache-Control pour cette entrée.
       {
         headers: [
           {
@@ -287,6 +289,15 @@ const nextConfig: NextConfig = {
           },
         ],
         source: "/blackline/assets/:path*",
+      },
+      {
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, must-revalidate",
+          },
+        ],
+        source: "/blackline/assets/blackline.js",
       },
       {
         headers: [

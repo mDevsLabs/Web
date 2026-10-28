@@ -165,11 +165,17 @@ export interface LocalTimeResolution {
 
 /**
  * Construit l'instant UTC exact d'une heure murale {y, m, d, h, min} dans un
- * fuseau IANA, en résolvant les anomalies DST :
- * - **gap** (2 h n'existe pas au passage à l'heure d'été) : on remonte à
- *   l'heure murale valide suivante (02:30 → 03:30) ;
- * - **duplicate** (retour à l'heure d'hiver) : le SECOND instant (UTC+1
- *   rétabli), le plus tardif des deux, déterministe entre serveurs.
+ * fuseau IANA, en résolvant les anomalies DST par ÉNUMÉRATION DES CANDIDATS :
+ * - heure ordinaire : un seul instant, `candidateCount = 1` ;
+ * - **duplicate** (retour à l'heure d'hiver) : deux instants, on choisit le
+ *   SECOND (UTC+1 rétabli), le plus tardif et déterministe ;
+ * - **gap** (heure inexistante au passage à l'heure d'été) : aucun instant.
+ *   On applique la politique « remonter de la taille du saut » : 02:30 →
+ *   03:30. Le résultat est ensuite résolu comme une heure ordinaire.
+ *
+ * La projection directe `new TZDate(...)` ne suffit pas : selon la plateforme
+ * elle ramène l'heure du gap en arrière (00:30Z au lieu de 01:30Z). Les
+ * candidats sont calculés avec les offsets réels du fuseau et revalidés.
  */
 export function resolveLocalInstant(
   tz: string,
@@ -179,58 +185,99 @@ export function resolveLocalInstant(
   h: number,
   min: number
 ): { at: Date; resolution: LocalTimeResolution } {
-  // TZDate projette les composants dans le fuseau : si la projection ne rend
-  // PAS l'heure murale demandée, c'est une heure inexistante (gap).
-  const attempt = new TZDate(y, m - 1, d, h, min, 0, 0, tz);
-  if (attempt.getHours() === h && attempt.getMinutes() === min) {
-    // Instant normal. Ambiguïté (heure répétée au retour d'hiver) : la même
-    // heure murale existe aux deux offsets de la journée. On recrée l'heure
-    // murale à l'instant candidat + 24 h d'offset précédent : si l'offset du
-    // jour chasse ce pas (29 oct. 03:00→02:00), le pas en arrière retombe
-    // dessus — signature d'une heure dupliquée.
-    const isDuplicate = isRepeatedWallTime(tz, y, m, d, h, min);
+  const candidates = wallTimeCandidates(tz, y, m, d, h, min);
+  if (candidates.length > 0) {
+    const at = candidates.at(-1) as number;
     return {
-      at: new Date(attempt.getTime()),
+      at: new Date(at),
       resolution: {
         adjustedHour: null,
-        ambiguity: isDuplicate ? "duplicate" : null,
-        candidateCount: 2,
+        ambiguity: candidates.length === 2 ? "duplicate" : null,
+        candidateCount: candidates.length,
       },
     };
   }
+
+  // Aucun candidat : l'heure n'existe pas. La taille du saut est la
+  // différence entre les offsets du début et de la fin de la journée locale
+  // (60 min à Paris, 30 min dans les zones à transition de 30 min).
+  const dayStart = new TZDate(y, m - 1, d, 0, 0, 0, 0, tz);
+  const dayEnd = new TZDate(y, m - 1, d, 23, 59, 59, 0, tz);
+  const offsetBefore = getTimeZoneOffsetMinutes(tz, dayStart);
+  const offsetAfter = getTimeZoneOffsetMinutes(tz, dayEnd);
+  const gapMinutes = Math.max(0, offsetAfter - offsetBefore);
+
+  if (gapMinutes > 0) {
+    const corrected = new Date(
+      Date.UTC(y, m - 1, d, h, min) + gapMinutes * 60_000
+    );
+    const cy = corrected.getUTCFullYear();
+    const cm = corrected.getUTCMonth() + 1;
+    const cd = corrected.getUTCDate();
+    const ch = corrected.getUTCHours();
+    const cmin = corrected.getUTCMinutes();
+    const adjusted = wallTimeCandidates(tz, cy, cm, cd, ch, cmin);
+    if (adjusted.length > 0) {
+      return {
+        at: new Date(adjusted.at(-1) as number),
+        resolution: {
+          adjustedHour: ch,
+          ambiguity: "gap",
+          candidateCount: adjusted.length,
+        },
+      };
+    }
+  }
+
+  // Repli défensif (fuseau exotique) : la projection TZDate reste un instant
+  // déterministe, mais l'anomalie est signalée.
+  const fallback = new TZDate(y, m - 1, d, h, min, 0, 0, tz);
   return {
-    at: new Date(attempt.getTime()),
+    at: new Date(fallback.getTime()),
     resolution: {
-      adjustedHour: attempt.getHours(),
+      adjustedHour: fallback.getHours(),
       ambiguity: "gap",
-      candidateCount: 2,
+      candidateCount: 0,
     },
   };
 }
 
 /**
- * Heure répétée : la même murale existe aux deux offsets de la journée de
- * transition (retour à l'heure d'hiver). Détection : sans transition dans la
- * journée (offset pratiquement constant), une même heure murale ne peut pas
- * exister deux fois ; il est impossible que la murale h soit répétée si la
- * journée a un seul offset.
+ * Tous les instants UTC qui, formatés dans `tz`, donnent exactement
+ * {y, m, d, h, min}. L'algorithme sonde les offsets avant, pendant et après
+ * l'heure visée (la transition peut être dans la journée), convertit chaque
+ * offset en candidat, puis ne garde que ceux dont la relecture est exacte.
  */
-function isRepeatedWallTime(
+function wallTimeCandidates(
   tz: string,
   y: number,
   m: number,
   d: number,
   h: number,
   min: number
-): boolean {
-  const dayStart = new TZDate(y, m - 1, d, 0, 0, 0, 0, tz);
-  const offsetStart = getTimeZoneOffsetMinutes(tz, dayStart);
-  // Milieu de la journée vue par ce fuseau : 12 h plus tard, l'offset y est
-  // analysé aussi ; s'il diffère de celui du début ET a DIMINUÉ (return à
-  // l'heure d'hiver), l'heure demandée existe aux deux offsets.
-  const mid = new TZDate(dayStart.getTime() + 12 * 60 * 60 * 1000);
-  const offsetMid = getTimeZoneOffsetMinutes(tz, mid);
-  return offsetMid !== offsetStart && offsetMid < offsetStart;
+): number[] {
+  const naive = Date.UTC(y, m - 1, d, h, min);
+  const offsets = new Set<number>();
+  for (const deltaHours of [-48, -24, -6, 0, 6, 24, 48]) {
+    offsets.add(
+      getTimeZoneOffsetMinutes(tz, new Date(naive + deltaHours * 3_600_000))
+    );
+  }
+  const instants = new Set<number>();
+  for (const offset of offsets) {
+    const instant = naive - offset * 60_000;
+    const local = new TZDate(instant, tz);
+    if (
+      local.getFullYear() === y &&
+      local.getMonth() + 1 === m &&
+      local.getDate() === d &&
+      local.getHours() === h &&
+      local.getMinutes() === min
+    ) {
+      instants.add(instant);
+    }
+  }
+  return [...instants].sort((a, b) => a - b);
 }
 
 function getTimeZoneOffsetMinutes(tz: string, at: Date): number {
@@ -370,30 +417,42 @@ function nextAtOrAfter(
   d: number
 ): Date | null {
   const tz = safeTz(schedule.timezone);
-  const target = new TZDate(
+  // Même résolveur que le mensuel : une heure murale de gap (02:30 le jour du
+  // passage à l'heure d'été) est corrigée en 03:30 au lieu de retomber une
+  // heure en arrière via la projection TZDate.
+  const target = resolveLocalInstant(
+    tz,
     y,
-    m - 1,
+    m,
     d,
     schedule.hour,
-    schedule.minute,
-    0,
-    0,
-    tz
-  );
+    schedule.minute
+  ).at;
   if (target.getTime() > localFrom.getTime()) {
-    return new Date(target.getTime());
+    return target;
   }
-  const fallback = new TZDate(
-    target.getFullYear(),
-    target.getMonth(),
-    target.getDate() + (schedule.recurrence === "weekly" ? 7 : 1),
-    schedule.hour,
-    schedule.minute,
+  // Jour suivant / semaine suivante : l'ancre à MIDI évite qu'un ajout de jour
+  // tombe dans un gap ; l'heure murale est ensuite résolue par le même chemin.
+  const anchor = new TZDate(y, m - 1, d, 12, 0, 0, 0, tz);
+  const step = schedule.recurrence === "weekly" ? 7 : 1;
+  const nextDay = new TZDate(
+    anchor.getFullYear(),
+    anchor.getMonth(),
+    anchor.getDate() + step,
+    12,
+    0,
     0,
     0,
     tz
   );
-  return new Date(fallback.getTime());
+  return resolveLocalInstant(
+    tz,
+    nextDay.getFullYear(),
+    nextDay.getMonth() + 1,
+    nextDay.getDate(),
+    schedule.hour,
+    schedule.minute
+  ).at;
 }
 
 /**

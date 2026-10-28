@@ -47,6 +47,7 @@ const PureChatItem = ({
   chat,
   isActive,
   onDelete,
+  onManageSecurity,
   setOpenMobile,
   projects,
 }: {
@@ -54,15 +55,18 @@ const PureChatItem = ({
     agentIcon?: string | null;
     agentColor?: string | null;
     agentName?: string | null;
+    isSecure?: boolean;
   };
   isActive: boolean;
   onDelete: (chatId: string) => void;
+  onManageSecurity: (chat: Chat) => void;
   setOpenMobile: (open: boolean) => void;
   projects?: { id: string; name: string; icon: string }[];
 }) => {
   const { visibilityType, setVisibilityType } = useChatVisibility({
     chatId: chat.id,
     initialVisibilityType: chat.visibility,
+    isSecure: Boolean(chat.isSecure),
   });
   const closeMobile = useCallback(() => {
     setOpenMobile(false);
@@ -223,6 +227,15 @@ const PureChatItem = ({
               size={14}
             />
           )}
+          {chat.isSecure ? (
+            <span
+              aria-label="Conversation sécurisée"
+              className="shrink-0 text-sidebar-foreground/50"
+              title="Conversation sécurisée"
+            >
+              <LockIcon size={12} />
+            </span>
+          ) : null}
           <span className="truncate">{chat.title}</span>
         </Link>
       </SidebarMenuButton>
@@ -282,6 +295,32 @@ const PureChatItem = ({
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
+
+          <DropdownMenuItem
+            className="cursor-pointer"
+            disabled={visibilityType !== "public" || chat.mode !== "chat"}
+            onClick={() => {
+              if (visibilityType === "public" && chat.mode === "chat") {
+                onManageSecurity(chat);
+              }
+            }}
+            title={
+              visibilityType === "public"
+                ? chat.mode === "chat"
+                  ? undefined
+                  : "Disponible uniquement pour les conversations classiques"
+                : "Disponible uniquement pour les conversations publiques"
+            }
+          >
+            <span className="mr-2 inline-flex">
+              <LockIcon size={16} />
+            </span>
+            <span>
+              {chat.isSecure
+                ? "Modifier le code PIN"
+                : "Sécuriser la conversation"}
+            </span>
+          </DropdownMenuItem>
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="cursor-pointer">
@@ -373,6 +412,9 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
   if (
     (prevProps.chat as any).agentColor !== (nextProps.chat as any).agentColor
   ) {
+    return false;
+  }
+  if ((prevProps.chat as any).isSecure !== (nextProps.chat as any).isSecure) {
     return false;
   }
   if (prevProps.projects !== nextProps.projects) {

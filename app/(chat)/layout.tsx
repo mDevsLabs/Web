@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import Script from "next/script";
 import { Suspense } from "react";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { ChatHost } from "@/components/chat/chat-host";
@@ -35,10 +34,9 @@ function WorkspaceSkeleton() {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Script
-        src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
-        strategy="lazyOnload"
-      />
+      {/* Pyodide est chargé DANS le worker d'exécution (public/workers),
+          jamais dans la page : le code non fiable ne partage plus le contexte
+          principal ni ses cookies/DOM. */}
       {/*
         L'économie des ressources enveloppe TOUTE l'application du groupe :
         elle décide des animations, du son et des rafraîchissements, et son

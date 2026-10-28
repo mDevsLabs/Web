@@ -16,7 +16,7 @@ import {
   htmlToPlainText,
   isRichHtml,
 } from "@/components/vibe/common/richTextUtils";
-import { useNavigate } from "../router";
+import { toVibeHref, useNavigate } from "../router";
 
 export { htmlToPlainText, isRichHtml };
 
@@ -87,7 +87,10 @@ function linkifyTextNodes(root: HTMLElement) {
     for (const part of parts) {
       if (MENTION_RE.test(part)) {
         const a = document.createElement("a");
-        a.setAttribute("href", `/@${part.slice(1)}`);
+        // href RÉSOLU sous /vibe (et basePath) : le clic gauche passe par le
+        // routeur, mais clic milieu, Ctrl/Cmd-clic et « copier le lien »
+        // suivent l'attribut href. Sans cela, ils menaient hors de /vibe.
+        a.setAttribute("href", toVibeHref(`/@${part.slice(1)}`));
         a.setAttribute("data-mention", part.slice(1));
         a.className = "rich-link";
         a.textContent = part;
@@ -97,7 +100,7 @@ function linkifyTextNodes(root: HTMLElement) {
         const a = document.createElement("a");
         a.setAttribute(
           "href",
-          `/explore?q=${encodeURIComponent(part)}&tab=hashtags`
+          toVibeHref(`/explore?q=${encodeURIComponent(part)}&tab=hashtags`)
         );
         a.setAttribute("data-hashtag", part);
         a.className = "rich-link";
@@ -142,6 +145,14 @@ function buildSafeHtml(content: string): string {
       a.setAttribute("target", "_blank");
       a.setAttribute("rel", "noopener noreferrer");
     });
+    // Les ancres de Livre stockent un href relatif (`/books/:id`) : on le
+    // résout ici sous /vibe pour les ouvertures natives.
+    tpl.querySelectorAll("a[data-book-id]").forEach((a) => {
+      const bookId = a.getAttribute("data-book-id");
+      if (bookId) {
+        a.setAttribute("href", toVibeHref(`/books/${bookId}`));
+      }
+    });
     return tpl.innerHTML;
   } catch {
     // Fail-safe : jamais de HTML brut non assaini
@@ -170,6 +181,12 @@ export const RichContent: React.FC<RichContentProps> = ({
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const anchor = (e.target as HTMLElement).closest("a");
     if (!anchor) return;
+    // Clic milieu, Ctrl/Cmd-clic, Maj-clic ou clic droit : on laisse le
+    // navigateur suivre le href (nouvel onglet, nouvelle fenêtre, copie).
+    // Intercepter ces gestes cassait précisément ce que D06 exige.
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
     const bookId = anchor.getAttribute("data-book-id");

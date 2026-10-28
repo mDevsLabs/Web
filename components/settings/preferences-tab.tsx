@@ -247,6 +247,12 @@ export function PreferencesTab() {
   const prevCustomRef = useRef(customInstructions);
   const prevTempRef = useRef(customTemp);
   const prevTopPRef = useRef(customTopP);
+  // Vitesse audio : la référence est la dernière valeur CONFIRMÉE par le
+  // serveur, pas la valeur du premier rendu. Elle est synchronisée par
+  // l'hydratation ; sans cela, revenir à 1,00× après un chargement à 1,05×
+  // ne déclenchait aucune écriture (1,00 === valeur initiale du ref).
+  const prevAudioSpeedRef = useRef(defaultAudioSpeed);
+  const audioSpeedDraggingRef = useRef(false);
 
   useEffect(() => {
     if (customPrefData) {
@@ -299,7 +305,14 @@ export function PreferencesTab() {
         setDefaultAudioVoice(customPrefData.defaultAudioVoice);
       }
       if (customPrefData.defaultAudioSpeed) {
-        setDefaultAudioSpeed(customPrefData.defaultAudioSpeed);
+        const serverSpeed = customPrefData.defaultAudioSpeed;
+        // Ne pas écraser un geste utilisateur en cours (curseur maintenu) ;
+        // sinon la valeur serveur devient la nouvelle référence confirmée et
+        // un retour à 1,00× sera bien persisté.
+        if (!audioSpeedDraggingRef.current) {
+          setDefaultAudioSpeed(serverSpeed);
+          prevAudioSpeedRef.current = serverSpeed;
+        }
       }
       if (customPrefData.defaultDictationLanguage !== undefined) {
         setDictationLanguage(
@@ -482,17 +495,28 @@ export function PreferencesTab() {
     [defaultAudioVoice, savePreference]
   );
 
-  const prevAudioSpeedRef = useRef(defaultAudioSpeed);
   const handleAudioSpeedCommit = useCallback(() => {
-    if (defaultAudioSpeed !== prevAudioSpeedRef.current) {
-      const prev = prevAudioSpeedRef.current;
-      prevAudioSpeedRef.current = defaultAudioSpeed;
-      savePreference({ defaultAudioSpeed }, () => {
+    const next = defaultAudioSpeed;
+    const prev = prevAudioSpeedRef.current;
+    if (next === prev) {
+      audioSpeedDraggingRef.current = false;
+      return;
+    }
+    prevAudioSpeedRef.current = next;
+    audioSpeedDraggingRef.current = true;
+    void savePreference({ defaultAudioSpeed: next }, () => {
+      setDefaultAudioSpeed(prev);
+      prevAudioSpeedRef.current = prev;
+      savePreference({ defaultAudioSpeed: prev }, () => {});
+    }).then((ok) => {
+      if (!ok) {
+        // L'écriture a échoué : la valeur affichée revient à la dernière
+        // valeur confirmée, et la référence ne prétend pas le contraire.
         setDefaultAudioSpeed(prev);
         prevAudioSpeedRef.current = prev;
-        savePreference({ defaultAudioSpeed: prev }, () => {});
-      });
-    }
+      }
+      audioSpeedDraggingRef.current = false;
+    });
   }, [defaultAudioSpeed, savePreference]);
 
   const handleDictationLanguageChange = useCallback(
@@ -902,7 +926,13 @@ export function PreferencesTab() {
             onChange={(e) =>
               setDefaultAudioSpeed(Number.parseFloat(e.target.value))
             }
+            onKeyDown={() => {
+              audioSpeedDraggingRef.current = true;
+            }}
             onKeyUp={handleAudioSpeedCommit}
+            onPointerDown={() => {
+              audioSpeedDraggingRef.current = true;
+            }}
             onPointerUp={handleAudioSpeedCommit}
             step={0.05}
             type="range"

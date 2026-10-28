@@ -12,6 +12,7 @@ import {
   getTierMaiTokenLimit,
   getWeekData,
 } from "./config.ts";
+import { assertDmRecipientAllowed } from "./vibe-dms-core.ts";
 import { executeCreativeTool } from "./vibe-mai-creative.ts";
 import { executeWebSearch } from "./web.ts";
 
@@ -764,6 +765,30 @@ export class MAIAgentFleet {
           if (recId === uid) {
             throw new Error(
               "Vous ne pouvez pas vous envoyer un message à vous-même."
+            );
+          }
+          // Mêmes gardes que le chemin HTTP : SENSITIVE_TOOLS et
+          // `mai_auto_approve_tools` autorisent l'OUTIL, jamais l'écriture au
+          // destinataire. Aucune conversation ni notification n'est créée si
+          // le destinataire refuse.
+          const recipientDecision = await assertDmRecipientAllowed(
+            sql,
+            uid,
+            recId
+          );
+          if (!recipientDecision.allowed) {
+            if (recipientDecision.reason === "blocked") {
+              throw new Error(
+                "Impossible d'envoyer un message : un blocage est actif."
+              );
+            }
+            if (recipientDecision.reason === "followers_only") {
+              throw new Error(
+                `@${cleanUsername} n'accepte les messages que de ses abonnements.`
+              );
+            }
+            throw new Error(
+              `@${cleanUsername} n'accepte pas les messages privés.`
             );
           }
           const p1 = uid < recId ? uid : recId;

@@ -35,6 +35,11 @@ export function registerDMModerationRoutes(
       }
 
       const sql = getDb();
+      // Les relations `follows` et `circle_members` sont CONSERVÉES : le
+      // déblocage restaure l'état antérieur sans réabonnement manuel. Ce n'est
+      // pas elles qui protègent la lecture — `visibilityFilter` applique le
+      // blocage dans les deux sens à chaque lecture de post, quel que soit le
+      // statut des relations.
       await sql`
         INSERT INTO blocked_users (user_id, blocked_user_id)
         VALUES (${userId}, ${targetId})

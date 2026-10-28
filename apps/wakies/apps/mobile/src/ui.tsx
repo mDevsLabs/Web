@@ -1,5 +1,5 @@
-import { ArrowUpRight, Check, ChevronRight, type React.ComponentType<any>, X } from "lucide-react-native";
-import type { ReactNode } from "react";
+import { ArrowUpRight, Check, ChevronRight, X } from "lucide-react-native";
+import type { ComponentType, ReactNode } from "react";
 import {
   ActivityIndicator,
   Image,
@@ -125,7 +125,7 @@ export function Button({
 }: {
   children: ReactNode;
   onPress: () => void;
-  icon?: React.ComponentType<any>;
+  icon?: ComponentType<any>;
   primary?: boolean;
   disabled?: boolean;
   busy?: boolean;
@@ -163,7 +163,7 @@ export function IconButton({
   label,
   onPress,
 }: {
-  icon: React.ComponentType<any>;
+  icon: ComponentType<any>;
   label: string;
   onPress: () => void;
 }) {
@@ -220,7 +220,7 @@ export function Empty({
   detail,
   children,
 }: {
-  icon: React.ComponentType<any>;
+  icon: ComponentType<any>;
   title: string;
   detail: string;
   children?: ReactNode;
@@ -375,7 +375,7 @@ export function LinkRow({
   title: string;
   detail?: string;
   onPress: () => void;
-  icon: React.ComponentType<any>;
+  icon: ComponentType<any>;
   tint?: string;
 }) {
   return (

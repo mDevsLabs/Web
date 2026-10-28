@@ -17,6 +17,7 @@ import {
   sql,
 } from "drizzle-orm";
 import { ChatbotError } from "@/lib/errors";
+import { checkInviteUsability } from "@/lib/projects/permissions";
 import {
   agent,
   agentTemplate,
@@ -423,6 +424,9 @@ export async function getProjectChats({
         customInstructions: chat.customInstructions,
         id: chat.id,
         isArchived: chat.isArchived,
+        isSecure: sql<boolean>`EXISTS (
+          SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
+        )`,
         mode: chat.mode,
         ownerVariant: chat.userId,
         pinned: chat.pinned,
@@ -584,6 +588,32 @@ export async function deleteProjectMember({
   }
 }
 
+/**
+ * Lecture interne du projet pour le parcours d'adhésion par invitation.
+ * `getProjectById` filtre sur le PROPRIÉTAIRE : l'utiliser après l'insertion
+ * faisait répondre 404 au nouveau membre. Cette lecture ne filtre pas sur
+ * l'identité, mais elle n'est appelée qu'après validation d'un code
+ * d'invitation, et ne renvoie que les champs nécessaires au parcours — pas
+ * d'énumération possible.
+ */
+export async function getProjectForInviteJoin({ id }: { id: string }) {
+  try {
+    const db = await dbReady();
+    const [p] = await db
+      .select({
+        id: project.id,
+        name: project.name,
+        userId: project.userId,
+      })
+      .from(project)
+      .where(eq(project.id, id))
+      .limit(1);
+    return p ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 // Rejoindre un projet via une invitation : atomique. L'index unique
 // (projectId, userId) protège contre les doubles joins concurrents ; le
 // compteur d'usage est incrémenté seulement si l'insertion réussit.
@@ -598,27 +628,72 @@ export async function joinProjectWithInvite({
 }) {
   const db = await dbReady();
   try {
-    const [member] = await db
-      .insert(projectMember)
-      .values({
-        invitedBy,
-        projectId: invite.projectId,
-        role: "member",
-        userId,
-      })
-      .onConflictDoNothing({
-        target: [projectMember.projectId, projectMember.userId],
-      })
-      .returning();
-    if (!member) {
-      // Déjà membre : rien à faire, pas d'incrément d'usage.
-      return { alreadyMember: true, member: null } as const;
-    }
-    await db
-      .update(projectInvite)
-      .set({ useCount: sql`${projectInvite.useCount} + 1` })
-      .where(eq(projectInvite.id, invite.id));
-    return { alreadyMember: false, member } as const;
+    return await db.transaction(async (tx) => {
+      // Verrouille l'invitation : deux adhésions concurrentes sur la DERNIÈRE
+      // place se sérialisent. La seconde relit le useCount incrémenté et refuse.
+      const [locked] = await tx
+        .select()
+        .from(projectInvite)
+        .where(eq(projectInvite.id, invite.id))
+        .for("update");
+      if (!locked) {
+        return {
+          alreadyMember: false as const,
+          member: null,
+          ok: false as const,
+          reason: "revoked" as const,
+        };
+      }
+      const usable = checkInviteUsability(locked);
+      if (!usable.ok) {
+        return {
+          alreadyMember: false as const,
+          member: null,
+          ok: false as const,
+          reason: usable.reason,
+        };
+      }
+
+      const [target] = await tx
+        .select({ id: project.id })
+        .from(project)
+        .where(eq(project.id, locked.projectId))
+        .limit(1);
+      if (!target) {
+        return {
+          alreadyMember: false as const,
+          member: null,
+          ok: false as const,
+          reason: "project_missing" as const,
+        };
+      }
+
+      const [member] = await tx
+        .insert(projectMember)
+        .values({
+          invitedBy,
+          projectId: locked.projectId,
+          role: "member",
+          userId,
+        })
+        .onConflictDoNothing({
+          target: [projectMember.projectId, projectMember.userId],
+        })
+        .returning();
+      if (!member) {
+        // Déjà membre : rien à faire, pas d'incrément d'usage.
+        return {
+          alreadyMember: true as const,
+          member: null,
+          ok: true as const,
+        };
+      }
+      await tx
+        .update(projectInvite)
+        .set({ useCount: sql`${projectInvite.useCount} + 1` })
+        .where(eq(projectInvite.id, locked.id));
+      return { alreadyMember: false as const, member, ok: true as const };
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

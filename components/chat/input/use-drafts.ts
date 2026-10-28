@@ -1,12 +1,14 @@
 "use client";
 
 import type { Dispatch, SetStateAction } from "react";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useSettings } from "@/hooks/use-settings";
 import type { ToolId } from "@/lib/ai/tools/config";
 import { isChatToolId } from "@/lib/ai/tools/ids";
 import {
   clearDraft,
   draftKeyForChatId,
+  draftScopeForIdentity,
   loadDraft,
   NEW_CHAT_DRAFT_KEY,
   resolveNewChatDraftKey,
@@ -47,17 +49,32 @@ export function useDrafts(params: {
     textareaRef,
   } = params;
 
-  // Clé namespacée : identifiant de conversation réel, ou clé dédiée au
-  // contexte de création. Aucune clé générique partagée entre chats.
-  const draftKey = isNewChatInput
-    ? resolveNewChatDraftKey()
-    : draftKeyForChatId(chatId);
+  // Clé namespacée par COMPTE et conversation. Le scope vient de la session
+  // (e-mail ou nom d'utilisateur haché) ; tant qu'il n'est pas connu, on
+  // n'écrit ni ne lit aucun brouillon — jamais de clé partagée entre comptes.
+  const { data: settingsData } = useSettings({
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+  });
+  const draftScope = useMemo(() => {
+    const identity =
+      settingsData?.user?.email || settingsData?.user?.username || "";
+    return identity ? draftScopeForIdentity(identity) : null;
+  }, [settingsData]);
+  const draftKey = draftScope
+    ? isNewChatInput
+      ? resolveNewChatDraftKey(draftScope)
+      : draftKeyForChatId(chatId, draftScope)
+    : null;
 
   // Restauration unique par clé : au montage et à chaque changement de
   // conversation (navigation SPA incluse), contrairement à l'ancien
   // comportement gelé au premier montage.
   const restoredKeyRef = useRef<string | null>(null);
   useEffect(() => {
+    if (!draftKey) {
+      return;
+    }
     if (restoredKeyRef.current === draftKey) {
       return;
     }
@@ -83,6 +100,9 @@ export function useDrafts(params: {
   // clé. La clé capturée au moment de l'effet protège contre une écriture
   // tardive dans la clé d'un chat quitté (course de navigation).
   useEffect(() => {
+    if (!draftKey) {
+      return;
+    }
     const timer = setTimeout(() => {
       saveDraft(draftKey, input);
     }, RESTORE_DEBOUNCE_MS);
@@ -141,7 +161,10 @@ export function useDrafts(params: {
   // également un effacement de l'ancienne clé de compatibilité si un
   // navigateur en porte encore une.
   const clearCurrentDraft = useCallback(() => {
-    clearDraft(draftKey);
+    if (draftKey) {
+      clearDraft(draftKey);
+    }
+    // Ancienne clé globale : on la supprime, jamais on ne la lit.
     clearDraft(NEW_CHAT_DRAFT_KEY);
   }, [draftKey]);
 

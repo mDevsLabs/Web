@@ -11,7 +11,6 @@ import {UltraBloomPass} from '../src/render/ultra-bloom.ts';
 import {ultraOutputShader} from '../src/render/ultra-output.ts';
 import {environmentMaps} from '../src/render/environment-surfaces.ts';
 import {generateSurface} from '../src/render/surface-generator.ts';
-import {settingsMarkup} from '../src/ui/settings.ts';
 import {normalizeSave} from '../lib/server/validation.js';
 const budget=renderBudget('ultra',false),limits={maxTextureSize:16384,maxRenderbufferSize:16384,maxViewportWidth:16384,maxViewportHeight:16384};
 test('8K suréchantillonne réellement la scène en 7680 × 4320 même sur une fenêtre 1080p',()=>{
@@ -45,7 +44,7 @@ test('le bloom 8K garde ses cinq niveaux sans dépasser le tampon lumineux 960 �
 });
 test('l’étalonnage et l’anticrénelage partagent une passe sRGB sans grain opaque',()=>{
  assert.ok(ultraOutputShader.fragmentShader.includes('vec4 aa=ApplyFXAA'));assert.ok(ultraOutputShader.fragmentShader.includes('gl_FragColor=vec4(c,aa.a)'));assert.ok(!ultraOutputShader.fragmentShader.includes('43758.5453'));assert.equal(ultraOutputShader.uniforms.strength.value,0);
- const ui=settingsMarkup({...DEFAULT_SETTINGS,renderResolution:'8k'},false,false,'7680 × 4320');assert.ok(ui.includes('data-graphics="uhd"'));assert.ok(ui.includes('value="8k" selected'));assert.ok(!ui.includes('id="fpsLimit"'));assert.ok(ui.includes('cadence suit l’écran'));
+ const ui=normalizeSettings({...DEFAULT_SETTINGS,renderResolution:'8k'});assert.equal(ui.renderResolution,'8k');assert.equal('fpsLimit' in ui,false);assert.equal(graphicsPreset('uhd').quality,'ultra');
 });
 test('les nouvelles surfaces PBR sont stables, mipmappées et les normales gardent une longueur unitaire',()=>{
  for(const kind of ['masonry','asphalt','bark','sand'] as const){const maps=environmentMaps(kind);assert.equal(maps,environmentMaps(kind));assert.equal(maps.color.image.width,512);assert.equal(maps.color.colorSpace,T.SRGBColorSpace);assert.equal(maps.normal.colorSpace,T.NoColorSpace);for(const t of Object.values(maps)){assert.ok(t.generateMipmaps);assert.equal(t.wrapS,T.RepeatWrapping);}const bytes=maps.normal.image.data as Uint8Array;for(let i=0;i<bytes.length;i+=4096){const n=Math.hypot(bytes[i]/255*2-1,bytes[i+1]/255*2-1,bytes[i+2]/255*2-1);assert.ok(Math.abs(n-1)<.015);}}

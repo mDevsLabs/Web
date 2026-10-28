@@ -29,6 +29,11 @@ const REQUIRED_TABLES = [
   "ProjectMember",
   "Skill",
   "ToolExecution",
+  // Migration 0068 : sans cette table, le backend ne peut pas vérifier qu'une
+  // tâche d'image appartient au compte qui la consulte — il refuse alors toutes
+  // les tâches (fail-closed), mais les nouvelles générations échouent à
+  // l'enregistrement de propriété.
+  "mprojects_image_tasks",
   // Migration 0063 : la table unifiée des notifications. Sans elle, la
   // cloche mAI ne peut ni lire ni écrire — et le tick de réplication n'a
   // nulle part où copier les événements Vibe et Wakies.
@@ -78,10 +83,24 @@ const REQUIRED_TABLES = [
   // des réglages échoue et /blackline retombe silencieusement sur les
   // réglages locaux de l'appareil.
   "BlacklineSettings",
+  // Migration 0069 : sans cette table, l'ouverture d'une conversation
+  // sécurisée échoue en 42P01 et le PIN ne peut être ni lu ni écrit.
+  "ChatSecurity",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Migration 0069 : le PIN et sa version sont relus à chaque ouverture ; les
+  // colonnes reset* portent la réinitialisation par e-mail. Une base
+  // partiellement migrée doit être signalée AVANT le déploiement.
+  { column: "chatId", table: "ChatSecurity" },
+  { column: "createdAt", table: "ChatSecurity" },
+  { column: "pinHash", table: "ChatSecurity" },
+  { column: "pinUpdatedAt", table: "ChatSecurity" },
+  { column: "resetCodeHash", table: "ChatSecurity" },
+  { column: "resetCodeExpiresAt", table: "ChatSecurity" },
+  { column: "resetAttempts", table: "ChatSecurity" },
+  { column: "resetLastSentAt", table: "ChatSecurity" },
   { column: "rewardResetApplied", table: "UserFormResponse" },
   { column: "rewardType", table: "UserFormResponse" },
   { column: "questions", table: "UserForm" },

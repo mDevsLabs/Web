@@ -42,7 +42,7 @@ import {
   ZapIcon,
 } from "@mdevs/icons";
 import type React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
@@ -76,6 +76,7 @@ import {
 import { cn, fetcher } from "@/lib/utils";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
+import type { UserSettings } from "@/lib/vibe/types/vibe";
 import type { SetupStatus, Wakie } from "@/lib/wakies/shared/types";
 import { WAKIE_TOOL_CATALOG } from "@/lib/wakies/tool-catalog";
 
@@ -213,6 +214,12 @@ export function ApplicationsTab() {
     useState<WakiesAccountSettings | null>(null);
   const [activeWakieId, setActiveWakieId] = useState<string>("");
   const { capabilities: wakiesCapabilities } = useCapabilities(true);
+  // Dernier état CONFIRMÉ par le serveur, et file d'écriture sérialisée :
+  // deux bascules rapides ne doivent ni partir dans le désordre ni laisser
+  // l'interface sur une valeur refusée.
+  const wakiesConfirmedRef = useRef<WakiesAccountSettings | null>(null);
+  const wakiesSaveQueueRef = useRef<Promise<unknown>>(Promise.resolve());
+  const wakiesPendingRef = useRef(0);
 
   // Synchronisation du modèle et voix globaux mAI
   useEffect(() => {
@@ -266,6 +273,40 @@ export function ApplicationsTab() {
     );
   }, [audioModelsData]);
 
+  /**
+   * Applique un état Vibe CONFIRMÉ par le serveur. Utilisé au chargement et
+   * après un échec partiel : l'interface ne conserve jamais une valeur
+   * optimiste qu'une écriture n'a pas confirmée.
+   */
+  const appliquerReglagesVibe = useCallback((s: Partial<UserSettings>) => {
+    setFeedDefaultMode(s.feed_default_mode || "for_you");
+    setHideReposts(Boolean(s.hide_reposts));
+    setBlockedKeywords(
+      Array.isArray(s.blocked_keywords)
+        ? s.blocked_keywords.join(", ")
+        : s.blocked_keywords || ""
+    );
+    setAllowDms(s.allow_dms_from || s.allow_dms || "everyone");
+    setDmAutoTranslate(Boolean(s.dm_auto_translate));
+    setDmTranslateLang(s.dm_translate_lang || "FR");
+    setAllowMentions(s.allow_mentions || "everyone");
+    setContentFilter(s.content_filter_level || "medium");
+    setBlurSensitive(s.blur_sensitive_content ?? true);
+    setMaiAutoApproveTools(Boolean(s.mai_auto_approve_tools));
+    setPostsAIGeneratedByDefault(Boolean(s.posts_ai_generated_by_default));
+    setMaiContextPosts(Boolean(s.mai_context_posts));
+    setMaiContextDms(Boolean(s.mai_context_dms));
+    setMaiContextBooks(Boolean(s.mai_context_books));
+    setHideVerifiedBadge(Boolean(s.hide_verified_badge));
+    setDefaultVibeAudience(s.default_vibe_audience || "public");
+    if (s.mai_default_model) {
+      setUnifiedModel(s.mai_default_model);
+    }
+    if (s.mai_tts_voice) {
+      setUnifiedVoice(s.mai_tts_voice);
+    }
+  }, []);
+
   // Chargement des paramètres Vibe
   useEffect(() => {
     let active = true;
@@ -273,26 +314,7 @@ export function ApplicationsTab() {
       .then((res) => {
         if (!active || !res?.settings) return;
         const s = res.settings;
-        setFeedDefaultMode(s.feed_default_mode || "for_you");
-        setHideReposts(Boolean(s.hide_reposts));
-        setBlockedKeywords(
-          Array.isArray(s.blocked_keywords)
-            ? s.blocked_keywords.join(", ")
-            : s.blocked_keywords || ""
-        );
-        setAllowDms(s.allow_dms_from || s.allow_dms || "everyone");
-        setDmAutoTranslate(Boolean(s.dm_auto_translate));
-        setDmTranslateLang(s.dm_translate_lang || "FR");
-        setAllowMentions(s.allow_mentions || "everyone");
-        setContentFilter(s.content_filter_level || "medium");
-        setBlurSensitive(s.blur_sensitive_content ?? true);
-        setMaiAutoApproveTools(Boolean(s.mai_auto_approve_tools));
-        setPostsAIGeneratedByDefault(Boolean(s.posts_ai_generated_by_default));
-        setMaiContextPosts(Boolean(s.mai_context_posts));
-        setMaiContextDms(Boolean(s.mai_context_dms));
-        setMaiContextBooks(Boolean(s.mai_context_books));
-        setHideVerifiedBadge(Boolean(s.hide_verified_badge));
-        setDefaultVibeAudience(s.default_vibe_audience || "public");
+        appliquerReglagesVibe(s);
 
         // Si Vibe avait un modèle ou voix défini et qu'aucun n'est encore configuré côté mAI
         if (s.mai_default_model && !userPrefData?.defaultChatModel) {
@@ -317,7 +339,7 @@ export function ApplicationsTab() {
     return () => {
       active = false;
     };
-  }, [userPrefData]);
+  }, [userPrefData, appliquerReglagesVibe]);
 
   // Chargement des données Wakies
   useEffect(() => {
@@ -327,6 +349,7 @@ export function ApplicationsTab() {
         if (!active || !data) return;
         setWakiesData(data);
         setWakiesAccount(data.settings);
+        wakiesConfirmedRef.current = data.settings;
         if (data.wakies?.length > 0) {
           setActiveWakieId(data.wakies[0].id);
         }
@@ -439,6 +462,28 @@ export function ApplicationsTab() {
   }, []);
 
   /**
+   * Après un échec (total ou partiel), relit les VALEURS CONFIRMÉES des deux
+   * services. Il n'existe pas de transaction entre l'hôte et Vibe : on ne
+   * prétend donc pas annuler, on affiche l'état réellement enregistré.
+   */
+  const reconcilierVibe = useCallback(async () => {
+    try {
+      const res = await ApiService.getSettings();
+      if (res?.settings) {
+        appliquerReglagesVibe(res.settings);
+      }
+    } catch {
+      // Vibe illisible : les valeurs Vibe précédentes restent affichées, et
+      // le message d'erreur le dit.
+    }
+    try {
+      await mutateUserPref();
+    } catch {
+      // Les préférences de l'hôte seront relues à la prochaine navigation.
+    }
+  }, [appliquerReglagesVibe, mutateUserPref]);
+
+  /**
    * Écrit les réglages Vibe.
    *
    * Deux destinations: le modèle et la voix sont partagés avec mAI, donc
@@ -455,7 +500,7 @@ export function ApplicationsTab() {
         .map((k) => k.trim())
         .filter(Boolean);
 
-      await fetch("/api/user/preferences", {
+      const reponse = await fetch("/api/user/preferences", {
         body: JSON.stringify({
           defaultAudioVoice: etat.unifiedVoice,
           defaultChatModel: etat.unifiedModel,
@@ -463,31 +508,49 @@ export function ApplicationsTab() {
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
+      if (!reponse.ok) {
+        // Un 4xx/5xx ne doit jamais être considéré comme un enregistrement
+        // réussi : on relit l'état confirmé avant de signaler l'échec.
+        await reconcilierVibe();
+        throw new Error(
+          "Les préférences mAI n'ont pas pu être enregistrées. L'état confirmé a été relu."
+        );
+      }
       await mutateUserPref();
 
-      await ApiService.updateSettings({
-        allow_dms: etat.allowDms,
-        allow_dms_from: etat.allowDms,
-        allow_mentions: etat.allowMentions,
-        blocked_keywords: motsCles,
-        blur_sensitive_content: etat.blurSensitive,
-        content_filter_level: etat.contentFilter,
-        default_vibe_audience: etat.defaultVibeAudience,
-        dm_auto_translate: etat.dmAutoTranslate,
-        dm_translate_lang: etat.dmTranslateLang,
-        feed_default_mode: etat.feedDefaultMode,
-        hide_reposts: etat.hideReposts,
-        hide_verified_badge: etat.hideVerifiedBadge,
-        mai_auto_approve_tools: etat.maiAutoApproveTools,
-        mai_context_books: etat.maiContextBooks,
-        mai_context_dms: etat.maiContextDms,
-        mai_context_posts: etat.maiContextPosts,
-        mai_default_model: etat.unifiedModel,
-        mai_tts_voice: etat.unifiedVoice,
-        posts_ai_generated_by_default: etat.postsAIGeneratedByDefault,
-      });
+      try {
+        await ApiService.updateSettings({
+          allow_dms: etat.allowDms,
+          allow_dms_from: etat.allowDms,
+          allow_mentions: etat.allowMentions,
+          blocked_keywords: motsCles,
+          blur_sensitive_content: etat.blurSensitive,
+          content_filter_level: etat.contentFilter,
+          default_vibe_audience: etat.defaultVibeAudience,
+          dm_auto_translate: etat.dmAutoTranslate,
+          dm_translate_lang: etat.dmTranslateLang,
+          feed_default_mode: etat.feedDefaultMode,
+          hide_reposts: etat.hideReposts,
+          hide_verified_badge: etat.hideVerifiedBadge,
+          mai_auto_approve_tools: etat.maiAutoApproveTools,
+          mai_context_books: etat.maiContextBooks,
+          mai_context_dms: etat.maiContextDms,
+          mai_context_posts: etat.maiContextPosts,
+          mai_default_model: etat.unifiedModel,
+          mai_tts_voice: etat.unifiedVoice,
+          posts_ai_generated_by_default: etat.postsAIGeneratedByDefault,
+        });
+      } catch {
+        // Écriture PARTIELLE : l'hôte a accepté, Vibe a refusé. On relit les
+        // deux services pour afficher ce qui est réellement enregistré, et on
+        // le dit explicitement — sans promettre une annulation qui n'existe pas.
+        await reconcilierVibe();
+        throw new Error(
+          "Les préférences mAI ont été enregistrées, mais Vibe ne les a pas acceptées. L'état confirmé a été relu : vérifiez puis réessayez."
+        );
+      }
     },
-    [mutateUserPref]
+    [mutateUserPref, reconcilierVibe]
   );
 
   useAutosaveSection({
@@ -594,23 +657,68 @@ export function ApplicationsTab() {
     }
   };
 
+  /** Relit l'état Wakies confirmé (après un échec d'écriture). */
+  const relireWakies = async () => {
+    try {
+      const data = await wakiesApi<WakiesData>("/settings");
+      if (data) {
+        setWakiesData(data);
+        setWakiesAccount(data.settings);
+        wakiesConfirmedRef.current = data.settings;
+        return true;
+      }
+    } catch {
+      // Le dernier état confirmé reste affiché ; le message le signale.
+    }
+    return false;
+  };
+
   // --- ACTIONS WAKIES ---
   const handleSaveWakiesAccount = async (
     patch: Partial<WakiesAccountSettings>
   ) => {
+    wakiesPendingRef.current += 1;
     setWakiesSaving(true);
+    const run = async () => {
+      try {
+        const updated = await wakiesApi<WakiesAccountSettings>(
+          "/settings",
+          "PATCH",
+          patch
+        );
+        // La réponse du serveur fait foi. Les écritures étant sérialisées,
+        // une réponse plus ancienne ne peut pas écraser une plus récente.
+        setWakiesAccount((prev) => (prev ? { ...prev, ...updated } : updated));
+        wakiesConfirmedRef.current = {
+          ...(wakiesConfirmedRef.current ?? updated),
+          ...updated,
+        };
+        toast.success("Paramètres Wakies mis à jour ");
+      } catch (err: any) {
+        // Échec HTTP/réseau : on restaure le dernier état CONFIRMÉ, puis on
+        // relit le serveur. Si la relecture échoue, l'utilisateur est averti
+        // que l'état est incertain — aucune valeur optimiste n'est présentée
+        // comme enregistrée.
+        if (wakiesConfirmedRef.current) {
+          setWakiesAccount(wakiesConfirmedRef.current);
+        }
+        const relu = await relireWakies();
+        toast.error(
+          relu
+            ? "Impossible de mettre à jour Wakies : l'état précédent a été restauré."
+            : `${err?.message || "Impossible de mettre à jour Wakies."} L'état du serveur n'a pas pu être relu ; rechargez la page.`
+        );
+      }
+    };
+    const chained = wakiesSaveQueueRef.current.then(run, run);
+    wakiesSaveQueueRef.current = chained.catch(() => {});
     try {
-      const updated = await wakiesApi<WakiesAccountSettings>(
-        "/settings",
-        "PATCH",
-        patch
-      );
-      setWakiesAccount((prev) => (prev ? { ...prev, ...updated } : updated));
-      toast.success("Paramètres Wakies mis à jour ");
-    } catch (err: any) {
-      toast.error(err?.message || "Impossible de mettre à jour Wakies.");
+      await chained;
     } finally {
-      setWakiesSaving(false);
+      wakiesPendingRef.current = Math.max(0, wakiesPendingRef.current - 1);
+      if (wakiesPendingRef.current === 0) {
+        setWakiesSaving(false);
+      }
     }
   };
 

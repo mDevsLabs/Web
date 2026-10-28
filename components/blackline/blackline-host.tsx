@@ -15,8 +15,9 @@
  *     pas de bande passante.
  *
  *  2. Le BUNDLE est chargé. Son nom est FIXE (`/blackline/assets/blackline.js`)
- *     : le navigateur le met en cache, et la page n'a rien à lire avant de
- *     l'insérer. Voir `scripts/build-blackline.mjs`.
+ *     mais son Cache-Control est `no-cache` : le navigateur revalide l'entrée
+ *     après chaque déploiement. Les chunks référencés, eux, sont hachés et
+ *     immuables. Voir `next.config.ts` et `scripts/build-blackline.mjs`.
  *
  *  3. Le JEU est monté dans le conteneur fourni par la page. Le point d'entrée
  *     du jeu (`apps/blackline/src/entry.ts`) est le MÊME que celui de

@@ -1,6 +1,7 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { getChatLockState } from "@/lib/chat/security";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { getProjectAccess } from "@/lib/projects/access";
 import { convertToUIMessages } from "@/lib/utils";
@@ -27,11 +28,11 @@ export async function GET(request: Request) {
     });
   }
 
-  const currentUserId = maiUser.id;
+  const currentUserId = maiUser.id || maiUser.email;
   const isOwner = chatOwnerMatches({
     chatUserId: chat.userId,
     email: maiUser.email,
-    userId: maiUser.id,
+    userId: currentUserId,
     username: maiUser.username,
   });
 
@@ -43,7 +44,7 @@ export async function GET(request: Request) {
     const access = await getProjectAccess({
       projectId: chat.projectId,
       userEmail: maiUser.email,
-      userId: currentUserId ?? "",
+      userId: currentUserId,
     });
     isProjectMember = Boolean(access);
   }
@@ -52,12 +53,35 @@ export async function GET(request: Request) {
     return errorResponse("access_denied");
   }
 
+  // Le propriétaire n'est pas exempté : le PIN protège la conversation à
+  // chaque nouvelle session navigateur. Le locked est un succès (200) pour que
+  // l'interface puisse afficher l'écran de saisie au lieu d'une erreur.
+  const lockState = await getChatLockState({
+    chat,
+    email: maiUser.email,
+    userId: currentUserId,
+    username: maiUser.username,
+  });
+  if (lockState.locked) {
+    return Response.json({
+      chatId: chat.id,
+      isOwner: lockState.isOwner,
+      isReadonly: !lockState.isOwner,
+      isSecure: true,
+      locked: true,
+      visibility: chat.visibility,
+    });
+  }
+
   const isReadonly = !isOwner;
   const messages = await getMessagesByChatId({ id: chatId });
 
   return Response.json({
     chatId: chat.id,
+    isOwner: lockState.isOwner,
     isReadonly,
+    isSecure: lockState.isSecure,
+    locked: false,
     messages: convertToUIMessages(messages),
     userId: chat.userId,
     visibility: chat.visibility,

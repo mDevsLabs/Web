@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { getWakiesQuota } from "@/lib/plans/tier-limits";
 import {
   badRequest,
   isResponse,
@@ -8,6 +9,7 @@ import {
   rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
+  wakiesQuotaResponse,
 } from "@/lib/wakies/http";
 import {
   createPage,
@@ -15,6 +17,7 @@ import {
   messageDuCompte,
   spaceExists,
 } from "@/lib/wakies/queries";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 
 /**
  * POST /api/wakies/messages/:id/page {spaceId} — « Enregistrer en page ».
@@ -86,11 +89,17 @@ export async function POST(
         content: pageMarkdown(message),
         title: `Message — ${message.extrait.slice(0, 60)}`,
       },
-      message.conversationId
+      {
+        quota: getWakiesQuota(identite.tier, "pages"),
+        sourceConversationId: message.conversationId,
+      }
     );
     await definirEpingle(identite.userId, id, true);
     return json({ page }, { status: 201 });
   } catch (erreur) {
+    if (erreur instanceof WakiesQuotaError) {
+      return wakiesQuotaResponse(erreur);
+    }
     return erreur instanceof Error
       ? badRequest(erreur.message)
       : toErrorResponse(erreur);

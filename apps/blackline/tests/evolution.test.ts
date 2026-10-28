@@ -10,7 +10,7 @@ import { createActor } from '../src/ai.ts';
 import { createWeapon } from '../src/world.ts';
 import { opticCenter } from '../src/optics.ts';
 import { arsenalMarkup } from '../src/ui/arsenal.ts';
-import { settingsMarkup } from '../src/ui/settings.ts';
+import { normalizeSettings } from '../src/settings-normalize.ts';
 import { weaponGraphic } from '../src/ui/weapon-graphic.ts';
 test('chaque arme progresse séparément et les accessoires modifient les statistiques sans modifier le catalogue',()=>{
   const book=normalizeProgress({});awardWeaponXP(book,'pistol',1200,true,true);assert.equal(weaponLevel(book.pistol.xp),2);assert.equal(book.pistol.kills,1);assert.equal(book.pistol.headshots,1);assert.equal(book.ar.xp,0);
@@ -28,7 +28,7 @@ test('les touches personnalisées remplacent les anciennes touches et refusent l
 test('l’arsenal expose le pistolet, des dessins distincts et trois accessoires verrouillés au premier niveau',()=>{
   const html=arsenalMarkup('pistol',normalizeProgress({}),false);assert.ok(html.includes('P-12 WARDEN'));assert.equal((html.match(/data-weapon=/g)??[]).length,WEAPONS.length);assert.equal((html.match(/data-upgrade=/g)??[]).length,3);assert.equal((html.match(/data-upgrade="[^"]+" disabled/g)??[]).length,3);assert.equal((html.match(/data-skin=/g)??[]).length,4);
   assert.notEqual(weaponGraphic('pistol'),weaponGraphic('ar'));assert.notEqual(weaponGraphic('smg'),weaponGraphic('dmr'));
-  const settings=settingsMarkup(DEFAULT_SETTINGS,false,false,'1280 × 720');assert.ok(settings.includes('data-bind="weapon4"'));assert.ok(settings.includes('id="reticleStyle"'));
+  const settings=normalizeSettings(DEFAULT_SETTINGS);assert.ok(settings.bindings?.weapon4?.length);assert.equal(settings.reticleStyle,'dot');
 });
 test('le réticule projeté s’aligne au centre de l’optique quand l’arme vise, y compris au pistolet',()=>{
   for(const w of WEAPONS){const gun=createWeapon(w,true);gun.position.set(0,-((w.model??w.id)==='dmr'?.21:w.id==='pistol'?.16:.23),-.4);const camera=new T.PerspectiveCamera(54,16/9,.02,8),point=opticCenter(gun,camera,w);assert.ok(Math.abs(point.x)<1e-10);assert.ok(Math.abs(point.y)<1e-10);assert.ok(Number.isFinite(point.z));}

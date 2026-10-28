@@ -13,6 +13,7 @@ import { pushRealtimeEvent } from "./realtime.ts";
 import { ensureBooksTables } from "./vibe-books.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
 import {
+  assertDmRecipientAllowed,
   attachDMAttachedPosts,
   deriveForwardedFrom,
   dmPlainLength,
@@ -313,7 +314,7 @@ export function registerDMDirectRoutes(
                ru.username as reply_to_username
         FROM direct_messages m
         JOIN users u ON u.id = m.sender_id
-        LEFT JOIN direct_messages r ON r.id = m.reply_to_id
+        LEFT JOIN direct_messages r ON r.id = m.reply_to_id AND r.conversation_id = m.conversation_id
         LEFT JOIN users ru ON ru.id = r.sender_id
         WHERE ((m.sender_id = ${userId} AND m.recipient_id = ${partnerId})
            OR (m.sender_id = ${partnerId} AND m.recipient_id = ${userId}))
@@ -500,25 +501,42 @@ export function registerDMDirectRoutes(
           reply_to_content: string;
           reply_to_username: string;
         } | null = null;
-        if (
-          typeof reply_to_id === "string" &&
-          /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-            reply_to_id
-          )
-        ) {
+        if (reply_to_id) {
+          if (
+            typeof reply_to_id !== "string" ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              reply_to_id
+            )
+          ) {
+            return c.json({ error: "Message de réponse invalide." }, 400);
+          }
           const rRows = await sql`
             SELECT r.content AS reply_to_content, u.username AS reply_to_username
             FROM direct_messages r JOIN users u ON u.id = r.sender_id
-            WHERE r.id = ${reply_to_id}::uuid AND r.conversation_id = ${groupId}::uuid
+            WHERE r.id = ${reply_to_id}::uuid
+              AND r.conversation_id = ${groupId}::uuid
+              AND NOT EXISTS (
+                SELECT 1 FROM dm_hidden_messages h
+                WHERE h.message_id = r.id AND h.user_id = ${userId}
+              )
             LIMIT 1
           `;
-          if (rRows.length > 0) {
-            validReplyTo = reply_to_id;
-            replyPreview = {
-              reply_to_content: String(rRows[0].reply_to_content),
-              reply_to_username: String(rRows[0].reply_to_username),
-            };
+          if (rRows.length === 0) {
+            // Un UUID d'un autre fil ne doit jamais être accepté : il ferait
+            // apparaître le contenu d'une conversation étrangère dans celle-ci.
+            return c.json(
+              {
+                error:
+                  "Message de réponse introuvable dans cette conversation.",
+              },
+              400
+            );
           }
+          validReplyTo = reply_to_id;
+          replyPreview = {
+            reply_to_content: String(rRows[0].reply_to_content),
+            reply_to_username: String(rRows[0].reply_to_username),
+          };
         }
 
         // Transfert: l'auteur d'origine est re-dérivé depuis la base (anti-usurpation)
@@ -641,64 +659,74 @@ export function registerDMDirectRoutes(
         scheduledAt = new Date(ts).toISOString();
       }
 
-      // Blocage: impossible d'envoyer si l'un des deux a bloqué l'autre
-      const blockCheck = await sql`
-        SELECT 1 FROM blocked_users
-        WHERE (user_id = ${userId} AND blocked_user_id = ${recId})
-           OR (user_id = ${recId} AND blocked_user_id = ${userId})
-        LIMIT 1
-      `;
-      if (blockCheck.length > 0) {
+      // Blocage + préférences de réception du destinataire : mêmes gardes que
+      // l'outil `send_message` de l'agent (politique partagée).
+      const recipientDecision = await assertDmRecipientAllowed(
+        sql,
+        userId,
+        recId
+      );
+      if (!recipientDecision.allowed) {
+        if (recipientDecision.reason === "blocked") {
+          return c.json(
+            { error: "Impossible d'envoyer un message: utilisateur bloqué." },
+            403
+          );
+        }
+        if (recipientDecision.reason === "followers_only") {
+          return c.json(
+            {
+              error:
+                "Cet utilisateur n'accepte les messages que de ses abonnements.",
+            },
+            403
+          );
+        }
         return c.json(
-          { error: "Impossible d'envoyer un message: utilisateur bloqué." },
+          { error: "Cet utilisateur n'accepte pas les messages privés." },
           403
         );
       }
 
-      // Vérifier les paramètres de messages du destinataire
-      let recipientSettings: any[] = [];
-      try {
-        recipientSettings = await sql`
-          SELECT allow_dms, dms_enabled
-          FROM user_settings
-          WHERE user_id = ${recId}
-          LIMIT 1
-        `;
-      } catch (settingsErr) {
-        console.warn(
-          "[vibe-dms] Note: user_settings check skipped or table incomplete:",
-          settingsErr
-        );
-      }
-
-      if (recipientSettings.length > 0) {
-        const s = recipientSettings[0];
-        const dmPolicy = s.allow_dms || "everyone";
-        const dmsEnabled = s.dms_enabled !== false;
-        if (!dmsEnabled || dmPolicy === "nobody") {
-          return c.json(
-            { error: "Cet utilisateur n'accepte pas les messages privés." },
-            403
-          );
-        }
-        if (dmPolicy === "following") {
-          const isFollowing = await sql`
-            SELECT 1 FROM follows WHERE follower_id = ${recId} AND following_id = ${userId} LIMIT 1
-          `;
-          if (isFollowing.length === 0) {
-            return c.json(
-              {
-                error:
-                  "Cet utilisateur n'accepte les messages que de ses abonnements.",
-              },
-              403
-            );
-          }
-        }
-      }
-
       const p1 = userId < recId ? userId : recId;
       const p2 = userId < recId ? recId : userId;
+
+      let validReplyTo: string | null = null;
+      if (reply_to_id) {
+        if (
+          typeof reply_to_id !== "string" ||
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+            reply_to_id
+          )
+        ) {
+          return c.json({ error: "Message de réponse invalide." }, 400);
+        }
+        // La référence doit appartenir à CETTE conversation et être visible
+        // par l'expéditeur. Un UUID valide d'un autre fil ne suffit pas.
+        // Validation AVANT l'upsert de conversation : un refus ne doit pas
+        // modifier l'aperçu du fil.
+        const replyRows = await sql`
+          SELECT 1 FROM direct_messages r
+          JOIN dm_conversations c ON c.id = r.conversation_id
+          WHERE r.id = ${reply_to_id}::uuid
+            AND c.participant_one_id = ${p1}
+            AND c.participant_two_id = ${p2}
+            AND NOT EXISTS (
+              SELECT 1 FROM dm_hidden_messages h
+              WHERE h.message_id = r.id AND h.user_id = ${userId}
+            )
+          LIMIT 1
+        `;
+        if (replyRows.length === 0) {
+          return c.json(
+            {
+              error: "Message de réponse introuvable dans cette conversation.",
+            },
+            400
+          );
+        }
+        validReplyTo = reply_to_id;
+      }
 
       const convRows = await sql`
         INSERT INTO dm_conversations (participant_one_id, participant_two_id, last_message_preview, last_message_at)
@@ -711,13 +739,6 @@ export function registerDMDirectRoutes(
       `;
 
       const conversationId = convRows[0].id;
-      const validReplyTo =
-        typeof reply_to_id === "string" &&
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-          reply_to_id
-        )
-          ? reply_to_id
-          : null;
       const forwardedFrom = await deriveForwardedFrom(sql, forwarded_from);
       const msg = scheduledAt
         ? await sql`

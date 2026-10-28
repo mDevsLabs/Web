@@ -1,14 +1,19 @@
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey,
+  releaseApiRequestQuota,
+  reserveApiQuotaOrRefuse,
+} from "./api-quota.ts";
+import {
   extractToken,
   getDb,
   getTierDailyImageLimit,
   getTierImageRequestCost,
   getUserQuotaBoost,
+  getWeekData,
   isPaidTier,
   verifyToken,
 } from "./config.ts";
+import { classifyMidjourneyPath } from "./image-route-policy.ts";
 
 export interface ImageModelItem {
   capabilities?: {
@@ -929,6 +934,8 @@ async function executeMidjourneyImagineBridge(
     aspectRatio?: string;
     base64Array?: string[];
     notifyHook?: string;
+    /** Enregistre l'association compte ↔ tâche AVANT tout polling. */
+    registerTask?: (taskId: string) => Promise<void>;
   }
 ): Promise<{
   failReason?: string;
@@ -951,6 +958,7 @@ async function executeMidjourneyImagineBridge(
     payload.notifyHook = options.notifyHook;
   }
 
+  let registrationError: Error | null = null;
   try {
     const submitRes = await fetch(
       "https://api.cometapi.com/mj/submit/imagine",
@@ -969,7 +977,16 @@ async function executeMidjourneyImagineBridge(
       const submitJson = await submitRes.json();
       const taskId = submitJson.result || submitJson.task_id || submitJson.id;
 
-      if (taskId) {
+      if (taskId && options?.registerTask) {
+        try {
+          await options.registerTask(String(taskId));
+        } catch (error) {
+          registrationError =
+            error instanceof Error ? error : new Error(String(error));
+        }
+      }
+
+      if (taskId && !registrationError) {
         // Polling actif jusqu'à succès (max 60s)
         const maxAttempts = 35;
         const pollIntervalMs = 1800;
@@ -1018,6 +1035,13 @@ async function executeMidjourneyImagineBridge(
     console.warn("[CometAPI] Midjourney imagine bridge error:", err);
   }
 
+  // L'association de propriété est obligatoire : sans elle, la tâche serait
+  // inaccessible (refusée côté fetch) et pourrait être générée sans être
+  // rattachée à un compte. On échoue plutôt que de laisser une tâche orpheline.
+  if (registrationError) {
+    throw registrationError;
+  }
+
   // Si le bridge MJ natif échoue ou timeout, fallback transparent sur les générateurs d'images CometAPI
   const fallbackRes = await callCometImageGeneration({
     apiKey: cometApiKey,
@@ -1035,6 +1059,166 @@ async function executeMidjourneyImagineBridge(
 }
 
 export function registerImageRoutes(app: Hono) {
+  // ─────────────────────────────────────────────
+  // Gardes communes aux générations d'images (toutes routes confondues)
+  // ─────────────────────────────────────────────
+  // La classification Midjourney (génération vs lecture de statut) vit dans
+  // `image-route-policy.ts`, testée séparément.
+
+  async function resolveImageAccount(
+    c: any
+  ): Promise<
+    | { id: string; tier: string }
+    | { error: "unauthenticated" }
+    | { error: "blocked" }
+    | { error: "not_found" }
+  > {
+    const rawUserId = (c as any).get?.("userId");
+    if (!rawUserId) return { error: "unauthenticated" };
+    const sql = getDb();
+    const rows = await sql`
+      SELECT id, tier, is_blocked FROM users
+      WHERE id::text = ${rawUserId}::text
+         OR username = ${rawUserId}::text
+         OR email = ${rawUserId}::text
+      LIMIT 1
+    `;
+    if (rows.length === 0) return { error: "not_found" };
+    if (rows[0].is_blocked === true) return { error: "blocked" };
+    return { id: String(rows[0].id), tier: String(rows[0].tier || "Free") };
+  }
+
+  /**
+   * Réserve atomiquement N images dans le quota journalier du compte.
+   * `ON CONFLICT … WHERE` ne renvoie une ligne que si la place restait : deux
+   * requêtes simultanées ne peuvent pas dépasser le même plafond.
+   */
+  async function reserveDailyImages(
+    sql: any,
+    userId: string,
+    amount: number,
+    limit: number
+  ): Promise<{ ok: boolean; used: number }> {
+    if (amount > limit) {
+      const rows =
+        await sql`SELECT images_generated FROM mprojects_daily_image_usage WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE LIMIT 1`;
+      return { ok: false, used: Number(rows[0]?.images_generated || 0) };
+    }
+    const rows = await sql`
+      INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
+      VALUES (${userId}::text, CURRENT_DATE, ${amount}, NOW())
+      ON CONFLICT (user_id, usage_date)
+      DO UPDATE SET
+        images_generated = mprojects_daily_image_usage.images_generated + ${amount},
+        updated_at = NOW()
+      WHERE mprojects_daily_image_usage.images_generated + ${amount} <= ${limit}
+      RETURNING images_generated
+    `;
+    if (rows.length > 0) {
+      return { ok: true, used: Number(rows[0].images_generated) };
+    }
+    const current =
+      await sql`SELECT images_generated FROM mprojects_daily_image_usage WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE LIMIT 1`;
+    return { ok: false, used: Number(current[0]?.images_generated || 0) };
+  }
+
+  async function releaseDailyImages(
+    sql: any,
+    userId: string,
+    amount: number
+  ): Promise<void> {
+    await sql`
+      UPDATE mprojects_daily_image_usage
+      SET images_generated = GREATEST(images_generated - ${amount}, 0),
+          updated_at = NOW()
+      WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE
+    `;
+  }
+
+  /**
+   * Réserve le coût API (crédits de requête) des images AVANT le fournisseur.
+   * Le middleware a déjà réservé 1 pour la requête ; le handler débite le coût
+   * complet et pose `quotaDebitedByHandler`, ce qui fait rendre sa réservation
+   * au middleware : le total reste exactement le coût, sans double débit.
+   */
+  async function reserveImageApiCost(
+    c: any,
+    sql: any,
+    params: {
+      userId: string;
+      cost: number;
+      weekStartStr: string;
+    }
+  ): Promise<
+    | { status: "reserved"; apiKey: string; cost: number }
+    | { status: "skipped" }
+    | { status: "exhausted"; limit: number; used: number; reason: string }
+    | { status: "unavailable" }
+  > {
+    const requestQuota = (c as any).get?.("requestQuota") as
+      | {
+          apiKey: string | null;
+          limit: number;
+          remaining: number;
+          used: number;
+        }
+      | undefined;
+    const apiKey = requestQuota?.apiKey;
+    if (!apiKey) {
+      return { status: "skipped" };
+    }
+    if (!requestQuota || params.cost < 1) {
+      return { status: "skipped" };
+    }
+    const gate = await reserveApiQuotaOrRefuse(sql, {
+      apiKey,
+      cost: params.cost,
+      limit: requestQuota.limit,
+      userId: params.userId,
+      weekStartStr: params.weekStartStr,
+    });
+    if (gate.status === "unavailable") {
+      return { status: "unavailable" };
+    }
+    if (gate.status !== "reserved") {
+      return {
+        limit: gate.limit,
+        reason: gate.status,
+        status: "exhausted",
+        used: gate.used,
+      };
+    }
+    return { apiKey, cost: params.cost, status: "reserved" };
+  }
+
+  async function registerImageTask(
+    sql: any,
+    taskId: string,
+    userId: string,
+    apiKey: string | null
+  ): Promise<void> {
+    if (!taskId) return;
+    await sql`
+      INSERT INTO mprojects_image_tasks (task_id, user_id, api_key)
+      VALUES (${taskId}::text, ${userId}::text, ${apiKey || null})
+      ON CONFLICT (task_id) DO NOTHING
+    `;
+  }
+
+  async function ownsImageTask(
+    sql: any,
+    taskId: string,
+    userId: string
+  ): Promise<boolean> {
+    if (!taskId) return false;
+    const rows = await sql`
+      SELECT 1 FROM mprojects_image_tasks
+      WHERE task_id = ${taskId}::text AND user_id = ${userId}::text
+      LIMIT 1
+    `;
+    return rows.length > 0;
+  }
+
   // ─────────────────────────────────────────────
   // GET /v1/models/images, /models/images & /v1/images/models (OpenAI Compatible)
   // ─────────────────────────────────────────────
@@ -1172,8 +1356,8 @@ export function registerImageRoutes(app: Hono) {
         `.catch(() => []),
       ]);
 
-      const keyTier = extractTierFromApiKey(token);
-      const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
+      // Forfait actuel du compte uniquement (pas de privilège de préfixe).
+      const effectiveTier = uRows[0]?.tier || userPlan || "Free";
       const usedToday = Number(countRows[0]?.images_generated || 0);
       const imageBoost = await getUserQuotaBoost(sql, userId, "images");
       const dailyLimit = getTierDailyImageLimit(effectiveTier) + imageBoost;
@@ -1390,6 +1574,15 @@ export function registerImageRoutes(app: Hono) {
   // POST /v1/images/generations & Formes Multi-Modèles (OpenAI, Midjourney, Google SDK)
   // ─────────────────────────────────────────────
   const handleImageGeneration = async (c: any) => {
+    // Réservations à libérer si le fournisseur échoue. Déclarées hors du try
+    // pour que le `catch` puisse les rendre sans laisser de place réservée.
+    const imageReservation = {
+      apiCost: 0,
+      apiKey: null as string | null,
+      daily: 0,
+      providerSucceeded: false,
+      userId: "",
+    };
     try {
       const token = extractToken(c.req.raw);
       const authHeader = c.req.header("Authorization");
@@ -1518,16 +1711,8 @@ export function registerImageRoutes(app: Hono) {
         WHERE id::text = ${userId}::text OR username = ${userId}::text
         LIMIT 1
       `;
-      const keyTier = extractTierFromApiKey(token);
-      const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
-      const requestQuota = (c as any).get?.("requestQuota") as
-        | {
-            apiKey: string | null;
-            limit: number;
-            remaining: number;
-            used: number;
-          }
-        | undefined;
+      // Forfait actuel du compte uniquement (pas de privilège de préfixe).
+      const effectiveTier = uRows[0]?.tier || userPlan || "Free";
 
       if (!isPaidTier(effectiveTier)) {
         return c.json(
@@ -1545,52 +1730,74 @@ export function registerImageRoutes(app: Hono) {
 
       const imageBoost = await getUserQuotaBoost(sql, userId, "images");
       const dailyLimit = getTierDailyImageLimit(effectiveTier) + imageBoost;
-      const usageRows = await sql`
-        SELECT images_generated
-        FROM mprojects_daily_image_usage
-        WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE
-        LIMIT 1
-      `;
-      const currentDailyUsage = Number(usageRows[0]?.images_generated || 0);
 
-      if (currentDailyUsage + n > dailyLimit) {
+      // Réservation journalière ATOMIQUE avant l'appel fournisseur.
+      const dailyReservation = await reserveDailyImages(
+        sql,
+        String(userId),
+        n,
+        dailyLimit
+      );
+      if (!dailyReservation.ok) {
         return c.json(
           {
             error: {
               code: "daily_image_quota_exceeded",
               limit: dailyLimit,
-              message: `Votre quota journalier de génération d'images est épuisé (${currentDailyUsage}/${dailyLimit} par jour pour le forfait ${effectiveTier}, ${n} image(s) demandée(s)). Réinitialisation automatique à minuit UTC.`,
+              message: `Votre quota journalier de génération d'images est épuisé (${dailyReservation.used}/${dailyLimit} par jour pour le forfait ${effectiveTier}, ${n} image(s) demandée(s)). Réinitialisation automatique à minuit UTC.`,
               requested: n,
               type: "quota_error",
-              used: currentDailyUsage,
+              used: dailyReservation.used,
             },
           },
           429
         );
       }
+      imageReservation.daily = n;
+      imageReservation.userId = String(userId);
 
-      // Le crédit API débité est le coût du tier multiplié par le nombre d'images demandées:
-      // il doit rester assez pour la requête AVANT d'appeler le fournisseur.
+      // Le crédit API est réservé atomiquement, à l'échelle du compte.
       const totalRequestCost = getTierImageRequestCost(effectiveTier) * n;
-      if (
-        requestQuota &&
-        requestQuota.used + totalRequestCost > requestQuota.limit
-      ) {
+      const { weekStartStr } = getWeekData();
+      const apiReservation = await reserveImageApiCost(c, sql, {
+        cost: totalRequestCost,
+        userId: String(userId),
+        weekStartStr,
+      });
+      if (apiReservation.status === "unavailable") {
+        await releaseDailyImages(sql, String(userId), n);
+        return c.json(
+          {
+            error: {
+              code: "quota_service_unavailable",
+              message:
+                "Le contrôle du quota API est momentanément indisponible. Réessayez plus tard.",
+            },
+          },
+          503
+        );
+      }
+      if (apiReservation.status === "exhausted") {
+        await releaseDailyImages(sql, String(userId), n);
         return c.json(
           {
             error: {
               code: "insufficient_api_requests",
               dailyLimit,
-              limit: requestQuota.limit,
-              message: `Requête refusée : ${totalRequestCost} crédits API sont nécessaires pour générer ${n} image(s) avec le forfait ${effectiveTier}, il n'en reste que ${requestQuota.remaining} sur ${requestQuota.limit} cette semaine.`,
-              remaining: requestQuota.remaining,
+              limit: apiReservation.limit,
+              message: `Requête refusée : ${totalRequestCost} crédits API sont nécessaires pour générer ${n} image(s) avec le forfait ${effectiveTier} sur ${apiReservation.limit} cette semaine.`,
+              remaining: 0,
               required: totalRequestCost,
               type: "quota_error",
-              used: requestQuota.used,
+              used: apiReservation.used,
             },
           },
           429
         );
+      }
+      if (apiReservation.status === "reserved") {
+        imageReservation.apiCost = totalRequestCost;
+        imageReservation.apiKey = apiReservation.apiKey;
       }
 
       // Appel de Comet API avec exécution multi-stratégie & gestion des erreurs
@@ -1616,6 +1823,14 @@ export function registerImageRoutes(app: Hono) {
                 aspectRatioStr ||
                 (width === height ? undefined : `${width}:${height}`),
               base64Array: body.image ? [body.image] : undefined,
+              registerTask: async (taskId) => {
+                await registerImageTask(
+                  sql,
+                  taskId,
+                  String(userId),
+                  imageReservation.apiKey || apiKey
+                );
+              },
             }
           );
           generatedImageUrl = normalizeImageSrc(mjRes.imageUrl);
@@ -1654,15 +1869,7 @@ export function registerImageRoutes(app: Hono) {
         cometResultData = [{ revised_prompt: prompt, url: generatedImageUrl }];
       }
 
-      // Incrémentation du quota journalier (1 par image générée)
-      await sql`
-        INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
-        VALUES (${userId}::text, CURRENT_DATE, ${n}, NOW())
-        ON CONFLICT (user_id, usage_date)
-        DO UPDATE SET
-          images_generated = mprojects_daily_image_usage.images_generated + ${n},
-          updated_at = NOW()
-      `;
+      imageReservation.providerSucceeded = true;
 
       // Enregistrement dans l'historique
       await sql`
@@ -1681,14 +1888,9 @@ export function registerImageRoutes(app: Hono) {
         )
       `;
 
-      // Débit du compteur de requêtes de la clé API (cout x n verifie avant l'appel)
-      const debitKey = requestQuota?.apiKey || apiKey;
-      if (debitKey) {
-        await sql`
-          UPDATE mprojects_api_keys
-          SET request_count = request_count + ${totalRequestCost}, last_used_at = NOW()
-          WHERE api_key = ${debitKey}::text
-        `;
+      // Le coût API a été réservé AVANT l'appel fournisseur ; la réservation
+      // du middleware (1 requête) est rendue pour ne pas le doubler.
+      if (imageReservation.apiCost > 0) {
         (c as any).set?.("quotaDebitedByHandler", true);
       }
 
@@ -1722,13 +1924,38 @@ export function registerImageRoutes(app: Hono) {
         model: finalUsedModel,
         usage: {
           daily_limit: dailyLimit,
-          daily_used: currentDailyUsage + n,
+          daily_used: dailyReservation.used,
           plan: effectiveTier,
           request_cost: totalRequestCost,
           requests_counted: totalRequestCost,
         },
       });
     } catch (err: unknown) {
+      // Si le fournisseur n'a jamais produit d'image, les réservations sont
+      // rendues : aucune place journalière ni aucun crédit API n'est facturé.
+      if (!imageReservation.providerSucceeded && imageReservation.userId) {
+        try {
+          if (imageReservation.daily > 0) {
+            await releaseDailyImages(
+              getDb(),
+              imageReservation.userId,
+              imageReservation.daily
+            );
+          }
+          if (imageReservation.apiCost > 0 && imageReservation.apiKey) {
+            await releaseApiRequestQuota(
+              getDb(),
+              imageReservation.apiKey,
+              imageReservation.apiCost
+            );
+          }
+        } catch (releaseError) {
+          console.error(
+            "[ImagesAPI] Libération des réservations impossible:",
+            releaseError
+          );
+        }
+      }
       const msg = err instanceof Error ? err.message : "Erreur inconnue";
       console.error("[ImagesAPI] Erreur serveur génération:", err);
       return c.json(
@@ -1760,27 +1987,232 @@ export function registerImageRoutes(app: Hono) {
     const subPath = c.req.path
       .replace(/^\/v1\/mj\//, "")
       .replace(/^\/mj\//, "");
-    const targetUrl = `https://api.cometapi.com/mj/${subPath}`;
     const method = c.req.method;
+    const route = classifyMidjourneyPath(subPath);
 
     try {
-      const init: RequestInit = {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${cometApiKey}`,
-          "Content-Type": "application/json",
-        },
-        method,
-      };
-
-      if (method === "POST" || method === "PUT" || method === "PATCH") {
-        const reqBody = await c.req.json().catch(() => ({}));
-        init.body = JSON.stringify(reqBody);
+      const sql = getDb();
+      const account = await resolveImageAccount(c);
+      if ("error" in account) {
+        if (account.error === "blocked") {
+          return c.json({ blocked: true, error: "Compte bloqué." }, 403);
+        }
+        if (account.error === "not_found") {
+          return c.json({ error: "Compte introuvable." }, 403);
+        }
+        return c.json({ error: "Non authentifié." }, 401);
       }
 
-      const res = await fetch(targetUrl, init);
-      const data = await res.json().catch(() => ({}));
-      return c.json(data, res.status as any);
+      // Lecture de statut : jamais facturée, mais strictement réservée au
+      // propriétaire de la tâche. Une tâche historique non attribuée est
+      // refusée comme inconnue — aucune donnée d'un autre compte ne fuit.
+      if (route.kind === "task_fetch") {
+        const taskId = route.taskId;
+        const owned = await ownsImageTask(sql, taskId, account.id);
+        if (!owned) {
+          return c.json({ error: "Tâche introuvable." }, 404);
+        }
+      }
+
+      if (route.kind === "submit") {
+        const action = route.action;
+        if (!isPaidTier(account.tier)) {
+          return c.json(
+            {
+              error: {
+                code: "image_generation_tier_restricted",
+                message:
+                  "La génération d'images via l'API est réservée aux abonnements payants (Plus, Pro, Max).",
+                type: "permission_error",
+              },
+            },
+            403
+          );
+        }
+
+        const body =
+          method === "POST" || method === "PUT" || method === "PATCH"
+            ? await c.req.json().catch(() => ({}))
+            : {};
+
+        // Les actions qui portent sur une tâche existante doivent prouver
+        // l'appartenance AVANT de transmettre l'identifiant au fournisseur.
+        if (route.requiresTaskId) {
+          const referencedTask =
+            body.taskId || body.task_id || body.sourceTaskId;
+          if (!referencedTask) {
+            return c.json({ error: "taskId requis pour cette action." }, 400);
+          }
+          const owned = await ownsImageTask(
+            sql,
+            String(referencedTask),
+            account.id
+          );
+          if (!owned) {
+            return c.json({ error: "Tâche introuvable." }, 404);
+          }
+        }
+
+        const generates = route.generates;
+        let dailyReserved = 0;
+        let reservedApiCost = 0;
+        let reservedApiKey: string | null = null;
+
+        if (generates) {
+          const boost = await getUserQuotaBoost(sql, account.id, "images");
+          const dailyLimit = getTierDailyImageLimit(account.tier) + boost;
+          const daily = await reserveDailyImages(
+            sql,
+            account.id,
+            1,
+            dailyLimit
+          );
+          if (!daily.ok) {
+            return c.json(
+              {
+                error: {
+                  code: "daily_image_quota_exceeded",
+                  limit: dailyLimit,
+                  message: `Votre quota journalier de génération d'images est épuisé (${daily.used}/${dailyLimit}).`,
+                  type: "quota_error",
+                  used: daily.used,
+                },
+              },
+              429
+            );
+          }
+          dailyReserved = 1;
+
+          const { weekStartStr } = getWeekData();
+          const api = await reserveImageApiCost(c, sql, {
+            cost: getTierImageRequestCost(account.tier),
+            userId: account.id,
+            weekStartStr,
+          });
+          if (api.status === "unavailable") {
+            await releaseDailyImages(sql, account.id, dailyReserved);
+            return c.json(
+              {
+                error: {
+                  code: "quota_service_unavailable",
+                  message:
+                    "Le contrôle du quota API est momentanément indisponible. Réessayez plus tard.",
+                },
+              },
+              503
+            );
+          }
+          if (api.status === "exhausted") {
+            await releaseDailyImages(sql, account.id, dailyReserved);
+            return c.json(
+              {
+                error: {
+                  code: "insufficient_api_requests",
+                  limit: api.limit,
+                  message: "Crédits API insuffisants pour générer cette image.",
+                  type: "quota_error",
+                  used: api.used,
+                },
+              },
+              429
+            );
+          }
+          if (api.status === "reserved") {
+            reservedApiCost = api.cost;
+            reservedApiKey = api.apiKey;
+          }
+        }
+
+        const init: RequestInit = {
+          body: JSON.stringify(body),
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${cometApiKey}`,
+            "Content-Type": "application/json",
+          },
+          method,
+          signal: AbortSignal.timeout(30_000),
+        };
+
+        const res = await fetch(`https://api.cometapi.com/mj/${subPath}`, init);
+        const data: any = await res.json().catch(() => ({}));
+        const providerAccepted =
+          res.ok &&
+          (data?.code === 1 ||
+            data?.code === 200 ||
+            Boolean(data?.result || data?.taskId || data?.task_id));
+
+        if (generates) {
+          if (providerAccepted) {
+            const taskId = data?.result || data?.taskId || data?.task_id || "";
+            if (!taskId) {
+              // Une génération sans identifiant de tâche est inexploitable :
+              // aucune place n'est facturée.
+              await releaseDailyImages(sql, account.id, dailyReserved);
+              if (reservedApiCost > 0 && reservedApiKey) {
+                await releaseApiRequestQuota(
+                  sql,
+                  reservedApiKey,
+                  reservedApiCost
+                );
+              }
+              return c.json(
+                {
+                  error:
+                    "Le fournisseur n'a pas renvoyé d'identifiant de tâche. Réessayez.",
+                },
+                502
+              );
+            }
+            try {
+              await registerImageTask(
+                sql,
+                String(taskId),
+                account.id,
+                reservedApiKey
+              );
+            } catch (registrationError) {
+              console.error(
+                "[MJ] Association de la tâche impossible:",
+                registrationError
+              );
+              await releaseDailyImages(sql, account.id, dailyReserved);
+              if (reservedApiCost > 0 && reservedApiKey) {
+                await releaseApiRequestQuota(
+                  sql,
+                  reservedApiKey,
+                  reservedApiCost
+                );
+              }
+              return c.json(
+                {
+                  error:
+                    "La tâche a été acceptée mais n'a pas pu être associée au compte. Réessayez.",
+                },
+                502
+              );
+            }
+            if (reservedApiCost > 0) {
+              (c as any).set?.("quotaDebitedByHandler", true);
+            }
+          } else {
+            await releaseDailyImages(sql, account.id, dailyReserved);
+            if (reservedApiCost > 0 && reservedApiKey) {
+              await releaseApiRequestQuota(
+                sql,
+                reservedApiKey,
+                reservedApiCost
+              );
+            }
+          }
+        }
+
+        return c.json(data, res.status as any);
+      }
+
+      // Aucun autre chemin n'est exposé : les routes sont enregistrées une à
+      // une, mais on refuse explicitement tout ce qui n'est ni submit ni fetch.
+      return c.json({ error: "Route Midjourney inconnue." }, 404);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erreur inconnue";
       return c.json(
@@ -1817,7 +2249,92 @@ export function registerImageRoutes(app: Hono) {
     if (!cometApiKey) {
       return c.json({ error: "Clé COMET_API_KEY non configurée." }, 500);
     }
+    let dailyReserved = 0;
+    let reservedApiCost = 0;
+    let reservedApiKey: string | null = null;
+    let succeeded = false;
+    let upscaleUserId: string | null = null;
     try {
+      const sql = getDb();
+      const account = await resolveImageAccount(c);
+      if ("error" in account) {
+        return c.json({ error: "Non authentifié." }, 401);
+      }
+      upscaleUserId = account.id;
+      if (!isPaidTier(account.tier)) {
+        return c.json(
+          {
+            error: {
+              code: "image_generation_tier_restricted",
+              message:
+                "L'upscale d'image via l'API est réservé aux abonnements payants (Plus, Pro, Max).",
+              type: "permission_error",
+            },
+          },
+          403
+        );
+      }
+
+      const boost = await getUserQuotaBoost(sql, account.id, "images");
+      const dailyLimit = getTierDailyImageLimit(account.tier) + boost;
+      const daily = await reserveDailyImages(sql, account.id, 1, dailyLimit);
+      if (!daily.ok) {
+        return c.json(
+          {
+            error: {
+              code: "daily_image_quota_exceeded",
+              limit: dailyLimit,
+              message: `Quota journalier d'images épuisé (${daily.used}/${dailyLimit}).`,
+              type: "quota_error",
+              used: daily.used,
+            },
+          },
+          429
+        );
+      }
+      dailyReserved = 1;
+
+      const { weekStartStr } = getWeekData();
+      const api = await reserveImageApiCost(c, sql, {
+        cost: getTierImageRequestCost(account.tier),
+        userId: account.id,
+        weekStartStr,
+      });
+      if (api.status === "unavailable") {
+        await releaseDailyImages(sql, account.id, dailyReserved);
+        dailyReserved = 0;
+        return c.json(
+          {
+            error: {
+              code: "quota_service_unavailable",
+              message:
+                "Le contrôle du quota API est momentanément indisponible.",
+            },
+          },
+          503
+        );
+      }
+      if (api.status === "exhausted") {
+        await releaseDailyImages(sql, account.id, dailyReserved);
+        dailyReserved = 0;
+        return c.json(
+          {
+            error: {
+              code: "insufficient_api_requests",
+              limit: api.limit,
+              message: "Crédits API insuffisants pour cet upscale.",
+              type: "quota_error",
+              used: api.used,
+            },
+          },
+          429
+        );
+      }
+      if (api.status === "reserved") {
+        reservedApiCost = api.cost;
+        reservedApiKey = api.apiKey;
+      }
+
       const body = await c.req.json().catch(() => ({}));
       const res = await fetch("https://api.cometapi.com/v1/images/upscale", {
         body: JSON.stringify(body),
@@ -1827,12 +2344,33 @@ export function registerImageRoutes(app: Hono) {
           "Content-Type": "application/json",
         },
         method: "POST",
+        signal: AbortSignal.timeout(30_000),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        succeeded = true;
+        if (reservedApiCost > 0) {
+          (c as any).set?.("quotaDebitedByHandler", true);
+        }
+      }
       return c.json(data, res.status as any);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erreur inconnue";
       return c.json({ details: msg, error: "Erreur upscale image" }, 500);
+    } finally {
+      if (!succeeded && upscaleUserId) {
+        try {
+          const sql = getDb();
+          if (dailyReserved > 0) {
+            await releaseDailyImages(sql, upscaleUserId, dailyReserved);
+          }
+          if (reservedApiCost > 0 && reservedApiKey) {
+            await releaseApiRequestQuota(sql, reservedApiKey, reservedApiCost);
+          }
+        } catch (releaseError) {
+          console.error("[Upscale] Libération impossible:", releaseError);
+        }
+      }
     }
   };
 
@@ -1846,14 +2384,29 @@ export function registerImageRoutes(app: Hono) {
       return c.json({ error: "Clé COMET_API_KEY non configurée." }, 500);
     }
     try {
+      const sql = getDb();
+      const account = await resolveImageAccount(c);
+      if ("error" in account) {
+        return c.json({ error: "Non authentifié." }, 401);
+      }
+
+      // Une session valide ne suffit pas : la tâche doit appartenir au compte.
+      // Une tâche inconnue ou historique non attribuée répond 404, sans
+      // révéler si elle existe chez un autre compte.
+      const owned = await ownsImageTask(sql, taskId, account.id);
+      if (!owned) {
+        return c.json({ error: "Tâche introuvable." }, 404);
+      }
+
       const res = await fetch(
-        `https://api.cometapi.com/mj/task/${taskId}/fetch`,
+        `https://api.cometapi.com/mj/task/${encodeURIComponent(taskId)}/fetch`,
         {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${cometApiKey}`,
             "Content-Type": "application/json",
           },
+          signal: AbortSignal.timeout(20_000),
         }
       );
       const data = await res.json().catch(() => ({}));

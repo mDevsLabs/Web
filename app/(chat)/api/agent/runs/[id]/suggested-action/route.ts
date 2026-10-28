@@ -2,6 +2,7 @@ import { z } from "zod";
 import { executeSuggestedAction } from "@/lib/agent/suggested-actions/registry";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import { getAgentRunById } from "@/lib/db/agent-queries";
 
 // Exécution d'une SuggestedAction : le frontend ne transmet que l'identifiant
@@ -41,6 +42,11 @@ export async function POST(
   const run = await getAgentRunById({ id, userId });
   if (!run) {
     return errorResponse("not_found", { message: "Run introuvable." });
+  }
+  if (!(await isChatUnlockedForUser({ chatId: run.chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   // Les catégories d'outils activées pendant le run, déduites du snapshot de

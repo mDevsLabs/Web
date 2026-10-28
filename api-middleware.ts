@@ -1,10 +1,18 @@
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey,
+  releaseApiRequestQuota,
+  reserveApiQuotaOrRefuse,
+} from "./api-quota.ts";
+import {
+  AccountBlockedError,
+  AuthAuthorityUnavailableError,
+} from "./auth-revocation.ts";
+import {
   getDb,
   getTierRequestLimit,
   getUserQuotaBoost,
   getWeekData,
+  normalizeTier,
   verifyToken,
 } from "./config.ts";
 import type { SqlClient } from "./openrouter-models.ts";
@@ -147,7 +155,6 @@ export function registerMiddleware(
     }
 
     const apiKey = rawApiKey;
-    const reqUserId = c.req.header("x-user-id") || c.req.header("X-User-Id");
     const startTime = Date.now();
 
     const systemMaiApiKey = Deno.env.get("MAI_API_KEY");
@@ -155,7 +162,7 @@ export function registerMiddleware(
     let userPlan = "Free";
     let currentUserId: string | null = null;
     const currentApiKey: string | null = apiKey;
-    let matchedApiKey: string | null = apiKey;
+    let matchedApiKey: string | null = null;
     // Authentification par clé API enregistrée (par opposition à un JWT de session ou à la clé système)
     let isRegisteredApiKey = false;
 
@@ -170,14 +177,13 @@ export function registerMiddleware(
       return diff === 0;
     }
 
-    // Résolution de l'authentification : Clé API utilisateur enregistrée, Clé système, ou Token JWT
+    // Résolution de l'authentification : Clé API utilisateur enregistrée, Clé système, ou Token JWT.
+    //
+    // Aucun privilège n'est tiré du PRÉFIXE de la clé (`mai-max-…`) : une clé
+    // inconnue ne doit pas ouvrir un catalogue payant. Après authentification,
+    // seule la colonne `users.tier` (forfait actuel du compte) fait autorité ;
+    // une clé créée sous un forfait supérieur suit donc une rétrogradation.
     if (apiKey) {
-      // Détection prioritaire du forfait directement encodé dans la clé (mai-TIER_USER-XXXXX-XXXXX)
-      const keyTier = extractTierFromApiKey(apiKey);
-      if (keyTier) {
-        userPlan = keyTier;
-      }
-
       try {
         // `database()` doit rester DANS le try : une base injoignable au moment de
         // l'ouverture est exactement le cas que ce bloc doit attraper, sinon
@@ -185,7 +191,7 @@ export function registerMiddleware(
         // ni refusée proprement.
         const sql = database();
         const rows = await sql`
-          SELECT k.*, u.tier as user_tier, u.id as u_id
+          SELECT k.*, u.tier as user_tier, u.id as u_id, u.is_blocked as user_blocked
           FROM mprojects_api_keys k
           LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
           WHERE k.api_key = ${apiKey}::text
@@ -194,19 +200,34 @@ export function registerMiddleware(
 
         if (rows.length > 0) {
           const apiKeyData = rows[0];
-          // Si le TIER_USER a été extrait de la clé fournie, il fait foi en priorité
-          if (!keyTier) {
-            const rawPlan = String(apiKeyData.plan || "")
-              .trim()
-              .toLowerCase();
-            const validTiers = ["free", "plus", "pro", "max"];
-            userPlan =
-              apiKeyData.user_tier ||
-              (validTiers.includes(rawPlan) ? apiKeyData.plan : "Plus");
+          // Une clé orpheline (propriétaire supprimé) n'authentifie personne :
+          // elle ne peut ni recevoir un forfait de repli ni consommer un quota.
+          const ownerExists = Boolean(apiKeyData.u_id);
+          const keyActive = apiKeyData.is_active !== false;
+
+          if (apiKeyData.user_blocked === true) {
+            return c.json(
+              {
+                blocked: true,
+                error:
+                  "Ce compte est bloqué. Contactez le support pour demander sa réactivation.",
+              },
+              403
+            );
           }
-          currentUserId = apiKeyData.user_id;
-          matchedApiKey = apiKeyData.api_key || apiKey;
-          isRegisteredApiKey = true;
+
+          if (!keyActive || !ownerExists) {
+            // Route publique : la clé n'accorde RIEN, la requête reste au
+            // niveau public le plus strict. Route privée : refus explicite.
+            if (!isPublicRoute) {
+              return c.json({ error: "Invalid API Key." }, 403);
+            }
+          } else {
+            userPlan = normalizeTier(apiKeyData.user_tier);
+            currentUserId = String(apiKeyData.u_id);
+            matchedApiKey = apiKeyData.api_key || apiKey;
+            isRegisteredApiKey = true;
+          }
         } else if (
           systemMaiApiKey &&
           timingSafeEqual(apiKey, systemMaiApiKey)
@@ -216,32 +237,66 @@ export function registerMiddleware(
         } else {
           // Tenter de valider le token comme un JWT de session.
           //
-          // Le try interne ne couvre QUE la vérification du jeton : c'est la
-          // seule défaillance qui justifie un 403. La lecture du forfait qui
-          // suit interroge la base ; si elle échoue, ce n'est pas un mauvais
-          // identifiant mais une panne d'infrastructure, et la traiter ici
-          // disait à un client aux jetons valides de se réauthentifier.
+          // Le try interne ne couvre QUE la vérification du jeton : un état
+          // d'autorité indisponible est une panne (503), un jeton révoqué ou
+          // un compte bloqué est un refus (403).
           let sessionPayload: { sub?: string; tier?: string } | null = null;
           try {
-            sessionPayload = await verifyToken(apiKey);
-          } catch {
+            sessionPayload = (await verifyToken(apiKey)) as {
+              sub?: string;
+              tier?: string;
+            };
+          } catch (tokenError) {
+            if (tokenError instanceof AuthAuthorityUnavailableError) {
+              console.error(
+                "[auth] Autorité de session indisponible:",
+                tokenError.message
+              );
+              return c.json(
+                { error: "Authentication service unavailable." },
+                503
+              );
+            }
+            if (tokenError instanceof AccountBlockedError) {
+              return c.json(
+                {
+                  blocked: true,
+                  error:
+                    "Ce compte est bloqué. Contactez le support pour demander sa réactivation.",
+                },
+                403
+              );
+            }
             if (!isPublicRoute) {
               return c.json({ error: "Invalid API Key." }, 403);
             }
           }
           if (sessionPayload) {
-            currentUserId = String(sessionPayload.sub || "");
-            userPlan = String(sessionPayload.tier || "Free");
-
-            // Vérifier dans la table users si le forfait a changé
-            if (currentUserId) {
+            const subject = String(sessionPayload.sub || "");
+            if (subject) {
               const uRows = await sql`
-                SELECT tier FROM users
-                WHERE id::text = ${currentUserId}::text OR username = ${currentUserId}::text OR email = ${currentUserId}::text
+                SELECT tier, is_blocked FROM users
+                WHERE id::text = ${subject}::text OR username = ${subject}::text OR email = ${subject}::text
                 LIMIT 1
               `;
-              if (uRows.length > 0 && uRows[0].tier) {
-                userPlan = uRows[0].tier;
+              if (uRows.length > 0) {
+                if (uRows[0].is_blocked === true) {
+                  return c.json(
+                    {
+                      blocked: true,
+                      error:
+                        "Ce compte est bloqué. Contactez le support pour demander sa réactivation.",
+                    },
+                    403
+                  );
+                }
+                if (uRows[0].tier) {
+                  userPlan = normalizeTier(uRows[0].tier);
+                }
+                currentUserId = subject;
+              } else if (!isPublicRoute) {
+                // Jeton signé d'un compte disparu : aucun accès.
+                return c.json({ error: "Invalid API Key." }, 403);
               }
             }
           }
@@ -260,40 +315,19 @@ export function registerMiddleware(
       }
     }
 
-    // 3. En-tête x-user-id (requêtes web app / internes) : uniquement si déjà authentifié ou fallback route publique
-    if (reqUserId && reqUserId !== "system-mai") {
-      if (currentUserId) {
-        // Déjà authentifié via clé API ou JWT : x-user-id doit correspondre, sinon on l'ignore
-        if (reqUserId !== currentUserId) {
-          console.warn(
-            `[Auth] x-user-id mismatch: header=${reqUserId} vs auth=${currentUserId} — header ignoré`
-          );
-        }
-      } else if (apiKey) {
-        // apiKey présent mais non reconnu (route publique) : ne pas promouvoir via x-user-id seul
-      } else {
-        // Aucune auth vérifiée
-        try {
-          const sql = database();
-          const uRows = await sql`
-            SELECT tier FROM users
-            WHERE id::text = ${reqUserId}::text OR username = ${reqUserId}::text OR email = ${reqUserId}::text
-            LIMIT 1
-          `;
-          if (uRows.length > 0) {
-            if (uRows[0].tier) {
-              userPlan = uRows[0].tier;
-            }
-            if (isPublicRoute) {
-              currentUserId = reqUserId;
-            } else {
-              console.warn(
-                `[Auth] x-user-id sans JWT sur route privée ${path} — ignoré`
-              );
-            }
-          }
-        } catch {}
-      }
+    // Aucune promotion d'identité depuis `x-user-id` : un en-tête fourni par le
+    // client n'est pas une authentification. Les handlers publics qui veulent
+    // un spectateur doivent vérifier eux-mêmes le JWT.
+    const reqUserId = c.req.header("x-user-id") || c.req.header("X-User-Id");
+    if (
+      reqUserId &&
+      reqUserId !== "system-mai" &&
+      currentUserId &&
+      reqUserId !== currentUserId
+    ) {
+      console.warn(
+        `[Auth] x-user-id mismatch: header=${reqUserId} vs auth=${currentUserId} — header ignoré`
+      );
     }
 
     // 4. Aucun identifiant et route privée
@@ -307,72 +341,95 @@ export function registerMiddleware(
     c.set("apiKey", currentApiKey);
     c.set("matchedApiKey", matchedApiKey);
 
-    // Vérification préventive du quota de requêtes pour les clés API enregistrées.
-    // Le solde est global au compte (cumul de toutes ses clés) et la période est hebdomadaire
-    // (lundi 00:00 UTC), marquée par usage_period_start pour un reset idempotent.
-    // Un token JWT de session ne consomme pas ce quota : la requête est exécutée directement.
-    if (isRegisteredApiKey && currentUserId && currentUserId !== "system-mai") {
+    // Réservation atomique du quota de requêtes pour les clés API enregistrées.
+    // Le solde est global au compte (cumul de toutes ses clés) et la période est
+    // hebdomadaire (lundi 00:00 UTC, reset idempotent par usage_period_start).
+    // La place est débitée AVANT le handler : deux requêtes concurrentes ne
+    // peuvent plus lire le même solde puis dépasser la limite.
+    // Un JWT de session ne consomme pas ce quota.
+    let quotaReserved = false;
+    if (isRegisteredApiKey && currentUserId && matchedApiKey) {
       const sql = database();
       const { nextResetIso, weekStartStr } = getWeekData();
-      try {
-        const [apiBoost, countRows] = await Promise.all([
-          getUserQuotaBoost(sql, currentUserId, "api"),
-          sql`
-            WITH reset AS (
-              UPDATE mprojects_api_keys
-              SET request_count = 0, usage_period_start = ${weekStartStr}::date
-              WHERE user_id::text = ${currentUserId}::text
-                AND usage_period_start IS DISTINCT FROM ${weekStartStr}::date
-              RETURNING api_key
-            )
-            SELECT COALESCE(SUM(CASE WHEN usage_period_start = ${weekStartStr}::date
-              THEN request_count ELSE 0 END), 0) AS total_requests
-            FROM mprojects_api_keys WHERE user_id::text = ${currentUserId}::text
-          `,
-        ]);
-        const limit = getTierRequestLimit(userPlan) + apiBoost;
-        // Neon renvoie les bigint en chaîne: Number() est obligatoire pour comparer
-        const used = Number(countRows[0]?.total_requests || 0);
-        const remaining = Math.max(0, limit - used);
+      const apiBoost = await getUserQuotaBoost(sql, currentUserId, "api");
+      const limit = getTierRequestLimit(userPlan) + apiBoost;
+      const quota = await reserveApiQuotaOrRefuse(sql, {
+        apiKey: matchedApiKey,
+        limit,
+        userId: currentUserId,
+        weekStartStr,
+      });
 
-        (c as any).set("requestQuota", {
-          apiKey: matchedApiKey,
-          limit,
-          remaining,
-          used,
-        });
+      if (quota.status === "unavailable") {
+        // Sans réponse de l'autorité de quota, le handler ne doit JAMAIS être
+        // appelé : ni `next()` ni fournisseur. On distingue plus bas le
+        // dépassement établi (429) de cette indisponibilité (503).
+        console.error(
+          "[quota] Contrôle du quota API indisponible:",
+          quota.error instanceof Error
+            ? quota.error.message
+            : String(quota.error)
+        );
+        return c.json(
+          { error: "Quota service unavailable. Please retry later." },
+          503
+        );
+      }
 
-        if (remaining < 1) {
-          if (isPublicRoute) {
-            await next();
-            return;
-          }
+      (c as any).set("requestQuota", {
+        apiKey: matchedApiKey,
+        limit: quota.limit,
+        remaining: quota.status === "reserved" ? quota.remaining : 0,
+        used: quota.used,
+      });
+
+      if (quota.status === "reserved") {
+        quotaReserved = true;
+      } else if (!isPublicRoute) {
+        if (quota.status === "key_exhausted") {
           return c.json(
             {
-              code: "quota_exceeded",
-              error: "Quota exceeded for your account.",
-              limit,
-              remaining,
-              resetAt: nextResetIso,
-              used,
+              code: "api_key_limit_exceeded",
+              error: "Cette clé API a atteint sa limite individuelle.",
+              limit: quota.limit,
+              remaining: 0,
+              used: quota.used,
             },
             429
           );
         }
-      } catch {}
+        return c.json(
+          {
+            code: "quota_exceeded",
+            error: "Quota exceeded for your account.",
+            limit,
+            remaining: 0,
+            resetAt: nextResetIso,
+            used: quota.used,
+          },
+          429
+        );
+      }
+      // Route publique sans place disponible : la requête reste servie au
+      // niveau public, sans débit supplémentaire (comportement documenté).
     }
 
-    await next();
+    let handlerError: unknown = null;
+    try {
+      await next();
+    } catch (error) {
+      // Le handler a levé : sa réservation doit être rendue avant de propager.
+      handlerError = error;
+    }
 
     const latency = Date.now() - startTime;
-    const status = c.res.status;
+    const status = handlerError ? 500 : c.res.status;
     const endpoint = c.req.path;
     const method = c.req.method;
 
-    // Log-usage & Décompte de 1 requête du quota API (chat, audio, images, web search, etc.).
-    // Uniquement pour les clés API enregistrées : +1 requête au solde hebdomadaire du
-    // propriétaire de la clé. Les requêtes authentifiées par JWT de session sont
-    // exécutées directement, sans log-usage ni débit ensuite.
+    // Log-usage & libération éventuelle de la réservation.
+    // La réservation reste comptée sur un succès ; elle est rendue si le
+    // handler a échoué, ou s'il a débité lui-même le coût complet (images).
     const isExcludedRoute =
       path.startsWith("/v1/devices") ||
       path === "/v1/status" ||
@@ -382,21 +439,27 @@ export function registerMiddleware(
         const sql = database();
         const effectiveKeyToLog = matchedApiKey || apiKey;
 
-        const shouldDebit =
-          status === 200 && !(c as any).get?.("quotaDebitedByHandler");
+        const handlerDebited = Boolean(
+          (c as any).get?.("quotaDebitedByHandler")
+        );
+        if (
+          quotaReserved &&
+          (handlerError || status !== 200 || handlerDebited)
+        ) {
+          await releaseApiRequestQuota(sql, effectiveKeyToLog as string);
+        }
+
         await sql`
-          WITH log AS (
-            INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms)
-            VALUES (${effectiveKeyToLog}::text, ${endpoint}::text, ${method}::text, ${status}::integer, ${latency}::integer)
-            RETURNING api_key
-          )
-          UPDATE mprojects_api_keys
-          SET request_count = request_count + 1, last_used_at = NOW()
-          WHERE api_key = ${effectiveKeyToLog}::text AND ${shouldDebit}::boolean
+          INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms)
+          VALUES (${effectiveKeyToLog}::text, ${endpoint}::text, ${method}::text, ${status}::integer, ${latency}::integer)
         `;
       } catch (err) {
         console.error("Erreur logging API & mise à jour quota:", err);
       }
+    }
+
+    if (handlerError) {
+      throw handlerError;
     }
   });
 }

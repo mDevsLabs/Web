@@ -15,6 +15,7 @@ import {
   createNotification,
   getAgentById,
   getChatById,
+  getChatSecurity,
   getMessagesByChatId,
   getPluginInstallationsByUserId,
   getSkillById,
@@ -122,6 +123,31 @@ export async function executeScheduledMessage(scheduledId: string) {
       existingChat = await getChatById({ id: targetChatId });
       targetMode = existingChat?.mode === "agent" ? "agent" : "chat";
       targetProjectId = existingChat?.projectId ?? null;
+
+      // Un tick d'arrière-plan n'a pas de cookie de déverrouillage : une
+      // conversation sécurisée ne peut pas être alimentée par la
+      // planification. On clôt l'item avec un motif lisible plutôt que de le
+      // reprendre à chaque tick.
+      if (existingChat) {
+        const security = await getChatSecurity({
+          chatId: existingChat.id,
+        });
+        if (security) {
+          await setScheduledMessageStatus({
+            id: item.id,
+            lastError:
+              "Conversation sécurisée : déverrouillez-la ou retirez son PIN pour reprendre la planification.",
+            status: "failed",
+          });
+          console.warn(
+            JSON.stringify({
+              chatId: existingChat.id,
+              event: "planning_secured_chat_skipped",
+            })
+          );
+          return { skipped: true, status: "secured_chat" };
+        }
+      }
     }
 
     // Déterminer ou créer la discussion cible

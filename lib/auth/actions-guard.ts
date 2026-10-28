@@ -4,18 +4,12 @@ import { checkBotId } from "botid/server";
 import { headers } from "next/headers";
 
 import type { ApiErrorCode } from "@/lib/api/error-codes";
+import { getClientIp as resolveClientIp } from "@/lib/net/client-ip";
 import { checkAuthRateLimit } from "@/lib/ratelimit";
 
 export async function getClientIp(): Promise<string> {
   const headerStore = await headers();
-  const forwarded = headerStore.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim();
-    if (first) {
-      return first;
-    }
-  }
-  return headerStore.get("x-real-ip")?.trim() || "unknown";
+  return resolveClientIp(headerStore);
 }
 
 export type AuthGuardFailure = {

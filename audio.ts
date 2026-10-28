@@ -1,6 +1,5 @@
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey,
   extractToken,
   getDb,
   getTierSpeechLimit,
@@ -233,8 +232,8 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
         `.catch(() => []),
       ]);
 
-      const keyTier = extractTierFromApiKey(token);
-      const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
+      // Forfait actuel du compte uniquement (pas de privilège de préfixe).
+      const effectiveTier = uRows[0]?.tier || userPlan || "Free";
       const tokensUsed = Number(usageRows[0]?.tokens_used || 0);
       const requestsCount = Number(usageRows[0]?.requests_count || 0);
       const audioBoost = await getUserQuotaBoost(sql, userId, "audio");
@@ -581,8 +580,8 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
         WHERE id::text = ${userId}::text OR username = ${userId}::text
         LIMIT 1
       `.catch(() => []);
-      const keyTier = extractTierFromApiKey(token);
-      const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
+      // Forfait actuel du compte uniquement (pas de privilège de préfixe).
+      const effectiveTier = uRows[0]?.tier || userPlan || "Free";
 
       // Le forfait tranche l'accès au modèle : Free reste limité aux modèles
       // `:free`, tandis qu'un forfait payant peut utiliser tout le catalogue

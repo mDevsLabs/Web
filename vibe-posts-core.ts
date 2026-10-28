@@ -16,15 +16,30 @@ export const isUuid = (v: any): boolean =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 
 /** Prédicat SQL : un post est lisible si public, sien, partagé aux abonnés
- *  (et que le spectateur suit l'auteur) ou au cercle (et qu'il en est membre). */
+ *  (et que le spectateur suit l'auteur) ou au cercle (et qu'il en est membre).
+ *
+ *  Le blocage est appliqué DANS LES DEUX SENS à la décision d'accès : les
+ *  relations follow/cercle sont conservées au blocage (le déblocage restaure
+ *  l'état antérieur), mais elles ne contournent jamais le blocage. Ce prédicat
+ *  est la règle commune au fil, aux profils, aux Livres, au contexte mAI et aux
+ *  engagements. */
 export const visibilityFilter = (viewerId: number | null) => {
   const sql = getDb();
   if (!viewerId) return sql`AND p.visibility = 'public'`;
   return sql`AND (
-    p.visibility = 'public'
-    OR p.author_id = ${viewerId}
-    OR (p.visibility = 'followers' AND EXISTS (SELECT 1 FROM follows f WHERE f.follower_id = ${viewerId} AND f.following_id = p.author_id))
-    OR (p.visibility = 'circle' AND EXISTS (SELECT 1 FROM circle_members cm WHERE cm.user_id = p.author_id AND cm.member_user_id = ${viewerId}))
+    p.author_id = ${viewerId}
+    OR (
+      NOT EXISTS (
+        SELECT 1 FROM blocked_users b
+        WHERE (b.user_id = ${viewerId} AND b.blocked_user_id = p.author_id)
+           OR (b.user_id = p.author_id AND b.blocked_user_id = ${viewerId})
+      )
+      AND (
+        p.visibility = 'public'
+        OR (p.visibility = 'followers' AND EXISTS (SELECT 1 FROM follows f WHERE f.follower_id = ${viewerId} AND f.following_id = p.author_id))
+        OR (p.visibility = 'circle' AND EXISTS (SELECT 1 FROM circle_members cm WHERE cm.user_id = p.author_id AND cm.member_user_id = ${viewerId}))
+      )
+    )
   )`;
 };
 

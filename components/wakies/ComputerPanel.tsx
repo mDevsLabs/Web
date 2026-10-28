@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { api } from "@/components/wakies/api";
+import { ApiError, api } from "@/components/wakies/api";
 import type {
   ComputerAction,
   ComputerStatus,
@@ -89,6 +89,11 @@ export function ComputerPanel({ wakie }: { wakie: Wakie }) {
   const [command, setCommand] = useState("");
   const [output, setOutput] = useState("");
   const [screenError, setScreenError] = useState("");
+  const [serviceUnavailable, setServiceUnavailable] = useState(false);
+  // Une réponse 404 DURABLE signifie que le service d'ordinateur n'existe pas
+  // sur cette instance : le polling automatique s'arrête, et une reprise
+  // explicite est proposée. Il ne réessaie pas indéfiniment toutes les 4 s.
+  const [polling, setPolling] = useState(true);
   const lifecycle = useRef({
     active: false,
     busy: false,
@@ -152,10 +157,15 @@ export function ComputerPanel({ wakie }: { wakie: Wakie }) {
             : "Impossible de charger l’ordinateur."
         );
         setScreen(undefined);
+        if (cause instanceof ApiError && cause.status === 404) {
+          setServiceUnavailable(true);
+          setPolling(false);
+        }
       }
     }
   }, [base]);
   useEffect(() => {
+    if (!polling) return;
     lifecycle.current.active = true;
     controller.current = new AbortController();
     let cancelled = false;
@@ -178,7 +188,7 @@ export function ComputerPanel({ wakie }: { wakie: Wakie }) {
       controller.current?.abort();
       clearTimeout(timer);
     };
-  }, [refresh]);
+  }, [refresh, polling]);
   const run = async (
     endpoint: string,
     body: unknown = {},
@@ -205,12 +215,17 @@ export function ComputerPanel({ wakie }: { wakie: Wakie }) {
       await refresh();
       return result;
     } catch (cause) {
-      if (lifecycle.current.active)
+      if (lifecycle.current.active) {
         setError(
           cause instanceof Error
             ? cause.message
             : "L’action sur l’ordinateur a échoué."
         );
+        if (cause instanceof ApiError && cause.status === 404) {
+          setServiceUnavailable(true);
+          setPolling(false);
+        }
+      }
     } finally {
       lifecycle.current.busy = false;
       if (lifecycle.current.active) setBusy(false);
@@ -222,6 +237,31 @@ export function ComputerPanel({ wakie }: { wakie: Wakie }) {
   const human =
     status?.control?.holder === "human" && !status.control.transitioning;
   const browser = !!running && !!status?.permissions.browser;
+  if (serviceUnavailable) {
+    return (
+      <section
+        aria-label={`${wakie.name}'s computer`}
+        className="computer-panel"
+      >
+        <div className="computer-setup">
+          <h3>Ordinateur indisponible</h3>
+          <p>
+            Le service d’ordinateur n’est pas disponible sur cette instance
+            (réponse 404). Les tentatives automatiques sont arrêtées.
+          </p>
+          <button
+            onClick={() => {
+              setError("");
+              setServiceUnavailable(false);
+              setPolling(true);
+            }}
+          >
+            Réessayer
+          </button>
+        </div>
+      </section>
+    );
+  }
   return (
     <section
       aria-busy={busy}

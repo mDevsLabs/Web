@@ -9,7 +9,8 @@
  */
 
 import { getDb } from "./config.ts";
-import { stripHtmlTags } from "./vibe-posts-core.ts";
+import { getStorageNodes } from "./storage.ts";
+import { stripHtmlTags, visibilityFilter } from "./vibe-posts-core.ts";
 
 /** Regex UUID partagée (conversations mAI, publications jointes). */
 export const UUID_RE =
@@ -347,9 +348,110 @@ function bytesToBase64(bytes: Uint8Array): string {
   return btoa(binary);
 }
 
+/**
+ * Origines de stockage approuvées (Z1/S3 configurés). Une URL de média jointe
+ * à une publication ne peut venir QUE de ces origines : lire un post ne doit
+ * pas transformer le serveur en proxy vers une URL arbitraire (SSRF).
+ */
+function approvedStorageOrigins(): Set<string> {
+  const origins = new Set<string>();
+  try {
+    for (const node of getStorageNodes()) {
+      for (const candidate of [node.endpoint, node.publicUrl]) {
+        try {
+          origins.add(new URL(candidate).origin);
+        } catch {
+          // Entrée de configuration invalide : ignorée.
+        }
+      }
+    }
+  } catch {
+    // Configuration de stockage illisible : aucune origine approuvée.
+  }
+  return origins;
+}
+
+function readResponseCapped(
+  response: Response,
+  maxBytes: number
+): Promise<Uint8Array | null> {
+  return (async () => {
+    const reader = response.body?.getReader();
+    if (!reader) return null;
+    const chunks: Uint8Array[] = [];
+    let total = 0;
+    try {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        total += value.byteLength;
+        if (total > maxBytes) {
+          await reader.cancel().catch(() => {});
+          return null;
+        }
+        chunks.push(value);
+      }
+    } catch {
+      return null;
+    }
+    const out = new Uint8Array(total);
+    let offset = 0;
+    for (const chunk of chunks) {
+      out.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+    return out;
+  })();
+}
+
+/** Transport sûr Deno : origine approuvée, redirection refusée, taille et délai bornés. */
+async function fetchApprovedImage(
+  rawUrl: string,
+  maxBytes: number
+): Promise<{ bytes: Uint8Array; contentType: string } | null> {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return null;
+  }
+  if (url.protocol !== "https:" && url.protocol !== "http:") {
+    return null;
+  }
+  if (!approvedStorageOrigins().has(url.origin)) {
+    return null;
+  }
+  try {
+    const response = await fetch(url.toString(), {
+      // Aucune redirection : une origine approuvée ne doit pas pouvoir mener
+      // vers un réseau interne via un `Location:`.
+      redirect: "error",
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) return null;
+    const contentType = response.headers.get("content-type") || "";
+    if (
+      !contentType.startsWith("image/") ||
+      contentType.toLowerCase().includes("svg")
+    ) {
+      return null;
+    }
+    const declared = Number(response.headers.get("content-length") || 0);
+    if (Number.isFinite(declared) && declared > maxBytes) {
+      return null;
+    }
+    const bytes = await readResponseCapped(response, maxBytes);
+    if (!bytes || bytes.byteLength === 0) return null;
+    return { bytes, contentType };
+  } catch {
+    return null;
+  }
+}
+
 export async function buildPostContext(
   sql: any,
-  postId: string
+  postId: string,
+  viewerId: number | null
 ): Promise<{ text: string; imageParts: any[] } | null> {
   try {
     if (
@@ -360,6 +462,8 @@ export async function buildPostContext(
       return null;
     }
 
+    // Le post joint ne s'affiche que si le SPECTATEUR peut réellement le lire :
+    // audience, statut de publication et blocages dans les deux sens.
     const rows = await sql`
       SELECT p.id, p.content, p.likes_count, p.reposts_count, p.replies_count, p.views_count,
              p.published_at, p.created_via, p.ai_generated,
@@ -368,6 +472,8 @@ export async function buildPostContext(
       JOIN users u ON u.id = p.author_id
       LEFT JOIN profiles pr ON pr.user_id = u.id
       WHERE p.id = ${postId}::uuid
+        AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${viewerId})
+        ${visibilityFilter(viewerId)}
       LIMIT 1
     `;
     if (rows.length === 0) return null;
@@ -418,21 +524,16 @@ export async function buildPostContext(
         String(m.media_type || "").startsWith("image") ||
         /\.(png|jpe?g|webp|gif)(\?|$)/i.test(url);
       if (!url || !isImage) continue;
-      try {
-        const res = await fetch(url);
-        if (!res.ok) continue;
-        const buf = await res.arrayBuffer();
-        if (buf.byteLength === 0 || buf.byteLength > MAX_CONTEXT_IMAGE_BYTES) {
-          continue;
-        }
-        const contentType = res.headers.get("content-type") || "image/jpeg";
-        imageParts.push({
-          image_url: {
-            url: `data:${contentType};base64,${bytesToBase64(new Uint8Array(buf))}`,
-          },
-          type: "image_url",
-        });
-      } catch {}
+      // Seules les URLs du stockage approuvé sont récupérées, sans redirection,
+      // avec plafond de taille et délai. Une `media_url` libre est ignorée.
+      const image = await fetchApprovedImage(url, MAX_CONTEXT_IMAGE_BYTES);
+      if (!image) continue;
+      imageParts.push({
+        image_url: {
+          url: `data:${image.contentType};base64,${bytesToBase64(image.bytes)}`,
+        },
+        type: "image_url",
+      });
     }
 
     return { imageParts, text };

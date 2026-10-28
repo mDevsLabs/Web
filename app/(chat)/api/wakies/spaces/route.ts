@@ -1,14 +1,16 @@
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { getWakiesQuota } from "@/lib/plans/tier-limits";
 import {
   badRequest,
-  enforceWakiesLimit,
   json,
   rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
+  wakiesQuotaResponse,
 } from "@/lib/wakies/http";
-import { createSpace, listSpaces } from "@/lib/wakies/queries";
+import { createSpaceWithinQuota, listSpaces } from "@/lib/wakies/queries";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 
 /**
  * GET  /api/wakies/spaces — espaces du compte.
@@ -46,18 +48,19 @@ export async function POST(request: Request) {
       message: zodIssuesMessage(parsed.error),
     });
   }
-  const limite = await enforceWakiesLimit({
-    limit: "spaces",
-    tier: identite.tier,
-    used: (await listSpaces(identite.userId)).length,
-  });
-  if (limite) {
-    return limite;
-  }
   try {
-    const space = await createSpace(identite.userId, parsed.data);
+    // Quota lu depuis le forfait, mais TRANCHÉ dans la transaction : deux
+    // créations simultanées ne peuvent pas dépasser la dernière place.
+    const space = await createSpaceWithinQuota(
+      identite.userId,
+      parsed.data,
+      getWakiesQuota(identite.tier, "spaces")
+    );
     return json(space, { status: 201 });
   } catch (erreur) {
+    if (erreur instanceof WakiesQuotaError) {
+      return wakiesQuotaResponse(erreur);
+    }
     return erreur instanceof Error
       ? badRequest(erreur.message)
       : toErrorResponse(erreur);

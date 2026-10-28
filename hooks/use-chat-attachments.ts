@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
+import { planAttachmentBatch } from "@/lib/chat/attachment-budget";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import type { Attachment } from "@/lib/types";
@@ -34,6 +35,12 @@ export function useChatAttachments({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const uploadedBytesRef = useRef(0);
   const uploadedFileSizesRef = useRef(new Map<string, number>());
+  // Budget PARTAGÉ : fichiers confirmés, octets confirmés, et réservations des
+  // envois EN VOL. Les réservations sont posées avant le premier `await`, donc
+  // deux sélections simultanées ne voient pas le même état confirmé.
+  const committedFilesRef = useRef(0);
+  const reservedFilesRef = useRef(0);
+  const reservedBytesRef = useRef(0);
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
 
   // Handoff Cloud -> Chat via sessionStorage
@@ -52,6 +59,7 @@ export function useChatAttachments({
           uploadedFileSizesRef.current.set(parsed.url, parsed.size);
           uploadedBytesRef.current += parsed.size;
         }
+        committedFilesRef.current += 1;
         toast.success(`Fichier Cloud importé : ${parsed.name}`);
       }
     } catch {}
@@ -64,6 +72,9 @@ export function useChatAttachments({
       setAttachments([]);
       uploadedBytesRef.current = 0;
       uploadedFileSizesRef.current.clear();
+      committedFilesRef.current = 0;
+      reservedFilesRef.current = 0;
+      reservedBytesRef.current = 0;
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -91,6 +102,7 @@ export function useChatAttachments({
           return {
             contentType,
             name: file.name || pathname || "fichier",
+            pathname,
             size: file.size,
             url,
           };
@@ -112,39 +124,40 @@ export function useChatAttachments({
         return;
       }
 
-      const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
-      if (remainingSlots <= 0) {
-        toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
-        return;
-      }
+      // Décision SYNCHRONE sous budget partagé : les places et octets sont
+      // réservés avant le premier await, donc deux sélections simultanées ne
+      // peuvent pas dépasser 4 fichiers / 50 Mo.
+      const plan = planAttachmentBatch(files, {
+        maxBytes: MAX_TOTAL_SIZE_BYTES,
+        maxFiles: MAX_FILES_PER_MESSAGE,
+        reservedBytes: reservedBytesRef.current,
+        reservedFiles: reservedFilesRef.current,
+        usedBytes: uploadedBytesRef.current,
+        usedFiles: committedFilesRef.current,
+      });
 
-      const candidates = files.slice(0, remainingSlots);
-      if (files.length > candidates.length) {
+      if (plan.rejectedBySlots > 0) {
         toast.error(
-          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${candidates.length} fichier(s) seront ajoutés.`
+          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. ${
+            plan.rejectedBySlots
+          } fichier(s) ignoré(s).`
         );
       }
-
-      let projectedBytes = uploadedBytesRef.current;
-      const accepted: File[] = [];
-      let rejectedForSize = 0;
-      for (const file of candidates) {
-        if (projectedBytes + file.size > MAX_TOTAL_SIZE_BYTES) {
-          rejectedForSize += 1;
-          continue;
-        }
-        accepted.push(file);
-        projectedBytes += file.size;
-      }
-
-      if (rejectedForSize > 0) {
+      if (plan.rejectedByBytes > 0) {
         toast.error(
-          `${rejectedForSize} fichier(s) dépassent la limite de 50 Mo par message.`
+          `${plan.rejectedByBytes} fichier(s) dépassent la limite de 50 Mo par message.`
         );
       }
+      const accepted = plan.acceptedIndexes
+        .map((index) => files[index])
+        .filter((file): file is File => Boolean(file));
       if (accepted.length === 0) {
         return;
       }
+
+      const acceptedBytes = plan.acceptedBytes;
+      reservedFilesRef.current += accepted.length;
+      reservedBytesRef.current += acceptedBytes;
 
       setUploadQueue(accepted.map((file) => file.name));
       try {
@@ -160,6 +173,7 @@ export function useChatAttachments({
           }
           uploadedFileSizesRef.current.set(attachment.url, file.size);
           uploadedBytesRef.current += file.size;
+          committedFilesRef.current += 1;
           return [attachment];
         });
 
@@ -172,10 +186,20 @@ export function useChatAttachments({
       } catch {
         toast.error("Échec lors du téléversement des fichiers");
       } finally {
+        // La réservation est rendue dans TOUS les cas ; les octets des fichiers
+        // réellement confirmés sont déjà dans le budget confirmé.
+        reservedFilesRef.current = Math.max(
+          0,
+          reservedFilesRef.current - accepted.length
+        );
+        reservedBytesRef.current = Math.max(
+          0,
+          reservedBytesRef.current - acceptedBytes
+        );
         setUploadQueue([]);
       }
     },
-    [attachments.length, setAttachments, uploadFile]
+    [setAttachments, uploadFile]
   );
 
   const handleFileChange = useCallback(
@@ -211,38 +235,33 @@ export function useChatAttachments({
         return;
       }
 
-      const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
-      if (remainingSlots <= 0) {
-        toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
-        return;
-      }
-
-      const candidates = newAttachments.slice(0, remainingSlots);
-      const accepted: Attachment[] = [];
-      let projectedBytes = uploadedBytesRef.current;
-      let rejectedForSize = 0;
-      for (const attachment of candidates) {
-        if (
-          typeof attachment.size === "number" &&
-          projectedBytes + attachment.size > MAX_TOTAL_SIZE_BYTES
-        ) {
-          rejectedForSize += 1;
-          continue;
+      const plan = planAttachmentBatch(
+        newAttachments.map((attachment) => ({
+          size: typeof attachment.size === "number" ? attachment.size : 0,
+        })),
+        {
+          maxBytes: MAX_TOTAL_SIZE_BYTES,
+          maxFiles: MAX_FILES_PER_MESSAGE,
+          reservedBytes: reservedBytesRef.current,
+          reservedFiles: reservedFilesRef.current,
+          usedBytes: uploadedBytesRef.current,
+          usedFiles: committedFilesRef.current,
         }
-        accepted.push(attachment);
-        if (typeof attachment.size === "number") {
-          projectedBytes += attachment.size;
-        }
-      }
+      );
+      const accepted = plan.acceptedIndexes
+        .map((index) => newAttachments[index])
+        .filter((attachment): attachment is Attachment => Boolean(attachment));
 
-      if (newAttachments.length > candidates.length) {
+      if (plan.rejectedBySlots > 0) {
         toast.error(
-          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${candidates.length} fichier(s) seront ajoutés.`
+          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. ${
+            plan.rejectedBySlots
+          } fichier(s) ignoré(s).`
         );
       }
-      if (rejectedForSize > 0) {
+      if (plan.rejectedByBytes > 0) {
         toast.error(
-          `${rejectedForSize} fichier(s) Cloud dépassent la limite de 50 Mo par message.`
+          `${plan.rejectedByBytes} fichier(s) Cloud dépassent la limite de 50 Mo par message.`
         );
       }
       if (accepted.length === 0) {
@@ -254,10 +273,11 @@ export function useChatAttachments({
           uploadedFileSizesRef.current.set(attachment.url, attachment.size);
         }
       }
-      uploadedBytesRef.current = projectedBytes;
+      uploadedBytesRef.current += plan.acceptedBytes;
+      committedFilesRef.current += accepted.length;
       setAttachments((curr) => [...curr, ...accepted]);
     },
-    [attachments.length, hasStrictCaps, hasVisionSupport, setAttachments]
+    [hasStrictCaps, hasVisionSupport, setAttachments]
   );
 
   const handlePaste = useCallback(
@@ -318,6 +338,7 @@ export function useChatAttachments({
           );
           uploadedFileSizesRef.current.delete(removed.url);
         }
+        committedFilesRef.current = Math.max(0, committedFilesRef.current - 1);
       }
       setAttachments((current) =>
         current.filter((_, i) => i !== indexToRemove)
@@ -329,6 +350,9 @@ export function useChatAttachments({
   const resetUploadedBytes = useCallback(() => {
     uploadedBytesRef.current = 0;
     uploadedFileSizesRef.current.clear();
+    committedFilesRef.current = 0;
+    reservedFilesRef.current = 0;
+    reservedBytesRef.current = 0;
   }, []);
 
   return {

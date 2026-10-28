@@ -48,11 +48,13 @@ const visibilities: Array<{
 ];
 
 function VisibilitySelectorItem({
+  isSecure,
   setOpen,
   setVisibilityType,
   visibility,
   visibilityType,
 }: {
+  isSecure?: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   setVisibilityType: (visibilityType: VisibilityType) => void;
   visibility: (typeof visibilities)[number];
@@ -63,6 +65,11 @@ function VisibilitySelectorItem({
     setOpen(false);
   }, [setOpen, setVisibilityType, visibility.id]);
 
+  const description =
+    visibility.id === "public" && isSecure
+      ? "Toute personne connectée disposant du lien et du code PIN peut consulter cette discussion"
+      : visibility.description;
+
   return (
     <DropdownMenuItem
       className="group/item flex flex-row items-center justify-between gap-4 cursor-pointer"
@@ -72,10 +79,8 @@ function VisibilitySelectorItem({
     >
       <div className="flex flex-col items-start gap-1">
         <span className="font-medium text-[13px]">{visibility.label}</span>
-        {visibility.description ? (
-          <div className="text-muted-foreground text-xs">
-            {visibility.description}
-          </div>
+        {description ? (
+          <div className="text-muted-foreground text-xs">{description}</div>
         ) : null}
       </div>
       <div className="text-foreground opacity-0 group-data-[active=true]/item:opacity-100 dark:text-foreground">
@@ -89,15 +94,18 @@ export function VisibilitySelector({
   chatId,
   className,
   selectedVisibilityType,
+  isSecure,
 }: {
   chatId: string;
   selectedVisibilityType: VisibilityType;
+  isSecure?: boolean;
 } & React.ComponentProps<typeof Button>) {
   const [open, setOpen] = useState(false);
 
   const { visibilityType, setVisibilityType } = useChatVisibility({
     chatId,
     initialVisibilityType: selectedVisibilityType,
+    isSecure,
   });
 
   const selectedVisibility = useMemo(
@@ -132,6 +140,7 @@ export function VisibilitySelector({
       >
         {visibilities.map((visibility) => (
           <VisibilitySelectorItem
+            isSecure={isSecure}
             key={visibility.id}
             setOpen={setOpen}
             setVisibilityType={setVisibilityType}

@@ -10,13 +10,16 @@ import {
   getChatHistoryPaginationKey,
 } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 
 export function useChatVisibility({
   chatId,
   initialVisibilityType,
+  isSecure = false,
 }: {
   chatId: string;
   initialVisibilityType: VisibilityType;
+  isSecure?: boolean;
 }) {
   const { mutate, cache } = useSWRConfig();
   const history: ChatHistory = cache.get(
@@ -53,7 +56,7 @@ export function useChatVisibility({
       .then(() => {
         if (updatedVisibilityType === "public") {
           if (typeof window !== "undefined") {
-            const shareUrl = `${window.location.origin}/chat/${chatId}`;
+            const shareUrl = `${window.location.origin}${apiEndpoints.chatPath(chatId)}`;
             navigator.clipboard.writeText(shareUrl).then(
               () =>
                 toast.success(
@@ -63,13 +66,28 @@ export function useChatVisibility({
             );
           }
         } else {
-          toast.success("Discussion rendue privée");
+          // Le passage en privé supprime le PIN côté serveur (invariant
+          // ChatSecurity) : rafraîchir la conversation ouverte pour que le
+          // badge et la description de partage disparaissent immédiatement.
+          if (isSecure) {
+            mutate(apiEndpoints.chatById(chatId));
+            mutate(apiEndpoints.messagesForChat(chatId));
+          }
+          toast.success(
+            isSecure
+              ? "Discussion rendue privée : la protection PIN a été retirée."
+              : "Discussion rendue privée"
+          );
         }
       })
       .catch(() => {
         setLocalVisibility(initialVisibilityType);
         mutate(unstable_serialize(getChatHistoryPaginationKey));
-        toast.error("Impossible de changer la visibilité de la conversation.");
+        toast.error(
+          isSecure && updatedVisibilityType === "private"
+            ? "Déverrouillez la conversation avec son code PIN pour changer sa visibilité."
+            : "Impossible de changer la visibilité de la conversation."
+        );
       });
   };
 

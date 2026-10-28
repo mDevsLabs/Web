@@ -45,10 +45,12 @@ function PureChatHeader({
   chatId,
   selectedVisibilityType,
   isReadonly,
+  isSecure,
 }: {
   chatId: string;
   selectedVisibilityType: VisibilityType;
   isReadonly: boolean;
+  isSecure: boolean;
 }) {
   const { state, toggleSidebar, isMobile } = useSidebar();
   const { isGhostMode, toggleGhostMode } = useActiveChat();
@@ -279,6 +281,7 @@ function PureChatHeader({
       {!isReadonly && (
         <VisibilitySelector
           chatId={chatId}
+          isSecure={isSecure}
           selectedVisibilityType={selectedVisibilityType}
         />
       )}
@@ -515,5 +518,6 @@ export const ChatHeader = memo(
   (prevProps, nextProps) =>
     prevProps.chatId === nextProps.chatId &&
     prevProps.selectedVisibilityType === nextProps.selectedVisibilityType &&
-    prevProps.isReadonly === nextProps.isReadonly
+    prevProps.isReadonly === nextProps.isReadonly &&
+    prevProps.isSecure === nextProps.isSecure
 );

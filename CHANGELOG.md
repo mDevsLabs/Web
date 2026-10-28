@@ -4,6 +4,22 @@
 
 ### Nouveautés
 
+* **Blackline** : intégration de BlackLine, un jeu vidéo divertissant pour attendre vos agents en jouant ! Disponible pour tous les plans et sur toutes les platformes.
+* **Conversations sécurisées** : introduction de la fonctionnalité Locked Chats dans mAI pour vous permettre de verrouiller les conversations publiques avec un code PIN à 4 chiffres. Disponible pour tous les plans et sur toutes les platformes mais uniquement dans mAI Web.
+
+
+### Améliorations
+
+* **Performances et chargement** : optimisation du chargement des ressources et performances accrues.
+
+### Corrections
+
+* **Nombreuses corrections** : application de nombreuses corrections dans l'API et dans la gestion des requêtes.
+
+## 0.9.1
+
+### Nouveautés
+
 * **Recherche mAI** : un moteur de recherche complet, avec recherche web, actualités, images et vidéos, un résumé par l’IA affiché en continu, les sources citées cliquables, une discussion de suivi sur un résultat précis, un vote de qualité et un historique des recherches conservé.
 * **Application de bureau** : une fenêtre « À propos de mAI » présente la version, le canal, la plateforme et les versions d’Electron, de Node et de Chromium. Les mises à jour se téléchargent depuis l’application, avec progression, et Coder se lance avec la session mAI déjà connectée.
 * **Mises à jour automatiques de Coder** : un panneau complet recherche, télécharge et redémarre l’application. Les préversions sont détectées par commit, et le panneau est neutralisé quand Coder est fourni avec mAI Desktop.

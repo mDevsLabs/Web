@@ -5,6 +5,7 @@ import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import type { RequestHints } from "@/lib/ai/prompts";
 import type { ChatAuth } from "@/lib/chat/auth";
 import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
+import { assertChatUnlocked } from "@/lib/chat/security";
 import { intersecterFiltres, prepareSkillContext } from "@/lib/chat/skills";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
@@ -144,6 +145,12 @@ export async function buildChatContext(
   let projectId: string | null | undefined = projectIdInput;
 
   const chat = await getChatById({ id });
+  // Une conversation sécurisée ne doit jamais alimenter le modèle (Chat ou
+  // Agent) sans avoir été déverrouillée dans la session courante : la lecture
+  // des messages passe par le même contrôle que /api/messages.
+  if (chat) {
+    await assertChatUnlocked({ chatId: chat.id, userId });
+  }
   // Borne d'accès au projet rattaché à la conversation : un chat stocké avec
   // un projet supprimé ou transféré ne doit pas faire échouer la requête — le
   // contexte projet est simplement neutralisé (garde stricte conservée pour la

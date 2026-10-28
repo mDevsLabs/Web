@@ -114,7 +114,11 @@ export function registerVibeMAIExecuteRoutes(
       let postContextBlock = "";
       const contextPostId = body?.context?.post_id;
       if (contextPostId) {
-        const postCtx = await buildPostContext(sql, String(contextPostId));
+        const postCtx = await buildPostContext(
+          sql,
+          String(contextPostId),
+          userId
+        );
         if (postCtx) postContextBlock = `\n\n${postCtx.text}`;
       }
 

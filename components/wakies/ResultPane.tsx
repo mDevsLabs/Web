@@ -20,6 +20,7 @@ export function ResultPane({
   onClose,
   wakies,
   defaultWakieId,
+  computersAvailable,
 }: {
   wakies: Wakie[];
   defaultWakieId: string;
@@ -27,30 +28,40 @@ export function ResultPane({
   status?: Status;
   wakieState: string;
   onClose: () => void;
+  computersAvailable: boolean;
 }) {
-  const [resultTab, setResultTab] = useState<"Brief" | "Computer">("Computer");
+  const [resultTab, setResultTab] = useState<"Brief" | "Computer">(
+    computersAvailable ? "Computer" : "Brief"
+  );
   const [computerWakieId, setComputerWakieId] = useState(defaultWakieId);
   const computerWakie =
     wakies.find((wakie) => wakie.id === computerWakieId) ??
     wakies.find((wakie) => wakie.id === defaultWakieId) ??
     wakies[0];
+  // Le panneau Ordinateur n'est proposé que si l'hôte déclare le service
+  // disponible (`setup.computers`). Sans cette garde, le panneau s'ouvrait
+  // sur un 404 : l'action était visible mais ne pouvait jamais aboutir.
+  const showComputer = computersAvailable && resultTab === "Computer";
   return (
     <aside className="result-pane">
       <div className="pane-header">
         <div className="pane-tabs">
           <button
-            className={resultTab === "Brief" ? "selected" : ""}
+            className={showComputer ? "" : "selected"}
             onClick={() => setResultTab("Brief")}
           >
             <BookOpen size={15} />
             Synthèse
           </button>
-          <button
-            className={resultTab === "Computer" ? "selected" : ""}
-            onClick={() => setResultTab("Computer")}
-          >
-            <Monitor size={15} /> Ordinateur de {computerWakie?.name ?? "Wakie"}
-          </button>
+          {computersAvailable && (
+            <button
+              className={showComputer ? "selected" : ""}
+              onClick={() => setResultTab("Computer")}
+            >
+              <Monitor size={15} /> Ordinateur de{" "}
+              {computerWakie?.name ?? "Wakie"}
+            </button>
+          )}
         </div>
         <button
           aria-label="Fermer le panneau de résultat"
@@ -60,7 +71,7 @@ export function ResultPane({
           <X size={16} />
         </button>
       </div>
-      {resultTab === "Computer" ? (
+      {showComputer ? (
         <>
           <label className="computer-wakie-picker">
             Ordinateur de

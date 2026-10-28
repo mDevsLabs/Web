@@ -187,36 +187,47 @@ Ordre strict, dans un `if (apiKey)`:
 
 | Rang | Source | Forfait retenu | Identifiant |
 |---|---|---|---|
-| 1 | **Clé API enregistrée** dans `mprojects_api_keys` | `users.tier`, sinon `plan`, sinon `Plus` | `k.user_id` |
-| 1 bis | **Forfait encodé dans la clé** (`extractTierFromApiKey`) | fait foi **en priorité** sur le 1 | — |
+| 1 | **Clé API enregistrée** dans `mprojects_api_keys` (clé active, propriétaire existant) | **`users.tier` uniquement** | `users.id` canonique |
 | 2 | **Clé système** `MAI_API_KEY` (comparaison à temps constant) | `Plus` | `system-mai` |
-| 3 | **JWT de session** (`verifyToken`) | `payload.tier`, puis relu en base | `payload.sub` |
-| 4 | En-tête `x-user-id` | `users.tier` | l'en-tête |
+| 3 | **JWT de session** (`verifyToken`) | `payload.tier`, **relu en base** | `payload.sub` |
 
 Détails qui comptent:
 
-- La clé est lue depuis `Authorization: Bearer …`, `x-api-key`,
-  `x-goog-api-key`, `?api_key=` ou `?key=`. Les valeurs sentinelles
-  (`""`, `"null"`, `"undefined"`, `"Bearer"`) sont normalisées à `null`.
-- `x-user-id` **ne promeut jamais** une authentification absente vers une route
-  privée: il est ignoré avec un `console.warn`. Sur une route publique, il est
-  accepté. S'il contredit une identité déjà établie, il est ignoré.
-- Le tier issu du JWT est **relu en base**: uneubscription válida dans le JWT ne
-  survit pas à un changement de forfait.
+- Le **préfixe** d'une clé (`mai-max-…`) n'accorde **aucun** privilège : une
+  clé inconnue, désactivée (`is_active = false`) ou orpheline n'authentifie
+  personne. Sur une route publique, elle reste au niveau public le plus strict ;
+  sur une route privée, elle répond 403.
+- La **limite individuelle** d'une clé (`max_limit`) est vérifiée dans la même
+  réservation atomique que le quota du compte ; une clé à sa limite répond 429.
+- Un **compte bloqué** (`users.is_blocked`) est refusé (403) pour ses clés comme
+  pour son JWT. `verifyToken` revérifie l'état du compte à chaque usage.
+- Le tier d'une clé suit donc une **rétrogradation** sans renouvellement de la
+  clé : la base est l'autorité.
+- `x-user-id` **ne promeut jamais** une identité, même sur une route publique.
+  Un en-tête fourni par le client n'est pas une authentification ; les routes
+  sociales publiques vérifient elles-mêmes le JWT.
 - La comparaison de la clé système est à temps constant
   (`timingSafeEqual`, comparaison de longueurs puis XOR).
+- L'en-tête `X-Forwarded-For` retenu pour les limites est la **dernière** entrée
+  (celle ajoutée par le proxy de bord), jamais la première (fournie par le
+  client). Les parcours de sécurité (inscription, connexion, vérification et
+  renvoi de code) utilisent un compteur **partagé** SQLite (`rateLimitShared`).
 
 ### 4.2 Refus
 
 | Situation | Statut | Corps |
 |---|---|---|
-| Clé présente, inconnue, route privée | `403` | `{ error: "Invalid API Key." }` |
+| Clé présente, inconnue/désactivée/orpheline, route privée | `403` | `{ error: "Invalid API Key." }` |
+| Compte bloqué (clé ou JWT) | `403` | `{ blocked: true, error: … }` |
+| Autorité de session indisponible (révocation inconnue) | `503` | `{ error: "Authentication service unavailable." }` |
 | Base injoignable pendant l'auth | `503` | `{ error: "Authentication service unavailable." }` |
 | Aucune clé ni identité, route privée | `401` | `{ error: "Service Unavailable. API Key missing." }` |
-| Quota hebdomadaire épuisé | `429` | `{ code: "quota_exceeded", limit, remaining, resetAt, used }` |
+| Quota hebdomadaire ou limite de clé épuisé | `429` | `{ code: "quota_exceeded" \| "api_key_limit_exceeded", … }` |
+| Autorité de quota indisponible | `503` | `{ error: "Quota service unavailable. Please retry later." }` |
 
-Sur une route **publique**, un quota épuisé **laisse passer** la requête
-(`await next()`) au lieu de la refuser.
+Sur une route **publique**, un quota épuisé **laisse passer** la requête au
+niveau public, sans débit supplémentaire. Une indisponibilité du quota, elle,
+ne fait jamais exécuter le handler.
 
 ### 4.3 Contexte posé sur le contexte Hono
 
@@ -228,16 +239,23 @@ c.set("matchedApiKey", matchedApiKey);
 ```
 
 Plus `requestQuota` (objet) et le fanion `quotaDebitedByHandler` posé par les
-handlers qui débitent eux-mêmes.
+handlers qui débitent eux-mêmes le coût complet (images).
 
-### 4.4 Quota hebdomadaire
+### 4.4 Quota hebdomadaire — réservation atomique
 
-- Somme de `request_count` sur **toutes** les clés du compte, plus
+- Somme de `request_count` sur **toutes** les clés du compte (résolues par la
+  table `users`, pas par la seule chaîne `user_id`), plus
   `getUserQuotaBoost(userId, "api")`.
 - Période hebdo (lundi 00:00 UTC) via `getWeekData()`.
-- Reset idempotent par `usage_period_start`.
-- **Un JWT de session ne consomme pas ce quota**: le compteur n'est incrémenté
-  que pour les clés enregistrées.
+- **La place est réservée AVANT le handler** (`api-quota.ts`, transaction +
+  `pg_advisory_xact_lock` par compte). Deux requêtes simultanées à 9/10 ne
+  peuvent pas consommer la même dernière place.
+- Si le handler échoue (statut non-200) ou s'il débite lui-même le coût complet,
+  la réservation est **rendue** (débit idempotent au niveau requête).
+- Une erreur de lecture ou d'écriture de l'autorité de quota produit un **503**
+  explicite et journalisé ; le fournisseur n'est jamais appelé.
+- **Un JWT de session ne consomme pas ce quota**: le compteur n'est réservé que
+  pour les clés enregistrées.
 
 ### 4.5 Journalisation après `next()`
 
@@ -245,11 +263,10 @@ handlers qui débitent eux-mêmes.
 INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms)
 ```
 
-Exclut: `/v1/devices*`, `/v1/status`, `/status`. Puis `request_count + 1` et
-`last_used_at = NOW()` sur la clé correspondante, **sauf** si le handler a posé
-`quotaDebitedByHandler` (évite un double débit sur les routes images, qui
-consomment plusieurs crédits). Les erreurs de journalisation sont loguées et
-**n'interrompent pas** la réponse.
+Exclut: `/v1/devices*`, `/v1/status`, `/status`. Le débit n'est **plus** fait
+après le handler : il a été réservé avant, et seule la libération éventuelle y
+figure. Les erreurs de journalisation sont loguées et **n'interrompent pas** la
+réponse.
 
 ---
 
@@ -397,10 +414,34 @@ Importe `maiModels.ts` (281 l.): le catalogue de modèles mAI.
 | Quota | `GET /v1/audio/usage`, `/v1/speech/usage` |
 | Historique | `GET` / `PATCH` / `DELETE` `/v1/audio/history[/:id]` |
 
-### 6.6 `web.ts` (438 l.) — 7 handlers
+### 6.6 `web.ts` — recherche Web publique bornée
 
 `GET|POST /v1/web/search` — recherche web, avec prise en compte des en-têtes
 `x-web-search` et `x-disable-web-search`.
+
+Le parcours anonyme est **documenté** (catalogue `requiresAuth: false`) et
+conservé, mais borné côté serveur : requête ≤ 500 caractères, `count` ramené
+dans [1, 10], corps ≤ 16 Ko, **30 recherches/min/IP** (60/min par compte
+authentifié, compteur partagé SQLite), 6 recherches simultanées par isolate et
+au plus 4 tentatives fournisseur par appel. Les appels You.com et les replis
+ont un délai de 5–6 s. Le CORS `origin: "*"` n'est pas une authentification :
+ces bornes s'appliquent aussi aux appels directs non navigateur.
+
+### 6.7 `images.ts` — générations et tâches Midjourney
+
+`/v1/images/generations`, `/images/*` et `/mj/*` (alias `/v1/mj/*`) partagent
+les mêmes gardes : forfait payant, quota journalier d'images **réservé
+atomiquement** avant le fournisseur, crédit API réservé à l'échelle du compte.
+Les actions génératrices (`imagine`, `action`, `blend`, `change`, `modal`,
+`swap-face`) consomment une image ; `describe` et `shorten` consomment le
+fournisseur sans génération ; `task/:id/fetch` est une **lecture de statut**
+sans débit.
+
+Chaque tâche Midjourney est associée à son compte à la création
+(`mprojects_image_tasks`, migration 0068). Une tâche inconnue, historique non
+attribuée ou appartenant à un autre compte répond 404, sans révéler son
+existence. Le corps des actions (`taskId`) est vérifié avant l'appel
+fournisseur.
 
 ### 6.7 `projects.ts` (650 l.) — 12 handlers
 

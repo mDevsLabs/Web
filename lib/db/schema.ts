@@ -352,6 +352,39 @@ export const chat = pgTable(
 
 export type Chat = InferSelectModel<typeof chat>;
 
+// ─────────────────────────────────────────────
+// CONVERSATIONS SÉCURISÉES (migration 0069) : PIN par conversation
+// ─────────────────────────────────────────────
+//
+// TABLE DÉDIÉE, PAS DES COLONNES SUR Chat
+//
+// `getChatById` sérialise toute la ligne Chat dans plusieurs réponses
+// (`GET /api/chats/[id]`, `PATCH`, fork…). Un `pinHash` posé sur Chat aurait
+// fuité par ces routes sans qu'aucun appelant ne le demande. La table est
+// supprimée en cascade avec la conversation ; une conversation privée ne doit
+// jamais conserver de ligne ici (voir `updateChatVisibilityById`).
+//
+// Le PIN est stocké en SHA-256 simple, conformément au choix produit. Un code
+// de 4 à 6 chiffres reste une faible entropie : la limitation des tentatives
+// est la protection réelle contre l'attaque en ligne, pas le hash.
+export const chatSecurity = pgTable("ChatSecurity", {
+  chatId: uuid("chatId")
+    .primaryKey()
+    .notNull()
+    .references(() => chat.id, { onDelete: "cascade" }),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  pinHash: text("pinHash").notNull(),
+  // Version du PIN : les cookies de déverrouillage portent cette valeur, donc
+  // un changement ou une réinitialisation les invalide immédiatement.
+  pinUpdatedAt: timestamp("pinUpdatedAt").notNull().defaultNow(),
+  resetAttempts: integer("resetAttempts").notNull().default(0),
+  resetCodeExpiresAt: timestamp("resetCodeExpiresAt"),
+  resetCodeHash: text("resetCodeHash"),
+  resetLastSentAt: timestamp("resetLastSentAt"),
+});
+
+export type ChatSecurity = InferSelectModel<typeof chatSecurity>;
+
 // Propositions de modifications ciblées d'un Artifact par l'IA. Une proposal
 // décrit un patch typé (lib/artifacts/patch.ts) généré contre un état précis
 // du document (baseHash) : elle n'est JAMAIS appliquée implicitement —// l'utilisateur accepte ou refuse explicitement. Le contenu du document reste

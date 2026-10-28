@@ -3,6 +3,7 @@ import { z } from "zod";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   getChatById,
   getMessagesByChatId,
@@ -48,6 +49,12 @@ export async function POST(
   }
   if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
     return errorResponse("access_denied");
+  }
+  if (!(await isChatUnlockedForUser({ chatId: id, userId }))) {
+    return errorResponse("access_denied", {
+      message:
+        "Déverrouillez la conversation avec son code PIN pour la dupliquer.",
+    });
   }
 
   const messages = await getMessagesByChatId({ id });

@@ -33,9 +33,16 @@ const TOKEN_MAX_BYTES = 64_000;
 export type OAuthFailureReason =
   /** `GOOGLE_CLIENT_ID` / `GITHUB_CLIENT_ID` absent : le connecteur n'est pas activé. */
   | "not_configured"
-  /** Le fournisseur a refusé l'échange (code expiré, redirect URI divergente…). */
+  /** Le fournisseur a refusé l'échange pour une raison de configuration
+   *  (`invalid_client`, `invalid_request`…) : ne jamais révoquer sur cela. */
+  | "configuration"
+  /** Le fournisseur a refusé DÉFINITIVEMENT le grant (`invalid_grant`). */
+  | "grant_revoked"
+  /** Fournisseur injoignable, 5xx, 429 : transitoire, jamais une déconnexion. */
+  | "temporary"
+  /** Réponse 2xx inexploitable (bug fournisseur) : à rejouer, sans révoquer. */
   | "exchange_failed"
-  /** Fournisseur injoignable : transitoire, à ne jamais confondre avec un refus. */
+  /** Alias historique de `temporary`, conservé pour les appelants existants. */
   | "network";
 
 export type OAuthResult<T> =
@@ -282,7 +289,39 @@ function requestJson(
         signal: AbortSignal.timeout(TOKEN_TIMEOUT_MS),
       });
       if (!response.ok) {
-        return { ok: false, reason: "exchange_failed" };
+        // Le statut seul ne dit pas si le GRANT est mort. Un 503 ou un 429 ne
+        // doit jamais effacer les jetons ; seul `invalid_grant` l'autorise.
+        if (
+          response.status === 408 ||
+          response.status === 425 ||
+          response.status === 429 ||
+          response.status >= 500
+        ) {
+          return { ok: false, reason: "temporary" };
+        }
+        let providerError = "";
+        try {
+          const body = await readCappedBody(response);
+          const parsed = JSON.parse(body || "{}") as {
+            error?: unknown;
+            error_description?: unknown;
+          };
+          providerError = typeof parsed.error === "string" ? parsed.error : "";
+        } catch {
+          providerError = "";
+        }
+        if (
+          providerError === "invalid_grant" ||
+          providerError === "invalid_token"
+        ) {
+          return { ok: false, reason: "grant_revoked" };
+        }
+        if (response.status >= 400 && response.status < 500) {
+          // `invalid_client`, `invalid_request`, `unsupported_grant_type` :
+          // problème de configuration. Les jetons restent en place.
+          return { ok: false, reason: "configuration" };
+        }
+        return { ok: false, reason: "temporary" };
       }
       const parsed = JSON.parse(
         (await readCappedBody(response)) || "{}"
@@ -292,7 +331,7 @@ function requestJson(
       }
       return { ok: true, value: parsed as Record<string, unknown> };
     } catch {
-      return { ok: false, reason: "network" };
+      return { ok: false, reason: "temporary" };
     }
   })();
 }

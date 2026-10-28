@@ -46,6 +46,16 @@ import { UI } from './ui.ts';
 let mounted: { dispose: () => void } | null = null;
 
 /**
+ * Identifiant du cycle de montage. `unmountBlackline` l'incrémente : une
+ * promesse de montage encore en vol (nextPaint, import dynamique, préchargement
+ * GPU) voit alors qu'elle n'est plus courante et libère immédiatement ce
+ * qu'elle a créé. Sans ce jeton, `unmountBlackline()` trouvait `mounted=null`,
+ * retournait, puis le montage asynchrone créait un Game et le conservait hors
+ * de la page.
+ */
+let mountGeneration = 0;
+
+/**
  * Démonte le jeu monté et libère la mémoire du moteur.
  *
  * Appelée par l'hôte mAI au démontage de la page, et par l'application
@@ -53,9 +63,12 @@ let mounted: { dispose: () => void } | null = null;
  * tourner dans le vide et le contexte WebGL n'est jamais relâché.
  */
 export function unmountBlackline(): void {
+  // Invalide tout montage en vol AVANT de libérer l'instance courante.
+  mountGeneration += 1;
   const instance = mounted;
   mounted = null;
   if (!instance) {
+    clearRoot();
     return;
   }
   try {
@@ -144,6 +157,8 @@ function preparerConteneur(conteneur: HTMLElement): {
 export async function mountBlackline(
   options: MountOptions = {}
 ): Promise<UI | null> {
+  const generation = ++mountGeneration;
+  const isCurrent = () => generation === mountGeneration;
   // DEUX ÉLÉMENTS, DEUX RÔLES
   //
   // Le CONTENEUR reçoit le canvas et l'interface du jeu. La RACINE reçoit les
@@ -184,6 +199,7 @@ export async function mountBlackline(
 
   const updateOrientation = installLandscapeGuard(mobile, app, () => ui.game);
   const status = loadingProgress((value, label) => {
+    if (!isCurrent()) return;
     // L'écran de chargement est un frère de l'interface, pas un enfant :
     // il est cherché dans le CONTENEUR.
     const boot = conteneur.querySelector<HTMLElement>('#boot');
@@ -201,15 +217,27 @@ export async function mountBlackline(
   try {
     status(5, 'CHARGEMENT DU MOTEUR 3D');
     await nextPaint();
+    if (!isCurrent()) {
+      updateOrientation.dispose();
+      return null;
+    }
     const [{ Game }, { preloadAssets }] = await Promise.all([
       import('./game.ts'),
       import('./asset-preload.ts'),
     ]);
+    if (!isCurrent()) {
+      updateOrientation.dispose();
+      return null;
+    }
     status(20, 'PRÉPARATION DES TEXTURES ULTRA');
     await preloadAssets(profile, (fraction, label) =>
       status(20 + fraction * 14, label)
     );
     await nextPaint();
+    if (!isCurrent()) {
+      updateOrientation.dispose();
+      return null;
+    }
     const game = new Game(
       canvas,
       settings,
@@ -222,14 +250,27 @@ export async function mountBlackline(
       },
       mobile
     );
+    // La page a pu être quittée pendant l'import ou le préchargement : le
+    // moteur tout juste créé doit être libéré, jamais conservé.
+    if (!isCurrent()) {
+      try {
+        game.dispose();
+      } catch {
+        // Libération best-effort.
+      }
+      ui.game = null;
+      updateOrientation.dispose();
+      return null;
+    }
     ui.setGame(game);
     game.applySettings(settings);
-    updateOrientation();
-    // Le moteur est monté : il devient la instance libérable par l'hôte.
+    updateOrientation.update();
+    // Le moteur est monté : il devient l'instance libérable par l'hôte.
     mounted = {
       dispose: () => {
         game.dispose();
         ui.game = null;
+        updateOrientation.dispose();
       },
     };
     status(35, 'PRÉCHARGEMENT DE L’ARSENAL');
@@ -239,6 +280,11 @@ export async function mountBlackline(
       ui.notice(
         'Préparation graphique partielle : les éléments restants seront chargés pendant le jeu.'
       );
+    }
+    // Démonté pendant le warmup : `unmountBlackline` a déjà libéré le game
+    // (via `mounted`) et les écouteurs d'orientation.
+    if (!isCurrent()) {
+      return null;
     }
     ui.engineReady = true;
     status(100, 'PRÊT POUR L’OPÉRATION');
@@ -251,8 +297,10 @@ export async function mountBlackline(
     );
     return ui;
   } catch (error) {
+    updateOrientation.dispose();
     conteneur.querySelector('#boot')?.remove();
     console.error('BLACKLINE initialization failed', error);
+    if (isCurrent()) clearRoot();
     ui.engineReady = false;
     ui.notice(
       'WebGL 2 est nécessaire. Activez l’accélération graphique de votre navigateur puis rechargez le jeu.'

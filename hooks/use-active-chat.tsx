@@ -30,6 +30,7 @@ import {
   isProfileAwaiting,
 } from "@/lib/ai/tools/account-status";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
@@ -58,6 +59,10 @@ type ActiveChatContextValue = {
   setInput: Dispatch<SetStateAction<string>>;
   visibilityType: VisibilityType;
   isReadonly: boolean;
+  isLocked: boolean;
+  isSecure: boolean;
+  isOwner: boolean;
+  refreshChat: () => void;
   isLoading: boolean;
   votes: Vote[] | undefined;
   currentModelId: string;
@@ -555,13 +560,13 @@ export function ActiveChatProvider({
   // confondu avec un changement de conversation. Voir l'effet plus bas.
   const { consumePreserveRequest } = useSharedDraft();
 
-  const { data: chatData, isLoading } = useSWR(
-    isNewChat
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
+  const {
+    data: chatData,
+    isLoading,
+    mutate: mutateChat,
+  } = useSWR(isNewChat ? null : apiEndpoints.messagesForChat(chatId), fetcher, {
+    revalidateOnFocus: false,
+  });
 
   const initialMessages: ChatMessage[] = isNewChat
     ? []
@@ -832,13 +837,19 @@ export function ActiveChatProvider({
   }, [sendMessage, chatId]);
 
   useAutoResume({
-    autoResume: !isNewChat && !!chatData,
+    autoResume: !isNewChat && !!chatData && !chatData.locked,
     initialMessages,
     resumeStream,
     setMessages,
   });
 
   const isReadonly = isNewChat ? false : (chatData?.isReadonly ?? false);
+  const isLocked = !isNewChat && Boolean(chatData?.locked);
+  const isSecure = !isNewChat && Boolean(chatData?.isSecure);
+  const isOwner = isNewChat ? true : Boolean(chatData?.isOwner);
+  const refreshChat = useCallback(() => {
+    void mutateChat();
+  }, [mutateChat]);
 
   const { data: votes } = useSWR<Vote[]>(
     !isReadonly && messages.length >= 2
@@ -866,11 +877,15 @@ export function ActiveChatProvider({
       input,
       isGhostMode,
       isLoading: !isNewChat && isLoading,
+      isLocked,
+      isOwner,
       isReadonly,
+      isSecure,
       messages,
       pendingCommand,
       pendingProject,
       pendingTools,
+      refreshChat,
       regenerate,
       resetChat,
       resetEpoch,
@@ -909,8 +924,12 @@ export function ActiveChatProvider({
       input,
       visibility,
       isReadonly,
+      isLocked,
+      isOwner,
+      isSecure,
       isNewChat,
       isLoading,
+      refreshChat,
       votes,
       activeAgent,
       setActiveAgent,

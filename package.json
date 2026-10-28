@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "admin": "bun run scripts/admin.ts",
-    "build": "node scripts/build-vibe-css.mjs && node scripts/build-wakies-css.mjs && node scripts/build-site-css.mjs && node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs && next build",
+    "build": "node scripts/validate-site-news.mjs && node scripts/build-vibe-css.mjs && node scripts/build-wakies-css.mjs && node scripts/build-site-css.mjs && node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs && next build",
     "build:all": "pnpm run build && pnpm --dir apps/coder run build && pnpm --dir apps/desktop run build",
     "build:blackline": "node scripts/build-blackline.mjs && node scripts/build-blackline-css.mjs",
     "build:coder": "pnpm --dir apps/coder run build",

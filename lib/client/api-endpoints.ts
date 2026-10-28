@@ -45,7 +45,13 @@ export const apiEndpoints = {
     apiUrl(`/api/chats/${chatId}/export?format=${format}`),
   /** Navigation SPA vers une conversation (history.pushState). */
   chatPath: (chatId: string) => pagePath(`/chat/${chatId}`),
+  /** Gestion du code PIN d'une conversation sécurisée. */
+  chatPin: (chatId: string) => apiUrl(`/api/chats/${chatId}/pin`),
+  /** Envoi du code OTP / vérification et nouveau PIN. */
+  chatPinReset: (chatId: string) => apiUrl(`/api/chats/${chatId}/pin/reset`),
   chatStream: (chatId: string) => apiUrl(`/api/chat/${chatId}/stream`),
+  /** Déverrouille une conversation pour la session navigateur courante. */
+  chatUnlock: (chatId: string) => apiUrl(`/api/chats/${chatId}/unlock`),
 
   document: (documentId: string) => apiUrl(`/api/document?id=${documentId}`),
 

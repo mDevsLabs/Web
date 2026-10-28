@@ -15,6 +15,10 @@ import {
   isPaidTier,
 } from "./config.ts";
 import { pushRealtimeEvent } from "./realtime.ts";
+import {
+  type DmRecipientDecision,
+  decideDmRecipient,
+} from "./vibe-access-policy.ts";
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 /** Longueurs maximales d'un message privé (texte brut, HTML décompté) par forfait. */
@@ -724,3 +728,66 @@ export const assertMessageAccess = async (
   }
   return { message: m, ok: true };
 };
+
+export type { DmRecipientDecision } from "./vibe-access-policy.ts";
+
+/**
+ * Autorisation d'écrire à un destinataire, PARTAGÉE par le chemin HTTP et
+ * l'outil `send_message` de l'agent. Une approbation d'outil (même automatique)
+ * ne remplace jamais le consentement du destinataire : blocage dans les deux
+ * sens, DM désactivés, ou politique « abonnements seulement ».
+ */
+export async function assertDmRecipientAllowed(
+  sql: any,
+  senderId: number,
+  recipientId: number
+): Promise<DmRecipientDecision> {
+  const blockCheck = await sql`
+    SELECT 1 FROM blocked_users
+    WHERE (user_id = ${senderId} AND blocked_user_id = ${recipientId})
+       OR (user_id = ${recipientId} AND blocked_user_id = ${senderId})
+    LIMIT 1
+  `;
+
+  let recipientSettings: any[] = [];
+  try {
+    recipientSettings = await sql`
+      SELECT allow_dms, dms_enabled
+      FROM user_settings
+      WHERE user_id = ${recipientId}
+      LIMIT 1
+    `;
+  } catch (settingsError) {
+    // Table absente ou incomplète : comportement historique (réception ouverte).
+    console.warn(
+      "[vibe-dms] Lecture des préférences DM ignorée:",
+      (settingsError as any)?.message
+    );
+  }
+
+  const settingsPresent = recipientSettings.length > 0;
+  const policy = settingsPresent
+    ? recipientSettings[0].allow_dms || "everyone"
+    : "everyone";
+  const dmsEnabled = settingsPresent
+    ? recipientSettings[0].dms_enabled !== false
+    : true;
+
+  let recipientFollowsSender = false;
+  if (settingsPresent && policy === "following") {
+    const follows = await sql`
+      SELECT 1 FROM follows
+      WHERE follower_id = ${recipientId} AND following_id = ${senderId}
+      LIMIT 1
+    `;
+    recipientFollowsSender = follows.length > 0;
+  }
+
+  return decideDmRecipient({
+    blockedEitherWay: blockCheck.length > 0,
+    dmsEnabled,
+    policy,
+    recipientFollowsSender,
+    settingsPresent,
+  });
+}

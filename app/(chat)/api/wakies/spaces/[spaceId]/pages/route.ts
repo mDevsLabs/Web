@@ -1,16 +1,18 @@
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { getWakiesQuota } from "@/lib/plans/tier-limits";
 import {
   badRequest,
-  enforceWakiesLimit,
   isResponse,
   json,
   notFound,
   rejectCrossOriginMutation,
   requireWakiesUser,
   toErrorResponse,
+  wakiesQuotaResponse,
 } from "@/lib/wakies/http";
 import { createPage, listPages, spaceExists } from "@/lib/wakies/queries";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 
 /**
  * GET  /api/wakies/spaces/:spaceId/pages — pages d'un espace.
@@ -65,18 +67,17 @@ export async function POST(
       message: zodIssuesMessage(parsed.error),
     });
   }
-  const limite = await enforceWakiesLimit({
-    limit: "pages",
-    tier: identite.tier,
-    used: (await listPages(identite.userId, spaceId)).length,
-  });
-  if (limite) {
-    return limite;
-  }
   try {
-    const page = await createPage(identite.userId, spaceId, parsed.data);
+    // Quota GLOBAL du compte (tous Espaces), tranché dans la transaction de
+    // création avec un verrou par compte.
+    const page = await createPage(identite.userId, spaceId, parsed.data, {
+      quota: getWakiesQuota(identite.tier, "pages"),
+    });
     return json(page, { status: 201 });
   } catch (erreur) {
+    if (erreur instanceof WakiesQuotaError) {
+      return wakiesQuotaResponse(erreur);
+    }
     return erreur instanceof Error
       ? badRequest(erreur.message)
       : toErrorResponse(erreur);

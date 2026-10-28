@@ -455,6 +455,7 @@ const PurePreviewMessage = ({
           attachment={{
             contentType: attachment.mediaType,
             name: attachment.filename ?? "file",
+            pathname: (attachment as { pathname?: string }).pathname,
             url: attachment.url,
           }}
           key={attachment.url}
