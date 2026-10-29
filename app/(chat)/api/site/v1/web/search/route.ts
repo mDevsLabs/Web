@@ -1,91 +1,78 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { getClientIp } from "@/lib/net/client-ip";
+import { checkApiRateLimit } from "@/lib/ratelimit";
 import { executeWebSearch } from "@/lib/site/web-search";
+import {
+  clampWebSearchCount,
+  normalizeWebSearchQuery,
+} from "@/web-search-limits";
 
 /**
- * Cette route est volontairement publique (`requiresAuth: false` dans le catalogue
- * des routes), mais elle était le seul point `/v1/*` dépourvu de toute limitation :
- * chaque appel déclenche jusqu'à quatre requêtes sortantes (Google News RSS, Bing
- * RSS, Wikipédia, DuckDuckGo). Elle est donc bridée à 30 requêtes par minute et par
- * IP, et le nombre de résultats demandé est borné.
+ * Cette route est volontairement publique (`requiresAuth: false` dans le
+ * catalogue des routes), mais elle engage les clés You.com de la plateforme et
+ * jusqu'à plusieurs requêtes sortantes de repli. Elle est donc bornée :
+ *  • 120 recherches/heure par IP (compteur partagé Redis, repli mémoire) ;
+ *  • 500 caractères de requête au plus ;
+ *  • count ramené dans [1, 10] ;
+ *  • corps de requête plafonné.
+ * Le CORS n'est pas une protection : la décision est prise ici.
  */
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const MAX_REQUESTS_PER_WINDOW = 30;
-const DEFAULT_RESULT_COUNT = 5;
-const MAX_RESULT_COUNT = 10;
+const MAX_BODY_BYTES = 16_384;
 
-const clientHits: Map<string, { count: number; resetAt: number }> = new Map();
-
-function checkRateLimit(
-  identifier: string
-): { allowed: true } | { allowed: false; resetInSec: number } {
-  const now = Date.now();
-  const hit = clientHits.get(identifier);
-
-  if (!hit || now > hit.resetAt) {
-    if (clientHits.size > 10_000) {
-      for (const [key, value] of clientHits) {
-        if (now > value.resetAt) clientHits.delete(key);
-      }
-    }
-    clientHits.set(identifier, {
-      count: 1,
-      resetAt: now + RATE_LIMIT_WINDOW_MS,
-    });
-    return { allowed: true };
-  }
-
-  if (hit.count >= MAX_REQUESTS_PER_WINDOW) {
-    return {
-      allowed: false,
-      resetInSec: Math.ceil((hit.resetAt - now) / 1000),
-    };
-  }
-
-  hit.count += 1;
-  return { allowed: true };
-}
-
-function clampCount(value: unknown): number {
-  const parsed =
-    typeof value === "number"
-      ? value
-      : Number.parseInt(String(value ?? ""), 10);
-  if (!Number.isFinite(parsed)) return DEFAULT_RESULT_COUNT;
-  return Math.min(MAX_RESULT_COUNT, Math.max(1, Math.floor(parsed)));
-}
-
-function getClientIdentifier(req: NextRequest): string {
-  return (
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    req.headers.get("x-real-ip") ||
-    "anonymous"
-  );
-}
-
-function rateLimitResponse(resetInSec: number): NextResponse {
+function rateLimitResponse(retryAfterSec: number): NextResponse {
   return NextResponse.json(
     {
       error: {
         code: "rate_limit_exceeded",
-        message: `Limite de ${MAX_REQUESTS_PER_WINDOW} recherches par minute atteinte. Réessayez dans ${resetInSec} secondes.`,
+        message: `Limite de recherches atteinte. Réessayez dans ${retryAfterSec} secondes.`,
       },
     },
-    { headers: { "Retry-After": String(resetInSec) }, status: 429 }
+    { headers: { "Retry-After": String(retryAfterSec) }, status: 429 }
   );
+}
+
+async function enforceRateLimit(
+  req: NextRequest
+): Promise<NextResponse | null> {
+  const ip = getClientIp(req.headers);
+  const result = await checkApiRateLimit({ action: "web_search", ip });
+  if (!result.allowed) {
+    return rateLimitResponse(result.retryAfterSeconds);
+  }
+  return null;
+}
+
+function bodyTooLarge(req: NextRequest): boolean {
+  const length = Number(req.headers.get("content-length") || 0);
+  return Number.isFinite(length) && length > MAX_BODY_BYTES;
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const limit = checkRateLimit(getClientIdentifier(req));
-    if (!limit.allowed) return rateLimitResponse(limit.resetInSec);
+    if (bodyTooLarge(req)) {
+      return NextResponse.json(
+        {
+          error: {
+            code: "payload_too_large",
+            message: "Corps de requête trop volumineux.",
+          },
+        },
+        { status: 413 }
+      );
+    }
+    const limited = await enforceRateLimit(req);
+    if (limited) return limited;
 
     const body = await req.json().catch(() => ({}));
-    const query = body.query || body.q;
-    const count = clampCount(body.count);
+    const query = normalizeWebSearchQuery(body.query || body.q);
+    const count = clampWebSearchCount(body.count);
 
-    if (!query || typeof query !== "string") {
+    if (!query) {
       return NextResponse.json(
-        { error: "Le paramètre 'query' est obligatoire." },
+        {
+          error:
+            "Le paramètre 'query' est obligatoire et limité à 500 caractères.",
+        },
         { status: 400 }
       );
     }
@@ -104,16 +91,21 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const limit = checkRateLimit(getClientIdentifier(req));
-    if (!limit.allowed) return rateLimitResponse(limit.resetInSec);
+    const limited = await enforceRateLimit(req);
+    if (limited) return limited;
 
     const { searchParams } = new URL(req.url);
-    const query = searchParams.get("q") || searchParams.get("query");
-    const count = clampCount(searchParams.get("count"));
+    const query = normalizeWebSearchQuery(
+      searchParams.get("q") || searchParams.get("query")
+    );
+    const count = clampWebSearchCount(searchParams.get("count"));
 
     if (!query) {
       return NextResponse.json(
-        { error: "Paramètre 'q' ou 'query' manquant." },
+        {
+          error:
+            "Paramètre 'q' ou 'query' manquant, ou supérieur à 500 caractères.",
+        },
         { status: 400 }
       );
     }

@@ -30,11 +30,11 @@ export default function PrivacyPage() {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-emerald-500">
             Confidentialité
           </span>{" "}
-          <Shield className="inline w-4 h-4 align-middle" />️
+          <Shield className="inline w-4 h-4 align-middle" />
         </h1>
 
         <p className="text-slate-500 font-light mb-8 text-base md:text-lg">
-          Dernière mise à jour : 25 août 2026. Chez <strong>mDevsLabs</strong>, la protection de vos données personnelles, la conformité réglementaire internationale et la transparence de notre plateforme <strong>mAI</strong> sont au cœur de nos engagements. Cette politique détaille la répartition de l&apos;hébergement de vos données (données structurées et comptes stockés dans l&apos;Union Européenne, stockage d&apos;objets et fichiers aux États-Unis), le traitement des requêtes via l&apos;API mAI avec notre politique prioritaire de <strong>Zero Data Retention (ZDR)</strong> sur l&apos;IA, et la gestion sécurisée de vos clés d&apos;API.
+          Dernière mise à jour: 25 août 2026. Chez <strong>mDevsLabs</strong>, la protection de vos données personnelles, la conformité réglementaire internationale et la transparence de notre plateforme <strong>mAI</strong> sont au cœur de nos engagements. Cette politique détaille la répartition de l&apos;hébergement de vos données (données structurées et comptes stockés dans l&apos;Union Européenne, stockage d&apos;objets et fichiers aux États-Unis), le traitement des requêtes via l&apos;API mAI avec notre politique prioritaire de <strong>Zero Data Retention (ZDR)</strong> sur l&apos;IA, et la gestion sécurisée de vos clés d&apos;API.
         </p>
 
         {/* Badge Résumé de Souveraineté UE & ZDR */}
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               Priorité ZDR (Zero Data Retention) <Lock className="inline w-4 h-4 align-middle" />
             </div>
             <p className="text-xs text-purple-700 leading-relaxed font-light">
-              Politique ZDR priorisée : vos prompts et requêtes d&apos;IA ne sont jamais enregistrés ni réutilisés pour l&apos;entraînement.
+              Politique ZDR priorisée: vos prompts et requêtes d&apos;IA ne sont jamais enregistrés ni réutilisés pour l&apos;entraînement.
             </p>
           </div>
           <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-900">
@@ -69,14 +69,14 @@ export default function PrivacyPage() {
         </div>
 
         <div className="space-y-10 text-slate-600">
-          {/* Section 1 : Stockage UE & USA */}
+          {/* Section 1: Stockage UE & USA */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Globe className="w-5 h-5 text-emerald-600" />
               1. Hébergement des Données (Union Européenne) &amp; Stockage Fichiers (États-Unis)
             </h2>
             <p className="leading-relaxed font-light">
-              Nous appliquons une politique claire et transparente de localisation et de chiffrement des données :
+              Nous appliquons une politique claire et transparente de localisation et de chiffrement des données:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1 text-xs">
               <div className="p-4 bg-white/70 rounded-2xl border border-slate-200/90 shadow-sm space-y-1.5">
@@ -121,24 +121,24 @@ export default function PrivacyPage() {
             </div>
           </section>
 
-          {/* Section 2 : Données Collectées & Clés API mAI */}
+          {/* Section 2: Données Collectées & Clés API mAI */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Lock className="w-5 h-5 text-purple-500" />
               2. Données Collectées &amp; Clés API mAI
             </h2>
             <p className="leading-relaxed font-light">
-              Nous appliquons le principe de minimisation des données : seules les données strictement nécessaires à la fourniture de nos services d'IA sont traitées :
+              Nous appliquons le principe de minimisation des données: seules les données strictement nécessaires à la fourniture de nos services d'IA sont traitées:
             </p>
             <ul className="list-disc list-inside space-y-2 ml-2 text-sm font-light">
               <li>
-                <strong>Données d'Identité &amp; Profil</strong> : Adresse e-mail valide, nom d'utilisateur unique, numéro de téléphone (optionnel), mot de passe sécurisé (haché de manière irréversible) et formule d'abonnement (Free, Plus, Pro, Max).
+                <strong>Données d'Identité &amp; Profil</strong>: Adresse e-mail valide, nom d'utilisateur unique, numéro de téléphone (optionnel), mot de passe sécurisé (haché de manière irréversible) et formule d'abonnement (Free, Plus, Pro, Max).
               </li>
               <li>
-                <strong>Clés API &amp; Authentification</strong> : Les clés secrètes d'API générées (format <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">mai-...</code> ou <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">mp-...</code>) sont conservées de façon chiffrée et associées exclusivement à votre identifiant utilisateur. Vous pouvez les révoquer à tout moment.
+                <strong>Clés API &amp; Authentification</strong>: Les clés secrètes d'API générées (format <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">mai-...</code> ou <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">mp-...</code>) sont conservées de façon chiffrée et associées exclusivement à votre identifiant utilisateur. Vous pouvez les révoquer à tout moment.
               </li>
               <li>
-                <strong>Journaux d'Exécution API (<code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">mprojects_api_logs</code>)</strong> : À chaque appel sur nos points de terminaison (<code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/chat/completions</code>, <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/models</code>, <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/messages</code>), nous enregistrons uniquement les métadonnées techniques suivantes :
+                <strong>Journaux d'Exécution API (<code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">mprojects_api_logs</code>)</strong>: À chaque appel sur nos points de terminaison (<code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/chat/completions</code>, <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/models</code>, <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-xs">/v1/messages</code>), nous enregistrons uniquement les métadonnées techniques suivantes:
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 ml-4">
                   <span className="p-2 rounded-xl bg-white/60 border border-slate-200 text-xs"><CircleDot className="inline w-4 h-4 align-middle" /> Préfixe sécurisé de la clé API</span>
                   <span className="p-2 rounded-xl bg-white/60 border border-slate-200 text-xs"><CircleDot className="inline w-4 h-4 align-middle" /> Point d'accès (endpoint) &amp; méthode HTTP</span>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
             </ul>
           </section>
 
-          {/* Section 3 : Fonctionnement de l'API & Traitement des Requêtes IA (Politique ZDR) */}
+          {/* Section 3: Fonctionnement de l'API & Traitement des Requêtes IA (Politique ZDR) */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Cpu className="w-5 h-5 text-blue-500" />
@@ -159,25 +159,25 @@ export default function PrivacyPage() {
             <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-slate-800 text-sm leading-relaxed space-y-2">
               <p className="font-bold flex items-center gap-2 text-blue-900">
                 <CheckCircle2 className="w-4 h-4 text-blue-600" />
-                Politique Prioritaire de Zero Data Retention (ZDR) &amp; Non-Entraînement :
+                Politique Prioritaire de Zero Data Retention (ZDR) &amp; Non-Entraînement:
               </p>
               <p className="font-light text-slate-700">
                 mDevsLabs priorise et applique une politique stricte de <strong>Zero Data Retention (ZDR)</strong> sur l&apos;ensemble des inférences d&apos;intelligence artificielle. Les invites (prompts), documents joints, messages, données de contexte et réponses générées transitant par l&apos;API mAI ou l&apos;interface web <strong>ne sont JAMAIS stockés de manière persistante, ni réutilisés pour entraîner, réentraîner ou affiner des modèles d&apos;IA</strong>.
               </p>
             </div>
             <p className="leading-relaxed font-light text-sm">
-              <strong>Traitement Éphémère en Mémoire Volatile (Stateless In-Memory)</strong> : Lorsque vous soumettez une requête à l&apos;API, les données sont traitées uniquement en mémoire vive volatile (RAM) par le moteur d&apos;inférence afin de générer la réponse demandée. Dès la transmission des tokens ou de l&apos;image à votre application, le contenu textuel et binaire est instantanément purgé de la mémoire active des serveurs.
+              <strong>Traitement Éphémère en Mémoire Volatile (Stateless In-Memory)</strong>: Lorsque vous soumettez une requête à l&apos;API, les données sont traitées uniquement en mémoire vive volatile (RAM) par le moteur d&apos;inférence afin de générer la réponse demandée. Dès la transmission des tokens ou de l&apos;image à votre application, le contenu textuel et binaire est instantanément purgé de la mémoire active des serveurs.
             </p>
           </section>
 
-          {/* Section 4 : Forfaits & Quotas d'Usage API */}
+          {/* Section 4: Forfaits & Quotas d'Usage API */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Key className="w-5 h-5 text-purple-500" />
               4. Forfaits, Quotas &amp; Gestion des Débits API
             </h2>
             <p className="leading-relaxed font-light">
-              L'utilisation des ressources d'intelligence artificielle et des serveurs est équilibrée par un système de quotas mensuels selon votre formule :
+              L'utilisation des ressources d'intelligence artificielle et des serveurs est équilibrée par un système de quotas mensuels selon votre formule:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
@@ -202,26 +202,26 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* Section 5 : Cookies et Stockage Navigateur */}
+          {/* Section 5: Cookies et Stockage Navigateur */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Cookie className="w-5 h-5 text-amber-500" />
               5. Cookies et Stockage Local
             </h2>
             <p className="leading-relaxed font-light">
-              Nous n'utilisons aucun traceur publicitaire tiers. Nous exploitons uniquement des cookies strictement nécessaires au fonctionnement et à la sécurité de l'application :
+              Nous n'utilisons aucun traceur publicitaire tiers. Nous exploitons uniquement des cookies strictement nécessaires au fonctionnement et à la sécurité de l'application:
             </p>
             <ul className="list-disc list-inside space-y-2 ml-4 text-sm font-light">
               <li>
-                <strong className="text-slate-800">mai_token &amp; mai_user</strong> : Cookies de session sécurisés avec attributs <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">SameSite=Lax</code> et <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">Secure</code> permettant de préserver votre authentification.
+                <strong className="text-slate-800">mai_token &amp; mai_user</strong>: Cookies de session sécurisés avec attributs <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">SameSite=Lax</code> et <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">Secure</code> permettant de préserver votre authentification.
               </li>
               <li>
-                <strong className="text-slate-800">mai_cookie_consent</strong> : Enregistre vos préférences de consentement conformément à la directive ePrivacy.
+                <strong className="text-slate-800">mai_cookie_consent</strong>: Enregistre vos préférences de consentement conformément à la directive ePrivacy.
               </li>
             </ul>
           </section>
 
-          {/* Section 6 : Conservation et Sécurité */}
+          {/* Section 6: Conservation et Sécurité */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Database className="w-5 h-5 text-emerald-500" />
@@ -232,14 +232,14 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* Section 7 : Vos Droits RGPD */}
+          {/* Section 7: Vos Droits RGPD */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <UserCheck className="w-5 h-5 text-purple-500" />
               7. Vos Droits sous le RGPD
             </h2>
             <p className="leading-relaxed font-light text-sm">
-              Conformément à la réglementation européenne (articles 15 à 22 du RGPD), vous disposez des droits suivants concernant vos données :
+              Conformément à la réglementation européenne (articles 15 à 22 du RGPD), vous disposez des droits suivants concernant vos données:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 bg-white/60 rounded-xl border border-slate-200 font-light">

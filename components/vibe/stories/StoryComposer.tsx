@@ -13,7 +13,7 @@ import type { StorySticker } from "@/lib/vibe/types/vibe";
  * COMPOSITEUR DE STORY (StoryComposer.tsx)
  *
  * Conçu dans une fenêtre contextuelle élégante (modale) ne recouvrant pas toute la page.
- * Prend en charge :
+ * Prend en charge:
  * - Médias (photos / vidéos ≤ 50 Mo) avec retouches (filtres photo CSS, cadrage, miroir)
  * - Nouveaux arrière-plans & palettes de couleurs (dégradés vibrants, teintes unies)
  * - Typographie et mise en page du texte avancées (polices, couleurs, styles de fond, alignement, position)
@@ -198,41 +198,15 @@ export const STICKER_CATEGORIES = {
   },
   emotions: {
     label: "Émotions",
-    stickers: [
-      "❤️",
-      "🔥",
-      "😍",
-      "😂",
-      "🥳",
-      "😎",
-      "🤩",
-      "🥺",
-      "🤯",
-      "💀",
-      "😴",
-      "👏",
-    ],
+    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
   },
   infos: {
     label: "Infos & Heure",
-    stickers: ["📍 ICI", "⭐ 10/10", "HEURE_LOCALE", "DATE_JOUR"],
+    stickers: [" ICI", " 10/10", "HEURE_LOCALE", "DATE_JOUR"],
   },
   vibes: {
     label: "Vibes & Fêtes",
-    stickers: [
-      "🎉",
-      "✨",
-      "💯",
-      "🌈",
-      "🚀",
-      "⚡",
-      "🌟",
-      "🍕",
-      "☕",
-      "🎵",
-      "🎈",
-      "🍹",
-    ],
+    stickers: ["", "", "", "", "", "", "", "", "", "", "", ""],
   },
 } as const;
 
@@ -358,7 +332,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         const estImage = fichier.type.startsWith("image/");
         const estVideo = fichier.type.startsWith("video/");
         if (!estImage && !estVideo) {
-          refus.push(`${fichier.name} : photo ou vidéo attendue.`);
+          refus.push(`${fichier.name}: photo ou vidéo attendue.`);
           continue;
         }
         if (fichier.size > STORY_MEDIA_MAX_BYTES) {
@@ -395,9 +369,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
   // ── Stickers ──────────────────────────────────────────────────────────────
   const isBadge = useCallback(
     (emoji: string) =>
-      /[a-zA-Z0-9]/.test(emoji) ||
-      emoji.startsWith("📍") ||
-      emoji.startsWith("⭐"),
+      /[a-zA-Z0-9]/.test(emoji) || emoji.startsWith("") || emoji.startsWith(""),
     []
   );
 
@@ -522,7 +494,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
     if (!peutPublier) return;
     if (sondage.actif && !sondagePret) {
       setErreur(
-        "Sondage incomplet : une question et au moins deux options requises."
+        "Sondage incomplet: une question et au moins deux options requises."
       );
       return;
     }
@@ -643,9 +615,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
         {/* ── En-tête contextuel ─────────────────────────────────────────── */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-zinc-950/90 backdrop-blur-sm shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="size-8 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-rose-500/20">
-              ✨
-            </div>
+            <div className="size-8 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-rose-500/20" />
             <div>
               <h2 className="text-sm font-bold text-white tracking-wide">
                 Nouvelle Story
@@ -668,9 +638,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
           </div>
         </div>
 
-        {/* ── Corps : 2 colonnes sur tablette/desktop, empilé sur mobile ── */}
+        {/* ── Corps: 2 colonnes sur tablette/desktop, empilé sur mobile ── */}
         <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
-          {/* ── Colonne Gauche : Canevas interactif (5 col / 12) ─────────── */}
+          {/* ── Colonne Gauche: Canevas interactif (5 col / 12) ─────────── */}
           <div className="md:col-span-5 bg-zinc-900/60 p-4 sm:p-5 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-white/10 overflow-hidden relative">
             <div
               className={`relative aspect-[9/16] w-full max-w-[240px] sm:max-w-[270px] rounded-2xl overflow-hidden shadow-2xl border border-white/15 touch-none select-none transition-colors duration-300 ${
@@ -818,7 +788,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                     onClick={() => setActiveFilterId("none")}
                     type="button"
                   >
-                    Filtre : {filtreActif.name} ✕
+                    Filtre: {filtreActif.name} ✕
                   </button>
                 )}
               </div>
@@ -829,18 +799,18 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
             )}
           </div>
 
-          {/* ── Colonne Droite : Panneau d'outils (7 col / 12) ───────────── */}
+          {/* ── Colonne Droite: Panneau d'outils (7 col / 12) ───────────── */}
           <div className="md:col-span-7 flex flex-col overflow-hidden bg-zinc-950">
             {/* Barre d'onglets ergonomique */}
             <div className="flex border-b border-white/10 overflow-x-auto no-scrollbar shrink-0 bg-zinc-900/30">
               {(
                 [
-                  ["media", "📸 Média"],
-                  ["colors", "🎨 Couleurs"],
-                  ["text", "✍️ Texte"],
-                  ["stickers", "✨ Stickers"],
-                  ["filters", "🪄 Filtres"],
-                  ["poll", "📊 Sondage"],
+                  ["media", " Média"],
+                  ["colors", " Couleurs"],
+                  ["text", " Texte"],
+                  ["stickers", " Stickers"],
+                  ["filters", " Filtres"],
+                  ["poll", " Sondage"],
                 ] as const
               ).map(([tabKey, label]) => (
                 <button
@@ -863,7 +833,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
             {/* Contenu de l'onglet actif */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
-              {/* ── Onglet 1 : Média ─────────────────────────────────────── */}
+              {/* ── Onglet 1: Média ─────────────────────────────────────── */}
               {activeTab === "media" ? (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -947,7 +917,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       onClick={() => inputRef.current?.click()}
                       type="button"
                     >
-                      <span className="text-3xl leading-none">📸</span>
+                      <span className="text-3xl leading-none" />
                       <span className="text-xs font-semibold text-white">
                         Choisir une photo ou une vidéo
                       </span>
@@ -959,7 +929,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
               ) : null}
 
-              {/* ── Onglet 2 : Fonds & Couleurs ──────────────────────────── */}
+              {/* ── Onglet 2: Fonds & Couleurs ──────────────────────────── */}
               {activeTab === "colors" ? (
                 <div className="space-y-4">
                   <div>
@@ -1004,7 +974,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
               ) : null}
 
-              {/* ── Onglet 3 : Texte & Typographie ───────────────────────── */}
+              {/* ── Onglet 3: Texte & Typographie ───────────────────────── */}
               {activeTab === "text" ? (
                 <div className="space-y-4">
                   <div>
@@ -1156,7 +1126,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
               ) : null}
 
-              {/* ── Onglet 4 : Stickers ──────────────────────────────────── */}
+              {/* ── Onglet 4: Stickers ──────────────────────────────────── */}
               {activeTab === "stickers" ? (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -1202,9 +1172,9 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                       const estBadge = isBadge(st);
                       const label =
                         st === "HEURE_LOCALE"
-                          ? "⏰ Heure"
+                          ? " Heure"
                           : st === "DATE_JOUR"
-                            ? "📅 Date"
+                            ? " Date"
                             : st;
                       return (
                         <button
@@ -1251,7 +1221,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
               ) : null}
 
-              {/* ── Onglet 5 : Retouches & Filtres ───────────────────────── */}
+              {/* ── Onglet 5: Retouches & Filtres ───────────────────────── */}
               {activeTab === "filters" ? (
                 <div className="space-y-4">
                   <div>
@@ -1284,7 +1254,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                             className="size-12 rounded-lg bg-zinc-800 flex items-center justify-center overflow-hidden border border-white/10"
                             style={{ filter: f.filter }}
                           >
-                            <span className="text-xl">🌇</span>
+                            <span className="text-xl" />
                           </div>
                           <span
                             className={`text-[11px] ${
@@ -1302,7 +1272,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                 </div>
               ) : null}
 
-              {/* ── Onglet 6 : Sondage ───────────────────────────────────── */}
+              {/* ── Onglet 6: Sondage ───────────────────────────────────── */}
               {activeTab === "poll" ? (
                 <div className="space-y-4">
                   <label className="flex items-center justify-between text-xs font-medium text-white/90 p-3 rounded-xl border border-white/15 bg-white/5 cursor-pointer">
@@ -1340,7 +1310,7 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
                               question: e.target.value,
                             }))
                           }
-                          placeholder="Ex : Vous préférez quoi ?"
+                          placeholder="Ex: Vous préférez quoi?"
                           value={sondage.question}
                         />
                       </div>
@@ -1387,13 +1357,11 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
               ) : null}
             </div>
 
-            {/* ── Pied de panneau : Visibilité & Publication ─────────────── */}
+            {/* ── Pied de panneau: Visibilité & Publication ─────────────── */}
             <div className="p-4 sm:p-5 border-t border-white/10 bg-zinc-950 shrink-0 space-y-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[11px] text-white/50">
-                    Visibilité :
-                  </span>
+                  <span className="text-[11px] text-white/50">Visibilité:</span>
                   {(
                     [
                       ["followers", "Abonnés"],

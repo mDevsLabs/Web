@@ -29,6 +29,15 @@ const REQUIRED_TABLES = [
   "ProjectMember",
   "Skill",
   "ToolExecution",
+  // Migration 0068 : sans cette table, le backend ne peut pas vérifier qu'une
+  // tâche d'image appartient au compte qui la consulte — il refuse alors toutes
+  // les tâches (fail-closed), mais les nouvelles générations échouent à
+  // l'enregistrement de propriété.
+  "mprojects_image_tasks",
+  // Migration 0063 : la table unifiée des notifications. Sans elle, la
+  // cloche mAI ne peut ni lire ni écrire — et le tick de réplication n'a
+  // nulle part où copier les événements Vibe et Wakies.
+  "Notification",
   "user_notification_prefs",
   "user_preferences",
   "UsageEvent",
@@ -70,10 +79,35 @@ const REQUIRED_TABLES = [
   "UserFormResponse",
   // Migration 0060 : mAI Search
   "MaiSearchQuery",
+  // Migration 0064 : réglages du jeu Blackline. Sans cette table, la lecture
+  // des réglages échoue et /blackline retombe silencieusement sur les
+  // réglages locaux de l'appareil.
+  "BlacklineSettings",
+  // Migration 0069 : sans cette table, l'ouverture d'une conversation
+  // sécurisée échoue en 42P01 et le PIN ne peut être ni lu ni écrit.
+  "ChatSecurity",
+  // Migration 0070 : plugins créés par le compte (serveur MCP ou OAuth).
+  "UserPlugin",
+  "UserPluginSecret",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Migration 0069 : le PIN et sa version sont relus à chaque ouverture ; les
+  // colonnes reset* portent la réinitialisation par e-mail. Une base
+  // partiellement migrée doit être signalée AVANT le déploiement.
+  { column: "userId", table: "UserPlugin" },
+  { column: "kind", table: "UserPlugin" },
+  { column: "mcpServerId", table: "UserPlugin" },
+  { column: "encryptedValue", table: "UserPluginSecret" },
+  { column: "chatId", table: "ChatSecurity" },
+  { column: "createdAt", table: "ChatSecurity" },
+  { column: "pinHash", table: "ChatSecurity" },
+  { column: "pinUpdatedAt", table: "ChatSecurity" },
+  { column: "resetCodeHash", table: "ChatSecurity" },
+  { column: "resetCodeExpiresAt", table: "ChatSecurity" },
+  { column: "resetAttempts", table: "ChatSecurity" },
+  { column: "resetLastSentAt", table: "ChatSecurity" },
   { column: "rewardResetApplied", table: "UserFormResponse" },
   { column: "rewardType", table: "UserFormResponse" },
   { column: "questions", table: "UserForm" },
@@ -94,6 +128,14 @@ const REQUIRED_COLUMNS = [
     "expiresAt",
   ].map((column) => ({ column, table: "WakiesChatTurn" })),
   { column: "agentApprovalRequired", table: "user_notification_prefs" },
+  // Migration 0063 : notifications unifiées. Sans `origin`, la réplication
+  // des notifications Vibe et Wakies n'a pas où écrire — et la cloche mAI
+  // ne sait pas de quelle application vient un événement.
+  { column: "origin", table: "Notification" },
+  { column: "sourceId", table: "Notification" },
+  { column: "sourceMeta", table: "Notification" },
+  // Migration 0065 : le réglage qui décide si une alerte Wakies est produite.
+  { column: "replyAlertsEnabled", table: "WakiesSettings" },
   { column: "executionOwner", table: "AgentRun" },
   { column: "executionLeaseUntil", table: "AgentRun" },
   { column: "isEnabled", table: "UserMemory" },
@@ -130,6 +172,14 @@ const REQUIRED_COLUMNS = [
   { column: "theme", table: "user_preferences" },
   // Migration 0057 : effort de réflexion global dans user_preferences.
   { column: "reasoningLevel", table: "user_preferences" },
+  // Migration 0062 : préférences de recherche mAI Search. Elles sont lues à
+  // chaque chargement de la page des paramètres ET par la route de
+  // recherche : une colonne absente ferait tomber la lecture des préférences
+  // en 42703, donc toute la page Paramètres — comme en 0034/0038.
+  { column: "searchLanguage", table: "user_preferences" },
+  { column: "searchResultCount", table: "user_preferences" },
+  { column: "searchSafetyLevel", table: "user_preferences" },
+  { column: "searchSources", table: "user_preferences" },
   // Migration 0059 : typage des modèles (chat, audio, image) et fournisseur.
   { column: "type", table: "openrouter_models" },
   { column: "fournisseur", table: "openrouter_models" },

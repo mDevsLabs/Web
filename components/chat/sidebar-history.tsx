@@ -29,6 +29,7 @@ import { useProjects } from "@/hooks/use-projects";
 import type { Chat } from "@/lib/db/schema";
 import { fetcher } from "@/lib/utils";
 import { LoaderIcon } from "./icons";
+import { SecureConversationDialog } from "./secure-conversation-dialog";
 import { ChatItem } from "./sidebar-history-item";
 
 type GroupedChats = {
@@ -132,6 +133,7 @@ export function SidebarHistory({
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [securityChat, setSecurityChat] = useState<Chat | null>(null);
 
   const allChats = paginatedChatHistories
     ? paginatedChatHistories.flatMap((page) =>
@@ -315,6 +317,7 @@ export function SidebarHistory({
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
                               projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
@@ -333,6 +336,7 @@ export function SidebarHistory({
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
                               projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
@@ -351,6 +355,7 @@ export function SidebarHistory({
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
                               projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
@@ -369,6 +374,7 @@ export function SidebarHistory({
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
                               projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
@@ -387,6 +393,7 @@ export function SidebarHistory({
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              onManageSecurity={setSecurityChat}
                               projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
@@ -432,6 +439,18 @@ export function SidebarHistory({
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <SecureConversationDialog
+        chat={securityChat}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSecurityChat(null);
+          }
+        }}
+        onSaved={() => {
+          mutate();
+        }}
+      />
     </>
   );
 }

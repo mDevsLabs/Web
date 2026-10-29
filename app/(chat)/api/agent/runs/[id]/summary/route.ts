@@ -1,6 +1,7 @@
 import { estimateRunCost } from "@/lib/agent/usage";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   getAgentRunById,
   getAgentStepsByRunId,
@@ -28,6 +29,11 @@ export async function GET(
   const run = await getAgentRunById({ id, userId });
   if (!run) {
     return errorResponse("not_found", { message: "Run introuvable." });
+  }
+  if (!(await isChatUnlockedForUser({ chatId: run.chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   const [steps, executions] = await Promise.all([

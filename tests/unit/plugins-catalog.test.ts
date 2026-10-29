@@ -79,28 +79,52 @@ afterEach(() => {
 });
 
 describe("Catalogue de plugins", () => {
-  it("expose les dix-sept plugins attendus, avec identifiants uniques", () => {
+  it("expose le catalogue courant, avec des identifiants uniques", () => {
     const ids = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.id).toSorted(
       (a, b) => a.localeCompare(b)
     );
     expect(ids).toEqual([
       "air-quality",
+      "asana",
+      "brave",
+      "brevo",
+      "cloudflare",
       "crossref",
+      "discord",
+      "dockerhub",
       "eurostat",
+      "exchange-rate",
       "fr-holidays",
       "github",
       "gitlab-public",
       "google",
+      "jira",
       "json-toolbox",
+      "linear",
+      "make",
+      "mapbox",
       "mobilite-fr",
+      "neon",
+      "notion",
+      "npm",
       "open-food-facts",
       "open-library",
       "openalex",
+      "posthog",
       "quizzly",
+      "resend",
+      "sentry",
+      "sonarcloud",
+      "stripe",
+      "supabase",
       "tvmaze",
+      "twilio",
+      "upstash",
+      "vercel",
       "weather",
       "wikidata",
       "world-bank",
+      "zapier",
     ]);
 
     const toolIds = PLUGIN_MANIFEST_LIST.flatMap((plugin) =>

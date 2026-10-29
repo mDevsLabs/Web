@@ -70,6 +70,7 @@ const REGLAGES_PAR_DEFAUT = {
   memoryAllowed: true,
   name: "Wakie",
   paused: false,
+  replyAlertsEnabled: true,
   researchAllowed: true,
 } as const;
 
@@ -108,6 +109,8 @@ export async function updateSettings(
     paused: boolean;
     researchAllowed: boolean;
     memoryAllowed: boolean;
+    /** Produire une alerte à la fin d'un tour terminé (migration 0065). */
+    replyAlertsEnabled: boolean;
     /** Repère de parcours, écrit par l'assistant de configuration. */
     onboardingCompleted: boolean;
   }>

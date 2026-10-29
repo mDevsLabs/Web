@@ -25,9 +25,9 @@ ollama run mDevsLabs/mAI-1.2-Apex
 hf download mDevsLabs/mAI-1.2-Apex-GGUF
 ~~~
 
-## 📊 Benchmarks de performance
+## Benchmarks de performance
 
-Aperçu des performances du modèle sur les tâches de référence :
+Aperçu des performances du modèle sur les tâches de référence:
 
 ![Benchmarks mAI-1.2-Apex](https://upload.fs.fr/BZvHvbDIlB.png)
 

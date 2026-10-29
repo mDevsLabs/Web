@@ -266,6 +266,42 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({
     if (audioRef.current) audioRef.current.playbackRate = speed;
   }, [current, speed]);
 
+  /**
+   * Suspension en arrière-plan.
+   *
+   * Un onglet caché ne rend personne : le son continue pourtant de jouer, et
+   * la synthèse vocale continue de parler. L'audio est MIS EN PAUSE — pas
+   * arrêté — pour que l'utilisateur retrouve la lecture là où il l'a
+   * laissée.
+   */
+  useEffect(() => {
+    let pausedSpeech = false;
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        audioRef.current?.pause();
+        if (
+          typeof window !== "undefined" &&
+          "speechSynthesis" in window &&
+          window.speechSynthesis.speaking
+        ) {
+          window.speechSynthesis.pause();
+          pausedSpeech = true;
+        }
+        return;
+      }
+      if (pausedSpeech) {
+        pausedSpeech = false;
+        if (typeof window !== "undefined" && "speechSynthesis" in window) {
+          window.speechSynthesis.resume();
+        }
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, []);
+
   const value: AudioPlayerContextValue = {
     close,
     current,

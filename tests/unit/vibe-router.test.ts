@@ -1,8 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   deriveVibeRouteParams,
   stripVibeBasePath,
   toVibeAbsoluteUrl,
+  toVibeHref,
   toVibePath,
   VIBE_BASE_PATH,
 } from "@/components/vibe/router";
@@ -108,6 +109,43 @@ describe("toVibeAbsoluteUrl — liens copiés et partagés", () => {
     expect(toVibeAbsoluteUrl("/vibe/messages?conv=7&msg=12")).toBe(
       "/vibe/messages?conv=7&msg=12"
     );
+  });
+});
+
+describe("toVibeHref — href des mentions et hashtags du contenu riche", () => {
+  it("résout les liens internes sous /vibe", () => {
+    expect(toVibeHref("/@marie")).toBe("/vibe/@marie");
+    expect(toVibeHref("/explore?q=%23intelligence&tab=hashtags")).toBe(
+      "/vibe/explore?q=%23intelligence&tab=hashtags"
+    );
+    expect(toVibeHref("/books/42")).toBe("/vibe/books/42");
+  });
+
+  it("laisse les URL externes intactes, sans basePath", () => {
+    expect(toVibeHref("https://exemple.fr/a")).toBe("https://exemple.fr/a");
+    expect(toVibeHref("mailto:marie@exemple.fr")).toBe(
+      "mailto:marie@exemple.fr"
+    );
+  });
+
+  it("ajoute aussi le basePath éventuel de l'hôte", async () => {
+    const previous = process.env.NEXT_PUBLIC_BASE_PATH;
+    process.env.NEXT_PUBLIC_BASE_PATH = "/demo";
+    vi.resetModules();
+    try {
+      const frais = await import("@/components/vibe/router");
+      expect(frais.toVibeHref("/@marie")).toBe("/demo/vibe/@marie");
+      expect(frais.toVibeHref("https://exemple.fr/a")).toBe(
+        "https://exemple.fr/a"
+      );
+    } finally {
+      if (previous === undefined) {
+        delete process.env.NEXT_PUBLIC_BASE_PATH;
+      } else {
+        process.env.NEXT_PUBLIC_BASE_PATH = previous;
+      }
+      vi.resetModules();
+    }
   });
 });
 

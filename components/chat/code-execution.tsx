@@ -1,143 +1,221 @@
 "use client";
 
 import { CopyIcon, Loader2Icon, PlayIcon } from "@mdevs/icons";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import {
+  buildJsWorkerSource,
+  JS_SANDBOX_MAX_CODE,
+  JS_SANDBOX_MAX_OUTPUT,
+} from "@/lib/security/js-sandbox";
 
 type Props = {
   code: string;
   language?: string;
 };
 
-// Motifs dangereux refusés avant même l'envoi au Worker (import,
-// fetch/XHR, DOM, storage, eval/Function).
-const BLOCKED_JS_PATTERNS = [
-  /import\s*\(/,
-  /\bimport\b.*\bfrom\b/,
-  /\bfetch\s*\(/,
-  /\bXMLHttpRequest\b/,
-  /\bWebSocket\b/,
-  /\bdocument\b/,
-  /\bwindow\b/,
-  /\blocalStorage\b/,
-  /\bsessionStorage\b/,
-  /\bindexedDB\b/,
-  /\beval\s*\(/,
-  /\bFunction\s*\(/,
-  /\bnavigator\b.*\bsendBeacon\b/,
-];
+const JS_TIMEOUT_MS = 10_000;
+const PYTHON_TIMEOUT_MS = 60_000;
+const PYTHON_LOAD_TIMEOUT_MS = 120_000;
+const MAX_CODE_LENGTH = JS_SANDBOX_MAX_CODE;
+const MAX_OUTPUT_LENGTH = JS_SANDBOX_MAX_OUTPUT;
 
-function runJsInSandbox(code: string, timeoutMs = 10_000): Promise<string> {
-  for (const re of BLOCKED_JS_PATTERNS) {
-    if (re.test(code)) {
-      return Promise.reject(
-        new Error(
-          "Code JS bloqué : motif interdit détecté (réseau/DOM/import/eval)."
-        )
-      );
-    }
+/**
+ * Exécute le JavaScript dans un Worker dont le script EST le code utilisateur.
+ * Aucun `eval`/`new Function` : la realm est créée par le navigateur, et
+ * `buildJsWorkerSource` en retire les capacités dangereuses avant exécution.
+ */
+function runJsInSandbox(
+  code: string,
+  timeoutMs = JS_TIMEOUT_MS
+): Promise<string> {
+  if (code.length > MAX_CODE_LENGTH) {
+    return Promise.reject(new Error("Code trop long."));
   }
-  const workerSrc = `
-    let out = "";
-    const log = (...a) => { out += a.map(String).join(" ") + "\\n"; };
-    self.console = { log, info: log, warn: log, error: log };
-    self.onmessage = (e) => {
-      const userCode = String(e.data ?? "");
-      try {
-        const fn = new Function("console", '"use strict";\\n" + userCode');
-        const res = fn({ log, info: log, warn: log, error: log });
-        if (res !== undefined && res !== null) out += String(res);
-        self.postMessage({ ok: true, out });
-      } catch (err) {
-        self.postMessage({ ok: false, err: err && err.message ? err.message : String(err) });
-      }
-    };
-  `;
+  const workerSrc = buildJsWorkerSource(code);
   return new Promise((resolve, reject) => {
     let settled = false;
     const blob = new Blob([workerSrc], { type: "text/javascript" });
     const url = URL.createObjectURL(blob);
     const worker = new Worker(url);
+    const finish = (fn: () => void) => {
+      if (settled) return;
+      settled = true;
+      worker.terminate();
+      URL.revokeObjectURL(url);
+      fn();
+    };
     const timer = window.setTimeout(() => {
-      if (settled) return;
-      settled = true;
-      worker.terminate();
-      URL.revokeObjectURL(url);
-      reject(new Error("L'exécution JS a dépassé le délai autorisé."));
+      finish(() =>
+        reject(new Error("L'exécution JS a dépassé le délai autorisé."))
+      );
     }, timeoutMs);
-    worker.onmessage = (ev: MessageEvent) => {
-      if (settled) return;
-      settled = true;
+    worker.onmessage = (event: MessageEvent) => {
+      const data = event.data as { ok?: boolean; out?: unknown; err?: unknown };
+      if (!data || typeof data.ok !== "boolean") {
+        return;
+      }
       window.clearTimeout(timer);
-      worker.terminate();
-      URL.revokeObjectURL(url);
-      const data = ev.data as { ok: boolean; out?: string; err?: string };
-      if (data.ok) resolve(data.out ?? "");
-      else reject(new Error(data.err || "Erreur d'exécution JS"));
+      if (data.ok) {
+        finish(() =>
+          resolve(String(data.out ?? "").slice(0, MAX_OUTPUT_LENGTH))
+        );
+      } else {
+        finish(() => reject(new Error(String(data.err || "Erreur JS"))));
+      }
     };
-    worker.onerror = (ev) => {
-      if (settled) return;
-      settled = true;
+    worker.onerror = (event) => {
       window.clearTimeout(timer);
-      worker.terminate();
-      URL.revokeObjectURL(url);
-      reject(new Error(ev.message || "Erreur Worker JS"));
+      finish(() => reject(new Error(event.message || "Erreur du Worker JS")));
     };
-    worker.postMessage(code);
+    // Le script du worker s'exécute au chargement ; aucun message n'est requis.
   });
+}
+
+type PythonEntry = {
+  worker: Worker;
+  ready: Promise<void>;
+  pending: {
+    reject: (error: Error) => void;
+    resolve: (output: string) => void;
+  } | null;
+};
+
+function createPythonEntry(): PythonEntry {
+  const worker = new Worker("/workers/python-sandbox.js");
+  let resolveReady: () => void = () => {};
+  let rejectReady: (error: Error) => void = () => {};
+  const ready = new Promise<void>((resolve, reject) => {
+    resolveReady = resolve;
+    rejectReady = reject;
+  });
+  const entry: PythonEntry = { pending: null, ready, worker };
+
+  worker.onmessage = (event: MessageEvent) => {
+    const data = event.data as {
+      type?: string;
+      message?: unknown;
+      output?: unknown;
+    };
+    if (!data || typeof data.type !== "string") return;
+    if (data.type === "ready") {
+      resolveReady();
+      return;
+    }
+    if (data.type === "error" && !entry.pending) {
+      rejectReady(
+        new Error(
+          String(data.message || "Moteur Python indisponible.").slice(0, 500)
+        )
+      );
+      return;
+    }
+    if (!entry.pending) return;
+    const pending = entry.pending;
+    entry.pending = null;
+    if (data.type === "result") {
+      pending.resolve(String(data.output ?? "").slice(0, MAX_OUTPUT_LENGTH));
+    } else if (data.type === "error") {
+      pending.reject(
+        new Error(String(data.message || "Erreur Python").slice(0, 500))
+      );
+    }
+  };
+  worker.onerror = (event) => {
+    const error = new Error(event.message || "Erreur du Worker Python");
+    rejectReady(error);
+    if (entry.pending) {
+      const pending = entry.pending;
+      entry.pending = null;
+      pending.reject(error);
+    }
+  };
+  worker.postMessage({ type: "init" });
+  return entry;
 }
 
 export function CodeExecution({ code, language = "python" }: Props) {
   const [output, setOutput] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isRunning, setIsRunning] = useState(false);
-  const [pyodideReady, setPyodideReady] = useState(false);
-  const [pyodideError, setPyodideError] = useState("");
-  const [isPyodideLoading, setIsPyodideLoading] = useState(false);
+  const [pythonState, setPythonState] = useState<
+    "idle" | "loading" | "ready" | "error"
+  >("idle");
+  const pythonRef = useRef<PythonEntry | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
-    const win = window as Window & {
-      pyodide?: any;
-      loadPyodide?: (options?: { indexURL?: string }) => Promise<any>;
-    };
-
-    const load = async () => {
-      try {
-        if (win.pyodide) {
-          if (!cancelled) setPyodideReady(true);
-          return;
-        }
-        if (!win.loadPyodide) {
-          if (!cancelled) {
-            setPyodideError("Le moteur Python n'est pas disponible.");
-          }
-          return;
-        }
-        if (!cancelled) setIsPyodideLoading(true);
-        const py = await win.loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
-        });
-        if (!cancelled) {
-          win.pyodide = py;
-          setPyodideReady(true);
-        }
-      } catch (e) {
-        if (!cancelled)
-          setPyodideError(e instanceof Error ? e.message : String(e));
-      } finally {
-        if (!cancelled) setIsPyodideLoading(false);
-      }
-    };
-
-    void load();
-    const check = window.setInterval(() => void load(), 500);
-    return () => {
-      cancelled = true;
-      window.clearInterval(check);
-    };
+  const disposePython = useCallback(() => {
+    const entry = pythonRef.current;
+    pythonRef.current = null;
+    if (entry) {
+      entry.pending?.reject(new Error("Exécution interrompue."));
+      entry.pending = null;
+      entry.worker.terminate();
+    }
+    setPythonState("idle");
   }, []);
+
+  useEffect(() => disposePython, [disposePython]);
+
+  const runPythonSandbox = useCallback(
+    async (source: string): Promise<string> => {
+      if (source.length > MAX_CODE_LENGTH) {
+        throw new Error("Code trop long.");
+      }
+      if (!pythonRef.current) {
+        setPythonState("loading");
+        pythonRef.current = createPythonEntry();
+      }
+      const entry = pythonRef.current;
+
+      let loadTimer: number | undefined;
+      try {
+        await Promise.race([
+          entry.ready,
+          new Promise<never>((_, reject) => {
+            loadTimer = window.setTimeout(
+              () =>
+                reject(
+                  new Error(
+                    "Le chargement du moteur Python a dépassé le délai autorisé."
+                  )
+                ),
+              PYTHON_LOAD_TIMEOUT_MS
+            );
+          }),
+        ]);
+      } catch (loadError) {
+        disposePython();
+        setPythonState("error");
+        throw loadError;
+      } finally {
+        if (loadTimer !== undefined) window.clearTimeout(loadTimer);
+      }
+      setPythonState("ready");
+
+      return new Promise<string>((resolve, reject) => {
+        const timer = window.setTimeout(() => {
+          if (entry.pending) {
+            entry.pending = null;
+            disposePython();
+            reject(new Error("L'exécution a dépassé le délai autorisé."));
+          }
+        }, PYTHON_TIMEOUT_MS);
+        entry.pending = {
+          reject: (runError) => {
+            window.clearTimeout(timer);
+            reject(runError);
+          },
+          resolve: (runOutput) => {
+            window.clearTimeout(timer);
+            resolve(runOutput);
+          },
+        };
+        entry.worker.postMessage({ code: source, type: "run" });
+      });
+    },
+    [disposePython]
+  );
 
   const run = async () => {
     setIsRunning(true);
@@ -145,61 +223,14 @@ export function CodeExecution({ code, language = "python" }: Props) {
     setError("");
     try {
       if (language === "python") {
-        const py = (window as any).pyodide;
-        if (!py || !pyodideReady) {
-          setError(
-            pyodideError ||
-              (isPyodideLoading
-                ? "Le moteur Python est encore en cours de chargement."
-                : "Le moteur Python n'est pas disponible. Rechargez la page puis réessayez.")
-          );
-          return;
-        }
-        // Capture stdout
-        let stdout = "";
-        py.setStdout({
-          batched: (msg: string) => {
-            stdout += `${msg}\n`;
-          },
-        });
-        py.setStderr({
-          batched: (msg: string) => {
-            stdout += `${msg}\n`;
-          },
-        });
-        let timeoutId: number | undefined;
-        try {
-          const result = await Promise.race([
-            py.runPythonAsync(code),
-            new Promise<never>((_, reject) => {
-              timeoutId = window.setTimeout(
-                () =>
-                  reject(new Error("L'exécution a dépassé le délai autorisé.")),
-                60_000
-              );
-            }),
-          ]);
-          if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-          if (result !== undefined && result !== null) {
-            const str = String(result);
-            if (str !== "undefined" && str !== "None") stdout += str;
-          }
-          setOutput(stdout.trim() || "(exécution réussie — pas de sortie)");
-        } catch (e: any) {
-          if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-          setError(e.message || String(e));
-        }
+        const result = await runPythonSandbox(code);
+        setOutput(result.trim() || "(exécution réussie — pas de sortie)");
       } else {
-        // JS — exécuté dans un Web Worker isolé (pas d'accès DOM,
-        // cookies, localStorage). Remplace l'ancien `new Function(code)`
-        // qui s'exécutait dans le contexte de la page.
-        try {
-          const out = await runJsInSandbox(code, 10_000);
-          setOutput(out.trim() || "(exécution JS réussie)");
-        } catch (e: any) {
-          setError(e.message || String(e));
-        }
+        const result = await runJsInSandbox(code, JS_TIMEOUT_MS);
+        setOutput(result.trim() || "(exécution JS réussie)");
       }
+    } catch (runError) {
+      setError(runError instanceof Error ? runError.message : String(runError));
     } finally {
       setIsRunning(false);
     }
@@ -210,23 +241,24 @@ export function CodeExecution({ code, language = "python" }: Props) {
     toast.success("Code copié");
   };
 
+  const pythonLabel =
+    pythonState === "ready"
+      ? "• prêt"
+      : pythonState === "loading"
+        ? "• chargement..."
+        : pythonState === "error"
+          ? "• erreur de chargement"
+          : "• chargement à la demande";
+
   return (
     <div className="w-[min(100%,600px)] rounded-xl border border-border/60 bg-card overflow-hidden">
       <div className="flex items-center justify-between px-3 py-2 bg-muted/30 border-b border-border/40">
         <span className="text-[12px] font-semibold flex items-center gap-1.5">
           <PlayIcon className="size-3.5" />{" "}
           {language === "python"
-            ? "Python (Pyodide, navigateur)"
-            : "JavaScript"}{" "}
-          {language === "python"
-            ? pyodideReady
-              ? "• prêt"
-              : pyodideError
-                ? "• erreur de chargement"
-                : isPyodideLoading
-                  ? "• chargement..."
-                  : "• indisponible"
-            : "• prêt"}
+            ? "Python (Pyodide, worker isolé)"
+            : "JavaScript (worker isolé)"}{" "}
+          {language === "python" ? pythonLabel : "• prêt"}
         </span>
         <div className="flex items-center gap-1">
           <Button
@@ -239,10 +271,7 @@ export function CodeExecution({ code, language = "python" }: Props) {
           </Button>
           <Button
             className="h-7 text-xs gap-1"
-            disabled={
-              isRunning ||
-              (language === "python" && (!pyodideReady || isPyodideLoading))
-            }
+            disabled={isRunning}
             onClick={run}
             size="sm"
           >

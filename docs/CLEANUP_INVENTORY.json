@@ -704,6 +704,221 @@
       "file": "scripts/tmp-schema-fix.py",
       "sha256": "4914732f0e942ef1a7568ac485f32a50f43f0aebf26a2b9a06bffbd2239c1e77",
       "reason": "Script ponctuel d’inspection ou de réécriture du code, sans appel depuis les scripts de paquet, tests ou CI."
+    },
+    {
+      "file": "apps/blackline/.github/workflows/build.yml",
+      "sha256": "6eca1368a7cfd7336671b7a6200f5540a14d39947d08b2f2ee3b7e6e0d89896d",
+      "reason": "Workflow GitHub imbriqué : les workflows placés dans un sous-dossier ne sont jamais exécutés par GitHub Actions."
+    },
+    {
+      "file": "apps/blackline/apps/assets/android-hdpi.png",
+      "sha256": "6b93e81444b83f0112fefa785342cfc2cb7fcbb219f2ee0ff91ee7abe8d1ace1",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/android-mdpi.png",
+      "sha256": "8613d7a085da0172e070d88818a012ad524909e0b3687b158a6702a31ed3cf73",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/android-xhdpi.png",
+      "sha256": "c6967a1590831ddf4d313f6707e3a3f30ee9109e185f955fbba29dab1c44887a",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/android-xxhdpi.png",
+      "sha256": "62c0ae9e80df2f5b0bd1b713d49040d51464f4a96289bb1f90d5ffd2b80fa415",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/android-xxxhdpi.png",
+      "sha256": "b096dc73bd195dae8817863f407120bafffe13b600ab27918a7db88c70ea86b9",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/icon.icns",
+      "sha256": "a1cac4f211ca2e81bf4d7df2298109fa28eb72072df901ecd969c4198531fb8d",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/icon.ico",
+      "sha256": "25a5f185c39668eb0928a7ed6128b964e808160fb64631f2959695d5b21254b8",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/assets/icon.png",
+      "sha256": "87736ebbca9012b39f5402a31fef6b7e35e9abb437f666a34b9b85cd5cc7a81b",
+      "reason": "Icônes du packaging natif Electron/Capacitor retiré : aucun job CI ni script de l'hôte ne les consomme."
+    },
+    {
+      "file": "apps/blackline/apps/desktop/main.cjs",
+      "sha256": "6a1841a6f8eeaf036d6eb709baed46575fd9944921ee89ac419eac453826f555",
+      "reason": "Empaquetage Electron du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/desktop/package-lock.json",
+      "sha256": "6d11e98f95480309de6af49c9ae3794f603c4997d3c05b8fb80151532fe8aa78",
+      "reason": "Empaquetage Electron du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/desktop/package.json",
+      "sha256": "653277db053eb34dd953a3d9ab49bbf4daa2079e439f94998350ccde19829aa8",
+      "reason": "Empaquetage Electron du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/desktop/protocol-path.cjs",
+      "sha256": "7b21855895bd6129bebdedbb309ddefc2d5eab684c6cb12e4b5576c46567f261",
+      "reason": "Empaquetage Electron du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/mobile/PrivacyInfo.xcprivacy",
+      "sha256": "6018dedf6426d06d5498e8018a725623b9778f63313c3792018515521fcf6b64",
+      "reason": "Empaquetage Capacitor du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/mobile/capacitor.config.json",
+      "sha256": "7429f5f6e505d80238df0554318cde9291f04255299e5147a56132f6f3052001",
+      "reason": "Empaquetage Capacitor du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/mobile/native-bridge.js",
+      "sha256": "7fe5041cbb4c5f1fd3ffe6c01ff10eab54cacb5335f535b19a2fab09c9ef6e69",
+      "reason": "Empaquetage Capacitor du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/mobile/package-lock.json",
+      "sha256": "e6d6ca22e08ba1fbc85a9a1be3040ecbddd8328674e1a450cfc5c8d81970952e",
+      "reason": "Empaquetage Capacitor du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/apps/mobile/package.json",
+      "sha256": "0600ffba0c7f2b97c4f8fd6d314e5365e84c3ee659f7f64025b5ca3e7f0abe11",
+      "reason": "Empaquetage Capacitor du projet autonome : aucun job CI ni script de l'hôte ne le construit."
+    },
+    {
+      "file": "apps/blackline/scripts/native/configure-mobile.mjs",
+      "sha256": "806f0b9eac61ac29ddefbe381e2a19aa3eb8fa4f8492624db60df603d184027d",
+      "reason": "Préparation Capacitor/Electron du projet autonome, orpheline après le retrait de apps/blackline/apps/."
+    },
+    {
+      "file": "apps/blackline/scripts/native/prepare-desktop.mjs",
+      "sha256": "4d1397b747c7f59df44d5d372edf194e74679c01de987e452f6414c5a5859acb",
+      "reason": "Préparation Capacitor/Electron du projet autonome, orpheline après le retrait de apps/blackline/apps/."
+    },
+    {
+      "file": "apps/blackline/scripts/native/prepare-mobile.mjs",
+      "sha256": "d2a7fbb03c48d427afb7850d2bfdeb313c2ac8f1f0b04e3750b9b4a278202b2d",
+      "reason": "Préparation Capacitor/Electron du projet autonome, orpheline après le retrait de apps/blackline/apps/."
+    },
+    {
+      "file": "apps/blackline/scripts/trace-imports.mjs",
+      "sha256": "28dd9971c6cb67427cf3f6d8e776746f50ccbe0f0eaf8e5e15f3e803ea42dd9e",
+      "reason": "Script de traçage orphelin : aucun script de package.json, test ou CI ne l'appelle."
+    },
+    {
+      "file": "apps/blackline/src/main.ts.new",
+      "sha256": "6826830e86b86168e736f28bc4c7abfd21bb83ae39cf3c94326857f02ca27183",
+      "reason": "Copie parasite de src/main.ts : ni index.html ni vite.config.ts ne la référencent."
+    },
+    {
+      "file": "apps/coder/scripts/tokenize-mac-codex.mjs",
+      "sha256": "93527d64c63a390d986e221134dc511b803f778cb2c5a7c9e40ac8e6673089e4",
+      "reason": "Migration ponctuelle déjà appliquée (src/styles/mac-codex.css) : aucun script ne l'appelle."
+    },
+    {
+      "file": "apps/coder/test-segments.mjs",
+      "sha256": "48b5054772166d6296ceaaefe13878c0f3e03a7042c0e6d633da0f8a6d50b40a",
+      "reason": "Script de test orphelin : ni les scripts de package.json, ni vitest.config.ts, ni la CI ne l'exécutent ; sa logique est dupliquée dans src/."
+    },
+    {
+      "file": "apps/site/email.ts",
+      "sha256": "5ef69ac0528e80b7888486146774de316e61172e90d46a7b0ef6f3319cd97b7e",
+      "reason": "Chas d'export de l'application autonome : l'hôte utilise @/lib/site/email et AGENTS.md interdit d'importer @/email."
+    },
+    {
+      "file": "apps/site/mai-identity.ts",
+      "sha256": "26f7bbefc84bf24ebb5b1d182ca1d661700db25444c44acbd3d111841bd3be37",
+      "reason": "Copie périmée du mai-identity.ts de la racine (empreintes différentes) : l'hôte lit le module racine."
+    },
+    {
+      "file": "apps/site/tsconfig.valtown.json",
+      "sha256": "4ffc3c88281cb20ec144b65ef17e387d8f03bf765afac76cad84214c3376da93",
+      "reason": "Configuration cassée : ses vingt entrées « include » visent des modules du backend Val Town déplacés à la racine du dépôt."
+    },
+    {
+      "file": "apps/vibe/.freebuff/project-id",
+      "sha256": "9c0bc0eda74b102f0d3a919b812d85d5a7cf70883a02ac5dff2de87a308983bf",
+      "reason": "Identifiant local d'outil, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_0e6c1545-16a6-4b98-90fa-8ae8ffc44ab9.md",
+      "sha256": "23f47681f2b492bb0d60063398e8b8954df5402dd7eece65efcf112d03a0da70",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_51e92976-30e8-4e1e-9714-480fc738076f.md",
+      "sha256": "9dc25e14b005af9b76f3d6abf1750866fe9f2003cbbff84d462a6c147e037b96",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_60bd38d8-b924-442b-bd50-43d73bf6dd76.md",
+      "sha256": "357d4e03d7903824b7a94b29a36b569bd6b6a77857b394aa41113084fc780107",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_6c0de15c-4307-49fa-82af-081b523fbf46.md",
+      "sha256": "0cacb4cf7739735411a27bb74af5c39d7e6a004b4404bf8943d619217170c810",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_a0a9f1b1-4fc8-4822-9419-8b178e42ab9a.md",
+      "sha256": "25b5d79a273c7e0bd2ffc67052c973ffcd9ba22ae18c74e8407e7cc44a59213d",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_af5c2380-4b07-4440-ab7d-93318deefdb8.md",
+      "sha256": "3cf5546ec497c140866c0a521ec6569366ce5c86e0dad3cdd9054c90d572f495",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/.zcode/plans/plan-sess_c9b7d6f3-78db-4ee4-bb48-e245026be487.md",
+      "sha256": "8585847dfec37de30a5379f4d766aeb2caef1a1b357bfbd7a7fdf07c676ccc3f",
+      "reason": "Plan de session d'outil local, sans usage dans le dépôt."
+    },
+    {
+      "file": "apps/vibe/lib/recommendation/index.ts",
+      "sha256": "8edc1ed6c388582f0a8c27e29ab311269b87146328c22fad4b37444f8c4d5047",
+      "reason": "Module de recommandation sans importeur dans l'application Vite de référence."
+    },
+    {
+      "file": "apps/vibe/lib/recommendation/signals.ts",
+      "sha256": "17366c5db45bc8d46f78276c27972a5c86ee49bf4abba74d3e01a03c7950acba",
+      "reason": "Module de recommandation sans importeur dans l'application Vite de référence."
+    },
+    {
+      "file": "apps/vibe/scripts/newsletter_editor.html",
+      "sha256": "2c16b45b149d35ba79aebf85aa3d2d75add5206f5c83a4dbe4351cf8e2fd0b1b",
+      "reason": "Doublon de scripts/newsletter_editor.html (racine) : seul l'exemplaire racine est référencé par la chaîne d'outils."
+    },
+    {
+      "file": "apps/vibe/src/App.css",
+      "sha256": "6e25a776d3e8102da5bacb3cb99f4a5fc662a2e01e6143140671a556d28c3d5c",
+      "reason": "Feuille de style orpheline : aucun fichier de l'application Vite de référence ne l'importe (seul src/index.css l'est)."
+    },
+    {
+      "file": "apps/vibe/src/types/lucide-react.d.ts",
+      "sha256": "3c3df145ada9885669c0becfb5b547cd99dc612b5c7a3100ff2c38fb1a1654df",
+      "reason": "Déclaration de module orpheline : lucide-react n'est importé par aucun fichier de l'application Vite de référence."
+    },
+    {
+      "file": "apps/site/tests/mai-identity.test.ts",
+      "sha256": "b824885d8ab57dbbee6472c55cbda1fc7859a7e19e1f66ba5c76d5f2f0146a79",
+      "reason": "Test de la copie périmée d'identity que l'application Site autonome possédait : cette copie, sous-ensemble strict du module de la racine, a été retirée. Le test est conservé côté hôte (tests/unit/mai-identity.test.ts) et vérifie désormais le module vivant."
+    },
+    {
+      "file": "apps/blackline/tests/native.test.mjs",
+      "sha256": "c6932c21af6b1f4c63e5ccf9ca26a7afad12270c03658c4965a50abdc5c127c2",
+      "reason": "Deux des trois vérifications portaient sur le conditionnement natif Electron/Capacitor et sur le workflow GitHub imbriqué, retirés du dépôt ; la troisième, qui porte sur les services en 410, est conservée dans tests/retired-services.test.mjs."
     }
   ],
   "preservedImages": true,

@@ -23,7 +23,7 @@
  * le serveur opposera un refus.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "@/components/wakies/api";
 import {
   CapacityPicker,
@@ -32,6 +32,7 @@ import {
 } from "@/components/wakies/CapacityPicker";
 import { FileLibrary } from "@/components/wakies/FileLibrary";
 import { ModelPicker } from "@/components/wakies/ModelPicker";
+import { useNotificationPermission } from "@/components/wakies/useNotificationPermission";
 import { getIntegrationProvider } from "@/lib/integrations/providers";
 import type { IntegrationStatus } from "@/lib/integrations/status";
 import { confirmInApp } from "@/lib/ui/app-dialog";
@@ -43,6 +44,7 @@ type ReglagesCompte = {
   name: string;
   onboardingCompleted?: boolean;
   paused: boolean;
+  replyAlertsEnabled: boolean;
   researchAllowed: boolean;
 };
 
@@ -75,6 +77,17 @@ export function WakiesSettings() {
   const [enCours, setEnCours] = useState(false);
   const [connexions, setConnexions] = useState<IntegrationStatus[]>([]);
   const { capabilities } = useCapabilities(true);
+  // Dernier état CONFIRMÉ par le serveur : les cases optimistes ne restent
+  // jamais affichées après un refus. Les écritures sont sérialisées pour
+  // qu'une réponse ancienne ne remplace pas une modification plus récente.
+  const compteConfirmeRef = useRef<ReglagesCompte | null>(null);
+  const fileEcritureRef = useRef<Promise<unknown>>(Promise.resolve());
+  const enAttenteRef = useRef(0);
+  // La permission du navigateur : elle est demandée ICI, depuis un clic
+  // (règle du domaine), et jamais au chargement. Les notifications
+  // elles-mêmes sont dans la cloche mAI ; ce hook ne sert qu'à l'état de
+  // la permission.
+  const { autoriser, permission } = useNotificationPermission();
 
   useEffect(() => {
     let annule = false;
@@ -101,6 +114,7 @@ export function WakiesSettings() {
         if (annule) return;
         setDonnees(data);
         setCompte(data.settings);
+        compteConfirmeRef.current = data.settings;
         setWakieActif((actuel) => actuel || data.wakies[0]?.id || "");
       } catch (e) {
         if (!annule) {
@@ -116,17 +130,56 @@ export function WakiesSettings() {
   }, []);
 
   const enregistrerCompte = async (patch: Partial<ReglagesCompte>) => {
+    enAttenteRef.current += 1;
     setEnCours(true);
     setErreur("");
+    const executer = async () => {
+      try {
+        const maj = await api<ReglagesCompte>("/settings", "PATCH", patch);
+        // La réponse du serveur fait foi : la page relit l'état réel, pas une
+        // hypothèse optimiste que l'écriture aurait contredite.
+        setCompte((precedent) => ({
+          ...(precedent as ReglagesCompte),
+          ...maj,
+        }));
+        compteConfirmeRef.current = {
+          ...(compteConfirmeRef.current ?? maj),
+          ...maj,
+        };
+      } catch (e) {
+        // Restaure le dernier état confirmé, puis relit le serveur. Si la
+        // relecture échoue, l'utilisateur est averti de l'incertitude.
+        if (compteConfirmeRef.current) {
+          setCompte(compteConfirmeRef.current);
+        }
+        let relu = false;
+        try {
+          const data = await api<Chargé>("/settings");
+          setDonnees(data);
+          setCompte(data.settings);
+          compteConfirmeRef.current = data.settings;
+          relu = true;
+        } catch {
+          // On conserve l'état confirmé connu.
+        }
+        setErreur(
+          relu
+            ? "Enregistrement refusé : l'état précédent a été restauré."
+            : `${
+                e instanceof Error ? e.message : "Enregistrement impossible."
+              } L'état du serveur n'a pas pu être relu ; rechargez la page.`
+        );
+      }
+    };
+    const chaine = fileEcritureRef.current.then(executer, executer);
+    fileEcritureRef.current = chaine.catch(() => {});
     try {
-      const maj = await api<ReglagesCompte>("/settings", "PATCH", patch);
-      // La réponse du serveur fait foi : la page relit l'état réel, pas une
-      // hypothèse optimiste que l'écriture aurait contredite.
-      setCompte((precedent) => ({ ...(precedent as ReglagesCompte), ...maj }));
-    } catch (e) {
-      setErreur(e instanceof Error ? e.message : "Enregistrement impossible.");
+      await chaine;
     } finally {
-      setEnCours(false);
+      enAttenteRef.current = Math.max(0, enAttenteRef.current - 1);
+      if (enAttenteRef.current === 0) {
+        setEnCours(false);
+      }
     }
   };
 
@@ -466,13 +519,38 @@ export function WakiesSettings() {
       <div className="settings-section">
         <h2>Alertes</h2>
         <p className="muted settings-aide">
-          Les alertes de réponses terminées et la permission navigateur se
-          règlent dans les notifications de mAI ; la sourdine se règle FIL PAR
-          FIL, dans l'en-tête de la conversation — c'est une préférence du fil,
-          pas du compte.
+          Les alertes de réponses terminées se règlent ici, et la sourdine se
+          règle FIL PAR FIL, dans l'en-tête de la conversation — c'est une
+          préférence du fil, pas du compte. La permission du navigateur, elle,
+          est demandée par votre navigateur et ne se règle pas ici.
         </p>
-        <a className="settings-lien" href="/settings">
-          Ouvrir les notifications de mAI
+
+        <label className="settings-lien flex items-center justify-between gap-3">
+          <span>Alerter quand un Wakie termine sa réponse</span>
+          <input
+            checked={compte?.replyAlertsEnabled ?? true}
+            disabled={enCours}
+            onChange={(event) => {
+              const replyAlertsEnabled = event.target.checked;
+              setCompte({ ...(compte as ReglagesCompte), replyAlertsEnabled });
+              void enregistrerCompte({ replyAlertsEnabled });
+            }}
+            type="checkbox"
+          />
+        </label>
+
+        {permission !== "granted" && permission !== "unsupported" ? (
+          <button
+            className="settings-lien"
+            onClick={() => void autoriser()}
+            type="button"
+          >
+            Autoriser les notifications du navigateur
+          </button>
+        ) : null}
+
+        <a className="settings-lien" href="/settings?tab=notifications">
+          Voir toutes les notifications de mAI
         </a>
       </div>
     </section>

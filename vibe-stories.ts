@@ -44,7 +44,6 @@
 
 import type { Hono } from "npm:hono@4";
 import {
-  extractTierFromApiKey as extractApiKeyTier,
   extractToken,
   getDb,
   getTierDailyStoryLimit,
@@ -57,8 +56,12 @@ import {
   formatQuotaBytes,
   getStorageNodes,
 } from "./storage.ts";
-import type { RegisterMultiFn } from "./vibe-common.ts";
-import { isBlockEitherWay, resolveHiddenUserIds } from "./vibe-common.ts";
+import { decideStoryInteraction } from "./vibe-access-policy.ts";
+import {
+  isBlockEitherWay,
+  type RegisterMultiFn,
+  resolveHiddenUserIds,
+} from "./vibe-common.ts";
 
 /** Durée de vie d'une story avant archivage automatique. */
 export const STORY_TTL_HOURS = 24;
@@ -324,19 +327,73 @@ async function storyUserId(c: any): Promise<number | null> {
   }
 }
 
-/** Forfait effectif : la base d'abord, le préfixe de clé API en repli, Free sinon. */
-async function resolveStoryTier(
-  userId: number,
-  token: string
-): Promise<string> {
+/**
+ * Forfait effectif : la BASE est l'autorité. En cas de base muette, on retombe
+ * sur Free — jamais sur le préfixe d'une clé (`mai-max-…`), qui accorderait un
+ * privilège sans validation du compte.
+ */
+async function resolveStoryTier(userId: number): Promise<string> {
   try {
     const sql = getDb();
     const rows = await sql`SELECT tier FROM users WHERE id = ${userId} LIMIT 1`;
     if (rows[0]?.tier) return normalizeTier(rows[0].tier);
   } catch {
-    // Base muette : on retombe sur le jeton, jamais sur une valeur implicite haute.
+    // Base muette : borne la plus stricte.
   }
-  return normalizeTier(extractApiKeyTier(token) || "Free");
+  return "Free";
+}
+
+/**
+ * Garde COMMUNE de lecture et d'interaction d'une story.
+ *
+ * Une vue, une réaction ou un vote n'est possible que si la story est vivante
+ * (non supprimée, non archivée, non expirée), si le spectateur peut la voir
+ * (public / abonné / auteur) et si aucun blocage n'existe dans les deux sens.
+ * Une story privée ou une story archivée ne redevient jamais publique par ces
+ * mutations.
+ */
+async function storyInteractionGuard(
+  sql: any,
+  storyId: string,
+  viewerId: number
+): Promise<{ ok: true; story: any } | { ok: false }> {
+  const [story] = await sql`
+    SELECT id, user_id, visibility, poll
+    FROM vibe_stories
+    WHERE id = ${storyId}::uuid
+      AND deleted_at IS NULL
+      AND archived_at IS NULL
+      AND expires_at > NOW()
+    LIMIT 1
+  `;
+  if (!story) return { ok: false };
+
+  const authorId = Number(story.user_id);
+  const blockedEitherWay =
+    authorId === viewerId ? false : await isBlockEitherWay(viewerId, authorId);
+  let isFollower = false;
+  if (
+    story.visibility === "followers" &&
+    !blockedEitherWay &&
+    authorId !== viewerId
+  ) {
+    const follows = await sql`
+      SELECT 1 FROM follows
+      WHERE follower_id = ${viewerId} AND following_id = ${authorId}
+      LIMIT 1
+    `;
+    isFollower = follows.length > 0;
+  }
+
+  const allowed = decideStoryInteraction({
+    alive: true,
+    authorId,
+    blockedEitherWay,
+    isFollower,
+    viewerId,
+    visibility: story.visibility,
+  });
+  return allowed ? { ok: true, story } : { ok: false };
 }
 
 /** JSONB relu par le pool : objet déjà décodé, ou chaîne selon le driver. */
@@ -742,7 +799,7 @@ export function registerVibeStoriesRoutes(
       }
 
       // Quota journalier, résolu AVANT toute écriture.
-      const tier = await resolveStoryTier(userId, token);
+      const tier = await resolveStoryTier(userId);
       const limit = getTierDailyStoryLimit(tier);
       const dayKey = getStoryDayKey();
       const usage = await sql`
@@ -1003,17 +1060,12 @@ export function registerVibeStoriesRoutes(
       await ensureStoriesTables();
       const sql = getDb();
 
-      const [auteur] = await sql`
-        SELECT user_id FROM vibe_stories
-        WHERE id = ${id}::uuid AND deleted_at IS NULL
-        LIMIT 1
-      `;
-      if (!auteur) return c.json({ error: "Story introuvable." }, 404);
-
-      // Un compte qui a bloqué l'auteur, ou l'inverse, ne compte pas comme vue :
-      // sinon la liste de l'auteur se peuplerait de spectateurs qu'il a écartés.
-      if (await isBlockEitherWay(userId, Number(auteur.user_id))) {
-        return c.json({ ignored: true, success: true });
+      // Audiences, blocages, archivage et expiration : la même garde que les
+      // réactions et les votes. Une story privée ou expirée n'enregistre
+      // jamais de vue.
+      const access = await storyInteractionGuard(sql, id, userId);
+      if (!access.ok) {
+        return c.json({ error: "Story introuvable." }, 404);
       }
 
       await sql`
@@ -1064,6 +1116,14 @@ export function registerVibeStoriesRoutes(
 
       await ensureStoriesTables();
       const sql = getDb();
+
+      // Sans cette garde, un UUID valide permettait de réagir à une story
+      // privée, expirée ou appartenant à un compte bloqué.
+      const access = await storyInteractionGuard(sql, id, userId);
+      if (!access.ok) {
+        return c.json({ error: "Story introuvable." }, 404);
+      }
+
       await sql`
         INSERT INTO vibe_story_reactions (story_id, user_id, emoji)
         VALUES (${id}::uuid, ${userId}, ${emoji})
@@ -1100,12 +1160,11 @@ export function registerVibeStoriesRoutes(
       const body = await c.req.json().catch(() => ({}));
       const index = Number(body?.option_index ?? body?.optionIndex);
 
-      const [story] = await sql`
-        SELECT poll FROM vibe_stories
-        WHERE id = ${id}::uuid AND deleted_at IS NULL AND expires_at > NOW()
-        LIMIT 1
-      `;
-      const brutPoll = lireJsonb(story?.poll);
+      const access = await storyInteractionGuard(sql, id, userId);
+      if (!access.ok) {
+        return c.json({ error: "Sondage introuvable." }, 404);
+      }
+      const brutPoll = lireJsonb(access.story.poll);
       const options = Array.isArray(brutPoll?.options) ? brutPoll.options : [];
       if (options.length === 0) {
         return c.json({ error: "Sondage introuvable." }, 404);
@@ -1227,7 +1286,7 @@ export function registerVibeStoriesRoutes(
 
       await ensureStoriesTables();
       const sql = getDb();
-      const tier = await resolveStoryTier(userId, token);
+      const tier = await resolveStoryTier(userId);
       const limit = getTierDailyStoryLimit(tier);
       const dayKey = getStoryDayKey();
       const usage = await sql`

@@ -330,7 +330,75 @@ export async function checkAuthRateLimit(params: {
   return { allowed: true };
 }
 
-// ─── Limitation des routes API coûteuses ────────────────────────────────────
+// ─── Conversations sécurisées ─────────────────────────────────────────────
+//
+// Le PIN est court (4 à 6 chiffres) : sans limitation, un visiteur pourrait
+// épuiser l'espace en quelques secondes. Le seau est indexé par conversation
+// ET par utilisateur : un visiteur ne peut pas verrouiller les autres, et un
+// propriétaire qui se trompe cinq fois attend la fenêtre suivante. Le même
+// seau couvre la vérification du PIN actuel lors d'un changement/retrait.
+const CHAT_PIN_ATTEMPT_POLICY: BucketPolicy = {
+  limit: 5,
+  windowSeconds: 15 * 60,
+};
+const CHAT_PIN_RESET_SEND_POLICY: BucketPolicy = {
+  limit: 5,
+  windowSeconds: 60 * 60,
+};
+
+function chatPinAttemptKey(chatId: string, userId: string): string {
+  return `chat-pin:attempt:${hashIdentifier(`${chatId}:${userId}`)}`;
+}
+
+export async function checkChatPinAttempt({
+  chatId,
+  userId,
+}: {
+  chatId: string;
+  userId: string;
+}): Promise<AuthRateLimitResult> {
+  return await checkBucket(
+    chatPinAttemptKey(chatId, userId),
+    CHAT_PIN_ATTEMPT_POLICY
+  );
+}
+
+// Un PIN correct remet le compteur à zéro : un utilisateur qui se trompe deux
+// fois puis réussit ne doit pas rester pénalisé pour la fenêtre suivante.
+export async function resetChatPinAttempt({
+  chatId,
+  userId,
+}: {
+  chatId: string;
+  userId: string;
+}): Promise<void> {
+  const key = chatPinAttemptKey(chatId, userId);
+  memoryBuckets.delete(key);
+  const redis = getClient();
+  if (redis?.isReady) {
+    try {
+      await redis.del(key);
+    } catch (error) {
+      console.warn(
+        "[ratelimit] Échec de remise à zéro du seau PIN:",
+        error instanceof Error ? error.message : error
+      );
+    }
+  }
+}
+
+export async function checkChatPinResetSend({
+  chatId,
+  userId,
+}: {
+  chatId: string;
+  userId: string;
+}): Promise<AuthRateLimitResult> {
+  return await checkBucket(
+    `chat-pin:reset:${hashIdentifier(`${chatId}:${userId}`)}`,
+    CHAT_PIN_RESET_SEND_POLICY
+  );
+}
 //
 // `checkIpRateLimit` ne couvre que le Chat et l'Agent (routes partagées avec
 // le runtime). Les autres routes qui déclenchent une dépense — génération
@@ -347,7 +415,8 @@ export type ApiRateLimitAction =
   | "message_execute"
   | "mcp_test"
   | "file_upload"
-  | "chat_bulk";
+  | "chat_bulk"
+  | "web_search";
 
 type ApiRateLimitResult =
   | { allowed: true }
@@ -398,6 +467,12 @@ const API_RATE_LIMITS: Record<
   message_execute: {
     ip: { limit: 60, windowSeconds: 3600 },
     user: { limit: 20, windowSeconds: 3600 },
+  },
+  // Recherche Web publique : chaque appel engage les clés You.com de la
+  // plateforme et plusieurs requêtes sortantes de repli.
+  web_search: {
+    ip: { limit: 120, windowSeconds: 3600 },
+    user: { limit: 120, windowSeconds: 3600 },
   },
 };
 

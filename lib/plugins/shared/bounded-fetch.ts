@@ -68,8 +68,8 @@ export type BoundedFetchOptions = {
   body?: string;
   headers?: Record<string, string>;
   maxBytes?: number;
-  /** Méthode autorisée : `POST` sert aux écritures des connecteurs. Défaut `GET`. */
-  method?: "GET" | "POST";
+  /** Méthode autorisée : `POST` et `PATCH` servent aux écritures des connecteurs. Défaut `GET`. */
+  method?: "GET" | "PATCH" | "POST";
   /** 0 désactive toute reprise. Défaut : une reprise sur 502/503/504. */
   retries?: 0 | 1;
   /** Annulation transmise par l'appelant ; prioritaire sur le délai interne. */

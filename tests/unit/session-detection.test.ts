@@ -135,16 +135,15 @@ describe("getMaiUser — détection de session", { timeout: 20_000 }, () => {
     process.env = { ...savedEnv };
   });
 
-  it("valide localement un jeton signé et n'interroge pas le backend", async () => {
+  it("l'API émettrice est l'autorité : son forfait prime sur les claims signés", async () => {
     const { getMaiUser } = await loadSession(BASE_ENV);
     cookieValue.current = signJwt(claims({ tier: "Plus" }), LOCAL_SECRET);
 
     const user = await getMaiUser();
 
     expect(user?.email).toBe("user@example.com");
-    expect(user?.tier).toBe("Plus");
-    // Le rafraîchissement d'usage part en tâche de fond : c'est le seul appel
-    // attendu, et il ne doit pas faire échouer la résolution.
+    // Le jeton prétend « Plus », l'API répond « Free » : la base/API tranche.
+    expect(user?.tier).toBe("Free");
     expect(
       fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/usage"))
     ).toHaveLength(1);

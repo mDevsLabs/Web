@@ -8,19 +8,19 @@ import { Button, Card, Chip, colors, ErrorNotice, Field, s } from "../ui";
 import { errorText, statusLabel } from "./task-common";
 
 export function record(value: unknown): Record<string, unknown> | undefined {
-  return typeof value === "object" && value !== null && !Array.isArray(value)
-    ? (value as Record<string, unknown>)
-    : undefined;
+  return typeof value === "object" && value!== null &&!Array.isArray(value)
+? (value as Record<string, unknown>)
+: undefined;
 }
 
 export function display(value: unknown): string {
   return typeof value === "string"
-    ? value
-    : typeof value === "number" || typeof value === "boolean"
-      ? String(value)
-      : value === null
-        ? "—"
-        : JSON.stringify(value, null, 2) || "";
+? value
+: typeof value === "number" || typeof value === "boolean"
+? String(value)
+: value === null
+? "—"
+: JSON.stringify(value, null, 2) || "";
 }
 
 export function ArtifactCard({ artifact }: { artifact: AgentArtifact }) {
@@ -36,15 +36,15 @@ export function ArtifactCard({ artifact }: { artifact: AgentArtifact }) {
       <Text selectable style={s.muted}>
         {artifact.summary}
       </Text>
-      {(expanded ? rows : rows.slice(0, 4)).map(([key, value]) => (
+      {(expanded? rows: rows.slice(0, 4)).map(([key, value]) => (
         <View key={key} style={{ gap: 6 }}>
           <Text style={s.label}>{key.replace(/_/g, " ")}</Text>
-          {Array.isArray(value) ? (
-            value.slice(0, expanded ? 100 : 5).map((item) => {
+          {Array.isArray(value)? (
+            value.slice(0, expanded? 100: 5).map((item) => {
               const row = record(item);
               return (
                 <View
-                  key={`${key}-${display(row?.id ?? item)}`}
+                  key={`${key}-${display(row?.id?? item)}`}
                   style={{
                     paddingVertical: 8,
                     borderBottomWidth: 1,
@@ -53,15 +53,15 @@ export function ArtifactCard({ artifact }: { artifact: AgentArtifact }) {
                 >
                   <Text selectable style={s.text}>
                     {row
-                      ? Object.entries(row)
-                          .map(([name, val]) => `${name}: ${display(val)}`)
-                          .join(" · ")
-                      : display(item)}
+? Object.entries(row)
+.map(([name, val]) => `${name}: ${display(val)}`)
+.join(" · ")
+: display(item)}
                   </Text>
                 </View>
               );
             })
-          ) : record(value) ? (
+          ): record(value)? (
             Object.entries(record(value) || {}).map(([name, val]) => (
               <View key={name} style={s.between}>
                 <Text style={s.muted}>{name}</Text>
@@ -70,15 +70,15 @@ export function ArtifactCard({ artifact }: { artifact: AgentArtifact }) {
                 </Text>
               </View>
             ))
-          ) : (
-            <Text selectable style={[s.text, { fontSize: typeof value === "number" ? 24 : 14 }]}>
+          ): (
+            <Text selectable style={[s.text, { fontSize: typeof value === "number"? 24: 14 }]}>
               {display(value)}
             </Text>
           )}
         </View>
       ))}
       <Button small onPress={() => setExpanded(!expanded)}>
-        {expanded ? "Show summary" : "Explore full result"}
+        {expanded? "Show summary": "Explore full result"}
       </Button>
     </Card>
   );
@@ -110,12 +110,12 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
     }
   };
   const amount = (value: unknown) =>
-    Number(value ?? 0).toLocaleString(undefined, {
+    Number(value?? 0).toLocaleString(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-  const categories = Array.isArray(artifact.data.categories) ? artifact.data.categories : [];
-  const transactions = Array.isArray(artifact.data.transactions) ? artifact.data.transactions : [];
+  const categories = Array.isArray(artifact.data.categories)? artifact.data.categories: [];
+  const transactions = Array.isArray(artifact.data.transactions)? artifact.data.transactions: [];
   const spending = Number(artifact.data.spending) || 1;
   const period = record(artifact.data.period);
   return (
@@ -151,7 +151,7 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
           </View>
           <Text style={{ color: "#D4DCFC", fontSize: 11, lineHeight: 18, marginBottom: 20 }}>
             Read from your imported transactions.{"\n"}
-            {String(period?.from ?? "")} — {String(period?.to ?? "")}
+            {String(period?.from?? "")} — {String(period?.to?? "")}
             {"\n"}
             {transactions.length} transactions, categorized and summarized.
           </Text>
@@ -176,7 +176,7 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
                   style={{
                     fontSize: 17,
                     fontWeight: "600",
-                    color: key === "saved" ? "#58D3AE" : "#FFF",
+                    color: key === "saved"? "#58D3AE": "#FFF",
                     marginTop: 5,
                   }}
                 >
@@ -188,7 +188,7 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
           </View>
         </View>
         <View style={[s.row, { gap: 11, paddingHorizontal: 8, paddingTop: 13, paddingBottom: 4 }]}>
-          <Text style={{ fontSize: 25 }}>💸</Text>
+          <Text style={{ fontSize: 25 }}></Text>
           <View style={{ flex: 1, gap: 2 }}>
             <Text style={[s.text, { fontWeight: "600" }]}>Finance tracker</Text>
             <Text style={s.small}>Spending, savings, and a plan for what’s next.</Text>
@@ -224,9 +224,9 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
           <Text style={s.small}>
             Amounts use your source currency. This summary covers the imported dates.
           </Text>
-          {goalSaved ? (
+          {goalSaved? (
             <Text style={s.text}>Your savings goal is saved in Goals.</Text>
-          ) : (
+          ): (
             <View style={{ gap: 10 }}>
               <Field
                 label="Turn this into a savings goal"
@@ -246,13 +246,13 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
             </View>
           )}
           <Button small onPress={() => setExpanded(!expanded)}>
-            {expanded ? "Hide transactions" : "View transactions"}
+            {expanded? "Hide transactions": "View transactions"}
           </Button>
           {expanded &&
             transactions.slice(0, 100).map((transaction) => {
               const row = record(transaction);
-              return row ? (
-                <View key={String(row.id ?? display(row))} style={s.between}>
+              return row? (
+                <View key={String(row.id?? display(row))} style={s.between}>
                   <View style={{ flex: 1 }}>
                     <Text style={s.text}>{String(row.description)}</Text>
                     <Text style={s.small}>
@@ -261,7 +261,7 @@ function FinanceArtifact({ artifact }: { artifact: AgentArtifact }) {
                   </View>
                   <Text style={s.text}>{amount(row.amount)}</Text>
                 </View>
-              ) : null;
+              ): null;
             })}
           {expanded && transactions.length > 100 && (
             <Text style={s.small}>

@@ -68,15 +68,15 @@ describe("Plafond d'upload des médias par forfait", () => {
     expect(handler).not.toMatch(/MAX_FILE_SIZE\s*=\s*\d/);
   });
 
-  it("résout le forfait depuis le jeton, avec la clé API en repli", () => {
+  it("relit le forfait actuel en base, sans privilège de préfixe", () => {
     const storage = source("storage.ts");
     const handler = storage.slice(
       storage.indexOf("const handleUploadFile"),
       storage.indexOf('app.post("/upload-file"')
     );
-    expect(handler).toMatch(
-      /payload\?\.tier\s*\|\|\s*extractTierFromApiKey\(token\)/
-    );
+    expect(handler).toContain("SELECT tier, is_blocked FROM users");
+    expect(handler).toContain("tier = userRows[0].tier");
+    expect(handler).not.toContain("extractTierFromApiKey");
   });
 
   it("refuse avant toute lecture du corps du fichier", () => {

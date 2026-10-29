@@ -19,6 +19,7 @@ import {
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { toolEffect } from "@/lib/plugins/tool-effect";
 import type { PluginSecretResolver } from "@/lib/plugins/types";
+import { listCustomPluginAgentTools } from "@/lib/plugins/user-plugin-tools";
 
 type PublicReference = { title?: unknown; url?: unknown };
 
@@ -169,12 +170,15 @@ export async function listInstalledPluginAgentTools(params: {
   });
   return {
     pluginIds,
-    tools: listPluginAgentTools(pluginIds, {
-      secretResolver: createIntegrationSecretResolver({
+    tools: [
+      ...listPluginAgentTools(pluginIds, {
+        secretResolver: createIntegrationSecretResolver({
+          userId: params.userId,
+        }),
         userId: params.userId,
       }),
-      userId: params.userId,
-    }),
+      ...(await listCustomPluginAgentTools(params.userId)),
+    ],
   };
 }
 

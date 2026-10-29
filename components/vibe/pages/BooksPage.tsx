@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE SOCIAL PLATFORM — BOOKS PAGE (src/pages/BooksPage.tsx)
- * « Livres » : collections de Vibe préférées (max 5 possédés par compte),
+ * « Livres»: collections de Vibe préférées (max 5 possédés par compte),
  * COLLABORATIVES. Liste (possédés + rejoints), vue d'un Livre (Vibe partagées
  * + membres + attribution), création, édition, suppression (créateur),
  * jointure par lien/code, partage, sortie (membres).
@@ -84,7 +84,7 @@ export const BooksPage: React.FC<{
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Menu « Plus » (créer / rejoindre)
+  // Menu « Plus» (créer / rejoindre)
   const [menuOpen, setMenuOpen] = useState(false);
   const [joinSubmenuOpen, setJoinSubmenuOpen] = useState(false);
 
@@ -216,7 +216,7 @@ export const BooksPage: React.FC<{
     fetchBookDetail();
   }, [bookId, fetchBookDetail]);
 
-  // Synchronisation collaborative : refresh silencieux 30 s + au retour de focus
+  // Synchronisation collaborative: refresh silencieux 30 s + au retour de focus
   useEffect(() => {
     const refresh = () => {
       if (document.hidden) return;
@@ -289,7 +289,7 @@ export const BooksPage: React.FC<{
         haptics.success();
         NotificationService.showInAppToast(
           "Livre modifié",
-          `« ${res.book.title} » a été mis à jour.`,
+          `« ${res.book.title}» a été mis à jour.`,
           "success"
         );
       } else {
@@ -303,7 +303,7 @@ export const BooksPage: React.FC<{
         haptics.success();
         NotificationService.showInAppToast(
           "Livre créé",
-          `« ${res.book.title} » est prêt. Partagez son code pour collaborer !`,
+          `« ${res.book.title}» est prêt. Partagez son code pour collaborer!`,
           "success"
         );
       }
@@ -336,8 +336,8 @@ export const BooksPage: React.FC<{
       NotificationService.showInAppToast(
         res.already_member ? "Déjà membre" : "Livre rejoint",
         res.already_member
-          ? `Vous êtes déjà membre du Livre « ${res.book.title} ».`
-          : `Bienvenue dans le Livre « ${res.book.title} » !`,
+          ? `Vous êtes déjà membre du Livre « ${res.book.title}».`
+          : `Bienvenue dans le Livre « ${res.book.title}»!`,
         "success"
       );
       closeJoin();
@@ -356,7 +356,7 @@ export const BooksPage: React.FC<{
       confirmLabel: "Supprimer",
       message:
         "Les Vibe enregistrées ne seront pas supprimées, mais les membres perdront l'accès.",
-      title: `Supprimer « ${b.title} » ?`,
+      title: `Supprimer « ${b.title}»?`,
       tone: "danger",
     });
     if (!ok) return;
@@ -367,10 +367,10 @@ export const BooksPage: React.FC<{
       haptics.medium();
       NotificationService.showInAppToast(
         "Livre supprimé",
-        `« ${b.title} » a été supprimé.`,
+        `« ${b.title}» a été supprimé.`,
         "info"
       );
-      // Depuis la vue d'un Livre : retour à la liste (pas de page fantôme)
+      // Depuis la vue d'un Livre: retour à la liste (pas de page fantôme)
       if (bookId) navigate("/books");
     } catch (err: any) {
       haptics.error();
@@ -388,7 +388,7 @@ export const BooksPage: React.FC<{
     const ok = await confirm({
       confirmLabel: "Quitter",
       message: "Vous n'aurez plus accès à son contenu.",
-      title: `Quitter « ${b.title} » ?`,
+      title: `Quitter « ${b.title}»?`,
     });
     if (!ok) return;
     setIsLeaving(true);
@@ -397,7 +397,7 @@ export const BooksPage: React.FC<{
       haptics.medium();
       NotificationService.showInAppToast(
         "Livre quitté",
-        `Vous avez quitté « ${b.title} ».`,
+        `Vous avez quitté « ${b.title}».`,
         "info"
       );
       if (fromDetail) navigate("/books");
@@ -419,7 +419,7 @@ export const BooksPage: React.FC<{
     const ok = await confirm({
       confirmLabel: "Régénérer",
       message: "L'ancien lien de partage ne fonctionnera plus.",
-      title: "Régénérer le code d'invitation ?",
+      title: "Régénérer le code d'invitation?",
       tone: "danger",
     });
     if (!ok) return;
@@ -455,7 +455,7 @@ export const BooksPage: React.FC<{
       await ApiService.toggleBookItem(bookId, postId);
       NotificationService.showInAppToast(
         "Retiré",
-        `Cette Vibe a été retirée du Livre « ${book.title} ».`,
+        `Cette Vibe a été retirée du Livre « ${book.title}».`,
         "info"
       );
     } catch {
@@ -482,7 +482,7 @@ export const BooksPage: React.FC<{
     }
   };
 
-  // ── Envoi par message : groupes du compte + recherche (debounce) ──
+  // ── Envoi par message: groupes du compte + recherche (debounce) ──
   useEffect(() => {
     if (!shareOpen) return;
     setShareTab("invite");
@@ -545,8 +545,8 @@ export const BooksPage: React.FC<{
     if (!book) return;
     const ok = await confirm({
       confirmLabel: "Exclure",
-      message: `@${member.username} n'aura plus accès au Livre « ${book.title} ».`,
-      title: "Exclure ce membre ?",
+      message: `@${member.username} n'aura plus accès au Livre « ${book.title}».`,
+      title: "Exclure ce membre?",
       tone: "danger",
     });
     if (!ok) return;
@@ -576,8 +576,8 @@ export const BooksPage: React.FC<{
     if (!book) return;
     const ok = await confirm({
       confirmLabel: "Transférer",
-      message: `@${member.username} deviendra créateur du Livre « ${book.title} » et vous deviendrez simple membre.`,
-      title: "Transférer la propriété ?",
+      message: `@${member.username} deviendra créateur du Livre « ${book.title}» et vous deviendrez simple membre.`,
+      title: "Transférer la propriété?",
       tone: "danger",
     });
     if (!ok) return;
@@ -617,7 +617,7 @@ export const BooksPage: React.FC<{
       return;
     }
     setIsSendingBook(true);
-    const message = `📚 Livre « ${book.title} »\n${buildBookJoinLink(book.join_code)}`;
+    const message = ` Livre « ${book.title}»\n${buildBookJoinLink(book.join_code)}`;
     try {
       if (target.kind === "group") {
         await ApiService.sendMessage(
@@ -653,7 +653,7 @@ export const BooksPage: React.FC<{
   if (bookId) {
     const shareLink = book?.join_code ? buildBookJoinLink(book.join_code) : "";
     const owner = isOwnerOf(book);
-    // Lecteur d'un Livre public (non-membre) : lecture seule (pas d'invitation, de sortie ni d'épinglage)
+    // Lecteur d'un Livre public (non-membre): lecture seule (pas d'invitation, de sortie ni d'épinglage)
     const memberOf = book ? book.is_member !== false : true;
     const pinnedPosts = posts.filter((p) => Boolean(p.is_pinned));
     const regularPosts = posts.filter((p) => !p.is_pinned);
@@ -722,12 +722,12 @@ export const BooksPage: React.FC<{
       </div>
     );
 
-    // Discussion du Livre : ouvre la conversation du Livre dans Messages
+    // Discussion du Livre: ouvre la conversation du Livre dans Messages
     // (créée automatiquement à la création/adhésion, mécanismes de groupe).
     const openBookDiscussion = async () => {
       let convId = book?.conversation_id || null;
       if (!convId && bookId) {
-        // Le champ peut manquer (page chargée avant la création) : nouvelle tentative
+        // Le champ peut manquer (page chargée avant la création): nouvelle tentative
         try {
           const res = await ApiService.getBookPosts(bookId);
           if (res.book) setBook(res.book);
@@ -906,7 +906,7 @@ export const BooksPage: React.FC<{
                   Ce Livre est vide pour l'instant.
                 </p>
                 <p className="text-xs text-zinc-600 max-w-xs">
-                  Enregistrez vos Vibe préférées avec le bouton « Livre » sous
+                  Enregistrez vos Vibe préférées avec le bouton « Livre» sous
                   une publication — chaque membre peut enrichir le Livre.
                 </p>
               </div>
@@ -953,7 +953,7 @@ export const BooksPage: React.FC<{
                 </button>
               </div>
 
-              {/* Onglets : inviter (lien/code) / envoyer par message */}
+              {/* Onglets: inviter (lien/code) / envoyer par message */}
               <div className="flex items-center gap-1 p-1 rounded-2xl bg-zinc-900 border border-zinc-800">
                 <button
                   className={`flex-1 py-1.5 rounded-xl text-[11px] font-bold transition-colors ${shareTab === "invite" ? "bg-white text-black" : "text-zinc-400 hover:text-white"}`}
@@ -1204,7 +1204,7 @@ export const BooksPage: React.FC<{
           </div>
         </div>
 
-        {/* Bouton Plus : créer ou rejoindre un Livre */}
+        {/* Bouton Plus: créer ou rejoindre un Livre */}
         <div className="relative">
           <button
             className="flex items-center gap-1.5 py-2 px-4 rounded-full bg-white text-black text-xs font-bold transition-all"
@@ -1336,8 +1336,8 @@ export const BooksPage: React.FC<{
             Créez ou rejoignez votre premier Livre
           </p>
           <p className="text-xs text-zinc-600 max-w-xs">
-            Un Livre regroupe vos « Vibe préférées » : créez le vôtre, invitez
-            des amis avec un lien, et enrichissez-le ensemble.
+            Un Livre regroupe vos « Vibe préférées»: créez le vôtre, invitez des
+            amis avec un lien, et enrichissez-le ensemble.
           </p>
           <div className="flex items-center gap-2 mt-2">
             <button

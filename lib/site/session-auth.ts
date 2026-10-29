@@ -1,7 +1,7 @@
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
-import { getMaiUser } from "@/lib/auth/session";
+import { isMaiSessionRevoked, resolveMaiSession } from "@/lib/auth/session";
 import { MAI_SESSION_COOKIE } from "@/lib/constants";
 
 /**
@@ -45,11 +45,12 @@ export async function verifyMaiSessionToken(
 }
 
 /**
- * Résolution de l'identité de session :
- * 1. Chemin rapide : validation cryptographique locale HS256 via MAI_JWT_SECRET.
- * 2. Si la vérification locale échoue (secret absent, signature non vérifiée localement),
- *    délègue à l'API distante émettrice via getMaiUser (chemin canonique mAI).
- * 3. Ne retourne une identité que si la session est légitimement confirmée.
+ * Résolution de l'identité de session.
+ *
+ * L'API émettrice est l'autorité : un refus explicite (401/403 : jeton révoqué,
+ * compte bloqué) invalide la session et ses caches, même si la signature
+ * locale reste valide. La signature locale n'est utilisée que si l'API est
+ * injoignable (panne réseau), jamais pour contredire un refus connu.
  */
 export async function resolveSessionIdentity(
   token: string | null | undefined
@@ -57,21 +58,29 @@ export async function resolveSessionIdentity(
   const cleanToken = token?.trim();
   if (!cleanToken) return null;
 
+  // Un refus déjà établi ne peut pas être annulé par une signature locale.
+  if (isMaiSessionRevoked(cleanToken)) {
+    return null;
+  }
+
+  const resolution = await resolveMaiSession(cleanToken);
+  if (resolution.status === "ok") {
+    const user = resolution.user;
+    if (user.id || user.email) {
+      return {
+        tier: user.tier || "Free",
+        userId: user.id || user.email,
+      };
+    }
+    return null;
+  }
+  if (resolution.status === "refused") {
+    return null;
+  }
+
+  // API injoignable : repli local explicite, sur signature vérifiée uniquement.
   const localIdentity = await verifyMaiSessionToken(cleanToken);
-  if (localIdentity) {
-    return localIdentity;
-  }
-
-  // Fallback canonique : l'API distante tranche.
-  const remoteUser = await getMaiUser(cleanToken);
-  if (remoteUser && (remoteUser.id || remoteUser.email)) {
-    return {
-      tier: remoteUser.tier || "Free",
-      userId: remoteUser.id || remoteUser.email,
-    };
-  }
-
-  return null;
+  return localIdentity;
 }
 
 function extractToken(req: NextRequest): string {

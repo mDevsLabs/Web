@@ -1,21 +1,22 @@
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { getWakiesQuota } from "@/lib/plans/tier-limits";
 import {
-  enforceWakiesLimit,
   isResponse,
   json,
   notFound,
   rejectCrossOriginMutation,
   requireWakiesUser,
+  wakiesQuotaResponse,
 } from "@/lib/wakies/http";
 import {
   createPage,
   findConversation,
   findWakie,
   listMessages,
-  listPages,
   wakieCanAccessSpace,
 } from "@/lib/wakies/queries";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 
 /**
  * POST /api/wakies/conversations/:id/page — enregistre la conversation en page.
@@ -90,23 +91,28 @@ export async function POST(
       message: "Ce Wakie n'a pas accès à cet espace.",
     });
   }
-  const limite = await enforceWakiesLimit({
-    limit: "pages",
-    tier: identite.tier,
-    used: (await listPages(identite.userId, spaceId)).length,
-  });
-  if (limite) {
-    return limite;
-  }
   const messages = await listMessages(identite.userId, id);
-  const page = await createPage(
-    identite.userId,
-    spaceId,
-    {
-      content: texteDeConversation(messages),
-      title: parsed.data.title,
-    },
-    id
-  );
-  return json(page, { status: 201 });
+  try {
+    const page = await createPage(
+      identite.userId,
+      spaceId,
+      {
+        content: texteDeConversation(messages),
+        title: parsed.data.title,
+      },
+      {
+        quota: getWakiesQuota(identite.tier, "pages"),
+        sourceConversationId: id,
+      }
+    );
+    return json(page, { status: 201 });
+  } catch (erreur) {
+    if (erreur instanceof WakiesQuotaError) {
+      return wakiesQuotaResponse(erreur);
+    }
+    return errorResponse("invalid_request", {
+      message:
+        erreur instanceof Error ? erreur.message : "Création impossible.",
+    });
+  }
 }

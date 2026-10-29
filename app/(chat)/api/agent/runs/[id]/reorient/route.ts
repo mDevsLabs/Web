@@ -4,6 +4,7 @@ import { ACTIVE_AGENT_RUN_STATUSES } from "@/lib/agent/types";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { enforceChatRateLimit } from "@/lib/chat/auth";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import { getAgentRunById } from "@/lib/db/agent-queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -68,6 +69,11 @@ async function handlePost(
   const run = await getAgentRunById({ id, userId });
   if (!run) {
     return errorResponse("not_found", { message: "Run introuvable." });
+  }
+  if (!(await isChatUnlockedForUser({ chatId: run.chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
   if (!ACTIVE_AGENT_RUN_STATUSES.includes(run.status)) {
     return errorResponse("invalid_request", {

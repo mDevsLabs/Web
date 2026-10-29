@@ -23,7 +23,7 @@ function buildLeadFinalSynthesisPacket(params: {
   const { teamLead, userRequest, planSummary, completedTasks, review, hasCjk } =
     params;
   const taskBlocks = completedTasks
-    .map((task) =>
+.map((task) =>
       [
         `### ${task.expertName} (${task.roleType}) — ${task.status}`,
         `Task: ${task.description}`,
@@ -31,12 +31,12 @@ function buildLeadFinalSynthesisPacket(params: {
         clampTeamPacketText(task.result, TEAM_HANDOFF_TEXT_LIMIT),
       ].join("\n")
     )
-    .join("\n\n");
+.join("\n\n");
   const isPureDiscuss =
     completedTasks.length > 0 &&
     completedTasks.every((task) => task.kind === "discuss");
   const guidance = hasCjk
-    ? [
+? [
         `你是 ${teamLead.name}，本次协作的 Team Lead。所有专家已完成各自的任务。`,
         "请基于用户的原始诉求和每位专家的输出，给用户写一段收尾陈述。",
         "要求：",
@@ -45,13 +45,13 @@ function buildLeadFinalSynthesisPacket(params: {
         "- 指出关键权衡、可选路径，以及你作为 Lead 的倾向性建议（如果有）。",
         "- 给出下一步用户可采取的动作。",
         isPureDiscuss
-          ? '- 这是一次讨论（非交付），不要写任何代码或建议"我们已经修改了文件"之类的话术。'
-          : "- 如果有失败或需要返工的任务，诚实指出并说明影响。",
+? '- 这是一次讨论（非交付），不要写任何代码或建议"我们已经修改了文件"之类的话术。'
+: "- 如果有失败或需要返工的任务，诚实指出并说明影响。",
         '- 不要以 "## " 或 "# " 标题开头，直接写正文即可；必要时可使用简短的小标题或项目符号。',
         "- 用中文回答，语气专业而友好。",
         "- 控制在 250 字以内的紧凑总结，避免冗长。",
       ].join("\n")
-    : [
+: [
         `You are ${teamLead.name}, the Team Lead for this collaboration. All specialists have finished their tasks.`,
         "Write a closing message to the user that integrates every specialists output.",
         "Requirements:",
@@ -60,8 +60,8 @@ function buildLeadFinalSynthesisPacket(params: {
         "- Highlight the key trade-offs, available paths, and your Lead-level recommendation.",
         "- Tell the user what they can do next.",
         isPureDiscuss
-          ? "- This was a discussion, not a delivery — do not write code or claim any files were changed."
-          : "- If any task failed or needs revision, be honest about it and its impact.",
+? "- This was a discussion, not a delivery — do not write code or claim any files were changed."
+: "- If any task failed or needs revision, be honest about it and its impact.",
         '- Do not start with a "## " or "# " heading; write in prose with short sub-headings or bullets only when helpful.',
         "- Keep it tight, under about 250 words.",
       ].join("\n");
@@ -75,10 +75,10 @@ function buildLeadFinalSynthesisPacket(params: {
     clampTeamPacketText(planSummary),
     "",
     "## Specialist Outputs",
-    taskBlocks || (hasCjk ? "(无)" : "(no specialist output)"),
+    taskBlocks || (hasCjk? "(无)": "(no specialist output)"),
     "",
     "## Review Verdict",
-    `${review.verdict === "approved" ? (hasCjk ? "通过" : "Approved") : hasCjk ? "需要修订" : "Needs revision"} — ${clampTeamPacketText(review.summary, 600)}`,
+    `${review.verdict === "approved"? (hasCjk? "通过": "Approved"): hasCjk? "需要修订": "Needs revision"} — ${clampTeamPacketText(review.summary, 600)}`,
   ].join("\n");
 }
 
@@ -175,18 +175,18 @@ async function runTeamLeadFinalSynthesis(params: {
     requestProviderId: resolvedModel.providerId,
     requestProviderIdentity: resolvedModel.providerIdentity,
     requestProxyUrl: resolvedModel.proxyUrl,
-    ...(resolvedModel.contextWindowTokens == null
-      ? {}
-      : { contextWindowTokens: resolvedModel.contextWindowTokens }),
+...(resolvedModel.contextWindowTokens == null
+? {}
+: { contextWindowTokens: resolvedModel.contextWindowTokens }),
     temperatureMode: resolvedModel.temperatureMode,
-    ...(resolvedModel.temperature == null
-      ? {}
-      : { temperature: resolvedModel.temperature }),
+...(resolvedModel.temperature == null
+? {}
+: { temperature: resolvedModel.temperature }),
     agentSystemAppend: appendTeamLanguageRule(settings, teamLead.systemPrompt),
     composerMode: "agent",
     deferredToolState,
     extraReadableRoots,
-    hostWebContentsId: hostWebContentsId ?? null,
+    hostWebContentsId: hostWebContentsId?? null,
     onDeferredToolStateChange,
     onToolResultReplacementStateChange,
     signal,
@@ -202,7 +202,7 @@ async function runTeamLeadFinalSynthesis(params: {
 
   if (
     teamLead.preferredModelId?.trim() &&
-    teamLead.preferredModelId.trim() !== modelSelection
+    teamLead.preferredModelId.trim()!== modelSelection
   ) {
     const resolved = resolveModelRequest(
       settings,
@@ -306,9 +306,8 @@ async function runTeamLeadFinalSynthesis(params: {
 }
 
 function buildTaskDeliveryLine(task: TeamTask): string {
-  const statusIcon = task.status === "completed" ? "✅" : "⚠️";
   const parts = [
-    `- ${statusIcon} ${task.expertName}: ${task.description}`,
+    `- ${task.expertName}: ${task.description}`,
     `status=${task.status}`,
   ];
   return parts.join(" | ");
@@ -332,33 +331,33 @@ function buildTeamDeliveryText(params: {
   } = params;
   const taskLines =
     completedTasks.length > 0
-      ? completedTasks.map((task) => buildTaskDeliveryLine(task))
-      : [`- ${hasCjkRequest ? "无角色任务。" : "No specialist tasks ran."}`];
+? completedTasks.map((task) => buildTaskDeliveryLine(task))
+: [`- ${hasCjkRequest? "无角色任务。": "No specialist tasks ran."}`];
   const detailNote = hasCjkRequest
-    ? "详细角色输出与分派过程保留在 Team 面板中。"
-    : "Detailed role outputs and planning history remain in the Team panel.";
+? "详细角色输出与分派过程保留在 Team 面板中。"
+: "Detailed role outputs and planning history remain in the Team panel.";
   const trimmedFinal = finalSummary.trim();
   const trimmedPlan = planSummary.trim();
   const trimmedReview = review.summary.trim();
   const leadBody =
-    trimmedFinal || trimmedPlan || (hasCjkRequest ? "(无)" : "(none)");
+    trimmedFinal || trimmedPlan || (hasCjkRequest? "(无)": "(none)");
   const leadHeading = hasCjkRequest
-    ? trimmedFinal
-      ? `## ${teamLeadName} 总结`
-      : "## Planning Summary"
-    : trimmedFinal
-      ? `## ${teamLeadName}'s Closing`
-      : "## Planning Summary";
+? trimmedFinal
+? `## ${teamLeadName} 总结`
+: "## Planning Summary"
+: trimmedFinal
+? `## ${teamLeadName}'s Closing`
+: "## Planning Summary";
   const sections = [
     "# Team Delivery",
     "",
     `**Lead:** ${teamLeadName}`,
-    `**Review:** ${review.verdict === "approved" ? "✅ Approved" : "⚠️ Revision Needed"}`,
+    `**Review:** ${review.verdict === "approved" ? "Approved" : "Revision Needed"}`,
     "",
     leadHeading,
     leadBody,
   ];
-  sections.push("", "## Task Status", ...taskLines);
+  sections.push("", "## Task Status",...taskLines);
   if (!trimmedFinal && trimmedReview) {
     sections.push("", "## Review", clampTeamPacketText(trimmedReview, 1600));
   }
@@ -400,7 +399,7 @@ function syncQueueToPending(
   // Remove from pending any tasks that are no longer pending/blocked in the queue.
   for (let i = pending.length - 1; i >= 0; i--) {
     const qTask = queue.get(pending[i]!.id);
-    if (!qTask || (qTask.status !== "pending" && qTask.status !== "blocked")) {
+    if (!qTask || (qTask.status!== "pending" && qTask.status!== "blocked")) {
       pending.splice(i, 1);
     }
   }
@@ -469,17 +468,17 @@ async function runTeamLeadQuickAnswer(params: {
     requestProviderId: resolvedModel.providerId,
     requestProviderIdentity: resolvedModel.providerIdentity,
     requestProxyUrl: resolvedModel.proxyUrl,
-    ...(resolvedModel.contextWindowTokens == null
-      ? {}
-      : { contextWindowTokens: resolvedModel.contextWindowTokens }),
+...(resolvedModel.contextWindowTokens == null
+? {}
+: { contextWindowTokens: resolvedModel.contextWindowTokens }),
     temperatureMode: resolvedModel.temperatureMode,
-    ...(resolvedModel.temperature == null
-      ? {}
-      : { temperature: resolvedModel.temperature }),
+...(resolvedModel.temperature == null
+? {}
+: { temperature: resolvedModel.temperature }),
     agentSystemAppend: appendTeamLanguageRule(settings, teamLead.systemPrompt),
     composerMode: "agent",
     extraReadableRoots,
-    hostWebContentsId: hostWebContentsId ?? null,
+    hostWebContentsId: hostWebContentsId?? null,
     signal,
     thinkingLevel,
     threadId,

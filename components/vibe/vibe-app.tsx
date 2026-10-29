@@ -22,8 +22,8 @@
  *
  * 2. La gestion du scroll change de nature. Le `ScrollManager` de la version
  *    Vite indexait les positions par `location.key` de react-router et
- *    interceptait `window.scrollTo`. Ici, `appNewScrollHandler` (next.config.ts)
- *    gère le scroll de l'App Router, y compris la restauration pour les
+ *    interceptait `window.scrollTo`. Ici, l'App Router Next.js
+ *    gère le scroll, y compris la restauration pour les
  *    navigations navigateur. Réimplémenter ce mécanisme en parallèle produirait
  *    deux écritures sur `scrollY` et des sauts de position au retour arrière.
  *
@@ -59,6 +59,7 @@ import { MobileTabBar } from "@/components/vibe/layout/MobileTabBar";
 import { Sidebar } from "@/components/vibe/layout/Sidebar";
 import { AuthModal } from "@/components/vibe/pages/AuthModal";
 import { useLocation, useNavigate } from "@/components/vibe/router";
+import { useEconomy } from "@/lib/resources/economy";
 import { AudioPlayerProvider } from "@/lib/vibe/context/AudioPlayerContext";
 import { AuthProvider, useAuth } from "@/lib/vibe/context/AuthContext";
 import { ThemeProvider } from "@/lib/vibe/context/ThemeContext";
@@ -221,6 +222,11 @@ function VibeShell({
 
   // Comptes non lus + flux temps réel (SSE). L'intervalle n'est qu'un filet de
   // sécurité : les badges sont poussés par le serveur.
+  //
+  // Le filet ne tourne que sur un onglet VISIBLE : un onglet en arrière-plan
+  // ne rend personne, et interroger le serveur toutes les minutes pour
+  // personne coûte du temps et de la batterie.
+  const { isTabHidden } = useEconomy();
   useEffect(() => {
     if (!isAuthenticated) {
       return;
@@ -233,7 +239,9 @@ function VibeShell({
     }
 
     const token = ApiService.getToken();
-    if (token) {
+    // Un onglet caché n'a besoin du flux temps réel de personne : la
+    // connexion est coupée, et rouverte au retour.
+    if (token && !isTabHidden) {
       RealtimeService.start(token);
     }
     const handleUnread = () => {
@@ -260,14 +268,19 @@ function VibeShell({
     window.addEventListener("vibe:realtime_unread", handleRealtimeUnread);
     window.addEventListener("vibe:realtime", handleRealtime);
     window.addEventListener("vibe:unread_updated", handleUnread);
-    const interval = setInterval(refreshUnreadCounts, 60_000);
+    // Le filet de sécurité ne tourne que sur un onglet visible.
+    const interval = isTabHidden
+      ? undefined
+      : setInterval(refreshUnreadCounts, 60_000);
     return () => {
-      clearInterval(interval);
+      if (interval !== undefined) {
+        clearInterval(interval);
+      }
       window.removeEventListener("vibe:realtime_unread", handleRealtimeUnread);
       window.removeEventListener("vibe:realtime", handleRealtime);
       window.removeEventListener("vibe:unread_updated", handleUnread);
     };
-  }, [isAuthenticated, location.pathname, refreshUnreadCounts]);
+  }, [isAuthenticated, isTabHidden, location.pathname, refreshUnreadCounts]);
 
   // Déconnexion : coupe le flux temps réel.
   useEffect(() => {
@@ -275,6 +288,21 @@ function VibeShell({
       RealtimeService.stop();
     }
   }, [isAuthenticated]);
+
+  // Onglet caché : le flux temps réel est coupé, puis rouvert au retour.
+  useEffect(() => {
+    if (!isAuthenticated) {
+      return;
+    }
+    if (isTabHidden) {
+      RealtimeService.stop();
+      return;
+    }
+    const token = ApiService.getToken();
+    if (token) {
+      RealtimeService.start(token);
+    }
+  }, [isAuthenticated, isTabHidden]);
 
   // Composeur prérempli (« Publier sur Vibe » depuis mAI, « Citer » depuis un post).
   useEffect(() => {

@@ -1,5 +1,6 @@
 import "server-only";
 
+import { hostAllowed } from "@/lib/integrations/hosts";
 import {
   getIntegrationProvider,
   type IntegrationDescriptor,
@@ -33,13 +34,18 @@ export type AuthorizedResult<T> =
 
 export type AuthorizedCallParams<T> = {
   accessToken: string;
+  /**
+   * En-tête Authorization complet. `undefined` conserve `Bearer` du jeton.
+   * `null` n'envoie pas cet en-tête : la clé voyage ailleurs (api-key, URL).
+   */
+  authorization?: string | null;
   /** Corps JSON d'une écriture. Sa présence interdit toute reprise. */
   body?: string;
   /** Base du service, ex. `https://www.googleapis.com/drive/v3`. */
   base: string;
   descriptor: IntegrationDescriptor;
   headers?: Record<string, string>;
-  method?: "GET" | "POST";
+  method?: "GET" | "PATCH" | "POST";
   /** Chemin sous la base, en littéral de code — jamais une URL du modèle. */
   path: string;
   /**
@@ -87,7 +93,7 @@ function endpointFor(
       ok: false,
     };
   }
-  if (!params.descriptor.hosts.includes(url.host)) {
+  if (!hostAllowed(url.host, params.descriptor)) {
     return {
       error: `Hôte non déclaré par le connecteur ${params.descriptor.label} : ${url.host}.`,
       ok: false,
@@ -119,12 +125,15 @@ export async function callAuthorized<T>(
     return endpoint;
   }
   const timeoutMs = params.timeoutMs ?? AUTHORIZED_API_TIMEOUT_MS;
+  const headers: Record<string, string> = { ...params.headers };
+  if (params.authorization === undefined) {
+    headers.Authorization = `Bearer ${params.accessToken}`;
+  } else if (params.authorization) {
+    headers.Authorization = params.authorization;
+  }
   const options: BoundedFetchOptions = {
     body: params.body,
-    headers: {
-      Authorization: `Bearer ${params.accessToken}`,
-      ...params.headers,
-    },
+    headers,
     maxBytes: AUTHORIZED_API_MAX_BYTES,
     method: params.method ?? "GET",
     signal: params.signal,

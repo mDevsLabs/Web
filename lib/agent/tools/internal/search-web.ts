@@ -33,6 +33,7 @@ type SearchWebOutput = {
   error?: string;
   query?: string;
   results?: Array<{
+    origin?: string;
     snippet?: string;
     source?: string;
     title?: string;
@@ -67,6 +68,7 @@ export const searchWebTool = fromExistingTool({
         count: result?.count ?? results.length,
         query: result?.query ?? "",
         results: results.map((item) => ({
+          origin: item.origin ?? "",
           snippet: item.snippet ?? "",
           source: item.source ?? "",
           title: item.title ?? "",

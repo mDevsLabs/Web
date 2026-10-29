@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { getClientIp } from "@/lib/net/client-ip";
 import { validateApiKey } from "./api-key-manager";
 
 // Rate Limiter basique en mémoire (60 requêtes/minute par IP/clé)
@@ -65,10 +66,8 @@ export function checkRateLimit(ip: string): {
  * Helper middleware de sécurité pour vérifier le Bearer token et le rate limit
  */
 export async function authenticateBearer(req: NextRequest) {
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip") ||
-    "127.0.0.1";
+  // Dernière entrée de X-Forwarded-For : celle ajoutée par le proxy de bord.
+  const ip = getClientIp(req.headers);
 
   // 1. Vérification du Rate Limit
   const rateLimit = checkRateLimit(ip);

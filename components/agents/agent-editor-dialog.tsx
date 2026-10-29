@@ -256,13 +256,13 @@ export function AgentEditorDialog({
                   className="min-h-[140px] font-mono text-xs leading-relaxed"
                   maxLength={INSTRUCTIONS_MAX_LENGTH}
                   onChange={(e) => setFormInstructions(e.target.value)}
-                  placeholder="Tu es un expert en…&#10;&#10;Rôle : …&#10;Ton : …&#10;Contraintes : …&#10;Interdits : …&#10;Format de sortie : …&#10;&#10;Ce que tu ne fais jamais : …"
+                  placeholder="Tu es un expert en…&#10;&#10;Rôle: …&#10;Ton: …&#10;Contraintes: …&#10;Interdits: …&#10;Format de sortie: …&#10;&#10;Ce que tu ne fais jamais: …"
                   required
                   value={formInstructions}
                 />
                 <p className="text-[11px] leading-relaxed text-muted-foreground">
                   Une consigne par ligne, la plus contraignante en premier. Ce
-                  que le bot doit faire ET ce qu'il ne doit jamais faire : les
+                  que le bot doit faire ET ce qu'il ne doit jamais faire: les
                   deux méritent la même place.
                 </p>
               </div>
@@ -452,7 +452,7 @@ export function AgentEditorDialog({
                   className="min-h-[70px] text-xs"
                   maxLength={2000}
                   onChange={(e) => setFormWelcomeMessage(e.target.value)}
-                  placeholder="Bonjour ! Je suis ton assistant dédié. Comment puis-je t'aider ?"
+                  placeholder="Bonjour! Je suis ton assistant dédié. Comment puis-je t'aider?"
                   value={formWelcomeMessage}
                 />
               </div>
@@ -523,7 +523,7 @@ export function AgentEditorDialog({
                 </Label>
                 {mcpServers.length === 0 ? (
                   <span className="text-xs text-muted-foreground">
-                    Aucun serveur MCP — configure dans /mcp
+                    Aucun plugin MCP — créez-en dans Applications
                   </span>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-32 overflow-y-auto border border-border/40 rounded-xl p-2 bg-muted/10">
@@ -703,7 +703,7 @@ export function AgentEditorDialog({
                   </div>
                   {formWelcomeMessage && (
                     <p className="text-[11px] italic text-muted-foreground line-clamp-2">
-                      💬 {formWelcomeMessage}
+                      {formWelcomeMessage}
                     </p>
                   )}
                   {formStarterPrompts.filter(Boolean).length > 0 && (

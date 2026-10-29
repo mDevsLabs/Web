@@ -15,6 +15,14 @@ export interface Settings {
    */
   onboardingCompleted: boolean;
   paused: boolean;
+  /**
+   * Produire une alerte quand un tour de conversation se termine.
+   *
+   * Le réglage est de COMPTE, pas de conversation : la sourdine reste par
+   * fil (champ `muted` de la conversation). Décidé à l'écriture de
+   * l'événement, jamais à la lecture.
+   */
+  replyAlertsEnabled: boolean;
   researchAllowed: boolean;
 }
 export interface Task {
@@ -137,8 +145,9 @@ export interface Wakie extends CapabilitySelection {
   name: string;
   researchAllowed: boolean;
   skillDeliveryEnabled?: boolean;
-  /** Default destination for saved pages, not ownership. */
-  spaceId: string;
+  /** Default destination for saved pages, not ownership. Null quand l'Espace
+   * de destination a été supprimé : le prochain enregistrement le répare. */
+  spaceId: string | null;
   spaceIds: string[];
 }
 

@@ -4,14 +4,14 @@ import {
   getWeekData,
   normalizeTier,
   rateLimit,
-} from "../config.ts";
+} from "../../../config.ts";
 import {
   APPROVAL_NONCE_ARG,
   extractApprovalNonce,
   sanitizeToolArgs,
   toolArgsEqual,
-} from "../vibe-mai-core.ts";
-import { isUuid, stripHtmlTags } from "../vibe-posts-core.ts";
+} from "../../../vibe-mai-core.ts";
+import { isUuid, stripHtmlTags } from "../../../vibe-posts-core.ts";
 
 Deno.test("normalise les forfaits et rejette les clés API forgées", () => {
   assert.equal(normalizeTier(" PRO "), "Pro");

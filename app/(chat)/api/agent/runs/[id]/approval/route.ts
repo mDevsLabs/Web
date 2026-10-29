@@ -5,6 +5,7 @@ import { paramsHashOf } from "@/lib/agent/params-hash";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { enforceChatRateLimit } from "@/lib/chat/auth";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   decideApprovalRequest,
   expireApprovalRequestById,
@@ -72,6 +73,11 @@ async function handlePost(request: Request, params: Promise<{ id: string }>) {
   const run = await getAgentRunById({ id, userId });
   if (!run) {
     return errorResponse("not_found", { message: "Run introuvable." });
+  }
+  if (!(await isChatUnlockedForUser({ chatId: run.chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   const pending = await getPendingApprovalForRun({ runId: run.id });

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArchiveIcon,
   CodeIcon,
@@ -8,6 +10,8 @@ import {
   VideoIcon,
 } from "@mdevs/icons";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { blobPathnameFromUrl } from "@/lib/files/blob-path";
 import type { Attachment } from "@/lib/types";
 import { Spinner } from "../ui/spinner";
 import { CrossSmallIcon } from "./icons";
@@ -60,18 +64,56 @@ export const PreviewAttachment = ({
   onRemove?: () => void;
 }) => {
   const { name, url, contentType } = attachment;
+  // L'URL signée d'un ancien message expire après 10 minutes. On la renouvelle
+  // à la première erreur de chargement, à partir de la référence durable.
+  const pathname = attachment.pathname ?? blobPathnameFromUrl(url);
+  const [displayUrl, setDisplayUrl] = useState(url);
+  const [refreshed, setRefreshed] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  useEffect(() => {
+    setDisplayUrl(url);
+    setRefreshed(false);
+    setImageFailed(false);
+  }, [url]);
+
+  const refreshUrl = async () => {
+    if (refreshed || !pathname) {
+      setImageFailed(true);
+      return;
+    }
+    setRefreshed(true);
+    try {
+      const response = await fetch(
+        `/api/files/url?pathname=${encodeURIComponent(pathname)}`
+      );
+      if (!response.ok) {
+        setImageFailed(true);
+        return;
+      }
+      const data = (await response.json()) as { url?: string };
+      if (data.url) {
+        setDisplayUrl(data.url);
+      } else {
+        setImageFailed(true);
+      }
+    } catch {
+      setImageFailed(true);
+    }
+  };
 
   return (
     <div
       className="group relative h-20 w-20 sm:h-24 sm:w-24 shrink-0 overflow-hidden rounded-xl border border-border/50 bg-card/60 backdrop-blur-xs shadow-xs"
       data-testid="input-attachment-preview"
     >
-      {contentType?.startsWith("image") && url ? (
+      {contentType?.startsWith("image") && displayUrl && !imageFailed ? (
         <Image
           alt={name ?? "pièce jointe"}
           className="size-full object-cover"
           height={96}
-          src={url}
+          onError={() => void refreshUrl()}
+          src={displayUrl}
           unoptimized
           width={96}
         />

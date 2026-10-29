@@ -182,6 +182,11 @@ export type ChatMessage = UIMessage<
 export type Attachment = {
   contentType: string;
   name: string;
+  /**
+   * Référence DURABLE au blob privé (`uploads/<userId>/…`). L'`url` signée
+   * expire ; le pathname permet de la renouveler côté serveur.
+   */
+  pathname?: string;
   /** Taille connue du fichier, utilisée pour appliquer les limites côté client. */
   size?: number;
   url: string;

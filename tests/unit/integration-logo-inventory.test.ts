@@ -16,31 +16,31 @@ import { INTEGRATION_PROVIDERS } from "@/lib/integrations/providers";
  * fond sombre.
  */
 
-const LOGO_DIR = path.join(process.cwd(), "public", "plugins");
-
-function readLogo(file: string): string {
-  return readFileSync(path.join(LOGO_DIR, file), "utf8");
+function readLogo(providerId: string): string {
+  const src = integrationLogoSrc(providerId).replace(/^\//, "");
+  return readFileSync(path.join(process.cwd(), "public", src), "utf8");
 }
 
 describe("public/plugins/", () => {
   it("expose un fichier pour chaque connecteur déclaré", () => {
-    const missing = INTEGRATION_PROVIDERS.filter(
-      (descriptor) => !integrationLogoSrc(descriptor.id).startsWith("/plugins/")
-    );
-    expect(missing).toEqual([]);
+    const missing = INTEGRATION_PROVIDERS.filter((descriptor) => {
+      const src = integrationLogoSrc(descriptor.id);
+      return !(src.startsWith("/plugins/") || src.startsWith("/mcp/"));
+    });
+    expect(missing.map((item) => item.id)).toEqual([]);
     for (const descriptor of INTEGRATION_PROVIDERS) {
       // Le fichier doit exister réellement : un logo manquant rendrait soit un
       // trou invisible (masque CSS), soit une image cassée (`<img>`).
       expect(
-        () => readLogo(`${descriptor.id}.svg`),
-        `${descriptor.id}.svg`
+        () => readLogo(descriptor.id),
+        integrationLogoSrc(descriptor.id)
       ).not.toThrow();
     }
   });
 
   it("n'accepte que des SVG sans vecteur", () => {
     for (const descriptor of INTEGRATION_PROVIDERS) {
-      const svg = readLogo(`${descriptor.id}.svg`);
+      const svg = readLogo(descriptor.id);
       expect(svg).toContain("<svg");
       expect(svg).toContain("</svg>");
       // Un SVG servi depuis /public est lu par le navigateur : `href`, `url(`
@@ -63,7 +63,7 @@ describe("public/plugins/", () => {
     for (const descriptor of INTEGRATION_PROVIDERS.filter(
       (item) => item.monochrome
     )) {
-      const svg = readLogo(`${descriptor.id}.svg`);
+      const svg = readLogo(descriptor.id);
       const fills = new Set(
         [...svg.matchAll(/fill="(#[0-9a-f]{3,6})"/gi)].map((match) =>
           match[1].toLowerCase()
@@ -85,7 +85,7 @@ describe("public/plugins/", () => {
     for (const descriptor of INTEGRATION_PROVIDERS.filter(
       (item) => !item.monochrome
     )) {
-      const svg = readLogo(`${descriptor.id}.svg`);
+      const svg = readLogo(descriptor.id);
       const fills = [...svg.matchAll(/fill="(#[0-9a-f]{3,6})"/gi)].map(
         (match) => match[1].toLowerCase()
       );

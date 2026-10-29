@@ -254,7 +254,7 @@ export default function McpDetailClient({
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8">
       {/* En-tête : identité + retour */}
       <div className="flex items-start justify-between gap-4">
-        <PageBackButton fallbackHref="/tools?tab=mcp" label="Retour" />
+        <PageBackButton fallbackHref="/tools?tab=plugins" label="Retour" />
       </div>
       <header className="flex items-start gap-4">
         <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card p-2.5 shadow-sm">

@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez SonarCloud par jeton utilisateur : l'IA liste vos projets et vos issues. Dans l'Agent, avec votre accord, elle peut commenter une issue.",
+  "icon": { "src": "/plugins/sonarcloud.svg", "type": "image" },
+  "id": "sonarcloud",
+  "minTier": "plus",
+  "name": "SonarCloud",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["sonarcloud", "qualité", "issues", "code", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les projets SonarCloud accessibles avec le jeton.",
+      "effect": "read",
+      "id": "sonarListProjects",
+      "label": "Projets SonarCloud",
+      "systemHint": "La clé de projet sert ensuite à filtrer les issues."
+    },
+    {
+      "description": "Liste les issues SonarCloud, éventuellement d'un projet.",
+      "effect": "read",
+      "id": "sonarSearchIssues",
+      "label": "Issues SonarCloud",
+      "systemHint": "Résumez le message et la sévérité. La clé d'issue sert à commenter."
+    },
+    {
+      "description": "Ajoute un commentaire sur une issue SonarCloud.",
+      "effect": "write",
+      "id": "sonarCommentIssue",
+      "label": "Commenter une issue",
+      "systemHint": "Montrez la clé d'issue et le texte complet avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

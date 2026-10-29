@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { APP_PRICING_URL } from "@/lib/constants";
 import { cn, formatImageSrc } from "@/lib/utils";
@@ -35,6 +36,9 @@ export function ImageWorkspace({ modeSwitcher }: ImageWorkspaceProps = {}) {
     data: ImageModel[];
   }>("/api/models/images", fetcher, {
     dedupingInterval: 60_000,
+    // Le catalogue des modèles d'images bouge : on le relit périodiquement
+    // (toutes les 10 minutes) pour ne pas proposer un modèle retiré.
+    refreshInterval: MODEL_CATALOG_REFRESH_INTERVAL,
     revalidateOnFocus: false,
   });
   const models = useMemo(() => modelsData?.data || [], [modelsData]);

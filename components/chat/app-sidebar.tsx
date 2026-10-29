@@ -4,29 +4,17 @@ import {
   ArchiveIcon,
   ArrowRightIcon,
   CalendarClockIcon,
-  CheckIcon,
   ChevronDownIcon,
-  Code2Icon,
   FolderKanbanIcon,
-  GlobeIcon,
-  ImageIcon,
   LibraryIcon,
   LockIcon,
-  MessageCircleIcon,
   MoreHorizontalIcon,
   PanelLeftIcon,
   PenSquareIcon,
   PlusIcon,
   PuzzleIcon,
   SearchIcon,
-  SettingsIcon,
-  SlidersHorizontalIcon,
-  SparkleIcon,
   SparklesIcon,
-  TerminalIcon,
-  TrashIcon,
-  UsersIcon,
-  Volume2Icon,
 } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,6 +31,7 @@ import {
   SidebarHistory,
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
+import { AppMenuItems } from "@/components/common/app-menu-items";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -77,8 +66,7 @@ import { useActiveChat } from "@/hooks/use-active-chat";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
-import type { AppKey } from "@/lib/apps/catalog";
-import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
+import { appKeyFromPath } from "@/lib/apps/catalog";
 import type { MaiUser } from "@/lib/auth/session";
 import { pagePath } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
@@ -93,28 +81,6 @@ import {
   AlertDialogTitle,
 } from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-
-function VibeSidebarIcon({ className }: { className?: string }) {
-  return (
-    <Image
-      alt="Vibe"
-      className={cn("size-4 rounded-sm object-contain dark:invert", className)}
-      height={16}
-      src="/vibe/logo.png"
-      unoptimized
-      width={16}
-    />
-  );
-}
-
-// Icônes du sélecteur d'applications du logo.
-const APP_ICONS: Record<AppKey, React.ComponentType<{ className?: string }>> = {
-  cli: TerminalIcon,
-  code: Code2Icon,
-  mai: MessageCircleIcon,
-  site: GlobeIcon,
-  vibe: VibeSidebarIcon,
-};
 
 function SidebarProjects() {
   const { projects: allProjects, isLoading } = useProjects();
@@ -409,11 +375,10 @@ export function AppSidebar({
       pathname?.startsWith("/skills") ||
       pathname?.startsWith("/mcp")
   );
-  // « Plus » regroupe Paramètres, Messages archivés et Planification.
+  // « Plus » regroupe Messages archivés et Planification. Paramètres vit dans
+  // le menu du compte, pour ne pas entretenir deux entrées vers la même page.
   const isPlusActive = Boolean(
-    pathname?.startsWith("/settings") ||
-      pathname?.startsWith("/archived") ||
-      pathname?.startsWith("/planning")
+    pathname?.startsWith("/archived") || pathname?.startsWith("/planning")
   );
   const isLibraryActive = pathname?.startsWith("/library");
 
@@ -450,6 +415,20 @@ export function AppSidebar({
   const currentApp = appKeyFromPath(pathname);
 
   const isUserLoggedIn = Boolean(user && !hasDeadSession);
+
+  /**
+   * État d'authentification tel que le menu doit le lire.
+   *
+   * `undefined` = inconnu : une session morte est en cours de reprise, et
+   * afficher un cadenas sur toutes les applications serait une accusation
+   * fausse. Un visiteur anonyme, lui, ne peut pas basculer vers les autres
+   * applications : le cadenas le dit.
+   */
+  const sidebarAuthState: boolean | undefined = isUserLoggedIn
+    ? true
+    : hasDeadSession
+      ? undefined
+      : false;
 
   const handleAppSelect = useCallback(
     (path: string) => {
@@ -604,82 +583,17 @@ export function AppSidebar({
                     className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
                     side="bottom"
                   >
-                    {APP_ORDER.map((entry) => {
-                      const isCurrent = currentApp === entry.key;
-                      const AppGlyph = APP_ICONS[entry.key];
-                      const isCodeDisabled = entry.key === "code" && !isDesktop;
-                      return (
-                        <DropdownMenuItem
-                          asChild
-                          className={cn(
-                            "cursor-pointer",
-                            isCodeDisabled && "opacity-55"
-                          )}
-                          key={entry.key}
-                          onSelect={() => handleAppSelect(entry.path)}
-                        >
-                          <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
-                            <AppGlyph
-                              className={cn(
-                                "mt-0.5 size-4 shrink-0",
-                                isCurrent
-                                  ? "text-primary"
-                                  : "text-muted-foreground"
-                              )}
-                            />
-                            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                              <div className="flex items-center gap-1.5">
-                                <span
-                                  className={cn(
-                                    "text-[13px] font-semibold",
-                                    isCurrent
-                                      ? "text-foreground"
-                                      : "text-sidebar-foreground/90"
-                                  )}
-                                >
-                                  {entry.label}
-                                </span>
-                                {isCodeDisabled && (
-                                  <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                                    Bureau
-                                  </span>
-                                )}
-                              </div>
-                              <span className="text-[11px] leading-snug text-muted-foreground">
-                                {entry.description}
-                              </span>
-                            </div>
-                            {isCurrent && (
-                              <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                            )}
-                          </div>
-                        </DropdownMenuItem>
-                      );
-                    })}
-                    <DropdownMenuItem
-                      className={cn(
-                        "cursor-pointer",
-                        !isDesktop && "opacity-55"
-                      )}
-                      onSelect={() => {
+                    <AppMenuItems
+                      currentApp={currentApp}
+                      isAuthenticated={sidebarAuthState}
+                      isDesktop={isDesktop}
+                      onOpenCli={() => {
                         void handleOpenCli();
                       }}
-                    >
-                      <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
-                      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-[13px]">CLI</span>
-                          {!isDesktop && (
-                            <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                              Bureau
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          mAI dans un terminal local
-                        </span>
-                      </div>
-                    </DropdownMenuItem>
+                      onSelectApp={(_key, path) => {
+                        handleAppSelect(path);
+                      }}
+                    />
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <Tooltip>
@@ -719,79 +633,17 @@ export function AppSidebar({
                   align="start"
                   className="w-64 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
                 >
-                  {APP_ORDER.map((entry) => {
-                    const isCurrent = currentApp === entry.key;
-                    const AppGlyph = APP_ICONS[entry.key];
-                    const isCodeDisabled = entry.key === "code" && !isDesktop;
-                    return (
-                      <DropdownMenuItem
-                        asChild
-                        className={cn(
-                          "cursor-pointer",
-                          isCodeDisabled && "opacity-55"
-                        )}
-                        key={entry.key}
-                        onSelect={() => handleAppSelect(entry.path)}
-                      >
-                        <div className="flex items-start gap-2.5 px-2 py-2 rounded-lg">
-                          <AppGlyph
-                            className={cn(
-                              "mt-0.5 size-4 shrink-0",
-                              isCurrent
-                                ? "text-primary"
-                                : "text-muted-foreground"
-                            )}
-                          />
-                          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                            <div className="flex items-center gap-1.5">
-                              <span
-                                className={cn(
-                                  "text-[13px] font-semibold",
-                                  isCurrent
-                                    ? "text-foreground"
-                                    : "text-sidebar-foreground/90"
-                                )}
-                              >
-                                {entry.label}
-                              </span>
-                              {isCodeDisabled && (
-                                <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                                  Bureau
-                                </span>
-                              )}
-                            </div>
-                            <span className="text-[11px] leading-snug text-muted-foreground">
-                              {entry.description}
-                            </span>
-                          </div>
-                          {isCurrent && (
-                            <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                          )}
-                        </div>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                  <DropdownMenuItem
-                    className={cn("cursor-pointer", !isDesktop && "opacity-55")}
-                    onSelect={() => {
+                  <AppMenuItems
+                    currentApp={currentApp}
+                    isAuthenticated={sidebarAuthState}
+                    isDesktop={isDesktop}
+                    onOpenCli={() => {
                       void handleOpenCli();
                     }}
-                  >
-                    <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
-                    <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-[13px]">CLI</span>
-                        {!isDesktop && (
-                          <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                            Bureau
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-xs text-muted-foreground">
-                        mAI dans un terminal local
-                      </span>
-                    </div>
-                  </DropdownMenuItem>
+                    onSelectApp={(_key, path) => {
+                      handleAppSelect(path);
+                    }}
+                  />
                 </DropdownMenuContent>
               </DropdownMenu>
               {/* La recherche est une PAGE, pas une modale : l'icône tient à
@@ -934,7 +786,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 2. Bots : ouverts à tous les forfaits, bornés par quota
+                {/* 5. Bots : ouverts à tous les forfaits, bornés par quota
                     (8 en Free, `getTierAgentLimit`). L'entrée n'est donc plus
                     verrouillée : ce qui limite un Free est un nombre de bots,
                     pas un cadenas. La clé de montée en niveau « agents » reste
@@ -952,7 +804,7 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 3. Applications : Plugins, MCP & Skills sur une page unifiée */}
+                {/* 6. Applications : Plugins, MCP & Skills sur une page unifiée */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -975,23 +827,10 @@ export function AppSidebar({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* 4. Plus : Paramètres, Messages archivés et Planification */}
+                {/* 7. Plus : Messages archivés et Planification */}
                 <SidebarNavCollapsible
                   dropdownItems={
                     <>
-                      <DropdownMenuItem
-                        asChild
-                        className="cursor-pointer text-xs py-1.5"
-                      >
-                        <Link
-                          className="flex items-center gap-2"
-                          href="/settings"
-                          onClick={handleNavClick}
-                        >
-                          <SettingsIcon className="size-4" />
-                          <span>Paramètres</span>
-                        </Link>
-                      </DropdownMenuItem>
                       <DropdownMenuItem
                         asChild
                         className="cursor-pointer text-xs py-1.5"
@@ -1005,7 +844,6 @@ export function AppSidebar({
                           <span>Messages Archivés</span>
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuSeparator />
                       <DropdownMenuItem
                         asChild
                         className="cursor-pointer text-xs py-1.5"
@@ -1026,24 +864,8 @@ export function AppSidebar({
                   isOpen={openMenu === "plus"}
                   label="Plus"
                   onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
-                  tooltip="Plus (Paramètres, archivés, Planification)"
+                  tooltip="Plus (archivés, Planification)"
                 >
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton
-                      asChild
-                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                      isActive={pathname?.startsWith("/settings")}
-                    >
-                      <Link
-                        data-onboarding="nav-settings"
-                        href="/settings"
-                        onClick={handleNavClick}
-                      >
-                        <SettingsIcon className="size-3.5" />
-                        <span>Paramètres</span>
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
                     <SidebarMenuSubButton
                       asChild

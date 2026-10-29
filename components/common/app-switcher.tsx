@@ -1,57 +1,24 @@
 "use client";
 
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  Code2Icon,
-  GlobeIcon,
-  LockIcon,
-  MessageCircleIcon,
-  TerminalIcon,
-} from "@mdevs/icons";
-import Image from "next/image";
+import { ChevronDownIcon, LockIcon } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
 import type React from "react";
 import { useCallback } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { AppMenuItems } from "@/components/common/app-menu-items";
 import { useOptionalAuth } from "@/components/site/auth-provider";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
 import type { AppKey } from "@/lib/apps/catalog";
-import { APP_ORDER, appKeyFromPath } from "@/lib/apps/catalog";
+import { appKeyFromPath } from "@/lib/apps/catalog";
 import { readAuthentication } from "@/lib/client/authentication";
 import { cn } from "@/lib/utils";
-
-function VibeGlyph({ className }: { className?: string }) {
-  return (
-    <Image
-      alt="Vibe"
-      className={cn("size-4 rounded-sm object-contain dark:invert", className)}
-      height={16}
-      src="/vibe/logo.png"
-      unoptimized
-      width={16}
-    />
-  );
-}
-
-export const APP_SWITCHER_ICONS: Record<
-  AppKey,
-  React.ComponentType<{ className?: string }>
-> = {
-  cli: TerminalIcon,
-  code: Code2Icon,
-  mai: MessageCircleIcon,
-  site: GlobeIcon,
-  vibe: VibeGlyph,
-};
 
 interface AppSwitcherProps {
   align?: "start" | "center" | "end";
@@ -261,96 +228,22 @@ export function AppSwitcherMenu({
           </div>
         )}
 
-        {APP_ORDER.map((entry) => {
-          const isCurrent = currentApp === entry.key;
-          const AppGlyph = APP_SWITCHER_ICONS[entry.key];
-          const isCodeDisabled = entry.key === "code" && !isDesktop;
-          const isLocked =
-            isAuthed === false && !isCurrent && entry.key !== "site";
-
-          return (
-            <DropdownMenuItem
-              asChild
-              className={cn(
-                "cursor-pointer rounded-lg",
-                (isCodeDisabled || isLocked) && "opacity-60"
-              )}
-              key={entry.key}
-              onSelect={() => handleAppSelect(entry.key, entry.path)}
-            >
-              <div className="flex items-start gap-2.5 px-2 py-2">
-                <AppGlyph
-                  className={cn(
-                    "mt-0.5 size-4 shrink-0",
-                    isCurrent ? "text-primary" : "text-muted-foreground"
-                  )}
-                />
-                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <span
-                      className={cn(
-                        "text-[13px] font-semibold",
-                        isCurrent
-                          ? "text-foreground"
-                          : "text-sidebar-foreground/90"
-                      )}
-                    >
-                      {entry.label}
-                    </span>
-                    {isCodeDisabled && (
-                      <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                        Bureau
-                      </span>
-                    )}
-                    {isLocked && (
-                      <LockIcon className="ml-auto size-3 text-warning" />
-                    )}
-                  </div>
-                  <span className="text-[11px] leading-snug text-muted-foreground">
-                    {entry.description}
-                  </span>
-                </div>
-                {isCurrent && (
-                  <CheckIcon className="mt-1 size-3.5 shrink-0 text-primary" />
-                )}
-              </div>
-            </DropdownMenuItem>
-          );
-        })}
-
-        {/* Option CLI toujours présente */}
-        <DropdownMenuItem
-          asChild
-          className={cn(
-            "cursor-pointer rounded-lg",
-            (!isDesktop || isAuthed === false) && "opacity-60"
-          )}
-          onSelect={() => {
+        {/*
+          Les entrées sont rendues par le module partagé : l'ordre du menu
+          (mAI, Site, Vibe, Coder, CLI, Blackline) n'existe qu'à un seul
+          endroit, et les trois rendus du menu ne peuvent plus diverger.
+        */}
+        <AppMenuItems
+          currentApp={currentApp}
+          isAuthenticated={isAuthed}
+          isDesktop={isDesktop}
+          onOpenCli={() => {
             void handleOpenCli();
           }}
-        >
-          <div className="flex items-start gap-2.5 px-2 py-2">
-            <TerminalIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
-            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <div className="flex items-center gap-1.5">
-                <span className="text-[13px] font-semibold text-sidebar-foreground/90">
-                  CLI
-                </span>
-                {!isDesktop && (
-                  <span className="rounded bg-muted px-1 py-0.2 text-[9px] font-semibold text-muted-foreground">
-                    Bureau
-                  </span>
-                )}
-                {isAuthed === false && (
-                  <LockIcon className="ml-auto size-3 text-warning" />
-                )}
-              </div>
-              <span className="text-[11px] leading-snug text-muted-foreground">
-                mAI dans un terminal local
-              </span>
-            </div>
-          </div>
-        </DropdownMenuItem>
+          onSelectApp={(key, path) => {
+            handleAppSelect(key, path);
+          }}
+        />
       </DropdownMenuContent>
     </DropdownMenu>
   );

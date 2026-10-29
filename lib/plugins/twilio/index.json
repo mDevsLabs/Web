@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Twilio par Account SID et Auth Token : l'IA liste vos numéros et vos SMS. Dans l'Agent, avec votre accord, elle peut envoyer un SMS.",
+  "icon": { "src": "/plugins/twilio.svg", "type": "image" },
+  "id": "twilio",
+  "minTier": "plus",
+  "name": "Twilio",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["twilio", "sms", "téléphone", "messages", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les numéros Twilio du compte.",
+      "effect": "read",
+      "id": "twilioListNumbers",
+      "label": "Numéros Twilio",
+      "systemHint": "L'envoi part d'un de ces numéros, au format international."
+    },
+    {
+      "description": "Liste les SMS Twilio récents du compte.",
+      "effect": "read",
+      "id": "twilioListMessages",
+      "label": "SMS récents",
+      "systemHint": "Résumez l'état et les correspondants. Ne recopiez pas le texte s'il est long."
+    },
+    {
+      "description": "Envoie un SMS depuis un numéro Twilio du compte.",
+      "effect": "write",
+      "id": "twilioSendSms",
+      "label": "Envoyer un SMS",
+      "systemHint": "Montrez le numéro d'envoi, le destinataire et le texte complet avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -2,6 +2,7 @@ import "server-only";
 import {
   and,
   asc,
+  count,
   desc,
   eq,
   gt,
@@ -40,6 +41,7 @@ import {
   wakiesWakieSpace,
 } from "@/lib/db/schema";
 import type { PageSettings } from "@/lib/wakies/pages";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
 import { apercuMessage } from "@/lib/wakies/shared/messages";
 import {
@@ -49,7 +51,6 @@ import {
   TACHE_MAX_TENTATIVES,
   tentativesEpuisees,
 } from "@/lib/wakies/task-lease";
-import { spaceExists } from "./spaces";
 import type {
   SetupStatus,
   WakieCallRow,
@@ -151,23 +152,67 @@ export async function findPageInSpace(
   return row ?? null;
 }
 
-export async function createPage(
+type Db = ReturnType<typeof getDb>;
+type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
+
+async function lockPageTree(tx: Tx, userId: string): Promise<void> {
+  // Sérialise créations et déplacements d'un même compte : le quota global,
+  // la vérification de parenté et la détection de cycle ne peuvent pas être
+  // contournés par deux écritures simultanées.
+  await tx.execute(
+    sql`SELECT pg_advisory_xact_lock(hashtext(${`wakies-pages:${userId}`}))`
+  );
+}
+
+async function createPageInTransaction(
+  tx: Tx,
   userId: string,
   spaceId: string,
   input: { title: string; content?: string; parentId?: string | null },
-  sourceConversationId: string | null = null
+  sourceConversationId: string | null,
+  quota: number | null
 ): Promise<WakiePageRow> {
-  await dbReady();
-  if (!(await spaceExists(userId, spaceId))) {
+  await lockPageTree(tx, userId);
+
+  const [space] = await tx
+    .select({ id: wakiesSpace.id })
+    .from(wakiesSpace)
+    .where(and(eq(wakiesSpace.id, spaceId), eq(wakiesSpace.userId, userId)))
+    .limit(1);
+  if (!space) {
     throw new Error("Espace introuvable.");
   }
+
   if (input.parentId) {
-    const parent = await findPage(userId, input.parentId);
-    if (!parent) {
-      throw new Error("Page parente introuvable.");
+    const [parent] = await tx
+      .select({ id: wakiesPage.id, spaceId: wakiesPage.spaceId })
+      .from(wakiesPage)
+      .where(
+        and(eq(wakiesPage.id, input.parentId), eq(wakiesPage.userId, userId))
+      )
+      .limit(1);
+    if (!parent || parent.spaceId !== spaceId) {
+      // Un parent d'un autre Espace (ou disparu) rendrait la hiérarchie
+      // incohérente : refus explicite, jamais de rattachement silencieux.
+      throw new Error(
+        "Page parente introuvable dans cet espace ou accès refusé."
+      );
     }
   }
-  const [row] = await getDb()
+
+  // Quota GLOBAL du compte, tous Espaces confondus.
+  if (quota !== null) {
+    const [row] = await tx
+      .select({ value: count() })
+      .from(wakiesPage)
+      .where(eq(wakiesPage.userId, userId));
+    const used = Number(row?.value ?? 0);
+    if (used >= quota) {
+      throw new WakiesQuotaError("pages", quota, used);
+    }
+  }
+
+  const [created] = await tx
     .insert(wakiesPage)
     .values({
       content: input.content ?? "",
@@ -178,13 +223,41 @@ export async function createPage(
       userId,
     })
     .returning();
-  return row;
+  return created;
 }
 
 /**
- * Mise à jour sous contrôle de révision : une écriture concurrent (deux
+ * Crée une page sous quota ATOMIQUE (verrou par compte + comptage global).
+ * Tous les chemins de création passent par ici : création manuelle, conversion
+ * de conversation, message enregistré en page, revue approuvée.
+ */
+export async function createPage(
+  userId: string,
+  spaceId: string,
+  input: { title: string; content?: string; parentId?: string | null },
+  options: { quota: number | null; sourceConversationId?: string | null }
+): Promise<WakiePageRow> {
+  await dbReady();
+  return getDb().transaction((tx) =>
+    createPageInTransaction(
+      tx,
+      userId,
+      spaceId,
+      input,
+      options.sourceConversationId ?? null,
+      options.quota
+    )
+  );
+}
+
+/**
+ * Mise à jour sous contrôle de révision : une écriture concurrente (deux
  * onglets, ou l'éditeur pendant une régénération) est refusée en 409 plutôt que
  * d'écraser la version la plus récente. C'est le même contrat que le gabarit.
+ *
+ * Hiérarchie : le parent doit appartenir au même compte ET au même Espace que
+ * l'enfant. Le verrou `FOR UPDATE` et le verrou d'arbre sérialisent deux
+ * déplacements concurrents ; un cycle (ou l'auto-parentage) est refusé.
  */
 export async function updatePage(
   userId: string,
@@ -197,41 +270,77 @@ export async function updatePage(
   }
 ): Promise<WakiePageRow | null> {
   await dbReady();
-  const page = await findPage(userId, pageId);
-  if (!page) {
-    return null;
-  }
-  if (page.revision !== patch.expectedRevision) {
-    return null;
-  }
-  const parentId =
-    patch.parentId === undefined ? page.parentId : patch.parentId;
-  if (parentId) {
-    const parent = await findPage(userId, parentId);
-    if (!parent) {
-      throw new Error("Page parente introuvable.");
+  return getDb().transaction(async (tx) => {
+    await lockPageTree(tx, userId);
+    const [page] = await tx
+      .select()
+      .from(wakiesPage)
+      .where(and(eq(wakiesPage.id, pageId), eq(wakiesPage.userId, userId)))
+      .for("update");
+    if (!page) {
+      return null;
     }
-  }
-  const [row] = await getDb()
-    .update(wakiesPage)
-    .set({
-      ...(patch.title === undefined ? {} : { title: patch.title }),
-      ...(patch.content === undefined
-        ? {}
-        : { content: preserveGoalMarker(page.content, patch.content) }),
-      parentId,
-      revision: page.revision + 1,
-      updatedAt: new Date(),
-    })
-    .where(
-      and(
-        eq(wakiesPage.id, pageId),
-        eq(wakiesPage.userId, userId),
-        eq(wakiesPage.revision, patch.expectedRevision)
+    if (page.revision !== patch.expectedRevision) {
+      return null;
+    }
+    const parentId =
+      patch.parentId === undefined ? page.parentId : patch.parentId;
+
+    if (parentId) {
+      if (parentId === pageId) {
+        throw new Error("Une page ne peut pas être sa propre parente.");
+      }
+      const [parent] = await tx
+        .select({ id: wakiesPage.id, spaceId: wakiesPage.spaceId })
+        .from(wakiesPage)
+        .where(and(eq(wakiesPage.id, parentId), eq(wakiesPage.userId, userId)))
+        .limit(1);
+      if (!parent || parent.spaceId !== page.spaceId) {
+        throw new Error(
+          "Page parente introuvable dans cet espace ou accès refusé."
+        );
+      }
+      // Remonter la chaîne : le nouveau parent ne doit pas être un descendant
+      // de la page déplacée.
+      let cursor: string | null = parentId;
+      const visited = new Set<string>();
+      while (cursor && !visited.has(cursor)) {
+        if (cursor === pageId) {
+          throw new Error(
+            "Déplacement impossible : le parent choisi est un descendant de cette page."
+          );
+        }
+        visited.add(cursor);
+        const [ancestor] = await tx
+          .select({ parentId: wakiesPage.parentId })
+          .from(wakiesPage)
+          .where(and(eq(wakiesPage.id, cursor), eq(wakiesPage.userId, userId)))
+          .limit(1);
+        cursor = ancestor?.parentId ?? null;
+      }
+    }
+
+    const [row] = await tx
+      .update(wakiesPage)
+      .set({
+        ...(patch.title === undefined ? {} : { title: patch.title }),
+        ...(patch.content === undefined
+          ? {}
+          : { content: preserveGoalMarker(page.content, patch.content) }),
+        parentId,
+        revision: page.revision + 1,
+        updatedAt: new Date(),
+      })
+      .where(
+        and(
+          eq(wakiesPage.id, pageId),
+          eq(wakiesPage.userId, userId),
+          eq(wakiesPage.revision, patch.expectedRevision)
+        )
       )
-    )
-    .returning();
-  return row ?? null;
+      .returning();
+    return row ?? null;
+  });
 }
 
 /**
@@ -279,33 +388,45 @@ export async function deletePage(
   pageId: string
 ): Promise<boolean> {
   await dbReady();
-  const page = await findPage(userId, pageId);
-  if (!page) return false;
-  const pages = await listPages(userId, page.spaceId);
-  const descendants = new Set([page.id]);
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const candidate of pages) {
-      if (
-        candidate.parentId &&
-        descendants.has(candidate.parentId) &&
-        !descendants.has(candidate.id)
-      ) {
-        descendants.add(candidate.id);
-        changed = true;
+  return getDb().transaction(async (tx) => {
+    await lockPageTree(tx, userId);
+    const [page] = await tx
+      .select()
+      .from(wakiesPage)
+      .where(and(eq(wakiesPage.id, pageId), eq(wakiesPage.userId, userId)))
+      .limit(1);
+    if (!page) return false;
+    const pages = await tx
+      .select({ id: wakiesPage.id, parentId: wakiesPage.parentId })
+      .from(wakiesPage)
+      .where(
+        and(eq(wakiesPage.userId, userId), eq(wakiesPage.spaceId, page.spaceId))
+      );
+    const descendants = new Set([page.id]);
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const candidate of pages) {
+        if (
+          candidate.parentId &&
+          descendants.has(candidate.parentId) &&
+          !descendants.has(candidate.id)
+        ) {
+          descendants.add(candidate.id);
+          changed = true;
+        }
       }
     }
-  }
-  await getDb()
-    .delete(wakiesPage)
-    .where(
-      and(
-        eq(wakiesPage.userId, userId),
-        inArray(wakiesPage.id, [...descendants])
-      )
-    );
-  return true;
+    await tx
+      .delete(wakiesPage)
+      .where(
+        and(
+          eq(wakiesPage.userId, userId),
+          inArray(wakiesPage.id, [...descendants])
+        )
+      );
+    return true;
+  });
 }
 
 /**
@@ -322,51 +443,69 @@ export async function createReviewedPage(
     title: string;
     content?: string;
     parentId?: string | null;
-  }
+  },
+  options: { quota: number | null }
 ): Promise<{ page: WakiePageRow; created: boolean }> {
   await dbReady();
-  const [recu] = await getDb()
-    .select()
-    .from(wakiesPageReview)
-    .where(
-      and(
-        eq(wakiesPageReview.conversationId, input.conversationId),
-        eq(wakiesPageReview.toolCallId, input.toolCallId)
+  return getDb().transaction(async (tx) => {
+    // Deux approbations simultanées du même appel d'outil se sérialisent :
+    // une seule crée la page, l'autre relit le reçu et ne consomme AUCUNE
+    // place de quota supplémentaire.
+    await tx.execute(
+      sql`SELECT pg_advisory_xact_lock(hashtext(${`wakies-review:${input.conversationId}:${input.toolCallId}`}))`
+    );
+    const [recu] = await tx
+      .select()
+      .from(wakiesPageReview)
+      .where(
+        and(
+          eq(wakiesPageReview.conversationId, input.conversationId),
+          eq(wakiesPageReview.toolCallId, input.toolCallId)
+        )
       )
-    )
-    .limit(1);
-  if (recu) {
-    if (recu.spaceId !== input.spaceId) {
-      throw new Error(
-        "Cette revue a déjà été enregistrée dans un autre espace."
-      );
+      .limit(1);
+    if (recu) {
+      if (recu.spaceId !== input.spaceId) {
+        throw new Error(
+          "Cette revue a déjà été enregistrée dans un autre espace."
+        );
+      }
+      const [page] = await tx
+        .select()
+        .from(wakiesPage)
+        .where(
+          and(eq(wakiesPage.id, recu.pageId), eq(wakiesPage.userId, userId))
+        )
+        .limit(1);
+      if (!page) {
+        throw new Error("Page enregistrée introuvable.");
+      }
+      return { created: false, page };
     }
-    const page = await findPage(userId, recu.pageId);
-    if (!page) {
-      throw new Error("Page enregistrée introuvable.");
-    }
-    return { created: false, page };
-  }
-  const page = await createPage(
-    userId,
-    input.spaceId,
-    {
-      content: input.content,
-      parentId: input.parentId,
-      title: input.title,
-    },
-    input.conversationId
-  );
-  await getDb()
-    .insert(wakiesPageReview)
-    .values({
-      conversationId: input.conversationId,
-      pageId: page.id,
-      spaceId: input.spaceId,
-      toolCallId: input.toolCallId,
-    })
-    .onConflictDoNothing();
-  return { created: true, page };
+
+    const page = await createPageInTransaction(
+      tx,
+      userId,
+      input.spaceId,
+      {
+        content: input.content,
+        parentId: input.parentId,
+        title: input.title,
+      },
+      input.conversationId,
+      options.quota
+    );
+    await tx
+      .insert(wakiesPageReview)
+      .values({
+        conversationId: input.conversationId,
+        pageId: page.id,
+        spaceId: input.spaceId,
+        toolCallId: input.toolCallId,
+      })
+      .onConflictDoNothing();
+    return { created: true, page };
+  });
 }
 
 export async function reviewReceipt(

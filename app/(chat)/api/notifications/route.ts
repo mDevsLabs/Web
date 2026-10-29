@@ -10,7 +10,11 @@ import {
   markAllNotificationsRead,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { NOTIFICATION_TYPES } from "@/lib/notifications/types";
+import {
+  isNotificationOrigin,
+  NOTIFICATION_TYPES,
+  type NotificationType,
+} from "@/lib/notifications/types";
 
 const notificationSchema = z.object({
   body: z.string().max(500).nullish(),
@@ -46,13 +50,24 @@ export async function GET(request: Request) {
     0
   );
   const unreadOnly = searchParams.get("unreadOnly") === "true";
+  // Filtre par origine : la cloche mAI affiche les trois applications, mais
+  // l'utilisateur peut n'en vouloir qu'une. Une origine inconnue est
+  // ignorée — jamais appliquée comme un filtre qui ne définirait rien.
+  const rawOrigins = searchParams.get("origins");
+  const origins = rawOrigins
+    ? rawOrigins
+        .split(",")
+        .map((valeur) => valeur.trim())
+        .filter(isNotificationOrigin)
+    : undefined;
   const notifications = await getNotificationsByUserId({
     limit,
     offset,
+    origins,
     unreadOnly,
     userId,
   });
-  const unreadCount = await getUnreadNotificationCount(userId);
+  const unreadCount = await getUnreadNotificationCount(userId, origins);
   return NextResponse.json({ notifications, unreadCount });
 }
 
@@ -106,7 +121,7 @@ export async function POST(request: Request) {
     body: notifBody ?? null,
     link: link ?? null,
     title,
-    type: type as any,
+    type: type as NotificationType,
     userId: session.userId,
   });
   return NextResponse.json(created);
@@ -120,6 +135,11 @@ export async function PATCH(request: Request) {
   const body = await request.json().catch(() => ({}));
   if (body.action === "markAllRead") {
     await markAllNotificationsRead(session.userId);
+    // Ce marquage porte sur la table unifiée. Les SOURCES ont leur propre
+    // granularité : Vibe est propagé par le CLIENT (seul détenteur du JWT
+    // Vibe), et la lecture d'une conversation Wakies reste portée par la
+    // page du fil — une conversation n'est pas « lue » parce qu'une
+    // notification l'a été.
     return NextResponse.json({ success: true });
   }
   return errorResponse("invalid_request", {
@@ -144,18 +164,11 @@ export async function DELETE(request: Request) {
   }
 
   if (clearRead) {
-    const { getNotificationsByUserId, deleteNotification } = await import(
-      "@/lib/db/queries"
-    );
-    const notifs = await getNotificationsByUserId({
-      limit: 50,
-      userId,
-    });
-    const toDelete = notifs.filter((n) => n.isRead);
-    for (const n of toDelete) {
-      await deleteNotification({ id: n.id, userId });
-    }
-    return NextResponse.json({ deleted: toDelete.length });
+    // Filtre `isRead` EN BASE, sans borne de lot : les lues anciennes ne sont
+    // plus invisibles derrière les 50 notifications récentes.
+    const { deleteReadNotifications } = await import("@/lib/db/queries");
+    const result = await deleteReadNotifications(userId);
+    return NextResponse.json(result);
   }
 
   // Also check if body has action: 'deleteAll'

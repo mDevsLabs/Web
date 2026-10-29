@@ -10,7 +10,7 @@
  * qui reste le moteur unique : le catalogue décrit et filtre, il ne duplique pas.
  * ============================================================================
  */
-import { getDb } from "../../config.ts";
+import { getDb } from "../../../../config.ts";
 import { execute as generateImage } from "./generateImage.ts";
 import { execute as searchWeb } from "./searchWeb.ts";
 import { execute as factCheck } from "./factCheck.ts";
@@ -42,6 +42,12 @@ import { execute as analyzeContentPerformance } from "./analyzeContentPerformanc
 import { execute as analyzeDmActivity } from "./analyzeDmActivity.ts";
 import { execute as analyzeBookStats } from "./analyzeBookStats.ts";
 import { execute as analyzeHashtags } from "./analyzeHashtags.ts";
+import { execute as analyzeSentiment } from "./analyzeSentiment.ts";
+import { execute as summarizeThread } from "./summarizeThread.ts";
+import { execute as adaptPost } from "./adaptPost.ts";
+import { execute as generateVariants } from "./generateVariants.ts";
+import { execute as generateCaption } from "./generateCaption.ts";
+import { execute as compareModels } from "./compareModels.ts";
 
 import catalogJson from "./index.json" with { type: "json" };
 
@@ -97,6 +103,12 @@ export const TOOL_EXECUTORS: Record<string, (userId: number | string, args: any)
   analyze_dm_activity: analyzeDmActivity,
   analyze_book_stats: analyzeBookStats,
   analyze_hashtags: analyzeHashtags,
+  analyze_sentiment: analyzeSentiment,
+  summarize_thread: summarizeThread,
+  adapt_post: adaptPost,
+  generate_variants: generateVariants,
+  generate_caption: generateCaption,
+  compare_models: compareModels,
 };
 
 /** Cache des outils activés par utilisateur (TTL 60 s, miroir userModelCache). */

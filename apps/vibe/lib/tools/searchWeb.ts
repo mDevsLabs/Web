@@ -2,7 +2,7 @@
  * Outil mAI — Recherche web (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "search_web".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface SearchWebArgs {
   query: string;

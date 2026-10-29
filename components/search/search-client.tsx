@@ -2,6 +2,7 @@
 
 import {
   ArrowRightIcon,
+  BookIcon,
   BotIcon,
   CheckIcon,
   CopyIcon,
@@ -26,13 +27,25 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { useRecentSearches } from "@/hooks/use-recent-searches";
+import { formatModelName } from "@/lib/ai/models";
+import { isSearchableQuery, looksLikeUrl } from "@/lib/search/query";
 import {
+  orderResults,
+  type ResultPeriod,
+  type ResultSort,
+} from "@/lib/search/result-order";
+import {
+  mergeStreamText,
   readSummaryStream,
   type SummarySource,
 } from "@/lib/search/summary-stream";
+import trendingSuggestions from "@/lib/search/trending-suggestions.json";
+import { isWikipediaArticleUrl } from "@/lib/search/wikipedia";
 import type {
   SearchImageHit,
   SearchNewsHit,
@@ -41,7 +54,95 @@ import type {
 } from "@/lib/search/you-client";
 import { cn } from "@/lib/utils";
 
-type SearchTab = "web" | "news" | "images" | "videos";
+type SearchTab = "web" | "news" | "images" | "videos" | "wikipedia";
+
+const TRENDING = trendingSuggestions.suggestions;
+
+function isWikipediaHit(hit: { origin?: string; url: string }): boolean {
+  return hit.origin === "wikipedia" || isWikipediaArticleUrl(hit.url);
+}
+
+function modelLabelFromResponse(response: Response): string | null {
+  const named = response.headers.get("X-Model-Name")?.trim();
+  if (named) {
+    return named;
+  }
+  const id = response.headers.get("X-Model-Id")?.trim();
+  return id ? formatModelName(id).name : null;
+}
+
+function TrendSuggestions({
+  layout,
+  onPick,
+  query,
+}: {
+  layout: "row" | "wrap";
+  onPick: (suggestion: string) => void;
+  query: string;
+}) {
+  const needle = query.trim().toLowerCase();
+  const visible = needle
+    ? TRENDING.filter((item) => item.toLowerCase().includes(needle))
+    : TRENDING;
+  if (visible.length === 0) {
+    return null;
+  }
+  return (
+    <div className={layout === "wrap" ? "mt-4 w-full max-w-3xl" : "w-full"}>
+      <p className="mb-2 px-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        Tendances
+      </p>
+      <div
+        className={
+          layout === "wrap"
+            ? "flex max-h-40 flex-wrap gap-1.5 overflow-y-auto"
+            : "flex gap-1.5 overflow-x-auto pb-1 no-scrollbar"
+        }
+      >
+        {visible.map((item) => (
+          <button
+            className="chip shrink-0 cursor-pointer px-3 py-1.5 text-xs"
+            key={item}
+            onClick={() => onPick(item)}
+            type="button"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AnswerReasoning({
+  streaming,
+  text,
+}: {
+  streaming: boolean;
+  text: string;
+}) {
+  const [open, setOpen] = useState(streaming);
+  useEffect(() => {
+    setOpen(streaming);
+  }, [streaming]);
+  if (!text) {
+    return null;
+  }
+  return (
+    <details
+      className="rounded-xl border border-border/50 bg-muted/30 px-3 py-2"
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+      open={open}
+    >
+      <summary className="cursor-pointer text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        Réflexion
+      </summary>
+      <p className="mt-2 whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">
+        {text}
+      </p>
+    </details>
+  );
+}
 
 type SummaryTarget = {
   url: string;
@@ -55,6 +156,7 @@ type DrawerMessage = {
   id: string;
   role: "user" | "assistant";
   content: string;
+  reasoning?: string;
   sources?: SummarySource[];
 };
 
@@ -83,6 +185,15 @@ function SummarySources({ sources }: { sources: SummarySource[] }) {
               <span className="line-clamp-1 font-medium">{source.title}</span>
               <span className="text-[10px] text-muted-foreground">
                 {source.domain}
+                {/*
+                  L'origine est rappelée ici : la synthèse annonce
+                  « d'après Wikipédia » quand l'affirmation vient de
+                  l'encyclopédie. C'est la même information que le badge des
+                  résultats, mais là où l'utilisateur la lit.
+                */}
+                {source.origin === "wikipedia" ? (
+                  <span className="text-info"> · Wikipédia</span>
+                ) : null}
               </span>
             </a>
           </li>
@@ -216,6 +327,8 @@ export function SearchClient() {
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [activeTab, setActiveTab] = useState<SearchTab>("web");
+  const [sort, setSort] = useState<ResultSort>("relevance");
+  const [period, setPeriod] = useState<ResultPeriod>("all");
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
@@ -224,12 +337,34 @@ export function SearchClient() {
   const [news, setNews] = useState<SearchNewsHit[]>([]);
   const [videos, setVideos] = useState<SearchVideoHit[]>([]);
   const [searchId, setSearchId] = useState<string | null>(null);
+  // Moteurs qui ont répondu : sert à dire d'où viennent les résultats
+  // quand la source principale a échoué.
+  const [provider, setProvider] = useState<string | null>(null);
+  /**
+   * Durée de la dernière recherche, en millisecondes.
+   *
+   * Elle n'est affichée que si elle est nettement trop longue : une
+   * recherche à 400 ms n'intéresse personne, une recherche à huit secondes
+   * explique pourquoi l'écran paraissait figé. C'est un DIAGNOSTIC, pas un
+   * compteur permanent.
+   */
+  const [durationMs, setDurationMs] = useState<number | null>(null);
+  /**
+   * Message d'erreur de la recherche courante.
+   *
+   * L'échec existait avant sous forme d'exception avalée : le `toast` partait,
+   * l'écran restait vide, et rien n'indiquait à l'utilisateur que la panne
+   * n'était pas « aucun résultat ». Un état dédié permet d'afficher la
+   * panne ET de proposer de réessayer.
+   */
+  const [searchError, setSearchError] = useState<string | null>(null);
 
   // Modèle d'IA choisi pour le tiroir de discussion (via ModelSelector)
   const [selectedModelId, setSelectedModelId] = useState<string>("mai-2-mini");
 
   // Synthèse globale
   const [summary, setSummary] = useState("");
+  const [summaryReasoning, setSummaryReasoning] = useState("");
   const [summarySources, setSummarySources] = useState<SummarySource[]>([]);
   const [summaryModel, setSummaryModel] = useState<string | null>(null);
   const [summaryLength, setSummaryLength] = useState<
@@ -238,6 +373,18 @@ export function SearchClient() {
   const [vote, setVote] = useState<"good" | "bad" | null>(null);
   const [hasCopiedSummary, setHasCopiedSummary] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
+
+  /**
+   * Les visionneuses sont montées dans `document.body`.
+   *
+   * `position: fixed` ne se réfère pas à la fenêtre dès qu'un ancêtre porte un
+   * `transform`, un `filter` ou `contain` : c'est le cas du conteneur de page de
+   * l'application, et la visionneuse d'image s'affichait alors AU BAS DU
+   * CONTENU, à la fin de la zone de défilement, au lieu de recouvrir l'écran.
+   * Un portail sort de cet ancêtre une fois pour toutes.
+   */
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => setPortalReady(true), []);
 
   // Visionneuse Lightbox pour les images
   const [selectedImage, setSelectedImage] = useState<SearchImageHit | null>(
@@ -263,11 +410,52 @@ export function SearchClient() {
 
   // Filtre par domaine optionnel
   const [domainFilter, setDomainFilter] = useState<string | null>(null);
+  /**
+   * Filtre par ORIGINE : tous les résultats, ou les seuls articles
+   * d'encyclopédie.
+   *
+   * L'encyclopédie est une source à part entière, mais ses articles étaient
+   * noyés parmi les pages web : rien ne disait à l'utilisateur que « Ada
+   * Lovelace » avait été trouvé dans Wikipédia. Ce filtre rend la source
+   * visible — et permet de ne lire QUE la référence.
+   */
+  /**
+   * Le moteur a-t-il remonté l'encyclopédie en tête de liste ?
+   *
+   * Le serveur le calcule (`wikiFirst`) : l'interface ne le redétermine pas,
+   * elle se contente de l'expliquer. Sans cette information, l'utilisateur
+   * voyait les articles d'encyclopédie en tête sans comprendre pourquoi.
+   */
+  const [wikiFirst, setWikiFirst] = useState(false);
+  /**
+   * Volume demandé (par source) et volume effectivement obtenu.
+   *
+   * Le serveur les envoie : l'interface ne les devine pas. Quand le moteur
+   * tronque, l'utilisateur doit le voir — une recherche qui rend 40 liens
+   * sur 200 demandés ne doit pas se faire passer pour exhaustive.
+   */
+  const [requestedCount, setRequestedCount] = useState<number | null>(null);
+  const [truncated, setTruncated] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const drawerMessagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const drawerAbortControllerRef = useRef<AbortController | null>(null);
+  /** Annule la recherche en vol (et elle seule). */
+  const searchAbortRef = useRef<AbortController | null>(null);
+
+  /**
+   * Historique des recherches récentes.
+   *
+   * Il est lu depuis le serveur, qui filtre par compte : l'interface ne
+   * reçoit jamais la requête d'un autre compte.
+   */
+  const {
+    clear: clearRecent,
+    forget: forgetRecent,
+    recent,
+    refresh: refreshRecent,
+  } = useRecentSearches();
 
   // Focus initial sur la barre de recherche
   useEffect(() => {
@@ -303,6 +491,7 @@ export function SearchClient() {
 
       setIsSummaryLoading(true);
       setSummary("");
+      setSummaryReasoning("");
       setSummarySources([]);
       setVote(null);
 
@@ -324,16 +513,25 @@ export function SearchClient() {
           throw new Error("Impossible de générer le résumé.");
         }
 
-        const modelHeader = response.headers.get("X-Model-Id");
-        if (modelHeader) setSummaryModel(modelHeader);
+        const modelLabel = modelLabelFromResponse(response);
+        if (modelLabel) {
+          setSummaryModel(modelLabel);
+        }
 
         let textAccumulator = "";
+        let reasoningAccumulator = "";
         let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
           if (event.type === "sources") {
             setSummarySources(event.sources);
+          } else if (event.type === "reasoning-delta") {
+            reasoningAccumulator = mergeStreamText(
+              reasoningAccumulator,
+              event.delta
+            );
+            setSummaryReasoning(reasoningAccumulator);
           } else if (event.type === "text-delta") {
-            textAccumulator += event.delta;
+            textAccumulator = mergeStreamText(textAccumulator, event.delta);
             setSummary(textAccumulator);
           } else if (event.type === "error") {
             streamError = event.message;
@@ -398,9 +596,22 @@ export function SearchClient() {
         }
 
         let textAccumulator = "";
+        let reasoningAccumulator = "";
         await readSummaryStream(response, (event) => {
-          if (event.type === "text-delta") {
-            textAccumulator += event.delta;
+          if (event.type === "reasoning-delta") {
+            reasoningAccumulator = mergeStreamText(
+              reasoningAccumulator,
+              event.delta
+            );
+            setTargetConversation((prev) => {
+              const msgs = [...prev.messages];
+              if (msgs.length > 0 && msgs[0].role === "assistant") {
+                msgs[0] = { ...msgs[0], reasoning: reasoningAccumulator };
+              }
+              return { ...prev, messages: msgs };
+            });
+          } else if (event.type === "text-delta") {
+            textAccumulator = mergeStreamText(textAccumulator, event.delta);
             setTargetConversation((prev) => {
               const msgs = [...prev.messages];
               if (msgs.length > 0 && msgs[0].role === "assistant") {
@@ -499,9 +710,26 @@ export function SearchClient() {
       }
 
       let accumulated = "";
+      let reasoningAccumulator = "";
       await readSummaryStream(response, (event) => {
-        if (event.type === "text-delta") {
-          accumulated += event.delta;
+        if (event.type === "reasoning-delta") {
+          reasoningAccumulator = mergeStreamText(
+            reasoningAccumulator,
+            event.delta
+          );
+          setTargetConversation((prev) => {
+            const msgs = [...prev.messages];
+            const lastIdx = msgs.length - 1;
+            if (lastIdx >= 0 && msgs[lastIdx].role === "assistant") {
+              msgs[lastIdx] = {
+                ...msgs[lastIdx],
+                reasoning: reasoningAccumulator,
+              };
+            }
+            return { ...prev, messages: msgs };
+          });
+        } else if (event.type === "text-delta") {
+          accumulated = mergeStreamText(accumulated, event.delta);
           setTargetConversation((prev) => {
             const msgs = [...prev.messages];
             const lastIdx = msgs.length - 1;
@@ -580,11 +808,36 @@ export function SearchClient() {
     router.push(`/?prompt=${encodeURIComponent(prefilled)}`);
   };
 
-  // Exécution de la recherche principale
-  const handleSearch = useCallback(
+  /**
+   * Exécution de la recherche principale.
+   *
+   * Trois choses ont été corrigées ici :
+   *
+   * 1. La requête est ANNULABLE. Une recherche lancée puis abandonnée
+   *    (nouvelle frappe, onglet fermé) continuait de courir et pouvait
+   *    réécrire les résultats par-dessus ceux de la recherche suivante.
+   *    Le `AbortController` estAnnulé, et la réponse d'une recherche
+   *    abandonnée est ignorée.
+   *
+   * 2. L'ERREUR EST AFFICHÉE, pas seulement signalée par un `toast`. Une
+   *    panne laissait un écran vide, indiscernable d'une recherche sans
+   *    résultat. L'écran dit maintenant ce qui s'est passé et propose de
+   *    réessayer.
+   *
+   * 3. L'URL porte la requête. Une recherche est partageable, et le bouton
+   *    « Partager » existait déjà mais reconstruisait l'URL à la main —
+   *    il pouvait donc partager autre chose que ce qui est affiché.
+   */
+  const runSearch = useCallback(
     async (overrideQuery?: string) => {
       const q = (overrideQuery ?? query).trim();
       if (!q) return;
+
+      // Une recherche précédente encore en vol est abandonnée : ses
+      // résultats ne doivent pas écraser ceux de la nouvelle.
+      searchAbortRef.current?.abort();
+      const controller = new AbortController();
+      searchAbortRef.current = controller;
 
       setSubmittedQuery(q);
       setIsLoading(true);
@@ -593,22 +846,50 @@ export function SearchClient() {
       setNews([]);
       setVideos([]);
       setSummary("");
+      setSummaryReasoning("");
       setSummaryModel(null);
       setVote(null);
       setDomainFilter(null);
+      setWikiFirst(false);
+      setSearchError(null);
+      setDurationMs(null);
+      setRequestedCount(null);
+      setTruncated(false);
+
+      // L'URL est mise à jour AVANT la requête : le partage et le
+      // rechargement fonctionnent même si la recherche échoue, et l'URL
+      // reflète la recherche en cours, pas la précédente.
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", q);
+      window.history.replaceState(null, "", url.toString());
 
       try {
+        // Aucune source, ni langue, ni volume n'est envoyé : le serveur
+        // applique les préférences du compte (langue, sources activées,
+        // volume, filtre) et son plafond de forfait. Le client propose, le
+        // serveur tranche — envoyer `type: "all"` contournerait le réglage
+        // « sources activées », et envoyer `count` contournerait le
+        // plafond du forfait.
         const res = await fetch("/api/mai-search", {
-          body: JSON.stringify({ count: 25, query: q, type: "all" }),
+          body: JSON.stringify({ query: q }),
           headers: { "Content-Type": "application/json" },
           method: "POST",
+          signal: controller.signal,
         });
 
         if (!res.ok) {
-          throw new Error("Erreur lors de la recherche");
+          throw new Error(
+            res.status === 429
+              ? "Trop de recherches consécutives. Patientez quelques secondes."
+              : "Le moteur de recherche n'a pas répondu."
+          );
         }
 
         const data = await res.json();
+        // Une réponse arrivée après l'abandon ne doit rien écrire.
+        if (controller.signal.aborted) {
+          return;
+        }
         const searchResults: SearchWebHit[] = data.results || [];
         const searchImages: SearchImageHit[] = data.images || [];
         const searchNews: SearchNewsHit[] = data.news || [];
@@ -619,23 +900,100 @@ export function SearchClient() {
         setNews(searchNews);
         setVideos(searchVideos);
         setSearchId(data.searchId || null);
+        setProvider(data.provider || null);
+        // Volume demandé et volume obtenu : quand ils diffèrent, le moteur a
+        // tronqué, et l'interface doit le dire.
+        setRequestedCount(
+          typeof data.requestedCount === "number" ? data.requestedCount : null
+        );
+        setTruncated(data.truncated === true);
+        // Le serveur décide de l'ordre : l'interface l'explique, elle ne le
+        // recalcule pas.
+        setWikiFirst(data.wikiFirst === true);
+        setDurationMs(
+          typeof data.durationMs === "number" ? data.durationMs : null
+        );
+
+        // L'historique est rechargé APRÈS la recherche : la ligne vient
+        // d'être écrite, et l'afficher immédiatement montrerait une entrée
+        // que le serveur n'a pas encore confirmée.
+        void refreshRecent();
 
         // Lancer immédiatement la synthèse IA en parallèle
         void fetchSummary(q, data.searchId || null, searchResults, "normal");
       } catch (err: any) {
-        toast.error(err.message || "Impossible d'effectuer la recherche.");
+        if (err?.name === "AbortError") {
+          return;
+        }
+        const message = err?.message || "Impossible d'effectuer la recherche.";
+        setSearchError(message);
+        toast.error(message);
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     },
-    [query, fetchSummary]
+    [fetchSummary, query, refreshRecent]
+  );
+
+  /**
+   * REPRISE D'UNE RECHERCHE DEPUIS L'URL.
+   *
+   * `/search?q=…` doit afficher la recherche, pas une page d'accueil. La
+   * requête est lue UNE SEULE FOIS au montage : ensuite, chaque recherche
+   * écrit l'URL elle-même, et la relire à chaque rendu créerait une boucle
+   * (l'URL change → l'effet rejoue → la recherche repart).
+   *
+   * Le drapeau `initialQueryRef` est donc la preuve que l'amorçage a eu
+   * lieu : sans lui, un changement de `searchParams` à la volée
+   * reserait la recherche, ce qui n'est pas le comportement attendu d'un
+   * simple lien.
+   *
+   * La fonction de recherche est lue dans une RÉF : elle change à chaque
+   * frappe, et l'amorçage ne doit se produire qu'une fois. Déclarer la
+   * dépendance ferait rejouer l'effet à chaque frappe — donc relancer la
+   * recherche en boucle. La ref est donc mise à jour à chaque rendu, et
+   * l'effet n'en dépend pas.
+   */
+  const initialQueryRef = useRef<string | null>(null);
+  const searchRef = useRef(runSearch);
+  searchRef.current = runSearch;
+  useEffect(() => {
+    if (initialQueryRef.current !== null) {
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    const depuisUrl = params.get("q")?.trim() ?? "";
+    if (!depuisUrl) {
+      return;
+    }
+    initialQueryRef.current = depuisUrl;
+    setQuery(depuisUrl);
+    void searchRef.current(depuisUrl);
+  }, []);
+
+  /**
+   * Annulation au DÉMONTAGE.
+   *
+   * Sans cela, quitter la page pendant une recherche la laisse courir
+   * jusqu'au bout et tenter d'écrire dans un composant disparu. Le même
+   * sort est réservé à la synthèse.
+   */
+  useEffect(
+    () => () => {
+      searchAbortRef.current?.abort();
+      abortControllerRef.current?.abort();
+      drawerAbortControllerRef.current?.abort();
+    },
+    []
   );
 
   // Soumission via Entrée
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      void handleSearch();
+      void runSearch();
     }
   };
 
@@ -728,17 +1086,52 @@ export function SearchClient() {
     router.push(`/?prompt=${encodeURIComponent(prefilled)}`);
   };
 
-  // Filtrage par domaine
+  const wikipediaCount = useMemo(
+    () => results.filter((result) => isWikipediaHit(result)).length,
+    [results]
+  );
+
+  // Tri, période et domaine s'appliquent sur la liste déjà reçue.
+  // L'onglet Wikipédia ne relance pas le moteur : il isole les articles.
   const filteredResults = useMemo(() => {
-    if (!domainFilter) return results;
-    return results.filter((r) => {
-      try {
-        return new URL(r.url).hostname.includes(domainFilter);
-      } catch {
-        return true;
-      }
-    });
-  }, [results, domainFilter]);
+    const scoped =
+      activeTab === "wikipedia"
+        ? results.filter((result) => isWikipediaHit(result))
+        : results;
+    const byDomain = domainFilter
+      ? scoped.filter((result) => {
+          try {
+            return new URL(result.url).hostname.includes(domainFilter);
+          } catch {
+            return true;
+          }
+        })
+      : scoped;
+    return orderResults(byDomain, sort, period);
+  }, [activeTab, domainFilter, period, results, sort]);
+
+  const orderedNews = useMemo(
+    () => orderResults(news, sort, period),
+    [news, period, sort]
+  );
+
+  const orderedImages = useMemo(() => {
+    if (sort !== "title") {
+      return images;
+    }
+    return [...images].sort((a, b) =>
+      a.title.localeCompare(b.title, "fr", { sensitivity: "base" })
+    );
+  }, [images, sort]);
+
+  const orderedVideos = useMemo(() => {
+    if (sort !== "title") {
+      return videos;
+    }
+    return [...videos].sort((a, b) =>
+      a.title.localeCompare(b.title, "fr", { sensitivity: "base" })
+    );
+  }, [sort, videos]);
 
   const hasSearched = Boolean(submittedQuery);
 
@@ -794,8 +1187,8 @@ export function SearchClient() {
                 ) : null}
                 <button
                   className="mr-1.5 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 cursor-pointer disabled:opacity-40"
-                  disabled={!query.trim() || isLoading}
-                  onClick={() => void handleSearch()}
+                  disabled={!isSearchableQuery(query) || isLoading}
+                  onClick={() => void runSearch()}
                   type="button"
                 >
                   {isLoading ? "Recherche..." : "Rechercher"}
@@ -814,14 +1207,26 @@ export function SearchClient() {
               </button>
             </div>
 
-            {/* Onglets et Tags de filtrage */}
+            <div className="max-w-6xl mx-auto w-full pt-3">
+              <TrendSuggestions
+                layout="row"
+                onPick={(suggestion) => {
+                  setQuery(suggestion);
+                  void runSearch(suggestion);
+                }}
+                query={query}
+              />
+            </div>
+
+            {/* Onglets et Tags de filtrage. L'état actif se porte sur
+                `data-active` (voir l'utilitaire `chip` de globals.css), jamais
+                sur une classe conditionnelle : les onglets et la pastille
+                « Wikipédia + Web » partagent alors exactement le même
+                gabarit, à la lettre près. */}
             <div className="max-w-6xl mx-auto flex items-center gap-1.5 pt-3 overflow-x-auto w-full no-scrollbar">
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "web" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "web" ? "true" : undefined}
                 onClick={() => setActiveTab("web")}
                 type="button"
               >
@@ -830,11 +1235,8 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "news" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "news" ? "true" : undefined}
                 onClick={() => setActiveTab("news")}
                 type="button"
               >
@@ -843,11 +1245,8 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "images" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "images" ? "true" : undefined}
                 onClick={() => setActiveTab("images")}
                 type="button"
               >
@@ -856,17 +1255,60 @@ export function SearchClient() {
               </button>
 
               <button
-                className={cn(
-                  "chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0",
-                  activeTab === "videos" &&
-                    "bg-foreground text-background font-medium"
-                )}
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "videos" ? "true" : undefined}
                 onClick={() => setActiveTab("videos")}
                 type="button"
               >
                 <VideoIcon className="size-3.5" />
                 <span>Vidéos ({videos.length})</span>
               </button>
+
+              <button
+                className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
+                data-active={activeTab === "wikipedia" ? "true" : undefined}
+                onClick={() => setActiveTab("wikipedia")}
+                type="button"
+              >
+                <BookIcon className="size-3.5" />
+                <span>Wikipédia ({wikipediaCount})</span>
+              </button>
+
+              {/*
+                Source interrogée. C'est une INFORMATION, pas un filtre : elle
+                dit QUELLE source a répondu, et ne filtre rien. Elle porte donc
+                le même gabarit que les onglets voisins — même taille, même
+                icône — mais reste une <span> neutre (`data-static`), sans
+                curseur cliquable ni état actif.
+              */}
+              {/*
+                Pas de pastille « Wikipédia + Web » : elle décrivait la
+                composition interne du moteur, pas une source que
+                l'utilisateur peut choisir, et faisait doublon avec le filtre
+                « Wikipédia » voisin. Seules restent les deux issues qui
+                changent la lecture des résultats : l'encyclopédie seule, et
+                le mode dégradé.
+              */}
+              {provider === "wikipedia" || provider === "fallback" ? (
+                <span
+                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 shrink-0"
+                  data-static="true"
+                  title={
+                    provider === "wikipedia"
+                      ? "Les résultats proviennent de l'encyclopédie"
+                      : "Le moteur principal a échoué : résultats de repli"
+                  }
+                >
+                  {provider === "wikipedia" ? (
+                    <BookIcon className="size-3.5" />
+                  ) : (
+                    <GlobeIcon className="size-3.5" />
+                  )}
+                  <span>
+                    {provider === "wikipedia" ? "Wikipédia" : "Mode dégradé"}
+                  </span>
+                </span>
+              ) : null}
 
               {domainFilter ? (
                 <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0">
@@ -883,6 +1325,39 @@ export function SearchClient() {
                 </div>
               ) : null}
             </div>
+
+            <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-2 pt-2">
+              <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <span>Trier</span>
+                <select
+                  className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                  onChange={(event) =>
+                    setSort(event.target.value as ResultSort)
+                  }
+                  value={sort}
+                >
+                  <option value="relevance">Pertinence</option>
+                  <option value="date">Plus récent</option>
+                  <option value="title">Titre</option>
+                </select>
+              </label>
+              <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <span>Période</span>
+                <select
+                  className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                  onChange={(event) =>
+                    setPeriod(event.target.value as ResultPeriod)
+                  }
+                  value={period}
+                >
+                  <option value="all">Toutes les dates</option>
+                  <option value="day">24 heures</option>
+                  <option value="week">7 jours</option>
+                  <option value="month">30 jours</option>
+                  <option value="year">1 an</option>
+                </select>
+              </label>
+            </div>
           </header>
 
           {/* Corps des résultats */}
@@ -897,171 +1372,249 @@ export function SearchClient() {
               </div>
             ) : null}
 
+            {/* ─── Panne de la recherche ─── */}
+            {searchError && !isLoading ? (
+              <div
+                className="surface-card flex flex-col items-center gap-3 border-destructive/30 bg-destructive/5 p-8 text-center"
+                role="alert"
+              >
+                <p className="text-sm font-medium text-foreground">
+                  {searchError}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  La recherche n'a rien renvoyé. Ce n'est pas un résultat vide :
+                  le moteur n'a pas répondu.
+                </p>
+                <button
+                  className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                  onClick={() => void runSearch()}
+                  type="button"
+                >
+                  <RotateCcwIcon className="size-3.5" />
+                  <span>Réessayer</span>
+                </button>
+              </div>
+            ) : null}
+
             {/* ─── Onglet Tous (Web + Synthèse mAI) ─── */}
-            {activeTab === "web" && !isLoading ? (
+            {(activeTab === "web" || activeTab === "wikipedia") &&
+            !isLoading ? (
               <div className="flex flex-col gap-6">
                 {/* ─── Carte Résumé IA Global ─── */}
-                <motion.section
-                  animate={{ opacity: 1, y: 0 }}
-                  className="surface-card relative overflow-hidden border border-primary/25 bg-gradient-to-b from-primary/[0.04] to-card/60 p-5 sm:p-6 shadow-sm flex flex-col gap-4"
-                  initial={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="size-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20">
-                        <SparklesIcon className="size-3.5 animate-pulse" />
+                {activeTab === "web" ? (
+                  <motion.section
+                    animate={{ opacity: 1, y: 0 }}
+                    className="surface-card relative overflow-hidden border border-primary/25 bg-gradient-to-b from-primary/[0.04] to-card/60 p-5 sm:p-6 shadow-sm flex flex-col gap-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="size-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20">
+                          <SparklesIcon className="size-3.5 animate-pulse" />
+                        </div>
+                        <span className="text-sm font-semibold text-foreground">
+                          Synthèse mAI
+                        </span>
+                        {summaryModel ? (
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
+                            {summaryModel}
+                          </span>
+                        ) : null}
+                        {isSummaryLoading ? (
+                          <span className="text-[11px] text-muted-foreground animate-pulse">
+                            Génération en cours…
+                          </span>
+                        ) : null}
                       </div>
-                      <span className="text-sm font-semibold text-foreground">
-                        Synthèse mAI
-                      </span>
-                      {summaryModel ? (
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-mono font-medium">
-                          {summaryModel}
-                        </span>
-                      ) : null}
-                      {isSummaryLoading ? (
-                        <span className="text-[11px] text-muted-foreground animate-pulse">
-                          Génération en cours…
-                        </span>
-                      ) : null}
+
+                      <div className="flex items-center gap-1 text-xs">
+                        <button
+                          className={cn(
+                            "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
+                            summaryLength === "short"
+                              ? "bg-primary text-primary-foreground"
+                              : "text-muted-foreground hover:bg-muted/50"
+                          )}
+                          onClick={() => handleRefineSummary("short")}
+                          title="Résumé très concis"
+                          type="button"
+                        >
+                          Plus court
+                        </button>
+                        <button
+                          className={cn(
+                            "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
+                            summaryLength === "long"
+                              ? "bg-primary text-primary-foreground"
+                              : "text-muted-foreground hover:bg-muted/50"
+                          )}
+                          onClick={() => handleRefineSummary("long")}
+                          title="Synthèse détaillée"
+                          type="button"
+                        >
+                          Plus long
+                        </button>
+                        <button
+                          className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer"
+                          onClick={() => handleRefineSummary("normal")}
+                          title="Réessayer"
+                          type="button"
+                        >
+                          <RotateCcwIcon className="size-3.5" />
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-1 text-xs">
-                      <button
-                        className={cn(
-                          "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
-                          summaryLength === "short"
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted/50"
-                        )}
-                        onClick={() => handleRefineSummary("short")}
-                        title="Résumé très concis"
-                        type="button"
-                      >
-                        Plus court
-                      </button>
-                      <button
-                        className={cn(
-                          "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors cursor-pointer",
-                          summaryLength === "long"
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted/50"
-                        )}
-                        onClick={() => handleRefineSummary("long")}
-                        title="Synthèse détaillée"
-                        type="button"
-                      >
-                        Plus long
-                      </button>
-                      <button
-                        className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer"
-                        onClick={() => handleRefineSummary("normal")}
-                        title="Réessayer"
-                        type="button"
-                      >
-                        <RotateCcwIcon className="size-3.5" />
-                      </button>
+                    {/* Contenu du résumé markdown */}
+                    <div className="text-sm leading-relaxed text-foreground/90 flex flex-col gap-3">
+                      <AnswerReasoning
+                        streaming={isSummaryLoading}
+                        text={summaryReasoning}
+                      />
+                      {summary ? (
+                        <div className="prose dark:prose-invert max-w-none text-sm">
+                          {summaryReasoning ? (
+                            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                              Réponse
+                            </p>
+                          ) : null}
+                          <Streamdown>{summary}</Streamdown>
+                          <SummarySources sources={summarySources} />
+                        </div>
+                      ) : isSummaryLoading ? (
+                        <div className="space-y-2 py-2">
+                          <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
+                          <div className="h-4 w-5/6 animate-pulse rounded bg-muted/50" />
+                          <div className="h-4 w-2/3 animate-pulse rounded bg-muted/50" />
+                        </div>
+                      ) : (
+                        <p className="text-xs text-muted-foreground italic">
+                          En attente des données de recherche…
+                        </p>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Contenu du résumé markdown */}
-                  <div className="text-sm leading-relaxed text-foreground/90">
-                    {summary ? (
-                      <div className="prose dark:prose-invert max-w-none text-sm">
-                        <Streamdown>{summary}</Streamdown>
-                        <SummarySources sources={summarySources} />
-                      </div>
-                    ) : isSummaryLoading ? (
-                      <div className="space-y-2 py-2">
-                        <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
-                        <div className="h-4 w-5/6 animate-pulse rounded bg-muted/50" />
-                        <div className="h-4 w-2/3 animate-pulse rounded bg-muted/50" />
-                      </div>
-                    ) : (
-                      <p className="text-xs text-muted-foreground italic">
-                        En attente des données de recherche…
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Actions sous le résumé */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/30 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] text-muted-foreground">
-                        Ce résumé vous a-t-il aidé ?
-                      </span>
-                      <button
-                        aria-label="Bien"
-                        className={cn(
-                          "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
-                          vote === "good"
-                            ? "bg-success/15 border-success/30 text-success"
-                            : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-                        )}
-                        onClick={() => void handleVote("good")}
-                        type="button"
-                      >
-                        <ThumbsUpIcon className="size-3" />
-                        <span>Bien</span>
-                      </button>
-                      <button
-                        aria-label="Pas bien"
-                        className={cn(
-                          "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
-                          vote === "bad"
-                            ? "bg-destructive/15 border-destructive/30 text-destructive"
-                            : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-                        )}
-                        onClick={() => void handleVote("bad")}
-                        type="button"
-                      >
-                        <ThumbsDownIcon className="size-3" />
-                        <span>Pas bien</span>
-                      </button>
-
-                      <button
-                        aria-label="Copier le résumé"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-border/60 text-[11px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors ml-1 cursor-pointer"
-                        onClick={handleCopySummary}
-                        type="button"
-                      >
-                        {hasCopiedSummary ? (
-                          <CheckIcon className="size-3 text-success" />
-                        ) : (
-                          <CopyIcon className="size-3" />
-                        )}
-                        <span>
-                          {hasCopiedSummary ? "Copié" : "Copier la synthèse"}
+                    {/* Actions sous le résumé */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/30 text-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] text-muted-foreground">
+                          Ce résumé vous a-t-il aidé ?
                         </span>
+                        <button
+                          aria-label="Bien"
+                          className={cn(
+                            "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
+                            vote === "good"
+                              ? "bg-success/15 border-success/30 text-success"
+                              : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                          )}
+                          onClick={() => void handleVote("good")}
+                          type="button"
+                        >
+                          <ThumbsUpIcon className="size-3" />
+                          <span>Bien</span>
+                        </button>
+                        <button
+                          aria-label="Pas bien"
+                          className={cn(
+                            "inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-all cursor-pointer",
+                            vote === "bad"
+                              ? "bg-destructive/15 border-destructive/30 text-destructive"
+                              : "border-border/60 hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                          )}
+                          onClick={() => void handleVote("bad")}
+                          type="button"
+                        >
+                          <ThumbsDownIcon className="size-3" />
+                          <span>Pas bien</span>
+                        </button>
+
+                        <button
+                          aria-label="Copier le résumé"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-border/60 text-[11px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors ml-1 cursor-pointer"
+                          onClick={handleCopySummary}
+                          type="button"
+                        >
+                          {hasCopiedSummary ? (
+                            <CheckIcon className="size-3 text-success" />
+                          ) : (
+                            <CopyIcon className="size-3" />
+                          )}
+                          <span>
+                            {hasCopiedSummary ? "Copié" : "Copier la synthèse"}
+                          </span>
+                        </button>
+                      </div>
+
+                      <button
+                        className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer ml-auto"
+                        onClick={handleSendToChat}
+                        type="button"
+                      >
+                        <MessageCircleIcon className="size-3.5" />
+                        <span>Continuer dans le Chat mAI</span>
+                        <ArrowRightIcon className="size-3" />
                       </button>
                     </div>
-
-                    <button
-                      className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer ml-auto"
-                      onClick={handleSendToChat}
-                      type="button"
-                    >
-                      <MessageCircleIcon className="size-3.5" />
-                      <span>Continuer dans le Chat mAI</span>
-                      <ArrowRightIcon className="size-3" />
-                    </button>
-                  </div>
-                </motion.section>
+                  </motion.section>
+                ) : null}
 
                 {/* ─── Liste des résultats Web ─── */}
                 <div className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+                  {/*
+                    Le moteur a remonté l'encyclopédie en tête : on l'explique.
+                    Sans cette ligne, l'utilisateur voyait les articles de
+                    Wikipédia avant les pages web sans comprendre que c'était
+                    un CHOIX — la requête était factuelle.
+                  */}
+                  {wikiFirst && activeTab === "web" ? (
+                    <p className="flex items-center gap-1.5 px-1 text-[11px] text-muted-foreground">
+                      <BookIcon className="size-3.5 shrink-0" />
+                      <span>
+                        Les articles de Wikipédia sont en tête : la requête
+                        ressemble à une recherche factuelle.
+                      </span>
+                    </p>
+                  ) : null}
+
+                  <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground px-1">
                     <span>
                       {filteredResults.length} résultat
                       {filteredResults.length > 1 ? "s" : ""} trouvé
                       {filteredResults.length > 1 ? "s" : ""}
+                      {/*
+                        Le moteur a rendu moins de liens que demandé : le
+                        dire vaut mieux que laisser croire à une recherche
+                        exhaustive. Le volume demandé vient du serveur (il
+                        applique la préférence ET le plafond du forfait).
+                      */}
+                      {truncated && requestedCount ? (
+                        <span className="text-warning">
+                          {" "}
+                          · sur {requestedCount} demandés
+                        </span>
+                      ) : null}
                     </span>
+                    {/*
+                      La durée n'est affichée qu'au-delà de deux secondes :
+                      en dessous, elle n'apprend rien et n'occupe que de la
+                      place. Au-dessus, elle explique une attente — et c'est
+                      le seul endroit où l'utilisateur comprend que le
+                      moteur a été lent plutôt que muet.
+                    */}
+                    {durationMs !== null && durationMs > 2000 ? (
+                      <span title="Durée de la recherche">
+                        {(durationMs / 1000).toFixed(1)} s
+                      </span>
+                    ) : null}
                   </div>
 
                   {filteredResults.length === 0 ? (
                     <div className="surface-card p-8 text-center text-sm text-muted-foreground">
-                      Aucun résultat web trouvé pour « {submittedQuery} ».
+                      {activeTab === "wikipedia"
+                        ? `Aucun article Wikipédia pour « ${submittedQuery} ».`
+                        : `Aucun résultat web trouvé pour « ${submittedQuery} ».`}
                     </div>
                   ) : (
                     filteredResults.map((item, index) => {
@@ -1098,9 +1651,43 @@ export function SearchClient() {
                               >
                                 {hostname}
                               </button>
-                              <span className="chip text-[10px] py-0.5 px-2 bg-muted/60 text-muted-foreground shrink-0">
-                                Web
-                              </span>
+                              {/*
+                                L'origine distingue l'article d'encyclopédie
+                                de la page qui en parle. L'accent
+                                d'information (`--info`) porte cette
+                                distinction : c'est une information sur la
+                                nature de la source, pas une validation.
+                              */}
+                              {isWikipediaHit(item) ? (
+                                <button
+                                  className="chip shrink-0 cursor-pointer bg-info/10 px-2 py-0.5 text-[10px] font-medium text-info"
+                                  onClick={() => setActiveTab("wikipedia")}
+                                  type="button"
+                                >
+                                  Wikipédia
+                                </button>
+                              ) : (
+                                <span
+                                  className="chip shrink-0 bg-muted/60 px-2 py-0.5 text-[10px] text-muted-foreground"
+                                  data-static="true"
+                                >
+                                  Web
+                                </span>
+                              )}
+                              {/*
+                                Une page de désambiguïsation est un index
+                                d'homonymes, pas un article : le signaler
+                                évite de croire à un contenu de référence.
+                              */}
+                              {item.isDisambiguation ? (
+                                <span
+                                  className="chip shrink-0 bg-warning/10 px-2 py-0.5 text-[10px] font-medium text-warning"
+                                  data-static="true"
+                                  title="Cette page liste plusieurs sujets possibles. Choisissez le bon article dans Wikipédia."
+                                >
+                                  Désambiguïsation
+                                </span>
+                              ) : null}
                             </div>
 
                             <div className="flex items-center gap-1.5 shrink-0">
@@ -1166,17 +1753,18 @@ export function SearchClient() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
                   <span>
-                    {news.length} article{news.length > 1 ? "s" : ""}{" "}
-                    d'actualité trouvé{news.length > 1 ? "s" : ""}
+                    {orderedNews.length} article
+                    {orderedNews.length > 1 ? "s" : ""} d'actualité trouvé
+                    {orderedNews.length > 1 ? "s" : ""}
                   </span>
                 </div>
 
-                {news.length === 0 ? (
+                {orderedNews.length === 0 ? (
                   <div className="surface-card p-8 text-center text-sm text-muted-foreground">
                     Aucune actualité trouvée pour « {submittedQuery} ».
                   </div>
                 ) : (
-                  news.map((item, index) => {
+                  orderedNews.map((item, index) => {
                     let domain = item.source || "";
                     if (!domain) {
                       try {
@@ -1207,7 +1795,10 @@ export function SearchClient() {
                             <span className="font-semibold text-[11px] text-foreground/80 truncate">
                               {domain}
                             </span>
-                            <span className="chip text-[10px] py-0.5 px-2 bg-info/10 text-info font-medium shrink-0">
+                            <span
+                              className="chip shrink-0 bg-info/10 px-2 py-0.5 text-[10px] font-medium text-info"
+                              data-static="true"
+                            >
                               Actualité
                             </span>
                           </div>
@@ -1282,7 +1873,7 @@ export function SearchClient() {
                     Aucune image trouvée pour « {submittedQuery} ».
                   </p>
                 ) : (
-                  images.map((img, i) => {
+                  orderedImages.map((img, i) => {
                     let domain = "";
                     try {
                       domain = new URL(img.page_url || img.image_url).hostname;
@@ -1365,74 +1956,77 @@ export function SearchClient() {
                     Aucune vidéo trouvée pour « {submittedQuery} ».
                   </p>
                 ) : (
-                  videos.map((vid, i) => (
+                  orderedVideos.map((vid, i) => (
                     <div
-                      className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card/60 hover:border-foreground/30 transition-all hover:shadow-md cursor-pointer"
+                      className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card/60 hover:border-foreground/30 transition-all hover:shadow-md"
                       key={`${vid.page_url}-${i}`}
-                      onClick={() => setSelectedVideo(vid)}
                     >
-                      <div className="relative aspect-video w-full overflow-hidden bg-muted/40 flex items-center justify-center">
-                        <SearchSafeImage
-                          alt={vid.title}
-                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          fallback={
-                            <div className="flex size-full items-center justify-center bg-muted/40">
-                              <VideoIcon className="size-8 text-muted-foreground/60" />
-                            </div>
-                          }
-                          src={vid.thumbnail}
-                        />
+                      <button
+                        className="w-full cursor-pointer text-left"
+                        onClick={() => setSelectedVideo(vid)}
+                        type="button"
+                      >
+                        <div className="relative aspect-video w-full overflow-hidden bg-muted/40 flex items-center justify-center">
+                          <SearchSafeImage
+                            alt={vid.title}
+                            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            fallback={
+                              <div className="flex size-full items-center justify-center bg-muted/40">
+                                <VideoIcon className="size-8 text-muted-foreground/60" />
+                              </div>
+                            }
+                            src={vid.thumbnail}
+                          />
 
-                        {/* Bouton lecture central */}
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                          <div className="size-11 rounded-full bg-background/90 text-foreground flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                            <PlayIcon className="size-5 text-primary ml-0.5 fill-primary" />
+                          {/* Bouton lecture central */}
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div className="size-11 rounded-full bg-background/90 text-foreground flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                              <PlayIcon className="size-5 text-primary ml-0.5 fill-primary" />
+                            </div>
                           </div>
+
+                          {/* Tags Plateforme & Vidéo */}
+                          <span className="absolute top-2 left-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
+                            Vidéo
+                          </span>
+
+                          {vid.platform ? (
+                            <span className="absolute bottom-2 right-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
+                              {vid.platform}
+                            </span>
+                          ) : null}
                         </div>
 
-                        {/* Tags Plateforme & Vidéo */}
-                        <span className="absolute top-2 left-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
-                          Vidéo
-                        </span>
-
-                        {vid.platform ? (
-                          <span className="absolute bottom-2 right-2 text-[10px] font-semibold bg-background/90 text-foreground px-1.5 py-0.5 rounded shadow">
-                            {vid.platform}
+                        <div className="p-3 flex flex-col gap-2">
+                          <span className="text-xs font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                            {vid.title}
                           </span>
-                        ) : null}
-                      </div>
 
-                      <div className="p-3 flex flex-col gap-2">
-                        <span className="text-xs font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                          {vid.title}
-                        </span>
-
-                        <div className="flex items-center justify-between pt-1 border-t border-border/30 text-[11px] text-muted-foreground">
-                          <span className="inline-flex items-center gap-1 text-primary font-medium">
+                          <span className="inline-flex items-center gap-1 border-t border-border/30 pt-1 text-[11px] font-medium text-primary">
                             <PlayIcon className="size-3 fill-primary" />
                             <span>Lire la vidéo</span>
                           </span>
-
-                          <button
-                            aria-label="Résumer la vidéo"
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              void handleRequestTargetSummary({
-                                snippet: vid.title,
-                                source: vid.platform || "Vidéo",
-                                title: vid.title,
-                                type: "video",
-                                url: vid.page_url,
-                              });
-                            }}
-                            title="Résumer la vidéo avec mAI"
-                            type="button"
-                          >
-                            <SparklesIcon className="size-3" />
-                            <span>Résumer</span>
-                          </button>
                         </div>
+                      </button>
+                      <div className="flex justify-end px-3 pb-3">
+                        <button
+                          aria-label="Résumer la vidéo"
+                          className="inline-flex cursor-pointer items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary transition-colors hover:bg-primary/20"
+                          onClick={() => {
+                            void handleRequestTargetSummary({
+                              snippet: vid.title,
+                              source: vid.platform || "Vidéo",
+                              title: vid.title,
+                              type: "video",
+                              url: vid.page_url,
+                            });
+                          }}
+                          title="Résumer la vidéo avec mAI"
+                          type="button"
+                        >
+                          <SparklesIcon className="size-3" />
+                          <span>Résumer</span>
+                        </button>
                       </div>
                     </div>
                   ))
@@ -1497,492 +2091,630 @@ export function SearchClient() {
               ) : null}
               <button
                 className="mr-2 inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-40"
-                disabled={!query.trim() || isLoading}
-                onClick={() => void handleSearch()}
+                disabled={!isSearchableQuery(query) || isLoading}
+                onClick={() => void runSearch()}
                 type="button"
               >
                 Rechercher
               </button>
             </div>
           </motion.div>
+
+          <TrendSuggestions
+            layout="wrap"
+            onPick={(suggestion) => {
+              setQuery(suggestion);
+              void runSearch(suggestion);
+            }}
+            query={query}
+          />
+
+          {/* ─── Raccourci d'adresse ─── */}
+          {looksLikeUrl(query) ? (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-3xl mt-4"
+              initial={{ opacity: 0, y: 6 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="surface-muted flex flex-wrap items-center justify-between gap-3 p-3 text-xs">
+                <span className="text-muted-foreground">
+                  Cette saisie est une adresse. L'ouvrir directement évite une
+                  recherche qui ne renverrait que des pages « à propos » de
+                  cette adresse.
+                </span>
+                <a
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-3 py-1.5 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all"
+                  href={
+                    query.trim().startsWith("http")
+                      ? query.trim()
+                      : `https://${query.trim()}`
+                  }
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span>Ouvrir l'adresse</span>
+                  <ExternalLinkIcon className="size-3" />
+                </a>
+              </div>
+            </motion.div>
+          ) : null}
+
+          {/* ─── Recherches récentes ─── */}
+          {recent.length > 0 ? (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-3xl mt-8"
+              initial={{ opacity: 0, y: 8 }}
+              transition={{ delay: 0.18, duration: 0.25 }}
+            >
+              <div className="mb-3 flex items-center justify-between px-1">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Recherches récentes
+                </span>
+                <button
+                  className="text-[11px] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  onClick={() => void clearRecent()}
+                  type="button"
+                >
+                  Tout effacer
+                </button>
+              </div>
+              <ul className="flex flex-col gap-1">
+                {recent.map((entree) => (
+                  <li className="group flex items-center gap-2" key={entree.id}>
+                    <button
+                      className="flex flex-1 items-center gap-2 rounded-xl border border-border/50 bg-card/50 px-3 py-2 text-left text-sm text-foreground/85 transition-colors hover:border-foreground/25 hover:bg-muted/40 cursor-pointer"
+                      onClick={() => {
+                        setQuery(entree.query);
+                        void runSearch(entree.query);
+                      }}
+                      type="button"
+                    >
+                      <SearchIcon className="size-3.5 shrink-0 text-muted-foreground" />
+                      <span className="truncate">{entree.query}</span>
+                    </button>
+                    <button
+                      aria-label={`Retirer « ${entree.query} » de l'historique`}
+                      className="p-1.5 rounded-lg text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 hover:text-foreground hover:bg-muted/60 focus-visible:opacity-100 cursor-pointer"
+                      onClick={() => void forgetRecent(entree.id)}
+                      type="button"
+                    >
+                      <XIcon className="size-3.5" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ) : null}
         </div>
       )}
 
       {/* ─── Modale Lightbox d'Image (Agrandissement + Résumé + Visite) ─── */}
-      <AnimatePresence>
-        {selectedImage ? (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
-              exit={{ opacity: 0, scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* En-tête Lightbox */}
-              <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
-                <div className="flex items-center gap-2 min-w-0 pr-4">
-                  <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
-                    Image
-                  </span>
-                  <span className="font-semibold text-sm text-foreground truncate">
-                    {selectedImage.title}
-                  </span>
-                </div>
-                <button
-                  aria-label="Fermer"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
-                  onClick={() => setSelectedImage(null)}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Image en grand */}
-              <div className="relative flex-1 bg-black/10 dark:bg-black/30 flex items-center justify-center p-4 min-h-[300px] max-h-[60vh] overflow-hidden">
-                <SearchSafeImage
-                  alt={selectedImage.title}
-                  className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
-                  fallback={
-                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                      <ImageIcon className="size-12" />
-                      <span className="text-xs">Image non disponible</span>
-                    </div>
-                  }
-                  src={selectedImage.image_url || selectedImage.thumbnail}
-                />
-              </div>
-
-              {/* Pied de Lightbox : Résumé + Actions */}
-              <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
-                  <GlobeIcon className="size-4 shrink-0" />
-                  <span className="truncate max-w-[280px]">
-                    {selectedImage.page_url
-                      ? new URL(selectedImage.page_url).hostname
-                      : "Source web"}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                  <button
-                    aria-label="Résumer avec mAI"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
-                    onClick={() => {
-                      const img = selectedImage;
-                      setSelectedImage(null);
-                      void handleRequestTargetSummary({
-                        snippet: img.title,
-                        source: img.page_url
-                          ? new URL(img.page_url).hostname
-                          : "Image",
-                        title: img.title,
-                        type: "image",
-                        url: img.page_url || img.image_url,
-                      });
-                    }}
-                    type="button"
+      {portalReady
+        ? createPortal(
+            <>
+              <AnimatePresence>
+                {selectedImage ? (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+                    onClick={() => setSelectedImage(null)}
                   >
-                    <SparklesIcon className="size-3.5" />
-                    <span>Résumer le sujet</span>
-                  </button>
-
-                  <button
-                    className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
-                    onClick={() =>
-                      handleCopyLink(
-                        selectedImage.page_url || selectedImage.image_url
-                      )
-                    }
-                    type="button"
-                  >
-                    <CopyIcon className="size-3.5" />
-                    <span>Copier le lien</span>
-                  </button>
-
-                  <a
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
-                    href={selectedImage.page_url || selectedImage.image_url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span>Visiter le site</span>
-                    <ExternalLinkIcon className="size-3.5" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
-
-      {/* ─── Modale Lightbox Vidéo avec Lecteur Interactif Intégré ─── */}
-      <AnimatePresence>
-        {selectedVideo ? (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
-            onClick={() => setSelectedVideo(null)}
-          >
-            <motion.div
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-4xl w-full max-h-[92vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
-              exit={{ opacity: 0, scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* En-tête Lightbox Vidéo */}
-              <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
-                <div className="flex items-center gap-2 min-w-0 pr-4">
-                  <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
-                    {selectedVideo.platform || "Vidéo"}
-                  </span>
-                  <span className="font-semibold text-sm text-foreground truncate">
-                    {selectedVideo.title}
-                  </span>
-                </div>
-                <button
-                  aria-label="Fermer"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
-                  onClick={() => setSelectedVideo(null)}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Lecteur vidéo interactif */}
-              <div className="relative flex-1 bg-black aspect-video w-full flex items-center justify-center overflow-hidden">
-                {(() => {
-                  const embed = getVideoEmbed(selectedVideo);
-
-                  if (embed.type === "iframe" && embed.embedUrl) {
-                    return (
-                      <iframe
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        className="w-full h-full border-0"
-                        src={embed.embedUrl}
-                        title={selectedVideo.title}
-                      />
-                    );
-                  }
-
-                  if (embed.type === "video" && embed.embedUrl) {
-                    return (
-                      <video
-                        autoPlay
-                        className="w-full h-full object-contain"
-                        controls
-                        src={embed.embedUrl}
-                      >
-                        Votre navigateur ne supporte pas la lecture de cette
-                        vidéo.
-                      </video>
-                    );
-                  }
-
-                  // Fallback si la plateforme ne supporte pas l'embed direct (ex: site restreint)
-                  return (
-                    <div className="flex flex-col items-center justify-center p-6 text-center gap-3">
-                      <VideoIcon className="size-12 text-muted-foreground/60" />
-                      <p className="text-sm text-foreground max-w-md">
-                        Cette vidéo ne permet pas l'intégration directe, mais
-                        vous pouvez la regarder directement sur le site source.
-                      </p>
-                      <a
-                        className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 transition-all shadow-sm cursor-pointer"
-                        href={selectedVideo.page_url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <span>
-                          Regarder sur{" "}
-                          {selectedVideo.platform || "le site source"}
-                        </span>
-                        <ExternalLinkIcon className="size-3.5" />
-                      </a>
-                    </div>
-                  );
-                })()}
-              </div>
-
-              {/* Pied de Lightbox Vidéo */}
-              <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
-                  <PlayIcon className="size-4 shrink-0 text-primary" />
-                  <span className="truncate max-w-[280px]">
-                    {selectedVideo.platform
-                      ? `Plateforme : ${selectedVideo.platform}`
-                      : selectedVideo.page_url}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                  {/* Bouton Résumer la vidéo avec mAI */}
-                  <button
-                    aria-label="Résumer cette vidéo avec mAI"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
-                    onClick={() => {
-                      const vid = selectedVideo;
-                      setSelectedVideo(null);
-                      void handleRequestTargetSummary({
-                        snippet: vid.title,
-                        source: vid.platform || "Vidéo",
-                        title: vid.title,
-                        type: "video",
-                        url: vid.page_url,
-                      });
-                    }}
-                    type="button"
-                  >
-                    <SparklesIcon className="size-3.5" />
-                    <span>Résumer la vidéo</span>
-                  </button>
-
-                  <button
-                    className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
-                    onClick={() => handleCopyLink(selectedVideo.page_url)}
-                    type="button"
-                  >
-                    <CopyIcon className="size-3.5" />
-                    <span>Copier le lien</span>
-                  </button>
-
-                  <a
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
-                    href={selectedVideo.page_url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span>Ouvrir la page</span>
-                    <ExternalLinkIcon className="size-3.5" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
-
-      {/* ─── Tiroir Latéral Rétractable de Discussion IA avec ModelSelector & Outil WebSearch ─── */}
-      <AnimatePresence>
-        {targetConversation.isOpen && targetConversation.target ? (
-          <div className="fixed inset-0 z-50 flex justify-end">
-            {/* Backdrop */}
-            <motion.div
-              animate={{ opacity: 1 }}
-              className="fixed inset-0 bg-background/60 backdrop-blur-sm"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              onClick={handleCloseTargetConversation}
-            />
-
-            {/* Volet Tiroir */}
-            <motion.aside
-              animate={{ x: 0 }}
-              className="relative z-10 w-full sm:w-[500px] h-full bg-card border-l border-border/80 shadow-2xl flex flex-col overflow-hidden"
-              exit={{ x: "100%" }}
-              initial={{ x: "100%" }}
-              transition={{ damping: 25, stiffness: 300, type: "spring" }}
-            >
-              {/* En-tête principal du tiroir */}
-              <div className="flex items-center justify-between p-3.5 border-b border-border/50 bg-muted/20">
-                <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                  <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0">
-                    <SparklesIcon className="size-4 animate-pulse" />
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-xs text-foreground">
-                        mAI Search Assistant
-                      </span>
-                      <span className="chip text-[10px] py-0 px-1.5 bg-primary/10 text-primary font-medium">
-                        {targetConversation.target.type.toUpperCase()}
-                      </span>
-                    </div>
-                    <span className="text-[11px] text-muted-foreground truncate">
-                      {targetConversation.target.title}
-                    </span>
-                  </div>
-                </div>
-
-                <button
-                  aria-label="Fermer le tiroir"
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
-                  onClick={handleCloseTargetConversation}
-                  type="button"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </div>
-
-              {/* Sous-en-tête : Sélecteur de modèle d'IA & Indicateur outil unique de recherche web */}
-              <div className="flex items-center justify-between px-3.5 py-2 bg-muted/10 border-b border-border/40 gap-2">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <span className="text-[11px] font-medium text-muted-foreground shrink-0 hidden sm:inline">
-                    Modèle :
-                  </span>
-                  <ModelSelectorCompact
-                    modal={true}
-                    onModelChange={(newModel) => setSelectedModelId(newModel)}
-                    selectedModelId={selectedModelId}
-                    side="bottom"
-                  />
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0 ring-1 ring-primary/20"
-                  title="Ce modèle dispose de l'outil Recherche web pour vérifier et compléter les informations en direct."
-                >
-                  <GlobeIcon className="size-3" />
-                  <span>Recherche web active</span>
-                </div>
-              </div>
-
-              {/* Corps déroulant : Carte source & Fil de discussion multi-tours */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-5 text-sm leading-relaxed text-foreground/90 space-y-4">
-                {/* Carte récapitulative de la source */}
-                <div className="surface-muted p-3 text-xs flex flex-col gap-1.5 rounded-xl border border-border/40">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-semibold text-foreground line-clamp-1">
-                      {targetConversation.target.title}
-                    </span>
-                    <a
-                      className="chip text-[10px] inline-flex items-center gap-1 py-0.5 px-2 cursor-pointer shrink-0"
-                      href={targetConversation.target.url}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      title="Consulter la ressource originale"
-                    >
-                      <span>Ouvrir</span>
-                      <ExternalLinkIcon className="size-2.5" />
-                    </a>
-                  </div>
-                  <span className="text-[11px] text-muted-foreground truncate font-mono">
-                    {targetConversation.target.url}
-                  </span>
-                </div>
-
-                {/* Messages de la conversation */}
-                {targetConversation.messages.map((msg, index) => {
-                  const isAssistant = msg.role === "assistant";
-                  return (
                     <motion.div
-                      animate={{ opacity: 1, y: 0 }}
-                      className={cn(
-                        "flex gap-2.5 w-full",
-                        isAssistant ? "items-start" : "items-end justify-end"
-                      )}
-                      initial={{ opacity: 0, y: 8 }}
-                      key={msg.id || index}
-                      transition={{ duration: 0.2 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      {isAssistant ? (
-                        <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0 mt-0.5">
-                          <BotIcon className="size-4" />
+                      {/* En-tête Lightbox */}
+                      <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
+                        <div className="flex items-center gap-2 min-w-0 pr-4">
+                          <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
+                            Image
+                          </span>
+                          <span className="font-semibold text-sm text-foreground truncate">
+                            {selectedImage.title}
+                          </span>
                         </div>
-                      ) : null}
-
-                      <div
-                        className={cn(
-                          "rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed max-w-[85%]",
-                          isAssistant
-                            ? "surface-card border border-border/60 bg-card/80 text-foreground shadow-xs w-full"
-                            : "bg-primary text-primary-foreground font-medium rounded-br-xs"
-                        )}
-                      >
-                        {isAssistant ? (
-                          msg.content ? (
-                            <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
-                              <Streamdown>{msg.content}</Streamdown>
-                              <SummarySources sources={msg.sources ?? []} />
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">
-                              <SparklesIcon className="size-3.5 text-primary" />
-                              <span>Génération et recherche en cours…</span>
-                            </div>
-                          )
-                        ) : (
-                          <p className="whitespace-pre-wrap">{msg.content}</p>
-                        )}
+                        <button
+                          aria-label="Fermer"
+                          className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
+                          onClick={() => setSelectedImage(null)}
+                          type="button"
+                        >
+                          <XIcon className="size-4" />
+                        </button>
                       </div>
 
-                      {isAssistant ? null : (
-                        <div className="size-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center shrink-0 mb-0.5">
-                          <UserIcon className="size-3.5" />
+                      {/* Image en grand */}
+                      <div className="relative flex-1 bg-black/10 dark:bg-black/30 flex items-center justify-center p-4 min-h-[300px] max-h-[60vh] overflow-hidden">
+                        <SearchSafeImage
+                          alt={selectedImage.title}
+                          className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
+                          fallback={
+                            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                              <ImageIcon className="size-12" />
+                              <span className="text-xs">
+                                Image non disponible
+                              </span>
+                            </div>
+                          }
+                          src={
+                            selectedImage.image_url || selectedImage.thumbnail
+                          }
+                        />
+                      </div>
+
+                      {/* Pied de Lightbox : Résumé + Actions */}
+                      <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
+                          <GlobeIcon className="size-4 shrink-0" />
+                          <span className="truncate max-w-[280px]">
+                            {selectedImage.page_url
+                              ? new URL(selectedImage.page_url).hostname
+                              : "Source web"}
+                          </span>
                         </div>
-                      )}
+
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                          <button
+                            aria-label="Résumer avec mAI"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
+                            onClick={() => {
+                              const img = selectedImage;
+                              setSelectedImage(null);
+                              void handleRequestTargetSummary({
+                                snippet: img.title,
+                                source: img.page_url
+                                  ? new URL(img.page_url).hostname
+                                  : "Image",
+                                title: img.title,
+                                type: "image",
+                                url: img.page_url || img.image_url,
+                              });
+                            }}
+                            type="button"
+                          >
+                            <SparklesIcon className="size-3.5" />
+                            <span>Résumer le sujet</span>
+                          </button>
+
+                          <button
+                            className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                            onClick={() =>
+                              handleCopyLink(
+                                selectedImage.page_url ||
+                                  selectedImage.image_url
+                              )
+                            }
+                            type="button"
+                          >
+                            <CopyIcon className="size-3.5" />
+                            <span>Copier le lien</span>
+                          </button>
+
+                          <a
+                            className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
+                            href={
+                              selectedImage.page_url || selectedImage.image_url
+                            }
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <span>Visiter le site</span>
+                            <ExternalLinkIcon className="size-3.5" />
+                          </a>
+                        </div>
+                      </div>
                     </motion.div>
-                  );
-                })}
+                  </div>
+                ) : null}
+              </AnimatePresence>
 
-                <div ref={drawerMessagesEndRef} />
-              </div>
+              {/* ─── Modale Lightbox Vidéo avec Lecteur Interactif Intégré ─── */}
+              <AnimatePresence>
+                {selectedVideo ? (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+                    onClick={() => setSelectedVideo(null)}
+                  >
+                    <motion.div
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="relative max-w-4xl w-full max-h-[92vh] rounded-2xl border border-border/80 bg-card shadow-2xl flex flex-col overflow-hidden"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* En-tête Lightbox Vidéo */}
+                      <div className="flex items-center justify-between p-4 border-b border-border/40 bg-muted/20">
+                        <div className="flex items-center gap-2 min-w-0 pr-4">
+                          <span className="chip text-[10px] py-0.5 px-2 bg-primary/10 text-primary font-medium shrink-0">
+                            {selectedVideo.platform || "Vidéo"}
+                          </span>
+                          <span className="font-semibold text-sm text-foreground truncate">
+                            {selectedVideo.title}
+                          </span>
+                        </div>
+                        <button
+                          aria-label="Fermer"
+                          className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
+                          onClick={() => setSelectedVideo(null)}
+                          type="button"
+                        >
+                          <XIcon className="size-4" />
+                        </button>
+                      </div>
 
-              {/* Zone de saisie et formulaire de question de suivi */}
-              <form
-                className="p-3.5 border-t border-border/50 bg-card flex flex-col gap-2.5 shrink-0"
-                onSubmit={handleSendFollowupMessage}
-              >
-                <div className="relative flex items-center w-full rounded-xl border border-border/70 bg-muted/20 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 transition-all p-1">
-                  <input
-                    aria-label="Poser une question sur cette ressource"
-                    className="w-full bg-transparent px-3 py-1.5 text-xs sm:text-sm outline-none placeholder:text-muted-foreground/60"
-                    disabled={targetConversation.isLoading}
-                    onChange={(e) => setFollowupInput(e.target.value)}
-                    placeholder="Poser une question de suivi sur cette ressource..."
-                    type="text"
-                    value={followupInput}
+                      {/* Lecteur vidéo interactif */}
+                      <div className="relative flex-1 bg-black aspect-video w-full flex items-center justify-center overflow-hidden">
+                        {(() => {
+                          const embed = getVideoEmbed(selectedVideo);
+
+                          if (embed.type === "iframe" && embed.embedUrl) {
+                            return (
+                              <iframe
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                className="w-full h-full border-0"
+                                src={embed.embedUrl}
+                                title={selectedVideo.title}
+                              />
+                            );
+                          }
+
+                          if (embed.type === "video" && embed.embedUrl) {
+                            return (
+                              <video
+                                autoPlay
+                                className="w-full h-full object-contain"
+                                controls
+                                src={embed.embedUrl}
+                              >
+                                Votre navigateur ne supporte pas la lecture de
+                                cette vidéo.
+                              </video>
+                            );
+                          }
+
+                          // Fallback si la plateforme ne supporte pas l'embed direct (ex: site restreint)
+                          return (
+                            <div className="flex flex-col items-center justify-center p-6 text-center gap-3">
+                              <VideoIcon className="size-12 text-muted-foreground/60" />
+                              <p className="text-sm text-foreground max-w-md">
+                                Cette vidéo ne permet pas l'intégration directe,
+                                mais vous pouvez la regarder directement sur le
+                                site source.
+                              </p>
+                              <a
+                                className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 transition-all shadow-sm cursor-pointer"
+                                href={selectedVideo.page_url}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                              >
+                                <span>
+                                  Regarder sur{" "}
+                                  {selectedVideo.platform || "le site source"}
+                                </span>
+                                <ExternalLinkIcon className="size-3.5" />
+                              </a>
+                            </div>
+                          );
+                        })()}
+                      </div>
+
+                      {/* Pied de Lightbox Vidéo */}
+                      <div className="p-4 border-t border-border/40 bg-card flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground truncate w-full sm:w-auto">
+                          <PlayIcon className="size-4 shrink-0 text-primary" />
+                          <span className="truncate max-w-[280px]">
+                            {selectedVideo.platform
+                              ? `Plateforme : ${selectedVideo.platform}`
+                              : selectedVideo.page_url}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                          {/* Bouton Résumer la vidéo avec mAI */}
+                          <button
+                            aria-label="Résumer cette vidéo avec mAI"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-all cursor-pointer"
+                            onClick={() => {
+                              const vid = selectedVideo;
+                              setSelectedVideo(null);
+                              void handleRequestTargetSummary({
+                                snippet: vid.title,
+                                source: vid.platform || "Vidéo",
+                                title: vid.title,
+                                type: "video",
+                                url: vid.page_url,
+                              });
+                            }}
+                            type="button"
+                          >
+                            <SparklesIcon className="size-3.5" />
+                            <span>Résumer la vidéo</span>
+                          </button>
+
+                          <button
+                            className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer"
+                            onClick={() =>
+                              handleCopyLink(selectedVideo.page_url)
+                            }
+                            type="button"
+                          >
+                            <CopyIcon className="size-3.5" />
+                            <span>Copier le lien</span>
+                          </button>
+
+                          <a
+                            className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
+                            href={selectedVideo.page_url}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <span>Ouvrir la page</span>
+                            <ExternalLinkIcon className="size-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                ) : null}
+              </AnimatePresence>
+            </>,
+            document.body
+          )
+        : null}
+
+      {/* ─── Tiroir Latéral Rétractable de Discussion IA avec ModelSelector & Outil WebSearch ─── */}
+      {portalReady
+        ? createPortal(
+            <AnimatePresence>
+              {targetConversation.isOpen && targetConversation.target ? (
+                <div className="fixed inset-0 z-50 flex justify-end">
+                  {/* Backdrop */}
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    className="fixed inset-0 bg-background/60 backdrop-blur-sm"
+                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    onClick={handleCloseTargetConversation}
                   />
-                  <button
-                    aria-label="Envoyer"
-                    className="p-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 active:scale-95 disabled:opacity-40 transition-all cursor-pointer shrink-0"
-                    disabled={
-                      !followupInput.trim() || targetConversation.isLoading
-                    }
-                    title="Envoyer la question"
-                    type="submit"
-                  >
-                    <SendIcon className="size-3.5" />
-                  </button>
-                </div>
 
-                {/* Actions secondaires */}
-                <div className="flex items-center justify-between text-xs pt-0.5">
-                  <button
-                    className="chip text-[11px] inline-flex items-center gap-1.5 py-1 px-2.5 cursor-pointer"
-                    disabled={targetConversation.messages.length === 0}
-                    onClick={handleCopyDrawerContent}
-                    type="button"
+                  {/* Volet Tiroir */}
+                  <motion.aside
+                    animate={{ x: 0 }}
+                    className="relative z-10 w-full sm:w-[500px] h-full bg-card border-l border-border/80 shadow-2xl flex flex-col overflow-hidden"
+                    exit={{ x: "100%" }}
+                    initial={{ x: "100%" }}
+                    transition={{ damping: 25, stiffness: 300, type: "spring" }}
                   >
-                    {hasCopiedDrawer ? (
-                      <CheckIcon className="size-3 text-success" />
-                    ) : (
-                      <CopyIcon className="size-3" />
-                    )}
-                    <span>{hasCopiedDrawer ? "Copié" : "Copier"}</span>
-                  </button>
+                    {/* En-tête principal du tiroir */}
+                    <div className="flex items-center justify-between p-3.5 border-b border-border/50 bg-muted/20">
+                      <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                        <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0">
+                          <SparklesIcon className="size-4 animate-pulse" />
+                        </div>
+                        <div className="flex flex-col min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-semibold text-xs text-foreground">
+                              mAI Search Assistant
+                            </span>
+                            <span className="chip text-[10px] py-0 px-1.5 bg-primary/10 text-primary font-medium">
+                              {targetConversation.target.type.toUpperCase()}
+                            </span>
+                          </div>
+                          <span className="text-[11px] text-muted-foreground truncate">
+                            {targetConversation.target.title}
+                          </span>
+                        </div>
+                      </div>
 
-                  <button
-                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-primary hover:underline cursor-pointer"
-                    onClick={handleSendDrawerToChat}
-                    type="button"
-                  >
-                    <MessageCircleIcon className="size-3.5" />
-                    <span>Poursuivre dans le Chat mAI</span>
-                    <ArrowRightIcon className="size-3" />
-                  </button>
+                      <button
+                        aria-label="Fermer le tiroir"
+                        className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
+                        onClick={handleCloseTargetConversation}
+                        type="button"
+                      >
+                        <XIcon className="size-4" />
+                      </button>
+                    </div>
+
+                    {/* Sous-en-tête : Sélecteur de modèle d'IA & Indicateur outil unique de recherche web */}
+                    <div className="flex items-center justify-between px-3.5 py-2 bg-muted/10 border-b border-border/40 gap-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-[11px] font-medium text-muted-foreground shrink-0 hidden sm:inline">
+                          Modèle :
+                        </span>
+                        <ModelSelectorCompact
+                          modal={true}
+                          onModelChange={(newModel) =>
+                            setSelectedModelId(newModel)
+                          }
+                          selectedModelId={selectedModelId}
+                          side="bottom"
+                        />
+                      </div>
+
+                      <div
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0 ring-1 ring-primary/20"
+                        title="Ce modèle dispose de l'outil Recherche web pour vérifier et compléter les informations en direct."
+                      >
+                        <GlobeIcon className="size-3" />
+                        <span>Recherche web active</span>
+                      </div>
+                    </div>
+
+                    {/* Corps déroulant : Carte source & Fil de discussion multi-tours */}
+                    <div className="flex-1 overflow-y-auto p-4 sm:p-5 text-sm leading-relaxed text-foreground/90 space-y-4">
+                      {/* Carte récapitulative de la source */}
+                      <div className="surface-muted p-3 text-xs flex flex-col gap-1.5 rounded-xl border border-border/40">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold text-foreground line-clamp-1">
+                            {targetConversation.target.title}
+                          </span>
+                          <a
+                            className="chip text-[10px] inline-flex items-center gap-1 py-0.5 px-2 cursor-pointer shrink-0"
+                            href={targetConversation.target.url}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            title="Consulter la ressource originale"
+                          >
+                            <span>Ouvrir</span>
+                            <ExternalLinkIcon className="size-2.5" />
+                          </a>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground truncate font-mono">
+                          {targetConversation.target.url}
+                        </span>
+                      </div>
+
+                      {/* Messages de la conversation */}
+                      {targetConversation.messages.map((msg, index) => {
+                        const isAssistant = msg.role === "assistant";
+                        return (
+                          <motion.div
+                            animate={{ opacity: 1, y: 0 }}
+                            className={cn(
+                              "flex gap-2.5 w-full",
+                              isAssistant
+                                ? "items-start"
+                                : "items-end justify-end"
+                            )}
+                            initial={{ opacity: 0, y: 8 }}
+                            key={msg.id || index}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {isAssistant ? (
+                              <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 shrink-0 mt-0.5">
+                                <BotIcon className="size-4" />
+                              </div>
+                            ) : null}
+
+                            <div
+                              className={cn(
+                                "rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed max-w-[85%]",
+                                isAssistant
+                                  ? "surface-card border border-border/60 bg-card/80 text-foreground shadow-xs w-full"
+                                  : "bg-primary text-primary-foreground font-medium rounded-br-xs"
+                              )}
+                            >
+                              {isAssistant ? (
+                                msg.content || msg.reasoning ? (
+                                  <div className="flex flex-col gap-2">
+                                    <AnswerReasoning
+                                      streaming={
+                                        targetConversation.isLoading &&
+                                        index ===
+                                          targetConversation.messages.length - 1
+                                      }
+                                      text={msg.reasoning ?? ""}
+                                    />
+                                    {msg.content ? (
+                                      <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm">
+                                        {msg.reasoning ? (
+                                          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                            Réponse
+                                          </p>
+                                        ) : null}
+                                        <Streamdown>{msg.content}</Streamdown>
+                                        <SummarySources
+                                          sources={msg.sources ?? []}
+                                        />
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                ) : (
+                                  <div className="flex items-center gap-2 py-1 text-xs text-muted-foreground animate-pulse">
+                                    <SparklesIcon className="size-3.5 text-primary" />
+                                    <span>
+                                      Génération et recherche en cours…
+                                    </span>
+                                  </div>
+                                )
+                              ) : (
+                                <p className="whitespace-pre-wrap">
+                                  {msg.content}
+                                </p>
+                              )}
+                            </div>
+
+                            {isAssistant ? null : (
+                              <div className="size-7 rounded-lg bg-muted text-muted-foreground flex items-center justify-center shrink-0 mb-0.5">
+                                <UserIcon className="size-3.5" />
+                              </div>
+                            )}
+                          </motion.div>
+                        );
+                      })}
+
+                      <div ref={drawerMessagesEndRef} />
+                    </div>
+
+                    {/* Zone de saisie et formulaire de question de suivi */}
+                    <form
+                      className="p-3.5 border-t border-border/50 bg-card flex flex-col gap-2.5 shrink-0"
+                      onSubmit={handleSendFollowupMessage}
+                    >
+                      <div className="relative flex items-center w-full rounded-xl border border-border/70 bg-muted/20 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 transition-all p-1">
+                        <input
+                          aria-label="Poser une question sur cette ressource"
+                          className="w-full bg-transparent px-3 py-1.5 text-xs sm:text-sm outline-none placeholder:text-muted-foreground/60"
+                          disabled={targetConversation.isLoading}
+                          onChange={(e) => setFollowupInput(e.target.value)}
+                          placeholder="Poser une question de suivi sur cette ressource..."
+                          type="text"
+                          value={followupInput}
+                        />
+                        <button
+                          aria-label="Envoyer"
+                          className="p-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 active:scale-95 disabled:opacity-40 transition-all cursor-pointer shrink-0"
+                          disabled={
+                            !followupInput.trim() ||
+                            targetConversation.isLoading
+                          }
+                          title="Envoyer la question"
+                          type="submit"
+                        >
+                          <SendIcon className="size-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Actions secondaires */}
+                      <div className="flex items-center justify-between text-xs pt-0.5">
+                        <button
+                          className="chip text-[11px] inline-flex items-center gap-1.5 py-1 px-2.5 cursor-pointer"
+                          disabled={targetConversation.messages.length === 0}
+                          onClick={handleCopyDrawerContent}
+                          type="button"
+                        >
+                          {hasCopiedDrawer ? (
+                            <CheckIcon className="size-3 text-success" />
+                          ) : (
+                            <CopyIcon className="size-3" />
+                          )}
+                          <span>{hasCopiedDrawer ? "Copié" : "Copier"}</span>
+                        </button>
+
+                        <button
+                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-primary hover:underline cursor-pointer"
+                          onClick={handleSendDrawerToChat}
+                          type="button"
+                        >
+                          <MessageCircleIcon className="size-3.5" />
+                          <span>Poursuivre dans le Chat mAI</span>
+                          <ArrowRightIcon className="size-3" />
+                        </button>
+                      </div>
+                    </form>
+                  </motion.aside>
                 </div>
-              </form>
-            </motion.aside>
-          </div>
-        ) : null}
-      </AnimatePresence>
+              ) : null}
+            </AnimatePresence>,
+            document.body
+          )
+        : null}
     </div>
   );
 }

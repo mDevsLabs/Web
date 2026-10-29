@@ -94,6 +94,12 @@ export async function proxy(request: NextRequest) {
     isStaticAsset ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api/auth") ||
+    // Artefacts du jeu Blackline : le bundle et ses chunks. Ce sont des
+    // fichiers STATIQUES, servis avec un cache long : les faire passer par
+    // la vérification de session les rendrait dépendants de l'expiration du
+    // cookie — un jeu déjà téléchargé deviendrait inutilisable.
+    pathname.startsWith("/blackline/assets/") ||
+    pathname.startsWith("/blackline/fonts/") ||
     pathname === "/api/app-version" ||
     pathname === "/favicon.ico" ||
     pathname === "/favicon.png" ||

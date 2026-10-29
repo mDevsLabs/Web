@@ -25,9 +25,9 @@ ollama run mDevsLabs/mAI-1.2-Opal
 hf download mDevsLabs/mAI-1.2-Opal-GGUF
 ~~~
 
-## 📊 Benchmarks de performance
+## Benchmarks de performance
 
-Aperçu des performances du modèle sur les tâches de référence :
+Aperçu des performances du modèle sur les tâches de référence:
 
 ![Benchmarks mAI-1.2-Opal](https://upload.fs.fr/AZhQIaqV5O.png)
 

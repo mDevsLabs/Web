@@ -1,4 +1,4 @@
-# Présentation de mAI-2 : une intelligence qui profite à tous
+# Présentation de mAI-2: une intelligence qui profite à tous
 
 ![mAI-2 — Cover](https://upload.fs.fr/hH9tc27Hi6.png)
 
@@ -8,15 +8,15 @@ Ce lancement ne représente pas une simple mise à jour de modèle. Il marque un
 
 **mAI-2 est l’évolution la plus significative de notre laboratoire depuis sa création.**
 
-Nous avons repensé le modèle sur l’ensemble de ses capacités : **raisonnement, codage, création et vitesse**.
+Nous avons repensé le modèle sur l’ensemble de ses capacités: **raisonnement, codage, création et vitesse**.
 
-Notre objectif n’était pas uniquement de construire un modèle plus performant. Nous voulions franchir un cap : créer une intelligence capable d’être réellement utile dans davantage de situations, pour davantage de personnes, tout en réduisant la distance entre une idée et sa réalisation.
+Notre objectif n’était pas uniquement de construire un modèle plus performant. Nous voulions franchir un cap: créer une intelligence capable d’être réellement utile dans davantage de situations, pour davantage de personnes, tout en réduisant la distance entre une idée et sa réalisation.
 
 Et nous voulions que cette avancée ne soit pas réservée à quelques-uns.
 
 > **Une intelligence de haut niveau ne devrait pas être réservée à quelques-uns. Elle devrait être disponible à tous.**
 
-mAI-2 succède à mAI-1.5 avec une ambition claire :
+mAI-2 succède à mAI-1.5 avec une ambition claire:
 
 **rendre l’intelligence la plus avancée de notre laboratoire plus rapide, plus polyvalente et plus accessible.**
 
@@ -24,7 +24,7 @@ mAI-2 succède à mAI-1.5 avec une ambition claire :
 
 mAI-1.5 avait posé les bases d’une intelligence capable de comprendre, réfléchir et assister dans de nombreuses tâches.
 
-Mais son exécution principalement locale imposait une limite importante : **la vitesse et l’accessibilité**.
+Mais son exécution principalement locale imposait une limite importante: **la vitesse et l’accessibilité**.
 
 mAI-2 change cette approche.
 
@@ -38,7 +38,7 @@ mAI-2 n’est donc pas simplement une évolution de mAI-1.5.
 
 ## Deux modèles. Une même vision.
 
-mAI-2 est disponible en deux modèles :
+mAI-2 est disponible en deux modèles:
 
 ### Le modèle mAI-2
 
@@ -80,7 +80,7 @@ Pour les développeurs, mAI-2 doit devenir davantage qu’un assistant qui gén�
 
 **Il doit comprendre le projet dans son ensemble.**
 
-### ⚡ Vitesse
+### Vitesse
 
 La vitesse était l’une des principales limites de mAI-1.5.
 
@@ -88,11 +88,11 @@ mAI-2 a été pensé pour réduire cette friction et permettre aux utilisateurs 
 
 Une intelligence puissante devient réellement utile lorsqu’elle peut être utilisée naturellement.
 
-### ✨ Création
+### Création
 
 mAI-2 améliore également ses capacités de création.
 
-Écrire, imaginer, structurer, transformer une idée ou explorer différentes possibilités : la création fait partie intégrante de cette nouvelle génération.
+Écrire, imaginer, structurer, transformer une idée ou explorer différentes possibilités: la création fait partie intégrante de cette nouvelle génération.
 
 L’intelligence artificielle ne doit pas seulement permettre d’obtenir une réponse.
 
@@ -160,7 +160,7 @@ Afin de conserver une comparaison honnête, nous affichons uniquement les scores
 
 ## mAI-2
 
-mAI-2 obtient les résultats suivants sur notre batterie d’évaluation :
+mAI-2 obtient les résultats suivants sur notre batterie d’évaluation:
 
 | Benchmark | mAI 2 | Claude Opus 5.5 | Gemini 4 Argon | GPT-6.1 Sol | GPT-6 Astra |
 |:---|---:|---:|---:|---:|---:|
@@ -186,14 +186,14 @@ mAI-2 obtient les résultats suivants sur notre batterie d’évaluation :
 
 ### Notes de méthode
 
-- Les scores de mAI-2 proviennent de notre campagne d’évaluation mAI-2 ; les autres scores ne sont retenus que lorsqu’une version de benchmark et un protocole suffisamment comparables sont disponibles.
+- Les scores de mAI-2 proviennent de notre campagne d’évaluation mAI-2; les autres scores ne sont retenus que lorsqu’une version de benchmark et un protocole suffisamment comparables sont disponibles.
 - Un tiret cadratin (`—`) indique qu’aucun résultat public suffisamment comparable n’a été retenu. Il ne représente pas un score nul.
-- Les lignes `HLE` et `HLE (w/tools)` sont deux évaluations distinctes : la première est mesurée sans outils, la seconde avec outils. Elles ne sont jamais fusionnées, et la seconde n’est jamais utilisée pour la première.
-- Terminal-Bench 2.1, Terminal-Bench 3.0 et Terminal-Bench 4.0 sont trois évaluations distinctes, chacune avec son propre harnais et sa propre échelle. Aucune version n’est utilisée comme substitut d’une autre, y compris lorsque les trois sont publiées : sur ces trois lignes, le score de mAI-2 tombe de 90.6 à 31.2.
-- Les lignes `GPQA Diamond`, `HLE`, `Terminal-Bench 2.1`, `MathArena Apex`, `ProgramBench`, `NL2Repo-Bench`, `CyberGym`, `Terminal-Bench 3.0`, `Chartography (w/tools)`, `BabyVision (w/tools)` et `ZeroBench-main (w/tools)` ne disposent d’aucun résultat concurrent suffisamment comparable : les colonnes restent à `—`.
+- Les lignes `HLE` et `HLE (w/tools)` sont deux évaluations distinctes: la première est mesurée sans outils, la seconde avec outils. Elles ne sont jamais fusionnées, et la seconde n’est jamais utilisée pour la première.
+- Terminal-Bench 2.1, Terminal-Bench 3.0 et Terminal-Bench 4.0 sont trois évaluations distinctes, chacune avec son propre harnais et sa propre échelle. Aucune version n’est utilisée comme substitut d’une autre, y compris lorsque les trois sont publiées: sur ces trois lignes, le score de mAI-2 tombe de 90.6 à 31.2.
+- Les lignes `GPQA Diamond`, `HLE`, `Terminal-Bench 2.1`, `MathArena Apex`, `ProgramBench`, `NL2Repo-Bench`, `CyberGym`, `Terminal-Bench 3.0`, `Chartography (w/tools)`, `BabyVision (w/tools)` et `ZeroBench-main (w/tools)` ne disposent d’aucun résultat concurrent suffisamment comparable: les colonnes restent à `—`.
 - Les scores sont publiés dans l’unité de chaque benchmark (points, notation Codeforces pour `Codeforces (Rating)`), sans conversion en pourcentage.
 - Gemini 4 Argon est reporté sur `HLE`, `Terminal-Bench 4.0`, `DeepSWE v1.1`, `AutomationBench` et `Agents’ Last Exam`, les seules lignes de ce tableau où sa campagne publie le même protocole.
-- Une version différente d’un benchmark n’est jamais utilisée comme substitut ; les scores ne sont pas comparés au-delà des conditions décrites ci-dessus.
+- Une version différente d’un benchmark n’est jamais utilisée comme substitut; les scores ne sont pas comparés au-delà des conditions décrites ci-dessus.
 
 ### Sources officielles
 
@@ -221,12 +221,12 @@ mAI-2 Mini a été évalué sur une sélection de benchmarks orientés développ
 
 ### Notes de méthode
 
-- Les scores de mAI-2 Mini proviennent de notre campagne d’évaluation ; les autres scores ne sont retenus que lorsqu’une version de benchmark et un protocole suffisamment comparables sont disponibles.
+- Les scores de mAI-2 Mini proviennent de notre campagne d’évaluation; les autres scores ne sont retenus que lorsqu’une version de benchmark et un protocole suffisamment comparables sont disponibles.
 - Un tiret cadratin (`—`) indique qu’aucun résultat public suffisamment comparable n’a été retenu. Il ne représente pas un score nul.
-- Les lignes `HLE (w/tools)`, `Agents' Last Exam`, `CyberGym`, `ExploitBench` et `ExploitGym` ne disposent d’aucun résultat concurrent suffisamment comparable : les colonnes restent à `—`.
-- La ligne `GDPVal-AA` est publiée avec une version explicite pour chaque modèle : mAI-2 Mini et Gemini 3.8 Flash en v2, Claude Sonnet 5.5 en v2.1. Ces versions ne sont pas directement interchangeables et la ligne n’est pas lue comme un classement direct.
-- La ligne `ExploitGym` est publiée telle que fournie par notre campagne d’évaluation : le score de mAI-2 Mini (130) et celui de GPT-6 Luna (11.6) ne reposent pas sur la même échelle et ne doivent pas être lus comme une comparaison directe.
-- Terminal-Bench 4.0 n’est pas utilisé comme substitut de Terminal-Bench 2.1 : les deux évaluations ne partagent ni le harnais ni l’échelle.
+- Les lignes `HLE (w/tools)`, `Agents' Last Exam`, `CyberGym`, `ExploitBench` et `ExploitGym` ne disposent d’aucun résultat concurrent suffisamment comparable: les colonnes restent à `—`.
+- La ligne `GDPVal-AA` est publiée avec une version explicite pour chaque modèle: mAI-2 Mini et Gemini 3.8 Flash en v2, Claude Sonnet 5.5 en v2.1. Ces versions ne sont pas directement interchangeables et la ligne n’est pas lue comme un classement direct.
+- La ligne `ExploitGym` est publiée telle que fournie par notre campagne d’évaluation: le score de mAI-2 Mini (130) et celui de GPT-6 Luna (11.6) ne reposent pas sur la même échelle et ne doivent pas être lus comme une comparaison directe.
+- Terminal-Bench 4.0 n’est pas utilisé comme substitut de Terminal-Bench 2.1: les deux évaluations ne partagent ni le harnais ni l’échelle.
 - Une version différente d’un benchmark n’est jamais utilisée comme substitut.
 
 ### Sources officielles
@@ -236,7 +236,7 @@ mAI-2 Mini a été évalué sur une sélection de benchmarks orientés développ
 - [OpenAI — GPT-6 Luna](https://openai.com/index/introducing-gpt-6-luna/)
 - [Qwen — Qwen3.8-Omni-Flash](https://qwen.ai/blog)
 
-mAI-2 Mini conserve ainsi une orientation claire : **84.3 sur Terminal-Bench 2.1** devant **83.2 pour Claude Sonnet 5.5** et **73.0 pour GPT-6 Luna**, **63.4 sur DeepSWE v1.1** et **48.8 sur AutomationBench**, tout en restant compétitif sur plusieurs tâches de développement et d'utilisation d'outils.
+mAI-2 Mini conserve ainsi une orientation claire: **84.3 sur Terminal-Bench 2.1** devant **83.2 pour Claude Sonnet 5.5** et **73.0 pour GPT-6 Luna**, **63.4 sur DeepSWE v1.1** et **48.8 sur AutomationBench**, tout en restant compétitif sur plusieurs tâches de développement et d'utilisation d'outils.
 
 ## Des résultats qui situent mAI-2 parmi les modèles frontier
 
@@ -244,23 +244,23 @@ Les résultats obtenus sont particulièrement intéressants sur les tâches agen
 
 Sur **GPQA Diamond**, mAI-2 affiche **90.9**, aux côtés de **90.6 pour Claude Opus 5.5**, **95.4 pour GPT-6.1 Sol** et **95.8 pour GPT-6 Astra**. Sur **Terminal-Bench 2.1**, mAI-2 affiche **90.6**, là où aucun concurrent ne publie de résultat comparable. Sur **DeepSWE v1.1**, mAI-2 affiche **74.2**, avec **77.9 pour Gemini 4 Argon**, **75.2 pour GPT-6.1 Sol**, **74.1 pour GPT-6 Astra** et **74.2 pour Claude Opus 5.5**. Sur **AutomationBench**, les valeurs reportées sont **54.8 pour mAI-2**, **51.3 pour Gemini 4 Argon**, **42.5 pour Claude Opus 5.5** et **41.4 pour GPT-6 Astra**. Sur **HLE avec outils**, mAI-2 affiche **63.9**, devant **57.2 pour GPT-6 Astra** et face à **67.7 pour Claude Opus 5.5**.
 
-Les trois versions de Terminal-Bench meritent d’être lues ensemble : **90.6** en version 2.1, **30.0** en version 3.0 et **31.2** en version 4.0. Elles ne partagent ni le harnais ni l’échelle, et aucune n’est utilisée comme substitut d’une autre.
+Les trois versions de Terminal-Bench meritent d’être lues ensemble: **90.6** en version 2.1, **30.0** en version 3.0 et **31.2** en version 4.0. Elles ne partagent ni le harnais ni l’échelle, et aucune n’est utilisée comme substitut d’une autre.
 
 Ces chiffres situent les résultats dans leur contexte d’évaluation. Ils ne signifient pas que mAI-2 domine chaque benchmark et ne doivent pas être étendus à des versions ou à des protocoles différents.
 
-L’objectif est différent :
+L’objectif est différent:
 
 **proposer un ensemble de capacités de haut niveau dans une intelligence accessible.**
 
 ## Ce que montrent les résultats
 
-Ces évaluations montrent une chose importante :
+Ces évaluations montrent une chose importante:
 
 **il n’existe pas un seul type d’intelligence.**
 
 Certains modèles excellent dans le raisonnement. D’autres se distinguent dans le développement logiciel, l’utilisation d’outils ou les tâches agentiques.
 
-mAI-2 a donc été conçu avec une ambition plus large :
+mAI-2 a donc été conçu avec une ambition plus large:
 
 **proposer une intelligence cohérente sur de nombreux usages, et la rendre accessible au plus grand nombre.**
 
@@ -294,10 +294,10 @@ Nous ne cherchons pas seulement à construire une intelligence plus puissante.
 
 Avec mAI-2, nous faisons un nouveau pas dans cette direction.
 
-**Une intelligence de haut niveau.**  
-**Plus rapide.**  
-**Plus polyvalente.**  
-**La plus grande avancée de notre laboratoire.**  
+**Une intelligence de haut niveau.**
+**Plus rapide.**
+**Plus polyvalente.**
+**La plus grande avancée de notre laboratoire.**
 **Qui profite à tous.**
 
 ![mAI — Logo style planètes](https://upload.fs.fr/OfdXfLybPS.png)

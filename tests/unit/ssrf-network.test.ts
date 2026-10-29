@@ -209,6 +209,48 @@ describe("Client sortant — en-têtes et plafonds", () => {
     expect(undeclared.Authorization).toBeUndefined();
   });
 
+  it("retire aussi X-API-Key et les en-têtes personnalisés sur une redirection interorigine", () => {
+    const headers = {
+      Accept: "application/json",
+      Authorization: "Bearer oauth-token",
+      "X-Api-Key": "mcp-secret",
+      "X-Custom-Token": "custom-secret",
+    };
+    const allowlist = ["https://mcp.example"];
+    const sensitive = ["x-api-key", "X-Custom-Token"];
+
+    const sameOrigin = headersForHop(
+      headers,
+      "https://mcp.example/rpc",
+      allowlist,
+      sensitive
+    );
+    expect(sameOrigin["X-Api-Key"]).toBe("mcp-secret");
+    expect(sameOrigin["X-Custom-Token"]).toBe("custom-secret");
+    expect(sameOrigin.Authorization).toBe("Bearer oauth-token");
+
+    const redirected = headersForHop(
+      headers,
+      "https://evil.example/rpc",
+      allowlist,
+      sensitive
+    );
+    expect(redirected["X-Api-Key"]).toBeUndefined();
+    expect(redirected["X-Custom-Token"]).toBeUndefined();
+    expect(redirected.Authorization).toBeUndefined();
+    expect(redirected.Accept).toBe("application/json");
+
+    // Comparaison des noms insensible à la casse : une casse différente ne
+    // laisse pas fuiter le secret.
+    const reCased = headersForHop(
+      { "x-api-KEY": "mcp-secret" },
+      "https://evil.example/rpc",
+      allowlist,
+      sensitive
+    );
+    expect(reCased["x-api-KEY"]).toBeUndefined();
+  });
+
   it("borne la lecture d'un flux et détruit la source au dépassement", async () => {
     let destroyed = false;
     async function* stream() {

@@ -43,6 +43,7 @@ import { ShareToDMModal } from "@/components/vibe/common/ShareToDMModal";
 import { ToolAutocomplete } from "@/components/vibe/layout/ToolAutocomplete";
 import { MaiReasoning } from "@/components/vibe/mai/MaiReasoning";
 import { MaiToolChips } from "@/components/vibe/mai/MaiToolChips";
+import { MODEL_CATALOG_REFRESH_INTERVAL } from "@/lib/ai/model-catalog";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   buildMAIConversationJSON,
@@ -185,7 +186,7 @@ export const MAIStudioPage: React.FC = () => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [shareMessageText, setShareMessageText] = useState<string | null>(null);
-  // Approbation des outils sensibles : l'IA doit demander l'accord de
+  // Approbation des outils sensibles: l'IA doit demander l'accord de
   // l'utilisateur, sauf si l'auto-approbation a été activée en paramètre.
   const [pendingTool, setPendingTool] = useState<{
     name: string;
@@ -278,11 +279,34 @@ export const MAIStudioPage: React.FC = () => {
     loadModels();
   }, []);
 
+  /**
+   * Rafraîchissement automatique de la liste de repli.
+   *
+   * Le `ModelDropdown` recharge déjà `/api/models` toutes les 10 minutes;
+   * cette liste-ci n'est que le repli affiché avant que le catalogue du
+   * sélecteur ne réponde. Elle suit la même cadence, pour que les deux
+   * listes ne proposent pas des modèles différents.
+   */
+  useEffect(() => {
+    const timer = setInterval(() => {
+      void ApiService.getModels()
+        .then((res) => {
+          if (res?.models && res.models.length > 0) {
+            setAvailableModels(res.models as typeof DEFAULT_MODELS);
+          }
+        })
+        .catch(() => {});
+    }, MODEL_CATALOG_REFRESH_INTERVAL);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Multi-conversations : liste + chargement de l'historique persisté
+  // Multi-conversations: liste + chargement de l'historique persisté
   const loadConversations = useCallback(async (): Promise<
     MAIConversationSummary[]
   > => {
@@ -354,7 +378,7 @@ export const MAIStudioPage: React.FC = () => {
       } else {
         const list = await loadConversations();
         await loadHistory(list[0]?.id);
-        // Aucune conversation existante : l'historique vient d'en créer une
+        // Aucune conversation existante: l'historique vient d'en créer une
         if (list.length === 0) await loadConversations();
       }
       setConversationsLoading(false);
@@ -422,7 +446,7 @@ export const MAIStudioPage: React.FC = () => {
     const ok = await confirm({
       confirmLabel: "Supprimer",
       message: "Tous ses messages seront définitivement supprimés.",
-      title: "Supprimer cette discussion ?",
+      title: "Supprimer cette discussion?",
       tone: "danger",
     });
     if (!ok) return;
@@ -725,7 +749,7 @@ export const MAIStudioPage: React.FC = () => {
       refreshQuotas();
     } catch (err: any) {
       const errorMsg: ChatMessage = {
-        content: `⚠️ Erreur : ${err.message || "Impossible de joindre mAI."}`,
+        content: ` Erreur: ${err.message || "Impossible de joindre mAI."}`,
         id: (Date.now() + 1).toString(),
         sender: "mai",
         time: new Date().toLocaleTimeString("fr-FR", {
@@ -778,7 +802,7 @@ export const MAIStudioPage: React.FC = () => {
         pushMaiMsg(res.reply, undefined, res.toolCalls);
       } catch {
         pushMaiMsg(
-          `🚫 Très bien, je n'exécute pas l'outil « ${tool.name} ». Dites-moi si je peux faire autre chose pour vous.`
+          ` Très bien, je n'exécute pas l'outil « ${tool.name}». Dites-moi si je peux faire autre chose pour vous.`
         );
       }
       setIsApproving(false);
@@ -797,7 +821,7 @@ export const MAIStudioPage: React.FC = () => {
       refreshQuotas();
     } catch (err: any) {
       pushMaiMsg(
-        `⚠️ Erreur lors de l'exécution de « ${tool.name} » : ${err.message || "réessayez plus tard."}`
+        ` Erreur lors de l'exécution de « ${tool.name}»: ${err.message || "réessayez plus tard."}`
       );
     } finally {
       setIsApproving(false);
@@ -1049,7 +1073,7 @@ export const MAIStudioPage: React.FC = () => {
         data-app-update-blocked={isExecuting || isRegenerating || isApproving}
         style={{ height: "calc(100dvh - var(--vibe-kb-offset, 0px))" }}
       >
-        {/* Sidebar desktop : multi-conversations mAI */}
+        {/* Sidebar desktop: multi-conversations mAI */}
         <aside className="hidden md:flex w-64 lg:w-72 shrink-0 flex-col border-r border-zinc-800">
           {conversationList}
         </aside>
@@ -1132,14 +1156,14 @@ export const MAIStudioPage: React.FC = () => {
                 <span className="flex items-center gap-1 text-zinc-300">
                   <Zap className="w-3.5 h-3.5 text-white" />
                   <span>
-                    Tokens : {quotas.weeklyTokens.used.toLocaleString()} /{" "}
+                    Tokens: {quotas.weeklyTokens.used.toLocaleString()} /{" "}
                     {quotas.weeklyTokens.limit.toLocaleString()}
                   </span>
                 </span>
                 <span className="flex items-center gap-1 text-zinc-300">
                   <ImageIcon className="w-3.5 h-3.5 text-white" />
                   <span>
-                    Images : {quotas.dailyImages.used} /{" "}
+                    Images: {quotas.dailyImages.used} /{" "}
                     {quotas.dailyImages.limit}
                   </span>
                 </span>
@@ -1178,7 +1202,7 @@ export const MAIStudioPage: React.FC = () => {
               <div className="h-full flex flex-col items-center justify-center text-center p-8 text-zinc-500 space-y-2">
                 <Sparkles className="w-8 h-8 text-zinc-600 animate-pulse" />
                 <p className="text-sm font-medium text-zinc-400">
-                  Comment puis-je vous aider aujourd'hui ?
+                  Comment puis-je vous aider aujourd'hui?
                 </p>
                 <p className="text-xs text-zinc-600 max-w-sm">
                   Posez une question, ou tapez{" "}
@@ -1239,7 +1263,7 @@ export const MAIStudioPage: React.FC = () => {
                     {m.requiresApproval && pendingTool && (
                       <div className="mt-3 p-3 rounded-2xl bg-zinc-900 border border-amber-500/40 space-y-2">
                         <p className="text-[11px] font-mono text-amber-300 uppercase tracking-wide">
-                          🔐 Outil sensible : {pendingTool.name}
+                          Outil sensible: {pendingTool.name}
                         </p>
                         <pre className="text-[10px] text-zinc-400 whitespace-pre-wrap break-all max-h-24 overflow-y-auto">
                           {JSON.stringify(pendingTool.args, null, 2)}
@@ -1296,7 +1320,7 @@ export const MAIStudioPage: React.FC = () => {
                           ) : (
                             <Copy className="w-3.5 h-3.5" />
                           )}
-                          <span>{isCopied ? "Copié !" : "Copier"}</span>
+                          <span>{isCopied ? "Copié!" : "Copier"}</span>
                         </button>
 
                         <button
@@ -1424,7 +1448,7 @@ export const MAIStudioPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Tiroir mobile : liste des conversations mAI */}
+      {/* Tiroir mobile: liste des conversations mAI */}
       {sidebarOpen && (
         <div className="md:hidden fixed inset-0 z-[70]">
           <div

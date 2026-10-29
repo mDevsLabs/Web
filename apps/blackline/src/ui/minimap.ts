@@ -1,0 +1,13 @@
+import type { HUDData } from '../game.ts';
+import { distance,visible } from '../math.ts';
+import { buildingLadder } from '../traversal.ts';
+import type { UI } from '../ui.ts';
+function visibleForRadar(a:HUDData['actors'][number],p:HUDData['player'],d:HUDData){return visible({x:p.x,y:p.y+1.6,z:p.z},{x:a.x,y:a.y+1.6,z:a.z},d.map.props);}
+export function drawMinimap(this:UI,data:HUDData):void{if(!this.minimap)return;const ctx=this.minimap.getContext('2d')!,w=280,h=230,s=Math.min((w-20)/data.map.width,(h-20)/data.map.depth);ctx.fillStyle='#111e1be0';ctx.fillRect(0,0,w,h);ctx.strokeStyle='#75917e1e';ctx.lineWidth=1;for(let i=0;i<w;i+=20){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,h);ctx.stroke();}for(let i=0;i<h;i+=20){ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(w,i);ctx.stroke();}
+    const px=(x:number)=>w/2+x*s,pz=(z:number)=>h/2+z*s;ctx.strokeStyle='#8b9b8260';ctx.strokeRect(px(-data.map.width/2),pz(-data.map.depth/2),data.map.width*s,data.map.depth*s);
+    for(const b of data.map.props){if(b.y!==undefined)continue;ctx.fillStyle=b.kind==='building'?'#6885787c':'#6b8b7855';ctx.fillRect(px(b.x-b.w/2),pz(b.z-b.d/2),b.w*s,b.d*s);ctx.strokeStyle='#8ca18a77';ctx.strokeRect(px(b.x-b.w/2),pz(b.z-b.d/2),b.w*s,b.d*s);}
+    for(const b of data.map.props){if(b.kind!=='building')continue;const l=buildingLadder(b);ctx.fillStyle='#d2e8a8';ctx.fillRect(px(l.x)-2,pz(l.z)-3,4,6);}
+    if(this.config.mode==='domination'||this.config.mode==='hardpoint')for(const [i,o]of data.objectives.entries()){if(this.config.mode==='hardpoint'&&i!==data.pointIndex)continue;ctx.fillStyle=o.owner===0?'#c5dd95':o.owner===1?'#e89172':'#bfd0ca';ctx.font='bold 10px monospace';ctx.textAlign='center';ctx.fillText(o.id,px(o.x),pz(o.z)+3);ctx.strokeStyle=ctx.fillStyle;ctx.beginPath();ctx.arc(px(o.x),pz(o.z),9,0,7);ctx.stroke();}
+    for(const s of data.supplies){if(s.readyAt>data.elapsed)continue;ctx.fillStyle=s.kind==='medical'?'#e7b6a2':'#b4cf8b';ctx.fillRect(px(s.x)-2,pz(s.z)-2,4,4);}
+    for(const a of data.actors){if(!a.alive||a.player)continue;if(a.team===1&&(distance(a,data.player)>26||!visibleForRadar(a,data.player,data)))continue;ctx.fillStyle=a.team===0?'#9eb6ae':'#e78968';ctx.beginPath();ctx.arc(px(a.x),pz(a.z),a.team===0?2:2.5,0,7);ctx.fill();}
+    ctx.save();ctx.translate(px(data.player.x),pz(data.player.z));ctx.rotate(-data.player.yaw);ctx.fillStyle='#d2e9a2';ctx.beginPath();ctx.moveTo(0,-6);ctx.lineTo(-4,4);ctx.lineTo(0,2);ctx.lineTo(4,4);ctx.closePath();ctx.fill();ctx.fillStyle='#d2e9a214';ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,30,-Math.PI*.67,-Math.PI*.33);ctx.closePath();ctx.fill();ctx.restore();}

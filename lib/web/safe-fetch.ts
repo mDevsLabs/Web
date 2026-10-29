@@ -60,46 +60,54 @@ export type SafeFetchOptions = {
   method?: "GET" | "POST";
   body?: string | Uint8Array;
   /**
-   * Origines autorisées à recevoir l'en-tête `Authorization`. Toute autre
-   * destination (y compris après une redirection) le voit retiré : un jeton de
-   * session ne peut pas être exfiltré par un `Location:` contrôlé par un tiers.
+   * Origines autorisées à recevoir les en-têtes sensibles (`Authorization` et
+   * ceux listés dans `sensitiveHeaders`). Toute autre destination (y compris
+   * après une redirection) les voit retirés : un jeton ou une clé API ne peut
+   * pas être exfiltré par un `Location:` contrôlé par un tiers.
    */
   tokenOriginAllowlist?: readonly string[];
+  /**
+   * Noms d'en-têtes porteurs de secrets (comparaison insensible à la casse),
+   * par exemple `X-API-Key` d'un serveur MCP ou un en-tête `custom_headers`.
+   * Ils ne quittent jamais l'origine autorisée.
+   */
+  sensitiveHeaders?: readonly string[];
 };
 
 /**
- * En-têtes réellement envoyés à un saut donné. `Authorization` est retiré dès
- * que l'origine n'est pas dans la liste blanche — le contrôle est refait à
- * CHAQUE saut, car une redirection peut changer d'origine.
+ * En-têtes réellement envoyés à un saut donné. `Authorization` et les en-têtes
+ * déclarés sensibles sont retirés dès que l'origine n'est pas dans la liste
+ * blanche — le contrôle est refait à CHAQUE saut, car une redirection peut
+ * changer d'origine.
  */
 export function headersForHop(
   headers: Record<string, string>,
   url: string,
-  allowlist: readonly string[] | undefined
+  allowlist: readonly string[] | undefined,
+  sensitiveHeaders: readonly string[] = []
 ): Record<string, string> {
-  const hasAuth = Object.keys(headers).some(
-    (name) => name.toLowerCase() === "authorization"
+  const sensitive = new Set(sensitiveHeaders.map((name) => name.toLowerCase()));
+  sensitive.add("authorization");
+  const carriesSecret = Object.keys(headers).some((name) =>
+    sensitive.has(name.toLowerCase())
   );
-  if (!hasAuth) {
+  if (!carriesSecret) {
     return headers;
   }
-  if (allowlist === undefined) {
-    // Aucun jeton fourni par un appelant qui ne déclare pas de liste blanche :
-    // l'en-tête est retiré. Par défaut on ne fait pas confiance.
-    return withoutAuthorization(headers);
-  }
-  if (isTokenOriginAllowed(url, allowlist)) {
+  if (allowlist !== undefined && isTokenOriginAllowed(url, allowlist)) {
     return headers;
   }
-  return withoutAuthorization(headers);
+  // Aucune liste blanche déclarée ou origine étrangère : aucun secret.
+  return withoutSensitiveHeaders(headers, sensitive);
 }
 
-function withoutAuthorization(
-  headers: Record<string, string>
+function withoutSensitiveHeaders(
+  headers: Record<string, string>,
+  sensitive: ReadonlySet<string>
 ): Record<string, string> {
   const out: Record<string, string> = {};
   for (const [name, value] of Object.entries(headers)) {
-    if (name.toLowerCase() !== "authorization") {
+    if (!sensitive.has(name.toLowerCase())) {
       out[name] = value;
     }
   }
@@ -176,20 +184,42 @@ type SingleResponse = {
   stream: IncomingMessage;
 };
 
-function pinnedLookup(addresses: string[]) {
+/**
+ * Lookup épinglé, exporté pour être testé sans réseau.
+ *
+ * Node appelle ce lookup avec `{ all: true }` (Happy Eyeballs /
+ * `autoSelectFamily`) et attend alors un TABLEAU de `{ address, family }`.
+ * Renvoyer une chaîne dans ce mode — ce que faisait la version précédente —
+ * fait échouer la connexion avec « Invalid IP address: undefined », avant
+ * même le premier octet. C'était le cas de TOUS les appels `safeFetch*` :
+ * proxy d'images, lecture d'URL, documents, imports Wakies, MCP distant.
+ */
+export function pinnedLookup(addresses: string[]) {
   // La résolution est déjà faite et validée : on épingle l'adresse pour que
   // la pile réseau ne relance JAMAIS une résolution concurrente.
   return (
     _hostname: string,
-    _options: unknown,
-    callback: (error: Error | null, address?: string, family?: number) => void
+    options: { all?: boolean } | undefined,
+    callback: (
+      error: Error | null,
+      address?: string | Array<{ address: string; family: number }>,
+      family?: number
+    ) => void
   ) => {
-    const address = addresses[0];
-    if (!address) {
+    const records = addresses.map((address) => ({
+      address,
+      family: address.includes(":") ? 6 : 4,
+    }));
+    const first = records[0];
+    if (!first) {
       callback(new Error("Aucune adresse validée pour cet hôte."));
       return;
     }
-    callback(null, address, address.includes(":") ? 6 : 4);
+    if (options?.all) {
+      callback(null, records);
+      return;
+    }
+    callback(null, first.address, first.family);
   };
 }
 
@@ -286,7 +316,8 @@ async function fetchCapped(
         headers: headersForHop(
           headers,
           url.toString(),
-          options.tokenOriginAllowlist
+          options.tokenOriginAllowlist,
+          options.sensitiveHeaders
         ),
         method: options.method,
         signal: options.signal,

@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Jira Cloud par e-mail, site et jeton d'API : l'IA liste vos projets et cherche des tickets. Dans l'Agent, avec votre accord, elle peut en créer un.",
+  "icon": { "src": "/plugins/jira.svg", "type": "image" },
+  "id": "jira",
+  "minTier": "plus",
+  "name": "Jira",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["jira", "atlassian", "tickets", "projet", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les projets Jira Cloud du site connecté.",
+      "effect": "read",
+      "id": "jiraListProjects",
+      "label": "Projets Jira",
+      "systemHint": "La clé de projet (pas le nom) sert à créer un ticket."
+    },
+    {
+      "description": "Cherche des tickets Jira avec une requête JQL courte.",
+      "effect": "read",
+      "id": "jiraSearchIssues",
+      "label": "Chercher des tickets",
+      "systemHint": "Sans JQL, les tickets modifiés depuis 30 jours sont listés."
+    },
+    {
+      "description": "Crée un ticket Jira dans un projet du site connecté.",
+      "effect": "write",
+      "id": "jiraCreateIssue",
+      "label": "Créer un ticket",
+      "systemHint": "Le type par défaut est Task ; un site français attend souvent Tâche. Montrez le projet, le titre et le texte avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

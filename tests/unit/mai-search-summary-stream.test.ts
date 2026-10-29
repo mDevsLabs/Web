@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   collectSummarySources,
+  createThinkSplitter,
+  mergeStreamText,
   readSummaryStream,
   type SummaryStreamEvent,
+  stripThinkTags,
 } from "@/lib/search/summary-stream";
 
 function sseResponse(blocks: string[]): Response {
@@ -67,5 +70,38 @@ describe("sources de la synthèse mAI Search", () => {
     expect(events[0].type).toBe("sources");
     expect(events[1]).toEqual({ delta: "Bonjour", type: "text-delta" });
     expect(events[2]).toEqual({ type: "done" });
+  });
+});
+
+describe("séparation réflexion / réponse", () => {
+  it("retire les balises de réflexion du texte visible", () => {
+    expect(
+      stripThinkTags("<think>Je compare les sources.</think>Réponse.")
+    ).toBe("Réponse.");
+  });
+
+  it("restitue une balise coupée entre deux chunks", () => {
+    const splitter = createThinkSplitter();
+    const first = splitter.push("Avant <thi");
+    const second = splitter.push("nk>Calcul</think>Après");
+    const tail = splitter.flush();
+    const pieces = [...first, ...second, ...tail];
+    expect(
+      pieces
+        .filter((piece) => piece.kind === "text")
+        .map((piece) => piece.delta)
+        .join("")
+    ).toBe("Avant Après");
+    expect(
+      pieces
+        .filter((piece) => piece.kind === "reasoning")
+        .map((piece) => piece.delta)
+        .join("")
+    ).toBe("Calcul");
+  });
+
+  it("ne répète pas un delta déjà cumulé", () => {
+    expect(mergeStreamText("Bon", "Bonjour")).toBe("Bonjour");
+    expect(mergeStreamText("Bonjour", "jour")).toBe("Bonjour");
   });
 });

@@ -5,11 +5,12 @@ import { memoryLimitForTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
-  countMemories,
   createMemory,
+  getAgentById,
   getUserMemoriesWithScope,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { getProjectAccess } from "@/lib/projects/access";
 
 const memoryImportItemSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
@@ -59,6 +60,53 @@ export async function POST(request: Request) {
     const body = await request.json();
     const parsed = importSchema.parse(body);
     const limit = memoryLimitForTier(user.tier);
+
+    // Une mémoire ne peut être rattachée qu'à UN scope, et ce scope doit être
+    // réellement accessible : un UUID privé d'un autre compte est refusé avant
+    // toute écriture. Les contrôles sont faits une fois par identifiant.
+    for (const item of parsed.memories) {
+      if (item.agentId && item.projectId) {
+        return errorResponse("invalid_request", {
+          message:
+            "Une mémoire ne peut pas être rattachée simultanément à un agent et à un projet.",
+          status: 400,
+        });
+      }
+    }
+    const agentIds = Array.from(
+      new Set(
+        parsed.memories
+          .map((item) => item.agentId)
+          .filter((id): id is string => Boolean(id))
+      )
+    );
+    const projectIds = Array.from(
+      new Set(
+        parsed.memories
+          .map((item) => item.projectId)
+          .filter((id): id is string => Boolean(id))
+      )
+    );
+    for (const agentId of agentIds) {
+      const owned = await getAgentById({ id: agentId, userId });
+      if (!owned) {
+        return errorResponse("not_found", {
+          message: "Agent introuvable ou non autorisé.",
+        });
+      }
+    }
+    for (const projectId of projectIds) {
+      const access = await getProjectAccess({
+        projectId,
+        userEmail: user.email,
+        userId,
+      });
+      if (!access) {
+        return errorResponse("not_found", {
+          message: "Projet introuvable ou non autorisé.",
+        });
+      }
+    }
 
     // Récupérer les mémoires existantes pour vérifier les doublons et les quotas
     const existing = await getUserMemoriesWithScope({ userId });

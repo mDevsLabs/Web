@@ -4,6 +4,7 @@ import { paramsHashOf } from "@/lib/agent/params-hash";
 import { getAgentToolLabel } from "@/lib/agent/tools/catalog";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import { getPendingApprovalForRun } from "@/lib/db/agent-foundation-queries";
 import {
   getActiveAgentRunByChatId,
@@ -145,6 +146,11 @@ export async function GET(request: Request) {
     })
   ) {
     return errorResponse("access_denied");
+  }
+  if (!(await isChatUnlockedForUser({ chatId, userId }))) {
+    return errorResponse("access_denied", {
+      message: "Déverrouillez la conversation avec son code PIN.",
+    });
   }
 
   if (searchParams.get("view") === "approvalPreview") {

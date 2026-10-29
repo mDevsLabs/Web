@@ -22,8 +22,10 @@ export async function sendVerificationEmail(
   extraInfo?: any
 ) {
   const maskedEmail = email.replace(/(.{2}).*(@.*)/, "$1***$2");
+  // Ne jamais journaliser le code : un OTP de réinitialisation de PIN doit
+  // rester absent des logs, même en développement.
   console.log(
-    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)} code=${code}`
+    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)}`
   );
 
   let subject = "Notification - mAI";
@@ -55,6 +57,12 @@ export async function sendVerificationEmail(
       title = "Suppression du compte";
       textContent =
         "Vous avez demandé la suppression de votre compte. Voici votre code à 8 chiffres :";
+      break;
+    case "secure_chat_reset":
+      subject = "Réinitialisation du code PIN - mAI";
+      title = "Réinitialisation du code PIN";
+      textContent =
+        "Voici votre code de vérification à 6 chiffres pour réinitialiser le code PIN d'une conversation sécurisée <strong>mAI</strong> :";
       break;
     case "subscription_unlocked": {
       const tierUnlocked = escapeHtml(extraInfo?.tier || "Pro");
@@ -129,7 +137,7 @@ export async function sendVerificationEmail(
     </html>
   `;
 
-  await sendHtmlEmail(email, subject, html);
+  return await sendHtmlEmail(email, subject, html);
 }
 
 export async function sendHtmlEmail(

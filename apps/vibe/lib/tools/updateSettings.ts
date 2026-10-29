@@ -2,7 +2,7 @@
  * Outil mAI — Modifier les paramètres (SENSIBLE, approbation requise).
  * Délègue à MAIAgentFleet.executeTool. Catalogue : id "update_settings".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface UpdateSettingsArgs {
   [key: string]: unknown;

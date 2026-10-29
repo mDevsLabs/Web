@@ -1,6 +1,7 @@
 import "server-only";
 
 export * from "./queries/agents";
+export * from "./queries/chat-security";
 export * from "./queries/chats";
 export * from "./queries/commands";
 export * from "./queries/connection";

@@ -1,6 +1,6 @@
 export const app = {
   getPath: (_name?: string) => process.cwd(),
-  getVersion: () => "0.9.1",
+  getVersion: () => "0.9.2",
   isPackaged: false,
 };
 export class BrowserWindow {}
@@ -16,4 +16,5 @@ export type IpcMainEvent = any;
 export type IpcMainInvokeEvent = any;
 export type IpcRendererEvent = any;
 export type Event = any;
+export type WebContents = any;
 export default { app, BrowserWindow, ipcMain, shell };

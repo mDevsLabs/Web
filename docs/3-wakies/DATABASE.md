@@ -1,18 +1,18 @@
-# 🗄️ Schéma de Base de Données — Wakies
+# Schéma de Base de Données — Wakies
 
 Ce document présente l'architecture des données de Wakies, décrivant la transition de la base SQLite mono-utilisateur d'origine vers les 16 tables relationnelles multi-tenant PostgreSQL (Neon) créées par la migration `0037_wakies.sql`.
 
 ---
 
-## 1. 🛡️ Isolation Multi-Tenant par `userId`
+## 1. Isolation Multi-Tenant par `userId`
 
-Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité mAI vérifiée). Certaines tables enfants, notamment les messages, sont isolées en vérifiant leur conversation ou Wakie propriétaire ; toutes ne portent pas physiquement `userId`, et ce champ texte n’est pas systématiquement une clé étrangère vers `User`.
+Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité mAI vérifiée). Certaines tables enfants, notamment les messages, sont isolées en vérifiant leur conversation ou Wakie propriétaire; toutes ne portent pas physiquement `userId`, et ce champ texte n’est pas systématiquement une clé étrangère vers `User`.
 - Aucune entité ne peut exister sans rattachement explicite à un compte mAI Web.
 - Toutes les fonctions du module `lib/wakies/queries.ts` exigent `userId: string` en tout premier argument.
 
 ---
 
-## 2. 📋 Les 16 Tables PostgreSQL (`lib/db/schema.ts`)
+## 2. Les 16 Tables PostgreSQL (`lib/db/schema.ts`)
 
 | Nom de la table | Description & Responsabilité |
 |---|---|
@@ -20,7 +20,7 @@ Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité m
 | `WakiesSpace` | Espaces de travail regroupant des pages et des agents. |
 | `WakiesWakie` | Définition des agents coworkers (nom, rôle, avatar, prompt système, permissions). |
 | `WakiesWakieSpace` | Table de liaison plusieurs-à-plusieurs entre Wakies et Espaces. |
-| `WakiesConversation` | Fils de discussion avec les Wakies (remplace le concept de « thread »). |
+| `WakiesConversation` | Fils de discussion avec les Wakies (remplace le concept de « thread»). |
 | `WakiesMessage` | Messages individuels au format `UIMessage` (AI SDK). |
 | `WakiesPage` | Documents éditables Tiptap au sein d'un Espace. |
 | `WakiesPageConversation`| Conversations liées directement à une page de travail spécifique. |
@@ -35,7 +35,7 @@ Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité m
 
 ---
 
-## 3. 🔄 Comparaison avec le modèle SQLite d'origine
+## 3. Comparaison avec le modèle SQLite d'origine
 
 | Caractéristique | Ancien gabarit OpenDots (archivé) | Portage mAI Web (`/wakies`) |
 |---|---|---|
@@ -47,6 +47,6 @@ Dans le modèle mAI Web, les tables propriétaires portent `userId` (identité m
 
 ## Migration OpenMuse et tours de conversation
 
-Les seize tables historiques sont conservées. Les migrations 0041 (modèle/avatar) et 0042 préexistante restent en place. La migration additive 0043 ajoute WakiesChatTurn : propriétaire, conversation, message logique, UUID de réponse, statut et expiration. L’index unique conversation/message et le verrou transactionnel empêchent les doublons ; les lectures sont limitées et filtrées par compte. Aucun contenu historique n’est réécrit ou supprimé. Le journal et scripts/check-db-schema.mjs accompagnent la migration ; aucun DDL au runtime.
+Les seize tables historiques sont conservées. Les migrations 0041 (modèle/avatar) et 0042 préexistante restent en place. La migration additive 0043 ajoute WakiesChatTurn: propriétaire, conversation, message logique, UUID de réponse, statut et expiration. L’index unique conversation/message et le verrou transactionnel empêchent les doublons; les lectures sont limitées et filtrées par compte. Aucun contenu historique n’est réécrit ou supprimé. Le journal et scripts/check-db-schema.mjs accompagnent la migration; aucun DDL au runtime.
 
 Les objectifs simples utilisent WakiesPage et ses révisions, pas une base séparée. Les blobs privés continuent d’utiliser le stockage mAI. Aucune base source OpenMuse n’est créée ou utilisée en production. L’application de 0043 et la validation sur une vraie base sont nécessaires avant déploiement du chat.

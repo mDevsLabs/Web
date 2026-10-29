@@ -22,6 +22,8 @@ import {
   incrementCustomCommandUsage,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { signBlobPathForUser } from "@/lib/files/blob-access";
+import { refreshBlobAttachmentUrls } from "@/lib/files/blob-path";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
   getPluginManifest,
@@ -30,6 +32,7 @@ import {
 } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
@@ -102,6 +105,18 @@ export async function POST(request: Request) {
 
     await enforceChatRateLimit(request, auth.userId);
 
+    // Les URL signées des pièces jointes expirent après 10 minutes. Avant tout
+    // envoi au fournisseur (y compris une régénération d'un ancien message),
+    // on réémet une URL fraîche pour les blobs DU compte ; les URL étrangères
+    // ou non-blob restent inchangées.
+    const refreshedMessages = Array.isArray(body.messages)
+      ? await refreshBlobAttachmentUrls(
+          body.messages,
+          auth.userId,
+          (pathname) => signBlobPathForUser(pathname, auth.userId)
+        )
+      : null;
+
     // 2. Résolution du contexte (chat, projet, skill, agent, mémoire utilisateur)
     const ctx = await buildChatContext(request, auth, {
       agentId: (body as any).agentId ?? null,
@@ -110,7 +125,7 @@ export async function POST(request: Request) {
       id: body.id,
       isGhostMode: body.isGhostMode ?? false,
       message: (body.message as any) ?? null,
-      messages: (body.messages as any) ?? null,
+      messages: (refreshedMessages as any) ?? null,
       pendingPrompt: body.pendingPrompt,
       projectId: body.projectId,
       reasoningLevel: body.reasoningLevel ?? null,
@@ -264,6 +279,10 @@ export async function POST(request: Request) {
           enabledPluginIds
         );
 
+        const customPlugins = ctx.isGhostMode
+          ? { addendum: "", ids: [] as string[], tools: {} }
+          : await customPluginChatTools(ctx.userId);
+
         const tools = createChatTools(
           {
             // `chatId` n'est renseigné que si la conversation est déjà
@@ -284,12 +303,14 @@ export async function POST(request: Request) {
             userId: ctx.userId,
           },
           mcpCtx.mcpTools,
-          pluginTools
+          { ...pluginTools, ...customPlugins.tools }
         );
 
         return {
-          activeToolsList,
-          effectiveAddendum: finalEffectiveAddendum,
+          activeToolsList: [...activeToolsList, ...customPlugins.ids],
+          effectiveAddendum: [finalEffectiveAddendum, customPlugins.addendum]
+            .filter(Boolean)
+            .join("\n\n"),
           tools,
         };
       },

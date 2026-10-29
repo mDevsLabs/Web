@@ -1,7 +1,7 @@
 # Liste des tâches — Agents IA, icônes, couleurs, planification
 
 > Fichier de travail **jetable** — à supprimer une fois le chantier terminé.
-> `TASKS.md` (racine) couvre un chantier parallèle (socle design) : ne pas
+> `TASKS.md` (racine) couvre un chantier parallèle (socle design): ne pas
 > confondre les deux listes.
 
 ## Résumé
@@ -13,29 +13,29 @@
 | 3 | Modèle par défaut unique `gemini/gemini-3.8-flash` | ☑ (⚠ prérequis bloquant) |
 | 4 | Dédoublonnage en lecture + test de non-régression | ☑ |
 | 5 | Suppression du système emoji | ☑ |
-| 6 | Designer : retrait du playground + repositionnement de la croix | ☑ |
+| 6 | Designer: retrait du playground + repositionnement de la croix | ☑ |
 | 7 | Palette 10 couleurs + couleur libre (composant partagé) | ☑ |
-| 8 | Onglet « Modèles » avec recherche + filtres | ☑ |
+| 8 | Onglet « Modèles» avec recherche + filtres | ☑ |
 | 9 | Icônes uniques — 16 plugins | ☑ |
 | 10 | Icônes uniques — modèles de skills | ☑ |
-| 11 | Planification : 3 modes d'outils | ☑ |
+| 11 | Planification: 3 modes d'outils | ☑ |
 | 12 | Validation | ☑ typecheck / tests / lint · ☐ build · ☐ `db:migrate` |
 
-> **Note numérotation** : `0029` est réservé par ce chantier
+> **Note numérotation**: `0029` est réservé par ce chantier
 > (`0029_agent_templates_icons_and_tool_modes.sql`, `_journal.json` idx 28 /
 > when 1787552720000). Le chantier parallèle démarre à `0030`.
 
-> **⚠ Prérequis bloquant (étape 3)** : `gemini/gemini-3.8-flash` doit exister dans
+> **⚠ Prérequis bloquant (étape 3)**: `gemini/gemini-3.8-flash` doit exister dans
 > le registre des modèles servi par `GET /api/models`. Au 26/09/2026 il est
 > absent de `models.ts` (backend Val Town, 5 entrées) comme de
-> `FALLBACK_MODELS`. **La constante est posée, le modèle n'existe pas encore** :
+> `FALLBACK_MODELS`. **La constante est posée, le modèle n'existe pas encore**:
 > sans lui, le chat retombe sur le fallback de `pickDefaultAgentModel`.
-> Voir « Reste à faire ».
+> Voir « Reste à faire».
 
-> **Chantier parallèle dans le même arbre de travail** : une autre session
+> **Chantier parallèle dans le même arbre de travail**: une autre session
 > édite `lib/db/schema.ts`, `lib/agent/*`, `app/(chat)/api/chat/schema.ts`,
 > `tests/unit/chat-schema-tolerance.test.ts`, `components/settings/memory-card.tsx`.
-> Ne pas « corriger » les erreurs qui en viennent.
+> Ne pas « corriger» les erreurs qui en viennent.
 
 ---
 
@@ -44,7 +44,7 @@
 - [x] 1.1 `lib/db/migrations/0029_agent_templates_icons_and_tool_modes.sql`
       — dédoublonnage `AgentTemplate` (garde le plus ancien par nom)
 - [x] 1.2 … — `CREATE UNIQUE INDEX "AgentTemplate_name_key"` (rend le seed de
-      `0007_agents.sql` idempotent : `ON CONFLICT DO NOTHING` sans cible
+      `0007_agents.sql` idempotent: `ON CONFLICT DO NOTHING` sans cible
       couvre désormais l'index. **Ne pas éditer `0007`**, sinon Drizzle rejoue
       le fichier sur son nouveau hash)
 - [x] 1.3 … — `DROP COLUMN IF EXISTS "emoji"` sur `Agent` et `AgentTemplate`
@@ -73,13 +73,13 @@
 - [ ] 2.7 `components/agents/agents-stats.tsx:196` — idem
 - [ ] 2.8 `hooks/use-active-chat.tsx` — adapter `mutate` au nouveau payload
 - [ ] 2.9 `app/(chat)/agents/page.tsx:42` + `app/(chat)/settings/page.tsx:1462`
-      — copies « jusqu'à N agents »
+      — copies « jusqu'à N agents»
 
 ## 3. Modèle par défaut unique ☑
 
 - [x] 3.1 `lib/ai/models.ts` — `DEFAULT_CHAT_MODEL = "gemini/gemini-3.8-flash"`,
       `titleModel` aligné
-- [x] 3.2 Littéraux remplacés par l'import de la constante :
+- [x] 3.2 Littéraux remplacés par l'import de la constante:
       `lib/db/queries.ts`, `lib/db/schema.ts`,
       `app/(chat)/api/planning/route.ts`, `lib/planning/executor.ts`
 - [ ] 3.3 Vérifier que l'id est servi par `GET /api/models` (prérequis bloquant)
@@ -87,7 +87,7 @@
 ## 4. Dédoublonnage en lecture ☑
 
 - [x] 4.1 `lib/agent-templates/dedupe.ts` (nouveau) —
-      `dedupeAgentTemplatesByName()` : helper pur, testable sans base
+      `dedupeAgentTemplatesByName()`: helper pur, testable sans base
 - [x] 4.2 `lib/db/queries.ts:getAgentTemplates()` — appelle le helper
 - [x] 4.3 `tests/unit/agents-quota-models.test.ts` — table sale rejouée, une
       seule ligne par nom, la plus ancienne conservée
@@ -95,7 +95,7 @@
 ## 5. Suppression du système emoji ☑
 
 - [x] 5.1 `components/agents/agent-icon.tsx` — prop `emoji`, `EMOJI_PRESETS`,
-      `isEmoji` retirés ; `variant="default"` re-style en badge coloré
+      `isEmoji` retirés; `variant="default"` re-style en badge coloré
 - [x] 5.2 `lib/db/queries.ts` — `AgentInput.emoji`, insert, `duplicateAgent`,
       `agentsWithStats`, `agentEmoji` dans les 2 SELECT JOIN
 - [x] 5.3 `app/(chat)/agents/agents-client.tsx` — `formEmoji`, `formIconType`,
@@ -106,21 +106,21 @@
       `input/context-chips.tsx`, `greeting.tsx`
 - [x] 5.6 `app/(chat)/settings/page.tsx` (`prefAgents`), `schedule-dialog.tsx`,
       `planning-client.tsx`
-- [x] 5.7 Copies « icône/emoji » → « icône » : `app/(chat)/agents/page.tsx`,
+- [x] 5.7 Copies « icône/emoji» → « icône»: `app/(chat)/agents/page.tsx`,
       `agents-client.tsx` (description du dialogue), `settings/page.tsx`
-- [x] 5.8 Zod `emoji` retiré de `api/agents/route.ts` + `[id]/route.ts` ;
+- [x] 5.8 Zod `emoji` retiré de `api/agents/route.ts` + `[id]/route.ts`;
       garde graphème supprimée
 
-## 6. Designer : playground + croix ☑
+## 6. Designer: playground + croix ☑
 
 - [x] 6.1 `agents-client.tsx` — `editorTab`, `handleSendPlaygroundMessage`,
       switcher d'onglets et bloc playground supprimés (~150 lignes)
-- [x] 6.2 … — imports morts (`PlayIcon`, `SendIcon`) retirés ;
+- [x] 6.2 … — imports morts (`PlayIcon`, `SendIcon`) retirés;
       `SlidersHorizontalIcon` / `MessageSquareTextIcon` conservés (encore
       utilisés ailleurs dans le fichier)
-- [x] 6.3 … — `DialogHeader className="pr-12"` : la croix
+- [x] 6.3 … — `DialogHeader className="pr-12"`: la croix
       (`absolute top-4 right-4`) ne chevauche plus le contenu
-- [x] 6.4 `app/(chat)/agents/page.tsx` — 🤖 de la page paywall remplacé par
+- [x] 6.4 `app/(chat)/agents/page.tsx` — de la page paywall remplacé par
       `BotIcon`
 
 ## 7. Palette 10 couleurs + couleur libre ☑
@@ -133,19 +133,19 @@
 - [x] 7.4 `app/(chat)/skills/skills-client.tsx` — `ColorPicker`
 - [x] 7.5 `components/settings/configuration-client.tsx` — `ColorPicker`
 
-## 8. Onglet « Modèles » ☑
+## 8. Onglet « Modèles» ☑
 
 - [x] 8.1 `agents-client.tsx` — `activeTab: "agents" | "templates" | "stats"`,
       bouton `Modèles ({templates.length})`
-- [x] 8.2 … — grille de modèles sortie de l'onglet « Mes agents »
+- [x] 8.2 … — grille de modèles sortie de l'onglet « Mes agents»
 - [x] 8.3 … — barre de recherche dédiée + `<select>` modèle + chips de tags +
-      bouton « Réinitialiser » + compteur `n sur 12`
-- [x] 8.4 … — état vide « Mes agents » avec 2 CTA (Parcourir les modèles /
-      Créer mon premier agent, désactivé au quota) ; état vide « Modèles »
+      bouton « Réinitialiser» + compteur `n sur 12`
+- [x] 8.4 … — état vide « Mes agents» avec 2 CTA (Parcourir les modèles /
+      Créer mon premier agent, désactivé au quota); état vide « Modèles»
 
 ## 9. Icônes uniques — plugins ☑
 
-Résultat : **16 icônes distinctes** (doublons corrigés : `Code`×2 → `Github` /
+Résultat: **16 icônes distinctes** (doublons corrigés: `Code`×2 → `Github` /
 `Gitlab`, `Atom`×2 → `Atom` / `Library`, `BarChart3`×2 → `Landmark` /
 `Banknote`, `Leaf`×2 → `Wind` / `Salad`).
 
@@ -155,7 +155,7 @@ Résultat : **16 icônes distinctes** (doublons corrigés : `Code`×2 → `Githu
 - [x] 9.2 `lib/plugins/icon.tsx` — import + entrée `LUCIDE_ICONS` pour les 10
       (le `Record<LucideIconName, …>` rend cette étape obligatoire)
 - [x] 9.3 `lib/plugins/github-public/index.json` → `Github`
-      (sans objet : `github-public` est retiré au profit du connecteur OAuth
+      (sans objet: `github-public` est retiré au profit du connecteur OAuth
       `github`, dont l'icône est le logo de marque `public/plugins/github.svg`)
 - [x] 9.4 `lib/plugins/gitlab-public/index.json` → `Gitlab`
 - [x] 9.5 `lib/plugins/openalex/index.json` → `Library`
@@ -168,18 +168,18 @@ Résultat : **16 icônes distinctes** (doublons corrigés : `Code`×2 → `Githu
 
 ## 10. Icônes uniques — skills ☑
 
-- [x] 10.1 `app/(chat)/tools/skills-panel.tsx:44-53` — **le vrai bug** :
+- [x] 10.1 `app/(chat)/tools/skills-panel.tsx:44-53` — **le vrai bug**:
       `SkillGlyph` ignorait `template.icon` et forçait `SparklesIcon`, donc
       tous les modèles se ressemblaient. Elle rend maintenant le manifeste
-      teinté par `color` (3 appelants : 213, 278, 334)
+      teinté par `color` (3 appelants: 213, 278, 334)
 - [x] 10.2 `lib/plugins/icon-allowlist.ts` + `icon.tsx` — `GitBranch`, `Mail`,
       `NotebookPen` (`Rss` était déjà dans l'allowlist)
 - [x] 10.3 `lib/skill-templates/index.ts` — `notion-organizer` → `NotebookPen`,
       `email-drafter` → `Mail`, `github-maintainer` → `GitBranch`,
       `brave-tech-watch` → `Rss` (au lieu de `Map`, une carte pour une veille)
-- [x] 10.4 Vérifié par test : plus aucun doublon d'icône sur les 20 modèles
+- [x] 10.4 Vérifié par test: plus aucun doublon d'icône sur les 20 modèles
 
-## 11. Planification : 3 modes d'outils ☑
+## 11. Planification: 3 modes d'outils ☑
 
 - [x] 11.1 `lib/planning/tool-mode.ts` (nouveau) — `SCHEDULE_TOOL_MODES`,
       `SCHEDULE_TOOL_MODE_META`, `normalizeScheduleToolMode`,
@@ -202,17 +202,17 @@ Résultat : **16 icônes distinctes** (doublons corrigés : `Code`×2 → `Githu
 - [x] 12.1 `tsc --noEmit` — **0 erreur** sur l'ensemble du dépôt à la fin du
       lot (le chantier parallèle a stabilisé ses fichiers entre-temps).
 - [x] 12.2 `vitest run` — **592 pass / 1 fail / 4 skip**. Le seul échec est
-      `tests/unit/tier-limits.test.ts` (« préserve optional met nullable »),
+      `tests/unit/tier-limits.test.ts` (« préserve optional met nullable»),
       test que le chantier parallèle vient d'ajouter et qui n'est pas encore au
       vert de son côté. Nouveau fichier
-      `tests/unit/agents-quota-models.test.ts` : **42/42 pass**.
+      `tests/unit/agents-quota-models.test.ts`: **42/42 pass**.
 - [x] 12.3 `validate-plugins.ts` → ✓ 16 plugins valides
 - [x] 12.4 `biome check` sur les 24 fichiers du chantier → clean
 - [ ] 12.5 `pnpm build` — non lancé (le chantier parallèle avait des erreurs TS
-      en cours pendant ce lot ; à relancer une fois les deux lots mergés)
+      en cours pendant ce lot; à relancer une fois les deux lots mergés)
 - [ ] 12.6 `pnpm db:migrate` sur une base de staging (aucun job Postgres en CI)
-- [ ] 12.7 Smoke test : Plus → 15 agents puis 403 ; Max → sans limite ;
-      12 modèles affichés une seule fois ; onglet Modèles filtrable ;
+- [ ] 12.7 Smoke test: Plus → 15 agents puis 403; Max → sans limite;
+      12 modèles affichés une seule fois; onglet Modèles filtrable;
       tâche planifiée en `none` sans outil
 
 ---

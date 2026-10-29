@@ -245,15 +245,22 @@ export async function POST(req: NextRequest) {
 
   const contentType = req.headers.get("content-type") || "";
 
+  // Le corps JSON n'est lu QU'UNE fois. Il était lu une première fois pour
+  // détecter `set_avatar`, puis une seconde pour le profil : sur un
+  // `NextRequest`, la seconde lecture rejette (« Body has already been read »)
+  // et le `.catch(() => null)` faisait valider `null` par Zod — d'où
+  // « champ: objet attendu, null reçu » sur TOUT enregistrement de profil.
+  let jsonBody: unknown = null;
+
   // Cas 0 : changement d'avatar par le tool natif (JSON, action set_avatar).
   if (contentType.includes("application/json")) {
-    const body: unknown = await req.json().catch(() => null);
+    jsonBody = await req.json().catch(() => null);
     if (
-      body &&
-      typeof body === "object" &&
-      (body as Record<string, unknown>).action === "set_avatar"
+      jsonBody &&
+      typeof jsonBody === "object" &&
+      (jsonBody as Record<string, unknown>).action === "set_avatar"
     ) {
-      const action = body as {
+      const action = jsonBody as {
         action: string;
         imageUrl?: unknown;
         sourceHash?: unknown;
@@ -385,7 +392,7 @@ export async function POST(req: NextRequest) {
     // Les longueurs suivent les bornes que le backend applique déjà ; les règles
     // de format (mot de passe, email) restent son domaine, il répond avec un
     // message précis que l'on préserve.
-    const raw = await req.json().catch(() => null);
+    const raw = jsonBody;
     const parsed = updateProfileSchema.safeParse(raw);
     if (!parsed.success) {
       return errorResponse("invalid_request", {

@@ -53,7 +53,10 @@ export function useAgentSettings() {
   );
 
   const update = useCallback(
-    async (patch: AgentSettingsPatch) => {
+    async (
+      patch: AgentSettingsPatch,
+      rollback?: () => void | Promise<void>
+    ) => {
       try {
         const response = await fetch(ENDPOINT, {
           body: JSON.stringify(patch),
@@ -74,6 +77,18 @@ export function useAgentSettings() {
               : current,
           { revalidate: true }
         );
+        toast.success("Paramètres enregistrés", {
+          action: rollback
+            ? {
+                label: "Annuler",
+                onClick: () => {
+                  void rollback();
+                },
+              }
+            : undefined,
+          duration: 5000,
+          position: "top-right",
+        });
       } catch {
         toast.error("Impossible d'enregistrer les paramètres Agent.");
       }

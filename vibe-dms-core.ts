@@ -1,7 +1,7 @@
 import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — DMs : SOCLE PARTAGÉ (vibe-dms-core.ts)
+ * VIBE SOCIAL PLATFORM — DMs: SOCLE PARTAGÉ (vibe-dms-core.ts)
  * Tables DM (ensureDMTables), compte officiel mAI, helpers SSE et requêtes
  * communes aux routes DMs. Scindé de vibe-dms.ts (limite de taille Val Town).
  * ============================================================================
@@ -15,6 +15,10 @@ import {
   isPaidTier,
 } from "./config.ts";
 import { pushRealtimeEvent } from "./realtime.ts";
+import {
+  type DmRecipientDecision,
+  decideDmRecipient,
+} from "./vibe-access-policy.ts";
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 /** Longueurs maximales d'un message privé (texte brut, HTML décompté) par forfait. */
@@ -23,7 +27,7 @@ export const DM_MESSAGE_CHARS_PAID = 10_000;
 export const dmPlainLength = (content: unknown): number =>
   stripHtmlTags(String(content ?? "")).length;
 
-/** Limite du compte : 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
+/** Limite du compte: 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
 export const getDmMessageCharLimit = async (
   sql: any,
   userId: number
@@ -40,10 +44,10 @@ export const getDmMessageCharLimit = async (
 
 /**
  * Crée les tables de modération DM si besoin (idempotent, exécuté une fois).
- * — blocked_users : relations de blocage
- * — dm_reports    : signalements
- * — dm_conv_meta  : métadonnées locales par utilisateur (renommage conversation)
- * — dm_reactions  : réactions emoji + colonne reply_to_id (réponses)
+ * — blocked_users: relations de blocage
+ * — dm_reports: signalements
+ * — dm_conv_meta: métadonnées locales par utilisateur (renommage conversation)
+ * — dm_reactions: réactions emoji + colonne reply_to_id (réponses)
  */
 let dmTablesReady = false;
 export async function ensureDMTables() {
@@ -106,7 +110,7 @@ export async function ensureDMTables() {
     await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS edited_at TIMESTAMPTZ`.catch(
       () => {}
     );
-    // Messages de groupe (migration 019) : conversations multi-participants
+    // Messages de groupe (migration 019): conversations multi-participants
     await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS is_group BOOLEAN DEFAULT FALSE`.catch(
       () => {}
     );
@@ -168,7 +172,7 @@ export async function ensureDMTables() {
     await sql`CREATE INDEX IF NOT EXISTS idx_dm_scheduled ON direct_messages(status, send_at) WHERE status = 'scheduled'`.catch(
       () => {}
     );
-    // Traduction mémorisée, transfert (attribution) et masquage local (« pour moi »)
+    // Traduction mémorisée, transfert (attribution) et masquage local (« pour moi»)
     await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS translations JSONB DEFAULT '{}'`.catch(
       () => {}
     );
@@ -196,8 +200,8 @@ export async function ensureDMTables() {
         PRIMARY KEY (conversation_id, message_id)
       )
     `.catch(() => {});
-    // Conversations de Livre (chantier « Livres dans Messages ») : rattachement
-    // d'une conversation de groupe à un Livre. Pas de FK : vibe_books peut ne
+    // Conversations de Livre (chantier « Livres dans Messages»): rattachement
+    // d'une conversation de groupe à un Livre. Pas de FK: vibe_books peut ne
     // pas encore exister au démarrage.
     await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(
       () => {}
@@ -219,7 +223,7 @@ export async function ensureDMTables() {
 }
 
 /**
- * Compte officiel mAI (pseudo-utilisateur) : répond automatiquement aux DMs.
+ * Compte officiel mAI (pseudo-utilisateur): répond automatiquement aux DMs.
  * Seed idempotent — même pattern que la migration 005 du compte @bot.
  */
 let maiAccountReady = false;
@@ -244,11 +248,11 @@ export async function ensureMAIAccount() {
     `;
     await sql`
       INSERT INTO profiles (user_id, display_name, bio, avatar_url, is_verified)
-      SELECT id, 'mAI', 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé : je réponds à toutes vos questions. ✨', 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe', TRUE
+      SELECT id, 'mAI', 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé: je réponds à toutes vos questions. ', 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe', TRUE
       FROM users WHERE username = 'mai'
       ON CONFLICT (user_id) DO UPDATE SET
         display_name = 'mAI',
-        bio = 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé : je réponds à toutes vos questions. ✨',
+        bio = 'L''intelligence artificielle officielle de Vibe. Écrivez-moi en message privé: je réponds à toutes vos questions. ',
         avatar_url = 'https://api.dicebear.com/7.x/bottts/svg?seed=mai-vibe',
         is_verified = TRUE
     `;
@@ -275,7 +279,7 @@ export async function getMAIUserId(sql: any): Promise<number | null> {
 }
 
 /**
- * Réponse automatique du compte mAI à un DM : génère une réponse avec
+ * Réponse automatique du compte mAI à un DM: génère une réponse avec
  * OpenRouter en tenant compte de l'historique de la conversation, puis
  * débite l'usage hebdomadaire de l'expéditeur.
  */
@@ -321,7 +325,7 @@ export async function generateMAIDMReply(
     let reply: string;
     if (currentUsage >= tokenLimit) {
       reply =
-        "⚠️ Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
+        " Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
     } else {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${senderId}::text LIMIT 1
@@ -332,15 +336,15 @@ export async function generateMAIDMReply(
         (keyRows.length > 0 ? keyRows[0].api_key : "");
 
       const systemPrompt =
-        "Tu es mAI, l'intelligence artificielle officielle du réseau social Vibe. Tu réponds aux messages privés des utilisateurs comme un vrai interlocuteur : bienveillant, concis et utile. " +
-        "Tu réponds en français avec quelques émojis. Tu connais tout l'historique de la conversation : poursuis naturellement l'échange sans redemander des informations déjà données. " +
+        "Tu es mAI, l'intelligence artificielle officielle du réseau social Vibe. Tu réponds aux messages privés des utilisateurs comme un vrai interlocuteur: bienveillant, concis et utile. " +
+        "Tu réponds en français avec quelques émojis. Tu connais tout l'historique de la conversation: poursuis naturellement l'échange sans redemander des informations déjà données. " +
         "Ne fais AUCUNE évaluation de sécurité, n'écris JAMAIS 'User Safety: safe' ni aucun méta-commentaire.";
 
       const userPrompt =
         (transcript.trim()
-          ? `Historique de la conversation :\n${transcript}\n\n`
+          ? `Historique de la conversation:\n${transcript}\n\n`
           : "Nouvelle conversation.\n\n") +
-        `L'utilisateur vient d'envoyer : « ${senderMessage} »\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
+        `L'utilisateur vient d'envoyer: « ${senderMessage}»\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
 
       reply = "";
       if (openRouterApiKey) {
@@ -392,7 +396,7 @@ export async function generateMAIDMReply(
       }
       if (!reply) {
         reply =
-          "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ✨";
+          "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ";
       }
 
       // Débit de l'usage hebdomadaire de l'expéditeur (chaque message compte)
@@ -426,7 +430,7 @@ export async function generateMAIDMReply(
       VALUES (${senderId}, ${maiUserId}, 'dm', 'vous a envoyé un message')
     `.catch(() => {});
 
-    // Temps réel : pousse la réponse mAI à l'expéditeur (flux SSE)
+    // Temps réel: pousse la réponse mAI à l'expéditeur (flux SSE)
     try {
       await pushRealtimeEvent(
         senderId,
@@ -449,7 +453,7 @@ export async function generateMAIDMReply(
 
 /**
  * Publication paresseuse des DMs programmés arrivés à échéance (miroir
- * publishDuePosts) : appelée en tête de handleDMMessages, throttle 30 s.
+ * publishDuePosts): appelée en tête de handleDMMessages, throttle 30 s.
  */
 let lastDMpublishCheck = 0;
 export async function publishScheduledDMs(): Promise<void> {
@@ -502,7 +506,7 @@ export async function resolveConversationId(
 }
 
 /**
- * Résout une conversation depuis un partnerId brut : "123" (1-à-1) ou
+ * Résout une conversation depuis un partnerId brut: "123" (1-à-1) ou
  * "group:<uuid>" (groupe). Vérifie l'appartenance de l'utilisateur et
  * retourne les membres pour la diffusion SSE.
  */
@@ -661,7 +665,7 @@ export async function attachDMAttachedPosts(
 }
 
 /**
- * Normalise l'attribution d'un message transféré : seul l'id du message
+ * Normalise l'attribution d'un message transféré: seul l'id du message
  * d'origine est accepté, l'auteur est re-dérivé depuis la base (anti-usurpation).
  */
 export async function deriveForwardedFrom(
@@ -724,3 +728,66 @@ export const assertMessageAccess = async (
   }
   return { message: m, ok: true };
 };
+
+export type { DmRecipientDecision } from "./vibe-access-policy.ts";
+
+/**
+ * Autorisation d'écrire à un destinataire, PARTAGÉE par le chemin HTTP et
+ * l'outil `send_message` de l'agent. Une approbation d'outil (même automatique)
+ * ne remplace jamais le consentement du destinataire : blocage dans les deux
+ * sens, DM désactivés, ou politique « abonnements seulement ».
+ */
+export async function assertDmRecipientAllowed(
+  sql: any,
+  senderId: number,
+  recipientId: number
+): Promise<DmRecipientDecision> {
+  const blockCheck = await sql`
+    SELECT 1 FROM blocked_users
+    WHERE (user_id = ${senderId} AND blocked_user_id = ${recipientId})
+       OR (user_id = ${recipientId} AND blocked_user_id = ${senderId})
+    LIMIT 1
+  `;
+
+  let recipientSettings: any[] = [];
+  try {
+    recipientSettings = await sql`
+      SELECT allow_dms, dms_enabled
+      FROM user_settings
+      WHERE user_id = ${recipientId}
+      LIMIT 1
+    `;
+  } catch (settingsError) {
+    // Table absente ou incomplète : comportement historique (réception ouverte).
+    console.warn(
+      "[vibe-dms] Lecture des préférences DM ignorée:",
+      (settingsError as any)?.message
+    );
+  }
+
+  const settingsPresent = recipientSettings.length > 0;
+  const policy = settingsPresent
+    ? recipientSettings[0].allow_dms || "everyone"
+    : "everyone";
+  const dmsEnabled = settingsPresent
+    ? recipientSettings[0].dms_enabled !== false
+    : true;
+
+  let recipientFollowsSender = false;
+  if (settingsPresent && policy === "following") {
+    const follows = await sql`
+      SELECT 1 FROM follows
+      WHERE follower_id = ${recipientId} AND following_id = ${senderId}
+      LIMIT 1
+    `;
+    recipientFollowsSender = follows.length > 0;
+  }
+
+  return decideDmRecipient({
+    blockedEitherWay: blockCheck.length > 0,
+    dmsEnabled,
+    policy,
+    recipientFollowsSender,
+    settingsPresent,
+  });
+}

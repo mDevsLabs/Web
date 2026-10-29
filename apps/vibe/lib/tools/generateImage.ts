@@ -2,7 +2,7 @@
  * Outil mAI — Génération d'image (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "generate_vibe_image".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface GenerateImageArgs {
   prompt: string;

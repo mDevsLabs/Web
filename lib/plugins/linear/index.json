@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Linear par clé API personnelle : l'IA liste vos équipes et vos issues. Le plugin ne crée ni ne modifie de tickets.",
+  "icon": { "src": "/plugins/linear.svg", "type": "image" },
+  "id": "linear",
+  "minTier": "plus",
+  "name": "Linear",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["linear", "issues", "roadmap", "projet", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les équipes Linear du compte.",
+      "effect": "read",
+      "id": "linearListTeams",
+      "label": "Équipes Linear",
+      "systemHint": "La clé d'équipe (key) sert à parler d'un espace, l'identifiant sert aux filtres."
+    },
+    {
+      "description": "Liste les issues Linear récentes, filtrables par un mot du titre.",
+      "effect": "read",
+      "id": "linearListIssues",
+      "label": "Issues Linear",
+      "systemHint": "Citez l'identifiant lisible (ENG-123) et l'URL, pas seulement le titre."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -31,6 +31,14 @@ import {
   selectAudioModels,
   validateModelRequest,
 } from "./openrouter-models.ts";
+import {
+  ensureUsageIncluded,
+  estimateTokensFromText,
+  extractUsageFromSseText,
+  extractUsageTokens,
+  MAX_TOKENS_PER_EVENT,
+  parseUsageLogPayload,
+} from "./usage-accounting.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
   if (userCustomKey?.trim().startsWith("sk-or-")) {
@@ -135,6 +143,165 @@ export function registerModelRoutes(
   app: Hono,
   database: () => SqlClient = getDb
 ) {
+  // ─────────────────────────────────────────────
+  // Comptabilisation des générations directes
+  // ─────────────────────────────────────────────
+  // Un seul débit par réponse, sur l'usage RÉEL du fournisseur. Si le
+  // fournisseur ne fournit aucun usage (flux interrompu, réponse non JSON),
+  // une estimation de repli évite la consommation gratuite — jamais les deux.
+  async function recordMaiTokenUsage(
+    sql: SqlClient,
+    userId: string,
+    weekStartStr: string,
+    tokens: number
+  ): Promise<void> {
+    if (!Number.isFinite(tokens) || tokens <= 0) {
+      return;
+    }
+    const amount = Math.min(
+      MAX_TOKENS_PER_EVENT,
+      Math.max(1, Math.floor(tokens))
+    );
+    await sql`
+      INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+      VALUES (${userId}::integer, ${weekStartStr}::date, ${amount}::integer)
+      ON CONFLICT (user_id, week_start)
+      DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${amount}::integer
+    `;
+  }
+
+  function createUsageCharger(params: {
+    sql: SqlClient;
+    userId: string;
+    weekStartStr: string;
+  }): (tokens: number) => Promise<void> {
+    let charged = false;
+    return async (tokens: number) => {
+      if (charged) return;
+      charged = true;
+      try {
+        await recordMaiTokenUsage(
+          params.sql,
+          params.userId,
+          params.weekStartStr,
+          tokens
+        );
+      } catch (error) {
+        console.error("[usage] Enregistrement de l'usage impossible:", error);
+      }
+    };
+  }
+
+  /**
+   * Relaie la réponse fournisseur en comptant son usage réel.
+   * - réponse classique : JSON parsé, usage lu, corps relayé ;
+   * - flux SSE : chaque octet est relayé, l'usage final est lu dans le dernier
+   *   chunk `include_usage`, et l'interruption client déclenche une estimation
+   *   de repli (sinon se déconnecter suffirait à ne rien payer).
+   */
+  async function forwardProviderResponse(params: {
+    requestBody: Record<string, any>;
+    sql: SqlClient;
+    upstream: Response;
+    userId: string;
+    weekStartStr: string;
+  }): Promise<Response> {
+    const { requestBody, sql, upstream, userId, weekStartStr } = params;
+    const contentType =
+      upstream.headers.get("Content-Type") || "application/json";
+    const charge = createUsageCharger({ sql, userId, weekStartStr });
+    const inputEstimate = Math.min(
+      MAX_TOKENS_PER_EVENT,
+      estimateTokensFromText(JSON.stringify(requestBody ?? {}))
+    );
+
+    if (!upstream.body) {
+      await charge(inputEstimate);
+      return new Response(null, {
+        headers: { "Content-Type": contentType },
+        status: upstream.status,
+      });
+    }
+
+    const isStream =
+      contentType.toLowerCase().includes("text/event-stream") ||
+      requestBody?.stream === true;
+
+    if (!isStream) {
+      const text = await upstream.text();
+      let usage: number | null = null;
+      try {
+        usage = extractUsageTokens(JSON.parse(text));
+      } catch {
+        usage = null;
+      }
+      await charge(usage ?? inputEstimate);
+      return new Response(text, {
+        headers: { "Content-Type": contentType },
+        status: upstream.status,
+      });
+    }
+
+    const reader = upstream.body.getReader();
+    const decoder = new TextDecoder();
+    let tail = "";
+    let streamedChars = 0;
+    let usage: number | null = null;
+    let finished = false;
+
+    const fallback = () =>
+      Math.min(
+        MAX_TOKENS_PER_EVENT,
+        inputEstimate + Math.ceil(streamedChars / 8)
+      );
+
+    return new Response(
+      new ReadableStream<Uint8Array>({
+        async cancel(reason) {
+          try {
+            await reader.cancel(reason);
+          } catch {
+            // Le flux amont est déjà terminé.
+          }
+          if (!finished) {
+            finished = true;
+            await charge(usage ?? fallback());
+          }
+        },
+        async pull(controller) {
+          try {
+            const { done, value } = await reader.read();
+            if (done) {
+              finished = true;
+              controller.close();
+              await charge(usage ?? fallback());
+              return;
+            }
+            const text = decoder.decode(value, { stream: true });
+            streamedChars += text.length;
+            tail = (tail + text).slice(-200_000);
+            const found = extractUsageFromSseText(tail);
+            if (found !== null) usage = found;
+            controller.enqueue(value);
+          } catch (error) {
+            if (!finished) {
+              finished = true;
+              await charge(usage ?? fallback());
+            }
+            controller.error(error);
+          }
+        },
+      }),
+      {
+        headers: {
+          "Cache-Control": "no-cache",
+          "Content-Type": contentType,
+        },
+        status: upstream.status,
+      }
+    );
+  }
+
   // ─────────────────────────────────────────────
   // GET /v1/usage & /usage
   // ─────────────────────────────────────────────
@@ -251,20 +418,27 @@ export function registerModelRoutes(
       }
 
       const body = await c.req.json().catch(() => ({}));
-      const inputTokens = Number(body.inputTokens || body.promptTokens || 0);
-      const outputTokens = Number(
-        body.outputTokens || body.completionTokens || 0
-      );
-      const tokensUsed = Number(
-        body.tokensUsed || body.tokens || inputTokens + outputTokens || 0
-      );
+      // Aucune coercition permissive : une valeur négative, NaN/infinie,
+      // malformée ou hors borne est refusée. Un client ne peut jamais
+      // diminuer le compteur, même avec `tokensUsed: -1000`.
+      const parsedUsage = parseUsageLogPayload(body);
+      if (!parsedUsage.ok) {
+        return c.json({ error: parsedUsage.error }, 400);
+      }
+      const { inputTokens, outputTokens, tokensUsed } = parsedUsage.value;
       const { weekStartStr } = getWeekData();
 
       const sql = database();
       const userRes =
-        await sql`SELECT id, tier FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text LIMIT 1`;
-      const tier = userRes.length > 0 ? userRes[0].tier : "Free";
-      const resolvedUserId = userRes.length > 0 ? userRes[0].id : userId;
+        await sql`SELECT id, tier, is_blocked FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text LIMIT 1`;
+      if (userRes.length === 0) {
+        return c.json({ error: "Compte introuvable." }, 403);
+      }
+      if (userRes[0].is_blocked === true) {
+        return c.json({ blocked: true, error: "Compte bloqué." }, 403);
+      }
+      const tier = userRes[0].tier;
+      const resolvedUserId = userRes[0].id;
       const maiBoost = await getUserQuotaBoost(sql, resolvedUserId, "mai");
       const limit = getTierMaiTokenLimit(tier) + maiBoost;
 
@@ -403,6 +577,19 @@ export function registerModelRoutes(
           deduped.push(m);
         }
       }
+      // Les alias mAI-2 ouvrent la liste : c'est l'ordre d'AFFICHAGE, pas
+      // l'ordre de gestion. Le reste du catalogue garde l'ordre de la base.
+      // Le même ordre est appliqué côté interface (lib/ai/model-selector/order.ts).
+      //
+      // Le rang est EXPLICITE (mAI-2 avant mAI-2-Mini) : un alias présent
+      // directement en base arrive avant l'autre dans la liste, et on ne peut
+      // pas compter sur le seul tri stable pour les ordonner entre eux.
+      const rangMai2: Record<string, number> = { "mai-2": 0, "mai-2-mini": 1 };
+      deduped.sort((a, b) => {
+        const rangA = rangMai2[a.id] ?? 2;
+        const rangB = rangMai2[b.id] ?? 2;
+        return rangA - rangB;
+      });
       return c.json({ data: deduped, object: "list" });
     } catch (error) {
       return modelErrorResponse(c, error);
@@ -583,7 +770,7 @@ export function registerModelRoutes(
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
         {
-          body: JSON.stringify(identifiedBody),
+          body: JSON.stringify(ensureUsageIncluded(identifiedBody)),
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
@@ -595,23 +782,12 @@ export function registerModelRoutes(
         }
       );
 
-      if (openRouterRes.status === 200) {
-        try {
-          await sql`
-            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
-            ON CONFLICT (user_id, week_start)
-            DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
-          `;
-        } catch {}
-      }
-
-      return new Response(openRouterRes.body, {
-        headers: {
-          "Content-Type":
-            openRouterRes.headers.get("Content-Type") || "application/json",
-        },
-        status: openRouterRes.status,
+      return forwardProviderResponse({
+        requestBody: identifiedBody,
+        sql,
+        upstream: openRouterRes,
+        userId,
+        weekStartStr,
       });
     } catch (err: any) {
       if (err instanceof ModelAccessError) return modelErrorResponse(c, err);
@@ -744,7 +920,7 @@ export function registerModelRoutes(
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
         {
-          body: JSON.stringify(identifiedBody),
+          body: JSON.stringify(ensureUsageIncluded(identifiedBody)),
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
@@ -756,23 +932,12 @@ export function registerModelRoutes(
         }
       );
 
-      if (openRouterRes.status === 200) {
-        try {
-          await sql`
-            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
-            ON CONFLICT (user_id, week_start)
-            DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
-          `;
-        } catch {}
-      }
-
-      return new Response(openRouterRes.body, {
-        headers: {
-          "Content-Type":
-            openRouterRes.headers.get("Content-Type") || "application/json",
-        },
-        status: openRouterRes.status,
+      return forwardProviderResponse({
+        requestBody: identifiedBody,
+        sql,
+        upstream: openRouterRes,
+        userId,
+        weekStartStr,
       });
     } catch (err: any) {
       if (err instanceof ModelAccessError) return modelErrorResponse(c, err);
@@ -901,7 +1066,7 @@ export function registerModelRoutes(
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
         {
-          body: JSON.stringify(openRouterPayload),
+          body: JSON.stringify(ensureUsageIncluded(openRouterPayload)),
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
@@ -913,23 +1078,12 @@ export function registerModelRoutes(
         }
       );
 
-      if (openRouterRes.status === 200) {
-        try {
-          await sql`
-            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
-            ON CONFLICT (user_id, week_start)
-            DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
-          `;
-        } catch {}
-      }
-
-      return new Response(openRouterRes.body, {
-        headers: {
-          "Content-Type":
-            openRouterRes.headers.get("Content-Type") || "application/json",
-        },
-        status: openRouterRes.status,
+      return forwardProviderResponse({
+        requestBody: openRouterPayload,
+        sql,
+        upstream: openRouterRes,
+        userId,
+        weekStartStr,
       });
     } catch (err: any) {
       if (err instanceof ModelAccessError) return modelErrorResponse(c, err);

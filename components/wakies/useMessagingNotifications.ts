@@ -1,6 +1,22 @@
 "use client";
 
-/** Une relève par compte ; le verrou navigateur évite les alertes en double entre onglets. */
+/**
+ * Alerte NAVIGATEUR des réponses Wakies.
+ *
+ * Une relève par compte ; le verrou navigateur évite les alertes en double
+ * entre onglets.
+ *
+ * POURQUOI LA LISTE N'EST PLUS GARDÉE ICI
+ *
+ * La cloche du rail Wakies a disparu : les notifications Wakies sont
+ * affichées par la cloche mAI, qui lit la table unifiée de l'hôte
+ * (migration 0063). Ce hook ne sert donc plus qu'à l'ALERTE SYSTÈME, qui
+ * dépend de la fenêtre ouverte et pas d'une page.
+ *
+ * Il garde donc seulement le curseur de relève et l'état de permission. La
+ * liste des événements servait à la cloche ; la garder en mémoire serait
+ * du travail inutile.
+ */
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import useSWR from "swr";
 import { alerterUneFois } from "@/lib/wakies/client/notifications";
@@ -14,6 +30,7 @@ export interface MessagingNotification {
   seq: number;
   title: string;
 }
+
 interface Releve {
   cursor: number;
   notifications: MessagingNotification[];
@@ -24,9 +41,6 @@ export function useMessagingNotifications(activeConversationId?: string) {
   const instance = useId();
   const cursor = useRef<number | undefined>(undefined);
   const scope = useRef<string | undefined>(undefined);
-  const [notifications, setNotifications] = useState<MessagingNotification[]>(
-    []
-  );
   const [permission, setPermission] = useState<
     NotificationPermission | "unsupported"
   >("unsupported");
@@ -72,17 +86,7 @@ export function useMessagingNotifications(activeConversationId?: string) {
           item.conversationId === active.current
         )
     );
-    const ancienCompte =
-      displayedScope.current !== undefined &&
-      displayedScope.current !== data.scope;
     displayedScope.current = data.scope;
-    setNotifications((actuelles) => {
-      const parId = new Map(
-        (ancienCompte ? [] : actuelles).map((item) => [item.id, item])
-      );
-      for (const item of nouveaux) parId.set(item.id, item);
-      return [...parId.values()].sort((a, b) => b.seq - a.seq).slice(0, 50);
-    });
     if (
       typeof Notification === "undefined" ||
       Notification.permission !== "granted"
@@ -103,10 +107,5 @@ export function useMessagingNotifications(activeConversationId?: string) {
     }
   }, []);
 
-  const retirer = useCallback((conversationId: string) => {
-    setNotifications((actuelles) =>
-      actuelles.filter((item) => item.conversationId !== conversationId)
-    );
-  }, []);
-  return { autoriser, notifications, permission, refresh: mutate, retirer };
+  return { autoriser, permission, refresh: mutate };
 }

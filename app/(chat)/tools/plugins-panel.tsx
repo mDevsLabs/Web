@@ -23,6 +23,7 @@ import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
+import { PersonalPlugins } from "./personal-plugins";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
 type IntegrationsResponse = { integrations: IntegrationStatus[] };
@@ -96,6 +97,19 @@ export default function PluginsPanel({
     const connector = getIntegrationByPluginId(plugin.id);
     const connection = connectedByPlugin.get(plugin.id);
     if (connector && !connection?.connected) {
+      // Un connecteur à jeton n'a pas d'écran de consentement : la route
+      // `connect` le refuserait, et l'utilisateur atterrirait sur une erreur
+      // au lieu du formulaire. On l'envoie sur la fiche, qui porte le champ.
+      if (connector.authMode === "token") {
+        router.push(`/tools/plugins/${plugin.id}`);
+        return;
+      }
+      if (connection && !connection.vaultConfigured) {
+        toast.error(
+          "Le coffre de secrets n'est pas configuré sur cette instance : la connexion externe est impossible pour le moment."
+        );
+        return;
+      }
       const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
       const returnTo = `${basePath}/tools/plugins/${plugin.id}`;
       const connectHref = `${basePath}/api/integration/${connector.id}/connect?returnTo=${encodeURIComponent(
@@ -194,18 +208,21 @@ export default function PluginsPanel({
       {/* Rangée d'actions globale (recherche dans l'en-tête de la page). */}
       {actionsAnchor
         ? createPortal(
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Button
-                className="h-8 gap-1.5 text-xs font-medium"
-                onClick={() => router.push("/tools?tab=plugins")}
-                variant="outline"
+                className="h-11 gap-1.5 text-xs font-medium sm:h-8"
+                onClick={() => router.push("/tools/plugins/custom/new")}
+                type="button"
               >
-                Gérer le catalogue
+                <PlusIcon className="size-3.5" />
+                Nouveau plugin
               </Button>
             </div>,
             actionsAnchor
           )
         : null}
+
+      <PersonalPlugins searchQuery={searchQuery} />
 
       {isLoading ? (
         <div className="py-16 text-center text-sm text-muted-foreground">

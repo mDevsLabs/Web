@@ -1,5 +1,6 @@
 import bcrypt from "npm:bcryptjs";
 import type { Hono } from "npm:hono@4";
+import { decideResend, normalizeResendAction } from "./auth-resend-policy.ts";
 import {
   BCRYPT_ROUNDS,
   clientIp,
@@ -8,6 +9,8 @@ import {
   getDb,
   parseUserAgent,
   rateLimit,
+  rateLimitShared,
+  regenerateVerificationCode,
   signToken,
   sqlite,
   verifyToken,
@@ -39,8 +42,10 @@ export function registerAuthRoutes(app: Hono) {
     ["/register", "/v1/register", "/api/register", "/api/vibe/register"],
     async (c) => {
       try {
-        // Anti-abus : 5 inscriptions / IP / 15 min
-        if (!rateLimit(`register:${clientIp(c)}`, 5, 15 * 60_000)) {
+        // Anti-abus : 5 inscriptions / IP / 15 min, compteur partagé entre isolates.
+        if (
+          !(await rateLimitShared(`register:${clientIp(c)}`, 5, 15 * 60_000))
+        ) {
           return c.json(
             { error: "Trop de tentatives. Réessayez plus tard." },
             429
@@ -209,8 +214,8 @@ export function registerAuthRoutes(app: Hono) {
         );
       }
       try {
-        // Anti brute-force : 10 tentatives / IP / 5 min
-        if (!rateLimit(`login:${clientIp(c)}`, 10, 5 * 60_000)) {
+        // Anti brute-force : 10 tentatives / IP / 5 min, compteur partagé.
+        if (!(await rateLimitShared(`login:${clientIp(c)}`, 10, 5 * 60_000))) {
           return c.json(
             { error: "Trop de tentatives. Réessayez plus tard." },
             429
@@ -335,6 +340,25 @@ export function registerAuthRoutes(app: Hono) {
         const loginId = (email || identifier || "").trim();
         if (!loginId || !code) {
           return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        // La vérification d'un code est un point d'entrée sensible : elle est
+        // bornée par adresse réseau et par compte, sur un compteur partagé.
+        const byIp = await rateLimitShared(
+          `verify-login:ip:${clientIp(c)}`,
+          20,
+          10 * 60_000
+        );
+        const byAccount = await rateLimitShared(
+          `verify-login:account:${loginId.toLowerCase()}`,
+          10,
+          10 * 60_000
+        );
+        if (!byIp || !byAccount) {
+          return c.json(
+            { error: "Trop de tentatives. Réessayez plus tard." },
+            429
+          );
         }
 
         const cleanId = loginId.toLowerCase();
@@ -477,17 +501,77 @@ export function registerAuthRoutes(app: Hono) {
           return c.json({ error: "Champs manquants." }, 400);
         }
 
-        // Vérifier le rate-limit (1 minute)
-        const result = await sqlite.execute({
-          args: [email, action],
+        // Un renvoi ne peut concerner qu'une demande de connexion ou
+        // d'inscription réellement commencée. Les autres actions (suppression
+        // de compte, changement d'e-mail) génèrent leur code dans leur propre
+        // parcours authentifié et ne passent pas par ici.
+        const normalizedAction = normalizeResendAction(action);
+        if (!normalizedAction) {
+          return c.json({ error: "Action non autorisée." }, 400);
+        }
+
+        const cleanEmail = String(email).trim().toLowerCase();
+        if (!cleanEmail) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        // Bornes partagées : par adresse réseau et par compte. Elles
+        // s'appliquent AVANT toute génération, même si la demande existe.
+        const byIp = await rateLimitShared(
+          `resend-code:ip:${clientIp(c)}`,
+          10,
+          10 * 60_000
+        );
+        const byAccount = await rateLimitShared(
+          `resend-code:account:${normalizedAction}:${cleanEmail}`,
+          3,
+          10 * 60_000
+        );
+        if (!byIp || !byAccount) {
+          return c.json(
+            { error: "Trop de renvois. Réessayez plus tard." },
+            429
+          );
+        }
+
+        const pending = await sqlite.execute({
+          args: [cleanEmail, normalizedAction],
+          sql: "SELECT attempts, expires_at FROM verification_codes WHERE email = ? AND action = ?",
+        });
+        const row = pending.rows[0];
+        const decision = decideResend(
+          row
+            ? {
+                attempts: Number(row[0] || 0),
+                expiresAt: new Date(String(row[1])).getTime(),
+              }
+            : null,
+          5
+        );
+        if (!decision.allowed) {
+          if (decision.reason === "too_many_attempts") {
+            return c.json(
+              { error: "Trop de tentatives. Recommencez la demande." },
+              429
+            );
+          }
+          return c.json(
+            {
+              error:
+                "Aucune demande de vérification en cours. Recommencez la connexion ou l'inscription.",
+            },
+            400
+          );
+        }
+
+        // Fenêtre anti-spam d'une minute, portée par le code existant.
+        const existing = await sqlite.execute({
+          args: [cleanEmail, normalizedAction],
           sql: "SELECT expires_at FROM verification_codes WHERE email = ? AND action = ?",
         });
-
-        if (result.rows.length > 0) {
-          const expiresAt = new Date(result.rows[0][0] as string);
-          const now = new Date();
-          // Si la date d'expiration est > maintenant + 9 minutes, ça veut dire qu'il a été généré il y a moins d'1 minute.
-          const diffMinutes = (expiresAt.getTime() - now.getTime()) / 60_000;
+        if (existing.rows.length > 0) {
+          const expiresAt = new Date(String(existing.rows[0][0]));
+          const diffMinutes = (expiresAt.getTime() - Date.now()) / 60_000;
           if (diffMinutes > 9) {
             return c.json(
               {
@@ -498,8 +582,24 @@ export function registerAuthRoutes(app: Hono) {
           }
         }
 
-        const code = await generateVerificationCode(email, action);
-        await sendVerificationEmail(email, code, action);
+        const regenerated = await regenerateVerificationCode(
+          cleanEmail,
+          normalizedAction
+        );
+        if (!regenerated) {
+          return c.json(
+            {
+              error:
+                "Aucune demande de vérification en cours. Recommencez la connexion ou l'inscription.",
+            },
+            400
+          );
+        }
+        await sendVerificationEmail(
+          cleanEmail,
+          regenerated.code,
+          normalizedAction
+        );
 
         return c.json({ success: true });
       } catch (err: any) {

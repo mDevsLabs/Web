@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Brevo par clé API : l'IA liste vos contacts et vos listes. Dans l'Agent, avec votre accord, elle peut envoyer un e-mail texte à un seul destinataire.",
+  "icon": { "src": "/plugins/brevo.svg", "type": "image" },
+  "id": "brevo",
+  "minTier": "plus",
+  "name": "Brevo",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["brevo", "e-mail", "contacts", "listes", "jeton"],
+  "tools": [
+    {
+      "description": "Liste des contacts Brevo récents.",
+      "effect": "read",
+      "id": "brevoListContacts",
+      "label": "Contacts Brevo",
+      "systemHint": "Ne recopiez pas une liste d'adresses si un décompte suffit."
+    },
+    {
+      "description": "Liste des listes de contacts Brevo.",
+      "effect": "read",
+      "id": "brevoListLists",
+      "label": "Listes Brevo",
+      "systemHint": "Le nom de la liste suffit le plus souvent."
+    },
+    {
+      "description": "Envoie un e-mail texte Brevo à un seul destinataire, depuis une adresse déjà vérifiée.",
+      "effect": "write",
+      "id": "brevoSendEmail",
+      "label": "Envoyer un e-mail",
+      "systemHint": "Un seul destinataire. Montrez l'expéditeur, le destinataire, l'objet et le texte avant approbation."
+    }
+  ],
+  "version": "1.0.0"
+}

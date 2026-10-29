@@ -4,24 +4,24 @@ import { useState } from "react";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { McpTemplateManifest } from "./types";
 
-// Vrai logo du service (assets réels dans public/mcp/<id>.svg, source
+// Vrai logo du service (assets réels dans public/plugins/<id>.svg, source
 // Simple Icons — licence CC0, utilisable librement). Correspondance
 // identifiant → fichier, établie une fois pour toutes :
 //
-//   brave-search → /mcp/brave-search.svg   (Brave)
-//   linear       → /mcp/linear.svg         (Linear)
-//   notion       → /mcp/notion.svg         (Notion)
-//   sentry       → /mcp/sentry.svg         (Sentry)
-//   slack        → /mcp/slack.svg          (Slack)
-//   stripe       → /mcp/stripe.svg         (Stripe)
-//   supabase     → /mcp/supabase.svg       (Supabase)
+//   brave-search → /plugins/brave-search.svg   (Brave)
+//   linear       → /plugins/linear.svg         (Linear)
+//   notion       → /plugins/notion.svg         (Notion)
+//   sentry       → /plugins/sentry.svg         (Sentry)
+//   slack        → /plugins/slack.svg          (Slack)
+//   stripe       → /plugins/stripe.svg         (Stripe)
+//   supabase     → /plugins/supabase.svg       (Supabase)
 //
 // Aucun logo n'est inventé : si un asset manque (nouveau template), le composant
 // retombe sur l'icône lucide déclarée par le manifeste (jamais le logo d'un
 // autre service). Le fill #000 est recoloré par CSS (currentColor) pour rester
 // lisible en thème clair et sombre.
 
-export const MCP_LOGO_BASE = "/mcp";
+export const MCP_LOGO_BASE = "/plugins";
 
 export function mcpLogoSrc(templateId: string): string {
   return `${MCP_LOGO_BASE}/${templateId}.svg`;

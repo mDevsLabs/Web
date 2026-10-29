@@ -19,6 +19,7 @@ import {
   canDeleteProjectFile,
   canUploadProjectFile,
 } from "@/lib/projects/permissions";
+import { parseProjectUploadResponse } from "@/lib/projects/upload-contract";
 
 // Fichiers d'un Projet partagé : stockage cloud mAI (backend Z1 Storage via
 // MAI_API_URL, même chemin que /api/library) — jamais Vercel Blob ici. Le
@@ -139,11 +140,7 @@ export async function POST(
     // Upload proxifié vers le stockage cloud mAI (compte du membre).
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
-    const upload = await upstreamForm<{
-      file_id?: string;
-      id?: string;
-      url?: string;
-    }>({
+    const upload = await upstreamForm<Record<string, unknown>>({
       form: uploadFormData,
       path: "/cloud/upload",
       timeoutMs: 120_000,
@@ -157,10 +154,20 @@ export async function POST(
         status: upload.payload.status,
       });
     }
-    const uploadData = upload.data ?? {};
 
-    const storageUrl = uploadData.url || "";
-    const fileRef = uploadData.id || uploadData.file_id || null;
+    // La réponse réelle de /cloud/upload est `{ file: { id, url } }`. Sans
+    // cette validation, `url` et `id` étaient lus à la racine et valaient
+    // `undefined` : la pièce jointe était enregistrée avec une URL vide.
+    const uploadRef = parseProjectUploadResponse(upload.data);
+    if (!uploadRef) {
+      return errorResponse("upstream_error", {
+        message:
+          "Réponse d'upload incomplète : identifiant ou URL du fichier manquant.",
+        status: 502,
+      });
+    }
+    const storageUrl = uploadRef.url;
+    const fileRef = uploadRef.id;
 
     // Extraction texte pour les documents (PDF/DOCX/CSV/texte) : cache borné
     // en base, injecté sous budget par la policy (lib/chat/project-files.ts).
@@ -191,17 +198,38 @@ export async function POST(
       }
     }
 
-    const created = await createProjectFile({
-      contentType,
-      extractedText,
-      extractionStatus,
-      fileName: file.name,
-      fileRef,
-      fileSize: file.size,
-      projectId: id,
-      storageUrl,
-      uploadedBy: userId,
-    });
+    let created: Awaited<ReturnType<typeof createProjectFile>>;
+    try {
+      created = await createProjectFile({
+        contentType,
+        extractedText,
+        extractionStatus,
+        fileName: file.name,
+        fileRef,
+        fileSize: file.size,
+        projectId: id,
+        storageUrl,
+        uploadedBy: userId,
+      });
+    } catch (persistError) {
+      // L'objet est déjà stocké : si la persistance locale échoue, on tente de
+      // le supprimer pour ne pas laisser un objet orphelin facturé au compte.
+      try {
+        await upstreamJson({
+          method: "DELETE",
+          path: `/cloud/files/${encodeURIComponent(fileRef)}`,
+          token,
+        });
+      } catch (cleanupError) {
+        logError("Project file upload cleanup error", cleanupError);
+      }
+      throw persistError;
+    }
+    if (!created) {
+      return errorResponse("database_error", {
+        message: "La pièce jointe n'a pas pu être enregistrée.",
+      });
+    }
     return Response.json({ file: created });
   } catch (error) {
     logError("Project file upload error", error);

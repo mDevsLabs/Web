@@ -1,0 +1,39 @@
+/* Rooftops — preserve BLACKLINE's olive, charcoal and amber identity. */
+.hero-meta{flex-wrap:wrap;row-gap:8px}
+.hero-copy .hero-subtitle{color:#c9d2c2}
+.mission-card{box-shadow:0 24px 70px #02090645,inset 0 1px 0 #c6dd9412}
+.mode-card{transition:transform .18s,border-color .18s,background .18s}
+.mode-card:hover{transform:translateY(-3px)}
+.mode-card.selected{box-shadow:inset 0 1px 0 #d2e8a826,0 8px 30px #02090628}
+.scope-overlay{width:min(78vh,88vw);height:min(78vh,88vw);border:5px solid #101916;outline:1px solid #aebea070;background:transparent;box-shadow:0 0 0 100vmax #020604cc;transition:opacity .07s}
+.scope-overlay>i{background:linear-gradient(90deg,#13241dde 0 43%,transparent 43% 57%,#13241dde 57%)}
+.scope-overlay>b{background:linear-gradient(0deg,#13241dde 0 43%,transparent 43% 57%,#13241dde 57%)}
+.scope-center{position:absolute;left:50%;top:50%;width:3px;height:3px;transform:translate(-50%,-50%);border-radius:50%;background:var(--crosshair);opacity:.8;box-shadow:0 0 2px #03130d}
+.scope-ticks{left:30%;width:40%;height:8px;opacity:.8}
+.scope-ticks:after{height:54px;top:-24px;width:7px}
+.scope-calibration{bottom:11%;font-size:8px;color:#bdd2acaa;letter-spacing:2px;text-shadow:0 1px 3px #000}
+.hitmarker{z-index:2}
+.traversal-hint{position:absolute;left:50%;top:67%;transform:translateX(-50%) translateY(6px);padding:10px 16px;border:1px solid #c6dd9460;border-radius:4px;background:#14251fec;color:#e1edcf;font:10px 'Courier New',monospace;letter-spacing:1px;opacity:0;transition:opacity .15s,transform .15s;text-align:center;max-width:90vw;box-shadow:0 8px 30px #0004}
+.traversal-hint.visible{opacity:1;transform:translateX(-50%)}
+#elevation-label{color:var(--lime);font-variant-numeric:tabular-nums}
+.touch-interact{position:absolute;left:calc(21px + env(safe-area-inset-left));top:46%;width:65px;height:44px;border-radius:7px;opacity:.45}
+.touch-interact.available{opacity:1;border-color:var(--lime);color:var(--lime);background:#244031e8}
+.touch-interact .icon{display:none}
+.touch-device .traversal-hint{top:66%;font-size:9px;padding:8px 12px}
+@media(orientation:portrait){.touch-device .traversal-hint{top:56%;width:240px}.touch-interact{top:48%;left:15px}.scope-overlay{width:min(75vw,78vh);height:min(75vw,78vh)}}
+@media(prefers-reduced-motion:reduce){.mode-card,.traversal-hint,.scope-overlay{transition:none}.mode-card:hover{transform:none}}
+
+.rooftops-release{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 26px;padding:15px 20px;border:1px solid #c6dd942c;border-left:2px solid var(--lime);background:linear-gradient(110deg,#2840359c,#14251e60);border-radius:3px}
+.rooftops-release>span{font:9px 'Courier New',monospace;letter-spacing:1.5px;color:#a8baa0;white-space:nowrap}
+.rooftops-release b{font-size:12px;color:var(--lime);margin-left:12px}
+.rooftops-release p{font-size:11px;color:#c7d3c1;line-height:1.6}
+.rooftops-release i{font-style:normal;color:#79916d;margin:0 10px}
+@media(max-width:700px){.rooftops-release{flex-direction:column;align-items:flex-start;gap:5px;padding:12px 14px}.rooftops-release p{font-size:10px}.rooftops-release i{margin:0 4px}}
+
+/* Low magnification optics keep both the window and peripheral vision clear. */
+.scope-overlay.compact{width:min(60vh,76vw);height:min(60vh,76vw);background:transparent;border:3px solid #18241f;outline:1px solid #c6dd9466;box-shadow:none}
+.scope-overlay.compact>i{background:linear-gradient(90deg,#dae4cfb3 0 43%,transparent 43% 57%,#dae4cfb3 57%);filter:drop-shadow(0 1px 1px #000)}
+.scope-overlay.compact>b{background:linear-gradient(0deg,#dae4cfb3 0 43%,transparent 43% 57%,#dae4cfb3 57%);filter:drop-shadow(1px 0 1px #000)}
+.scope-overlay.compact .scope-ticks,.scope-overlay.compact .scope-ticks:after{opacity:.55}
+.scope-overlay.compact .scope-calibration{bottom:9%;color:#d5e4c8bd}
+.touch-device .scope-overlay.compact{width:min(68vw,60dvh);height:min(68vw,60dvh)}

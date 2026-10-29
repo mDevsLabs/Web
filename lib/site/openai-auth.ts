@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { getClientIp } from "@/lib/net/client-ip";
 import { validateApiKey } from "./api-key-manager";
 import { checkRateLimit } from "./bearer-auth";
 import type { OpenAIErrorResponse } from "./openai-types";
@@ -78,10 +79,7 @@ export async function authenticateOpenAIRequest(
   }
 
   // Rate Limiting (60 requêtes/min par IP/clé)
-  const clientIp =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip") ||
-    "127.0.0.1";
+  const clientIp = getClientIp(req.headers);
   const rateLimitKey = `openai_${validation.keyInfo.id}_${clientIp}`;
   const rateCheck = checkRateLimit(rateLimitKey);
 

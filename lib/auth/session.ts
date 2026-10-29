@@ -54,7 +54,51 @@ const userCache = new Map<string, SessionCacheEntry>();
 const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
 const CACHE_DENIED_TTL_MS = 30_000; // refus : fenêtre courte, le temps qu'une
 //                                    reconnexion (cookie neuf) prenne effet
+const CACHE_LOCAL_FALLBACK_TTL_MS = 15_000; // panne réseau : on réessaie vite
 const CACHE_MAX_ENTRIES = 500;
+const REVOKED_MAX_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Jetons explicitement refusés par le backend. Cette liste survit à l'expiration
+// du cache négatif : une signature locale valide ne doit JAMAIS ressusciter un
+// jeton que l'autorité a refusé. Entrée bornée par l'expiration du JWT (7 jours
+// au plus) et par la taille LRU du cache.
+const revokedTokens = new Map<string, number>();
+
+function pruneRevoked() {
+  const now = Date.now();
+  for (const [token, expiresAt] of revokedTokens) {
+    if (expiresAt <= now) {
+      revokedTokens.delete(token);
+    }
+  }
+}
+
+export function markMaiSessionRevoked(token: string, ttlMs?: number): void {
+  const ttl = Math.min(
+    Math.max(ttlMs ?? CACHE_DENIED_TTL_MS, CACHE_DENIED_TTL_MS),
+    REVOKED_MAX_TTL_MS
+  );
+  if (revokedTokens.size >= CACHE_MAX_ENTRIES) {
+    pruneRevoked();
+    const oldest = revokedTokens.keys().next().value as string | undefined;
+    if (oldest) {
+      revokedTokens.delete(oldest);
+    }
+  }
+  revokedTokens.set(token, Date.now() + ttl);
+}
+
+export function isMaiSessionRevoked(token: string): boolean {
+  const expiresAt = revokedTokens.get(token);
+  if (!expiresAt) {
+    return false;
+  }
+  if (Date.now() >= expiresAt) {
+    revokedTokens.delete(token);
+    return false;
+  }
+  return true;
+}
 
 function readCachedEntry(token: string) {
   const cached = userCache.get(token);
@@ -80,14 +124,14 @@ function cacheUser(token: string, user: MaiUser | null, expiresAt: number) {
   userCache.set(token, { expiresAt, user });
 }
 
-// Diagnostic « la clé locale ne correspond plus à celle du backend » : une
-// seule ligne par jeton, et uniquement hors production (en production le
-// silence évite de révéler la configuration de déploiement).
+// Diagnostic « repli distant » : une seule ligne par jeton, et uniquement
+// hors production (en production le silence évite de révéler la configuration
+// de déploiement).
 const remoteFallbackNotices = new Set<string>();
 
 function noteRemoteValidation(
   token: string,
-  reason: "no_secret" | "signature"
+  reason: "no_secret" | "signature" | "unreachable"
 ) {
   if (
     process.env.NODE_ENV === "production" ||
@@ -102,7 +146,9 @@ function noteRemoteValidation(
   console.warn(
     reason === "no_secret"
       ? "[auth] MAI_JWT_SECRET absent : session contrôlée par l'API distante."
-      : "[auth] Signature locale refusée (MAI_JWT_SECRET différent de celui du backend ?) : session contrôlée par l'API distante."
+      : reason === "signature"
+        ? "[auth] Signature locale refusée : session contrôlée par l'API distante."
+        : "[auth] API de session injoignable : repli local temporaire sur la signature HS256."
   );
 }
 
@@ -168,31 +214,20 @@ export function invalidateMaiUserCache(token: string): void {
   userCache.delete(token);
 }
 
-// Rafraîchissement asynchrone non-bloquant des quotas mAI
-function triggerBackgroundUsageRefresh(token: string) {
-  fetch(`${MAI_API_URL}/usage`, {
-    cache: "no-store",
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((r) => (r.ok ? r.json() : null))
-    .then((data) => {
-      if (data && !data.error) {
-        // Entrée négative (`user: null`) : rien à rafraîchir.
-        const cached = userCache.get(token);
-        const user = cached?.user;
-        if (user) {
-          user.tokensUsed = Number(data.tokensUsed || user.tokensUsed);
-          user.limit = Number(data.limit || user.limit);
-          user.tier = data.tier || user.tier;
-          if (data.username) user.username = data.username;
-          if (data.name) user.username = data.name;
-          if (data.avatarUrl) user.avatarUrl = data.avatarUrl;
-          if (data.avatar) user.avatarUrl = data.avatar;
-          cached.expiresAt = Date.now() + CACHE_TTL_MS;
-        }
-      }
-    })
-    .catch(() => {});
+// Retire le cookie de session UNIQUEMENT s'il porte encore le jeton refusé.
+// Une déconnexion concurrente ou une reconnexion (nouveau cookie) ne doit pas
+// être écrasée par un refus concernant l'ancien jeton. Les Server Components
+// n'autorisent pas l'écriture de cookies : l'échec est ignoré, le jeton reste
+// refusé côté serveur.
+async function clearSessionCookieIfMatches(token: string): Promise<void> {
+  try {
+    const cookieStore = await cookies();
+    if (cookieStore.get(MAI_SESSION_COOKIE)?.value === token) {
+      cookieStore.delete(MAI_SESSION_COOKIE);
+    }
+  } catch {
+    // Contexte en lecture seule (RSC), test ou CLI : rien à effacer ici.
+  }
 }
 
 // Projette un payload JWT VÉRIFIÉ (signature HS256 + expiration contrôlées par
@@ -225,7 +260,7 @@ function userFromVerifiedPayload(payload: any): MaiUser | null {
   };
 }
 
-type RemoteResolution =
+export type MaiSessionResolution =
   | { status: "ok"; user: MaiUser }
   // L'API a répondu et a refusé le jeton : décision définitive, elle mérite
   // d'être mémorisée pour ne pas la redemander à chaque requête.
@@ -237,23 +272,23 @@ type RemoteResolution =
 
 // Déduplication des résolutions distantes en vol (évite les rafales de requêtes
 // fetch concurrentes vers le backend lors du chargement des routes).
-const inFlightResolutions = new Map<string, Promise<RemoteResolution>>();
+const inFlightResolutions = new Map<string, Promise<MaiSessionResolution>>();
 const REMOTE_AUTH_TIMEOUT_MS = 10_000;
 
 // Résolution de l'identité par l'API distante. C'est elle qui a émis le jeton :
-// seule elle peut dire s'il est encore valide. Le payload local n'est
-// consulté que s'il a été VÉRIFIÉ — un jeton dont la signature échoue ne peut
-// injecter ni identité, ni identifiant, ni tier.
+// seule elle peut dire s'il est encore valide, si le compte est bloqué et quel
+// est le forfait actuel. Le payload local n'est consulté qu'en repli technique
+// lorsque l'API est injoignable, et jamais s'il a déjà été refusé.
 async function resolveUserFromApi(
   token: string,
   verifiedPayload: any | null
-): Promise<RemoteResolution> {
+): Promise<MaiSessionResolution> {
   const existing = inFlightResolutions.get(token);
   if (existing) {
     return existing;
   }
 
-  const resolutionPromise = (async (): Promise<RemoteResolution> => {
+  const resolutionPromise = (async (): Promise<MaiSessionResolution> => {
     try {
       const controller = new AbortController();
       const timeout = setTimeout(
@@ -266,33 +301,43 @@ async function resolveUserFromApi(
         signal: controller.signal,
       }).finally(() => clearTimeout(timeout));
 
-      if (res.ok) {
-        const data = await res.json();
-        if (!data.error) {
-          const userId = data.id
-            ? String(data.id)
-            : verifiedPayload?.sub
-              ? String(verifiedPayload.sub)
-              : undefined;
-
-          return {
-            status: "ok",
-            user: {
-              avatarUrl: data.avatarUrl || null,
-              email: data.email || "",
-              id: userId || data.email,
-              limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
-              phone: data.phone || "",
-              resetAt: data.resetAt,
-              tier: data.tier || "Free",
-              tokensUsed: Number(data.tokensUsed || 0),
-              username: data.username || "Utilisateur",
-              weekStart: data.weekStart,
-            },
-          };
-        }
+      // 401/403 : refus explicite de l'autorité (jeton révoqué, compte bloqué).
+      // Les 5xx et 429 sont des indisponibilités : elles ne révoquent rien.
+      if (res.status === 401 || res.status === 403) {
+        return { status: "refused" };
       }
-      return { status: "refused" };
+      if (!res.ok) {
+        return { status: "unreachable" };
+      }
+      const data = await res.json().catch(() => null);
+      if (!data || typeof data !== "object") {
+        return { status: "unreachable" };
+      }
+      if (data.error) {
+        return { status: "refused" };
+      }
+
+      const userId = data.id
+        ? String(data.id)
+        : verifiedPayload?.sub
+          ? String(verifiedPayload.sub)
+          : undefined;
+
+      return {
+        status: "ok",
+        user: {
+          avatarUrl: data.avatarUrl || null,
+          email: data.email || "",
+          id: userId || data.email,
+          limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
+          phone: data.phone || "",
+          resetAt: data.resetAt,
+          tier: data.tier || "Free",
+          tokensUsed: Number(data.tokensUsed || 0),
+          username: data.username || "Utilisateur",
+          weekStart: data.weekStart,
+        },
+      };
     } catch (error: any) {
       if (error?.name === "AbortError") {
         console.warn(
@@ -311,45 +356,81 @@ async function resolveUserFromApi(
   return resolutionPromise;
 }
 
-export async function getMaiUser(
+/**
+ * Résolution complète d'une session mAI, avec la distinction
+ * refus définitif / indisponibilité.
+ *
+ * Ordre :
+ * 1. jeton déjà refusé explicitement → refus, sans consulter personne ;
+ * 2. cache (positif ou négatif) ;
+ * 3. l'API émettrice tranche (elle est l'autorité) ;
+ * 4. si elle est injoignable, repli local sur signature vérifiée — court, pour
+ *    réessayer vite, mais jamais pour un jeton déjà refusé.
+ */
+export async function resolveMaiSession(
   tokenInput?: string | null
-): Promise<MaiUser | null> {
+): Promise<MaiSessionResolution> {
   const token = tokenInput || (await getMaiSessionToken());
   if (!token) {
-    return null;
+    return { status: "refused" };
   }
 
-  // 1. Cache mémoire — session résolue comme refus définitif.
+  // Un refus explicite est définitif : ni le cache ni la signature locale ne
+  // peuvent le rétablir.
+  if (isMaiSessionRevoked(token)) {
+    return { status: "refused" };
+  }
+
   const cached = readCachedEntry(token);
   if (cached) {
-    return cached.user;
+    return cached.user
+      ? { status: "ok", user: cached.user }
+      : { status: "refused" };
   }
 
-  // 2. Vérification cryptographique locale du JWT (signature HS256 + expiration).
-  // C'est un chemin RAPIDE, pas une autorité : le backend qui a émis le jeton
-  // reste l'arbitre. Une clé locale absente ou divergente (cas classique en dev :
-  // MAI_JWT_SECRET du .env différent de celui du déploiement) ne doit pas
-  // rendre l'application inutilisable ni enfermer l'utilisateur hors de l'app.
   const hasSecret = getJwtSecret() !== null;
   const payload = hasSecret ? await verifyJwtPayload(token) : null;
   const localUser = payload ? userFromVerifiedPayload(payload) : null;
-  if (localUser) {
-    cacheUser(token, localUser, Date.now() + CACHE_TTL_MS);
-    // Rafraîchissement des quotas en arrière-plan, sans bloquer la requête.
-    triggerBackgroundUsageRefresh(token);
-    return localUser;
+  if (!localUser) {
+    // Le chemin rapide n'a pas conclu (secret absent ou signature divergente) :
+    // c'est l'API émettrice qui tranche, et le diagnostic le dit.
+    noteRemoteValidation(token, hasSecret ? "signature" : "no_secret");
   }
 
-  // 3. La vérification locale n'a pas conclu : l'API distante tranche. Un
-  // payload non vérifié n'est jamais utilisé pour construire l'identité.
-  noteRemoteValidation(token, hasSecret ? "signature" : "no_secret");
   const resolution = await resolveUserFromApi(token, payload);
   if (resolution.status === "ok") {
     cacheUser(token, resolution.user, Date.now() + CACHE_TTL_MS);
-    return resolution.user;
+    return resolution;
   }
   if (resolution.status === "refused") {
+    // Un refus explicite est définitif pour CE jeton. Sans payload vérifiable,
+    // on applique la borne maximale (7 jours) : une panne ultérieure ne doit
+    // pas réhabiliter un jeton que l'autorité a refusé.
+    const ttlMs =
+      payload?.exp && Number.isFinite(payload.exp)
+        ? payload.exp * 1000 - Date.now()
+        : REVOKED_MAX_TTL_MS;
+    markMaiSessionRevoked(token, ttlMs);
     cacheUser(token, null, Date.now() + CACHE_DENIED_TTL_MS);
+    await clearSessionCookieIfMatches(token);
+    return { status: "refused" };
   }
-  return null;
+
+  // API injoignable : repli local uniquement sur signature vérifiée, avec un
+  // cache court. Le forfait y est celui du jeton, donc potentiellement en
+  // retard — c'est acceptable le temps d'une panne, et jamais un accès nouveau.
+  if (localUser) {
+    noteRemoteValidation(token, "unreachable");
+    cacheUser(token, localUser, Date.now() + CACHE_LOCAL_FALLBACK_TTL_MS);
+    return { status: "ok", user: localUser };
+  }
+
+  return { status: "unreachable" };
+}
+
+export async function getMaiUser(
+  tokenInput?: string | null
+): Promise<MaiUser | null> {
+  const resolution = await resolveMaiSession(tokenInput);
+  return resolution.status === "ok" ? resolution.user : null;
 }

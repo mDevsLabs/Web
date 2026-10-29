@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { requireUser } from "@/lib/auth/require-user";
+import { getChatLockState, isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   getChatById,
   updateChatArchivedById,
@@ -81,7 +82,30 @@ export async function GET(
   ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
-  return Response.json(chat);
+
+  const lockState = await getChatLockState({
+    chat,
+    email: user.email,
+    userId,
+    username: user.username,
+  });
+  if (lockState.locked) {
+    // Réponse minimale : ni instructions personnalisées, ni tags, ni contenu.
+    return Response.json({
+      id: chat.id,
+      isOwner: lockState.isOwner,
+      isSecure: true,
+      locked: true,
+      visibility: chat.visibility,
+    });
+  }
+
+  return Response.json({
+    ...chat,
+    isOwner: lockState.isOwner,
+    isSecure: lockState.isSecure,
+    locked: false,
+  });
 }
 
 export async function PATCH(
@@ -105,6 +129,19 @@ export async function PATCH(
   try {
     const body = await request.json();
     const parsed = buildPatchSchema(user.tier).parse(body);
+
+    // Retirer le PIN en repassant la conversation en privé est une mutation
+    // protégée : sans cookie de déverrouillage, un navigateur laissé ouvert
+    // pourrait annuler la protection sans connaître le code.
+    if (parsed.visibility === "private") {
+      const unlocked = await isChatUnlockedForUser({ chatId: id, userId });
+      if (!unlocked) {
+        return new ChatbotError("forbidden:chat", undefined, {
+          messageOverride:
+            "Déverrouillez la conversation avec son code PIN pour changer sa visibilité.",
+        }).toResponse();
+      }
+    }
 
     if (parsed.title !== undefined) {
       await updateChatTitleById({ chatId: id, title: parsed.title });

@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez ExchangeRate-API par clé : l'IA lit les derniers taux et convertit un montant. Elle ne passe aucun ordre.",
+  "icon": { "src": "/plugins/exchange-rate.svg", "type": "image" },
+  "id": "exchange-rate",
+  "minTier": "plus",
+  "name": "ExchangeRate-API",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["change", "devise", "taux", "conversion", "jeton"],
+  "tools": [
+    {
+      "description": "Derniers taux de change pour une devise de base.",
+      "effect": "read",
+      "id": "exchangeLatestRates",
+      "label": "Taux de change",
+      "systemHint": "La base par défaut est EUR. Ne citez que les codes rendus."
+    },
+    {
+      "description": "Convertit un montant d'une devise vers une autre.",
+      "effect": "read",
+      "id": "exchangeConvert",
+      "label": "Convertir un montant",
+      "systemHint": "Annoncez le montant, les deux devises et le résultat."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -3,6 +3,7 @@ import "server-only";
 import type { IntegrationConnection } from "@/lib/db/schema";
 import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 import type { PluginSecretResolver } from "@/lib/plugins/types";
+import { unpackCredential } from "./credential-envelope";
 import { type OAuthTokenSet, readCredentials, refreshTokens } from "./oauth";
 import {
   getIntegrationProvider,
@@ -98,17 +99,27 @@ async function refreshTokenFor(
       refreshToken,
     });
     if (!result.ok) {
-      if (result.reason === "exchange_failed") {
-        // Le fournisseur refuse définitivement le grant (`invalid_grant` après
-        // révocation côté Google/GitHub) : reconnecter est la seule sortie.
+      if (result.reason === "grant_revoked") {
+        // Refus TERMINAL établi par le fournisseur (`invalid_grant`) : la
+        // reconnexion est la seule sortie. Un 503, un 429, une erreur réseau
+        // ou une erreur de configuration ne doivent JAMAIS arriver ici.
         await markConnectionRevoked({
           connectionId: row.id,
           userId: row.userId,
         });
         return { accessToken: null, revoked: false, scopes: row.scopes };
       }
-      // `network` : panne transitoire. On LÈVE pour que l'Agent la classe
-      // rejouable, au lieu de mentir avec un « non connecté ».
+      if (result.reason === "not_configured") {
+        return { accessToken: null, revoked: false, scopes: row.scopes };
+      }
+      if (result.reason === "configuration") {
+        throw new Error(
+          `Le connecteur ${descriptor.id} est mal configuré : le rafraîchissement du jeton a été refusé. Les jetons existants sont conservés.`
+        );
+      }
+      // `temporary`, `network` et `exchange_failed` : panne ou réponse
+      // inexploitable. On LÈVE pour que l'Agent la classe rejouable, sans
+      // supprimer la connexion ni imposer une reconnexion.
       throw new Error(
         `Le service ${descriptor.id} est momentanément indisponible : rafraîchissement du jeton impossible.`
       );
@@ -202,8 +213,30 @@ export async function accessTokenForProvider(params: {
  * Deux issues, un seul canal : `undefined` = non connecté (échec permanent, le
  * plugin rend un conseil), une levée = service indisponible (échec transitoire).
  */
-const SECRET_KEY_PATTERN =
-  /^(google|github)\.(access_token|refresh_token|scopes)$/;
+const SECRET_SUFFIXES = new Set([
+  "access_token",
+  "fields",
+  "refresh_token",
+  "scopes",
+]);
+
+function parseAuthKey(
+  key: string
+): { id: IntegrationProviderId; suffix: string } | null {
+  const dot = key.lastIndexOf(".");
+  if (dot <= 0) {
+    return null;
+  }
+  const suffix = key.slice(dot + 1);
+  if (!SECRET_SUFFIXES.has(suffix)) {
+    return null;
+  }
+  const id = key.slice(0, dot);
+  if (!getIntegrationProvider(id)) {
+    return null;
+  }
+  return { id: id as IntegrationProviderId, suffix };
+}
 
 export function createIntegrationSecretResolver(params: {
   userId: string;
@@ -212,19 +245,30 @@ export function createIntegrationSecretResolver(params: {
     if (request.kind !== "auth") {
       return;
     }
-    const matched = SECRET_KEY_PATTERN.exec(request.key);
+    const matched = parseAuthKey(request.key);
     if (!matched) {
       return;
     }
-    const provider = matched[1] as IntegrationProviderId;
-    if (matched[2] === "scopes") {
+    const provider = matched.id;
+    if (matched.suffix === "scopes") {
       const row = await getPrimaryConnection({
         provider,
         userId: params.userId,
       });
       return row?.scopes;
     }
-    if (matched[2] === "refresh_token") {
+    if (matched.suffix === "fields") {
+      const row = await getPrimaryConnection({
+        provider,
+        userId: params.userId,
+      });
+      const raw = row ? readAccessToken(row) : null;
+      if (!raw) {
+        return;
+      }
+      return JSON.stringify(unpackCredential(raw).fields);
+    }
+    if (matched.suffix === "refresh_token") {
       throw new Error(
         "Le refresh token n'est jamais exposé à un outil : seul le porteur d'accès est délivré."
       );
@@ -233,8 +277,11 @@ export function createIntegrationSecretResolver(params: {
       provider,
       userId: params.userId,
     });
-    // `revoked` comme `accessToken: null` renvoient la même sortie pour
-    // l'utilisateur : reconnecter le compte depuis l'onglet Plugins.
-    return outcome.accessToken ?? undefined;
+    if (!outcome.accessToken) {
+      return;
+    }
+    // L'enveloppe éventuelle (jeton + champs) ne sort pas : l'outil ne reçoit
+    // que le secret. Un jeton historique, sans enveloppe, est renvoyé tel quel.
+    return unpackCredential(outcome.accessToken).token || undefined;
   };
 }

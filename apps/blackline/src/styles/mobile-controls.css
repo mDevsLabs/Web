@@ -1,0 +1,35 @@
+.touch-controls{position:absolute;inset:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);pointer-events:none;z-index:3;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.touch-look-zone{position:absolute;inset:0 0 0 28%;pointer-events:auto;touch-action:none}
+.touch-button,.touch-weapon,.touch-joystick{pointer-events:auto;touch-action:none}
+.touch-button{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:50px;height:50px;padding:3px;border:1px solid #d9e4d865;border-radius:50%;background:#102119aa;color:#e4eddd;text-shadow:0 1px 4px #000;transition:background .1s,border-color .1s}
+.touch-button .icon{width:21px;height:21px}
+.touch-button>span{font:7px 'Courier New',monospace;letter-spacing:.3px}
+.touch-button:active,.touch-weapon:active{transform:none}
+.touch-button.pressed,.touch-button.active,.touch-weapon.pressed,.touch-weapon.active{background:#526b31bf;border-color:var(--lime);color:#e8f5d6}
+.touch-fire{width:76px;height:76px;right:14px;bottom:80px;border:2px solid #d3e6a4a6;background:#253d22a6}
+.touch-fire .icon{width:32px;height:32px}
+.touch-fire>span{font-size:10px;letter-spacing:1px}
+.touch-aim{right:103px;bottom:128px}
+.touch-reload{right:103px;bottom:70px}
+.touch-jump{right:94px;bottom:12px}
+.touch-crouch{right:154px;bottom:12px}
+.touch-grenade{right:14px;bottom:12px}
+.touch-melee{right:18px;bottom:169px}
+.touch-sprint{left:48px;bottom:140px;width:44px;height:44px}
+.touch-joystick{position:absolute;left:14px;bottom:20px;width:110px;height:110px;border-radius:50%;border:1px solid #c5d5c65c;background:#0e21186b;display:grid;place-items:center}
+.joystick-ring{position:absolute;inset:13px;border:1px solid #cddbbb38;border-radius:50%;pointer-events:none}
+.joystick-knob{width:42px;height:42px;border:1px solid #e2eccfa0;border-radius:50%;background:#bdcdae40;box-shadow:0 2px 14px #00000033;pointer-events:none;will-change:transform}
+.touch-joystick.pressed .joystick-knob{background:#d8e8b878;border-color:var(--lime)}
+.touch-joystick>span{position:absolute;bottom:9px;font:7px 'Courier New',monospace;color:#dce8ce;pointer-events:none}
+.touch-toolbar{position:absolute;right:6px;top:6px;display:flex;gap:6px;pointer-events:none}
+.touch-toolbar .touch-button{position:relative;width:44px;height:44px;border-radius:7px;background:#142319c9}
+.touch-toolbar .icon{width:17px;height:17px}
+.touch-toolbar .touch-button>span{font-size:6px}
+.touch-weapons{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:7px;pointer-events:none}
+.touch-weapon{width:44px;height:46px;border:1px solid #d4dfc85c;background:#102119a6;border-radius:6px;padding:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.touch-weapon>b{font:14px Blackline,Impact,sans-serif}
+.touch-weapon>span{font:7px 'Courier New',monospace}
+.portrait-tip{display:none}
+.operator-dead .touch-joystick,.operator-dead .touch-controls>.touch-button,.operator-dead .touch-weapons{opacity:.25;pointer-events:none}
+.operator-dead .touch-look-zone{pointer-events:none}
+

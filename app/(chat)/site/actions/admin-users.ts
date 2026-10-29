@@ -60,14 +60,14 @@ function buildAccountUpdateEmailHtml(params: {
 
   const changesListHtml = changes
     .map((item) => {
-      const icon = item.icon || "✨";
+      const icon = item.icon || "";
       const oldStr = item.oldValue
         ? `<span style="color:#94a3b8; text-decoration:line-through; margin-right:6px;">${escapeHtml(item.oldValue)}</span>➔ `
         : "";
       return `
         <li style="margin-bottom:12px; font-size:14px; line-height:1.6; color:#e2e8f0; list-style:none; padding-left:0;">
           <span style="display:inline-block; margin-right:8px; font-size:16px;">${icon}</span>
-          <strong style="color:#cbd5e1;">${escapeHtml(item.label)} :</strong> 
+          <strong style="color:#cbd5e1;">${escapeHtml(item.label)}:</strong>
           ${oldStr}<strong style="color:#c084fc;">${escapeHtml(item.newValue)}</strong>
         </li>
       `;
@@ -85,7 +85,7 @@ function buildAccountUpdateEmailHtml(params: {
     ? `
       <div style="background:linear-gradient(180deg, #131d31 0%, #0c1322 100%); border:1px solid #334155; border-radius:16px; padding:20px; text-align:center; margin:22px 0;">
         <span style="display:inline-block; background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.35); font-weight:800; font-size:14px; padding:6px 20px; border-radius:100px; text-transform:uppercase; letter-spacing:0.5px;">
-          Forfait Actuel : ${escapeHtml(newTier)}
+          Forfait Actuel: ${escapeHtml(newTier)}
         </span>
         <p style="font-size:13px; color:#94a3b8; margin:10px 0 0 0;">
           ${tierLimitsMap[newTier] || "Vos nouveaux quotas étendus sont immédiatement disponibles."}
@@ -97,7 +97,7 @@ function buildAccountUpdateEmailHtml(params: {
   const passwordBoxHtml = tempPassword
     ? `
       <div style="background:rgba(234,179,8,0.1); border:1px solid rgba(234,179,8,0.3); border-radius:12px; padding:16px; margin:18px 0; color:#fef08a; font-size:14px;">
-        🔑 <strong>Nouveau mot de passe temporaire :</strong> 
+         <strong>Nouveau mot de passe temporaire:</strong>
         <code style="background:#0f172a; padding:4px 10px; border-radius:6px; color:#fbbf24; font-family:monospace; font-size:15px; user-select:all;">${escapeHtml(tempPassword)}</code>
         <br><span style="font-size:12px; color:#cbd5e1; margin-top:8px; display:inline-block;">Nous vous recommandons de le modifier dès votre prochaine connexion dans vos paramètres de compte.</span>
       </div>
@@ -114,7 +114,7 @@ function buildAccountUpdateEmailHtml(params: {
     </head>
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9; -webkit-font-smoothing:antialiased;">
       <div style="max-width:560px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
-        
+
         <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:36px 24px 28px 24px; text-align:center; border-bottom:1px solid #2e1065;">
           <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
           <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:16px 0 0 0; letter-spacing:-0.5px;">Mise à jour de votre compte mAI</h1>
@@ -122,8 +122,8 @@ function buildAccountUpdateEmailHtml(params: {
 
         <div style="padding:32px 28px; line-height:1.7; font-size:15px; color:#cbd5e1;">
           <p style="margin-top:0; font-size:16px; font-weight:600; color:#ffffff;">Bonjour <strong>${escapeHtml(username)}</strong>,</p>
-          <p>Un administrateur de la plateforme mAI a apporté des modifications aux informations de votre compte :</p>
-          
+          <p>Un administrateur de la plateforme mAI a apporté des modifications aux informations de votre compte:</p>
+
           <div style="background:rgba(255,255,255,0.03); border:1px solid #1e293b; border-radius:14px; padding:18px 20px; margin:18px 0;">
             <ul style="margin:0; padding:0;">
               ${changesListHtml}
@@ -134,7 +134,7 @@ function buildAccountUpdateEmailHtml(params: {
           ${passwordBoxHtml}
 
           <div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.3); border-radius:12px; padding:14px 18px; margin:18px 0; color:#93c5fd; font-size:14px;">
-            ⚡ <strong>Prise d'effet immédiate :</strong> Vos nouveaux droits et informations sont effectifs dès à présent sur l'ensemble de vos accès mAI.
+             <strong>Prise d'effet immédiate:</strong> Vos nouveaux droits et informations sont effectifs dès à présent sur l'ensemble de vos accès mAI.
           </div>
 
           <p style="font-size:13px; color:#94a3b8; margin-top:24px;">
@@ -169,16 +169,16 @@ function buildAccountSecurityAlertEmailHtml(params: {
     <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
       <div style="max-width:560px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden;">
         <div style="background:linear-gradient(135deg, #7f1d1d 0%, #31104b 100%); padding:28px 24px; text-align:center; border-bottom:1px solid #991b1b;">
-          <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:0;">⚠️ Alerte de sécurité mAI</h1>
+          <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:0;"> Alerte de sécurité mAI</h1>
         </div>
         <div style="padding:28px; line-height:1.7; font-size:15px; color:#cbd5e1;">
           <p>Bonjour <strong>${escapeHtml(params.username)}</strong>,</p>
-          <p>L'adresse e-mail associée à votre compte mAI a été modifiée par un administrateur :</p>
+          <p>L'adresse e-mail associée à votre compte mAI a été modifiée par un administrateur:</p>
           <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:12px; padding:14px; margin:16px 0; color:#fca5a5; font-size:14px;">
-            Nouvelle adresse e-mail : <strong>${escapeHtml(params.newEmail)}</strong>
+            Nouvelle adresse e-mail: <strong>${escapeHtml(params.newEmail)}</strong>
           </div>
           <p>Si vous êtes à l'origine de cette demande, aucune action supplémentaire n'est requise.</p>
-          <p style="color:#ef4444; font-weight:600;">Si vous n'avez pas sollicité cette modification, contactez immédiatement notre équipe : <a href="mailto:mprojectsofficiel@gmail.com" style="color:#f87171;">mprojectsofficiel@gmail.com</a>.</p>
+          <p style="color:#ef4444; font-weight:600;">Si vous n'avez pas sollicité cette modification, contactez immédiatement notre équipe: <a href="mailto:mprojectsofficiel@gmail.com" style="color:#f87171;">mprojectsofficiel@gmail.com</a>.</p>
         </div>
       </div>
     </body>
@@ -197,7 +197,7 @@ async function hashPassword(plainText: string): Promise<string> {
     });
   }
   try {
-    // Indirection volontaire : dépendance optionnelle, non embarquée par le bundler
+    // Indirection volontaire: dépendance optionnelle, non embarquée par le bundler
     const importOptional = Function("s", "return import(s)") as (
       s: string
     ) => Promise<any>;
@@ -226,7 +226,7 @@ export async function updateUserByAdmin(
 
   const sql = neon(dbUrl);
 
-  // Garde d'accès : réservé à l'administrateur (identité dérivée de la session signée)
+  // Garde d'accès: réservé à l'administrateur (identité dérivée de la session signée)
   const identity = await getSessionIdentity();
   if (!identity) {
     return { changes: [], error: "Authentification requise.", success: false };
@@ -242,10 +242,10 @@ export async function updateUserByAdmin(
   }
 
   const userRows = await sql`
-    SELECT id, username, email, tier, phone, is_blocked, created_at 
-    FROM users 
-    WHERE id::text = ${String(params.userId)} 
-       OR LOWER(username) = ${String(params.userId).toLowerCase().trim().replace(/^@/, "")} 
+    SELECT id, username, email, tier, phone, is_blocked, created_at
+    FROM users
+    WHERE id::text = ${String(params.userId)}
+       OR LOWER(username) = ${String(params.userId).toLowerCase().trim().replace(/^@/, "")}
        OR LOWER(email) = ${String(params.userId).toLowerCase().trim()}
     LIMIT 1;
   `;
@@ -275,7 +275,7 @@ export async function updateUserByAdmin(
     if (normalized !== (user.tier || "Free")) {
       targetTier = normalized;
       changes.push({
-        icon: "⭐",
+        icon: "",
         label: "Plan d'abonnement",
         newValue: normalized,
         oldValue: user.tier || "Free",
@@ -299,7 +299,7 @@ export async function updateUserByAdmin(
     }
     if (cleanU !== user.username) {
       const existing =
-        await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanU} AND id != ${user.id} LIMIT 1;`;
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanU} AND id!= ${user.id} LIMIT 1;`;
       if (existing.length > 0) {
         return {
           changes: [],
@@ -309,7 +309,7 @@ export async function updateUserByAdmin(
       }
       targetUsername = cleanU;
       changes.push({
-        icon: "👤",
+        icon: "",
         label: "Nom d'utilisateur",
         newValue: `@${cleanU}`,
         oldValue: `@${user.username}`,
@@ -329,7 +329,7 @@ export async function updateUserByAdmin(
     }
     if (cleanE !== user.email.toLowerCase()) {
       const existing =
-        await sql`SELECT id FROM users WHERE LOWER(email) = ${cleanE} AND id != ${user.id} LIMIT 1;`;
+        await sql`SELECT id FROM users WHERE LOWER(email) = ${cleanE} AND id!= ${user.id} LIMIT 1;`;
       if (existing.length > 0) {
         return {
           changes: [],
@@ -339,7 +339,7 @@ export async function updateUserByAdmin(
       }
       targetEmail = cleanE;
       changes.push({
-        icon: "✉️",
+        icon: "",
         label: "Adresse e-mail",
         newValue: cleanE,
         oldValue: user.email,
@@ -353,7 +353,7 @@ export async function updateUserByAdmin(
     if (cleanP !== (user.phone || null)) {
       targetPhone = cleanP;
       changes.push({
-        icon: "📞",
+        icon: "",
         label: "Numéro de téléphone",
         newValue: cleanP || "Supprimé",
         oldValue: user.phone || "Non renseigné",
@@ -372,7 +372,7 @@ export async function updateUserByAdmin(
     }
     targetHash = await hashPassword(params.password);
     changes.push({
-      icon: "🔑",
+      icon: "",
       label: "Mot de passe",
       newValue: "Nouveau mot de passe défini par l'administrateur",
       oldValue: "••••••••",
@@ -399,7 +399,7 @@ export async function updateUserByAdmin(
     };
     const reqLimit = TIER_REQUEST_LIMITS[targetTier] || 500;
     await sql`
-      UPDATE mprojects_api_keys 
+      UPDATE mprojects_api_keys
       SET plan = ${targetTier}, max_limit = ${reqLimit}
       WHERE user_id = ${user.id}::text OR user_id = ${user.username} OR user_id = ${user.email};
     `.catch(() => {});
@@ -408,13 +408,13 @@ export async function updateUserByAdmin(
   if (targetUsername) {
     await sql`UPDATE users SET username = ${targetUsername} WHERE id = ${user.id};`;
     await sql`
-      UPDATE profiles 
-      SET display_name = ${targetUsername} 
+      UPDATE profiles
+      SET display_name = ${targetUsername}
       WHERE user_id = ${user.id} AND (display_name IS NULL OR display_name = ${user.username});
     `.catch(() => {});
     await sql`
-      UPDATE mprojects_api_keys 
-      SET user_id = ${targetUsername} 
+      UPDATE mprojects_api_keys
+      SET user_id = ${targetUsername}
       WHERE user_id = ${user.username};
     `.catch(() => {});
   }
@@ -472,7 +472,7 @@ export async function updateUserByAdmin(
       try {
         await sendHtmlEmail(
           user.email,
-          "Alerte de sécurité : modification de votre adresse e-mail mAI",
+          "Alerte de sécurité: modification de votre adresse e-mail mAI",
           buildAccountSecurityAlertEmailHtml({
             newEmail: targetEmail,
             oldEmail: user.email,
@@ -489,9 +489,9 @@ export async function updateUserByAdmin(
   }
 
   const updatedUserRows = await sql`
-    SELECT id, username, email, tier, phone, is_blocked, created_at 
-    FROM users 
-    WHERE id = ${user.id} 
+    SELECT id, username, email, tier, phone, is_blocked, created_at
+    FROM users
+    WHERE id = ${user.id}
     LIMIT 1;
   `;
 

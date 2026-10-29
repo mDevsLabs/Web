@@ -17,12 +17,16 @@ function loadIsolated(file: string, stubs: Record<string, unknown> = {}) {
     text = ast.statements
       .filter((node) => {
         if (ts.isFunctionDeclaration(node)) {
-          return ["rateLimit", "clientIp"].includes(node.name?.text ?? "");
+          return ["rateLimit", "clientIp", "normalizeIp"].includes(
+            node.name?.text ?? ""
+          );
         }
         return (
           ts.isVariableStatement(node) &&
-          node.declarationList.declarations.some(
-            (declaration) => declaration.name.getText(ast) === "rateBuckets"
+          node.declarationList.declarations.some((declaration) =>
+            ["rateBuckets", "IPV4_RE", "IPV6_RE"].includes(
+              declaration.name.getText(ast)
+            )
           )
         );
       })
@@ -62,14 +66,7 @@ const D = (expr: string) => `\${${expr}}`;
 const T = (label: string, expr: string) => `\`${label}:${D(expr)}\``;
 
 const CALLS = [
-  [
-    "auth.ts",
-    [
-      `${T("register", "clientIp(c)")}, 5, 15 * 60_000`,
-      `${T("login", "clientIp(c)")}, 10, 5 * 60_000`,
-      `${T("verify-code", "userId")}, 10, 15 * 60_000`,
-    ],
-  ],
+  ["auth.ts", [`${T("verify-code", "userId")}, 10, 15 * 60_000`]],
   ["vibe-posts-crud.ts", [`${T("post", "userId")}, 10, 5 * 60_000`]],
   ["vibe-posts-engage.ts", [`${T("mai-cmd", "userId")}, 5, 60_000`]],
   ["vibe-mai-execute.ts", [`${T("mai-execute", "userId")}, 30, 60_000`]],
@@ -159,14 +156,41 @@ describe("bounded root backend audit", () => {
     const ip = clientIp(
       context("/login", { "x-forwarded-for": "192.0.2.1, 192.0.2.2" })
     );
-    expect(ip).toBe("192.0.2.1");
+    // Dernière entrée de X-Forwarded-For : celle ajoutée par le proxy de bord.
+    expect(ip).toBe("192.0.2.2");
+    // Une première entrée forgée ne change pas l'adresse retenue.
+    expect(
+      clientIp(
+        context("/login", { "x-forwarded-for": "6.6.6.6, 198.51.100.7" })
+      )
+    ).toBe("198.51.100.7");
     expect(rateLimit(`login:${ip}`, 1, 60_000)).toBe(true);
     expect(rateLimit(`login:${ip}`, 1, 60_000)).toBe(false);
-    expect(rateLimit("login:192.0.2.2", 1, 60_000)).toBe(true);
+    expect(rateLimit("login:192.0.2.1", 1, 60_000)).toBe(true);
     expect(rateLimit("pv:1:2", 1, 60_000)).toBe(true);
     expect(rateLimit("pv:1:2", 1, 60_000)).toBe(false);
     expect(rateLimit("pv:1:3", 1, 60_000)).toBe(true);
     expect(rateLimit("pv:2:3", 1, 60_000)).toBe(true);
+  });
+
+  it("auth.ts borne les parcours de sécurité avec le limiteur partagé", () => {
+    const auth = source("auth.ts");
+    // Compteur partagé entre isolates pour inscription, connexion,
+    // vérification de code et renvoi de code.
+    const clefs = [
+      /register:\$\{clientIp\(c\)\}/,
+      /login:\$\{clientIp\(c\)\}/,
+      /verify-login:ip:/,
+      /verify-login:account:/,
+      /resend-code:ip:/,
+      /resend-code:account:/,
+    ];
+    for (const clef of clefs) {
+      expect(auth, String(clef)).toMatch(clef);
+    }
+    expect(
+      (auth.match(/rateLimitShared\(/g) ?? []).length
+    ).toBeGreaterThanOrEqual(4);
   });
 
   it("registers every alias for all five supported methods", () => {
@@ -272,10 +296,28 @@ describe("bounded root backend audit", () => {
         return sql;
       };
       const { registerMiddleware } = loadIsolated("api-middleware.ts", {
+        "./api-quota.ts": {
+          releaseApiRequestQuota: vi.fn(),
+          reserveApiQuotaOrRefuse: vi.fn(async () => ({
+            limit: 500,
+            remaining: 499,
+            status: "reserved",
+            used: 0,
+          })),
+        },
+        "./auth-revocation.ts": {
+          AccountBlockedError: class AccountBlockedError extends Error {},
+          AuthAuthorityUnavailableError: class AuthAuthorityUnavailableError extends Error {},
+        },
         "./config.ts": {
-          extractTierFromApiKey: () => null,
           getDb,
-          getEnv: () => undefined,
+          getTierRequestLimit: () => 500,
+          getUserQuotaBoost: async () => 0,
+          getWeekData: () => ({
+            nextResetIso: "2026-09-21T00:00:00.000Z",
+            weekStartStr: "2026-09-14",
+          }),
+          normalizeTier: (tier: string) => tier || "Free",
           verifyToken: async () => ({ sub: "1", tier: "Plus" }),
         },
       });
@@ -297,10 +339,23 @@ describe("bounded root backend audit", () => {
 
   it("keeps invalid credentials at 403 and public anonymous access working", async () => {
     const { registerMiddleware } = loadIsolated("api-middleware.ts", {
+      "./api-quota.ts": {
+        releaseApiRequestQuota: vi.fn(),
+        reserveApiQuotaOrRefuse: vi.fn(),
+      },
+      "./auth-revocation.ts": {
+        AccountBlockedError: class AccountBlockedError extends Error {},
+        AuthAuthorityUnavailableError: class AuthAuthorityUnavailableError extends Error {},
+      },
       "./config.ts": {
-        extractTierFromApiKey: () => null,
         getDb: () => vi.fn().mockResolvedValue([]),
-        getEnv: () => undefined,
+        getTierRequestLimit: () => 500,
+        getUserQuotaBoost: async () => 0,
+        getWeekData: () => ({
+          nextResetIso: "2026-09-21T00:00:00.000Z",
+          weekStartStr: "2026-09-14",
+        }),
+        normalizeTier: (tier: string) => tier || "Free",
         verifyToken: vi.fn().mockRejectedValue(new Error("stub invalid token")),
       },
     });

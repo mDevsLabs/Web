@@ -62,7 +62,12 @@ export function fromExistingTool<Input>(params: {
 
 // Convertit une liste de résultats web en sources citables.
 export function webResultsToSources(
-  results: Array<{ source?: string; title?: string; url?: string }>
+  results: Array<{
+    origin?: string;
+    source?: string;
+    title?: string;
+    url?: string;
+  }>
 ): AgentSource[] {
   return results.flatMap((result, index) => {
     if (!result.url) return [];
@@ -73,6 +78,9 @@ export function webResultsToSources(
         {
           id: `web-${index + 1}`,
           kind: "web" as const,
+          // L'origine accompagne la source : l'agent (et la timeline) doit
+          // pouvoir distinguer un article d'encyclopédie d'une page web.
+          metadata: result.origin ? { origin: result.origin } : undefined,
           title: (result.title || result.url || "Résultat web").slice(0, 200),
           url: url.toString(),
         },

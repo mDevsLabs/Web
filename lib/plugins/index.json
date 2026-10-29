@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.10.11",
+  "catalogVersion": "2026.10.28",
   "categories": [
     {
       "id": "meteo",
@@ -80,6 +80,150 @@
       "dir": "google",
       "entry": "./google",
       "manifest": "./google/index.json"
+    },
+    {
+      "id": "notion",
+      "dir": "notion",
+      "entry": "./notion",
+      "manifest": "./notion/index.json"
+    },
+    {
+      "id": "discord",
+      "dir": "discord",
+      "entry": "./discord",
+      "manifest": "./discord/index.json"
+    },
+    {
+      "id": "vercel",
+      "dir": "vercel",
+      "entry": "./vercel",
+      "manifest": "./vercel/index.json"
+    },
+    {
+      "id": "sentry",
+      "dir": "sentry",
+      "entry": "./sentry",
+      "manifest": "./sentry/index.json"
+    },
+    {
+      "id": "posthog",
+      "dir": "posthog",
+      "entry": "./posthog",
+      "manifest": "./posthog/index.json"
+    },
+    {
+      "id": "linear",
+      "dir": "linear",
+      "entry": "./linear",
+      "manifest": "./linear/index.json"
+    },
+    {
+      "id": "stripe",
+      "dir": "stripe",
+      "entry": "./stripe",
+      "manifest": "./stripe/index.json"
+    },
+    {
+      "id": "resend",
+      "dir": "resend",
+      "entry": "./resend",
+      "manifest": "./resend/index.json"
+    },
+    {
+      "id": "cloudflare",
+      "dir": "cloudflare",
+      "entry": "./cloudflare",
+      "manifest": "./cloudflare/index.json"
+    },
+    {
+      "id": "brave",
+      "dir": "brave",
+      "entry": "./brave",
+      "manifest": "./brave/index.json"
+    },
+    {
+      "id": "mapbox",
+      "dir": "mapbox",
+      "entry": "./mapbox",
+      "manifest": "./mapbox/index.json"
+    },
+    {
+      "id": "exchange-rate",
+      "dir": "exchange-rate",
+      "entry": "./exchange-rate",
+      "manifest": "./exchange-rate/index.json"
+    },
+    {
+      "id": "sonarcloud",
+      "dir": "sonarcloud",
+      "entry": "./sonarcloud",
+      "manifest": "./sonarcloud/index.json"
+    },
+    {
+      "id": "npm",
+      "dir": "npm",
+      "entry": "./npm",
+      "manifest": "./npm/index.json"
+    },
+    {
+      "id": "dockerhub",
+      "dir": "dockerhub",
+      "entry": "./dockerhub",
+      "manifest": "./dockerhub/index.json"
+    },
+    {
+      "id": "brevo",
+      "dir": "brevo",
+      "entry": "./brevo",
+      "manifest": "./brevo/index.json"
+    },
+    {
+      "id": "twilio",
+      "dir": "twilio",
+      "entry": "./twilio",
+      "manifest": "./twilio/index.json"
+    },
+    {
+      "id": "asana",
+      "dir": "asana",
+      "entry": "./asana",
+      "manifest": "./asana/index.json"
+    },
+    {
+      "id": "jira",
+      "dir": "jira",
+      "entry": "./jira",
+      "manifest": "./jira/index.json"
+    },
+    {
+      "id": "upstash",
+      "dir": "upstash",
+      "entry": "./upstash",
+      "manifest": "./upstash/index.json"
+    },
+    {
+      "id": "neon",
+      "dir": "neon",
+      "entry": "./neon",
+      "manifest": "./neon/index.json"
+    },
+    {
+      "id": "supabase",
+      "dir": "supabase",
+      "entry": "./supabase",
+      "manifest": "./supabase/index.json"
+    },
+    {
+      "id": "zapier",
+      "dir": "zapier",
+      "entry": "./zapier",
+      "manifest": "./zapier/index.json"
+    },
+    {
+      "id": "make",
+      "dir": "make",
+      "entry": "./make",
+      "manifest": "./make/index.json"
     },
     {
       "id": "open-food-facts",

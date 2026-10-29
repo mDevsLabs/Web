@@ -25,13 +25,21 @@ export function SettingsAnchorNav({ items }: { items: AnchorItem[] }) {
 
   useEffect(() => {
     const root = document.querySelector<HTMLElement>("[data-scroll-root]");
-    if (!root || items.length === 0) {
+    if (items.length === 0) {
       return;
     }
+    // Sur desktop, le panneau droit est borné et porte `data-scroll-root` :
+    // c'est lui qui défile, et le rail reste visible. Sous `lg`, le panneau n'a
+    // pas de hauteur propre (la page défile) : écouter l'élément ne produirait
+    // aucun événement, donc on écoute `window`.
+    const defilant =
+      root && root.scrollHeight > root.clientHeight ? root : null;
+    const cible: HTMLElement | Window = defilant ?? window;
+    const baseTop = () => (defilant ? defilant.getBoundingClientRect().top : 0);
 
     let raf = 0;
     const update = () => {
-      const rootTop = root.getBoundingClientRect().top;
+      const rootTop = baseTop();
       let current = items[0].id;
       for (const item of items) {
         const el = document.getElementById(item.id);
@@ -53,11 +61,11 @@ export function SettingsAnchorNav({ items }: { items: AnchorItem[] }) {
       raf = requestAnimationFrame(update);
     };
 
-    root.addEventListener("scroll", onScroll, { passive: true });
+    cible.addEventListener("scroll", onScroll, { passive: true });
     update();
 
     return () => {
-      root.removeEventListener("scroll", onScroll);
+      cible.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
     };
   }, [items]);

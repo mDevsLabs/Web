@@ -5,6 +5,7 @@ import {
   count,
   desc,
   eq,
+  exists,
   gt,
   gte,
   inArray,
@@ -340,8 +341,34 @@ export async function getUserMemoriesWithScope({
       updatedAt: userMemory.updatedAt,
     })
     .from(userMemory)
-    .leftJoin(agent, eq(userMemory.agentId, agent.id))
-    .leftJoin(project, eq(userMemory.projectId, project.id))
+    .leftJoin(
+      agent,
+      and(eq(userMemory.agentId, agent.id), eq(agent.userId, userId))
+    )
+    .leftJoin(
+      project,
+      and(
+        eq(userMemory.projectId, project.id),
+        // Une mémoire du demandeur peut référencer un projet privé d'un autre
+        // compte (données historiques incohérentes) : la jointure ne doit pas
+        // révéler son titre. Seuls le propriétaire et les membres autorisés le
+        // voient.
+        or(
+          eq(project.userId, userId),
+          exists(
+            database
+              .select({ one: sql`1` })
+              .from(projectMember)
+              .where(
+                and(
+                  eq(projectMember.projectId, project.id),
+                  eq(projectMember.userId, userId)
+                )
+              )
+          )
+        )
+      )
+    )
     .where(eq(userMemory.userId, userId))
     .orderBy(desc(userMemory.isImportant), desc(userMemory.createdAt))
     .limit(limit);

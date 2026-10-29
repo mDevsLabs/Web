@@ -88,6 +88,7 @@ export async function GET(request: Request) {
       .where(
         and(
           sql`${chat.userId} IN (${variants})`,
+          sql`NOT EXISTS (SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id})`,
           chatConditions.length > 0
             ? and(...chatConditions)
             : ilike(chat.title, escapedFull)
@@ -139,6 +140,7 @@ export async function GET(request: Request) {
       .where(
         and(
           sql`${chat.userId} IN (${variants})`,
+          sql`NOT EXISTS (SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id})`,
           messageConditions.length > 0
             ? and(...messageConditions)
             : sql`${message.parts}::text ILIKE ${escapedFull}`

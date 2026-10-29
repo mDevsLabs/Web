@@ -43,7 +43,7 @@ export function Navbar({ changelogs, news }: NavbarProps) {
   return (
     <>
       <header
-        className={`fixed safe-top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-6xl xl:max-w-7xl rounded-3xl md:rounded-full px-4 md:px-8 py-2 md:py-3 glass transition-[background-color,box-shadow] duration-300 ease-ios ${
+        className={`fixed top-[calc(env(safe-area-inset-top,0px)+1rem)] left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-6xl xl:max-w-7xl rounded-3xl md:rounded-full px-4 md:px-8 py-2 md:py-3 glass [--glass-blur:12px] transition-[background-color,box-shadow] duration-300 ease-ios ${
           scrolled ? "glass-elev" : ""
         }`}
       >

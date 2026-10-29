@@ -1,26 +1,26 @@
-# 🗄️ Base de données & Migrations — mAI Web
+# Base de données & Migrations — mAI Web
 
 Ce document détaille la politique, le schéma et la gestion des migrations PostgreSQL de l'application mAI Web.
 
 ---
 
-## 1. ⚙️ Technologies & Fournisseurs
+## 1. Technologies & Fournisseurs
 
-- **Moteur de base de données** : PostgreSQL serverless hébergé chez **Neon**.
-- **ORM** : **Drizzle ORM** avec pilote `postgres` (postgres.js).
-- **Configuration Drizzle** : `drizzle.config.ts`.
-- **Définition du schéma** : Fichier central unique `lib/db/schema.ts` (déclarant toutes les tables : `User`, `Chat`, `Message`, `Vote`, `Document`, `Suggestion`, `UserMemory`, et les tables spécifiques aux agents).
+- **Moteur de base de données**: PostgreSQL serverless hébergé chez **Neon**.
+- **ORM**: **Drizzle ORM** avec pilote `postgres` (postgres.js).
+- **Configuration Drizzle**: `drizzle.config.ts`.
+- **Définition du schéma**: Fichier central unique `lib/db/schema.ts` (déclarant toutes les tables: `User`, `Chat`, `Message`, `Vote`, `Document`, `Suggestion`, `UserMemory`, et les tables spécifiques aux agents).
 
 ---
 
-## 2. 🛡️ Règles absolues de migration
+## 2. Règles absolues de migration
 
 ### A. Idempotence obligatoire
-Chaque instruction SQL dans les fichiers de migration (`lib/db/migrations/NNNN_nom.sql`) doit être strictement rejouable sans provoquer d'erreur :
+Chaque instruction SQL dans les fichiers de migration (`lib/db/migrations/NNNN_nom.sql`) doit être strictement rejouable sans provoquer d'erreur:
 - `CREATE TABLE IF NOT EXISTS`
 - `ALTER TABLE "X" ADD COLUMN IF NOT EXISTS "y"`
 - `CREATE INDEX IF NOT EXISTS`
-- `DO $$ BEGIN ... EXCEPTION WHEN duplicate_object THEN NULL; END $$;`
+- `DO $$ BEGIN... EXCEPTION WHEN duplicate_object THEN NULL; END $$;`
 
 ### B. Le Journal de migration Drizzle (`_journal.json`)
 Drizzle suit l'historique des migrations via `lib/db/migrations/meta/_journal.json`.
@@ -37,7 +37,7 @@ Les fonctions de réparation dynamique au runtime (`ensureTableTypes`, `ensureCo
 
 ---
 
-## 3. 🚀 Commandes de gestion
+## 3. Commandes de gestion
 
 ```bash
 # Générer une nouvelle migration à partir des changements dans schema.ts

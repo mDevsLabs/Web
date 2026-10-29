@@ -2,19 +2,25 @@
 // (localStorage, aucune synchronisation multi-appareil, aucune table SQL).
 //
 // Contrat :
-// - une clé namespacée par conversation (`mai.draft:v1:<chatId>`) ; le contexte
-//   de création d'une nouvelle conversation utilise la clé dédiée
-//   `mai.draft:v1:new` — un brouillon d'un chat n'est jamais restauré dans un
-//   autre, et un brouillon « nouvelle conversation » ne fuit pas dans un chat
-//   existant ;
+// - une clé namespacée par COMPTE **et** par conversation
+//   (`mai.draft:v2:<scope>:<chatId|new>`) ; le contexte de création d'une
+//   nouvelle conversation utilise la même clé avec `new` — un brouillon d'un
+//   chat n'est jamais restauré dans un autre, et le brouillon de A n'est
+//   jamais proposé à B sur le même navigateur ;
+// - `scope` est un HACHAGE non réversible de l'identité du compte : la clé ne
+//   transporte pas l'e-mail en clair. Les clés v1 (sans compte) ne sont
+//   JAMAIS relues : un ancien brouillon sans propriétaire n'est attribué à
+//   personne ;
 // - payload minimal typé `{ text, savedAt }` avec TTL de 30 jours ;
 // - tout échec de stockage (quota, navigation privée…) est journalisé et non
 //   bloquant : le chat fonctionne toujours sans brouillon.
 
 import { generateUUID } from "@/lib/utils";
 
-const DRAFT_KEY_PREFIX = "mai.draft:v1:";
-export const NEW_CHAT_DRAFT_KEY = `${DRAFT_KEY_PREFIX}new`;
+const DRAFT_KEY_PREFIX = "mai.draft:v2:";
+
+/** Ancienne clé globale, uniquement effacée — jamais relue. */
+export const NEW_CHAT_DRAFT_KEY = "mai.draft:v1:new";
 
 // Aligné sur l'ancienne durée du brouillon global (cookie 30 jours).
 export const DRAFT_TTL_MS = 30 * 24 * 60 * 60 * 1000;
@@ -28,10 +34,32 @@ export type ChatDraft = {
   text: string;
 };
 
-export function draftKeyForChatId(chatId: string): string {
+/**
+ * Empreinte stable et non réversible d'une identité de compte, pour le
+ * namespacing local. Ce n'est PAS un secret cryptographique : deux comptes
+ * distincts ne doivent simplement pas partager la même clé.
+ */
+export function draftScopeForIdentity(identity: string): string {
+  const value = String(identity || "")
+    .trim()
+    .toLowerCase();
+  let h1 = 0x81_1c_9d_c5;
+  let h2 = 0x01_00_01_93;
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index);
+    h1 = Math.imul(h1 ^ code, 0x01_00_01_93);
+    h2 = Math.imul(h2 ^ code, 0x85_eb_ca_6b);
+  }
+  return `${(h1 >>> 0).toString(36)}${(h2 >>> 0).toString(36)}`;
+}
+
+export function draftKeyForChatId(chatId: string, scope: string): string {
+  const cleanScope = String(scope || "").trim();
   const trimmed = chatId.trim();
-  // Un identifiant vide ne doit jamais produire une clé ambiguë partagée.
-  return trimmed ? `${DRAFT_KEY_PREFIX}${trimmed}` : NEW_CHAT_DRAFT_KEY;
+  // Un scope vide produirait une clé partagée par tous les comptes : la clé
+  // est alors explicitement liée à « anonyme », qui n'est jamais alimenté par
+  // un compte connecté (le hook n'écrit pas sans scope).
+  return `${DRAFT_KEY_PREFIX}${cleanScope || "anonymous"}:${trimmed || "new"}`;
 }
 
 export function isDraftExpired(draft: ChatDraft, now: number): boolean {
@@ -138,8 +166,8 @@ export function clearDraft(
 // Identifiant de conversation en cours pour le contexte « nouvelle discussion ».
 // La clé dédiée évite qu'un brouillon d'accueil soit restauré dans un chat
 // existant, et inversement.
-export function resolveNewChatDraftKey(): string {
-  return NEW_CHAT_DRAFT_KEY;
+export function resolveNewChatDraftKey(scope: string): string {
+  return draftKeyForChatId("", scope);
 }
 
 /** Clé stable utilisée par les tests (aucune opération réseau ni horloge). */

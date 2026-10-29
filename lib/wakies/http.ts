@@ -28,6 +28,7 @@ import {
   type WakiesQuotaKey,
   wakiesQuotaMessage,
 } from "@/lib/plans/tier-limits";
+import type { WakiesQuotaError } from "@/lib/wakies/quota-error";
 import { versClient } from "@/lib/wakies/serialize";
 import { trustedWakiesOrigin } from "@/lib/wakies/shared/origin";
 
@@ -118,6 +119,14 @@ export async function enforceWakiesLimit(params: {
 }
 
 export { toErrorResponse };
+
+/** Traduit un quota atteint DANS la transaction en 429 explicite. */
+export function wakiesQuotaResponse(error: WakiesQuotaError): Response {
+  return errorResponse("quota_exceeded", {
+    details: { limit: error.limit, quota: error.quota, used: error.used },
+    message: wakiesQuotaMessage(error.limit, error.quota),
+  });
+}
 
 export function rejectCrossOriginMutation(request: Request): Response | null {
   return trustedWakiesOrigin(request)

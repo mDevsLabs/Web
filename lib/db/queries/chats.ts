@@ -25,6 +25,7 @@ import {
   agentTemplate,
   type Chat,
   chat,
+  chatSecurity,
   customCommand,
   type DBMessage,
   type DocumentProposal,
@@ -227,6 +228,10 @@ export async function getChatsByUserId({
           customInstructions: chat.customInstructions,
           id: chat.id,
           isArchived: chat.isArchived,
+          isSecure: sql<boolean>`EXISTS (
+            SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
+          )`,
+          mode: chat.mode,
           pinned: chat.pinned,
           projectId: chat.projectId,
           skillId: chat.skillId,
@@ -639,7 +644,17 @@ export async function getMessagesForExportByUserId({
       })
       .from(message)
       .innerJoin(chat, eq(message.chatId, chat.id))
-      .where(sql`${chat.userId}::text = ${userId}::text`)
+      .where(
+        and(
+          sql`${chat.userId}::text = ${userId}::text`,
+          // Une conversation sécurisée est exclue de l'export global : le
+          // fichier ne doit pas contourner un PIN. Son export individuel reste
+          // disponible après déverrouillage.
+          sql`NOT EXISTS (
+            SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id}
+          )`
+        )
+      )
       .orderBy(desc(chat.createdAt), asc(message.createdAt))
       .limit(limit)) as never;
   } catch (error) {
@@ -764,7 +779,21 @@ export async function updateChatVisibilityById({
 }) {
   try {
     const db = await dbReady();
-    return await db.update(chat).set({ visibility }).where(eq(chat.id, chatId));
+    // Invariant : une conversation privée ne conserve jamais de PIN. Le
+    // passage en privé efface la ligne dans la même transaction que la
+    // visibilité ; les appelants refusent d'abord le changement si la session
+    // n'est pas déverrouillée (le PIN ne se retire pas sans le connaître).
+    return await db.transaction(async (tx) => {
+      const result = await tx
+        .update(chat)
+        .set({ visibility })
+        .where(eq(chat.id, chatId))
+        .returning();
+      if (visibility === "private") {
+        await tx.delete(chatSecurity).where(eq(chatSecurity.chatId, chatId));
+      }
+      return result;
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

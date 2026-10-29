@@ -45,11 +45,11 @@ export default function PrivacyPage() {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-emerald-500">
             Confidentialité
           </span>{" "}
-          <Shield className="inline w-4 h-4 align-middle" />️
+          <Shield className="inline w-4 h-4 align-middle" />
         </h1>
 
         <p className="text-slate-500 font-light mb-8 text-base md:text-lg">
-          Dernière mise à jour : 25 août 2026. Chez <strong>mDevsLabs</strong>,
+          Dernière mise à jour: 25 août 2026. Chez <strong>mDevsLabs</strong>,
           la protection de vos données personnelles, la conformité réglementaire
           internationale et la transparence de notre plateforme{" "}
           <strong>mAI</strong> sont au cœur de nos engagements. Cette politique
@@ -80,8 +80,8 @@ export default function PrivacyPage() {
               <Lock className="inline w-4 h-4 align-middle" />
             </div>
             <p className="text-xs text-purple-700 leading-relaxed font-light">
-              Politique ZDR priorisée : vos prompts et requêtes d&apos;IA ne
-              sont jamais enregistrés ni réutilisés pour l&apos;entraînement.
+              Politique ZDR priorisée: vos prompts et requêtes d&apos;IA ne sont
+              jamais enregistrés ni réutilisés pour l&apos;entraînement.
             </p>
           </div>
           <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-900">
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
         </div>
 
         <div className="space-y-10 text-slate-600">
-          {/* Section 1 : Stockage UE & USA */}
+          {/* Section 1: Stockage UE & USA */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Globe className="w-5 h-5 text-emerald-600" />
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             </h2>
             <p className="leading-relaxed font-light">
               Nous appliquons une politique claire et transparente de
-              localisation et de chiffrement des données :
+              localisation et de chiffrement des données:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1 text-xs">
               <div className="p-4 bg-white/70 rounded-2xl border border-slate-200/90 shadow-sm space-y-1.5">
@@ -166,26 +166,26 @@ export default function PrivacyPage() {
             </div>
           </section>
 
-          {/* Section 2 : Données Collectées & Clés API mAI */}
+          {/* Section 2: Données Collectées & Clés API mAI */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Lock className="w-5 h-5 text-purple-500" />
               2. Données Collectées &amp; Clés API mAI
             </h2>
             <p className="leading-relaxed font-light">
-              Nous appliquons le principe de minimisation des données : seules
+              Nous appliquons le principe de minimisation des données: seules
               les données strictement nécessaires à la fourniture de nos
-              services d'IA sont traitées :
+              services d'IA sont traitées:
             </p>
             <ul className="list-disc list-inside space-y-2 ml-2 text-sm font-light">
               <li>
-                <strong>Données d'Identité &amp; Profil</strong> : Adresse
-                e-mail valide, nom d'utilisateur unique, numéro de téléphone
+                <strong>Données d'Identité &amp; Profil</strong>: Adresse e-mail
+                valide, nom d'utilisateur unique, numéro de téléphone
                 (optionnel), mot de passe sécurisé (haché de manière
                 irréversible) et formule d'abonnement (Free, Plus, Pro, Max).
               </li>
               <li>
-                <strong>Clés API &amp; Authentification</strong> : Les clés
+                <strong>Clés API &amp; Authentification</strong>: Les clés
                 secrètes d'API générées (format{" "}
                 <code className="bg-purple-50 px-1.5 py-0.5 rounded text-purple-700 font-mono text-xs">
                   mai-...
@@ -219,7 +219,7 @@ export default function PrivacyPage() {
                   /v1/messages
                 </code>
                 ), nous enregistrons uniquement les métadonnées techniques
-                suivantes :
+                suivantes:
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 ml-4">
                   <span className="p-2 rounded-xl bg-white/60 border border-slate-200 text-xs">
                     <CircleDot className="inline w-4 h-4 align-middle" />{" "}
@@ -246,7 +246,7 @@ export default function PrivacyPage() {
             </ul>
           </section>
 
-          {/* Section 3 : Fonctionnement de l'API & Traitement des Requêtes IA (Politique ZDR) */}
+          {/* Section 3: Fonctionnement de l'API & Traitement des Requêtes IA (Politique ZDR) */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Cpu className="w-5 h-5 text-blue-500" />
@@ -257,7 +257,7 @@ export default function PrivacyPage() {
               <p className="font-bold flex items-center gap-2 text-blue-900">
                 <CheckCircle2 className="w-4 h-4 text-blue-600" />
                 Politique Prioritaire de Zero Data Retention (ZDR) &amp;
-                Non-Entraînement :
+                Non-Entraînement:
               </p>
               <p className="font-light text-slate-700">
                 mDevsLabs priorise et applique une politique stricte de{" "}
@@ -286,7 +286,7 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* Section 4 : Forfaits & Quotas d'Usage API */}
+          {/* Section 4: Forfaits & Quotas d'Usage API */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Key className="w-5 h-5 text-purple-500" />
@@ -295,7 +295,7 @@ export default function PrivacyPage() {
             <p className="leading-relaxed font-light">
               L'utilisation des ressources d'intelligence artificielle et des
               serveurs est équilibrée par un système de quotas mensuels selon
-              votre formule :
+              votre formule:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
               <div className="p-3.5 bg-white/70 rounded-2xl border border-slate-200">
@@ -336,7 +336,7 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* Section 5 : Cookies et Stockage Navigateur */}
+          {/* Section 5: Cookies et Stockage Navigateur */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Cookie className="w-5 h-5 text-amber-500" />
@@ -345,7 +345,7 @@ export default function PrivacyPage() {
             <p className="leading-relaxed font-light">
               Nous n'utilisons aucun traceur publicitaire tiers. Nous exploitons
               uniquement des cookies strictement nécessaires au fonctionnement
-              et à la sécurité de l'application :
+              et à la sécurité de l'application:
             </p>
             <ul className="list-disc list-inside space-y-2 ml-4 text-sm font-light">
               <li>
@@ -363,14 +363,14 @@ export default function PrivacyPage() {
                 permettant de préserver votre authentification.
               </li>
               <li>
-                <strong className="text-slate-800">mai_cookie_consent</strong> :
+                <strong className="text-slate-800">mai_cookie_consent</strong>:
                 Enregistre vos préférences de consentement conformément à la
                 directive ePrivacy.
               </li>
             </ul>
           </section>
 
-          {/* Section 6 : Conservation et Sécurité */}
+          {/* Section 6: Conservation et Sécurité */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <Database className="w-5 h-5 text-emerald-500" />
@@ -387,7 +387,7 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* Section 7 : Vos Droits RGPD */}
+          {/* Section 7: Vos Droits RGPD */}
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
               <UserCheck className="w-5 h-5 text-purple-500" />
@@ -395,7 +395,7 @@ export default function PrivacyPage() {
             </h2>
             <p className="leading-relaxed font-light text-sm">
               Conformément à la réglementation européenne (articles 15 à 22 du
-              RGPD), vous disposez des droits suivants concernant vos données :
+              RGPD), vous disposez des droits suivants concernant vos données:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 bg-white/60 rounded-xl border border-slate-200 font-light">

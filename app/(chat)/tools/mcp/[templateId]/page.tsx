@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { tierMeetsMinimum } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -24,6 +25,16 @@ export default async function McpDetailPage({
   params: Promise<{ templateId: string }>;
 }) {
   const { templateId } = await params;
+  const nativePlugin: Record<string, string> = {
+    linear: "linear",
+    notion: "notion",
+    sentry: "sentry",
+    stripe: "stripe",
+  };
+  const pluginId = nativePlugin[templateId];
+  if (pluginId) {
+    redirect(`/tools/plugins/${pluginId}`);
+  }
   const manifest = getMcpTemplate(templateId);
 
   if (!manifest) {
@@ -35,7 +46,7 @@ export default async function McpDetailPage({
         </p>
         <a
           className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
-          href="/tools?tab=mcp"
+          href="/tools?tab=plugins"
         >
           Retour aux connexions MCP
         </a>

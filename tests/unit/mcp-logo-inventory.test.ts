@@ -12,10 +12,13 @@ import {
 } from "@/lib/skill-templates/catalog";
 
 // Inventaire des vrais logos MCP : chaque identifiant du catalogue doit avoir
-// un asset réel dans public/mcp/<id>.svg (source Simple Icons, licence CC0).
+// un asset réel dans public/plugins/<id>.svg (source Simple Icons, licence CC0).
 // Un asset manquant fait échouer ce test au lieu de retomber silencieusement
 // sur une icône générique ou, pire, sur le logo d'un autre service.
-const PUBLIC_MCP_DIR = path.resolve(import.meta.dirname, "../../public/mcp");
+const PUBLIC_PLUGIN_DIR = path.resolve(
+  import.meta.dirname,
+  "../../public/plugins"
+);
 
 describe("Catalogues MCP et Skills — identifiants et logos", () => {
   it("les identifiants MCP sont uniques", () => {
@@ -26,9 +29,9 @@ describe("Catalogues MCP et Skills — identifiants et logos", () => {
     expect(new Set(SKILL_TEMPLATE_IDS).size).toBe(SKILL_TEMPLATE_IDS.length);
   });
 
-  it("chaque modèle MCP possède un logo réel dans public/mcp/<id>.svg", () => {
+  it("chaque modèle MCP possède un logo réel dans public/plugins/<id>.svg", () => {
     for (const template of MCP_TEMPLATE_LIST) {
-      const file = path.join(PUBLIC_MCP_DIR, `${template.id}.svg`);
+      const file = path.join(PUBLIC_PLUGIN_DIR, `${template.id}.svg`);
       expect(
         existsSync(file),
         `Logo manquant pour « ${template.id} » : ${mcpLogoSrc(template.id)}`
@@ -42,7 +45,7 @@ describe("Catalogues MCP et Skills — identifiants et logos", () => {
   it("les logos sont des SVG autonomes (pas de référence externe ni de script)", () => {
     for (const template of MCP_TEMPLATE_LIST) {
       const content = readFileSync(
-        path.join(PUBLIC_MCP_DIR, `${template.id}.svg`),
+        path.join(PUBLIC_PLUGIN_DIR, `${template.id}.svg`),
         "utf8"
       );
       expect(content).not.toMatch(/<script/i);
@@ -77,8 +80,8 @@ describe("Catalogues MCP et Skills — identifiants et logos", () => {
 });
 
 describe("mcpLogoSrc — correspondance identifiant → fichier", () => {
-  it("construit l'URL stable /mcp/<id>.svg", () => {
-    expect(mcpLogoSrc("sentry")).toBe("/mcp/sentry.svg");
-    expect(mcpLogoSrc("brave-search")).toBe("/mcp/brave-search.svg");
+  it("construit l'URL stable /plugins/<id>.svg", () => {
+    expect(mcpLogoSrc("sentry")).toBe("/plugins/sentry.svg");
+    expect(mcpLogoSrc("brave-search")).toBe("/plugins/brave-search.svg");
   });
 });

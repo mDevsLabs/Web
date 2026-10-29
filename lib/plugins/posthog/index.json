@@ -1,0 +1,33 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez PostHog (hôte US) par clé personnelle : l'IA liste vos projets et leurs feature flags. Le plugin ne modifie rien chez PostHog.",
+  "icon": { "src": "/plugins/posthog.svg", "type": "image" },
+  "id": "posthog",
+  "minTier": "plus",
+  "name": "PostHog",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["posthog", "analytics", "feature flags", "produit", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les projets PostHog du compte (hôte US).",
+      "effect": "read",
+      "id": "posthogListProjects",
+      "label": "Projets PostHog",
+      "systemHint": "L'identifiant numérique du projet sert à lire ses feature flags."
+    },
+    {
+      "description": "Liste les feature flags d'un projet PostHog.",
+      "effect": "read",
+      "id": "posthogListFlags",
+      "label": "Feature flags PostHog",
+      "systemHint": "Indiquez si le flag est actif plutôt que de recopier ses filtres."
+    }
+  ],
+  "version": "1.0.0"
+}

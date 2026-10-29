@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIcon, GlobeIcon as Globe, FileTextIcon as FileText, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, LanguagesIcon as Languages, SendIcon as Send, TrendingUpIcon as TrendingUp, BarChart3Icon as BarChart3, ZapIcon as Zap, BellIcon as Bell, UserPlusIcon as UserPlus, HeartIcon as Heart, MessageCircleIcon as MessageCircle, SettingsIcon as Settings, BookmarkIcon as Bookmark, Repeat2Icon as Repeat2, MessageSquareIcon as MessageSquare, ActivityIcon as Activity, Trash2Icon as Trash2, LightbulbIcon as Lightbulb, SearchIcon as Search, UserIcon as User, UsersIcon as Users, ClockIcon as Clock, ArrowLeftRightIcon as ArrowLeftRight, TargetIcon as Target, LayoutGridIcon as LayoutGrid, MessagesSquareIcon as MessagesSquare, BookOpenIcon as BookOpen, HashIcon as Hash } from "@mdevs/icons";
+import { ImageIcon, GlobeIcon as Globe, FileTextIcon as FileText, ShieldCheckIcon as ShieldCheck, SparklesIcon as Sparkles, LanguagesIcon as Languages, SendIcon as Send, TrendingUpIcon as TrendingUp, BarChart3Icon as BarChart3, ZapIcon as Zap, BellIcon as Bell, UserPlusIcon as UserPlus, HeartIcon as Heart, MessageCircleIcon as MessageCircle, SettingsIcon as Settings, BookmarkIcon as Bookmark, Repeat2Icon as Repeat2, MessageSquareIcon as MessageSquare, ActivityIcon as Activity, Trash2Icon as Trash2, LightbulbIcon as Lightbulb, SearchIcon as Search, UserIcon as User, UsersIcon as Users, ClockIcon as Clock, ArrowLeftRightIcon as ArrowLeftRight, TargetIcon as Target, LayoutGridIcon as LayoutGrid, MessagesSquareIcon as MessagesSquare, BookOpenIcon as BookOpen, HashIcon as Hash, CalculatorIcon as Calculator } from "@mdevs/icons";
 import { type MAITool } from '../../data/maiTools';
 import { useAvailableMAITools } from '../../hooks/useAvailableMAITools';
 
@@ -53,6 +53,9 @@ const iconMap: Record<string, React.ElementType> = {
   MessagesSquare: MessagesSquare,
   BookOpen: BookOpen,
   Hash: Hash,
+  // `Calculator` manquait : l'outil portable du même nom tombait sur le
+  // repli `Sparkles` et s'affichait avec l'icône d'une baguette magique.
+  Calculator: Calculator,
 };
 
 export const ToolAutocomplete: React.FC<ToolAutocompleteProps> = ({
@@ -134,6 +137,14 @@ export const ToolAutocomplete: React.FC<ToolAutocompleteProps> = ({
                   <span className="text-[11px] text-zinc-600 dark:text-zinc-400 truncate font-semibold">
                     {tool.name}
                   </span>
+                  {/* Un outil sensible agit sur le compte ou sur le contenu
+                      public : il exigera une approbation. L'utilisateur doit
+                      le savoir avant de l'écrire, pas après. */}
+                  {tool.sensitive ? (
+                    <span className="shrink-0 rounded-full bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-bold text-amber-600 dark:text-amber-400">
+                      approbation
+                    </span>
+                  ) : null}
                 </div>
                 <p className="text-[11px] text-zinc-500 truncate mt-0.5">
                   {tool.description}

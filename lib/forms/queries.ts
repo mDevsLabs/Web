@@ -1,9 +1,10 @@
 import "server-only";
 
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, type SQL, sql } from "drizzle-orm";
 import { invalidateMaiUserCache } from "@/lib/auth/session";
-import { dbReady, getDb, getRawClient } from "@/lib/db/queries";
+import { dbReady, getDb } from "@/lib/db/queries";
 import { userForm, userFormResponse } from "@/lib/db/schema";
+import { ChatbotError } from "@/lib/errors";
 import { buildActiveFormsFilter } from "@/lib/forms/query-filters";
 import {
   type FormQuestion,
@@ -11,6 +12,7 @@ import {
   type RewardType,
   type UserFormDetail,
 } from "./types";
+import { validateFormAnswers } from "./validation";
 
 /**
  * Calcule le début de la semaine courante (lundi 00:00 UTC)
@@ -130,57 +132,46 @@ export async function getFormById(
 }
 
 /**
+ * Exécuteur SQL minimal : la transaction Drizzle de la soumission, ou une
+ * connexion directe pour un usage hors transaction. Aucune erreur SQL n'est
+ * absorbée : une récompense non appliquée doit faire échouer la soumission.
+ */
+export type FormRewardExecutor = {
+  execute: (query: SQL) => Promise<unknown>;
+};
+
+/**
  * Applique la réinitialisation immédiate du compteur d'utilisation pour le type de quota choisi.
+ *
+ * Toutes les identités historiques (id, email, username) sont couvertes par
+ * des sous-requêtes paramétrées ; une panne SQL remonte à l'appelant.
  */
 export async function applyQuotaReset(
   userId: string,
-  rewardType: RewardType
-): Promise<{ success: boolean; details: string }> {
-  await dbReady();
-  const raw = getRawClient();
-  if (!raw) {
-    throw new Error("Client base de données indisponible.");
-  }
-
-  const { weekStartStr } = getWeekData();
+  rewardType: RewardType,
+  executor: FormRewardExecutor
+): Promise<{ success: true; details: string }> {
   const trimmedUserId = userId.trim();
-
-  // Résolution de l'identifiant pour cibler à la fois les colonnes integer et text
-  let resolvedIntId: number | null = null;
-  const numericMatch = trimmedUserId.match(/^\d+$/);
-  if (numericMatch) {
-    resolvedIntId = Number.parseInt(trimmedUserId, 10);
-  } else {
-    try {
-      const uRows = await raw.unsafe(
-        "SELECT id FROM users WHERE id::text = $1 OR email = $1 OR username = $1 LIMIT 1",
-        [trimmedUserId]
-      );
-      if (uRows.length > 0 && typeof uRows[0].id === "number") {
-        resolvedIntId = uRows[0].id;
-      }
-    } catch {
-      // Toléré si la table users locale n'est pas accessible
-    }
+  if (!trimmedUserId) {
+    throw new ChatbotError(
+      "bad_request:api",
+      "Identifiant utilisateur manquant pour appliquer la récompense."
+    );
   }
+  const { weekStartStr } = getWeekData();
 
   switch (rewardType) {
     case "mai": {
-      // 1. Remise à zéro des tokens chat mAI de la semaine en cours dans weekly_usage
-      if (resolvedIntId !== null) {
-        await raw.unsafe(
-          "UPDATE weekly_usage SET tokens_used = 0 WHERE user_id = $1 AND week_start = $2::date",
-          [resolvedIntId, weekStartStr]
-        );
-      }
-      await raw
-        .unsafe(
-          `UPDATE weekly_usage SET tokens_used = 0
-         WHERE user_id IN (SELECT id FROM users WHERE id::text = $1 OR email = $1 OR username = $1)
-           AND week_start = $2::date`,
-          [trimmedUserId, weekStartStr]
+      await executor.execute(sql`
+        UPDATE weekly_usage SET tokens_used = 0
+        WHERE user_id IN (
+          SELECT id FROM users
+          WHERE id::text = ${trimmedUserId}
+             OR email = ${trimmedUserId}
+             OR username = ${trimmedUserId}
         )
-        .catch(() => {});
+          AND week_start = ${weekStartStr}::date
+      `);
       return {
         details: "Compteur de tokens hebdomadaires mAI remis à 0.",
         success: true,
@@ -188,15 +179,28 @@ export async function applyQuotaReset(
     }
 
     case "api": {
-      // 2. Remise à zéro du compteur de requêtes des clés API du compte dans mprojects_api_keys
-      await raw
-        .unsafe(
-          `UPDATE mprojects_api_keys SET request_count = 0
-         WHERE user_id = $1 
-            OR user_id IN (SELECT id::text FROM users WHERE id::text = $1 OR email = $1 OR username = $1)`,
-          [trimmedUserId]
-        )
-        .catch(() => {});
+      await executor.execute(sql`
+        UPDATE mprojects_api_keys SET request_count = 0
+        WHERE user_id = ${trimmedUserId}
+           OR user_id IN (
+             SELECT id::text FROM users
+             WHERE id::text = ${trimmedUserId}
+                OR email = ${trimmedUserId}
+                OR username = ${trimmedUserId}
+           )
+           OR user_id IN (
+             SELECT email FROM users
+             WHERE id::text = ${trimmedUserId}
+                OR email = ${trimmedUserId}
+                OR username = ${trimmedUserId}
+           )
+           OR user_id IN (
+             SELECT username FROM users
+             WHERE id::text = ${trimmedUserId}
+                OR email = ${trimmedUserId}
+                OR username = ${trimmedUserId}
+           )
+      `);
       return {
         details: "Compteur de requêtes API du compte remis à 0.",
         success: true,
@@ -204,15 +208,31 @@ export async function applyQuotaReset(
     }
 
     case "images": {
-      // 3. Remise à zéro des images générées ce jour dans mprojects_daily_image_usage
-      await raw
-        .unsafe(
-          `UPDATE mprojects_daily_image_usage SET images_generated = 0
-         WHERE (user_id = $1 OR user_id IN (SELECT id::text FROM users WHERE id::text = $1 OR email = $1 OR username = $1))
-           AND usage_date = CURRENT_DATE`,
-          [trimmedUserId]
-        )
-        .catch(() => {});
+      await executor.execute(sql`
+        UPDATE mprojects_daily_image_usage SET images_generated = 0
+        WHERE usage_date = CURRENT_DATE
+          AND (
+            user_id = ${trimmedUserId}
+            OR user_id IN (
+              SELECT id::text FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+            OR user_id IN (
+              SELECT email FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+            OR user_id IN (
+              SELECT username FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+          )
+      `);
       return {
         details: "Compteur journalier d'images remis à 0.",
         success: true,
@@ -220,15 +240,32 @@ export async function applyQuotaReset(
     }
 
     case "audio": {
-      // 4. Remise à zéro des tokens de synthèse vocale dans weekly_speech_usage
-      await raw
-        .unsafe(
-          `UPDATE weekly_speech_usage SET tokens_used = 0, requests_count = 0
-         WHERE (user_id = $1 OR user_id IN (SELECT id::text FROM users WHERE id::text = $1 OR email = $1 OR username = $1))
-           AND week_start = $2::date`,
-          [trimmedUserId, weekStartStr]
-        )
-        .catch(() => {});
+      await executor.execute(sql`
+        UPDATE weekly_speech_usage
+        SET tokens_used = 0, requests_count = 0
+        WHERE week_start = ${weekStartStr}::date
+          AND (
+            user_id = ${trimmedUserId}
+            OR user_id IN (
+              SELECT id::text FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+            OR user_id IN (
+              SELECT email FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+            OR user_id IN (
+              SELECT username FROM users
+              WHERE id::text = ${trimmedUserId}
+                 OR email = ${trimmedUserId}
+                 OR username = ${trimmedUserId}
+            )
+          )
+      `);
       return {
         details: "Compteur hebdomadaire audio remis à 0.",
         success: true,
@@ -236,7 +273,10 @@ export async function applyQuotaReset(
     }
 
     default:
-      throw new Error(`Type de récompense inconnu: ${rewardType}`);
+      throw new ChatbotError(
+        "bad_request:api",
+        `Type de récompense inconnu: ${rewardType}`
+      );
   }
 }
 
@@ -256,7 +296,7 @@ export async function submitFormResponse(params: {
 }> {
   await dbReady();
   const db = getDb();
-  const { answers, formId, rewardType, sessionToken, userId } = params;
+  const { formId, rewardType, sessionToken, userId } = params;
 
   // 1. Vérifier l'existence et la validité du formulaire
   const formRows = await db
@@ -266,59 +306,121 @@ export async function submitFormResponse(params: {
     .limit(1);
 
   if (formRows.length === 0) {
-    throw new Error("Formulaire introuvable.");
+    throw new ChatbotError("not_found:database", "Formulaire introuvable.");
   }
 
   const f = formRows[0];
   if (!f.isActive) {
-    throw new Error("Ce formulaire n'est plus actif.");
+    throw new ChatbotError(
+      "bad_request:api",
+      "Ce formulaire n'est plus actif."
+    );
   }
 
   const now = new Date();
   if (f.startDate > now) {
-    throw new Error("Ce formulaire n'a pas encore débuté.");
+    throw new ChatbotError(
+      "bad_request:api",
+      "Ce formulaire n'a pas encore débuté."
+    );
   }
   if (f.endDate && f.endDate < now) {
-    throw new Error("Ce formulaire est expiré.");
+    throw new ChatbotError("bad_request:api", "Ce formulaire est expiré.");
   }
   if (
     !getFormRewardTypes((f.options as Record<string, unknown>) || {}).includes(
       rewardType
     )
   ) {
-    throw new Error("Cette récompense n'est pas proposée pour ce formulaire.");
+    throw new ChatbotError(
+      "bad_request:api",
+      "Cette récompense n'est pas proposée pour ce formulaire."
+    );
   }
 
-  // 2. Vérifier si l'utilisateur a déjà répondu
-  const existingRows = await db
-    .select()
-    .from(userFormResponse)
-    .where(
-      and(
-        eq(userFormResponse.formId, formId),
-        eq(userFormResponse.userId, userId)
-      )
-    )
-    .limit(1);
-
-  if (existingRows.length > 0) {
-    throw new Error("Vous avez déjà répondu à ce formulaire.");
+  // 2. Valider les réponses contre les questions ENREGISTRÉES
+  const validated = validateFormAnswers(
+    (f.questions as FormQuestion[]) || [],
+    params.answers
+  );
+  if (!validated.ok) {
+    throw new ChatbotError("bad_request:api", validated.error);
   }
 
-  // 3. Enregistrer la réponse
-  await db.insert(userFormResponse).values({
-    answers,
-    formId,
-    rewardAppliedAt: now,
-    rewardResetApplied: true,
-    rewardType,
-    userId,
-  });
+  // 3. Réponse + récompense dans LA MÊME transaction : si la remise à zéro
+  // échoue, la réponse n'est pas enregistrée (donc pas de blocage « déjà
+  // répondu ») et la récompense n'est jamais annoncée à tort. Les deux
+  // indicateurs ne passent à vrai qu'après l'application réelle.
+  let resetResult: { success: true; details: string };
+  try {
+    resetResult = await db.transaction(async (tx) => {
+      const existingRows = await tx
+        .select({ id: userFormResponse.id })
+        .from(userFormResponse)
+        .where(
+          and(
+            eq(userFormResponse.formId, formId),
+            eq(userFormResponse.userId, userId)
+          )
+        )
+        .limit(1);
+      if (existingRows.length > 0) {
+        throw new ChatbotError(
+          "bad_request:api",
+          "Vous avez déjà répondu à ce formulaire."
+        );
+      }
 
-  // 4. Appliquer la réinitialisation de limites
-  const resetResult = await applyQuotaReset(userId, rewardType);
+      const [inserted] = await tx
+        .insert(userFormResponse)
+        .values({
+          answers: validated.value,
+          formId,
+          rewardAppliedAt: null,
+          rewardResetApplied: false,
+          rewardType,
+          userId,
+        })
+        .returning({ id: userFormResponse.id });
 
-  // 5. Invalider le cache de session en mémoire si sessionToken fourni
+      if (!inserted) {
+        throw new ChatbotError(
+          "bad_request:database",
+          "La réponse n'a pas pu être enregistrée."
+        );
+      }
+
+      const applied = await applyQuotaReset(
+        userId,
+        rewardType,
+        tx as unknown as FormRewardExecutor
+      );
+
+      await tx
+        .update(userFormResponse)
+        .set({ rewardAppliedAt: new Date(), rewardResetApplied: true })
+        .where(eq(userFormResponse.id, inserted.id));
+
+      return applied;
+    });
+  } catch (error) {
+    if (error instanceof ChatbotError) {
+      throw error;
+    }
+    // Violation de l'index unique : une soumission concurrente a gagné.
+    const code =
+      (error as { code?: unknown })?.code ??
+      (error as { cause?: { code?: unknown } })?.cause?.code;
+    if (code === "23505") {
+      throw new ChatbotError(
+        "bad_request:api",
+        "Vous avez déjà répondu à ce formulaire."
+      );
+    }
+    throw error;
+  }
+
+  // 4. Invalider le cache de session en mémoire si sessionToken fourni
   if (sessionToken) {
     invalidateMaiUserCache(sessionToken);
   }

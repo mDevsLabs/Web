@@ -10,6 +10,7 @@ import {
   assertMcpRuntimeEnabled,
   toMcpRuntimePreferences,
 } from "@/lib/mcp/policy";
+import { linkMcpServerAsPlugin } from "@/lib/plugins/user-plugin-store";
 import { getMcpTemplate } from "./catalog";
 import type { McpTemplateManifest } from "./types";
 
@@ -52,6 +53,19 @@ export function templateRequiresConfiguration(
   template: McpTemplateManifest
 ): boolean {
   return template.credentials.some((credential) => credential.required);
+}
+
+async function rememberAsPlugin(
+  server: Awaited<ReturnType<typeof createMcpServer>>
+) {
+  try {
+    await linkMcpServerAsPlugin(server);
+  } catch (error) {
+    console.error(
+      "[plugins] lien du serveur MCP ignoré",
+      error instanceof Error ? error.message : "erreur"
+    );
+  }
 }
 
 function isUniqueViolation(error: unknown): boolean {
@@ -158,6 +172,7 @@ export async function installMcpTemplate(params: {
     userId: params.userId,
   });
   if (existing) {
+    await rememberAsPlugin(existing);
     return {
       alreadyInstalled: true,
       message: `Le serveur « ${existing.name} » est déjà installé depuis ce modèle.`,
@@ -203,6 +218,7 @@ export async function installMcpTemplate(params: {
         userId: params.userId,
       });
       if (concurrent) {
+        await rememberAsPlugin(concurrent);
         return {
           alreadyInstalled: true,
           message: `Le serveur « ${concurrent.name} » est déjà installé depuis ce modèle.`,
@@ -221,6 +237,7 @@ export async function installMcpTemplate(params: {
     };
   }
 
+  await rememberAsPlugin(server);
   return {
     alreadyInstalled: false,
     message: requiresConfiguration

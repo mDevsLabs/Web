@@ -3,6 +3,7 @@ import { getMaiUser } from "@/lib/auth/session";
 import {
   createNotification,
   getProjectById,
+  getProjectForInviteJoin,
   getProjectInviteByCode,
   joinProjectWithInvite,
 } from "@/lib/db/queries";
@@ -43,9 +44,25 @@ export async function POST(request: Request) {
       return new ChatbotError("bad_request:api", messages[reason]).toResponse();
     }
 
-    // Rejet immédiat si le projet n'existe plus (invitation en cascade) ou
-    // si l'utilisateur en est déjà le propriétaire.
-    const project = await getProjectById({ id: invite.projectId, userId });
+    // Propriétaire qui rouvre son propre lien : idempotent, sans insertion de
+    // membre ni notification à soi-même.
+    const ownedProject = await getProjectById({
+      id: invite.projectId,
+      userEmail,
+      userId,
+    });
+    if (ownedProject) {
+      return Response.json({
+        alreadyMember: true,
+        projectId: invite.projectId,
+        role: "owner",
+        success: true,
+      });
+    }
+
+    // Lecture interne au parcours d'invitation : le nouvel arrivant n'est pas
+    // propriétaire, donc `getProjectById` répondrait 404 à tort.
+    const project = await getProjectForInviteJoin({ id: invite.projectId });
     if (!project) {
       return new ChatbotError(
         "not_found:database",
@@ -53,13 +70,33 @@ export async function POST(request: Request) {
       ).toResponse();
     }
 
-    // joinProjectWithInvite est idempotent : déjà membre => no-op (l'usage
-    // de l'invitation n'est pas incrémenté).
+    // L'existence du projet, la validité de l'invitation et sa limite d'usage
+    // sont revérifiées DANS la transaction (verrou ligne) : le dernier code ne
+    // peut pas être consommé deux fois par deux adhésions simultanées.
     const result = await joinProjectWithInvite({
       invite,
       invitedBy: invite.createdBy,
       userId,
     });
+
+    if (!result.ok) {
+      if (result.reason === "project_missing") {
+        return new ChatbotError(
+          "not_found:database",
+          "Ce projet n'existe plus."
+        ).toResponse();
+      }
+      const messages: Record<"exhausted" | "expired" | "revoked", string> = {
+        exhausted:
+          "Cette invitation a atteint son nombre maximal d'utilisations.",
+        expired: "Cette invitation a expiré.",
+        revoked: "Cette invitation n'est plus valide.",
+      };
+      return new ChatbotError(
+        "bad_request:api",
+        messages[result.reason]
+      ).toResponse();
+    }
 
     if (!result.alreadyMember) {
       // Notification au propriétaire (type project_member_joined, migration 0020).

@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Sentry par jeton d'authentification : l'IA liste vos organisations, vos projets et les issues ouvertes. Le plugin ne modifie rien chez Sentry.",
+  "icon": { "src": "/plugins/sentry.svg", "type": "image" },
+  "id": "sentry",
+  "minTier": "plus",
+  "name": "Sentry",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["sentry", "erreurs", "monitoring", "issues", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les organisations Sentry accessibles avec le jeton.",
+      "effect": "read",
+      "id": "sentryListOrganizations",
+      "label": "Organisations Sentry",
+      "systemHint": "Commencez ici pour obtenir le slug d'organisation exigé par les autres outils."
+    },
+    {
+      "description": "Liste les projets d'une organisation Sentry.",
+      "effect": "read",
+      "id": "sentryListProjects",
+      "label": "Projets Sentry",
+      "systemHint": "Le paramètre est le slug d'organisation, pas son nom affiché."
+    },
+    {
+      "description": "Liste les issues récentes d'une organisation Sentry.",
+      "effect": "read",
+      "id": "sentryListIssues",
+      "label": "Issues Sentry",
+      "systemHint": "Résumez le titre, le niveau et le nombre d'événements plutôt que de recopier la pile."
+    }
+  ],
+  "version": "1.0.0"
+}

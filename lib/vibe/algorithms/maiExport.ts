@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE — EXPORT DES CONVERSATIONS mAI (src/algorithms/maiExport.ts)
- * Logique pure : nom de fichier sûr, rendu Markdown horodaté et export JSON
+ * Logique pure: nom de fichier sûr, rendu Markdown horodaté et export JSON
  * versionné (réimportable) des conversations mAI, outils inclus.
  * ============================================================================
  */
@@ -50,7 +50,7 @@ const formatDate = (iso?: string): string => {
   }
 };
 
-/** Export Markdown : titre, métadonnées, messages horodatés, outils résumés. */
+/** Export Markdown: titre, métadonnées, messages horodatés, outils résumés. */
 export function buildMAIConversationMarkdown(
   conv: MAIExportConversation,
   messages: MAIExportMessage[]
@@ -58,11 +58,10 @@ export function buildMAIConversationMarkdown(
   const lines: string[] = [];
   lines.push(`# ${conv.title || "Discussion mAI"}`);
   lines.push("");
-  if (conv.created_at)
-    lines.push(`- Créée le : ${formatDate(conv.created_at)}`);
+  if (conv.created_at) lines.push(`- Créée le: ${formatDate(conv.created_at)}`);
   if (conv.updated_at)
-    lines.push(`- Dernière activité : ${formatDate(conv.updated_at)}`);
-  lines.push(`- Messages : ${messages.length}`);
+    lines.push(`- Dernière activité: ${formatDate(conv.updated_at)}`);
+  lines.push(`- Messages: ${messages.length}`);
   lines.push("");
   lines.push("---");
   lines.push("");
@@ -76,7 +75,7 @@ export function buildMAIConversationMarkdown(
     lines.push("");
     for (const call of m.tool_calls || []) {
       if (!call) continue;
-      lines.push(`> 🔧 **Outil : ${call.name}** (${call.status})`);
+      lines.push(`> **Outil: ${call.name}** (${call.status})`);
       if (call.args && Object.keys(call.args).length > 0) {
         lines.push(">");
         lines.push("> ```json");
@@ -85,7 +84,7 @@ export function buildMAIConversationMarkdown(
       }
       if (call.error) {
         lines.push(">");
-        lines.push(`> Erreur : ${call.error}`);
+        lines.push(`> Erreur: ${call.error}`);
       }
       lines.push("");
     }

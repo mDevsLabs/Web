@@ -6,6 +6,7 @@ import {
   HelpCircleIcon,
   InfoIcon,
   LibraryIcon,
+  LifeBuoyIcon,
   LineChartIcon,
   LogOutIcon,
   MoonIcon,
@@ -210,6 +211,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                     className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                     href={APP_SUPPORT_URL}
                   >
+                    <LifeBuoyIcon className="size-3.5 text-muted-foreground" />
                     <span>Centre d'aide</span>
                   </a>
                 </DropdownMenuItem>

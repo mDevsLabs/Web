@@ -6,9 +6,12 @@ Un **connecteur** relie le compte mAI d'un utilisateur à un service externe
 modifie **les données du compte de l'utilisateur**, avec son jeton, après son
 consentement.
 
-Deux connecteurs existent : **Google** (Drive + Agenda + Gmail, une seule
-connexion) et **GitHub**. Le registre est conçu pour s'étendre : ajouter Notion,
-Slack, Discord, Google Docs ou Sheets ne demande ni de toucher au moteur, ni de
+Quatre connecteurs passent par OAuth : **Google** (Drive + Agenda + Gmail, une
+seule connexion), **GitHub**, **Discord** et **Notion**. Les autres collent un
+**jeton personnel** (Vercel, et les services du même mode dans
+`lib/integrations/token-catalog.ts`). Le registre est
+conçu pour s'étendre : ajouter un fournisseur ne demande ni de
+toucher au moteur, ni de
 retoucher les mentions `@`, ni de retoucher le rendu.
 
 ---
@@ -188,7 +191,7 @@ switch.
   Le nom affiché vient du manifeste du plugin : `Google · Rechercher dans mes
   fichiers`, plus lisible que `searchDriveFiles`.
 - Rendu : les marques multicolores sont des `<img>` **nus** ; le `dark:invert`
-  utilisé pour `public/mcp/` est proscrit ici, il détruirait les couleurs. Les
+  des logos monochromes servis en image est proscrit ici, il détruirait les couleurs. Les
   marques monochromes (GitHub, et demain Notion, Discord) passent par un
   **masque CSS + `currentColor`** (`.integration-logo`, `app/globals.css`), donc
   elles suivent le thème sans variante `dark:` — et restent utilisables telles
@@ -202,8 +205,10 @@ switch.
    portées, politique de rafraîchissement, hôtes, `mentionToken`, `monochrome`,
    `accessSummary`).
 2. `lib/integrations/repository.ts` : ajouter l'identifiant à l'énumération
-   `provider` de `lib/db/schema.ts`, **et** à la colonne `varchar` de la
-   migration additive correspondante.
+   `provider` de `lib/db/schema.ts`. La colonne est un `varchar` : aucun DDL
+   n'est nécessaire pour un nouveau fournisseur. Un connecteur à jeton
+   personnel n'a pas de client OAuth ; il déclare `authMode: "token"` et
+   l'échange de la route `/token` le valide avant de le chiffrer.
 3. `lib/plugins/<id>/{index.ts,index.json}` : les outils, avec `effect` sur
    chacun, puis `pnpm plugins:gen && pnpm plugins:check`.
 4. `public/plugins/<id>.svg` : le logo, et le test d'inventaire doit rester vert.
@@ -246,14 +251,102 @@ PEM par installation et une signature JWT sans rien apporter de plus pour
 pour agir sur une organisation sans accord humain. Portées demandées à
 l'autorisation : `repo`, `public_repo`, `read:user`.
 
+### Discord — OAuth utilisateur **et** bot d'instance
+
+Developer Portal → **OAuth2**, callback
+`https://<hôte>/api/integration/discord/callback`, portées `identify`, `email`
+et `guilds`. Un jeton UTILISATEUR ne lit pas les messages d'un serveur : c'est
+une limite de Discord, pas un réglage. La lecture des salons et des messages
+passe donc par un **bot d'instance** (`DISCORD_BOT_TOKEN`), invité dans les
+serveurs concernés avec « Voir les salons » et « Lire l'historique ». Le bot
+n'est pas un compte utilisateur : il signe les messages qu'il envoie, et
+l'absence de la variable est un avertissement, jamais un blocage du
+consentement.
+
+### Notion — intégration publique, pages partagées
+
+Créer une intégration publique sur `notion.so/profile/integrations` (ou le
+portail développeur), callback
+`https://<hôte>/api/integration/notion/callback`. Notion **n'a pas de portées
+OAuth** : l'utilisateur choisit, dans Notion, les pages et bases qu'il partage
+avec l'intégration. L'autorisation est donc un droit d'entrée, pas une
+permission globale — une page non partagée répond 404, et le message de l'outil
+le dit. Tous les appels portent `Notion-Version` (constante
+`NOTION_API_VERSION`), y compris l'échange et la révocation de jeton.
+
+### Vercel — jeton personnel, pas OAuth
+
+L'OAuth public de Vercel ne délivre aujourd'hui que l'identité du compte : les
+permissions d'accès aux projets et déploiements sont en bêta privée. Le plugin
+se connecte donc par **jeton personnel** (`https://vercel.com/account/tokens`),
+collé dans la fiche du plugin puis validé par `GET /v2/user` avant d'être
+chiffré. Aucune variable d'environnement n'est requise. Le plugin est en
+**lecture seule** : projets, déploiements, journaux. Un jeton personnel porte
+souvent les droits du compte entier, et un redéploiement déclenché par erreur
+ne se rattrape pas.
+
+Les connecteurs Brave Search, Mapbox, ExchangeRate-API, SonarCloud, npm,
+Docker Hub, Brevo, Twilio, Asana, Jira, Upstash, Neon, Supabase, Zapier et
+Make suivent le même coffre. Cinq d'entre eux demandent un renseignement en
+plus du secret, validé avant chiffrement : Docker Hub (identifiant), Twilio
+(Account SID), Jira (e-mail et site `*.atlassian.net`), Upstash (URL REST) et
+Make (zone `eu1`, `eu2`, `us1` ou `us2`). Les écritures — e-mail, SMS, ticket,
+clé Redis, branche, dépôt privé, commentaire, exécution d'un scénario — ne
+sont proposées que dans l'Agent, après approbation. Brave, Mapbox,
+ExchangeRate-API, npm, Supabase (API de gestion) et Zapier restent en lecture :
+leur surface d'écriture publie, facture, ou n'existe pas sous forme de jeton
+stable. Zapier n'a pas de jeton permanent : le jeton d'accès collé expire au
+bout d'environ dix heures.
+
+Aucune de ces clés ne se lit dans l'environnement. Le logo de chacun est
+`public/plugins/<id>.svg`.
+
 ### Variables
 
 ```
+MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET scellement de l'état
 GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET   un seul client pour les trois accès
 GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
-MCP_ENCRYPTION_KEY                       coffre des jetons ET scellement de l'état
+DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET
+DISCORD_BOT_TOKEN                        capacité : salons et messages Discord
+NOTION_CLIENT_ID, NOTION_CLIENT_SECRET
 MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
 ```
+
+Vercel et les connecteurs à jeton du catalogue ne figurent pas dans cette
+liste : le jeton est stocké chiffré par le coffre, pas lu dans l'environnement.
+
+Les URI de rappel à enregistrer chez les fournisseurs, une par environnement :
+
+```
+https://<hôte>/api/integration/google/callback
+https://<hôte>/api/integration/github/callback
+https://<hôte>/api/integration/discord/callback
+https://<hôte>/api/integration/notion/callback
+```
+
+**`MCP_ENCRYPTION_KEY` est la variable la plus facile à oublier, et son absence
+ne se voit qu'au moment de cliquer sur « Connecter ».** Elle n'est pas
+négociable : sans elle, ni l'« état » OAuth (qui porte l'identité du compte
+qui se connecte) ni les jetons eux-mêmes ne peuvent être chiffrés, et la
+connexion est refusée avec la raison `vault_unconfigured`. Il n'existe **aucun
+repli** — une clé dérivée de `DATABASE_URL` serait devinable par quiconque
+connaît l'URL de la base.
+
+Deux conséquences à connaître avant un déploiement :
+
+- **Poser la variable dans le MÊME environnement Vercel que l'application
+  Next.** Les variables `*_CLIENT_ID` ne suffisent pas : le coffre est
+  distinct, et l'échec ne se produit qu'à la connexion, pas au démarrage.
+- **Changer la clé rend les jetons existants illisibles.** Les lignes
+  `IntegrationConnection` survivent (l'interface affiche encore « Connecté »),
+  mais le porteur est muet : l'utilisateur doit reconnecter. Prévoyez-le dans
+  la note de livraison.
+
+L'interface expose cet état : `GET /api/integration` renvoie
+`vaultConfigured` par connecteur, et la fiche du plugin affiche un encart
+« Coffre de secrets non configuré sur cette instance » avec le bouton
+« Connecter » désactivé — plutôt qu'un échec opaque au clic.
 
 Ces identifiants authentifient un **connecteur externe**. Ils ne sont pas, et ne
 doivent jamais devenir, une authentification mAI : la session du produit reste

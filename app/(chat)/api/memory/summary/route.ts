@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   const userId = maiUser.id || maiUser.email;
 
-  // Résumé généré sur l'ensemble des mémoires : un appel modèle complet.
+  // Résumé généré sur l'ensemble des mémoires: un appel modèle complet.
   const limited = await enforceApiRateLimit({
     action: "memory_summary",
     request,
@@ -81,22 +81,22 @@ export async function POST(request: Request) {
     const effectiveModel = modelId || DEFAULT_CHAT_MODEL;
     const model = getLanguageModel(effectiveModel);
 
-    const prompt = `Voici l'ensemble des informations enregistrées dans la mémoire de l'utilisateur (${memories.length} entrées) :
+    const prompt = `Voici l'ensemble des informations enregistrées dans la mémoire de l'utilisateur (${memories.length} entrées):
 
 ${memoryListText}
 
-Ta tâche est de produire une synthèse claire, structurée et élégante de la mémoire de cet utilisateur, organisée obligatoirement selon les 4 sections suivantes au format Markdown :
+Ta tâche est de produire une synthèse claire, structurée et élégante de la mémoire de cet utilisateur, organisée obligatoirement selon les 4 sections suivantes au format Markdown:
 
-### 👤 1. Profil & Identité
+### 1. Profil & Identité
 (Nom, profession, contexte général, langue préférée, etc.)
 
-### 🛠️ 2. Préférences Techniques & Outils
+### 2. Préférences Techniques & Outils
 (Langages favoris, frameworks, conventions de code, outils et styles d'architecture)
 
-### 🎯 3. Projets, Objectifs & Intérêts
+### 3. Projets, Objectifs & Intérêts
 (Projets en cours, thématiques récurrentes, buts à court et moyen terme)
 
-### 📋 4. Directives, Contraintes & Habitudes
+### 4. Directives, Contraintes & Habitudes
 (Format de réponse souhaité, consignes strictes, habitudes de communication)
 
 Rédige une synthèse fluide, concise et valorisante sans inventer d'information qui ne figure pas dans les données fournies.`;

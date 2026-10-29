@@ -2,6 +2,7 @@ import "server-only";
 import {
   and,
   asc,
+  count,
   desc,
   eq,
   gt,
@@ -40,6 +41,7 @@ import {
   wakiesWakieSpace,
 } from "@/lib/db/schema";
 import type { PageSettings } from "@/lib/wakies/pages";
+import { WakiesQuotaError } from "@/lib/wakies/quota-error";
 import { preserveGoalMarker } from "@/lib/wakies/shared/goals";
 import { apercuMessage } from "@/lib/wakies/shared/messages";
 import {
@@ -80,20 +82,44 @@ export async function listSpaces(userId: string): Promise<WakieSpaceRow[]> {
   );
 }
 
-export async function createSpace(
+/**
+ * Création d'un Espace sous quota, ATOMIQUE.
+ *
+ * Le quota était vérifié en lecture puis l'insertion suivie : à 7 Espaces sur
+ * une limite de 8, deux requêtes simultanées passaient toutes les deux. Le
+ * verrou consultatif PostgreSQL sérialise les créations DU MÊME COMPTE ; une
+ * insertion échouée ne réserve aucune place (tout est dans la transaction).
+ */
+export async function createSpaceWithinQuota(
   userId: string,
-  input: { name: string; description?: string }
+  input: { name: string; description?: string },
+  quota: number | null
 ): Promise<WakieSpaceRow> {
   await dbReady();
-  const [row] = await getDb()
-    .insert(wakiesSpace)
-    .values({
-      description: input.description ?? "",
-      name: input.name,
-      userId,
-    })
-    .returning();
-  return row;
+  return getDb().transaction(async (tx) => {
+    await tx.execute(
+      sql`SELECT pg_advisory_xact_lock(hashtext(${`wakies-spaces:${userId}`}))`
+    );
+    if (quota !== null) {
+      const [row] = await tx
+        .select({ value: count() })
+        .from(wakiesSpace)
+        .where(eq(wakiesSpace.userId, userId));
+      const used = Number(row?.value ?? 0);
+      if (used >= quota) {
+        throw new WakiesQuotaError("spaces", quota, used);
+      }
+    }
+    const [created] = await tx
+      .insert(wakiesSpace)
+      .values({
+        description: input.description ?? "",
+        name: input.name,
+        userId,
+      })
+      .returning();
+    return created;
+  });
 }
 
 /** Espace du compte, ou `null` : jamais d'espace lu par simple identifiant. */

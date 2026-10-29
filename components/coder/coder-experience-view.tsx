@@ -2,20 +2,11 @@
 
 import {
   AlertCircleIcon,
-  BotIcon,
   CheckCircle2Icon,
-  Code2Icon,
   DownloadIcon,
   ExternalLinkIcon,
-  GitBranchIcon,
-  GlobeIcon,
-  LaptopIcon,
   MonitorIcon,
   PlayIcon,
-  PuzzleIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  TerminalIcon,
 } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +15,6 @@ import { toast } from "sonner";
 import { CoderDesktopRequired } from "@/components/coder/coder-desktop-required";
 import { Button } from "@/components/ui/button";
 import { useIsDesktopApp } from "@/hooks/use-is-desktop-app";
-import { cn } from "@/lib/utils";
 
 // Squelette du temps de détection du pont Electron (un rendu, pas un écran
 // de chargement apparent) : évite le flash « erreur bloquante » puis
@@ -39,58 +29,6 @@ function CoderGateSkeleton() {
 }
 
 const GITHUB_RELEASES_URL = "https://github.com/mDevsLabs/Web/releases";
-
-interface FeatureCard {
-  badge?: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-}
-
-const FEATURES: FeatureCard[] = [
-  {
-    badge: "IA Locale",
-    description:
-      "Boucle itérative Réfléchir → Planifier → Exécuter → Observer. Modes Agent complet, Planification préalable, Questions en lecture seule et Débogage approfondi.",
-    icon: BotIcon,
-    title: "Agent Autonome & Multi-Modes",
-  },
-  {
-    badge: "Natif",
-    description:
-      "Accès natif à ConPTY et openpty. Exécutez vos commandes PowerShell, CMD, Bash et Zsh directement en local, partagés en temps réel avec l'agent.",
-    icon: TerminalIcon,
-    title: "Terminal PTY Haute Fréquence",
-  },
-  {
-    badge: "Éditeur",
-    description:
-      "L'expérience d'édition puissante de Monaco, avec coloration syntaxique Shiki, navigation de symboles et analyse de diagnostic LSP TypeScript.",
-    icon: Code2Icon,
-    title: "Éditeur Monaco & Shiki",
-  },
-  {
-    badge: "Git",
-    description:
-      "Statut visuel en direct, visualisation des hunks de diffs, staging sélectif, commits et pushs sans jamais quitter votre espace de travail.",
-    icon: GitBranchIcon,
-    title: "Intégration Git Complète",
-  },
-  {
-    badge: "Extensible",
-    description:
-      "Branchez vos serveurs Model Context Protocol (MCP), bases de données, APIs et compétences sur disque pour décupler la portée de l'agent.",
-    icon: PuzzleIcon,
-    title: "Serveurs MCP & Outils Personnalisés",
-  },
-  {
-    badge: "Web QA",
-    description:
-      "Intégration Playwright pour le pilotage web par l'agent, couplée à un proxy d'inspection réseau sécurisé pour analyser requêtes et flux d'APIs.",
-    icon: GlobeIcon,
-    title: "Automatisation Navigateur & Proxy",
-  },
-];
 
 export function CoderExperienceView() {
   const { isDesktop, isChecking, openCoder } = useIsDesktopApp();
@@ -163,10 +101,6 @@ export function CoderExperienceView() {
           </div>
 
           <div className="flex-1 text-center md:text-left space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
-              <SparklesIcon className="size-3.5" />
-              Espace de Travail Desktop Agent-First
-            </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
               mAI Coder
             </h1>
@@ -315,72 +249,6 @@ export function CoderExperienceView() {
             </div>
           )}
         </div>
-      </section>
-
-      {/* Grille des 6 atouts de l'application */}
-      <section className="space-y-6">
-        <div className="flex flex-col space-y-1">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <LaptopIcon className="size-5 text-primary" />
-            Pourquoi mAI Coder est une application desktop native ?
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            L'exécution locale garantit la sécurité de votre code source,
-            l'absence de latence et le plein contrôle sur votre machine.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {FEATURES.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                className="group relative rounded-2xl border border-border/60 bg-card/50 p-5 sm:p-6 transition-all duration-200 hover:border-primary/40 hover:bg-card/80 hover:shadow-md space-y-3"
-                key={feature.title}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="size-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-transform duration-200">
-                    <Icon className="size-5" />
-                  </div>
-                  {feature.badge && (
-                    <span className="text-[10px] font-medium uppercase px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                      {feature.badge}
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-semibold text-sm sm:text-base text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Sécurité et Souveraineté */}
-      <section className="rounded-2xl border border-border/60 bg-muted/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6">
-        <div className="size-12 shrink-0 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-          <ShieldCheckIcon className="size-6" />
-        </div>
-        <div className="space-y-1 text-center sm:text-left flex-1">
-          <h4 className="font-semibold text-sm sm:text-base text-foreground">
-            Confidentialité & Respect Total de Vos Données
-          </h4>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Vos fichiers de code, clés API, historiques de conversation et
-            dépôts Git restent exclusivement stockés sur votre disque local.
-            Aucun code n'est téléversé vers des serveurs tiers sans votre
-            autorisation explicite.
-          </p>
-        </div>
-        <Button asChild size="sm" variant="secondary">
-          <Link href={GITHUB_RELEASES_URL} rel="noreferrer" target="_blank">
-            Consulter les versions
-          </Link>
-        </Button>
       </section>
     </div>
   );

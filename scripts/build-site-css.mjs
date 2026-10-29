@@ -4,11 +4,11 @@
  * CONSTRUCTION DE LA FEUILLE DE STYLE SITE POUR L'HÔTE mAI
  * ============================================================================
  *
- * Scoping strict de apps/site/app/globals.css sous `.site-root` :
- *   1. Retire `@import "tailwindcss"` et `@plugin` (l'hôte fournit Tailwind v4).
- *   2. Extrait `@theme` et `@utility` vers des classes et variables CSS sous `.site-root`.
- *   3. Re-ancre tous les sélecteurs de règles sous `.site-root` (:root, html, body -> .site-root).
- *   4. Sortie dans `components/site/site.css`.
+ * Scoping strict de apps/site/app/globals.css sous `.site-root`:
+ * 1. Retire `@import "tailwindcss"` et `@plugin` (l'hôte fournit Tailwind v4).
+ * 2. Extrait `@theme` et `@utility` vers des classes et variables CSS sous `.site-root`.
+ * 3. Re-ancre tous les sélecteurs de règles sous `.site-root` (:root, html, body ->.site-root).
+ * 4. Sortie dans `components/site/site.css`.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -21,7 +21,7 @@ const SORTIE = resolve(RACINE, "components/site/site.css");
 const PORTEUR = ".site-root";
 
 if (!existsSync(SOURCE)) {
-  console.error(`❌ Source introuvable : ${SOURCE}`);
+  console.error(` Source introuvable: ${SOURCE}`);
   process.exit(1);
 }
 
@@ -184,7 +184,10 @@ const pluginSite = () => {
           return;
         }
 
-        // Convertir @utility <name> { ... } en .site-root .<name> { ... }
+        // `@utility` est une classe posée SUR un élément du Site, pas sur
+        // la racine. `.site-root.glass` ne matche que si les deux classes
+        // sont sur le même nœud : la barre de navigation, enfant de
+        // `.site-root`, restait alors sans fond ni flou.
         if (node.type === "atrule" && node.name === "utility") {
           const utilName = node.params.trim();
           const rule = postcss.rule({
@@ -198,7 +201,7 @@ const pluginSite = () => {
           return;
         }
 
-        // Convertir @theme { ... }
+        // Convertir @theme {... }
         if (node.type === "atrule" && node.name === "theme") {
           const rootVarsRule = postcss.rule({
             selector: PORTEUR,
@@ -300,13 +303,13 @@ async function compiler() {
 
   // En-tête explicite
   const entete =
-    "/**\n * FEUILLE DE STYLE SITE PORTÉE — GÉNÉRÉE AUTOMATIQUEMENT\n * Source : apps/site/app/globals.css\n * Script : scripts/build-site-css.mjs\n * NE PAS ÉDITER À LA MAIN — relancer le script après toute modification.\n */\n\n";
+    "/**\n * FEUILLE DE STYLE SITE PORTÉE — GÉNÉRÉE AUTOMATIQUEMENT\n * Source: apps/site/app/globals.css\n * Script: scripts/build-site-css.mjs\n * NE PAS ÉDITER À LA MAIN — relancer le script après toute modification.\n */\n\n";
 
   writeFileSync(SORTIE, entete + resultat.css, "utf8");
-  console.log(`✅ Feuille de style Site générée avec succès : ${SORTIE}`);
+  console.log(` Feuille de style Site générée avec succès: ${SORTIE}`);
 }
 
 compiler().catch((err) => {
-  console.error("❌ Échec de la génération de site.css :", err);
+  console.error(" Échec de la génération de site.css:", err);
   process.exit(1);
 });

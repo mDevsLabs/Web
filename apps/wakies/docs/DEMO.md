@@ -6,7 +6,7 @@ Updated September 16, 2026. Both recordings feature OpenMuse's original capybara
 
 [Watch the 38-second MP4](../assets/demos/2026-09-16/mobile.mp4) · [Animated hero](../assets/demos/2026-09-16/mobile.gif) · [Cover image](../assets/demos/2026-09-16/mobile.png).
 
-**OpenMuse 🪁 — ask it to browse, follow along in chat, and take control when you need to.** The native iPhone recording is framed in a 1920 × 1080 (16:9) canvas, with a cream, blue, and lilac background and captions for sound-off viewing.
+**OpenMuse — ask it to browse, follow along in chat, and take control when you need to.** The native iPhone recording is framed in a 1920 × 1080 (16:9) canvas, with a cream, blue, and lilac background and captions for sound-off viewing.
 
 The model responses use [CopilotKit AI Mock](https://github.com/CopilotKit/aimock). The app runs its actual CopilotKit agent and `browse_web` tool against a real Chromium worker. The script requests a page, waits for the real tool result, and extracts headlines or overview text from that result. It does not supply browser results or invent page content.
 
@@ -34,7 +34,7 @@ Captures are trimmed and paced for readability, including brief slowdowns of the
 
 [Watch the 42-second web MP4](../assets/demos/2026-09-16/web.mp4) · [Animated preview](../assets/demos/2026-09-16/web.gif) · [Cover image](../assets/demos/2026-09-16/web.png).
 
-A separate recording of the actual desktop web app, placed below the mobile demo in the README. Ask **“Check my emails for the school trip”**, open the school's reminder, then ask **“Research Monterey Bay Aquarium and suggest three exhibits”**. The 1440 × 810 browser capture sits inside a 1920 × 1080 canvas with the same cream, blue, and lilac background and OpenMuse 🪁 branding.
+A separate recording of the actual desktop web app, placed below the mobile demo in the README. Ask **“Check my emails for the school trip”**, open the school's reminder, then ask **“Research Monterey Bay Aquarium and suggest three exhibits”**. The 1440 × 810 browser capture sits inside a 1920 × 1080 canvas with the same cream, blue, and lilac background and OpenMuse branding.
 
 | Time | Scene |
 | --- | --- |

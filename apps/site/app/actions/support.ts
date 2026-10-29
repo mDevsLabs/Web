@@ -5,7 +5,7 @@ import {
   sendSupportTicketCreatedEmail,
   sendSupportTicketUpdateEmail,
   type SupportTicketEmailPayload,
-} from "@/email";
+} from "@/lib/email";
 import {
   ADMIN_EMAIL,
   isAdminUser,

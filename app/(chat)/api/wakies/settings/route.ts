@@ -37,6 +37,9 @@ const schema = z
     // retirerait aucun droit.
     onboardingCompleted: z.boolean().optional(),
     paused: z.boolean().optional(),
+    // Produire une alerte à la fin d'un tour terminé. La décision reste dans
+    // Wakies (migration 0065) : c'est là que l'événement est écrit.
+    replyAlertsEnabled: z.boolean().optional(),
     researchAllowed: z.boolean().optional(),
   })
   .strict();

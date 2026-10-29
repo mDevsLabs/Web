@@ -59,6 +59,39 @@ export const titleModel = {
 export const FALLBACK_MODELS: ChatModel[] = [
   {
     architecture: {
+      input_modalities: ["text", "image", "file"],
+      modality: "text+image->text",
+      output_modalities: ["text"],
+    },
+    description:
+      "Modèle phare de la génération mAI-2 : raisonnement avancé, vision et contexte long",
+    id: "mai-2",
+    isFree: true,
+    maxContext: 1_000_000,
+    maxOutput: 384_000,
+    name: "mAI-2",
+    provider: "mdevslabs",
+    reasoning: {
+      default_effort: "high",
+      default_enabled: true,
+      mandatory: false,
+      supported_efforts: ["max", "high", "low"],
+    },
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "stream",
+      "stop",
+      "tools",
+      "tool_choice",
+      "reasoning",
+      "include_reasoning",
+      "response_format",
+    ],
+  },
+  {
+    architecture: {
       input_modalities: ["text", "image"],
       modality: "text+image->text",
       output_modalities: ["text"],
@@ -239,6 +272,8 @@ export function formatModelName(modelId: string): {
     "llama-3.1-8b-instruct": "Llama 3.1 8B Instruct",
     "llama-3.1-70b-instruct": "Llama 3.1 70B Instruct",
     "llama-3.3-70b-instruct": "Llama 3.3 70B Instruct",
+    "mai-2": "mAI-2",
+    "mai-2-mini": "mAI-2 Mini",
     "mistral-large": "Mistral Large",
     "mistral-small": "Mistral Small",
     "mixtral-8x7b-instruct": "Mixtral 8x7B",

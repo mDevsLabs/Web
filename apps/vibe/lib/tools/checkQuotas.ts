@@ -2,7 +2,7 @@
  * Outil mAI — Quotas mAI (délègue à MAIAgentFleet).
  * Catalogue : lib/tools/index.json → id "check_quotas".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export async function execute(userId: number | string, _args: Record<string, never> = {}) {
   return MAIAgentFleet.executeTool("check_quotas", {}, userId);

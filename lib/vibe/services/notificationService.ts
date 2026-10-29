@@ -38,8 +38,8 @@ export class NotificationService {
           // Préparer le service worker pour les notifications même app en arrière-plan
           try {
             const reg = await navigator.serviceWorker.ready;
-            await (reg as any).showNotification?.("Vibe 🔔", {
-              body: "Les notifications sont maintenant activées !",
+            await (reg as any).showNotification?.("Vibe ", {
+              body: "Les notifications sont maintenant activées!",
               icon: "/logo.png",
             });
           } catch {}
@@ -118,7 +118,7 @@ export class NotificationService {
    * lors de la publication d'un post
    */
   static notifyPostPublished(contentPreview?: string) {
-    const title = "Vibe — Publication publiée ! 🚀";
+    const title = "Vibe — Publication publiée! ";
     const body =
       contentPreview && contentPreview.length > 0
         ? contentPreview.slice(0, 120) +
@@ -133,7 +133,7 @@ export class NotificationService {
 
     // 2. Notification / Toast in-app
     NotificationService.showInAppToast(
-      "Publication en ligne ! 🚀",
+      "Publication en ligne! ",
       body,
       "success"
     );
@@ -144,7 +144,7 @@ export class NotificationService {
    */
   static notifyPostDeleted() {
     NotificationService.showInAppToast(
-      "Publication supprimée 🗑️",
+      "Publication supprimée ",
       "Le post a été retiré avec succès.",
       "info"
     );

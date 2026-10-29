@@ -1,7 +1,7 @@
 import { fetchOpenRouter } from "./openrouter-fetch.ts";
 /**
  * ============================================================================
- * VIBE SOCIAL PLATFORM — mAI : CHAT (vibe-mai-chat.ts)
+ * VIBE SOCIAL PLATFORM — mAI: CHAT (vibe-mai-chat.ts)
  * Réponse mAI en commentaire (/mai) et endpoint de conversation mAI avec
  * détection d'outils, contexte de post joint (vision), contexte personnel
  * opt-in et flux d'approbation. Scindé de vibe-mai.ts (limite de taille
@@ -10,7 +10,21 @@ import { fetchOpenRouter } from "./openrouter-fetch.ts";
  */
 
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, getWeekData, verifyToken } from "./config.ts";
+import {
+  extractToken,
+  getDb,
+  getTierMaiTokenLimit,
+  getUserQuotaBoost,
+  getWeekData,
+  isPaidTier,
+  rateLimitShared,
+  verifyToken,
+} from "./config.ts";
+import {
+  isFreeModelId,
+  ModelAccessError,
+  requireChatModel,
+} from "./openrouter-models.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
 import {
   buildPostContext,
@@ -31,7 +45,65 @@ import { extractMaiReasoning } from "./vibe-mai-reasoning.ts";
 import { isToolEnabledForUser, TOOL_EXECUTORS } from "./vibe-tools.ts";
 
 /**
- * Réponse mAI à la commande /mai en commentaire : génération à partir du
+ * Réserve atomiquement une estimation de tokens AVANT l'appel fournisseur.
+ * Deux conversations simultanées ne peuvent plus lire le même solde et
+ * dépasser ensemble le quota hebdomadaire du compte.
+ */
+async function reserveWeeklyTokens(
+  sql: any,
+  userId: number,
+  weekStartStr: string,
+  amount: number,
+  limit: number
+): Promise<{ ok: boolean; used: number }> {
+  const current =
+    await sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date LIMIT 1`;
+  const used = Number(current[0]?.tokens_used || 0);
+  if (amount > limit) {
+    return { ok: false, used };
+  }
+  const rows = await sql`
+    INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+    VALUES (${userId}::integer, ${weekStartStr}::date, ${amount}::integer)
+    ON CONFLICT (user_id, week_start)
+    DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${amount}::integer
+    WHERE weekly_usage.tokens_used + ${amount}::integer <= ${limit}::integer
+    RETURNING tokens_used
+  `;
+  if (rows.length > 0) {
+    return { ok: true, used: Number(rows[0].tokens_used) };
+  }
+  const after =
+    await sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date LIMIT 1`;
+  return { ok: false, used: Number(after[0]?.tokens_used || used) };
+}
+
+/** Ajuste la réservation à la consommation RÉELLE (une seule fois par requête). */
+async function settleWeeklyTokens(
+  sql: any,
+  userId: number,
+  weekStartStr: string,
+  delta: number
+): Promise<void> {
+  if (!Number.isFinite(delta) || delta === 0) return;
+  if (delta > 0) {
+    await sql`
+      INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+      VALUES (${userId}::integer, ${weekStartStr}::date, ${Math.floor(delta)}::integer)
+      ON CONFLICT (user_id, week_start)
+      DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${Math.floor(delta)}::integer
+    `;
+    return;
+  }
+  await sql`
+    UPDATE weekly_usage
+    SET tokens_used = GREATEST(0, tokens_used - ${Math.floor(-delta)}::integer)
+    WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
+  `;
+}
+
+/**
+ * Réponse mAI à la commande /mai en commentaire: génération à partir du
  * contenu de la publication uniquement (sans historique de conversation),
  * modèle léger laguna, quota hebdomadaire débité de 250 tokens.
  */
@@ -40,7 +112,7 @@ export async function generateMAICommentAnswer(
   opts: { postId: string; question: string; requesterId: number }
 ): Promise<string | null> {
   try {
-    const context = await buildPostContext(sql, opts.postId);
+    const context = await buildPostContext(sql, opts.postId, opts.requesterId);
     if (!context) return null;
 
     const openRouterApiKey = await getOpenRouterKey(sql, opts.requesterId);
@@ -133,6 +205,13 @@ export function registerVibeMAIChatRoutes(
 ) {
   // 1. mAI CHAT & TOOL EXECUTION
   const handleMAIChat = async (c: any) => {
+    // Réservation de quota à restituer si le fournisseur ne répond pas.
+    const maiReservation = {
+      estimated: 0,
+      settled: false,
+      userId: 0,
+      weekStartStr: "",
+    };
     try {
       const token = extractToken(c.req.raw);
       if (!token) return c.json({ error: "Non authentifié." }, 401);
@@ -153,12 +232,47 @@ export function registerVibeMAIChatRoutes(
       const effectiveModel =
         model || (await MAIAgentFleet.getUserDefaultModel(userId));
 
+      // Anti-abus partagé entre isolates.
+      if (!(await rateLimitShared(`mai-chat:${userId}`, 30, 60_000))) {
+        return c.json(
+          { error: "Trop de messages mAI. Patientez un instant." },
+          429
+        );
+      }
+
       const sql = getDb();
       const userRows =
         await sql`SELECT username, tier FROM users WHERE id = ${userId} LIMIT 1`;
       const username = userRows[0]?.username || "Ami";
+      // Le forfait de la BASE est l'autorité (pas le JWT, pas la présence
+      // d'une clé OpenRouter côté plateforme).
+      const tier = String(userRows[0]?.tier || "Free");
+      const paid = isPaidTier(tier);
 
-      // ── Conversation persistée : contexte complet pour chaque message ──
+      const { weekStartStr } = getWeekData();
+      maiReservation.userId = userId;
+      maiReservation.weekStartStr = weekStartStr;
+      const [quotaRow, maiBoost] = await Promise.all([
+        sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date LIMIT 1`.catch(
+          () => [] as any[]
+        ),
+        getUserQuotaBoost(sql, userId, "mai"),
+      ]);
+      const weeklyLimit = getTierMaiTokenLimit(tier) + maiBoost;
+      const weeklyUsed = Number(quotaRow[0]?.tokens_used || 0);
+      if (weeklyUsed >= weeklyLimit) {
+        return c.json(
+          {
+            code: "mai_quota_exceeded",
+            error: "Votre quota mAI hebdomadaire est épuisé.",
+            limit: weeklyLimit,
+            used: weeklyUsed,
+          },
+          429
+        );
+      }
+
+      // ── Conversation persistée: contexte complet pour chaque message ──
       await ensureMAIConversations();
       const requestedConv = await resolveOwnedConversation(
         sql,
@@ -219,11 +333,15 @@ export function registerVibeMAIChatRoutes(
         }
       }
 
-      // Post mentionné : contenu + stats + premiers commentaires + médias (fichiers)
+      // Post mentionné: contenu + stats + premiers commentaires + médias (fichiers)
       let postContextBlock = "";
       let postImageParts: any[] = [];
       if (context?.post_id) {
-        const postCtx = await buildPostContext(sql, String(context.post_id));
+        const postCtx = await buildPostContext(
+          sql,
+          String(context.post_id),
+          userId
+        );
         if (postCtx) {
           postContextBlock = `\n\n---\n${postCtx.text}`;
           postImageParts = postCtx.imageParts;
@@ -252,10 +370,10 @@ export function registerVibeMAIChatRoutes(
           if (recentPosts.length > 0) {
             const list = recentPosts
               .map(
-                (p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)} »`
+                (p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)}»`
               )
               .join("\n");
-            personalContextBlock += `\n\nContexte : voici les publications récentes de l'utilisateur :\n${list}`;
+            personalContextBlock += `\n\nContexte: voici les publications récentes de l'utilisateur:\n${list}`;
           }
         }
         if (flags.mai_context_dms) {
@@ -270,10 +388,10 @@ export function registerVibeMAIChatRoutes(
           `.catch(() => []);
           if (recentDMs.length > 0) {
             const excerpt = recentDMs
-              .map((m: any) => `— « ${trunc(m.content, 200)} »`)
+              .map((m: any) => `— « ${trunc(m.content, 200)}»`)
               .join("\n")
               .slice(0, 2000);
-            personalContextBlock += `\n\nContexte : extraits récents des messages privés de l'utilisateur (confidentiel, ne pas citer verbatim) :\n${excerpt}`;
+            personalContextBlock += `\n\nContexte: extraits récents des messages privés de l'utilisateur (confidentiel, ne pas citer verbatim):\n${excerpt}`;
           }
         }
         if (flags.mai_context_books) {
@@ -285,7 +403,7 @@ export function registerVibeMAIChatRoutes(
             const titles = books
               .map((b: any) => `— ${trunc(b.title, 80)}`)
               .join("\n");
-            personalContextBlock += `\n\nContexte : Vibe Books de l'utilisateur :\n${titles}`;
+            personalContextBlock += `\n\nContexte: Vibe Books de l'utilisateur:\n${titles}`;
             try {
               const bookIds = books.map((b: any) => b.id);
               const items = await sql`
@@ -296,10 +414,10 @@ export function registerVibeMAIChatRoutes(
               `.catch(() => []);
               if (items.length > 0) {
                 const itemList = items
-                  .map((it: any) => `— « ${trunc(it.content, 200)} »`)
+                  .map((it: any) => `— « ${trunc(it.content, 200)}»`)
                   .join("\n")
                   .slice(0, 2000);
-                personalContextBlock += `\nPublications épinglées dans ces livres :\n${itemList}`;
+                personalContextBlock += `\nPublications épinglées dans ces livres:\n${itemList}`;
               }
             } catch {}
           }
@@ -325,7 +443,7 @@ export function registerVibeMAIChatRoutes(
       // ── Filtre des outils activés par l'utilisateur (Paramètres → Outils mAI) ──
       // Un outil désactivé n'est ni détecté ni exécutable pour cet utilisateur.
       if (toolToRun && !(await isToolEnabledForUser(userId, toolToRun))) {
-        const reply = `🚫 L'outil « ${toolToRun} » est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
+        const reply = ` L'outil « ${toolToRun}» est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
         const record = makeToolCallRecord({
           args: toolArgs,
           model: effectiveModel,
@@ -359,7 +477,7 @@ export function registerVibeMAIChatRoutes(
       if (toolToRun && SENSITIVE_TOOLS.includes(toolToRun)) {
         const autoApprove = await getUserAutoApprove(sql, userId);
         if (!autoApprove) {
-          const reply = `🔐 **Approbation requise** : mAI souhaite exécuter l'outil « ${toolToRun} » sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`;
+          const reply = ` **Approbation requise**: mAI souhaite exécuter l'outil « ${toolToRun}» sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`;
           const record = makeToolCallRecord({
             args: toolArgs,
             model: effectiveModel,
@@ -390,6 +508,9 @@ export function registerVibeMAIChatRoutes(
         }
       }
 
+      let reply = `Bonjour @${username}! Je suis mAI. Comment puis-je vous aider?`;
+      let providerResponded = false;
+
       let toolResult: any = null;
       if (toolToRun) {
         // Registre vibe-tools d'abord (couvre les outils sans case dans la flotte,
@@ -400,51 +521,108 @@ export function registerVibeMAIChatRoutes(
           : await MAIAgentFleet.executeTool(toolToRun, toolArgs, userId);
       }
 
-      const { weekStartStr } = getWeekData();
-      await sql`
-        INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${userId}, ${weekStartStr}::date, 250)
-        ON CONFLICT (user_id, week_start)
-        DO UPDATE SET tokens_used = weekly_usage.tokens_used + 250
-      `.catch(() => {});
-
-      let reply = `Bonjour @${username} ! Je suis mAI. Comment puis-je vous aider ?`;
-
       if (!toolToRun) {
         const openRouterApiKey = await getOpenRouterKey(sql, userId);
 
-        const resolveModel = (m: string) => {
-          if (
-            !m ||
-            m === "default" ||
-            m === "mai-1.5-light" ||
-            m === "openrouter/free"
-          ) {
-            return "poolside/laguna-xs-2.1:free";
-          }
-          if (m === "mai-1.5-apex") return "openai/gpt-4o";
-          return m;
+        // Alias historiques → identifiants du catalogue. Tout autre identifiant
+        // est validé par le catalogue ET le forfait : un modèle inconnu ou
+        // hors forfait est refusé AVANT l'appel fournisseur.
+        const MIA_MODEL_ALIASES: Record<string, string> = {
+          default: "poolside/laguna-xs-2.1:free",
+          "mai-1.5-apex": "openai/gpt-4o",
+          "mai-1.5-light": "poolside/laguna-xs-2.1:free",
+          "openrouter/free": "poolside/laguna-xs-2.1:free",
         };
+        const requestedModel =
+          MIA_MODEL_ALIASES[String(effectiveModel)] ||
+          String(effectiveModel || "");
+
+        let primaryStored: Awaited<ReturnType<typeof requireChatModel>>;
+        try {
+          primaryStored = await requireChatModel(sql, requestedModel, paid);
+        } catch (modelError) {
+          if (modelError instanceof ModelAccessError) {
+            return c.json(
+              {
+                error: {
+                  code: modelError.code,
+                  message: modelError.message,
+                },
+              },
+              modelError.status
+            );
+          }
+          throw modelError;
+        }
 
         const hasImages = postImageParts.length > 0;
-        let primaryModel = resolveModel(effectiveModel);
-        // Images jointes → forcer un modèle vision si le modèle choisi ne l'est pas
+        let primaryModel = primaryStored.id;
+        // Images jointes → modèle vision autorisé pour le forfait. Un compte
+        // Free ne reçoit PAS un modèle payant par la seule présence de la clé
+        // OPENROUTER_API_KEY de la plateforme.
         if (hasImages && !VISION_CAPABLE_MODELS.has(primaryModel)) {
-          primaryModel = "openai/gpt-4o";
+          const visionModelId = paid
+            ? "openai/gpt-4o"
+            : "google/gemini-2.5-flash:free";
+          try {
+            const visionStored = await requireChatModel(
+              sql,
+              visionModelId,
+              paid
+            );
+            primaryModel = visionStored.id;
+          } catch {
+            return c.json(
+              {
+                error: {
+                  code: "vision_requires_paid",
+                  message:
+                    "L'analyse d'images jointes nécessite un modèle vision autorisé par votre forfait.",
+                },
+              },
+              403
+            );
+          }
         }
         const modelsToTry = [primaryModel];
-        if (hasImages) {
-          if (!modelsToTry.includes("google/gemini-2.5-flash")) {
-            modelsToTry.push("google/gemini-2.5-flash");
-          }
-        } else {
-          if (!modelsToTry.includes("poolside/laguna-xs-2.1:free")) {
-            modelsToTry.push("poolside/laguna-xs-2.1:free");
-          }
-          if (!modelsToTry.includes("nvidia/nemotron-3.5-lightning:free")) {
-            modelsToTry.push("nvidia/nemotron-3.5-lightning:free");
-          }
+        const fallbackModels = hasImages
+          ? ["google/gemini-2.5-flash:free", "google/gemini-2.5-flash"]
+          : [
+              "poolside/laguna-xs-2.1:free",
+              "nvidia/nemotron-3.5-lightning:free",
+            ];
+        for (const fallback of fallbackModels) {
+          if (!paid && !isFreeModelId(fallback)) continue;
+          if (!modelsToTry.includes(fallback)) modelsToTry.push(fallback);
         }
+
+        // Réserve AVANT l'appel fournisseur (concurrence comprise), puis
+        // ajustement sur l'usage réel. Un échec fournisseur rend la place.
+        const estimated = Math.max(
+          64,
+          Math.ceil((String(message).length + postContextBlock.length) / 4) +
+            256
+        );
+        const estimatedReservation = Math.min(estimated, weeklyLimit);
+        const reservation = await reserveWeeklyTokens(
+          sql,
+          userId,
+          weekStartStr,
+          estimatedReservation,
+          weeklyLimit
+        );
+        if (!reservation.ok) {
+          return c.json(
+            {
+              code: "mai_quota_exceeded",
+              error: "Votre quota mAI hebdomadaire est épuisé.",
+              limit: weeklyLimit,
+              used: reservation.used,
+            },
+            429
+          );
+        }
+        maiReservation.estimated = estimatedReservation;
 
         const userText = `${message.trim()}${postContextBlock}${personalContextBlock}`;
         const userContent: any = hasImages
@@ -452,12 +630,12 @@ export function registerVibeMAIChatRoutes(
           : userText;
         const systemContent =
           "Tu es mAI, l'intelligence artificielle intégrée au réseau social Vibe. Tu es concis, créatif, pertinent et tu réponds en français avec des émojis." +
-          " Tu connais l'historique de la conversation en cours : apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
+          " Tu connais l'historique de la conversation en cours: apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
           (hasImages
-            ? " Des images sont jointes à la publication mentionnée : analyse-les directement."
+            ? " Des images sont jointes à la publication mentionnée: analyse-les directement."
             : "") +
           (postContextBlock
-            ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires."
+            ? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
             : "");
 
         let capturedUsage: any = null;
@@ -498,6 +676,7 @@ export function registerVibeMAIChatRoutes(
                 const textOutput = message?.content;
                 if (textOutput?.trim()) {
                   reply = textOutput.trim();
+                  providerResponded = true;
                   capturedUsage = aiData.usage || null;
                   capturedReasoning = extractMaiReasoning(message);
                   break;
@@ -514,7 +693,7 @@ export function registerVibeMAIChatRoutes(
       } else if (toolResult?.success) {
         reply = formatToolReply(toolToRun, toolResult.result, username);
       } else if (toolResult && !toolResult.success) {
-        reply = `⚠️ L'action n'a pas pu être exécutée : ${toolResult.error}`;
+        reply = ` L'action n'a pas pu être exécutée: ${toolResult.error}`;
       }
 
       // Persistance de la réponse mAI (avec les outils utilisés — chips du chat)
@@ -554,40 +733,61 @@ export function registerVibeMAIChatRoutes(
       const totalTokens = Number(
         capturedUsage?.total_tokens || inputTokens + outputTokens
       );
+      // Aucun appel fournisseur réussi → aucune consommation facturable : la
+      // réservation est intégralement rendue.
+      const billedTokens = providerResponded ? totalTokens : 0;
 
-      if (totalTokens > 0) {
+      if (maiReservation.estimated > 0 && !maiReservation.settled) {
+        maiReservation.settled = true;
         try {
-          const { weekStartStr } = getWeekData();
-          await sql`
-            INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}, ${weekStartStr}::date, ${totalTokens})
-            ON CONFLICT (user_id, week_start)
-            DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${totalTokens}, updated_at = NOW()
-          `;
-        } catch {}
+          await settleWeeklyTokens(
+            sql,
+            userId,
+            weekStartStr,
+            billedTokens - maiReservation.estimated
+          );
+        } catch (settleError) {
+          console.error(
+            "[mAI Chat] Règlement du quota impossible:",
+            settleError
+          );
+        }
       }
 
       return c.json({
         assistant_message_id: savedAssistant?.id || null,
         conversation_id: conversationId || null,
-        inputTokens,
+        inputTokens: providerResponded ? inputTokens : 0,
         modelUsed: effectiveModel,
-        outputTokens,
+        outputTokens: providerResponded ? outputTokens : 0,
         reasoning: capturedReasoning,
         reply,
-        tokensUsed: totalTokens,
+        tokensUsed: billedTokens,
         toolCalls: toolCallRecords,
         toolExecuted: toolToRun
           ? { name: toolToRun, result: toolResult }
           : null,
         usage: {
-          completion_tokens: outputTokens,
-          prompt_tokens: inputTokens,
-          total_tokens: totalTokens,
+          completion_tokens: providerResponded ? outputTokens : 0,
+          prompt_tokens: providerResponded ? inputTokens : 0,
+          total_tokens: billedTokens,
         },
         user_message_id: savedUser?.id || null,
       });
     } catch (err: any) {
+      // Une erreur après réservation (persistance, réseau) ne doit pas laisser
+      // une place débitée : restitution idempotente.
+      if (maiReservation.estimated > 0 && !maiReservation.settled) {
+        maiReservation.settled = true;
+        try {
+          await settleWeeklyTokens(
+            getDb(),
+            maiReservation.userId,
+            maiReservation.weekStartStr,
+            -maiReservation.estimated
+          );
+        } catch {}
+      }
       console.error("[Vibe API] mAI Chat Error:", err);
       return c.json({ error: "Erreur lors de la conversation avec mAI." }, 500);
     }

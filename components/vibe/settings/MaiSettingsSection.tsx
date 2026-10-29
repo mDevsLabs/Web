@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * VIBE — PARAMÈTRES IA mAI (components/vibe/settings/MaiSettingsSection.tsx)
- * Section Paramètres : Modèles, voix TTS, contexte, catalogue d'outils mAI et approbation.
+ * Section Paramètres: Modèles, voix TTS, contexte, catalogue d'outils mAI et approbation.
  * ============================================================================
  */
 
@@ -98,7 +98,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
                 Posts marqués IA par défaut
               </span>
               <p className="text-zinc-500 text-[11px]">
-                Badge « Créé avec l'IA » activé automatiquement
+                Badge « Créé avec l'IA» activé automatiquement
               </p>
             </div>
             <input
@@ -140,7 +140,7 @@ export const MaiSettingsSection: React.FC<MaiSettingsSectionProps> = ({
               />
             </div>
             <p className="text-[11px] text-amber-600 vibe-dark:text-amber-400/90">
-              ⚠️ Confidentiel : seuls des extraits tronqués sont transmis à mAI,
+              Confidentiel: seuls des extraits tronqués sont transmis à mAI,
               jamais cités verbatim.
             </p>
           </div>

@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Make par jeton d'API et zone (eu1, eu2, us1 ou us2) : l'IA liste vos organisations et vos scénarios. Dans l'Agent, avec votre accord, elle peut exécuter un scénario déjà actif.",
+  "icon": { "src": "/plugins/make.svg", "type": "image" },
+  "id": "make",
+  "minTier": "plus",
+  "name": "Make",
+  "permissions": {
+    "network": "read-write",
+    "readsUserData": true,
+    "requiresApproval": true,
+    "writesUserData": true
+  },
+  "tags": ["make", "integromat", "scénarios", "automatisation", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les organisations Make de la zone connectée.",
+      "effect": "read",
+      "id": "makeListOrganizations",
+      "label": "Organisations Make",
+      "systemHint": "L'identifiant d'organisation sert à lister les scénarios."
+    },
+    {
+      "description": "Liste les scénarios Make d'une organisation.",
+      "effect": "read",
+      "id": "makeListScenarios",
+      "label": "Scénarios Make",
+      "systemHint": "L'identifiant de scénario sert à l'exécuter. Le scénario doit déjà être actif."
+    },
+    {
+      "description": "Exécute un scénario Make déjà actif. Les entrées obligatoires du scénario ne sont pas envoyées.",
+      "effect": "write",
+      "id": "makeRunScenario",
+      "label": "Exécuter un scénario",
+      "systemHint": "C'est un lancement réel. Montrez l'identifiant du scénario avant approbation. S'il exige des entrées, dites que l'outil ne les envoie pas."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -2,7 +2,7 @@
  * Outil mAI — Meilleur moment pour publier (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "best_time_to_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface BestTimeToPostArgs {
   period?: "7d" | "30d" | "90d" | "12m";

@@ -41,6 +41,10 @@ const filePartSchema = z.object({
   // historiques portent encore `name`. Accepter les deux évite un 400 sur un
   // simple écart de nommage.
   name: z.string().min(1).max(255).optional(),
+  // Référence durable du blob privé, utilisée pour réémettre une URL signée
+  // quand l'ancienne a expiré (10 minutes). Ignorée si le chemin n'appartient
+  // pas au compte.
+  pathname: z.string().min(1).max(1024).optional(),
   type: z.enum(["file"]),
   url: z.url(),
 });

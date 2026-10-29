@@ -25,6 +25,7 @@ import {
   attachBookRefs,
   attachQuotedPosts,
   stripHtmlTags,
+  visibilityFilter,
 } from "./vibe-posts-core.ts";
 
 /** Limite de Livres possédés par compte (les Livres rejoints ne comptent pas). */
@@ -722,8 +723,17 @@ export function registerVibeBooksRoutes(
         return c.json({ error: "Livre introuvable." }, 404);
       }
 
-      const exists =
-        await sql`SELECT 1 FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
+      // L'ajout applique la MÊME règle d'accès que la lecture du Livre :
+      // visibilité du post pour CE membre, blocages, statut de publication.
+      // L'existence d'un UUID ne prouve pas l'autorisation de le conserver
+      // dans une collection collaborative.
+      const exists = await sql`
+        SELECT p.id FROM posts p
+        WHERE p.id = ${postId}::uuid
+          AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${userId})
+          ${visibilityFilter(userId)}
+        LIMIT 1
+      `;
       if (exists.length === 0) {
         return c.json({ error: "Publication introuvable." }, 404);
       }
@@ -816,6 +826,7 @@ export function registerVibeBooksRoutes(
         LEFT JOIN profiles ap ON ap.user_id = bi.added_by
         WHERE bi.book_id = ${bookId}::uuid
           AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${userId})
+          ${visibilityFilter(userId)}
         ORDER BY COALESCE(bi.is_pinned, FALSE) DESC, bi.pinned_at DESC NULLS LAST, bi.added_at DESC
         LIMIT 200
       `;

@@ -26,6 +26,7 @@ import {
   ensureProfilePinnedPostsTable,
   isUuid,
   stripHtmlTags,
+  visibilityFilter,
 } from "./vibe-posts-core.ts";
 
 export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
@@ -40,44 +41,84 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
       const postId = c.req.param("id");
       const sql = getDb();
 
-      const existing = await sql`
-        SELECT id FROM post_interactions
-        WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'like'
+      // L'auteur d'un post privé n'est pas le seul à pouvoir le lire : un
+      // like/repost est un engagement soumis à la même audience et aux mêmes
+      // blocages que la lecture.
+      const accessible = await sql`
+        SELECT p.id FROM posts p
+        WHERE p.id = ${postId}::uuid
+          AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${userId})
+          ${visibilityFilter(userId)}
+        LIMIT 1
+      `;
+      if (accessible.length === 0) {
+        return c.json({ error: "Publication introuvable." }, 404);
+      }
+
+      // Décrément conditionné à une suppression RÉELLE : un retrait rejoué ne
+      // doit jamais retirer deux fois le même like du compteur.
+      const unliked = await sql`
+        WITH removed AS (
+          DELETE FROM post_interactions
+          WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'like'
+          RETURNING id
+        )
+        UPDATE posts
+        SET likes_count = GREATEST(0, COALESCE(likes_count, 0) - 1)
+        WHERE id = ${postId}::uuid AND EXISTS (SELECT 1 FROM removed)
+        RETURNING author_id, likes_count, reposts_count, replies_count
       `;
 
-      if (existing.length > 0) {
-        await sql`DELETE FROM post_interactions WHERE id = ${existing[0].id}::uuid`;
-        await sql`UPDATE posts SET likes_count = GREATEST(0, likes_count - 1) WHERE id = ${postId}::uuid`;
+      if (unliked.length > 0) {
         try {
           await sql`
             DELETE FROM notifications
             WHERE actor_id = ${userId} AND post_id = ${postId}::uuid AND type = 'like'
           `;
         } catch {}
-        // Temps réel : compteurs actualisés pour l'auteur (flux SSE)
         try {
-          const statsRows =
-            await sql`SELECT author_id, likes_count, reposts_count, replies_count FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-          if (statsRows[0]) {
-            await pushRealtimeEvent(statsRows[0].author_id, "post_stats", {
-              likes_count: Number(statsRows[0].likes_count || 0),
-              post_id: postId,
-              replies_count: Number(statsRows[0].replies_count || 0),
-              reposts_count: Number(statsRows[0].reposts_count || 0),
-            });
-          }
+          await pushRealtimeEvent(unliked[0].author_id, "post_stats", {
+            likes_count: Number(unliked[0].likes_count || 0),
+            post_id: postId,
+            replies_count: Number(unliked[0].replies_count || 0),
+            reposts_count: Number(unliked[0].reposts_count || 0),
+          });
         } catch {}
         return c.json({ liked: false, success: true });
       }
-      await sql`
+
+      // Aucune relation retirée : soit déjà non liké (idempotent), soit le
+      // post a disparu entre la garde d'accès et l'écriture.
+      const existingLike = await sql`
+        SELECT 1 FROM post_interactions
+        WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'like'
+        LIMIT 1
+      `;
+      if (existingLike.length > 0) {
+        return c.json({ liked: true, success: true });
+      }
+
+      // Like : l'incrément n'a lieu que si l'INSERT a réellement créé la
+      // relation. `ON CONFLICT DO NOTHING RETURNING` rend la course atomique.
+      const likedRows = await sql`
+        WITH inserted AS (
           INSERT INTO post_interactions (user_id, post_id, interaction_type)
           VALUES (${userId}, ${postId}::uuid, 'like')
           ON CONFLICT (user_id, post_id, interaction_type) DO NOTHING
-        `;
-      await sql`UPDATE posts SET likes_count = likes_count + 1 WHERE id = ${postId}::uuid`;
+          RETURNING id
+        )
+        UPDATE posts
+        SET likes_count = COALESCE(likes_count, 0) + 1
+        WHERE id = ${postId}::uuid AND EXISTS (SELECT 1 FROM inserted)
+        RETURNING author_id, likes_count, reposts_count, replies_count, content
+      `;
+      if (likedRows.length === 0) {
+        // Insertion concurrente gagnée par une autre requête : aucun second
+        // incrément, réponse idempotente.
+        return c.json({ liked: true, success: true });
+      }
 
-      const postAuthor =
-        await sql`SELECT author_id, content, likes_count, reposts_count, replies_count FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
+      const postAuthor = likedRows;
       if (postAuthor.length > 0) {
         // Temps réel : compteurs actualisés pour l'auteur (flux SSE)
         pushRealtimeEvent(postAuthor[0].author_id, "post_stats", {
@@ -139,44 +180,73 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
       const postId = c.req.param("id");
       const sql = getDb();
 
-      const existing = await sql`
-        SELECT id FROM post_interactions
-        WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'repost'
+      const accessible = await sql`
+        SELECT p.id FROM posts p
+        WHERE p.id = ${postId}::uuid
+          AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${userId})
+          ${visibilityFilter(userId)}
+        LIMIT 1
+      `;
+      if (accessible.length === 0) {
+        return c.json({ error: "Publication introuvable." }, 404);
+      }
+
+      const unreposted = await sql`
+        WITH removed AS (
+          DELETE FROM post_interactions
+          WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'repost'
+          RETURNING id
+        )
+        UPDATE posts
+        SET reposts_count = GREATEST(0, COALESCE(reposts_count, 0) - 1)
+        WHERE id = ${postId}::uuid AND EXISTS (SELECT 1 FROM removed)
+        RETURNING author_id, likes_count, reposts_count, replies_count
       `;
 
-      if (existing.length > 0) {
-        await sql`DELETE FROM post_interactions WHERE id = ${existing[0].id}::uuid`;
-        await sql`UPDATE posts SET reposts_count = GREATEST(0, reposts_count - 1) WHERE id = ${postId}::uuid`;
+      if (unreposted.length > 0) {
         try {
           await sql`
             DELETE FROM notifications
             WHERE actor_id = ${userId} AND post_id = ${postId}::uuid AND type = 'repost'
           `;
         } catch {}
-        // Temps réel : compteurs actualisés pour l'auteur (flux SSE)
         try {
-          const statsRows =
-            await sql`SELECT author_id, likes_count, reposts_count, replies_count FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-          if (statsRows[0]) {
-            await pushRealtimeEvent(statsRows[0].author_id, "post_stats", {
-              likes_count: Number(statsRows[0].likes_count || 0),
-              post_id: postId,
-              replies_count: Number(statsRows[0].replies_count || 0),
-              reposts_count: Number(statsRows[0].reposts_count || 0),
-            });
-          }
+          await pushRealtimeEvent(unreposted[0].author_id, "post_stats", {
+            likes_count: Number(unreposted[0].likes_count || 0),
+            post_id: postId,
+            replies_count: Number(unreposted[0].replies_count || 0),
+            reposts_count: Number(unreposted[0].reposts_count || 0),
+          });
         } catch {}
         return c.json({ reposted: false, success: true });
       }
-      await sql`
+
+      const existingRepost = await sql`
+        SELECT 1 FROM post_interactions
+        WHERE user_id = ${userId} AND post_id = ${postId}::uuid AND interaction_type = 'repost'
+        LIMIT 1
+      `;
+      if (existingRepost.length > 0) {
+        return c.json({ reposted: true, success: true });
+      }
+
+      const repostedRows = await sql`
+        WITH inserted AS (
           INSERT INTO post_interactions (user_id, post_id, interaction_type)
           VALUES (${userId}, ${postId}::uuid, 'repost')
           ON CONFLICT (user_id, post_id, interaction_type) DO NOTHING
-        `;
-      await sql`UPDATE posts SET reposts_count = reposts_count + 1 WHERE id = ${postId}::uuid`;
+          RETURNING id
+        )
+        UPDATE posts
+        SET reposts_count = COALESCE(reposts_count, 0) + 1
+        WHERE id = ${postId}::uuid AND EXISTS (SELECT 1 FROM inserted)
+        RETURNING author_id, likes_count, reposts_count, replies_count, content
+      `;
+      if (repostedRows.length === 0) {
+        return c.json({ reposted: true, success: true });
+      }
 
-      const postAuthor =
-        await sql`SELECT author_id, content, likes_count, reposts_count, replies_count FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
+      const postAuthor = repostedRows;
       if (postAuthor.length > 0) {
         // Temps réel : compteurs actualisés pour l'auteur (flux SSE)
         pushRealtimeEvent(postAuthor[0].author_id, "post_stats", {
@@ -812,6 +882,21 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
 
       const sql = getDb();
       await ensurePostColumns();
+
+      // L'auteur d'un commentaire doit pouvoir LIRE le post selon son audience,
+      // les blocages et le statut de publication. Un UUID connu ne suffit pas :
+      // sans cette garde, un compte extérieur pouvait commenter un post privé,
+      // abonnés ou cercle et déclencher une notification à son auteur.
+      const commentable = await sql`
+        SELECT p.id FROM posts p
+        WHERE p.id = ${postId}::uuid
+          AND (COALESCE(p.status, 'published') <> 'scheduled' OR p.author_id = ${userId})
+          ${visibilityFilter(userId)}
+        LIMIT 1
+      `;
+      if (commentable.length === 0) {
+        return c.json({ error: "Publication introuvable." }, 404);
+      }
 
       // Commande /mai : réponse IA en commentaire (abonnés Plus, Pro et Max uniquement)
       const plainStart = stripHtmlTags(String(content || "")).trim();

@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Mapbox par jeton d'accès : l'IA géocode des lieux et calcule un itinéraire routier. Elle ne modifie aucune carte.",
+  "icon": { "src": "/plugins/mapbox.svg", "type": "image" },
+  "id": "mapbox",
+  "minTier": "plus",
+  "name": "Mapbox",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["mapbox", "carte", "géocodage", "itinéraire", "jeton"],
+  "tools": [
+    {
+      "description": "Transforme une adresse ou un lieu en coordonnées Mapbox.",
+      "effect": "read",
+      "id": "mapboxGeocode",
+      "label": "Géocoder un lieu",
+      "systemHint": "Donnez le lieu le plus précis rendu, avec ses coordonnées."
+    },
+    {
+      "description": "Transforme des coordonnées en lieu Mapbox.",
+      "effect": "read",
+      "id": "mapboxReverseGeocode",
+      "label": "Lieu depuis des coordonnées",
+      "systemHint": "Les coordonnées viennent de l'utilisateur ou d'un géocodage précédent."
+    },
+    {
+      "description": "Itinéraire routier Mapbox entre deux points.",
+      "effect": "read",
+      "id": "mapboxDirections",
+      "label": "Itinéraire routier",
+      "systemHint": "Annoncez la distance et la durée. Ne inventez pas d'étapes si l'outil ne les rend pas."
+    }
+  ],
+  "version": "1.0.0"
+}

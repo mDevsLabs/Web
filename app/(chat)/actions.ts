@@ -7,6 +7,7 @@ import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { titlePrompt } from "@/lib/ai/prompts";
 import { getTitleModel } from "@/lib/ai/providers";
+import { isChatUnlockedForUser } from "@/lib/chat/security";
 import {
   deleteMessagesByChatIdAfterTimestamp,
   getChatById,
@@ -143,6 +144,22 @@ export async function updateChatVisibility({
     })
   ) {
     throw new ChatbotError("unauthorized:chat");
+  }
+
+  // Le passage en privé supprime le PIN (invariant ChatSecurity). Il exige
+  // donc un déverrouillage préalable : sans cela, un navigateur laissé ouvert
+  // retirerait la protection sans connaître le code.
+  if (visibility === "private") {
+    const unlocked = await isChatUnlockedForUser({
+      chatId,
+      userId: session.user.id,
+    });
+    if (!unlocked) {
+      throw new ChatbotError("forbidden:chat", undefined, {
+        messageOverride:
+          "Déverrouillez la conversation avec son code PIN pour changer sa visibilité.",
+      });
+    }
   }
 
   await updateChatVisibilityById({ chatId, visibility });

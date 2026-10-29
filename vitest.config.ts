@@ -24,5 +24,7 @@ export default defineConfig({
       "app/**/*.test.ts",
       "tests/unit/**/*.test.ts",
     ],
+    // Bloque toute requête réseau réelle dans les tests unitaires.
+    setupFiles: ["tests/unit/setup.ts"],
   },
 });

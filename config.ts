@@ -2,6 +2,11 @@ import { sqlite } from "https://esm.town/v/std/sqlite";
 import { type NeonQueryFunction, neon } from "npm:@neondatabase/serverless";
 import { jwtVerify, SignJWT } from "npm:jose";
 import type {} from "./api-context.ts";
+import {
+  AccountBlockedError,
+  AuthAuthorityUnavailableError,
+  evaluateRevocationProbes,
+} from "./auth-revocation.ts";
 
 // ─────────────────────────────────────────────
 // Config & Données
@@ -33,12 +38,100 @@ export function rateLimit(
   return true;
 }
 
+/**
+ * Limiteur PARTAGÉ (SQLite Val Town) pour les parcours de sécurité qui doivent
+ * couvrir plusieurs isolates : connexion, inscription, vérification de code,
+ * renvoi de code. Un compteur uniquement en mémoire se contourne en répartissant
+ * les requêtes sur plusieurs instances.
+ *
+ * Politique d'indisponibilité : repli explicite sur le seau LOCAL (dégradé,
+ * journalisé). Un attaquant ne gagne alors qu'un facteur « nombre d'isolates »,
+ * jamais une absence totale de limite, et les utilisateurs légitimes ne sont
+ * pas enfermés dehors par une panne de SQLite.
+ */
+export async function rateLimitShared(
+  key: string,
+  limit: number,
+  windowMs: number
+): Promise<boolean> {
+  const now = Date.now();
+  const resetAt = now + windowMs;
+  try {
+    await initSQLite();
+    const result = await sqlite.execute({
+      args: [key, resetAt, now, now, resetAt],
+      sql: `INSERT INTO request_rate_limits (bucket_key, hits, reset_at)
+            VALUES (?, 1, ?)
+            ON CONFLICT(bucket_key) DO UPDATE SET
+              hits = CASE WHEN request_rate_limits.reset_at <= ? THEN 1 ELSE request_rate_limits.hits + 1 END,
+              reset_at = CASE WHEN request_rate_limits.reset_at <= ? THEN ? ELSE request_rate_limits.reset_at END
+            RETURNING hits`,
+    });
+    const hits = Number(result?.rows?.[0]?.[0] ?? 1);
+    return hits <= limit;
+  } catch (error) {
+    console.error(
+      "[ratelimit] Limiteur partagé indisponible, repli local:",
+      error instanceof Error ? error.message : String(error)
+    );
+    return rateLimit(key, limit, windowMs);
+  }
+}
+
+const IPV4_RE = /^(?:\d{1,3}\.){3}\d{1,3}$/;
+const IPV6_RE = /^[0-9a-f:]+$/i;
+
+function normalizeIp(value: string | undefined): string | null {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  let candidate = raw;
+  if (candidate.startsWith("[")) {
+    const closing = candidate.indexOf("]");
+    candidate = closing > 0 ? candidate.slice(1, closing) : candidate;
+  } else if (candidate.includes(":")) {
+    // « 198.51.100.4:8080 » : le suffixe est un port, pas une adresse IPv6.
+    const lastColon = candidate.lastIndexOf(":");
+    const hostPart = candidate.slice(0, lastColon);
+    const portPart = candidate.slice(lastColon + 1);
+    if (IPV4_RE.test(hostPart) && /^\d+$/.test(portPart)) {
+      candidate = hostPart;
+    }
+  }
+  candidate = candidate.trim();
+  if (IPV4_RE.test(candidate)) {
+    const octets = candidate.split(".").map(Number);
+    if (octets.every((o) => Number.isInteger(o) && o >= 0 && o <= 255)) {
+      return candidate;
+    }
+    return null;
+  }
+  if (IPV6_RE.test(candidate) && candidate.includes(":")) {
+    return candidate.toLowerCase();
+  }
+  return null;
+}
+
+/**
+ * Adresse cliente pour les limites de sécurité.
+ *
+ * Le proxy de bord du déploiement ajoute l'adresse qu'il observe en DERNIÈRE
+ * position de X-Forwarded-For. Lire la première valeur revenait à lire une
+ * valeur fournie par le client : elle changeait à chaque requête et
+ * contournait tous les seaux. On ne retient donc que la dernière entrée
+ * syntaxiquement valide, puis x-real-ip, sinon « unknown ».
+ */
 export function clientIp(c: any): string {
-  return (
-    c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ||
-    c.req.header("x-real-ip") ||
-    "unknown"
-  );
+  const forwarded = c.req.header("x-forwarded-for");
+  if (forwarded) {
+    const parts = forwarded
+      .split(",")
+      .map((part: string) => normalizeIp(part))
+      .filter((value: string | null): value is string => Boolean(value));
+    if (parts.length > 0) {
+      return parts.at(-1) as string;
+    }
+  }
+  return normalizeIp(c.req.header("x-real-ip")) || "unknown";
 }
 
 export type Tier = "Free" | "Plus" | "Pro" | "Max";
@@ -104,25 +197,6 @@ export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
 
 export function getTierRequestLimit(tier?: string | null): number {
   return TIER_REQUEST_LIMITS[normalizeTier(tier)];
-}
-
-/**
- * Extrait le forfait (TIER_USER) encodé directement dans une clé API au format :
- * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
- * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
- */
-export function extractTierFromApiKey(
-  apiKey: string | null | undefined
-): "Free" | "Plus" | "Pro" | "Max" | null {
-  if (!apiKey || typeof apiKey !== "string") return null;
-  const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
-  if (!match) return null;
-  const t = match[1].toLowerCase();
-  if (t === "free") return "Free";
-  if (t === "plus") return "Plus";
-  if (t === "pro") return "Pro";
-  if (t === "max") return "Max";
-  return null;
 }
 
 /**
@@ -314,26 +388,60 @@ export async function verifyToken(
   const { payload } = await jwtVerify(token, getJwtSecret(), {
     requiredClaims: ["exp"],
   });
-  const revoked = await Promise.all([
-    sqlite
-      .execute({
-        args: [token],
-        sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
-      })
-      .then((result) => Boolean(result?.rows?.length))
-      .catch(() => false),
-    (async () => {
+  // Une seule autorité « révoqué » suffit. Une autorité muette rend l'état
+  // INCONNU : le jeton n'est alors jamais accepté sur sa seule signature, et
+  // l'appelant reçoit une erreur temporaire (503) au lieu d'un refus définitif.
+  const revocation = await evaluateRevocationProbes([
+    async () => {
+      try {
+        const result = await sqlite.execute({
+          args: [token],
+          sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
+        });
+        return result?.rows?.length ? "revoked" : "active";
+      } catch {
+        return "unavailable";
+      }
+    },
+    async () => {
       try {
         const sql = getDb();
         const rows =
           await sql`SELECT 1 FROM token_blacklist WHERE token = ${token} LIMIT 1`;
-        return rows.length > 0;
+        return rows.length > 0 ? "revoked" : "active";
       } catch {
-        return false;
+        return "unavailable";
       }
-    })(),
+    },
   ]);
-  if (revoked.some(Boolean)) throw new Error("Token révoqué.");
+  if (revocation === "revoked") throw new Error("Token révoqué.");
+  if (revocation === "unknown") {
+    throw new AuthAuthorityUnavailableError(
+      "État de révocation du jeton indisponible."
+    );
+  }
+
+  // L'état du compte est vérifié à chaque usage du jeton : un blocage
+  // administrateur ne dépend ni de la liste noire ni de l'expiration.
+  const subject = payload.sub ? String(payload.sub) : "";
+  if (subject) {
+    try {
+      const sql = getDb();
+      const users = await sql`
+        SELECT is_blocked FROM users
+        WHERE id::text = ${subject}::text
+           OR username = ${subject}::text
+           OR email = ${subject}::text
+        LIMIT 1
+      `;
+      if (users.length > 0 && users[0].is_blocked === true) {
+        throw new AccountBlockedError();
+      }
+    } catch (error) {
+      if (error instanceof AccountBlockedError) throw error;
+      throw new AuthAuthorityUnavailableError("État du compte indisponible.");
+    }
+  }
 
   return payload as Record<string, unknown>;
 }
@@ -524,6 +632,13 @@ export async function initSQLite() {
       revoked_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
+  await sqlite.execute(`
+    CREATE TABLE IF NOT EXISTS request_rate_limits (
+      bucket_key TEXT PRIMARY KEY,
+      hits INTEGER NOT NULL DEFAULT 0,
+      reset_at INTEGER NOT NULL
+    );
+  `);
   sqliteReady = true;
   console.log("[SQLite] Tables de vérification initialisées.");
 }
@@ -554,6 +669,53 @@ export async function generateVerificationCode(
   });
 
   return code;
+}
+
+/**
+ * Régénère le code d'une demande DÉJÀ existante, sans remettre le compteur
+ * d'essais à zéro. Renvoie null si aucune demande vivante n'existe : un renvoi
+ * ne crée jamais de code pour une adresse ou une action arbitraire.
+ */
+export async function regenerateVerificationCode(
+  email: string,
+  action: string
+): Promise<{ code: string; expiresAt: string } | null> {
+  await initSQLite();
+  const current = await sqlite.execute({
+    args: [email, action],
+    sql: "SELECT code, attempts, expires_at FROM verification_codes WHERE email = ? AND action = ?",
+  });
+  if (current.rows.length === 0) {
+    return null;
+  }
+  const [, attemptsRaw, expiresAtRaw] = current.rows[0] as any[];
+  const attempts = Number(attemptsRaw || 0);
+  const expiresAtMs = new Date(String(expiresAtRaw)).getTime();
+  if (
+    !Number.isFinite(expiresAtMs) ||
+    expiresAtMs <= Date.now() ||
+    attempts >= MAX_VERIFICATION_ATTEMPTS
+  ) {
+    return null;
+  }
+  const length = action === "delete_account" ? 8 : 6;
+  const min = 10 ** (length - 1);
+  const max = 10 ** length - 1;
+  const randomValue =
+    crypto.getRandomValues(new Uint32Array(1))[0] / 0xff_ff_ff_ff;
+  const code = Math.floor(min + randomValue * (max - min))
+    .toString()
+    .padStart(length, "0");
+  const expiresAt = new Date(Date.now() + 10 * 60_000).toISOString();
+  const updated = await sqlite.execute({
+    args: [code, expiresAt, email, action, attempts],
+    sql: "UPDATE verification_codes SET code = ?, expires_at = ? WHERE email = ? AND action = ? AND attempts = ? RETURNING email",
+  });
+  if (updated.rows.length === 0) {
+    // Course avec une vérification concurrente : ne jamais ressusciter un code.
+    return null;
+  }
+  return { code, expiresAt };
 }
 
 export async function verifyVerificationCode(

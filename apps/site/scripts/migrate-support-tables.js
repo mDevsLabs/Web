@@ -11,8 +11,8 @@ function loadEnv() {
         const content = fs.readFileSync(fullPath, "utf8");
         for (const line of content.split("\n")) {
           const trimmed = line.trim();
-          if (trimmed && !trimmed.startsWith("#") && trimmed.includes("=")) {
-            const [key, ...vals] = trimmed.split("=");
+          if (trimmed &&!trimmed.startsWith("#") && trimmed.includes("=")) {
+            const [key,...vals] = trimmed.split("=");
             let val = vals.join("=").trim();
             if (
               (val.startsWith('"') && val.endsWith('"')) ||
@@ -35,7 +35,7 @@ loadEnv();
 async function main() {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
-    console.error("DATABASE_URL non trouvée dans l'environnement !");
+    console.error("DATABASE_URL non trouvée dans l'environnement!");
     process.exit(1);
   }
 
@@ -108,9 +108,9 @@ async function main() {
     console.warn("Trigger warning:", e.message);
   }
 
-  console.log("✅ Tables support_tickets et support_ticket_messages créées avec succès !");
+  console.log(" Tables support_tickets et support_ticket_messages créées avec succès!");
 
-  // ── Migration v2 : exécution de support_v2_upgrade.sql si présent ──
+  // ── Migration v2: exécution de support_v2_upgrade.sql si présent ──
   try {
     const v2Path = path.resolve(process.cwd(), "scripts", "support_v2_upgrade.sql");
     if (fs.existsSync(v2Path)) {
@@ -125,7 +125,7 @@ async function main() {
         let i = 0;
         while (i < sqlText.length) {
           if (sqlText.slice(i, i + 2) === "$$") {
-            inDollar = !inDollar;
+            inDollar =!inDollar;
             current += "$$";
             i += 2;
             continue;
@@ -134,8 +134,8 @@ async function main() {
             current += ";";
             const trimmed = current.trim();
             // Extraire sans commentaires -- lignes
-            const withoutComments = trimmed.split("\n").filter(l => !l.trim().startsWith("--")).join("\n").trim();
-            if (withoutComments && withoutComments !== ";") {
+            const withoutComments = trimmed.split("\n").filter(l =>!l.trim().startsWith("--")).join("\n").trim();
+            if (withoutComments && withoutComments!== ";") {
               statements.push(withoutComments);
             }
             current = "";
@@ -147,14 +147,14 @@ async function main() {
         }
         const leftover = current.trim();
         if (leftover) {
-          const withoutComments = leftover.split("\n").filter(l => !l.trim().startsWith("--")).join("\n").trim();
+          const withoutComments = leftover.split("\n").filter(l =>!l.trim().startsWith("--")).join("\n").trim();
           if (withoutComments) statements.push(withoutComments);
         }
         return statements;
       }
 
       const stmts = splitSqlStatements(v2Sql);
-      console.log(`  -> ${stmts.length} statements détectés`);
+      console.log(` -> ${stmts.length} statements détectés`);
       for (let idx = 0; idx < stmts.length; idx++) {
         const stmt = stmts[idx].trim();
         if (!stmt) continue;
@@ -163,19 +163,19 @@ async function main() {
         try {
           await sql.query(stmt, []);
         } catch (qe) {
-          // idempotent : ignorer erreurs "already exists" mais logger autres
+          // idempotent: ignorer erreurs "already exists" mais logger autres
           const msg = qe.message || "";
           if (msg.includes("already exists") || msg.includes("does not exist")) {
-            console.log(`  (info) statement ${idx + 1}: ${msg.slice(0, 80)}`);
+            console.log(` (info) statement ${idx + 1}: ${msg.slice(0, 80)}`);
           } else {
             throw qe;
           }
         }
       }
-      console.log("✅ Migration v2 appliquée avec succès !");
+      console.log(" Migration v2 appliquée avec succès!");
     }
   } catch (e) {
-    console.error("⚠️ Erreur migration v2:", e.message);
+    console.error(" Erreur migration v2:", e.message);
   }
 }
 

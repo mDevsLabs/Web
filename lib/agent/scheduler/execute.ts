@@ -56,6 +56,7 @@ import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   getAgentById,
   getChatById,
+  getChatSecurity,
   getMcpServersByUserId,
   getMessagesByChatId,
   getSkillById,
@@ -116,6 +117,15 @@ async function ensureScheduleChat(params: {
     if (existing.userId !== params.schedule.userId) {
       throw new Error(
         "Conversation de tâche planifiée appartenant à un autre utilisateur."
+      );
+    }
+    // Défense en profondeur : une tâche planifiée n'a pas de cookie de
+    // déverrouillage. Une conversation sécurisée ne doit pas être alimentée
+    // silencieusement par un tick.
+    const security = await getChatSecurity({ chatId });
+    if (security) {
+      throw new Error(
+        "Conversation de tâche planifiée sécurisée : exécution refusée."
       );
     }
     return chatId;

@@ -107,6 +107,22 @@ export function toVibeAbsoluteUrl(to: string): string {
     : `${window.location.origin}${chemin}`;
 }
 
+/**
+ * Chemin RELATIF à l'origine, prêt pour un `href` d'ancre : `/vibe/...` plus
+ * l'éventuel basePath de l'hôte. Contrairement à `toVibeAbsoluteUrl`, il ne
+ * dépend pas de `window` et reste valable au rendu serveur. Utilisé pour les
+ * liens du contenu riche, afin que clic milieu, Ctrl/Cmd-clic, « Ouvrir dans
+ * un nouvel onglet » et la copie du lien aboutissent à la même ressource.
+ */
+export function toVibeHref(to: string): string {
+  const path = toVibePath(to);
+  // URL externe ou protocole : ne jamais préfixer par le basePath de l'hôte.
+  if (/^[a-z][a-z0-9+.-]*:/i.test(path) || path.startsWith("//")) {
+    return path;
+  }
+  return `${BASE_PUBLIQUE}${path}`;
+}
+
 /** Isole chemin / query / hash sans regex coûteuse : Vibe construit ces chaînes à la main. */
 function splitOnce(
   value: string,

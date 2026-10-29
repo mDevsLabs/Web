@@ -2,7 +2,7 @@
  * Outil mAI — Idées de posts (délègue à MAIAgentFleet.executeTool).
  * Catalogue : lib/tools/index.json → id "suggest_post".
  */
-import { MAIAgentFleet } from "../../vibe-mai-fleet.ts";
+import { MAIAgentFleet } from "../../../../vibe-mai-fleet.ts";
 
 export interface SuggestPostArgs {
   topic: string;

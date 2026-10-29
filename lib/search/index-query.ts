@@ -219,6 +219,10 @@ const chatSource: SourceResolver = {
       .where(
         and(
           inArray(chat.userId, ctx.userIds),
+          // Une conversation sécurisée est exclue de la recherche globale tant
+          // que le PIN existe : un extrait de message ne doit pas contourner
+          // l'écran de déverrouillage.
+          sql`NOT EXISTS (SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id})`,
           matchAllTerms(terms, (term) => [
             sql`${chat.title} ILIKE ${term.like}`,
             sql`EXISTS (SELECT 1 FROM unnest(${chat.tags}) tag WHERE tag ILIKE ${term.like})`,
@@ -282,6 +286,7 @@ const messageSource: SourceResolver = {
       .where(
         and(
           inArray(chat.userId, ctx.userIds),
+          sql`NOT EXISTS (SELECT 1 FROM "ChatSecurity" cs WHERE cs."chatId" = ${chat.id})`,
           matchAllTerms(terms, (term) => [
             sql`${message.parts}::text ILIKE ${term.like}`,
             sql`${chat.title} ILIKE ${term.like}`,

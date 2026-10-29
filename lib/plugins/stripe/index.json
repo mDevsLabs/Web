@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Stripe par clé secrète ou clé restreinte : l'IA liste vos clients, paiements et abonnements. Aucune opération financière n'est possible.",
+  "icon": { "src": "/plugins/stripe.svg", "type": "image" },
+  "id": "stripe",
+  "minTier": "plus",
+  "name": "Stripe",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["stripe", "paiements", "clients", "abonnements", "jeton"],
+  "tools": [
+    {
+      "description": "Liste les clients Stripe récents.",
+      "effect": "read",
+      "id": "stripeListCustomers",
+      "label": "Clients Stripe",
+      "systemHint": "Ne recopiez pas d'adresse e-mail en entier si un nom suffit."
+    },
+    {
+      "description": "Liste les paiements Stripe récents et leur état.",
+      "effect": "read",
+      "id": "stripeListPayments",
+      "label": "Paiements Stripe",
+      "systemHint": "Le montant est en plus petite unité monétaire (centimes pour EUR)."
+    },
+    {
+      "description": "Liste les abonnements Stripe récents.",
+      "effect": "read",
+      "id": "stripeListSubscriptions",
+      "label": "Abonnements Stripe",
+      "systemHint": "L'état (active, past_due, canceled) répond à la plupart des questions."
+    }
+  ],
+  "version": "1.0.0"
+}

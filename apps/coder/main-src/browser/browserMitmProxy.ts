@@ -470,6 +470,23 @@ class BrowserCaptureMitmProxyService {
       addCaptureChunk(requestCapture, chunk)
     );
     const transport = target.protocol === "https:" ? https : http;
+    // Validation TLS AMONT : le navigateur fait confiance au certificat LOCAL
+    // du proxy ; ce dernier doit donc vérifier le certificat du serveur final.
+    // `rejectUnauthorized: false` supprimait cette vérification et acceptait
+    // un certificat invalide ou une interception réseau.
+    // Une autorité privée explicite peut être fournie via MAI_MITM_UPSTREAM_CA.
+    let upstreamCa: Buffer | undefined;
+    const upstreamCaPath = process.env.MAI_MITM_UPSTREAM_CA;
+    if (upstreamCaPath) {
+      try {
+        upstreamCa = readFileSync(upstreamCaPath);
+      } catch (caError) {
+        console.warn(
+          "[browser-capture] CA amont illisible:",
+          caError instanceof Error ? caError.message : caError
+        );
+      }
+    }
     const upstreamReq = transport.request(
       {
         headers: upstreamHeaders,
@@ -478,7 +495,7 @@ class BrowserCaptureMitmProxyService {
         path: `${target.url.pathname}${target.url.search}`,
         port: target.port,
         protocol: target.protocol,
-        rejectUnauthorized: false,
+        ...(upstreamCa ? { ca: upstreamCa } : {}),
       },
       (upstreamRes) => {
         const responseCapture = createCaptureBuffer();

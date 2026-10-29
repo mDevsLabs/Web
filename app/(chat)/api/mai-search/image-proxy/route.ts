@@ -1,22 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { sniffImageType } from "@/lib/search/image-sniff";
+import { safeFetchBuffer } from "@/lib/web/safe-fetch";
 
 export const maxDuration = 15;
 
-function isBlockedHost(hostname: string): boolean {
-  const lower = hostname.toLowerCase();
-  if (
-    lower === "localhost" ||
-    lower.endsWith(".local") ||
-    lower.endsWith(".internal") ||
-    lower === "127.0.0.1" ||
-    lower === "::1" ||
-    lower.startsWith("10.") ||
-    lower.startsWith("192.168.") ||
-    /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(lower)
-  ) {
-    return true;
-  }
-  return false;
+// Plafond volontairement modeste : une vignette de résultat de recherche n'a
+// aucune raison de peser davantage.
+const MAX_IMAGE_BYTES = 5_000_000;
+const IMAGE_TIMEOUT_MS = 6000;
+
+function responseHeaders(contentType: string): Record<string, string> {
+  return {
+    "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+    "Content-Security-Policy": "default-src 'none'; sandbox",
+    "Content-Type": contentType,
+    "Cross-Origin-Resource-Policy": "same-origin",
+    // Le type annoncé est celui des octets réellement détectés.
+    "X-Content-Type-Options": "nosniff",
+  };
 }
 
 export async function GET(request: NextRequest) {
@@ -33,44 +34,44 @@ export async function GET(request: NextRequest) {
     if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
       return new NextResponse("Protocole invalide", { status: 400 });
     }
-    if (isBlockedHost(parsed.hostname)) {
-      return new NextResponse("Hôte non autorisé", { status: 403 });
-    }
   } catch {
     return new NextResponse("URL malformée", { status: 400 });
   }
 
-  try {
-    const res = await fetch(parsed.toString(), {
-      headers: {
-        Accept:
-          "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-      },
-      redirect: "follow",
-      signal: AbortSignal.timeout(6000),
-    });
+  // safeFetchBuffer épingle la résolution DNS, revalide chaque redirection et
+  // borne taille et délai : aucune requête ne part vers une adresse privée,
+  // locale ou de métadonnées, même après un `Location:` intermédiaire.
+  const result = await safeFetchBuffer(parsed.toString(), {
+    allowedContentTypes: [/^image\//i],
+    headers: {
+      Accept:
+        "image/avif,image/webp,image/apng,image/png,image/jpeg,image/gif,*/*;q=0.5",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    },
+    maxBytes: MAX_IMAGE_BYTES,
+    maxRedirects: 3,
+    timeoutMs: IMAGE_TIMEOUT_MS,
+  });
 
-    if (!res.ok) {
-      return new NextResponse("Image distante indisponible", {
-        status: res.status,
-      });
-    }
-
-    const contentType = res.headers.get("content-type") || "image/jpeg";
-    const arrayBuffer = await res.arrayBuffer();
-
-    return new NextResponse(arrayBuffer, {
-      headers: {
-        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
-        "Content-Type": contentType,
-      },
-      status: 200,
-    });
-  } catch (error: any) {
-    return new NextResponse(error?.message || "Erreur de proxy d'image", {
-      status: 502,
-    });
+  if (!result.ok) {
+    // Le statut amont n'est pas relayé tel quel : un 401/403 distant ne doit
+    // pas laisser croire à un problème de session mAI.
+    return new NextResponse("Image distante indisponible", { status: 502 });
   }
+  if (result.truncated) {
+    return new NextResponse("Image trop volumineuse", { status: 413 });
+  }
+
+  // Le type déclaré ne suffit pas : on exige une signature binaire connue.
+  // HTML déguisé en image/png, SVG actif et contenu exécutable sont refusés.
+  const detected = sniffImageType(result.buffer);
+  if (!detected) {
+    return new NextResponse("Format d'image non autorisé", { status: 415 });
+  }
+
+  return new NextResponse(new Uint8Array(result.buffer), {
+    headers: responseHeaders(detected),
+    status: 200,
+  });
 }
